@@ -1,0 +1,119 @@
+/*
+ *  Copyright (C) 2012-2018 Team Universal Media Center
+ *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *
+ *  SPDX-License-Identifier: GPL-2.0-or-later
+ *  See LICENSES/README.md for more information.
+ */
+
+#pragma once
+
+#include "FileItem.h"
+#include "ThumbLoader.h"
+#include "media/MediaType.h"
+#include "utils/Artwork.h"
+
+#include <map>
+#include <memory>
+#include <set>
+#include <vector>
+
+class CStreamDetails;
+class CVideoDatabase;
+class EmbeddedArt;
+
+using ArtCache = std::map<std::pair<std::string, int>, KODI::ART::Artwork>;
+
+class CVideoThumbLoader : public CThumbLoader
+{
+public:
+  CVideoThumbLoader();
+  ~CVideoThumbLoader() override;
+
+  void OnLoaderStart() override;
+  void OnLoaderFinish() override;
+
+  bool LoadItem(CFileItem* pItem) override;
+  bool LoadItemCached(CFileItem* pItem) override;
+  bool LoadItemLookup(CFileItem* pItem) override;
+
+  /*! \brief Prefetch art, stream details, ratings, tags and unique ids of a batch for LoadItem(). */
+  void Prefetch(const std::vector<CFileItem*>& items);
+
+  /*! \brief Fill the thumb of a video item
+   First uses a cached thumb from a previous run, then checks for a local thumb
+   and caches it for the next run
+   \param item the CFileItem object to fill
+   \return true if we fill the thumb, false otherwise
+   */
+  virtual bool FillThumb(CFileItem &item);
+
+  /*! \brief Find a particular art type for a given item, optionally checking at the folder level
+   \param item the CFileItem to search.
+   \param type the type of art to look for.
+   \param checkFolder whether to also check the folder level for files. Defaults to false.
+   \return the art file (if found), else empty.
+   */
+  static std::string GetLocalArt(const CFileItem &item, const std::string &type, bool checkFolder = false);
+
+  /*! \brief return the available art types for a given media type
+   \param type the type of media.
+   \return a vector of art types.
+   \sa GetLocalArt
+   */
+  static std::vector<std::string> GetArtTypes(const std::string &type);
+  static std::vector<std::string> GetArtTypes(KODI::MEDIA::TYPE type)
+  {
+    return GetArtTypes(KODI::MEDIA::NameOf(type));
+  }
+
+  static bool IsValidArtType(const std::string& potentialArtType);
+
+  static bool IsArtTypeInWhitelist(const std::string& artType, const std::vector<std::string>& whitelist, bool exact);
+
+  /*! \brief helper function to retrieve a thumb URL for embedded video thumbs
+   \param item a video CFileItem.
+   \return a URL for the embedded thumb.
+   */
+  static std::string GetEmbeddedThumbURL(const CFileItem &item);
+
+  /*! \brief Whether a thumb can be extracted from the video GetEmbeddedThumbURL() names
+   \param item a video CFileItem.
+   \return true if a thumb can be extracted, false otherwise.
+   */
+  static bool CanExtractEmbeddedThumb(const CFileItem& item);
+
+  /*! \brief helper function to fill the art for a video library item
+   \param item a video CFileItem
+   \return true if we fill art, false otherwise
+   */
+ bool FillLibraryArt(CFileItem &item) override;
+
+protected:
+  CVideoDatabase *m_videoDatabase;
+  ArtCache m_artCache;
+
+  /*! \brief Tries to detect missing data/info from a file and adds those
+   \param item The CFileItem to process
+   \return void
+   */
+  void DetectAndAddMissingItemData(CFileItem &item);
+
+  const KODI::ART::Artwork& GetArtFromCache(const std::string& mediaType, const int id);
+
+private:
+  int SetDetailsForItem(CVideoInfoTag& details, const KODI::ART::Artwork& artwork);
+
+  /*! \brief Prefetch() the next list batch, unless the item is in one. */
+  void PrefetchFrom(const CFileItem& item);
+
+  /*! \brief Prefetch the art of ids by media type for FillLibraryArt(). */
+  void PrefetchArt(std::map<std::string, std::vector<int>> artIds);
+
+  /*! \brief Get an item's own art, taking it from the art cache when it holds it. */
+  bool GetItemArt(const CVideoInfoTag& tag, KODI::ART::Artwork& artwork);
+
+  size_t m_prefetchEnd{0};
+  std::set<const CFileItem*> m_batched;
+  std::map<const CFileItem*, std::unique_ptr<CVideoInfoTag>> m_prefetched;
+};

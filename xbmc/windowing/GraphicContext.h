@@ -1,0 +1,378 @@
+/*
+ *  Copyright (C) 2005-2018 Team Universal Media Center
+ *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *
+ *  SPDX-License-Identifier: GPL-2.0-or-later
+ *  See LICENSES/README.md for more information.
+ */
+
+#pragma once
+
+#include "Resolution.h"
+#include "rendering/RenderSystemTypes.h"
+#include "threads/CriticalSection.h"
+#include "utils/ColorUtils.h"
+#include "utils/Geometry.h" // for CRect/CPoint
+#include "utils/TransformMatrix.h" // for the members m_guiTransform etc.
+
+#include <stack>
+#include <string>
+#include <vector>
+
+#define D3DPRESENTFLAG_INTERLACED   1
+#define D3DPRESENTFLAG_WIDESCREEN   2
+#define D3DPRESENTFLAG_PROGRESSIVE  4
+#define D3DPRESENTFLAG_MODE3DSBS    8
+#define D3DPRESENTFLAG_MODE3DTB    16
+
+/* what types are important for mode setting */
+#define D3DPRESENTFLAG_MODEMASK ( D3DPRESENTFLAG_INTERLACED \
+                                  | D3DPRESENTFLAG_MODE3DSBS  \
+                                  | D3DPRESENTFLAG_MODE3DTB   )
+
+enum VIEW_TYPE { VIEW_TYPE_NONE = 0,
+                 VIEW_TYPE_LIST,
+                 VIEW_TYPE_ICON,
+                 VIEW_TYPE_BIG_LIST,
+                 VIEW_TYPE_BIG_ICON,
+                 VIEW_TYPE_WIDE,
+                 VIEW_TYPE_BIG_WIDE,
+                 VIEW_TYPE_WRAP,
+                 VIEW_TYPE_BIG_WRAP,
+                 VIEW_TYPE_INFO,
+                 VIEW_TYPE_BIG_INFO,
+                 VIEW_TYPE_AUTO,
+                 VIEW_TYPE_MAX };
+
+enum AdjustRefreshRate
+{
+  ADJUST_REFRESHRATE_OFF = 0,
+  ADJUST_REFRESHRATE_ALWAYS,
+  ADJUST_REFRESHRATE_ON_STARTSTOP,
+  ADJUST_REFRESHRATE_ON_START,
+};
+
+enum RENDER_ORDER
+{
+  RENDER_ORDER_ALL_BACK_TO_FRONT = 0,
+  RENDER_ORDER_BACK_TO_FRONT,
+  RENDER_ORDER_FRONT_TO_BACK,
+};
+
+enum class STENCIL_LAYER
+{
+  LAYER0 = 0,
+  LAYER1 = 1,
+  LAYER2 = 2,
+  LAYER3 = 3,
+  LAYER4 = 4,
+  LAYER5 = 5,
+  LAYER6 = 6,
+  LAYER7 = 7,
+  NONE,
+  INVALID,
+};
+
+class CGraphicContext : public CCriticalSection
+{
+public:
+  CGraphicContext(void);
+  virtual ~CGraphicContext();
+
+  // methods related to windowing
+  float GetFPS() const;
+  void SetFPS(float fps);
+  float GetDisplayLatency() const;
+  bool IsFullScreenRoot() const;
+  void ToggleFullScreen();
+  void SetFullScreenVideo(bool bOnOff);
+  bool IsFullScreenVideo() const;
+  bool IsValidResolution(RESOLUTION res);
+  void SetVideoResolution(RESOLUTION res, bool forceUpdate);
+  void ApplyModeChange(RESOLUTION res);
+  void ApplyWindowResize(int newWidth, int newHeight);
+  RESOLUTION GetVideoResolution() const;
+  const RESOLUTION_INFO GetResInfo() const;
+  const RESOLUTION_INFO GetResInfo(RESOLUTION res) const;
+  void SetResInfo(RESOLUTION res, const RESOLUTION_INFO& info);
+
+  void Flip(bool rendered, bool videoLayer);
+
+  // gfx context interface
+  int GetWidth() const;
+  int GetHeight() const;
+  bool SetViewPort(float fx, float fy , float fwidth, float fheight, bool intersectPrevious = false);
+  void RestoreViewPort();
+  void SetScissors(const CRect &rect);
+  void ResetScissors();
+  const CRect &GetScissors() const;
+  const CRect GetViewWindow() const;
+  void SetViewWindow(float left, float top, float right, float bottom);
+  //! \brief Confine the GUI to \p rect, empty for the whole screen. Not persisted, unlike the
+  //! overscan calibration. \return whether the confinement changed
+  bool SetGuiContentRect(const CRect& rect);
+
+  //! \brief State the shape of the screen the display is projected onto, or zero for the
+  //! display's own. Nothing drawn may exceed the raster this defines.
+  void SetRasterAspect(float aspect);
+
+  //! \brief The stated shape of the screen, or zero when the display's own is in force.
+  float GetRasterAspect() const;
+
+  //! \brief Stated, not in force: one suspended while a screen tool is up still counts.
+  bool IsRasterShapeStated() const { return GetRasterAspect() > 0.0f; }
+
+  //! \brief The raster, in screen coordinates. The whole display when no shape is stated.
+  CRect GetRasterRect() const;
+
+  //! \brief The resolution sized as the raster, for the skin's layout selection. A selection
+  //! target, not a drawable resolution.
+  RESOLUTION_INFO GetRasterResInfo() const;
+
+  //! \brief Draw the interface at its authored proportions inside the area in force rather than
+  //! stretching it to fill. A 16:9 skin in a 2.40 raster is then pillarboxed.
+  void SetGuiKeepShape(bool keepShape);
+
+  //! \brief Asked for, not in force - unlike GetGuiKeepShapeRect(), which answers empty while
+  //! the hold is merely suspended.
+  bool GetGuiKeepShape() const { return m_guiKeepShape; }
+
+  //! \brief The rectangle the interface is held to, empty whenever no hold is in force.
+  CRect GetGuiKeepShapeRect() const;
+
+  //! \brief Confine the clip in force to the area the interface occupies. \return the previous
+  //! clip
+  CRect ClipToGui();
+
+  //! \brief Lift the clip to the whole display for the picture's render pass, which is contained
+  //! by scaling rather than by the scissor. \return the previous clip
+  CRect ClipToVideo();
+
+  //! \brief Clip to exactly \p rect, re-applying no bound. \return the previous clip
+  CRect SetClip(const CRect& rect);
+
+  //! \brief Whether a screen tool is on screen. While one is, the raster and the proportions
+  //! hold are suspended and the tool draws on the raw pixel grid.
+  bool IsCalibrating() const;
+  void SetCalibrating(bool bOnOff);
+  void ResetOverscan(RESOLUTION res, OVERSCAN &overscan);
+  void ResetOverscan(RESOLUTION_INFO &resinfo);
+  void ResetScreenParameters(RESOLUTION res);
+  void CaptureStateBlock();
+  void ApplyStateBlock();
+  /*! \brief Invalidates color buffer, clears the depth buffer (if used). 
+   Will result in undefined color buffer values which will have to be 
+   repainted. Has to be called at the beginning of a frame.
+   */
+  void Clear();
+  /*! \brief Clears the depth buffer (if used) and the color buffer. Guaranties
+   a defined color buffer value. Has to be called at the beginning of a frame.
+   \param color the specified color.
+   */
+  void Clear(KODI::UTILS::COLOR::Color color);
+  void GetAllowedResolutions(std::vector<RESOLUTION> &res);
+  /*! \brief Sets the direction of the current rendering pass.
+   \param renderOrder direction of the pass
+   */
+  void SetRenderOrder(RENDER_ORDER renderOrder);
+  /*! \brief Returns the current render order mode
+   \returns RENDER_ORDER returns the mode
+   */
+  RENDER_ORDER GetRenderOrder() { return m_renderOrder; }
+  /*! \brief Resets the z-depth. Layer 0 and 1 are reserved as presentation (video) layer.
+   */
+  void ResetDepth() { m_layer = 2; }
+  /*! \brief Reserve layers for the caller to use
+   \param addLayers number of layers needed
+   \returns uint32_t returns the absolute layer height
+   */
+  uint32_t GetDepth(uint32_t addLayers = 2);
+
+  /* \brief Get UI scaling information from a given resolution to the screen resolution.
+   Takes account of overscan and UI zooming.
+   \param res the resolution to scale from.
+   \param scaleX [out] the scaling amount in the X direction.
+   \param scaleY [out] the scaling amount in the Y direction.
+   \param matrix [out] if non-NULL, a suitable transformation from res to screen resolution is set.
+   */
+  void GetGUIScaling(const RESOLUTION_INFO &res, float &scaleX, float &scaleY, TransformMatrix *matrix = NULL);
+  void SetRenderingResolution(const RESOLUTION_INFO &res, bool needsScaling);  ///< Sets scaling up for rendering
+  void SetScalingResolution(const RESOLUTION_INFO &res, bool needsScaling);    ///< Sets scaling up for skin loading etc.
+  float GetScalingPixelRatio() const;
+  void InvertFinalCoords(float &x, float &y) const;
+  float ScaleFinalXCoord(float x, float y) const;
+  float ScaleFinalYCoord(float x, float y) const;
+  float ScaleFinalZCoord(float x, float y) const;
+  void ScaleFinalCoords(float &x, float &y, float &z) const;
+  bool RectIsAngled(float x1, float y1, float x2, float y2) const;
+  const TransformMatrix &GetGUIMatrix() const;
+  float GetGUIScaleX() const;
+  float GetGUIScaleY() const;
+  KODI::UTILS::COLOR::Color MergeAlpha(KODI::UTILS::COLOR::Color color) const;
+  KODI::UTILS::COLOR::Color MergeColor(KODI::UTILS::COLOR::Color color) const;
+  void SetOrigin(float x, float y);
+  void RestoreOrigin();
+  void SetCameraPosition(const CPoint &camera);
+  void SetStereoView(RenderStereoView view);
+  RenderStereoView GetStereoView() { return m_stereoView; }
+  void SetStereoMode(RenderStereoMode mode) { m_nextStereoMode = mode; }
+  RenderStereoMode GetStereoMode() { return m_stereoMode; }
+  void RestoreCameraPosition();
+  void SetStereoFactor(float factor);
+  void RestoreStereoFactor();
+  /*! \brief Gets the depth information of the current transform matrix
+   \param depthOffset adds an offset to the current depth
+   \returns float normalized -1 to 1
+   */
+  float GetTransformDepth(int32_t depthOffset = 0);
+  /*! \brief Gets the (normalized) depth information 
+   \param depth to be normalized
+   \returns float normalized -1 to 1
+   */
+  float GetNormalizedDepth(uint32_t depth);
+  /*! \brief Set a region in which to clip all rendering
+   Anything that is rendered after setting a clip region will be clipped so that no part renders
+   outside of the clip region.  Successive calls to SetClipRegion intersect the clip region, which
+   means the clip region may eventually become an empty set.  In this case SetClipRegion returns false
+   to indicate that no rendering need be performed.
+
+   This call must be matched with a RestoreClipRegion call unless SetClipRegion returns false.
+
+   Usage should be of the form:
+
+     if (SetClipRegion(x, y, w, h))
+     {
+       ...
+       perform rendering
+       ...
+       RestoreClipRegion();
+     }
+
+   \param x the left-most coordinate of the clip region
+   \param y the top-most coordinate of the clip region
+   \param w the width of the clip region
+   \param h the height of the clip region
+   \returns true if the region is set and the result is non-empty. Returns false if the resulting region is empty.
+   \sa RestoreClipRegion
+   */
+  bool SetClipRegion(float x, float y, float w, float h);
+  void RestoreClipRegion();
+  void ClipRect(CRect &vertex, CRect &texture, CRect *diffuse = NULL);
+  CRect GetClipRegion();
+  bool HasClipRegion() const { return !m_clipRegions.empty(); }
+  void AddGUITransform();
+  TransformMatrix AddTransform(const TransformMatrix &matrix);
+  void SetTransform(const TransformMatrix &matrix);
+  void SetTransform(const TransformMatrix &matrix, float scaleX, float scaleY);
+  void RemoveTransform();
+
+  /* modifies final coordinates according to stereo mode if needed */
+  CRect StereoCorrection(const CRect &rect) const;
+  CPoint StereoCorrection(const CPoint &point) const;
+
+  CRect GenerateAABB(const CRect &rect) const;
+
+  //@todo move those somewhere else
+  const std::string& GetMediaDir() const;
+  void SetMediaDir(const std::string& strMediaDir);
+
+  void SetTransferPQ(bool PQ) { m_isTransferPQ = PQ; }
+  bool IsTransferPQ() const { return m_isTransferPQ; }
+
+  /*! \brief Reserves an aabb to which a stencil drawcall should be made. Returns the bucket (or rather layer)
+   to which the drawcall has to be applied to. If all 8 available buckets are full for a given area, it will
+   signal so. 
+
+   \param newRect the requested area the element wants to render to
+   \sa returns an available layer, or signals that all available buckets are full
+   */
+  STENCIL_LAYER AddStencilRectToBucket(const CRect& newRect);
+  /*! \brief Clears all stencil buckets. Should be called at the start of a new frame */
+  void ClearStencilBuckets();
+
+  /*! \brief Pushes a new stencil layer to the stack. Child elements should render using this layer.
+   \param stencilLayer the layer which to be added.
+   */
+  void SetStencilLayer(const STENCIL_LAYER stencilLayer);
+  /*! \brief Pops the current stencil layer */
+  void RestoreStencilLayer();
+  /*! \brief Returns the current stencil layer */
+  STENCIL_LAYER GetStencilLayer();
+
+protected:
+
+  void UpdateCameraPosition(const CPoint &camera, const float &factor);
+  void SetVideoResolutionInternal(RESOLUTION res, bool forceUpdate);
+  void ApplyVideoResolution(RESOLUTION res);
+  void UpdateInternalStateWithResolution(RESOLUTION res);
+
+  int m_iScreenHeight = 576;
+  int m_iScreenWidth = 720;
+  std::string m_strMediaDir;
+  CRect m_videoRect;
+  CRect m_guiContentRect;
+  float m_rasterAspect{0.0f};
+  bool m_guiKeepShape{false};
+
+  //! \brief The area the interface occupies, recorded by GetGUIScaling for the clip.
+  CRect m_guiRect;
+
+  //! \brief The furthest anything being drawn may reach: the raster for the interface, the whole
+  //! display for the picture.
+  CRect ClipBounds() const;
+
+  CRect ScreenRect() const;
+
+  //! \brief The stated shape put through ComputeRasterAspectInForce() for the state in hand.
+  float RasterAspectInForce() const;
+
+  //! \brief The hold put through ComputeGuiKeepShape() for the state in hand.
+  bool GuiKeepShapeInForce() const;
+
+  bool m_bFullScreenRoot = true;
+  bool m_bFullScreenVideo = false;
+  bool m_bCalibrating = false;
+  RESOLUTION m_Resolution = RES_INVALID;
+  float m_fFPSOverride = 0.0f;
+
+  RESOLUTION_INFO m_windowResolution;
+  std::stack<CPoint> m_cameras;
+  std::stack<CPoint> m_origins;
+  std::stack<STENCIL_LAYER> m_stencilLayers;
+
+  std::array<std::vector<CRect>, 8> m_stencilBuckets;
+  std::stack<CRect> m_clipRegions;
+  std::stack<float> m_stereoFactors;
+  std::stack<CRect> m_viewStack;
+  CRect m_scissors;
+
+  class UITransform
+  {
+  public:
+    UITransform() : matrix() {}
+    UITransform(const TransformMatrix& m, const float sX = 1.0f, const float sY = 1.0f)
+      : matrix(m), scaleX(sX), scaleY(sY)
+    {
+    }
+    void Reset()
+    {
+      matrix.Reset();
+      scaleX = scaleY = 1.0f;
+    }
+
+    TransformMatrix matrix;
+    float scaleX = 1.0f;
+    float scaleY = 1.0f;
+  };
+
+  UITransform m_guiTransform;
+  UITransform m_finalTransform;
+  std::stack<UITransform, std::vector<UITransform>> m_transforms;
+  RenderStereoView m_stereoView = RenderStereoView::OFF;
+  RenderStereoMode m_stereoMode = RenderStereoMode::OFF;
+  RenderStereoMode m_nextStereoMode = RenderStereoMode::OFF;
+
+  bool m_isTransferPQ{false};
+  RENDER_ORDER m_renderOrder{RENDER_ORDER_ALL_BACK_TO_FRONT};
+  uint32_t m_layer{2};
+};

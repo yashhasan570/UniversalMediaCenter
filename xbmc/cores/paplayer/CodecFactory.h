@@ -1,0 +1,23 @@
+/*
+ *  Copyright (C) 2005-2018 Team Universal Media Center
+ *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *
+ *  SPDX-License-Identifier: GPL-2.0-or-later
+ *  See LICENSES/README.md for more information.
+ */
+
+#pragma once
+
+#include "ICodec.h"
+
+class CFileItem;
+
+class CodecFactory
+{
+public:
+  CodecFactory() = default;
+  virtual ~CodecFactory() = default;
+  static ICodec* CreateCodec(const CURL& urlFile);
+  static ICodec* CreateCodecDemux(const CFileItem& file, unsigned int filecache);
+};
+

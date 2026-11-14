@@ -1,0 +1,137 @@
+# Universal Media Center Media Center language file
+# Addon Name: Version Check
+# Addon id: service.xbmc.versioncheck
+# Addon Provider: Team Universal Media Center
+msgid ""
+msgstr ""
+"Project-Id-Version: XBMC Addons\n"
+"Report-Msgid-Bugs-To: translations@github.com/yashhasan570/UniversalMediaCenter\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2021-12-14 15:13+0000\n"
+"Last-Translator: Deleted User <noreply+158@weblate.org>\n"
+"Language-Team: Dutch <https://kodi.weblate.cloud/projects/kodi-core/service-xbmc-versioncheck/nl_nl/>\n"
+"Language: nl_nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.9.1\n"
+
+msgctxt "Addon Summary"
+msgid "Universal Media Center Version Check checks if you are running latest released version."
+msgstr "Universal Media Center versie-check controleert of je de laatst beschikbare versie hebt."
+
+msgctxt "Addon Description"
+msgid "Universal Media Center Version Check only supports a number of platforms/distros as releases may differ between them. For more information visit the github.com/yashhasan570/UniversalMediaCenter website."
+msgstr "Universal Media Center versie check ondersteunt alleen een aantal platforms/distro`s omdat uitgaven verschillen tussen hen. Voor meer informatie bezoek de github.com/yashhasan570/UniversalMediaCenter website."
+
+msgctxt "Addon Disclaimer"
+msgid "Feel free to use this script. For information visit github.com/yashhasan570/UniversalMediaCenter"
+msgstr "Gebruik dit script vrijblijvend. Voor meer informatie bezoek github.com/yashhasan570/UniversalMediaCenter"
+
+msgctxt "#32001"
+msgid "We would like to recommend you to upgrade."
+msgstr "We raden je aan om te upgraden."
+
+msgctxt "#32002"
+msgid "Visit Universal Media Center.tv for more information."
+msgstr "Bezoek Universal Media Center.tv voor meer informatie."
+
+msgctxt "#32009"
+msgid "Would you like to remove this reminder?"
+msgstr "Will je deze herinnering verwijderen?"
+
+msgctxt "#32010"
+msgid "You can enable/disable it through add-on settings."
+msgstr "Deze kan je aan/uitzetten in add-on instellingen."
+
+msgctxt "#32011"
+msgid "Use your package manager(apt) to upgrade."
+msgstr "Gebruik de pakketmanager(apt) om te upgraden."
+
+msgctxt "#32012"
+msgid "A new version is available, do you want to upgrade now?"
+msgstr "Er is een nieuwe versie beschikbaar, wil je nu upgraden?"
+
+msgctxt "#32013"
+msgid "Upgrade successful"
+msgstr "Upgrade succesvol"
+
+msgctxt "#32014"
+msgid "Do you want to restart Universal Media Center to finish the upgrade?"
+msgstr "Wil je Universal Media Center herstarten om de upgrade te voltooien?"
+
+msgctxt "#32015"
+msgid "Do you want to check the repository for a new version?"
+msgstr "Wil je de repository controleren op een nieuwe versie?"
+
+msgctxt "#32016"
+msgid "There is a newer stable Universal Media Center version available."
+msgstr "Er is een nieuwere stabiele versie van Universal Media Center beschikbaar."
+
+msgctxt "#32020"
+msgid "General"
+msgstr "Algemeen"
+
+msgctxt "#32021"
+msgid "Enable Universal Media Center version check?"
+msgstr "Universal Media Center versiecontrole inschakelen?"
+
+msgctxt "#32022"
+msgid "Please enter your password"
+msgstr "Vul je wachtwoord in"
+
+msgctxt "#32023"
+msgid "Linux: Upgrade complete system"
+msgstr "Linux: Upgrade compleet systeem"
+
+msgctxt "#32024"
+msgid "Linux: Upgrade using apt"
+msgstr "Linux: Upgrade gebruikt apt"
+
+#. Used in OK dialog
+msgctxt "#32030"
+msgid "A new stable version of Universal Media Center is available."
+msgstr "Een nieuwe stabiele versie van Universal Media Center is beschikbaar."
+
+#. Direct people to the website. Used in OK dialog
+msgctxt "#32031"
+msgid "Visit http://github.com/yashhasan570/UniversalMediaCenter for more information."
+msgstr "Bezoek http://github.com/yashhasan570/UniversalMediaCenter voor meer informatie."
+
+#. Used in OK dialog
+msgctxt "#32032"
+msgid "A new stable version of Universal Media Center is available."
+msgstr "Een nieuwe stabiele versie van Universal Media Center is beschikbaar."
+
+#. Direct people to the website. Used in OK dialog
+msgctxt "#32033"
+msgid "Visit http://github.com/yashhasan570/UniversalMediaCenter for more information."
+msgstr "Bezoek Http://github.com/yashhasan570/UniversalMediaCenter voor meer informatie."
+
+#. For example: "You are using 13.1 prealpha while 13.2 stable is available"
+msgctxt "#32034"
+msgid "Using %s while %s is available."
+msgstr "In gebruik %s terwijl %s beschikbaar is."
+
+#. Used in OK dialog
+msgctxt "#32035"
+msgid "It is recommended that you upgrade to a newer version."
+msgstr "Het is aanbevolen dat je upgrade naar een nieuwere versie."
+
+# empty strings from id 32036 to 32039
+msgctxt "#32040"
+msgid "Your version %s of the Python cryptography module is too old. You need at least version 1.7."
+msgstr "Jouw versie %s van de Python cryptografie module is te oud. Je hebt ten minste versie 1.7 nodig."
+
+msgctxt "#32041"
+msgid "Please upgrade your operating system."
+msgstr "Update uw besturingssysteem."
+
+msgctxt "#32042"
+msgid "For more information, see https://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Linux"
+msgstr "Voor meer informatie, kijk op https://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Linux"
+
+#~ msgctxt "#32035"
+#~ msgid "It is recommended that you to upgrade to a newer version."
+#~ msgstr "Het is aanbevolen dat je upgrade naar een nieuwere versie."

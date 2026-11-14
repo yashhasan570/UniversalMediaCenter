@@ -1,0 +1,23 @@
+/*
+ *  Copyright (C) 2005-2018 Team Universal Media Center
+ *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *
+ *  SPDX-License-Identifier: GPL-2.0-or-later
+ *  See LICENSES/README.md for more information.
+ */
+
+#pragma once
+
+#include "utils/CPUInfo.h"
+#include "utils/Temperature.h"
+
+class CCPUInfoWin10 : public CCPUInfo
+{
+public:
+  CCPUInfoWin10();
+  ~CCPUInfoWin10() = default;
+
+  int GetUsedPercentage() override;
+  float GetCPUFrequency() override { return 0; }
+  bool GetTemperature(CTemperature& temperature) override;
+};

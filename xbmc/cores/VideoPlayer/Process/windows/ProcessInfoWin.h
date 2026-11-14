@@ -1,0 +1,27 @@
+/*
+ *  Copyright (C) 2005-2018 Team Universal Media Center
+ *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *
+ *  SPDX-License-Identifier: GPL-2.0-or-later
+ *  See LICENSES/README.md for more information.
+ */
+
+#pragma once
+
+#include "../ProcessInfo.h"
+#include "cores/IPlayer.h"
+
+namespace VIDEOPLAYER
+{
+
+class CProcessInfoWin : public CProcessInfo
+{
+public:
+  static CProcessInfo* Create();
+  static void Register();
+
+  EINTERLACEMETHOD GetFallbackDeintMethod() override;
+  std::vector<AVPixelFormat> GetRenderFormats() override;
+};
+
+}

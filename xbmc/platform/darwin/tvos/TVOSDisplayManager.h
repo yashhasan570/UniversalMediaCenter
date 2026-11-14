@@ -1,0 +1,47 @@
+/*
+ *  Copyright (C) 2019 Team Universal Media Center
+ *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *
+ *  SPDX-License-Identifier: GPL-2.0-or-later
+ *  See LICENSES/README.md for more information.
+ */
+
+#import <CoreGraphics/CGBase.h>
+#import <CoreGraphics/CGGeometry.h>
+#import <CoreMedia/CMFormatDescription.h>
+#import <Foundation/Foundation.h>
+
+@class CADisplayLink;
+
+class CWinSystemTVOS;
+
+@interface TVOSDisplayManager : NSObject
+{
+  CADisplayLink* m_displayLink;
+  CWinSystemTVOS* m_winSystem;
+  float m_displayRate;
+  CGSize m_screensize;
+}
+
+@property(readwrite) CGFloat screenScale;
+
+- (float)getDisplayRate;
+- (void)displayLinkTick:(CADisplayLink*)sender;
+- (void)displayRateSwitch:(float)refreshRate withDynamicRange:(int)dynamicRange;
+- (BOOL)displayVideoFormatSwitch:(CMFormatDescriptionRef)formatDescription
+                     refreshRate:(float)refreshRate;
+- (void)displayDynamicRangeReset;
+- (void)displayRateReset;
+- (void)removeModeSwitchObserver;
+- (void)addModeSwitchObserver;
+- (void)observeValueForKeyPath:(NSString*)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary*)change
+                       context:(void*)context;
+- (const char*)stringFromDynamicRange:(int)dynamicRange;
+- (BOOL)supportsHDR;
+- (BOOL)supportsHLG;
+- (BOOL)canMatchVideoDynamicRange;
+- (CGSize)getScreenSize;
+- (instancetype)init;
+@end

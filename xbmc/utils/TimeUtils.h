@@ -1,0 +1,49 @@
+/*
+ *  Copyright (C) 2005-2018 Team Universal Media Center
+ *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *
+ *  SPDX-License-Identifier: GPL-2.0-or-later
+ *  See LICENSES/README.md for more information.
+ */
+
+#pragma once
+
+#include <stdint.h>
+#include <string>
+#include <time.h>
+
+class CDateTime;
+
+int64_t CurrentHostCounter(void);
+int64_t CurrentHostFrequency(void);
+
+class CTimeUtils
+{
+public:
+  
+  /*!
+   * @brief Update the time frame
+   * @note Not threadsafe
+   */
+  static void UpdateFrameTime(bool flip);
+  
+  /*!
+   * @brief Returns the frame time in MS
+   * @note Not threadsafe
+   */
+  static unsigned int GetFrameTime();
+
+  //! @brief Monotonic milliseconds, for elapsed time a clock change must not move.
+  static int64_t MonotonicMs();
+  static CDateTime GetLocalTime(time_t time);
+  
+  /*!
+   * @brief Returns a time string without seconds, i.e: HH:MM
+   * @param hhmmss Time string in the format HH:MM:SS
+  */
+  static std::string WithoutSeconds(const std::string& hhmmss);
+
+private:
+  static unsigned int frameTime;
+};
+

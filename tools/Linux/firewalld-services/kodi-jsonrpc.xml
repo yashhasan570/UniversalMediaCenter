@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>Universal Media Center JSON-RPC</short>
+  <description>Universal Media Center is a free cross-platform media-player jukebox and entertainment hub.  Enable this option to remotely control Universal Media Center via its JSON-RPC API.</description>
+  <port protocol="tcp" port="9090"/>
+</service>

@@ -1,0 +1,32 @@
+/*
+ *  Copyright (C) 2012-2018 Team Universal Media Center
+ *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *
+ *  SPDX-License-Identifier: GPL-2.0-or-later
+ *  See LICENSES/README.md for more information.
+ */
+
+#include "Vector.h"
+
+#include <math.h>
+
+CVector& CVector::operator+=(const CVector &other)
+{
+  x += other.x;
+  y += other.y;
+
+  return *this;
+}
+
+CVector& CVector::operator-=(const CVector &other)
+{
+  x -= other.x;
+  y -= other.y;
+
+  return *this;
+}
+
+float CVector::length() const
+{
+  return sqrt(pow(x, 2) + pow(y, 2));
+}

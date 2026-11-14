@@ -1,0 +1,19 @@
+/*
+ *  Copyright (C) 2005-2018 Team Universal Media Center
+ *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *
+ *  SPDX-License-Identifier: GPL-2.0-or-later
+ *  See LICENSES/README.md for more information.
+ */
+
+#pragma once
+
+#include "Builtins.h"
+
+//! \brief Class providing CEC related built-in commands.
+class CCECBuiltins
+{
+public:
+  //! \brief Returns the map of operations.
+  CBuiltins::CommandMap GetOperations() const;
+};

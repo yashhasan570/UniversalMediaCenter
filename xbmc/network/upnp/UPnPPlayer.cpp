@@ -1,0 +1,643 @@
+/*
+ *  Copyright (c) 2006 elupus (Joakim Plate)
+ *  Copyright (C) 2006-2026 Team Universal Media Center
+ *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *
+ *  SPDX-License-Identifier: GPL-2.0-or-later
+ *  See LICENSES/README.md for more information.
+ */
+#include "UPnPPlayer.h"
+
+#include "FileItem.h"
+#include "ServiceBroker.h"
+#include "ThumbLoader.h"
+#include "UPnP.h"
+#include "UPnPInternal.h"
+#include "UPnPPlayerController.h"
+#include "cores/DataCacheCore.h"
+#include "input/actions/Action.h"
+#include "input/actions/ActionIDs.h"
+#include "messaging/helpers/DialogHelper.h"
+#include "music/MusicFileItemClassify.h"
+#include "music/MusicThumbLoader.h"
+#include "settings/Settings.h"
+#include "settings/SettingsComponent.h"
+#include "utils/StringUtils.h"
+#include "utils/log.h"
+#include "video/VideoFileItemClassify.h"
+#include "video/VideoThumbLoader.h"
+
+#include <Platinum/Source/Devices/MediaRenderer/PltMediaController.h>
+#include <Platinum/Source/Devices/MediaServer/PltDidl.h>
+#include <Platinum/Source/Platinum/Platinum.h>
+
+using namespace KODI::MESSAGING;
+using namespace KODI;
+
+using KODI::MESSAGING::HELPERS::DialogResponse;
+using namespace std::chrono_literals;
+
+NPT_SET_LOCAL_LOGGER("xbmc.upnp.player")
+
+namespace UPNP
+{
+
+namespace
+{
+constexpr std::chrono::milliseconds QUEUE_NEXT_LEAD = 10s;
+} // unnamed namespace
+
+CUPnPPlayer::CUPnPPlayer(IPlayerCallback& callback, const char* uuid)
+  : IPlayer(callback),
+    CThread("UPnPPlayer"),
+    m_logger(CServiceBroker::GetLogging().GetLogger(StringUtils::Format("CUPnPPlayer[{}]", uuid)))
+{
+  m_control = CUPnP::GetInstance()->m_MediaController;
+
+  PLT_DeviceDataReference device;
+  if (NPT_SUCCEEDED(m_control->FindRenderer(uuid, device)))
+  {
+    m_delegate = std::make_unique<CUPnPPlayerController>(m_control, device);
+    CUPnP::RegisterUserdata(m_delegate.get());
+  }
+  else
+    m_logger->error("couldn't find device as {}", uuid);
+}
+
+CUPnPPlayer::~CUPnPPlayer()
+{
+  CloseFile();
+  CUPnP::UnregisterUserdata(m_delegate.get());
+}
+
+bool CUPnPPlayer::BuildResource(const CFileItem& file, std::string& uri, std::string& metadata)
+{
+  CFileItem item(file);
+  NPT_Reference<CThumbLoader> thumb_loader;
+  NPT_String path(file.GetPath().c_str());
+
+  if (VIDEO::IsVideoDb(file))
+    thumb_loader = NPT_Reference<CThumbLoader>(new CVideoThumbLoader());
+  else if (MUSIC::IsMusicDb(item))
+    thumb_loader = NPT_Reference<CThumbLoader>(new CMusicThumbLoader());
+
+  NPT_Reference<PLT_MediaObject> obj(
+      BuildObject(item, path, false, thumb_loader, NULL, CUPnP::GetServer(), UPnPPlayer));
+  if (obj.IsNull())
+  {
+    m_logger->error("BuildResource({}) failed to describe the item", file.GetPath());
+    return false;
+  }
+
+  // One resource is built per local address. Put the ones on the address that routes to the
+  // renderer first: connecting a UDP socket sends nothing, it only makes the kernel pick that
+  // address.
+  {
+    const NPT_HttpUrl& rendererUrl = m_delegate->m_device->GetURLBase();
+    NPT_IpAddress rendererAddress;
+    NPT_UdpSocket probe;
+    NPT_SocketInfo route;
+    if (NPT_SUCCEEDED(rendererAddress.Parse(rendererUrl.GetHost())) &&
+        NPT_SUCCEEDED(probe.Connect(NPT_SocketAddress(rendererAddress, rendererUrl.GetPort()))) &&
+        NPT_SUCCEEDED(probe.GetInfo(route)))
+    {
+      const NPT_String local = route.local_address.GetIpAddress().ToString();
+      NPT_Array<PLT_MediaItemResource> ordered;
+      for (NPT_Cardinal i = 0; i < obj->m_Resources.GetItemCount(); i++)
+      {
+        if (NPT_HttpUrl(obj->m_Resources[i].m_Uri).GetHost() == local)
+          ordered.Add(obj->m_Resources[i]);
+      }
+      for (NPT_Cardinal i = 0; i < obj->m_Resources.GetItemCount(); i++)
+      {
+        if (NPT_HttpUrl(obj->m_Resources[i].m_Uri).GetHost() != local)
+          ordered.Add(obj->m_Resources[i]);
+      }
+      obj->m_Resources = ordered;
+    }
+  }
+
+  NPT_String didl;
+  if (NPT_FAILED(PLT_Didl::ToDidl(*obj, "", didl)))
+  {
+    m_logger->error("BuildResource({}) failed to serialize item into DIDL-Lite", file.GetPath());
+    return false;
+  }
+  didl.Insert(didl_header, 0);
+  didl.Append(didl_footer);
+
+  if (GetMediaControllerQuirks(m_delegate->m_device.AsPointer()) & EMEDIACONTROLLERQUIRKS_X_MKV)
+  {
+    for (NPT_Cardinal i = 0; i < obj->m_Resources.GetItemCount(); i++)
+    {
+      if (obj->m_Resources[i].m_ProtocolInfo.GetContentType().Compare("video/x-matroska") == 0)
+      {
+        m_logger->debug("BuildResource({}): applying video/x-mkv quirk", file.GetPath());
+        NPT_String protocolInfo = obj->m_Resources[i].m_ProtocolInfo.ToString();
+        protocolInfo.Replace(":video/x-matroska:", ":video/x-mkv:");
+        obj->m_Resources[i].m_ProtocolInfo = PLT_ProtocolInfo(protocolInfo);
+      }
+    }
+  }
+
+  /* The resource uri's are stored in the Didl. We must choose the best resource
+   * for the playback device */
+  NPT_Cardinal res_index;
+  if (NPT_FAILED(m_control->FindBestResource(m_delegate->m_device, *obj, res_index)))
+  {
+    // An empty sink list means the renderer never said what it accepts; offer the first resource.
+    NPT_List<NPT_String> sinks;
+    const bool advertised =
+        NPT_SUCCEEDED(m_control->GetProtocolInfoSink(m_delegate->m_device->GetUUID(), sinks)) &&
+        sinks.GetItemCount() > 0 && !(*sinks.GetFirstItem()).IsEmpty();
+
+    if (advertised || obj->m_Resources.GetItemCount() == 0)
+    {
+      m_logger->error("BuildResource({}) failed to find a matching resource", file.GetPath());
+      return false;
+    }
+
+    res_index = 0;
+    m_logger->warn("BuildResource({}): {} advertises no protocolInfo, offering '{}' unmatched",
+                   file.GetPath(), m_delegate->m_device->GetFriendlyName().GetChars(),
+                   obj->m_Resources[res_index].m_ProtocolInfo.ToString().GetChars());
+  }
+
+  uri = obj->m_Resources[res_index].m_Uri.GetChars();
+  metadata = didl.GetChars();
+  return true;
+}
+
+int CUPnPPlayer::PlayFile(const CFileItem& file,
+                          const CPlayerOptions& options,
+                          XbmcThreads::EndTime<>& timeout)
+{
+  std::string uri, metadata;
+  CUPnPPlayerController::CAction* action = nullptr;
+
+  NPT_CHECK_POINTER_LABEL_SEVERE(m_delegate, failed);
+  if (!BuildResource(file, uri, metadata))
+    goto failed;
+
+  // get the transport info to evaluate the TransportState to be able to
+  // determine whether we first need to call Stop()
+  timeout.Set(timeout.GetInitialTimeoutValue());
+  NPT_CHECK_LABEL_SEVERE(m_delegate->SendGetTransportInfo(action), failed_gettransportinfo);
+  NPT_CHECK_LABEL_SEVERE(m_delegate->WaitForReply(*action, timeout), failed_gettransportinfo);
+
+  if (const NPT_String openingState = action->GetTransportState();
+      openingState != "NO_MEDIA_PRESENT" && openingState != "STOPPED")
+  {
+    timeout.Set(timeout.GetInitialTimeoutValue());
+    NPT_CHECK_LABEL_SEVERE(m_delegate->SendStop(action), failed_stop);
+    NPT_CHECK_LABEL_SEVERE(m_delegate->WaitForReply(*action, timeout), failed_stop);
+    NPT_CHECK_LABEL_SEVERE(action->GetStatus(), failed_stop);
+
+    // Stop is acknowledged before the renderer has stopped. Wait for STOPPED so the states read
+    // from here on belong to the file being opened.
+    XbmcThreads::EndTime<> stopping(3s);
+    while (!stopping.IsTimePast())
+    {
+      if (NPT_FAILED(m_delegate->SendGetTransportInfo(action)))
+        break;
+      if (!m_delegate->WaitForReplyFor(*action, 500ms))
+        continue;
+
+      const NPT_String stoppedState = action->GetTransportState();
+      if (stoppedState == "STOPPED" || stoppedState == "NO_MEDIA_PRESENT")
+        break;
+    }
+  }
+
+  timeout.Set(timeout.GetInitialTimeoutValue());
+  NPT_CHECK_LABEL_SEVERE(m_delegate->SendSetAVTransportURI(action, uri.c_str(), metadata.c_str()),
+                         failed_setavtransporturi);
+  NPT_CHECK_LABEL_SEVERE(m_delegate->WaitForReply(*action, timeout), failed_setavtransporturi);
+  NPT_CHECK_LABEL_SEVERE(action->GetStatus(), failed_setavtransporturi);
+
+  {
+    std::unique_lock lock(m_queueSection);
+    m_trackUri = uri;
+  }
+
+  timeout.Set(timeout.GetInitialTimeoutValue());
+  NPT_CHECK_LABEL_SEVERE(m_delegate->SendPlay(action), failed_play);
+  NPT_CHECK_LABEL_SEVERE(m_delegate->WaitForReply(*action, timeout), failed_play);
+  NPT_CHECK_LABEL_SEVERE(action->GetStatus(), failed_play);
+
+  /* wait for PLAYING state */
+  timeout.Set(timeout.GetInitialTimeoutValue());
+  do
+  {
+    // Wait for the reply before reading the state, or the first pass sees the old file's state.
+    NPT_CHECK_LABEL_SEVERE(m_delegate->SendGetTransportInfo(action), failed_waitplaying);
+    const NPT_Result waited = m_delegate->WaitForReply(*action, timeout);
+    // The deadline ends this loop, as the loop condition does, rather than failing the open
+    if (waited == NPT_ERROR_TIMEOUT)
+      break;
+    NPT_CHECK_LABEL_SEVERE(waited, failed_waitplaying);
+
+    const NPT_String transportStatus = action->GetTransportStatus();
+    const NPT_String transportState = action->GetTransportState();
+    if (transportState == "PLAYING" || transportState == "PAUSED_PLAYBACK")
+    {
+      break;
+    }
+    if (transportState == "STOPPED" && transportStatus != "OK")
+    {
+      m_logger->error("OpenFile({}): remote player signalled error", file.GetPath());
+      return NPT_FAILURE;
+    }
+
+  } while (!timeout.IsTimePast());
+
+  if (options.starttime > 0)
+  {
+    /* many upnp units won't load file properly until after play (including xbmc) */
+    NPT_CHECK_LABEL(m_control->Seek(m_delegate->m_device, m_delegate->m_instance, "REL_TIME",
+                                    PLT_Didl::FormatTimeStamp((NPT_UInt32)options.starttime),
+                                    m_delegate.get()),
+                    failed_seek);
+  }
+
+  return NPT_SUCCESS;
+failed_gettransportinfo:
+  m_logger->error("PlayFile({}): call to GetTransportInfo failed", file.GetPath());
+  return NPT_FAILURE;
+failed_stop:
+  m_logger->error("PlayFile({}) failed to stop current playback", file.GetPath());
+  return NPT_FAILURE;
+failed_setavtransporturi:
+  m_logger->error("PlayFile({}) failed to set the playback URI", file.GetPath());
+  return NPT_FAILURE;
+failed_play:
+  m_logger->error("PlayFile({}) failed to start playback", file.GetPath());
+  return NPT_FAILURE;
+failed_waitplaying:
+  m_logger->error("PlayFile({}) failed to wait for PLAYING state", file.GetPath());
+  return NPT_FAILURE;
+failed_seek:
+  m_logger->error("PlayFile({}) failed to seek to start offset", file.GetPath());
+  return NPT_FAILURE;
+failed:
+  m_logger->error("PlayFile({}) failed", file.GetPath());
+  return NPT_FAILURE;
+}
+
+bool CUPnPPlayer::OpenFile(const CFileItem& file, const CPlayerOptions& options)
+{
+  XbmcThreads::EndTime<> timeout(10s);
+  CUPnPPlayerController::CAction* action = nullptr;
+
+  m_started = false;
+  {
+    std::unique_lock lock(m_queueSection);
+    m_trackUri.clear();
+    m_queued.reset();
+    m_nextRequested = false;
+  }
+
+  /* if no path we want to attach to a already playing player */
+  if (file.GetPath().empty())
+  {
+    NPT_CHECK_LABEL_SEVERE(m_delegate->SendGetTransportInfo(action), failed);
+
+    NPT_CHECK_LABEL_SEVERE(m_delegate->WaitForReply(*action, timeout), failed);
+
+    /* make sure the attached player is actually playing */
+    const NPT_String transportState = action->GetTransportState();
+    if (transportState != "PLAYING" && transportState != "PAUSED_PLAYBACK")
+    {
+      goto failed;
+    }
+  }
+  else
+    NPT_CHECK_LABEL_SEVERE(PlayFile(file, options, timeout), failed);
+
+  {
+    const bool canQueueNext = m_control->CanSetNextAVTransportURI(m_delegate->m_device);
+    std::unique_lock lock(m_queueSection);
+    m_canQueueNext = canQueueNext;
+  }
+
+  if (!IsRunning())
+    Create();
+
+  m_stopremote = true;
+  m_started = true;
+
+  if (VIDEO::IsVideo(file))
+  {
+    m_hasVideo = true;
+  }
+  else if (MUSIC::IsAudio(file))
+  {
+    m_hasAudio = true;
+  }
+
+  m_callback.OnPlayBackStarted(file);
+  m_callback.OnAVStarted(file);
+  NPT_CHECK_LABEL_SEVERE(
+      m_control->GetPositionInfo(m_delegate->m_device, m_delegate->m_instance, m_delegate.get()),
+      failed);
+
+  m_updateTimer.Set(0ms);
+
+  return true;
+failed:
+  m_logger->error("OpenFile({}) failed to open file", file.GetPath());
+  return false;
+}
+
+bool CUPnPPlayer::QueueNextFile(const CFileItem& file)
+{
+  std::string uri, metadata;
+  CUPnPPlayerController::CAction* action = nullptr;
+
+  NPT_CHECK_POINTER_LABEL_SEVERE(m_delegate, failed);
+  if (!BuildResource(file, uri, metadata))
+    goto failed;
+
+  {
+    // Moving to the URI already playing changes nothing the renderer reports, so it could not be
+    // followed. The file opens the ordinary way once this one ends.
+    std::unique_lock lock(m_queueSection);
+    if (uri == m_trackUri)
+      return true;
+  }
+
+  // Not waited on: this runs on the application thread, and a refusal only means the next file is
+  // opened the ordinary way once this one ends.
+  NPT_CHECK_LABEL_WARNING(
+      m_delegate->SendSetNextAVTransportURI(action, uri.c_str(), metadata.c_str()), failed);
+  m_delegate->EndAction(*action);
+  {
+    std::unique_lock lock(m_queueSection);
+    m_queued = std::make_unique<CFileItem>(file);
+  }
+  return true;
+
+failed:
+  m_logger->error("QueueNextFile({}) failed to queue file", file.GetPath());
+  return false;
+}
+
+bool CUPnPPlayer::CloseFile(bool reopen)
+{
+  CUPnPPlayerController::CAction* action = nullptr;
+  bool stopped = true;
+
+  // Also reached from the player thread's exit and the destructor; the renderer is told once.
+  if (m_delegate && m_stopremote.exchange(false))
+  {
+    if (NPT_FAILED(m_delegate->SendStop(action)) ||
+        !m_delegate->WaitForReplyFor(*action, 10000ms) || NPT_FAILED(action->GetStatus()))
+    {
+      m_logger->error("CloseFile - unable to stop playback");
+      stopped = false;
+    }
+  }
+
+  if (m_started)
+  {
+    m_started = false;
+    m_callback.OnPlayBackStopped();
+  }
+
+  StopThread(true);
+  CServiceBroker::GetDataCacheCore().Reset();
+  return stopped;
+}
+
+void CUPnPPlayer::Pause()
+{
+  if (IsPaused())
+  {
+    NPT_CHECK_LABEL(
+        m_control->Play(m_delegate->m_device, m_delegate->m_instance, "1", m_delegate.get()),
+        failed);
+    CDataCacheCore::GetInstance().SetSpeed(1.0, 1.0);
+    m_callback.OnPlayBackResumed();
+  }
+  else
+  {
+    NPT_CHECK_LABEL(
+        m_control->Pause(m_delegate->m_device, m_delegate->m_instance, m_delegate.get()), failed);
+    CDataCacheCore::GetInstance().SetSpeed(1.0, 0.0);
+    m_callback.OnPlayBackPaused();
+  }
+
+  return;
+failed:
+  m_logger->error("CloseFile - unable to pause/unpause playback");
+}
+
+void CUPnPPlayer::SeekTime(int64_t ms)
+{
+  NPT_CHECK_LABEL(m_control->Seek(m_delegate->m_device, m_delegate->m_instance, "REL_TIME",
+                                  PLT_Didl::FormatTimeStamp((NPT_UInt32)(ms / 1000)),
+                                  m_delegate.get()),
+                  failed);
+
+  CDataCacheCore::GetInstance().SeekFinished(0);
+  return;
+failed:
+  m_logger->error("SeekTime - unable to seek playback");
+}
+
+float CUPnPPlayer::GetPercentage()
+{
+  int64_t tot = GetTotalTime();
+  if (tot)
+    return 100.0f * GetTime() / tot;
+  else
+    return 0.0f;
+}
+
+void CUPnPPlayer::SeekPercentage(float percent)
+{
+  int64_t tot = GetTotalTime();
+  if (tot)
+    SeekTime((int64_t)(tot * percent / 100));
+}
+
+void CUPnPPlayer::Seek(bool bPlus, bool bLargeStep, bool bChapterOverride)
+{
+}
+
+void CUPnPPlayer::FollowQueue()
+{
+  const PLT_PositionInfo position = m_delegate->GetPosition();
+  const std::string reported = position.track_uri.GetChars();
+  std::unique_ptr<CFileItem> started;
+  bool request = false;
+
+  {
+    std::unique_lock lock(m_queueSection);
+    // A file is only queued behind one the renderer reports by the URI it was given, so any
+    // other URI it then reports is the queued file, however the renderer spells it.
+    if (m_queued && !reported.empty() && reported != m_trackUri)
+    {
+      started = std::move(m_queued);
+      m_trackUri = reported;
+      m_nextRequested = false;
+    }
+    // The renderer echoing the URI it was given is what lets the move to the next one be seen.
+    else if (m_canQueueNext && !m_nextRequested && !m_trackUri.empty() && reported == m_trackUri)
+    {
+      const int64_t duration = position.track_duration.ToMillis();
+      const int64_t remaining = duration - position.rel_time.ToMillis();
+      if (duration > 0 && remaining <= QUEUE_NEXT_LEAD.count())
+      {
+        m_nextRequested = true;
+        request = true;
+      }
+    }
+  }
+
+  if (started)
+  {
+    m_hasVideo = VIDEO::IsVideo(*started);
+    m_hasAudio = !m_hasVideo && MUSIC::IsAudio(*started);
+    m_callback.OnPlayBackStarted(*started);
+    m_callback.OnAVStarted(*started);
+  }
+  else if (request)
+    m_callback.OnQueueNextItem();
+}
+
+void CUPnPPlayer::Process()
+{
+  while (!m_bStop)
+  {
+    NPT_CHECK_POINTER_LABEL_SEVERE(m_delegate, failed);
+    m_delegate->UpdatePositionInfo();
+
+    if (m_started)
+    {
+      // Update player times
+      CDataCacheCore& dataCacheCore = CDataCacheCore::GetInstance();
+      if (m_updateTimer.IsTimePast())
+      {
+        FollowQueue();
+        dataCacheCore.SetPlayTimes(0, GetTime(), 0, GetTotalTime());
+        m_updateTimer.Set(500ms);
+      }
+
+      // Player may be paused or resumed from the target player, state needs to be synchronized to data cache core.
+      if (IsPaused() && dataCacheCore.GetSpeed() > 0.0f)
+      {
+        m_callback.OnPlayBackPaused();
+        dataCacheCore.SetSpeed(1.0, 0.0);
+      }
+      else if (!IsPaused() && dataCacheCore.GetSpeed() == 0.0f)
+      {
+        m_callback.OnPlayBackResumed();
+        dataCacheCore.SetSpeed(1.0, 1.0);
+      }
+
+      if (m_delegate->GetTransportState() == "STOPPED")
+      {
+        m_logger->info("Transport state flagged as STOPPED. Triggering OnPlayBackEnded.");
+        m_started = false;
+        m_callback.OnPlayBackEnded();
+      }
+    }
+
+    CThread::Sleep(100ms);
+  }
+failed:
+  CloseFile();
+}
+
+bool CUPnPPlayer::IsPlaying() const
+{
+  NPT_CHECK_POINTER_LABEL_SEVERE(m_delegate, failed);
+  return m_delegate->GetTransportState() != "STOPPED";
+failed:
+  return false;
+}
+
+bool CUPnPPlayer::IsPaused() const
+{
+  NPT_CHECK_POINTER_LABEL_SEVERE(m_delegate, failed);
+  return m_delegate->GetTransportState() == "PAUSED_PLAYBACK";
+failed:
+  return false;
+}
+
+void CUPnPPlayer::SetVolume(float volume)
+{
+  if (!CServiceBroker::GetSettingsComponent()->GetSettings()->GetBool(
+          CSettings::SETTING_SERVICES_UPNPPLAYERVOLUMESYNC))
+  {
+    return;
+  }
+
+  NPT_CHECK_POINTER_LABEL_SEVERE(m_delegate, failed);
+  NPT_CHECK_LABEL(m_control->SetVolume(m_delegate->m_device, m_delegate->m_instance, "Master",
+                                       (int)(volume * 100), m_delegate.get()),
+                  failed);
+  return;
+failed:
+  m_logger->error("- unable to set volume");
+}
+
+int64_t CUPnPPlayer::GetTime()
+{
+  NPT_CHECK_POINTER_LABEL_SEVERE(m_delegate, failed);
+  return m_delegate->m_posinfo.rel_time.ToMillis();
+failed:
+  return 0;
+}
+
+int64_t CUPnPPlayer::GetTotalTime()
+{
+  NPT_CHECK_POINTER_LABEL_SEVERE(m_delegate, failed);
+  return m_delegate->m_posinfo.track_duration.ToMillis();
+failed:
+  return 0;
+};
+
+bool CUPnPPlayer::OnAction(const CAction& action)
+{
+  switch (action.GetID())
+  {
+    case ACTION_STOP:
+      if (IsPlaying())
+      {
+        //stop on remote system
+        m_stopremote = HELPERS::ShowYesNoDialogText(37022, 37023) == DialogResponse::CHOICE_YES;
+
+        return false; /* let normal code handle the action */
+      }
+      [[fallthrough]];
+    default:
+      return false;
+  }
+}
+
+void CUPnPPlayer::SetSpeed(float speed)
+{
+  if (IsPaused() && speed == 1.0f)
+  {
+    NPT_CHECK_LABEL(
+        m_control->Play(m_delegate->m_device, m_delegate->m_instance, "1", m_delegate.get()),
+        failed);
+    m_callback.OnPlayBackResumed();
+    CDataCacheCore::GetInstance().SetSpeed(1.0, 1.0);
+  }
+  return;
+failed:
+  m_logger->error("- unable to set speed");
+}
+
+void CUPnPPlayer::OnExit()
+{
+  if (m_started)
+  {
+    m_callback.OnPlayBackEnded();
+  }
+}
+
+} /* namespace UPNP */

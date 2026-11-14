@@ -1,0 +1,23 @@
+/*
+*  Copyright (C) 2010-2020 Team Universal Media Center
+*  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+*
+*  SPDX-License-Identifier: GPL-2.0-or-later
+*  See LICENSES/README.md for more information.
+*/
+
+#pragma once
+
+#include <string>
+
+class CDarwinEmbedUtils
+{
+public:
+  static const char* GetAppRootFolder(void);
+  static bool IsIosSandboxed(void);
+
+#if !defined(TVOS_TOPSHELF)
+  // AppStore requires all dylibs to be in .app/Frameworks in framework format
+  static std::string GetSharedLibraryPath(const std::string& sharedLibraryPath);
+#endif
+};

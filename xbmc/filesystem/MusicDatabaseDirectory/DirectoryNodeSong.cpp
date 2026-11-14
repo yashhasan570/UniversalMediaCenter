@@ -1,0 +1,39 @@
+/*
+ *  Copyright (C) 2005-2018 Team Universal Media Center
+ *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *
+ *  SPDX-License-Identifier: GPL-2.0-or-later
+ *  See LICENSES/README.md for more information.
+ */
+
+#include "DirectoryNodeSong.h"
+
+#include "QueryParams.h"
+#include "music/MusicDatabase.h"
+
+using namespace XFILE::MUSICDATABASEDIRECTORY;
+
+CDirectoryNodeSong::CDirectoryNodeSong(const std::string& strName, CDirectoryNode* pParent)
+  : CDirectoryNode(NodeType::SONG, strName, pParent)
+{
+
+}
+
+bool CDirectoryNodeSong::GetContent(CFileItemList& items) const
+{
+  CMusicDatabase musicdatabase;
+  if (!musicdatabase.Open())
+    return false;
+
+  CQueryParams params;
+  CollectQueryParams(params);
+
+  std::string strBaseDir=BuildPath();
+  bool bSuccess =
+      musicdatabase.GetSongsNav(strBaseDir, items, SortDescription(), params.GetGenreId(),
+                                params.GetArtistId(), params.GetAlbumId());
+
+  musicdatabase.Close();
+
+  return bSuccess;
+}

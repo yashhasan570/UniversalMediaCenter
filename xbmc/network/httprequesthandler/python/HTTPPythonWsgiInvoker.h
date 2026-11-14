@@ -1,0 +1,48 @@
+/*
+ *  Copyright (C) 2015-2018 Team Universal Media Center
+ *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *
+ *  SPDX-License-Identifier: GPL-2.0-or-later
+ *  See LICENSES/README.md for more information.
+ */
+
+#pragma once
+
+#include "interfaces/python/PythonInvoker.h"
+#include "network/httprequesthandler/python/HTTPPythonInvoker.h"
+#include "network/httprequesthandler/python/HTTPPythonRequest.h"
+
+#include <map>
+#include <string>
+
+namespace XBMCAddon
+{
+  namespace xbmcwsgi
+  {
+    class WsgiResponse;
+  }
+}
+
+class CHTTPPythonWsgiInvoker : public CHTTPPythonInvoker
+{
+public:
+  CHTTPPythonWsgiInvoker(ILanguageInvocationHandler* invocationHandler, HTTPPythonRequest* request);
+  ~CHTTPPythonWsgiInvoker() override;
+
+  static void GlobalInitializeModules(void);
+
+  // implementations of CHTTPPythonInvoker
+  HTTPPythonRequest* GetRequest() override;
+
+protected:
+  // overrides of CPythonInvoker
+  void executeScript(FILE* fp, const std::string& script, PyObject* moduleDict) override;
+  const char* getInitializationScript() const override;
+
+private:
+  static std::map<std::string, std::string> createCgiEnvironment(
+      const HTTPPythonRequest* httpRequest, const ADDON::AddonPtr& addon);
+  static void addWsgiEnvironment(HTTPPythonRequest* request, void* environment);
+
+  XBMCAddon::xbmcwsgi::WsgiResponse* m_wsgiResponse;
+};

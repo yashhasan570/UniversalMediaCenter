@@ -1,0 +1,144 @@
+/*
+ *  Copyright (C) 2005-2018 Team Universal Media Center
+ *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *
+ *  SPDX-License-Identifier: GPL-2.0-or-later
+ *  See LICENSES/README.md for more information.
+ */
+
+#pragma once
+
+#include "cores/IPlayerCallback.h"
+#include "interfaces/IAnnouncer.h"
+#include "interfaces/generic/ILanguageInvocationHandler.h"
+#include "threads/CriticalSection.h"
+#include "threads/Event.h"
+#include "threads/Thread.h"
+
+#include <atomic>
+#include <functional>
+#include <memory>
+#include <optional>
+#include <set>
+#include <vector>
+
+class CPythonInvoker;
+class CVariant;
+
+using PyThreadState = struct _ts;
+
+struct PyElem
+{
+  int id;
+  bool bDone;
+  CPythonInvoker* pyThread;
+};
+
+class LibraryLoader;
+
+namespace XBMCAddon
+{
+namespace xbmc
+{
+class Monitor;
+}
+} // namespace XBMCAddon
+
+template<class T>
+struct LockableType : public T, public CCriticalSection
+{
+  bool hadSomethingRemoved;
+};
+
+typedef LockableType<std::vector<void*>> PlayerCallbackList;
+typedef LockableType<std::vector<XBMCAddon::xbmc::Monitor*>> MonitorCallbackList;
+typedef LockableType<std::vector<PyElem>> PyList;
+typedef std::vector<LibraryLoader*> PythonExtensionLibraries;
+
+class XBPython : public IPlayerCallback,
+                 public ANNOUNCEMENT::IAnnouncer,
+                 public ILanguageInvocationHandler
+{
+public:
+  XBPython();
+  ~XBPython() override;
+  void OnPlayBackEnded() override;
+  void OnPlayBackStarted(const CFileItem& file) override;
+  void OnAVStarted(const CFileItem& file) override;
+  void OnAVChange() override;
+  void OnPlayBackPaused() override;
+  void OnPlayBackResumed() override;
+  void OnPlayBackStopped() override;
+  void OnPlayBackError() override;
+  void OnPlayBackSpeedChanged(int iSpeed) override;
+  void OnPlayBackSeek(int64_t iTime, int64_t seekOffset) override;
+  void OnPlayBackSeekChapter(int iChapter) override;
+  void OnQueueNextItem() override;
+
+  void Announce(ANNOUNCEMENT::AnnouncementFlag flag,
+                const std::string& sender,
+                const std::string& message,
+                const CVariant& data) override;
+  void RegisterPythonPlayerCallBack(IPlayerCallback* pCallback);
+  void UnregisterPythonPlayerCallBack(IPlayerCallback* pCallback);
+  void RegisterPythonMonitorCallBack(XBMCAddon::xbmc::Monitor* pCallback);
+  void UnregisterPythonMonitorCallBack(XBMCAddon::xbmc::Monitor* pCallback);
+  void OnSettingsChanged(const std::string& strings);
+  void OnScreensaverActivated();
+  void OnScreensaverDeactivated();
+  void OnDPMSActivated();
+  void OnDPMSDeactivated();
+  void OnScanStarted(const std::string& library);
+  void OnScanFinished(const std::string& library);
+  void OnCleanStarted(const std::string& library);
+  void OnCleanFinished(const std::string& library);
+  void OnNotification(const std::string& sender,
+                      const std::string& method,
+                      const std::string& data);
+
+  void Process() override;
+  void PulseGlobalEvent() override;
+  void Uninitialize() override;
+  bool OnScriptInitialized(ILanguageInvoker* invoker) override;
+  void OnScriptStarted(ILanguageInvoker* invoker) override;
+  void NotifyScriptAborting(ILanguageInvoker* invoker) override;
+  void OnExecutionEnded(ILanguageInvoker* invoker) override;
+  void OnScriptFinalized(ILanguageInvoker* invoker) override;
+  std::shared_ptr<ILanguageInvoker> CreateInvoker() override;
+
+  PyThreadState* GetMainThreadState() const { return m_mainThreadState; }
+
+  // Runs fn with the GIL, under a new thread state of the main interpreter, and returns its
+  // result, or nothing if the GIL couldn't be had. fn returns true to keep the GIL for good.
+  // Once Universal Media Center is stopping, gives up if a script holds the GIL too long.
+  std::optional<bool> RunWithGil(const std::function<bool()>& fn);
+  bool IsGilLost() const { return m_gilLost; }
+  // Python wasn't finalized at exit, as a script was left running or the GIL couldn't be had
+  bool IsPythonLeftRunning() const { return m_skipFinalize || m_gilLost; }
+
+  // false means an inconsistent binding runtime: types would be created by a sub-interpreter
+  bool BindingModulesLoaded() const { return m_bindingModulesLoaded; }
+
+  bool WaitForEvent(CEvent& hEvent, unsigned int milliseconds);
+
+private:
+  CCriticalSection m_critSection;
+  PyThreadState* m_mainThreadState{nullptr};
+  bool m_bindingModulesLoaded{true};
+  std::set<const ILanguageInvoker*> m_scriptsStarted; // between OnScriptInitialized/Finalized
+  bool m_skipFinalize{false}; // Python left running at exit
+  bool m_scriptsClosed{false}; // no script starts once Uninitialize() counts them
+  std::atomic<bool> m_gilLost{false}; // a GIL wait timed out, no more Python runs
+
+  //Vector with list of threads used for running scripts
+  PyList m_vecPyList;
+  PlayerCallbackList m_vecPlayerCallbackList;
+  MonitorCallbackList m_vecMonitorCallbackList;
+
+  // any global events that scripts should be using
+  CEvent m_globalEvent;
+
+  // in order to finalize and unload the python library, need to save all the extension libraries that are
+  // loaded by it and unload them first (not done by finalize)
+  PythonExtensionLibraries m_extensions;
+};
