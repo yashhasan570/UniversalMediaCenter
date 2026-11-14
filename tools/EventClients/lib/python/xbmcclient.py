@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-#   Copyright (C) 2008-2013 Team XBMC
+#   Copyright (C) 2008-2013 Team 
 #
 #   This program is free software; you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
@@ -18,11 +18,11 @@
 #   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 """
-Implementation of XBMC's UDP based input system.
+Implementation of 's UDP based input system.
 
 A set of classes that abstract the various packets that the event server
-currently supports. In addition, there's also a class, XBMCClient, that
-provides functions that sends the various packets. Use XBMCClient if you
+currently supports. In addition, there's also a class, Client, that
+provides functions that sends the various packets. Use Client if you
 don't need complete control over packet structure.
 
 The basic workflow involves:
@@ -32,9 +32,9 @@ The basic workflow involves:
 3. Send a BYE packet
 
 IMPORTANT NOTE ABOUT TIMEOUTS:
-A client is considered to be timed out if XBMC doesn't received a packet
-at least once every 60 seconds. To "ping" XBMC with an empty packet use
-PacketPING or XBMCClient.ping(). See the documentation for details.
+A client is considered to be timed out if  doesn't received a packet
+at least once every 60 seconds. To "ping"  with an empty packet use
+PacketPING or Client.ping(). See the documentation for details.
 """
 
 from __future__ import unicode_literals, print_function, absolute_import, division
@@ -130,7 +130,7 @@ class Packet:
      - H7 must be set to zeros for now
 
          -----------------------------
-         | -H1 Signature ("XBMC")    | - 4  x CHAR                4B
+         | -H1 Signature ("")    | - 4  x CHAR                4B
          | -H2 Version (eg. 2.0)     | - 2  x UNSIGNED CHAR       2B
          | -H3 PacketType            | - 1  x UNSIGNED SHORT      2B
          | -H4 Sequence number       | - 1  x UNSIGNED LONG       4B
@@ -142,7 +142,7 @@ class Packet:
          -----------------------------
     """
     def __init__(self):
-        self.sig = b"XBMC"
+        self.sig = b""
         self.minver = 0
         self.majver = 2
         self.seq = 1
@@ -260,7 +260,7 @@ class Packet:
 class PacketHELO (Packet):
     """A HELO packet
 
-    A HELO packet establishes a valid connection to XBMC. It is the
+    A HELO packet establishes a valid connection to . It is the
     first packet that should be sent.
     """
     def __init__(self, devicename=None, icon_type=ICON_NONE, icon_file=None):
@@ -287,7 +287,7 @@ class PacketHELO (Packet):
 class PacketNOTIFICATION (Packet):
     """A NOTIFICATION packet
 
-    This packet displays a notification window in XBMC. It can contain
+    This packet displays a notification window in . It can contain
     a caption, a message and an icon.
     """
     def __init__(self, title, message, icon_type=ICON_NONE, icon_file=None):
@@ -314,7 +314,7 @@ class PacketNOTIFICATION (Packet):
 class PacketBUTTON (Packet):
     """A BUTTON packet
 
-    A button packet send a key press or release event to XBMC
+    A button packet send a key press or release event to 
     """
     def __init__(self, code=0, repeat=1, down=1, queue=0,
                  map_name="", button_name="", amount=0, axis=0):
@@ -387,7 +387,7 @@ class PacketBUTTON (Packet):
 class PacketMOUSE (Packet):
     """A MOUSE packet
 
-    A MOUSE packets sets the mouse position in XBMC
+    A MOUSE packets sets the mouse position in 
     """
     def __init__(self, x, y):
         """
@@ -395,7 +395,7 @@ class PacketMOUSE (Packet):
         x -- horizontal position ranging from 0 to 65535
         y -- vertical position ranging from 0 to 65535
 
-        The range will be mapped to the screen width and height in XBMC
+        The range will be mapped to the screen width and height in 
         """
         Packet.__init__(self)
         self.packettype = PT_MOUSE
@@ -407,7 +407,7 @@ class PacketMOUSE (Packet):
 class PacketBYE (Packet):
     """A BYE packet
 
-    A BYE packet terminates the connection to XBMC.
+    A BYE packet terminates the connection to .
     """
     def __init__(self):
         Packet.__init__(self)
@@ -417,9 +417,9 @@ class PacketBYE (Packet):
 class PacketPING (Packet):
     """A PING packet
 
-    A PING packet tells XBMC that the client is still alive. All valid
+    A PING packet tells  that the client is still alive. All valid
     packets act as ping (not just this one). A client needs to ping
-    XBMC at least once in 60 seconds or it will time out.
+     at least once in 60 seconds or it will time out.
     """
     def __init__(self):
         Packet.__init__(self)
@@ -428,12 +428,12 @@ class PacketPING (Packet):
 class PacketLOG (Packet):
     """A LOG packet
 
-    A LOG packet tells XBMC to log the message to xbmc.log with the loglevel as specified.
+    A LOG packet tells  to log the message to .log with the loglevel as specified.
     """
     def __init__(self, loglevel=0, logmessage="", autoprint=True):
         """
         Keyword arguments:
-        loglevel -- the loglevel, follows XBMC standard.
+        loglevel -- the loglevel, follows  standard.
         logmessage -- the message to log
         autoprint -- if the logmessage should automatically be printed to stdout
         """
@@ -447,13 +447,13 @@ class PacketLOG (Packet):
 class PacketACTION (Packet):
     """An ACTION packet
 
-    An ACTION packet tells XBMC to do the action specified, based on the type it knows were it needs to be sent.
+    An ACTION packet tells  to do the action specified, based on the type it knows were it needs to be sent.
     The idea is that this will be as in scripting/skining and keymapping, just triggered from afar.
     """
     def __init__(self, actionmessage="", actiontype=ACTION_EXECBUILTIN):
         """
         Keyword arguments:
-        loglevel -- the loglevel, follows XBMC standard.
+        loglevel -- the loglevel, follows  standard.
         logmessage -- the message to log
         autoprint -- if the logmessage should automatically be printed to stdout
         """
@@ -463,11 +463,11 @@ class PacketACTION (Packet):
         self.append_payload( format_string(actionmessage) )
 
 ######################################################################
-# XBMC Client Class
+#  Client Class
 ######################################################################
 
-class XBMCClient:
-    """An XBMC event client"""
+class Client:
+    """An  event client"""
 
     def __init__(self, name ="", icon_file=None, broadcast=False, uid=UNIQUE_IDENTIFICATION,
                  ip="127.0.0.1"):
@@ -489,9 +489,9 @@ class XBMCClient:
 
 
     def connect(self, ip=None, port=None):
-        """Initialize connection to XBMC
-        ip -- IP Address of XBMC
-        port -- port that the event server on XBMC is listening on
+        """Initialize connection to 
+        ip -- IP Address of 
+        port -- port that the event server on  is listening on
         """
         if ip:
             self.ip = ip
@@ -515,7 +515,7 @@ class XBMCClient:
 
 
     def send_notification(self, title="", message="", icon_file=None):
-        """Send a notification to the connected XBMC
+        """Send a notification to the connected 
         Keyword Arguments:
         title -- The title/heading for the notification
         message -- The message to be displayed
@@ -529,7 +529,7 @@ class XBMCClient:
 
 
     def send_keyboard_button(self, button=None):
-        """Send a keyboard event to XBMC
+        """Send a keyboard event to 
         Keyword Arguments:
         button -- name of the keyboard button to send (same as in Keymap.xml)
         """
@@ -539,7 +539,7 @@ class XBMCClient:
 
 
     def send_remote_button(self, button=None):
-        """Send a remote control event to XBMC
+        """Send a remote control event to 
         Keyword Arguments:
         button -- name of the remote control button to send (same as in Keymap.xml)
         """
@@ -555,7 +555,7 @@ class XBMCClient:
 
 
     def send_button(self, map="", button="", amount=0):
-        """Send a button event to XBMC
+        """Send a button event to 
         Keyword arguments:
         map -- a combination of map_name and button_name refers to a
                mapping in the user's Keymap.xml or Lircmap.xml.
@@ -576,7 +576,7 @@ class XBMCClient:
         packet.send(self.sock, self.addr, self.uid)
 
     def send_button_state(self, map="", button="", amount=0, down=0, axis=0):
-        """Send a button event to XBMC
+        """Send a button event to 
         Keyword arguments:
         map -- a combination of map_name and button_name refers to a
                mapping in the user's Keymap.xml or Lircmap.xml.
@@ -600,7 +600,7 @@ class XBMCClient:
         packet.send(self.sock, self.addr, self.uid)
 
     def send_mouse_position(self, x=0, y=0):
-        """Send a mouse event to XBMC
+        """Send a mouse event to 
         Keywords Arguments:
         x -- absolute x position of mouse ranging from 0 to 65535
              which maps to the entire screen width
@@ -612,7 +612,7 @@ class XBMCClient:
     def send_log(self, loglevel=0, logmessage="", autoprint=True):
         """
         Keyword arguments:
-        loglevel -- the loglevel, follows XBMC standard.
+        loglevel -- the loglevel, follows  standard.
         logmessage -- the message to log
         autoprint -- if the logmessage should automatically be printed to stdout
         """

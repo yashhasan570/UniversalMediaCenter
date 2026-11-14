@@ -17,7 +17,7 @@
 
 #include <emscripten/em_asm.h>
 
-namespace KODI::PLATFORM::WASM
+namespace UNIVERSAL MEDIA CENTER::PLATFORM::WASM
 {
 WebApiProvider CWasmWebApis::GetProvider()
 {
@@ -26,7 +26,7 @@ WebApiProvider CWasmWebApis::GetProvider()
   {
     // clang-format off
     const int selected = MAIN_THREAD_EM_ASM_INT(({
-      const provider = Module.kodi && Module.kodi.webApiProvider;
+      const provider = Module.universalmediacenter && Module.universalmediacenter.webApiProvider;
       if (provider === 'tizen') return 1;
       if (provider === 'titan') return 2;
       return 0;
@@ -71,4 +71,4 @@ bool ParseOwnedJson(void* ptr, CVariant& out)
   std::free(ptr);
   return ok && out.isObject();
 }
-} // namespace KODI::PLATFORM::WASM
+} // namespace UNIVERSAL MEDIA CENTER::PLATFORM::WASM

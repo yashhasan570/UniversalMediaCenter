@@ -17,7 +17,7 @@
 #include "dialogs/GUIDialogNumeric.h"
 #include "input/actions/Action.h"
 #include "input/actions/ActionIDs.h"
-#include "input/keyboard/XBMC_vkeys.h"
+#include "input/keyboard/_vkeys.h"
 #include "input/keymaps/keyboard/KeyIDs.h"
 #include "resources/LocalizeStrings.h"
 #include "resources/ResourcesComponent.h"
@@ -30,9 +30,9 @@
 
 #include <algorithm>
 
-using namespace KODI::GUILIB;
+using namespace UNIVERSAL MEDIA CENTER::GUILIB;
 
-using KODI::UTILITY::CDigest;
+using UNIVERSAL MEDIA CENTER::UTILITY::CDigest;
 
 #ifdef TARGET_WINDOWS
 extern HWND g_hWnd;
@@ -174,31 +174,31 @@ bool CGUIEditControl::OnAction(const CAction &action)
     {
       // input from the keyboard (vkey, not ascii)
       uint16_t b = action.GetID() - KEY_VKEY;
-      if (b == XBMCVK_HOME)
+      if (b == VK_HOME)
       {
         m_cursorPos = 0;
         UpdateText(false);
         return true;
       }
-      else if (b == XBMCVK_END)
+      else if (b == VK_END)
       {
         m_cursorPos = m_text2.length();
         UpdateText(false);
         return true;
       }
-      if (b == XBMCVK_LEFT && m_cursorPos > 0)
+      if (b == VK_LEFT && m_cursorPos > 0)
       {
         m_cursorPos--;
         UpdateText(false);
         return true;
       }
-      if (b == XBMCVK_RIGHT && m_cursorPos < m_text2.length())
+      if (b == VK_RIGHT && m_cursorPos < m_text2.length())
       {
         m_cursorPos++;
         UpdateText(false);
         return true;
       }
-      if (b == XBMCVK_DELETE)
+      if (b == VK_DELETE)
       {
         if (m_cursorPos < m_text2.length())
         {
@@ -208,7 +208,7 @@ bool CGUIEditControl::OnAction(const CAction &action)
           return true;
         }
       }
-      if (b == XBMCVK_BACK)
+      if (b == VK_BACK)
       {
         if (m_cursorPos > 0)
         {
@@ -218,13 +218,13 @@ bool CGUIEditControl::OnAction(const CAction &action)
         }
         return true;
       }
-      else if (b == XBMCVK_RETURN || b == XBMCVK_NUMPADENTER)
+      else if (b == VK_RETURN || b == VK_NUMPADENTER)
       {
         // enter - send click message, but otherwise ignore
         SEND_CLICK_MESSAGE(GetID(), GetParentID(), 1);
         return true;
       }
-      else if (b == XBMCVK_ESCAPE)
+      else if (b == VK_ESCAPE)
       { // escape - fallthrough to default action
         return CGUIButtonControl::OnAction(action);
       }
@@ -343,7 +343,7 @@ void CGUIEditControl::OnClick()
     {
       CDateTime dateTime;
       dateTime.SetFromDBTime(utf8);
-      KODI::TIME::SystemTime time;
+      UNIVERSAL MEDIA CENTER::TIME::SystemTime time;
       dateTime.GetAsSystemTime(time);
       if (CGUIDialogNumeric::ShowAndGetTime(
               time, !m_inputHeading.empty()
@@ -358,12 +358,12 @@ void CGUIEditControl::OnClick()
     }
     case INPUT_TYPE_DATE:
     {
-      KODI::TIME::SystemTime date;
+      UNIVERSAL MEDIA CENTER::TIME::SystemTime date;
       CDateTime dateTime;
       if (dateTime.SetFromDBDate(utf8))
         dateTime.GetAsSystemTime(date);
       else
-        KODI::TIME::GetLocalTime(&date);
+        UNIVERSAL MEDIA CENTER::TIME::GetLocalTime(&date);
 
       if (CGUIDialogNumeric::ShowAndGetDate(
               date, !m_inputHeading.empty()
@@ -609,10 +609,10 @@ bool CGUIEditControl::SetStyledText(const std::wstring &text)
   vecText styled;
   styled.reserve(text.size() + 1);
 
-  std::vector<KODI::UTILS::COLOR::Color> colors;
+  std::vector<UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color> colors;
   colors.push_back(m_label.GetLabelInfo().textColor);
   colors.push_back(m_label.GetLabelInfo().disabledColor);
-  KODI::UTILS::COLOR::Color select = m_label.GetLabelInfo().selectedColor;
+  UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color select = m_label.GetLabelInfo().selectedColor;
   if (!select)
     select = 0xFFFF0000;
   colors.push_back(select);
@@ -849,7 +849,7 @@ void CGUIEditControl::ComposingCursorAppendChar(std::uint32_t deadUnicodeKey)
 void CGUIEditControl::CancelKeyComposition(std::uint32_t deadUnicodeKey)
 {
   // sequence cancelled and reverted...
-  if (deadUnicodeKey == XBMCK_BACKSPACE)
+  if (deadUnicodeKey == K_BACKSPACE)
   {
     ResetCursor();
   }

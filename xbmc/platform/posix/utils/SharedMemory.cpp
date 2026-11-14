@@ -23,7 +23,7 @@
 
 #include "utils/log.h"
 
-using namespace KODI::UTILS::POSIX;
+using namespace UNIVERSAL MEDIA CENTER::UTILS::POSIX;
 
 CSharedMemory::CSharedMemory(std::size_t size)
 : m_size{size}, m_fd{Open()}, m_mmap(nullptr, m_size, PROT_READ | PROT_WRITE, MAP_SHARED, m_fd, 0)
@@ -63,7 +63,7 @@ CFileHandle CSharedMemory::OpenMemfd()
 #if defined(SYS_memfd_create) && defined(HAVE_LINUX_MEMFD)
   // This is specific to Linux >= 3.17, but preferred over shm_create if available
   // because it is race-free
-  int fd = syscall(SYS_memfd_create, "kodi", MFD_CLOEXEC);
+  int fd = syscall(SYS_memfd_create, "universalmediacenter", MFD_CLOEXEC);
   if (fd < 0)
   {
     throw std::system_error(errno, std::generic_category(), "memfd_create");
@@ -84,7 +84,7 @@ CFileHandle CSharedMemory::OpenShm()
   }
 
   std::string tmpFilename(xdgRuntimeDir);
-  tmpFilename.append("/kodi-shared-XXXXXX");
+  tmpFilename.append("/universalmediacenter-shared-XXXXXX");
 
   int rawFd;
 #if defined(HAVE_MKOSTEMP)

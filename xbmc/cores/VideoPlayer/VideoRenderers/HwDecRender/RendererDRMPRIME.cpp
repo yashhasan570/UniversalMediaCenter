@@ -24,7 +24,7 @@
 #include "windowing/gbm/WinSystemGbm.h"
 #include "windowing/gbm/drm/DRMAtomic.h"
 
-using namespace KODI::WINDOWING::GBM;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::GBM;
 
 CRendererDRMPRIME::~CRendererDRMPRIME()
 {
@@ -208,8 +208,8 @@ bool CRendererDRMPRIME::NeedBuffer(int index)
   return false;
 }
 
-bool CRendererDRMPRIME::CaptureVideoFrame(const KODI::RENDERING::CAPTURE::CaptureSpec& spec,
-                                          KODI::RENDERING::CAPTURE::CaptureResult& result)
+bool CRendererDRMPRIME::CaptureVideoFrame(const UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CaptureSpec& spec,
+                                          UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CaptureResult& result)
 {
   if (m_iLastRenderBuffer < 0)
     return false;

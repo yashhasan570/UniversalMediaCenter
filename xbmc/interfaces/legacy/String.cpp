@@ -8,7 +8,7 @@
 
 #include "AddonString.h"
 
-namespace XBMCAddon
+namespace Addon
 {
   String emptyString;
 }

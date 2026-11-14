@@ -314,12 +314,12 @@ bool CDVDVideoCodecDRMPRIME::Open(CDVDStreamInfo& hints, CDVDCodecOptions& optio
 
     if (pConfig->device_type == AV_HWDEVICE_TYPE_DRM)
     {
-      if (getenv("KODI_RENDER_NODE"))
-        device = getenv("KODI_RENDER_NODE");
+      if (getenv("UNIVERSALMEDIA_RENDER_NODE"))
+        device = getenv("UNIVERSALMEDIA_RENDER_NODE");
 
 #if defined(HAVE_GBM)
       auto winSystem =
-          dynamic_cast<KODI::WINDOWING::GBM::CWinSystemGbm*>(CServiceBroker::GetWinSystem());
+          dynamic_cast<UNIVERSAL MEDIA CENTER::WINDOWING::GBM::CWinSystemGbm*>(CServiceBroker::GetWinSystem());
 
       if (winSystem)
       {

@@ -8,7 +8,7 @@
 
 #pragma once
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace JOYSTICK
 {
@@ -20,4 +20,4 @@ struct AxisConfiguration
   bool bLateDiscovery = false;
 };
 } // namespace JOYSTICK
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

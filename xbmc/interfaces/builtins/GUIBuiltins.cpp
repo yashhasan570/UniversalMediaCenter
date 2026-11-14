@@ -39,7 +39,7 @@
 
 #include <charconv>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 namespace
 {
@@ -385,8 +385,8 @@ static int Screenshot(const std::vector<std::string>& params)
       strSaveToPath = param;
   }
 
-  const auto content = video ? KODI::RENDERING::CAPTURE::CaptureContent::VIDEO
-                             : KODI::RENDERING::CAPTURE::CaptureContent::COMPOSITE;
+  const auto content = video ? UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CaptureContent::VIDEO
+                             : UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CaptureContent::COMPOSITE;
 
   if (video)
   {

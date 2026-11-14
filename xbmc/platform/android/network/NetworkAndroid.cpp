@@ -69,9 +69,9 @@ bool CNetworkInterfaceAndroid::IsConnected() const
 std::string CNetworkInterfaceAndroid::GetMacAddress() const
 {
   auto interfaceMacAddrRaw = m_intf.getHardwareAddress();
-  if (xbmc_jnienv()->ExceptionCheck())
+  if (_jnienv()->ExceptionCheck())
   {
-    xbmc_jnienv()->ExceptionClear();
+    _jnienv()->ExceptionClear();
     CLog::Log(LOGERROR, "CNetworkInterfaceAndroid::GetMacAddress Exception getting HW address");
     return "";
   }
@@ -88,9 +88,9 @@ std::string CNetworkInterfaceAndroid::GetMacAddress() const
 void CNetworkInterfaceAndroid::GetMacAddressRaw(char rawMac[6]) const
 {
   auto interfaceMacAddrRaw = m_intf.getHardwareAddress();
-  if (xbmc_jnienv()->ExceptionCheck())
+  if (_jnienv()->ExceptionCheck())
   {
-    xbmc_jnienv()->ExceptionClear();
+    _jnienv()->ExceptionClear();
     CLog::Log(LOGERROR, "CNetworkInterfaceAndroid::GetMacAddress Exception getting HW address");
     return;
   }
@@ -231,7 +231,7 @@ std::unique_ptr<CNetworkBase> CNetworkBase::GetNetwork()
   return std::make_unique<CNetworkAndroid>();
 }
 
-CNetworkAndroid::CNetworkAndroid() : CNetworkBase(), CJNIXBMCConnectivityManagerNetworkCallback()
+CNetworkAndroid::CNetworkAndroid() : CNetworkBase(), CJNIConnectivityManagerNetworkCallback()
 {
   RetrieveInterfaces();
 
@@ -338,9 +338,9 @@ void CNetworkAndroid::RetrieveInterfaces()
     if (lp)
     {
       CJNINetworkInterface intf = CJNINetworkInterface::getByName(lp.getInterfaceName());
-      if (xbmc_jnienv()->ExceptionCheck())
+      if (_jnienv()->ExceptionCheck())
       {
-        xbmc_jnienv()->ExceptionClear();
+        _jnienv()->ExceptionClear();
         CLog::Log(LOGERROR, "CNetworkAndroid::RetrieveInterfaces Cannot get interface by name: {}",
                   lp.getInterfaceName());
         continue;
@@ -368,9 +368,9 @@ void CNetworkAndroid::onAvailable(const CJNINetwork n)
   if (lp)
   {
     CJNINetworkInterface intf = CJNINetworkInterface::getByName(lp.getInterfaceName());
-    if (xbmc_jnienv()->ExceptionCheck())
+    if (_jnienv()->ExceptionCheck())
     {
-      xbmc_jnienv()->ExceptionClear();
+      _jnienv()->ExceptionClear();
       CLog::Log(LOGERROR, "CNetworkAndroid::onAvailable: Cannot get interface by name: {}",
                 lp.getInterfaceName());
       return;

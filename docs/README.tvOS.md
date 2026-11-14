@@ -9,10 +9,10 @@ This guide has been tested using Xcode 11.3.1 running on MacOS 10.15.2 (Catalina
 3. **[Get the source code](#3-get-the-source-code)**
 4. **[Configure and build tools and dependencies](#4-configure-and-build-tools-and-dependencies)**  
   4.1. **[Advanced Configure Options](#41-advanced-configure-options)**  
-5. **[Generate Universal Media Center Build files](#5-generate-kodi-build-files)**  
+5. **[Generate Universal Media Center Build files](#5-generate-universalmediacenter-build-files)**  
   5.1. **[Generate XCode Project Files](#51-generate-xcode-project-files)**  
   5.2. **[Build with Xcode](#62-build)**  
-6. **[Build Universal Media Center](#6-build-kodi)**  
+6. **[Build Universal Media Center](#6-build-universalmediacenter)**  
   6.1. **[Build with Xcode](#61-build-with-xcode)**  
   6.2. **[Build with xcodebuild](#62-build-with-xcodebuild)**  
 7. **[Packaging to distribute as deb or ipa](#7-packaging-to-distribute-as-deb-or-ipa)**
@@ -37,17 +37,17 @@ and yet another one
 
 **Example:** Clone Universal Media Center's current master branch:
 ```
-git clone https://github.com/xbmc/xbmc kodi
+git clone https://github.com// universalmediacenter
 ```
 
 Commands that contain strings enclosed in angle brackets denote something you need to change to suit your needs.
 ```
-git clone -b <branch-name> https://github.com/xbmc/xbmc kodi
+git clone -b <branch-name> https://github.com// universalmediacenter
 ```
 
 **Example:** Clone Universal Media Center's current Krypton branch:
 ```
-git clone -b Krypton https://github.com/xbmc/xbmc kodi
+git clone -b Krypton https://github.com// universalmediacenter
 ```
 
 Several different strategies are used to draw your attention to certain pieces of information. In order of how critical the information is, these items are marked as a note, tip, or warning. For example:
@@ -94,19 +94,19 @@ cd $HOME
 
 Clone Universal Media Center's current master branch:
 ```
-git clone https://github.com/xbmc/xbmc kodi
+git clone https://github.com// universalmediacenter
 ```
 
 **[back to top](#table-of-contents)**
 
 ## 4. Configure and build tools and dependencies
-Universal Media Center can be built as a 64bit program only for tvOS. The dependencies are built in `$HOME/kodi/tools/depends` and installed into `/Users/Shared/xbmc-depends`.
+Universal Media Center can be built as a 64bit program only for tvOS. The dependencies are built in `$HOME/universalmediacenter/tools/depends` and installed into `/Users/Shared/-depends`.
 > [!NOTE]  
 > `--with-platform` is mandatory for all Apple platforms
 
 Configure build:
 ```
-cd $HOME/kodi/tools/depends
+cd $HOME/universalmediacenter/tools/depends
 ./bootstrap
 ./configure --host=aarch64-apple-darwin --with-platform=tvos
 ```
@@ -155,7 +155,7 @@ make -j$(getconf _NPROCESSORS_ONLN)
 ```
 --with-tarballs=<path>
 ```
-  path where tarballs will be saved [prefix/xbmc-tarballs]
+  path where tarballs will be saved [prefix/-tarballs]
 
 ```
 --with-cpu=<cpu>
@@ -216,23 +216,23 @@ Before you can use Xcode to build Universal Media Center, the Xcode project has 
 
 Create an out-of-source build directory:
 ```
-mkdir $HOME/kodi-build
+mkdir $HOME/universalmediacenter-build
 ```
 
 Generate Xcode project for TVOS:
 ```
-make -C tools/depends/target/cmakebuildsys BUILD_DIR=$HOME/kodi-build
+make -C tools/depends/target/cmakebuildsys BUILD_DIR=$HOME/universalmediacenter-build
 ```
 
 > [!TIP]
-> BUILD_DIR can be omitted, and project will be created in $HOME/kodi/build
+> BUILD_DIR can be omitted, and project will be created in $HOME/universalmediacenter/build
 Change all relevant paths onwards if omitted.
 
 Additional cmake arguments can be supplied via the CMAKE_EXTRA_ARGUMENTS command line variable
 
 An example to set signing settings in xcode project:
 ````
-make -C tools/depends/target/cmakebuildsys CMAKE_EXTRA_ARGUMENTS="-DPLATFORM_BUNDLE_IDENTIFIER='tv.kodi.kodi' -DCODE_SIGN_IDENTITY='iPhone Developer: *** (**********)' -DPROVISIONING_PROFILE_APP='tv.kodi.kodi' -DPROVISIONING_PROFILE_TOPSHELF='tv.kodi.kodi.Topshelf'"
+make -C tools/depends/target/cmakebuildsys CMAKE_EXTRA_ARGUMENTS="-DPLATFORM_BUNDLE_IDENTIFIER='tv.universalmediacenter.universalmediacenter' -DCODE_SIGN_IDENTITY='iPhone Developer: *** (**********)' -DPROVISIONING_PROFILE_APP='tv.universalmediacenter.universalmediacenter' -DPROVISIONING_PROFILE_TOPSHELF='tv.universalmediacenter.universalmediacenter.Topshelf'"
 ````
 Available Signing arguments
 
@@ -246,7 +246,7 @@ PROVISIONING_PROFILE_TOPSHELF - provprofile name for the top shelf
 > [!TIP]
 > If you wish to add signing settings automatically, look at **[Generate XCode Project Files](#51-generate-xcode-project-files)** for the additional `CMAKE_EXTRA_ARGUMENTS`
 
-You can find a complete list of available binary add-ons **[here](https://github.com/xbmc/repo-binary-addons)**.
+You can find a complete list of available binary add-ons **[here](https://github.com//repo-binary-addons)**.
 
 Binary addons will be built as a dependency in the Xcode project. You can choose the addons you wish to build during the Xcode project generation step
 
@@ -275,23 +275,23 @@ You can also build the binary-addons target via xcodebuild. This will not build 
 ```
 xcodebuild -config "Debug" -target binary-addons
 ```
-**[back to top](#table-of-contents)** | **[back to section top](#5-generate-kodi-build-files)**
+**[back to top](#table-of-contents)** | **[back to section top](#5-generate-universalmediacenter-build-files)**
 
 ## 6. Build
 
 ### 6.1. Build with Xcode
 
-Start Xcode, open the Universal Media Center project file created in **[Generate Universal Media Center Build files](#5-generate-kodi-build-files)**
+Start Xcode, open the Universal Media Center project file created in **[Generate Universal Media Center Build files](#5-generate-universalmediacenter-build-files)**
 
 > [!TIP]
-> (`kodi.xcodeproj`) is located in `$HOME/kodi-build`
+> (`universalmediacenter.xcodeproj`) is located in `$HOME/universalmediacenter-build`
 
 Once the project has loaded, select `Generic TvOs Device` (or your actual connected device if you have it connected) and hit `Build`.
 
-This will create a `Universal Media Center.app` file located in `$HOME/kodi-build/build/Debug-appletvos`. This App can be deployed via Xcode to an AppleTV via `Window -> Devices and Simulators -> Select device and click +`
+This will create a `Universal Media Center.app` file located in `$HOME/universalmediacenter-build/build/Debug-appletvos`. This App can be deployed via Xcode to an AppleTV via `Window -> Devices and Simulators -> Select device and click +`
 
 > [!TIP]
-> If you build as a release target, the location of the `Universal Media Center.app` will be `$HOME/kodi-build/build/Release-appletvos`
+> If you build as a release target, the location of the `Universal Media Center.app` will be `$HOME/universalmediacenter-build/build/Release-appletvos`
 
 > [!WARNING]  
 > If you have selected a specific tvOS SDK Version in step 4 then you might need to adapt the active target to use the same tvOS SDK version, otherwise build will fail. Be sure to select a device configuration.
@@ -301,17 +301,17 @@ Alternatively, you can also build via Xcode from the command-line with `xcodebui
 
 Change to build directory:
 ```
-cd $HOME/kodi-build
+cd $HOME/universalmediacenter-build
 xcodebuild -config "Debug"
 ```
 
-This will create a `Universal Media Center.app` file located in `$HOME/kodi-build/build/Debug-appletvos`. This App can be deployed via Xcode to an AppleTV via `Window -> Devices and Simulators -> Select device and click +`
+This will create a `Universal Media Center.app` file located in `$HOME/universalmediacenter-build/build/Debug-appletvos`. This App can be deployed via Xcode to an AppleTV via `Window -> Devices and Simulators -> Select device and click +`
 
 > [!TIP]
 > You can specify Release instead of Debug as -config parameter.
 
 > [!TIP]
-> If you build as a release target, the location of the `Universal Media Center.app` will be `$HOME/kodi-build/build/Release-appletvos`
+> If you build as a release target, the location of the `Universal Media Center.app` will be `$HOME/universalmediacenter-build/build/Release-appletvos`
 
 **[back to top](#table-of-contents)** | **[back to section top](#6-build)**
 
@@ -325,37 +325,37 @@ After Universal Media Center has been built, either target can be triggered by s
 Start Xcode, open the Universal Media Center project file created in **[Generate XCode Project Files](#51-generate-xcode-project-files)**
 
 > [!TIP]
-> (`kodi.xcodeproj`) is located in `$HOME/kodi-build`
+> (`universalmediacenter.xcodeproj`) is located in `$HOME/universalmediacenter-build`
 
 Click on `Product` in the top menu bar, and then go to `Scheme`, then select `deb` or `ipa`
 
 Hit `Build`
 
 > [!TIP]
-> The generated package will be located at `$HOME/kodi-build/tools/darwin/packaging/darwin_embedded`.
+> The generated package will be located at `$HOME/universalmediacenter-build/tools/darwin/packaging/darwin_embedded`.
 
 ## 7.2. Package via Xcodebuild
 
 Change to build directory:
 ```
-cd $HOME/kodi-build
+cd $HOME/universalmediacenter-build
 xcodebuild -target deb
 ```
 
 To create an unsigned IPA instead:
 ```
-cd $HOME/kodi-build
+cd $HOME/universalmediacenter-build
 xcodebuild -target ipa
 ```
 
 To build both packages in one command:
 ```
-cd $HOME/kodi-build
+cd $HOME/universalmediacenter-build
 xcodebuild -target deb -target ipa
 ```
 
 > [!TIP]
-> The generated package will be located at `$HOME/kodi-build/tools/darwin/packaging/darwin_embedded`.
+> The generated package will be located at `$HOME/universalmediacenter-build/tools/darwin/packaging/darwin_embedded`.
 
 **[back to top](#table-of-contents)**
 
@@ -373,7 +373,7 @@ Note that using a free developer account the signing will need to be reapplied e
   1. Open the Xcode project in Xcode as above (requires Xcode 7 or later)
   2. Select Xcode->Preferences and select Accounts
     * Hit the + sign to add an Apple ID account and Login.
-  2. Next select the kodi build target
+  2. Next select the universalmediacenter build target
   3. Under the `General` tab, enter a unique bundle identifier and check the box to `Automatically Manage Signing`.
   4. Select your team under `Automatically Manage Signing`.
 
@@ -385,7 +385,7 @@ In that case Universal Media Center will be sandboxed like any other app. All Un
 
   1. Build the ipa target via xcodebuild or Xcode as per **[Packaging to distribute as deb or ipa](#7-packaging-to-distribute-as-deb-or-ipa)**
   2. Open iOS Appsigner
-  3. Browse to `$HOME/kodi-build/tools/darwin/packaging/darwin_embedded` for your input file
+  3. Browse to `$HOME/universalmediacenter-build/tools/darwin/packaging/darwin_embedded` for your input file
   4. Select your signing certificate
   5. Select your provisioning profile
   6. Click start and select save location for the ipa file
@@ -397,7 +397,7 @@ In that case Universal Media Center will be sandboxed like any other app. All Un
 
 ## 9. Install
 
-There are a number of different methods that can be used to install kodi on an AppleTV 4/4K.
+There are a number of different methods that can be used to install universalmediacenter on an AppleTV 4/4K.
 
 ## 9.1. Jailbroken devices
 On jailbroken devices the resulting deb file created from **[Packaging to distribute as deb or ipa](#7-packaging-to-distribute-as-deb-or-ipa)** can be copied to the tvOS device via *ssh/scp* and installed manually. You need to SSH into the tvOS device and issue:
@@ -424,6 +424,6 @@ Once your Apple TV has been connected in Xcode, you can deploy the built **[App]
 
   1. Choose Window > Devices and Simulators, then in the window that appears, click Devices.
   2. On your Mac, select the Apple TV in the Devices pane.
-  3. Click the + symbol under `installed apps` and navigate to and select: `$HOME/kodi-build/build/Debug-appletvos/Universal Media Center.app` and then `Open`.
+  3. Click the + symbol under `installed apps` and navigate to and select: `$HOME/universalmediacenter-build/build/Debug-appletvos/Universal Media Center.app` and then `Open`.
 
 **[back to top](#table-of-contents)**

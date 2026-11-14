@@ -36,7 +36,7 @@
 
 using namespace XFILE;
 
-using KODI::PLATFORM::WINDOWS::FromW;
+using UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW;
 
 // local helper
 static inline bool worthTryToConnect(const DWORD lastErr)
@@ -178,7 +178,7 @@ bool CWin32SMBDirectory::GetDirectory(const CURL& url, CFileItemList &items)
     item->SetFolder(isDir);
     item->SetPath(itemPath);
 
-    using KODI::TIME::FileTime;
+    using UNIVERSAL MEDIA CENTER::TIME::FileTime;
     FileTime localTime{};
 
     if (FileTimeToLocalFileTime(reinterpret_cast<const FileTime*>(&findData.ftLastWriteTime),

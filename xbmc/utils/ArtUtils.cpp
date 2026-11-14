@@ -39,16 +39,16 @@ namespace
 {
 std::string GetArtTypeFromSize(unsigned int width, unsigned int height)
 {
-  std::string type = KODI::ART::TYPE::THUMB;
+  std::string type = UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB;
   if (width * 5 < height * 4)
-    type = KODI::ART::TYPE::POSTER;
+    type = UNIVERSAL MEDIA CENTER::ART::TYPE::POSTER;
   else if (width > height * 4)
-    type = KODI::ART::TYPE::BANNER;
+    type = UNIVERSAL MEDIA CENTER::ART::TYPE::BANNER;
   return type;
 }
 } // unnamed namespace
 
-namespace KODI::ART
+namespace UNIVERSAL MEDIA CENTER::ART
 {
 
 void FillInDefaultIcon(CFileItem& item)
@@ -523,4 +523,4 @@ void AddLocalItemArtwork(Artwork& itemArt,
   }
 }
 
-} // namespace KODI::ART
+} // namespace UNIVERSAL MEDIA CENTER::ART

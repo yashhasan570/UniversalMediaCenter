@@ -15,7 +15,7 @@
 #include <fmt/format.h>
 #include <gtest/gtest.h>
 
-using namespace KODI::LANGUAGE::I18N;
+using namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N;
 
 struct SubTagScopeTest
 {

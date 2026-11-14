@@ -225,7 +225,7 @@ char* CLibcdio::GetDeviceFileName()
 
   if (s_defaultDevice == NULL)
   {
-    std::string strEnvDvd = CEnvironment::getenv("KODI_DVD_DEVICE");
+    std::string strEnvDvd = CEnvironment::getenv("UNIVERSALMEDIA_DVD_DEVICE");
     if (!strEnvDvd.empty())
       s_defaultDevice = strdup(strEnvDvd.c_str());
     else
@@ -639,7 +639,7 @@ int CCdIoSupport::GuessFilesystem(int start_session, track_t track_num)
   return ret;
 }
 
-void CCdIoSupport::GetCdTextInfo(xbmc_cdtext_t &xcdt, int trackNum)
+void CCdIoSupport::GetCdTextInfo(_cdtext_t &xcdt, int trackNum)
 {
   // cdtext disabled for windows as some setup doesn't like mmc commands
   // and stall for over a minute in cdio_get_cdtext 83
@@ -757,7 +757,7 @@ CCdInfo* CCdIoSupport::GetCdInfo(char* cDeviceFileName)
       // Make sure that we have the Disc related info available
       if (i == 1)
       {
-        xbmc_cdtext_t xcdt;
+        _cdtext_t xcdt;
         GetCdTextInfo(xcdt, 0);
         info->SetDiscCDTextInformation( xcdt );
       }

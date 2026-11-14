@@ -12,14 +12,14 @@
 
 class CPictureInfoTag;
 
-namespace XBMCAddon
+namespace Addon
 {
-namespace xbmc
+namespace 
 {
 
 ///
 /// \defgroup python_InfoTagPicture InfoTagPicture
-/// \ingroup python_xbmc
+/// \ingroup python_
 /// @{
 /// @brief **Universal Media Center's picture info tag class.**
 ///
@@ -56,7 +56,7 @@ public:
 #ifdef DOXYGEN_SHOULD_USE_THIS
   ///
   /// \ingroup python_InfoTagPicture
-  /// @brief \python_func{ xbmc.InfoTagPicture([offscreen]) }
+  /// @brief \python_func{ .InfoTagPicture([offscreen]) }
   /// Create a picture info tag.
   ///
   /// @param offscreen            [opt] bool (default `False`) - if GUI based locks should be
@@ -80,7 +80,7 @@ public:
   /// **Example:**
   /// ~~~~~~~~~~~~~{.py}
   /// ...
-  /// pictureinfo = xbmc.InfoTagPicture(offscreen=False)
+  /// pictureinfo = .InfoTagPicture(offscreen=False)
   /// ...
   /// ~~~~~~~~~~~~~
   ///
@@ -176,5 +176,5 @@ public:
 #endif
 };
 
-} // namespace xbmc
-} // namespace XBMCAddon
+} // namespace 
+} // namespace Addon

@@ -16,7 +16,7 @@
 
 #include <cmath>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace JOYSTICK;
 
 #define AXIS_DEADZONE 0.05f

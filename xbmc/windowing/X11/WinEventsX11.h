@@ -17,7 +17,7 @@
 
 #include <X11/Xlib.h>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace WINDOWING
 {
@@ -37,8 +37,8 @@ public:
   void SetXRRFailSafeTimer(std::chrono::milliseconds duration);
 
 protected:
-  XBMCKey LookupXbmcKeySym(KeySym keysym);
-  bool ProcessKey(XBMC_Event &event);
+  Key LookupXbmcKeySym(KeySym keysym);
+  bool ProcessKey(_Event &event);
   Display *m_display = nullptr;
   Window m_window = 0;
   Atom m_wmDeleteMessage;

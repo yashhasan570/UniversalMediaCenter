@@ -36,7 +36,7 @@
 #include <algorithm>
 #include <vector>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 namespace

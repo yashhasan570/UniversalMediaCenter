@@ -12,7 +12,7 @@
 
 #include <cmath>
 
-using namespace KODI::WINDOWING::WASM;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::WASM;
 
 namespace
 {

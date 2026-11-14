@@ -33,7 +33,7 @@ enum class DialogModalityType;
 #pragma pack(pop)
 #endif
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
   namespace MESSAGING
   {
@@ -47,7 +47,7 @@ namespace KODI
  \ingroup winman
  \brief
  */
-class CGUIWindowManager : public KODI::MESSAGING::IMessageTarget
+class CGUIWindowManager : public UNIVERSAL MEDIA CENTER::MESSAGING::IMessageTarget
 {
   friend CGUIDialog;
   friend CGUIMediaWindow;
@@ -81,7 +81,7 @@ public:
   void CloseDialogs(bool forceClose = false) const;
   void CloseInternalModalDialogs(bool forceClose = false) const;
 
-  void OnApplicationMessage(KODI::MESSAGING::ThreadMessage* pMsg) override;
+  void OnApplicationMessage(UNIVERSAL MEDIA CENTER::MESSAGING::ThreadMessage* pMsg) override;
   int GetMessageMask() override;
 
   // OnAction() runs through our active dialogs and windows and sends the message
@@ -277,7 +277,7 @@ private:
   void CloseWindowSync(CGUIWindow *window, int nextWindowID = 0);
   int GetTopmostDialog(bool modal, bool ignoreClosing) const;
 
-  friend class KODI::MESSAGING::CApplicationMessenger;
+  friend class UNIVERSAL MEDIA CENTER::MESSAGING::CApplicationMessenger;
 
   /*! \brief Activate the given window.
    *

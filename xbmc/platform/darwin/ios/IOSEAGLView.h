@@ -28,7 +28,7 @@
 	GLfloat rotz;
 
 	BOOL animating;
-  BOOL xbmcAlive;
+  BOOL Alive;
   BOOL readyToRun;
   BOOL pause;
   NSConditionLock* animationThreadLock;
@@ -38,7 +38,7 @@
   BOOL framebufferResizeRequested;
 }
 @property (readonly, nonatomic, getter=isAnimating) BOOL animating;
-@property (readonly, nonatomic, getter=isXBMCAlive) BOOL xbmcAlive;
+@property (readonly, nonatomic, getter=isAlive) BOOL Alive;
 @property (readonly, nonatomic, getter=isReadyToRun) BOOL readyToRun;
 @property (readonly, nonatomic, getter=isPause) BOOL pause;
 @property(weak, readonly, getter=getCurrentScreen) UIScreen* currentScreen;

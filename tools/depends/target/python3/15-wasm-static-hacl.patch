@@ -3,7 +3,7 @@ From: Clément Péron <peron.clem@gmail.com>
 Date: Tue, 14 Apr 2026 00:00:00 +0000
 Subject: [PATCH] Makefile.pre.in: fold HACL objects into wasm static build
 
-For the Emscripten static build used by Kodi depends, the built-in hash modules
+For the Emscripten static build used by Universal Media Center depends, the built-in hash modules
 end up needing the HACL object files directly in Python's core object list.
 Inject them into LIBRARY_OBJS_OMIT_FROZEN early so the normal interpreter,
 bootstrap, and freeze tool links all see the same object graph.

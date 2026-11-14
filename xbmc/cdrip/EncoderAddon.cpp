@@ -8,7 +8,7 @@
 #include "EncoderAddon.h"
 
 using namespace ADDON;
-using namespace KODI::CDRIP;
+using namespace UNIVERSAL MEDIA CENTER::CDRIP;
 
 CEncoderAddon::CEncoderAddon(const AddonInfoPtr& addonInfo)
   : IAddonInstanceHandler(ADDON_INSTANCE_AUDIOENCODER, addonInfo)
@@ -17,7 +17,7 @@ CEncoderAddon::CEncoderAddon(const AddonInfoPtr& addonInfo)
   m_ifc.audioencoder = new AddonInstance_AudioEncoder();
   m_ifc.audioencoder->toAddon = new Universal Media CenterToAddonFuncTable_AudioEncoder();
   m_ifc.audioencoder->toUniversal Media Center = new AddonToUniversal Media CenterFuncTable_AudioEncoder();
-  m_ifc.audioencoder->toUniversal Media Center->kodiInstance = this;
+  m_ifc.audioencoder->toUniversal Media Center->universalmediacenterInstance = this;
   m_ifc.audioencoder->toUniversal Media Center->write = cb_write;
   m_ifc.audioencoder->toUniversal Media Center->seek = cb_seek;
 }
@@ -35,7 +35,7 @@ bool CEncoderAddon::Init()
   if (CreateInstance() != ADDON_STATUS_OK || !m_ifc.audioencoder->toAddon->start)
     return false;
 
-  KODI_ADDON_AUDIOENCODER_INFO_TAG tag{};
+  UNIVERSALMEDIA_ADDON_AUDIOENCODER_INFO_TAG tag{};
   tag.channels = m_iInChannels;
   tag.samplerate = m_iInSampleRate;
   tag.bits_per_sample = m_iInBitsPerSample;
@@ -80,16 +80,16 @@ ssize_t CEncoderAddon::Seek(ssize_t pos, int whence)
   return CEncoder::Seek(pos, whence);
 }
 
-ssize_t CEncoderAddon::cb_write(KODI_HANDLE kodiInstance, const uint8_t* data, size_t len)
+ssize_t CEncoderAddon::cb_write(UNIVERSALMEDIA_HANDLE universalmediacenterInstance, const uint8_t* data, size_t len)
 {
-  if (!kodiInstance || !data)
+  if (!universalmediacenterInstance || !data)
     return -1;
-  return static_cast<CEncoderAddon*>(kodiInstance)->Write(data, len);
+  return static_cast<CEncoderAddon*>(universalmediacenterInstance)->Write(data, len);
 }
 
-ssize_t CEncoderAddon::cb_seek(KODI_HANDLE kodiInstance, ssize_t pos, int whence)
+ssize_t CEncoderAddon::cb_seek(UNIVERSALMEDIA_HANDLE universalmediacenterInstance, ssize_t pos, int whence)
 {
-  if (!kodiInstance)
+  if (!universalmediacenterInstance)
     return -1;
-  return static_cast<CEncoderAddon*>(kodiInstance)->Seek(pos, whence);
+  return static_cast<CEncoderAddon*>(universalmediacenterInstance)->Seek(pos, whence);
 }

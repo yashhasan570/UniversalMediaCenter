@@ -26,7 +26,7 @@ class CGUIListLabel :
 {
 public:
   CGUIListLabel(int parentID, int controlID, float posX, float posY, float width, float height,
-                const CLabelInfo& labelInfo, const KODI::GUILIB::GUIINFO::CGUIInfoLabel &label, CGUIControl::GUISCROLLVALUE scroll);
+                const CLabelInfo& labelInfo, const UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoLabel &label, CGUIControl::GUISCROLLVALUE scroll);
   ~CGUIListLabel(void) override;
   CGUIListLabel* Clone() const override { return new CGUIListLabel(*this); }
 
@@ -52,6 +52,6 @@ protected:
   bool UpdateColors(const CGUIListItem* item) override;
 
   CGUILabel     m_label;
-  KODI::GUILIB::GUIINFO::CGUIInfoLabel m_info;
+  UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoLabel m_info;
   CGUIControl::GUISCROLLVALUE m_scroll;
 };

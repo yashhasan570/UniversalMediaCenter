@@ -28,12 +28,12 @@
 
 #include <mutex>
 
-using namespace KODI;
-using namespace KODI::WINDOWING::X11;
+using namespace UNIVERSAL MEDIA CENTER;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::X11;
 
 void CWinSystemX11GLESContext::Register()
 {
-  KODI::WINDOWING::CWindowSystemFactory::RegisterWindowSystem(CreateWinSystem, "x11");
+  UNIVERSAL MEDIA CENTER::WINDOWING::CWindowSystemFactory::RegisterWindowSystem(CreateWinSystem, "x11");
 }
 
 std::unique_ptr<CWinSystemBase> CWinSystemX11GLESContext::CreateWinSystem()

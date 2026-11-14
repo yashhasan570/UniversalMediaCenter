@@ -16,7 +16,7 @@ TEST(TestScraperParser, General)
   CScraperParser a;
 
   a.Clear();
-  EXPECT_TRUE(a.Load(XBMC_REF_FILE_PATH("/addons/metadata.local/local.xml")));
+  EXPECT_TRUE(a.Load(_REF_FILE_PATH("/addons/metadata.local/local.xml")));
 
   EXPECT_STREQ("UTF-8", a.GetSearchStringEncoding().c_str());
 }

@@ -17,7 +17,7 @@
 #include "windowing/GraphicContext.h"
 #include "windowing/WinSystem.h"
 
-#include "platform/android/activity/XBMCApp.h"
+#include "platform/android/activity/App.h"
 
 bool CVideoSyncAndroid::Setup()
 {
@@ -27,7 +27,7 @@ bool CVideoSyncAndroid::Setup()
   m_LastVBlankTime = CurrentHostCounter();
   m_abortEvent.Reset();
 
-  CXBMCApp::Get().InitFrameCallback(this);
+  CApp::Get().InitFrameCallback(this);
   CServiceBroker::GetWinSystem()->Register(this);
 
   return true;
@@ -42,7 +42,7 @@ void CVideoSyncAndroid::Run(CEvent& stopEvent)
 void CVideoSyncAndroid::Cleanup()
 {
   CLog::Log(LOGDEBUG, "CVideoSyncAndroid::{} cleaning up", __FUNCTION__);
-  CXBMCApp::Get().DeinitFrameCallback();
+  CApp::Get().DeinitFrameCallback();
   CServiceBroker::GetWinSystem()->Unregister(this);
 }
 

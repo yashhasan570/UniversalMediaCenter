@@ -14,7 +14,7 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using XFILE::CVideoDatabaseDirectory;
 using XFILE::VIDEODATABASEDIRECTORY::NodeType;
 

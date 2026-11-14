@@ -42,7 +42,7 @@ std::vector<AddonGetInterface> Interface_Base::s_registeredInterfaces;
 
 bool Interface_Base::InitInterface(CAddonDll* addon,
                                    AddonGlobalInterface& addonInterface,
-                                   KODI_ADDON_INSTANCE_STRUCT* firstUniversal Media CenterInstance)
+                                   UNIVERSALMEDIA_ADDON_INSTANCE_STRUCT* firstUniversal Media CenterInstance)
 {
   addonInterface = {};
 
@@ -50,33 +50,33 @@ bool Interface_Base::InitInterface(CAddonDll* addon,
   addonInterface.globalSingleInstance = nullptr;
   addonInterface.firstUniversal Media CenterInstance = firstUniversal Media CenterInstance;
 
-  // Create function list from kodi to addon, generated with malloc to have
+  // Create function list from universalmediacenter to addon, generated with malloc to have
   // compatible with other versions
   addonInterface.toUniversal Media Center = new AddonToUniversal Media CenterFuncTable_Addon();
-  addonInterface.toUniversal Media Center->kodiBase = addon;
+  addonInterface.toUniversal Media Center->universalmediacenterBase = addon;
   addonInterface.toUniversal Media Center->addon_log_msg = addon_log_msg;
   addonInterface.toUniversal Media Center->free_string = free_string;
   addonInterface.toUniversal Media Center->free_string_array = free_string_array;
 
-  addonInterface.toUniversal Media Center->kodi_addon = new AddonToUniversal Media CenterFuncTable_kodi_addon();
-  addonInterface.toUniversal Media Center->kodi_addon->get_addon_path = get_addon_path;
-  addonInterface.toUniversal Media Center->kodi_addon->get_lib_path = get_lib_path;
-  addonInterface.toUniversal Media Center->kodi_addon->get_user_path = get_user_path;
-  addonInterface.toUniversal Media Center->kodi_addon->get_temp_path = get_temp_path;
-  addonInterface.toUniversal Media Center->kodi_addon->get_localized_string = get_localized_string;
-  addonInterface.toUniversal Media Center->kodi_addon->open_settings_dialog = open_settings_dialog;
-  addonInterface.toUniversal Media Center->kodi_addon->is_setting_using_default = is_setting_using_default;
-  addonInterface.toUniversal Media Center->kodi_addon->get_setting_bool = get_setting_bool;
-  addonInterface.toUniversal Media Center->kodi_addon->get_setting_int = get_setting_int;
-  addonInterface.toUniversal Media Center->kodi_addon->get_setting_float = get_setting_float;
-  addonInterface.toUniversal Media Center->kodi_addon->get_setting_string = get_setting_string;
-  addonInterface.toUniversal Media Center->kodi_addon->set_setting_bool = set_setting_bool;
-  addonInterface.toUniversal Media Center->kodi_addon->set_setting_int = set_setting_int;
-  addonInterface.toUniversal Media Center->kodi_addon->set_setting_float = set_setting_float;
-  addonInterface.toUniversal Media Center->kodi_addon->set_setting_string = set_setting_string;
-  addonInterface.toUniversal Media Center->kodi_addon->get_addon_info = get_addon_info;
-  addonInterface.toUniversal Media Center->kodi_addon->get_type_version = get_type_version;
-  addonInterface.toUniversal Media Center->kodi_addon->get_interface = get_interface;
+  addonInterface.toUniversal Media Center->universalmediacenter_addon = new AddonToUniversal Media CenterFuncTable_universalmediacenter_addon();
+  addonInterface.toUniversal Media Center->universalmediacenter_addon->get_addon_path = get_addon_path;
+  addonInterface.toUniversal Media Center->universalmediacenter_addon->get_lib_path = get_lib_path;
+  addonInterface.toUniversal Media Center->universalmediacenter_addon->get_user_path = get_user_path;
+  addonInterface.toUniversal Media Center->universalmediacenter_addon->get_temp_path = get_temp_path;
+  addonInterface.toUniversal Media Center->universalmediacenter_addon->get_localized_string = get_localized_string;
+  addonInterface.toUniversal Media Center->universalmediacenter_addon->open_settings_dialog = open_settings_dialog;
+  addonInterface.toUniversal Media Center->universalmediacenter_addon->is_setting_using_default = is_setting_using_default;
+  addonInterface.toUniversal Media Center->universalmediacenter_addon->get_setting_bool = get_setting_bool;
+  addonInterface.toUniversal Media Center->universalmediacenter_addon->get_setting_int = get_setting_int;
+  addonInterface.toUniversal Media Center->universalmediacenter_addon->get_setting_float = get_setting_float;
+  addonInterface.toUniversal Media Center->universalmediacenter_addon->get_setting_string = get_setting_string;
+  addonInterface.toUniversal Media Center->universalmediacenter_addon->set_setting_bool = set_setting_bool;
+  addonInterface.toUniversal Media Center->universalmediacenter_addon->set_setting_int = set_setting_int;
+  addonInterface.toUniversal Media Center->universalmediacenter_addon->set_setting_float = set_setting_float;
+  addonInterface.toUniversal Media Center->universalmediacenter_addon->set_setting_string = set_setting_string;
+  addonInterface.toUniversal Media Center->universalmediacenter_addon->get_addon_info = get_addon_info;
+  addonInterface.toUniversal Media Center->universalmediacenter_addon->get_type_version = get_type_version;
+  addonInterface.toUniversal Media Center->universalmediacenter_addon->get_interface = get_interface;
 
   // Related parts becomes set from addon headers, make here to nullptr to allow
   // checks for right set of them
@@ -101,7 +101,7 @@ void Interface_Base::DeInitInterface(AddonGlobalInterface& addonInterface)
   Interface_General::DeInit(&addonInterface);
 
   if (addonInterface.toUniversal Media Center)
-    delete addonInterface.toUniversal Media Center->kodi_addon;
+    delete addonInterface.toUniversal Media Center->universalmediacenter_addon;
   delete addonInterface.toUniversal Media Center;
   delete addonInterface.toAddon;
   addonInterface = {};
@@ -149,14 +149,14 @@ bool Interface_Base::UpdateSettingInActiveDialog(const CAddonDll* addon,
  */
 //@{
 
-void Interface_Base::addon_log_msg(const KODI_ADDON_BACKEND_HDL hdl,
+void Interface_Base::addon_log_msg(const UNIVERSALMEDIA_ADDON_BACKEND_HDL hdl,
                                    const int addonLogLevel,
                                    const char* strMessage)
 {
   const auto* addon = static_cast<const CAddonDll*>(hdl);
   if (!addon)
   {
-    CLog::Log(LOGERROR, "addon_log_msg(...) called with empty kodi instance pointer");
+    CLog::Log(LOGERROR, "addon_log_msg(...) called with empty universalmediacenter instance pointer");
     return;
   }
 
@@ -186,53 +186,53 @@ void Interface_Base::addon_log_msg(const KODI_ADDON_BACKEND_HDL hdl,
   CLog::Log(addon->ID(), logLevel, "{}", strMessage);
 }
 
-char* Interface_Base::get_type_version(const KODI_ADDON_BACKEND_HDL /*hdl*/, int type)
+char* Interface_Base::get_type_version(const UNIVERSALMEDIA_ADDON_BACKEND_HDL /*hdl*/, int type)
 {
-  return strdup(kodi::addon::GetTypeVersion(type));
+  return strdup(addon::GetTypeVersion(type));
 }
 
-char* Interface_Base::get_addon_path(const KODI_ADDON_BACKEND_HDL hdl)
+char* Interface_Base::get_addon_path(const UNIVERSALMEDIA_ADDON_BACKEND_HDL hdl)
 {
   const auto* addon = static_cast<const CAddonDll*>(hdl);
   if (!addon)
   {
-    CLog::Log(LOGERROR, "get_addon_path(...) called with empty kodi instance pointer");
+    CLog::Log(LOGERROR, "get_addon_path(...) called with empty universalmediacenter instance pointer");
     return nullptr;
   }
 
   return strdup(CSpecialProtocol::TranslatePath(addon->Path()).c_str());
 }
 
-char* Interface_Base::get_lib_path(const KODI_ADDON_BACKEND_HDL hdl)
+char* Interface_Base::get_lib_path(const UNIVERSALMEDIA_ADDON_BACKEND_HDL hdl)
 {
   const auto* addon = static_cast<const CAddonDll*>(hdl);
   if (!addon)
   {
-    CLog::Log(LOGERROR, "get_lib_path(...) called with empty kodi instance pointer");
+    CLog::Log(LOGERROR, "get_lib_path(...) called with empty universalmediacenter instance pointer");
     return nullptr;
   }
 
-  return strdup(CSpecialProtocol::TranslatePath("special://xbmcbinaddons/" + addon->ID()).c_str());
+  return strdup(CSpecialProtocol::TranslatePath("special://binaddons/" + addon->ID()).c_str());
 }
 
-char* Interface_Base::get_user_path(const KODI_ADDON_BACKEND_HDL hdl)
+char* Interface_Base::get_user_path(const UNIVERSALMEDIA_ADDON_BACKEND_HDL hdl)
 {
   const auto* addon = static_cast<const CAddonDll*>(hdl);
   if (!addon)
   {
-    CLog::Log(LOGERROR, "get_user_path(...) called with empty kodi instance pointer");
+    CLog::Log(LOGERROR, "get_user_path(...) called with empty universalmediacenter instance pointer");
     return nullptr;
   }
 
   return strdup(CSpecialProtocol::TranslatePath(addon->Profile()).c_str());
 }
 
-char* Interface_Base::get_temp_path(const KODI_ADDON_BACKEND_HDL hdl)
+char* Interface_Base::get_temp_path(const UNIVERSALMEDIA_ADDON_BACKEND_HDL hdl)
 {
   const auto* addon = static_cast<const CAddonDll*>(hdl);
   if (!addon)
   {
-    CLog::Log(LOGERROR, "get_temp_path(...) called with empty kodi instance pointer");
+    CLog::Log(LOGERROR, "get_temp_path(...) called with empty universalmediacenter instance pointer");
     return nullptr;
   }
 
@@ -244,12 +244,12 @@ char* Interface_Base::get_temp_path(const KODI_ADDON_BACKEND_HDL hdl)
   return strdup(CSpecialProtocol::TranslatePath(tempPath).c_str());
 }
 
-char* Interface_Base::get_localized_string(const KODI_ADDON_BACKEND_HDL hdl, long label_id)
+char* Interface_Base::get_localized_string(const UNIVERSALMEDIA_ADDON_BACKEND_HDL hdl, long label_id)
 {
   const auto* addon = static_cast<const CAddonDll*>(hdl);
   if (!addon)
   {
-    CLog::Log(LOGERROR, "get_localized_string(...) called with empty kodi instance pointer");
+    CLog::Log(LOGERROR, "get_localized_string(...) called with empty universalmediacenter instance pointer");
     return nullptr;
   }
 
@@ -265,7 +265,7 @@ char* Interface_Base::get_localized_string(const KODI_ADDON_BACKEND_HDL hdl, lon
   return buffer;
 }
 
-char* Interface_Base::get_addon_info(const KODI_ADDON_BACKEND_HDL hdl, const char* id)
+char* Interface_Base::get_addon_info(const UNIVERSALMEDIA_ADDON_BACKEND_HDL hdl, const char* id)
 {
   const auto* addon = static_cast<const CAddonDll*>(hdl);
   if (!addon || !id)
@@ -311,12 +311,12 @@ char* Interface_Base::get_addon_info(const KODI_ADDON_BACKEND_HDL hdl, const cha
   return buffer;
 }
 
-bool Interface_Base::open_settings_dialog(const KODI_ADDON_BACKEND_HDL hdl)
+bool Interface_Base::open_settings_dialog(const UNIVERSALMEDIA_ADDON_BACKEND_HDL hdl)
 {
   const auto* addon = static_cast<const CAddonDll*>(hdl);
   if (!addon)
   {
-    CLog::Log(LOGERROR, "open_settings_dialog(...) called with empty kodi instance pointer");
+    CLog::Log(LOGERROR, "open_settings_dialog(...) called with empty universalmediacenter instance pointer");
     return false;
   }
 
@@ -331,7 +331,7 @@ bool Interface_Base::open_settings_dialog(const KODI_ADDON_BACKEND_HDL hdl)
   return CGUIDialogAddonSettings::ShowForAddon(addonInfo);
 }
 
-bool Interface_Base::is_setting_using_default(const KODI_ADDON_BACKEND_HDL hdl, const char* id)
+bool Interface_Base::is_setting_using_default(const UNIVERSALMEDIA_ADDON_BACKEND_HDL hdl, const char* id)
 {
   auto* addon = static_cast<CAddonDll*>(hdl);
   if (!addon || !id)
@@ -357,7 +357,7 @@ bool Interface_Base::is_setting_using_default(const KODI_ADDON_BACKEND_HDL hdl, 
   return setting->IsDefault();
 }
 
-bool Interface_Base::get_setting_bool(const KODI_ADDON_BACKEND_HDL hdl, const char* id, bool* value)
+bool Interface_Base::get_setting_bool(const UNIVERSALMEDIA_ADDON_BACKEND_HDL hdl, const char* id, bool* value)
 {
   auto* addon = static_cast<CAddonDll*>(hdl);
   if (!addon || !id || !value)
@@ -391,7 +391,7 @@ bool Interface_Base::get_setting_bool(const KODI_ADDON_BACKEND_HDL hdl, const ch
   return true;
 }
 
-bool Interface_Base::get_setting_int(const KODI_ADDON_BACKEND_HDL hdl, const char* id, int* value)
+bool Interface_Base::get_setting_int(const UNIVERSALMEDIA_ADDON_BACKEND_HDL hdl, const char* id, int* value)
 {
   auto* addon = static_cast<CAddonDll*>(hdl);
   if (!addon || !id || !value)
@@ -428,7 +428,7 @@ bool Interface_Base::get_setting_int(const KODI_ADDON_BACKEND_HDL hdl, const cha
   return true;
 }
 
-bool Interface_Base::get_setting_float(const KODI_ADDON_BACKEND_HDL hdl,
+bool Interface_Base::get_setting_float(const UNIVERSALMEDIA_ADDON_BACKEND_HDL hdl,
                                        const char* id,
                                        float* value)
 {
@@ -464,7 +464,7 @@ bool Interface_Base::get_setting_float(const KODI_ADDON_BACKEND_HDL hdl,
   return true;
 }
 
-bool Interface_Base::get_setting_string(const KODI_ADDON_BACKEND_HDL hdl,
+bool Interface_Base::get_setting_string(const UNIVERSALMEDIA_ADDON_BACKEND_HDL hdl,
                                         const char* id,
                                         char** value)
 {
@@ -500,7 +500,7 @@ bool Interface_Base::get_setting_string(const KODI_ADDON_BACKEND_HDL hdl,
   return true;
 }
 
-bool Interface_Base::set_setting_bool(const KODI_ADDON_BACKEND_HDL hdl, const char* id, bool value)
+bool Interface_Base::set_setting_bool(const UNIVERSALMEDIA_ADDON_BACKEND_HDL hdl, const char* id, bool value)
 {
   auto* addon = static_cast<CAddonDll*>(hdl);
   if (!addon || !id)
@@ -525,7 +525,7 @@ bool Interface_Base::set_setting_bool(const KODI_ADDON_BACKEND_HDL hdl, const ch
   return true;
 }
 
-bool Interface_Base::set_setting_int(const KODI_ADDON_BACKEND_HDL hdl, const char* id, int value)
+bool Interface_Base::set_setting_int(const UNIVERSALMEDIA_ADDON_BACKEND_HDL hdl, const char* id, int value)
 {
   auto* addon = static_cast<CAddonDll*>(hdl);
   if (!addon || !id)
@@ -550,7 +550,7 @@ bool Interface_Base::set_setting_int(const KODI_ADDON_BACKEND_HDL hdl, const cha
   return true;
 }
 
-bool Interface_Base::set_setting_float(const KODI_ADDON_BACKEND_HDL hdl,
+bool Interface_Base::set_setting_float(const UNIVERSALMEDIA_ADDON_BACKEND_HDL hdl,
                                        const char* id,
                                        float value)
 {
@@ -577,7 +577,7 @@ bool Interface_Base::set_setting_float(const KODI_ADDON_BACKEND_HDL hdl,
   return true;
 }
 
-bool Interface_Base::set_setting_string(const KODI_ADDON_BACKEND_HDL hdl,
+bool Interface_Base::set_setting_string(const UNIVERSALMEDIA_ADDON_BACKEND_HDL hdl,
                                         const char* id,
                                         const char* value)
 {
@@ -604,13 +604,13 @@ bool Interface_Base::set_setting_string(const KODI_ADDON_BACKEND_HDL hdl,
   return true;
 }
 
-void Interface_Base::free_string(const KODI_ADDON_BACKEND_HDL /*hdl*/, char* str)
+void Interface_Base::free_string(const UNIVERSALMEDIA_ADDON_BACKEND_HDL /*hdl*/, char* str)
 {
   if (str)
     free(str);
 }
 
-void Interface_Base::free_string_array(const KODI_ADDON_BACKEND_HDL /*hdl*/,
+void Interface_Base::free_string_array(const UNIVERSALMEDIA_ADDON_BACKEND_HDL /*hdl*/,
                                        char** arr,
                                        int numElements)
 {
@@ -624,7 +624,7 @@ void Interface_Base::free_string_array(const KODI_ADDON_BACKEND_HDL /*hdl*/,
   }
 }
 
-void* Interface_Base::get_interface(const KODI_ADDON_BACKEND_HDL /*hdl*/,
+void* Interface_Base::get_interface(const UNIVERSALMEDIA_ADDON_BACKEND_HDL /*hdl*/,
                                     const char* name,
                                     const char* version)
 {

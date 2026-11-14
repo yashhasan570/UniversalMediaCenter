@@ -14,7 +14,7 @@
 #include "application/Application.h"
 #include "pch.h"
 #include "platform/Environment.h"
-#include "platform/xbmc.h"
+#include "platform/.h"
 #include "rendering/dx/RenderContext.h"
 #include "utils/SystemInfo.h"
 #include "utils/log.h"
@@ -25,7 +25,7 @@
 #include <ppltasks.h>
 #include <winrt/Windows.Storage.AccessCache.h>
 
-using namespace KODI::PLATFORM::WINDOWS10;
+using namespace UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS10;
 namespace winrt
 {
   using namespace Windows::Foundation;
@@ -60,7 +60,7 @@ void App::Initialize(const CoreApplicationView& applicationView)
   WSADATA wd;
   WSAStartup(MAKEWORD(2, 2), &wd);
 
-  // set up some xbmc specific relationships
+  // set up some  specific relationships
   setlocale(LC_NUMERIC, "C");
 }
 
@@ -94,7 +94,7 @@ void App::Run()
 
     // Create and run the app
     CAppEnvironment::SetUp(params);
-    XBMC_Run(true);
+    _Run(true);
     CAppEnvironment::TearDown();
   }
 
@@ -148,7 +148,7 @@ void App::OnActivated(const CoreApplicationView& applicationView, const IActivat
     FileActivatedEventArgs fileArgs = args.as<FileActivatedEventArgs>();
     if (fileArgs && fileArgs.Files() && fileArgs.Files().Size() > 0)
     {
-      using KODI::PLATFORM::WINDOWS::FromW;
+      using UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW;
       for (auto file : fileArgs.Files())
       {
         if (!StorageApplicationPermissions::FutureAccessList().CheckAccess(file))

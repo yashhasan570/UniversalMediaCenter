@@ -4,10 +4,10 @@ Date: Tue, 25 Jun 2024 10:57:31 +0200
 Subject: [PATCH] libUPnP: Fix memory allocation of size 0
 
 In member function 'ReallocateBuffer',
-    inlined from 'SetBufferSize' at ../../kodi-e495e26f477d4de8a7e6c2fac4acbe1a15e22242/.aarch64-libreelec-linux-gnu/../lib/libUPnP/Neptune/Source/Core/NptDataBuffer.cpp:172:32,
-    inlined from 'Load' at ../../kodi-e495e26f477d4de8a7e6c2fac4acbe1a15e22242/.aarch64-libreelec-linux-gnu/../lib/libUPnP/Neptune/Source/Core/NptStreams.cpp:106:33:
-../../kodi-e495e26f477d4de8a7e6c2fac4acbe1a15e22242/.aarch64-libreelec-linux-gnu/../lib/libUPnP/Neptune/Source/Core/NptDataBuffer.cpp:245:23: warning: '__builtin_memcpy' writing between 1 and 4294967295 bytes into a region of size 0 [-Wstringop-overflow=]
-../../kodi-e495e26f477d4de8a7e6c2fac4acbe1a15e22242/.aarch64-libreelec-linux-gnu/../lib/libUPnP/Neptune/Source/Core/NptDataBuffer.cpp:241:44: note: destination object of size 0 allocated by 'operator new []'
+    inlined from 'SetBufferSize' at ../../Universal Media Center-e495e26f477d4de8a7e6c2fac4acbe1a15e22242/.aarch64-libreelec-linux-gnu/../lib/libUPnP/Neptune/Source/Core/NptDataBuffer.cpp:172:32,
+    inlined from 'Load' at ../../Universal Media Center-e495e26f477d4de8a7e6c2fac4acbe1a15e22242/.aarch64-libreelec-linux-gnu/../lib/libUPnP/Neptune/Source/Core/NptStreams.cpp:106:33:
+../../Universal Media Center-e495e26f477d4de8a7e6c2fac4acbe1a15e22242/.aarch64-libreelec-linux-gnu/../lib/libUPnP/Neptune/Source/Core/NptDataBuffer.cpp:245:23: warning: '__builtin_memcpy' writing between 1 and 4294967295 bytes into a region of size 0 [-Wstringop-overflow=]
+../../Universal Media Center-e495e26f477d4de8a7e6c2fac4acbe1a15e22242/.aarch64-libreelec-linux-gnu/../lib/libUPnP/Neptune/Source/Core/NptDataBuffer.cpp:241:44: note: destination object of size 0 allocated by 'operator new []'
 
 ---
  lib/libUPnP/Neptune/Source/Core/NptDataBuffer.cpp | 4 +++-

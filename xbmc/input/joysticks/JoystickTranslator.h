@@ -10,7 +10,7 @@
 
 #include "JoystickTypes.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace JOYSTICK
 {
@@ -124,4 +124,4 @@ public:
   static std::string GetPrimitiveName(const CDriverPrimitive& primitive);
 };
 } // namespace JOYSTICK
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

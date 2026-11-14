@@ -21,7 +21,7 @@
 #include <utility>
 
 using namespace MUSIC_INFO;
-using KODI::MEDIA::NameOf;
+using UNIVERSAL MEDIA CENTER::MEDIA::NameOf;
 
 CMusicThumbLoader::CMusicThumbLoader() : CThumbLoader()
 {
@@ -61,16 +61,16 @@ bool CMusicThumbLoader::LoadItemCached(CFileItem* pItem)
     return false;
 
   if (pItem->HasMusicInfoTag() &&
-      !pItem->GetProperty(KODI::ITEM::PROPERTY::LIBRARY_ART_FILLED).asBoolean())
+      !pItem->GetProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::LIBRARY_ART_FILLED).asBoolean())
   {
     if (FillLibraryArt(*pItem))
       return true;
 
-    if (pItem->GetMusicInfoTag()->GetMediaType() == KODI::MEDIA::TYPE::ARTIST)
+    if (pItem->GetMusicInfoTag()->GetMediaType() == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::ARTIST)
       return false; // No fallback
   }
 
-  if (pItem->HasVideoInfoTag() && !pItem->HasArt(KODI::ART::TYPE::THUMB))
+  if (pItem->HasVideoInfoTag() && !pItem->HasArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB))
   { // music video
     CVideoThumbLoader loader;
     if (loader.LoadItemCached(pItem))
@@ -78,22 +78,22 @@ bool CMusicThumbLoader::LoadItemCached(CFileItem* pItem)
   }
 
   // Fallback to folder thumb when path has one cached
-  if (!pItem->HasArt(KODI::ART::TYPE::THUMB))
+  if (!pItem->HasArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB))
   {
-    std::string art = GetCachedImage(*pItem, KODI::ART::TYPE::THUMB);
+    std::string art = GetCachedImage(*pItem, UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB);
     if (!art.empty())
-      pItem->SetArt(KODI::ART::TYPE::THUMB, art);
+      pItem->SetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB, art);
   }
 
   // Fallback to folder fanart when path has one cached
   //! @todo Remove as "fanart" is never been cached for music folders (only for
   // artists) or start caching fanart for folders?
-  if (!pItem->HasArt(KODI::ART::TYPE::FANART))
+  if (!pItem->HasArt(UNIVERSAL MEDIA CENTER::ART::TYPE::FANART))
   {
-    std::string art = GetCachedImage(*pItem, KODI::ART::TYPE::FANART);
+    std::string art = GetCachedImage(*pItem, UNIVERSAL MEDIA CENTER::ART::TYPE::FANART);
     if (!art.empty())
     {
-      pItem->SetArt(KODI::ART::TYPE::FANART, art);
+      pItem->SetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::FANART, art);
     }
   }
 
@@ -107,7 +107,7 @@ bool CMusicThumbLoader::LoadItemLookup(CFileItem* pItem)
 
   if (pItem->HasMusicInfoTag() &&
       pItem->GetMusicInfoTag()->GetMediaType() ==
-          KODI::MEDIA::TYPE::ARTIST) // No fallback for artist
+          UNIVERSAL MEDIA CENTER::MEDIA::TYPE::ARTIST) // No fallback for artist
     return false;
 
   if (pItem->HasVideoInfoTag())
@@ -117,7 +117,7 @@ bool CMusicThumbLoader::LoadItemLookup(CFileItem* pItem)
       return true;
   }
 
-  if (!pItem->HasArt(KODI::ART::TYPE::THUMB))
+  if (!pItem->HasArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB))
   {
     // Look for embedded art
     if (pItem->HasMusicInfoTag() && !pItem->GetMusicInfoTag()->GetCoverArtInfo().Empty())
@@ -127,7 +127,7 @@ bool CMusicThumbLoader::LoadItemLookup(CFileItem* pItem)
       {
         // No user thumb, use embedded art
         std::string thumb = IMAGE_FILES::URLFromFile(pItem->GetPath(), "music");
-        pItem->SetArt(KODI::ART::TYPE::THUMB, thumb);
+        pItem->SetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB, thumb);
       }
     }
     else
@@ -142,17 +142,17 @@ bool CMusicThumbLoader::LoadItemLookup(CFileItem* pItem)
 
 bool CMusicThumbLoader::FillThumb(CFileItem &item, bool folderThumbs /* = true */)
 {
-  if (item.HasArt(KODI::ART::TYPE::THUMB))
+  if (item.HasArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB))
     return true;
-  std::string thumb = GetCachedImage(item, KODI::ART::TYPE::THUMB);
+  std::string thumb = GetCachedImage(item, UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB);
   if (thumb.empty())
   {
     thumb = item.GetUserMusicThumb(false, folderThumbs);
     if (!thumb.empty())
-      SetCachedImage(item, KODI::ART::TYPE::THUMB, thumb);
+      SetCachedImage(item, UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB, thumb);
   }
   if (!thumb.empty())
-    item.SetArt(KODI::ART::TYPE::THUMB, thumb);
+    item.SetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB, thumb);
   return !thumb.empty();
 }
 
@@ -166,16 +166,16 @@ bool CMusicThumbLoader::FillLibraryArt(CFileItem &item)
   bool artfound(false);
   std::vector<ArtForThumbLoader> art;
   CMusicInfoTag &tag = *item.GetMusicInfoTag();
-  KODI::MEDIA::TYPE mediaType = tag.GetMediaType();
+  UNIVERSAL MEDIA CENTER::MEDIA::TYPE mediaType = tag.GetMediaType();
   if (tag.GetDatabaseId() > -1 &&
-      (mediaType == KODI::MEDIA::TYPE::SONG || mediaType == KODI::MEDIA::TYPE::ALBUM ||
-       mediaType == KODI::MEDIA::TYPE::ARTIST))
+      (mediaType == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::SONG || mediaType == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::ALBUM ||
+       mediaType == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::ARTIST))
   {
     // Item in music library, fetch the art
     m_musicDatabase->Open();
-    if (mediaType == KODI::MEDIA::TYPE::SONG)
+    if (mediaType == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::SONG)
       artfound = m_musicDatabase->GetArtForItem(tag.GetDatabaseId(), tag.GetAlbumId(), -1, false, art);
-    else if (mediaType == KODI::MEDIA::TYPE::ALBUM)
+    else if (mediaType == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::ALBUM)
       artfound = m_musicDatabase->GetArtForItem(-1, tag.GetDatabaseId(), -1, false, art);
     else //Artist
       artfound = m_musicDatabase->GetArtForItem(-1, -1, tag.GetDatabaseId(), true, art);
@@ -183,7 +183,7 @@ bool CMusicThumbLoader::FillLibraryArt(CFileItem &item)
     m_musicDatabase->Close();
   }
   else if (!tag.GetArtist().empty() &&
-           (tag.GetType().empty() || mediaType == KODI::MEDIA::TYPE::SONG))
+           (tag.GetType().empty() || mediaType == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::SONG))
   {
     /*
     Could be non-library song - has musictag but no ID or type (may have
@@ -198,8 +198,8 @@ bool CMusicThumbLoader::FillLibraryArt(CFileItem &item)
     song.SetArtistCredits(tag.GetArtist(), tag.GetMusicBrainzArtistHints(), tag.GetMusicBrainzArtistID());
     if (!song.artistCredits.empty())
     {
-      tag.SetType(KODI::MEDIA::TYPE::SONG);  // Makes "Information" context menu visible
-      mediaType = KODI::MEDIA::TYPE::SONG;
+      tag.SetType(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::SONG);  // Makes "Information" context menu visible
+      mediaType = UNIVERSAL MEDIA CENTER::MEDIA::TYPE::SONG;
       m_musicDatabase->Open();
       int iOrder = 0;
       // Song artist art
@@ -278,8 +278,8 @@ bool CMusicThumbLoader::FillLibraryArt(CFileItem &item)
   {
     std::string fanartfallback;
     std::string artname;
-    KODI::ART::Artwork artmap;
-    KODI::ART::Artwork discartmap;
+    UNIVERSAL MEDIA CENTER::ART::Artwork artmap;
+    UNIVERSAL MEDIA CENTER::ART::Artwork discartmap;
     for (auto artitem : art)
     {
       /* Add art to artmap, naming according to media type.
@@ -293,13 +293,13 @@ bool CMusicThumbLoader::FillLibraryArt(CFileItem &item)
         artname = artitem.mediaType + "." + artitem.artType;
       else
       {
-        if (mediaType == KODI::MEDIA::TYPE::ALBUM)
+        if (mediaType == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::ALBUM)
           StringUtils::Replace(artitem.prefix, "albumartist", "artist");
         artname = artitem.prefix + "." + artitem.artType;
       }
 
       // Pull out album art for this specific disc e.g. "thumb2", skip art for other discs
-      if (artitem.mediaType == NameOf(KODI::MEDIA::TYPE::ALBUM) && tag.GetDiscNumber() > 0)
+      if (artitem.mediaType == NameOf(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::ALBUM) && tag.GetDiscNumber() > 0)
       {
         // Find any trailing digits
         size_t startnum = artitem.artType.find_last_not_of("0123456789");
@@ -317,29 +317,29 @@ bool CMusicThumbLoader::FillLibraryArt(CFileItem &item)
 
       // Add fallback art for "thumb" and "fanart" art types only
       // Set album thumb as the fallback used when song thumb is missing
-      if (mediaType == KODI::MEDIA::TYPE::SONG &&
-          artitem.mediaType == NameOf(KODI::MEDIA::TYPE::ALBUM) &&
-          artitem.artType == KODI::ART::TYPE::THUMB)
+      if (mediaType == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::SONG &&
+          artitem.mediaType == NameOf(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::ALBUM) &&
+          artitem.artType == UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB)
       {
         item.SetArtFallback(artitem.artType, artname);
       }
 
       // For albums and songs set fallback fanart from the artist.
       // For songs prefer primary song artist over primary albumartist fanart as fallback fanart
-      if (artitem.prefix == "artist" && artitem.artType == KODI::ART::TYPE::FANART)
+      if (artitem.prefix == "artist" && artitem.artType == UNIVERSAL MEDIA CENTER::ART::TYPE::FANART)
         fanartfallback = artname;
-      if (artitem.prefix == "albumartist" && artitem.artType == KODI::ART::TYPE::FANART &&
+      if (artitem.prefix == "albumartist" && artitem.artType == UNIVERSAL MEDIA CENTER::ART::TYPE::FANART &&
           fanartfallback.empty())
         fanartfallback = artname;
     }
     if (!fanartfallback.empty())
-      item.SetArtFallback(KODI::ART::TYPE::FANART, fanartfallback);
+      item.SetArtFallback(UNIVERSAL MEDIA CENTER::ART::TYPE::FANART, fanartfallback);
 
     // Process specific disc art when we have some
     for (const auto& discart : discartmap)
     {
       std::map<std::string, std::string>::iterator it;
-      if (mediaType == KODI::MEDIA::TYPE::ALBUM)
+      if (mediaType == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::ALBUM)
       {
         // Insert or replace album art with specific disc art
         it = artmap.find(discart.first);
@@ -348,11 +348,11 @@ bool CMusicThumbLoader::FillLibraryArt(CFileItem &item)
         else
           artmap.insert(discart);
       }
-      else if (mediaType == KODI::MEDIA::TYPE::SONG)
+      else if (mediaType == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::SONG)
       {
         // Use disc thumb rather than album as fallback for song thumb
         // (Fallback approach is used to fill missing thumbs).
-        if (discart.first == KODI::ART::TYPE::THUMB)
+        if (discart.first == UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB)
         {
           it = artmap.find("album.thumb");
           if (it != artmap.end())
@@ -362,7 +362,7 @@ bool CMusicThumbLoader::FillLibraryArt(CFileItem &item)
           {
             // Insert thumb for album and set as fallback
             artmap.insert(std::make_pair("album.thumb", discart.second));
-            item.SetArtFallback(KODI::ART::TYPE::THUMB, "album.thumb");
+            item.SetArtFallback(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB, "album.thumb");
           }
         }
         else
@@ -377,7 +377,7 @@ bool CMusicThumbLoader::FillLibraryArt(CFileItem &item)
     }
 
     item.AppendArt(artmap);
-    item.SetProperty(KODI::ITEM::PROPERTY::LIBRARY_ART_FILLED, true);
+    item.SetProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::LIBRARY_ART_FILLED, true);
   }
 
   return artfound;

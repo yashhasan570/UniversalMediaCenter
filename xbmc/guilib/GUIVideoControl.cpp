@@ -21,7 +21,7 @@
 #include "windowing/GraphicContext.h"
 #include "windowing/WinSystem.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 CGUIVideoControl::CGUIVideoControl(int parentID, int controlID, float posX, float posY, float width, float height)
     : CGUIControl(parentID, controlID, posX, posY, width, height)
@@ -64,7 +64,7 @@ void CGUIVideoControl::Render()
     TransformMatrix mat;
     CServiceBroker::GetWinSystem()->GetGfxContext().SetTransform(mat, 1.0, 1.0);
 
-    KODI::UTILS::COLOR::Color alpha =
+    UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color alpha =
         CServiceBroker::GetWinSystem()->GetGfxContext().MergeAlpha(0xFF000000) >> 24;
     // The HDR composite also draws the video behind the GUI, so it needs the same hole.
     if (appPlayer->IsRenderingVideoLayer() || CServiceBroker::GetWinSystem()->IsHdrComposite())

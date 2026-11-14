@@ -11,7 +11,7 @@
 // images and present it in a reasonably consistent way
 //
 // Original code pulled from 'jhead' by Matthias Wandel (http://www.sentex.net/~mwandel/) - jhead
-// Adapted for XBMC by DD.
+// Adapted for  by DD.
 //--------------------------------------------------------------------------
 
 // Note: Jhead supports TAG_MAKER_NOTE exif field,

@@ -10,7 +10,7 @@
 
 #include "utils/log.h"
 
-using namespace KODI::WINDOWING;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING;
 
 COSScreenSaverManager::COSScreenSaverManager(std::unique_ptr<IOSScreenSaver> impl)
 : m_impl{std::move(impl)}

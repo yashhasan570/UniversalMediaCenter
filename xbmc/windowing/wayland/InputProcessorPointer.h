@@ -9,15 +9,15 @@
 #pragma once
 
 #include "Seat.h"
-#include "input/keyboard/XBMC_keysym.h"
+#include "input/keyboard/_keysym.h"
 #include "utils/Geometry.h"
-#include "windowing/XBMC_events.h"
+#include "windowing/_events.h"
 
 #include <cstdint>
 
 #include <wayland-client-protocol.hpp>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace WINDOWING
 {
@@ -29,7 +29,7 @@ class IInputHandlerPointer
 public:
   virtual void OnPointerEnter(std::uint32_t seatGlobalName, std::uint32_t serial) {}
   virtual void OnPointerLeave() {}
-  virtual void OnPointerEvent(XBMC_Event& event) = 0;
+  virtual void OnPointerEvent(_Event& event) = 0;
 protected:
   ~IInputHandlerPointer() = default;
 };

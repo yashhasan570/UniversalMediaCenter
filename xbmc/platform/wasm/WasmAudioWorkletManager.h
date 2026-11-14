@@ -14,7 +14,7 @@
 #include <mutex>
 #include <vector>
 
-namespace KODI::PLATFORM::WASM
+namespace UNIVERSAL MEDIA CENTER::PLATFORM::WASM
 {
 class CWasmAudioWorkletManager
 {
@@ -113,4 +113,4 @@ private:
   unsigned int m_prebufferFrames{0};
   std::atomic<bool> m_prebufferComplete{false};
 };
-} // namespace KODI::PLATFORM::WASM
+} // namespace UNIVERSAL MEDIA CENTER::PLATFORM::WASM

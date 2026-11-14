@@ -43,9 +43,9 @@
 using enum CDatabaseQueryRule::FieldType;
 using enum CDatabaseQueryRule::SearchOperator;
 using namespace XFILE;
-using KODI::MEDIA::MediaTypeFromName;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaTypeFromName;
 
-namespace KODI::PLAYLIST
+namespace UNIVERSAL MEDIA CENTER::PLAYLIST
 {
 
 struct TranslateField
@@ -1483,7 +1483,7 @@ bool CSmartPlaylist::LoadFromJson(const std::string &json)
 
 bool CSmartPlaylist::Save(const std::string &path) const
 {
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   TiXmlDeclaration decl("1.0", "UTF-8", "yes");
   doc.InsertEndChild(decl);
 
@@ -1704,4 +1704,4 @@ CDatabaseQueryRuleCombination *CSmartPlaylist::CreateCombination() const
   return new CSmartPlaylistRuleCombination();
 }
 
-} // namespace KODI::PLAYLIST
+} // namespace UNIVERSAL MEDIA CENTER::PLAYLIST

@@ -12,7 +12,7 @@
 
 #include <cassert>
 
-using namespace KODI::WINDOWING::WAYLAND;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::WAYLAND;
 
 COSScreenSaverIdleInhibitUnstableV1* COSScreenSaverIdleInhibitUnstableV1::TryCreate(CConnection& connection, wayland::surface_t const& inhibitSurface)
 {

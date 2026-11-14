@@ -16,7 +16,7 @@
 
 #include "platform/win32/WIN32Util.h"
 
-using namespace KODI::SHADER;
+using namespace UNIVERSAL MEDIA CENTER::SHADER;
 
 bool CRPWinShader::CreateVertexBuffer(unsigned int count, unsigned int size)
 {
@@ -184,7 +184,7 @@ bool CRPWinOutputShader::Create(RETRO::SCALINGMETHOD scalingMethod)
       break;
   }
 
-  const std::string effectPath("special://xbmc/system/shaders/rp_output_d3d.fx");
+  const std::string effectPath("special:///system/shaders/rp_output_d3d.fx");
 
   if (!LoadEffect(effectPath, &defines))
   {
@@ -202,7 +202,7 @@ bool CRPWinOutputShader::Create(RETRO::SCALINGMETHOD scalingMethod)
 
 void CRPWinOutputShader::Render(CD3DTexture& sourceTexture,
                                 CRect sourceRect,
-                                const KODI::RETRO::ViewportCoordinates& points,
+                                const UNIVERSAL MEDIA CENTER::RETRO::ViewportCoordinates& points,
                                 CRect& viewPort,
                                 CD3DTexture& target,
                                 unsigned int range /* = 0 */,
@@ -218,7 +218,7 @@ void CRPWinOutputShader::Render(CD3DTexture& sourceTexture,
 bool CRPWinOutputShader::PrepareParameters(unsigned int sourceWidth,
                                            unsigned int sourceHeight,
                                            CRect sourceRect,
-                                           const KODI::RETRO::ViewportCoordinates& points)
+                                           const UNIVERSAL MEDIA CENTER::RETRO::ViewportCoordinates& points)
 {
   bool changed = false;
   for (unsigned int i = 0; i < 4 && !changed; ++i)

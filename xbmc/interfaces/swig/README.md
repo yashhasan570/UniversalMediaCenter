@@ -1,10 +1,10 @@
 # Python bindings
 
-The seven Python modules addons import (xbmc, xbmcgui, xbmcplugin, xbmcaddon,
-xbmcvfs, xbmcdrm, xbmcwsgi) are generated here by stock SWIG from the
-AddonModule*.i files, wrapping the C++ API in xbmc/interfaces/legacy/. The
-kodi_*.i files carry the typemaps and policies shared by all modules; start
-with kodi_common.i, which includes the rest in dependency order and documents
+The seven Python modules addons import (, gui, plugin, addon,
+vfs, drm, wsgi) are generated here by stock SWIG from the
+AddonModule*.i files, wrapping the C++ API in /interfaces/legacy/. The
+universalmediacenter_*.i files carry the typemaps and policies shared by all modules; start
+with universalmediacenter_common.i, which includes the rest in dependency order and documents
 each one.
 
 ## Requirements
@@ -29,20 +29,20 @@ measures here make it safe:
 - fix-swig-3535.cmake, run on each generated file after SWIG: rewrites the
   per-class init blocks so each builtin Python type is created once per
   process and shared immortally by every interpreter, matching the semantics
-  of the retired Groovy-generated bindings. Universal Media CenterSwig_freeze (kodi_common.i)
+  of the retired Groovy-generated bindings. Universal Media CenterSwig_freeze (universalmediacenter_common.i)
   then flags the shared type, its SwigPyObject base and its SwigPyObjectType
   metatype Py_TPFLAGS_IMMUTABLETYPE, all heap types under SWIG 4.5's default
   SWIG_HEAPTYPES, so their method-cache version tags come from the
   process-wide range; a per-interpreter tag would be reissued to an unrelated
-  class in another interpreter (xbmc/xbmc#29309). The flag is Python 3.10+.
+  class in another interpreter (/#29309). The flag is Python 3.10+.
 
 XBPython::Initialize imports all seven modules in the main interpreter at
 startup so first registration happens in an interpreter that never exits.
 
 ## Type stubs
 
-Generation runs with -pyi, producing PEP 484 stub files (xbmc.pyi, ...) next
-to the wrappers in the build tree. kodi_typing.i supplies the annotations for
+Generation runs with -pyi, producing PEP 484 stub files (.pyi, ...) next
+to the wrappers in the build tree. universalmediacenter_typing.i supplies the annotations for
 Universal Media Center's generic types via pytyping typemaps; the stubs never affect the
-compiled wrappers. On Linux the kodi-addon-dev component installs them to
-${datarootdir}/kodi/python-stubs for addon developers.
+compiled wrappers. On Linux the universalmediacenter-addon-dev component installs them to
+${datarootdir}/universalmediacenter/python-stubs for addon developers.

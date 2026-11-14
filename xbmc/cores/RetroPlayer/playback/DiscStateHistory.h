@@ -13,7 +13,7 @@
 #include <cstdint>
 #include <vector>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -28,4 +28,4 @@ private:
   std::vector<GAME::CGameClientDiscModel> m_states;
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

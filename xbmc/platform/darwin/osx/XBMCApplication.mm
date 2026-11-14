@@ -1,5 +1,5 @@
 /*
- *  XBMCApplication.mm - main entry point for our Cocoa-ized app
+ *  Application.mm - main entry point for our Cocoa-ized app
  *  Initial Version: Darrell Walisser <dwaliss1@purdue.edu>
  *  Non-NIB-Code & other changes: Max Horn <max@quendi.de>
  *
@@ -7,14 +7,14 @@
  *  See LICENSES/README.md for more information.
  */
 
-#import "XBMCApplication.h"
+#import "Application.h"
 
 #include "ServiceBroker.h"
 #include "application/AppEnvironment.h"
 #include "application/AppInboundProtocol.h"
 #include "application/AppParamParser.h"
 #include "messaging/ApplicationMessenger.h"
-#include "platform/xbmc.h"
+#include "platform/.h"
 #include "utils/log.h"
 
 #import "platform/darwin/osx/storage/OSXStorageProvider.h"
@@ -66,7 +66,7 @@ static NSDictionary* _windowMenu = @{
 };
 
 // The main class of the application, the application's delegate
-@implementation XBMCDelegate
+@implementation Delegate
 {
   //! Whether AppKit is waiting for the deferred reply to applicationShouldTerminate:.
   BOOL m_terminationPending;
@@ -155,17 +155,17 @@ static NSDictionary* _windowMenu = @{
 
   // kick our mainloop into a separate thread
 
-  auto xbmcThread = [[NSThread alloc] initWithBlock:^{
+  auto Thread = [[NSThread alloc] initWithBlock:^{
     CAppParamParser appParamParser;
     appParamParser.Parse(gArgv, gArgc);
     CAppEnvironment::SetUp(appParamParser.GetAppParams());
-    XBMC_Run(true);
+    _Run(true);
     CAppEnvironment::TearDown();
   }];
 
   auto __weak notifier = [NSNotificationCenter defaultCenter];
   id __block obs = [notifier addObserverForName:NSThreadWillExitNotification
-                                         object:xbmcThread
+                                         object:Thread
                                           queue:[NSOperationQueue mainQueue]
                                      usingBlock:^(NSNotification* note) {
                                        if (self->m_terminationPending)
@@ -183,8 +183,8 @@ static NSDictionary* _windowMenu = @{
                                        [notifier removeObserver:obs];
                                      }];
 
-  xbmcThread.name = @"XBMCMainThread";
-  [xbmcThread start];
+  Thread.name = @"MainThread";
+  [Thread start];
 }
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication*)sender
@@ -193,7 +193,7 @@ static NSDictionary* _windowMenu = @{
   if (appPort == nullptr)
     return NSTerminateNow;
 
-  XBMC_Event quitEvent{.type = XBMC_QUIT, .quit = {}};
+  _Event quitEvent{.type = _QUIT, .quit = {}};
   appPort->OnEvent(quitEvent);
 
   m_terminationPending = YES;
@@ -362,7 +362,7 @@ int main(int argc, const char* argv[])
     // Make sure we call applicationWillTerminate on SIGTERM
     [NSProcessInfo.processInfo disableSuddenTermination];
 
-    auto appDelegate = [XBMCDelegate new];
+    auto appDelegate = [Delegate new];
     [NSApplication sharedApplication].delegate = appDelegate;
 
     return NSApplicationMain(argc, argv);

@@ -13,8 +13,8 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI::VIDEO::GEOMETRY;
-using KODI::VIDEO::GEOMETRY::TEST::ExpectRect;
+using namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY;
+using UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::TEST::ExpectRect;
 
 namespace
 {

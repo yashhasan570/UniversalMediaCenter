@@ -6,7 +6,7 @@
  *  See LICENSES/README.md for more information.
  */
 
-#include "addons/kodi-dev-kit/include/kodi/addon-instance/peripheral/PeripheralUtils.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/addon-instance/peripheral/PeripheralUtils.h"
 #include "peripherals/PeripheralTypes.h"
 #include "threads/CriticalSection.h"
 
@@ -26,10 +26,10 @@
 - (PERIPHERALS::PeripheralScanResults)GetInputDevices;
 - (void)DeviceAdded:(int)deviceID;
 - (void)DeviceRemoved:(int)deviceID;
-- (void)SetDigitalEvent:(kodi::addon::PeripheralEvent)event;
-- (void)SetAxisEvent:(kodi::addon::PeripheralEvent)event;
-- (std::vector<kodi::addon::PeripheralEvent>)GetButtonEvents;
-- (std::vector<kodi::addon::PeripheralEvent>)GetAxisEvents;
+- (void)SetDigitalEvent:(addon::PeripheralEvent)event;
+- (void)SetAxisEvent:(addon::PeripheralEvent)event;
+- (std::vector<addon::PeripheralEvent>)GetButtonEvents;
+- (std::vector<addon::PeripheralEvent>)GetAxisEvents;
 - (int)GetControllerAxisCount:(int)deviceId withControllerType:(GCCONTROLLER_TYPE)controllerType;
 - (int)GetControllerButtonCount:(int)deviceId withControllerType:(GCCONTROLLER_TYPE)controllerType;
 - (GCCONTROLLER_TYPE)GetControllerType:(int)deviceID;

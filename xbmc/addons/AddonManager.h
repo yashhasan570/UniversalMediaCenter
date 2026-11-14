@@ -229,7 +229,7 @@ public:
 
   /*!
      * Install available addon updates, if any.
-     * @param wait If kodi should wait for all updates to download and install before returning
+     * @param wait If universalmediacenter should wait for all updates to download and install before returning
      */
   void CheckAndInstallAddonUpdates(bool wait) const;
 

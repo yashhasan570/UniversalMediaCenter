@@ -10,7 +10,7 @@
 
 #include "utils/log.h"
 
-using namespace KODI::SHADER;
+using namespace UNIVERSAL MEDIA CENTER::SHADER;
 
 CShaderTextureGLES::CShaderTextureGLES(uint32_t textureWidth,
                                        uint32_t textureHeight,

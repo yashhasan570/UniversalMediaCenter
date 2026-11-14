@@ -65,10 +65,10 @@ namespace CEC
 class ICECAdapter;
 };
 
-namespace KODI::CEC
+namespace UNIVERSAL MEDIA CENTER::CEC
 {
 class ICecKeyHandler;
-} // namespace KODI::CEC
+} // namespace UNIVERSAL MEDIA CENTER::CEC
 
 namespace PERIPHERALS
 {
@@ -90,7 +90,7 @@ typedef enum
 } CecVolumeChange;
 
 class CPeripheralCecAdapter : public CPeripheralHID,
-                              public KODI::CEC::ICecInputProvider,
+                              public UNIVERSAL MEDIA CENTER::CEC::ICecInputProvider,
                               public ANNOUNCEMENT::IAnnouncer,
                               private CThread
 {

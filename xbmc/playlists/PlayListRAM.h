@@ -12,11 +12,11 @@
 
 #include <iostream>
 
-namespace KODI::PLAYLIST
+namespace UNIVERSAL MEDIA CENTER::PLAYLIST
 {
 class CPlayListRAM : public CPlayList
 {
 public:
   bool LoadData(std::istream& stream) override;
 };
-} // namespace KODI::PLAYLIST
+} // namespace UNIVERSAL MEDIA CENTER::PLAYLIST

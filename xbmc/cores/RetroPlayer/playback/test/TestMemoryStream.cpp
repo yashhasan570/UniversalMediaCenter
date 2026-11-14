@@ -20,7 +20,7 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI::RETRO;
+using namespace UNIVERSAL MEDIA CENTER::RETRO;
 
 TEST(TestMemoryStream, RetiredSnapshotSurvivesRewindAndBufferReuse)
 {
@@ -73,10 +73,10 @@ TEST(TestMemoryStream, WorkerPersistsDetachedCoreAndAchievementsForReload)
     std::unique_ptr<uint32_t[]> memory = std::make_unique<uint32_t[]>(1025);
     std::array<uint8_t, 3> achievements{};
   };
-  auto deleteTemp = [](XFILE::CFile* file) { XBMC_DELETETEMPFILE(file); };
-  std::unique_ptr<XFILE::CFile, decltype(deleteTemp)> temp(XBMC_CREATETEMPFILE(".sav"), deleteTemp);
+  auto deleteTemp = [](XFILE::CFile* file) { _DELETETEMPFILE(file); };
+  std::unique_ptr<XFILE::CFile, decltype(deleteTemp)> temp(_CREATETEMPFILE(".sav"), deleteTemp);
   ASSERT_NE(temp, nullptr);
-  const auto path = XBMC_TEMPFILEPATH(temp.get());
+  const auto path = _TEMPFILEPATH(temp.get());
   temp->Close();
   CSavestateDatabase database;
   CSavestateWorker<Snapshot> worker(

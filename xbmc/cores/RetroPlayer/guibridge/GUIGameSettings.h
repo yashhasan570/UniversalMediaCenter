@@ -17,7 +17,7 @@
 
 class CGameSettings;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -51,4 +51,4 @@ private:
   mutable CCriticalSection m_mutex;
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

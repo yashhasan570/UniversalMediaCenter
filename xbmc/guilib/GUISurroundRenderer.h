@@ -47,7 +47,7 @@ private:
   //! \brief What the surround is painted with. Both can be in force.
   struct SurroundArt
   {
-    std::optional<KODI::UTILS::COLOR::Color> colour;
+    std::optional<UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color> colour;
     std::string image;
 
     bool Nothing() const { return !colour && image.empty(); }

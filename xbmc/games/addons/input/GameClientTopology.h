@@ -8,13 +8,13 @@
 
 #pragma once
 
-#include "addons/kodi-dev-kit/include/kodi/c-api/addon-instance/game.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api/addon-instance/game.h"
 #include "games/GameTypes.h"
 #include "games/controllers/types/ControllerTree.h"
 
 #include <memory>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -55,4 +55,4 @@ private:
 };
 
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

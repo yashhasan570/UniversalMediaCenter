@@ -8,7 +8,7 @@
 
 #include "SeatWebOS.h"
 
-namespace KODI::WINDOWING::WAYLAND
+namespace UNIVERSAL MEDIA CENTER::WINDOWING::WAYLAND
 {
 
 void CSeatWebOS::SetCursor(std::uint32_t serial,
@@ -26,4 +26,4 @@ void CSeatWebOS::InstallKeyboardRepeatInfo()
   // Which is too fast for the long press detection
 }
 
-} // namespace KODI::WINDOWING::WAYLAND
+} // namespace UNIVERSAL MEDIA CENTER::WINDOWING::WAYLAND

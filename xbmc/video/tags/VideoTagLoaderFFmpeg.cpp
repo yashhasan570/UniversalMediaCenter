@@ -44,11 +44,11 @@ int64_t vfs_file_seek(void* h, int64_t pos, int whence)
 std::string filenameToType(std::string_view filename)
 {
   if (filename == "fanart.png" || filename == "fanart.jpg")
-    return KODI::ART::TYPE::FANART;
+    return UNIVERSAL MEDIA CENTER::ART::TYPE::FANART;
   else if (filename == "cover.png" || filename == "cover.jpg")
-    return KODI::ART::TYPE::POSTER;
+    return UNIVERSAL MEDIA CENTER::ART::TYPE::POSTER;
   else if (filename == "small_cover.png" || filename == "small_cover.jpg")
-    return KODI::ART::TYPE::THUMB;
+    return UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB;
   return {};
 }
 
@@ -114,12 +114,12 @@ bool CVideoTagLoaderFFmpeg::HasInfo() const
   {
     const AVDictionaryEntry* avtag =
         av_dict_get(m_fctx->streams[i]->metadata, "filename", nullptr, AV_DICT_IGNORE_SUFFIX);
-    if (avtag && strcmp(avtag->value, "kodi-metadata") == 0)
+    if (avtag && strcmp(avtag->value, "universalmediacenter-metadata") == 0)
     {
       m_metadata_stream = i;
       return true;
     }
-    else if (avtag && strcmp(avtag->value, "kodi-override-metadata") == 0)
+    else if (avtag && strcmp(avtag->value, "universalmediacenter-override-metadata") == 0)
     {
       m_metadata_stream = i;
       m_override_data = true;
@@ -284,7 +284,7 @@ CInfoScanner::InfoType CVideoTagLoaderFFmpeg::LoadMP4(CVideoInfoTag& tag,
       continue;
 
     const size_t size = m_fctx->streams[i]->attached_pic.size;
-    const std::string type = KODI::ART::TYPE::POSTER;
+    const std::string type = UNIVERSAL MEDIA CENTER::ART::TYPE::POSTER;
     if (art)
       art->emplace_back(m_fctx->streams[i]->attached_pic.data, size, "image/png", type);
     else

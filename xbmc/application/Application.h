@@ -59,7 +59,7 @@ namespace MEDIA_DETECT
   class CAutorun;
 }
 
-namespace KODI::PLAYLIST
+namespace UNIVERSAL MEDIA CENTER::PLAYLIST
 {
   class CPlayList;
 }
@@ -69,7 +69,7 @@ namespace ActiveAE
   class CActiveAE;
 }
 
-namespace KODI::VIDEO
+namespace UNIVERSAL MEDIA CENTER::VIDEO
 {
   class CVideoInfoScanner;
 }
@@ -81,7 +81,7 @@ namespace MUSIC_INFO
 
 class CApplication : public IWindowManagerCallback,
                      public IMsgTargetCallback,
-                     public KODI::MESSAGING::IMessageTarget,
+                     public UNIVERSAL MEDIA CENTER::MESSAGING::IMessageTarget,
                      public CApplicationComponents,
                      public CApplicationPlayerCallback,
                      public CApplicationSettingsHandling
@@ -121,12 +121,12 @@ public:
   std::string GetCurrentPlayer();
 
   int  GetMessageMask() override;
-  void OnApplicationMessage(KODI::MESSAGING::ThreadMessage* pMsg) override;
+  void OnApplicationMessage(UNIVERSAL MEDIA CENTER::MESSAGING::ThreadMessage* pMsg) override;
 
-  bool PlayMedia(CFileItem& item, const std::string& player, KODI::PLAYLIST::Id playlistId);
+  bool PlayMedia(CFileItem& item, const std::string& player, UNIVERSAL MEDIA CENTER::PLAYLIST::Id playlistId);
   bool ProcessAndStartPlaylist(const std::string& strPlayList,
-                               KODI::PLAYLIST::CPlayList& playlist,
-                               KODI::PLAYLIST::Id playlistId,
+                               UNIVERSAL MEDIA CENTER::PLAYLIST::CPlayList& playlist,
+                               UNIVERSAL MEDIA CENTER::PLAYLIST::Id playlistId,
                                int track = 0);
   bool PlayFile(CFileItem item, const std::string& player, bool bRestart = false);
   void StopPlaying();
@@ -166,7 +166,7 @@ public:
 
   void UpdateCurrentPlayArt();
 
-  bool ExecuteXBMCAction(std::string action, const std::shared_ptr<CGUIListItem>& item = NULL);
+  bool ExecuteAction(std::string action, const std::shared_ptr<CGUIListItem>& item = NULL);
 
   bool WasPlaybackCancelled() const { return m_cancelPlayback; }
 
@@ -188,12 +188,12 @@ public:
   std::unique_ptr<CServiceManager> m_ServiceManager;
 
   /*!
-  \brief Locks calls from outside kodi (e.g. python) until framemove is processed.
+  \brief Locks calls from outside universalmediacenter (e.g. python) until framemove is processed.
   */
   void LockFrameMoveGuard();
 
   /*!
-  \brief Unlocks calls from outside kodi (e.g. python).
+  \brief Unlocks calls from outside universalmediacenter (e.g. python).
   */
   void UnlockFrameMoveGuard();
 
@@ -269,5 +269,5 @@ private:
   CEvent m_playerEvent;
 };
 
-XBMC_GLOBAL_REF(CApplication,g_application);
-#define g_application XBMC_GLOBAL_USE(CApplication)
+_GLOBAL_REF(CApplication,g_application);
+#define g_application _GLOBAL_USE(CApplication)

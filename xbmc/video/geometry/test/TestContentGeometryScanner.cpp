@@ -17,7 +17,7 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI::VIDEO::GEOMETRY;
+using namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY;
 
 namespace
 {
@@ -129,7 +129,7 @@ TEST_F(TestContentGeometryScanner, MeasuringAwayFromPlaybackStartsAndStopsTheSwe
 TEST(TestContentGeometryMeasurement, AnOpenThatFailsAfterACancelStoresNothing)
 {
   const CFileItem unopenable(
-      XBMC_REF_FILE_PATH("xbmc/cores/VideoPlayer/test/testdata/nonexistent.mp4"), false);
+      _REF_FILE_PATH("/cores/VideoPlayer/test/testdata/nonexistent.mp4"), false);
 
   EXPECT_FALSE(
       MeasureContentGeometry(unopenable, {1, 1}, SamplingDepth::Normal, [] { return true; })
@@ -139,7 +139,7 @@ TEST(TestContentGeometryMeasurement, AnOpenThatFailsAfterACancelStoresNothing)
 TEST(TestContentGeometryMeasurement, AFileThatCouldNotBeReadStillStoresARecord)
 {
   const CFileItem unopenable(
-      XBMC_REF_FILE_PATH("xbmc/cores/VideoPlayer/test/testdata/nonexistent.mp4"), false);
+      _REF_FILE_PATH("/cores/VideoPlayer/test/testdata/nonexistent.mp4"), false);
 
   const std::optional<ContentGeometryRecord> record = MeasureContentGeometry(unopenable, {1, 1});
 

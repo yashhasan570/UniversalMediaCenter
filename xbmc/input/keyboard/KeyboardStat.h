@@ -25,12 +25,12 @@
 // ASCII/unicode.
 
 #include "input/keyboard/Key.h"
-#include "input/keyboard/XBMC_keyboard.h"
+#include "input/keyboard/_keyboard.h"
 
 #include <chrono>
 #include <string>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace KEYBOARD
 {
@@ -45,18 +45,18 @@ public:
 
   void Initialize();
 
-  CKey TranslateKey(XBMC_keysym& keysym) const;
+  CKey TranslateKey(_keysym& keysym) const;
 
-  void ProcessKeyDown(XBMC_keysym& keysym);
+  void ProcessKeyDown(_keysym& keysym);
   void ProcessKeyUp(void);
 
   std::string GetKeyName(uint32_t keyId);
 
 private:
-  static bool LookupSymAndUnicodePeripherals(XBMC_keysym& keysym, uint16_t* key, char* unicode);
+  static bool LookupSymAndUnicodePeripherals(_keysym& keysym, uint16_t* key, char* unicode);
 
-  XBMC_keysym m_lastKeysym;
+  _keysym m_lastKeysym;
   std::chrono::time_point<std::chrono::steady_clock> m_lastKeyTime;
 };
 } // namespace KEYBOARD
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

@@ -11,7 +11,7 @@
 #include <string>
 #include <vector>
 
-namespace KODI::GAME
+namespace UNIVERSAL MEDIA CENTER::GAME
 {
 /*!
  * \ingroup games
@@ -64,4 +64,4 @@ public:
 private:
   std::vector<Cheat> m_cheats;
 };
-} // namespace KODI::GAME
+} // namespace UNIVERSAL MEDIA CENTER::GAME

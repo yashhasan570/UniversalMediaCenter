@@ -47,7 +47,7 @@ struct StreamInfo
 {
   bool valid = false;
   int bitrate = 0;
-  KODI::LANGUAGE::CLanguageTag language;
+  UNIVERSAL MEDIA CENTER::LANGUAGE::CLanguageTag language;
   std::string name;
   std::string codecName;
   std::string codecDesc;

@@ -12,7 +12,7 @@
 
 class CFileItemList;
 
-namespace KODI::PICTURE
+namespace UNIVERSAL MEDIA CENTER::PICTURE
 {
 /*!
  * \brief Hide the clip of each Live Photo (a .mov named like a picture next to it, which Apple's
@@ -33,4 +33,4 @@ std::string ExtractMotionPhotoClip(const std::string& path);
  * \brief Delete the clips copied by ExtractMotionPhotoClip().
  */
 void ClearMotionPhotoClips();
-} // namespace KODI::PICTURE
+} // namespace UNIVERSAL MEDIA CENTER::PICTURE

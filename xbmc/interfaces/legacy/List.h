@@ -10,7 +10,7 @@
 
 #include <list>
 
-namespace XBMCAddon
+namespace Addon
 {
   template <class T> class List : public std::list<T>
   {

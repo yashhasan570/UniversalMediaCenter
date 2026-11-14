@@ -8,7 +8,7 @@
 
 #include "InputTranslator.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace INPUT;
 
 #define TAN_1_8_PI 0.4142136f // tan(1/8*PI)

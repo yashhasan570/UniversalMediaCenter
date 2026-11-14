@@ -45,9 +45,9 @@
 using namespace ADDON;
 using namespace XFILE;
 using namespace MUSIC_INFO;
-using namespace KODI::MESSAGING;
-using namespace KODI::CDRIP;
-using KODI::MEDIA::MediaSection;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
+using namespace UNIVERSAL MEDIA CENTER::CDRIP;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaSection;
 
 CCDDARipper& CCDDARipper::GetInstance()
 {

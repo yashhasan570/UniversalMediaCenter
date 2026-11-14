@@ -32,7 +32,7 @@ void CWHelper::OnStartup()
   if((m_hwnd == NULL) && (m_hProcess == NULL))
     return;
 
-  // Minimize XBMC if not already
+  // Minimize  if not already
   ShowWindow(g_hWnd,SW_MINIMIZE);
   if(m_hwnd != NULL)
     ShowWindow(m_hwnd,SW_RESTORE);
@@ -42,7 +42,7 @@ void CWHelper::OnStartup()
 
 void CWHelper::OnExit()
 {
-  // Bring back XBMC window
+  // Bring back  window
   ShowWindow(g_hWnd,SW_RESTORE);
   SetForegroundWindow(g_hWnd);
   m_hwnd = NULL;

@@ -18,7 +18,7 @@ namespace tinyxml2
 class XMLNode;
 }
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace KEYMAP
 {
@@ -57,4 +57,4 @@ private:
   std::map<std::string, CustomControllerWindowMap> m_customControllersMap;
 };
 } // namespace KEYMAP
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

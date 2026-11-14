@@ -4,14 +4,14 @@ include(ExternalProject)
 
 # Variables required
 # TARBALL_DIR = location to download tarballs
-# KODI_MIRROR = mirror address
-# KODI_SOURCE_DIR = xbmc source root
+# UNIVERSALMEDIA_MIRROR = mirror address
+# UNIVERSALMEDIA_SOURCE_DIR =  source root
 # NATIVEPREFIX = install prefix
 
 set(pkgconf_INSTALL_PREFIX ${NATIVEPREFIX})
 
 # Dependency path
-set(MODULE_PATH "${KODI_SOURCE_DIR}/tools/depends/native/pkgconf")
+set(MODULE_PATH "${UNIVERSALMEDIA_SOURCE_DIR}/tools/depends/native/pkgconf")
 
 set(PKGCONF_FILE "${MODULE_PATH}/PKGCONF-VERSION")
 
@@ -39,7 +39,7 @@ string(REGEX REPLACE "\\$\\(BASE_URL\\)" "${PKGCONF_BASE_URL}" PKGCONF_FULL_URL 
 string(REGEX REPLACE "\\$\\(VERSION\\)" "${PKGCONF_VER}" PKGCONF_FULL_URL "${PKGCONF_FULL_URL}")
 
 if(NOT PKGCONF_BASE_URL)
-  set(PKGCONF_BASE_URL "${KODI_MIRROR}/build-deps/sources")
+  set(PKGCONF_BASE_URL "${UNIVERSALMEDIA_MIRROR}/build-deps/sources")
 endif()
 
 find_package(Meson REQUIRED)

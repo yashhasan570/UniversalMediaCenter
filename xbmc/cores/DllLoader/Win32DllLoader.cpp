@@ -123,7 +123,7 @@ Win32DllLoader::~Win32DllLoader()
 
 bool Win32DllLoader::Load()
 {
-  using namespace KODI::PLATFORM::WINDOWS;
+  using namespace UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS;
 
   if (m_dllHandle != NULL)
     return true;
@@ -232,7 +232,7 @@ bool Win32DllLoader::HasSymbols()
 
 void Win32DllLoader::OverrideImports(const std::string &dll)
 {
-  using KODI::PLATFORM::WINDOWS::ToW;
+  using UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::ToW;
   auto strdllW = ToW(CSpecialProtocol::TranslatePath(dll));
   auto image_base = reinterpret_cast<BYTE*>(m_dllHandle);
 

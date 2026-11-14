@@ -47,10 +47,10 @@ public:
 
 private:
   // Returns a copy so callers never hold the lock while proxying to the main thread.
-  KODI::PLATFORM::WASM::TizenNetworkInfo GetInfo() const;
+  UNIVERSAL MEDIA CENTER::PLATFORM::WASM::TizenNetworkInfo GetInfo() const;
 
   mutable std::mutex m_mutex;
-  mutable KODI::PLATFORM::WASM::TizenNetworkInfo m_info;
+  mutable UNIVERSAL MEDIA CENTER::PLATFORM::WASM::TizenNetworkInfo m_info;
   mutable std::chrono::steady_clock::time_point m_refreshed;
   mutable std::string m_loggedState;
 };

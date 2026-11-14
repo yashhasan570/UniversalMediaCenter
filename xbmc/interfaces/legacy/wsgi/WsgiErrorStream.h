@@ -14,13 +14,13 @@
 
 struct HTTPPythonRequest;
 
-namespace XBMCAddon
+namespace Addon
 {
-  namespace xbmcwsgi
+  namespace wsgi
   {
 
-    /// \defgroup python_xbmcwsgi_WsgiErrorStream WsgiErrorStream
-    /// \ingroup python_xbmcwsgi
+    /// \defgroup python_wsgi_WsgiErrorStream WsgiErrorStream
+    /// \ingroup python_wsgi
     /// @{
     /// @brief **Represents the wsgi.errors stream to write error messages.**
     ///
@@ -39,7 +39,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcwsgi_WsgiErrorStream
+      /// \ingroup python_wsgi_WsgiErrorStream
       /// \python_func{ flush() }
       /// Since nothing is buffered this is a no-op.
       ///
@@ -51,7 +51,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcwsgi_WsgiErrorStream
+      /// \ingroup python_wsgi_WsgiErrorStream
       /// \python_func{ write(str) }
       /// Writes the given error message to the application's log file.
       ///
@@ -66,7 +66,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcwsgi_WsgiErrorStream
+      /// \ingroup python_wsgi_WsgiErrorStream
       /// \python_func{ writelines(seq) }
       /// Joins the given list of error messages (without any separator) into
       /// a single error message which is written to the application's log file.

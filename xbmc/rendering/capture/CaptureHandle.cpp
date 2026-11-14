@@ -13,7 +13,7 @@
 #include "threads/SystemClock.h"
 #include "utils/log.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RENDERING
 {
@@ -109,4 +109,4 @@ void CCaptureHandle::Detach()
 
 } // namespace CAPTURE
 } // namespace RENDERING
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

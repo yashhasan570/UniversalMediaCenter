@@ -15,7 +15,7 @@
 
 class CApplication;
 class CGUIMessage;
-namespace KODI::MESSAGING
+namespace UNIVERSAL MEDIA CENTER::MESSAGING
 {
 class ThreadMessage;
 struct ThreadMessageCallback;
@@ -27,7 +27,7 @@ public:
   explicit CApplicationMessageHandling(CApplication& app);
   ~CApplicationMessageHandling();
 
-  void OnApplicationMessage(KODI::MESSAGING::ThreadMessage* pMsg);
+  void OnApplicationMessage(UNIVERSAL MEDIA CENTER::MESSAGING::ThreadMessage* pMsg);
   bool OnMessage(const CGUIMessage& message);
 
 private:
@@ -36,6 +36,6 @@ private:
   void ScheduleSkinReloadAfterPlayback();
 
   CApplication& m_app;
-  std::unique_ptr<KODI::MESSAGING::ThreadMessageCallback> m_reloadSkinCallback;
+  std::unique_ptr<UNIVERSAL MEDIA CENTER::MESSAGING::ThreadMessageCallback> m_reloadSkinCallback;
   CTimer m_skinReloadTimer;
 };

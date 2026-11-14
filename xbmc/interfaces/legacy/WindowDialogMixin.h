@@ -16,9 +16,9 @@
 #define HACK_CUSTOM_ACTION_CLOSING -3
 #define HACK_CUSTOM_ACTION_OPENING -4
 
-namespace XBMCAddon
+namespace Addon
 {
-  namespace xbmcgui
+  namespace gui
   {
     class WindowDialogMixin
     {

@@ -46,7 +46,7 @@
 #endif
 
 using namespace XFILE;
-using KODI::MEDIA::MediaSection;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaSection;
 
 #define CONTROL_HEADING          2
 #define CONTROL_PATH            10
@@ -142,7 +142,7 @@ bool CGUIDialogMediaSource::ShowAndAddMediaSource(MediaSection section)
     CMediaSource share;
     share.FromNameAndPaths(strName, dialog->GetPaths());
     if (dialog->m_paths->Size() > 0)
-      share.m_strThumbnailImage = dialog->m_paths->Get(0)->GetArt(KODI::ART::TYPE::THUMB);
+      share.m_strThumbnailImage = dialog->m_paths->Get(0)->GetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB);
     CMediaSourceSettings::GetInstance().AddShare(section, share);
     OnMediaSourceChanged(section, "", share);
   }

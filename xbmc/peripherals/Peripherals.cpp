@@ -59,7 +59,7 @@
 #include "settings/SettingsComponent.h"
 #include "settings/lib/Setting.h"
 #include "utils/StringUtils.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 #include "utils/XMLUtils.h"
 #include "utils/log.h"
 
@@ -71,7 +71,7 @@
 #include "resources/ResourcesComponent.h"
 #endif
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace JOYSTICK;
 using namespace PERIPHERALS;
 using namespace XFILE;
@@ -545,8 +545,8 @@ bool CPeripherals::LoadMappings()
 {
   std::unique_lock lock(m_critSectionMappings);
 
-  CXBMCTinyXML2 xmlDoc;
-  if (!xmlDoc.LoadFile("special://xbmc/system/peripherals.xml"))
+  CTinyXML2 xmlDoc;
+  if (!xmlDoc.LoadFile("special:///system/peripherals.xml"))
   {
     CLog::LogF(LOGWARNING, "peripherals.xml does not exist");
     return true;

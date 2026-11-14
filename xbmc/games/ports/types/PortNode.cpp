@@ -8,7 +8,7 @@
 
 #include "PortNode.h"
 
-#include "addons/kodi-dev-kit/include/kodi/c-api/addon-instance/game.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api/addon-instance/game.h"
 #include "games/controllers/Controller.h"
 #include "games/controllers/ControllerTranslator.h"
 #include "games/controllers/types/ControllerHub.h"
@@ -20,7 +20,7 @@
 
 #include <tinyxml2.h>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 namespace

@@ -9,7 +9,7 @@
 #include "PVRTimerRuleMatcher.h"
 
 #include "XBDateTime.h"
-#include "addons/kodi-dev-kit/include/kodi/c-api/addon-instance/pvr/pvr_channels.h" // PVR_CHANNEL_INVALID_UID
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api/addon-instance/pvr/pvr_channels.h" // PVR_CHANNEL_INVALID_UID
 #include "pvr/PVRConstants.h" // PVR_CLIENT_INVALID_UID
 #include "pvr/epg/EpgInfoTag.h"
 #include "pvr/timers/PVRTimerInfoTag.h"

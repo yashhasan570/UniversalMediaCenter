@@ -19,7 +19,7 @@ class CSetting;
 class CSettings;
 struct StringSettingOption;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace SUBTITLES
 {
@@ -221,4 +221,4 @@ private:
 };
 
 } // namespace SUBTITLES
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

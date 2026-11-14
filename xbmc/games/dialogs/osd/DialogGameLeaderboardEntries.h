@@ -16,7 +16,7 @@
 
 #include <string>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -105,4 +105,4 @@ private:
 };
 
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

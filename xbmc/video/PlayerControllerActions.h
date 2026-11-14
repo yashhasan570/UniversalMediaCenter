@@ -8,7 +8,7 @@
 
 #pragma once
 
-namespace KODI::VIDEO
+namespace UNIVERSAL MEDIA CENTER::VIDEO
 {
 enum class SubtitleTrackAction
 {
@@ -42,4 +42,4 @@ public:
                                                      bool visible,
                                                      SubtitleTrackAction action);
 };
-} // namespace KODI::VIDEO
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO

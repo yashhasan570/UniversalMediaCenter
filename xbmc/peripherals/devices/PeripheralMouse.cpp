@@ -17,7 +17,7 @@
 #include <mutex>
 #include <sstream>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace PERIPHERALS;
 
 CPeripheralMouse::CPeripheralMouse(CPeripherals& manager,

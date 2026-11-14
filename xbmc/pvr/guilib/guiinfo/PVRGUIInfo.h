@@ -28,7 +28,7 @@
 
 class CFileItem;
 
-namespace KODI::GUILIB::GUIINFO
+namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO
 {
 class CGUIInfo;
 }
@@ -37,7 +37,7 @@ namespace PVR
 {
 class CPVREpgInfoTag;
 
-class CPVRGUIInfo : public KODI::GUILIB::GUIINFO::CGUIInfoProvider,
+class CPVRGUIInfo : public UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoProvider,
                     private CThread,
                     public CPowerState
 {
@@ -58,26 +58,26 @@ public:
    */
   void OnWake() override;
 
-  // KODI::GUILIB::GUIINFO::IGUIInfoProvider implementation
+  // UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::IGUIInfoProvider implementation
   bool InitCurrentItem(CFileItem* item) override;
   bool GetLabel(std::string& value,
                 const CFileItem* item,
                 int contextWindow,
-                const KODI::GUILIB::GUIINFO::CGUIInfo& info,
+                const UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfo& info,
                 std::string* fallback) const override;
   bool GetFallbackLabel(std::string& value,
                         const CFileItem* item,
                         int contextWindow,
-                        const KODI::GUILIB::GUIINFO::CGUIInfo& info,
+                        const UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfo& info,
                         std::string* fallback) override;
   bool GetInt(int& value,
               const CGUIListItem* item,
               int contextWindow,
-              const KODI::GUILIB::GUIINFO::CGUIInfo& info) const override;
+              const UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfo& info) const override;
   bool GetBool(bool& value,
                const CGUIListItem* item,
                int contextWindow,
-               const KODI::GUILIB::GUIINFO::CGUIInfo& info) const override;
+               const UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfo& info) const override;
 
 private:
   void ResetProperties();
@@ -106,29 +106,29 @@ private:
   bool IsPlayable(const std::shared_ptr<const CPVREpgInfoTag>& tag) const;
 
   bool GetListItemAndPlayerLabel(const CFileItem* item,
-                                 const KODI::GUILIB::GUIINFO::CGUIInfo& info,
+                                 const UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfo& info,
                                  std::string& strValue) const;
   bool GetPVRLabel(const CFileItem* item,
-                   const KODI::GUILIB::GUIINFO::CGUIInfo& info,
+                   const UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfo& info,
                    std::string& strValue) const;
   bool GetRadioRDSLabel(const CFileItem* item,
-                        const KODI::GUILIB::GUIINFO::CGUIInfo& info,
+                        const UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfo& info,
                         std::string& strValue) const;
 
   bool GetListItemAndPlayerInt(const CFileItem* item,
-                               const KODI::GUILIB::GUIINFO::CGUIInfo& info,
+                               const UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfo& info,
                                int& iValue) const;
   bool GetPVRInt(const CFileItem* item,
-                 const KODI::GUILIB::GUIINFO::CGUIInfo& info,
+                 const UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfo& info,
                  int& iValue) const;
   int GetTimeShiftSeekPercent() const;
 
   bool GetListItemAndPlayerBool(const CFileItem* item,
-                                const KODI::GUILIB::GUIINFO::CGUIInfo& info,
+                                const UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfo& info,
                                 bool& bValue) const;
-  bool GetPVRBool(const KODI::GUILIB::GUIINFO::CGUIInfo& info, bool& bValue) const;
+  bool GetPVRBool(const UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfo& info, bool& bValue) const;
   bool GetRadioRDSBool(const CFileItem* item,
-                       const KODI::GUILIB::GUIINFO::CGUIInfo& info,
+                       const UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfo& info,
                        bool& bValue) const;
 
   void CharInfoBackendNumber(std::string& strValue) const;

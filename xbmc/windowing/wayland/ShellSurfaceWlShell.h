@@ -11,7 +11,7 @@
 #include "Connection.h"
 #include "ShellSurface.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace WINDOWING
 {

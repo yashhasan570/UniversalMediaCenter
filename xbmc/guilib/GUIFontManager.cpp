@@ -55,7 +55,7 @@ namespace
 {
 constexpr const char* XML_FONTCACHE_FILENAME = "fontcache.xml";
 
-bool LoadXMLData(const std::string& filepath, CXBMCTinyXML& xmlDoc)
+bool LoadXMLData(const std::string& filepath, CTinyXML& xmlDoc)
 {
   if (!CFileUtils::Exists(filepath))
   {
@@ -137,8 +137,8 @@ static bool CheckFont(std::string& strPath, const std::string& newPath, const st
 
 CGUIFont* GUIFontManager::LoadTTF(const std::string& strFontName,
                                   const std::string& strFilename,
-                                  KODI::UTILS::COLOR::Color textColor,
-                                  KODI::UTILS::COLOR::Color shadowColor,
+                                  UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color textColor,
+                                  UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color shadowColor,
                                   const int iSize,
                                   const int iStyle,
                                   bool border,
@@ -185,7 +185,7 @@ CGUIFont* GUIFontManager::LoadTTF(const std::string& strFontName,
   // Check if the file exists, otherwise try loading it from the global media dir
   std::string file = URIUtils::GetFileName(strFilename);
   if (!CheckFont(strPath, "special://home/media/Fonts", file) &&
-      !CheckFont(strPath, "special://xbmc/media/Fonts", file))
+      !CheckFont(strPath, "special:///media/Fonts", file))
   {
     VECADDONS addons;
     CServiceBroker::GetAddonMgr().GetAddons(addons, AddonType::RESOURCE_FONT);
@@ -401,7 +401,7 @@ CGUIFont* GUIFontManager::GetDefaultFont(bool border)
     { // create it
       const auto& font13 = m_vecFonts[font13index];
       OrigFontInfo fontInfo = m_vecFontInfo[font13index];
-      font13border = LoadTTF("__defaultborder__", fontInfo.fileName, KODI::UTILS::COLOR::BLACK, 0,
+      font13border = LoadTTF("__defaultborder__", fontInfo.fileName, UNIVERSAL MEDIA CENTER::UTILS::COLOR::BLACK, 0,
                              fontInfo.size, font13->GetStyle(), true, 1.0f, fontInfo.aspect,
                              &fontInfo.sourceRes, fontInfo.preserveAspect);
     }
@@ -431,7 +431,7 @@ bool GUIFontManager::LoadFontsFromFile(const std::string& fontsetFilePath,
                                        std::string& firstFontset,
                                        bool resolveIncludes)
 {
-  CXBMCTinyXML xmlDoc;
+  CTinyXML xmlDoc;
   if (LoadXMLData(fontsetFilePath, xmlDoc))
   {
     TiXmlElement* rootElement = xmlDoc.RootElement();
@@ -592,8 +592,8 @@ void GUIFontManager::LoadFonts(const TiXmlNode* fontNode)
     int iSize = 20;
     float aspect = 1.0f;
     float lineSpacing = 1.0f;
-    KODI::UTILS::COLOR::Color shadowColor = 0;
-    KODI::UTILS::COLOR::Color textColor = 0;
+    UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color shadowColor = 0;
+    UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color textColor = 0;
     int iStyle = FONT_STYLE_NORMAL;
 
     XMLUtils::GetString(fontNode, "name", fontName);
@@ -649,11 +649,11 @@ void GUIFontManager::SettingOptionsFontsFiller(const SettingConstPtr& setting,
   CFileItemList items;
 
   // Find font files
-  XFILE::CDirectory::GetDirectory(KODI::UTILS::FONT::FONTPATH::SYSTEM, itemsRoot,
-                                  KODI::UTILS::FONT::SUPPORTED_EXTENSIONS_MASK,
+  XFILE::CDirectory::GetDirectory(UNIVERSAL MEDIA CENTER::UTILS::FONT::FONTPATH::SYSTEM, itemsRoot,
+                                  UNIVERSAL MEDIA CENTER::UTILS::FONT::SUPPORTED_EXTENSIONS_MASK,
                                   XFILE::DIR_FLAG_NO_FILE_DIRS | XFILE::DIR_FLAG_NO_FILE_INFO);
-  XFILE::CDirectory::GetDirectory(KODI::UTILS::FONT::FONTPATH::USER, items,
-                                  KODI::UTILS::FONT::SUPPORTED_EXTENSIONS_MASK,
+  XFILE::CDirectory::GetDirectory(UNIVERSAL MEDIA CENTER::UTILS::FONT::FONTPATH::USER, items,
+                                  UNIVERSAL MEDIA CENTER::UTILS::FONT::SUPPORTED_EXTENSIONS_MASK,
                                   XFILE::DIR_FLAG_NO_FILE_DIRS | XFILE::DIR_FLAG_NO_FILE_INFO);
 
   for (auto itItem = itemsRoot.rbegin(); itItem != itemsRoot.rend(); ++itItem)
@@ -676,13 +676,13 @@ void GUIFontManager::Initialize()
 
 void GUIFontManager::LoadUserFonts()
 {
-  if (!XFILE::CDirectory::Exists(KODI::UTILS::FONT::FONTPATH::USER))
+  if (!XFILE::CDirectory::Exists(UNIVERSAL MEDIA CENTER::UTILS::FONT::FONTPATH::USER))
     return;
 
   CLog::LogF(LOGDEBUG, "Updating user fonts cache...");
-  CXBMCTinyXML xmlDoc;
+  CTinyXML xmlDoc;
   std::string userFontCacheFilepath =
-      URIUtils::AddFileToFolder(KODI::UTILS::FONT::FONTPATH::USER, XML_FONTCACHE_FILENAME);
+      URIUtils::AddFileToFolder(UNIVERSAL MEDIA CENTER::UTILS::FONT::FONTPATH::USER, XML_FONTCACHE_FILENAME);
   if (LoadXMLData(userFontCacheFilepath, xmlDoc))
   {
     // Load in cache the fonts metadata previously stored in the XML
@@ -712,8 +712,8 @@ void GUIFontManager::LoadUserFonts()
   size_t previousCacheSize = m_userFontsCache.size();
   CFileItemList dirItems;
   // Get the current files list from user fonts folder
-  XFILE::CDirectory::GetDirectory(KODI::UTILS::FONT::FONTPATH::USER, dirItems,
-                                  KODI::UTILS::FONT::SUPPORTED_EXTENSIONS_MASK,
+  XFILE::CDirectory::GetDirectory(UNIVERSAL MEDIA CENTER::UTILS::FONT::FONTPATH::USER, dirItems,
+                                  UNIVERSAL MEDIA CENTER::UTILS::FONT::SUPPORTED_EXTENSIONS_MASK,
                                   XFILE::DIR_FLAG_NO_FILE_DIRS | XFILE::DIR_FLAG_NO_FILE_INFO);
   dirItems.SetFastLookup(true);
 
@@ -721,7 +721,7 @@ void GUIFontManager::LoadUserFonts()
   auto it = m_userFontsCache.begin();
   while (it != m_userFontsCache.end())
   {
-    const std::string filePath = KODI::UTILS::FONT::FONTPATH::USER + (*it).m_filename;
+    const std::string filePath = UNIVERSAL MEDIA CENTER::UTILS::FONT::FONTPATH::USER + (*it).m_filename;
     if (!dirItems.Contains(filePath))
     {
       it = m_userFontsCache.erase(it);
@@ -748,7 +748,7 @@ void GUIFontManager::LoadUserFonts()
       continue;
 
     std::set<std::string> familyNames;
-    if (KODI::UTILS::FONT::GetFontFamilyNames(filepath, familyNames))
+    if (UNIVERSAL MEDIA CENTER::UTILS::FONT::GetFontFamilyNames(filepath, familyNames))
     {
       m_userFontsCache.emplace_back(item->GetLabel(), familyNames);
     }
@@ -758,7 +758,7 @@ void GUIFontManager::LoadUserFonts()
   // If the cache is changed save an updated XML cache file
   if (isCacheChanged)
   {
-    CXBMCTinyXML xmlDoc;
+    CTinyXML xmlDoc;
     TiXmlDeclaration decl("1.0", "UTF-8", "yes");
     xmlDoc.InsertEndChild(decl);
     TiXmlElement xmlMainElement("fonts");

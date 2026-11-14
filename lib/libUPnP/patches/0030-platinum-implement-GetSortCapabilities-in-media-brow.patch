@@ -1,5 +1,5 @@
 From bf2fe4c362eaec89257d7649f18af2431dcc544a Mon Sep 17 00:00:00 2001
-From: montellese <montellese@xbmc.org>
+From: montellese <montellese@.org>
 Date: Sat, 8 Feb 2014 15:15:32 +0100
 Subject: [PATCH 07/11] platinum: implement GetSortCapabilities in media
  browser

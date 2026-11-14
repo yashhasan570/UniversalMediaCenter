@@ -10,10 +10,10 @@ import _strptime # https://bugs.python.org/issue7980
 from socket import timeout
 from threading import Thread
 from urllib.error import HTTPError, URLError
-import xbmc
-import xbmcaddon
-import xbmcgui
-import xbmcplugin
+import 
+import addon
+import gui
+import plugin
 from .allmusic import allmusic_albumfind
 from .allmusic import allmusic_albumdetails
 from .discogs import discogs_albumfind
@@ -29,14 +29,14 @@ from .theaudiodb import theaudiodb_albumdetails
 from .wikipedia import wikipedia_albumdetails
 from .utils import *
 
-ADDONID = xbmcaddon.Addon().getAddonInfo('id')
-ADDONNAME = xbmcaddon.Addon().getAddonInfo('name')
-ADDONVERSION = xbmcaddon.Addon().getAddonInfo('version')
+ADDONID = addon.Addon().getAddonInfo('id')
+ADDONNAME = addon.Addon().getAddonInfo('name')
+ADDONVERSION = addon.Addon().getAddonInfo('version')
 
 
 def log(txt):
     message = '%s: %s' % (ADDONID, txt)
-    xbmc.log(msg=message, level=xbmc.LOGDEBUG)
+    .log(msg=message, level=.LOGDEBUG)
 
 def get_data(url, jsonformat, retry=True):
     try:
@@ -61,14 +61,14 @@ def get_data(url, jsonformat, retry=True):
     if resp.getcode() == 503:
         log('exceeding musicbrainz api limit')
         if retry:
-            xbmc.sleep(1000)
+            .sleep(1000)
             get_data(url, jsonformat, retry=False)
         else:
             return
     elif resp.getcode() == 429:
         log('exceeding discogs api limit')
         if retry:
-            xbmc.sleep(1000)
+            .sleep(1000)
             get_data(url, jsonformat, retry=False)
         else:
             return
@@ -78,19 +78,19 @@ def get_data(url, jsonformat, retry=True):
 
 def api_timeout(scraper):
     currenttime = round(time.time() * 1000)
-    previoustime = xbmcgui.Window(10000).getProperty(scraper)
+    previoustime = gui.Window(10000).getProperty(scraper)
     if previoustime:
         timeout = currenttime - int(previoustime)
         if timeout < 1000:
-            xbmc.sleep(1000 - timeout)
-    xbmcgui.Window(10000).setProperty(scraper, str(round(time.time() * 1000)))
+            .sleep(1000 - timeout)
+    gui.Window(10000).setProperty(scraper, str(round(time.time() * 1000)))
 
 
 class Scraper():
     def __init__(self, action, key, artist, album, url, nfo, settings):
         # parse path settings
         self.parse_settings(settings)
-        # this is just for backward compatibility with xml based scrapers https://github.com/xbmc/xbmc/pull/11632
+        # this is just for backward compatibility with xml based scrapers https://github.com///pull/11632
         if action == 'resolveid':
             # return the result
             result = self.resolve_mbid(key)
@@ -181,7 +181,7 @@ class Scraper():
                 # return the result
                 result = self.resolve_mbid(mbalbumid)
                 self.return_nfourl(result)
-        xbmcplugin.endOfDirectory(int(sys.argv[1]))
+        plugin.endOfDirectory(int(sys.argv[1]))
 
     def parse_settings(self, data):
         settings = json.loads(data)
@@ -415,7 +415,7 @@ class Scraper():
     def return_search(self, data):
         items = []
         for item in data:
-            listitem = xbmcgui.ListItem(item['album'], offscreen=True)
+            listitem = gui.ListItem(item['album'], offscreen=True)
             listitem.setArt({'thumb': item['thumb']})
             listitem.setProperty('album.artist', item['artist_description'])
             listitem.setProperty('album.year', item.get('year',''))
@@ -431,20 +431,20 @@ class Scraper():
                 url['dcalbumid'] = item['dcalbumid']
             items.append((json.dumps(url), listitem, True))
         if items:
-            xbmcplugin.addDirectoryItems(handle=int(sys.argv[1]), items=items)
+            plugin.addDirectoryItems(handle=int(sys.argv[1]), items=items)
 
     def return_nfourl(self, item):
-        listitem = xbmcgui.ListItem(offscreen=True)
-        xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]), url=json.dumps(item), listitem=listitem, isFolder=True)
+        listitem = gui.ListItem(offscreen=True)
+        plugin.addDirectoryItem(handle=int(sys.argv[1]), url=json.dumps(item), listitem=listitem, isFolder=True)
 
     def return_resolved(self, item):
-        listitem = xbmcgui.ListItem(path=json.dumps(item), offscreen=True)
-        xbmcplugin.setResolvedUrl(handle=int(sys.argv[1]), succeeded=True, listitem=listitem)
+        listitem = gui.ListItem(path=json.dumps(item), offscreen=True)
+        plugin.setResolvedUrl(handle=int(sys.argv[1]), succeeded=True, listitem=listitem)
 
     def return_details(self, item):
         if not 'album' in item:
             return
-        listitem = xbmcgui.ListItem(item['album'], offscreen=True)
+        listitem = gui.ListItem(item['album'], offscreen=True)
         if 'mbalbumid' in item:
             listitem.setProperty('album.musicbrainzid', item['mbalbumid'])
             listitem.setProperty('album.releaseid', item['mbalbumid'])
@@ -494,4 +494,4 @@ class Scraper():
                 listitem.setProperty('album.thumb%i.url' % (count + 1), thumb['image'])
                 listitem.setProperty('album.thumb%i.aspect' % (count + 1), thumb['aspect'])
                 listitem.setProperty('album.thumb%i.preview' % (count + 1), thumb['preview'])
-        xbmcplugin.setResolvedUrl(handle=int(sys.argv[1]), succeeded=True, listitem=listitem)
+        plugin.setResolvedUrl(handle=int(sys.argv[1]), succeeded=True, listitem=listitem)

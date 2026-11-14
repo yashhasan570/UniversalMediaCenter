@@ -50,9 +50,9 @@
 #include <string>
 #include <vector>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace PVR;
-using namespace KODI::MESSAGING;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
 
 CPVRGUIActionsPlayback::CPVRGUIActionsPlayback()
   : m_settings(std::make_unique<CPVRSettings>(
@@ -209,7 +209,7 @@ bool CPVRGUIActionsPlayback::SwitchToChannel(const CFileItem& item) const
 
       if (bPlayRecording)
       {
-        KODI::VIDEO::GUILIB::CVideoPlayActionProcessor proc{std::make_shared<CFileItem>(recording)};
+        UNIVERSAL MEDIA CENTER::VIDEO::GUILIB::CVideoPlayActionProcessor proc{std::make_shared<CFileItem>(recording)};
         return proc.ProcessDefaultAction();
       }
     }

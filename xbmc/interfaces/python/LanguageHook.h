@@ -17,7 +17,7 @@
 
 #include <Python.h>
 
-namespace XBMCAddon
+namespace Addon
 {
   namespace Python
   {
@@ -28,7 +28,7 @@ namespace XBMCAddon
      *  plugging into the API. It's got a static only implementation
      *  and uses the singleton pattern for access.
      */
-    class PythonLanguageHook : public XBMCAddon::LanguageHook
+    class PythonLanguageHook : public Addon::LanguageHook
     {
       PyInterpreterState* m_interp;
       CCriticalSection crit;
@@ -58,7 +58,7 @@ namespace XBMCAddon
        * See PythonCallbackHandler for more details
        * See PythonCallbackHandler::PythonCallbackHandler for more details
        */
-      XBMCAddon::CallbackHandler* GetCallbackHandler() override;
+      Addon::CallbackHandler* GetCallbackHandler() override;
 
       String GetAddonId() override;
       String GetAddonVersion() override;
@@ -66,8 +66,8 @@ namespace XBMCAddon
 
       void RegisterPlayerCallback(IPlayerCallback* player) override;
       void UnregisterPlayerCallback(IPlayerCallback* player) override;
-      void RegisterMonitorCallback(XBMCAddon::xbmc::Monitor* monitor) override;
-      void UnregisterMonitorCallback(XBMCAddon::xbmc::Monitor* monitor) override;
+      void RegisterMonitorCallback(Addon::::Monitor* monitor) override;
+      void UnregisterMonitorCallback(Addon::::Monitor* monitor) override;
       bool WaitForEvent(CEvent& hEvent, unsigned int milliseconds) override;
 
       static AddonClass::Ref<PythonLanguageHook> GetIfExists(PyInterpreterState* interp);

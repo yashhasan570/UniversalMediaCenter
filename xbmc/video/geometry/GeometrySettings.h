@@ -13,7 +13,7 @@
 #include "video/geometry/FrameSampling.h"
 #include "video/geometry/LiveGeometrySelector.h"
 
-namespace KODI::VIDEO::GEOMETRY
+namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY
 {
 
 bool ContentGeometryEnabledFromSettings();
@@ -51,4 +51,4 @@ struct LiveGeometrySettings
 
 LiveGeometrySettings LiveGeometryFromSettings();
 
-} // namespace KODI::VIDEO::GEOMETRY
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY

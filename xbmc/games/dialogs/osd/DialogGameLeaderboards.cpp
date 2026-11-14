@@ -36,7 +36,7 @@
 #include <cmath>
 #include <mutex>
 
-using namespace KODI::GAME;
+using namespace UNIVERSAL MEDIA CENTER::GAME;
 
 namespace
 {

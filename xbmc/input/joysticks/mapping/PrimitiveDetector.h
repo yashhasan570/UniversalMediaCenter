@@ -8,7 +8,7 @@
 
 #pragma once
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace JOYSTICK
 {
@@ -42,4 +42,4 @@ private:
   CButtonMapping* const m_buttonMapping;
 };
 } // namespace JOYSTICK
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

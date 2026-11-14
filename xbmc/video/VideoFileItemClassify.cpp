@@ -29,7 +29,7 @@ constexpr const char* VIDEO_EXTRAS_FOLDER_REGEXP{
     R"(^(extras|bonus[ ._-]*(dis[ck]|content|feature)s?)$)"};
 } // namespace
 
-namespace KODI::VIDEO
+namespace UNIVERSAL MEDIA CENTER::VIDEO
 {
 
 bool IsBDFile(const CFileItem& item)
@@ -173,4 +173,4 @@ bool IsVideoExtrasFolder(const CFileItem& item)
   return item.IsFolder() && IsVideoExtrasFolderName(URIUtils::GetFileOrFolderName(item.GetPath()));
 }
 
-} // namespace KODI::VIDEO
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO

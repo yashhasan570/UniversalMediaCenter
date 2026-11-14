@@ -10,7 +10,7 @@
 
 #include "StringUtils.h"
 #include "URIUtils.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 #include "utils/XMLUtils.h"
 
 #include <algorithm>
@@ -66,7 +66,7 @@ void CFanart::Clear()
 
 bool CFanart::Unpack()
 {
-  CXBMCTinyXML2 doc;
+  CTinyXML2 doc;
   doc.Parse(m_xml);
 
   m_fanart.clear();
@@ -149,7 +149,7 @@ unsigned int CFanart::GetNumFanarts() const
 bool CFanart::ParseColors(const std::string &colorsIn, std::string &colorsOut)
 {
   // Formats:
-  // 0: XBMC ARGB Hexadecimal string comma separated "FFFFFFFF,DDDDDDDD,AAAAAAAA"
+  // 0:  ARGB Hexadecimal string comma separated "FFFFFFFF,DDDDDDDD,AAAAAAAA"
   // 1: The TVDB RGB Int Triplets, pipe separate with leading/trailing pipes "|68,69,59|69,70,58|78,78,68|"
 
   // Essentially we read the colors in using the proper format, and store them in our own fixed temporary format (3 DWORDS), and then

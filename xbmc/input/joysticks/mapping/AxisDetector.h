@@ -14,7 +14,7 @@
 
 #include <chrono>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace JOYSTICK
 {
@@ -135,4 +135,4 @@ private:
       m_activationTimeMs; // only used to delay anomalous trigger mapping to detect full range
 };
 } // namespace JOYSTICK
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

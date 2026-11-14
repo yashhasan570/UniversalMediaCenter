@@ -23,7 +23,7 @@
 
 namespace
 {
-constexpr char AUDIO_PROCESSOR_NAME[] = "kodi-audio-worklet";
+constexpr char AUDIO_PROCESSOR_NAME[] = "universalmediacenter-audio-worklet";
 constexpr unsigned int BUFFER_TARGET_MS = 100;
 constexpr unsigned int MIN_BUFFER_QUANTA = 2;
 constexpr unsigned int PREBUFFER_TARGET_MS = 40;
@@ -125,10 +125,10 @@ void TrackContextStateOnMain(int audioContext, uintptr_t runningFlag)
           return;
         const update = () => {
           Atomics.store(HEAPU8, $1, ctx.state === "running" ? 1 : 0);
-          if (ctx.state !== "closed" && ctx.__kodiArmResume)
-            ctx.__kodiArmResume();
+          if (ctx.state !== "closed" && ctx.__universalmediacenterArmResume)
+            ctx.__universalmediacenterArmResume();
         };
-        ctx.__kodiStateHandler = update;
+        ctx.__universalmediacenterStateHandler = update;
         ctx.addEventListener("statechange", update);
         update();
       },
@@ -144,7 +144,7 @@ void DestroyAudioContextOnMain(int audioContext)
         const ctx = emscriptenGetAudioObject($0);
         if (!ctx)
           return;
-        ctx.removeEventListener("statechange", ctx.__kodiStateHandler);
+        ctx.removeEventListener("statechange", ctx.__universalmediacenterStateHandler);
         queueMicrotask(() => ctx.close().catch(() => {}));
       },
       audioContext);
@@ -210,23 +210,23 @@ void ClearResumeHooksOnMain(int audioContext)
         const ctx = emscriptenGetAudioObject($0);
         if (!ctx)
           return;
-        ctx.__kodiArmResume = null;
-        if (!ctx.__kodiResumeHandler)
+        ctx.__universalmediacenterArmResume = null;
+        if (!ctx.__universalmediacenterResumeHandler)
           return;
-        const handler = ctx.__kodiResumeHandler;
+        const handler = ctx.__universalmediacenterResumeHandler;
         window.removeEventListener("pointerdown", handler, true);
         window.removeEventListener("keydown", handler, true);
         window.removeEventListener("touchstart", handler, true);
         document.removeEventListener("visibilitychange", handler, true);
-        ctx.__kodiResumeHandler = null;
-        ctx.__kodiResumeHooksInstalled = false;
+        ctx.__universalmediacenterResumeHandler = null;
+        ctx.__universalmediacenterResumeHooksInstalled = false;
       },
       audioContext);
 }
 
 } // namespace
 
-namespace KODI::PLATFORM::WASM
+namespace UNIVERSAL MEDIA CENTER::PLATFORM::WASM
 {
 CWasmAudioWorkletManager& CWasmAudioWorkletManager::GetInstance()
 {
@@ -675,21 +675,21 @@ void CWasmAudioWorkletManager::InstallResumeHooks() const
             window.removeEventListener("keydown", tryResume, true);
             window.removeEventListener("touchstart", tryResume, true);
             document.removeEventListener("visibilitychange", tryResume, true);
-            ctx.__kodiResumeHooksInstalled = false;
-            ctx.__kodiResumeHandler = null;
+            ctx.__universalmediacenterResumeHooksInstalled = false;
+            ctx.__universalmediacenterResumeHandler = null;
           }
         };
-        ctx.__kodiArmResume = () => {
-          if (ctx.state === "running" || ctx.__kodiResumeHooksInstalled)
+        ctx.__universalmediacenterArmResume = () => {
+          if (ctx.state === "running" || ctx.__universalmediacenterResumeHooksInstalled)
             return;
-          ctx.__kodiResumeHooksInstalled = true;
-          ctx.__kodiResumeHandler = tryResume;
+          ctx.__universalmediacenterResumeHooksInstalled = true;
+          ctx.__universalmediacenterResumeHandler = tryResume;
           window.addEventListener("pointerdown", tryResume, true);
           window.addEventListener("keydown", tryResume, true);
           window.addEventListener("touchstart", tryResume, true);
           document.addEventListener("visibilitychange", tryResume, true);
         };
-        ctx.__kodiArmResume();
+        ctx.__universalmediacenterArmResume();
       }),
       m_audioContext);
 }
@@ -883,4 +883,4 @@ bool CWasmAudioWorkletManager::ProcessAudioImpl(int numOutputs, void* outputsRaw
   m_readFrame.store(readFrame + toRead, std::memory_order_release);
   return true;
 }
-} // namespace KODI::PLATFORM::WASM
+} // namespace UNIVERSAL MEDIA CENTER::PLATFORM::WASM

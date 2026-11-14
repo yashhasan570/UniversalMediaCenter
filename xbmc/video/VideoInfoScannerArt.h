@@ -21,7 +21,7 @@ class CFileItem;
 class CVideoInfoTag;
 struct SActorInfo;
 
-namespace KODI::VIDEO
+namespace UNIVERSAL MEDIA CENTER::VIDEO
 {
 //! \brief When an image is likely to be first seen by the user, and so the order to fetch it in
 enum class ArtPriority : uint8_t
@@ -108,7 +108,7 @@ public:
    Each image is placed by the art type it is held under \sa PriorityOfArtType
    \param art the artwork to cache
    */
-  void Cache(const KODI::ART::Artwork& art) const;
+  void Cache(const UNIVERSAL MEDIA CENTER::ART::Artwork& art) const;
 
   /*! \brief Hand the artwork held back during the scan to the texture cache
 
@@ -135,11 +135,11 @@ public:
    */
   static void GetSeasonThumbs(
       const CVideoInfoTag& show,
-      KODI::ART::SeasonsArtwork& art,
+      UNIVERSAL MEDIA CENTER::ART::SeasonsArtwork& art,
       const std::vector<std::string>& artTypes,
       bool useLocal = true,
       UseRemoteArtWithLocalScraper useRemoteArt = UseRemoteArtWithLocalScraper::YES,
-      KODI::REGEXP::RegExpCache* cache = nullptr);
+      UNIVERSAL MEDIA CENTER::REGEXP::RegExpCache* cache = nullptr);
 
   static std::string GetImage(const CScraperUrl::SUrlEntry& image, const std::string& itemPath);
 
@@ -162,4 +162,4 @@ private:
   mutable std::vector<ArtToCache> m_deferredArt;
 };
 
-} // namespace KODI::VIDEO
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO

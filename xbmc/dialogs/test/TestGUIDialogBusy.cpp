@@ -40,7 +40,7 @@ std::chrono::milliseconds Elapsed(const std::chrono::steady_clock::time_point st
 }
 
 // Enough of a windowing system for CGUIWindowManager::GetWindow, which takes the graphics context
-// lock. Duplicated from xbmc/guilib/test/TestGUIWindowOnAction.cpp rather than shared, to keep this
+// lock. Duplicated from /guilib/test/TestGUIWindowOnAction.cpp rather than shared, to keep this
 // change to the files it already touches.
 class CTestRenderSystem : public CRenderSystemBase
 {
@@ -51,7 +51,7 @@ public:
   bool BeginRender() override { return true; }
   bool EndRender() override { return true; }
   void PresentRender(bool rendered, bool videoLayer) override {}
-  bool ClearBuffers(KODI::UTILS::COLOR::Color color) override { return true; }
+  bool ClearBuffers(UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color color) override { return true; }
   bool IsExtSupported(const char* extension) const override { return false; }
   void SetViewPort(const CRect& viewPort) override {}
   void GetViewPort(CRect& viewPort) override {}

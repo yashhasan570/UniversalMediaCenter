@@ -34,7 +34,7 @@ bool CShader::LoadSource(const std::string& filename, const std::string& prefix)
 
   CFileStream file;
 
-  std::string path = "special://xbmc/system/shaders/";
+  std::string path = "special:///system/shaders/";
   path += CServiceBroker::GetRenderSystem()->GetShaderPath(filename);
   path += filename;
   if(!file.Open(path))
@@ -67,7 +67,7 @@ bool CShader::AppendSource(const std::string& filename)
   CFileStream file;
   std::string temp;
 
-  std::string path = "special://xbmc/system/shaders/";
+  std::string path = "special:///system/shaders/";
   path += CServiceBroker::GetRenderSystem()->GetShaderPath(filename);
   path += filename;
   if(!file.Open(path))
@@ -91,7 +91,7 @@ bool CShader::InsertSource(const std::string& filename, const std::string& loc)
   CFileStream file;
   std::string temp;
 
-  std::string path = "special://xbmc/system/shaders/";
+  std::string path = "special:///system/shaders/";
   path += CServiceBroker::GetRenderSystem()->GetShaderPath(filename);
   path += filename;
   if(!file.Open(path))

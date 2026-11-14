@@ -26,15 +26,15 @@ class CVideoInfoTag;
 
 class CGUIListItem;
 
-namespace KODI::GAME
+namespace UNIVERSAL MEDIA CENTER::GAME
 {
 class CGameInfoTag;
 }
-namespace KODI::GUILIB::GUIINFO
+namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO
 {
 class CGUIInfo;
 class IGUIInfoProvider;
-} // namespace KODI::GUILIB::GUIINFO
+} // namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO
 namespace INFO
 {
 class InfoSingle;
@@ -48,7 +48,7 @@ class CMusicInfoTag;
  \ingroup strings
  \brief
  */
-class CGUIInfoManager : public KODI::MESSAGING::IMessageTarget
+class CGUIInfoManager : public UNIVERSAL MEDIA CENTER::MESSAGING::IMessageTarget
 {
 public:
   CGUIInfoManager(void);
@@ -59,9 +59,9 @@ public:
   void Clear();
   void ResetCache();
 
-  // KODI::MESSAGING::IMessageTarget implementation
+  // UNIVERSAL MEDIA CENTER::MESSAGING::IMessageTarget implementation
   int GetMessageMask() override;
-  void OnApplicationMessage(KODI::MESSAGING::ThreadMessage* pMsg) override;
+  void OnApplicationMessage(UNIVERSAL MEDIA CENTER::MESSAGING::ThreadMessage* pMsg) override;
 
   /*! \brief Register a boolean condition/expression
    This routine allows controls or other clients of the info manager to register
@@ -136,7 +136,7 @@ public:
   const CVideoInfoTag* GetCurrentMovieTag() const;
 
   // Current game stuff
-  const KODI::GAME::CGameInfoTag* GetCurrentGameTag() const;
+  const UNIVERSAL MEDIA CENTER::GAME::CGameInfoTag* GetCurrentGameTag() const;
 
   void UpdateAVInfo() const;
 
@@ -146,17 +146,17 @@ public:
   /*! \brief register a guiinfo provider
    \param the guiinfo provider to register
    */
-  void RegisterInfoProvider(KODI::GUILIB::GUIINFO::IGUIInfoProvider* provider);
+  void RegisterInfoProvider(UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::IGUIInfoProvider* provider);
 
   /*! \brief unregister a guiinfo provider
    \param the guiinfo provider to unregister
    */
-  void UnregisterInfoProvider(KODI::GUILIB::GUIINFO::IGUIInfoProvider* provider);
+  void UnregisterInfoProvider(UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::IGUIInfoProvider* provider);
 
   /*! \brief get access to the registered guiinfo providers
    \return the guiinfo providers
    */
-  KODI::GUILIB::GUIINFO::CGUIInfoProviders& GetInfoProviders() { return m_infoProviders; }
+  UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoProviders& GetInfoProviders() { return m_infoProviders; }
 
 private:
   /*! \brief class for holding information on properties
@@ -195,24 +195,24 @@ private:
   int TranslatePlayerString(std::string_view info) const;
   static TIME_FORMAT TranslateTimeFormat(const std::string& format);
 
-  std::string GetMultiInfoLabel(const KODI::GUILIB::GUIINFO::CGUIInfo& info,
+  std::string GetMultiInfoLabel(const UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfo& info,
                                 int contextWindow,
                                 std::string* fallback = nullptr) const;
   bool GetMultiInfoInt(int& value,
-                       const KODI::GUILIB::GUIINFO::CGUIInfo& info,
+                       const UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfo& info,
                        int contextWindow,
                        const CGUIListItem* item) const;
-  bool GetMultiInfoBool(const KODI::GUILIB::GUIINFO::CGUIInfo& info,
+  bool GetMultiInfoBool(const UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfo& info,
                         int contextWindow,
                         const CGUIListItem* item);
 
   std::string GetMultiInfoItemLabel(const CFileItem* item,
                                     int contextWindow,
-                                    const KODI::GUILIB::GUIINFO::CGUIInfo& info,
+                                    const UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfo& info,
                                     std::string* fallback = nullptr) const;
   std::string GetMultiInfoItemImage(const CFileItem* item,
                                     int contextWindow,
-                                    const KODI::GUILIB::GUIINFO::CGUIInfo& info,
+                                    const UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfo& info,
                                     std::string* fallback = nullptr) const;
 
   std::string GetSkinVariableString(int info,
@@ -220,7 +220,7 @@ private:
                                     bool preferImage = false,
                                     const CGUIListItem* item = nullptr) const;
 
-  int AddMultiInfo(const KODI::GUILIB::GUIINFO::CGUIInfo& info);
+  int AddMultiInfo(const UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfo& info);
 
   /*!
    \brief One registered multi-info block, by value.
@@ -230,7 +230,7 @@ private:
    that follows frees what the reference points at. Callers get a copy taken
    under the lock instead.
    */
-  KODI::GUILIB::GUIINFO::CGUIInfo GetMultiInfo(int id) const;
+  UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfo GetMultiInfo(int id) const;
 
   /*!
    \brief The info number of one registered multi-info block.
@@ -247,7 +247,7 @@ private:
   void SetCurrentVideoTag(const CVideoInfoTag& tag);
 
   // Vector of multiple information mapped to a single integer lookup
-  std::vector<KODI::GUILIB::GUIINFO::CGUIInfo> m_multiInfo;
+  std::vector<UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfo> m_multiInfo;
   mutable CCriticalSection m_critMultiInfo;
 
   // Current playing stuff
@@ -267,5 +267,5 @@ private:
 
   mutable CCriticalSection m_critInfo;
 
-  KODI::GUILIB::GUIINFO::CGUIInfoProviders m_infoProviders;
+  UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoProviders m_infoProviders;
 };

@@ -29,7 +29,7 @@
 #include <winrt/Windows.Storage.Streams.h>
 
 using namespace XFILE;
-using namespace KODI::PLATFORM::WINDOWS;
+using namespace UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS;
 namespace winrt
 {
   using namespace Windows::Foundation;
@@ -108,7 +108,7 @@ ssize_t CWinLibraryFile::Read(void* lpBuf, size_t uiBufSize)
   }
   catch (const winrt::hresult_error& ex)
   {
-    using KODI::PLATFORM::WINDOWS::FromW;
+    using UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW;
     CLog::LogF(LOGERROR, "unable to read file ({})", winrt::to_string(ex.message()));
     return -1;
   }
@@ -129,7 +129,7 @@ ssize_t CWinLibraryFile::Write(const void* lpBuf, size_t uiBufSize)
   }
   catch (const winrt::hresult_error& ex)
   {
-    using KODI::PLATFORM::WINDOWS::FromW;
+    using UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW;
     CLog::LogF(LOGERROR, "unable write to file ({})", winrt::to_string(ex.message()));
     return -1;
   }
@@ -279,7 +279,7 @@ int CWinLibraryFile::Stat(struct __stat64* statData)
 
 bool CWinLibraryFile::IsInAccessList(const CURL& url)
 {
-  using KODI::PLATFORM::WINDOWS::FromW;
+  using UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW;
   static std::string localPath;
   static std::string packagePath;
 
@@ -402,7 +402,7 @@ winrt::hstring CWinLibraryFile::GetTokenFromList(const CURL& url, const IStorage
   if (listview.Size() == 0)
     return winrt::hstring();
 
-  using KODI::PLATFORM::WINDOWS::ToW;
+  using UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::ToW;
   std::wstring filePathW = ToW(url.Get());
 
   for(auto&& listEntry : listview)

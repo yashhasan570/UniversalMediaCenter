@@ -17,9 +17,9 @@
 #include <cmath>
 #include <cstdlib>
 
-using namespace KODI::UTILS;
+using namespace UNIVERSAL MEDIA CENTER::UTILS;
 
-namespace KODI::VIDEO::GEOMETRY
+namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY
 {
 
 CLiveGeometrySelector::CLiveGeometrySelector(const LiveSelectorParams& params) : m_params(params)
@@ -205,4 +205,4 @@ std::string CLiveGeometrySelector::Describe() const
   return state;
 }
 
-} // namespace KODI::VIDEO::GEOMETRY
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY

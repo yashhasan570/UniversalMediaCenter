@@ -9,7 +9,7 @@
 #include "AndroidMouse.h"
 
 #include "ServiceBroker.h"
-#include "XBMCApp.h"
+#include "App.h"
 #include "application/AppInboundProtocol.h"
 #include "input/mouse/MouseStat.h"
 #include "windowing/android/WinSystemAndroid.h"
@@ -27,7 +27,7 @@ bool CAndroidMouse::onMouseEvent(AInputEvent* event)
 
 #ifdef DEBUG_VERBOSE
   int32_t mousePointerId = AMotionEvent_getPointerId(event, mousePointerIdx);
-  CXBMCApp::android_printf("%s idx:%i, id:%i", __PRETTY_FUNCTION__, mousePointerIdx, mousePointerId);
+  CApp::android_printf("%s idx:%i, id:%i", __PRETTY_FUNCTION__, mousePointerIdx, mousePointerId);
 #endif
   float x = AMotionEvent_getX(event, mousePointerIdx);
   float y = AMotionEvent_getY(event, mousePointerIdx);
@@ -51,11 +51,11 @@ bool CAndroidMouse::onMouseEvent(AInputEvent* event)
 void CAndroidMouse::MouseMove(float x, float y)
 {
 #ifdef DEBUG_VERBOSE
-  CXBMCApp::android_printf("%s: x:%f, y:%f", __PRETTY_FUNCTION__, x, y);
+  CApp::android_printf("%s: x:%f, y:%f", __PRETTY_FUNCTION__, x, y);
 #endif
-  XBMC_Event newEvent = {};
+  _Event newEvent = {};
 
-  newEvent.type = XBMC_MOUSEMOTION;
+  newEvent.type = _MOUSEMOTION;
   newEvent.motion.x = x;
   newEvent.motion.y = y;
   std::shared_ptr<CAppInboundProtocol> appPort = CServiceBroker::GetAppPort();
@@ -66,23 +66,23 @@ void CAndroidMouse::MouseMove(float x, float y)
 void CAndroidMouse::MouseButton(float x, float y, int32_t action, int32_t buttons)
 {
 #ifdef DEBUG_VERBOSE
-  CXBMCApp::android_printf("%s: x:%f, y:%f, action:%i, buttons:%i", __PRETTY_FUNCTION__, x, y, action, buttons);
+  CApp::android_printf("%s: x:%f, y:%f, action:%i, buttons:%i", __PRETTY_FUNCTION__, x, y, action, buttons);
 #endif
-  XBMC_Event newEvent = {};
+  _Event newEvent = {};
 
   int32_t checkButtons = buttons;
   if (action ==  AMOTION_EVENT_ACTION_UP)
     checkButtons = m_lastButtonState;
 
-  newEvent.type = (action ==  AMOTION_EVENT_ACTION_DOWN) ? XBMC_MOUSEBUTTONDOWN : XBMC_MOUSEBUTTONUP;
+  newEvent.type = (action ==  AMOTION_EVENT_ACTION_DOWN) ? _MOUSEBUTTONDOWN : _MOUSEBUTTONUP;
   newEvent.button.x = x;
   newEvent.button.y = y;
   if (checkButtons & AMOTION_EVENT_BUTTON_PRIMARY)
-    newEvent.button.button = XBMC_BUTTON_LEFT;
+    newEvent.button.button = _BUTTON_LEFT;
   else if (checkButtons & AMOTION_EVENT_BUTTON_SECONDARY)
-    newEvent.button.button = XBMC_BUTTON_RIGHT;
+    newEvent.button.button = _BUTTON_RIGHT;
   else if (checkButtons & AMOTION_EVENT_BUTTON_TERTIARY)
-    newEvent.button.button = XBMC_BUTTON_MIDDLE;
+    newEvent.button.button = _BUTTON_MIDDLE;
 
   std::shared_ptr<CAppInboundProtocol> appPort = CServiceBroker::GetAppPort();
   if (appPort)
@@ -94,19 +94,19 @@ void CAndroidMouse::MouseButton(float x, float y, int32_t action, int32_t button
 void CAndroidMouse::MouseWheel(float x, float y, float value)
 {
 #ifdef DEBUG_VERBOSE
-  CXBMCApp::android_printf("%s: val:%f", __PRETTY_FUNCTION__, value);
+  CApp::android_printf("%s: val:%f", __PRETTY_FUNCTION__, value);
 #endif
-  XBMC_Event newEvent = {};
+  _Event newEvent = {};
 
   if (value > 0.0f)
   {
-    newEvent.type = XBMC_MOUSEBUTTONDOWN;
-    newEvent.button.button = XBMC_BUTTON_WHEELUP;
+    newEvent.type = _MOUSEBUTTONDOWN;
+    newEvent.button.button = _BUTTON_WHEELUP;
   }
   else if (value < 0.0f)
   {
-    newEvent.type = XBMC_MOUSEBUTTONDOWN;
-    newEvent.button.button = XBMC_BUTTON_WHEELDOWN;
+    newEvent.type = _MOUSEBUTTONDOWN;
+    newEvent.button.button = _BUTTON_WHEELDOWN;
   }
   else
     return;
@@ -118,7 +118,7 @@ void CAndroidMouse::MouseWheel(float x, float y, float value)
   if (appPort)
     appPort->OnEvent(newEvent);
 
-  newEvent.type = XBMC_MOUSEBUTTONUP;
+  newEvent.type = _MOUSEBUTTONUP;
 
   dynamic_cast<CWinSystemAndroid*>(CServiceBroker::GetWinSystem())->MessagePush(&newEvent);
 }

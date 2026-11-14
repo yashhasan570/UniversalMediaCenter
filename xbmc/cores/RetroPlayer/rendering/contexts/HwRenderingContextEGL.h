@@ -10,7 +10,7 @@
 
 #include "IHwRenderingContext.h"
 
-namespace KODI::RETRO
+namespace UNIVERSAL MEDIA CENTER::RETRO
 {
 std::unique_ptr<IHwRenderingContext> CreateHwRenderingContextEGL(CRenderContext& context);
 }

@@ -20,7 +20,7 @@
 #include <string>
 #include <vector>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace JOYSTICK
 {
@@ -35,7 +35,7 @@ namespace KEYMAP
 {
 class CKeymapHandling;
 } // namespace KEYMAP
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER
 
 namespace PERIPHERALS
 {
@@ -45,7 +45,7 @@ class CPeripherals;
  * \ingroup peripherals
  */
 class CPeripheralJoystick : public CPeripheral, //! @todo extend CPeripheralHID
-                            public KODI::JOYSTICK::IDriverReceiver
+                            public UNIVERSAL MEDIA CENTER::JOYSTICK::IDriverReceiver
 {
 public:
   CPeripheralJoystick(CPeripherals& manager,
@@ -59,18 +59,18 @@ public:
   void OnUserNotification() override;
   bool TestFeature(PeripheralFeature feature) override;
   void ResetDefaultSettings() override;
-  void RegisterJoystickDriverHandler(KODI::JOYSTICK::IDriverHandler* handler,
+  void RegisterJoystickDriverHandler(UNIVERSAL MEDIA CENTER::JOYSTICK::IDriverHandler* handler,
                                      bool bPromiscuous) override;
-  void UnregisterJoystickDriverHandler(KODI::JOYSTICK::IDriverHandler* handler) override;
-  KODI::JOYSTICK::IDriverReceiver* GetDriverReceiver() override { return this; }
-  KODI::KEYMAP::IKeymap* GetKeymap(const std::string& controllerId) override;
+  void UnregisterJoystickDriverHandler(UNIVERSAL MEDIA CENTER::JOYSTICK::IDriverHandler* handler) override;
+  UNIVERSAL MEDIA CENTER::JOYSTICK::IDriverReceiver* GetDriverReceiver() override { return this; }
+  UNIVERSAL MEDIA CENTER::KEYMAP::IKeymap* GetKeymap(const std::string& controllerId) override;
   CDateTime LastActive() const override { return m_lastActive; }
   void SetLastActive(const CDateTime& lastActive) override;
-  KODI::GAME::ControllerPtr ControllerProfile() const override;
-  void SetControllerProfile(const KODI::GAME::ControllerPtr& controller) override;
+  UNIVERSAL MEDIA CENTER::GAME::ControllerPtr ControllerProfile() const override;
+  void SetControllerProfile(const UNIVERSAL MEDIA CENTER::GAME::ControllerPtr& controller) override;
 
   bool OnButtonMotion(unsigned int buttonIndex, bool bPressed);
-  bool OnHatMotion(unsigned int hatIndex, KODI::JOYSTICK::HAT_STATE state);
+  bool OnHatMotion(unsigned int hatIndex, UNIVERSAL MEDIA CENTER::JOYSTICK::HAT_STATE state);
   bool OnAxisMotion(unsigned int axisIndex, float position);
   void OnInputFrame(void);
 
@@ -114,14 +114,14 @@ public:
   void SetSupportsPowerOff(bool bSupportsPowerOff); // specialized to update m_features
 
 protected:
-  void InitializeDeadzoneFiltering(KODI::JOYSTICK::IButtonMap& buttonMap);
-  void InitializeControllerProfile(KODI::JOYSTICK::IButtonMap& buttonMap);
+  void InitializeDeadzoneFiltering(UNIVERSAL MEDIA CENTER::JOYSTICK::IButtonMap& buttonMap);
+  void InitializeControllerProfile(UNIVERSAL MEDIA CENTER::JOYSTICK::IButtonMap& buttonMap);
 
   void PowerOff();
 
   struct DriverHandler
   {
-    KODI::JOYSTICK::IDriverHandler* handler;
+    UNIVERSAL MEDIA CENTER::JOYSTICK::IDriverHandler* handler;
     bool bPromiscuous;
   };
 
@@ -136,11 +136,11 @@ protected:
   CDateTime m_lastActive;
 
   // Input clients
-  std::unique_ptr<KODI::KEYMAP::CKeymapHandling> m_appInput;
-  std::unique_ptr<KODI::JOYSTICK::CRumbleGenerator> m_rumbleGenerator;
-  std::unique_ptr<KODI::JOYSTICK::IInputHandler> m_joystickMonitor;
-  std::unique_ptr<KODI::JOYSTICK::IButtonMap> m_buttonMap;
-  std::unique_ptr<KODI::JOYSTICK::CDeadzoneFilter> m_deadzoneFilter;
+  std::unique_ptr<UNIVERSAL MEDIA CENTER::KEYMAP::CKeymapHandling> m_appInput;
+  std::unique_ptr<UNIVERSAL MEDIA CENTER::JOYSTICK::CRumbleGenerator> m_rumbleGenerator;
+  std::unique_ptr<UNIVERSAL MEDIA CENTER::JOYSTICK::IInputHandler> m_joystickMonitor;
+  std::unique_ptr<UNIVERSAL MEDIA CENTER::JOYSTICK::IButtonMap> m_buttonMap;
+  std::unique_ptr<UNIVERSAL MEDIA CENTER::JOYSTICK::CDeadzoneFilter> m_deadzoneFilter;
   std::vector<DriverHandler> m_driverHandlers;
 
   // Synchronization parameters

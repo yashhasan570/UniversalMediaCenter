@@ -40,7 +40,7 @@ unset(_ARM_)
 
 set(PLATFORM_DIR platform/win32)
 set(APP_RENDER_SYSTEM dx11)
-set(CORE_MAIN_SOURCE ${CMAKE_SOURCE_DIR}/xbmc/platform/win10/main.cpp)
+set(CORE_MAIN_SOURCE ${CMAKE_SOURCE_DIR}//platform/win10/main.cpp)
 
 # Precompiled headers fail with per target output directory. (needs CMake 3.1)
 set(PRECOMPILEDHEADER_DIR ${PROJECT_BINARY_DIR}/${CORE_BUILD_CONFIG}/objs)
@@ -78,14 +78,14 @@ add_options(CXX ALL_BUILDS "/wd\"4146\"")
 add_options(CXX ALL_BUILDS "/wd\"4251\"")
 add_options(CXX ALL_BUILDS "/wd\"4668\"")
 add_options(CXX ALL_BUILDS "/wd\"5033\"")
-set(ARCH_DEFINES -D_WINDOWS -DTARGET_WINDOWS -DTARGET_WINDOWS_STORE -DXBMC_EXPORT -DMS_UWP -DMS_STORE)
+set(ARCH_DEFINES -D_WINDOWS -DTARGET_WINDOWS -DTARGET_WINDOWS_STORE -D_EXPORT -DMS_UWP -DMS_STORE)
 if(NOT SDK_TARGET_ARCH STREQUAL arm)
   list(APPEND ARCH_DEFINES -D__SSE__ -D__SSE2__)
 endif()
 set(SYSTEM_DEFINES -DWIN32_LEAN_AND_MEAN -DNOMINMAX -DHAS_DX -D__STDC_CONSTANT_MACROS
                    -DNPT_CONFIG_ENABLE_LOGGING
-                   -DPLT_HTTP_DEFAULT_USER_AGENT="UPnP/1.0 DLNADOC/1.50 Kodi"
-                   -DPLT_HTTP_DEFAULT_SERVER="UPnP/1.0 DLNADOC/1.50 Kodi"
+                   -DPLT_HTTP_DEFAULT_USER_AGENT="UPnP/1.0 DLNADOC/1.50 Universal Media Center"
+                   -DPLT_HTTP_DEFAULT_SERVER="UPnP/1.0 DLNADOC/1.50 Universal Media Center"
                    -DUNICODE -D_UNICODE
                    -DFRIBIDI_STATIC
                    $<$<CONFIG:Debug>:-DD3D_DEBUG_INFO>)

@@ -33,7 +33,7 @@ bool CDirectoryNodeTitleMusicVideos::GetContent(CFileItemList& items) const
   CollectQueryParams(params);
 
   const int details =
-      items.GetProperty(KODI::ITEM::PROPERTY::SET_VIDEODB_DETAILS).asInteger32(VideoDbDetailsNone);
+      items.GetProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::SET_VIDEODB_DETAILS).asInteger32(VideoDbDetailsNone);
   bool bSuccess = videodatabase.GetMusicVideosNav(
       BuildPath(), items, params.GetGenreId(), params.GetYear(), params.GetActorId(),
       params.GetDirectorId(), params.GetStudioId(), params.GetAlbumId(), params.GetTagId(),

@@ -32,7 +32,7 @@
 #include <string>
 #include <utility>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 namespace
 {

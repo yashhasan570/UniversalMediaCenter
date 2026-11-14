@@ -11,7 +11,7 @@
 #include "settings/lib/SettingDefinitions.h"
 #include "settings/lib/SettingSection.h"
 #include "settings/lib/SettingsManager.h"
-#include "utils/XBMCTinyXML.h"
+#include "utils/TinyXML.h"
 #include "utils/XMLUtils.h"
 #include "utils/log.h"
 
@@ -23,7 +23,7 @@ std::string CSettingsValueXmlSerializer::SerializeValues(
   if (!settingsManager)
     return "";
 
-  CXBMCTinyXML xmlDoc;
+  CTinyXML xmlDoc;
   TiXmlElement rootElement(SETTINGS_XML_ROOT);
   rootElement.SetAttribute(SETTING_XML_ROOT_VERSION, settingsManager->GetVersion());
   TiXmlNode* xmlRoot = xmlDoc.InsertEndChild(rootElement);

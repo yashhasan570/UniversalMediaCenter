@@ -11,7 +11,7 @@
 #include <map>
 #include <string>
 
-namespace KODI::GAME
+namespace UNIVERSAL MEDIA CENTER::GAME
 {
 class CController;
 
@@ -98,4 +98,4 @@ private:
   ControlMap<Wheel> m_wheels;
 };
 
-} // namespace KODI::GAME
+} // namespace UNIVERSAL MEDIA CENTER::GAME

@@ -401,7 +401,7 @@ bool COSXStorageProvider::Eject(const std::string& mountpath)
 
 bool COSXStorageProvider::PumpDriveChangeEvents(IStorageEventsCallback* callback)
 {
-  // Note: If we find a way to only notify kodi user initiated mounts/unmounts we
+  // Note: If we find a way to only notify universalmediacenter user initiated mounts/unmounts we
   //       could do this here, but currently we can't distinguish this and popups
   //       for system initiated mounts/unmounts (like done by Time Machine automatic
   //       backups) are very confusing and annoying.

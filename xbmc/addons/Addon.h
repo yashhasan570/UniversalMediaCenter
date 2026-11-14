@@ -15,7 +15,7 @@
 #include <unordered_map>
 #include <vector>
 
-class CXBMCTinyXML;
+class CTinyXML;
 
 namespace ADDON
 {
@@ -116,7 +116,7 @@ public:
   std::string Author() const override;
   std::string ChangeLog() const override;
   std::string Icon() const override;
-  KODI::ART::Artwork Art() const override;
+  UNIVERSAL MEDIA CENTER::ART::Artwork Art() const override;
   std::vector<std::string> Screenshots() const override;
   std::string Disclaimer() const override;
   AddonLifecycleState LifecycleState() const override;
@@ -460,7 +460,7 @@ protected:
    *
    * \sa SettingsToXML
    */
-  virtual bool SettingsFromXML(const CXBMCTinyXML& doc,
+  virtual bool SettingsFromXML(const CTinyXML& doc,
                                bool loadDefaults,
                                AddonInstanceId id = ADDON_SETTINGS_ID);
 
@@ -474,7 +474,7 @@ protected:
    *
    * \sa SettingsFromXML
    */
-  virtual bool SettingsToXML(CXBMCTinyXML& doc, AddonInstanceId id = ADDON_SETTINGS_ID) const;
+  virtual bool SettingsToXML(CTinyXML& doc, AddonInstanceId id = ADDON_SETTINGS_ID) const;
 
   const AddonInfoPtr m_addonInfo;
 

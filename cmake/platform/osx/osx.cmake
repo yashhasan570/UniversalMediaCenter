@@ -1,4 +1,4 @@
-list(APPEND CORE_MAIN_SOURCE ${CMAKE_SOURCE_DIR}/xbmc/platform/darwin/osx/XBMCApplication.mm)
+list(APPEND CORE_MAIN_SOURCE ${CMAKE_SOURCE_DIR}//platform/darwin/osx/Application.mm)
 
 if(NOT APP_RENDER_SYSTEM OR APP_RENDER_SYSTEM STREQUAL "gl")
   list(APPEND PLATFORM_REQUIRED_DEPS OpenGl)

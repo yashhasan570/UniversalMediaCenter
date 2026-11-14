@@ -50,7 +50,7 @@ JSONRPC_STATUS CFavouritesOperations::GetFavourites(const std::string &method, I
 
     object["title"] = item->GetLabel();
     if (fields.contains("thumbnail"))
-      object["thumbnail"] = item->GetArt(KODI::ART::TYPE::THUMB);
+      object["thumbnail"] = item->GetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB);
 
     if (function == CFavouritesURL::Action::ACTIVATE_WINDOW)
     {
@@ -153,7 +153,7 @@ JSONRPC_STATUS CFavouritesOperations::AddFavourite(const std::string &method, IT
 
   item.SetLabel(title);
   if (ParameterNotNull(parameterObject,"thumbnail"))
-    item.SetArt(KODI::ART::TYPE::THUMB, parameterObject["thumbnail"].asString());
+    item.SetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB, parameterObject["thumbnail"].asString());
 
   if (CServiceBroker::GetFavouritesService().AddOrRemove(item, contextWindow))
     return ACK;

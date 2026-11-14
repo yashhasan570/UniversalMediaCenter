@@ -10,7 +10,7 @@
 
 #include "input/joysticks/interfaces/IInputHandler.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace JOYSTICK
 {
@@ -56,4 +56,4 @@ private:
   bool ResetTimers(void);
 };
 } // namespace JOYSTICK
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

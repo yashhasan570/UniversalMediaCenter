@@ -12,7 +12,7 @@
 
 #include <string>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace MOUSE
 {
@@ -29,7 +29,7 @@ public:
   /*!
    * \brief The controller profile for this mouse input handler
    *
-   * \return The ID of the add-on extending kodi.game.controller
+   * \return The ID of the add-on extending universalmediacenter.game.controller
    */
   virtual std::string ControllerID(void) const = 0;
 
@@ -86,4 +86,4 @@ public:
   virtual void OnInputFrame() = 0;
 };
 } // namespace MOUSE
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

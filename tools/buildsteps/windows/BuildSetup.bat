@@ -61,8 +61,8 @@ IF DEFINED buildconfig (
 IF DEFINED BUILDDIR (
   echo BuildDir: %BUILDDIR%
 ) else (
-  echo Setting Default BuildDir: %base_dir%\kodi-build.%TARGET_PLATFORM%
-  SET BUILDDIR=%base_dir%\kodi-build.%TARGET_PLATFORM%
+  echo Setting Default BuildDir: %base_dir%\universalmediacenter-build.%TARGET_PLATFORM%
+  SET BUILDDIR=%base_dir%\universalmediacenter-build.%TARGET_PLATFORM%
 )
 
   :: sets the BRANCH env var
@@ -92,7 +92,7 @@ IF DEFINED BUILDDIR (
   rem MSBuild copies the whole environment into every out-of-proc node it spawns, and
   rem .NET refuses to set any single variable whose value exceeds 32767 characters,
   rem throwing "System.ArgumentException: Environment variable name or value is too
-  rem long" from OutOfProcNode.HandleNodeConfiguration (see xbmc/infrastructure#84).
+  rem long" from OutOfProcNode.HandleNodeConfiguration (see /infrastructure#84).
   rem Jenkins/ghprb export the pull request text here; on a long or much-edited PR
   rem ghprbPullLongDescription alone exceeds the cap and every node dies with MSB4166
   rem before compiling anything.
@@ -176,10 +176,10 @@ rem Runs in the build directory, where CMakeCache.txt records the selected CCACH
   Echo Desktop.ini>>exclude.txt
   Echo dsstdfx.bin>>exclude.txt
   Echo exclude.txt>>exclude.txt
-  Echo xbmc.log>>exclude.txt
-  Echo xbmc.old.log>>exclude.txt
-  Echo kodi.log>>exclude.txt
-  Echo kodi.old.log>>exclude.txt
+  Echo .log>>exclude.txt
+  Echo .old.log>>exclude.txt
+  Echo universalmediacenter.log>>exclude.txt
+  Echo universalmediacenter.old.log>>exclude.txt
   Echo .so\>>exclude.txt
   Echo .h\>>exclude.txt
   Echo .cpp\>>exclude.txt

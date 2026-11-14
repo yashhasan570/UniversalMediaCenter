@@ -42,10 +42,10 @@
 #include <mutex>
 #include <string>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace PVR;
 
-namespace CONTENT = KODI::MEDIA::CONTENT;
+namespace CONTENT = UNIVERSAL MEDIA CENTER::MEDIA::CONTENT;
 
 namespace
 {
@@ -323,7 +323,7 @@ bool CGUIWindowPVRRecordingsBase::OnMessage(CGUIMessage& message)
 
               if (!item->IsParentFolder() && message.GetParam1() == ACTION_PLAYER_PLAY)
               {
-                KODI::VIDEO::GUILIB::CVideoPlayActionProcessor proc{item};
+                UNIVERSAL MEDIA CENTER::VIDEO::GUILIB::CVideoPlayActionProcessor proc{item};
                 bReturn = proc.ProcessDefaultAction();
               }
               else if (item->IsFolder())

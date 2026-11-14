@@ -30,7 +30,7 @@ extern "C"
 #include <libavutil/pixdesc.h>
 }
 
-using namespace KODI::VIDEO::GEOMETRY;
+using namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY;
 
 namespace
 {

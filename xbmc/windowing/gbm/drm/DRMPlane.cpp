@@ -15,7 +15,7 @@
 
 #include <algorithm>
 
-using namespace KODI::WINDOWING::GBM;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::GBM;
 
 CDRMPlane::CDRMPlane(int fd, uint32_t plane) : CDRMObject(fd), m_plane(drmModeGetPlane(m_fd, plane))
 {

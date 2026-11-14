@@ -12,7 +12,7 @@
 #include <cmath>
 #include <cstdlib>
 
-namespace KODI::VIDEO::GEOMETRY
+namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY
 {
 
 int NormaliseRotation(int degrees)
@@ -212,4 +212,4 @@ ContentCut CutToContent(const RenderGeometry& geometry,
   return {SourceRect(cut, frameSource), ratio};
 }
 
-} // namespace KODI::VIDEO::GEOMETRY
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY

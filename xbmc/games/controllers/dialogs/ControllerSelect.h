@@ -13,7 +13,7 @@
 
 #include <functional>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -45,4 +45,4 @@ private:
   std::function<void(ControllerPtr)> m_callback;
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

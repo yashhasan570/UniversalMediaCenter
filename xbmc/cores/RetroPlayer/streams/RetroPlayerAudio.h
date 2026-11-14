@@ -20,7 +20,7 @@
 
 class IAEStream;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -110,4 +110,4 @@ private:
   std::optional<std::chrono::steady_clock::time_point> m_lastDropLog;
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

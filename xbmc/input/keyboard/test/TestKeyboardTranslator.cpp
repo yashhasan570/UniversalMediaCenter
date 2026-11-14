@@ -16,7 +16,7 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace KEYBOARD;
 
 TEST(TestKeyboardTranslator, TranslateKeys)
@@ -45,13 +45,13 @@ TEST(TestKeyboardTranslator, TranslateKeys)
 
   for (const GAME::CPhysicalFeature& feature : controller->Features())
   {
-    const KEYBOARD::XBMCKey keycode = feature.Keycode();
-    EXPECT_NE(keycode, KEYBOARD::XBMCKey::XBMCK_UNKNOWN);
+    const KEYBOARD::Key keycode = feature.Keycode();
+    EXPECT_NE(keycode, KEYBOARD::Key::K_UNKNOWN);
 
     const char* symbolName = CKeyboardTranslator::TranslateKeycode(keycode);
     EXPECT_STRNE(symbolName, "");
 
-    const KEYBOARD::XBMCKey keycode2 = CKeyboardTranslator::TranslateKeysym(symbolName);
+    const KEYBOARD::Key keycode2 = CKeyboardTranslator::TranslateKeysym(symbolName);
     EXPECT_EQ(keycode, keycode2);
 
     ++count;

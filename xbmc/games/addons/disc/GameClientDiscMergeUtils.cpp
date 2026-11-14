@@ -10,7 +10,7 @@
 
 #include <algorithm>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 CGameClientDiscModel CGameClientDiscMergeUtils::ReconcileModels(

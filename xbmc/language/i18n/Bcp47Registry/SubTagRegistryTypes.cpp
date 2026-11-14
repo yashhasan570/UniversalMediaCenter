@@ -14,7 +14,7 @@
 #include <array>
 #include <ranges>
 
-namespace KODI::LANGUAGE::I18N
+namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N
 {
 struct SubTagTypeDetails
 {
@@ -103,4 +103,4 @@ bool VariantSubTag::Load(const RegistryFileRecord& fileRecord)
   return LoadVariantSubTag(*this, fileRecord);
 }
 
-} // namespace KODI::LANGUAGE::I18N
+} // namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N

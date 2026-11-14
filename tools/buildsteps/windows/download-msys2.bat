@@ -50,13 +50,13 @@ if exist %hash_file% (
   if not !installed_hash!==%hash% rmdir "%instdir%\%msys2%" /S /Q
 )
 
-:: if KODI_MIRROR is not set externally to this script, set it to the default mirror URL
-if "%KODI_MIRROR%"=="" set KODI_MIRROR=https://mirrors.kodi.tv
+:: if UNIVERSALMEDIA_MIRROR is not set externally to this script, set it to the default mirror URL
+if "%UNIVERSALMEDIA_MIRROR%"=="" set UNIVERSALMEDIA_MIRROR=https://mirrors.universalmediacenter.tv
 if "%usemirror%"=="yes" (
     echo -------------------------------------------------------------------------------
-    echo. Downloading will be performed from mirror %KODI_MIRROR%
+    echo. Downloading will be performed from mirror %UNIVERSALMEDIA_MIRROR%
     echo -------------------------------------------------------------------------------
-    set MSYS_MIRROR=%KODI_MIRROR%/build-deps/win32/msys2
+    set MSYS_MIRROR=%UNIVERSALMEDIA_MIRROR%/build-deps/win32/msys2
 )
 
 set downloaddir=%instdir%\downloads2
@@ -94,7 +94,7 @@ if exist "%downloaddir%\%msysfile%" (
 
 if exist "%downloaddir%\%msysfile%" GOTO unpack
     echo -------------------------------------------------------------------------------
-    echo.- Download msys2 basic system (Kodi mirrors: %usemirror%)
+    echo.- Download msys2 basic system (Universal Media Center mirrors: %usemirror%)
     echo -------------------------------------------------------------------------------
 
     set msysurl=https://repo.msys2.org/distrib/%arch%/%msysfile%
@@ -211,8 +211,8 @@ for %%x in (win32 x64 arm64) do (
 if not exist %instdir%\%msys2%\etc\fstab. GOTO writeFstab
 
 set searchRes=
-for /f "tokens=2 delims=/" %%a in ('findstr /i xbmc %instdir%\%msys2%\etc\fstab.') do set searchRes=%%a
-if "%searchRes%"=="xbmc" GOTO installbase
+for /f "tokens=2 delims=/" %%a in ('findstr /i  %instdir%\%msys2%\etc\fstab.') do set searchRes=%%a
+if "%searchRes%"=="" GOTO installbase
 
 :writeFstab
 echo -------------------------------------------------------------------------------
@@ -238,7 +238,7 @@ if "%cygdrive%"=="no" echo.none / cygdrive binary,posix=0,noacl,user 0 ^0>>%inst
     echo.%instdir%\x64\              /depends/x64
     echo.%instdir%\win10-x64\        /depends/win10-x64
     echo.%instdir%\arm64\            /depends/arm64
-    echo.%instdir%\..\..\            /xbmc
+    echo.%instdir%\..\..\            /
 )>>%instdir%\%msys2%\etc\fstab.
 
 :installbase

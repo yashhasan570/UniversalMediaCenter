@@ -17,7 +17,7 @@
 #include <optional>
 #include <stdint.h>
 
-namespace KODI::SHADER
+namespace UNIVERSAL MEDIA CENTER::SHADER
 {
 class CShaderGLES : public IShader
 {
@@ -139,4 +139,4 @@ private:
   // Output size the vertex buffers were last filled for
   std::optional<float2> m_vertexDataSize;
 };
-} // namespace KODI::SHADER
+} // namespace UNIVERSAL MEDIA CENTER::SHADER

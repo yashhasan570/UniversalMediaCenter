@@ -14,7 +14,7 @@
 #include "settings/SettingsComponent.h"
 #include "settings/SubtitlesSettings.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 CDVDSubtitleParserSSA::CDVDSubtitleParserSSA(std::unique_ptr<CDVDSubtitleStream>&& pStream,
                                              const std::string& strFile)

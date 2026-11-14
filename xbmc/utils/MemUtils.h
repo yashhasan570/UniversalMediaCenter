@@ -11,7 +11,7 @@
 #include <cstdint>
 #include <memory>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace MEMORY
 {

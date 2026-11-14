@@ -37,7 +37,7 @@
 
 #include <tinyxml.h>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 #define HOLD_TIME_START 100
 #define HOLD_TIME_END   3000

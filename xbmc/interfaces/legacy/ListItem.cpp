@@ -29,9 +29,9 @@
 #include <sstream>
 #include <utility>
 
-namespace XBMCAddon
+namespace Addon
 {
-  namespace xbmcgui
+  namespace gui
   {
     ListItem::ListItem(const String& label,
                        const String& label2,
@@ -65,7 +65,7 @@ namespace XBMCAddon
 
       String ret;
       {
-        XBMCAddonUtils::GuiLock lock(languageHook, m_offscreen);
+        AddonUtils::GuiLock lock(languageHook, m_offscreen);
         ret = item->GetLabel();
       }
 
@@ -78,7 +78,7 @@ namespace XBMCAddon
 
       String ret;
       {
-        XBMCAddonUtils::GuiLock lock(languageHook, m_offscreen);
+        AddonUtils::GuiLock lock(languageHook, m_offscreen);
         ret = item->GetLabel2();
       }
 
@@ -90,7 +90,7 @@ namespace XBMCAddon
       if (!item) return;
       // set label
       {
-        XBMCAddonUtils::GuiLock lock(languageHook, m_offscreen);
+        AddonUtils::GuiLock lock(languageHook, m_offscreen);
         item->SetLabel(label);
       }
     }
@@ -100,7 +100,7 @@ namespace XBMCAddon
       if (!item) return;
       // set label
       {
-        XBMCAddonUtils::GuiLock lock(languageHook, m_offscreen);
+        AddonUtils::GuiLock lock(languageHook, m_offscreen);
         item->SetLabel2(label);
       }
     }
@@ -112,7 +112,7 @@ namespace XBMCAddon
 
       String ret;
       {
-        XBMCAddonUtils::GuiLock lock(languageHook, m_offscreen);
+        AddonUtils::GuiLock lock(languageHook, m_offscreen);
         const CDateTime& dateTime{item->GetDateTime()};
         if (dateTime.IsValid())
           ret = dateTime.GetAsW3CDateTime();
@@ -127,7 +127,7 @@ namespace XBMCAddon
         return;
       // set datetime
       {
-        XBMCAddonUtils::GuiLock lock(languageHook, m_offscreen);
+        AddonUtils::GuiLock lock(languageHook, m_offscreen);
         setDateTimeRaw(dateTime);
       }
     }
@@ -136,7 +136,7 @@ namespace XBMCAddon
     {
       if (!item) return;
       {
-        XBMCAddonUtils::GuiLock lock(languageHook, m_offscreen);
+        AddonUtils::GuiLock lock(languageHook, m_offscreen);
         for (const auto& it : dictionary)
           addArtRaw(it.first, it.second);
       }
@@ -148,7 +148,7 @@ namespace XBMCAddon
         return;
 
       {
-        XBMCAddonUtils::GuiLock lock(languageHook, m_offscreen);
+        AddonUtils::GuiLock lock(languageHook, m_offscreen);
         setIsFolderRaw(isFolder);
       }
     }
@@ -168,8 +168,8 @@ namespace XBMCAddon
         uniqueIDs.emplace(it.first, it.second);
 
       {
-        XBMCAddonUtils::GuiLock lock(languageHook, m_offscreen);
-        xbmc::InfoTagVideo::setUniqueIDsRaw(GetVideoInfoTag(), uniqueIDs, defaultrating);
+        AddonUtils::GuiLock lock(languageHook, m_offscreen);
+        ::InfoTagVideo::setUniqueIDsRaw(GetVideoInfoTag(), uniqueIDs, defaultrating);
       }
     }
 
@@ -184,8 +184,8 @@ namespace XBMCAddon
 
       if (!item) return;
 
-      XBMCAddonUtils::GuiLock lock(languageHook, m_offscreen);
-      xbmc::InfoTagVideo::setRatingRaw(GetVideoInfoTag(), rating, votes, type, defaultt);
+      AddonUtils::GuiLock lock(languageHook, m_offscreen);
+      ::InfoTagVideo::setRatingRaw(GetVideoInfoTag(), rating, votes, type, defaultt);
     }
 
     void ListItem::addSeason(int number, std::string name /* = "" */)
@@ -196,15 +196,15 @@ namespace XBMCAddon
 
       if (!item) return;
 
-      XBMCAddonUtils::GuiLock lock(languageHook, m_offscreen);
-      xbmc::InfoTagVideo::addSeasonRaw(GetVideoInfoTag(), number, std::move(name));
+      AddonUtils::GuiLock lock(languageHook, m_offscreen);
+      ::InfoTagVideo::addSeasonRaw(GetVideoInfoTag(), number, std::move(name));
     }
 
     void ListItem::select(bool selected)
     {
       if (!item) return;
       {
-        XBMCAddonUtils::GuiLock lock(languageHook, m_offscreen);
+        AddonUtils::GuiLock lock(languageHook, m_offscreen);
         item->Select(selected);
       }
     }
@@ -216,7 +216,7 @@ namespace XBMCAddon
 
       bool ret;
       {
-        XBMCAddonUtils::GuiLock lock(languageHook, m_offscreen);
+        AddonUtils::GuiLock lock(languageHook, m_offscreen);
         ret = item->IsSelected();
       }
 
@@ -225,7 +225,7 @@ namespace XBMCAddon
 
     void ListItem::setProperty(const char * key, const String& value)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, m_offscreen);
+      AddonUtils::GuiLock lock(languageHook, m_offscreen);
       String lowerKey = key;
       StringUtils::ToLower(lowerKey);
       if (lowerKey == "startoffset")
@@ -254,12 +254,12 @@ namespace XBMCAddon
                   "Universal Media Center versions. Please use InfoTagVideo.setResumePoint().",
                   lowerKey);
 
-        xbmc::InfoTagVideo::setResumePointRaw(GetVideoInfoTag(), atof(value.c_str()));
+        ::InfoTagVideo::setResumePointRaw(GetVideoInfoTag(), atof(value.c_str()));
       }
       else if (lowerKey == "specialsort")
         setSpecialSortRaw(value);
       else if (lowerKey == "fanart_image")
-        item->SetArt(KODI::ART::TYPE::FANART, value);
+        item->SetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::FANART, value);
       else
         addPropertyRaw(lowerKey, value);
     }
@@ -272,7 +272,7 @@ namespace XBMCAddon
 
     String ListItem::getProperty(const char* key)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, m_offscreen);
+      AddonUtils::GuiLock lock(languageHook, m_offscreen);
       String lowerKey = key;
       StringUtils::ToLower(lowerKey);
       std::string value;
@@ -300,7 +300,7 @@ namespace XBMCAddon
         value = StringUtils::Format("{:f}", GetVideoInfoTag()->GetResumePoint().timeInSeconds);
       }
       else if (lowerKey == "fanart_image")
-        value = item->GetArt(KODI::ART::TYPE::FANART);
+        value = item->GetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::FANART);
       else
         value = item->GetProperty(lowerKey).asString();
 
@@ -309,13 +309,13 @@ namespace XBMCAddon
 
     String ListItem::getArt(const char* key)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, m_offscreen);
+      AddonUtils::GuiLock lock(languageHook, m_offscreen);
       return item->GetArt(key);
     }
 
     bool ListItem::isFolder() const
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, m_offscreen);
+      AddonUtils::GuiLock lock(languageHook, m_offscreen);
       return item->IsFolder();
     }
 
@@ -326,7 +326,7 @@ namespace XBMCAddon
           "ListItem.getUniqueID() is deprecated and might be removed in future Universal Media Center versions. "
           "Please use InfoTagVideo.getUniqueID().");
 
-      XBMCAddonUtils::GuiLock lock(languageHook, m_offscreen);
+      AddonUtils::GuiLock lock(languageHook, m_offscreen);
       return GetVideoInfoTag()->GetUniqueID(key);
     }
 
@@ -336,7 +336,7 @@ namespace XBMCAddon
                 "ListItem.getRating() is deprecated and might be removed in future Universal Media Center versions. "
                 "Please use InfoTagVideo.getRating().");
 
-      XBMCAddonUtils::GuiLock lock(languageHook, m_offscreen);
+      AddonUtils::GuiLock lock(languageHook, m_offscreen);
       return GetVideoInfoTag()->GetRating(key).rating;
     }
 
@@ -346,43 +346,43 @@ namespace XBMCAddon
                 "ListItem.getVotes() is deprecated and might be removed in future Universal Media Center versions. "
                 "Please use InfoTagVideo.getVotesAsInt().");
 
-      XBMCAddonUtils::GuiLock lock(languageHook, m_offscreen);
+      AddonUtils::GuiLock lock(languageHook, m_offscreen);
       return GetVideoInfoTag()->GetRating(key).votes;
     }
 
     void ListItem::setPath(const String& path)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, m_offscreen);
+      AddonUtils::GuiLock lock(languageHook, m_offscreen);
       setPathRaw(path);
     }
 
     void ListItem::setMimeType(const String& mimetype)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, m_offscreen);
+      AddonUtils::GuiLock lock(languageHook, m_offscreen);
       setMimeTypeRaw(mimetype);
     }
 
     void ListItem::setContentLookup(bool enable)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, m_offscreen);
+      AddonUtils::GuiLock lock(languageHook, m_offscreen);
       setContentLookupRaw(enable);
     }
 
     void ListItem::setFileTitle(const String& title)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, m_offscreen);
+      AddonUtils::GuiLock lock(languageHook, m_offscreen);
       setTitleRaw(title);
     }
 
     void ListItem::setCount(int count)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, m_offscreen);
+      AddonUtils::GuiLock lock(languageHook, m_offscreen);
       setCountRaw(count);
     }
 
     void ListItem::setSize(int64_t size)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, m_offscreen);
+      AddonUtils::GuiLock lock(languageHook, m_offscreen);
       setSizeRaw(size);
     }
 
@@ -390,24 +390,24 @@ namespace XBMCAddon
     {
       if (overlay < 0 || overlay > 8)
         throw ListItemException("setOverlay: overlay must be in the range 0 to 8, not %d", overlay);
-      XBMCAddonUtils::GuiLock lock(languageHook, m_offscreen);
+      AddonUtils::GuiLock lock(languageHook, m_offscreen);
       item->SetOverlayImage(static_cast<CGUIListItem::GUIIconOverlay>(overlay));
     }
 
     String ListItem::getPath()
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, m_offscreen);
+      AddonUtils::GuiLock lock(languageHook, m_offscreen);
       return item->GetPath();
     }
 
     void ListItem::setInfo(const char* type, const InfoLabelDict& infoLabels)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, m_offscreen);
+      AddonUtils::GuiLock lock(languageHook, m_offscreen);
 
       bool hasDeprecatedInfoLabel = false;
       if (StringUtils::CompareNoCase(type, "video") == 0)
       {
-        using InfoTagVideo = xbmc::InfoTagVideo;
+        using InfoTagVideo = ::InfoTagVideo;
         auto videotag = GetVideoInfoTag();
         for (const auto& it : infoLabels)
         {
@@ -580,7 +580,7 @@ namespace XBMCAddon
         String mediaType;
         int dbId = -1;
 
-        using InfoTagMusic = xbmc::InfoTagMusic;
+        using InfoTagMusic = ::InfoTagMusic;
         auto musictag = GetMusicInfoTag();
         for (const auto& it : infoLabels)
         {
@@ -695,9 +695,9 @@ namespace XBMCAddon
 
             exifkey = StringUtils::Mid(exifkey, 5);
             if (exifkey == "resolution")
-              xbmc::InfoTagPicture::setResolutionRaw(item->GetPictureInfoTag(), value);
+              ::InfoTagPicture::setResolutionRaw(item->GetPictureInfoTag(), value);
             else if (exifkey == "exiftime")
-              xbmc::InfoTagPicture::setDateTimeTakenRaw(item->GetPictureInfoTag(), value);
+              ::InfoTagPicture::setDateTimeTakenRaw(item->GetPictureInfoTag(), value);
             else
               CLog::Log(LOGWARNING, "ListItem.setInfo: unknown pictures info key \"{}\"", key);
           }
@@ -722,22 +722,22 @@ namespace XBMCAddon
           if (key == "title")
           {
             setTitleRaw(value);
-            xbmc::InfoTagGame::setTitleRaw(gametag, value);
+            ::InfoTagGame::setTitleRaw(gametag, value);
           }
           else if (key == "platform")
-            xbmc::InfoTagGame::setPlatformRaw(gametag, value);
+            ::InfoTagGame::setPlatformRaw(gametag, value);
           else if (key == "genres")
-            xbmc::InfoTagGame::setGenresRaw(gametag, getStringArray(alt, key, value, ","));
+            ::InfoTagGame::setGenresRaw(gametag, getStringArray(alt, key, value, ","));
           else if (key == "publisher")
-            xbmc::InfoTagGame::setPublisherRaw(gametag, value);
+            ::InfoTagGame::setPublisherRaw(gametag, value);
           else if (key == "developer")
-            xbmc::InfoTagGame::setDeveloperRaw(gametag, value);
+            ::InfoTagGame::setDeveloperRaw(gametag, value);
           else if (key == "overview")
-            xbmc::InfoTagGame::setOverviewRaw(gametag, value);
+            ::InfoTagGame::setOverviewRaw(gametag, value);
           else if (key == "year")
-            xbmc::InfoTagGame::setYearRaw(gametag, strtoul(value.c_str(), nullptr, 10));
+            ::InfoTagGame::setYearRaw(gametag, strtoul(value.c_str(), nullptr, 10));
           else if (key == "gameclient")
-            xbmc::InfoTagGame::setGameClientRaw(gametag, value);
+            ::InfoTagGame::setGameClientRaw(gametag, value);
         }
 
         if (!infoLabels.empty())
@@ -758,7 +758,7 @@ namespace XBMCAddon
                 "ListItem.setCast() is deprecated and might be removed in future Universal Media Center versions. "
                 "Please use InfoTagVideo.setCast().");
 
-      XBMCAddonUtils::GuiLock lock(languageHook, m_offscreen);
+      AddonUtils::GuiLock lock(languageHook, m_offscreen);
       std::vector<SActorInfo> cast;
       cast.reserve(actors.size());
       for (const auto& dictionary : actors)
@@ -783,7 +783,7 @@ namespace XBMCAddon
         }
         cast.push_back(std::move(info));
       }
-      xbmc::InfoTagVideo::setCastRaw(GetVideoInfoTag(), std::move(cast));
+      ::InfoTagVideo::setCastRaw(GetVideoInfoTag(), std::move(cast));
     }
 
     void ListItem::setAvailableFanart(const std::vector<Properties>& images)
@@ -792,7 +792,7 @@ namespace XBMCAddon
                 "ListItem.setAvailableFanart() is deprecated and might be removed in future Universal Media Center "
                 "versions. Please use InfoTagVideo.setAvailableFanart().");
 
-      XBMCAddonUtils::GuiLock lock(languageHook, m_offscreen);
+      AddonUtils::GuiLock lock(languageHook, m_offscreen);
       auto infoTag = GetVideoInfoTag();
       infoTag->m_fanart.Clear();
       for (const auto& dictionary : images)
@@ -828,8 +828,8 @@ namespace XBMCAddon
       CLog::Log(LOGWARNING, "ListItem.addAvailableArtwork() is deprecated and might be removed in "
                             "future Universal Media Center versions. Please use InfoTagVideo.addAvailableArtwork().");
 
-      XBMCAddonUtils::GuiLock lock(languageHook, m_offscreen);
-      xbmc::InfoTagVideo::addAvailableArtworkRaw(GetVideoInfoTag(), url, art_type, preview,
+      AddonUtils::GuiLock lock(languageHook, m_offscreen);
+      ::InfoTagVideo::addAvailableArtworkRaw(GetVideoInfoTag(), url, art_type, preview,
                                                  referrer, cache, post, isgz, season);
     }
 
@@ -841,7 +841,7 @@ namespace XBMCAddon
           "Please use InfoTagVideo.addVideoStream(), InfoTagVideo.addAudioStream() and "
           "InfoTagVideo.addSubtitleStream().");
 
-      XBMCAddonUtils::GuiLock lock(languageHook, m_offscreen);
+      AddonUtils::GuiLock lock(languageHook, m_offscreen);
 
       auto infoTag = GetVideoInfoTag();
       if (StringUtils::CompareNoCase(cType, "video") == 0)
@@ -867,7 +867,7 @@ namespace XBMCAddon
           else if (key == "language")
             video->m_strLanguage = CLangCodeExpander::AsISO6392B(value);
         }
-        xbmc::InfoTagVideo::addStreamRaw(infoTag, video);
+        ::InfoTagVideo::addStreamRaw(infoTag, video);
       }
       else if (StringUtils::CompareNoCase(cType, "audio") == 0)
       {
@@ -884,7 +884,7 @@ namespace XBMCAddon
           else if (key == "channels")
             audio->m_iChannels = strtol(value.c_str(), nullptr, 10);
         }
-        xbmc::InfoTagVideo::addStreamRaw(infoTag, audio);
+        ::InfoTagVideo::addStreamRaw(infoTag, audio);
       }
       else if (StringUtils::CompareNoCase(cType, "subtitle") == 0)
       {
@@ -897,9 +897,9 @@ namespace XBMCAddon
           if (key == "language")
             subtitle->m_strLanguage = CLangCodeExpander::AsISO6392B(value);
         }
-        xbmc::InfoTagVideo::addStreamRaw(infoTag, subtitle);
+        ::InfoTagVideo::addStreamRaw(infoTag, subtitle);
       }
-      xbmc::InfoTagVideo::finalizeStreamsRaw(infoTag);
+      ::InfoTagVideo::finalizeStreamsRaw(infoTag);
     } // end ListItem::addStreamInfo
 
     void ListItem::addContextMenuItems(const std::vector<Tuple<String,String> >& items, bool replaceItems /* = false */)
@@ -910,7 +910,7 @@ namespace XBMCAddon
         if (tuple.GetNumValuesSet() != 2)
           throw ListItemException("Must pass in a list of tuples of pairs of strings. One entry in the list only has %d elements.",tuple.GetNumValuesSet());
 
-        XBMCAddonUtils::GuiLock lock(languageHook, m_offscreen);
+        AddonUtils::GuiLock lock(languageHook, m_offscreen);
         item->SetProperty(StringUtils::Format("contextmenulabel({})", i), tuple.first());
         item->SetProperty(StringUtils::Format("contextmenuaction({})", i), tuple.second());
       }
@@ -918,32 +918,32 @@ namespace XBMCAddon
 
     void ListItem::setSubtitles(const std::vector<String>& paths)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, m_offscreen);
+      AddonUtils::GuiLock lock(languageHook, m_offscreen);
       addSubtitlesRaw(paths);
     }
 
-    xbmc::InfoTagVideo* ListItem::getVideoInfoTag()
+    ::InfoTagVideo* ListItem::getVideoInfoTag()
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, m_offscreen);
-      return new xbmc::InfoTagVideo(GetVideoInfoTag(), m_offscreen);
+      AddonUtils::GuiLock lock(languageHook, m_offscreen);
+      return new ::InfoTagVideo(GetVideoInfoTag(), m_offscreen);
     }
 
-    xbmc::InfoTagMusic* ListItem::getMusicInfoTag()
+    ::InfoTagMusic* ListItem::getMusicInfoTag()
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, m_offscreen);
-      return new xbmc::InfoTagMusic(GetMusicInfoTag(), m_offscreen);
+      AddonUtils::GuiLock lock(languageHook, m_offscreen);
+      return new ::InfoTagMusic(GetMusicInfoTag(), m_offscreen);
     }
 
-    xbmc::InfoTagPicture* ListItem::getPictureInfoTag()
+    ::InfoTagPicture* ListItem::getPictureInfoTag()
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, m_offscreen);
-      return new xbmc::InfoTagPicture(item->GetPictureInfoTag(), m_offscreen);
+      AddonUtils::GuiLock lock(languageHook, m_offscreen);
+      return new ::InfoTagPicture(item->GetPictureInfoTag(), m_offscreen);
     }
 
-    xbmc::InfoTagGame* ListItem::getGameInfoTag()
+    ::InfoTagGame* ListItem::getGameInfoTag()
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, m_offscreen);
-      return new xbmc::InfoTagGame(item->GetGameInfoTag(), m_offscreen);
+      AddonUtils::GuiLock lock(languageHook, m_offscreen);
+      return new ::InfoTagGame(item->GetGameInfoTag(), m_offscreen);
     }
 
     std::vector<std::string> ListItem::getStringArray(const InfoLabelValue& alt,

@@ -15,7 +15,7 @@
 
 using namespace XFILE::VIDEODATABASEDIRECTORY;
 
-namespace CONTENT = KODI::MEDIA::CONTENT;
+namespace CONTENT = UNIVERSAL MEDIA CENTER::MEDIA::CONTENT;
 
 CDirectoryNodeGrouped::CDirectoryNodeGrouped(NodeType type,
                                              const std::string& strName,

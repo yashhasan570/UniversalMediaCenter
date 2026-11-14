@@ -74,8 +74,8 @@ TEST(TestDataFile, OfficialBriefNoteExampleAndDefaults)
 TEST(TestDataFile, MediaTypesParametersAndCase)
 {
   ExpectContents("DATA:TEXT/PLAIN;CHARSET=UTF-8,hello", "hello");
-  ExpectContents("data:application/vnd.kodi.test+json;version=1,%7B%7D", "{}");
-  ExpectContents("data:application/x-kodi-test;version=1;name=a%20b%3Bc%3Dd,hello", "hello");
+  ExpectContents("data:application/vnd.universalmediacenter.test+json;version=1,%7B%7D", "{}");
+  ExpectContents("data:application/x-universalmediacenter-test;version=1;name=a%20b%3Bc%3Dd,hello", "hello");
   ExpectContents("data:text/plain;CHARSET=UTF-8;BaSe64,SGVsbG8=", "Hello");
 
   // A parameter named base64 is not the encoding marker because it has '='.

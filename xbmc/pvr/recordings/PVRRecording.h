@@ -9,8 +9,8 @@
 #pragma once
 
 #include "XBDateTime.h"
-#include "addons/kodi-dev-kit/include/kodi/c-api/addon-instance/pvr/pvr_providers.h"
-#include "addons/kodi-dev-kit/include/kodi/c-api/addon-instance/pvr/pvr_recordings.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api/addon-instance/pvr/pvr_providers.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api/addon-instance/pvr/pvr_recordings.h"
 #include "pvr/PVRCachedImage.h"
 #include "threads/CriticalSection.h"
 #include "threads/SystemClock.h"
@@ -565,7 +565,7 @@ private:
   int m_iPriority; /*!< priority of this recording */
   int m_iLifetime; /*!< lifetime of this recording */
   std::string m_strDirectory; /*!< directory of this recording on the client */
-  unsigned int m_iRecordingId; /*!< id that won't change while xbmc is running */
+  unsigned int m_iRecordingId; /*!< id that won't change while  is running */
 
   CPVRCachedImage m_iconPath; /*!< icon path */
   CPVRCachedImage m_thumbnailPath; /*!< thumbnail path */

@@ -20,7 +20,7 @@ namespace MUSIC_INFO
 class CMusicInfoTag;
 }
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace CDRIP
 {
@@ -100,4 +100,4 @@ private:
 };
 
 } /* namespace CDRIP */
-} /* namespace KODI */
+} /* namespace UNIVERSAL MEDIA CENTER */

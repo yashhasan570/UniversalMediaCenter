@@ -15,9 +15,9 @@
 #include <map>
 #include <string>
 
-namespace XBMCAddon
+namespace Addon
 {
-  namespace xbmcwsgi
+  namespace wsgi
   {
     class WsgiResponse;
   }
@@ -44,5 +44,5 @@ private:
       const HTTPPythonRequest* httpRequest, const ADDON::AddonPtr& addon);
   static void addWsgiEnvironment(HTTPPythonRequest* request, void* environment);
 
-  XBMCAddon::xbmcwsgi::WsgiResponse* m_wsgiResponse;
+  Addon::wsgi::WsgiResponse* m_wsgiResponse;
 };

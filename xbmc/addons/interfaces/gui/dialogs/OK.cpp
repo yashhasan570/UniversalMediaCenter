@@ -9,39 +9,39 @@
 #include "OK.h"
 
 #include "addons/binary-addons/AddonDll.h"
-#include "addons/kodi-dev-kit/include/kodi/gui/dialogs/OK.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/gui/dialogs/OK.h"
 #include "messaging/helpers/DialogOKHelper.h"
 #include "utils/Variant.h"
 #include "utils/log.h"
 
-using namespace KODI::MESSAGING;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
 
 namespace ADDON
 {
 
 void Interface_GUIDialogOK::Init(AddonGlobalInterface* addonInterface)
 {
-  addonInterface->toUniversal Media Center->kodi_gui->dialogOK = new AddonToUniversal Media CenterFuncTable_kodi_gui_dialogOK();
+  addonInterface->toUniversal Media Center->->dialogOK = new AddonToUniversal Media CenterFuncTable__dialogOK();
 
-  addonInterface->toUniversal Media Center->kodi_gui->dialogOK->show_and_get_input_single_text =
+  addonInterface->toUniversal Media Center->->dialogOK->show_and_get_input_single_text =
       show_and_get_input_single_text;
-  addonInterface->toUniversal Media Center->kodi_gui->dialogOK->show_and_get_input_line_text =
+  addonInterface->toUniversal Media Center->->dialogOK->show_and_get_input_line_text =
       show_and_get_input_line_text;
 }
 
 void Interface_GUIDialogOK::DeInit(AddonGlobalInterface* addonInterface)
 {
-  delete addonInterface->toUniversal Media Center->kodi_gui->dialogOK;
+  delete addonInterface->toUniversal Media Center->->dialogOK;
 }
 
-void Interface_GUIDialogOK::show_and_get_input_single_text(KODI_HANDLE kodiBase,
+void Interface_GUIDialogOK::show_and_get_input_single_text(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
                                                            const char* heading,
                                                            const char* text)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !heading || !text)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', heading='{}', text='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', heading='{}', text='{}')", universalmediacenterBase,
                static_cast<const void*>(heading), static_cast<const void*>(text));
     return;
   }
@@ -49,19 +49,19 @@ void Interface_GUIDialogOK::show_and_get_input_single_text(KODI_HANDLE kodiBase,
   HELPERS::ShowOKDialogText(CVariant{heading}, CVariant{text});
 }
 
-void Interface_GUIDialogOK::show_and_get_input_line_text(KODI_HANDLE kodiBase,
+void Interface_GUIDialogOK::show_and_get_input_line_text(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
                                                          const char* heading,
                                                          const char* line0,
                                                          const char* line1,
                                                          const char* line2)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !heading || !line0 || !line1 || !line2)
   {
     CLog::LogF(LOGERROR,
                "Invalid data (addon='{}', heading='{}', line0='{}', "
                "line1='{}', line2='{}')",
-               kodiBase, static_cast<const void*>(heading), static_cast<const void*>(line0),
+               universalmediacenterBase, static_cast<const void*>(heading), static_cast<const void*>(line0),
                static_cast<const void*>(line1), static_cast<const void*>(line2));
     return;
   }

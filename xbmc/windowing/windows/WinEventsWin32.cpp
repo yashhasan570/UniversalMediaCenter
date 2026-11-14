@@ -86,7 +86,7 @@ CGenericTouchSwipeDetector* CWinEventsWin32::m_touchSwipeDetector = nullptr;
 #define WM_MEDIA_CHANGE (WM_USER + 666)
 SHChangeNotifyEntry shcne;
 
-static int XBMC_MapVirtualKey(int scancode, WPARAM vkey)
+static int _MapVirtualKey(int scancode, WPARAM vkey)
 {
   int mvke = MapVirtualKeyEx(scancode & 0xFF, 1, nullptr);
 
@@ -149,9 +149,9 @@ static int XBMC_MapVirtualKey(int scancode, WPARAM vkey)
 }
 
 
-static XBMC_keysym *TranslateKey(WPARAM vkey, UINT scancode, XBMC_keysym *keysym, int pressed)
+static _keysym *TranslateKey(WPARAM vkey, UINT scancode, _keysym *keysym, int pressed)
 {
-  using namespace KODI::WINDOWING::WINDOWS;
+  using namespace UNIVERSAL MEDIA CENTER::WINDOWING::WINDOWS;
 
   uint8_t keystate[256];
 
@@ -162,11 +162,11 @@ static XBMC_keysym *TranslateKey(WPARAM vkey, UINT scancode, XBMC_keysym *keysym
   if ((vkey == VK_RETURN) && (scancode & 0x100))
   {
     /* No VK_ code for the keypad enter key */
-    keysym->sym = XBMCK_KP_ENTER;
+    keysym->sym = K_KP_ENTER;
   }
   else
   {
-    keysym->sym = VK_keymap[XBMC_MapVirtualKey(scancode, vkey)];
+    keysym->sym = VK_keymap[_MapVirtualKey(scancode, vkey)];
   }
 
   // Attempt to convert the keypress to a UNICODE character
@@ -196,28 +196,28 @@ static XBMC_keysym *TranslateKey(WPARAM vkey, UINT scancode, XBMC_keysym *keysym
 
   // Set the modifier bitmap
 
-  uint16_t mod = static_cast<uint16_t>(XBMCKMOD_NONE);
+  uint16_t mod = static_cast<uint16_t>(KMOD_NONE);
 
   // If left control and right alt are down this usually means that
   // AltGr is down
   if ((keystate[VK_LCONTROL] & 0x80) && (keystate[VK_RMENU] & 0x80))
   {
-    mod |= XBMCKMOD_MODE;
+    mod |= KMOD_MODE;
   }
   else
   {
-    if (keystate[VK_LCONTROL] & 0x80) mod |= XBMCKMOD_LCTRL;
-    if (keystate[VK_RMENU]    & 0x80) mod |= XBMCKMOD_RALT;
+    if (keystate[VK_LCONTROL] & 0x80) mod |= KMOD_LCTRL;
+    if (keystate[VK_RMENU]    & 0x80) mod |= KMOD_RALT;
   }
 
   // Check the remaining modifiers
-  if (keystate[VK_LSHIFT]   & 0x80) mod |= XBMCKMOD_LSHIFT;
-  if (keystate[VK_RSHIFT]   & 0x80) mod |= XBMCKMOD_RSHIFT;
-  if (keystate[VK_RCONTROL] & 0x80) mod |= XBMCKMOD_RCTRL;
-  if (keystate[VK_LMENU]    & 0x80) mod |= XBMCKMOD_LALT;
-  if (keystate[VK_LWIN]     & 0x80) mod |= XBMCKMOD_LSUPER;
-  if (keystate[VK_RWIN]     & 0x80) mod |= XBMCKMOD_LSUPER;
-  keysym->mod = static_cast<XBMCMod>(mod);
+  if (keystate[VK_LSHIFT]   & 0x80) mod |= KMOD_LSHIFT;
+  if (keystate[VK_RSHIFT]   & 0x80) mod |= KMOD_RSHIFT;
+  if (keystate[VK_RCONTROL] & 0x80) mod |= KMOD_RCTRL;
+  if (keystate[VK_LMENU]    & 0x80) mod |= KMOD_LALT;
+  if (keystate[VK_LWIN]     & 0x80) mod |= KMOD_LSUPER;
+  if (keystate[VK_RWIN]     & 0x80) mod |= KMOD_LSUPER;
+  keysym->mod = static_cast<Mod>(mod);
 
   // Return the updated keysym
   return(keysym);
@@ -237,9 +237,9 @@ bool CWinEventsWin32::MessagePump()
 
 LRESULT CALLBACK CWinEventsWin32::WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
-  using KODI::PLATFORM::WINDOWS::FromW;
+  using UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW;
 
-  XBMC_Event newEvent = {};
+  _Event newEvent = {};
   static HDEVNOTIFY hDeviceNotify;
 
   if (uMsg == WM_CREATE)
@@ -248,7 +248,7 @@ LRESULT CALLBACK CWinEventsWin32::WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, L
     // need to set windows handle before WM_SIZE processing
     DX::Windowing()->SetWindow(hWnd);
 
-    KODI::WINDOWING::WINDOWS::DIB_InitOSKeymap();
+    UNIVERSAL MEDIA CENTER::WINDOWING::WINDOWS::DIB_InitOSKeymap();
 
     g_uQueryCancelAutoPlay = RegisterWindowMessage(TEXT("QueryCancelAutoPlay"));
     shcne.pidl = nullptr;
@@ -279,7 +279,7 @@ LRESULT CALLBACK CWinEventsWin32::WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, L
         else
           CLog::LogF(LOGINFO, "UnregisterDeviceNotification failed ({})", GetLastError());
       }
-      newEvent.type = XBMC_QUIT;
+      newEvent.type = _QUIT;
       if (appPort)
         appPort->OnEvent(newEvent);
       break;
@@ -397,10 +397,10 @@ LRESULT CALLBACK CWinEventsWin32::WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, L
           break;
         default:;
       }
-      XBMC_keysym keysym;
+      _keysym keysym;
       TranslateKey(wParam, HIWORD(lParam), &keysym, 1);
 
-      newEvent.type = XBMC_KEYDOWN;
+      newEvent.type = _KEYDOWN;
       newEvent.key.keysym = keysym;
       if (appPort)
         appPort->OnEvent(newEvent);
@@ -437,13 +437,13 @@ LRESULT CALLBACK CWinEventsWin32::WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, L
           break;
         default:;
       }
-      XBMC_keysym keysym;
+      _keysym keysym;
       TranslateKey(wParam, HIWORD(lParam), &keysym, 1);
 
       if (wParam == VK_SNAPSHOT)
-        newEvent.type = XBMC_KEYDOWN;
+        newEvent.type = _KEYDOWN;
       else
-        newEvent.type = XBMC_KEYUP;
+        newEvent.type = _KEYUP;
       newEvent.key.keysym = keysym;
       if (appPort)
         appPort->OnEvent(newEvent);
@@ -500,7 +500,7 @@ LRESULT CALLBACK CWinEventsWin32::WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, L
         DX::Windowing()->ShowOSMouse(true);
       break;
     case WM_MOUSEMOVE:
-      newEvent.type = XBMC_MOUSEMOTION;
+      newEvent.type = _MOUSEMOTION;
       newEvent.motion.x = GET_X_LPARAM(lParam);
       newEvent.motion.y = GET_Y_LPARAM(lParam);
       if (appPort)
@@ -509,26 +509,26 @@ LRESULT CALLBACK CWinEventsWin32::WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, L
     case WM_LBUTTONDOWN:
     case WM_MBUTTONDOWN:
     case WM_RBUTTONDOWN:
-      newEvent.type = XBMC_MOUSEBUTTONDOWN;
+      newEvent.type = _MOUSEBUTTONDOWN;
       newEvent.button.x = GET_X_LPARAM(lParam);
       newEvent.button.y = GET_Y_LPARAM(lParam);
       newEvent.button.button = 0;
-      if (uMsg == WM_LBUTTONDOWN) newEvent.button.button = XBMC_BUTTON_LEFT;
-      else if (uMsg == WM_MBUTTONDOWN) newEvent.button.button = XBMC_BUTTON_MIDDLE;
-      else if (uMsg == WM_RBUTTONDOWN) newEvent.button.button = XBMC_BUTTON_RIGHT;
+      if (uMsg == WM_LBUTTONDOWN) newEvent.button.button = _BUTTON_LEFT;
+      else if (uMsg == WM_MBUTTONDOWN) newEvent.button.button = _BUTTON_MIDDLE;
+      else if (uMsg == WM_RBUTTONDOWN) newEvent.button.button = _BUTTON_RIGHT;
       if (appPort)
         appPort->OnEvent(newEvent);
       return(0);
     case WM_LBUTTONUP:
     case WM_MBUTTONUP:
     case WM_RBUTTONUP:
-      newEvent.type = XBMC_MOUSEBUTTONUP;
+      newEvent.type = _MOUSEBUTTONUP;
       newEvent.button.x = GET_X_LPARAM(lParam);
       newEvent.button.y = GET_Y_LPARAM(lParam);
       newEvent.button.button = 0;
-      if (uMsg == WM_LBUTTONUP) newEvent.button.button = XBMC_BUTTON_LEFT;
-      else if (uMsg == WM_MBUTTONUP) newEvent.button.button = XBMC_BUTTON_MIDDLE;
-      else if (uMsg == WM_RBUTTONUP) newEvent.button.button = XBMC_BUTTON_RIGHT;
+      if (uMsg == WM_LBUTTONUP) newEvent.button.button = _BUTTON_LEFT;
+      else if (uMsg == WM_MBUTTONUP) newEvent.button.button = _BUTTON_MIDDLE;
+      else if (uMsg == WM_RBUTTONUP) newEvent.button.button = _BUTTON_RIGHT;
       if (appPort)
         appPort->OnEvent(newEvent);
       return(0);
@@ -537,7 +537,7 @@ LRESULT CALLBACK CWinEventsWin32::WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, L
         // SDL, which our events system is based off, sends a MOUSEBUTTONDOWN message
         // followed by a MOUSEBUTTONUP message.  As this is a momentary event, we just
         // react on the MOUSEBUTTONUP message, resetting the state after processing.
-        newEvent.type = XBMC_MOUSEBUTTONDOWN;
+        newEvent.type = _MOUSEBUTTONDOWN;
         // the coordinates in WM_MOUSEWHEEL are screen, not client coordinates
         POINT point;
         point.x = GET_X_LPARAM(lParam);
@@ -545,11 +545,11 @@ LRESULT CALLBACK CWinEventsWin32::WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, L
         WindowFromScreenCoords(hWnd, &point);
         newEvent.button.x = static_cast<uint16_t>(point.x);
         newEvent.button.y = static_cast<uint16_t>(point.y);
-        newEvent.button.button = GET_Y_LPARAM(wParam) > 0 ? XBMC_BUTTON_WHEELUP : XBMC_BUTTON_WHEELDOWN;
+        newEvent.button.button = GET_Y_LPARAM(wParam) > 0 ? _BUTTON_WHEELUP : _BUTTON_WHEELDOWN;
         if (appPort)
         {
           appPort->OnEvent(newEvent);
-          newEvent.type = XBMC_MOUSEBUTTONUP;
+          newEvent.type = _MOUSEBUTTONUP;
           appPort->OnEvent(newEvent);
         }
     }
@@ -606,7 +606,7 @@ LRESULT CALLBACK CWinEventsWin32::WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, L
         if (g_sizeMoveMoving)
         {
           g_sizeMoveMoving = false;
-          newEvent.type = XBMC_VIDEOMOVE;
+          newEvent.type = _VIDEOMOVE;
           newEvent.move.x = g_sizeMoveX;
           newEvent.move.y = g_sizeMoveY;
 
@@ -624,7 +624,7 @@ LRESULT CALLBACK CWinEventsWin32::WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, L
         if (g_sizeMoveSizing)
         {
           g_sizeMoveSizing = false;
-          newEvent.type = XBMC_VIDEORESIZE;
+          newEvent.type = _VIDEORESIZE;
           newEvent.resize.width = g_sizeMoveWidth;
           newEvent.resize.height = g_sizeMoveHight;
           newEvent.resize.scale = 1.0;
@@ -676,7 +676,7 @@ LRESULT CALLBACK CWinEventsWin32::WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, L
         if (DX::Windowing()->IsInSizeMoveMode())
         {
           // If an user is dragging the resize bars, we don't resize
-          // the buffers and don't rise XBMC_VIDEORESIZE here because
+          // the buffers and don't rise _VIDEORESIZE here because
           // as the user continuously resize the window, a lot of WM_SIZE
           // messages are sent to the proc, and it'd be pointless (and slow)
           // to resize for each WM_SIZE message received from dragging.
@@ -687,7 +687,7 @@ LRESULT CALLBACK CWinEventsWin32::WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, L
         else
         {
           // API call such as SetWindowPos or SwapChain->SetFullscreenState
-          newEvent.type = XBMC_VIDEORESIZE;
+          newEvent.type = _VIDEORESIZE;
           newEvent.resize.width = g_sizeMoveWidth;
           newEvent.resize.height = g_sizeMoveHight;
           newEvent.resize.scale = 1.0;
@@ -719,7 +719,7 @@ LRESULT CALLBACK CWinEventsWin32::WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, L
         }
         else
         {
-          newEvent.type = XBMC_VIDEOMOVE;
+          newEvent.type = _VIDEOMOVE;
           newEvent.move.x = g_sizeMoveX;
           newEvent.move.y = g_sizeMoveY;
 

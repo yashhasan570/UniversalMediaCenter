@@ -29,7 +29,7 @@ extern "C"
 
 struct SwsContext;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -351,4 +351,4 @@ private:
   CCriticalSection m_bufferMutex;
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

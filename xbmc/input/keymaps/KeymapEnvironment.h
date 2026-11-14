@@ -10,7 +10,7 @@
 
 #include "input/keymaps/interfaces/IKeymapEnvironment.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace KEYMAP
 {
@@ -33,4 +33,4 @@ private:
   int m_windowId = -1;
 };
 } // namespace KEYMAP
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

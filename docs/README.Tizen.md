@@ -233,13 +233,13 @@ The wizard writes `author.p12` and `distributor.p12` (plus their `.pwd` files) t
 tz security-profiles list
 ```
 
-Expected output for a profile named `kodi-samsung`:
+Expected output for a profile named `universalmediacenter-samsung`:
 ```
-Current Active Profile: kodi-samsung
+Current Active Profile: universalmediacenter-samsung
 
-kodi-samsung
-  Author      : /Users/<user>/SamsungCertificate/kodi-samsung/author.p12
-  Distributor : /Users/<user>/SamsungCertificate/kodi-samsung/distributor.p12
+universalmediacenter-samsung
+  Author      : /Users/<user>/SamsungCertificate/universalmediacenter-samsung/author.p12
+  Distributor : /Users/<user>/SamsungCertificate/universalmediacenter-samsung/distributor.p12
   Distributor2:
 ```
 

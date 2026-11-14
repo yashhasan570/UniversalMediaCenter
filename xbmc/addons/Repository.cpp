@@ -35,9 +35,9 @@
 
 using namespace XFILE;
 using namespace ADDON;
-using namespace KODI::MESSAGING;
-using KODI::UTILITY::CDigest;
-using KODI::UTILITY::TypedDigest;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
+using UNIVERSAL MEDIA CENTER::UTILITY::CDigest;
+using UNIVERSAL MEDIA CENTER::UTILITY::TypedDigest;
 
 
 CRepository::ResolveResult CRepository::ResolvePathAndHash(const AddonPtr& addon) const
@@ -105,7 +105,7 @@ CRepository::CRepository(const AddonInfoPtr& addonInfo) : CAddon(addonInfo, Addo
   RepositoryDirList dirs;
   CAddonVersion version;
   AddonInfoPtr addonver =
-      CServiceBroker::GetAddonMgr().GetAddonInfo("xbmc.addon", AddonType::UNKNOWN);
+      CServiceBroker::GetAddonMgr().GetAddonInfo(".addon", AddonType::UNKNOWN);
   if (addonver)
     version = addonver->Version();
 

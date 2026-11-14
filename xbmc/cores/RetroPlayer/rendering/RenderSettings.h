@@ -10,7 +10,7 @@
 
 #include "RenderVideoSettings.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -31,4 +31,4 @@ private:
   CRenderVideoSettings m_videoSettings;
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

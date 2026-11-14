@@ -303,7 +303,7 @@ void CVideoLibraryQueue::OnJobComplete(unsigned int jobID, bool success, CJob *j
       Refresh();
 
     if (std::strcmp(job->GetType(), CVideoLibraryScanningJob::TYPE) == 0)
-      KODI::VIDEO::GEOMETRY::CContentGeometryScanner::GetInstance().Sweep();
+      UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::CContentGeometryScanner::GetInstance().Sweep();
   }
 
   {

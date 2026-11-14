@@ -41,8 +41,8 @@ public:
   bool IsHDRDisplay() override;
   bool SetHDR(const VideoPicture* videoPicture) override;
   int GetOutputBitDepth() const override;
-  KODI::UTILS::Eotf GetEotf() const override;
-  KODI::UTILS::Colorimetry GetColorimetry() const override;
+  UNIVERSAL MEDIA CENTER::UTILS::Eotf GetEotf() const override;
+  UNIVERSAL MEDIA CENTER::UTILS::Colorimetry GetColorimetry() const override;
 
   EGLDisplay GetEGLDisplay() const;
   EGLSurface GetEGLSurface() const;

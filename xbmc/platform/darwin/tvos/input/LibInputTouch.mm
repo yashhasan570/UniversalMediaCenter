@@ -16,7 +16,7 @@
 #include "utils/log.h"
 
 #import "platform/darwin/tvos/TVOSEAGLView.h"
-#import "platform/darwin/tvos/XBMCController.h"
+#import "platform/darwin/tvos/Controller.h"
 #import "platform/darwin/tvos/input/LibInputHandler.h"
 #import "platform/darwin/tvos/input/LibInputRemote.h"
 #import "platform/darwin/tvos/input/LibInputSettings.h"
@@ -25,7 +25,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class XBMCController;
+@class Controller;
 
 @implementation TVOSLibInputTouch
 
@@ -36,7 +36,7 @@
        shouldReceiveEvent:(nonnull UIEvent*)event
 {
   // allow press or touch event only if we are up and running
-  if (g_xbmcController.appAlive)
+  if (g_Controller.appAlive)
     return YES;
   return NO;
 }
@@ -109,7 +109,7 @@
     swipeRecognizer.delaysTouchesBegan = NO;
     swipeRecognizer.direction = swipeDirection;
     swipeRecognizer.delegate = self;
-    [g_xbmcController.glView addGestureRecognizer:swipeRecognizer];
+    [g_Controller.glView addGestureRecognizer:swipeRecognizer];
   }
 }
 
@@ -118,7 +118,7 @@
   // for pan gestures with one finger
   auto pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
   pan.delegate = self;
-  [g_xbmcController.glView addGestureRecognizer:pan];
+  [g_Controller.glView addGestureRecognizer:pan];
 }
 
 - (void)createTapGesturecognizers
@@ -141,7 +141,7 @@
         [[UITapGestureRecognizer alloc] initWithTarget:self action:std::get<1>(t)];
     arrowRecognizer.allowedPressTypes = allowedPressTypes;
     arrowRecognizer.delegate = self;
-    [g_xbmcController.glView addGestureRecognizer:arrowRecognizer];
+    [g_Controller.glView addGestureRecognizer:arrowRecognizer];
 
     // @todo doesn't seem to work
     // we need UILongPressGestureRecognizer here because it will give
@@ -153,7 +153,7 @@
     longArrowRecognizer.allowedPressTypes = allowedPressTypes;
     longArrowRecognizer.minimumPressDuration = 0.01;
     longArrowRecognizer.delegate = self;
-    [g_xbmcController.glView addGestureRecognizer:longArrowRecognizer];
+    [g_Controller.glView addGestureRecognizer:longArrowRecognizer];
   }
 }
 
@@ -163,7 +163,7 @@
       [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(menuPressed:)];
   menuRecognizer.allowedPressTypes = @[ @(UIPressTypeMenu) ];
   menuRecognizer.delegate = self;
-  [g_xbmcController.glView addGestureRecognizer:menuRecognizer];
+  [g_Controller.glView addGestureRecognizer:menuRecognizer];
 
   if (@available(tvOS 14.3, *)) {
     auto pageUpTypes = @[ @(UIPressTypePageUp) ];
@@ -171,14 +171,14 @@
         [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pageUpPressed:)];
     pageUpRecognizer.allowedPressTypes = pageUpTypes;
     pageUpRecognizer.delegate = self;
-    [g_xbmcController.glView addGestureRecognizer:pageUpRecognizer];
+    [g_Controller.glView addGestureRecognizer:pageUpRecognizer];
 
     auto pageDownTypes = @[ @(UIPressTypePageDown) ];
     auto pageDownRecognizer =
         [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pageDownPressed:)];
     pageDownRecognizer.allowedPressTypes = pageDownTypes;
     pageDownRecognizer.delegate = self;
-    [g_xbmcController.glView addGestureRecognizer:pageDownRecognizer];
+    [g_Controller.glView addGestureRecognizer:pageDownRecognizer];
   }
 
 
@@ -187,7 +187,7 @@
       [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(playPausePressed:)];
   playPauseRecognizer.allowedPressTypes = playPauseTypes;
   playPauseRecognizer.delegate = self;
-  [g_xbmcController.glView addGestureRecognizer:playPauseRecognizer];
+  [g_Controller.glView addGestureRecognizer:playPauseRecognizer];
 
   auto doublePlayPauseRecognizer =
       [[UITapGestureRecognizer alloc] initWithTarget:self
@@ -195,16 +195,16 @@
   doublePlayPauseRecognizer.allowedPressTypes = playPauseTypes;
   doublePlayPauseRecognizer.numberOfTapsRequired = 2;
   doublePlayPauseRecognizer.delegate = self;
-  [g_xbmcController.glView.gestureRecognizers.lastObject
+  [g_Controller.glView.gestureRecognizers.lastObject
       requireGestureRecognizerToFail:doublePlayPauseRecognizer];
-  [g_xbmcController.glView addGestureRecognizer:doublePlayPauseRecognizer];
+  [g_Controller.glView addGestureRecognizer:doublePlayPauseRecognizer];
 
   auto longPlayPauseRecognizer =
       [[UILongPressGestureRecognizer alloc] initWithTarget:self
                                                     action:@selector(longPlayPausePressed:)];
   longPlayPauseRecognizer.allowedPressTypes = playPauseTypes;
   longPlayPauseRecognizer.delegate = self;
-  [g_xbmcController.glView addGestureRecognizer:longPlayPauseRecognizer];
+  [g_Controller.glView addGestureRecognizer:longPlayPauseRecognizer];
 
   auto selectTypes = @[ @(UIPressTypeSelect) ];
   auto longSelectRecognizer =
@@ -213,14 +213,14 @@
   longSelectRecognizer.allowedPressTypes = selectTypes;
   longSelectRecognizer.minimumPressDuration = 0.001;
   longSelectRecognizer.delegate = self;
-  [g_xbmcController.glView addGestureRecognizer:longSelectRecognizer];
+  [g_Controller.glView addGestureRecognizer:longSelectRecognizer];
 
   auto selectRecognizer =
       [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(SiriSelectHandler:)];
   selectRecognizer.allowedPressTypes = selectTypes;
   selectRecognizer.delegate = self;
   [longSelectRecognizer requireGestureRecognizerToFail:selectRecognizer];
-  [g_xbmcController.glView addGestureRecognizer:selectRecognizer];
+  [g_Controller.glView addGestureRecognizer:selectRecognizer];
 
   auto doubleSelectRecognizer =
       [[UITapGestureRecognizer alloc] initWithTarget:self
@@ -229,9 +229,9 @@
   doubleSelectRecognizer.numberOfTapsRequired = 2;
   doubleSelectRecognizer.delegate = self;
   [longSelectRecognizer requireGestureRecognizerToFail:doubleSelectRecognizer];
-  [g_xbmcController.glView.gestureRecognizers.lastObject
+  [g_Controller.glView.gestureRecognizers.lastObject
       requireGestureRecognizerToFail:doubleSelectRecognizer];
-  [g_xbmcController.glView addGestureRecognizer:doubleSelectRecognizer];
+  [g_Controller.glView addGestureRecognizer:doubleSelectRecognizer];
 }
 
 - (void)menuPressed:(UITapGestureRecognizer*)sender
@@ -240,8 +240,8 @@
   {
     case UIGestureRecognizerStateEnded:
       CLog::Log(LOGDEBUG, "Input: Siri remote menu press (id: 6)");
-      [g_xbmcController.inputHandler sendButtonPressed:6];
-      [g_xbmcController.inputHandler.inputRemote startSiriRemoteIdleTimer];
+      [g_Controller.inputHandler sendButtonPressed:6];
+      [g_Controller.inputHandler.inputRemote startSiriRemoteIdleTimer];
       break;
     default:
       break;
@@ -254,8 +254,8 @@
   {
     case UIGestureRecognizerStateBegan:
       CLog::Log(LOGDEBUG, "Input: Siri remote select long press (id: 7)");
-      [g_xbmcController.inputHandler sendButtonPressed:7];
-      [g_xbmcController.inputHandler.inputRemote startSiriRemoteIdleTimer];
+      [g_Controller.inputHandler sendButtonPressed:7];
+      [g_Controller.inputHandler.inputRemote startSiriRemoteIdleTimer];
       break;
     default:
       break;
@@ -268,8 +268,8 @@
   {
     case UIGestureRecognizerStateEnded:
       CLog::Log(LOGDEBUG, "Input: Siri remote select press (id: 5)");
-      [g_xbmcController.inputHandler sendButtonPressed:5];
-      [g_xbmcController.inputHandler.inputRemote startSiriRemoteIdleTimer];
+      [g_Controller.inputHandler sendButtonPressed:5];
+      [g_Controller.inputHandler.inputRemote startSiriRemoteIdleTimer];
       break;
     default:
       break;
@@ -282,8 +282,8 @@
   {
     case UIGestureRecognizerStateEnded:
       CLog::Log(LOGDEBUG, "Input: Siri remote page up press (id: 27)");
-      [g_xbmcController.inputHandler sendButtonPressed:27];
-      [g_xbmcController.inputHandler.inputRemote startSiriRemoteIdleTimer];
+      [g_Controller.inputHandler sendButtonPressed:27];
+      [g_Controller.inputHandler.inputRemote startSiriRemoteIdleTimer];
       break;
     default:
       break;
@@ -296,8 +296,8 @@
   {
     case UIGestureRecognizerStateEnded:
       CLog::Log(LOGDEBUG, "Input: Siri remote page down press (id: 28)");
-      [g_xbmcController.inputHandler sendButtonPressed:28];
-      [g_xbmcController.inputHandler.inputRemote startSiriRemoteIdleTimer];
+      [g_Controller.inputHandler sendButtonPressed:28];
+      [g_Controller.inputHandler.inputRemote startSiriRemoteIdleTimer];
       break;
     default:
       break;
@@ -310,8 +310,8 @@
   {
     case UIGestureRecognizerStateEnded:
       CLog::Log(LOGDEBUG, "Input: Siri remote play/pause press (id: 12)");
-      [g_xbmcController.inputHandler sendButtonPressed:12];
-      [g_xbmcController.inputHandler.inputRemote startSiriRemoteIdleTimer];
+      [g_Controller.inputHandler sendButtonPressed:12];
+      [g_Controller.inputHandler.inputRemote startSiriRemoteIdleTimer];
       break;
     default:
       break;
@@ -324,8 +324,8 @@
   {
     case UIGestureRecognizerStateBegan:
       CLog::Log(LOGDEBUG, "Input: Siri remote play/pause long press (id: 20)");
-      [g_xbmcController.inputHandler sendButtonPressed:20];
-      [g_xbmcController.inputHandler.inputRemote startSiriRemoteIdleTimer];
+      [g_Controller.inputHandler sendButtonPressed:20];
+      [g_Controller.inputHandler.inputRemote startSiriRemoteIdleTimer];
       break;
     default:
       break;
@@ -338,8 +338,8 @@
   {
     case UIGestureRecognizerStateEnded:
       CLog::Log(LOGDEBUG, "Input: Siri remote play/pause double press (id: 21)");
-      [g_xbmcController.inputHandler sendButtonPressed:21];
-      [g_xbmcController.inputHandler.inputRemote startSiriRemoteIdleTimer];
+      [g_Controller.inputHandler sendButtonPressed:21];
+      [g_Controller.inputHandler.inputRemote startSiriRemoteIdleTimer];
       break;
     default:
       break;
@@ -352,8 +352,8 @@
   {
     case UIGestureRecognizerStateEnded:
       CLog::Log(LOGDEBUG, "Input: Siri remote select double press (id: 22)");
-      [g_xbmcController.inputHandler sendButtonPressed:22];
-      [g_xbmcController.inputHandler.inputRemote startSiriRemoteIdleTimer];
+      [g_Controller.inputHandler sendButtonPressed:22];
+      [g_Controller.inputHandler.inputRemote startSiriRemoteIdleTimer];
       break;
     default:
       break;
@@ -368,13 +368,13 @@
   {
     case UIGestureRecognizerStateBegan:
       CLog::Log(LOGDEBUG, "Input: IR remote up press (id: 1)");
-      [g_xbmcController.inputHandler.inputRemote startKeyPressTimer:1];
+      [g_Controller.inputHandler.inputRemote startKeyPressTimer:1];
       break;
     case UIGestureRecognizerStateChanged:
       break;
     case UIGestureRecognizerStateEnded:
-      [g_xbmcController.inputHandler.inputRemote stopKeyPressTimer];
-      [g_xbmcController.inputHandler.inputRemote startSiriRemoteIdleTimer];
+      [g_Controller.inputHandler.inputRemote stopKeyPressTimer];
+      [g_Controller.inputHandler.inputRemote startSiriRemoteIdleTimer];
       break;
     default:
       break;
@@ -387,13 +387,13 @@
   {
     case UIGestureRecognizerStateBegan:
       CLog::Log(LOGDEBUG, "Input: IR remote down press (id: 2)");
-      [g_xbmcController.inputHandler.inputRemote startKeyPressTimer:2];
+      [g_Controller.inputHandler.inputRemote startKeyPressTimer:2];
       break;
     case UIGestureRecognizerStateChanged:
       break;
     case UIGestureRecognizerStateEnded:
-      [g_xbmcController.inputHandler.inputRemote stopKeyPressTimer];
-      [g_xbmcController.inputHandler.inputRemote startSiriRemoteIdleTimer];
+      [g_Controller.inputHandler.inputRemote stopKeyPressTimer];
+      [g_Controller.inputHandler.inputRemote startSiriRemoteIdleTimer];
       break;
     default:
       break;
@@ -406,13 +406,13 @@
   {
     case UIGestureRecognizerStateBegan:
       CLog::Log(LOGDEBUG, "Input: IR remote left press (id: 3)");
-      [g_xbmcController.inputHandler.inputRemote startKeyPressTimer:3];
+      [g_Controller.inputHandler.inputRemote startKeyPressTimer:3];
       break;
     case UIGestureRecognizerStateChanged:
       break;
     case UIGestureRecognizerStateEnded:
-      [g_xbmcController.inputHandler.inputRemote stopKeyPressTimer];
-      [g_xbmcController.inputHandler.inputRemote startSiriRemoteIdleTimer];
+      [g_Controller.inputHandler.inputRemote stopKeyPressTimer];
+      [g_Controller.inputHandler.inputRemote startSiriRemoteIdleTimer];
       break;
     default:
       break;
@@ -425,13 +425,13 @@
   {
     case UIGestureRecognizerStateBegan:
       CLog::Log(LOGDEBUG, "Input: IR remote right press (id: 4)");
-      [g_xbmcController.inputHandler.inputRemote startKeyPressTimer:4];
+      [g_Controller.inputHandler.inputRemote startKeyPressTimer:4];
       break;
     case UIGestureRecognizerStateChanged:
       break;
     case UIGestureRecognizerStateEnded:
-      [g_xbmcController.inputHandler.inputRemote stopKeyPressTimer];
-      [g_xbmcController.inputHandler.inputRemote startSiriRemoteIdleTimer];
+      [g_Controller.inputHandler.inputRemote stopKeyPressTimer];
+      [g_Controller.inputHandler.inputRemote startSiriRemoteIdleTimer];
       break;
     default:
       break;
@@ -443,46 +443,46 @@
 - (IBAction)tapUpArrowPressed:(UIGestureRecognizer*)sender
 {
   CLog::Log(LOGDEBUG, "Input: Siri remote tap up (id: 1)");
-  if (!g_xbmcController.inputHandler.inputRemote.siriRemoteIdleState)
-    [g_xbmcController.inputHandler sendButtonPressed:1];
+  if (!g_Controller.inputHandler.inputRemote.siriRemoteIdleState)
+    [g_Controller.inputHandler sendButtonPressed:1];
 
-  [g_xbmcController.inputHandler.inputRemote startSiriRemoteIdleTimer];
+  [g_Controller.inputHandler.inputRemote startSiriRemoteIdleTimer];
 }
 
 - (IBAction)tapDownArrowPressed:(UIGestureRecognizer*)sender
 {
   CLog::Log(LOGDEBUG, "Input: Siri remote tap down (id: 2)");
-  if (!g_xbmcController.inputHandler.inputRemote.siriRemoteIdleState)
-    [g_xbmcController.inputHandler sendButtonPressed:2];
+  if (!g_Controller.inputHandler.inputRemote.siriRemoteIdleState)
+    [g_Controller.inputHandler sendButtonPressed:2];
 
-  [g_xbmcController.inputHandler.inputRemote startSiriRemoteIdleTimer];
+  [g_Controller.inputHandler.inputRemote startSiriRemoteIdleTimer];
 }
 
 - (IBAction)tapLeftArrowPressed:(UIGestureRecognizer*)sender
 {
   CLog::Log(LOGDEBUG, "Input: Siri remote tap left (id: 3)");
-  if (!g_xbmcController.inputHandler.inputRemote.siriRemoteIdleState)
-    [g_xbmcController.inputHandler sendButtonPressed:3];
+  if (!g_Controller.inputHandler.inputRemote.siriRemoteIdleState)
+    [g_Controller.inputHandler sendButtonPressed:3];
 
-  [g_xbmcController.inputHandler.inputRemote startSiriRemoteIdleTimer];
+  [g_Controller.inputHandler.inputRemote startSiriRemoteIdleTimer];
 }
 
 - (IBAction)tapRightArrowPressed:(UIGestureRecognizer*)sender
 {
   CLog::Log(LOGDEBUG, "Input: Siri remote tap right (id: 4)");
-  if (!g_xbmcController.inputHandler.inputRemote.siriRemoteIdleState)
-    [g_xbmcController.inputHandler sendButtonPressed:4];
+  if (!g_Controller.inputHandler.inputRemote.siriRemoteIdleState)
+    [g_Controller.inputHandler sendButtonPressed:4];
 
-  [g_xbmcController.inputHandler.inputRemote startSiriRemoteIdleTimer];
+  [g_Controller.inputHandler.inputRemote startSiriRemoteIdleTimer];
 }
 
 #pragma mark - Pan
 
 - (IBAction)handlePan:(UIPanGestureRecognizer*)sender
 {
-  if (g_xbmcController.inputHandler.inputRemote.siriRemoteIdleState)
+  if (g_Controller.inputHandler.inputRemote.siriRemoteIdleState)
   {
-    [g_xbmcController.inputHandler.inputRemote startSiriRemoteIdleTimer];
+    [g_Controller.inputHandler.inputRemote startSiriRemoteIdleTimer];
     return;
   }
 
@@ -506,7 +506,7 @@
         case UIPanGestureRecognizerDirectionUp:
         {
           if (fabs(m_lastGesturePoint.y - translation.y) >
-              maxSensitivity - g_xbmcController.inputHandler.inputSettings.siriRemoteVerticalSensitivity)
+              maxSensitivity - g_Controller.inputHandler.inputSettings.siriRemoteVerticalSensitivity)
           {
             CLog::Log(LOGDEBUG, "Input: Siri remote pan up (id: 23)");
             keyId = 23;
@@ -516,7 +516,7 @@
         case UIPanGestureRecognizerDirectionDown:
         {
           if (fabs(m_lastGesturePoint.y - translation.y) >
-              maxSensitivity - g_xbmcController.inputHandler.inputSettings.siriRemoteVerticalSensitivity)
+              maxSensitivity - g_Controller.inputHandler.inputSettings.siriRemoteVerticalSensitivity)
           {
             CLog::Log(LOGDEBUG, "Input: Siri remote pan down (id: 24)");
             keyId = 24;
@@ -526,7 +526,7 @@
         case UIPanGestureRecognizerDirectionLeft:
         {
           if (fabs(m_lastGesturePoint.x - translation.x) >
-              maxSensitivity - g_xbmcController.inputHandler.inputSettings.siriRemoteHorizontalSensitivity)
+              maxSensitivity - g_Controller.inputHandler.inputSettings.siriRemoteHorizontalSensitivity)
           {
             CLog::Log(LOGDEBUG, "Input: Siri remote pan left (id: 25)");
             keyId = 25;
@@ -536,7 +536,7 @@
         case UIPanGestureRecognizerDirectionRight:
         {
           if (fabs(m_lastGesturePoint.x - translation.x) >
-              maxSensitivity - g_xbmcController.inputHandler.inputSettings.siriRemoteHorizontalSensitivity)
+              maxSensitivity - g_Controller.inputHandler.inputSettings.siriRemoteHorizontalSensitivity)
           {
             CLog::Log(LOGDEBUG, "Input: Siri remote pan right (id: 26)");
             keyId = 26;
@@ -551,21 +551,21 @@
       if (keyId != 0)
       {
         m_lastGesturePoint = translation;
-        [g_xbmcController.inputHandler sendButtonPressed:keyId];
+        [g_Controller.inputHandler sendButtonPressed:keyId];
       }
       break;
     }
     default:
       break;
   }
-  [g_xbmcController.inputHandler.inputRemote startSiriRemoteIdleTimer];
+  [g_Controller.inputHandler.inputRemote startSiriRemoteIdleTimer];
 }
 
 - (IBAction)handleSwipe:(UISwipeGestureRecognizer*)sender
 {
-  if (g_xbmcController.inputHandler.inputRemote.siriRemoteIdleState)
+  if (g_Controller.inputHandler.inputRemote.siriRemoteIdleState)
   {
-    [g_xbmcController.inputHandler.inputRemote startSiriRemoteIdleTimer];
+    [g_Controller.inputHandler.inputRemote startSiriRemoteIdleTimer];
     return;
   }
 
@@ -599,8 +599,8 @@
     default:
       break;
   }
-  [g_xbmcController.inputHandler sendButtonPressed:keyId];
-  [g_xbmcController.inputHandler.inputRemote startSiriRemoteIdleTimer];
+  [g_Controller.inputHandler sendButtonPressed:keyId];
+  [g_Controller.inputHandler.inputRemote startSiriRemoteIdleTimer];
 }
 
 - (UIPanGestureRecognizerDirection)getPanDirection:(CGPoint)velocity

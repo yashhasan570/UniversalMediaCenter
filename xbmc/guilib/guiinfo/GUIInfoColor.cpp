@@ -16,7 +16,7 @@
 #include "guilib/GUIComponent.h"
 #include "utils/StringUtils.h"
 
-using namespace KODI::GUILIB::GUIINFO;
+using namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO;
 
 bool CGUIInfoColor::Update(const CGUIListItem* item /* = nullptr */)
 {
@@ -31,7 +31,7 @@ bool CGUIInfoColor::Update(const CGUIListItem* item /* = nullptr */)
   else
     infoLabel = CServiceBroker::GetGUI()->GetInfoManager().GetLabel(m_info, INFO::DEFAULT_CONTEXT);
 
-  KODI::UTILS::COLOR::Color color =
+  UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color color =
       !infoLabel.empty() ? CServiceBroker::GetGUI()->GetColorManager().GetColor(infoLabel) : 0;
   if (m_color != color)
   {

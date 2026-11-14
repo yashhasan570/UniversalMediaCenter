@@ -27,7 +27,7 @@ namespace
  * \param[in] cache Optional regular expression cache
  * \return Valid pointer if the regular expression was compiled successfully, nullptr otherwise.
  */
-std::shared_ptr<CRegExp> InitFilenameAttributesRegExp(KODI::REGEXP::RegExpCache* cache)
+std::shared_ptr<CRegExp> InitFilenameAttributesRegExp(UNIVERSAL MEDIA CENTER::REGEXP::RegExpCache* cache)
 {
   std::shared_ptr<CRegExp> re;
 
@@ -37,7 +37,7 @@ std::shared_ptr<CRegExp> InitFilenameAttributesRegExp(KODI::REGEXP::RegExpCache*
   if (advancedSettings == nullptr)
     return re;
 
-  re = KODI::REGEXP::GetRegExp(advancedSettings->m_videoFilenameAttributePairsRegExp, cache, true,
+  re = UNIVERSAL MEDIA CENTER::REGEXP::GetRegExp(advancedSettings->m_videoFilenameAttributePairsRegExp, cache, true,
                                CRegExp::autoUtf8);
   if (re == nullptr)
   {
@@ -58,7 +58,7 @@ std::shared_ptr<CRegExp> InitFilenameAttributesRegExp(KODI::REGEXP::RegExpCache*
  */
 void ForEachFilenameAttribute(
     const std::string& fileName,
-    KODI::REGEXP::RegExpCache* cache,
+    UNIVERSAL MEDIA CENTER::REGEXP::RegExpCache* cache,
     std::function<void(int pos, int len, const std::string& key, const std::string& value)>
         callback)
 {
@@ -79,16 +79,16 @@ void ForEachFilenameAttribute(
 }
 } // namespace
 
-namespace KODI::VIDEO
+namespace UNIVERSAL MEDIA CENTER::VIDEO
 {
 CFilenameAttributes::CFilenameAttributes(const std::string& filename,
-                                         KODI::REGEXP::RegExpCache* cache)
+                                         UNIVERSAL MEDIA CENTER::REGEXP::RegExpCache* cache)
 {
   m_attributes = GetFilenameAttributePairs(filename, cache);
 }
 
 AttributeMap CFilenameAttributes::GetFilenameAttributePairs(const std::string& fileName,
-                                                            KODI::REGEXP::RegExpCache* cache)
+                                                            UNIVERSAL MEDIA CENTER::REGEXP::RegExpCache* cache)
 {
   AttributeMap result;
 
@@ -105,7 +105,7 @@ AttributeMap CFilenameAttributes::GetFilenameAttributePairs(const std::string& f
 }
 
 void CFilenameAttributes::CleanFilenameAttributePairs(std::string& fileName,
-                                                      KODI::REGEXP::RegExpCache* cache)
+                                                      UNIVERSAL MEDIA CENTER::REGEXP::RegExpCache* cache)
 {
   std::string result;
   result.reserve(fileName.size());
@@ -203,4 +203,4 @@ std::string CFilenameAttributes::GetEdition() const
 
   return "";
 }
-} // namespace KODI::VIDEO
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO

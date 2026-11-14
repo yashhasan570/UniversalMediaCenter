@@ -14,7 +14,7 @@
 
 #include <cstdint>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RENDERING
 {
@@ -71,4 +71,4 @@ private:
 
 } // namespace CAPTURE
 } // namespace RENDERING
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

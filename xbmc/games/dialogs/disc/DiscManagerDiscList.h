@@ -16,7 +16,7 @@
 
 class CFileItem;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -54,4 +54,4 @@ private:
   bool m_dirty{false};
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

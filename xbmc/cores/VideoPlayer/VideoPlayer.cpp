@@ -81,8 +81,8 @@
 #include <string_view>
 #include <utility>
 
-using namespace KODI;
-using namespace KODI::LANGUAGE;
+using namespace UNIVERSAL MEDIA CENTER;
+using namespace UNIVERSAL MEDIA CENTER::LANGUAGE;
 using namespace std::chrono_literals;
 
 //------------------------------------------------------------------------------
@@ -2278,7 +2278,7 @@ void CVideoPlayer::HandlePlaySpeed()
       }
       // Note: Previously used cache.level >= 1 would keep video stalled
       // event after cache was full
-      // Talk link: https://github.com/xbmc/xbmc/pull/23760
+      // Talk link: https://github.com///pull/23760
       if (cache.time > m_messageQueueTimeSize)
         SetCaching(CACHESTATE_INIT);
     }
@@ -6330,7 +6330,7 @@ void CVideoPlayer::Render(bool clear, uint32_t alpha, bool gui)
   m_renderManager.Render(clear, 0, alpha, gui);
 }
 
-bool CVideoPlayer::CompositeVideoCapture(KODI::RENDERING::CAPTURE::CaptureResult& result)
+bool CVideoPlayer::CompositeVideoCapture(UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CaptureResult& result)
 {
   return m_renderManager.CompositeVideoCapture(result);
 }
@@ -6473,7 +6473,7 @@ void CVideoPlayer::GetDebugInfo(DEBUG_INFO_PLAYER& info)
       CServiceBroker::GetAppComponents().GetComponent<CApplicationContentGeometry>()->Get();
   info.contentGeometry = StringUtils::Format(
       "cg: {} {} {:.0f}x{:.0f} at {:.0f},{:.0f}", geometry.label,
-      KODI::VIDEO::GEOMETRY::GeometrySourceName(geometry.source), geometry.displayRect.Width(),
+      UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::GeometrySourceName(geometry.source), geometry.displayRect.Width(),
       geometry.displayRect.Height(), geometry.displayRect.x1, geometry.displayRect.y1);
 
   const std::string live = m_VideoPlayerVideo->GetContentGeometryInfo();

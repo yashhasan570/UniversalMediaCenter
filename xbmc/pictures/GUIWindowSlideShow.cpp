@@ -54,8 +54,8 @@
 #include <memory>
 #include <mutex>
 
-using namespace KODI;
-using namespace KODI::VIDEO;
+using namespace UNIVERSAL MEDIA CENTER;
+using namespace UNIVERSAL MEDIA CENTER::VIDEO;
 using namespace MESSAGING;
 using namespace XFILE;
 using namespace std::chrono_literals;
@@ -109,7 +109,7 @@ void CBackgroundPicLoader::Process()
             CTexture::LoadFromFile(m_strFileName, m_maxWidth, m_maxHeight);
         std::string motionClip;
         if (texture && m_checkMotion)
-          motionClip = KODI::PICTURE::ExtractMotionPhotoClip(m_strFileName);
+          motionClip = UNIVERSAL MEDIA CENTER::PICTURE::ExtractMotionPhotoClip(m_strFileName);
 
         auto end = std::chrono::steady_clock::now();
         auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
@@ -316,7 +316,7 @@ void CGUIWindowSlideShow::OnDeinitWindow(int nextWindowID)
       // sleep until the loader finishes loading the current pic
       CLog::Log(LOGDEBUG,"Waiting for BackgroundLoader thread to close");
       while (m_pBackgroundLoader->IsLoading())
-        KODI::TIME::Sleep(10ms);
+        UNIVERSAL MEDIA CENTER::TIME::Sleep(10ms);
       // stop the thread
       CLog::Log(LOGDEBUG,"Stopping BackgroundLoader thread");
       m_pBackgroundLoader->StopThread();
@@ -330,7 +330,7 @@ void CGUIWindowSlideShow::OnDeinitWindow(int nextWindowID)
       std::unique_lock lock(m_motionClipsSection);
       m_motionClips.clear();
     }
-    KODI::PICTURE::ClearMotionPhotoClips();
+    UNIVERSAL MEDIA CENTER::PICTURE::ClearMotionPhotoClips();
   }
   CServiceBroker::GetGUI()->GetInfoManager().GetInfoProviders().GetPicturesInfoProvider().SetCurrentSlide(nullptr);
   m_bSlideShow = false;
@@ -1484,7 +1484,7 @@ void CGUIWindowSlideShow::OnLoadPic(int iPic,
 
 void CGUIWindowSlideShow::Shuffle()
 {
-  KODI::UTILS::RandomShuffle(m_slides.begin(), m_slides.end());
+  UNIVERSAL MEDIA CENTER::UTILS::RandomShuffle(m_slides.begin(), m_slides.end());
   m_iCurrentSlide = 0;
   m_iNextSlide = GetNextSlide();
   m_bShuffled = true;
@@ -1590,7 +1590,7 @@ void CGUIWindowSlideShow::AddItems(const std::string &strPath, path_set *recursi
   if (!CDirectory::GetDirectory(strPath, items, viewState.GetExtensions(), DIR_FLAG_NO_FILE_DIRS))
     return;
 
-  KODI::PICTURE::GroupLivePhotos(items);
+  UNIVERSAL MEDIA CENTER::PICTURE::GroupLivePhotos(items);
 
   items.Sort(method, order, sortAttributes);
 

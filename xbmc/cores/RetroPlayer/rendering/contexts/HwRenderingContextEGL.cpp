@@ -30,14 +30,14 @@
 #include <EGL/egl.h>
 #include <EGL/eglext.h>
 
-using namespace KODI::RETRO;
+using namespace UNIVERSAL MEDIA CENTER::RETRO;
 
 namespace
 {
 #if defined(TARGET_ANDROID)
 using CWinSystemEGL = CWinSystemAndroidGLESContext;
 #else
-using CWinSystemEGL = KODI::WINDOWING::LINUX::CWinSystemEGL;
+using CWinSystemEGL = UNIVERSAL MEDIA CENTER::WINDOWING::LINUX::CWinSystemEGL;
 #endif
 
 #if defined(HAS_GLES)
@@ -254,7 +254,7 @@ void CHwRenderingContextEGL::Destroy()
   m_client.Destroy();
 }
 
-std::unique_ptr<IHwRenderingContext> KODI::RETRO::CreateHwRenderingContextEGL(
+std::unique_ptr<IHwRenderingContext> UNIVERSAL MEDIA CENTER::RETRO::CreateHwRenderingContextEGL(
     CRenderContext& context)
 {
   return std::make_unique<CHwRenderingContextEGL>(context);

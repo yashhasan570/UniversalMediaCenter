@@ -10,7 +10,7 @@
 
 #include "GUIFeatureButton.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -42,4 +42,4 @@ private:
   STATE m_state;
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

@@ -346,7 +346,7 @@ bool CContext::CreateContext()
     {
       CLog::LogF(
           LOGINFO, "device for decoding created on adapter '{}' with {}",
-          KODI::PLATFORM::WINDOWS::FromW(DX::DeviceResources::Get()->GetAdapterDesc().Description),
+          UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW(DX::DeviceResources::Get()->GetAdapterDesc().Description),
           DX::GetFeatureLevelDescription(d3dFeatureLevel));
 
 #ifdef _DEBUG
@@ -792,7 +792,7 @@ void DXVA::CVideoBuffer::Unref()
 }
 
 ReductionResult DXVA::CVideoBuffer::ReduceForAnalysis(
-    KODI::VIDEO::GEOMETRY::ReducedFrame& reduction,
+    UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::ReducedFrame& reduction,
     unsigned int sourceWidth,
     unsigned int sourceHeight,
     unsigned int targetWidth)

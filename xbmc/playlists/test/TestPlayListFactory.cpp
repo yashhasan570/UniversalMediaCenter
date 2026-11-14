@@ -15,11 +15,11 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 TEST(TestPlayListFactory, XSPF)
 {
-  std::string filename = XBMC_REF_FILE_PATH("/xbmc/playlists/test/newfile.xspf");
+  std::string filename = _REF_FILE_PATH("//playlists/test/newfile.xspf");
   CURL url("http://example.com/playlists/playlist.xspf");
   PLAYLIST::CPlayList* playlist = nullptr;
 

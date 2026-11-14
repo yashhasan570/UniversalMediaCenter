@@ -15,7 +15,7 @@
 
 #include <algorithm>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace RETRO;
 
 CRetroPlayerRendering::CRetroPlayerRendering(CRPRenderManager& renderManager,

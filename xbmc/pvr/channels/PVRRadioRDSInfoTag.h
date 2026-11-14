@@ -36,8 +36,8 @@ public:
   void SetSpeechActive(bool active);
   void SetLanguage(const std::string& strLanguage);
   const std::string& GetLanguage() const;
-  void SetCountry(const KODI::LANGUAGE::CTerritory& territory);
-  KODI::LANGUAGE::CTerritory GetCountry() const;
+  void SetCountry(const UNIVERSAL MEDIA CENTER::LANGUAGE::CTerritory& territory);
+  UNIVERSAL MEDIA CENTER::LANGUAGE::CTerritory GetCountry() const;
   void SetRadioText(const std::string& strRadioText);
   std::string GetRadioText(unsigned int line) const;
   void SetProgramServiceText(const std::string& strPSText);
@@ -133,7 +133,7 @@ private:
   bool m_RDS_SpeechActive;
 
   std::string m_strLanguage;
-  KODI::LANGUAGE::CTerritory m_territory;
+  UNIVERSAL MEDIA CENTER::LANGUAGE::CTerritory m_territory;
   std::string m_strTitle;
   std::string m_strBand;
   std::string m_strArtist;

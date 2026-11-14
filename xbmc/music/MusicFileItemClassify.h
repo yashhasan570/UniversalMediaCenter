@@ -10,7 +10,7 @@
 
 class CFileItem;
 
-namespace KODI::MUSIC
+namespace UNIVERSAL MEDIA CENTER::MUSIC
 {
 
 //! \brief Check whether an item is an audio item.
@@ -33,4 +33,4 @@ bool IsLyrics(const CFileItem& item);
 //! \brief Check whether an item is a music database item.
 bool IsMusicDb(const CFileItem& item);
 
-} // namespace KODI::MUSIC
+} // namespace UNIVERSAL MEDIA CENTER::MUSIC

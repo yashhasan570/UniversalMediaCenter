@@ -12,7 +12,7 @@
 
 class CDatabase;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -105,4 +105,4 @@ private:
   CDatabase& m_database;
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

@@ -18,7 +18,7 @@
 
 #include <cstddef>
 
-using namespace KODI::SHADER;
+using namespace UNIVERSAL MEDIA CENTER::SHADER;
 
 CShaderPresetDX::CShaderPresetDX(RETRO::CRenderContext& context,
                                  unsigned videoWidth,

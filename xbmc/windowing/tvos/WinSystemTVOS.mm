@@ -39,7 +39,7 @@
 
 #import "platform/darwin/DarwinUtils.h"
 #import "platform/darwin/tvos/TVOSDisplayManager.h"
-#import "platform/darwin/tvos/XBMCController.h"
+#import "platform/darwin/tvos/Controller.h"
 
 #include <memory>
 #include <mutex>
@@ -71,7 +71,7 @@ constexpr auto LOST_DEVICE_TIMEOUT_MS{3000ms};
 - (void)runDisplayLink;
 @end
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace MESSAGING;
 
 struct CADisplayLinkWrapper
@@ -82,7 +82,7 @@ struct CADisplayLinkWrapper
 
 void CWinSystemTVOS::Register()
 {
-  KODI::WINDOWING::CWindowSystemFactory::RegisterWindowSystem(CreateWinSystem);
+  UNIVERSAL MEDIA CENTER::WINDOWING::CWindowSystemFactory::RegisterWindowSystem(CreateWinSystem);
 }
 
 std::unique_ptr<CWinSystemBase> CWinSystemTVOS::CreateWinSystem()
@@ -90,7 +90,7 @@ std::unique_ptr<CWinSystemBase> CWinSystemTVOS::CreateWinSystem()
   return std::make_unique<CWinSystemTVOS>();
 }
 
-void CWinSystemTVOS::MessagePush(XBMC_Event* newEvent)
+void CWinSystemTVOS::MessagePush(_Event* newEvent)
 {
   dynamic_cast<CWinEventsTVOS&>(*m_winEvents).MessagePush(newEvent);
 }
@@ -167,9 +167,9 @@ bool CWinSystemTVOS::DestroyWindowSystem()
   return true;
 }
 
-std::unique_ptr<KODI::WINDOWING::IOSScreenSaver> CWinSystemTVOS::GetOSScreenSaverImpl()
+std::unique_ptr<UNIVERSAL MEDIA CENTER::WINDOWING::IOSScreenSaver> CWinSystemTVOS::GetOSScreenSaverImpl()
 {
-  std::unique_ptr<KODI::WINDOWING::IOSScreenSaver> screensaver =
+  std::unique_ptr<UNIVERSAL MEDIA CENTER::WINDOWING::IOSScreenSaver> screensaver =
       std::make_unique<COSScreenSaverTVOS>();
   return screensaver;
 }
@@ -179,7 +179,7 @@ bool CWinSystemTVOS::CreateNewWindow(const std::string& name, bool fullScreen, R
   if (!SetFullScreen(fullScreen, res, false))
     return false;
 
-  [g_xbmcController setFramebuffer];
+  [g_Controller setFramebuffer];
 
   m_bWindowCreated = true;
 
@@ -245,13 +245,13 @@ bool CWinSystemTVOS::SwitchToVideoMode(int width, int height, double refreshrate
   m_requestedRefreshRate = static_cast<float>(refreshrate);
   if (m_hdrStatus == HDR_STATUS::HDR_ON && m_hdrFormatDescription)
   {
-    if ([g_xbmcController.displayManager displayVideoFormatSwitch:m_hdrFormatDescription
+    if ([g_Controller.displayManager displayVideoFormatSwitch:m_hdrFormatDescription
                                                       refreshRate:m_requestedRefreshRate])
       return true;
     SetHDR(nullptr);
   }
 
-  [g_xbmcController.displayManager displayRateSwitch:refreshrate withDynamicRange:0 /* SDR */];
+  [g_Controller.displayManager displayRateSwitch:refreshrate withDynamicRange:0 /* SDR */];
   return true;
 }
 
@@ -302,10 +302,10 @@ bool CWinSystemTVOS::SetHDR(const VideoPicture* videoPicture)
     {
       // "On start" retains Universal Media Center's selected rate when playback stops.
       if (matchRefreshRate && m_requestedRefreshRate > 0.0f)
-        [g_xbmcController.displayManager displayRateSwitch:m_requestedRefreshRate
+        [g_Controller.displayManager displayRateSwitch:m_requestedRefreshRate
                                           withDynamicRange:0 /* SDR */];
       else
-        [g_xbmcController.displayManager displayDynamicRangeReset];
+        [g_Controller.displayManager displayDynamicRangeReset];
     }
     m_hdrStatus = HDR_STATUS::HDR_OFF;
     if (!matchRefreshRate)
@@ -325,8 +325,8 @@ bool CWinSystemTVOS::SetHDR(const VideoPicture* videoPicture)
 
   const float rate = matchRefreshRate && m_requestedRefreshRate > 0.0f
                          ? m_requestedRefreshRate
-                         : [g_xbmcController.displayManager getDisplayRate];
-  const bool accepted = [g_xbmcController.displayManager displayVideoFormatSwitch:formatDescription
+                         : [g_Controller.displayManager getDisplayRate];
+  const bool accepted = [g_Controller.displayManager displayVideoFormatSwitch:formatDescription
                                                                       refreshRate:rate];
   if (accepted)
   {
@@ -352,7 +352,7 @@ bool CWinSystemTVOS::CanUseHDRVideoLayer()
   if (@available(tvOS 17.0, *))
   {
     const bool hdrEnabled = IsHDRDisplaySettingEnabled();
-    const bool matchingEnabled = [g_xbmcController.displayManager canMatchVideoDynamicRange];
+    const bool matchingEnabled = [g_Controller.displayManager canMatchVideoDynamicRange];
     CLog::Log(LOGDEBUG, "CWinSystemTVOS::CanUseHDRVideoLayer: HDR setting {}, display matching {}",
               hdrEnabled, matchingEnabled);
     return hdrEnabled && matchingEnabled;
@@ -371,10 +371,10 @@ CHDRCapabilities CWinSystemTVOS::GetDisplayHDRCapabilities() const
 {
   CHDRCapabilities caps;
 
-  if ([g_xbmcController.displayManager supportsHDR])
+  if ([g_Controller.displayManager supportsHDR])
     caps.SetHDR10();
 
-  if ([g_xbmcController.displayManager supportsHLG])
+  if ([g_Controller.displayManager supportsHLG])
     caps.SetHLG();
 
   return caps;
@@ -382,9 +382,9 @@ CHDRCapabilities CWinSystemTVOS::GetDisplayHDRCapabilities() const
 
 bool CWinSystemTVOS::GetScreenResolution(int* w, int* h, double* fps, int screenIdx)
 {
-  *w = [g_xbmcController.displayManager getScreenSize].width;
-  *h = [g_xbmcController.displayManager getScreenSize].height;
-  *fps = static_cast<double>([g_xbmcController.displayManager getDisplayRate]);
+  *w = [g_Controller.displayManager getScreenSize].width;
+  *h = [g_Controller.displayManager getScreenSize].height;
+  *fps = static_cast<double>([g_Controller.displayManager getDisplayRate]);
 
   CLog::Log(LOGDEBUG, "Current resolution Screen: {} with {} x {} @ {}", screenIdx, *w, *h, *fps);
   return true;
@@ -451,7 +451,7 @@ bool CWinSystemTVOS::BeginRender()
 {
   bool rtn;
 
-  [g_xbmcController setFramebuffer];
+  [g_Controller setFramebuffer];
 
   rtn = CRenderSystemGLES::BeginRender();
   return rtn;
@@ -531,7 +531,7 @@ void CWinSystemTVOS::PresentRenderImpl(bool rendered)
 {
   //glFlush;
   if (rendered)
-    [g_xbmcController presentFramebuffer];
+    [g_Controller presentFramebuffer];
 }
 
 bool CWinSystemTVOS::HasCursor()
@@ -573,7 +573,7 @@ bool CWinSystemTVOS::Show(bool raise)
 
 CVEAGLContext CWinSystemTVOS::GetEAGLContextObj()
 {
-  return [g_xbmcController getEAGLContextObj];
+  return [g_Controller getEAGLContextObj];
 }
 
 std::vector<std::string> CWinSystemTVOS::GetConnectedOutputs()

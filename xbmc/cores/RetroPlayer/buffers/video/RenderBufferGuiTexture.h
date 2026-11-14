@@ -15,7 +15,7 @@
 
 #include <memory>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -46,4 +46,4 @@ protected:
 };
 
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

@@ -18,7 +18,7 @@
 #include <cassert>
 #include <string_view>
 
-using namespace KODI::LANGUAGE::I18N;
+using namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N;
 using namespace std::literals;
 
 std::optional<ParsedBcp47Tag> CBcp47Parser::Parse(std::string str)

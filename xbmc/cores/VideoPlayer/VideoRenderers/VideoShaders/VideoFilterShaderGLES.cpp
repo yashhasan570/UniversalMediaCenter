@@ -106,7 +106,7 @@ ConvolutionFilterShader::ConvolutionFilterShader(ESCALINGMETHOD method, bool dit
   }
 
   if (m_dither)
-    defines += "#define XBMC_DITHER\n";
+    defines += "#define _DITHER\n";
 
   CLog::Log(LOGDEBUG, "GLES: using scaling method: {}",
             fmt::formatter<ESCALINGMETHOD>::ToString(m_method));

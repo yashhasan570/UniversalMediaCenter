@@ -15,7 +15,7 @@
 class CFileItem;
 class CMediaSource;
 
-namespace KODI::VIDEO
+namespace UNIVERSAL MEDIA CENTER::VIDEO
 {
 class IVideoItemArtworkHandler
 {
@@ -50,4 +50,4 @@ public:
                                                           const std::string& artType);
 };
 
-} // namespace KODI::VIDEO
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO

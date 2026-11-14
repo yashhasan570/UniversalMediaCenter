@@ -38,9 +38,9 @@
 #define PROPERTY_GROUP_BY           "group.by"
 #define PROPERTY_GROUP_MIXED        "group.mixed"
 
-using namespace KODI;
-using KODI::MEDIA::MediaTypeFromName;
-using KODI::MEDIA::PluralNameOf;
+using namespace UNIVERSAL MEDIA CENTER;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaTypeFromName;
+using UNIVERSAL MEDIA CENTER::MEDIA::PluralNameOf;
 
 namespace XFILE
 {

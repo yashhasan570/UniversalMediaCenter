@@ -8,7 +8,7 @@
 
 #include "GUIFeatureTranslator.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 BUTTON_TYPE CGUIFeatureTranslator::GetButtonType(JOYSTICK::FEATURE_TYPE featureType)

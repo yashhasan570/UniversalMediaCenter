@@ -9,9 +9,9 @@
 #pragma once
 
 #include "settings/lib/ISettingsMigrationStep.h"
-#include "utils/XBMCTinyXML.h"
+#include "utils/TinyXML.h"
 
-namespace KODI::SETTINGS
+namespace UNIVERSAL MEDIA CENTER::SETTINGS
 {
 
 /*!
@@ -20,4 +20,4 @@ namespace KODI::SETTINGS
  */
 MigrationStepList BuildMigrationSteps();
 
-} // namespace KODI::SETTINGS
+} // namespace UNIVERSAL MEDIA CENTER::SETTINGS

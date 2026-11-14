@@ -12,7 +12,7 @@ if(PATCH_FOUND)
 else()
   set(PATCH_ARCHIVE_NAME "patch-2.7.6-bin")
   set(PATCH_ARCHIVE "${PATCH_ARCHIVE_NAME}.zip")
-  set(PATCH_URL "${KODI_MIRROR}/build-deps/win32/${PATCH_ARCHIVE}")
+  set(PATCH_URL "${UNIVERSALMEDIA_MIRROR}/build-deps/win32/${PATCH_ARCHIVE}")
   set(PATCH_DOWNLOAD ${BUILD_DIR}/download/${PATCH_ARCHIVE})
 
   # download the archive containing patch.exe

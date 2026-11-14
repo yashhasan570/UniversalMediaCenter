@@ -11,7 +11,7 @@
 #include <string>
 #include <vector>
 
-namespace KODI::ADDONS
+namespace UNIVERSAL MEDIA CENTER::ADDONS
 {
 
 /*!
@@ -72,4 +72,4 @@ public:
       const std::string& addonId) = 0;
 };
 
-} // namespace KODI::ADDONS
+} // namespace UNIVERSAL MEDIA CENTER::ADDONS

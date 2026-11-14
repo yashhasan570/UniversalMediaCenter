@@ -11,7 +11,7 @@
 #include "addons/addoninfo/AddonInfo.h"
 #include "addons/addoninfo/AddonInfoBuilder.h"
 #include "addons/addoninfo/AddonType.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 
 #include <set>
 #include <string>
@@ -26,17 +26,17 @@ const std::string addonXML = R"xml(
        version="1.2.3"
        provider-name="Team Universal Media Center">
   <requires>
-    <import addon="xbmc.metadata" version="2.1.0"/>
+    <import addon=".metadata" version="2.1.0"/>
     <import addon="metadata.common.imdb.com" minversion="2.9.2" version="2.9.2"/>
     <import addon="metadata.common.themoviedb.org" minversion="3.1.0" version="3.1.0"/>
     <import addon="plugin.video.youtube" minversion="4.4.0" version="4.4.10" optional="true"/>
   </requires>
-  <extension point="xbmc.metadata.scraper.movies"
+  <extension point=".metadata.scraper.movies"
              language="en"
              library="blablabla.xml"/>
-  <extension point="xbmc.python.module"
+  <extension point=".python.module"
              library="lib.so"/>
-  <extension point="kodi.addon.metadata">
+  <extension point="universalmediacenter.addon.metadata">
     <summary lang="en">Summary bla bla bla</summary>
     <description lang="en">Description bla bla bla</description>
     <disclaimer lang="en">Disclaimer bla bla bla</disclaimer>
@@ -46,7 +46,7 @@ const std::string addonXML = R"xml(
     <forum>https://github.com/yashhasan570/UniversalMediaCenter</forum>
     <website>https://github.com/yashhasan570/UniversalMediaCenter</website>
     <email>a@a.dummy</email>
-    <source>https://github.com/xbmc/xbmc</source>
+    <source>https://github.com//</source>
   </extension>
 </addon>
 )xml";
@@ -60,15 +60,15 @@ AddonInfoPtr GenerateWithLibrary(const std::string& libraryName)
        name="The Binary Bla Bla Bla Addon"
        version="1.2.3"
        provider-name="Team Universal Media Center">
-  <extension point="xbmc.python.module" library=")xml" +
+  <extension point=".python.module" library=")xml" +
                           libraryName + R"xml("/>
-  <extension point="kodi.addon.metadata">
+  <extension point="universalmediacenter.addon.metadata">
     <platform>all</platform>
   </extension>
 </addon>
 )xml";
 
-  CXBMCTinyXML2 doc;
+  CTinyXML2 doc;
   EXPECT_TRUE(doc.Parse(xml));
   return CAddonInfoBuilder::Generate(doc.RootElement(), RepositoryDirInfo{});
 }
@@ -98,7 +98,7 @@ TEST_F(TestAddonInfoBuilder, TestGenerate_Id_Type)
 
 TEST_F(TestAddonInfoBuilder, TestGenerate_Repo)
 {
-  CXBMCTinyXML2 doc;
+  CTinyXML2 doc;
   EXPECT_TRUE(doc.Parse(addonXML));
   ASSERT_NE(nullptr, doc.RootElement());
 
@@ -127,11 +127,11 @@ TEST_F(TestAddonInfoBuilder, TestGenerate_Repo)
   EXPECT_EQ(addon->Forum(), "https://github.com/yashhasan570/UniversalMediaCenter");
   EXPECT_EQ(addon->Website(), "https://github.com/yashhasan570/UniversalMediaCenter");
   EXPECT_EQ(addon->EMail(), "a@a.dummy");
-  EXPECT_EQ(addon->Source(), "https://github.com/xbmc/xbmc");
+  EXPECT_EQ(addon->Source(), "https://github.com//");
 
   const std::vector<DependencyInfo>& dependencies = addon->GetDependencies();
   ASSERT_EQ(dependencies.size(), (long unsigned int)4);
-  EXPECT_EQ(dependencies[0].id, "xbmc.metadata");
+  EXPECT_EQ(dependencies[0].id, ".metadata");
   EXPECT_EQ(dependencies[0].optional, false);
   EXPECT_EQ(dependencies[0].versionMin.asString(), "2.1.0");
   EXPECT_EQ(dependencies[0].version.asString(), "2.1.0");

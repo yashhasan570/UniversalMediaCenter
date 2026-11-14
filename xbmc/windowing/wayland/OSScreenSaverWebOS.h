@@ -12,7 +12,7 @@
 
 #include <webos-helpers/libhelpers.h>
 
-namespace KODI::WINDOWING::WAYLAND
+namespace UNIVERSAL MEDIA CENTER::WINDOWING::WAYLAND
 {
 
 class COSScreenSaverWebOS : public IOSScreenSaver
@@ -35,4 +35,4 @@ private:
   std::unique_ptr<HContext> m_requestContext;
 };
 
-} // namespace KODI::WINDOWING::WAYLAND
+} // namespace UNIVERSAL MEDIA CENTER::WINDOWING::WAYLAND

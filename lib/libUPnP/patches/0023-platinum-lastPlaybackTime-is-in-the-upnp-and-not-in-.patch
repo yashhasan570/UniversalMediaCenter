@@ -1,5 +1,5 @@
 From 19863401ba591822bc1df58c8d804530e0bafc16 Mon Sep 17 00:00:00 2001
-From: montellese <montellese@xbmc.org>
+From: montellese <montellese@.org>
 Date: Thu, 23 Jan 2014 19:36:06 +0100
 Subject: [PATCH 23/24] platinum: lastPlaybackTime is in the "upnp" and not in
  the "dc" namespace

@@ -12,7 +12,7 @@
 #include <string_view>
 #include <utility>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 namespace

@@ -1,2 +1,2 @@
-xbmc/media                                      media
-xbmc/media/drm                                  drm
+/media                                      media
+/media/drm                                  drm

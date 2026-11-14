@@ -8,7 +8,7 @@
 
 #pragma once
 
-namespace KODI::VIDEO::GUILIB
+namespace UNIVERSAL MEDIA CENTER::VIDEO::GUILIB
 {
 
 /*!
@@ -26,4 +26,4 @@ void OpenDialogSelectAudioStream();
  */
 void OpenDialogSelectSubtitleStream();
 
-} // namespace KODI::VIDEO::GUILIB
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO::GUILIB

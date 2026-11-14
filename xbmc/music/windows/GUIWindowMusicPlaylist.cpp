@@ -41,7 +41,7 @@
 #include "utils/log.h"
 #include "view/GUIViewState.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 #define CONTROL_BTNVIEWASICONS 2
 #define CONTROL_BTNSORTBY 3

@@ -39,7 +39,7 @@ public:
     CLog::Log(LOGDEBUG, "AERingBuffer::~AERingBuffer: Deleting buffer.");
 #endif
     for (unsigned int i = 0; i < m_planes; i++)
-      KODI::MEMORY::AlignedFree(m_Buffer[i]);
+      UNIVERSAL MEDIA CENTER::MEMORY::AlignedFree(m_Buffer[i]);
     delete[] m_Buffer;
   }
 
@@ -53,7 +53,7 @@ public:
     m_Buffer = new unsigned char*[planes];
     for (unsigned int i = 0; i < planes; i++)
     {
-      m_Buffer[i] = static_cast<unsigned char*>(KODI::MEMORY::AlignedMalloc(size, 16));
+      m_Buffer[i] = static_cast<unsigned char*>(UNIVERSAL MEDIA CENTER::MEMORY::AlignedMalloc(size, 16));
       if (!m_Buffer[i])
         return false;
       memset(m_Buffer[i], 0, size);
@@ -193,7 +193,7 @@ public:
    */
   void Dump()
   {
-    unsigned char *bufferContents = static_cast<unsigned char*>(KODI::MEMORY::AlignedMalloc(m_iSize * m_planes + 1, 16));
+    unsigned char *bufferContents = static_cast<unsigned char*>(UNIVERSAL MEDIA CENTER::MEMORY::AlignedMalloc(m_iSize * m_planes + 1, 16));
     unsigned char *dest = bufferContents;
     for (unsigned int j = 0; j < m_planes; j++)
     {
@@ -207,7 +207,7 @@ public:
     }
     bufferContents[m_iSize*m_planes] = '\0';
     CLog::LogF(LOGDEBUG, "Buffer Content: {}", reinterpret_cast<const char*>(bufferContents));
-    KODI::MEMORY::AlignedFree(bufferContents);
+    UNIVERSAL MEDIA CENTER::MEMORY::AlignedFree(bufferContents);
   }
 
   /**

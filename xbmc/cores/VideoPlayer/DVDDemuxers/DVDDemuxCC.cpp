@@ -28,10 +28,10 @@
 #include <ranges>
 #include <utility>
 
-namespace COLOR = KODI::UTILS::COLOR;
+namespace COLOR = UNIVERSAL MEDIA CENTER::UTILS::COLOR;
 
-using namespace KODI::UTILS;
-using namespace KODI::LANGUAGE;
+using namespace UNIVERSAL MEDIA CENTER::UTILS;
+using namespace UNIVERSAL MEDIA CENTER::LANGUAGE;
 
 namespace
 {

@@ -6,7 +6,7 @@
  *  See LICENSES/README.md for more information.
  */
 
-#include "JNIXBMCURIUtils.h"
+#include "JNIURIUtils.h"
 
 #include "CompileInfo.h"
 #include "utils/URIUtils.h"
@@ -16,23 +16,23 @@
 
 using namespace jni;
 
-static std::string s_className = std::string(CCompileInfo::GetClass()) + "/XBMCURIUtils";
+static std::string s_className = std::string(CCompileInfo::GetClass()) + "/URIUtils";
 
-void CJNIXBMCURIUtils::RegisterNatives(JNIEnv *env)
+void CJNIURIUtils::RegisterNatives(JNIEnv *env)
 {
   jclass cClass = env->FindClass(s_className.c_str());
   if(cClass)
   {
     JNINativeMethod methods[] =
     {
-      {"_substitutePath", "(Ljava/lang/String;)Ljava/lang/String;", (void*)&CJNIXBMCURIUtils::_substitutePath},
+      {"_substitutePath", "(Ljava/lang/String;)Ljava/lang/String;", (void*)&CJNIURIUtils::_substitutePath},
     };
 
     env->RegisterNatives(cClass, methods, sizeof(methods)/sizeof(methods[0]));
   }
 }
 
-jstring CJNIXBMCURIUtils::_substitutePath(JNIEnv *env, jobject thiz, jstring path)
+jstring CJNIURIUtils::_substitutePath(JNIEnv *env, jobject thiz, jstring path)
 {
   std::string strPath = jcast<std::string>(jhstring::fromJNI(path));
   std::string responseData = URIUtils::SubstitutePath(strPath);

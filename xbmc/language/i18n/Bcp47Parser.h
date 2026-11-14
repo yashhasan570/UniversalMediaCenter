@@ -14,7 +14,7 @@
 #include <string>
 #include <vector>
 
-namespace KODI::LANGUAGE::I18N
+namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N
 {
 struct ParsedBcp47Tag
 {
@@ -49,4 +49,4 @@ private:
   static std::optional<ParsedBcp47Tag> TryParseRegularGrandfathered(const std::string& str);
   static std::optional<ParsedBcp47Tag> TryParseIrregularGrandfathered(const std::string& str);
 };
-} // namespace KODI::LANGUAGE::I18N
+} // namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N

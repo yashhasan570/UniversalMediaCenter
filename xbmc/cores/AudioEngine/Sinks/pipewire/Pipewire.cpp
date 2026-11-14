@@ -19,7 +19,7 @@
 
 using namespace std::chrono_literals;
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace PIPEWIRE;
 
 CPipewire::CPipewire()

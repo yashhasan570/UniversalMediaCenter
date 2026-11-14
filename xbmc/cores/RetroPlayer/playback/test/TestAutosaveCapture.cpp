@@ -13,7 +13,7 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI::RETRO;
+using namespace UNIVERSAL MEDIA CENTER::RETRO;
 
 TEST(TestAutosaveCapture, ReusesCoreStateAndCapturesAchievementsOnMarkedFrame)
 {

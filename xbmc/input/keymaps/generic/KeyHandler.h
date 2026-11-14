@@ -18,7 +18,7 @@
 
 class CAction;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace ACTION
 {
@@ -114,4 +114,4 @@ private:
   CAction m_lastAction;
 };
 } // namespace KEYMAP
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

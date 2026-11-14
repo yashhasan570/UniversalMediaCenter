@@ -27,7 +27,7 @@ CVideoTagLoaderPlugin::CVideoTagLoaderPlugin(const CFileItem& item, bool forceRe
     m_tag = std::make_unique<CVideoInfoTag>(*m_item.GetVideoInfoTag());
   auto& art = item.GetArt();
   if (!art.empty())
-    m_art = std::make_unique<KODI::ART::Artwork>(art);
+    m_art = std::make_unique<UNIVERSAL MEDIA CENTER::ART::Artwork>(art);
 }
 
 bool CVideoTagLoaderPlugin::HasInfo() const
@@ -41,11 +41,11 @@ CInfoScanner::InfoType CVideoTagLoaderPlugin::Load(CVideoInfoTag& tag,
 {
   if (m_force_refresh)
   {
-    // In case of force refresh call our plugin with option "kodi_action=refresh_info"
+    // In case of force refresh call our plugin with option "universalmediacenter_action=refresh_info"
     // Plugin must do all refreshing work at specified path and return directory containing one ListItem with video tag and art
     // We cannot obtain all info from setResolvedUrl, because CPluginDirectory::GetPluginResult doesn't copy full art
     CURL url(m_item.GetPath());
-    url.SetOption("kodi_action", "refresh_info");
+    url.SetOption("universalmediacenter_action", "refresh_info");
     CPluginDirectory plugin;
     CFileItemList items;
     if (!plugin.GetDirectory(url, items))
@@ -53,7 +53,7 @@ CInfoScanner::InfoType CVideoTagLoaderPlugin::Load(CVideoInfoTag& tag,
     if (!items.IsEmpty())
     {
       const CFileItemPtr &item = items[0];
-      m_art = std::make_unique<KODI::ART::Artwork>(item->GetArt());
+      m_art = std::make_unique<UNIVERSAL MEDIA CENTER::ART::Artwork>(item->GetArt());
       if (item->HasVideoInfoTag())
       {
         tag = *item->GetVideoInfoTag();

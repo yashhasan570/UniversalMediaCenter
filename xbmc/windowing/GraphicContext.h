@@ -169,7 +169,7 @@ public:
    a defined color buffer value. Has to be called at the beginning of a frame.
    \param color the specified color.
    */
-  void Clear(KODI::UTILS::COLOR::Color color);
+  void Clear(UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color color);
   void GetAllowedResolutions(std::vector<RESOLUTION> &res);
   /*! \brief Sets the direction of the current rendering pass.
    \param renderOrder direction of the pass
@@ -208,8 +208,8 @@ public:
   const TransformMatrix &GetGUIMatrix() const;
   float GetGUIScaleX() const;
   float GetGUIScaleY() const;
-  KODI::UTILS::COLOR::Color MergeAlpha(KODI::UTILS::COLOR::Color color) const;
-  KODI::UTILS::COLOR::Color MergeColor(KODI::UTILS::COLOR::Color color) const;
+  UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color MergeAlpha(UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color color) const;
+  UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color MergeColor(UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color color) const;
   void SetOrigin(float x, float y);
   void RestoreOrigin();
   void SetCameraPosition(const CPoint &camera);

@@ -84,7 +84,7 @@ private:
   std::string m_filename;
   std::string m_args;
   bool m_hideconsole;
-  bool m_hidexbmc;
+  bool m_hide;
   bool m_islauncher;
   bool m_playOneStackItem;
   WARP_CURSOR m_warpcursor;

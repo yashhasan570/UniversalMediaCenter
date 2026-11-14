@@ -52,13 +52,13 @@ private:
   RESOLUTION_INFO RawGrid() const;
 
   //! \brief The colour of the frame for the entry at \p index in the vocabulary.
-  static KODI::UTILS::COLOR::Color FrameColour(size_t index);
+  static UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color FrameColour(size_t index);
 
-  void DrawFrame(const CRect& rect, KODI::UTILS::COLOR::Color colour, float thickness);
+  void DrawFrame(const CRect& rect, UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color colour, float thickness);
   void DrawLabel(float x,
                  float y,
                  uint32_t alignment,
-                 KODI::UTILS::COLOR::Color colour,
+                 UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color colour,
                  const std::string& text);
   void DrawLegend(const CRect& display, const std::set<int>& shown);
 
@@ -75,7 +75,7 @@ private:
   //! \brief Show the shape the viewer has already stated, once per session.
   void ApplyDefaultRatios();
 
-  std::vector<KODI::UTILS::AspectRatioEntry> m_entries;
+  std::vector<UNIVERSAL MEDIA CENTER::UTILS::AspectRatioEntry> m_entries;
 
   mutable CCriticalSection m_stateSection;
   std::set<int> m_shown;

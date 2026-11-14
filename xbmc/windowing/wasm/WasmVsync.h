@@ -9,7 +9,7 @@
 
 // Display refresh ticks from the browser main thread's requestAnimationFrame
 // loop, shared with every Universal Media Center thread that paces itself to the display.
-namespace KODI::WINDOWING::WASM::VSYNC
+namespace UNIVERSAL MEDIA CENTER::WINDOWING::WASM::VSYNC
 {
 // Installs the requestAnimationFrame pump on the browser main thread and waits
 // briefly for it to measure the refresh rate. Idempotent.
@@ -30,4 +30,4 @@ double RefreshRate();
 
 // Whether the pump has seen enough frames for RefreshRate() to have settled.
 bool RefreshRateSettled();
-} // namespace KODI::WINDOWING::WASM::VSYNC
+} // namespace UNIVERSAL MEDIA CENTER::WINDOWING::WASM::VSYNC

@@ -16,7 +16,7 @@
 
 class CD3DTexture;
 
-namespace KODI::SHADER
+namespace UNIVERSAL MEDIA CENTER::SHADER
 {
 
 /*!
@@ -41,4 +41,4 @@ private:
   // Construction parameter
   const std::shared_ptr<CD3DTexture> m_texture;
 };
-} // namespace KODI::SHADER
+} // namespace UNIVERSAL MEDIA CENTER::SHADER

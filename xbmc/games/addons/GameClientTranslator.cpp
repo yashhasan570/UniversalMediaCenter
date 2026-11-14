@@ -8,7 +8,7 @@
 
 #include "GameClientTranslator.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 const char* CGameClientTranslator::ToString(GAME_ERROR error)

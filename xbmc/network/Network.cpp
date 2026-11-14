@@ -430,8 +430,8 @@ std::vector<SOCKET> CreateTCPServerSocket(const int port, const bool bindLocal, 
     if (sock == INVALID_SOCKET)
       continue;
 
-    KODI::NETWORK::SetReusePort(sock);
-    KODI::NETWORK::SetIPv6Only(sock, 1);
+    UNIVERSAL MEDIA CENTER::NETWORK::SetReusePort(sock);
+    UNIVERSAL MEDIA CENTER::NETWORK::SetIPv6Only(sock, 1);
 
     if (bind(sock, result->ai_addr, result->ai_addrlen) != 0)
     {
@@ -476,7 +476,7 @@ void CNetworkBase::WaitForNet()
   for(int i=0; i < numMaxTries; ++i)
   {
     if (i > 0)
-      KODI::TIME::Sleep(std::chrono::milliseconds(intervalMs));
+      UNIVERSAL MEDIA CENTER::TIME::Sleep(std::chrono::milliseconds(intervalMs));
 
     if (IsConnected())
     {

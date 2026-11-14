@@ -12,9 +12,9 @@
 #include "utils/log.h"
 
 #ifndef SWIG
-namespace XBMCAddon
+namespace Addon
 {
-  XBMCCOMMONS_STANDARD_EXCEPTION(WrongTypeException);
+  COMMONS_STANDARD_EXCEPTION(WrongTypeException);
 
   /**
    * UnimplementedException Can be used in places like the
@@ -40,7 +40,7 @@ namespace XBMCAddon
   {
   public:
     inline UnhandledException(const UnhandledException& other) = default;
-    inline UnhandledException(const char* _message,...) : Exception("UnhandledException") { XBMCCOMMONS_COPYVARARGS(_message); }
+    inline UnhandledException(const char* _message,...) : Exception("UnhandledException") { COMMONS_COPYVARARGS(_message); }
   };
 }
 #endif

@@ -14,7 +14,7 @@
 
 #include <string>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -68,4 +68,4 @@ private:
   IConfigurationWizard* const m_wizard;
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

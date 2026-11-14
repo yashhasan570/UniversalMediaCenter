@@ -8,8 +8,8 @@ This guide has been tested with Windows 11 Pro x64, version 25H2. Please read it
 2. **[Prerequisites](#2-prerequisites)**
 3. **[Get the source code](#3-get-the-source-code)**
 4. **[Set up the build environment](#4-set-up-the-build-environment)**
-5. **[Build Universal Media Center automagically](#5-build-kodi-automagically)**
-6. **[Build Universal Media Center manually](#6-build-kodi-manually)**
+5. **[Build Universal Media Center automagically](#5-build-universalmediacenter-automagically)**
+6. **[Build Universal Media Center manually](#6-build-universalmediacenter-manually)**
 7. **[Build binary add-ons manually](#7-build-binary-add-ons-manually)**  
   7.1. **[In-tree building of binary add-ons](#71-in-tree-building-of-binary-add-ons)**  
 
@@ -25,17 +25,17 @@ and yet another one
 
 **Example:** Clone Universal Media Center's current master branch:
 ```
-git clone https://github.com/xbmc/xbmc kodi
+git clone https://github.com// universalmediacenter
 ```
 
 Commands that contain strings enclosed in angle brackets denote something you need to change to suit your needs.
 ```
-git clone -b <branch-name> https://github.com/xbmc/xbmc kodi
+git clone -b <branch-name> https://github.com// universalmediacenter
 ```
 
 **Example:** Clone Universal Media Center's current Matrix branch:
 ```
-git clone -b Matrix https://github.com/xbmc/xbmc kodi
+git clone -b Matrix https://github.com// universalmediacenter
 ```
 
 Several different strategies are used to draw your attention to certain pieces of information. In order of how critical the information is, these items are marked as a note, tip, or warning. For example:
@@ -110,7 +110,7 @@ cd %userprofile%
 
 Clone Universal Media Center's current master branch:
 ```
-git clone https://github.com/xbmc/xbmc kodi
+git clone https://github.com// universalmediacenter
 ```
 
 **[back to top](#table-of-contents)**
@@ -128,22 +128,22 @@ Universal Media Center can be built as either a normal 64bit, 32bit or ARM64 pro
 
 Change to the 64bit build directory (**recommended**):
 ```
-cd %userprofile%\kodi\tools\buildsteps\windows\x64
+cd %userprofile%\universalmediacenter\tools\buildsteps\windows\x64
 ```
 
 Or change to the 32bit build directory:
 ```
-cd %userprofile%\kodi\tools\buildsteps\windows\win32
+cd %userprofile%\universalmediacenter\tools\buildsteps\windows\win32
 ```
 
 Or change to the ARM 64bit build directory:
 ```
-cd %userprofile%\kodi\tools\buildsteps\windows\arm64
+cd %userprofile%\universalmediacenter\tools\buildsteps\windows\arm64
 ```
 
 Or change to the UWP 64bit build directory:
 ```
-cd %userprofile%\kodi\tools\buildsteps\windows\x64-uwp
+cd %userprofile%\universalmediacenter\tools\buildsteps\windows\x64-uwp
 ```
 
 Download dependencies:
@@ -169,9 +169,9 @@ Build a package ready to install:
 BuildSetup.bat
 ```
 
-*Normal* 32bit, 64bit and ARM 64bit builds generate an `exe` file ready to run, located at `%userprofile%\kodi\kodi-build\Debug` or `%userprofile%\kodi\kodi-build\Release`, depending on the build config. An installer `exe` file, located at `%userprofile%\kodi\project\Win32BuildSetup`, is also generated.
+*Normal* 32bit, 64bit and ARM 64bit builds generate an `exe` file ready to run, located at `%userprofile%\universalmediacenter\universalmediacenter-build\Debug` or `%userprofile%\universalmediacenter\universalmediacenter-build\Release`, depending on the build config. An installer `exe` file, located at `%userprofile%\universalmediacenter\project\Win32BuildSetup`, is also generated.
 
-UWP builds generate `msix`, `appxsym` and `cer` files, located at `%userprofile%\kodi\project\UWPBuildSetup`. You can install them following this **[guide](https://github.com/yashhasan570/UniversalMediaCenter/wiki/view/HOW-TO:Install_Universal Media Center_for_Universal_Windows_Platform)**.
+UWP builds generate `msix`, `appxsym` and `cer` files, located at `%userprofile%\universalmediacenter\project\UWPBuildSetup`. You can install them following this **[guide](https://github.com/yashhasan570/UniversalMediaCenter/wiki/view/HOW-TO:Install_Universal Media Center_for_Universal_Windows_Platform)**.
 
 > [!NOTE]  
 > To generate an exact replica of the official Universal Media Center Windows installer, some additional steps are required:
@@ -198,34 +198,34 @@ cd %userprofile%
 
 Create an out-of-source build directory:
 ```
-mkdir kodi-build
+mkdir universalmediacenter-build
 ```
 
 Change to build directory:
 ```
-cd kodi-build
+cd universalmediacenter-build
 ```
 
 *Note:* For *Visual Studio 2026* substitute "Visual Studio 18 2026" for "Visual Studio 17 2022" below.
 
 Configure build for 64bit (**recommended**):
 ```
-cmake -G "Visual Studio 17 2022" -A x64 %userprofile%\kodi
+cmake -G "Visual Studio 17 2022" -A x64 %userprofile%\universalmediacenter
 ```
 
 Or configure build for 32bit:
 ```
-cmake -G "Visual Studio 17 2022" -A Win32 %userprofile%\kodi
+cmake -G "Visual Studio 17 2022" -A Win32 %userprofile%\universalmediacenter
 ```
 
 Or configure build for ARM 64bit:
 ```
-cmake -G "Visual Studio 17 2022" -A arm64 %userprofile%\kodi
+cmake -G "Visual Studio 17 2022" -A arm64 %userprofile%\universalmediacenter
 ```
 
 Or configure build for UWP 64bit:
 ```
-cmake -G "Visual Studio 17 2022" -A x64 -DCMAKE_SYSTEM_NAME=WindowsStore -DCMAKE_SYSTEM_VERSION=10.0 %userprofile%\kodi
+cmake -G "Visual Studio 17 2022" -A x64 -DCMAKE_SYSTEM_NAME=WindowsStore -DCMAKE_SYSTEM_VERSION=10.0 %userprofile%\universalmediacenter
 ```
 
 Build Universal Media Center:
@@ -239,8 +239,8 @@ Or build a `Release` binary:
 cmake --build . --config "Release"
 ```
 
-*Normal* 32bit, 64bit and ARM 64bit builds generate an `exe` file ready to run, located at `%userprofile%\kodi-build\Debug` or `%userprofile%\kodi-build\Release`, depending on the build config.
-UWP builds generate `msix`, `appxsym` and `cer` files, located inside directories at `%userprofile%\kodi-build\AppPackages\kodi\`. You can install them following this **[guide](https://github.com/yashhasan570/UniversalMediaCenter/wiki/view/HOW-TO:Install_Universal Media Center_for_Universal_Windows_Platform)**.
+*Normal* 32bit, 64bit and ARM 64bit builds generate an `exe` file ready to run, located at `%userprofile%\universalmediacenter-build\Debug` or `%userprofile%\universalmediacenter-build\Release`, depending on the build config.
+UWP builds generate `msix`, `appxsym` and `cer` files, located inside directories at `%userprofile%\universalmediacenter-build\AppPackages\universalmediacenter\`. You can install them following this **[guide](https://github.com/yashhasan570/UniversalMediaCenter/wiki/view/HOW-TO:Install_Universal Media Center_for_Universal_Windows_Platform)**.
 
 ### Compiler caching
 
@@ -279,23 +279,23 @@ build directory paths stable for reliable reuse of debug information. Inspect
 statistics with `ccache -s`, or reset only the counters with `ccache -s -z` before
 measuring a rebuild. Restart the agent service after changing its environment.
 
-**[back to top](#table-of-contents)** | **[back to section top](#6-build-kodi-manually)**
+**[back to top](#table-of-contents)** | **[back to section top](#6-build-universalmediacenter-manually)**
 
 ## 7. Build binary add-ons manually
-You can find a complete list of available binary add-ons **[here](https://github.com/xbmc/repo-binary-addons)**.
+You can find a complete list of available binary add-ons **[here](https://github.com//repo-binary-addons)**.
 
-There are two approaches to build binary add-ons: _In-tree_ building that is automated, but doesn't support building from sources (forks, PRs, branches) other than the [Universal Media Center binary addon repo](https://github.com/xbmc/repo-binary-addons), and _out-of-tree_ building that allows building from any source. Please refer to each add-on repository for out-of-tree build instructions.
+There are two approaches to build binary add-ons: _In-tree_ building that is automated, but doesn't support building from sources (forks, PRs, branches) other than the [Universal Media Center binary addon repo](https://github.com//repo-binary-addons), and _out-of-tree_ building that allows building from any source. Please refer to each add-on repository for out-of-tree build instructions.
 
 ### 7.1. In-tree building of binary add-ons
 Change to the architecture platform you wish to build for (examples use x64):
 ```
-cd %userprofile%\kodi\tools\buildsteps\windows\x64
+cd %userprofile%\universalmediacenter\tools\buildsteps\windows\x64
 ```
 Build specific add-on:
 ```
 make-addons.bat package audioencoder.flac
 ```
-Built files are under the folder `kodi\addons\<add-on name>`.
+Built files are under the folder `universalmediacenter\addons\<add-on name>`.
 
 Clean-up binary add-ons:
 ```

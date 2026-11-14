@@ -10,7 +10,7 @@
 
 #include "windowing/OSScreenSaver.h"
 
-namespace KODI::WINDOWING::WASM
+namespace UNIVERSAL MEDIA CENTER::WINDOWING::WASM
 {
 
 /*!
@@ -24,4 +24,4 @@ public:
   void Uninhibit() override;
 };
 
-} // namespace KODI::WINDOWING::WASM
+} // namespace UNIVERSAL MEDIA CENTER::WINDOWING::WASM

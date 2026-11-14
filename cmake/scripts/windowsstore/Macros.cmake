@@ -6,7 +6,7 @@ macro(winstore_set_assets target)
   set_property(SOURCE ${ASSET_FILES} PROPERTY VS_DEPLOYMENT_LOCATION "media")
   source_group("media" FILES ${ASSET_FILES})
   set(RESOURCES ${RESOURCES} ${ASSET_FILES}
-                            "${CMAKE_SOURCE_DIR}/tools/windows/packaging/uwp/kodi_temp_key.pfx")
+                            "${CMAKE_SOURCE_DIR}/tools/windows/packaging/uwp/universalmediacenter_temp_key.pfx")
 
   set(LICENSE_FILES
     ${CMAKE_SOURCE_DIR}/LICENSE.md

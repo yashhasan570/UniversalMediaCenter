@@ -14,7 +14,7 @@
 #include <string>
 #include <vector>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace JOYSTICK
 {
@@ -44,4 +44,4 @@ private:
   unsigned int m_state = 0;
 };
 } // namespace JOYSTICK
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

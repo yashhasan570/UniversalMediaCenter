@@ -15,8 +15,8 @@
 #include <emscripten.h>
 #include <emscripten/em_asm.h>
 
-using namespace KODI::WINDOWING::WASM;
-using KODI::PLATFORM::WASM::CTizenWebApis;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::WASM;
+using UNIVERSAL MEDIA CENTER::PLATFORM::WASM::CTizenWebApis;
 
 namespace
 {
@@ -28,9 +28,9 @@ void SetWakeLockWanted(bool wanted)
   MAIN_THREAD_EM_ASM(({
     if (!('wakeLock' in navigator))
       return;
-    const kodi = (Module.kodi = Module.kodi || {});
-    if (!kodi.wakeLock) {
-      const wl = (kodi.wakeLock = { wanted: false, pending: false, sentinel: null, warned: false });
+    const universalmediacenter = (Module.universalmediacenter = Module.universalmediacenter || {});
+    if (!universalmediacenter.wakeLock) {
+      const wl = (universalmediacenter.wakeLock = { wanted: false, pending: false, sentinel: null, warned: false });
       wl.acquire = () => {
         if (!wl.wanted || wl.pending || wl.sentinel || document.visibilityState !== 'visible')
           return;
@@ -50,13 +50,13 @@ void SetWakeLockWanted(bool wanted)
           wl.pending = false;
           if (!wl.warned) {
             wl.warned = true;
-            console.warn('[kodi] screen wake lock:', e);
+            console.warn('[universalmediacenter] screen wake lock:', e);
           }
         });
       };
       document.addEventListener('visibilitychange', wl.acquire);
     }
-    const wl = kodi.wakeLock;
+    const wl = universalmediacenter.wakeLock;
     wl.wanted = !!$0;
     if (wl.wanted) {
       wl.acquire();

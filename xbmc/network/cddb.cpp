@@ -183,7 +183,7 @@ std::string Xcddb::Recv(bool wait4point)
 
 
   //##########################################################
-  // Write captured data information to the xbmc log file
+  // Write captured data information to the  log file
   CLog::Log(LOGDEBUG,
             "Xcddb::Recv Captured {0} bytes // Buffer= {1} bytes. Captured data follows on next "
             "line\n{2}",

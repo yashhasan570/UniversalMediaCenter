@@ -299,12 +299,12 @@ public:
    */
   virtual bool SetArtForItem(int mediaId,
                              const std::string& mediaType,
-                             const KODI::ART::Artwork& art);
+                             const UNIVERSAL MEDIA CENTER::ART::Artwork& art);
 
   /*! \brief Adds the art a library item has to \p art, a map of art type to url.
    \return false on a database error
    */
-  virtual bool GetArtForItem(int mediaId, const std::string& mediaType, KODI::ART::Artwork& art);
+  virtual bool GetArtForItem(int mediaId, const std::string& mediaType, UNIVERSAL MEDIA CENTER::ART::Artwork& art);
 
   //! \brief The url of one type of art for a library item, empty if it has none.
   std::string GetArtForItem(int mediaId, const std::string& mediaType, const std::string& artType);
@@ -321,29 +321,29 @@ public:
 
   //! \brief The art functions above, for an item whose table is a media type.
   bool SetArtForItem(int mediaId,
-                     KODI::MEDIA::TYPE mediaType,
+                     UNIVERSAL MEDIA CENTER::MEDIA::TYPE mediaType,
                      const std::string& artType,
                      const std::string& url)
   {
-    return SetArtForItem(mediaId, KODI::MEDIA::NameOf(mediaType), artType, url);
+    return SetArtForItem(mediaId, UNIVERSAL MEDIA CENTER::MEDIA::NameOf(mediaType), artType, url);
   }
-  bool SetArtForItem(int mediaId, KODI::MEDIA::TYPE mediaType, const KODI::ART::Artwork& art)
+  bool SetArtForItem(int mediaId, UNIVERSAL MEDIA CENTER::MEDIA::TYPE mediaType, const UNIVERSAL MEDIA CENTER::ART::Artwork& art)
   {
-    return SetArtForItem(mediaId, KODI::MEDIA::NameOf(mediaType), art);
+    return SetArtForItem(mediaId, UNIVERSAL MEDIA CENTER::MEDIA::NameOf(mediaType), art);
   }
-  bool GetArtForItem(int mediaId, KODI::MEDIA::TYPE mediaType, KODI::ART::Artwork& art)
+  bool GetArtForItem(int mediaId, UNIVERSAL MEDIA CENTER::MEDIA::TYPE mediaType, UNIVERSAL MEDIA CENTER::ART::Artwork& art)
   {
-    return GetArtForItem(mediaId, KODI::MEDIA::NameOf(mediaType), art);
+    return GetArtForItem(mediaId, UNIVERSAL MEDIA CENTER::MEDIA::NameOf(mediaType), art);
   }
-  std::string GetArtForItem(int mediaId, KODI::MEDIA::TYPE mediaType, const std::string& artType)
+  std::string GetArtForItem(int mediaId, UNIVERSAL MEDIA CENTER::MEDIA::TYPE mediaType, const std::string& artType)
   {
-    return GetArtForItem(mediaId, KODI::MEDIA::NameOf(mediaType), artType);
+    return GetArtForItem(mediaId, UNIVERSAL MEDIA CENTER::MEDIA::NameOf(mediaType), artType);
   }
   bool RemoveArtForItem(int mediaId,
-                        KODI::MEDIA::TYPE mediaType,
+                        UNIVERSAL MEDIA CENTER::MEDIA::TYPE mediaType,
                         const std::set<std::string, std::less<>>& artTypes)
   {
-    return RemoveArtForItem(mediaId, KODI::MEDIA::NameOf(mediaType), artTypes);
+    return RemoveArtForItem(mediaId, UNIVERSAL MEDIA CENTER::MEDIA::NameOf(mediaType), artTypes);
   }
 
 protected:

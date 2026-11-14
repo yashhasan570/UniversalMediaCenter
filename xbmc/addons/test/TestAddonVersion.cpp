@@ -231,12 +231,12 @@ TEST_F(TestAddonVersion, LessThan)
   // ref: https://www.python.org/dev/peps/pep-0440/#local-version-identifiers
   // Python addons use this kind of versioning particularly for script.module
   // addons. The "same" version number may exist in different branches or
-  // targeting different kodi versions while keeping consistency with the
+  // targeting different universalmediacenter versions while keeping consistency with the
   // upstream module version. The addon version available in upper repos
   // (let's say matrix) must have a higher version than the one stored in
   // lower branches (e.g. leia) so that users receive the addon update
-  // when upgrading kodi.
-  // So, for instance, we use version x.x.x or version x.x.x+kodiversion.r to
+  // when upgrading universalmediacenter.
+  // So, for instance, we use version x.x.x or version x.x.x+universalmediacenterversion.r to
   // refer to the same upstream version x.x.x of the module.
   // Eg: script.module.foo-1.0.0 or script.module.foo-1.0.0+leia.1 for upstream
   // module foo (version 1.0.0) available for leia; and

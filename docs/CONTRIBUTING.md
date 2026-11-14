@@ -12,7 +12,7 @@ Before you start coding we advise you to build Universal Media Center's master b
 If you are a *git ninja*, we feel happy and sad for you at the same time. Your soul might be lost to the dark side already but worry not, we have cookies!
 
 ## Reviews
-Reviews are a great way to get familiar with the codebase. If you would like to start with reviewing just use **[this handy github filter](https://github.com/xbmc/xbmc/pulls?q=is%3Apr+is%3Aopen+review%3Anone)** to see PRs that are in need of one (we have plenty!).
+Reviews are a great way to get familiar with the codebase. If you would like to start with reviewing just use **[this handy github filter](https://github.com///pulls?q=is%3Apr+is%3Aopen+review%3Anone)** to see PRs that are in need of one (we have plenty!).
 
 ## Pull request submission guidelines
 * **Create topic branches**. Never, ever open a pull request from your master branch. **Ever!**
@@ -22,14 +22,14 @@ Reviews are a great way to get familiar with the codebase. If you would like to 
 * **Be descriptive, but concise**. The *pull request* and *commits* should have a useful title and follow the format:<br/>
 `[Component(s)] Short description...` or alternative format `Component(s): Short description...`<br/>
 By "component", we mean that you should identify the area of the code (gui, video, depends, builds, etc), the code context (e.g. class name), etc. You can easily find hints by browsing through the git history. An example:<br/>
-`[Python][xbmcgui] Fix x problem...` or `Python/xbmcgui: Fix x problem...`<br/>
+`[Python][gui] Fix x problem...` or `Python/gui: Fix x problem...`<br/>
 instead of something like `[README.md] Update`, which is **not** descriptive enough.<br/>
 Also, adding a short description to the *commit* (under the title) is a good thing to consider to give a better explanation of the commit changes.<br/>
 The *pull request* description should only contain information relevant to the change.
 * **Draft PR**. If your work requires further development, and you wish to ask the opinion of other developers on how to proceed, you can publish your PR as Draft.
 
 ## Pull request merge guidelines
-* **First rule, be patient, be kind, rewind**. We're all volunteers with busy lives but usually very responsive in cataloging *pull requests* and pinging the relevant maintainer(s). Although not valid for the whole codebase, specific components of Universal Media Center have a set of [maintainers/code owners](https://github.com/xbmc/xbmc/blob/master/.github/CODEOWNERS) whose review will be automatically requested when you open a pull request.
+* **First rule, be patient, be kind, rewind**. We're all volunteers with busy lives but usually very responsive in cataloging *pull requests* and pinging the relevant maintainer(s). Although not valid for the whole codebase, specific components of Universal Media Center have a set of [maintainers/code owners](https://github.com///blob/master/.github/CODEOWNERS) whose review will be automatically requested when you open a pull request.
 * **Jenkins code formatting requests**. Always apply code style formatting requests from Jenkins. If not, please provide a valid reason why you do not apply them.
 * **Jenkins CI builds**. It is mandatory to have green status on all Jenkins building platforms. The "No-Jenkins" label can be set by maintainers to avoid having the CI build the PR code (and waste build resources) when the contribution is still a work-in-progress or if it's known in advance that it won't build.
 * **Reviewing time**. Be patient. In general terms we're talking weeks, not days, but the active team is small and things can stack up, even with everyone doing their best. If your PR has been standing for too long without a review, feel free to let us know.
@@ -39,12 +39,12 @@ The *pull request* description should only contain information relevant to the c
 ## Coding guidelines
 * **Follow our [code guidelines](CODE_GUIDELINES.md)**. New code should follow those guidelines even if existing code doesn't. If you're up to it, improve existing code and submit it in separate commits.
 * **Document the code**. When changes are made to the code, its functionality may be clear to the author, but other developers who read the block of code (even after several years) can easily have a hard time understanding it. Providing documentation saves time for everyone.
-* **Separate code from cosmetics**. Don't mix code and unrelated cosmetic changes in the same commit. It's already hard to review code without added noise. Of course, deleting a **few** trailing spaces does not warrant a separate commit. Use your judgement. Also, note that the PR build job expects each individual commit to be formatted according to the [`.clang-format`](https://github.com/xbmc/xbmc/blob/master/.clang-format) rules, so if your change touches existing code that needs reformatting to satisfy the current rules, then those would be considered related cosmetic changes that should be included in the same commit.
+* **Separate code from cosmetics**. Don't mix code and unrelated cosmetic changes in the same commit. It's already hard to review code without added noise. Of course, deleting a **few** trailing spaces does not warrant a separate commit. Use your judgement. Also, note that the PR build job expects each individual commit to be formatted according to the [`.clang-format`](https://github.com///blob/master/.clang-format) rules, so if your change touches existing code that needs reformatting to satisfy the current rules, then those would be considered related cosmetic changes that should be included in the same commit.
 * **Test your changes**. Universal Media Center's **[continuous integration system](http://jenkins.github.com/yashhasan570/UniversalMediaCenter/)** builds every PR automatically. Nonetheless, you're expected to test the code on your development platform.
 
 ## Updating your PR
 Making a *pull request* adhere to the standards above can be difficult. If the maintainers notice anything that they'd like changed, they'll ask you to edit your *pull request* before it gets merged. **There's no need to open a new *pull request*, just edit the existing one**. If you're not sure how to do that, our **[git guide](GIT-FU.md)** provides a step by step guide. If you're still not sure, ask us for guidance. We're all fairly proficient with *git* and happy to be of assistance.
 
-<a href="https://github.com/xbmc/xbmc"><img src="https://forthebadge.com/images/badges/made-with-c-plus-plus.svg" height="25"></a>
-<a href="https://github.com/xbmc/xbmc"><img src="https://forthebadge.com/images/badges/contains-technical-debt.svg" height="25"></a>
+<a href="https://github.com//"><img src="https://forthebadge.com/images/badges/made-with-c-plus-plus.svg" height="25"></a>
+<a href="https://github.com//"><img src="https://forthebadge.com/images/badges/contains-technical-debt.svg" height="25"></a>
 

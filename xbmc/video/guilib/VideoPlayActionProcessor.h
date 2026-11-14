@@ -14,7 +14,7 @@
 
 class CFileItem;
 
-namespace KODI::VIDEO::GUILIB
+namespace UNIVERSAL MEDIA CENTER::VIDEO::GUILIB
 {
 class CVideoPlayActionProcessor : public CVideoActionProcessorBase
 {
@@ -46,4 +46,4 @@ private:
   bool m_choosePlayer{false};
   unsigned int m_chosenStackPart{0};
 };
-} // namespace KODI::VIDEO::GUILIB
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO::GUILIB

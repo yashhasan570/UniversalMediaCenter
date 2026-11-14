@@ -23,26 +23,26 @@
 
 #include <vector>
 
-namespace XBMCAddon
+namespace Addon
 {
-  namespace xbmc
+  namespace 
   {
-    XBMCCOMMONS_STANDARD_EXCEPTION(PlayerException);
+    COMMONS_STANDARD_EXCEPTION(PlayerException);
 
     typedef Alternative<String, const PlayList* > PlayParameter;
 
-    // This class is a merge of what was previously in xbmcmodule/player.h
-    //  and xbmcmodule/PythonPlayer.h without the python references. The
+    // This class is a merge of what was previously in module/player.h
+    //  and module/PythonPlayer.h without the python references. The
     //  queuing and handling of asynchronous callbacks is done internal to
     //  this class.
 
     //
     /// \defgroup python_Player Player
-    /// \ingroup python_xbmc
+    /// \ingroup python_
     /// @{
     /// @brief **Universal Media Center's player.**
     ///
-    /// \python_class{ xbmc.Player() }
+    /// \python_class{ .Player() }
     ///
     /// To become and create the class to play something.
     ///
@@ -53,7 +53,7 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ...
-    /// xbmc.Player().play(url, listitem, windowed)
+    /// .Player().play(url, listitem, windowed)
     /// ...
     /// ~~~~~~~~~~~~~
     //
@@ -62,7 +62,7 @@ namespace XBMCAddon
     private:
       int iPlayList;
 
-      void playStream(const String& item = emptyString, const XBMCAddon::xbmcgui::ListItem* listitem = NULL, bool windowed = false);
+      void playStream(const String& item = emptyString, const Addon::gui::ListItem* listitem = NULL, bool windowed = false);
       void playPlaylist(const PlayList* playlist = NULL,
       bool windowed = false, int startpos=-1);
       void playCurrent(bool windowed = false);
@@ -114,17 +114,17 @@ namespace XBMCAddon
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ...
-      /// listitem = xbmcgui.ListItem('Ironman')
+      /// listitem = gui.ListItem('Ironman')
       /// listitem.setInfo('video', {'Title': 'Ironman', 'Genre': 'Science Fiction'})
-      /// xbmc.Player().play(url, listitem, windowed)
-      /// xbmc.Player().play(playlist, listitem, windowed, startpos)
+      /// .Player().play(url, listitem, windowed)
+      /// .Player().play(playlist, listitem, windowed, startpos)
       /// ...
       /// ~~~~~~~~~~~~~
       ///
       play(...);
 #else
       void play(const PlayParameter& item = Player::defaultPlayParameter,
-                const XBMCAddon::xbmcgui::ListItem* listitem = NULL, bool windowed = false, int startpos = -1);
+                const Addon::gui::ListItem* listitem = NULL, bool windowed = false, int startpos = -1);
 #endif
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
@@ -421,7 +421,7 @@ namespace XBMCAddon
       /// @brief \python_func{ isPlayingRDS() }
       /// Check for playing radio data system (RDS).
       ///
-      /// @return                    True if kodi is playing a radio data
+      /// @return                    True if universalmediacenter is playing a radio data
       ///                            system (RDS).
       ///
       isPlayingRDS();
@@ -435,7 +435,7 @@ namespace XBMCAddon
       /// @brief \python_func{ isPlayingGame() }
       /// Check for playing game.
       ///
-      /// @return                    True if kodi is playing a game
+      /// @return                    True if universalmediacenter is playing a game
       ///
       ///------------------------------------------------------------------------
       /// @python_v20 New function added.
@@ -451,7 +451,7 @@ namespace XBMCAddon
       /// @brief \python_func{ isExternalPlayer() }
       /// Check for external player.
       ///
-      /// @return                    True if kodi is playing using an
+      /// @return                    True if universalmediacenter is playing using an
       ///                            external player.
       ///
       ///
@@ -494,7 +494,7 @@ namespace XBMCAddon
       ///
       getPlayingItem();
 #else
-      XBMCAddon::xbmcgui::ListItem* getPlayingItem();
+      Addon::gui::ListItem* getPlayingItem();
 #endif
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
@@ -559,7 +559,7 @@ namespace XBMCAddon
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ...
-      /// xbmc.Player().showSubtitles(True)
+      /// .Player().showSubtitles(True)
       /// ...
       /// ~~~~~~~~~~~~~
       ///
@@ -614,7 +614,7 @@ namespace XBMCAddon
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ...
-      /// xbmc.Player().setSubtitleStream(1)
+      /// .Player().setSubtitleStream(1)
       /// ...
       /// ~~~~~~~~~~~~~
       ///
@@ -639,16 +639,16 @@ namespace XBMCAddon
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ...
-      /// item = xbmcgui.ListItem()
-      /// item.setPath(xbmc.Player().getPlayingFile())
+      /// item = gui.ListItem()
+      /// item.setPath(.Player().getPlayingFile())
       /// item.setInfo('music', {'title' : 'foo', 'artist' : 'bar'})
-      /// xbmc.Player().updateInfoTag(item)
+      /// .Player().updateInfoTag(item)
       /// ...
       /// ~~~~~~~~~~~~~
       ///
       updateInfoTag();
 #else
-      void updateInfoTag(const XBMCAddon::xbmcgui::ListItem* item);
+      void updateInfoTag(const Addon::gui::ListItem* item);
 #endif
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
@@ -710,7 +710,7 @@ namespace XBMCAddon
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ...
-      /// geometry = xbmc.Player().getContentGeometry()
+      /// geometry = .Player().getContentGeometry()
       /// if geometry.getSource() != 'container':
       ///     lens.select(geometry.getAspect())
       /// ...
@@ -804,7 +804,7 @@ namespace XBMCAddon
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ...
-      /// xbmc.Player().setAudioStream(1)
+      /// .Player().setAudioStream(1)
       /// ...
       /// ~~~~~~~~~~~~~
       ///
@@ -843,7 +843,7 @@ namespace XBMCAddon
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ...
-      /// xbmc.Player().setVideoStream(1)
+      /// .Player().setVideoStream(1)
       /// ...
       /// ~~~~~~~~~~~~~
       ///

@@ -13,7 +13,7 @@
 #include <string>
 #include <vector>
 
-namespace KODI::UTILS::FONT
+namespace UNIVERSAL MEDIA CENTER::UTILS::FONT
 {
 constexpr const char* SUPPORTED_EXTENSIONS_MASK = ".ttf|.ttc|.otf";
 
@@ -23,7 +23,7 @@ constexpr const char* FONT_DEFAULT_FILENAME = "arial.ttf";
 namespace FONTPATH
 {
 // Directory where Universal Media Center bundled fonts files are located
-constexpr const char* SYSTEM = "special://xbmc/media/Fonts/";
+constexpr const char* SYSTEM = "special:///media/Fonts/";
 // Directory where user defined fonts are located
 constexpr const char* USER = "special://home/media/Fonts/";
 // Temporary font path (where MKV fonts are extracted and temporarily stored)
@@ -85,4 +85,4 @@ bool IsSupportedFontExtension(const std::string& filepath);
  */
 void ClearTemporaryFonts();
 
-} // namespace KODI::UTILS::FONT
+} // namespace UNIVERSAL MEDIA CENTER::UTILS::FONT

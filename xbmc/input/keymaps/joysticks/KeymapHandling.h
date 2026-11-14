@@ -14,7 +14,7 @@
 #include <string>
 #include <vector>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace JOYSTICK
 {
@@ -75,4 +75,4 @@ private:
   std::vector<std::unique_ptr<JOYSTICK::IInputHandler>> m_inputHandlers;
 };
 } // namespace KEYMAP
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

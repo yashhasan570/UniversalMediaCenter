@@ -23,9 +23,9 @@
 
 using namespace ADDON;
 
-namespace XBMCAddon
+namespace Addon
 {
-  namespace xbmcaddon
+  namespace addon
   {
     String Addon::getDefaultId() { return languageHook == NULL ? emptyString : languageHook->GetAddonId(); }
 
@@ -97,7 +97,7 @@ namespace XBMCAddon
     {
       bool value = false;
       if (!pAddon->GetSettingBool(id, value))
-        throw XBMCAddon::WrongTypeException("Invalid setting type");
+        throw Addon::WrongTypeException("Invalid setting type");
 
       return value;
     }
@@ -106,7 +106,7 @@ namespace XBMCAddon
     {
       int value = 0;
       if (!pAddon->GetSettingInt(id, value))
-        throw XBMCAddon::WrongTypeException("Invalid setting type");
+        throw Addon::WrongTypeException("Invalid setting type");
 
       return value;
     }
@@ -115,7 +115,7 @@ namespace XBMCAddon
     {
       double value = 0.0;
       if (!pAddon->GetSettingNumber(id, value))
-        throw XBMCAddon::WrongTypeException("Invalid setting type");
+        throw Addon::WrongTypeException("Invalid setting type");
 
       return value;
     }
@@ -124,7 +124,7 @@ namespace XBMCAddon
     {
       std::string value;
       if (!pAddon->GetSettingString(id, value))
-        throw XBMCAddon::WrongTypeException("Invalid setting type");
+        throw Addon::WrongTypeException("Invalid setting type");
 
       return value;
     }
@@ -148,7 +148,7 @@ namespace XBMCAddon
         return true;
 
       if (!addon->UpdateSettingBool(id, value))
-        throw XBMCAddon::WrongTypeException("Invalid setting type");
+        throw Addon::WrongTypeException("Invalid setting type");
 
       addon->SaveSettings();
 
@@ -163,7 +163,7 @@ namespace XBMCAddon
         return true;
 
       if (!addon->UpdateSettingInt(id, value))
-        throw XBMCAddon::WrongTypeException("Invalid setting type");
+        throw Addon::WrongTypeException("Invalid setting type");
 
       addon->SaveSettings();
 
@@ -178,7 +178,7 @@ namespace XBMCAddon
         return true;
 
       if (!addon->UpdateSettingNumber(id, value))
-        throw XBMCAddon::WrongTypeException("Invalid setting type");
+        throw Addon::WrongTypeException("Invalid setting type");
 
       addon->SaveSettings();
 
@@ -193,7 +193,7 @@ namespace XBMCAddon
         return true;
 
       if (!addon->UpdateSettingString(id, value))
-        throw XBMCAddon::WrongTypeException("Invalid setting type");
+        throw Addon::WrongTypeException("Invalid setting type");
 
       addon->SaveSettings();
 

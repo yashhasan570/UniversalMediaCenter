@@ -44,8 +44,8 @@ if(NOT TARGET PkgConfig::PkgConfig)
     # Configure
     execute_process(
       COMMAND ${CMAKE_COMMAND} ${CMAKE_SOURCE_DIR}/tools/depends/native/pkgconf
-                               -DKODI_MIRROR=${KODI_MIRROR}
-                               -DKODI_SOURCE_DIR=${CMAKE_SOURCE_DIR}
+                               -DUNIVERSALMEDIA_MIRROR=${UNIVERSALMEDIA_MIRROR}
+                               -DUNIVERSALMEDIA_SOURCE_DIR=${CMAKE_SOURCE_DIR}
                                -DTARBALL_DIR=${TARBALL_DIR}
                                -DNATIVEPREFIX=${NATIVEPREFIX}
                                -DCMAKE_MODULE_PATH=${CMAKE_SOURCE_DIR}/cmake/modules/buildtools

@@ -16,7 +16,7 @@ bool CPlatformDarwin::InitStageOne()
 {
   if (!CPlatformPosix::InitStageOne())
     return false;
-  setenv("SSL_CERT_FILE", CSpecialProtocol::TranslatePath("special://xbmc/system/certs/cacert.pem").c_str(), 0);
+  setenv("SSL_CERT_FILE", CSpecialProtocol::TranslatePath("special:///system/certs/cacert.pem").c_str(), 0);
 
   setenv("OS", "OS X", true); // for python scripts that check the OS
 

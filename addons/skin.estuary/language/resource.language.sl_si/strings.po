@@ -4,12 +4,12 @@
 # Addon Provider: Team Universal Media Center
 msgid ""
 msgstr ""
-"Project-Id-Version: KODI Main\n"
-"Report-Msgid-Bugs-To: https://github.com/xbmc/xbmc/issues/\n"
+"Project-Id-Version: UNIVERSAL MEDIA CENTER Main\n"
+"Report-Msgid-Bugs-To: https://github.com///issues/\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: 2025-04-02 12:55+0000\n"
 "Last-Translator: Simon <dolenec@gmail.com>\n"
-"Language-Team: Slovenian <https://kodi.weblate.cloud/projects/kodi-add-ons-skins/skin-estuary/sl_si/>\n"
+"Language-Team: Slovenian <https://universalmediacenter.weblate.cloud/projects/Universal Media Center-add-ons-skins/skin-estuary/sl_si/>\n"
 "Language: sl_si\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,11 +19,11 @@ msgstr ""
 
 msgctxt "Addon Summary"
 msgid "Estuary skin by phil65. (Universal Media Center's default skin)"
-msgstr "Estuary preobleka od phil65. (Universal Media Centerjeva privzeta preobleka)"
+msgstr "Estuary preobleka od phil65. (UniversalMediaCenter*eva privzeta preobleka)"
 
 msgctxt "Addon Description"
 msgid "Estuary is the default skin for Universal Media Center 17.0 and above. It attempts to be easy for first time Universal Media Center users to understand and use."
-msgstr "Estuary je privzeta preobleka za Universal Media Center 17.0 in novejše. Poskuša biti enostaven za razumevanje in uporabo za prve uporabnike Universal Media Centerja."
+msgstr "Estuary je privzeta preobleka za Universal Media Center 17.0 in novejše. Poskuša biti enostaven za razumevanje in uporabo za prve uporabnike UniversalMediaCenter*a."
 
 msgctxt "Addon Disclaimer"
 msgid "Estuary is the default skin for Universal Media Center, removing it may cause issues"
@@ -555,7 +555,7 @@ msgstr "Predvajalnik"
 #. Label to show video decoder name
 msgctxt "#31139"
 msgid "Video decoder"
-msgstr "Odkodirnik slike"
+msgstr "OdUniversalMediaCenter*nik slike"
 
 #. Label to show the video pixel format
 msgctxt "#31140"

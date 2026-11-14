@@ -15,7 +15,7 @@ extern "C"
 #include <libavutil/pixfmt.h>
 }
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -43,4 +43,4 @@ public:
   static unsigned int TranslateWidthToBytes(unsigned int width, AVPixelFormat format);
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

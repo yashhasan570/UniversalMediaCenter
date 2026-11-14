@@ -10,7 +10,7 @@
 
 #include <EGL/egl.h>
 
-namespace KODI::RETRO
+namespace UNIVERSAL MEDIA CENTER::RETRO
 {
 struct EGLClientFunctions
 {
@@ -66,4 +66,4 @@ private:
   EGLSurface m_prevDraw{EGL_NO_SURFACE};
   EGLSurface m_prevRead{EGL_NO_SURFACE};
 };
-} // namespace KODI::RETRO
+} // namespace UNIVERSAL MEDIA CENTER::RETRO

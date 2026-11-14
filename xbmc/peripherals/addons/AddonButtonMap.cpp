@@ -22,7 +22,7 @@
 #include <mutex>
 #include <vector>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace JOYSTICK;
 using namespace PERIPHERALS;
 
@@ -176,7 +176,7 @@ bool CAddonButtonMap::GetScalar(const FeatureName& feature, CDriverPrimitive& pr
   FeatureMap::const_iterator it = m_features.find(feature);
   if (it != m_features.end())
   {
-    const kodi::addon::JoystickFeature& addonFeature = it->second;
+    const addon::JoystickFeature& addonFeature = it->second;
 
     if (addonFeature.Type() == JOYSTICK_FEATURE_TYPE_SCALAR ||
         addonFeature.Type() == JOYSTICK_FEATURE_TYPE_MOTOR)
@@ -217,7 +217,7 @@ void CAddonButtonMap::AddScalar(const FeatureName& feature, const CDriverPrimiti
 {
   const bool bMotor = (primitive.Type() == PRIMITIVE_TYPE::MOTOR);
 
-  kodi::addon::JoystickFeature scalar(feature, bMotor ? JOYSTICK_FEATURE_TYPE_MOTOR
+  addon::JoystickFeature scalar(feature, bMotor ? JOYSTICK_FEATURE_TYPE_MOTOR
                                                       : JOYSTICK_FEATURE_TYPE_SCALAR);
   scalar.SetPrimitive(JOYSTICK_SCALAR_PRIMITIVE,
                       CPeripheralAddonTranslator::TranslatePrimitive(primitive));
@@ -237,7 +237,7 @@ bool CAddonButtonMap::GetAnalogStick(const FeatureName& feature,
   FeatureMap::const_iterator it = m_features.find(feature);
   if (it != m_features.end())
   {
-    const kodi::addon::JoystickFeature& addonFeature = it->second;
+    const addon::JoystickFeature& addonFeature = it->second;
 
     if (addonFeature.Type() == JOYSTICK_FEATURE_TYPE_ANALOG_STICK)
     {
@@ -257,10 +257,10 @@ void CAddonButtonMap::AddAnalogStick(const FeatureName& feature,
   using namespace JOYSTICK;
 
   JOYSTICK_FEATURE_PRIMITIVE primitiveIndex = GetAnalogStickIndex(direction);
-  kodi::addon::DriverPrimitive addonPrimitive =
+  addon::DriverPrimitive addonPrimitive =
       CPeripheralAddonTranslator::TranslatePrimitive(primitive);
 
-  kodi::addon::JoystickFeature analogStick(feature, JOYSTICK_FEATURE_TYPE_ANALOG_STICK);
+  addon::JoystickFeature analogStick(feature, JOYSTICK_FEATURE_TYPE_ANALOG_STICK);
 
   {
     std::unique_lock lock(m_mutex);
@@ -294,7 +294,7 @@ bool CAddonButtonMap::GetRelativePointer(const FeatureName& feature,
   FeatureMap::const_iterator it = m_features.find(feature);
   if (it != m_features.end())
   {
-    const kodi::addon::JoystickFeature& addonFeature = it->second;
+    const addon::JoystickFeature& addonFeature = it->second;
 
     if (addonFeature.Type() == JOYSTICK_FEATURE_TYPE_RELPOINTER)
     {
@@ -314,10 +314,10 @@ void CAddonButtonMap::AddRelativePointer(const FeatureName& feature,
   using namespace JOYSTICK;
 
   JOYSTICK_FEATURE_PRIMITIVE primitiveIndex = GetRelativePointerIndex(direction);
-  kodi::addon::DriverPrimitive addonPrimitive =
+  addon::DriverPrimitive addonPrimitive =
       CPeripheralAddonTranslator::TranslatePrimitive(primitive);
 
-  kodi::addon::JoystickFeature relPointer(feature, JOYSTICK_FEATURE_TYPE_RELPOINTER);
+  addon::JoystickFeature relPointer(feature, JOYSTICK_FEATURE_TYPE_RELPOINTER);
 
   {
     std::unique_lock lock(m_mutex);
@@ -352,7 +352,7 @@ bool CAddonButtonMap::GetAccelerometer(const FeatureName& feature,
   FeatureMap::const_iterator it = m_features.find(feature);
   if (it != m_features.end())
   {
-    const kodi::addon::JoystickFeature& addonFeature = it->second;
+    const addon::JoystickFeature& addonFeature = it->second;
 
     if (addonFeature.Type() == JOYSTICK_FEATURE_TYPE_ACCELEROMETER)
     {
@@ -376,7 +376,7 @@ void CAddonButtonMap::AddAccelerometer(const FeatureName& feature,
 {
   using namespace JOYSTICK;
 
-  kodi::addon::JoystickFeature accelerometer(feature, JOYSTICK_FEATURE_TYPE_ACCELEROMETER);
+  addon::JoystickFeature accelerometer(feature, JOYSTICK_FEATURE_TYPE_ACCELEROMETER);
 
   accelerometer.SetPrimitive(JOYSTICK_ACCELEROMETER_POSITIVE_X,
                              CPeripheralAddonTranslator::TranslatePrimitive(positiveX));
@@ -389,9 +389,9 @@ void CAddonButtonMap::AddAccelerometer(const FeatureName& feature,
     addon->MapFeature(m_device, m_strControllerId, accelerometer);
 }
 
-bool CAddonButtonMap::GetWheel(const KODI::JOYSTICK::FeatureName& feature,
-                               KODI::JOYSTICK::WHEEL_DIRECTION direction,
-                               KODI::JOYSTICK::CDriverPrimitive& primitive)
+bool CAddonButtonMap::GetWheel(const UNIVERSAL MEDIA CENTER::JOYSTICK::FeatureName& feature,
+                               UNIVERSAL MEDIA CENTER::JOYSTICK::WHEEL_DIRECTION direction,
+                               UNIVERSAL MEDIA CENTER::JOYSTICK::CDriverPrimitive& primitive)
 {
   bool retVal(false);
 
@@ -400,7 +400,7 @@ bool CAddonButtonMap::GetWheel(const KODI::JOYSTICK::FeatureName& feature,
   FeatureMap::const_iterator it = m_features.find(feature);
   if (it != m_features.end())
   {
-    const kodi::addon::JoystickFeature& addonFeature = it->second;
+    const addon::JoystickFeature& addonFeature = it->second;
 
     if (addonFeature.Type() == JOYSTICK_FEATURE_TYPE_WHEEL)
     {
@@ -413,17 +413,17 @@ bool CAddonButtonMap::GetWheel(const KODI::JOYSTICK::FeatureName& feature,
   return retVal;
 }
 
-void CAddonButtonMap::AddWheel(const KODI::JOYSTICK::FeatureName& feature,
-                               KODI::JOYSTICK::WHEEL_DIRECTION direction,
-                               const KODI::JOYSTICK::CDriverPrimitive& primitive)
+void CAddonButtonMap::AddWheel(const UNIVERSAL MEDIA CENTER::JOYSTICK::FeatureName& feature,
+                               UNIVERSAL MEDIA CENTER::JOYSTICK::WHEEL_DIRECTION direction,
+                               const UNIVERSAL MEDIA CENTER::JOYSTICK::CDriverPrimitive& primitive)
 {
   using namespace JOYSTICK;
 
   JOYSTICK_FEATURE_PRIMITIVE primitiveIndex = GetPrimitiveIndex(direction);
-  kodi::addon::DriverPrimitive addonPrimitive =
+  addon::DriverPrimitive addonPrimitive =
       CPeripheralAddonTranslator::TranslatePrimitive(primitive);
 
-  kodi::addon::JoystickFeature joystickFeature(feature, JOYSTICK_FEATURE_TYPE_WHEEL);
+  addon::JoystickFeature joystickFeature(feature, JOYSTICK_FEATURE_TYPE_WHEEL);
 
   {
     std::unique_lock lock(m_mutex);
@@ -446,9 +446,9 @@ void CAddonButtonMap::AddWheel(const KODI::JOYSTICK::FeatureName& feature,
     Load();
 }
 
-bool CAddonButtonMap::GetThrottle(const KODI::JOYSTICK::FeatureName& feature,
-                                  KODI::JOYSTICK::THROTTLE_DIRECTION direction,
-                                  KODI::JOYSTICK::CDriverPrimitive& primitive)
+bool CAddonButtonMap::GetThrottle(const UNIVERSAL MEDIA CENTER::JOYSTICK::FeatureName& feature,
+                                  UNIVERSAL MEDIA CENTER::JOYSTICK::THROTTLE_DIRECTION direction,
+                                  UNIVERSAL MEDIA CENTER::JOYSTICK::CDriverPrimitive& primitive)
 {
   bool retVal(false);
 
@@ -457,7 +457,7 @@ bool CAddonButtonMap::GetThrottle(const KODI::JOYSTICK::FeatureName& feature,
   FeatureMap::const_iterator it = m_features.find(feature);
   if (it != m_features.end())
   {
-    const kodi::addon::JoystickFeature& addonFeature = it->second;
+    const addon::JoystickFeature& addonFeature = it->second;
 
     if (addonFeature.Type() == JOYSTICK_FEATURE_TYPE_THROTTLE)
     {
@@ -470,17 +470,17 @@ bool CAddonButtonMap::GetThrottle(const KODI::JOYSTICK::FeatureName& feature,
   return retVal;
 }
 
-void CAddonButtonMap::AddThrottle(const KODI::JOYSTICK::FeatureName& feature,
-                                  KODI::JOYSTICK::THROTTLE_DIRECTION direction,
-                                  const KODI::JOYSTICK::CDriverPrimitive& primitive)
+void CAddonButtonMap::AddThrottle(const UNIVERSAL MEDIA CENTER::JOYSTICK::FeatureName& feature,
+                                  UNIVERSAL MEDIA CENTER::JOYSTICK::THROTTLE_DIRECTION direction,
+                                  const UNIVERSAL MEDIA CENTER::JOYSTICK::CDriverPrimitive& primitive)
 {
   using namespace JOYSTICK;
 
   JOYSTICK_FEATURE_PRIMITIVE primitiveIndex = GetPrimitiveIndex(direction);
-  kodi::addon::DriverPrimitive addonPrimitive =
+  addon::DriverPrimitive addonPrimitive =
       CPeripheralAddonTranslator::TranslatePrimitive(primitive);
 
-  kodi::addon::JoystickFeature joystickFeature(feature, JOYSTICK_FEATURE_TYPE_THROTTLE);
+  addon::JoystickFeature joystickFeature(feature, JOYSTICK_FEATURE_TYPE_THROTTLE);
 
   {
     std::unique_lock lock(m_mutex);
@@ -512,7 +512,7 @@ bool CAddonButtonMap::GetKey(const FeatureName& feature, CDriverPrimitive& primi
   FeatureMap::const_iterator it = m_features.find(feature);
   if (it != m_features.end())
   {
-    const kodi::addon::JoystickFeature& addonFeature = it->second;
+    const addon::JoystickFeature& addonFeature = it->second;
 
     if (addonFeature.Type() == JOYSTICK_FEATURE_TYPE_KEY)
     {
@@ -527,7 +527,7 @@ bool CAddonButtonMap::GetKey(const FeatureName& feature, CDriverPrimitive& primi
 
 void CAddonButtonMap::AddKey(const FeatureName& feature, const CDriverPrimitive& primitive)
 {
-  kodi::addon::JoystickFeature scalar(feature, JOYSTICK_FEATURE_TYPE_KEY);
+  addon::JoystickFeature scalar(feature, JOYSTICK_FEATURE_TYPE_KEY);
   scalar.SetPrimitive(JOYSTICK_SCALAR_PRIMITIVE,
                       CPeripheralAddonTranslator::TranslatePrimitive(primitive));
 
@@ -584,7 +584,7 @@ void CAddonButtonMap::RevertButtonMap()
 
 bool CAddonButtonMap::GetMotorIndex(const FeatureName& feature, unsigned int& motorIndex) const
 {
-  const KODI::GAME::ControllerPtr controller =
+  const UNIVERSAL MEDIA CENTER::GAME::ControllerPtr controller =
       m_manager.GetControllerProfiles().GetController(m_strControllerId);
   if (!controller)
     return false;
@@ -592,7 +592,7 @@ bool CAddonButtonMap::GetMotorIndex(const FeatureName& feature, unsigned int& mo
   unsigned int index = 0;
   for (const auto& physicalFeature : controller->Features())
   {
-    if (physicalFeature.Type() != KODI::JOYSTICK::FEATURE_TYPE::MOTOR)
+    if (physicalFeature.Type() != UNIVERSAL MEDIA CENTER::JOYSTICK::FEATURE_TYPE::MOTOR)
       continue;
 
     if (physicalFeature.Name() == feature)
@@ -615,7 +615,7 @@ CAddonButtonMap::DriverMap CAddonButtonMap::CreateLookupTable(const FeatureMap& 
 
   for (const auto& it : features)
   {
-    const kodi::addon::JoystickFeature& feature = it.second;
+    const addon::JoystickFeature& feature = it.second;
 
     switch (feature.Type())
     {

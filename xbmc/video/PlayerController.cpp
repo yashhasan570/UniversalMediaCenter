@@ -39,7 +39,7 @@
 
 #include <algorithm>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace UTILS;
 
 CPlayerController::CPlayerController()
@@ -118,7 +118,7 @@ bool CPlayerController::OnAction(const CAction &action)
         if (appPlayer->GetSubtitleCount() == 0)
           return true;
 
-        using namespace KODI::VIDEO;
+        using namespace UNIVERSAL MEDIA CENTER::VIDEO;
         const std::vector<SubtitleStreamInfoExt> streams =
             CVideoStreamSelect::GetSubtitleStreams(appPlayer.get());
 
@@ -282,7 +282,7 @@ bool CPlayerController::OnAction(const CAction &action)
         if (appPlayer->GetVideoStreamCount() == 1)
           return true;
 
-        using namespace KODI::VIDEO;
+        using namespace UNIVERSAL MEDIA CENTER::VIDEO;
         const std::vector<VideoStreamInfoExt> streams =
             CVideoStreamSelect::GetVideoStreams(appPlayer.get());
 
@@ -610,7 +610,7 @@ bool CPlayerController::NextAudioStream()
   if (appPlayer->GetAudioStreamCount() < 2)
     return true;
 
-  using namespace KODI::VIDEO;
+  using namespace UNIVERSAL MEDIA CENTER::VIDEO;
   const std::vector<AudioStreamInfoExt> streams =
       CVideoStreamSelect::GetAudioStreams(appPlayer.get());
 

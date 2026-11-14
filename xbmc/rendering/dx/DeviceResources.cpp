@@ -467,7 +467,7 @@ void DX::DeviceResources::CreateDeviceResources()
   m_adapter->GetDesc(&aDesc);
 
   CLog::LogF(LOGINFO, "device is created on adapter '{}' with {}",
-             KODI::PLATFORM::WINDOWS::FromW(aDesc.Description),
+             UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW(aDesc.Description),
              GetFeatureLevelDescription(m_d3dFeatureLevel));
 
   CheckDXVA2SharedDecoderSurfaces();
@@ -1090,11 +1090,11 @@ void DX::DeviceResources::HandleOutputChange(const std::function<bool(DXGI_OUTPU
           m_adapter = adapter;
           if (m_crossAdapter)
             CLog::LogF(LOGINFO, "selected {} adapter, display is on {} adapter (cross-adapter).",
-                       KODI::PLATFORM::WINDOWS::FromW(foundDesc.Description),
-                       KODI::PLATFORM::WINDOWS::FromW(outputAdapterDesc.Description));
+                       UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW(foundDesc.Description),
+                       UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW(outputAdapterDesc.Description));
           else
             CLog::LogF(LOGDEBUG, "selected {} adapter. ",
-                       KODI::PLATFORM::WINDOWS::FromW(foundDesc.Description));
+                       UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW(foundDesc.Description));
           // (re)init hooks into new driver
           Windowing()->InitHooks(output.Get());
           // recreate d3d11 device on new adapter

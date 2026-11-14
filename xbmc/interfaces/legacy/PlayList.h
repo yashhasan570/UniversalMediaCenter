@@ -13,27 +13,27 @@
 #include "ListItem.h"
 #include "playlists/PlayList.h"
 
-namespace XBMCAddon
+namespace Addon
 {
-  namespace xbmc
+  namespace 
   {
-    XBMCCOMMONS_STANDARD_EXCEPTION(PlayListException);
+    COMMONS_STANDARD_EXCEPTION(PlayListException);
 
     //
     /// \defgroup python_PlayList PlayList
-    /// \ingroup python_xbmc
+    /// \ingroup python_
     /// @{
     /// @brief **Universal Media Center's Play List class.**
     ///
-    /// \python_class{ xbmc.PlayList(playList) }
+    /// \python_class{ .PlayList(playList) }
     ///
     /// To create and edit a playlist which can be handled by the player.
     ///
     /// @param playList              [integer] To define the stream type
     /// | Value | Integer String      | Description                            |
     /// |:-----:|:--------------------|:---------------------------------------|
-    /// |   0   | xbmc.PLAYLIST_MUSIC | Playlist for music files or streams    |
-    /// |   1   | xbmc.PLAYLIST_VIDEO | Playlist for video files or streams    |
+    /// |   0   | .PLAYLIST_MUSIC | Playlist for music files or streams    |
+    /// |   1   | .PLAYLIST_VIDEO | Playlist for video files or streams    |
     ///
     ///
     ///
@@ -42,14 +42,14 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ...
-    /// play=xbmc.PlayList(xbmc.PLAYLIST_VIDEO)
+    /// play=.PlayList(.PLAYLIST_VIDEO)
     /// ...
     /// ~~~~~~~~~~~~~
     //
     class PlayList : public AddonClass
     {
       int iPlayList;
-      KODI::PLAYLIST::CPlayList* pPlayList;
+      UNIVERSAL MEDIA CENTER::PLAYLIST::CPlayList* pPlayList;
 
     public:
       explicit PlayList(int playList);
@@ -87,9 +87,9 @@ namespace XBMCAddon
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// playlist = xbmc.PlayList(xbmc.PLAYLIST_VIDEO)
+      /// playlist = .PlayList(.PLAYLIST_VIDEO)
       /// video = 'F:\\movies\\Ironman.mov'
-      /// listitem = xbmcgui.ListItem('Ironman', thumbnailImage='F:\\movies\\Ironman.tbn')
+      /// listitem = gui.ListItem('Ironman', thumbnailImage='F:\\movies\\Ironman.tbn')
       /// listitem.setInfo('video', {'Title': 'Ironman', 'Genre': 'Science Fiction'})
       /// playlist.add(url=video, listitem=listitem, index=7)
       /// ..
@@ -97,7 +97,7 @@ namespace XBMCAddon
       ///
       add(...);
 #else
-      void add(const String& url, XBMCAddon::xbmcgui::ListItem* listitem = NULL, int index = -1);
+      void add(const String& url, Addon::gui::ListItem* listitem = NULL, int index = -1);
 #endif
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
@@ -203,7 +203,7 @@ namespace XBMCAddon
       ///
       [](...);
 #else
-      XBMCAddon::xbmcgui::ListItem* operator[](long i);
+      Addon::gui::ListItem* operator[](long i);
 #endif
     };
     /// @}

@@ -16,9 +16,9 @@
 struct NSOpenGLContext;
 #endif
 
-namespace KODI::RETRO
+namespace UNIVERSAL MEDIA CENTER::RETRO
 {
 class IHwRenderingContext;
 
 std::unique_ptr<IHwRenderingContext> CreateHwRenderingContextOSX(NSOpenGLContext* shareContext);
-} // namespace KODI::RETRO
+} // namespace UNIVERSAL MEDIA CENTER::RETRO

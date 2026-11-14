@@ -13,7 +13,7 @@
 
 #include <map>
 
-namespace KODI::GUILIB::GUIINFO
+namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO
 {
 
 class CGUIInfo;
@@ -23,7 +23,7 @@ class CGUIControlsGUIInfo : public CGUIInfoProvider
 public:
   ~CGUIControlsGUIInfo() override = default;
 
-  // KODI::GUILIB::GUIINFO::IGUIInfoProvider implementation
+  // UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::IGUIInfoProvider implementation
   bool InitCurrentItem(CFileItem* item) override;
   bool GetLabel(std::string& value,
                 const CFileItem* item,
@@ -57,4 +57,4 @@ private:
   std::map<int, int> m_containerMoves; // direction of list moving
 };
 
-} // namespace KODI::GUILIB::GUIINFO
+} // namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO

@@ -21,7 +21,7 @@
 
 #include <memory>
 
-using namespace KODI::LANGUAGE;
+using namespace UNIVERSAL MEDIA CENTER::LANGUAGE;
 
 CDVDDemuxVobsub::CDVDDemuxVobsub() = default;
 

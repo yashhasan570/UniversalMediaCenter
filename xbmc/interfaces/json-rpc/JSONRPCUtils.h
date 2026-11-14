@@ -245,6 +245,6 @@ inline const char* PermissionToString(const OperationPermission& permission)
   public:
     static void NotifyItemUpdated();
     static void NotifyItemUpdated(const std::shared_ptr<CFileItem>& item);
-    static void NotifyItemUpdated(const CVideoInfoTag& info, const KODI::ART::Artwork& artwork);
+    static void NotifyItemUpdated(const CVideoInfoTag& info, const UNIVERSAL MEDIA CENTER::ART::Artwork& artwork);
   };
 }

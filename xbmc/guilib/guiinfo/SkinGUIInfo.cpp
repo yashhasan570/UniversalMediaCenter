@@ -21,7 +21,7 @@
 #include "utils/StringUtils.h"
 #include "utils/URIUtils.h"
 
-using namespace KODI::GUILIB::GUIINFO;
+using namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO;
 
 bool CSkinGUIInfo::InitCurrentItem(CFileItem* item)
 {

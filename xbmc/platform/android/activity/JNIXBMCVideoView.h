@@ -20,15 +20,15 @@
 namespace jni
 {
 
-class CJNIXBMCVideoView : virtual public CJNIBase, public CJNISurfaceHolderCallback, public CJNIInterfaceImplem<CJNIXBMCVideoView>
+class CJNIVideoView : virtual public CJNIBase, public CJNISurfaceHolderCallback, public CJNIInterfaceImplem<CJNIVideoView>
 {
 public:
-  CJNIXBMCVideoView(const jni::jhobject &object);
-  ~CJNIXBMCVideoView() override = default;
+  CJNIVideoView(const jni::jhobject &object);
+  ~CJNIVideoView() override = default;
 
   static void RegisterNatives(JNIEnv* env);
 
-  static CJNIXBMCVideoView* createVideoView(CJNISurfaceHolderCallback* callback);
+  static CJNIVideoView* createVideoView(CJNISurfaceHolderCallback* callback);
 
   // CJNISurfaceHolderCallback interface
   void surfaceChanged(CJNISurfaceHolder holder, int format, int width, int height) override;
@@ -55,7 +55,7 @@ protected:
   CRect m_surfaceRect;
 
 private:
-  CJNIXBMCVideoView() = default;
+  CJNIVideoView() = default;
 };
 
 } // namespace jni

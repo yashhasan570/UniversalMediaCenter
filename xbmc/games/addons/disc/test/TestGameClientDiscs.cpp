@@ -20,7 +20,7 @@
 #include "games/addons/disc/GameClientDiscModel.h"
 #include "games/addons/disc/GameClientDiscs.h"
 #include "test/TestUtils.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 
 #include <algorithm>
 #include <cstring>
@@ -31,8 +31,8 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI;
-using namespace KODI::GAME;
+using namespace UNIVERSAL MEDIA CENTER;
+using namespace UNIVERSAL MEDIA CENTER::GAME;
 
 namespace
 {
@@ -103,42 +103,42 @@ template struct TestMemberAccess<ClientGamePath, &CGameClient::m_gamePath>;
 struct PlaybackMemory
 {
   using Type =
-      std::unique_ptr<KODI::RETRO::CDeltaPairMemoryStream> KODI::RETRO::CReversiblePlayback::*;
+      std::unique_ptr<UNIVERSAL MEDIA CENTER::RETRO::CDeltaPairMemoryStream> UNIVERSAL MEDIA CENTER::RETRO::CReversiblePlayback::*;
   friend Type GetMember(PlaybackMemory);
 };
-template struct TestMemberAccess<PlaybackMemory, &KODI::RETRO::CReversiblePlayback::m_memoryStream>;
+template struct TestMemberAccess<PlaybackMemory, &UNIVERSAL MEDIA CENTER::RETRO::CReversiblePlayback::m_memoryStream>;
 
 struct PlaybackDiscs
 {
-  using Type = KODI::RETRO::CDiscStateHistory KODI::RETRO::CReversiblePlayback::*;
+  using Type = UNIVERSAL MEDIA CENTER::RETRO::CDiscStateHistory UNIVERSAL MEDIA CENTER::RETRO::CReversiblePlayback::*;
   friend Type GetMember(PlaybackDiscs);
 };
 template struct TestMemberAccess<PlaybackDiscs,
-                                 &KODI::RETRO::CReversiblePlayback::m_discStateHistory>;
+                                 &UNIVERSAL MEDIA CENTER::RETRO::CReversiblePlayback::m_discStateHistory>;
 
 struct PlaybackTotalFrames
 {
-  using Type = uint64_t KODI::RETRO::CReversiblePlayback::*;
+  using Type = uint64_t UNIVERSAL MEDIA CENTER::RETRO::CReversiblePlayback::*;
   friend Type GetMember(PlaybackTotalFrames);
 };
 template struct TestMemberAccess<PlaybackTotalFrames,
-                                 &KODI::RETRO::CReversiblePlayback::m_totalFrameCount>;
+                                 &UNIVERSAL MEDIA CENTER::RETRO::CReversiblePlayback::m_totalFrameCount>;
 
 struct PlaybackRestoreFailed
 {
-  using Type = bool KODI::RETRO::CReversiblePlayback::*;
+  using Type = bool UNIVERSAL MEDIA CENTER::RETRO::CReversiblePlayback::*;
   friend Type GetMember(PlaybackRestoreFailed);
 };
 template struct TestMemberAccess<PlaybackRestoreFailed,
-                                 &KODI::RETRO::CReversiblePlayback::m_restoreFailed>;
+                                 &UNIVERSAL MEDIA CENTER::RETRO::CReversiblePlayback::m_restoreFailed>;
 
 struct PlaybackStats
 {
-  using Type = void (KODI::RETRO::CReversiblePlayback::*)();
+  using Type = void (UNIVERSAL MEDIA CENTER::RETRO::CReversiblePlayback::*)();
   friend Type GetMember(PlaybackStats);
 };
 template struct TestMemberAccess<PlaybackStats,
-                                 &KODI::RETRO::CReversiblePlayback::UpdatePlaybackStats>;
+                                 &UNIVERSAL MEDIA CENTER::RETRO::CReversiblePlayback::UpdatePlaybackStats>;
 
 struct DiscCore
 {
@@ -216,20 +216,20 @@ DiscCore& Core(const AddonInstance_Game* instance)
 }
 } // namespace
 
-namespace KODI::GAME
+namespace UNIVERSAL MEDIA CENTER::GAME
 {
 class TestGameClientDiscs : public testing::Test
 {
 protected:
   void SetUp() override
   {
-    CXBMCTinyXML2 xml;
+    CTinyXML2 xml;
     const std::string addonXml = R"(<addon id="game.test.discs" name="Disc test" version="1.0.0">
-      <extension point="kodi.gameclient" library="test.so">
+      <extension point="universalmediacenter.gameclient" library="test.so">
         <supports_disc_control>true</supports_disc_control>
         <extensions>chd|m3u</extensions>
       </extension>
-      <extension point="kodi.addon.metadata"><platform>all</platform></extension>
+      <extension point="universalmediacenter.addon.metadata"><platform>all</platform></extension>
     </addon>)";
     ASSERT_TRUE(xml.Parse(addonXml));
     const auto info =
@@ -319,12 +319,12 @@ protected:
     if (m_client)
       TestMember<ClientPlaying>(*m_client) = false;
     for (auto* file : m_files)
-      EXPECT_TRUE(XBMC_DELETETEMPFILE(file));
+      EXPECT_TRUE(_DELETETEMPFILE(file));
   }
 
   std::string CreateFile(const std::string& extension, const std::string& contents = {})
   {
-    auto* file = XBMC_CREATETEMPFILE(extension);
+    auto* file = _CREATETEMPFILE(extension);
     EXPECT_NE(file, nullptr);
     if (!file)
       return {};
@@ -335,7 +335,7 @@ protected:
                 static_cast<ssize_t>(contents.size()));
     }
     file->Close();
-    return XBMC_TEMPFILEPATH(file);
+    return _TEMPFILEPATH(file);
   }
 
   bool InitializeGameplay(const std::string& gamePath, bool validTiming = true)
@@ -754,7 +754,7 @@ protected:
   std::unique_ptr<CGameClient> m_client;
   std::vector<XFILE::CFile*> m_files;
 };
-} // namespace KODI::GAME
+} // namespace UNIVERSAL MEDIA CENTER::GAME
 
 TEST_F(TestGameClientDiscs, OlderDiscModelKeepsLaterMediaIdentity)
 {

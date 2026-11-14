@@ -28,7 +28,7 @@
 #include "utils/ContentNames.h"
 #include "utils/StringUtils.h"
 #include "utils/Variant.h"
-#include "utils/XBMCTinyXML.h"
+#include "utils/TinyXML.h"
 #include "utils/XMLUtils.h"
 #include "utils/log.h"
 #include "video/VideoDatabase.h"
@@ -41,12 +41,12 @@
 #include <mutex>
 #include <string>
 
-using namespace KODI;
-using namespace KODI::MESSAGING;
+using namespace UNIVERSAL MEDIA CENTER;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
 
-namespace CONTENT = KODI::MEDIA::CONTENT;
+namespace CONTENT = UNIVERSAL MEDIA CENTER::MEDIA::CONTENT;
 
-using KODI::MESSAGING::HELPERS::DialogResponse;
+using UNIVERSAL MEDIA CENTER::MESSAGING::HELPERS::DialogResponse;
 
 CMediaSettings& CMediaSettings::GetInstance()
 {
@@ -374,7 +374,7 @@ void CMediaSettings::OnSettingAction(const std::shared_ptr<const CSetting>& sett
   }
   else if (settingId == CSettings::SETTING_VIDEOSCREEN_SCANCONTENTGEOMETRY)
   {
-    KODI::VIDEO::GEOMETRY::CContentGeometryScanner::GetInstance().Sweep(true);
+    UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::CContentGeometryScanner::GetInstance().Sweep(true);
   }
   else if (settingId == CSettings::SETTING_MAINTENANCE_CLEANIMAGECACHE)
   {
@@ -405,7 +405,7 @@ void CMediaSettings::OnSettingChanged(const std::shared_ptr<const CSetting>& set
   else if (settingId == CSettings::SETTING_VIDEOSCREEN_EXTRACTCONTENTGEOMETRY ||
            settingId == CSettings::SETTING_VIDEOSCREEN_CONTENTGEOMETRYONSCAN)
   {
-    auto& scanner{KODI::VIDEO::GEOMETRY::CContentGeometryScanner::GetInstance()};
+    auto& scanner{UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::CContentGeometryScanner::GetInstance()};
     if (std::static_pointer_cast<const CSettingBool>(setting)->GetValue())
       scanner.Sweep();
     else

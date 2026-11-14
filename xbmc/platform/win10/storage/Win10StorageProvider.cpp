@@ -81,7 +81,7 @@ void CStorageProvider::GetLocalDrives(std::vector<CMediaSource>& localDrives)
 
 void CStorageProvider::GetRemovableDrives(std::vector<CMediaSource>& removableDrives)
 {
-  using KODI::PLATFORM::WINDOWS::FromW;
+  using UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW;
 
   // get drives which we have direct access for (in case of broad file system access)
   GetDrivesByType(removableDrives, REMOVABLE_DRIVES, true);
@@ -140,7 +140,7 @@ bool CStorageProvider::Eject(const std::string& mountpath)
 
 std::vector<std::string> CStorageProvider::GetDiskUsage()
 {
-  using KODI::PLATFORM::WINDOWS::FromW;
+  using UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW;
 
   std::vector<std::string> result;
   ULARGE_INTEGER ULTotal = { { 0 } };

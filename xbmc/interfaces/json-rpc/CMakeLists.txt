@@ -21,7 +21,7 @@ set(SOURCES AddonsExecuteAddon.cpp
             TextureOperations.cpp
             VideoLibrary.cpp
             VideoLibrarySetSourceContent.cpp
-            XBMCOperations.cpp)
+            Operations.cpp)
 
 set(HEADERS AddonsExecuteAddon.h
             AddonsOperations.h
@@ -50,7 +50,7 @@ set(HEADERS AddonsExecuteAddon.h
             TextureOperations.h
             VideoLibrary.h
             VideoLibrarySetSourceContent.h
-            XBMCOperations.h)
+            Operations.h)
 
 core_add_library(jsonrpc_interface)
 add_dependencies(${CORE_LIBRARY} generate_json_header)

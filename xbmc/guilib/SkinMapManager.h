@@ -15,7 +15,7 @@
 
 class TiXmlElement;
 
-namespace KODI::GUILIB
+namespace UNIVERSAL MEDIA CENTER::GUILIB
 {
 
 /*!
@@ -89,4 +89,4 @@ private:
   RefMap m_refs;
 };
 
-} // namespace KODI::GUILIB
+} // namespace UNIVERSAL MEDIA CENTER::GUILIB

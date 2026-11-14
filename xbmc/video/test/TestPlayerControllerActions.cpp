@@ -10,7 +10,7 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI::VIDEO;
+using namespace UNIVERSAL MEDIA CENTER::VIDEO;
 
 namespace
 {

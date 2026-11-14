@@ -76,7 +76,7 @@ bool CanSafelySortForDisplay(const std::vector<DiscListDisplayRow>& rows)
 }
 } // namespace
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 CDiscManagerDiscList::CDiscManagerDiscList(GameClientPtr gameClient,

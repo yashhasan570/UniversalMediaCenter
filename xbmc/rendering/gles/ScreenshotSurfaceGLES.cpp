@@ -28,7 +28,7 @@ std::unique_ptr<IScreenshotSurface> CScreenshotSurfaceGLES::CreateSurface()
 
 bool CScreenshotSurfaceGLES::Read(const ScreenshotContext& ctx)
 {
-  using namespace KODI::RENDERING::CAPTURE;
+  using namespace UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE;
 
   // get current viewport: x, y, width, height
   GLint viewport[4];

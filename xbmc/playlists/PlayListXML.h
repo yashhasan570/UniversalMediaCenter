@@ -10,7 +10,7 @@
 
 #include "PlayList.h"
 
-namespace KODI::PLAYLIST
+namespace UNIVERSAL MEDIA CENTER::PLAYLIST
 {
 class CPlayListXML : public CPlayList
 {

@@ -189,7 +189,7 @@ ID3D11VideoProcessorInputView* CSurfaceReadback::GetInputView(ID3D11Resource* su
   return view.Get();
 }
 
-ReductionResult CSurfaceReadback::ReadFilledSlot(KODI::VIDEO::GEOMETRY::ReducedFrame& reduction)
+ReductionResult CSurfaceReadback::ReadFilledSlot(UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::ReducedFrame& reduction)
 {
   const size_t readSlot = m_writeSlot;
   if (!m_filled[readSlot])
@@ -209,7 +209,7 @@ ReductionResult CSurfaceReadback::ReadFilledSlot(KODI::VIDEO::GEOMETRY::ReducedF
     return ReductionResult::Unsupported;
   }
 
-  KODI::VIDEO::GEOMETRY::ReductionSource nv12;
+  UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::ReductionSource nv12;
   nv12.width = m_targetWidth;
   nv12.height = m_targetHeight;
   nv12.bitDepth = 8;
@@ -218,7 +218,7 @@ ReductionResult CSurfaceReadback::ReadFilledSlot(KODI::VIDEO::GEOMETRY::ReducedF
   nv12.u = nv12.y + static_cast<size_t>(mapped.RowPitch) * m_targetHeight;
   nv12.uStrideBytes = static_cast<int>(mapped.RowPitch);
 
-  const bool copied = KODI::VIDEO::GEOMETRY::ReduceFrame(nv12, m_targetWidth, reduction);
+  const bool copied = UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::ReduceFrame(nv12, m_targetWidth, reduction);
 
   m_deviceContext->Unmap(m_staging[readSlot].Get(), 0);
   m_filled[readSlot] = false;
@@ -231,11 +231,11 @@ ReductionResult CSurfaceReadback::Reduce(ID3D11Resource* surface,
                                          unsigned int sourceWidth,
                                          unsigned int sourceHeight,
                                          bool fullRange,
-                                         KODI::VIDEO::GEOMETRY::ReducedFrame& reduction,
+                                         UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::ReducedFrame& reduction,
                                          unsigned int targetWidth)
 {
   const auto [width, height] =
-      KODI::VIDEO::GEOMETRY::ReductionOutputSize(sourceWidth, sourceHeight, targetWidth);
+      UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::ReductionOutputSize(sourceWidth, sourceHeight, targetWidth);
   if (width == 0 || height == 0)
     return ReductionResult::Unsupported;
 

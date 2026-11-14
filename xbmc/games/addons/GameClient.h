@@ -11,7 +11,7 @@
 #include "GameClientRestoreResult.h"
 #include "GameClientSubsystem.h"
 #include "addons/binary-addons/AddonDll.h"
-#include "addons/kodi-dev-kit/include/kodi/addon-instance/Game.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/addon-instance/Game.h"
 #include "games/GameTypes.h"
 #include "games/addons/streams/GameClientStreamHwFramebuffer.h"
 #include "threads/CriticalSection.h"
@@ -25,7 +25,7 @@
 
 class CFileItem;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -55,16 +55,16 @@ public:
   CGameClientStruct()
   {
     // Create "C" interface structures, used as own parts to prevent API problems on update
-    KODI_ADDON_INSTANCE_INFO* info = new KODI_ADDON_INSTANCE_INFO();
+    UNIVERSALMEDIA_ADDON_INSTANCE_INFO* info = new UNIVERSALMEDIA_ADDON_INSTANCE_INFO();
     info->id = "";
-    info->version = kodi::addon::GetTypeVersion(ADDON_INSTANCE_GAME);
+    info->version = addon::GetTypeVersion(ADDON_INSTANCE_GAME);
     info->type = ADDON_INSTANCE_GAME;
-    info->kodi = this;
+    info->universalmediacenter = this;
     info->parent = nullptr;
     info->first_instance = true;
-    info->functions = new KODI_ADDON_INSTANCE_FUNC_CB();
+    info->functions = new UNIVERSALMEDIA_ADDON_INSTANCE_FUNC_CB();
     m_ifc.info = info;
-    m_ifc.functions = new KODI_ADDON_INSTANCE_FUNC();
+    m_ifc.functions = new UNIVERSALMEDIA_ADDON_INSTANCE_FUNC();
 
     m_ifc.game = new AddonInstance_Game;
     m_ifc.game->props = new AddonProps_Game();
@@ -87,7 +87,7 @@ public:
     }
   }
 
-  KODI_ADDON_INSTANCE_STRUCT m_ifc;
+  UNIVERSALMEDIA_ADDON_INSTANCE_STRUCT m_ifc;
 };
 
 /*!
@@ -286,7 +286,7 @@ public:
   void HardwareContextDestroy() override;
 
   /*!
-   * @brief To get the interface table used between addon and kodi
+   * @brief To get the interface table used between addon and universalmediacenter
    * @todo This function becomes removed after old callback library system
    * is removed.
    */
@@ -310,70 +310,70 @@ private:
   void LogAddonProperties(void) const;
 
   /*!
-   * @brief Callback functions from addon to kodi
+   * @brief Callback functions from addon to universalmediacenter
    */
   //@{
-  static bool cb_enable_hardware_rendering(void* kodiInstance,
+  static bool cb_enable_hardware_rendering(void* universalmediacenterInstance,
                                            const game_hw_rendering_properties* properties);
-  static void cb_close_game(KODI_HANDLE kodiInstance);
-  static void cb_report_missing_file(KODI_HANDLE kodiInstance, const char* path);
-  static double cb_get_playback_speed(KODI_HANDLE kodiInstance);
-  static void cb_set_fast_forwarding(KODI_HANDLE kodiInstance, bool fastForward, double ratio);
-  static void cb_set_game_timing(KODI_HANDLE kodiInstance, const game_system_timing* timingInfo);
-  static bool cb_start_stream(KODI_HANDLE kodiInstance, KODI_GAME_STREAM_HANDLE stream);
-  static KODI_GAME_STREAM_HANDLE cb_open_stream(KODI_HANDLE kodiInstance,
+  static void cb_close_game(UNIVERSALMEDIA_HANDLE universalmediacenterInstance);
+  static void cb_report_missing_file(UNIVERSALMEDIA_HANDLE universalmediacenterInstance, const char* path);
+  static double cb_get_playback_speed(UNIVERSALMEDIA_HANDLE universalmediacenterInstance);
+  static void cb_set_fast_forwarding(UNIVERSALMEDIA_HANDLE universalmediacenterInstance, bool fastForward, double ratio);
+  static void cb_set_game_timing(UNIVERSALMEDIA_HANDLE universalmediacenterInstance, const game_system_timing* timingInfo);
+  static bool cb_start_stream(UNIVERSALMEDIA_HANDLE universalmediacenterInstance, UNIVERSALMEDIA_GAME_STREAM_HANDLE stream);
+  static UNIVERSALMEDIA_GAME_STREAM_HANDLE cb_open_stream(UNIVERSALMEDIA_HANDLE universalmediacenterInstance,
                                                 const game_stream_properties* properties);
-  static bool cb_get_stream_buffer(KODI_HANDLE kodiInstance,
-                                   KODI_GAME_STREAM_HANDLE stream,
+  static bool cb_get_stream_buffer(UNIVERSALMEDIA_HANDLE universalmediacenterInstance,
+                                   UNIVERSALMEDIA_GAME_STREAM_HANDLE stream,
                                    unsigned int width,
                                    unsigned int height,
                                    game_stream_buffer* buffer);
-  static void cb_add_stream_data(KODI_HANDLE kodiInstance,
-                                 KODI_GAME_STREAM_HANDLE stream,
+  static void cb_add_stream_data(UNIVERSALMEDIA_HANDLE universalmediacenterInstance,
+                                 UNIVERSALMEDIA_GAME_STREAM_HANDLE stream,
                                  const game_stream_packet* packet);
-  static void cb_release_stream_buffer(KODI_HANDLE kodiInstance,
-                                       KODI_GAME_STREAM_HANDLE stream,
+  static void cb_release_stream_buffer(UNIVERSALMEDIA_HANDLE universalmediacenterInstance,
+                                       UNIVERSALMEDIA_GAME_STREAM_HANDLE stream,
                                        game_stream_buffer* buffer);
-  static void cb_close_stream(KODI_HANDLE kodiInstance, KODI_GAME_STREAM_HANDLE stream);
-  static game_proc_address_t cb_hw_get_proc_address(KODI_HANDLE kodiInstance, const char* sym);
-  static bool cb_input_event(KODI_HANDLE kodiInstance, const game_input_event* event);
-  static void cb_rc_on_game_loaded(KODI_HANDLE kodiInstance, const game_rc_game_loaded* data);
-  static void cb_rc_on_achievement_triggered(KODI_HANDLE kodiInstance,
+  static void cb_close_stream(UNIVERSALMEDIA_HANDLE universalmediacenterInstance, UNIVERSALMEDIA_GAME_STREAM_HANDLE stream);
+  static game_proc_address_t cb_hw_get_proc_address(UNIVERSALMEDIA_HANDLE universalmediacenterInstance, const char* sym);
+  static bool cb_input_event(UNIVERSALMEDIA_HANDLE universalmediacenterInstance, const game_input_event* event);
+  static void cb_rc_on_game_loaded(UNIVERSALMEDIA_HANDLE universalmediacenterInstance, const game_rc_game_loaded* data);
+  static void cb_rc_on_achievement_triggered(UNIVERSALMEDIA_HANDLE universalmediacenterInstance,
                                              const game_rc_achievement_triggered* data);
-  static void cb_rc_on_game_completed(KODI_HANDLE kodiInstance, const char* title, bool hardcore);
-  static void cb_rc_on_rich_presence_updated(KODI_HANDLE kodiInstance, const char* evaluation);
-  static void cb_rc_on_login_result(KODI_HANDLE kodiInstance, const game_rc_login_result* data);
-  static void cb_rc_on_achievement_progress(KODI_HANDLE kodiInstance,
+  static void cb_rc_on_game_completed(UNIVERSALMEDIA_HANDLE universalmediacenterInstance, const char* title, bool hardcore);
+  static void cb_rc_on_rich_presence_updated(UNIVERSALMEDIA_HANDLE universalmediacenterInstance, const char* evaluation);
+  static void cb_rc_on_login_result(UNIVERSALMEDIA_HANDLE universalmediacenterInstance, const game_rc_login_result* data);
+  static void cb_rc_on_achievement_progress(UNIVERSALMEDIA_HANDLE universalmediacenterInstance,
                                             const game_rc_achievement_progress* progress,
                                             unsigned int count);
-  static void cb_rc_on_server_error(KODI_HANDLE kodiInstance, const char* message, const char* api);
-  static void cb_rc_on_connection_changed(KODI_HANDLE kodiInstance, bool connected);
-  static void cb_rc_on_challenge_indicator(KODI_HANDLE kodiInstance,
+  static void cb_rc_on_server_error(UNIVERSALMEDIA_HANDLE universalmediacenterInstance, const char* message, const char* api);
+  static void cb_rc_on_connection_changed(UNIVERSALMEDIA_HANDLE universalmediacenterInstance, bool connected);
+  static void cb_rc_on_challenge_indicator(UNIVERSALMEDIA_HANDLE universalmediacenterInstance,
                                            const game_rc_achievement_challenge* data,
                                            bool show);
   static void cb_rc_on_achievement_progress_show(
-      KODI_HANDLE kodiInstance, const struct game_rc_achievement_progress_indicator* data);
+      UNIVERSALMEDIA_HANDLE universalmediacenterInstance, const struct game_rc_achievement_progress_indicator* data);
   static void cb_rc_on_achievement_progress_update(
-      KODI_HANDLE kodiInstance, const struct game_rc_achievement_progress_indicator* data);
+      UNIVERSALMEDIA_HANDLE universalmediacenterInstance, const struct game_rc_achievement_progress_indicator* data);
   static void cb_rc_on_achievement_progress_hide(
-      KODI_HANDLE kodiInstance, const struct game_rc_achievement_progress_indicator* data);
-  static void cb_rc_on_leaderboard_started(KODI_HANDLE kodiInstance,
+      UNIVERSALMEDIA_HANDLE universalmediacenterInstance, const struct game_rc_achievement_progress_indicator* data);
+  static void cb_rc_on_leaderboard_started(UNIVERSALMEDIA_HANDLE universalmediacenterInstance,
                                            const struct game_rc_leaderboard* data);
-  static void cb_rc_on_leaderboard_failed(KODI_HANDLE kodiInstance,
+  static void cb_rc_on_leaderboard_failed(UNIVERSALMEDIA_HANDLE universalmediacenterInstance,
                                           const struct game_rc_leaderboard* data);
-  static void cb_rc_on_leaderboard_submitted(KODI_HANDLE kodiInstance,
+  static void cb_rc_on_leaderboard_submitted(UNIVERSALMEDIA_HANDLE universalmediacenterInstance,
                                              const struct game_rc_leaderboard* data);
-  static void cb_rc_on_leaderboard_tracker_show(KODI_HANDLE kodiInstance,
+  static void cb_rc_on_leaderboard_tracker_show(UNIVERSALMEDIA_HANDLE universalmediacenterInstance,
                                                 const struct game_rc_leaderboard_tracker* data);
-  static void cb_rc_on_leaderboard_tracker_update(KODI_HANDLE kodiInstance,
+  static void cb_rc_on_leaderboard_tracker_update(UNIVERSALMEDIA_HANDLE universalmediacenterInstance,
                                                   const struct game_rc_leaderboard_tracker* data);
-  static void cb_rc_on_leaderboard_tracker_hide(KODI_HANDLE kodiInstance,
+  static void cb_rc_on_leaderboard_tracker_hide(UNIVERSALMEDIA_HANDLE universalmediacenterInstance,
                                                 const struct game_rc_leaderboard_tracker* data);
-  static void cb_rc_on_leaderboard_scoreboard(KODI_HANDLE kodiInstance,
+  static void cb_rc_on_leaderboard_scoreboard(UNIVERSALMEDIA_HANDLE universalmediacenterInstance,
                                               const struct game_rc_leaderboard_scoreboard* data);
-  static void cb_rc_on_reset(KODI_HANDLE kodiInstance);
-  static void cb_rc_on_subset_completed(KODI_HANDLE kodiInstance, const char* title);
-  static void cb_rc_on_achievement_sets(KODI_HANDLE kodiInstance,
+  static void cb_rc_on_reset(UNIVERSALMEDIA_HANDLE universalmediacenterInstance);
+  static void cb_rc_on_subset_completed(UNIVERSALMEDIA_HANDLE universalmediacenterInstance, const char* title);
+  static void cb_rc_on_achievement_sets(UNIVERSALMEDIA_HANDLE universalmediacenterInstance,
                                         const game_rc_achievement_sets* data);
   //@}
 
@@ -441,4 +441,4 @@ private:
 };
 
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

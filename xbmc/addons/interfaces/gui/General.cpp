@@ -12,7 +12,7 @@
 #include "ServiceBroker.h"
 #include "Window.h"
 #include "addons/binary-addons/AddonDll.h"
-#include "addons/kodi-dev-kit/include/kodi/gui/General.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/gui/General.h"
 #include "controls/Button.h"
 #include "controls/Edit.h"
 #include "controls/FadeLabel.h"
@@ -50,7 +50,7 @@ int Interface_GUIGeneral::m_iAddonGUILockRef = 0;
 
 void Interface_GUIGeneral::Init(AddonGlobalInterface* addonInterface)
 {
-  addonInterface->toUniversal Media Center->kodi_gui = new AddonToUniversal Media CenterFuncTable_kodi_gui();
+  addonInterface->toUniversal Media Center-> = new AddonToUniversal Media CenterFuncTable_();
 
   Interface_GUIControlButton::Init(addonInterface);
   Interface_GUIControlEdit::Init(addonInterface);
@@ -77,25 +77,25 @@ void Interface_GUIGeneral::Init(AddonGlobalInterface* addonInterface)
   Interface_GUIListItem::Init(addonInterface);
   Interface_GUIWindow::Init(addonInterface);
 
-  addonInterface->toUniversal Media Center->kodi_gui->general = new AddonToUniversal Media CenterFuncTable_kodi_gui_general();
+  addonInterface->toUniversal Media Center->->general = new AddonToUniversal Media CenterFuncTable__general();
 
-  addonInterface->toUniversal Media Center->kodi_gui->general->lock = lock;
-  addonInterface->toUniversal Media Center->kodi_gui->general->unlock = unlock;
-  addonInterface->toUniversal Media Center->kodi_gui->general->get_screen_height = get_screen_height;
-  addonInterface->toUniversal Media Center->kodi_gui->general->get_screen_width = get_screen_width;
-  addonInterface->toUniversal Media Center->kodi_gui->general->get_video_resolution = get_video_resolution;
-  addonInterface->toUniversal Media Center->kodi_gui->general->get_current_window_dialog_id =
+  addonInterface->toUniversal Media Center->->general->lock = lock;
+  addonInterface->toUniversal Media Center->->general->unlock = unlock;
+  addonInterface->toUniversal Media Center->->general->get_screen_height = get_screen_height;
+  addonInterface->toUniversal Media Center->->general->get_screen_width = get_screen_width;
+  addonInterface->toUniversal Media Center->->general->get_video_resolution = get_video_resolution;
+  addonInterface->toUniversal Media Center->->general->get_current_window_dialog_id =
       get_current_window_dialog_id;
-  addonInterface->toUniversal Media Center->kodi_gui->general->get_current_window_id = get_current_window_id;
-  addonInterface->toUniversal Media Center->kodi_gui->general->get_hw_context = get_hw_context;
-  addonInterface->toUniversal Media Center->kodi_gui->general->get_adjust_refresh_rate_status =
+  addonInterface->toUniversal Media Center->->general->get_current_window_id = get_current_window_id;
+  addonInterface->toUniversal Media Center->->general->get_hw_context = get_hw_context;
+  addonInterface->toUniversal Media Center->->general->get_adjust_refresh_rate_status =
       get_adjust_refresh_rate_status;
 }
 
 void Interface_GUIGeneral::DeInit(AddonGlobalInterface* addonInterface)
 {
   if (addonInterface->toUniversal Media Center && /* <-- needed as long as the old addon way is used */
-      addonInterface->toUniversal Media Center->kodi_gui)
+      addonInterface->toUniversal Media Center->)
   {
     Interface_GUIControlButton::DeInit(addonInterface);
     Interface_GUIControlEdit::DeInit(addonInterface);
@@ -122,9 +122,9 @@ void Interface_GUIGeneral::DeInit(AddonGlobalInterface* addonInterface)
     Interface_GUIListItem::DeInit(addonInterface);
     Interface_GUIWindow::DeInit(addonInterface);
 
-    delete addonInterface->toUniversal Media Center->kodi_gui->general;
-    delete addonInterface->toUniversal Media Center->kodi_gui;
-    addonInterface->toUniversal Media Center->kodi_gui = nullptr;
+    delete addonInterface->toUniversal Media Center->->general;
+    delete addonInterface->toUniversal Media Center->;
+    addonInterface->toUniversal Media Center-> = nullptr;
   }
 }
 
@@ -148,9 +148,9 @@ void Interface_GUIGeneral::unlock()
 //@}
 
 //@{
-int Interface_GUIGeneral::get_screen_height(KODI_HANDLE kodiBase)
+int Interface_GUIGeneral::get_screen_height(UNIVERSALMEDIA_HANDLE universalmediacenterBase)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon)
   {
     CLog::LogF(LOGERROR, "Invalid data");
@@ -160,9 +160,9 @@ int Interface_GUIGeneral::get_screen_height(KODI_HANDLE kodiBase)
   return CServiceBroker::GetWinSystem()->GetGfxContext().GetHeight();
 }
 
-int Interface_GUIGeneral::get_screen_width(KODI_HANDLE kodiBase)
+int Interface_GUIGeneral::get_screen_width(UNIVERSALMEDIA_HANDLE universalmediacenterBase)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon)
   {
     CLog::LogF(LOGERROR, "Invalid data");
@@ -172,9 +172,9 @@ int Interface_GUIGeneral::get_screen_width(KODI_HANDLE kodiBase)
   return CServiceBroker::GetWinSystem()->GetGfxContext().GetWidth();
 }
 
-int Interface_GUIGeneral::get_video_resolution(KODI_HANDLE kodiBase)
+int Interface_GUIGeneral::get_video_resolution(UNIVERSALMEDIA_HANDLE universalmediacenterBase)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon)
   {
     CLog::LogF(LOGERROR, "Invalid data");
@@ -186,9 +186,9 @@ int Interface_GUIGeneral::get_video_resolution(KODI_HANDLE kodiBase)
 //@}
 
 //@{
-int Interface_GUIGeneral::get_current_window_dialog_id(KODI_HANDLE kodiBase)
+int Interface_GUIGeneral::get_current_window_dialog_id(UNIVERSALMEDIA_HANDLE universalmediacenterBase)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon)
   {
     CLog::LogF(LOGERROR, "Invalid data");
@@ -199,9 +199,9 @@ int Interface_GUIGeneral::get_current_window_dialog_id(KODI_HANDLE kodiBase)
   return CServiceBroker::GetGUI()->GetWindowManager().GetTopmostModalDialog();
 }
 
-int Interface_GUIGeneral::get_current_window_id(KODI_HANDLE kodiBase)
+int Interface_GUIGeneral::get_current_window_id(UNIVERSALMEDIA_HANDLE universalmediacenterBase)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon)
   {
     CLog::LogF(LOGERROR, "Invalid data");
@@ -212,14 +212,14 @@ int Interface_GUIGeneral::get_current_window_id(KODI_HANDLE kodiBase)
   return CServiceBroker::GetGUI()->GetWindowManager().GetActiveWindow();
 }
 
-ADDON_HARDWARE_CONTEXT Interface_GUIGeneral::get_hw_context(KODI_HANDLE kodiBase)
+ADDON_HARDWARE_CONTEXT Interface_GUIGeneral::get_hw_context(UNIVERSALMEDIA_HANDLE universalmediacenterBase)
 {
   return CServiceBroker::GetWinSystem()->GetHWContext();
 }
 
-AdjustRefreshRateStatus Interface_GUIGeneral::get_adjust_refresh_rate_status(KODI_HANDLE kodiBase)
+AdjustRefreshRateStatus Interface_GUIGeneral::get_adjust_refresh_rate_status(UNIVERSALMEDIA_HANDLE universalmediacenterBase)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon)
   {
     CLog::LogF(LOGERROR, "Invalid data");

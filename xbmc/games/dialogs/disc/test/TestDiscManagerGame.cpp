@@ -11,7 +11,7 @@
 #include "games/addons/GameClient.h"
 #include "games/addons/disc/GameClientDiscs.h"
 #include "games/dialogs/disc/DiscManagerGame.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 
 #include <cstdlib>
 #include <cstring>
@@ -21,7 +21,7 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI::GAME;
+using namespace UNIVERSAL MEDIA CENTER::GAME;
 
 namespace
 {
@@ -47,14 +47,14 @@ class TestDiscManagerGame : public testing::Test
 protected:
   void SetUp() override
   {
-    CXBMCTinyXML2 xml;
+    CTinyXML2 xml;
     const std::string addonXml =
         R"(<addon id="game.test.discmanager" name="Disc manager test" version="1.0.0">
-      <extension point="kodi.gameclient" library="test.so">
+      <extension point="universalmediacenter.gameclient" library="test.so">
         <supports_disc_control>true</supports_disc_control>
         <extensions>chd</extensions>
       </extension>
-      <extension point="xbmc.addon.metadata"><platform>all</platform></extension>
+      <extension point=".addon.metadata"><platform>all</platform></extension>
     </addon>)";
     ASSERT_TRUE(xml.Parse(addonXml));
     const auto info =

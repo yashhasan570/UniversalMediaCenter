@@ -11,7 +11,7 @@
 #include <memory>
 #include <vector>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -44,4 +44,4 @@ enum class PORT_TYPE
   CONTROLLER,
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

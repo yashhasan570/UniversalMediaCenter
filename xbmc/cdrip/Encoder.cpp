@@ -14,7 +14,7 @@
 #include <string.h>
 #include <utility>
 
-using namespace KODI::CDRIP;
+using namespace UNIVERSAL MEDIA CENTER::CDRIP;
 
 CEncoder::CEncoder() = default;
 

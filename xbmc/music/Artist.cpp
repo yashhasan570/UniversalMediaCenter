@@ -171,7 +171,7 @@ bool CArtist::Load(const TiXmlElement *artist, bool append, bool prioritise)
     fanart.Unpack();
     // Append fanart to other image URLs
     for (unsigned int i = 0; i < fanart.GetNumFanarts(); i++)
-      thumbURL.AddParsedUrl(fanart.GetImageURL(i), KODI::ART::TYPE::FANART,
+      thumbURL.AddParsedUrl(fanart.GetImageURL(i), UNIVERSAL MEDIA CENTER::ART::TYPE::FANART,
                             fanart.GetPreviewURL(i));
   }
 
@@ -221,7 +221,7 @@ bool CArtist::Save(TiXmlNode *node, const std::string &tag, const std::string& s
   // Available remote art
   if (thumbURL.HasData())
   {
-    CXBMCTinyXML doc;
+    CTinyXML doc;
     doc.Parse(thumbURL.GetData());
     const TiXmlNode* thumb = doc.FirstChild("thumb");
     while (thumb)

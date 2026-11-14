@@ -30,7 +30,7 @@ public:
   bool HasVisibleControls() override;
 
 protected:
-  EVENT_RESULT OnMouseEvent(const CPoint& point, const KODI::MOUSE::CMouseEvent& event) override;
+  EVENT_RESULT OnMouseEvent(const CPoint& point, const UNIVERSAL MEDIA CENTER::MOUSE::CMouseEvent& event) override;
 
 private:
   //! \brief Draw the picture at video resolution under a clip lifted to the whole screen, then

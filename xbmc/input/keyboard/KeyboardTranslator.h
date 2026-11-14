@@ -10,9 +10,9 @@
 
 #include "KeyboardSymbols.h"
 #include "KeyboardTypes.h"
-#include "XBMC_keysym.h"
+#include "_keysym.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace KEYBOARD
 {
@@ -30,11 +30,11 @@ public:
    * They are used to help facilitate keyboard mapping.
    *
    * \param symbol The key's symbol, defined in the Controller Topology Project:
-   *   https://github.com/kodi-game/controller-topology-project/blob/master/Readme-Keyboard.md
+   *   https://github.com/universalmediacenter-game/controller-topology-project/blob/master/Readme-Keyboard.md
    *
    * \return The layout-independent keycode associated with the key
    */
-  static XBMCKey TranslateKeysym(const SymbolName& symbolName);
+  static Key TranslateKeysym(const SymbolName& symbolName);
 
   /*!
    * \brief Translate a Universal Media Center key code to a keyboard symbol
@@ -43,8 +43,8 @@ public:
    *
    * \return The key's symbol, or an empty string if no symbol is defined for the keycode
    */
-  static const char* TranslateKeycode(XBMCKey keycode);
+  static const char* TranslateKeycode(Key keycode);
 };
 
 } // namespace KEYBOARD
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

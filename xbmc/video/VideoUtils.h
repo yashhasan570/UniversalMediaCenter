@@ -25,7 +25,7 @@ class CVideoDatabase;
 class CVideoInfoTag;
 enum class VideoDbContentType;
 
-namespace KODI::VIDEO::UTILS
+namespace UNIVERSAL MEDIA CENTER::VIDEO::UTILS
 {
 
 /*! \brief
@@ -39,7 +39,7 @@ namespace KODI::VIDEO::UTILS
  */
 std::string FindTrailer(const CFileItem& item,
                         bool movieFolder,
-                        KODI::REGEXP::RegExpCache* cache = nullptr);
+                        UNIVERSAL MEDIA CENTER::REGEXP::RegExpCache* cache = nullptr);
 
 /*! \brief Whether a movie has a folder of its own: its source has movies in separate folders, and it
  *         isn't in the source's root. A disc's is that of its file, not of its playlist.
@@ -257,4 +257,4 @@ void AnnouncePlayCountChanged(const std::string& file, int playCount);
  */
 void AnnounceResumePointChanged(const std::string& file, const CBookmark& resumePoint);
 
-} // namespace KODI::VIDEO::UTILS
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO::UTILS

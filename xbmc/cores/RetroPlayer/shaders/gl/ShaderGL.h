@@ -16,7 +16,7 @@
 #include <array>
 #include <stdint.h>
 
-namespace KODI::SHADER
+namespace UNIVERSAL MEDIA CENTER::SHADER
 {
 class CShaderGL : public IShader
 {
@@ -137,4 +137,4 @@ private:
   std::array<GLuint, 3> m_shaderVertexVBO{GL_NONE};
   GLuint m_shaderIndexVBO{GL_NONE};
 };
-} // namespace KODI::SHADER
+} // namespace UNIVERSAL MEDIA CENTER::SHADER

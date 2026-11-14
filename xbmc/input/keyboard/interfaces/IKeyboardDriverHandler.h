@@ -10,7 +10,7 @@
 
 class CKey;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace KEYBOARD
 {
@@ -41,4 +41,4 @@ public:
   virtual void OnKeyRelease(const CKey& key) = 0;
 };
 } // namespace KEYBOARD
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

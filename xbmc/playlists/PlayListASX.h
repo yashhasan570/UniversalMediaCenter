@@ -18,7 +18,7 @@ class XMLDocument;
 class XMLNode;
 } // namespace tinyxml2
 
-namespace KODI::PLAYLIST
+namespace UNIVERSAL MEDIA CENTER::PLAYLIST
 {
 class CPlayListASX : public CPlayList
 {
@@ -35,4 +35,4 @@ private:
    */
   void recurseLowercaseNames(tinyxml2::XMLNode& targetNode, tinyxml2::XMLNode* sourceNode);
 };
-} // namespace KODI::PLAYLIST
+} // namespace UNIVERSAL MEDIA CENTER::PLAYLIST

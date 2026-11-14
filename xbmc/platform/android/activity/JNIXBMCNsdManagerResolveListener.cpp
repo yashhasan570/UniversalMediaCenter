@@ -6,7 +6,7 @@
  *  See LICENSES/README.md for more information.
  */
 
-#include "JNIXBMCNsdManagerResolveListener.h"
+#include "JNINsdManagerResolveListener.h"
 
 #include "CompileInfo.h"
 
@@ -17,9 +17,9 @@
 using namespace jni;
 
 
-static std::string s_className = std::string(CCompileInfo::GetClass()) + "/interfaces/XBMCNsdManagerResolveListener";
+static std::string s_className = std::string(CCompileInfo::GetClass()) + "/interfaces/NsdManagerResolveListener";
 
-CJNIXBMCNsdManagerResolveListener::CJNIXBMCNsdManagerResolveListener()
+CJNINsdManagerResolveListener::CJNINsdManagerResolveListener()
   : CJNIBase(s_className)
 {
   m_object = new_object(CJNIContext::getClassLoader().loadClass(ToDotClassName(s_className)));
@@ -28,42 +28,42 @@ CJNIXBMCNsdManagerResolveListener::CJNIXBMCNsdManagerResolveListener()
   add_instance(m_object, this);
 }
 
-CJNIXBMCNsdManagerResolveListener::CJNIXBMCNsdManagerResolveListener(const CJNIXBMCNsdManagerResolveListener& other)
+CJNINsdManagerResolveListener::CJNINsdManagerResolveListener(const CJNINsdManagerResolveListener& other)
   : CJNIBase(other)
 {
   add_instance(m_object, this);
 }
 
-CJNIXBMCNsdManagerResolveListener::~CJNIXBMCNsdManagerResolveListener()
+CJNINsdManagerResolveListener::~CJNINsdManagerResolveListener()
 {
   remove_instance(this);
 }
 
-void CJNIXBMCNsdManagerResolveListener::RegisterNatives(JNIEnv* env)
+void CJNINsdManagerResolveListener::RegisterNatives(JNIEnv* env)
 {
   jclass cClass = env->FindClass(s_className.c_str());
   if(cClass)
   {
     JNINativeMethod methods[] =
     {
-      {"_onResolveFailed", "(Landroid/net/nsd/NsdServiceInfo;I)V", (void*)&CJNIXBMCNsdManagerResolveListener::_onResolveFailed},
-      {"_onServiceResolved", "(Landroid/net/nsd/NsdServiceInfo;)V", (void*)&CJNIXBMCNsdManagerResolveListener::_onServiceResolved},
+      {"_onResolveFailed", "(Landroid/net/nsd/NsdServiceInfo;I)V", (void*)&CJNINsdManagerResolveListener::_onResolveFailed},
+      {"_onServiceResolved", "(Landroid/net/nsd/NsdServiceInfo;)V", (void*)&CJNINsdManagerResolveListener::_onServiceResolved},
     };
 
     env->RegisterNatives(cClass, methods, sizeof(methods)/sizeof(methods[0]));
   }
 }
 
-void CJNIXBMCNsdManagerResolveListener::_onResolveFailed(JNIEnv* env, jobject thiz, jobject serviceInfo, jint errorCode)
+void CJNINsdManagerResolveListener::_onResolveFailed(JNIEnv* env, jobject thiz, jobject serviceInfo, jint errorCode)
 {
-  CJNIXBMCNsdManagerResolveListener *inst = find_instance(thiz);
+  CJNINsdManagerResolveListener *inst = find_instance(thiz);
   if (inst)
     inst->onResolveFailed(CJNINsdServiceInfo(jhobject::fromJNI(serviceInfo)), errorCode);
 }
 
-void CJNIXBMCNsdManagerResolveListener::_onServiceResolved(JNIEnv* env, jobject thiz, jobject serviceInfo)
+void CJNINsdManagerResolveListener::_onServiceResolved(JNIEnv* env, jobject thiz, jobject serviceInfo)
 {
-  CJNIXBMCNsdManagerResolveListener *inst = find_instance(thiz);
+  CJNINsdManagerResolveListener *inst = find_instance(thiz);
   if (inst)
     inst->onServiceResolved(CJNINsdServiceInfo(jhobject::fromJNI(serviceInfo)));
 }

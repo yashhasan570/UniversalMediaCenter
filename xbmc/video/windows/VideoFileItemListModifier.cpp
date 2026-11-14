@@ -25,7 +25,7 @@
 
 #include <memory>
 
-using namespace KODI::VIDEO;
+using namespace UNIVERSAL MEDIA CENTER::VIDEO;
 using namespace XFILE::VIDEODATABASEDIRECTORY;
 
 bool CVideoFileItemListModifier::CanModify(const CFileItemList &items) const
@@ -85,14 +85,14 @@ void CVideoFileItemListModifier::AddQueuingFolder(CFileItemList& items)
       {
         CFileItemPtr item = items[i];
         watched +=
-            static_cast<int>(item->GetProperty(KODI::ITEM::PROPERTY::WATCHED_EPISODES).asInteger());
+            static_cast<int>(item->GetProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::WATCHED_EPISODES).asInteger());
         unwatched += static_cast<int>(
-            item->GetProperty(KODI::ITEM::PROPERTY::UNWATCHED_EPISODES).asInteger());
+            item->GetProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::UNWATCHED_EPISODES).asInteger());
         inprogress += static_cast<int>(
-            item->GetProperty(KODI::ITEM::PROPERTY::IN_PROGRESS_EPISODES).asInteger());
+            item->GetProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::IN_PROGRESS_EPISODES).asInteger());
       }
-      KODI::VIDEO::UTILS::SetEpisodeCounts(*pItem, watched + unwatched, watched);
-      pItem->SetProperty(KODI::ITEM::PROPERTY::IN_PROGRESS_EPISODES, inprogress);
+      UNIVERSAL MEDIA CENTER::VIDEO::UTILS::SetEpisodeCounts(*pItem, watched + unwatched, watched);
+      pItem->SetProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::IN_PROGRESS_EPISODES, inprogress);
 
       // @note: The items list may contain additional items that do not belong to the show.
       // This is the case of the up directory (..) or movies linked to the tvshow.
@@ -103,7 +103,7 @@ void CVideoFileItemListModifier::AddQueuingFolder(CFileItemList& items)
         for (int i = 1; i < items.Size(); i++)
         {
           if (items[i]->HasVideoInfoTag() &&
-              items[i]->GetVideoInfoTag()->GetMediaType() == KODI::MEDIA::TYPE::SEASON &&
+              items[i]->GetVideoInfoTag()->GetMediaType() == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::SEASON &&
               items[i]->GetVideoInfoTag()->m_iSeason > 0)
           {
             *pItem->GetVideoInfoTag() = *items[i]->GetVideoInfoTag();
@@ -123,7 +123,7 @@ void CVideoFileItemListModifier::AddQueuingFolder(CFileItemList& items)
         pItem->GetVideoInfoTag()->m_iDbId = db.GetSeasonId(pItem->GetVideoInfoTag()->m_iIdShow, -1);
         db.Close();
       }
-      pItem->GetVideoInfoTag()->SetMediaType(KODI::MEDIA::TYPE::SEASON);
+      pItem->GetVideoInfoTag()->SetMediaType(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::SEASON);
   }
   break;
   case NodeType::MUSICVIDEOS_ALBUM:

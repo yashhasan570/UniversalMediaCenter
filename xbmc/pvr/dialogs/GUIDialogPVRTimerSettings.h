@@ -9,7 +9,7 @@
 #pragma once
 
 #include "XBDateTime.h"
-#include "addons/kodi-dev-kit/include/kodi/c-api/addon-instance/pvr/pvr_channels.h" // PVR_CHANNEL_INVALID_UID
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api/addon-instance/pvr/pvr_channels.h" // PVR_CHANNEL_INVALID_UID
 #include "pvr/PVRConstants.h" // PVR_CLIENT_INVALID_UID
 #include "pvr/settings/IPVRSettingsContainer.h"
 #include "settings/SettingConditions.h"
@@ -84,7 +84,7 @@ private:
 
   static int GetDateAsIndex(const CDateTime& datetime);
   static void SetDateFromIndex(CDateTime& datetime, int date);
-  static void SetTimeFromSystemTime(CDateTime& datetime, const KODI::TIME::SystemTime& time);
+  static void SetTimeFromSystemTime(CDateTime& datetime, const UNIVERSAL MEDIA CENTER::TIME::SystemTime& time);
 
   static int GetWeekdaysFromSetting(const std::shared_ptr<const CSetting>& setting);
 

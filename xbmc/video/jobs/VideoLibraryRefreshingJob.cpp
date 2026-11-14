@@ -56,8 +56,8 @@
 #include <utility>
 #include <vector>
 
-using namespace KODI;
-using namespace KODI::MESSAGING;
+using namespace UNIVERSAL MEDIA CENTER;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
 using namespace VIDEO;
 using namespace ADDON;
 
@@ -275,7 +275,7 @@ bool CVideoLibraryRefreshingJob::Work(CVideoDatabase &db)
   do
   {
     std::unique_ptr<CVideoInfoTag> pluginTag;
-    std::unique_ptr<KODI::ART::Artwork> pluginArt;
+    std::unique_ptr<UNIVERSAL MEDIA CENTER::ART::Artwork> pluginArt;
     std::string embeddedTitle;
     int embeddedYear{-1};
 

@@ -32,8 +32,8 @@ public:
   void ReleaseBuffer(int idx) override;
   bool NeedBuffer(int idx) override;
   bool IsGuiLayer() override { return false; }
-  bool CaptureVideoFrame(const KODI::RENDERING::CAPTURE::CaptureSpec& spec,
-                         KODI::RENDERING::CAPTURE::CaptureResult& result) override;
+  bool CaptureVideoFrame(const UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CaptureSpec& spec,
+                         UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CaptureResult& result) override;
   CRenderInfo GetRenderInfo() override;
   void Update() override;
   void RenderUpdate(

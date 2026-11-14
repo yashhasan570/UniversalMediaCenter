@@ -19,15 +19,15 @@
 #include "resources/LocalizeStrings.h"
 #include "resources/ResourcesComponent.h"
 #include "utils/SystemInfo.h"
-#include "utils/XBMCTinyXML.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML.h"
+#include "utils/TinyXML2.h"
 
 #include <limits>
 #include <string>
 
 #include <gtest/gtest.h>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 class CGFTestable : public CGUIControlFactory
 {
@@ -115,7 +115,7 @@ class CGUITestColorManager : public CGUIColorManager
 public:
   CGUITestColorManager()
   {
-    CXBMCTinyXML2 xmlDoc;
+    CTinyXML2 xmlDoc;
     xmlDoc.Parse(R"(<colors>
                       <color name="white">ffffffff</color>
                       <color name="black">00000000</color>
@@ -614,41 +614,41 @@ class TestGetTexture : public testing::WithParamInterface<TextureTest>, public t
 const auto TextureTests = std::array{
     TextureTest{R"(<root><test>foo.png</test></root>)"s,
                 {false, CRect{0.0, 0.0, 0.0, 0.0}, true, 0, ""s,
-                 KODI::GUILIB::GUIINFO::CGUIInfoColor{0, 0}, "foo.png"s}},
+                 UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoColor{0, 0}, "foo.png"s}},
     TextureTest{R"(<root><test flipx="true">foo.png</test></root>)"s,
                 {false, CRect{0.0, 0.0, 0.0, 0.0}, true, 1, ""s,
-                 KODI::GUILIB::GUIINFO::CGUIInfoColor{0, 0}, "foo.png"s}},
+                 UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoColor{0, 0}, "foo.png"s}},
     TextureTest{R"(<root><test flipy="true">foo.png</test></root>)"s,
                 {false, CRect{0.0, 0.0, 0.0, 0.0}, true, 3, ""s,
-                 KODI::GUILIB::GUIINFO::CGUIInfoColor{0, 0}, "foo.png"s}},
+                 UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoColor{0, 0}, "foo.png"s}},
     TextureTest{R"(<root><test flipx="true" flipy="true">foo.png</test></root>)"s,
                 {false, CRect{0.0, 0.0, 0.0, 0.0}, true, 2, ""s,
-                 KODI::GUILIB::GUIINFO::CGUIInfoColor{0, 0}, "foo.png"s}},
+                 UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoColor{0, 0}, "foo.png"s}},
     TextureTest{R"(<root><test border="1,2,3,4">foo.png</test></root>)"s,
                 {false, CRect{1.0, 2.0, 3.0, 4.0}, true, 0, ""s,
-                 KODI::GUILIB::GUIINFO::CGUIInfoColor{0, 0}, "foo.png"s}},
+                 UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoColor{0, 0}, "foo.png"s}},
     TextureTest{R"(<root><test infill="false" border="1,2,3,4">foo.png</test></root>)"s,
                 {false, CRect{1.0, 2.0, 3.0, 4.0}, false, 0, ""s,
-                 KODI::GUILIB::GUIINFO::CGUIInfoColor{0, 0}, "foo.png"s}},
+                 UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoColor{0, 0}, "foo.png"s}},
     TextureTest{R"(<root><test diffuse="bar.png">foo.png</test></root>)"s,
                 {false, CRect{0.0, 0.0, 0.0, 0.0}, true, 0, "bar.png"s,
-                 KODI::GUILIB::GUIINFO::CGUIInfoColor{0, 0}, "foo.png"s}},
+                 UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoColor{0, 0}, "foo.png"s}},
     TextureTest{R"(<root><test colordiffuse="1">foo.png</test></root>)"s,
                 {false, CRect{0.0, 0.0, 0.0, 0.0}, true, 0, ""s,
-                 KODI::GUILIB::GUIINFO::CGUIInfoColor{1, 0}, "foo.png"s}},
+                 UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoColor{1, 0}, "foo.png"s}},
     TextureTest{R"(<root><test colordiffuse="white">foo.png</test></root>)"s,
                 {false, CRect{0.0, 0.0, 0.0, 0.0}, true, 0, ""s,
-                 KODI::GUILIB::GUIINFO::CGUIInfoColor{0xFFFFFFFF, 0}, "foo.png"s}},
+                 UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoColor{0xFFFFFFFF, 0}, "foo.png"s}},
     TextureTest{R"(<root><test background="true">foo.png</test></root>)"s,
                 {true, CRect{0.0, 0.0, 0.0, 0.0}, true, 0, ""s,
-                 KODI::GUILIB::GUIINFO::CGUIInfoColor{0, 0}, "foo.png"s}},
+                 UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoColor{0, 0}, "foo.png"s}},
     TextureTest{R"(<root><test/></root>)"s,
                 {false, CRect{0.0, 0.0, 0.0, 0.0}, true, 0, ""s,
-                 KODI::GUILIB::GUIINFO::CGUIInfoColor{0, 0}, ""s},
+                 UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoColor{0, 0}, ""s},
                 true},
     TextureTest{R"(<root/>)"s,
                 {false, CRect{0.0, 0.0, 0.0, 0.0}, true, 0, ""s,
-                 KODI::GUILIB::GUIINFO::CGUIInfoColor{0, 0}, ""s},
+                 UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoColor{0, 0}, ""s},
                 false},
 };
 
@@ -672,7 +672,7 @@ const auto TypeTests = std::array{
 
 TEST_P(TestGetActions, GetActions)
 {
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   doc.Parse(GetParam().def);
   CGUIAction action;
   EXPECT_EQ(CGFTestable::GetActions(doc.RootElement(), "test", action), GetParam().result);
@@ -687,7 +687,7 @@ INSTANTIATE_TEST_SUITE_P(TestGUIControlFactory, TestGetActions, testing::ValuesI
 
 TEST_P(TestGetAlignment, GetAlignment)
 {
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   doc.Parse(GetParam().def);
   uint32_t align{};
   EXPECT_EQ(CGFTestable::GetAlignment(doc.RootElement(), "test", align), GetParam().result);
@@ -700,7 +700,7 @@ INSTANTIATE_TEST_SUITE_P(TestGUIControlFactory,
 
 TEST_P(TestGetLabelAlignmentY, GetAlignmentY)
 {
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   doc.Parse(GetParam().def);
   uint32_t align = std::numeric_limits<uint32_t>::max();
   EXPECT_EQ(CGFTestable::GetLabelAlignmentY(doc.RootElement(), "test", align), GetParam().result);
@@ -713,7 +713,7 @@ INSTANTIATE_TEST_SUITE_P(TestGUIControlFactory,
 
 TEST_P(TestAspectRatio, GetAspectRatio)
 {
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   doc.Parse(GetParam().def);
   CAspectRatio ratio;
   EXPECT_EQ(CGFTestable::GetAspectRatio(doc.RootElement(), "test", ratio), GetParam().result);
@@ -729,7 +729,7 @@ INSTANTIATE_TEST_SUITE_P(TestGUIControlFactory,
 TEST_P(TestGetColor, GetColor)
 {
   CGUITestComponent comp;
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   doc.Parse(GetParam().def);
   UTILS::COLOR::Color value = std::numeric_limits<uint32_t>::max();
   EXPECT_EQ(CGFTestable::GetColor(doc.RootElement(), "test", value), GetParam().result);
@@ -740,7 +740,7 @@ INSTANTIATE_TEST_SUITE_P(TestGUIControlFactory, TestGetColor, testing::ValuesIn(
 
 TEST_P(TestGetDimension, GetDimension)
 {
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   doc.Parse(GetParam().def);
   float min = 0.f, value = 0.f;
   EXPECT_EQ(CGFTestable::GetDimension(doc.RootElement(), "test", 0.1f, value, min),
@@ -755,7 +755,7 @@ INSTANTIATE_TEST_SUITE_P(TestGUIControlFactory,
 
 TEST_P(TestGetDimensions, GetDimensions)
 {
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   doc.Parse(GetParam().def);
   float left = 0.f, width = 0.f, min_width = 0.f;
   EXPECT_EQ(CGFTestable::GetDimensions(doc.RootElement(), "left", "right", "center_left",
@@ -772,7 +772,7 @@ INSTANTIATE_TEST_SUITE_P(TestGUIControlFactory,
 
 TEST_P(TestGetFloatRange, GetFloatRange)
 {
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   doc.Parse(GetParam().def);
   float min = 0.f, max = 0.f, interval = 0.f;
   EXPECT_EQ(CGFTestable::GetFloatRange(doc.RootElement(), "test", min, max, interval),
@@ -788,7 +788,7 @@ INSTANTIATE_TEST_SUITE_P(TestGUIControlFactory,
 
 TEST_P(TestGetHitRect, GetHitRect)
 {
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   doc.Parse(GetParam().def);
   CRect rect, parentRect{1.0, 2.0, 3.0, 4.0};
   EXPECT_EQ(CGFTestable::GetHitRect(doc.RootElement(), rect, parentRect), GetParam().result);
@@ -805,9 +805,9 @@ TEST_P(TestGetInfoLabel, GetInfoLabel)
   CGUITestComponent comp;
   ASSERT_TRUE(CServiceBroker::GetResourcesComponent().GetLocalizeStrings().Load(
       g_langInfo.GetLanguagePath(), "resource.language.en_gb"));
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   doc.Parse(GetParam().def);
-  KODI::GUILIB::GUIINFO::CGUIInfoLabel infoLabel;
+  UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoLabel infoLabel;
   EXPECT_EQ(CGFTestable::GetInfoLabelFromElement(doc.RootElement(), infoLabel, 100),
             GetParam().result);
   EXPECT_EQ(infoLabel.GetLabel(INFO::DEFAULT_CONTEXT), GetParam().label);
@@ -823,9 +823,9 @@ TEST_P(TestGetInfoLabels, GetInfoLabels)
   CGUITestComponent comp;
   ASSERT_TRUE(CServiceBroker::GetResourcesComponent().GetLocalizeStrings().Load(
       g_langInfo.GetLanguagePath(), "resource.language.en_gb"));
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   doc.Parse(GetParam().def);
-  std::vector<KODI::GUILIB::GUIINFO::CGUIInfoLabel> infoLabel;
+  std::vector<UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoLabel> infoLabel;
   CGFTestable::GetInfoLabels(doc.RootElement(), "test", infoLabel, 100);
   EXPECT_EQ(infoLabel.size(), GetParam().labels.size());
   for (size_t i = 0; i < infoLabel.size(); ++i)
@@ -841,7 +841,7 @@ INSTANTIATE_TEST_SUITE_P(TestGUIControlFactory,
 
 TEST_P(TestGetIntRange, GetIntRange)
 {
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   doc.Parse(GetParam().def);
   int min = 0, max = 0, interval = 0;
   EXPECT_EQ(CGFTestable::GetIntRange(doc.RootElement(), "test", min, max, interval),
@@ -855,7 +855,7 @@ INSTANTIATE_TEST_SUITE_P(TestGUIControlFactory, TestGetIntRange, testing::Values
 
 TEST_P(TestGetMovingSpeed, GetMovingSpeed)
 {
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   doc.Parse(GetParam().def);
   UTILS::MOVING_SPEED::MapEventConfig config;
   EXPECT_EQ(CGFTestable::GetMovingSpeedConfig(doc.RootElement(), "test", config),
@@ -869,7 +869,7 @@ INSTANTIATE_TEST_SUITE_P(TestGUIControlFactory,
 
 TEST_P(TestGetPosition, GetPosition)
 {
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   doc.Parse(GetParam().def);
   float pos = 0.f;
   EXPECT_EQ(CGFTestable::GetPosition(doc.RootElement(), "test", 0.1f, pos), GetParam().result);
@@ -880,7 +880,7 @@ INSTANTIATE_TEST_SUITE_P(TestGUIControlFactory, TestGetPosition, testing::Values
 
 TEST_P(TestGetScroller, GetScroller)
 {
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   doc.Parse(GetParam().def);
   CScroller value;
   EXPECT_EQ(CGFTestable::GetScroller(doc.RootElement(), "test", value), GetParam().result);
@@ -905,7 +905,7 @@ TEST_P(TestGetString, GetString)
 {
   ASSERT_TRUE(CServiceBroker::GetResourcesComponent().GetLocalizeStrings().Load(
       g_langInfo.GetLanguagePath(), "resource.language.en_gb"));
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   doc.Parse(GetParam().def);
   std::string value;
   EXPECT_EQ(CGFTestable::GetString(doc.RootElement(), "test", value), GetParam().result);
@@ -917,7 +917,7 @@ INSTANTIATE_TEST_SUITE_P(TestGUIControlFactory, TestGetString, testing::ValuesIn
 TEST_P(TestGetTexture, GetTexture)
 {
   CGUITestComponent comp;
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   doc.Parse(GetParam().def);
   CTextureInfo info;
   EXPECT_EQ(CGFTestable::GetTexture(doc.RootElement(), "test", info), GetParam().result);
@@ -937,7 +937,7 @@ INSTANTIATE_TEST_SUITE_P(TestGUIControlFactory, TestGetTexture, testing::ValuesI
 TEST(TestGUIControlFactory, GetTextureMipmap)
 {
   CGUITestComponent comp;
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   doc.Parse(R"(<root><test mipmap="true">foo.png</test></root>)"s);
   CTextureInfo info;
   EXPECT_TRUE(CGFTestable::GetTexture(doc.RootElement(), "test", info));
@@ -947,7 +947,7 @@ TEST(TestGUIControlFactory, GetTextureMipmap)
 TEST(TestGUIControlFactory, GetTextureMipmapFalse)
 {
   CGUITestComponent comp;
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   doc.Parse(R"(<root><test mipmap="false">foo.png</test></root>)"s);
   CTextureInfo info;
   info.m_mipmap = true;
@@ -958,7 +958,7 @@ TEST(TestGUIControlFactory, GetTextureMipmapFalse)
 TEST(TestGUIControlFactory, GetTextureSubpixel)
 {
   CGUITestComponent comp;
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   doc.Parse(R"(<root><test subpixel="true">foo.png</test></root>)"s);
   CTextureInfo info;
   EXPECT_TRUE(CGFTestable::GetTexture(doc.RootElement(), "test", info));
@@ -968,7 +968,7 @@ TEST(TestGUIControlFactory, GetTextureSubpixel)
 TEST(TestGUIControlFactory, GetTextureSubpixelFalse)
 {
   CGUITestComponent comp;
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   doc.Parse(R"(<root><test subpixel="false">foo.png</test></root>)"s);
   CTextureInfo info;
   info.m_subpixel = true;
@@ -978,7 +978,7 @@ TEST(TestGUIControlFactory, GetTextureSubpixelFalse)
 
 TEST_P(TestGetType, GetType)
 {
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   doc.Parse(GetParam().def);
   std::string type;
   EXPECT_EQ(CGFTestable::GetType(doc.RootElement()), GetParam().type);

@@ -17,7 +17,7 @@ namespace jni
 
 /*!
  * \brief Callback interface implemented by the native consumer of
- *        CJNIXBMCNativeKeyboard to receive soft keyboard input events.
+ *        CJNINativeKeyboard to receive soft keyboard input events.
  */
 class IKeyboardInputHandler
 {
@@ -29,11 +29,11 @@ public:
   virtual void OnInputCanceled() = 0;
 };
 
-class CJNIXBMCNativeKeyboard : public CJNIBase, public CJNIInterfaceImplem<CJNIXBMCNativeKeyboard>
+class CJNINativeKeyboard : public CJNIBase, public CJNIInterfaceImplem<CJNINativeKeyboard>
 {
 public:
-  explicit CJNIXBMCNativeKeyboard(IKeyboardInputHandler* handler);
-  ~CJNIXBMCNativeKeyboard() override;
+  explicit CJNINativeKeyboard(IKeyboardInputHandler* handler);
+  ~CJNINativeKeyboard() override;
 
   static void RegisterNatives(JNIEnv* env);
 

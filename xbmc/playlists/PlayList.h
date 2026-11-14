@@ -17,7 +17,7 @@
 class CFileItem;
 class CFileItemList;
 
-namespace KODI::PLAYLIST
+namespace UNIVERSAL MEDIA CENTER::PLAYLIST
 {
 
 class CPlayList
@@ -90,4 +90,4 @@ private:
 
 typedef std::shared_ptr<CPlayList> CPlayListPtr;
 
-} // namespace KODI::PLAYLIST
+} // namespace UNIVERSAL MEDIA CENTER::PLAYLIST

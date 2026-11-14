@@ -8,14 +8,14 @@
 
 #include "OSScreenSaverAndroid.h"
 
-#include "platform/android/activity/XBMCApp.h"
+#include "platform/android/activity/App.h"
 
 void COSScreenSaverAndroid::Inhibit()
 {
-  CXBMCApp::Get().KeepScreenOn(true);
+  CApp::Get().KeepScreenOn(true);
 }
 
 void COSScreenSaverAndroid::Uninhibit()
 {
-  CXBMCApp::Get().KeepScreenOn(false);
+  CApp::Get().KeepScreenOn(false);
 }

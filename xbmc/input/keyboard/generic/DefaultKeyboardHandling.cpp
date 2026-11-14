@@ -14,7 +14,7 @@
 
 #include <memory>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace KEYBOARD;
 
 CDefaultKeyboardHandling::CDefaultKeyboardHandling(PERIPHERALS::CPeripheral* peripheral,

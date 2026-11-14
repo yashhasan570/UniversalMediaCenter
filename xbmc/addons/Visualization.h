@@ -9,9 +9,9 @@
 #pragma once
 
 #include "addons/binary-addons/AddonInstanceHandler.h"
-#include "addons/kodi-dev-kit/include/kodi/addon-instance/Visualization.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/addon-instance/Visualization.h"
 
-namespace KODI::ADDONS
+namespace UNIVERSAL MEDIA CENTER::ADDONS
 {
 
 class CVisualization : public ADDON::IAddonInstanceHandler
@@ -36,7 +36,7 @@ public:
   bool LockPreset();
   bool RatePreset(bool plus_minus);
   bool UpdateAlbumart(const char* albumart);
-  bool UpdateTrack(const KODI_ADDON_VISUALIZATION_TRACK* track);
+  bool UpdateTrack(const UNIVERSALMEDIA_ADDON_VISUALIZATION_TRACK* track);
   bool HasPresets() const;
   bool GetPresetList(std::vector<std::string>& vecpresets) const;
   int GetActivePreset();
@@ -44,7 +44,7 @@ public:
   bool IsLocked();
 
   // Addon callback functions
-  void GetProperties(struct KODI_ADDON_VISUALIZATION_PROPS* props) const;
+  void GetProperties(struct UNIVERSALMEDIA_ADDON_VISUALIZATION_PROPS* props) const;
   void TransferPreset(const std::string& preset);
   void ClearPresets();
 
@@ -56,4 +56,4 @@ private:
   std::vector<std::string> m_presets; /*!< cached preset list */
 };
 
-} // namespace KODI::ADDONS
+} // namespace UNIVERSAL MEDIA CENTER::ADDONS

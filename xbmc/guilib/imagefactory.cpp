@@ -19,7 +19,7 @@
 
 CCriticalSection ImageFactory::m_createSec;
 
-using namespace KODI::ADDONS;
+using namespace UNIVERSAL MEDIA CENTER::ADDONS;
 
 IImage* ImageFactory::CreateLoader(const std::string& strFileName)
 {

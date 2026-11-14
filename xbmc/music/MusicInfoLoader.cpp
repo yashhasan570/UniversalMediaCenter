@@ -36,7 +36,7 @@
 
 #include <ranges>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace MUSIC_INFO;
 using namespace XFILE;
 

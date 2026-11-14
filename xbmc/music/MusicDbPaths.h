@@ -9,7 +9,7 @@
 #pragma once
 
 //! \brief The musicdb:// paths of the music library's nodes and filtered album views.
-namespace KODI::MUSIC::DB_PATH
+namespace UNIVERSAL MEDIA CENTER::MUSIC::DB_PATH
 {
 
 inline constexpr char ROOT[] = "musicdb://";
@@ -32,4 +32,4 @@ inline constexpr char ROLES[] = "musicdb://roles/";
 inline constexpr char SOURCES[] = "musicdb://sources/";
 inline constexpr char DISCS[] = "musicdb://discs/";
 
-} // namespace KODI::MUSIC::DB_PATH
+} // namespace UNIVERSAL MEDIA CENTER::MUSIC::DB_PATH

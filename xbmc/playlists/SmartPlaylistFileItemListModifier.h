@@ -12,7 +12,7 @@
 
 #include <string>
 
-namespace KODI::PLAYLIST
+namespace UNIVERSAL MEDIA CENTER::PLAYLIST
 {
 
 class CSmartPlaylistFileItemListModifier : public IFileItemListModifier
@@ -28,4 +28,4 @@ private:
   static std::string GetUrlOption(const std::string &path, const std::string &option);
 };
 
-} // namespace KODI::PLAYLIST
+} // namespace UNIVERSAL MEDIA CENTER::PLAYLIST

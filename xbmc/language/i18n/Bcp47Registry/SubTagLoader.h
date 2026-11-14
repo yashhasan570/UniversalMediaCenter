@@ -8,7 +8,7 @@
 
 #pragma once
 
-namespace KODI::LANGUAGE::I18N
+namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N
 {
 struct BaseSubTag;
 struct LanguageSubTag;
@@ -51,4 +51,4 @@ bool LoadExtLangSubTag(ExtLangSubTag& subTag, const RegistryFileRecord& record);
  * \return True for success, false otherwise (ex. missing mandatory fields, invalid field values)
  */
 bool LoadVariantSubTag(VariantSubTag& subTag, const RegistryFileRecord& record);
-} // namespace KODI::LANGUAGE::I18N
+} // namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N

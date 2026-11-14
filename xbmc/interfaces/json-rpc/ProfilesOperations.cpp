@@ -20,7 +20,7 @@
 #include "utils/Variant.h"
 
 using namespace JSONRPC;
-using KODI::UTILITY::CDigest;
+using UNIVERSAL MEDIA CENTER::UTILITY::CDigest;
 
 JSONRPC_STATUS CProfilesOperations::GetProfiles(const std::string &method, ITransportLayer *transport, IClient *client, const CVariant &parameterObject, CVariant &result)
 {
@@ -32,7 +32,7 @@ JSONRPC_STATUS CProfilesOperations::GetProfiles(const std::string &method, ITran
   {
     const CProfile *profile = profileManager->GetProfile(i);
     CFileItemPtr item(new CFileItem(profile->getName()));
-    item->SetArt(KODI::ART::TYPE::THUMB, profile->getThumb());
+    item->SetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB, profile->getThumb());
     listItems.Add(item);
   }
 

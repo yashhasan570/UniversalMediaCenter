@@ -11,7 +11,7 @@
 #include <cstdint>
 #include <vector>
 
-namespace KODI::VIDEO::GEOMETRY
+namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY
 {
 
 //! \brief A non-owning view of one decoded 4:2:0 frame with interleaved chroma, as NV12 and
@@ -59,4 +59,4 @@ ReducedSize ReductionOutputSize(unsigned int sourceWidth,
 //! is not describable, leaving \p out untouched.
 bool ReduceFrame(const ReductionSource& source, unsigned int targetWidth, ReducedFrame& out);
 
-} // namespace KODI::VIDEO::GEOMETRY
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY

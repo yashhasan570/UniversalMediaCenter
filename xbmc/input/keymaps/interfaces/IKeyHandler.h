@@ -8,7 +8,7 @@
 
 #pragma once
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace KEYMAP
 {
@@ -54,4 +54,4 @@ public:
   virtual bool OnAnalogMotion(float magnitude, unsigned int motionTimeMs) = 0;
 };
 } // namespace KEYMAP
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

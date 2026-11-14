@@ -15,7 +15,7 @@ class CDateTime;
 class CFileItem;
 class CFileItemList;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -58,4 +58,4 @@ private:
   static bool CreateFolderIfNotExists(const std::string& path);
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

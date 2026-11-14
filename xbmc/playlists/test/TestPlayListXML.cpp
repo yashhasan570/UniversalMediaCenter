@@ -17,11 +17,11 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 TEST(TestPlayListXML, LoadData)
 {
-  const std::string filename = XBMC_REF_FILE_PATH("/xbmc/playlists/test/test.pxml");
+  const std::string filename = _REF_FILE_PATH("//playlists/test/test.pxml");
   PLAYLIST::CPlayListXML playlist;
 
   EXPECT_TRUE(playlist.Load(filename));

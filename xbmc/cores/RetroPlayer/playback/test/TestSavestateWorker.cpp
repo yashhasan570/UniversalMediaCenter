@@ -15,7 +15,7 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI::RETRO;
+using namespace UNIVERSAL MEDIA CENTER::RETRO;
 
 TEST(TestSavestateWorker, BusyWorkerKeepsOneOwnedSnapshot)
 {
@@ -154,7 +154,7 @@ TEST(TestSavestateWorker, ExplicitSaveWaitsForCapacityAndIsNotDropped)
   EXPECT_EQ(saved, 2);
 }
 
-namespace KODI::RETRO
+namespace UNIVERSAL MEDIA CENTER::RETRO
 {
 class CSavestateWorkerTestAccess
 {
@@ -165,7 +165,7 @@ public:
     return std::unique_lock(worker.m_mutex);
   }
 };
-} // namespace KODI::RETRO
+} // namespace UNIVERSAL MEDIA CENTER::RETRO
 
 TEST(TestSavestateWorker, ReadySnapshotInvalidatedBeforeSubmissionRetriesOnce)
 {

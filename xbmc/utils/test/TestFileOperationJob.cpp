@@ -22,8 +22,8 @@ TEST(TestFileOperationJob, ActionCopy)
   CFileItemList items;
   CFileOperationJob job;
 
-  ASSERT_NE(nullptr, (tmpfile = XBMC_CREATETEMPFILE("")));
-  tmpfilepath = XBMC_TEMPFILEPATH(tmpfile);
+  ASSERT_NE(nullptr, (tmpfile = _CREATETEMPFILE("")));
+  tmpfilepath = _TEMPFILEPATH(tmpfile);
   tmpfile->Close();
 
   CFileItemPtr item(new CFileItem(tmpfilepath));
@@ -44,7 +44,7 @@ TEST(TestFileOperationJob, ActionCopy)
   EXPECT_TRUE(XFILE::CFile::Exists(tmpfilepath));
   EXPECT_TRUE(XFILE::CFile::Exists(destfile));
 
-  EXPECT_TRUE(XBMC_DELETETEMPFILE(tmpfile));
+  EXPECT_TRUE(_DELETETEMPFILE(tmpfile));
   EXPECT_TRUE(XFILE::CFile::Delete(destfile));
   EXPECT_TRUE(XFILE::CDirectory::Remove(destpath));
 }
@@ -56,8 +56,8 @@ TEST(TestFileOperationJob, ActionMove)
   CFileItemList items;
   CFileOperationJob job;
 
-  ASSERT_NE(nullptr, (tmpfile = XBMC_CREATETEMPFILE("")));
-  tmpfilepath = XBMC_TEMPFILEPATH(tmpfile);
+  ASSERT_NE(nullptr, (tmpfile = _CREATETEMPFILE("")));
+  tmpfilepath = _TEMPFILEPATH(tmpfile);
   tmpfile->Close();
 
   CFileItemPtr item(new CFileItem(tmpfilepath));
@@ -82,7 +82,7 @@ TEST(TestFileOperationJob, ActionMove)
   EXPECT_TRUE(XFILE::CFile::Delete(destfile));
   EXPECT_TRUE(XFILE::CDirectory::Remove(destpath));
 
-  EXPECT_FALSE(XBMC_DELETETEMPFILE(tmpfile));
+  EXPECT_FALSE(_DELETETEMPFILE(tmpfile));
 }
 
 TEST(TestFileOperationJob, ActionDelete)
@@ -92,8 +92,8 @@ TEST(TestFileOperationJob, ActionDelete)
   CFileItemList items;
   CFileOperationJob job;
 
-  ASSERT_NE(nullptr, (tmpfile = XBMC_CREATETEMPFILE("")));
-  tmpfilepath = XBMC_TEMPFILEPATH(tmpfile);
+  ASSERT_NE(nullptr, (tmpfile = _CREATETEMPFILE("")));
+  tmpfilepath = _TEMPFILEPATH(tmpfile);
   tmpfile->Close();
 
   CFileItemPtr item(new CFileItem(tmpfilepath));
@@ -134,7 +134,7 @@ TEST(TestFileOperationJob, ActionDelete)
   EXPECT_FALSE(XFILE::CFile::Exists(destfile));
   EXPECT_TRUE(XFILE::CDirectory::Remove(destpath));
 
-  EXPECT_FALSE(XBMC_DELETETEMPFILE(tmpfile));
+  EXPECT_FALSE(_DELETETEMPFILE(tmpfile));
 }
 
 TEST(TestFileOperationJob, ActionReplace)
@@ -144,8 +144,8 @@ TEST(TestFileOperationJob, ActionReplace)
   CFileItemList items;
   CFileOperationJob job;
 
-  ASSERT_NE(nullptr, (tmpfile = XBMC_CREATETEMPFILE("")));
-  tmpfilepath = XBMC_TEMPFILEPATH(tmpfile);
+  ASSERT_NE(nullptr, (tmpfile = _CREATETEMPFILE("")));
+  tmpfilepath = _TEMPFILEPATH(tmpfile);
   tmpfile->Close();
 
   CFileItemPtr item(new CFileItem(tmpfilepath));
@@ -172,7 +172,7 @@ TEST(TestFileOperationJob, ActionReplace)
   EXPECT_TRUE(job.DoWork());
   EXPECT_TRUE(XFILE::CFile::Exists(destfile));
 
-  EXPECT_TRUE(XBMC_DELETETEMPFILE(tmpfile));
+  EXPECT_TRUE(_DELETETEMPFILE(tmpfile));
   EXPECT_TRUE(XFILE::CFile::Delete(destfile));
   EXPECT_TRUE(XFILE::CDirectory::Remove(destpath));
 }
@@ -184,11 +184,11 @@ TEST(TestFileOperationJob, ActionCreateFolder)
   CFileItemList items;
   CFileOperationJob job;
 
-  ASSERT_NE(nullptr, (tmpfile = XBMC_CREATETEMPFILE("")));
-  tmpfilepath = XBMC_TEMPFILEPATH(tmpfile);
+  ASSERT_NE(nullptr, (tmpfile = _CREATETEMPFILE("")));
+  tmpfilepath = _TEMPFILEPATH(tmpfile);
 
   std::string tmpfiledirectory =
-    CXBMCTestUtils::Instance().TempFileDirectory(tmpfile);
+    CTestUtils::Instance().TempFileDirectory(tmpfile);
 
   tmpfile->Close();
 
@@ -208,7 +208,7 @@ TEST(TestFileOperationJob, ActionCreateFolder)
   EXPECT_TRUE(job.DoWork());
   EXPECT_TRUE(XFILE::CDirectory::Exists(destpath));
 
-  EXPECT_TRUE(XBMC_DELETETEMPFILE(tmpfile));
+  EXPECT_TRUE(_DELETETEMPFILE(tmpfile));
   EXPECT_TRUE(XFILE::CDirectory::Remove(destpath));
 }
 
@@ -220,11 +220,11 @@ TEST(TestFileOperationJob, ActionDeleteFolder)
   CFileItemList items;
   CFileOperationJob job;
 
-  ASSERT_NE(nullptr, (tmpfile = XBMC_CREATETEMPFILE("")));
-  tmpfilepath = XBMC_TEMPFILEPATH(tmpfile);
+  ASSERT_NE(nullptr, (tmpfile = _CREATETEMPFILE("")));
+  tmpfilepath = _TEMPFILEPATH(tmpfile);
 
   std::string tmpfiledirectory =
-    CXBMCTestUtils::Instance().TempFileDirectory(tmpfile);
+    CTestUtils::Instance().TempFileDirectory(tmpfile);
 
   tmpfile->Close();
 
@@ -250,7 +250,7 @@ TEST(TestFileOperationJob, ActionDeleteFolder)
   EXPECT_TRUE(job.DoWork());
   EXPECT_FALSE(XFILE::CDirectory::Exists(destpath));
 
-  EXPECT_TRUE(XBMC_DELETETEMPFILE(tmpfile));
+  EXPECT_TRUE(_DELETETEMPFILE(tmpfile));
 }
 
 TEST(TestFileOperationJob, GetFunctions)
@@ -260,8 +260,8 @@ TEST(TestFileOperationJob, GetFunctions)
   CFileItemList items;
   CFileOperationJob job;
 
-  ASSERT_NE(nullptr, (tmpfile = XBMC_CREATETEMPFILE("")));
-  tmpfilepath = XBMC_TEMPFILEPATH(tmpfile);
+  ASSERT_NE(nullptr, (tmpfile = _CREATETEMPFILE("")));
+  tmpfilepath = _TEMPFILEPATH(tmpfile);
   tmpfile->Close();
 
   CFileItemPtr item(new CFileItem(tmpfilepath));
@@ -286,7 +286,7 @@ TEST(TestFileOperationJob, GetFunctions)
   std::cout << "GetCurrentFile(): " << job.GetCurrentFile() << std::endl;
   EXPECT_FALSE(job.GetItems().IsEmpty());
 
-  EXPECT_TRUE(XBMC_DELETETEMPFILE(tmpfile));
+  EXPECT_TRUE(_DELETETEMPFILE(tmpfile));
   EXPECT_TRUE(XFILE::CFile::Delete(destfile));
   EXPECT_TRUE(XFILE::CDirectory::Remove(destpath));
 }
@@ -294,8 +294,8 @@ TEST(TestFileOperationJob, GetFunctions)
 TEST(TestFileOperationJob, ExternalProgressBarStaysOpen)
 {
   XFILE::CFile* tmpfile;
-  ASSERT_NE(nullptr, (tmpfile = XBMC_CREATETEMPFILE("")));
-  const std::string tmpfilepath = XBMC_TEMPFILEPATH(tmpfile);
+  ASSERT_NE(nullptr, (tmpfile = _CREATETEMPFILE("")));
+  const std::string tmpfilepath = _TEMPFILEPATH(tmpfile);
   tmpfile->Close();
 
   CFileItemList items;
@@ -318,7 +318,7 @@ TEST(TestFileOperationJob, ExternalProgressBarStaysOpen)
   }
   EXPECT_FALSE(progressBar.IsFinished());
 
-  EXPECT_TRUE(XBMC_DELETETEMPFILE(tmpfile));
+  EXPECT_TRUE(_DELETETEMPFILE(tmpfile));
   EXPECT_TRUE(XFILE::CFile::Delete(destfile));
   EXPECT_TRUE(XFILE::CDirectory::Remove(destpath));
 }

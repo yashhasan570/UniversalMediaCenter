@@ -9,7 +9,7 @@
 #pragma once
 
 #include "settings/lib/ISettingsMigrationStep.h"
-#include "utils/XBMCTinyXML.h"
+#include "utils/TinyXML.h"
 
 #include <algorithm>
 #include <memory>
@@ -21,7 +21,7 @@ class CSettingsMigration
 public:
   // The constructors throw for invalid lists of steps
   CSettingsMigration();
-  CSettingsMigration(KODI::SETTINGS::MigrationStepList steps);
+  CSettingsMigration(UNIVERSAL MEDIA CENTER::SETTINGS::MigrationStepList steps);
 
   /*!
    * \brief Upgrade the settings contained in \p root from \p fromVersion to \p targetVersion.
@@ -38,5 +38,5 @@ public:
   bool UpdateXMLSettings(TiXmlElement* root, int currentVersion, int targetVersion);
 
 private:
-  KODI::SETTINGS::MigrationStepList m_steps; // steps sorted by TargetVersion() in constructor
+  UNIVERSAL MEDIA CENTER::SETTINGS::MigrationStepList m_steps; // steps sorted by TargetVersion() in constructor
 };

@@ -30,7 +30,7 @@
 #include "utils/ArtTypes.h"
 #include "utils/DefaultArt.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 CGUIActivePortList::CGUIActivePortList(CGUIWindow& window, int controlId, bool showInputDisabled)

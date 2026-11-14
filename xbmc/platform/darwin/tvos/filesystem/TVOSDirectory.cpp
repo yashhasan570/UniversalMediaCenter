@@ -92,9 +92,9 @@ bool CTVOSDirectory::GetDirectory(const CURL& url, CFileItemList& items)
       if (tvOSFile.Stat(url2, &buffer) == 0)
       {
         // fake the datetime
-        KODI::TIME::FileTime fileTime, localTime;
-        KODI::TIME::TimeTToFileTime(buffer.st_mtime, &fileTime);
-        KODI::TIME::FileTimeToLocalFileTime(&fileTime, &localTime);
+        UNIVERSAL MEDIA CENTER::TIME::FileTime fileTime, localTime;
+        UNIVERSAL MEDIA CENTER::TIME::TimeTToFileTime(buffer.st_mtime, &fileTime);
+        UNIVERSAL MEDIA CENTER::TIME::FileTimeToLocalFileTime(&fileTime, &localTime);
         pItem->SetDateTime(localTime);
         // all this to get the file size
         pItem->SetSize(buffer.st_size);

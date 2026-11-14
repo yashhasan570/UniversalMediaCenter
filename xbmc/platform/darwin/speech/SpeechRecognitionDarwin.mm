@@ -46,9 +46,9 @@ API_UNAVAILABLE(tvos) @interface SpeechRecognitionImpl : NSObject<SFSpeechRecogn
   self.owner = owner;
 
   // Get current Universal Media Center GUI locale and use it for speech recognition.
-  std::string kodiLocale = g_langInfo.GetLocale().ToShortString();
-  std::replace(kodiLocale.begin(), kodiLocale.end(), '_', '-');
-  NSString* locale = @(kodiLocale.c_str());
+  std::string universalmediacenterLocale = g_langInfo.GetLocale().ToShortString();
+  std::replace(universalmediacenterLocale.begin(), universalmediacenterLocale.end(), '_', '-');
+  NSString* locale = @(universalmediacenterLocale.c_str());
 
   self.speechRecognizer =
       [[SFSpeechRecognizer alloc] initWithLocale:[NSLocale localeWithLocaleIdentifier:locale]];

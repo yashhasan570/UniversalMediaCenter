@@ -16,12 +16,12 @@
 
 #if defined(TARGET_DARWIN_IOS)
 #include "platform/darwin/ios/IOSKeyboardView.h"
-#include "platform/darwin/ios/XBMCController.h"
+#include "platform/darwin/ios/Controller.h"
 
 #define KEYBOARDVIEW_CLASS IOSKeyboardView
 #elif defined(TARGET_DARWIN_TVOS)
 #include "platform/darwin/tvos/TVOSKeyboardView.h"
-#include "platform/darwin/tvos/XBMCController.h"
+#include "platform/darwin/tvos/Controller.h"
 #define KEYBOARDVIEW_CLASS TVOSKeyboardView
 #endif
 
@@ -41,7 +41,7 @@ bool CDarwinEmbedKeyboard::ShowAndGetInput(char_callback_t pCallback,
                                            const std::string& heading,
                                            bool bHiddenInput)
 {
-  // we are in xbmc main thread or python module thread.
+  // we are in  main thread or python module thread.
   @autoreleasepool
   {
     @synchronized([KeyboardView class])
@@ -54,7 +54,7 @@ bool CDarwinEmbedKeyboard::ShowAndGetInput(char_callback_t pCallback,
       KEYBOARDVIEW_CLASS* __block keyboardView;
       dispatch_sync(dispatch_get_main_queue(), ^{
         // assume we are only drawn on the mainscreen ever!
-        auto keyboardFrame = [g_xbmcController fullscreenSubviewFrame];
+        auto keyboardFrame = [g_Controller fullscreenSubviewFrame];
         keyboardView = [[KEYBOARDVIEW_CLASS alloc] initWithFrame:keyboardFrame];
       });
       ////////////////////////////////////////////
@@ -64,7 +64,7 @@ bool CDarwinEmbedKeyboard::ShowAndGetInput(char_callback_t pCallback,
 
       // inform the controller that the native keyboard is active
       // basically as long as m_impl->g_pKeyboard exists...
-      [g_xbmcController nativeKeyboardActive:true];
+      [g_Controller nativeKeyboardActive:true];
     }
 
     m_pCharCallback = pCallback;
@@ -90,7 +90,7 @@ bool CDarwinEmbedKeyboard::ShowAndGetInput(char_callback_t pCallback,
     @synchronized([KeyboardView class])
     {
       m_impl->g_pKeyboard = nil;
-      [g_xbmcController nativeKeyboardActive:false];
+      [g_Controller nativeKeyboardActive:false];
     }
     return confirmed;
   }

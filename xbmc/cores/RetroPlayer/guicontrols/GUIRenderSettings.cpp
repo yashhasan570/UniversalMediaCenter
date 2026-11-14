@@ -12,7 +12,7 @@
 
 #include <mutex>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace RETRO;
 
 CGUIRenderSettings::CGUIRenderSettings(CGUIGameControl& guiControl) : m_guiControl(guiControl)

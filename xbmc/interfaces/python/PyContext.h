@@ -8,7 +8,7 @@
 
 #pragma once
 
-namespace XBMCAddon
+namespace Addon
 {
   namespace Python
   {

@@ -28,7 +28,7 @@ void CGUITextureGLES::Register(CGUIQuadDrawerGLES& quadDrawer)
 {
   CGUITexture::Register(
       CGUITextureGLES::CreateTexture,
-      [&quadDrawer](const CRect& coords, KODI::UTILS::COLOR::Color color, CTexture* texture,
+      [&quadDrawer](const CRect& coords, UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color color, CTexture* texture,
                     const CRect* texCoords, const float depth, const bool blending)
       { quadDrawer.DrawQuad(coords, color, texture, texCoords, depth, blending); },
       CGUITextureGLES::DrawStencilQuad);
@@ -107,7 +107,7 @@ void CGUITextureGLES::Free()
   m_quadCount = 0;
 }
 
-void CGUITextureGLES::Begin(KODI::UTILS::COLOR::Color color)
+void CGUITextureGLES::Begin(UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color color)
 {
   CTexture* texture = m_texture.m_textures[m_currentFrame].get();
   texture->LoadToGPU();
@@ -115,10 +115,10 @@ void CGUITextureGLES::Begin(KODI::UTILS::COLOR::Color color)
     m_diffuse.m_textures[0]->LoadToGPU();
 
   // Setup Colors
-  m_col[0] = KODI::UTILS::GL::GetChannelFromARGB(KODI::UTILS::GL::ColorChannel::R, color);
-  m_col[1] = KODI::UTILS::GL::GetChannelFromARGB(KODI::UTILS::GL::ColorChannel::G, color);
-  m_col[2] = KODI::UTILS::GL::GetChannelFromARGB(KODI::UTILS::GL::ColorChannel::B, color);
-  m_col[3] = KODI::UTILS::GL::GetChannelFromARGB(KODI::UTILS::GL::ColorChannel::A, color);
+  m_col[0] = UNIVERSAL MEDIA CENTER::UTILS::GL::GetChannelFromARGB(UNIVERSAL MEDIA CENTER::UTILS::GL::ColorChannel::R, color);
+  m_col[1] = UNIVERSAL MEDIA CENTER::UTILS::GL::GetChannelFromARGB(UNIVERSAL MEDIA CENTER::UTILS::GL::ColorChannel::G, color);
+  m_col[2] = UNIVERSAL MEDIA CENTER::UTILS::GL::GetChannelFromARGB(UNIVERSAL MEDIA CENTER::UTILS::GL::ColorChannel::B, color);
+  m_col[3] = UNIVERSAL MEDIA CENTER::UTILS::GL::GetChannelFromARGB(UNIVERSAL MEDIA CENTER::UTILS::GL::ColorChannel::A, color);
 
   bool hasAlpha = m_texture.m_textures[m_currentFrame]->HasAlpha() || m_col[3] < 255;
   const bool hasBlendColor =

@@ -11,7 +11,7 @@
 #include <cstdint>
 #include <string>
 #include <system_error>
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace PLATFORM
 {

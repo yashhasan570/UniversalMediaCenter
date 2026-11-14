@@ -36,7 +36,7 @@ bool CDirectoryNodeEpisodes::GetContent(CFileItemList& items) const
     season = -1;
 
   const int details =
-      items.GetProperty(KODI::ITEM::PROPERTY::SET_VIDEODB_DETAILS).asInteger32(VideoDbDetailsNone);
+      items.GetProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::SET_VIDEODB_DETAILS).asInteger32(VideoDbDetailsNone);
 
   bool bSuccess = videodatabase.GetEpisodesNav(
       BuildPath(), items, params.GetGenreId(), params.GetYear(), params.GetActorId(),

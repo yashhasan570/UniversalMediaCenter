@@ -11,7 +11,7 @@
 #include <map>
 #include <string>
 
-namespace KODI::ART
+namespace UNIVERSAL MEDIA CENTER::ART
 {
 /*!
  * \brief A container for artwork. key: artwork type, value: URL of artwork file
@@ -23,4 +23,4 @@ using Artwork = std::map<std::string, std::string, std::less<>>;
  */
 using SeasonsArtwork = std::map<int, Artwork>;
 
-} // namespace KODI::ART
+} // namespace UNIVERSAL MEDIA CENTER::ART

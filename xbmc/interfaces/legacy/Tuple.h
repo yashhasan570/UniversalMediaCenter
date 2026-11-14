@@ -14,7 +14,7 @@
  * This file contains a few templates to define various length
  * Tuples.
  */
-namespace XBMCAddon
+namespace Addon
 {
   struct tuple_null_type { };
 

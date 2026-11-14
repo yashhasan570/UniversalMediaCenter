@@ -10,7 +10,7 @@
 
     python3 tools/testdata/mkmka.py [outdir]
 
-Writes to xbmc/filesystem/test/data/audiobook/ unless told otherwise.
+Writes to /filesystem/test/data/audiobook/ unless told otherwise.
 
 Each file is built element by element from the tables below rather than muxed from media, so it
 holds only what the test it serves is about and stays around a kilobyte. Output is deterministic:
@@ -384,7 +384,7 @@ FIXTURES = {
 
 
 def main():
-    default = Path(__file__).resolve().parents[2] / "xbmc/filesystem/test/data/audiobook"
+    default = Path(__file__).resolve().parents[2] / "/filesystem/test/data/audiobook"
     outdir = Path(sys.argv[1]) if len(sys.argv) > 1 else default
     outdir.mkdir(parents=True, exist_ok=True)
     for name, make in FIXTURES.items():

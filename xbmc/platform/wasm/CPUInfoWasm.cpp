@@ -29,7 +29,7 @@ CCPUInfoWasm::CCPUInfoWasm()
 
   m_cpuModel = "WebAssembly";
 
-  const auto device = KODI::PLATFORM::WASM::CWasmWebApis::GetDeviceInfo();
+  const auto device = UNIVERSAL MEDIA CENTER::PLATFORM::WASM::CWasmWebApis::GetDeviceInfo();
   if (device.available)
   {
     m_cpuHardware = device.manufacturer;

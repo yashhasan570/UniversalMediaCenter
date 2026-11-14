@@ -13,7 +13,7 @@
 #include <algorithm>
 #include <string>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace SUBTITLES
 {
@@ -172,4 +172,4 @@ inline FrameMargins TrackMargins(const renderOpts& opts, bool native)
 
 } // namespace STYLE
 } // namespace SUBTITLES
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

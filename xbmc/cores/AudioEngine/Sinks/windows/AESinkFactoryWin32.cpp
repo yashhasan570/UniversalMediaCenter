@@ -93,13 +93,13 @@ std::vector<RendererDetail> CAESinkFactoryWin::GetRendererDetails()
     hr = pProperty->GetValue(PKEY_Device_FriendlyName, &varName);
     EXIT_ON_FAILURE(hr, "Retrieval of endpoint device name failed.")
 
-    details.strDescription = KODI::PLATFORM::WINDOWS::FromW(varName.pwszVal);
+    details.strDescription = UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW(varName.pwszVal);
     PropVariantClear(&varName);
 
     hr = pProperty->GetValue(PKEY_AudioEndpoint_GUID, &varName);
     EXIT_ON_FAILURE(hr, "Retrieval of endpoint GUID failed.")
 
-    details.strDeviceId = KODI::PLATFORM::WINDOWS::FromW(varName.pwszVal);
+    details.strDeviceId = UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW(varName.pwszVal);
     PropVariantClear(&varName);
 
     hr = pProperty->GetValue(PKEY_AudioEndpoint_FormFactor, &varName);
@@ -133,7 +133,7 @@ std::vector<RendererDetail> CAESinkFactoryWin::GetRendererDetails()
     hr = pProperty->GetValue(PKEY_Device_EnumeratorName, &varName);
     if (SUCCEEDED(hr) && varName.vt != VT_EMPTY)
     {
-      details.strDeviceEnumerator = KODI::PLATFORM::WINDOWS::FromW(varName.pwszVal);
+      details.strDeviceEnumerator = UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW(varName.pwszVal);
       StringUtils::ToUpper(details.strDeviceEnumerator);
     }
     else
@@ -233,7 +233,7 @@ std::string CAESinkFactoryWin::GetDefaultDeviceId()
   hr = pProperty->GetValue(PKEY_AudioEndpoint_GUID, &varName);
   EXIT_ON_FAILURE(hr, "Retrieval of endpoint GUID failed.")
 
-  strDeviceId = KODI::PLATFORM::WINDOWS::FromW(varName.pwszVal);
+  strDeviceId = UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW(varName.pwszVal);
   PropVariantClear(&varName);
 
 failed:
@@ -275,7 +275,7 @@ HRESULT CAESinkFactoryWin::ActivateWASAPIDevice(std::string &device, IAEWASAPIDe
     hr = pProperty->GetValue(PKEY_AudioEndpoint_GUID, &varName);
     EXIT_ON_FAILURE(hr, "Retrieval of endpoint GUID failed.")
 
-    std::string strDevName = KODI::PLATFORM::WINDOWS::FromW(varName.pwszVal);
+    std::string strDevName = UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW(varName.pwszVal);
 
     if (device == strDevName)
       i = uiCount;

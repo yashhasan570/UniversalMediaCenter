@@ -6,7 +6,7 @@
  *  See LICENSES/README.md for more information.
  */
 
-#include "addons/kodi-dev-kit/include/kodi/c-api/addon-instance/game.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api/addon-instance/game.h"
 #include "games/addons/input/GameClientPort.h"
 #include "games/addons/input/GameClientTopology.h"
 #include "games/controllers/ControllerIDs.h"
@@ -14,7 +14,7 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 TEST(TestGameClientTopology, Construtor)

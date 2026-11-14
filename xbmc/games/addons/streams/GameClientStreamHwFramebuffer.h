@@ -9,11 +9,11 @@
 #pragma once
 
 #include "IGameClientStream.h"
-#include "addons/kodi-dev-kit/include/kodi/c-api/addon-instance/game.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api/addon-instance/game.h"
 
 #include <memory>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -98,4 +98,4 @@ private:
 };
 
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

@@ -308,12 +308,12 @@ void CCocoaPowerSyscall::OSPowerCallBack(void *refcon, io_service_t service, nat
       CServiceBroker::GetPowerManager().ProcessEvents();
       IOAllowPowerChange(ctx->m_root_port, (long)msg_arg);
       //CLog::Log(LOGDEBUG, "{} - kIOMessageSystemWillSleep", __FUNCTION__);
-      // let XBMC know system will sleep
+      // let  know system will sleep
       //! @todo implement
       break;
     case kIOMessageSystemHasPoweredOn:
       // System has awakened from sleep.
-      // let XBMC know system has woke
+      // let  know system has woke
       //! @todo implement
       ctx->m_OnResume = true;
       //CLog::Log(LOGDEBUG, "{} - kIOMessageSystemHasPoweredOn", __FUNCTION__);

@@ -147,9 +147,9 @@ CArchive& CArchive::operator<<(const std::wstring& wstr)
   return streamout(wstr.data(), size * sizeof(wchar_t));
 }
 
-CArchive& CArchive::operator<<(const KODI::TIME::SystemTime& time)
+CArchive& CArchive::operator<<(const UNIVERSAL MEDIA CENTER::TIME::SystemTime& time)
 {
-  return streamout(&time, sizeof(KODI::TIME::SystemTime));
+  return streamout(&time, sizeof(UNIVERSAL MEDIA CENTER::TIME::SystemTime));
 }
 
 CArchive& CArchive::operator<<(IArchivable& obj)
@@ -260,9 +260,9 @@ CArchive& CArchive::operator>>(std::wstring& wstr)
   return *this;
 }
 
-CArchive& CArchive::operator>>(KODI::TIME::SystemTime& time)
+CArchive& CArchive::operator>>(UNIVERSAL MEDIA CENTER::TIME::SystemTime& time)
 {
-  return streamin(&time, sizeof(KODI::TIME::SystemTime));
+  return streamin(&time, sizeof(UNIVERSAL MEDIA CENTER::TIME::SystemTime));
 }
 
 CArchive& CArchive::operator>>(IArchivable& obj)

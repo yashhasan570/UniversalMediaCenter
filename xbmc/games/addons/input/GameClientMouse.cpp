@@ -10,14 +10,14 @@
 
 #include "GameClientInput.h"
 #include "GameClientTopology.h"
-#include "addons/kodi-dev-kit/include/kodi/addon-instance/Game.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/addon-instance/Game.h"
 #include "games/addons/GameClient.h"
 #include "games/controllers/input/ControllerActivity.h"
 #include "input/mouse/interfaces/IMouseInputProvider.h"
 
 #include <utility>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 CGameClientMouse::CGameClientMouse(CGameClient& gameClient,

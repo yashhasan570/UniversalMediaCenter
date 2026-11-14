@@ -8,7 +8,7 @@
 
 #pragma once
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace INPUT
 {
@@ -40,4 +40,4 @@ enum class INTERCARDINAL_DIRECTION
   LEFTDOWN = LEFT | DOWN,
 };
 } // namespace INPUT
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

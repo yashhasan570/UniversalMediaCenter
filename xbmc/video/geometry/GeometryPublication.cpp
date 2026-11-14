@@ -11,7 +11,7 @@
 #include <cmath>
 #include <utility>
 
-namespace KODI::VIDEO::GEOMETRY
+namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY
 {
 
 namespace
@@ -130,4 +130,4 @@ void ParseGeometryOverrides(const CVariant& geometry, GeometryOverrides& overrid
     overrides.osdPlacement = OsdPlacementFromName(placement.asString());
 }
 
-} // namespace KODI::VIDEO::GEOMETRY
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY

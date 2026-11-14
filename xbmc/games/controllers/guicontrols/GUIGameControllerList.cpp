@@ -28,7 +28,7 @@
 #include <algorithm>
 #include <cstdlib>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 CGUIGameControllerList::CGUIGameControllerList(int parentID,

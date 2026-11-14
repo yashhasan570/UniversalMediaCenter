@@ -18,7 +18,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace MEMORY
 {

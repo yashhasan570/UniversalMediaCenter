@@ -10,7 +10,7 @@
 
 #include "input/keymaps/interfaces/IKeymapEnvironment.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace KEYMAP;
 
 CKeymap::CKeymap(std::shared_ptr<const IWindowKeymap> keymap, const IKeymapEnvironment* environment)

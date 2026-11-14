@@ -42,8 +42,8 @@ TEST_F(TestDateTime, FileTimeOperators)
   CDateTime dateTime1(1991, 5, 14, 12, 34, 56);
   CDateTime dateTime2(1991, 5, 14, 12, 34, 57);
 
-  KODI::TIME::FileTime fileTime1;
-  KODI::TIME::FileTime fileTime2;
+  UNIVERSAL MEDIA CENTER::TIME::FileTime fileTime1;
+  UNIVERSAL MEDIA CENTER::TIME::FileTime fileTime2;
 
   dateTime1.GetAsTimeStamp(fileTime1);
   dateTime2.GetAsTimeStamp(fileTime2);
@@ -60,7 +60,7 @@ TEST_F(TestDateTime, SystemTimeOperators)
   CDateTime dateTime1(1991, 5, 14, 12, 34, 56);
   CDateTime dateTime2(1991, 5, 14, 12, 34, 57);
 
-  KODI::TIME::SystemTime systemTime;
+  UNIVERSAL MEDIA CENTER::TIME::SystemTime systemTime;
   dateTime2.GetAsSystemTime(systemTime);
 
   EXPECT_TRUE(dateTime1 < systemTime);
@@ -542,11 +542,11 @@ TEST_F(TestDateTime, GetAsLocalized)
   //and the windows-specific formatting happens in getRegion().
 #ifdef TARGET_WINDOWS
   //Windows is handled differently because that's what ModuleXbmc.cpp does.
-  EXPECT_EQ(XBMCAddon::xbmc::getRegion("dateshort"), "%#d/%#m/%y");
-  EXPECT_EQ(XBMCAddon::xbmc::getRegion("datelong"), "%a, %#d %B %Y");
+  EXPECT_EQ(Addon::::getRegion("dateshort"), "%#d/%#m/%y");
+  EXPECT_EQ(Addon::::getRegion("datelong"), "%a, %#d %B %Y");
 #else
-  EXPECT_EQ(XBMCAddon::xbmc::getRegion("dateshort"), "%-d/%-m/%y");
-  EXPECT_EQ(XBMCAddon::xbmc::getRegion("datelong"), "%a, %-d %B %Y");
+  EXPECT_EQ(Addon::::getRegion("dateshort"), "%-d/%-m/%y");
+  EXPECT_EQ(Addon::::getRegion("datelong"), "%a, %-d %B %Y");
 #endif
 
   //Test short day name, short month name and 2 digit year.
@@ -655,7 +655,7 @@ TEST_F(TestDateTime, GetAsSystemTime)
   CDateTime dateTime;
   dateTime.SetDateTime(1991, 05, 14, 12, 34, 56);
 
-  KODI::TIME::SystemTime systemTime;
+  UNIVERSAL MEDIA CENTER::TIME::SystemTime systemTime;
   dateTime.GetAsSystemTime(systemTime);
 
   EXPECT_TRUE(dateTime == systemTime);
@@ -746,7 +746,7 @@ TEST_F(TestDateTime, GetAsTimeStamp)
   CDateTime dateTime;
   dateTime.SetDateTime(1991, 05, 14, 12, 34, 56);
 
-  KODI::TIME::FileTime fileTime;
+  UNIVERSAL MEDIA CENTER::TIME::FileTime fileTime;
   dateTime.GetAsTimeStamp(fileTime);
   dateTime += dateTime.GetTimezoneBias();
 
@@ -755,12 +755,12 @@ TEST_F(TestDateTime, GetAsTimeStamp)
 
 TEST_F(TestDateTime, GetTimezoneBiasBefore1970)
 {
-  KODI::TIME::SystemTime time{};
+  UNIVERSAL MEDIA CENTER::TIME::SystemTime time{};
   time.year = 1969;
   time.month = 12;
   time.day = 31;
 
-  EXPECT_TRUE(std::get<0>(KODI::TIME::GetTimezoneBias(time)));
+  EXPECT_TRUE(std::get<0>(UNIVERSAL MEDIA CENTER::TIME::GetTimezoneBias(time)));
 }
 
 TEST_F(TestDateTime, GetAsUTCDateTime)

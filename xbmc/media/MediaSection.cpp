@@ -8,7 +8,7 @@
 
 #include "MediaSection.h"
 
-namespace KODI::MEDIA
+namespace UNIVERSAL MEDIA CENTER::MEDIA
 {
 
 std::string_view NameOf(MediaSection section)
@@ -48,4 +48,4 @@ std::optional<MediaSection> MediaSectionFromName(std::string_view name)
   return std::nullopt;
 }
 
-} // namespace KODI::MEDIA
+} // namespace UNIVERSAL MEDIA CENTER::MEDIA

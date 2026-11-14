@@ -1,1 +1,1 @@
-xbmc/cores/RetroPlayer/messages                                 cores/RetroPlayer/messages
+/cores/RetroPlayer/messages                                 cores/RetroPlayer/messages

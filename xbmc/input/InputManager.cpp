@@ -23,7 +23,7 @@
 #include "input/cec/ICecInputProvider.h"
 #include "input/keyboard/Key.h"
 #include "input/keyboard/KeyboardEasterEgg.h"
-#include "input/keyboard/XBMC_vkeys.h"
+#include "input/keyboard/_vkeys.h"
 #include "input/keyboard/interfaces/IKeyboardDriverHandler.h"
 #include "input/keymaps/ButtonTranslator.h"
 #include "input/keymaps/KeymapEnvironment.h"
@@ -51,16 +51,16 @@
 
 using EVENTSERVER::CEventServer;
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 const std::string CInputManager::SETTING_INPUT_ENABLE_CONTROLLER = "input.enablejoystick";
 
 namespace
 {
 constexpr auto keyComposeactionEventMap = make_map<uint8_t, int>({
-    {XBMC_KEYCOMPOSING_COMPOSING, ACTION_KEYBOARD_COMPOSING_KEY},
-    {XBMC_KEYCOMPOSING_CANCELLED, ACTION_KEYBOARD_COMPOSING_KEY_CANCELLED},
-    {XBMC_KEYCOMPOSING_FINISHED, ACTION_KEYBOARD_COMPOSING_KEY_FINISHED},
+    {_KEYCOMPOSING_COMPOSING, ACTION_KEYBOARD_COMPOSING_KEY},
+    {_KEYCOMPOSING_CANCELLED, ACTION_KEYBOARD_COMPOSING_KEY_CANCELLED},
+    {_KEYCOMPOSING_FINISHED, ACTION_KEYBOARD_COMPOSING_KEY_FINISHED},
 });
 }
 
@@ -195,7 +195,7 @@ bool CInputManager::ProcessEventServer(int windowId, float frameTime)
   bool isJoystick = false;
 
   // es->ExecuteNextAction() invalidates the ref to the CEventServer instance
-  // when the action exits XBMC
+  // when the action exits 
   es = CEventServer::GetInstance();
   if (!es || !es->Running() || es->GetNumberOfClients() == 0)
     return false;
@@ -282,8 +282,8 @@ bool CInputManager::ProcessEventServer(int windowId, float frameTime)
     CPoint pos;
     if (es->GetMousePos(pos.x, pos.y) && m_Mouse.IsEnabled())
     {
-      XBMC_Event newEvent = {};
-      newEvent.type = XBMC_MOUSEMOTION;
+      _Event newEvent = {};
+      newEvent.type = _MOUSEMOTION;
       newEvent.motion.x = (uint16_t)pos.x;
       newEvent.motion.y = (uint16_t)pos.y;
       CServiceBroker::GetAppPort()->OnEvent(
@@ -364,33 +364,33 @@ bool CInputManager::Process(int windowId, float frameTime)
   return true;
 }
 
-bool CInputManager::OnEvent(XBMC_Event& newEvent)
+bool CInputManager::OnEvent(_Event& newEvent)
 {
   switch (newEvent.type)
   {
-    case XBMC_KEYDOWN:
+    case _KEYDOWN:
     {
       m_Keyboard.ProcessKeyDown(newEvent.key.keysym);
       CKey key = m_Keyboard.TranslateKey(newEvent.key.keysym);
       OnKey(key);
       break;
     }
-    case XBMC_KEYUP:
+    case _KEYUP:
       m_Keyboard.ProcessKeyUp();
       OnKeyUp(m_Keyboard.TranslateKey(newEvent.key.keysym));
       break;
-    case XBMC_KEYCOMPOSING_COMPOSING:
-    case XBMC_KEYCOMPOSING_CANCELLED:
-    case XBMC_KEYCOMPOSING_FINISHED:
+    case _KEYCOMPOSING_COMPOSING:
+    case _KEYCOMPOSING_CANCELLED:
+    case _KEYCOMPOSING_FINISHED:
     {
       const CAction action = CAction(keyComposeactionEventMap.find(newEvent.type)->second,
                                      static_cast<wchar_t>(newEvent.key.keysym.unicode));
       ExecuteInputAction(action);
       break;
     }
-    case XBMC_MOUSEBUTTONDOWN:
-    case XBMC_MOUSEBUTTONUP:
-    case XBMC_MOUSEMOTION:
+    case _MOUSEBUTTONDOWN:
+    case _MOUSEBUTTONUP:
+    case _MOUSEMOTION:
     {
       bool handled = false;
 
@@ -398,13 +398,13 @@ bool CInputManager::OnEvent(XBMC_Event& newEvent)
       {
         switch (newEvent.type)
         {
-          case XBMC_MOUSEMOTION:
+          case _MOUSEMOTION:
           {
             if (driverHandler->OnPosition(newEvent.motion.x, newEvent.motion.y))
               handled = true;
             break;
           }
-          case XBMC_MOUSEBUTTONDOWN:
+          case _MOUSEBUTTONDOWN:
           {
             MOUSE::BUTTON_ID buttonId;
             if (CMouseTranslator::TranslateEventID(newEvent.button.button, buttonId))
@@ -414,7 +414,7 @@ bool CInputManager::OnEvent(XBMC_Event& newEvent)
             }
             break;
           }
-          case XBMC_MOUSEBUTTONUP:
+          case _MOUSEBUTTONUP:
           {
             MOUSE::BUTTON_ID buttonId;
             if (CMouseTranslator::TranslateEventID(newEvent.button.button, buttonId))
@@ -436,7 +436,7 @@ bool CInputManager::OnEvent(XBMC_Event& newEvent)
       }
       break;
     }
-    case XBMC_TOUCH:
+    case _TOUCH:
     {
       if (newEvent.touch.action == ACTION_TOUCH_TAP)
       { // Send a mouse motion event with no dx,dy for getting the current guiitem selected
@@ -481,7 +481,7 @@ bool CInputManager::OnEvent(XBMC_Event& newEvent)
 
       break;
     } // case
-    case XBMC_BUTTON:
+    case _BUTTON:
     {
       HandleKey(
           m_buttonStat.TranslateKey(CKey(newEvent.keybutton.button, newEvent.keybutton.holdtime)));
@@ -656,13 +656,13 @@ bool CInputManager::HandleKey(const CKey& key)
           // Check for paste keypress
 #ifdef TARGET_WINDOWS
           // In Windows paste is ctrl-V
-          if (key.GetVKey() == XBMCVK_V && key.GetModifiers() == CKey::MODIFIER_CTRL)
+          if (key.GetVKey() == VK_V && key.GetModifiers() == CKey::MODIFIER_CTRL)
 #elif defined(TARGET_LINUX)
           // In Linux paste is ctrl-V
-          if (key.GetVKey() == XBMCVK_V && key.GetModifiers() == CKey::MODIFIER_CTRL)
+          if (key.GetVKey() == VK_V && key.GetModifiers() == CKey::MODIFIER_CTRL)
 #elif defined(TARGET_DARWIN_OSX)
           // In OSX paste is cmd-V
-          if (key.GetVKey() == XBMCVK_V && key.GetModifiers() == CKey::MODIFIER_META)
+          if (key.GetVKey() == VK_V && key.GetModifiers() == CKey::MODIFIER_META)
 #else
           // Placeholder for other operating systems
           if (false)

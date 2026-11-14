@@ -14,7 +14,7 @@
 
 void CWinSystemOSXGL::Register()
 {
-  KODI::WINDOWING::CWindowSystemFactory::RegisterWindowSystem(CreateWinSystem);
+  UNIVERSAL MEDIA CENTER::WINDOWING::CWindowSystemFactory::RegisterWindowSystem(CreateWinSystem);
 }
 
 std::unique_ptr<CWinSystemBase> CWinSystemOSXGL::CreateWinSystem()

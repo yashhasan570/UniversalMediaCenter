@@ -41,7 +41,7 @@ public:
 
   static char FirstDriveFromMask (ULONG unitmask);
   static int GetDriveStatus(const std::string &strPath, bool bStatusEx=false);
-  static bool XBMCShellExecute(const std::string &strPath, bool bWaitForScriptExit=false);
+  static bool ShellExecute(const std::string &strPath, bool bWaitForScriptExit=false);
   static std::string GetResInfoString();
   static size_t GetSystemMemorySize();
 

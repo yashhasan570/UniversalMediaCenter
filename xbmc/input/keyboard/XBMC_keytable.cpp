@@ -6,297 +6,297 @@
  *  See LICENSES/README.md for more information.
  */
 
-#include "input/keyboard/XBMC_keytable.h"
+#include "input/keyboard/_keytable.h"
 
-#include "input/keyboard/XBMC_keysym.h"
-#include "input/keyboard/XBMC_vkeys.h"
+#include "input/keyboard/_keysym.h"
+#include "input/keyboard/_vkeys.h"
 #include "utils/StringUtils.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace KEYBOARD;
 
 namespace
 {
-// The array of XBMCKEYTABLEs used in XBMC.
+// The array of KEYTABLEs used in .
 // sym, unicode, ascii, vkey, keyname
 // clang-format off
-static const XBMCKEYTABLE XBMCKeyTable[] = {
-    {XBMCK_BACKSPACE, 0, 0, XBMCVK_BACK, "backspace"},
-    {XBMCK_TAB, 0, 0, XBMCVK_TAB, "tab"},
-    {XBMCK_RETURN, 0, 0, XBMCVK_RETURN, "return"},
-    {XBMCK_ESCAPE, 0, 0, XBMCVK_ESCAPE, "escape"},
-    {0, 0, 0, XBMCVK_ESCAPE, "esc"} // Allowed abbreviation for "escape"
+static const KEYTABLE KeyTable[] = {
+    {K_BACKSPACE, 0, 0, VK_BACK, "backspace"},
+    {K_TAB, 0, 0, VK_TAB, "tab"},
+    {K_RETURN, 0, 0, VK_RETURN, "return"},
+    {K_ESCAPE, 0, 0, VK_ESCAPE, "escape"},
+    {0, 0, 0, VK_ESCAPE, "esc"} // Allowed abbreviation for "escape"
 
     // Number keys on the main keyboard
     ,
-    {XBMCK_0, '0', '0', XBMCVK_0, "zero"},
-    {XBMCK_1, '1', '1', XBMCVK_1, "one"},
-    {XBMCK_2, '2', '2', XBMCVK_2, "two"},
-    {XBMCK_3, '3', '3', XBMCVK_3, "three"},
-    {XBMCK_4, '4', '4', XBMCVK_4, "four"},
-    {XBMCK_5, '5', '5', XBMCVK_5, "five"},
-    {XBMCK_6, '6', '6', XBMCVK_6, "six"},
-    {XBMCK_7, '7', '7', XBMCVK_7, "seven"},
-    {XBMCK_8, '8', '8', XBMCVK_8, "eight"},
-    {XBMCK_9, '9', '9', XBMCVK_9, "nine"}
+    {K_0, '0', '0', VK_0, "zero"},
+    {K_1, '1', '1', VK_1, "one"},
+    {K_2, '2', '2', VK_2, "two"},
+    {K_3, '3', '3', VK_3, "three"},
+    {K_4, '4', '4', VK_4, "four"},
+    {K_5, '5', '5', VK_5, "five"},
+    {K_6, '6', '6', VK_6, "six"},
+    {K_7, '7', '7', VK_7, "seven"},
+    {K_8, '8', '8', VK_8, "eight"},
+    {K_9, '9', '9', VK_9, "nine"}
 
     // A to Z - note that upper case A-Z don't have a matching name or
     // vkey. Only the lower case a-z are used in key mappings.
     ,
-    {XBMCK_a, 'A', 'A', XBMCVK_A, NULL},
-    {XBMCK_b, 'B', 'B', XBMCVK_B, NULL},
-    {XBMCK_c, 'C', 'C', XBMCVK_C, NULL},
-    {XBMCK_d, 'D', 'D', XBMCVK_D, NULL},
-    {XBMCK_e, 'E', 'E', XBMCVK_E, NULL},
-    {XBMCK_f, 'F', 'F', XBMCVK_F, NULL},
-    {XBMCK_g, 'G', 'G', XBMCVK_G, NULL},
-    {XBMCK_h, 'H', 'H', XBMCVK_H, NULL},
-    {XBMCK_i, 'I', 'I', XBMCVK_I, NULL},
-    {XBMCK_j, 'J', 'J', XBMCVK_J, NULL},
-    {XBMCK_k, 'K', 'K', XBMCVK_K, NULL},
-    {XBMCK_l, 'L', 'L', XBMCVK_L, NULL},
-    {XBMCK_m, 'M', 'M', XBMCVK_M, NULL},
-    {XBMCK_n, 'N', 'N', XBMCVK_N, NULL},
-    {XBMCK_o, 'O', 'O', XBMCVK_O, NULL},
-    {XBMCK_p, 'P', 'P', XBMCVK_P, NULL},
-    {XBMCK_q, 'Q', 'Q', XBMCVK_Q, NULL},
-    {XBMCK_r, 'R', 'R', XBMCVK_R, NULL},
-    {XBMCK_s, 'S', 'S', XBMCVK_S, NULL},
-    {XBMCK_t, 'T', 'T', XBMCVK_T, NULL},
-    {XBMCK_u, 'U', 'U', XBMCVK_U, NULL},
-    {XBMCK_v, 'V', 'V', XBMCVK_V, NULL},
-    {XBMCK_w, 'W', 'W', XBMCVK_W, NULL},
-    {XBMCK_x, 'X', 'X', XBMCVK_X, NULL},
-    {XBMCK_y, 'Y', 'Y', XBMCVK_Y, NULL},
-    {XBMCK_z, 'Z', 'Z', XBMCVK_Z, NULL}
+    {K_a, 'A', 'A', VK_A, NULL},
+    {K_b, 'B', 'B', VK_B, NULL},
+    {K_c, 'C', 'C', VK_C, NULL},
+    {K_d, 'D', 'D', VK_D, NULL},
+    {K_e, 'E', 'E', VK_E, NULL},
+    {K_f, 'F', 'F', VK_F, NULL},
+    {K_g, 'G', 'G', VK_G, NULL},
+    {K_h, 'H', 'H', VK_H, NULL},
+    {K_i, 'I', 'I', VK_I, NULL},
+    {K_j, 'J', 'J', VK_J, NULL},
+    {K_k, 'K', 'K', VK_K, NULL},
+    {K_l, 'L', 'L', VK_L, NULL},
+    {K_m, 'M', 'M', VK_M, NULL},
+    {K_n, 'N', 'N', VK_N, NULL},
+    {K_o, 'O', 'O', VK_O, NULL},
+    {K_p, 'P', 'P', VK_P, NULL},
+    {K_q, 'Q', 'Q', VK_Q, NULL},
+    {K_r, 'R', 'R', VK_R, NULL},
+    {K_s, 'S', 'S', VK_S, NULL},
+    {K_t, 'T', 'T', VK_T, NULL},
+    {K_u, 'U', 'U', VK_U, NULL},
+    {K_v, 'V', 'V', VK_V, NULL},
+    {K_w, 'W', 'W', VK_W, NULL},
+    {K_x, 'X', 'X', VK_X, NULL},
+    {K_y, 'Y', 'Y', VK_Y, NULL},
+    {K_z, 'Z', 'Z', VK_Z, NULL}
 
     ,
-    {XBMCK_a, 'a', 'a', XBMCVK_A, "a"},
-    {XBMCK_b, 'b', 'b', XBMCVK_B, "b"},
-    {XBMCK_c, 'c', 'c', XBMCVK_C, "c"},
-    {XBMCK_d, 'd', 'd', XBMCVK_D, "d"},
-    {XBMCK_e, 'e', 'e', XBMCVK_E, "e"},
-    {XBMCK_f, 'f', 'f', XBMCVK_F, "f"},
-    {XBMCK_g, 'g', 'g', XBMCVK_G, "g"},
-    {XBMCK_h, 'h', 'h', XBMCVK_H, "h"},
-    {XBMCK_i, 'i', 'i', XBMCVK_I, "i"},
-    {XBMCK_j, 'j', 'j', XBMCVK_J, "j"},
-    {XBMCK_k, 'k', 'k', XBMCVK_K, "k"},
-    {XBMCK_l, 'l', 'l', XBMCVK_L, "l"},
-    {XBMCK_m, 'm', 'm', XBMCVK_M, "m"},
-    {XBMCK_n, 'n', 'n', XBMCVK_N, "n"},
-    {XBMCK_o, 'o', 'o', XBMCVK_O, "o"},
-    {XBMCK_p, 'p', 'p', XBMCVK_P, "p"},
-    {XBMCK_q, 'q', 'q', XBMCVK_Q, "q"},
-    {XBMCK_r, 'r', 'r', XBMCVK_R, "r"},
-    {XBMCK_s, 's', 's', XBMCVK_S, "s"},
-    {XBMCK_t, 't', 't', XBMCVK_T, "t"},
-    {XBMCK_u, 'u', 'u', XBMCVK_U, "u"},
-    {XBMCK_v, 'v', 'v', XBMCVK_V, "v"},
-    {XBMCK_w, 'w', 'w', XBMCVK_W, "w"},
-    {XBMCK_x, 'x', 'x', XBMCVK_X, "x"},
-    {XBMCK_y, 'y', 'y', XBMCVK_Y, "y"},
-    {XBMCK_z, 'z', 'z', XBMCVK_Z, "z"}
+    {K_a, 'a', 'a', VK_A, "a"},
+    {K_b, 'b', 'b', VK_B, "b"},
+    {K_c, 'c', 'c', VK_C, "c"},
+    {K_d, 'd', 'd', VK_D, "d"},
+    {K_e, 'e', 'e', VK_E, "e"},
+    {K_f, 'f', 'f', VK_F, "f"},
+    {K_g, 'g', 'g', VK_G, "g"},
+    {K_h, 'h', 'h', VK_H, "h"},
+    {K_i, 'i', 'i', VK_I, "i"},
+    {K_j, 'j', 'j', VK_J, "j"},
+    {K_k, 'k', 'k', VK_K, "k"},
+    {K_l, 'l', 'l', VK_L, "l"},
+    {K_m, 'm', 'm', VK_M, "m"},
+    {K_n, 'n', 'n', VK_N, "n"},
+    {K_o, 'o', 'o', VK_O, "o"},
+    {K_p, 'p', 'p', VK_P, "p"},
+    {K_q, 'q', 'q', VK_Q, "q"},
+    {K_r, 'r', 'r', VK_R, "r"},
+    {K_s, 's', 's', VK_S, "s"},
+    {K_t, 't', 't', VK_T, "t"},
+    {K_u, 'u', 'u', VK_U, "u"},
+    {K_v, 'v', 'v', VK_V, "v"},
+    {K_w, 'w', 'w', VK_W, "w"},
+    {K_x, 'x', 'x', VK_X, "x"},
+    {K_y, 'y', 'y', VK_Y, "y"},
+    {K_z, 'z', 'z', VK_Z, "z"}
 
     // Misc printing characters
     ,
-    {XBMCK_SPACE, ' ', ' ', XBMCVK_SPACE, "space"},
-    {XBMCK_EXCLAIM, '!', '!', XBMCVK_EXCLAIM, "exclaim"},
-    {XBMCK_QUOTEDBL, '"', '"', XBMCVK_QUOTEDBL, "doublequote"},
-    {XBMCK_HASH, '#', '#', XBMCVK_HASH, "hash"},
-    {XBMCK_DOLLAR, '$', '$', XBMCVK_DOLLAR, "dollar"},
-    {XBMCK_PERCENT, '%', '%', XBMCVK_PERCENT, "percent"},
-    {XBMCK_AMPERSAND, '&', '&', XBMCVK_AMPERSAND, "ampersand"},
-    {XBMCK_QUOTE, '\'', '\'', XBMCVK_QUOTE, "quote"},
-    {XBMCK_LEFTPAREN, '(', '(', XBMCVK_LEFTPAREN, "leftbracket"},
-    {XBMCK_RIGHTPAREN, ')', ')', XBMCVK_RIGHTPAREN, "rightbracket"},
-    {XBMCK_ASTERISK, '*', '*', XBMCVK_ASTERISK, "asterisk"},
-    {XBMCK_PLUS, '+', '+', XBMCVK_PLUS, "plus"},
-    {XBMCK_COMMA, ',', ',', XBMCVK_COMMA, "comma"},
-    {XBMCK_MINUS, '-', '-', XBMCVK_MINUS, "minus"},
-    {XBMCK_PERIOD, '.', '.', XBMCVK_PERIOD, "period"},
-    {XBMCK_SLASH, '/', '/', XBMCVK_SLASH, "forwardslash"}
+    {K_SPACE, ' ', ' ', VK_SPACE, "space"},
+    {K_EXCLAIM, '!', '!', VK_EXCLAIM, "exclaim"},
+    {K_QUOTEDBL, '"', '"', VK_QUOTEDBL, "doublequote"},
+    {K_HASH, '#', '#', VK_HASH, "hash"},
+    {K_DOLLAR, '$', '$', VK_DOLLAR, "dollar"},
+    {K_PERCENT, '%', '%', VK_PERCENT, "percent"},
+    {K_AMPERSAND, '&', '&', VK_AMPERSAND, "ampersand"},
+    {K_QUOTE, '\'', '\'', VK_QUOTE, "quote"},
+    {K_LEFTPAREN, '(', '(', VK_LEFTPAREN, "leftbracket"},
+    {K_RIGHTPAREN, ')', ')', VK_RIGHTPAREN, "rightbracket"},
+    {K_ASTERISK, '*', '*', VK_ASTERISK, "asterisk"},
+    {K_PLUS, '+', '+', VK_PLUS, "plus"},
+    {K_COMMA, ',', ',', VK_COMMA, "comma"},
+    {K_MINUS, '-', '-', VK_MINUS, "minus"},
+    {K_PERIOD, '.', '.', VK_PERIOD, "period"},
+    {K_SLASH, '/', '/', VK_SLASH, "forwardslash"}
 
     ,
-    {XBMCK_COLON, ':', ':', XBMCVK_COLON, "colon"},
-    {XBMCK_SEMICOLON, ';', ';', XBMCVK_SEMICOLON, "semicolon"},
-    {XBMCK_LESS, '<', '<', XBMCVK_LESS, "lessthan"},
-    {XBMCK_EQUALS, '=', '=', XBMCVK_EQUALS, "equals"},
-    {XBMCK_GREATER, '>', '>', XBMCVK_GREATER, "greaterthan"},
-    {XBMCK_QUESTION, '?', '?', XBMCVK_QUESTION, "questionmark"},
-    {XBMCK_AT, '@', '@', XBMCVK_AT, "at"}
+    {K_COLON, ':', ':', VK_COLON, "colon"},
+    {K_SEMICOLON, ';', ';', VK_SEMICOLON, "semicolon"},
+    {K_LESS, '<', '<', VK_LESS, "lessthan"},
+    {K_EQUALS, '=', '=', VK_EQUALS, "equals"},
+    {K_GREATER, '>', '>', VK_GREATER, "greaterthan"},
+    {K_QUESTION, '?', '?', VK_QUESTION, "questionmark"},
+    {K_AT, '@', '@', VK_AT, "at"}
 
     ,
-    {XBMCK_LEFTBRACKET, '[', '[', XBMCVK_LEFTBRACKET, "opensquarebracket"},
-    {XBMCK_BACKSLASH, '\\', '\\', XBMCVK_BACKSLASH, "backslash"},
-    {XBMCK_RIGHTBRACKET, ']', ']', XBMCVK_RIGHTBRACKET, "closesquarebracket"},
-    {XBMCK_CARET, '^', '^', XBMCVK_CARET, "caret"},
-    {XBMCK_UNDERSCORE, '_', '_', XBMCVK_UNDERSCORE, "underline"},
-    {XBMCK_BACKQUOTE, '`', '`', XBMCVK_BACKQUOTE, "leftquote"}
+    {K_LEFTBRACKET, '[', '[', VK_LEFTBRACKET, "opensquarebracket"},
+    {K_BACKSLASH, '\\', '\\', VK_BACKSLASH, "backslash"},
+    {K_RIGHTBRACKET, ']', ']', VK_RIGHTBRACKET, "closesquarebracket"},
+    {K_CARET, '^', '^', VK_CARET, "caret"},
+    {K_UNDERSCORE, '_', '_', VK_UNDERSCORE, "underline"},
+    {K_BACKQUOTE, '`', '`', VK_BACKQUOTE, "leftquote"}
 
     ,
-    {XBMCK_LEFTBRACE, '{', '{', XBMCVK_LEFTBRACE, "openbrace"},
-    {XBMCK_PIPE, '|', '|', XBMCVK_PIPE, "pipe"},
-    {XBMCK_RIGHTBRACE, '}', '}', XBMCVK_RIGHTBRACE, "closebrace"},
-    {XBMCK_TILDE, '~', '~', XBMCVK_TILDE, "tilde"}
+    {K_LEFTBRACE, '{', '{', VK_LEFTBRACE, "openbrace"},
+    {K_PIPE, '|', '|', VK_PIPE, "pipe"},
+    {K_RIGHTBRACE, '}', '}', VK_RIGHTBRACE, "closebrace"},
+    {K_TILDE, '~', '~', VK_TILDE, "tilde"}
 
     // Numeric keypad
     ,
-    {XBMCK_KP0, '0', '0', XBMCVK_NUMPAD0, "numpadzero"},
-    {XBMCK_KP1, '1', '1', XBMCVK_NUMPAD1, "numpadone"},
-    {XBMCK_KP2, '2', '2', XBMCVK_NUMPAD2, "numpadtwo"},
-    {XBMCK_KP3, '3', '3', XBMCVK_NUMPAD3, "numpadthree"},
-    {XBMCK_KP4, '4', '4', XBMCVK_NUMPAD4, "numpadfour"},
-    {XBMCK_KP5, '5', '5', XBMCVK_NUMPAD5, "numpadfive"},
-    {XBMCK_KP6, '6', '6', XBMCVK_NUMPAD6, "numpadsix"},
-    {XBMCK_KP7, '7', '7', XBMCVK_NUMPAD7, "numpadseven"},
-    {XBMCK_KP8, '8', '8', XBMCVK_NUMPAD8, "numpadeight"},
-    {XBMCK_KP9, '9', '9', XBMCVK_NUMPAD9, "numpadnine"}
+    {K_KP0, '0', '0', VK_NUMPAD0, "numpadzero"},
+    {K_KP1, '1', '1', VK_NUMPAD1, "numpadone"},
+    {K_KP2, '2', '2', VK_NUMPAD2, "numpadtwo"},
+    {K_KP3, '3', '3', VK_NUMPAD3, "numpadthree"},
+    {K_KP4, '4', '4', VK_NUMPAD4, "numpadfour"},
+    {K_KP5, '5', '5', VK_NUMPAD5, "numpadfive"},
+    {K_KP6, '6', '6', VK_NUMPAD6, "numpadsix"},
+    {K_KP7, '7', '7', VK_NUMPAD7, "numpadseven"},
+    {K_KP8, '8', '8', VK_NUMPAD8, "numpadeight"},
+    {K_KP9, '9', '9', VK_NUMPAD9, "numpadnine"}
 
     ,
-    {XBMCK_KP_DIVIDE, '/', '/', XBMCVK_NUMPADDIVIDE, "numpaddivide"},
-    {XBMCK_KP_MULTIPLY, '*', '*', XBMCVK_NUMPADTIMES, "numpadtimes"},
-    {XBMCK_KP_MINUS, '-', '-', XBMCVK_NUMPADMINUS, "numpadminus"},
-    {XBMCK_KP_PLUS, '+', '+', XBMCVK_NUMPADPLUS, "numpadplus"},
-    {XBMCK_KP_ENTER, 0, 0, XBMCVK_NUMPADENTER, "enter"},
-    {XBMCK_KP_PERIOD, '.', '.', XBMCVK_NUMPADPERIOD, "numpadperiod"}
+    {K_KP_DIVIDE, '/', '/', VK_NUMPADDIVIDE, "numpaddivide"},
+    {K_KP_MULTIPLY, '*', '*', VK_NUMPADTIMES, "numpadtimes"},
+    {K_KP_MINUS, '-', '-', VK_NUMPADMINUS, "numpadminus"},
+    {K_KP_PLUS, '+', '+', VK_NUMPADPLUS, "numpadplus"},
+    {K_KP_ENTER, 0, 0, VK_NUMPADENTER, "enter"},
+    {K_KP_PERIOD, '.', '.', VK_NUMPADPERIOD, "numpadperiod"}
 
     // Multimedia keys
     ,
-    {XBMCK_BROWSER_BACK, 0, 0, XBMCVK_BROWSER_BACK, "browser_back"},
-    {XBMCK_BROWSER_FORWARD, 0, 0, XBMCVK_BROWSER_FORWARD, "browser_forward"},
-    {XBMCK_BROWSER_REFRESH, 0, 0, XBMCVK_BROWSER_REFRESH, "browser_refresh"},
-    {XBMCK_BROWSER_STOP, 0, 0, XBMCVK_BROWSER_STOP, "browser_stop"},
-    {XBMCK_BROWSER_SEARCH, 0, 0, XBMCVK_BROWSER_SEARCH, "browser_search"},
-    {XBMCK_BROWSER_FAVORITES, 0, 0, XBMCVK_BROWSER_FAVORITES, "browser_favorites"},
-    {XBMCK_BROWSER_HOME, 0, 0, XBMCVK_BROWSER_HOME, "browser_home"},
-    {XBMCK_VOLUME_MUTE, 0, 0, XBMCVK_VOLUME_MUTE, "volume_mute"},
-    {XBMCK_VOLUME_DOWN, 0, 0, XBMCVK_VOLUME_DOWN, "volume_down"},
-    {XBMCK_VOLUME_UP, 0, 0, XBMCVK_VOLUME_UP, "volume_up"},
-    {XBMCK_MEDIA_NEXT_TRACK, 0, 0, XBMCVK_MEDIA_NEXT_TRACK, "next_track"},
-    {XBMCK_MEDIA_PREV_TRACK, 0, 0, XBMCVK_MEDIA_PREV_TRACK, "prev_track"},
-    {XBMCK_MEDIA_STOP, 0, 0, XBMCVK_MEDIA_STOP, "stop"},
-    {XBMCK_MEDIA_PLAY_PAUSE, 0, 0, XBMCVK_MEDIA_PLAY_PAUSE, "play_pause"},
-    {XBMCK_MEDIA_REWIND, 0, 0, XBMCVK_MEDIA_REWIND, "rewind"},
-    {XBMCK_MEDIA_FASTFORWARD, 0, 0, XBMCVK_MEDIA_FASTFORWARD, "fastforward"},
-    {XBMCK_LAUNCH_MAIL, 0, 0, XBMCVK_LAUNCH_MAIL, "launch_mail"},
-    {XBMCK_LAUNCH_MEDIA_SELECT, 0, 0, XBMCVK_LAUNCH_MEDIA_SELECT, "launch_media_select"},
-    {XBMCK_LAUNCH_APP1, 0, 0, XBMCVK_LAUNCH_APP1, "launch_app1_pc_icon"},
-    {XBMCK_LAUNCH_APP2, 0, 0, XBMCVK_LAUNCH_APP2, "launch_app2_pc_icon"},
-    {XBMCK_LAUNCH_FILE_BROWSER, 0, 0, XBMCVK_LAUNCH_FILE_BROWSER, "launch_file_browser"},
-    {XBMCK_LAUNCH_MEDIA_CENTER, 0, 0, XBMCVK_LAUNCH_MEDIA_CENTER, "launch_media_center"},
-    {XBMCK_PLAY, 0, 0, XBMCVK_MEDIA_PLAY_PAUSE, "play_pause"},
-    {XBMCK_STOP, 0, 0, XBMCVK_MEDIA_STOP, "stop"},
-    {XBMCK_REWIND, 0, 0, XBMCVK_MEDIA_REWIND, "rewind"},
-    {XBMCK_FASTFORWARD, 0, 0, XBMCVK_MEDIA_FASTFORWARD, "fastforward"},
-    {XBMCK_RECORD, 0, 0, XBMCVK_MEDIA_RECORD, "record"},
-    {XBMCK_LAUNCH_MESSENGER, 0, 0, XBMCVK_LAUNCH_MESSENGER, "launch_messenger"},
-    {XBMCK_LAUNCH_PRESENTATION, 0, 0, XBMCVK_LAUNCH_PRESENTATION, "launch_presentation"},
-    {XBMCK_BRIGHTNESS_UP, 0, 0, XBMCVK_BRIGHTNESS_UP, "brightness_up"},
-    {XBMCK_BRIGHTNESS_DOWN, 0, 0, XBMCVK_BRIGHTNESS_DOWN, "brightness_down"},
+    {K_BROWSER_BACK, 0, 0, VK_BROWSER_BACK, "browser_back"},
+    {K_BROWSER_FORWARD, 0, 0, VK_BROWSER_FORWARD, "browser_forward"},
+    {K_BROWSER_REFRESH, 0, 0, VK_BROWSER_REFRESH, "browser_refresh"},
+    {K_BROWSER_STOP, 0, 0, VK_BROWSER_STOP, "browser_stop"},
+    {K_BROWSER_SEARCH, 0, 0, VK_BROWSER_SEARCH, "browser_search"},
+    {K_BROWSER_FAVORITES, 0, 0, VK_BROWSER_FAVORITES, "browser_favorites"},
+    {K_BROWSER_HOME, 0, 0, VK_BROWSER_HOME, "browser_home"},
+    {K_VOLUME_MUTE, 0, 0, VK_VOLUME_MUTE, "volume_mute"},
+    {K_VOLUME_DOWN, 0, 0, VK_VOLUME_DOWN, "volume_down"},
+    {K_VOLUME_UP, 0, 0, VK_VOLUME_UP, "volume_up"},
+    {K_MEDIA_NEXT_TRACK, 0, 0, VK_MEDIA_NEXT_TRACK, "next_track"},
+    {K_MEDIA_PREV_TRACK, 0, 0, VK_MEDIA_PREV_TRACK, "prev_track"},
+    {K_MEDIA_STOP, 0, 0, VK_MEDIA_STOP, "stop"},
+    {K_MEDIA_PLAY_PAUSE, 0, 0, VK_MEDIA_PLAY_PAUSE, "play_pause"},
+    {K_MEDIA_REWIND, 0, 0, VK_MEDIA_REWIND, "rewind"},
+    {K_MEDIA_FASTFORWARD, 0, 0, VK_MEDIA_FASTFORWARD, "fastforward"},
+    {K_LAUNCH_MAIL, 0, 0, VK_LAUNCH_MAIL, "launch_mail"},
+    {K_LAUNCH_MEDIA_SELECT, 0, 0, VK_LAUNCH_MEDIA_SELECT, "launch_media_select"},
+    {K_LAUNCH_APP1, 0, 0, VK_LAUNCH_APP1, "launch_app1_pc_icon"},
+    {K_LAUNCH_APP2, 0, 0, VK_LAUNCH_APP2, "launch_app2_pc_icon"},
+    {K_LAUNCH_FILE_BROWSER, 0, 0, VK_LAUNCH_FILE_BROWSER, "launch_file_browser"},
+    {K_LAUNCH_MEDIA_CENTER, 0, 0, VK_LAUNCH_MEDIA_CENTER, "launch_media_center"},
+    {K_PLAY, 0, 0, VK_MEDIA_PLAY_PAUSE, "play_pause"},
+    {K_STOP, 0, 0, VK_MEDIA_STOP, "stop"},
+    {K_REWIND, 0, 0, VK_MEDIA_REWIND, "rewind"},
+    {K_FASTFORWARD, 0, 0, VK_MEDIA_FASTFORWARD, "fastforward"},
+    {K_RECORD, 0, 0, VK_MEDIA_RECORD, "record"},
+    {K_LAUNCH_MESSENGER, 0, 0, VK_LAUNCH_MESSENGER, "launch_messenger"},
+    {K_LAUNCH_PRESENTATION, 0, 0, VK_LAUNCH_PRESENTATION, "launch_presentation"},
+    {K_BRIGHTNESS_UP, 0, 0, VK_BRIGHTNESS_UP, "brightness_up"},
+    {K_BRIGHTNESS_DOWN, 0, 0, VK_BRIGHTNESS_DOWN, "brightness_down"},
 
     // Remote control keys
 
-    {XBMCK_SUBTITLE, 0, 0, XBMCVK_SUBTITLE, "subtitle"},
-    {XBMCK_OK, 0, 0, XBMCVK_OK, "ok"},
-    {XBMCK_LANGUAGE, 0, 0, XBMCVK_LANGUAGE, "language"},
-    {XBMCK_CHANNEL_UP, 0, 0, XBMCVK_CHANNEL_UP, "channel_up"},
-    {XBMCK_CHANNEL_DOWN, 0, 0, XBMCVK_CHANNEL_DOWN, "channel_down"},
-    {XBMCK_SELECT, 0, 0, XBMCVK_SELECT, "select"},
-    {XBMCK_EJECT, 0, 0, XBMCVK_EJECT, "eject"},
-    {XBMCK_SHUFFLE, 0, 0, XBMCVK_SHUFFLE, "shuffle"},
-    {XBMCK_PREVIOUS, 0, 0, XBMCVK_PREVIOUS, "previous"},
-    {XBMCK_NEXT, 0, 0, XBMCVK_NEXT, "next"},
-    {XBMCK_POWER2, 0, 0, XBMCVK_POWER2, "power2"},
-    {XBMCK_SETUP, 0, 0, XBMCVK_SETUP, "setup"},
-    {XBMCK_RECALL_LAST, 0, 0, XBMCVK_RECALL_LAST, "recall_last"},
-    {XBMCK_LIST, 0, 0, XBMCVK_LIST, "list"},
-    {XBMCK_DVD, 0, 0, XBMCVK_DVD, "dvd"},
-    {XBMCK_TV, 0, 0, XBMCVK_TV, "tv"},
-    {XBMCK_RADIO, 0, 0, XBMCVK_RADIO, "radio"},
-    {XBMCK_AUDIO, 0, 0, XBMCVK_AUDIO, "audio"},
-    {XBMCK_VIDEO, 0, 0, XBMCVK_VIDEO, "video"},
-    {XBMCK_CAMERA, 0, 0, XBMCVK_CAMERA, "camera"},
-    {XBMCK_TUNER, 0, 0, XBMCVK_TUNER, "tuner"},
-    {XBMCK_PVR, 0, 0, XBMCVK_PVR, "pvr"},
-    {XBMCK_FULLSCREEN, 0, 0, XBMCVK_FULLSCREEN, "fullscreen"},
-    {XBMCK_TITLE_MENU, 0, 0, XBMCVK_TITLE_MENU, "title_menu"},
-    {XBMCK_AUDIO_MODE, 0, 0, XBMCVK_AUDIO_MODE, "audio_mode"},
-    {XBMCK_AGAIN, 0, 0, XBMCVK_AGAIN, "again"},
-    {XBMCK_CHANNEL, 0, 0, XBMCVK_CHANNEL, "channel"},
-    {XBMCK_EXIT, 0, 0, XBMCVK_EXIT, "exit"},
-    {XBMCK_CONTEXT_MENU, 0, 0, XBMCVK_CONTEXT_MENU, "context_menu"},
-    {XBMCK_TIME, 0, 0, XBMCVK_TIME, "time"},
-    {XBMCK_RELOAD, 0, 0, XBMCVK_RELOAD, "reload"},
-    {XBMCK_VIDEO_DEFAULT, 0, 0, XBMCVK_VIDEO_DEFAULT, "video_default"},
-    {XBMCK_ANGLE, 0, 0, XBMCVK_ANGLE, "angle"},
-    {XBMCK_GOTO, 0, 0, XBMCVK_GOTO, "goto"},
-    {XBMCK_CABLE, 0, 0, XBMCVK_CABLE, "cable"},
-    {XBMCK_OPTION, 0, 0, XBMCVK_OPTION, "option"},
-    {XBMCK_FRAME_BACK, 0, 0, XBMCVK_FRAME_BACK, "frame_back"},
-    {XBMCK_FRAME_FORWARD, 0, 0, XBMCVK_FRAME_FORWARD, "frame_forward"},
-    {XBMCK_PROPERTIES, 0, 0, XBMCVK_PROPERTIES, "properties"},
-    {XBMCK_MP3, 0, 0, XBMCVK_MP3, "mp3"},
+    {K_SUBTITLE, 0, 0, VK_SUBTITLE, "subtitle"},
+    {K_OK, 0, 0, VK_OK, "ok"},
+    {K_LANGUAGE, 0, 0, VK_LANGUAGE, "language"},
+    {K_CHANNEL_UP, 0, 0, VK_CHANNEL_UP, "channel_up"},
+    {K_CHANNEL_DOWN, 0, 0, VK_CHANNEL_DOWN, "channel_down"},
+    {K_SELECT, 0, 0, VK_SELECT, "select"},
+    {K_EJECT, 0, 0, VK_EJECT, "eject"},
+    {K_SHUFFLE, 0, 0, VK_SHUFFLE, "shuffle"},
+    {K_PREVIOUS, 0, 0, VK_PREVIOUS, "previous"},
+    {K_NEXT, 0, 0, VK_NEXT, "next"},
+    {K_POWER2, 0, 0, VK_POWER2, "power2"},
+    {K_SETUP, 0, 0, VK_SETUP, "setup"},
+    {K_RECALL_LAST, 0, 0, VK_RECALL_LAST, "recall_last"},
+    {K_LIST, 0, 0, VK_LIST, "list"},
+    {K_DVD, 0, 0, VK_DVD, "dvd"},
+    {K_TV, 0, 0, VK_TV, "tv"},
+    {K_RADIO, 0, 0, VK_RADIO, "radio"},
+    {K_AUDIO, 0, 0, VK_AUDIO, "audio"},
+    {K_VIDEO, 0, 0, VK_VIDEO, "video"},
+    {K_CAMERA, 0, 0, VK_CAMERA, "camera"},
+    {K_TUNER, 0, 0, VK_TUNER, "tuner"},
+    {K_PVR, 0, 0, VK_PVR, "pvr"},
+    {K_FULLSCREEN, 0, 0, VK_FULLSCREEN, "fullscreen"},
+    {K_TITLE_MENU, 0, 0, VK_TITLE_MENU, "title_menu"},
+    {K_AUDIO_MODE, 0, 0, VK_AUDIO_MODE, "audio_mode"},
+    {K_AGAIN, 0, 0, VK_AGAIN, "again"},
+    {K_CHANNEL, 0, 0, VK_CHANNEL, "channel"},
+    {K_EXIT, 0, 0, VK_EXIT, "exit"},
+    {K_CONTEXT_MENU, 0, 0, VK_CONTEXT_MENU, "context_menu"},
+    {K_TIME, 0, 0, VK_TIME, "time"},
+    {K_RELOAD, 0, 0, VK_RELOAD, "reload"},
+    {K_VIDEO_DEFAULT, 0, 0, VK_VIDEO_DEFAULT, "video_default"},
+    {K_ANGLE, 0, 0, VK_ANGLE, "angle"},
+    {K_GOTO, 0, 0, VK_GOTO, "goto"},
+    {K_CABLE, 0, 0, VK_CABLE, "cable"},
+    {K_OPTION, 0, 0, VK_OPTION, "option"},
+    {K_FRAME_BACK, 0, 0, VK_FRAME_BACK, "frame_back"},
+    {K_FRAME_FORWARD, 0, 0, VK_FRAME_FORWARD, "frame_forward"},
+    {K_PROPERTIES, 0, 0, VK_PROPERTIES, "properties"},
+    {K_MP3, 0, 0, VK_MP3, "mp3"},
 
     // Function keys
 
-    {XBMCK_F1, 0, 0, XBMCVK_F1, "f1"},
-    {XBMCK_F2, 0, 0, XBMCVK_F2, "f2"},
-    {XBMCK_F3, 0, 0, XBMCVK_F3, "f3"},
-    {XBMCK_F4, 0, 0, XBMCVK_F4, "f4"},
-    {XBMCK_F5, 0, 0, XBMCVK_F5, "f5"},
-    {XBMCK_F6, 0, 0, XBMCVK_F6, "f6"},
-    {XBMCK_F7, 0, 0, XBMCVK_F7, "f7"},
-    {XBMCK_F8, 0, 0, XBMCVK_F8, "f8"},
-    {XBMCK_F9, 0, 0, XBMCVK_F9, "f9"},
-    {XBMCK_F10, 0, 0, XBMCVK_F10, "f10"},
-    {XBMCK_F11, 0, 0, XBMCVK_F11, "f11"},
-    {XBMCK_F12, 0, 0, XBMCVK_F12, "f12"},
-    {XBMCK_F13, 0, 0, XBMCVK_F13, "f13"},
-    {XBMCK_F14, 0, 0, XBMCVK_F14, "f14"},
-    {XBMCK_F15, 0, 0, XBMCVK_F15, "f15"}
+    {K_F1, 0, 0, VK_F1, "f1"},
+    {K_F2, 0, 0, VK_F2, "f2"},
+    {K_F3, 0, 0, VK_F3, "f3"},
+    {K_F4, 0, 0, VK_F4, "f4"},
+    {K_F5, 0, 0, VK_F5, "f5"},
+    {K_F6, 0, 0, VK_F6, "f6"},
+    {K_F7, 0, 0, VK_F7, "f7"},
+    {K_F8, 0, 0, VK_F8, "f8"},
+    {K_F9, 0, 0, VK_F9, "f9"},
+    {K_F10, 0, 0, VK_F10, "f10"},
+    {K_F11, 0, 0, VK_F11, "f11"},
+    {K_F12, 0, 0, VK_F12, "f12"},
+    {K_F13, 0, 0, VK_F13, "f13"},
+    {K_F14, 0, 0, VK_F14, "f14"},
+    {K_F15, 0, 0, VK_F15, "f15"}
 
     // Misc non-printing keys
     ,
-    {XBMCK_UP, 0, 0, XBMCVK_UP, "up"},
-    {XBMCK_DOWN, 0, 0, XBMCVK_DOWN, "down"},
-    {XBMCK_RIGHT, 0, 0, XBMCVK_RIGHT, "right"},
-    {XBMCK_LEFT, 0, 0, XBMCVK_LEFT, "left"},
-    {XBMCK_INSERT, 0, 0, XBMCVK_INSERT, "insert"},
-    {XBMCK_DELETE, 0, 0, XBMCVK_DELETE, "delete"},
-    {XBMCK_HOME, 0, 0, XBMCVK_HOME, "home"},
-    {XBMCK_END, 0, 0, XBMCVK_END, "end"},
-    {XBMCK_PAGEUP, 0, 0, XBMCVK_PAGEUP, "pageup"},
-    {XBMCK_PAGEDOWN, 0, 0, XBMCVK_PAGEDOWN, "pagedown"},
-    {XBMCK_NUMLOCK, 0, 0, XBMCVK_NUMLOCK, "numlock"},
-    {XBMCK_CAPSLOCK, 0, 0, XBMCVK_CAPSLOCK, "capslock"},
-    {XBMCK_RSHIFT, 0, 0, XBMCVK_RSHIFT, "rightshift"},
-    {XBMCK_LSHIFT, 0, 0, XBMCVK_LSHIFT, "leftshift"},
-    {XBMCK_RCTRL, 0, 0, XBMCVK_RCONTROL, "rightctrl"},
-    {XBMCK_LCTRL, 0, 0, XBMCVK_LCONTROL, "leftctrl"},
-    {XBMCK_LALT, 0, 0, XBMCVK_LMENU, "leftalt"},
-    {XBMCK_LSUPER, 0, 0, XBMCVK_LWIN, "leftwindows"},
-    {XBMCK_RSUPER, 0, 0, XBMCVK_RWIN, "rightwindows"},
-    {XBMCK_MENU, 0, 0, XBMCVK_MENU, "menu"},
-    {XBMCK_PAUSE, 0, 0, XBMCVK_PAUSE, "pause"},
-    {XBMCK_SCROLLOCK, 0, 0, XBMCVK_SCROLLLOCK, "scrolllock"},
-    {XBMCK_PRINT, 0, 0, XBMCVK_PRINTSCREEN, "printscreen"},
-    {XBMCK_POWER, 0, 0, XBMCVK_POWER, "power"},
-    {XBMCK_SLEEP, 0, 0, XBMCVK_SLEEP, "sleep"},
-    {XBMCK_GUIDE, 0, 0, XBMCVK_GUIDE, "guide"},
-    {XBMCK_SETTINGS, 0, 0, XBMCVK_SETTINGS, "settings"},
-    {XBMCK_INFO, 0, 0, XBMCVK_INFO, "info"},
-    {XBMCK_RED, 0, 0, XBMCVK_RED, "red"},
-    {XBMCK_GREEN, 0, 0, XBMCVK_GREEN, "green"},
-    {XBMCK_YELLOW, 0, 0, XBMCVK_YELLOW, "yellow"},
-    {XBMCK_BLUE, 0, 0, XBMCVK_BLUE, "blue"},
-    {XBMCK_ZOOM, 0, 0, XBMCVK_ZOOM, "zoom"},
-    {XBMCK_TEXT, 0, 0, XBMCVK_TEXT, "text"},
-    {XBMCK_FAVORITES, 0, 0, XBMCVK_FAVORITES, "favorites"},
-    {XBMCK_HOMEPAGE, 0, 0, XBMCVK_HOMEPAGE, "homepage"},
-    {XBMCK_CONFIG, 0, 0, XBMCVK_CONFIG, "config"},
-    {XBMCK_EPG, 0, 0, XBMCVK_EPG, "epg"},
-    {XBMCK_PHONE, 0, 0, XBMCVK_PHONE, "phone"},
+    {K_UP, 0, 0, VK_UP, "up"},
+    {K_DOWN, 0, 0, VK_DOWN, "down"},
+    {K_RIGHT, 0, 0, VK_RIGHT, "right"},
+    {K_LEFT, 0, 0, VK_LEFT, "left"},
+    {K_INSERT, 0, 0, VK_INSERT, "insert"},
+    {K_DELETE, 0, 0, VK_DELETE, "delete"},
+    {K_HOME, 0, 0, VK_HOME, "home"},
+    {K_END, 0, 0, VK_END, "end"},
+    {K_PAGEUP, 0, 0, VK_PAGEUP, "pageup"},
+    {K_PAGEDOWN, 0, 0, VK_PAGEDOWN, "pagedown"},
+    {K_NUMLOCK, 0, 0, VK_NUMLOCK, "numlock"},
+    {K_CAPSLOCK, 0, 0, VK_CAPSLOCK, "capslock"},
+    {K_RSHIFT, 0, 0, VK_RSHIFT, "rightshift"},
+    {K_LSHIFT, 0, 0, VK_LSHIFT, "leftshift"},
+    {K_RCTRL, 0, 0, VK_RCONTROL, "rightctrl"},
+    {K_LCTRL, 0, 0, VK_LCONTROL, "leftctrl"},
+    {K_LALT, 0, 0, VK_LMENU, "leftalt"},
+    {K_LSUPER, 0, 0, VK_LWIN, "leftwindows"},
+    {K_RSUPER, 0, 0, VK_RWIN, "rightwindows"},
+    {K_MENU, 0, 0, VK_MENU, "menu"},
+    {K_PAUSE, 0, 0, VK_PAUSE, "pause"},
+    {K_SCROLLOCK, 0, 0, VK_SCROLLLOCK, "scrolllock"},
+    {K_PRINT, 0, 0, VK_PRINTSCREEN, "printscreen"},
+    {K_POWER, 0, 0, VK_POWER, "power"},
+    {K_SLEEP, 0, 0, VK_SLEEP, "sleep"},
+    {K_GUIDE, 0, 0, VK_GUIDE, "guide"},
+    {K_SETTINGS, 0, 0, VK_SETTINGS, "settings"},
+    {K_INFO, 0, 0, VK_INFO, "info"},
+    {K_RED, 0, 0, VK_RED, "red"},
+    {K_GREEN, 0, 0, VK_GREEN, "green"},
+    {K_YELLOW, 0, 0, VK_YELLOW, "yellow"},
+    {K_BLUE, 0, 0, VK_BLUE, "blue"},
+    {K_ZOOM, 0, 0, VK_ZOOM, "zoom"},
+    {K_TEXT, 0, 0, VK_TEXT, "text"},
+    {K_FAVORITES, 0, 0, VK_FAVORITES, "favorites"},
+    {K_HOMEPAGE, 0, 0, VK_HOMEPAGE, "homepage"},
+    {K_CONFIG, 0, 0, VK_CONFIG, "config"},
+    {K_EPG, 0, 0, VK_EPG, "epg"},
+    {K_PHONE, 0, 0, VK_PHONE, "phone"},
 
     /*
      * Numpad extended keypad keys at table end
@@ -307,53 +307,53 @@ static const XBMCKEYTABLE XBMCKeyTable[] = {
 
     // Extended keypad key symbols for Num Lock state-specific behaviors, with
     // Num Lock disabled
-    {XBMCK_XKB_KP_HOME, 0, 0, XBMCVK_HOME, "home"},
-    {XBMCK_XKB_KP_LEFT, 0, 0, XBMCVK_LEFT, "left"},
-    {XBMCK_XKB_KP_UP, 0, 0, XBMCVK_UP, "up"},
-    {XBMCK_XKB_KP_RIGHT, 0, 0, XBMCVK_RIGHT, "right"},
-    {XBMCK_XKB_KP_DOWN, 0, 0, XBMCVK_DOWN, "down"},
-    {XBMCK_XKB_KP_PAGE_UP, 0, 0, XBMCVK_PAGEUP, "pageup"},
-    {XBMCK_XKB_KP_PAGE_DOWN, 0, 0, XBMCVK_PAGEDOWN, "pagedown"},
-    {XBMCK_XKB_KP_END, 0, 0, XBMCVK_END, "end"},
-    {XBMCK_XKB_KP_BEGIN, 0, 0, XBMCVK_HOME, "home"},
-    {XBMCK_XKB_KP_INSERT, 0, 0, XBMCVK_INSERT, "insert"},
-    {XBMCK_XKB_KP_DELETE, 0, 0, XBMCVK_DELETE, "delete"},
+    {K_XKB_KP_HOME, 0, 0, VK_HOME, "home"},
+    {K_XKB_KP_LEFT, 0, 0, VK_LEFT, "left"},
+    {K_XKB_KP_UP, 0, 0, VK_UP, "up"},
+    {K_XKB_KP_RIGHT, 0, 0, VK_RIGHT, "right"},
+    {K_XKB_KP_DOWN, 0, 0, VK_DOWN, "down"},
+    {K_XKB_KP_PAGE_UP, 0, 0, VK_PAGEUP, "pageup"},
+    {K_XKB_KP_PAGE_DOWN, 0, 0, VK_PAGEDOWN, "pagedown"},
+    {K_XKB_KP_END, 0, 0, VK_END, "end"},
+    {K_XKB_KP_BEGIN, 0, 0, VK_HOME, "home"},
+    {K_XKB_KP_INSERT, 0, 0, VK_INSERT, "insert"},
+    {K_XKB_KP_DELETE, 0, 0, VK_DELETE, "delete"},
 
     // Extended keypad key symbols for Num Lock state-specific behaviors, with
     // Num Lock enabled
-    {XBMCK_XKB_KP_DECIMAL, '.', '.', XBMCVK_NUMPADPERIOD, "numpadperiod"},
-    {XBMCK_XKB_KP0, '0', '0', XBMCVK_NUMPAD0, "numpadzero"},
-    {XBMCK_XKB_KP1, '1', '1', XBMCVK_NUMPAD1, "numpadone"},
-    {XBMCK_XKB_KP2, '2', '2', XBMCVK_NUMPAD2, "numpadtwo"},
-    {XBMCK_XKB_KP3, '3', '3', XBMCVK_NUMPAD3, "numpadthree"},
-    {XBMCK_XKB_KP4, '4', '4', XBMCVK_NUMPAD4, "numpadfour"},
-    {XBMCK_XKB_KP5, '5', '5', XBMCVK_NUMPAD5, "numpadfive"},
-    {XBMCK_XKB_KP6, '6', '6', XBMCVK_NUMPAD6, "numpadsix"},
-    {XBMCK_XKB_KP7, '7', '7', XBMCVK_NUMPAD7, "numpadseven"},
-    {XBMCK_XKB_KP8, '8', '8', XBMCVK_NUMPAD8, "numpadeight"},
-    {XBMCK_XKB_KP9, '9', '9', XBMCVK_NUMPAD9, "numpadnine"},
+    {K_XKB_KP_DECIMAL, '.', '.', VK_NUMPADPERIOD, "numpadperiod"},
+    {K_XKB_KP0, '0', '0', VK_NUMPAD0, "numpadzero"},
+    {K_XKB_KP1, '1', '1', VK_NUMPAD1, "numpadone"},
+    {K_XKB_KP2, '2', '2', VK_NUMPAD2, "numpadtwo"},
+    {K_XKB_KP3, '3', '3', VK_NUMPAD3, "numpadthree"},
+    {K_XKB_KP4, '4', '4', VK_NUMPAD4, "numpadfour"},
+    {K_XKB_KP5, '5', '5', VK_NUMPAD5, "numpadfive"},
+    {K_XKB_KP6, '6', '6', VK_NUMPAD6, "numpadsix"},
+    {K_XKB_KP7, '7', '7', VK_NUMPAD7, "numpadseven"},
+    {K_XKB_KP8, '8', '8', VK_NUMPAD8, "numpadeight"},
+    {K_XKB_KP9, '9', '9', VK_NUMPAD9, "numpadnine"},
 
     // Extended keypad key symbols for Num Lock state-independent behaviors
-    {XBMCK_XKB_KP_SPACE, ' ', ' ', XBMCVK_SPACE, "space"},
-    {XBMCK_XKB_KP_TAB, 0, 0, XBMCVK_TAB, "tab"},
-    {XBMCK_XKB_KP_ENTER, 0, 0, XBMCVK_NUMPADENTER, "enter"},
-    {XBMCK_XKB_KP_F1, 0, 0, XBMCVK_F1, "f1"},
-    {XBMCK_XKB_KP_F2, 0, 0, XBMCVK_F2, "f2"},
-    {XBMCK_XKB_KP_F3, 0, 0, XBMCVK_F3, "f3"},
-    {XBMCK_XKB_KP_F4, 0, 0, XBMCVK_F4, "f4"},
-    {XBMCK_XKB_KP_EQUALS, '=', '=', 0, "numpadequals"},
-    {XBMCK_XKB_KP_MULTIPLY, '*', '*', XBMCVK_NUMPADTIMES, "numpadtimes"},
-    {XBMCK_XKB_KP_ADD, '+', '+', XBMCVK_NUMPADPLUS, "numpadplus"},
-    {XBMCK_XKB_KP_SEPARATOR, 0, 0, 0, "numpadseparator"},
-    {XBMCK_XKB_KP_SUBTRACT, '-', '-', XBMCVK_NUMPADMINUS, "numpadminus"},
-    {XBMCK_XKB_KP_DIVIDE, '/', '/', XBMCVK_NUMPADDIVIDE, "numpaddivide"},
+    {K_XKB_KP_SPACE, ' ', ' ', VK_SPACE, "space"},
+    {K_XKB_KP_TAB, 0, 0, VK_TAB, "tab"},
+    {K_XKB_KP_ENTER, 0, 0, VK_NUMPADENTER, "enter"},
+    {K_XKB_KP_F1, 0, 0, VK_F1, "f1"},
+    {K_XKB_KP_F2, 0, 0, VK_F2, "f2"},
+    {K_XKB_KP_F3, 0, 0, VK_F3, "f3"},
+    {K_XKB_KP_F4, 0, 0, VK_F4, "f4"},
+    {K_XKB_KP_EQUALS, '=', '=', 0, "numpadequals"},
+    {K_XKB_KP_MULTIPLY, '*', '*', VK_NUMPADTIMES, "numpadtimes"},
+    {K_XKB_KP_ADD, '+', '+', VK_NUMPADPLUS, "numpadplus"},
+    {K_XKB_KP_SEPARATOR, 0, 0, 0, "numpadseparator"},
+    {K_XKB_KP_SUBTRACT, '-', '-', VK_NUMPADMINUS, "numpadminus"},
+    {K_XKB_KP_DIVIDE, '/', '/', VK_NUMPADDIVIDE, "numpaddivide"},
 };
 // clang-format on
 
-static int XBMCKeyTableSize = sizeof(XBMCKeyTable) / sizeof(XBMCKEYTABLE);
+static int KeyTableSize = sizeof(KeyTable) / sizeof(KEYTABLE);
 } // namespace
 
-bool KeyTable::LookupName(std::string keyname, XBMCKEYTABLE* keytable)
+bool KeyTable::LookupName(std::string keyname, KEYTABLE* keytable)
 {
   // If the name being searched for is empty there will be no match
   if (keyname.empty())
@@ -362,14 +362,14 @@ bool KeyTable::LookupName(std::string keyname, XBMCKEYTABLE* keytable)
   // We need the button name to be in lowercase
   StringUtils::ToLower(keyname);
 
-  // Look up the key name in XBMCKeyTable
-  for (int i = 0; i < XBMCKeyTableSize; i++)
+  // Look up the key name in KeyTable
+  for (int i = 0; i < KeyTableSize; i++)
   {
-    if (XBMCKeyTable[i].keyname)
+    if (KeyTable[i].keyname)
     {
-      if (strcmp(keyname.c_str(), XBMCKeyTable[i].keyname) == 0)
+      if (strcmp(keyname.c_str(), KeyTable[i].keyname) == 0)
       {
-        *keytable = XBMCKeyTable[i];
+        *keytable = KeyTable[i];
         return true;
       }
     }
@@ -379,18 +379,18 @@ bool KeyTable::LookupName(std::string keyname, XBMCKEYTABLE* keytable)
   return false;
 }
 
-bool KeyTable::LookupSym(uint16_t sym, XBMCKEYTABLE* keytable)
+bool KeyTable::LookupSym(uint16_t sym, KEYTABLE* keytable)
 {
   // If the sym being searched for is zero there will be no match
   if (sym == 0)
     return false;
 
-  // Look up the sym in XBMCKeyTable
-  for (int i = 0; i < XBMCKeyTableSize; i++)
+  // Look up the sym in KeyTable
+  for (int i = 0; i < KeyTableSize; i++)
   {
-    if (sym == XBMCKeyTable[i].sym)
+    if (sym == KeyTable[i].sym)
     {
-      *keytable = XBMCKeyTable[i];
+      *keytable = KeyTable[i];
       return true;
     }
   }
@@ -399,18 +399,18 @@ bool KeyTable::LookupSym(uint16_t sym, XBMCKEYTABLE* keytable)
   return false;
 }
 
-bool KeyTable::LookupUnicode(uint16_t unicode, XBMCKEYTABLE* keytable)
+bool KeyTable::LookupUnicode(uint16_t unicode, KEYTABLE* keytable)
 {
   // If the unicode being searched for is zero there will be no match
   if (unicode == 0)
     return false;
 
-  // Look up the unicode in XBMCKeyTable
-  for (int i = 0; i < XBMCKeyTableSize; i++)
+  // Look up the unicode in KeyTable
+  for (int i = 0; i < KeyTableSize; i++)
   {
-    if (unicode == XBMCKeyTable[i].unicode)
+    if (unicode == KeyTable[i].unicode)
     {
-      *keytable = XBMCKeyTable[i];
+      *keytable = KeyTable[i];
       return true;
     }
   }
@@ -419,19 +419,19 @@ bool KeyTable::LookupUnicode(uint16_t unicode, XBMCKEYTABLE* keytable)
   return false;
 }
 
-bool KeyTable::LookupSymAndUnicode(uint16_t sym, uint16_t unicode, XBMCKEYTABLE* keytable)
+bool KeyTable::LookupSymAndUnicode(uint16_t sym, uint16_t unicode, KEYTABLE* keytable)
 {
   // If the sym being searched for is zero there will be no match (the
   // unicode can be zero if the sym is non-zero)
   if (sym == 0)
     return false;
 
-  // Look up the sym and unicode in XBMCKeyTable
-  for (int i = 0; i < XBMCKeyTableSize; i++)
+  // Look up the sym and unicode in KeyTable
+  for (int i = 0; i < KeyTableSize; i++)
   {
-    if (sym == XBMCKeyTable[i].sym && unicode == XBMCKeyTable[i].unicode)
+    if (sym == KeyTable[i].sym && unicode == KeyTable[i].unicode)
     {
-      *keytable = XBMCKeyTable[i];
+      *keytable = KeyTable[i];
       return true;
     }
   }
@@ -440,18 +440,18 @@ bool KeyTable::LookupSymAndUnicode(uint16_t sym, uint16_t unicode, XBMCKEYTABLE*
   return false;
 }
 
-bool KeyTable::LookupVKeyName(uint32_t vkey, XBMCKEYTABLE* keytable)
+bool KeyTable::LookupVKeyName(uint32_t vkey, KEYTABLE* keytable)
 {
   // If the vkey being searched for is zero there will be no match
   if (vkey == 0)
     return false;
 
-  // Look up the vkey in XBMCKeyTable
-  for (int i = 0; i < XBMCKeyTableSize; i++)
+  // Look up the vkey in KeyTable
+  for (int i = 0; i < KeyTableSize; i++)
   {
-    if (vkey == XBMCKeyTable[i].vkey && XBMCKeyTable[i].keyname)
+    if (vkey == KeyTable[i].vkey && KeyTable[i].keyname)
     {
-      *keytable = XBMCKeyTable[i];
+      *keytable = KeyTable[i];
       return true;
     }
   }

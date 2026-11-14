@@ -15,7 +15,7 @@ class CGUIDialog;
 class CGUIMessage;
 class CGUIWindow;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -81,4 +81,4 @@ private:
   std::vector<std::string> m_lines;
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

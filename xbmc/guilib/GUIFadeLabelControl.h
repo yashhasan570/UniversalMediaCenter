@@ -38,7 +38,7 @@ public:
   bool OnMessage(CGUIMessage& message) override;
   void AssignDepth() override;
 
-  void SetInfo(const std::vector<KODI::GUILIB::GUIINFO::CGUIInfoLabel> &vecInfo);
+  void SetInfo(const std::vector<UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoLabel> &vecInfo);
   void SetScrolling(bool scroll) { m_scroll = scroll; }
 
   bool AllLabelsShown() const { return m_allLabelsShown; }
@@ -58,7 +58,7 @@ protected:
    */
   std::string GetLabel();
 
-  std::vector<KODI::GUILIB::GUIINFO::CGUIInfoLabel> m_infoLabels;
+  std::vector<UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoLabel> m_infoLabels;
   unsigned int m_currentLabel;
   unsigned int m_lastLabel;
 

@@ -50,7 +50,7 @@ CTexture::CTexture(unsigned int width, unsigned int height, XB_FMT format)
 
 CTexture::~CTexture()
 {
-  KODI::MEMORY::AlignedFree(m_pixels);
+  UNIVERSAL MEDIA CENTER::MEMORY::AlignedFree(m_pixels);
   m_pixels = NULL;
 }
 
@@ -432,7 +432,7 @@ bool CTexture::UploadFromMemory(unsigned int width,
   {
     size_t size = static_cast<size_t>(GetPitch()) * GetRows();
     constexpr size_t simdPadding{32};
-    m_pixels = static_cast<unsigned char*>(KODI::MEMORY::AlignedMalloc(size + simdPadding, 32));
+    m_pixels = static_cast<unsigned char*>(UNIVERSAL MEDIA CENTER::MEMORY::AlignedMalloc(size + simdPadding, 32));
     if (m_pixels == nullptr)
     {
       CLog::LogF(LOGERROR, "Could not allocate {} bytes. Out of memory.", size + simdPadding);

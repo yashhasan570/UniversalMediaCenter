@@ -32,9 +32,9 @@ struct DependencyInfo;
 
 using AddonInstanceId = uint32_t;
 
-constexpr const char* ADDON_SETTING_INSTANCE_GROUP = "kodi_addon_instance";
-constexpr const char* ADDON_SETTING_INSTANCE_NAME_VALUE = "kodi_addon_instance_name";
-constexpr const char* ADDON_SETTING_INSTANCE_ENABLED_VALUE = "kodi_addon_instance_enabled";
+constexpr const char* ADDON_SETTING_INSTANCE_GROUP = "instance";
+constexpr const char* ADDON_SETTING_INSTANCE_NAME_VALUE = "instance_name";
+constexpr const char* ADDON_SETTING_INSTANCE_ENABLED_VALUE = "instance_enabled";
 
 /*!
  * @brief Identifier denoting default add-on instance.
@@ -90,7 +90,7 @@ public:
   virtual std::string LibPath() const = 0;
   virtual std::string ChangeLog() const = 0;
   virtual std::string FanArt() const = 0;
-  virtual KODI::ART::Artwork Art() const = 0;
+  virtual UNIVERSAL MEDIA CENTER::ART::Artwork Art() const = 0;
   virtual std::vector<std::string> Screenshots() const = 0;
   virtual std::string Author() const = 0;
   virtual std::string Icon() const = 0;

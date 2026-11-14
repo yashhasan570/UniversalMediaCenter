@@ -8,7 +8,7 @@
 
 #pragma once
 
-namespace KODI::GAME
+namespace UNIVERSAL MEDIA CENTER::GAME
 {
 enum class RestoreResult
 {
@@ -16,4 +16,4 @@ enum class RestoreResult
   Rejected, // Target rejected; the previous running state is still valid.
   StateUncertain, // Machine or media state may be inconsistent.
 };
-} // namespace KODI::GAME
+} // namespace UNIVERSAL MEDIA CENTER::GAME

@@ -8,7 +8,7 @@
 
 #pragma once
 
-namespace KODI::VIDEO::GUILIB
+namespace UNIVERSAL MEDIA CENTER::VIDEO::GUILIB
 {
 // Note: Do not change the numerical values of the elements. Some of them are used as values for
 //       the integer settings SETTING_MYVIDEOS_SELECTACTION and SETTING_MYVIDEOS_PLAYACTION.
@@ -24,4 +24,4 @@ enum Action
   ACTION_QUEUE = 7, // add item to the video playlist
   ACTION_PLAY = 8, // play according to SETTING_MYVIDEOS_PLAYACTION value
 };
-} // namespace KODI::VIDEO::GUILIB
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO::GUILIB

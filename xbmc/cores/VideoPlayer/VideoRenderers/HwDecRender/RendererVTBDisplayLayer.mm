@@ -18,7 +18,7 @@
 #include "windowing/tvos/WinSystemTVOS.h"
 
 #include "platform/darwin/tvos/TVOSEAGLView.h"
-#include "platform/darwin/tvos/XBMCController.h"
+#include "platform/darwin/tvos/Controller.h"
 
 #include <algorithm>
 #include <cmath>
@@ -40,7 +40,7 @@
 
 namespace
 {
-using namespace KODI::RENDERING::CAPTURE;
+using namespace UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE;
 
 class CCompositeCapturePixels : public ICapturePixels
 {
@@ -239,7 +239,7 @@ bool CRendererVTBDisplayLayer::Configure(const VideoPicture& picture,
     CLog::Log(LOGERROR, "CRendererVTBDisplayLayer::Configure: missing VideoToolbox pixel buffer");
     return false;
   }
-  if (![g_xbmcController enableVideoLayer])
+  if (![g_Controller enableVideoLayer])
   {
     CLog::Log(LOGERROR, "CRendererVTBDisplayLayer::Configure: unable to enable video layer");
     return false;
@@ -305,14 +305,14 @@ void CRendererVTBDisplayLayer::UnInit()
   for (int i = 0; i < NUM_BUFFERS; ++i)
     ReleaseBuffer(i);
   CServiceBroker::GetWinSystem()->SetHDR(nullptr);
-  [g_xbmcController disableVideoLayer];
+  [g_Controller disableVideoLayer];
   m_lastIndex = -1;
   m_configured = false;
 }
 
 bool CRendererVTBDisplayLayer::Flush(bool saveBuffers)
 {
-  [g_xbmcController flushVideoLayer];
+  [g_Controller flushVideoLayer];
   m_lastIndex = -1;
   if (!saveBuffers)
   {
@@ -330,11 +330,11 @@ void CRendererVTBDisplayLayer::Update()
   if (m_destRect != m_lastRect || m_sourceRect != m_lastSourceRect)
   {
     const auto& gfx = CServiceBroker::GetWinSystem()->GetGfxContext();
-    const CGSize boundsSize = g_xbmcController.glView.bounds.size;
+    const CGSize boundsSize = g_Controller.glView.bounds.size;
     const CGFloat sx = boundsSize.width / gfx.GetWidth();
     const CGFloat sy = boundsSize.height / gfx.GetHeight();
     // UIKit uses points; the source crop is normalized in the unrotated surface.
-    [g_xbmcController
+    [g_Controller
         setVideoLayerFrame:CGRectApplyAffineTransform(ToCGRect(m_destRect),
                                                       CGAffineTransformMakeScale(sx, sy))
                 sourceRect:CGRectApplyAffineTransform(
@@ -397,17 +397,17 @@ void CRendererVTBDisplayLayer::RenderUpdate(
   auto dictionary = static_cast<CFMutableDictionaryRef>(
       const_cast<void*>(CFArrayGetValueAtIndex(attachments, 0)));
   CFDictionarySetValue(dictionary, kCMSampleAttachmentKey_DisplayImmediately, kCFBooleanTrue);
-  [g_xbmcController enqueueVideoSampleBuffer:sample];
+  [g_Controller enqueueVideoSampleBuffer:sample];
   CFRelease(sample);
   m_lastIndex = index;
 }
 
 // Native video bypasses the framebuffer. Convert P010 to packed RGB while
 // preserving HDR coding and metadata for the capture consumer.
-bool CRendererVTBDisplayLayer::CaptureVideoFrame(const KODI::RENDERING::CAPTURE::CaptureSpec& spec,
-                                                 KODI::RENDERING::CAPTURE::CaptureResult& result)
+bool CRendererVTBDisplayLayer::CaptureVideoFrame(const UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CaptureSpec& spec,
+                                                 UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CaptureResult& result)
 {
-  using namespace KODI::RENDERING::CAPTURE;
+  using namespace UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE;
 
   const int index = m_lastIndex.load();
   if (!m_configured || index < 0)
@@ -519,9 +519,9 @@ bool CRendererVTBDisplayLayer::CaptureVideoFrame(const KODI::RENDERING::CAPTURE:
 }
 
 bool CRendererVTBDisplayLayer::CompositeVideoCapture(
-    KODI::RENDERING::CAPTURE::CaptureResult& result)
+    UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CaptureResult& result)
 {
-  using namespace KODI::RENDERING::CAPTURE;
+  using namespace UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE;
 
   if (!m_configured)
     return true;

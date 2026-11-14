@@ -15,14 +15,14 @@
 
 #include <vector>
 
-namespace XBMCAddon
+namespace Addon
 {
-  namespace xbmcwsgi
+  namespace wsgi
   {
     typedef Tuple<String, String> WsgiHttpHeader;
 
-    /// \defgroup python_xbmcwsgi_WsgiResponse WsgiResponse
-    /// \ingroup python_xbmcwsgi
+    /// \defgroup python_wsgi_WsgiResponse WsgiResponse
+    /// \ingroup python_wsgi
     /// @{
     /// @brief **Represents the start_response callable passed to a WSGI handler.**
     ///
@@ -37,7 +37,7 @@ namespace XBMCAddon
       ~WsgiResponse() override;
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_xbmcwsgi_WsgiInputStreamIterator
+      /// \ingroup python_wsgi_WsgiInputStreamIterator
       /// \python_func{ operator(status, response_headers[, exc_info]) }
       ///
       /// Callable implementation to initialize the response with the given
@@ -53,7 +53,7 @@ namespace XBMCAddon
       ///                             This argument should be supplied by the
       ///                             application only if start_response is
       ///                             being called by an error
-      /// @return                     The write() method \ref python_xbmcwsgi_WsgiResponseBody "WsgiResponseBody"
+      /// @return                     The write() method \ref python_wsgi_WsgiResponseBody "WsgiResponseBody"
       ///
       operator(...);
 #else

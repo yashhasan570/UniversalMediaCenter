@@ -16,7 +16,7 @@
 
 #include <wayland-client-protocol.hpp>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace WINDOWING
 {
@@ -55,14 +55,14 @@ private:
   {
     std::uint32_t lastEventTime;
     /// Pointer number passed to \ref ITouchInputHandler
-    std::int32_t kodiPointerNumber;
+    std::int32_t universalmediacenterPointerNumber;
     /**
      * Last coordinates - needed for TouchInputUp events where Wayland does not
      * send new coordinates but Universal Media Center needs them anyway
      */
     float x, y, size;
-    TouchPoint(std::uint32_t initialEventTime, std::int32_t kodiPointerNumber, float x, float y, float size)
-    : lastEventTime{initialEventTime}, kodiPointerNumber{kodiPointerNumber}, x{x}, y{y}, size{size}
+    TouchPoint(std::uint32_t initialEventTime, std::int32_t universalmediacenterPointerNumber, float x, float y, float size)
+    : lastEventTime{initialEventTime}, universalmediacenterPointerNumber{universalmediacenterPointerNumber}, x{x}, y{y}, size{size}
     {}
   };
 

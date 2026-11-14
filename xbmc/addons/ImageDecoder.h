@@ -9,16 +9,16 @@
 
 #include "addons/IAddonSupportCheck.h"
 #include "addons/binary-addons/AddonInstanceHandler.h"
-#include "addons/kodi-dev-kit/include/kodi/addon-instance/ImageDecoder.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/addon-instance/ImageDecoder.h"
 #include "guilib/iimage.h"
 
 class CPictureInfoTag;
 
-namespace KODI::ADDONS
+namespace UNIVERSAL MEDIA CENTER::ADDONS
 {
 
 class CImageDecoder : public ADDON::IAddonInstanceHandler,
-                      public KODI::ADDONS::IAddonSupportCheck,
+                      public UNIVERSAL MEDIA CENTER::ADDONS::IAddonSupportCheck,
                       public IImage
 {
 public:
@@ -56,7 +56,7 @@ public:
   bool LoadInfoTag(const std::string& fileName, CPictureInfoTag* tag);
   ///@}
 
-  /*! @ref KODI::ADDONS::IAddonSupportCheck related function */
+  /*! @ref UNIVERSAL MEDIA CENTER::ADDONS::IAddonSupportCheck related function */
   ///@{
   bool SupportsFile(const std::string& filename) override;
   ///@}
@@ -67,4 +67,4 @@ private:
   bool m_created{false};
 };
 
-} // namespace KODI::ADDONS
+} // namespace UNIVERSAL MEDIA CENTER::ADDONS

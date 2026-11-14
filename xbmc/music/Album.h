@@ -155,7 +155,7 @@ public:
   std::vector<std::string> moods;
   std::vector<std::string> styles;
   std::vector<std::string> themes;
-  KODI::ART::Artwork art;
+  UNIVERSAL MEDIA CENTER::ART::Artwork art;
   std::string strReview;
   std::string strLabel;
   std::string strType;

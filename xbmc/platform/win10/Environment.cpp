@@ -31,7 +31,7 @@
  */
 int CEnvironment::win_setenv(const std::string &name, const std::string &value /* = "" */, enum updateAction action /* = autoDetect */)
 {
-  std::wstring Wname = KODI::PLATFORM::WINDOWS::ToW(name);
+  std::wstring Wname = UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::ToW(name);
   if (Wname.empty() || name.find('=') != std::wstring::npos)
     return -1;
   if ((action == addOnly || action == addOrUpdateOnly) && value.empty())
@@ -39,7 +39,7 @@ int CEnvironment::win_setenv(const std::string &name, const std::string &value /
   if (action == addOnly && !getenv(name).empty())
     return 0;
 
-  std::wstring Wvalue = KODI::PLATFORM::WINDOWS::ToW(value);
+  std::wstring Wvalue = UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::ToW(value);
   int retValue = 0;
 
   // Update process Environment used for current process and for future new child processes

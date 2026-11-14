@@ -21,7 +21,7 @@ endfunction()
 function(core_target_precompile_headers target)
   core_pch_compile_options(${target})
   target_precompile_headers(${target} PRIVATE
-    $<$<COMPILE_LANGUAGE:CXX>:${CMAKE_SOURCE_DIR}/xbmc/platform/posix/pch.h>)
+    $<$<COMPILE_LANGUAGE:CXX>:${CMAKE_SOURCE_DIR}//platform/posix/pch.h>)
 
   # Objective-C++ sources are built as C++, but can't use a C++ PCH
   get_target_property(sources ${target} SOURCES)

@@ -12,8 +12,8 @@
 #include "language/i18n/Iso3166_1.h"
 #include "utils/StringUtils.h"
 
-using namespace KODI::LANGUAGE;
-using namespace KODI::LANGUAGE::I18N;
+using namespace UNIVERSAL MEDIA CENTER::LANGUAGE;
+using namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N;
 
 CTerritory CTerritory::FromCode(std::string_view code)
 {

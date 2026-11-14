@@ -16,7 +16,7 @@
 #include "windowing/WinSystem.h"
 
 void CGUIQuadDrawerGLES::DrawQuad(const CRect& rect,
-                                  KODI::UTILS::COLOR::Color color,
+                                  UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color color,
                                   CTexture* texture,
                                   const CRect* texCoords,
                                   float depth,
@@ -60,10 +60,10 @@ void CGUIQuadDrawerGLES::DrawQuad(const CRect& rect,
   GLint depthLoc = renderSystem->GUIShaderGetDepth();
 
   // Setup Colors
-  col[0] = KODI::UTILS::GL::GetChannelFromARGB(KODI::UTILS::GL::ColorChannel::R, color);
-  col[1] = KODI::UTILS::GL::GetChannelFromARGB(KODI::UTILS::GL::ColorChannel::G, color);
-  col[2] = KODI::UTILS::GL::GetChannelFromARGB(KODI::UTILS::GL::ColorChannel::B, color);
-  col[3] = KODI::UTILS::GL::GetChannelFromARGB(KODI::UTILS::GL::ColorChannel::A, color);
+  col[0] = UNIVERSAL MEDIA CENTER::UTILS::GL::GetChannelFromARGB(UNIVERSAL MEDIA CENTER::UTILS::GL::ColorChannel::R, color);
+  col[1] = UNIVERSAL MEDIA CENTER::UTILS::GL::GetChannelFromARGB(UNIVERSAL MEDIA CENTER::UTILS::GL::ColorChannel::G, color);
+  col[2] = UNIVERSAL MEDIA CENTER::UTILS::GL::GetChannelFromARGB(UNIVERSAL MEDIA CENTER::UTILS::GL::ColorChannel::B, color);
+  col[3] = UNIVERSAL MEDIA CENTER::UTILS::GL::GetChannelFromARGB(UNIVERSAL MEDIA CENTER::UTILS::GL::ColorChannel::A, color);
 
   glUniform4f(uniColLoc, col[0] / 255.0f, col[1] / 255.0f, col[2] / 255.0f, col[3] / 255.0f);
   glUniform1f(depthLoc, depth);

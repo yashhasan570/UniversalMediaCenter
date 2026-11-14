@@ -47,7 +47,7 @@ constexpr const char* SETTING_ALL_EXTERNAL_AUDIO = "allexternalaudio";
 } // unnamed namespace
 
 using namespace ADDON;
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 CGUIDialogContentSettings::CGUIDialogContentSettings()
   : CGUIDialogSettingsManualBase(WINDOW_DIALOG_CONTENT_SETTINGS, "DialogSettings.xml")

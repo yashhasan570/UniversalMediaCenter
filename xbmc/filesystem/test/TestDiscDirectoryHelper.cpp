@@ -98,7 +98,7 @@ AudioStreamInfo MakeAudioStream(std::string codecName, std::string language, int
   AudioStreamInfo info;
   info.valid = true;
   info.codecName = std::move(codecName);
-  info.language = KODI::LANGUAGE::CLanguageTag::Parse(language);
+  info.language = UNIVERSAL MEDIA CENTER::LANGUAGE::CLanguageTag::Parse(language);
   info.channels = channels;
   return info;
 }
@@ -116,7 +116,7 @@ SubtitleStreamInfo MakeSubtitleStream(std::string language)
 {
   SubtitleStreamInfo info;
   info.valid = true;
-  info.language = KODI::LANGUAGE::CLanguageTag::Parse(language);
+  info.language = UNIVERSAL MEDIA CENTER::LANGUAGE::CLanguageTag::Parse(language);
   return info;
 }
 
@@ -139,12 +139,12 @@ ClipInfo MakeClip(std::chrono::milliseconds duration, std::vector<unsigned int> 
   return info;
 }
 
-KODI::VIDEO::EPISODE MakeEpisode(int season,
+UNIVERSAL MEDIA CENTER::VIDEO::EPISODE MakeEpisode(int season,
                                  int episode,
                                  unsigned int durationSeconds = 0,
                                  std::string title = "Test Episode")
 {
-  KODI::VIDEO::EPISODE ep(season, episode);
+  UNIVERSAL MEDIA CENTER::VIDEO::EPISODE ep(season, episode);
   ep.duration = durationSeconds;
   ep.strTitle = std::move(title);
   return ep;

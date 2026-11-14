@@ -1,26 +1,26 @@
 # Auto generated cmake/treedata/common/addon_dev_kit.txt.
-# See xbmc/addons/kodi-dev-kit/tools/code-generator.py.
+# See /addons/universalmediacenter-dev-kit/tools/code-generator.py.
 
-xbmc/addons/kodi-dev-kit/include/kodi addons_kodi-dev-kit_include_kodi
-xbmc/addons/kodi-dev-kit/include/kodi/addon-instance addons_kodi-dev-kit_include_kodi_addon-instance
-xbmc/addons/kodi-dev-kit/include/kodi/addon-instance/inputstream addons_kodi-dev-kit_include_kodi_addon-instance_inputstream
-xbmc/addons/kodi-dev-kit/include/kodi/addon-instance/peripheral addons_kodi-dev-kit_include_kodi_addon-instance_peripheral
-xbmc/addons/kodi-dev-kit/include/kodi/addon-instance/pvr addons_kodi-dev-kit_include_kodi_addon-instance_pvr
-xbmc/addons/kodi-dev-kit/include/kodi/c-api addons_kodi-dev-kit_include_kodi_c-api
-xbmc/addons/kodi-dev-kit/include/kodi/c-api/addon-instance addons_kodi-dev-kit_include_kodi_c-api_addon-instance
-xbmc/addons/kodi-dev-kit/include/kodi/c-api/addon-instance/inputstream addons_kodi-dev-kit_include_kodi_c-api_addon-instance_inputstream
-xbmc/addons/kodi-dev-kit/include/kodi/c-api/addon-instance/pvr addons_kodi-dev-kit_include_kodi_c-api_addon-instance_pvr
-xbmc/addons/kodi-dev-kit/include/kodi/c-api/gui addons_kodi-dev-kit_include_kodi_c-api_gui
-xbmc/addons/kodi-dev-kit/include/kodi/c-api/gui/controls addons_kodi-dev-kit_include_kodi_c-api_gui_controls
-xbmc/addons/kodi-dev-kit/include/kodi/c-api/gui/dialogs addons_kodi-dev-kit_include_kodi_c-api_gui_dialogs
-xbmc/addons/kodi-dev-kit/include/kodi/c-api/gui/input addons_kodi-dev-kit_include_kodi_c-api_gui_input
-xbmc/addons/kodi-dev-kit/include/kodi/c-api/platform addons_kodi-dev-kit_include_kodi_c-api_platform
-xbmc/addons/kodi-dev-kit/include/kodi/c-api/platform/android addons_kodi-dev-kit_include_kodi_c-api_platform_android
-xbmc/addons/kodi-dev-kit/include/kodi/gui addons_kodi-dev-kit_include_kodi_gui
-xbmc/addons/kodi-dev-kit/include/kodi/gui/controls addons_kodi-dev-kit_include_kodi_gui_controls
-xbmc/addons/kodi-dev-kit/include/kodi/gui/dialogs addons_kodi-dev-kit_include_kodi_gui_dialogs
-xbmc/addons/kodi-dev-kit/include/kodi/gui/gl addons_kodi-dev-kit_include_kodi_gui_gl
-xbmc/addons/kodi-dev-kit/include/kodi/gui/input addons_kodi-dev-kit_include_kodi_gui_input
-xbmc/addons/kodi-dev-kit/include/kodi/platform addons_kodi-dev-kit_include_kodi_platform
-xbmc/addons/kodi-dev-kit/include/kodi/platform/android addons_kodi-dev-kit_include_kodi_platform_android
-xbmc/addons/kodi-dev-kit/include/kodi/tools addons_kodi-dev-kit_include_kodi_tools
+/addons/universalmediacenter-dev-kit/include/universalmediacenter addons_universalmediacenter-dev-kit_include_universalmediacenter
+/addons/universalmediacenter-dev-kit/include/universalmediacenter/addon-instance addons_universalmediacenter-dev-kit_include_universalmediacenter_addon-instance
+/addons/universalmediacenter-dev-kit/include/universalmediacenter/addon-instance/inputstream addons_universalmediacenter-dev-kit_include_universalmediacenter_addon-instance_inputstream
+/addons/universalmediacenter-dev-kit/include/universalmediacenter/addon-instance/peripheral addons_universalmediacenter-dev-kit_include_universalmediacenter_addon-instance_peripheral
+/addons/universalmediacenter-dev-kit/include/universalmediacenter/addon-instance/pvr addons_universalmediacenter-dev-kit_include_universalmediacenter_addon-instance_pvr
+/addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api addons_universalmediacenter-dev-kit_include_universalmediacenter_c-api
+/addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api/addon-instance addons_universalmediacenter-dev-kit_include_universalmediacenter_c-api_addon-instance
+/addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api/addon-instance/inputstream addons_universalmediacenter-dev-kit_include_universalmediacenter_c-api_addon-instance_inputstream
+/addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api/addon-instance/pvr addons_universalmediacenter-dev-kit_include_universalmediacenter_c-api_addon-instance_pvr
+/addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api/gui addons_universalmediacenter-dev-kit_include_universalmediacenter_c-api_gui
+/addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api/gui/controls addons_universalmediacenter-dev-kit_include_universalmediacenter_c-api_gui_controls
+/addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api/gui/dialogs addons_universalmediacenter-dev-kit_include_universalmediacenter_c-api_gui_dialogs
+/addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api/gui/input addons_universalmediacenter-dev-kit_include_universalmediacenter_c-api_gui_input
+/addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api/platform addons_universalmediacenter-dev-kit_include_universalmediacenter_c-api_platform
+/addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api/platform/android addons_universalmediacenter-dev-kit_include_universalmediacenter_c-api_platform_android
+/addons/universalmediacenter-dev-kit/include/universalmediacenter/gui addons_universalmediacenter-dev-kit_include_
+/addons/universalmediacenter-dev-kit/include/universalmediacenter/gui/controls addons_universalmediacenter-dev-kit_include__controls
+/addons/universalmediacenter-dev-kit/include/universalmediacenter/gui/dialogs addons_universalmediacenter-dev-kit_include__dialogs
+/addons/universalmediacenter-dev-kit/include/universalmediacenter/gui/gl addons_universalmediacenter-dev-kit_include__gl
+/addons/universalmediacenter-dev-kit/include/universalmediacenter/gui/input addons_universalmediacenter-dev-kit_include__input
+/addons/universalmediacenter-dev-kit/include/universalmediacenter/platform addons_universalmediacenter-dev-kit_include_universalmediacenter_platform
+/addons/universalmediacenter-dev-kit/include/universalmediacenter/platform/android addons_universalmediacenter-dev-kit_include_universalmediacenter_platform_android
+/addons/universalmediacenter-dev-kit/include/universalmediacenter/tools addons_universalmediacenter-dev-kit_include_universalmediacenter_tools

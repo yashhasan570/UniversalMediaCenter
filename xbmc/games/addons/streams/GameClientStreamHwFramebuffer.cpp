@@ -8,13 +8,13 @@
 
 #include "GameClientStreamHwFramebuffer.h"
 
-#include "addons/kodi-dev-kit/include/kodi/addon-instance/Game.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/addon-instance/Game.h"
 #include "cores/RetroPlayer/streams/RetroPlayerRendering.h"
 #include "games/addons/GameClientTranslator.h"
 #include "utils/StringUtils.h"
 #include "utils/log.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 CGameClientStreamHwFramebuffer::CGameClientStreamHwFramebuffer(

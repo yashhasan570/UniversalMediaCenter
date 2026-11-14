@@ -17,7 +17,7 @@
 
 #include <gtest/gtest.h>
 
-using KODI::PLAYLIST::CSmartFeed;
+using UNIVERSAL MEDIA CENTER::PLAYLIST::CSmartFeed;
 
 namespace
 {

@@ -14,13 +14,13 @@
 namespace jni
 {
 
-class CJNIXBMCSurfaceTextureOnFrameAvailableListener : public CJNISurfaceTextureOnFrameAvailableListener, public CJNIInterfaceImplem<CJNIXBMCSurfaceTextureOnFrameAvailableListener>
+class CJNISurfaceTextureOnFrameAvailableListener : public CJNISurfaceTextureOnFrameAvailableListener, public CJNIInterfaceImplem<CJNISurfaceTextureOnFrameAvailableListener>
 {
 public:
-  CJNIXBMCSurfaceTextureOnFrameAvailableListener();
-  CJNIXBMCSurfaceTextureOnFrameAvailableListener(const CJNIXBMCSurfaceTextureOnFrameAvailableListener& other);
-  CJNIXBMCSurfaceTextureOnFrameAvailableListener(const jni::jhobject &object) : CJNIBase(object) {}
-  ~CJNIXBMCSurfaceTextureOnFrameAvailableListener() override;
+  CJNISurfaceTextureOnFrameAvailableListener();
+  CJNISurfaceTextureOnFrameAvailableListener(const CJNISurfaceTextureOnFrameAvailableListener& other);
+  CJNISurfaceTextureOnFrameAvailableListener(const jni::jhobject &object) : CJNIBase(object) {}
+  ~CJNISurfaceTextureOnFrameAvailableListener() override;
 
   static void RegisterNatives(JNIEnv* env);
 

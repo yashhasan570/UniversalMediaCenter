@@ -12,7 +12,7 @@
 
 class CVariant;
 
-namespace KODI::PLATFORM::WASM
+namespace UNIVERSAL MEDIA CENTER::PLATFORM::WASM
 {
 enum class WebApiProvider
 {
@@ -41,4 +41,4 @@ public:
 
 // Takes ownership of a stringToNewUTF8() result (nullptr when the JS side failed).
 bool ParseOwnedJson(void* ptr, CVariant& out);
-} // namespace KODI::PLATFORM::WASM
+} // namespace UNIVERSAL MEDIA CENTER::PLATFORM::WASM

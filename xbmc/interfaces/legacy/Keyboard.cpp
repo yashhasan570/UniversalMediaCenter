@@ -13,11 +13,11 @@
 #include "messaging/ApplicationMessenger.h"
 #include "utils/Variant.h"
 
-using namespace KODI::MESSAGING;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
 
-namespace XBMCAddon
+namespace Addon
 {
-  namespace xbmc
+  namespace 
   {
 
     Keyboard::Keyboard(const String& line /* = nullString*/, const String& heading/* = nullString*/, bool hidden/* = false*/)

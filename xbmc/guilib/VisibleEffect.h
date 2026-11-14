@@ -88,8 +88,8 @@ class CFadeEffect : public CAnimEffect
 public:
   CFadeEffect(const TiXmlElement* node, bool reverseDefaults, EFFECT_TYPE effect);
   CFadeEffect(float start, float end, unsigned int delay, unsigned int length);
-  CFadeEffect(KODI::UTILS::COLOR::Color start,
-              KODI::UTILS::COLOR::Color end,
+  CFadeEffect(UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color start,
+              UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color end,
               unsigned int delay,
               unsigned int length);
   ~CFadeEffect() override = default;
@@ -98,8 +98,8 @@ private:
 
   float m_startAlpha;
   float m_endAlpha;
-  KODI::UTILS::COLOR::ColorFloats m_startColor;
-  KODI::UTILS::COLOR::ColorFloats m_endColor;
+  UNIVERSAL MEDIA CENTER::UTILS::COLOR::ColorFloats m_startColor;
+  UNIVERSAL MEDIA CENTER::UTILS::COLOR::ColorFloats m_endColor;
 };
 
 class CSlideEffect : public CAnimEffect

@@ -10,7 +10,7 @@
 
 #include <string>
 
-namespace XBMCAddon
+namespace Addon
 {
   typedef std::string String;
 

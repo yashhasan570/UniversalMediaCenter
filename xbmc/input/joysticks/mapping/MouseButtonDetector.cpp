@@ -10,7 +10,7 @@
 
 #include "input/joysticks/DriverPrimitive.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace JOYSTICK;
 
 CMouseButtonDetector::CMouseButtonDetector(CButtonMapping* buttonMapping,

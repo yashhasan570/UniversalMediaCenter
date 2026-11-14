@@ -27,7 +27,7 @@ namespace PERIPHERALS
 class CPeripherals;
 }
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -115,4 +115,4 @@ private:
   std::future<void> m_initializationTask;
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

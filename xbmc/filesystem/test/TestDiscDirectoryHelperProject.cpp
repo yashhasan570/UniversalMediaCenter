@@ -53,9 +53,9 @@ ClipInfo MakeClip(std::chrono::milliseconds duration, std::vector<unsigned int> 
   return ClipInfo{.duration = duration, .playlists = std::move(playlists)};
 }
 
-KODI::VIDEO::EPISODE MakeEpisode(int season, int episode, unsigned int seconds, std::string title)
+UNIVERSAL MEDIA CENTER::VIDEO::EPISODE MakeEpisode(int season, int episode, unsigned int seconds, std::string title)
 {
-  KODI::VIDEO::EPISODE e{season, episode, 0, false};
+  UNIVERSAL MEDIA CENTER::VIDEO::EPISODE e{season, episode, 0, false};
   e.duration = seconds;
   e.strTitle = std::move(title);
   return e;
@@ -938,7 +938,7 @@ TEST_F(TestDiscDirectoryHelperProject, Extras_TitlesOfferWhatIsNotTheMovie)
                         {804u, MakePlaylist(804u, 12min, {3u})}};
   playlists.emplace(806u, MakePlaylist(806u, 6min, {3u}));
   for (auto& [playlist, information] : playlists)
-    information.audioStreams[1].language = KODI::LANGUAGE::CLanguageTag::Parse("eng");
+    information.audioStreams[1].language = UNIVERSAL MEDIA CENTER::LANGUAGE::CLanguageTag::Parse("eng");
   playlists.emplace(805u, MakePlaylist(805u, 3min, {5u}));
   ClipMap clips{{1u, MakeClip(110min, {800u})},
                 {2u, MakeClip(5s, {801u})},

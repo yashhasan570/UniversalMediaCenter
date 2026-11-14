@@ -12,7 +12,7 @@ Several other distributions have **[specific build guides](README.md)** and a ge
 2. **[Get the source code](#2-get-the-source-code)**
 3. **[Install the required packages](#3-install-the-required-packages)**  
   3.1. **[Build missing dependencies](#31-build-missing-dependencies)**
-4. **[Build Universal Media Center](#4-build-kodi)**
+4. **[Build Universal Media Center](#4-build-universalmediacenter)**
 
 ## 1. Document conventions
 This guide assumes you are using `terminal`, also known as `console`, `command-line` or simply `cli`. Commands need to be run at the terminal, one at a time and in the provided order.
@@ -26,17 +26,17 @@ and yet another one
 
 **Example:** Clone Universal Media Center's current master branch:
 ```
-git clone https://github.com/xbmc/xbmc kodi
+git clone https://github.com// universalmediacenter
 ```
 
 Commands that contain strings enclosed in angle brackets denote something you need to change to suit your needs.
 ```
-git clone -b <branch-name> https://github.com/xbmc/xbmc kodi
+git clone -b <branch-name> https://github.com// universalmediacenter
 ```
 
 **Example:** Clone Universal Media Center's current Krypton branch:
 ```
-git clone -b Krypton https://github.com/xbmc/xbmc kodi
+git clone -b Krypton https://github.com// universalmediacenter
 ```
 
 Several different strategies are used to draw your attention to certain pieces of information. In order of how critical the information is, these items are marked as a note, tip, or warning. For example:
@@ -61,7 +61,7 @@ sudo zypper install git
 Clone Universal Media Center's current master branch:
 ```
 cd $HOME
-git clone https://github.com/xbmc/xbmc kodi
+git clone https://github.com// universalmediacenter
 ```
 
 **[back to top](#table-of-contents)**
@@ -131,7 +131,7 @@ See the general **[Linux build guide](README.Linux.md)** for reference.
 
 Change to Universal Media Center's source code directory:
 ```
-cd $HOME/kodi
+cd $HOME/universalmediacenter
 ```
 
 Build and install missing dependencies from repositories (*flatbuffers*, *libfmt*, and *waylandpp*):

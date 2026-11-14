@@ -6,8 +6,8 @@
  *  See LICENSES/README.md for more information.
  */
 
-#include "input/keyboard/XBMC_keysym.h"
-#include "windowing/XBMC_events.h"
+#include "input/keyboard/_keysym.h"
+#include "windowing/_events.h"
 
 #import "platform/darwin/ios-common/DarwinEmbedNowPlayingInfoManager.h"
 
@@ -18,7 +18,7 @@
 
 @class IOSEAGLView;
 
-@interface XBMCController : UIViewController <UIGestureRecognizerDelegate, UIKeyInput>
+@interface Controller : UIViewController <UIGestureRecognizerDelegate, UIKeyInput>
 {
   UIWindow *m_window;
   IOSEAGLView  *m_glView;
@@ -56,7 +56,7 @@
 - (void) enterBackground;
 - (void) enterForeground;
 - (void) becomeInactive;
-- (void) sendKey: (XBMCKey) key;
+- (void) sendKey: (Key) key;
 - (void) observeDefaultCenterStuff: (NSNotification *) notification;
 - (CGRect)fullscreenSubviewFrame;
 - (void)onXbmcAlive;
@@ -83,4 +83,4 @@
 - (CVEAGLContext)getEAGLContextObj;
 @end
 
-extern XBMCController *g_xbmcController;
+extern Controller *g_Controller;

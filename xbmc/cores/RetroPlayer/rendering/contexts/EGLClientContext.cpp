@@ -10,7 +10,7 @@
 
 #include "utils/log.h"
 
-using namespace KODI::RETRO;
+using namespace UNIVERSAL MEDIA CENTER::RETRO;
 
 CEGLClientContext::~CEGLClientContext()
 {

@@ -10,7 +10,7 @@
 
 #include "cores/RetroPlayer/playback/IPlaybackControl.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -49,4 +49,4 @@ private:
   double m_previousSpeed = 0.0;
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

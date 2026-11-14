@@ -10,7 +10,7 @@
 
 #include "view/GUIViewState.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -25,7 +25,7 @@ public:
   ~CGUIViewStateWindowGames() override = default;
 
   // implementation of CGUIViewState
-  std::optional<KODI::MEDIA::MediaSection> GetLockType() override;
+  std::optional<UNIVERSAL MEDIA CENTER::MEDIA::MediaSection> GetLockType() override;
   std::string GetExtensions() override;
   std::vector<CMediaSource>& GetSources() override;
 
@@ -34,4 +34,4 @@ protected:
   void SaveViewState() override;
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

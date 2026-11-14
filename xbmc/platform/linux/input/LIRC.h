@@ -15,13 +15,13 @@
 #include <memory>
 #include <string>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace KEYMAP
 {
 class CIRTranslator;
 } // namespace KEYMAP
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER
 
 class CLirc : CThread
 {
@@ -38,6 +38,6 @@ protected:
   int m_fd = -1;
   std::chrono::time_point<std::chrono::steady_clock> m_firstClickTime;
   CCriticalSection m_critSection;
-  std::unique_ptr<KODI::KEYMAP::CIRTranslator> m_irTranslator;
+  std::unique_ptr<UNIVERSAL MEDIA CENTER::KEYMAP::CIRTranslator> m_irTranslator;
   int m_profileId;
 };

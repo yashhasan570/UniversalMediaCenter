@@ -58,7 +58,7 @@ CDateTimeSpan::CDateTimeSpan(int day, int hour, int minute, int second) : CDateT
 
 bool CDateTimeSpan::operator >(const CDateTimeSpan& right) const
 {
-  return KODI::TIME::CompareFileTime(&m_timeSpan, &right.m_timeSpan) > 0;
+  return UNIVERSAL MEDIA CENTER::TIME::CompareFileTime(&m_timeSpan, &right.m_timeSpan) > 0;
 }
 
 bool CDateTimeSpan::operator >=(const CDateTimeSpan& right) const
@@ -68,7 +68,7 @@ bool CDateTimeSpan::operator >=(const CDateTimeSpan& right) const
 
 bool CDateTimeSpan::operator <(const CDateTimeSpan& right) const
 {
-  return KODI::TIME::CompareFileTime(&m_timeSpan, &right.m_timeSpan) < 0;
+  return UNIVERSAL MEDIA CENTER::TIME::CompareFileTime(&m_timeSpan, &right.m_timeSpan) < 0;
 }
 
 bool CDateTimeSpan::operator <=(const CDateTimeSpan& right) const
@@ -78,7 +78,7 @@ bool CDateTimeSpan::operator <=(const CDateTimeSpan& right) const
 
 bool CDateTimeSpan::operator ==(const CDateTimeSpan& right) const
 {
-  return KODI::TIME::CompareFileTime(&m_timeSpan, &right.m_timeSpan) == 0;
+  return UNIVERSAL MEDIA CENTER::TIME::CompareFileTime(&m_timeSpan, &right.m_timeSpan) == 0;
 }
 
 bool CDateTimeSpan::operator !=(const CDateTimeSpan& right) const
@@ -249,11 +249,11 @@ void CDateTimeSpan::SetFromPeriod(const std::string &period)
 
 namespace
 {
-CDateTimeSpan GetTimezoneBiasForSystemTime(const KODI::TIME::SystemTime& time)
+CDateTimeSpan GetTimezoneBiasForSystemTime(const UNIVERSAL MEDIA CENTER::TIME::SystemTime& time)
 {
   CDateTimeSpan timezoneBias;
 
-  const auto [success, bias] = KODI::TIME::GetTimezoneBias(time);
+  const auto [success, bias] = UNIVERSAL MEDIA CENTER::TIME::GetTimezoneBias(time);
   if (success)
     timezoneBias = CDateTimeSpan(0, 0, static_cast<int>(bias), 0);
   else
@@ -272,8 +272,8 @@ CDateTimeSpan GetCurrentTimezoneBias()
   // This method gets called very often and is expensive, so refresh info only every 5 mins.
   if (static XbmcThreads::EndTime<> biasRefreshTimeout(0s); biasRefreshTimeout.IsTimePast())
   {
-    KODI::TIME::SystemTime now;
-    KODI::TIME::GetLocalTime(&now);
+    UNIVERSAL MEDIA CENTER::TIME::SystemTime now;
+    UNIVERSAL MEDIA CENTER::TIME::GetLocalTime(&now);
 
     const CDateTimeSpan oldTimezoneBias{timezoneBias};
     timezoneBias = GetTimezoneBiasForSystemTime(now);
@@ -297,13 +297,13 @@ CDateTime::CDateTime()
   Reset();
 }
 
-CDateTime::CDateTime(const KODI::TIME::SystemTime& time)
+CDateTime::CDateTime(const UNIVERSAL MEDIA CENTER::TIME::SystemTime& time)
 {
   // we store internally as a FileTime
   m_state = ToFileTime(time, m_time) ? State::VALID : State::INVALID;
 }
 
-CDateTime::CDateTime(const KODI::TIME::FileTime& time) : m_time(time)
+CDateTime::CDateTime(const UNIVERSAL MEDIA CENTER::TIME::FileTime& time) : m_time(time)
 {
   SetValid(true);
 }
@@ -328,8 +328,8 @@ CDateTime::CDateTime(int year, int month, int day, int hour, int minute, int sec
 CDateTime CDateTime::GetCurrentDateTime()
 {
   // get the current time
-  KODI::TIME::SystemTime time;
-  KODI::TIME::GetLocalTime(&time);
+  UNIVERSAL MEDIA CENTER::TIME::SystemTime time;
+  UNIVERSAL MEDIA CENTER::TIME::GetLocalTime(&time);
 
   return CDateTime(time);
 }
@@ -341,14 +341,14 @@ CDateTime CDateTime::GetUTCDateTime()
   return time;
 }
 
-const CDateTime& CDateTime::operator=(const KODI::TIME::SystemTime& right)
+const CDateTime& CDateTime::operator=(const UNIVERSAL MEDIA CENTER::TIME::SystemTime& right)
 {
   m_state = ToFileTime(right, m_time) ? State::VALID : State::INVALID;
   m_timeZoneBias.reset();
   return *this;
 }
 
-const CDateTime& CDateTime::operator=(const KODI::TIME::FileTime& right)
+const CDateTime& CDateTime::operator=(const UNIVERSAL MEDIA CENTER::TIME::FileTime& right)
 {
   m_time=right;
   SetValid(true);
@@ -400,78 +400,78 @@ bool CDateTime::operator !=(const CDateTime& right) const
   return !operator ==(right);
 }
 
-bool CDateTime::operator>(const KODI::TIME::FileTime& right) const
+bool CDateTime::operator>(const UNIVERSAL MEDIA CENTER::TIME::FileTime& right) const
 {
-  return KODI::TIME::CompareFileTime(&m_time, &right) > 0;
+  return UNIVERSAL MEDIA CENTER::TIME::CompareFileTime(&m_time, &right) > 0;
 }
 
-bool CDateTime::operator>=(const KODI::TIME::FileTime& right) const
+bool CDateTime::operator>=(const UNIVERSAL MEDIA CENTER::TIME::FileTime& right) const
 {
   return operator >(right) || operator ==(right);
 }
 
-bool CDateTime::operator<(const KODI::TIME::FileTime& right) const
+bool CDateTime::operator<(const UNIVERSAL MEDIA CENTER::TIME::FileTime& right) const
 {
-  return KODI::TIME::CompareFileTime(&m_time, &right) < 0;
+  return UNIVERSAL MEDIA CENTER::TIME::CompareFileTime(&m_time, &right) < 0;
 }
 
-bool CDateTime::operator<=(const KODI::TIME::FileTime& right) const
+bool CDateTime::operator<=(const UNIVERSAL MEDIA CENTER::TIME::FileTime& right) const
 {
   return operator <(right) || operator ==(right);
 }
 
-bool CDateTime::operator==(const KODI::TIME::FileTime& right) const
+bool CDateTime::operator==(const UNIVERSAL MEDIA CENTER::TIME::FileTime& right) const
 {
-  return KODI::TIME::CompareFileTime(&m_time, &right) == 0;
+  return UNIVERSAL MEDIA CENTER::TIME::CompareFileTime(&m_time, &right) == 0;
 }
 
-bool CDateTime::operator!=(const KODI::TIME::FileTime& right) const
+bool CDateTime::operator!=(const UNIVERSAL MEDIA CENTER::TIME::FileTime& right) const
 {
   return !operator ==(right);
 }
 
-bool CDateTime::operator>(const KODI::TIME::SystemTime& right) const
+bool CDateTime::operator>(const UNIVERSAL MEDIA CENTER::TIME::SystemTime& right) const
 {
-  KODI::TIME::FileTime time;
+  UNIVERSAL MEDIA CENTER::TIME::FileTime time;
   ToFileTime(right, time);
 
   return operator >(time);
 }
 
-bool CDateTime::operator>=(const KODI::TIME::SystemTime& right) const
+bool CDateTime::operator>=(const UNIVERSAL MEDIA CENTER::TIME::SystemTime& right) const
 {
   return operator >(right) || operator ==(right);
 }
 
-bool CDateTime::operator<(const KODI::TIME::SystemTime& right) const
+bool CDateTime::operator<(const UNIVERSAL MEDIA CENTER::TIME::SystemTime& right) const
 {
-  KODI::TIME::FileTime time;
+  UNIVERSAL MEDIA CENTER::TIME::FileTime time;
   ToFileTime(right, time);
 
   return operator <(time);
 }
 
-bool CDateTime::operator<=(const KODI::TIME::SystemTime& right) const
+bool CDateTime::operator<=(const UNIVERSAL MEDIA CENTER::TIME::SystemTime& right) const
 {
   return operator <(right) || operator ==(right);
 }
 
-bool CDateTime::operator==(const KODI::TIME::SystemTime& right) const
+bool CDateTime::operator==(const UNIVERSAL MEDIA CENTER::TIME::SystemTime& right) const
 {
-  KODI::TIME::FileTime time;
+  UNIVERSAL MEDIA CENTER::TIME::FileTime time;
   ToFileTime(right, time);
 
   return operator ==(time);
 }
 
-bool CDateTime::operator!=(const KODI::TIME::SystemTime& right) const
+bool CDateTime::operator!=(const UNIVERSAL MEDIA CENTER::TIME::SystemTime& right) const
 {
   return !operator ==(right);
 }
 
 bool CDateTime::operator >(const time_t& right) const
 {
-  KODI::TIME::FileTime time;
+  UNIVERSAL MEDIA CENTER::TIME::FileTime time;
   ToFileTime(right, time);
 
   return operator >(time);
@@ -484,7 +484,7 @@ bool CDateTime::operator >=(const time_t& right) const
 
 bool CDateTime::operator <(const time_t& right) const
 {
-  KODI::TIME::FileTime time;
+  UNIVERSAL MEDIA CENTER::TIME::FileTime time;
   ToFileTime(right, time);
 
   return operator <(time);
@@ -497,7 +497,7 @@ bool CDateTime::operator <=(const time_t& right) const
 
 bool CDateTime::operator ==(const time_t& right) const
 {
-  KODI::TIME::FileTime time;
+  UNIVERSAL MEDIA CENTER::TIME::FileTime time;
   ToFileTime(right, time);
 
   return operator ==(time);
@@ -510,7 +510,7 @@ bool CDateTime::operator !=(const time_t& right) const
 
 bool CDateTime::operator >(const tm& right) const
 {
-  KODI::TIME::FileTime time;
+  UNIVERSAL MEDIA CENTER::TIME::FileTime time;
   ToFileTime(right, time);
 
   return operator >(time);
@@ -523,7 +523,7 @@ bool CDateTime::operator >=(const tm& right) const
 
 bool CDateTime::operator <(const tm& right) const
 {
-  KODI::TIME::FileTime time;
+  UNIVERSAL MEDIA CENTER::TIME::FileTime time;
   ToFileTime(right, time);
 
   return operator <(time);
@@ -536,7 +536,7 @@ bool CDateTime::operator <=(const tm& right) const
 
 bool CDateTime::operator ==(const tm& right) const
 {
-  KODI::TIME::FileTime time;
+  UNIVERSAL MEDIA CENTER::TIME::FileTime time;
   ToFileTime(right, time);
 
   return operator ==(time);
@@ -631,7 +631,7 @@ CDateTimeSpan CDateTime::operator -(const CDateTime& right) const
   return left;
 }
 
-CDateTime::operator KODI::TIME::FileTime() const
+CDateTime::operator UNIVERSAL MEDIA CENTER::TIME::FileTime() const
 {
   return m_time;
 }
@@ -643,7 +643,7 @@ void CDateTime::Archive(CArchive& ar)
     ar << static_cast<int>(m_state);
     if (m_state == State::VALID)
     {
-      KODI::TIME::SystemTime st;
+      UNIVERSAL MEDIA CENTER::TIME::SystemTime st;
       GetAsSystemTime(st);
       ar<<st;
     }
@@ -656,7 +656,7 @@ void CDateTime::Archive(CArchive& ar)
     m_state = static_cast<State>(state);
     if (m_state == State::VALID)
     {
-      KODI::TIME::SystemTime st;
+      UNIVERSAL MEDIA CENTER::TIME::SystemTime st;
       ar>>st;
       ToFileTime(st, m_time);
     }
@@ -680,13 +680,13 @@ bool CDateTime::IsValid() const
   return m_state == State::VALID;
 }
 
-bool CDateTime::ToFileTime(const KODI::TIME::SystemTime& time, KODI::TIME::FileTime& fileTime) const
+bool CDateTime::ToFileTime(const UNIVERSAL MEDIA CENTER::TIME::SystemTime& time, UNIVERSAL MEDIA CENTER::TIME::FileTime& fileTime) const
 {
-  return KODI::TIME::SystemTimeToFileTime(&time, &fileTime) == 1 &&
+  return UNIVERSAL MEDIA CENTER::TIME::SystemTimeToFileTime(&time, &fileTime) == 1 &&
          (fileTime.lowDateTime > 0 || fileTime.highDateTime > 0);
 }
 
-bool CDateTime::ToFileTime(const time_t& time, KODI::TIME::FileTime& fileTime) const
+bool CDateTime::ToFileTime(const time_t& time, UNIVERSAL MEDIA CENTER::TIME::FileTime& fileTime) const
 {
   long long ll = time;
   ll *= 10000000ll;
@@ -698,9 +698,9 @@ bool CDateTime::ToFileTime(const time_t& time, KODI::TIME::FileTime& fileTime) c
   return true;
 }
 
-bool CDateTime::ToFileTime(const tm& time, KODI::TIME::FileTime& fileTime) const
+bool CDateTime::ToFileTime(const tm& time, UNIVERSAL MEDIA CENTER::TIME::FileTime& fileTime) const
 {
-  KODI::TIME::SystemTime st = {};
+  UNIVERSAL MEDIA CENTER::TIME::SystemTime st = {};
 
   st.year = time.tm_year + 1900;
   st.month = time.tm_mon + 1;
@@ -766,7 +766,7 @@ bool CDateTime::SetFromDateString(const std::string &date)
 
 int CDateTime::GetDay() const
 {
-  KODI::TIME::SystemTime st;
+  UNIVERSAL MEDIA CENTER::TIME::SystemTime st;
   GetAsSystemTime(st);
 
   return st.day;
@@ -774,7 +774,7 @@ int CDateTime::GetDay() const
 
 int CDateTime::GetMonth() const
 {
-  KODI::TIME::SystemTime st;
+  UNIVERSAL MEDIA CENTER::TIME::SystemTime st;
   GetAsSystemTime(st);
 
   return st.month;
@@ -782,7 +782,7 @@ int CDateTime::GetMonth() const
 
 int CDateTime::GetYear() const
 {
-  KODI::TIME::SystemTime st;
+  UNIVERSAL MEDIA CENTER::TIME::SystemTime st;
   GetAsSystemTime(st);
 
   return st.year;
@@ -790,7 +790,7 @@ int CDateTime::GetYear() const
 
 int CDateTime::GetHour() const
 {
-  KODI::TIME::SystemTime st;
+  UNIVERSAL MEDIA CENTER::TIME::SystemTime st;
   GetAsSystemTime(st);
 
   return st.hour;
@@ -798,7 +798,7 @@ int CDateTime::GetHour() const
 
 int CDateTime::GetMinute() const
 {
-  KODI::TIME::SystemTime st;
+  UNIVERSAL MEDIA CENTER::TIME::SystemTime st;
   GetAsSystemTime(st);
 
   return st.minute;
@@ -806,7 +806,7 @@ int CDateTime::GetMinute() const
 
 int CDateTime::GetSecond() const
 {
-  KODI::TIME::SystemTime st;
+  UNIVERSAL MEDIA CENTER::TIME::SystemTime st;
   GetAsSystemTime(st);
 
   return st.second;
@@ -814,7 +814,7 @@ int CDateTime::GetSecond() const
 
 int CDateTime::GetDayOfWeek() const
 {
-  KODI::TIME::SystemTime st;
+  UNIVERSAL MEDIA CENTER::TIME::SystemTime st;
   GetAsSystemTime(st);
 
   return st.dayOfWeek;
@@ -822,14 +822,14 @@ int CDateTime::GetDayOfWeek() const
 
 int CDateTime::GetMinuteOfDay() const
 {
-  KODI::TIME::SystemTime st;
+  UNIVERSAL MEDIA CENTER::TIME::SystemTime st;
   GetAsSystemTime(st);
   return st.hour * 60 + st.minute;
 }
 
 bool CDateTime::SetDateTime(int year, int month, int day, int hour, int minute, int second)
 {
-  KODI::TIME::SystemTime st = {};
+  UNIVERSAL MEDIA CENTER::TIME::SystemTime st = {};
 
   st.year = year;
   st.month = month;
@@ -854,7 +854,7 @@ bool CDateTime::SetTime(int hour, int minute, int second)
   return SetDateTime(1601, 1, 1, hour, minute, second);
 }
 
-void CDateTime::GetAsSystemTime(KODI::TIME::SystemTime& time) const
+void CDateTime::GetAsSystemTime(UNIVERSAL MEDIA CENTER::TIME::SystemTime& time) const
 {
   FileTimeToSystemTime(&m_time, &time);
 }
@@ -874,7 +874,7 @@ int64_t CDateTime::GetAsSecondsSinceEpoch() const
 
 void CDateTime::GetAsTm(tm& time) const
 {
-  KODI::TIME::SystemTime st;
+  UNIVERSAL MEDIA CENTER::TIME::SystemTime st;
   GetAsSystemTime(st);
 
   time = {};
@@ -890,14 +890,14 @@ void CDateTime::GetAsTm(tm& time) const
   mktime(&time);
 }
 
-void CDateTime::GetAsTimeStamp(KODI::TIME::FileTime& time) const
+void CDateTime::GetAsTimeStamp(UNIVERSAL MEDIA CENTER::TIME::FileTime& time) const
 {
-  KODI::TIME::LocalFileTimeToFileTime(&m_time, &time);
+  UNIVERSAL MEDIA CENTER::TIME::LocalFileTimeToFileTime(&m_time, &time);
 }
 
 std::string CDateTime::GetAsDBDate() const
 {
-  KODI::TIME::SystemTime st;
+  UNIVERSAL MEDIA CENTER::TIME::SystemTime st;
   GetAsSystemTime(st);
 
   return StringUtils::Format("{:04}-{:02}-{:02}", st.year, st.month, st.day);
@@ -905,7 +905,7 @@ std::string CDateTime::GetAsDBDate() const
 
 std::string CDateTime::GetAsDBTime() const
 {
-  KODI::TIME::SystemTime st;
+  UNIVERSAL MEDIA CENTER::TIME::SystemTime st;
   GetAsSystemTime(st);
 
   return StringUtils::Format("{:02}:{:02}:{:02}", st.hour, st.minute, st.second);
@@ -913,7 +913,7 @@ std::string CDateTime::GetAsDBTime() const
 
 std::string CDateTime::GetAsDBDateTime() const
 {
-  KODI::TIME::SystemTime st;
+  UNIVERSAL MEDIA CENTER::TIME::SystemTime st;
   GetAsSystemTime(st);
 
   return StringUtils::Format("{:04}-{:02}-{:02} {:02}:{:02}:{:02}", st.year, st.month, st.day,
@@ -922,7 +922,7 @@ std::string CDateTime::GetAsDBDateTime() const
 
 std::string CDateTime::GetAsSaveString() const
 {
-  KODI::TIME::SystemTime st;
+  UNIVERSAL MEDIA CENTER::TIME::SystemTime st;
   GetAsSystemTime(st);
 
   return StringUtils::Format("{:04}{:02}{:02}_{:02}{:02}{:02}", st.year, st.month, st.day, st.hour,
@@ -950,7 +950,7 @@ namespace
 {
 //! \brief Whether broken-down date/time fields are in range for a valid date.
 //!
-//! The POSIX implementation of KODI::TIME::SystemTimeToFileTime() normalizes
+//! The POSIX implementation of UNIVERSAL MEDIA CENTER::TIME::SystemTimeToFileTime() normalizes
 //! out-of-range fields instead of failing, so parsers have to reject them
 //! explicitly to behave the same on every platform.
 bool IsValidDateTimeRange(int year, int month, int day, int hour, int minute, int second)
@@ -1260,7 +1260,7 @@ CDateTime CDateTime::FromSecondsSinceEpoch(int64_t seconds)
 
   const int64_t ll{seconds * 10000000LL + UNIX_BASE_TIME};
 
-  KODI::TIME::FileTime fileTime{};
+  UNIVERSAL MEDIA CENTER::TIME::FileTime fileTime{};
   fileTime.lowDateTime = static_cast<uint32_t>(ll & 0xFFFFFFFF);
   fileTime.highDateTime = static_cast<uint32_t>(ll >> 32);
 
@@ -1279,7 +1279,7 @@ std::string CDateTime::GetAsLocalizedTime(const std::string &format, bool withSe
   std::string strOut;
   const std::string& strFormat = format.empty() ? g_langInfo.GetTimeFormat() : format;
 
-  KODI::TIME::SystemTime dateTime;
+  UNIVERSAL MEDIA CENTER::TIME::SystemTime dateTime;
   GetAsSystemTime(dateTime);
 
   // Prefetch meridiem symbol
@@ -1449,7 +1449,7 @@ std::string CDateTime::GetAsLocalizedDate(const std::string& strFormat,
   std::string strOut;
   std::string fmtOut;
 
-  KODI::TIME::SystemTime dateTime;
+  UNIVERSAL MEDIA CENTER::TIME::SystemTime dateTime;
   GetAsSystemTime(dateTime);
 
   size_t length = strFormat.size();
@@ -1689,7 +1689,7 @@ std::string CDateTime::GetAsRFC1123DateTime() const
 
 std::string CDateTime::GetAsW3CDate() const
 {
-  KODI::TIME::SystemTime st;
+  UNIVERSAL MEDIA CENTER::TIME::SystemTime st;
   GetAsSystemTime(st);
 
   return StringUtils::Format("{:04}-{:02}-{:02}", st.year, st.month, st.day);
@@ -1700,7 +1700,7 @@ std::string CDateTime::GetAsW3CDateTime(bool asUtc /* = false */) const
   CDateTime w3cDate = *this;
   if (asUtc)
     w3cDate = GetAsUTCDateTime();
-  KODI::TIME::SystemTime st;
+  UNIVERSAL MEDIA CENTER::TIME::SystemTime st;
   w3cDate.GetAsSystemTime(st);
 
   std::string result = StringUtils::Format("{:04}-{:02}-{:02}T{:02}:{:02}:{:02}", st.year, st.month,
@@ -1732,7 +1732,7 @@ CDateTimeSpan CDateTime::GetTimezoneBias() const
     if (!IsValid())
       return {};
 
-    KODI::TIME::SystemTime time{};
+    UNIVERSAL MEDIA CENTER::TIME::SystemTime time{};
     GetAsSystemTime(time);
     m_timeZoneBias = GetTimezoneBiasForSystemTime(time);
   }

@@ -13,7 +13,7 @@
 
 #include <wayland-client-protocol.h>
 
-using namespace KODI::WINDOWING::WAYLAND;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::WAYLAND;
 
 namespace
 {

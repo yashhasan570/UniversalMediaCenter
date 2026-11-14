@@ -14,7 +14,7 @@
 #include <chrono>
 #include <cmath>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace RETRO;
 using namespace std::chrono_literals;
 

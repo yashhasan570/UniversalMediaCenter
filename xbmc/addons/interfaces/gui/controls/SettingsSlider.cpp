@@ -10,7 +10,7 @@
 
 #include "ServiceBroker.h"
 #include "addons/binary-addons/AddonDll.h"
-#include "addons/kodi-dev-kit/include/kodi/gui/controls/SettingsSlider.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/gui/controls/SettingsSlider.h"
 #include "guilib/GUIComponent.h"
 #include "guilib/GUISettingsSliderControl.h"
 #include "guilib/GUIWindowManager.h"
@@ -21,83 +21,83 @@ namespace ADDON
 
 void Interface_GUIControlSettingsSlider::Init(AddonGlobalInterface* addonInterface)
 {
-  addonInterface->toUniversal Media Center->kodi_gui->control_settings_slider =
-      new AddonToUniversal Media CenterFuncTable_kodi_gui_control_settings_slider();
+  addonInterface->toUniversal Media Center->->control_settings_slider =
+      new AddonToUniversal Media CenterFuncTable__control_settings_slider();
 
-  addonInterface->toUniversal Media Center->kodi_gui->control_settings_slider->set_visible = set_visible;
-  addonInterface->toUniversal Media Center->kodi_gui->control_settings_slider->set_enabled = set_enabled;
+  addonInterface->toUniversal Media Center->->control_settings_slider->set_visible = set_visible;
+  addonInterface->toUniversal Media Center->->control_settings_slider->set_enabled = set_enabled;
 
-  addonInterface->toUniversal Media Center->kodi_gui->control_settings_slider->set_text = set_text;
-  addonInterface->toUniversal Media Center->kodi_gui->control_settings_slider->reset = reset;
+  addonInterface->toUniversal Media Center->->control_settings_slider->set_text = set_text;
+  addonInterface->toUniversal Media Center->->control_settings_slider->reset = reset;
 
-  addonInterface->toUniversal Media Center->kodi_gui->control_settings_slider->set_int_range = set_int_range;
-  addonInterface->toUniversal Media Center->kodi_gui->control_settings_slider->set_int_value = set_int_value;
-  addonInterface->toUniversal Media Center->kodi_gui->control_settings_slider->get_int_value = get_int_value;
-  addonInterface->toUniversal Media Center->kodi_gui->control_settings_slider->set_int_interval = set_int_interval;
+  addonInterface->toUniversal Media Center->->control_settings_slider->set_int_range = set_int_range;
+  addonInterface->toUniversal Media Center->->control_settings_slider->set_int_value = set_int_value;
+  addonInterface->toUniversal Media Center->->control_settings_slider->get_int_value = get_int_value;
+  addonInterface->toUniversal Media Center->->control_settings_slider->set_int_interval = set_int_interval;
 
-  addonInterface->toUniversal Media Center->kodi_gui->control_settings_slider->set_percentage = set_percentage;
-  addonInterface->toUniversal Media Center->kodi_gui->control_settings_slider->get_percentage = get_percentage;
+  addonInterface->toUniversal Media Center->->control_settings_slider->set_percentage = set_percentage;
+  addonInterface->toUniversal Media Center->->control_settings_slider->get_percentage = get_percentage;
 
-  addonInterface->toUniversal Media Center->kodi_gui->control_settings_slider->set_float_range = set_float_range;
-  addonInterface->toUniversal Media Center->kodi_gui->control_settings_slider->set_float_value = set_float_value;
-  addonInterface->toUniversal Media Center->kodi_gui->control_settings_slider->get_float_value = get_float_value;
-  addonInterface->toUniversal Media Center->kodi_gui->control_settings_slider->set_float_interval =
+  addonInterface->toUniversal Media Center->->control_settings_slider->set_float_range = set_float_range;
+  addonInterface->toUniversal Media Center->->control_settings_slider->set_float_value = set_float_value;
+  addonInterface->toUniversal Media Center->->control_settings_slider->get_float_value = get_float_value;
+  addonInterface->toUniversal Media Center->->control_settings_slider->set_float_interval =
       set_float_interval;
 }
 
 void Interface_GUIControlSettingsSlider::DeInit(AddonGlobalInterface* addonInterface)
 {
-  delete addonInterface->toUniversal Media Center->kodi_gui->control_settings_slider;
+  delete addonInterface->toUniversal Media Center->->control_settings_slider;
 }
 
-void Interface_GUIControlSettingsSlider::set_visible(KODI_HANDLE kodiBase,
-                                                     KODI_GUI_CONTROL_HANDLE handle,
+void Interface_GUIControlSettingsSlider::set_visible(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                                     UNIVERSALMEDIA_GUI_CONTROL_HANDLE handle,
                                                      bool visible)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   auto* control = static_cast<CGUISettingsSliderControl*>(handle);
   if (!addon || !control)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', "
+               "Invalid handler data (universalmediacenterBase='{}', "
                "handle='{}') on addon '{}'",
-               kodiBase, handle, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, addon ? addon->ID() : "unknown");
     return;
   }
 
   control->SetVisible(visible);
 }
 
-void Interface_GUIControlSettingsSlider::set_enabled(KODI_HANDLE kodiBase,
-                                                     KODI_GUI_CONTROL_HANDLE handle,
+void Interface_GUIControlSettingsSlider::set_enabled(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                                     UNIVERSALMEDIA_GUI_CONTROL_HANDLE handle,
                                                      bool enabled)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   auto* control = static_cast<CGUISettingsSliderControl*>(handle);
   if (!addon || !control)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', "
+               "Invalid handler data (universalmediacenterBase='{}', "
                "handle='{}') on addon '{}'",
-               kodiBase, handle, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, addon ? addon->ID() : "unknown");
     return;
   }
 
   control->SetEnabled(enabled);
 }
 
-void Interface_GUIControlSettingsSlider::set_text(KODI_HANDLE kodiBase,
-                                                  KODI_GUI_CONTROL_HANDLE handle,
+void Interface_GUIControlSettingsSlider::set_text(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                                  UNIVERSALMEDIA_GUI_CONTROL_HANDLE handle,
                                                   const char* text)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   const auto* control = static_cast<const CGUISettingsSliderControl*>(handle);
   if (!addon || !control || !text)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', "
+               "Invalid handler data (universalmediacenterBase='{}', "
                "handle='{}', text='{}') on addon '{}'",
-               kodiBase, handle, static_cast<const void*>(text), addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, static_cast<const void*>(text), addon ? addon->ID() : "unknown");
     return;
   }
 
@@ -106,16 +106,16 @@ void Interface_GUIControlSettingsSlider::set_text(KODI_HANDLE kodiBase,
   CServiceBroker::GetGUI()->GetWindowManager().SendThreadMessage(msg, control->GetParentID());
 }
 
-void Interface_GUIControlSettingsSlider::reset(KODI_HANDLE kodiBase, KODI_GUI_CONTROL_HANDLE handle)
+void Interface_GUIControlSettingsSlider::reset(UNIVERSALMEDIA_HANDLE universalmediacenterBase, UNIVERSALMEDIA_GUI_CONTROL_HANDLE handle)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   const auto* control = static_cast<const CGUISettingsSliderControl*>(handle);
   if (!addon || !control)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', "
+               "Invalid handler data (universalmediacenterBase='{}', "
                "handle='{}') on addon '{}'",
-               kodiBase, handle, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, addon ? addon->ID() : "unknown");
     return;
   }
 
@@ -123,19 +123,19 @@ void Interface_GUIControlSettingsSlider::reset(KODI_HANDLE kodiBase, KODI_GUI_CO
   CServiceBroker::GetGUI()->GetWindowManager().SendThreadMessage(msg, control->GetParentID());
 }
 
-void Interface_GUIControlSettingsSlider::set_int_range(KODI_HANDLE kodiBase,
-                                                       KODI_GUI_CONTROL_HANDLE handle,
+void Interface_GUIControlSettingsSlider::set_int_range(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                                       UNIVERSALMEDIA_GUI_CONTROL_HANDLE handle,
                                                        int start,
                                                        int end)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   auto* control = static_cast<CGUISettingsSliderControl*>(handle);
   if (!addon || !control)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', "
+               "Invalid handler data (universalmediacenterBase='{}', "
                "handle='{}') on addon '{}'",
-               kodiBase, handle, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, addon ? addon->ID() : "unknown");
     return;
   }
 
@@ -143,18 +143,18 @@ void Interface_GUIControlSettingsSlider::set_int_range(KODI_HANDLE kodiBase,
   control->SetRange(start, end);
 }
 
-void Interface_GUIControlSettingsSlider::set_int_value(KODI_HANDLE kodiBase,
-                                                       KODI_GUI_CONTROL_HANDLE handle,
+void Interface_GUIControlSettingsSlider::set_int_value(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                                       UNIVERSALMEDIA_GUI_CONTROL_HANDLE handle,
                                                        int value)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   auto* control = static_cast<CGUISettingsSliderControl*>(handle);
   if (!addon || !control)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', "
+               "Invalid handler data (universalmediacenterBase='{}', "
                "handle='{}') on addon '{}'",
-               kodiBase, handle, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, addon ? addon->ID() : "unknown");
     return;
   }
 
@@ -162,53 +162,53 @@ void Interface_GUIControlSettingsSlider::set_int_value(KODI_HANDLE kodiBase,
   control->SetIntValue(value);
 }
 
-int Interface_GUIControlSettingsSlider::get_int_value(KODI_HANDLE kodiBase,
-                                                      KODI_GUI_CONTROL_HANDLE handle)
+int Interface_GUIControlSettingsSlider::get_int_value(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                                      UNIVERSALMEDIA_GUI_CONTROL_HANDLE handle)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   const auto* control = static_cast<const CGUISettingsSliderControl*>(handle);
   if (!addon || !control)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', "
+               "Invalid handler data (universalmediacenterBase='{}', "
                "handle='{}') on addon '{}'",
-               kodiBase, handle, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, addon ? addon->ID() : "unknown");
     return -1;
   }
 
   return control->GetIntValue();
 }
 
-void Interface_GUIControlSettingsSlider::set_int_interval(KODI_HANDLE kodiBase,
-                                                          KODI_GUI_CONTROL_HANDLE handle,
+void Interface_GUIControlSettingsSlider::set_int_interval(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                                          UNIVERSALMEDIA_GUI_CONTROL_HANDLE handle,
                                                           int interval)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   auto* control = static_cast<CGUISettingsSliderControl*>(handle);
   if (!addon || !control)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', "
+               "Invalid handler data (universalmediacenterBase='{}', "
                "handle='{}') on addon '{}'",
-               kodiBase, handle, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, addon ? addon->ID() : "unknown");
     return;
   }
 
   control->SetIntInterval(interval);
 }
 
-void Interface_GUIControlSettingsSlider::set_percentage(KODI_HANDLE kodiBase,
-                                                        KODI_GUI_CONTROL_HANDLE handle,
+void Interface_GUIControlSettingsSlider::set_percentage(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                                        UNIVERSALMEDIA_GUI_CONTROL_HANDLE handle,
                                                         float percent)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   auto* control = static_cast<CGUISettingsSliderControl*>(handle);
   if (!addon || !control)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', "
+               "Invalid handler data (universalmediacenterBase='{}', "
                "handle='{}') on addon '{}'",
-               kodiBase, handle, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, addon ? addon->ID() : "unknown");
     return;
   }
 
@@ -216,36 +216,36 @@ void Interface_GUIControlSettingsSlider::set_percentage(KODI_HANDLE kodiBase,
   control->SetPercentage(percent);
 }
 
-float Interface_GUIControlSettingsSlider::get_percentage(KODI_HANDLE kodiBase,
-                                                         KODI_GUI_CONTROL_HANDLE handle)
+float Interface_GUIControlSettingsSlider::get_percentage(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                                         UNIVERSALMEDIA_GUI_CONTROL_HANDLE handle)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   const auto* control = static_cast<const CGUISettingsSliderControl*>(handle);
   if (!addon || !control)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', "
+               "Invalid handler data (universalmediacenterBase='{}', "
                "handle='{}') on addon '{}'",
-               kodiBase, handle, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, addon ? addon->ID() : "unknown");
     return 0.0f;
   }
 
   return control->GetPercentage();
 }
 
-void Interface_GUIControlSettingsSlider::set_float_range(KODI_HANDLE kodiBase,
-                                                         KODI_GUI_CONTROL_HANDLE handle,
+void Interface_GUIControlSettingsSlider::set_float_range(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                                         UNIVERSALMEDIA_GUI_CONTROL_HANDLE handle,
                                                          float start,
                                                          float end)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   auto* control = static_cast<CGUISettingsSliderControl*>(handle);
   if (!addon || !control)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', "
+               "Invalid handler data (universalmediacenterBase='{}', "
                "handle='{}') on addon '{}'",
-               kodiBase, handle, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, addon ? addon->ID() : "unknown");
     return;
   }
 
@@ -253,18 +253,18 @@ void Interface_GUIControlSettingsSlider::set_float_range(KODI_HANDLE kodiBase,
   control->SetFloatRange(start, end);
 }
 
-void Interface_GUIControlSettingsSlider::set_float_value(KODI_HANDLE kodiBase,
-                                                         KODI_GUI_CONTROL_HANDLE handle,
+void Interface_GUIControlSettingsSlider::set_float_value(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                                         UNIVERSALMEDIA_GUI_CONTROL_HANDLE handle,
                                                          float value)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   auto* control = static_cast<CGUISettingsSliderControl*>(handle);
   if (!addon || !control)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', "
+               "Invalid handler data (universalmediacenterBase='{}', "
                "handle='{}') on addon '{}'",
-               kodiBase, handle, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, addon ? addon->ID() : "unknown");
     return;
   }
 
@@ -272,35 +272,35 @@ void Interface_GUIControlSettingsSlider::set_float_value(KODI_HANDLE kodiBase,
   control->SetFloatValue(value);
 }
 
-float Interface_GUIControlSettingsSlider::get_float_value(KODI_HANDLE kodiBase,
-                                                          KODI_GUI_CONTROL_HANDLE handle)
+float Interface_GUIControlSettingsSlider::get_float_value(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                                          UNIVERSALMEDIA_GUI_CONTROL_HANDLE handle)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   const auto* control = static_cast<const CGUISettingsSliderControl*>(handle);
   if (!addon || !control)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', "
+               "Invalid handler data (universalmediacenterBase='{}', "
                "handle='{}') on addon '{}'",
-               kodiBase, handle, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, addon ? addon->ID() : "unknown");
     return 0.0f;
   }
 
   return control->GetFloatValue();
 }
 
-void Interface_GUIControlSettingsSlider::set_float_interval(KODI_HANDLE kodiBase,
-                                                            KODI_GUI_CONTROL_HANDLE handle,
+void Interface_GUIControlSettingsSlider::set_float_interval(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                                            UNIVERSALMEDIA_GUI_CONTROL_HANDLE handle,
                                                             float interval)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   auto* control = static_cast<CGUISettingsSliderControl*>(handle);
   if (!addon || !control)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', "
+               "Invalid handler data (universalmediacenterBase='{}', "
                "handle='{}') on addon '{}'",
-               kodiBase, handle, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, addon ? addon->ID() : "unknown");
     return;
   }
 

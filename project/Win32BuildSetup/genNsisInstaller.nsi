@@ -1,5 +1,5 @@
 ;Application for Windows install script
-;Copyright (C) 2005-2013 Team XBMC
+;Copyright (C) 2005-2013 Team 
 ;http://github.com/yashhasan570/UniversalMediaCenter
 
 ;--------------------------------
@@ -104,31 +104,31 @@
 ;HelperFunction
 
 Function CallbackDirLeave
-  ;deinstall kodi if it is already there in destination folder
+  ;deinstall universalmediacenter if it is already there in destination folder
   Call HandleUniversal Media CenterInDestDir
 FunctionEnd
 
 Function HandleOldUniversal Media CenterInstallation
-  Var /GLOBAL INSTDIR_KODI
-  ReadRegStr $INSTDIR_KODI HKCU "Software\${APP_NAME}" ""
+  Var /GLOBAL INSTDIR_UNIVERSAL MEDIA CENTER
+  ReadRegStr $INSTDIR_UNIVERSAL MEDIA CENTER HKCU "Software\${APP_NAME}" ""
 
   ;if former Universal Media Center installation was detected in a different directory then the destination dir
   ;ask for uninstallation
   ;only ask about the other installation if user didn't already
   ;decide to not overwrite the installation in his originally selected destination dir
   ${IfNot}    $CleanDestDir == "0"
-  ${AndIfNot} $INSTDIR_KODI == ""
-  ${AndIfNot} $INSTDIR_KODI == $INSTDIR
+  ${AndIfNot} $INSTDIR_UNIVERSAL MEDIA CENTER == ""
+  ${AndIfNot} $INSTDIR_UNIVERSAL MEDIA CENTER == $INSTDIR
     MessageBox MB_YESNO|MB_ICONQUESTION  "A previous ${APP_NAME} installation in a different folder was detected. Would you like to uninstall it?$\nYour current settings and library data will be kept intact." IDYES true IDNO false
     true:
-      DetailPrint "Uninstalling $INSTDIR_KODI"
+      DetailPrint "Uninstalling $INSTDIR_UNIVERSAL MEDIA CENTER"
       SetDetailsPrint none
-      ExecWait '"$INSTDIR_KODI\uninstall.exe" /S _?=$INSTDIR_KODI'
+      ExecWait '"$INSTDIR_UNIVERSAL MEDIA CENTER\uninstall.exe" /S _?=$INSTDIR_UNIVERSAL MEDIA CENTER'
       SetDetailsPrint both
       ;this also removes the uninstall.exe which doesn't remove it self...
-      Delete "$INSTDIR_KODI\uninstall.exe"
+      Delete "$INSTDIR_UNIVERSAL MEDIA CENTER\uninstall.exe"
       ;if the directory is now empty we can safely remove it (rmdir won't remove non-empty dirs!)
-      RmDir "$INSTDIR_KODI"
+      RmDir "$INSTDIR_UNIVERSAL MEDIA CENTER"
     false:
   ${EndIf}
 FunctionEnd
@@ -175,7 +175,7 @@ Section "${APP_NAME}" SecAPP
   SectionIn RO
   SectionIn 1 2 3 #section is in install type Normal/Full/Minimal
 
-  ;deinstall kodi in destination dir if $CleanDestDir == "1" - meaning user has confirmed it
+  ;deinstall universalmediacenter in destination dir if $CleanDestDir == "1" - meaning user has confirmed it
   Call DeinstallUniversal Media CenterInDestDir
 
   ;Start copying files

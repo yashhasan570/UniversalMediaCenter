@@ -8,7 +8,7 @@
 
 #pragma once
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace KEYBOARD
 {
@@ -45,4 +45,4 @@ public:
   virtual void UnregisterKeyboardHandler(IKeyboardInputHandler* handler) = 0;
 };
 } // namespace KEYBOARD
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

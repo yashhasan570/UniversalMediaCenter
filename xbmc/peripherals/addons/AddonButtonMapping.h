@@ -15,7 +15,7 @@
 
 #include <memory>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace JOYSTICK
 {
@@ -23,7 +23,7 @@ class CButtonMapping;
 class IButtonMap;
 class IButtonMapper;
 } // namespace JOYSTICK
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER
 
 namespace PERIPHERALS
 {
@@ -33,21 +33,21 @@ class CPeripherals;
 /*!
 * \ingroup peripherals
 */
-class CAddonButtonMapping : public KODI::JOYSTICK::IDriverHandler,
-                            public KODI::KEYBOARD::IKeyboardDriverHandler,
-                            public KODI::MOUSE::IMouseDriverHandler,
-                            public KODI::JOYSTICK::IButtonMapCallback
+class CAddonButtonMapping : public UNIVERSAL MEDIA CENTER::JOYSTICK::IDriverHandler,
+                            public UNIVERSAL MEDIA CENTER::KEYBOARD::IKeyboardDriverHandler,
+                            public UNIVERSAL MEDIA CENTER::MOUSE::IMouseDriverHandler,
+                            public UNIVERSAL MEDIA CENTER::JOYSTICK::IButtonMapCallback
 {
 public:
   CAddonButtonMapping(CPeripherals& manager,
                       CPeripheral* peripheral,
-                      KODI::JOYSTICK::IButtonMapper* mapper);
+                      UNIVERSAL MEDIA CENTER::JOYSTICK::IButtonMapper* mapper);
 
   ~CAddonButtonMapping(void) override;
 
   // implementation of IDriverHandler
   bool OnButtonMotion(unsigned int buttonIndex, bool bPressed) override;
-  bool OnHatMotion(unsigned int hatIndex, KODI::JOYSTICK::HAT_STATE state) override;
+  bool OnHatMotion(unsigned int hatIndex, UNIVERSAL MEDIA CENTER::JOYSTICK::HAT_STATE state) override;
   bool OnAxisMotion(unsigned int axisIndex,
                     float position,
                     int center,
@@ -60,8 +60,8 @@ public:
 
   // implementation of IMouseDriverHandler
   bool OnPosition(int x, int y) override;
-  bool OnButtonPress(KODI::MOUSE::BUTTON_ID button) override;
-  void OnButtonRelease(KODI::MOUSE::BUTTON_ID button) override;
+  bool OnButtonPress(UNIVERSAL MEDIA CENTER::MOUSE::BUTTON_ID button) override;
+  void OnButtonRelease(UNIVERSAL MEDIA CENTER::MOUSE::BUTTON_ID button) override;
 
   // implementation of IButtonMapCallback
   void SaveButtonMap() override;
@@ -69,7 +69,7 @@ public:
   void RevertButtonMap() override;
 
 private:
-  std::unique_ptr<KODI::JOYSTICK::CButtonMapping> m_buttonMapping;
-  std::unique_ptr<KODI::JOYSTICK::IButtonMap> m_buttonMap;
+  std::unique_ptr<UNIVERSAL MEDIA CENTER::JOYSTICK::CButtonMapping> m_buttonMapping;
+  std::unique_ptr<UNIVERSAL MEDIA CENTER::JOYSTICK::IButtonMap> m_buttonMap;
 };
 } // namespace PERIPHERALS

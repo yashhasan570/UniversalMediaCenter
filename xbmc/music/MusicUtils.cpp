@@ -57,12 +57,12 @@
 
 #include <memory>
 
-using namespace KODI;
-using namespace KODI::VIDEO;
+using namespace UNIVERSAL MEDIA CENTER;
+using namespace UNIVERSAL MEDIA CENTER::VIDEO;
 using namespace MUSIC_INFO;
 using namespace XFILE;
 using namespace std::chrono_literals;
-using KODI::MEDIA::MediaSection;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaSection;
 
 namespace MUSIC_UTILS
 {
@@ -243,7 +243,7 @@ void AddCurrentArtTypes(std::vector<std::string>& artTypes,
                         const CMusicInfoTag& tag,
                         CMusicDatabase& db)
 {
-  KODI::ART::Artwork currentArt;
+  UNIVERSAL MEDIA CENTER::ART::Artwork currentArt;
   db.GetArtForItem(tag.GetDatabaseId(), tag.GetType(), currentArt);
   for (const auto& art : currentArt)
   {

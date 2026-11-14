@@ -10,7 +10,7 @@
 
 #include "ServiceBroker.h"
 #include "addons/binary-addons/AddonDll.h"
-#include "addons/kodi-dev-kit/include/kodi/gui/dialogs/Select.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/gui/dialogs/Select.h"
 #include "dialogs/GUIDialogSelect.h"
 #include "guilib/GUIComponent.h"
 #include "guilib/GUIWindowManager.h"
@@ -22,25 +22,25 @@ namespace ADDON
 
 void Interface_GUIDialogSelect::Init(AddonGlobalInterface* addonInterface)
 {
-  addonInterface->toUniversal Media Center->kodi_gui->dialogSelect = new AddonToUniversal Media CenterFuncTable_kodi_gui_dialogSelect();
+  addonInterface->toUniversal Media Center->->dialogSelect = new AddonToUniversal Media CenterFuncTable__dialogSelect();
 
-  addonInterface->toUniversal Media Center->kodi_gui->dialogSelect->open = open;
-  addonInterface->toUniversal Media Center->kodi_gui->dialogSelect->open_multi_select = open_multi_select;
+  addonInterface->toUniversal Media Center->->dialogSelect->open = open;
+  addonInterface->toUniversal Media Center->->dialogSelect->open_multi_select = open_multi_select;
 }
 
 void Interface_GUIDialogSelect::DeInit(AddonGlobalInterface* addonInterface)
 {
-  delete addonInterface->toUniversal Media Center->kodi_gui->dialogSelect;
+  delete addonInterface->toUniversal Media Center->->dialogSelect;
 }
 
-int Interface_GUIDialogSelect::open(KODI_HANDLE kodiBase,
+int Interface_GUIDialogSelect::open(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
                                     const char* heading,
                                     const char* entries[],
                                     unsigned int size,
                                     int selected,
                                     unsigned int autoclose)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon)
   {
     CLog::LogF(LOGERROR, "Invalid data");
@@ -76,7 +76,7 @@ int Interface_GUIDialogSelect::open(KODI_HANDLE kodiBase,
 }
 
 
-bool Interface_GUIDialogSelect::open_multi_select(KODI_HANDLE kodiBase,
+bool Interface_GUIDialogSelect::open_multi_select(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
                                                   const char* heading,
                                                   const char* entryIDs[],
                                                   const char* entryNames[],
@@ -84,7 +84,7 @@ bool Interface_GUIDialogSelect::open_multi_select(KODI_HANDLE kodiBase,
                                                   unsigned int size,
                                                   unsigned int autoclose)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon)
   {
     CLog::LogF(LOGERROR, "Invalid data");

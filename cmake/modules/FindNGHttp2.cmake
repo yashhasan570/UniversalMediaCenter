@@ -53,7 +53,7 @@ if(NOT TARGET LIBRARY::NGHttp2)
         set(_target nghttp2::nghttp2)
       endif()
 
-      # This is a kodi target name
+      # This is a universalmediacenter target name
       add_library(LIBRARY::${CMAKE_FIND_PACKAGE_NAME} ALIAS ${_target})
     elseif(TARGET PkgConfig::${${CMAKE_FIND_PACKAGE_NAME}_SEARCH_NAME} AND NOT TARGET ${${${CMAKE_FIND_PACKAGE_NAME}_MODULE}_BUILD_NAME})
       add_library(LIBRARY::${CMAKE_FIND_PACKAGE_NAME} ALIAS PkgConfig::${${CMAKE_FIND_PACKAGE_NAME}_SEARCH_NAME})

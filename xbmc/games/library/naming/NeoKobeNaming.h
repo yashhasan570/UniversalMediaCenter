@@ -12,7 +12,7 @@
 #include <string_view>
 #include <vector>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -69,4 +69,4 @@ public:
   static bool IsCompanyTypeWord(std::string_view word);
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

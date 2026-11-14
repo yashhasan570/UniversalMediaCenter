@@ -15,7 +15,7 @@
 #include <X11/Xlib.h>
 #include <X11/extensions/dpms.h>
 
-using namespace KODI::WINDOWING::X11;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::X11;
 
 namespace
 {

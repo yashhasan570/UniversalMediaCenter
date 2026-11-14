@@ -17,14 +17,14 @@ extern "C"
 
 #include <gtest/gtest.h>
 
-using namespace KODI::RENDERING::CAPTURE;
+using namespace UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE;
 
 namespace
 {
 class CTestWinSystem : public CWinSystemBase
 {
 public:
-  explicit CTestWinSystem(KODI::UTILS::Eotf eotf) : m_eotf(eotf) {}
+  explicit CTestWinSystem(UNIVERSAL MEDIA CENTER::UTILS::Eotf eotf) : m_eotf(eotf) {}
 
   bool CreateNewWindow(const std::string& name, bool fullScreen, RESOLUTION_INFO& res) override
   {
@@ -38,16 +38,16 @@ public:
   void Register(IDispResource* resource) override {}
   void Unregister(IDispResource* resource) override {}
   bool UseLimitedColor() override { return false; }
-  KODI::UTILS::Eotf GetEotf() const override { return m_eotf; }
+  UNIVERSAL MEDIA CENTER::UTILS::Eotf GetEotf() const override { return m_eotf; }
 
 private:
-  const KODI::UTILS::Eotf m_eotf;
+  const UNIVERSAL MEDIA CENTER::UTILS::Eotf m_eotf;
 };
 } // namespace
 
 TEST(TestCaptureMetadata, TagsSdrAsSrgb)
 {
-  CTestWinSystem winSystem(KODI::UTILS::Eotf::TRADITIONAL_SDR);
+  CTestWinSystem winSystem(UNIVERSAL MEDIA CENTER::UTILS::Eotf::TRADITIONAL_SDR);
   const ImageColorMetadata color = GetOutputColorMetadata(winSystem);
   EXPECT_EQ(color.primaries, AVCOL_PRI_BT709);
   EXPECT_EQ(color.transfer, AVCOL_TRC_IEC61966_2_1);
@@ -56,6 +56,6 @@ TEST(TestCaptureMetadata, TagsSdrAsSrgb)
 
 TEST(TestCaptureMetadata, TagsPqAsPq)
 {
-  CTestWinSystem winSystem(KODI::UTILS::Eotf::PQ);
+  CTestWinSystem winSystem(UNIVERSAL MEDIA CENTER::UTILS::Eotf::PQ);
   EXPECT_EQ(GetOutputColorMetadata(winSystem).transfer, AVCOL_TRC_SMPTE2084);
 }

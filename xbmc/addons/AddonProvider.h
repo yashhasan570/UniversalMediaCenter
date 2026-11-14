@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "addons/kodi-dev-kit/include/kodi/AddonBase.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/AddonBase.h"
 
 #include <memory>
 
@@ -33,7 +33,7 @@ public:
   };
   virtual void GetAddonInstance(InstanceType instance_type,
                                 ADDON::AddonInfoPtr& addonInfo,
-                                KODI_HANDLE& parentInstance) = 0;
+                                UNIVERSALMEDIA_HANDLE& parentInstance) = 0;
 };
 
 } // namespace ADDON

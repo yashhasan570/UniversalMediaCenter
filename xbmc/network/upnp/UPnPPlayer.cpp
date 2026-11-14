@@ -31,13 +31,13 @@
 #include <Platinum/Source/Devices/MediaServer/PltDidl.h>
 #include <Platinum/Source/Platinum/Platinum.h>
 
-using namespace KODI::MESSAGING;
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
+using namespace UNIVERSAL MEDIA CENTER;
 
-using KODI::MESSAGING::HELPERS::DialogResponse;
+using UNIVERSAL MEDIA CENTER::MESSAGING::HELPERS::DialogResponse;
 using namespace std::chrono_literals;
 
-NPT_SET_LOCAL_LOGGER("xbmc.upnp.player")
+NPT_SET_LOCAL_LOGGER(".upnp.player")
 
 namespace UPNP
 {
@@ -253,7 +253,7 @@ int CUPnPPlayer::PlayFile(const CFileItem& file,
 
   if (options.starttime > 0)
   {
-    /* many upnp units won't load file properly until after play (including xbmc) */
+    /* many upnp units won't load file properly until after play (including ) */
     NPT_CHECK_LABEL(m_control->Seek(m_delegate->m_device, m_delegate->m_instance, "REL_TIME",
                                     PLT_Didl::FormatTimeStamp((NPT_UInt32)options.starttime),
                                     m_delegate.get()),

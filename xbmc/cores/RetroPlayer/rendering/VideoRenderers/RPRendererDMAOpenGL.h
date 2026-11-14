@@ -12,7 +12,7 @@
 
 #include <memory>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -54,4 +54,4 @@ protected:
   std::map<CRenderBufferDMA*, std::unique_ptr<RenderBufferTextures>> m_RBTexturesMap;
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

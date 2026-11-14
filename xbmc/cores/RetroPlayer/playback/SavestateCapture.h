@@ -14,7 +14,7 @@
 #include <cstdint>
 #include <memory>
 
-namespace KODI::RETRO
+namespace UNIVERSAL MEDIA CENTER::RETRO
 {
 template<typename Snapshot, typename GameClient, typename CaptureMetadata>
 std::unique_ptr<Snapshot> CaptureSavestate(CSavestateWorker<Snapshot>& worker,
@@ -32,4 +32,4 @@ std::unique_ptr<Snapshot> CaptureSavestate(CSavestateWorker<Snapshot>& worker,
   captureMetadata(*snapshot);
   return snapshot;
 }
-} // namespace KODI::RETRO
+} // namespace UNIVERSAL MEDIA CENTER::RETRO

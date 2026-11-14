@@ -13,7 +13,7 @@
 #include <string>
 #include <string_view>
 
-namespace KODI::VIDEO::GEOMETRY
+namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY
 {
 
 //! \brief What is known about the stream being played, as coded.
@@ -106,4 +106,4 @@ ContentCut CutToContent(const RenderGeometry& geometry,
                         const CRectInt& content,
                         const CRect& frameSource);
 
-} // namespace KODI::VIDEO::GEOMETRY
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY

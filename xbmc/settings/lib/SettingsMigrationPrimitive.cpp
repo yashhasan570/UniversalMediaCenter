@@ -10,7 +10,7 @@
 
 #include "Setting.h"
 
-namespace KODI::SETTINGS
+namespace UNIVERSAL MEDIA CENTER::SETTINGS
 {
 SettingConversionResult ConvertSettingBoolToInt(TiXmlElement* root,
                                                 std::string_view oldSettingId,
@@ -25,4 +25,4 @@ SettingConversionResult ConvertSettingBoolToInt(TiXmlElement* root,
         return std::pair{newValue, mapping.m_default};
       });
 }
-} // namespace KODI::SETTINGS
+} // namespace UNIVERSAL MEDIA CENTER::SETTINGS

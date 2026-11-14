@@ -23,7 +23,7 @@
 #include "video/VideoFileItemClassify.h"
 #include "video/VideoInfoTag.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 CExecString::CExecString(const std::string& execString)
 {

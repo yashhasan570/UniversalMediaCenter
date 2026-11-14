@@ -21,7 +21,7 @@
 #include "settings/SettingsComponent.h"
 #include "utils/URIUtils.h"
 
-using namespace KODI::GUILIB::GUIINFO;
+using namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO;
 
 bool CVisualisationGUIInfo::InitCurrentItem(CFileItem* item)
 {

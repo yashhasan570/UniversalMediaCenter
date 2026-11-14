@@ -93,9 +93,9 @@ void CVideoPlayerAudioID3::CloseStream(bool bWaitForBuffers)
   {
     // The stream may be reopened while the item keeps playing
     CFileItem& item = g_application.CurrentFileItem();
-    if (item.GetArt(KODI::ART::TYPE::THUMB) == m_picturePath)
+    if (item.GetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB) == m_picturePath)
     {
-      item.SetArt(KODI::ART::TYPE::THUMB, m_previousThumb);
+      item.SetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB, m_previousThumb);
       if (CGUIComponent* gui = CServiceBroker::GetGUI())
         gui->GetInfoManager().SetCurrentItem(item);
     }
@@ -379,7 +379,7 @@ bool CVideoPlayerAudioID3::ProcessID3v2Picture(const ID3v2::FrameList& frameList
   const ByteVector& data = picture->picture();
   const std::string path =
       StringUtils::Format("special://temp/id3-{}.{}",
-                          KODI::UTILITY::CDigest::Calculate(KODI::UTILITY::CDigest::Type::MD5,
+                          UNIVERSAL MEDIA CENTER::UTILITY::CDigest::Calculate(UNIVERSAL MEDIA CENTER::UTILITY::CDigest::Type::MD5,
                                                             data.data(), data.size()),
                           extension);
   if (path == m_picturePath)
@@ -402,12 +402,12 @@ bool CVideoPlayerAudioID3::ProcessID3v2Picture(const ID3v2::FrameList& frameList
   }
 
   if (m_picturePath.empty())
-    m_previousThumb = g_application.CurrentFileItem().GetArt(KODI::ART::TYPE::THUMB);
+    m_previousThumb = g_application.CurrentFileItem().GetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB);
   else
     XFILE::CFile::Delete(m_picturePath);
   m_picturePath = path;
 
-  g_application.CurrentFileItem().SetArt(KODI::ART::TYPE::THUMB, path);
+  g_application.CurrentFileItem().SetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB, path);
   return true;
 }
 

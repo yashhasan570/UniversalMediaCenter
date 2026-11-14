@@ -10,7 +10,7 @@
 
 #include "input/keyboard/KeyboardTypes.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -28,8 +28,8 @@ public:
    *
    * \return The key's name, or an empty string if no symbol is defined for the keycode
    */
-  static const char* TranslateKeycode(KEYBOARD::XBMCKey keycode);
+  static const char* TranslateKeycode(KEYBOARD::Key keycode);
 };
 
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

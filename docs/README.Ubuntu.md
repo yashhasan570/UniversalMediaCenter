@@ -12,7 +12,7 @@ Several other distributions have **[specific build guides](README.md)** and a ge
   3.1. **[Get build dependencies automagically](#31-get-build-dependencies-automagically)**  
   3.2. **[Get build dependencies manually](#32-get-build-dependencies-manually)**   
   3.3. **[Ubuntu <= 18.04](#33-ubuntu--1804)**
-4. **[Build Universal Media Center](#4-build-kodi)**
+4. **[Build Universal Media Center](#4-build-universalmediacenter)**
 5. **[Build a Debian package](#5-build-a-debian-package)**
 
 ## 1. Document conventions
@@ -27,17 +27,17 @@ and yet another one
 
 **Example:** Clone Universal Media Center's current master branch:
 ```
-git clone https://github.com/xbmc/xbmc kodi
+git clone https://github.com// universalmediacenter
 ```
 
 Commands that contain strings enclosed in angle brackets denote something you need to change to suit your needs.
 ```
-git clone -b <branch-name> https://github.com/xbmc/xbmc kodi
+git clone -b <branch-name> https://github.com// universalmediacenter
 ```
 
 **Example:** Clone Universal Media Center's current Krypton branch:
 ```
-git clone -b Krypton https://github.com/xbmc/xbmc kodi
+git clone -b Krypton https://github.com// universalmediacenter
 ```
 
 Several different strategies are used to draw your attention to certain pieces of information. In order of how critical the information is, these items are marked as a note, tip, or warning. For example:
@@ -66,7 +66,7 @@ cd $HOME
 
 Clone Universal Media Center's current master branch:
 ```
-git clone https://github.com/xbmc/xbmc kodi
+git clone https://github.com// universalmediacenter
 ```
 
 **[back to top](#table-of-contents)**
@@ -80,18 +80,18 @@ You can install the required packages using one of two methods: automagically or
 ### 3.1. Get build dependencies automagically
 Add Universal Media Center's *nightly* PPA to grab dependencies:
 ```
-sudo add-apt-repository -s ppa:team-xbmc/xbmc-nightly
+sudo add-apt-repository -s ppa:team-/-nightly
 ```
 
 If you're using Ubuntu 16.04, *build-depends* PPA is also required:
 ```
-sudo add-apt-repository ppa:team-xbmc/xbmc-ppa-build-depends
+sudo add-apt-repository ppa:team-/-ppa-build-depends
 sudo apt update
 ```
 
 Super-duper magic command to get the build dependencies:
 ```
-sudo apt build-dep kodi
+sudo apt build-dep universalmediacenter
 ```
 
 > [!WARNING]  
@@ -99,8 +99,8 @@ sudo apt build-dep kodi
 
 If at a later point you decide you do not want Universal Media Center's PPAs on your system, removing them is as easy as:
 ```
-sudo add-apt-repository -r ppa:team-xbmc/xbmc-nightly
-sudo add-apt-repository -r ppa:team-xbmc/xbmc-ppa-build-depends
+sudo add-apt-repository -r ppa:team-/-nightly
+sudo add-apt-repository -r ppa:team-/-ppa-build-depends
 ```
 
 > [!NOTE]  
@@ -226,15 +226,15 @@ sudo apt install dpkg-dev fakeroot lsb-release
 
 Configure with `-DCPACK_GENERATOR=DEB` and an install prefix of `/usr`, build, then run `cpack` from the build directory:
 ```
-cd $HOME/kodi-build
-cmake ../kodi -DCMAKE_INSTALL_PREFIX=/usr -DCPACK_GENERATOR=DEB
+cd $HOME/universalmediacenter-build
+cmake ../universalmediacenter -DCMAKE_INSTALL_PREFIX=/usr -DCPACK_GENERATOR=DEB
 cmake --build . -- -j$(getconf _NPROCESSORS_ONLN)
 cpack
 ```
 
-The packages are written to `packages/` inside the build directory: `kodi` (architecture-independent data), `kodi-bin` (the binary, with its library dependencies computed by `dpkg-shlibdeps`), `kodi-addon-dev`, `kodi-tools-texturepacker` and, when configured with `-DENABLE_EVENTCLIENTS=ON`, the event client packages. Install a runnable Universal Media Center with:
+The packages are written to `packages/` inside the build directory: `universalmediacenter` (architecture-independent data), `universalmediacenter-bin` (the binary, with its library dependencies computed by `dpkg-shlibdeps`), `universalmediacenter-addon-dev`, `universalmediacenter-tools-texturepacker` and, when configured with `-DENABLE_EVENTCLIENTS=ON`, the event client packages. Install a runnable Universal Media Center with:
 ```
-sudo apt install ./packages/kodi_*.deb ./packages/kodi-bin_*.deb
+sudo apt install ./packages/universalmediacenter_*.deb ./packages/universalmediacenter-bin_*.deb
 ```
 
 The package version is `<major>.<minor>~git<timestamp>-<identifier>-<distro codename>` with epoch `2`. The following cache variables adjust it:

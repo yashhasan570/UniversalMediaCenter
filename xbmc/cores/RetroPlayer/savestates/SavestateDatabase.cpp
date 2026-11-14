@@ -33,7 +33,7 @@ namespace
 constexpr auto SAVESTATE_EXTENSION = ".sav";
 } // namespace
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace RETRO;
 
 CSavestateDatabase::CSavestateDatabase() = default;

@@ -30,7 +30,7 @@
 #include "windowing/GraphicContext.h"
 #include "windowing/Resolution.h"
 
-#include "platform/android/activity/XBMCApp.h"
+#include "platform/android/activity/App.h"
 #include "platform/android/media/decoderfilter/MediaCodecDecoderFilterManager.h"
 #include "platform/android/media/drm/MediaDrmCryptoSession.h"
 
@@ -43,7 +43,7 @@
 
 #include <EGL/eglplatform.h>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace std::chrono_literals;
 
 CWinSystemAndroid::CWinSystemAndroid()
@@ -122,7 +122,7 @@ bool CWinSystemAndroid::CreateNewWindow(const std::string& name,
   m_stereo_mode = CServiceBroker::GetWinSystem()->GetGfxContext().GetStereoMode();
   m_bFullScreen = fullScreen;
 
-  m_nativeWindow = CXBMCApp::Get().GetNativeWindow(2000);
+  m_nativeWindow = CApp::Get().GetNativeWindow(2000);
   if (!m_nativeWindow)
   {
     CLog::Log(LOGERROR, "CWinSystemAndroid::CreateNewWindow: failed");
@@ -284,7 +284,7 @@ void CWinSystemAndroid::UpdateDisplayModes()
 
 bool CWinSystemAndroid::Minimize()
 {
-  return CXBMCApp::Get().moveTaskToBack(true);
+  return CApp::Get().moveTaskToBack(true);
 }
 
 bool CWinSystemAndroid::Hide()
@@ -311,7 +311,7 @@ void CWinSystemAndroid::Unregister(IDispResource *resource)
     m_resources.erase(i);
 }
 
-void CWinSystemAndroid::MessagePush(XBMC_Event *newEvent)
+void CWinSystemAndroid::MessagePush(_Event *newEvent)
 {
   dynamic_cast<CWinEventsAndroid&>(*m_winEvents).MessagePush(newEvent);
 }
@@ -328,7 +328,7 @@ bool CWinSystemAndroid::IsHDRDisplay()
 
 std::unique_ptr<WINDOWING::IOSScreenSaver> CWinSystemAndroid::GetOSScreenSaverImpl()
 {
-  std::unique_ptr<KODI::WINDOWING::IOSScreenSaver> ret(new COSScreenSaverAndroid());
+  std::unique_ptr<UNIVERSAL MEDIA CENTER::WINDOWING::IOSScreenSaver> ret(new COSScreenSaverAndroid());
   return ret;
 }
 

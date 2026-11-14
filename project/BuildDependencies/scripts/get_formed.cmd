@@ -23,9 +23,9 @@ IF EXIST %FORMED_FAILED_LIST% (
   del /F /Q "%FORMED_FAILED_LIST%" || EXIT /B 4
 )
 
-REM If KODI_MIRROR is not set externally to this script, set it to the default mirror URL
-IF "%KODI_MIRROR%" == "" SET KODI_MIRROR=https://mirrors.kodi.tv
-echo Downloading from mirror %KODI_MIRROR%
+REM If UNIVERSAL MEDIA CENTER_MIRROR is not set externally to this script, set it to the default mirror URL
+IF "%UNIVERSAL MEDIA CENTER_MIRROR%" == "" SET UNIVERSAL MEDIA CENTER_MIRROR=https://mirrors.Universal Media Center.tv
+echo Downloading from mirror %UNIVERSAL MEDIA CENTER_MIRROR%
 
 REM If USE_LESSMSI is set to YES externally, disable msiexec. Primary usage is CI where
 REM the service is running without TRUSTED_INSTALLER permissions to allow execution of msiexec
@@ -39,7 +39,7 @@ SET SCRIPT_PATH=%CD%
 CD %DL_PATH% || EXIT /B 10
 FOR /F "eol=; tokens=1,2" %%f IN (%SCRIPT_PATH%\0_package.native-%NATIVEPLATFORM%.list) DO (
   IF "%%g" == "" (
-    set "BASE_URL=%KODI_MIRROR%/build-deps/win32"
+    set "BASE_URL=%UNIVERSAL MEDIA CENTER_MIRROR%/build-deps/win32"
   ) ELSE (
     set "BASE_URL=%%g"
   )
@@ -58,7 +58,7 @@ CALL :setStageName Starting downloads of Target (%TARGETPLATFORM%) formed packag
 CD %DL_PATH% || EXIT /B 10
 FOR /F "eol=; tokens=1,2" %%f IN (%SCRIPT_PATH%\0_package.target-%TARGETPLATFORM%.list) DO (
   IF "%%g" == "" (
-    set "BASE_URL=%KODI_MIRROR%/build-deps/win32"
+    set "BASE_URL=%UNIVERSAL MEDIA CENTER_MIRROR%/build-deps/win32"
   ) ELSE (
     set "BASE_URL=%%g"
   )

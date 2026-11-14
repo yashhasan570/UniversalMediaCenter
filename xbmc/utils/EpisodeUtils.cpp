@@ -32,7 +32,7 @@
 #include <tuple>
 #include <vector>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 namespace
 {
@@ -179,7 +179,7 @@ void ProcessEpisodeRange(int first,
 
 bool CEpisodeUtils::EnumerateEpisodeItem(const CFileItem* item,
                                          VIDEO::EPISODELIST& episodeList,
-                                         KODI::REGEXP::RegExpCache* cache /* = nullptr */)
+                                         UNIVERSAL MEDIA CENTER::REGEXP::RegExpCache* cache /* = nullptr */)
 {
   const auto advancedSettings{CServiceBroker::GetSettingsComponent()->GetAdvancedSettings()};
   const auto& tvShowRegExps{advancedSettings->m_tvshowEnumRegExps};
@@ -198,7 +198,7 @@ bool CEpisodeUtils::EnumerateEpisodeItem(const CFileItem* item,
   label = CURL::Decode(CURL::GetRedacted(label));
 
   // Pre-compile multi-part regex
-  std::shared_ptr<CRegExp> multiPartRegex = KODI::REGEXP::GetRegExp(
+  std::shared_ptr<CRegExp> multiPartRegex = UNIVERSAL MEDIA CENTER::REGEXP::GetRegExp(
       advancedSettings->m_tvshowMultiPartEnumRegExp, cache, true, CRegExp::autoUtf8);
   if (multiPartRegex == nullptr)
     CLog::LogF(LOGWARNING, "Invalid multipart RegExp '{}', multipart episode detection disabled",
@@ -208,7 +208,7 @@ bool CEpisodeUtils::EnumerateEpisodeItem(const CFileItem* item,
   for (const auto& tvShowRegExp : tvShowRegExps)
   {
     std::shared_ptr<CRegExp> reg =
-        KODI::REGEXP::GetRegExp(tvShowRegExp.regexp, cache, true, CRegExp::autoUtf8);
+        UNIVERSAL MEDIA CENTER::REGEXP::GetRegExp(tvShowRegExp.regexp, cache, true, CRegExp::autoUtf8);
     if (reg == nullptr)
       continue; // Failed to compile
 
@@ -481,7 +481,7 @@ std::string CEpisodeUtils::GetEpisodesLabel(const CFileItem& item)
     labels.push_back(localizeStrings.Get(SPECIALS));
 
   // Generate label
-  using namespace KODI::LANGUAGE::I18N;
+  using namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N;
   const auto fmt = CListFormatter::CreateInstance(localizeStrings);
   const std::string label{fmt.Format(labels)};
 

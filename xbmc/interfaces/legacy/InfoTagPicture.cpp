@@ -18,11 +18,11 @@
 #include <string>
 #include <vector>
 
-using namespace XBMCAddonUtils;
+using namespace AddonUtils;
 
-namespace XBMCAddon
+namespace Addon
 {
-namespace xbmc
+namespace 
 {
 
 InfoTagPicture::InfoTagPicture(bool offscreen /* = false */)
@@ -58,13 +58,13 @@ String InfoTagPicture::getDateTimeTaken()
 
 void InfoTagPicture::setResolution(int width, int height)
 {
-  XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+  AddonUtils::GuiLock lock(languageHook, offscreen);
   setResolutionRaw(infoTag, width, height);
 }
 
 void InfoTagPicture::setDateTimeTaken(const String& datetimetaken)
 {
-  XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+  AddonUtils::GuiLock lock(languageHook, offscreen);
   setDateTimeTakenRaw(infoTag, datetimetaken);
 }
 
@@ -101,5 +101,5 @@ void InfoTagPicture::setDateTimeTakenRaw(CPictureInfoTag* infoTag, String dateti
   infoTag->SetDateTimeTaken(datetimetaken);
 }
 
-} // namespace xbmc
-} // namespace XBMCAddon
+} // namespace 
+} // namespace Addon

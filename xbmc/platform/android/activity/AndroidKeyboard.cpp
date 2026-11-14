@@ -21,7 +21,7 @@ bool CAndroidKeyboard::ShowAndGetInput(char_callback_t pCallback,
     m_confirmed = false;
     m_confirmOnCancel = false;
     m_inputFinishedEvent.Reset();
-    m_keyboard = std::make_unique<jni::CJNIXBMCNativeKeyboard>(this);
+    m_keyboard = std::make_unique<jni::CJNINativeKeyboard>(this);
   }
 
   m_keyboard->show(heading, initialString, hiddenInput);

@@ -22,7 +22,7 @@ constexpr uint32_t RATE_SAMPLES = 10;
 constexpr double RATE_WAIT_MS = 500.0;
 } // namespace
 
-namespace KODI::WINDOWING::WASM::VSYNC
+namespace UNIVERSAL MEDIA CENTER::WINDOWING::WASM::VSYNC
 {
 // CurrentHostCounter() is emscripten_get_now() in nanoseconds, which under
 // pthreads is performance.timeOrigin + performance.now(); the rAF timestamp is
@@ -102,4 +102,4 @@ bool RefreshRateSettled()
 {
   return Tick() > RATE_SAMPLES;
 }
-} // namespace KODI::WINDOWING::WASM::VSYNC
+} // namespace UNIVERSAL MEDIA CENTER::WINDOWING::WASM::VSYNC

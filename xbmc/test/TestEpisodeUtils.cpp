@@ -22,8 +22,8 @@ using ::testing::WithParamInterface;
 struct TestEntry
 {
   const char* path;
-  std::vector<KODI::VIDEO::EPISODE> ranges;
-  std::vector<KODI::VIDEO::EPISODE> noranges;
+  std::vector<UNIVERSAL MEDIA CENTER::VIDEO::EPISODE> ranges;
+  std::vector<UNIVERSAL MEDIA CENTER::VIDEO::EPISODE> noranges;
 };
 
 static const TestEntry TestData[] = {
@@ -118,7 +118,7 @@ TEST_P(TestEnumerateEpisodes, EnumerateEpisodeItem)
   const TestEntry& entry = GetParam();
 
   CFileItem item(entry.path, false);
-  KODI::VIDEO::EPISODELIST result;
+  UNIVERSAL MEDIA CENTER::VIDEO::EPISODELIST result;
 
   const bool saveState{advancedSettings->m_disableEpisodeRanges};
   advancedSettings->m_disableEpisodeRanges = false;
@@ -137,7 +137,7 @@ INSTANTIATE_TEST_SUITE_P(EnumerateEpisodeItem, TestEnumerateEpisodes, ValuesIn(T
 TEST(TestEnumerateEpisodes, EnumerateEpisodeItemByTitle)
 {
   CFileItem item("/foo.special.mp4", false);
-  KODI::VIDEO::EPISODELIST result;
+  UNIVERSAL MEDIA CENTER::VIDEO::EPISODELIST result;
   ASSERT_TRUE(CEpisodeUtils::EnumerateEpisodeItem(&item, result));
   ASSERT_EQ(result.size(), 1);
   ASSERT_EQ(result[0].strTitle, "foo");

@@ -13,7 +13,7 @@
 
 #include <string_view>
 
-namespace KODI::VIDEO::SUBTITLES
+namespace UNIVERSAL MEDIA CENTER::VIDEO::SUBTITLES
 {
 /*!
  * \brief Whether the selected output mode separates stereoscopic eye views.
@@ -26,4 +26,4 @@ bool IsStereoscopicOutputMode(RenderStereoMode renderMode);
 bool ShouldRenderStereoOverlay(DVDOverlayStereoView overlayView,
                                RenderStereoView renderView,
                                std::string_view sourceStereoMode);
-} // namespace KODI::VIDEO::SUBTITLES
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO::SUBTITLES

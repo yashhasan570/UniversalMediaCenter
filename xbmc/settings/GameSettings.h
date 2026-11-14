@@ -30,8 +30,8 @@ public:
   const std::string &VideoFilter() const { return m_videoFilter; }
   void SetVideoFilter(std::string_view videoFilter);
 
-  KODI::RETRO::STRETCHMODE StretchMode() const { return m_stretchMode; }
-  void SetStretchMode(KODI::RETRO::STRETCHMODE stretchMode);
+  UNIVERSAL MEDIA CENTER::RETRO::STRETCHMODE StretchMode() const { return m_stretchMode; }
+  void SetStretchMode(UNIVERSAL MEDIA CENTER::RETRO::STRETCHMODE stretchMode);
 
   unsigned int RotationDegCCW() const { return m_rotationDegCCW; }
   void SetRotationDegCCW(unsigned int rotation);
@@ -39,6 +39,6 @@ public:
 private:
   // Video settings
   std::string m_videoFilter;
-  KODI::RETRO::STRETCHMODE m_stretchMode;
+  UNIVERSAL MEDIA CENTER::RETRO::STRETCHMODE m_stretchMode;
   unsigned int m_rotationDegCCW;
 };

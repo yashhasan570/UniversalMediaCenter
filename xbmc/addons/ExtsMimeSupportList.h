@@ -24,7 +24,7 @@ class CAddonMgr;
 class CAddonInfo;
 }
 
-namespace KODI::ADDONS
+namespace UNIVERSAL MEDIA CENTER::ADDONS
 {
 
 /*!
@@ -35,7 +35,7 @@ namespace KODI::ADDONS
  * globally in Universal Media Center so that other addons can also be managed with it (all which
  * have mimetypes and file extensions, e.g. vfs, audioencoder).
  */
-class CExtsMimeSupportList : public KODI::ADDONS::IAddonSupportList
+class CExtsMimeSupportList : public UNIVERSAL MEDIA CENTER::ADDONS::IAddonSupportList
 {
 public:
   explicit CExtsMimeSupportList(ADDON::CAddonMgr& addonMgr);
@@ -161,9 +161,9 @@ public:
    * @param[in] addonId Identifier about wanted addon
    * @return List of all supported parts on selected addon
    *
-   * @sa KODI::ADDONS::IAddonSupportList
+   * @sa UNIVERSAL MEDIA CENTER::ADDONS::IAddonSupportList
    */
-  std::vector<KODI::ADDONS::AddonSupportEntry> GetSupportedExtsAndMimeTypes(
+  std::vector<UNIVERSAL MEDIA CENTER::ADDONS::AddonSupportEntry> GetSupportedExtsAndMimeTypes(
       const std::string& addonId) override;
 
 private:
@@ -178,4 +178,4 @@ private:
   ADDON::CAddonMgr& m_addonMgr;
 };
 
-} // namespace KODI::ADDONS
+} // namespace UNIVERSAL MEDIA CENTER::ADDONS

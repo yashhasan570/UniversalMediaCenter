@@ -165,13 +165,13 @@ bool CApplicationStackHelper::ProcessNextPartInBookmark(CFileItem& item, CBookma
 {
   std::unique_lock stackLock(m_critSection);
 
-  if (std::optional<int> nextPart{KODI::VIDEO::UTILS::GetNextPartFromBookmark(bookmark)}; nextPart)
+  if (std::optional<int> nextPart{UNIVERSAL MEDIA CENTER::VIDEO::UTILS::GetNextPartFromBookmark(bookmark)}; nextPart)
   {
     // This updates the FileItem with the next part in the stack
     item = SetStackPartAsCurrent(*nextPart);
     // Resume within the part (time is relative to it) or from its start
     if (std::optional<std::string> state{
-            KODI::VIDEO::UTILS::GetNextPartPlayerStateFromBookmark(bookmark)};
+            UNIVERSAL MEDIA CENTER::VIDEO::UTILS::GetNextPartPlayerStateFromBookmark(bookmark)};
         state)
     {
       bookmark.playerState = *state;
@@ -202,9 +202,9 @@ void CApplicationStackHelper::GetStackPartAndOptions(CFileItem& item,
   bool updated{false};
 
   std::string path{item.GetDynPath()}; // stack:// path
-  if (item.HasProperty(KODI::ITEM::PROPERTY::ORIGINAL_LISTITEM_URL) &&
-      URIUtils::IsPlugin(item.GetProperty(KODI::ITEM::PROPERTY::ORIGINAL_LISTITEM_URL).asString()))
-    path = item.GetProperty(KODI::ITEM::PROPERTY::ORIGINAL_LISTITEM_URL).asString();
+  if (item.HasProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::ORIGINAL_LISTITEM_URL) &&
+      URIUtils::IsPlugin(item.GetProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::ORIGINAL_LISTITEM_URL).asString()))
+    path = item.GetProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::ORIGINAL_LISTITEM_URL).asString();
 
   if (restart)
   {

@@ -20,7 +20,7 @@
 
 #include <X11/extensions/Xrandr.h>
 
-using namespace KODI::WINDOWING::X11;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::X11;
 
 using namespace std::chrono_literals;
 
@@ -218,7 +218,7 @@ void CVideoSyncGLX::Run(CEvent& stopEvent)
       }
 
       //sleep here so we don't busy spin when this constantly happens, for example when the display went to sleep
-      KODI::TIME::Sleep(1s);
+      UNIVERSAL MEDIA CENTER::TIME::Sleep(1s);
 
       CLog::Log(LOGDEBUG, "CVideoReferenceClock: Attaching glX context");
       ReturnV = glXMakeCurrent(m_Dpy, m_Window, m_Context);
@@ -237,7 +237,7 @@ void CVideoSyncGLX::Run(CEvent& stopEvent)
   m_lostEvent.Set();
   while(!stopEvent.Signaled() && m_displayLost && !m_displayReset)
   {
-    KODI::TIME::Sleep(10ms);
+    UNIVERSAL MEDIA CENTER::TIME::Sleep(10ms);
   }
 }
 

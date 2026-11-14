@@ -175,7 +175,7 @@ bool CThreadImplWin::SetTask(const ThreadTask& task)
 
   std::string_view taskName{ThreadTaskToNativeTask(task)};
 
-  using KODI::PLATFORM::WINDOWS::ToW;
+  using UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::ToW;
 
   m_hTask = AvSetMmThreadCharacteristicsW(ToW(taskName).c_str(), &m_taskIndex);
   if (m_hTask == 0)

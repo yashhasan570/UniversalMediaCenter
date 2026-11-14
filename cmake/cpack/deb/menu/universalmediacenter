@@ -1,0 +1,2 @@
+?package(universalmediacenter):needs="X11" section="Applications/Video" \
+  title="universalmediacenter" command="/usr/bin/universalmediacenter"

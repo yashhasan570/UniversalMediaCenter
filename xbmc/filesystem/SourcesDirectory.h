@@ -30,9 +30,9 @@ namespace XFILE
     bool AllowAll() const override { return true; }
 
     //! \brief The path listing the sources of \p section, e.g. sources://video/.
-    static std::string PathOf(KODI::MEDIA::MediaSection section);
+    static std::string PathOf(UNIVERSAL MEDIA CENTER::MEDIA::MediaSection section);
 
     //! \brief The section whose sources \p path lists. Nullopt for any other path.
-    static std::optional<KODI::MEDIA::MediaSection> SectionOf(const std::string& path);
+    static std::optional<UNIVERSAL MEDIA CENTER::MEDIA::MediaSection> SectionOf(const std::string& path);
   };
 }

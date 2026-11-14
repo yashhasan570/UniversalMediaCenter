@@ -16,7 +16,7 @@ class CFileItem;
 class CFileItemList;
 class CVideoDatabase;
 
-namespace KODI::VIDEO
+namespace UNIVERSAL MEDIA CENTER::VIDEO
 {
 class CVideoInfoScannerArt;
 
@@ -126,4 +126,4 @@ private:
   CVideoDatabase& m_database;
   const CVideoInfoScannerArt& m_art;
 };
-} // namespace KODI::VIDEO
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO

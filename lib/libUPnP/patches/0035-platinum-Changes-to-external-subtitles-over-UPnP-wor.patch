@@ -20,7 +20,7 @@ index 7b853c8..b58aa50 100644
                                              " xmlns:upnp=\"urn:schemas-upnp-org:metadata-1-0/upnp/\""
                                              " xmlns:dlna=\"urn:schemas-dlna-org:metadata-1-0/\""
 +                                            " xmlns:sec=\"http://www.sec.co.kr/\""
-                                             " xmlns:xbmc=\"urn:schemas-xbmc-org:metadata-1-0/\">";
+                                             " xmlns:=\"urn:schemas--org:metadata-1-0/\">";
  const char* didl_footer         = "</DIDL-Lite>";
  const char* didl_namespace_dc   = "http://purl.org/dc/elements/1.1/";
 diff --git a/lib/libUPnP/Platinum/Source/Devices/MediaServer/PltMediaItem.cpp b/lib/libUPnP/Platinum/Source/Devices/MediaServer/PltMediaItem.cpp
@@ -77,9 +77,9 @@ index 4db2d45..f937df2 100644
 +        didl += ">";
 +    }
 +
-     // xbmc dateadded
-     if ((mask & PLT_FILTER_MASK_XBMC_DATEADDED) && !m_XbmcInfo.date_added.IsEmpty()) {
-         didl += "<xbmc:dateadded>";
+     //  dateadded
+     if ((mask & PLT_FILTER_MASK__DATEADDED) && !m_XbmcInfo.date_added.IsEmpty()) {
+         didl += "<:dateadded>";
 diff --git a/lib/libUPnP/Platinum/Source/Devices/MediaServer/PltMediaItem.h b/lib/libUPnP/Platinum/Source/Devices/MediaServer/PltMediaItem.h
 index deb4961..6461b81 100644
 --- a/lib/libUPnP/Platinum/Source/Devices/MediaServer/PltMediaItem.h
@@ -114,7 +114,7 @@ index deb4961..6461b81 100644
 +    /* sec resources related */
 +    NPT_Array<PLT_SecResource> m_SecResources;
 +
-     /* XBMC specific */
+     /*  specific */
      PLT_XbmcInfo m_XbmcInfo;
  
 -- 

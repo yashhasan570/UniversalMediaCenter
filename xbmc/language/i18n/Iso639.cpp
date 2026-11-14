@@ -23,7 +23,7 @@ namespace
 constexpr uint32_t LONG_CODE_CHAR_MASK{(1u << CHAR_BIT) - 1};
 } // namespace
 
-namespace KODI::LANGUAGE::I18N
+namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N
 {
 std::string LongCodeToString(uint32_t code)
 {
@@ -92,4 +92,4 @@ std::optional<std::string> CIso639::BCodeToTCode(std::string_view bCode)
 
   return std::nullopt;
 }
-} // namespace KODI::LANGUAGE::I18N
+} // namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N

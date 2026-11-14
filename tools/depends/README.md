@@ -34,28 +34,28 @@ Paths below are examples. If you want to build Universal Media Center, follow ou
 
 ### Android
 **arm**
-`./configure --with-tarballs=$HOME/android-tools/xbmc-tarballs --host=arm-linux-androideabi --with-sdk-path=$HOME/android-tools/android-sdk-linux --with-ndk-path=$HOME/android-tools/android-ndk-r20 --prefix=$HOME/android-tools/xbmc-depends`
+`./configure --with-tarballs=$HOME/android-tools/-tarballs --host=arm-linux-androideabi --with-sdk-path=$HOME/android-tools/android-sdk-linux --with-ndk-path=$HOME/android-tools/android-ndk-r20 --prefix=$HOME/android-tools/-depends`
 
 **aarch64**
-`./configure --with-tarballs=$HOME/android-tools/xbmc-tarballs --host=aarch64-linux-android --with-sdk-path=$HOME/android-tools/android-sdk-linux --with-ndk-path=$HOME/android-tools/android-ndk-r20 --prefix=$HOME/android-tools/xbmc-depends`
+`./configure --with-tarballs=$HOME/android-tools/-tarballs --host=aarch64-linux-android --with-sdk-path=$HOME/android-tools/android-sdk-linux --with-ndk-path=$HOME/android-tools/android-ndk-r20 --prefix=$HOME/android-tools/-depends`
 
 **x86**
-`./configure --with-tarballs=$HOME/android-tools/xbmc-tarballs --host=i686-linux-android --with-sdk-path=$HOME/android-tools/android-sdk-linux --with-ndk-path=$HOME/android-tools/android-ndk-r20 --prefix=$HOME/android-tools/xbmc-depends`
+`./configure --with-tarballs=$HOME/android-tools/-tarballs --host=i686-linux-android --with-sdk-path=$HOME/android-tools/android-sdk-linux --with-ndk-path=$HOME/android-tools/android-ndk-r20 --prefix=$HOME/android-tools/-depends`
 
 **x86_64**
-`./configure --with-tarballs=$HOME/android-tools/xbmc-tarballs --host=x86_64-linux-android --with-sdk-path=$HOME/android-tools/android-sdk-linux --with-ndk-path=$HOME/android-tools/android-ndk-r20 --prefix=$HOME/android-tools/xbmc-depends`
+`./configure --with-tarballs=$HOME/android-tools/-tarballs --host=x86_64-linux-android --with-sdk-path=$HOME/android-tools/android-sdk-linux --with-ndk-path=$HOME/android-tools/android-ndk-r20 --prefix=$HOME/android-tools/-depends`
 
 > [!NOTE]  
 > Android x86 and x86_64 are not maintained and are not 100% sure that everything works correctly!
 
 ### Linux
 **ARM (codesourcery/lenaro/etc)**
-`./configure --with-toolchain=/opt/toolchains/my-example-toolchain/ --prefix=/opt/xbmc-deps --host=arm-linux-gnueabi --with-rendersystem=gles`
+`./configure --with-toolchain=/opt/toolchains/my-example-toolchain/ --prefix=/opt/-deps --host=arm-linux-gnueabi --with-rendersystem=gles`
 
 **webos (buildroot-nc4)**
-`./configure --with-toolchain=/opt/toolchains/arm-webos-linux-gnueabi_sdk-buildroot --prefix=/opt/xbmc-deps --host=arm-webos-linux-gnueabi`
+`./configure --with-toolchain=/opt/toolchains/arm-webos-linux-gnueabi_sdk-buildroot --prefix=/opt/-deps --host=arm-webos-linux-gnueabi`
 
 **Native**
-`./configure --with-toolchain=/usr --prefix=/opt/xbmc-deps --host=x86_64-linux-gnu --with-rendersystem=gl`
+`./configure --with-toolchain=/usr --prefix=/opt/-deps --host=x86_64-linux-gnu --with-rendersystem=gl`
 
 Cross compiling is a PITA.

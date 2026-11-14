@@ -24,9 +24,9 @@
 #include <assert.h>
 #include <set>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
-using KODI::MEDIA::MediaSection;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaSection;
 
 CGUIViewStateWindowGames::CGUIViewStateWindowGames(const CFileItemList& items)
   : CGUIViewState(items)
@@ -64,9 +64,9 @@ CGUIViewStateWindowGames::CGUIViewStateWindowGames(const CFileItemList& items)
   LoadViewState(items.GetPath(), WINDOW_GAMES);
 }
 
-std::optional<KODI::MEDIA::MediaSection> CGUIViewStateWindowGames::GetLockType()
+std::optional<UNIVERSAL MEDIA CENTER::MEDIA::MediaSection> CGUIViewStateWindowGames::GetLockType()
 {
-  return KODI::MEDIA::MediaSection::GAMES;
+  return UNIVERSAL MEDIA CENTER::MEDIA::MediaSection::GAMES;
 }
 
 std::string CGUIViewStateWindowGames::GetExtensions()

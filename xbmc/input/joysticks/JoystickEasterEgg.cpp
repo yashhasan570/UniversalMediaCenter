@@ -16,7 +16,7 @@
 #include "guilib/GUIAudioManager.h"
 #include "guilib/WindowIDs.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace JOYSTICK;
 
 const std::map<std::string, std::vector<FeatureName>> CJoystickEasterEgg::m_sequence = {

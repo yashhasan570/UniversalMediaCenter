@@ -12,9 +12,9 @@
 #include "pvr/channels/PVRRadioRDSInfoTag.h"
 #include "utils/StringUtils.h"
 
-namespace XBMCAddon
+namespace Addon
 {
-  namespace xbmc
+  namespace 
   {
     InfoTagRadioRDS::InfoTagRadioRDS() = default;
 

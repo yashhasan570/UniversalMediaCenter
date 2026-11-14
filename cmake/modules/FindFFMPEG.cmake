@@ -3,11 +3,11 @@
 # Finds FFmpeg libraries
 #
 # This module will first look for the required library versions on the system.
-# If they are not found, it will fall back to downloading and building kodi's own version
+# If they are not found, it will fall back to downloading and building universalmediacenter's own version
 #
 # --------
 # the following variables influence behaviour:
-# ENABLE_INTERNAL_FFMPEG - if enabled, kodi's own version will always be built
+# ENABLE_INTERNAL_FFMPEG - if enabled, universalmediacenter's own version will always be built
 #
 # FFMPEG_PATH - use external ffmpeg not found in system paths
 #               usage: -DFFMPEG_PATH=/path/to/ffmpeg_install_prefix
@@ -30,7 +30,7 @@ macro(buildFFMPEG)
   include(cmake/scripts/common/ModuleHelpers.cmake)
 
   # Check for dependencies - Must be done before SETUP_BUILD_VARS
-  if(KODI_DEPENDSBUILD OR (WIN32 OR WINDOWS_STORE))
+  if(UNIVERSALMEDIA_DEPENDSBUILD OR (WIN32 OR WINDOWS_STORE))
     get_libversion_data("dav1d" "target")
     set(DAV1D_REQUIRED REQUIRED)
   else()
@@ -169,7 +169,7 @@ macro(buildFFMPEG)
                                -DENABLE_VDPAU=${FFMPEG_VDPAU}
                                -DEXTRA_FLAGS=${FFMPEG_EXTRA_FLAGS})
 
-    if(KODI_DEPENDSBUILD OR (NOT APPLE AND CMAKE_CROSSCOMPILING))
+    if(UNIVERSALMEDIA_DEPENDSBUILD OR (NOT APPLE AND CMAKE_CROSSCOMPILING))
       set(CROSS_ARGS -DDEPENDS_PATH=${DEPENDS_PATH}
                      -DPKG_CONFIG_EXECUTABLE=${PKG_CONFIG_EXECUTABLE}
                      -DCROSSCOMPILING=${CMAKE_CROSSCOMPILING}
@@ -315,7 +315,7 @@ if(WITH_FFMPEG)
 else()
   # We track multiple versions due to API changes. For dependsbuild or windows, we always
   # have latest version to properly track rebuiling.
-  if(KODI_DEPENDSBUILD OR (WIN32 OR WINDOWS_STORE))
+  if(UNIVERSALMEDIA_DEPENDSBUILD OR (WIN32 OR WINDOWS_STORE))
     # required ffmpeg library versions - tools/depends/target/ffmpeg versions
     set(REQUIRED_FFMPEG_VERSION 9.0.2)
     set(_avutil_ver "=61.1.102")
@@ -357,7 +357,7 @@ if(NOT DISABLE_FFMPEG_SOURCE_PLUGINS)
 endif()
 
 # Check for dav1d dep rebuild property
-if(KODI_DEPENDSBUILD OR (WIN32 OR WINDOWS_STORE))
+if(UNIVERSALMEDIA_DEPENDSBUILD OR (WIN32 OR WINDOWS_STORE))
   find_package(Dav1d ${SEARCH_QUIET})
   if(TARGET LIBRARY::Dav1d)
     get_target_property(FFMPEG_DEP_BUILD LIBRARY::Dav1d LIB_BUILD)
@@ -523,7 +523,7 @@ else()
       ffmpeg_create_target(${_libname})
     endforeach()
   else()
-    if(KODI_DEPENDSBUILD OR (WIN32 OR WINDOWS_STORE))
+    if(UNIVERSALMEDIA_DEPENDSBUILD OR (WIN32 OR WINDOWS_STORE))
       message(WARNING "Suitable FFmpeg version not found, consider explicitly using -DENABLE_INTERNAL_FFMPEG=ON. Internal FFMPEG will be built")
       buildFFMPEG()
     else()

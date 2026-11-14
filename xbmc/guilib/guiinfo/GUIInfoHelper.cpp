@@ -25,7 +25,7 @@
 #include "windowing/WinSystem.h"
 #include "windows/GUIMediaWindow.h"
 
-namespace KODI::GUILIB::GUIINFO
+namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO
 {
 
 // conditions for window retrieval
@@ -205,4 +205,4 @@ std::string GetFileInfoLabelValueFromPath(int info, const std::string& filenameA
   return value;
 }
 
-} // namespace KODI::GUILIB::GUIINFO
+} // namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO

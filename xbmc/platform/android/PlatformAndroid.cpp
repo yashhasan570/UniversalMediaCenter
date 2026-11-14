@@ -15,7 +15,7 @@
 #include "utils/log.h"
 #include "windowing/android/WinSystemAndroidGLESContext.h"
 
-#include "platform/android/activity/XBMCApp.h"
+#include "platform/android/activity/App.h"
 #include "platform/android/powermanagement/AndroidPowerSyscall.h"
 #include "platform/android/storage/AndroidStorageProvider.h"
 
@@ -34,7 +34,7 @@ bool CPlatformAndroid::InitStageOne()
 {
   if (!CPlatformPosix::InitStageOne())
     return false;
-  setenv("SSL_CERT_FILE", CSpecialProtocol::TranslatePath("special://xbmc/system/certs/cacert.pem").c_str(), 1);
+  setenv("SSL_CERT_FILE", CSpecialProtocol::TranslatePath("special:///system/certs/cacert.pem").c_str(), 1);
 
   setenv("OS", "Linux", true); // for python scripts that check the OS
 
@@ -52,8 +52,8 @@ bool CPlatformAndroid::InitStageThree()
 
   if (CServiceBroker::GetSettingsComponent()->GetAdvancedSettings()->m_guiVideoLayoutTransparent)
   {
-    CLog::Log(LOGINFO, "XBMCApp: VideoLayout view was set to transparent.");
-    CXBMCApp::Get().SetVideoLayoutBackgroundColor(0);
+    CLog::Log(LOGINFO, "App: VideoLayout view was set to transparent.");
+    CApp::Get().SetVideoLayoutBackgroundColor(0);
   }
 
   return true;

@@ -35,7 +35,7 @@
 #include <string_view>
 #include <utility>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 #define CONTROL_HEADING         2
 #define CONTROL_RULE_LIST       10

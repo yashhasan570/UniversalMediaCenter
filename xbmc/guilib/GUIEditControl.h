@@ -55,7 +55,7 @@ public:
 
   void SetLabel(const std::string &text) override;
   void SetLabel2(const std::string &text) override;
-  void SetHint(const KODI::GUILIB::GUIINFO::CGUIInfoLabel& hint);
+  void SetHint(const UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoLabel& hint);
 
   std::string GetLabel2() const override;
 
@@ -121,7 +121,7 @@ protected:
 
   std::wstring m_text2;
   std::string  m_text;
-  KODI::GUILIB::GUIINFO::CGUIInfoLabel m_hintInfo;
+  UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoLabel m_hintInfo;
   float m_textOffset;
   CRect m_clipRect; ///< clipping rect for the second label
 

@@ -67,7 +67,7 @@ private:
   std::atomic<int> m_raisingExit{0}; // stop() thread states in this interpreter
   CEvent m_stoppedEvent;
 
-  XBMCAddon::AddonClass::Ref<XBMCAddon::Python::PythonLanguageHook> m_languageHook;
+  Addon::AddonClass::Ref<Addon::Python::PythonLanguageHook> m_languageHook;
 
   static CCriticalSection s_critical;
 

@@ -2,13 +2,13 @@
 include(${CORE_SOURCE_DIR}/cmake/scripts/common/Macros.cmake)
 core_find_versions()
 
-# in case we need to download something, set KODI_MIRROR to the default if not already set
-if(NOT DEFINED KODI_MIRROR)
-  set(KODI_MIRROR "https://mirrors.kodi.tv")
+# in case we need to download something, set UNIVERSALMEDIA_MIRROR to the default if not already set
+if(NOT DEFINED UNIVERSALMEDIA_MIRROR)
+  set(UNIVERSALMEDIA_MIRROR "https://mirrors.universalmediacenter.tv")
 endif()
 
-### copy all the addon binding header files to include/kodi
-# make sure include/kodi exists and is empty
+### copy all the addon binding header files to include/universalmediacenter
+# make sure include/universalmediacenter exists and is empty
 set(APP_LIB_DIR ${ADDON_DEPENDS_PATH}/lib/${APP_NAME_LC})
 if(NOT EXISTS "${APP_LIB_DIR}/")
   file(MAKE_DIRECTORY ${APP_LIB_DIR})
@@ -35,7 +35,7 @@ endif()
 set(PLATFORM_TAG ${CORE_SYSTEM_NAME})
 
 # The CPU variable is given either by ./tools/depends or by the
-# ./cmake/scripts/common/ArchSetup.cmake (which refers to the Kodi building
+# ./cmake/scripts/common/ArchSetup.cmake (which refers to the Universal Media Center building
 # itself). However, this file is only used by addons, so CPU can not always
 # be defined, so in this case, if empty, the base CPU will be used.
 if(NOT CPU)
@@ -90,16 +90,16 @@ elseif(CORE_SYSTEM_NAME STREQUAL windows OR CORE_SYSTEM_NAME STREQUAL windowssto
   unset(_ARM64_)
 endif()
 
-# generate the proper KodiConfig.cmake file
-configure_file(${CORE_SOURCE_DIR}/cmake/KodiConfig.cmake.in ${APP_LIB_DIR}/KodiConfig.cmake @ONLY)
+# generate the proper UniversalMediaCenterConfig.cmake file
+configure_file(${CORE_SOURCE_DIR}/cmake/UniversalMediaCenterConfig.cmake.in ${APP_LIB_DIR}/UniversalMediaCenterConfig.cmake @ONLY)
 
-# copy cmake helpers to lib/kodi
+# copy cmake helpers to lib/universalmediacenter
 file(COPY ${CORE_SOURCE_DIR}/cmake/scripts/common/AddonHelpers.cmake
           ${CORE_SOURCE_DIR}/cmake/scripts/common/AddOptions.cmake
      DESTINATION ${APP_LIB_DIR})
 
-### copy all the addon binding header files to include/kodi
-include(${CORE_SOURCE_DIR}/xbmc/addons/AddonBindings.cmake)
+### copy all the addon binding header files to include/universalmediacenter
+include(${CORE_SOURCE_DIR}//addons/AddonBindings.cmake)
 file(COPY ${CORE_ADDON_BINDINGS_FILES} ${CORE_ADDON_BINDINGS_DIRS}/
      DESTINATION ${APP_INCLUDE_DIR}
      REGEX ".txt" EXCLUDE)

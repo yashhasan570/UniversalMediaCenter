@@ -12,7 +12,7 @@
 #include <string>
 #include <vector>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -41,4 +41,4 @@ struct GameClientDiscState
   bool operator==(const GameClientDiscState&) const = default;
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

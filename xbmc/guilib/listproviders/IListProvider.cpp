@@ -11,7 +11,7 @@
 #include "DirectoryProvider.h"
 #include "MultiProvider.h"
 #include "StaticProvider.h"
-#include "utils/XBMCTinyXML.h"
+#include "utils/TinyXML.h"
 
 std::unique_ptr<IListProvider> IListProvider::Create(const TiXmlNode* node, int parentID)
 {

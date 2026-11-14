@@ -32,7 +32,7 @@
 
 using namespace XFILE;
 using namespace std::chrono_literals;
-using KODI::LANGUAGE::CLanguageTag;
+using UNIVERSAL MEDIA CENTER::LANGUAGE::CLanguageTag;
 
 class TestBlurayDirectory : public ::testing::Test
 {
@@ -339,7 +339,7 @@ TEST_F(TestBlurayDirectory, GetPlaylists_IgnoresOtherFilesNamedAfterAPlaylist)
   ASSERT_TRUE(CDirectory::Create(URIUtils::AddFileToFolder(disc, "BDMV")));
   ASSERT_TRUE(CDirectory::Create(playlistFolder));
   ASSERT_TRUE(
-      CFile::Copy(XBMC_REF_FILE_PATH("xbmc/utils/test/data/bluray/BDMV/PLAYLIST/00888.mpls"),
+      CFile::Copy(_REF_FILE_PATH("/utils/test/data/bluray/BDMV/PLAYLIST/00888.mpls"),
                   URIUtils::AddFileToFolder(playlistFolder, "00888.mpls")));
   {
     CFile hash;
@@ -363,5 +363,5 @@ TEST_F(TestBlurayDirectory, GetPlaylists_IgnoresOtherFilesNamedAfterAPlaylist)
 
   EXPECT_TRUE(found);
   ASSERT_EQ(items.Size(), 1);
-  EXPECT_EQ(items[0]->GetProperty(KODI::ITEM::PROPERTY::BLURAY_PLAYLIST).asInteger(), 888);
+  EXPECT_EQ(items[0]->GetProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::BLURAY_PLAYLIST).asInteger(), 888);
 }

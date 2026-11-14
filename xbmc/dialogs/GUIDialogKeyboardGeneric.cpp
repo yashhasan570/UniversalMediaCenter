@@ -20,7 +20,7 @@
 #include "input/actions/Action.h"
 #include "input/actions/ActionIDs.h"
 #include "input/keyboard/KeyboardLayoutManager.h"
-#include "input/keyboard/XBMC_vkeys.h"
+#include "input/keyboard/_vkeys.h"
 #include "input/keymaps/keyboard/KeyIDs.h"
 #include "interfaces/AnnouncementManager.h"
 #include "messaging/ApplicationMessenger.h"
@@ -40,7 +40,7 @@
 
 #include <mutex>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace MESSAGING;
 
 #define BUTTON_ID_OFFSET      100
@@ -248,7 +248,7 @@ bool CGUIDialogKeyboardGeneric::OnAction(const CAction &action)
 {
   int actionId = action.GetID();
   bool handled = true;
-  if (actionId == (KEY_VKEY | XBMCVK_BACK))
+  if (actionId == (KEY_VKEY | VK_BACK))
     Backspace();
   else if (actionId == ACTION_ENTER ||
            (actionId == ACTION_SELECT_ITEM && (m_isKeyboardNavigationMode || GetFocusedControlID() == CTL_EDIT)))
@@ -281,7 +281,7 @@ bool CGUIDialogKeyboardGeneric::OnAction(const CAction &action)
       if (!handled && actionId >= KEY_VKEY && actionId <= KEY_VKEY_MAX)
       {
         uint16_t b = actionId - KEY_VKEY;
-        if (b == XBMCVK_TAB)
+        if (b == VK_TAB)
         {
           // Toggle left/right key mode
           m_isKeyboardNavigationMode = !m_isKeyboardNavigationMode;

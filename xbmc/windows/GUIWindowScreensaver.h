@@ -12,13 +12,13 @@
 
 #include <memory>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace ADDONS
 {
 class CScreenSaver;
 } // namespace ADDONS
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER
 
 class CGUIWindowScreensaver : public CGUIDialog
 {
@@ -39,6 +39,6 @@ protected:
   void OnInitWindow() override;
 
 private:
-  std::unique_ptr<KODI::ADDONS::CScreenSaver> m_addon;
+  std::unique_ptr<UNIVERSAL MEDIA CENTER::ADDONS::CScreenSaver> m_addon;
   bool m_visible{false};
 };

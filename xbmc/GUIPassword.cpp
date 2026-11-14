@@ -37,8 +37,8 @@
 
 #include <utility>
 
-using namespace KODI::MESSAGING;
-using KODI::MEDIA::MediaSection;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaSection;
 
 CGUIPassword::CGUIPassword(void)
 {
@@ -65,7 +65,7 @@ bool CGUIPassword::IsItemUnlocked(T pItem,
     int iResult = 0; // init to user succeeded state, doing this to optimize switch statement below
     if (!g_passwordManager.bMasterUser) // Check if we are the MasterUser!
     {
-      const KODI::UTILS::CLockInfo& lockInfo{pItem->GetLockInfo()};
+      const UNIVERSAL MEDIA CENTER::UTILS::CLockInfo& lockInfo{pItem->GetLockInfo()};
       if (0 != settings->GetInt(CSettings::SETTING_MASTERLOCK_MAXRETRIES) &&
           lockInfo.GetBadPasswordCount() >=
               settings->GetInt(CSettings::SETTING_MASTERLOCK_MAXRETRIES))
@@ -86,7 +86,7 @@ bool CGUIPassword::IsItemUnlocked(T pItem,
     case 0:
       {
         // password entry succeeded
-        KODI::UTILS::CLockInfo& lockInfo{pItem->GetLockInfo()};
+        UNIVERSAL MEDIA CENTER::UTILS::CLockInfo& lockInfo{pItem->GetLockInfo()};
         lockInfo.ResetBadPasswordCount();
         lockInfo.SetState(LOCK_STATE_LOCK_BUT_UNLOCKED);
         g_passwordManager.LockSource(section, strLabel, false);
@@ -102,7 +102,7 @@ bool CGUIPassword::IsItemUnlocked(T pItem,
     case 1:
       {
         // password entry failed
-        KODI::UTILS::CLockInfo& lockInfo{pItem->GetLockInfo()};
+        UNIVERSAL MEDIA CENTER::UTILS::CLockInfo& lockInfo{pItem->GetLockInfo()};
         if (0 != settings->GetInt(CSettings::SETTING_MASTERLOCK_MAXRETRIES))
           lockInfo.IncrementBadPasswordCount();
         mediaSources.UpdateSource(
@@ -187,7 +187,7 @@ bool CGUIPassword::CheckStartUpLock()
   if (iVerifyPasswordResult == 0)
   {
     g_passwordManager.iMasterLockRetriesLeft = CServiceBroker::GetSettingsComponent()->GetSettings()->GetInt(CSettings::SETTING_MASTERLOCK_MAXRETRIES);
-    return true;  // OK The MasterCode Accepted! XBMC Can Run!
+    return true;  // OK The MasterCode Accepted!  Can Run!
   }
   else
   {
@@ -561,12 +561,12 @@ bool CGUIPassword::LockSource(MediaSection section, const std::string& strName, 
 void CGUIPassword::LockSources(bool lock)
 {
   // lock or unlock all sources (those with locks)
-  for (const MediaSection section : KODI::MEDIA::MEDIA_SECTIONS)
+  for (const MediaSection section : UNIVERSAL MEDIA CENTER::MEDIA::MEDIA_SECTIONS)
   {
     std::vector<CMediaSource>& shares = CMediaSourceSettings::GetInstance().GetSources(section);
     for (std::vector<CMediaSource>::iterator it = shares.begin(); it != shares.end(); ++it)
     {
-      KODI::UTILS::CLockInfo& lockInfo{it->GetLockInfo()};
+      UNIVERSAL MEDIA CENTER::UTILS::CLockInfo& lockInfo{it->GetLockInfo()};
       if (lockInfo.GetMode() != LockMode::EVERYONE)
         lockInfo.SetState(lock ? LOCK_STATE_LOCKED : LOCK_STATE_LOCK_BUT_UNLOCKED);
     }
@@ -579,12 +579,12 @@ void CGUIPassword::RemoveSourceLocks()
 {
   CMediaSourceSettings& mediaSources{CMediaSourceSettings::GetInstance()};
   // remove lock from all sources
-  for (const MediaSection section : KODI::MEDIA::MEDIA_SECTIONS)
+  for (const MediaSection section : UNIVERSAL MEDIA CENTER::MEDIA::MEDIA_SECTIONS)
   {
     std::vector<CMediaSource>& shares = mediaSources.GetSources(section);
     for (std::vector<CMediaSource>::iterator it = shares.begin(); it != shares.end(); ++it)
     {
-      KODI::UTILS::CLockInfo& lockInfo{it->GetLockInfo()};
+      UNIVERSAL MEDIA CENTER::UTILS::CLockInfo& lockInfo{it->GetLockInfo()};
       if (lockInfo.GetMode() != LockMode::EVERYONE) // remove old info
       {
         lockInfo.SetState(LOCK_STATE_NO_LOCK);

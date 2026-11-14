@@ -31,7 +31,7 @@
 // To enable button mapping support
 #include "peripherals/Peripherals.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 CGUIControllerWindow::CGUIControllerWindow(void)

@@ -1,5 +1,5 @@
-![Universal Media Center logo](https://github.com/xbmc/xbmc/raw/master/docs/resources/banner_slim.png)
-# KODI ADDON DEFINITIONS BOOTSTRAPPING
+![Universal Media Center logo](https://github.com///raw/master/docs/resources/banner_slim.png)
+# UNIVERSAL MEDIA CENTER ADDON DEFINITIONS BOOTSTRAPPING
 This directory contains the cmake-based buildsystem for addon definitions
 bootstrapping which downloads the addon definitions from one or more addon
 definitions repositories. These addon definitions are then used by the addon

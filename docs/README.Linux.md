@@ -13,14 +13,14 @@ Several distribution **[specific build guides](README.md)** are available.
 3. **[Install the required packages](#3-install-the-required-packages)**  
   3.1. **[Build missing dependencies](#31-build-missing-dependencies)**  
   3.2. **[Enable internal dependencies](#32-enable-internal-dependencies)**
-4. **[Build Universal Media Center](#4-build-kodi)**  
+4. **[Build Universal Media Center](#4-build-universalmediacenter)**  
   4.1. **[Configure build](#41-configure-build)**  
   4.2. **[Build](#42-build)**
 5. **[Build binary add-ons](#5-build-binary-add-ons)**  
   5.1. **[In-tree building of binary add-ons](#51-in-tree-building-of-binary-add-ons)**  
   5.2. **[Out-of-tree building of binary add-ons](#52-out-of-tree-building-of-binary-add-ons)**
-6. **[Run Universal Media Center](#6-run-kodi)**
-7. **[Uninstall Universal Media Center](#7-uninstall-kodi)**
+6. **[Run Universal Media Center](#6-run-universalmediacenter)**
+7. **[Uninstall Universal Media Center](#7-uninstall-universalmediacenter)**
 8. **[Test suite](#8-test-suite)**
 
 ## 1. Document conventions
@@ -35,17 +35,17 @@ and yet another one
 
 **Example:** Clone Universal Media Center's current master branch:
 ```
-git clone https://github.com/xbmc/xbmc kodi
+git clone https://github.com// universalmediacenter
 ```
 
 Commands that contain strings enclosed in angle brackets denote something you need to change to suit your needs.
 ```
-git clone -b <branch-name> https://github.com/xbmc/xbmc kodi
+git clone -b <branch-name> https://github.com// universalmediacenter
 ```
 
 **Example:** Clone Universal Media Center's current Krypton branch:
 ```
-git clone -b Krypton https://github.com/xbmc/xbmc kodi
+git clone -b Krypton https://github.com// universalmediacenter
 ```
 
 Several different strategies are used to draw your attention to certain pieces of information. In order of how critical the information is, these items are marked as a note, tip, or warning. For example:
@@ -71,7 +71,7 @@ cd $HOME
 
 Clone Universal Media Center's current master branch:
 ```
-git clone https://github.com/xbmc/xbmc kodi
+git clone https://github.com// universalmediacenter
 ```
 
 **[back to top](#table-of-contents)**
@@ -89,7 +89,7 @@ Some packages may be missing or outdated in older distributions. Notably `crossg
 
 Change to Universal Media Center's source code directory:
 ```
-cd $HOME/kodi
+cd $HOME/universalmediacenter
 ```
 
 Build and install crossguid:
@@ -126,10 +126,10 @@ sudo make -C tools/depends/target/waylandpp PREFIX=/usr/local
 > Building `waylandpp` has some dependencies of its own, namely `libpugixml-dev and libwayland-dev (>= 1.11.0)`
 
 > [!TIP]
-> Complete list of dependencies is available **[here](https://github.com/xbmc/xbmc/tree/master/tools/depends/target)**.
+> Complete list of dependencies is available **[here](https://github.com///tree/master/tools/depends/target)**.
 
 ### 3.2. Enable internal dependencies
-Some dependencies can be configured to build before Universal Media Center. That's the case with `flatbuffers`, `crossguid`, `fmt`, `spdlog`, `fstrcmp`, `nlohmann-json`, `dav1d` and `swig`. To enable the internal build of a dependency, append `-DENABLE_INTERNAL_<DEPENDENCY_NAME>=ON` to the configure command below. For example, configuring an X11 build with internal `fmt` would become `cmake ../kodi -DCMAKE_INSTALL_PREFIX=/usr/local -DENABLE_INTERNAL_FMT=ON` instead of `cmake ../kodi -DCMAKE_INSTALL_PREFIX=/usr/local`.
+Some dependencies can be configured to build before Universal Media Center. That's the case with `flatbuffers`, `crossguid`, `fmt`, `spdlog`, `fstrcmp`, `nlohmann-json`, `dav1d` and `swig`. To enable the internal build of a dependency, append `-DENABLE_INTERNAL_<DEPENDENCY_NAME>=ON` to the configure command below. For example, configuring an X11 build with internal `fmt` would become `cmake ../universalmediacenter -DCMAKE_INSTALL_PREFIX=/usr/local -DENABLE_INTERNAL_FMT=ON` instead of `cmake ../universalmediacenter -DCMAKE_INSTALL_PREFIX=/usr/local`.
 Internal dependencies that are based on cmake upstream (currently crossguid, ffmpeg, fmt, spdlog) can have their build type overridden by defining `-D<DEPENDENCY_NAME>_BUILD_TYPE=<buildtype>`. Build Type can be one of `Release, RelWithDebInfo, Debug, MinSizeRel`. eg `-DFFMPEG_BUILD_TYPE=RelWithDebInfo`. If not provided, the build type will be the same as the core Universal Media Center project.
 
 > [!NOTE]  
@@ -150,7 +150,7 @@ If you get a `Could NOT find...` error message during CMake configuration step, 
 
 Create an out-of-source build directory:
 ```
-mkdir $HOME/kodi-build
+mkdir $HOME/universalmediacenter-build
 ```
 
 > [!TIP]
@@ -158,12 +158,12 @@ mkdir $HOME/kodi-build
 
 Change to build directory:
 ```
-cd $HOME/kodi-build
+cd $HOME/universalmediacenter-build
 ```
 
 Configure build for X11:
 ```
-cmake ../kodi -DCMAKE_INSTALL_PREFIX=/usr/local -DCORE_PLATFORM_NAME=x11 -DAPP_RENDER_SYSTEM=gl
+cmake ../universalmediacenter -DCMAKE_INSTALL_PREFIX=/usr/local -DCORE_PLATFORM_NAME=x11 -DAPP_RENDER_SYSTEM=gl
 ```
 
 > [!NOTE]  
@@ -171,7 +171,7 @@ cmake ../kodi -DCMAKE_INSTALL_PREFIX=/usr/local -DCORE_PLATFORM_NAME=x11 -DAPP_R
 
 Or configure build for Wayland:
 ```
-cmake ../kodi -DCMAKE_INSTALL_PREFIX=/usr/local -DCORE_PLATFORM_NAME=wayland -DAPP_RENDER_SYSTEM=gl
+cmake ../universalmediacenter -DCMAKE_INSTALL_PREFIX=/usr/local -DCORE_PLATFORM_NAME=wayland -DAPP_RENDER_SYSTEM=gl
 ```
 
 > [!NOTE]  
@@ -179,7 +179,7 @@ cmake ../kodi -DCMAKE_INSTALL_PREFIX=/usr/local -DCORE_PLATFORM_NAME=wayland -DA
 
 Or configure build for GBM:
 ```
-cmake ../kodi -DCMAKE_INSTALL_PREFIX=/usr/local -DCORE_PLATFORM_NAME=gbm -DAPP_RENDER_SYSTEM=gles
+cmake ../universalmediacenter -DCMAKE_INSTALL_PREFIX=/usr/local -DCORE_PLATFORM_NAME=gbm -DAPP_RENDER_SYSTEM=gles
 ```
 
 > [!NOTE]  
@@ -187,7 +187,7 @@ cmake ../kodi -DCMAKE_INSTALL_PREFIX=/usr/local -DCORE_PLATFORM_NAME=gbm -DAPP_R
 
 Or configure build with any combination of the three (default is "x11 wayland gbm"):
 ```
-cmake ../kodi -DCMAKE_INSTALL_PREFIX=/usr/local -DCORE_PLATFORM_NAME="x11 wayland gbm" -DAPP_RENDER_SYSTEM=gl
+cmake ../universalmediacenter -DCMAKE_INSTALL_PREFIX=/usr/local -DCORE_PLATFORM_NAME="x11 wayland gbm" -DAPP_RENDER_SYSTEM=gl
 ```
 
 > [!NOTE]  
@@ -209,21 +209,21 @@ cmake --build . -- VERBOSE=1 -j$(getconf _NPROCESSORS_ONLN)
 
 After the build process completes successfully you can test your shiny new Universal Media Center build while in the build directory:
 ```
-./kodi-x11
+./universalmediacenter-x11
 ```
 
 Or if you built for Wayland:
 ```
-./kodi-wayland
+./universalmediacenter-wayland
 ```
 
 Or if you built for GBM:
 ```
-./kodi-gbm
+./universalmediacenter-gbm
 ```
 
 > [!WARNING]  
-> User running `kodi-gbm` needs to be part of `input` and `video` groups. Otherwise you'll have to use `sudo`.
+> User running `universalmediacenter-gbm` needs to be part of `input` and `video` groups. Otherwise you'll have to use `sudo`.
 
 Add user to input and video groups:
 ```
@@ -246,13 +246,13 @@ This will install Universal Media Center in the prefix provided in **[section 4.
 > To override Universal Media Center's install location, use `DESTDIR=<path>`. For example:
 
 ```
-sudo make install DESTDIR=$HOME/kodi
+sudo make install DESTDIR=$HOME/universalmediacenter
 ```
 
-**[back to top](#table-of-contents)** | **[back to section top](#4-build-kodi)**
+**[back to top](#table-of-contents)** | **[back to section top](#4-build-universalmediacenter)**
 
 ## 5. Build binary add-ons
-You can find a complete list of available binary add-ons **[here](https://github.com/xbmc/repo-binary-addons)**.
+You can find a complete list of available binary add-ons **[here](https://github.com//repo-binary-addons)**.
 
 In the following, two approaches to building binary add-ons are described.
 While the workflow of in-tree building is more automated,
@@ -263,7 +263,7 @@ Thus when changing `DCMAKE_INSTALL_PREFIX`, you must follow the out-of-tree buil
 
 Change to Universal Media Center's source code directory:
 ```
-cd $HOME/kodi
+cd $HOME/universalmediacenter
 ```
 
 Build all add-ons:
@@ -296,35 +296,35 @@ For additional information on regular expression usage for ADDONS_TO_BUILD, view
 
 ### 5.2. Out-of-tree building of binary add-ons
 
-You can find a complete list of available binary add-ons **[here](https://github.com/xbmc/repo-binary-addons)**.
+You can find a complete list of available binary add-ons **[here](https://github.com//repo-binary-addons)**.
 Exemplary, to install `pvr.demo`, follow below steps.
-For other addons, simply adapt the repository based on the information found in the `.txt` associated with the respective addon **[here](https://github.com/xbmc/repo-binary-addons)**
+For other addons, simply adapt the repository based on the information found in the `.txt` associated with the respective addon **[here](https://github.com//repo-binary-addons)**
 
 Some addons have dependencies.
 You must install all required dependencies of an addon before installing the addon.
 Required dependencies can be found by checking the `depends` folder and
 it's subdirectories in the repository of the respective addons.
 
-A number of addons require the the `p8-platform` and `kodi-platform` add-ons.
-Note that dependencies on `p8-platform` and `kodi-platform` are typically not declared in the `depends` folder.
+A number of addons require the the `p8-platform` and `universalmediacenter-platform` add-ons.
+Note that dependencies on `p8-platform` and `universalmediacenter-platform` are typically not declared in the `depends` folder.
 They are only declared in the `CMakeLists.txt` file of the respective addon (e.g. via `find_package(p8-platform REQUIRED)`).
 Below we demonstrate how to build these two.
 First, the platform addon:
 
 ```
 cd ~/src/
-git clone https://github.com/xbmc/platform.git
+git clone https://github.com//platform.git
 cd ~/src/platform/
 cmake -DCMAKE_INSTALL_PREFIX=/usr/local
 make && make install
 ```
 
-Then the kodi-platform add-on:
+Then the universalmediacenter-platform add-on:
 
 ```
 cd ~/src/
-git clone https://github.com/xbmc/kodi-platform.git
-cd ~/src/kodi-platform/
+git clone https://github.com//universalmediacenter-platform.git
+cd ~/src/universalmediacenter-platform/
 cmake -DCMAKE_INSTALL_PREFIX=/usr/local
 make && make install
 ```
@@ -333,7 +333,7 @@ Finally, to install pvr.demo
 
 ```
 cd ~/src
-git clone https://github.com/kodi-pvr/pvr.demo.git
+git clone https://github.com/universalmediacenter-pvr/pvr.demo.git
 cd ~/src/pvr.demo/
 cmake -DCMAKE_INSTALL_PREFIX=/usr/local
 make && make install
@@ -343,16 +343,16 @@ make && make install
 > `-DCMAKE_INSTALL_PREFIX=` should match Universal Media Center's `-DCMAKE_INSTALL_PREFIX=` prefix used in **[section 4.1](#41-configure-build)**.
 
 ## 6. Run Universal Media Center
-If you chose to install Universal Media Center using `/usr` or `/usr/local` as the `-DCMAKE_INSTALL_PREFIX=`, you can just issue *kodi* in a terminal session.
+If you chose to install Universal Media Center using `/usr` or `/usr/local` as the `-DCMAKE_INSTALL_PREFIX=`, you can just issue *universalmediacenter* in a terminal session.
 
 If you changed `-DCMAKE_INSTALL_PREFIX=` to install Universal Media Center into some non-standard location, you will have to run Universal Media Center directly:
 ```
-<CMAKE_INSTALL_PREFIX>/bin/kodi
+<CMAKE_INSTALL_PREFIX>/bin/universalmediacenter
 ```
 
 To run Universal Media Center in *portable* mode (useful for testing):
 ```
-<CMAKE_INSTALL_PREFIX>/bin/kodi -p
+<CMAKE_INSTALL_PREFIX>/bin/universalmediacenter -p
 ```
 
 **[back to top](#table-of-contents)**
@@ -367,7 +367,7 @@ sudo make uninstall
 
 If you would like to also remove any settings and third-party addons (skins, scripts, etc.) and Universal Media Center configuration files, you should also run:
 ```
-rm -rf ~/.kodi
+rm -rf ~/.universalmediacenter
 ```
 
 **[back to top](#table-of-contents)**
@@ -382,17 +382,17 @@ make check
 
 Build Universal Media Center's test suite without running it:
 ```
-make kodi-test
+make universalmediacenter-test
 ```
 
 Run Universal Media Center's test suite manually:
 ```
-./kodi-test
+./universalmediacenter-test
 ```
 
 Show Universal Media Center's test suite *help* notes:
 ```
-./kodi-test --gtest_help
+./universalmediacenter-test --gtest_help
 ```
 
 Useful options:

@@ -17,7 +17,7 @@
 #include "video/VideoInfoTag.h"
 #include "video/dialogs/GUIDialogVideoInfo.h"
 
-using namespace KODI::UTILS::GUILIB;
+using namespace UNIVERSAL MEDIA CENTER::UTILS::GUILIB;
 
 bool CGUIContentUtils::HasInfoForItem(const CFileItem& item)
 {
@@ -25,13 +25,13 @@ bool CGUIContentUtils::HasInfoForItem(const CFileItem& item)
   {
     switch (item.GetVideoInfoTag()->GetMediaType())
     {
-      case KODI::MEDIA::TYPE::VIDEO:
-      case KODI::MEDIA::TYPE::MOVIE:
-      case KODI::MEDIA::TYPE::VIDEO_COLLECTION:
-      case KODI::MEDIA::TYPE::TV_SHOW:
-      case KODI::MEDIA::TYPE::SEASON:
-      case KODI::MEDIA::TYPE::EPISODE:
-      case KODI::MEDIA::TYPE::MUSIC_VIDEO:
+      case UNIVERSAL MEDIA CENTER::MEDIA::TYPE::VIDEO:
+      case UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MOVIE:
+      case UNIVERSAL MEDIA CENTER::MEDIA::TYPE::VIDEO_COLLECTION:
+      case UNIVERSAL MEDIA CENTER::MEDIA::TYPE::TV_SHOW:
+      case UNIVERSAL MEDIA CENTER::MEDIA::TYPE::SEASON:
+      case UNIVERSAL MEDIA CENTER::MEDIA::TYPE::EPISODE:
+      case UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MUSIC_VIDEO:
         return true;
       default:
         return false;

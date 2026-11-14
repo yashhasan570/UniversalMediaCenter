@@ -13,7 +13,7 @@
 #include <span>
 #include <vector>
 
-namespace KODI::VIDEO::GEOMETRY
+namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY
 {
 
 //! \brief Confidence below which a lone reading corroborates nothing, and only recurrence
@@ -94,4 +94,4 @@ CombinedGeometry CombineGeometrySamples(std::span<const GeometrySample> samples,
                                         const CRectInt& coded,
                                         const CombinerParams& params = {});
 
-} // namespace KODI::VIDEO::GEOMETRY
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY

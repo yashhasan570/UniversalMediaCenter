@@ -8,7 +8,7 @@
 
 #pragma once
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace WINDOWING
 {
@@ -24,4 +24,4 @@ public:
 
 } // namespace GBM
 } // namespace WINDOWING
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

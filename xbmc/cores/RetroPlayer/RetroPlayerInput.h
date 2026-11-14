@@ -17,7 +17,7 @@ namespace PERIPHERALS
 class CPeripherals;
 }
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -57,4 +57,4 @@ private:
   bool m_bAgentManagerStarted{false};
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

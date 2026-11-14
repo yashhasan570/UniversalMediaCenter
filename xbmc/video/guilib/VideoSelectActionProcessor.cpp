@@ -19,7 +19,7 @@
 #include "video/guilib/VideoGUIUtils.h"
 #include "video/guilib/VideoPlayActionProcessor.h"
 
-namespace KODI::VIDEO::GUILIB
+namespace UNIVERSAL MEDIA CENTER::VIDEO::GUILIB
 {
 
 Action CVideoSelectActionProcessor::GetDefaultAction()
@@ -53,9 +53,9 @@ bool CVideoSelectActionProcessor::Process(Action action)
     case ACTION_INFO:
     {
       const auto item{GetItem()};
-      if (GetDefaultAction() == ACTION_INFO && !KODI::VIDEO::IsVideoDb(*item) &&
+      if (GetDefaultAction() == ACTION_INFO && !UNIVERSAL MEDIA CENTER::VIDEO::IsVideoDb(*item) &&
           !item->IsPlugin() && !item->IsScript() && !item->IsPVR() &&
-          !KODI::VIDEO::UTILS::HasItemVideoDbInformation(*item))
+          !UNIVERSAL MEDIA CENTER::VIDEO::UTILS::HasItemVideoDbInformation(*item))
       {
         // For items without info fall back to default play action.
         return Process(ACTION_PLAY);
@@ -85,7 +85,7 @@ bool CVideoSelectActionProcessor::OnQueueSelected()
 
 bool CVideoSelectActionProcessor::OnInfoSelected()
 {
-  return KODI::UTILS::GUILIB::CGUIContentUtils::ShowInfoForItem(*GetItem());
+  return UNIVERSAL MEDIA CENTER::UTILS::GUILIB::CGUIContentUtils::ShowInfoForItem(*GetItem());
 }
 
 bool CVideoSelectActionProcessor::OnChooseSelected()
@@ -94,4 +94,4 @@ bool CVideoSelectActionProcessor::OnChooseSelected()
   return true;
 }
 
-} // namespace KODI::VIDEO::GUILIB
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO::GUILIB

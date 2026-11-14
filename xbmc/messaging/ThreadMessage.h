@@ -16,7 +16,7 @@
 
 class CEvent;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace MESSAGING
 {

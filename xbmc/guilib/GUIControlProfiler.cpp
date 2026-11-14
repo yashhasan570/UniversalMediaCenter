@@ -10,7 +10,7 @@
 
 #include "utils/StringUtils.h"
 #include "utils/TimeUtils.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 
 bool CGUIControlProfiler::m_bIsRunning = false;
 
@@ -325,7 +325,7 @@ bool CGUIControlProfiler::SaveResults(void)
   if (m_strOutputFile.empty())
     return false;
 
-  CXBMCTinyXML2 doc;
+  CTinyXML2 doc;
   doc.InsertEndChild(doc.NewDeclaration("xml version=\"1.0\" standalone=\"yes\""));
 
   tinyxml2::XMLElement* root = doc.NewElement("guicontrolprofiler");

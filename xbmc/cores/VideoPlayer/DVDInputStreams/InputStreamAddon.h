@@ -12,7 +12,7 @@
 #include "IVideoPlayer.h"
 #include "addons/AddonProvider.h"
 #include "addons/binary-addons/AddonInstanceHandler.h"
-#include "addons/kodi-dev-kit/include/kodi/addon-instance/Inputstream.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/addon-instance/Inputstream.h"
 
 #include <memory>
 #include <vector>
@@ -21,15 +21,15 @@ class CInputStreamProvider
   : public ADDON::IAddonProvider
 {
 public:
-  CInputStreamProvider(const ADDON::AddonInfoPtr& addonInfo, KODI_HANDLE parentInstance);
+  CInputStreamProvider(const ADDON::AddonInfoPtr& addonInfo, UNIVERSALMEDIA_HANDLE parentInstance);
 
   void GetAddonInstance(InstanceType instance_type,
                         ADDON::AddonInfoPtr& addonInfo,
-                        KODI_HANDLE& parentInstance) override;
+                        UNIVERSALMEDIA_HANDLE& parentInstance) override;
 
 private:
   ADDON::AddonInfoPtr m_addonInfo;
-  KODI_HANDLE m_parentInstance;
+  UNIVERSALMEDIA_HANDLE m_parentInstance;
 };
 
 //! \brief Input stream class
@@ -129,34 +129,34 @@ private:
   std::vector<std::unique_ptr<CDemuxStream>> m_streams;
 
   /*!
-   * Callbacks from add-on to kodi
+   * Callbacks from add-on to universalmediacenter
    */
   //@{
   /*!
    * @brief Allocate a demux packet. Free with FreeDemuxPacket
-   * @param kodiInstance A pointer to the add-on.
+   * @param universalmediacenterInstance A pointer to the add-on.
    * @param iDataSize The size of the data that will go into the packet
    * @return The allocated packet.
    */
-  static DEMUX_PACKET* cb_allocate_demux_packet(void* kodiInstance, int iDataSize = 0);
+  static DEMUX_PACKET* cb_allocate_demux_packet(void* universalmediacenterInstance, int iDataSize = 0);
 
   /*!
   * @brief Allocate an encrypted demux packet. Free with FreeDemuxPacket
-  * @param kodiInstance A pointer to the add-on.
+  * @param universalmediacenterInstance A pointer to the add-on.
   * @param dataSize The size of the data that will go into the packet
   * @param encryptedSubsampleCount The number of subsample description blocks to allocate
   * @return The allocated packet.
   */
-  static DEMUX_PACKET* cb_allocate_encrypted_demux_packet(void* kodiInstance,
+  static DEMUX_PACKET* cb_allocate_encrypted_demux_packet(void* universalmediacenterInstance,
                                                           unsigned int dataSize,
                                                           unsigned int encryptedSubsampleCount);
 
   /*!
    * @brief Free a packet that was allocated with AllocateDemuxPacket
-   * @param kodiInstance A pointer to the add-on.
+   * @param universalmediacenterInstance A pointer to the add-on.
    * @param pPacket The packet to free.
    */
-  static void cb_free_demux_packet(void* kodiInstance, DEMUX_PACKET* pPacket);
+  static void cb_free_demux_packet(void* universalmediacenterInstance, DEMUX_PACKET* pPacket);
 
   /*!
    * @brief Callback used by @ref GetStream to get the data
@@ -169,7 +169,7 @@ private:
    * @param[in] stream "C" structure with stream information
    * @return The created demux stream packet
    */
-  static KODI_HANDLE cb_get_stream_transfer(KODI_HANDLE handle,
+  static UNIVERSALMEDIA_HANDLE cb_get_stream_transfer(UNIVERSALMEDIA_HANDLE handle,
                                             int streamId,
                                             INPUTSTREAM_INFO* stream);
   //@}

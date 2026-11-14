@@ -12,7 +12,7 @@
 #include "utils/ItemProperties.h"
 #include "utils/URIUtils.h"
 
-namespace KODI::NETWORK
+namespace UNIVERSAL MEDIA CENTER::NETWORK
 {
 
 bool IsInternetStream(const CFileItem& item)
@@ -33,4 +33,4 @@ bool IsStreamedFilesystem(const CFileItem& item)
   return URIUtils::IsStreamedFilesystem(item.GetDynPath());
 }
 
-} // namespace KODI::NETWORK
+} // namespace UNIVERSAL MEDIA CENTER::NETWORK

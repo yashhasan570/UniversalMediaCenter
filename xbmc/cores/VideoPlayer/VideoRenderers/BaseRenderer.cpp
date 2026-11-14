@@ -376,24 +376,24 @@ CRect CBaseRenderer::ApplyContentGeometry(float& contentRatio)
 
   if (CServiceBroker::GetWinSystem()->GetGfxContext().IsRasterShapeStated())
   {
-    const KODI::VIDEO::GEOMETRY::RenderGeometry& effective = inputs.geometry;
+    const UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::RenderGeometry& effective = inputs.geometry;
 
-    if (KODI::VIDEO::GEOMETRY::DescribesFrame(effective, m_sourceRect))
+    if (UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::DescribesFrame(effective, m_sourceRect))
     {
-      const KODI::VIDEO::GEOMETRY::ContentCut cut{
-          KODI::VIDEO::GEOMETRY::CutToContent(effective, m_frameContentRect, m_sourceRect)};
+      const UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::ContentCut cut{
+          UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::CutToContent(effective, m_frameContentRect, m_sourceRect)};
 
       m_sourceRect = cut.source;
       contentRatio = cut.aspect;
 
       if (!m_frameContentRect.IsEmpty() && inputs.maskAspect > 0.0f)
         renderWindow =
-            KODI::VIDEO::GEOMETRY::FitAspect(inputs.maskAspect, renderWindow, pixelRatio);
+            UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::FitAspect(inputs.maskAspect, renderWindow, pixelRatio);
     }
   }
 
   if (inputs.maintainAspect > 0.0f)
-    renderWindow = KODI::VIDEO::GEOMETRY::FitAspect(inputs.maintainAspect, m_viewRect, pixelRatio);
+    renderWindow = UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::FitAspect(inputs.maintainAspect, m_viewRect, pixelRatio);
 
   return renderWindow;
 }

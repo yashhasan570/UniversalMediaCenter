@@ -11,8 +11,8 @@
 
 #include <gtest/gtest.h>
 
-using KODI::MEDIA::MEDIA_SECTIONS;
-using KODI::MEDIA::MediaSection;
+using UNIVERSAL MEDIA CENTER::MEDIA::MEDIA_SECTIONS;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaSection;
 using XFILE::CSourcesDirectory;
 
 TEST(TestSourcesDirectory, EverySectionReadsBackFromItsPath)

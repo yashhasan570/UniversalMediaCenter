@@ -12,7 +12,7 @@
 #include "addons/addoninfo/AddonInfo.h"
 #include "addons/addoninfo/AddonType.h"
 #include "settings/lib/SettingsManager.h"
-#include "utils/XBMCTinyXML.h"
+#include "utils/TinyXML.h"
 #include "utils/XMLUtils.h"
 #include "utils/log.h"
 

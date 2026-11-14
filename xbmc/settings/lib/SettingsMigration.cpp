@@ -17,7 +17,7 @@
 // Version when the migration system was added. Early exit for upgrades to that version or lower
 constexpr int VERSION_BEFORE_MIGRATION_SYSTEM = 2;
 
-using namespace KODI::SETTINGS;
+using namespace UNIVERSAL MEDIA CENTER::SETTINGS;
 
 CSettingsMigration::CSettingsMigration() : CSettingsMigration(BuildMigrationSteps())
 {

@@ -40,8 +40,8 @@
 #include <ranges>
 #include <vector>
 
-using namespace KODI;
-using KODI::UTILITY::CDigest;
+using namespace UNIVERSAL MEDIA CENTER;
+using UNIVERSAL MEDIA CENTER::UTILITY::CDigest;
 using namespace XFILE;
 
 CFileItemList::CFileItemList() : CFileItem("", true)
@@ -411,7 +411,7 @@ void CFileItemList::Sort(SortDescription sortDescription)
 void CFileItemList::Randomize()
 {
   std::unique_lock lock(m_lock);
-  KODI::UTILS::RandomShuffle(m_items.begin(), m_items.end());
+  UNIVERSAL MEDIA CENTER::UTILS::RandomShuffle(m_items.begin(), m_items.end());
 }
 
 void CFileItemList::Archive(CArchive& ar)

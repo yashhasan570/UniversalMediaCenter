@@ -86,7 +86,7 @@ std::string NormalizeStem(std::string stem)
 }
 } // namespace
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -139,4 +139,4 @@ std::optional<std::pair<std::string, int>> GetNormalizedStemAndTrailingNumber(
   return std::make_pair(normalizedStem, *trailingNumber);
 }
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

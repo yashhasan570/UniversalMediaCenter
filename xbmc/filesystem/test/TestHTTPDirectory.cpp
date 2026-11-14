@@ -27,11 +27,11 @@
 #include <gtest/gtest.h>
 
 using namespace XFILE;
-using KODI::MEDIA::MediaSection;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaSection;
 
 #define WEBSERVER_HOST "127.0.0.1"
 
-#define SOURCE_PATH "xbmc/filesystem/test/data/httpdirectory/"
+#define SOURCE_PATH "/filesystem/test/data/httpdirectory/"
 
 #define TEST_FILE_APACHE_DEFAULT "apache-default.html"
 #define TEST_FILE_APACHE_FANCY "apache-fancy.html"
@@ -69,7 +69,7 @@ using KODI::MEDIA::MediaSection;
 class TestHTTPDirectory : public testing::Test
 {
 protected:
-  TestHTTPDirectory() : m_sourcePath(XBMC_REF_FILE_PATH(SOURCE_PATH)) {}
+  TestHTTPDirectory() : m_sourcePath(_REF_FILE_PATH(SOURCE_PATH)) {}
 
   ~TestHTTPDirectory() override = default;
 

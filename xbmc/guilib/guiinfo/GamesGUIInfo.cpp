@@ -35,9 +35,9 @@
 #include "utils/Variant.h"
 #include "utils/log.h"
 
-using namespace KODI::GUILIB::GUIINFO;
-using namespace KODI::GAME;
-using namespace KODI::RETRO;
+using namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO;
+using namespace UNIVERSAL MEDIA CENTER::GAME;
+using namespace UNIVERSAL MEDIA CENTER::RETRO;
 
 namespace
 {

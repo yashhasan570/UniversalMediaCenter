@@ -16,12 +16,12 @@
 
 @interface CWinEventsOSXImpl : NSObject
 
-- (void)MessagePush:(XBMC_Event*)newEvent;
+- (void)MessagePush:(_Event*)newEvent;
 - (size_t)GetQueueSize;
 - (bool)MessagePump;
 - (void)enableInputEvents;
 - (void)disableInputEvents;
-- (XBMC_Event)keyPressEvent:(NSEvent*)nsEvent;
+- (_Event)keyPressEvent:(NSEvent*)nsEvent;
 
 - (void)signalMouseEntered;
 - (void)signalMouseExited;

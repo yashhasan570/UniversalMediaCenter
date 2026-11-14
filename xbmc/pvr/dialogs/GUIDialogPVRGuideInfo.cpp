@@ -144,7 +144,7 @@ bool CGUIDialogPVRGuideInfo::OnClickButtonPlay(const CGUIMessage& message)
         const auto recording{CPVRItem(m_progItem).GetRecording()};
         if (recording)
         {
-          KODI::VIDEO::GUILIB::CVideoPlayActionProcessor proc{
+          UNIVERSAL MEDIA CENTER::VIDEO::GUILIB::CVideoPlayActionProcessor proc{
               std::make_shared<CFileItem>(recording)};
           proc.ProcessDefaultAction();
           if (proc.GetUserCancelled())

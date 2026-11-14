@@ -120,7 +120,7 @@ public:
   std::vector<std::string> yearsActive;
   std::string strPath;
   CScraperUrl thumbURL; // Data for available remote art
-  KODI::ART::Artwork art; // Current artwork - thumb, fanart etc.
+  UNIVERSAL MEDIA CENTER::ART::Artwork art; // Current artwork - thumb, fanart etc.
   std::vector<CDiscoAlbum> discography;
   CDateTime dateAdded; // From related file creation or modification times, or when (re-)scanned
   CDateTime dateUpdated; // Time db record Last modified

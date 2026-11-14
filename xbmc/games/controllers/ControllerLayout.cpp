@@ -24,7 +24,7 @@
 
 #include <tinyxml2.h>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 CControllerLayout::CControllerLayout() : m_topology(new CPhysicalTopology)

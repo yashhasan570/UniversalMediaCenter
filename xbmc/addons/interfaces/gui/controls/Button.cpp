@@ -9,7 +9,7 @@
 #include "Button.h"
 
 #include "addons/binary-addons/AddonDll.h"
-#include "addons/kodi-dev-kit/include/kodi/gui/controls/Button.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/gui/controls/Button.h"
 #include "guilib/GUIButtonControl.h"
 #include "utils/StringUtils.h"
 #include "utils/log.h"
@@ -19,122 +19,122 @@ namespace ADDON
 
 void Interface_GUIControlButton::Init(AddonGlobalInterface* addonInterface)
 {
-  addonInterface->toUniversal Media Center->kodi_gui->control_button =
-      new AddonToUniversal Media CenterFuncTable_kodi_gui_control_button();
+  addonInterface->toUniversal Media Center->->control_button =
+      new AddonToUniversal Media CenterFuncTable__control_button();
 
-  addonInterface->toUniversal Media Center->kodi_gui->control_button->set_visible = set_visible;
-  addonInterface->toUniversal Media Center->kodi_gui->control_button->set_enabled = set_enabled;
+  addonInterface->toUniversal Media Center->->control_button->set_visible = set_visible;
+  addonInterface->toUniversal Media Center->->control_button->set_enabled = set_enabled;
 
-  addonInterface->toUniversal Media Center->kodi_gui->control_button->set_label = set_label;
-  addonInterface->toUniversal Media Center->kodi_gui->control_button->get_label = get_label;
+  addonInterface->toUniversal Media Center->->control_button->set_label = set_label;
+  addonInterface->toUniversal Media Center->->control_button->get_label = get_label;
 
-  addonInterface->toUniversal Media Center->kodi_gui->control_button->set_label2 = set_label2;
-  addonInterface->toUniversal Media Center->kodi_gui->control_button->get_label2 = get_label2;
+  addonInterface->toUniversal Media Center->->control_button->set_label2 = set_label2;
+  addonInterface->toUniversal Media Center->->control_button->get_label2 = get_label2;
 }
 
 void Interface_GUIControlButton::DeInit(AddonGlobalInterface* addonInterface)
 {
-  delete addonInterface->toUniversal Media Center->kodi_gui->control_button;
+  delete addonInterface->toUniversal Media Center->->control_button;
 }
 
-void Interface_GUIControlButton::set_visible(KODI_HANDLE kodiBase,
-                                             KODI_GUI_CONTROL_HANDLE handle,
+void Interface_GUIControlButton::set_visible(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                             UNIVERSALMEDIA_GUI_CONTROL_HANDLE handle,
                                              bool visible)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   auto* control = static_cast<CGUIButtonControl*>(handle);
   if (!addon || !control)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}') "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}') "
                "on addon '{}'",
-               kodiBase, handle, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, addon ? addon->ID() : "unknown");
     return;
   }
 
   control->SetVisible(visible);
 }
 
-void Interface_GUIControlButton::set_enabled(KODI_HANDLE kodiBase,
-                                             KODI_GUI_CONTROL_HANDLE handle,
+void Interface_GUIControlButton::set_enabled(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                             UNIVERSALMEDIA_GUI_CONTROL_HANDLE handle,
                                              bool enabled)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   auto* control = static_cast<CGUIButtonControl*>(handle);
   if (!addon || !control)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}') "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}') "
                "on addon '{}'",
-               kodiBase, handle, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, addon ? addon->ID() : "unknown");
     return;
   }
 
   control->SetEnabled(enabled);
 }
 
-void Interface_GUIControlButton::set_label(KODI_HANDLE kodiBase,
-                                           KODI_GUI_CONTROL_HANDLE handle,
+void Interface_GUIControlButton::set_label(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                           UNIVERSALMEDIA_GUI_CONTROL_HANDLE handle,
                                            const char* label)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   auto* control = static_cast<CGUIButtonControl*>(handle);
   if (!addon || !control || !label)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}', "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}', "
                "label='{}') on addon '{}'",
-               kodiBase, handle, static_cast<const void*>(label), addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, static_cast<const void*>(label), addon ? addon->ID() : "unknown");
     return;
   }
 
   control->SetLabel(label);
 }
 
-char* Interface_GUIControlButton::get_label(KODI_HANDLE kodiBase, KODI_GUI_CONTROL_HANDLE handle)
+char* Interface_GUIControlButton::get_label(UNIVERSALMEDIA_HANDLE universalmediacenterBase, UNIVERSALMEDIA_GUI_CONTROL_HANDLE handle)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   const CGUIButtonControl* control = static_cast<const CGUIButtonControl*>(handle);
   if (!addon || !control)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}') "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}') "
                "on addon '{}'",
-               kodiBase, handle, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, addon ? addon->ID() : "unknown");
     return nullptr;
   }
 
   return strdup(control->GetLabel().c_str());
 }
 
-void Interface_GUIControlButton::set_label2(KODI_HANDLE kodiBase,
-                                            KODI_GUI_CONTROL_HANDLE handle,
+void Interface_GUIControlButton::set_label2(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                            UNIVERSALMEDIA_GUI_CONTROL_HANDLE handle,
                                             const char* label)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   auto* control = static_cast<CGUIButtonControl*>(handle);
   if (!addon || !control || !label)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}', "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}', "
                "label='{}') on addon '{}'",
-               kodiBase, handle, static_cast<const void*>(label), addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, static_cast<const void*>(label), addon ? addon->ID() : "unknown");
     return;
   }
 
   control->SetLabel2(label);
 }
 
-char* Interface_GUIControlButton::get_label2(KODI_HANDLE kodiBase, KODI_GUI_CONTROL_HANDLE handle)
+char* Interface_GUIControlButton::get_label2(UNIVERSALMEDIA_HANDLE universalmediacenterBase, UNIVERSALMEDIA_GUI_CONTROL_HANDLE handle)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   const auto* control = static_cast<const CGUIButtonControl*>(handle);
   if (!addon || !control)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}') "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}') "
                "on addon '{}'",
-               kodiBase, handle, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, addon ? addon->ID() : "unknown");
     return nullptr;
   }
 

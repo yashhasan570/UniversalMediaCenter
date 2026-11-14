@@ -24,8 +24,8 @@
 #include "utils/Variant.h"
 
 using namespace JSONRPC;
-using namespace KODI;
-using KODI::MESSAGING::TransferToMessenger;
+using namespace UNIVERSAL MEDIA CENTER;
+using UNIVERSAL MEDIA CENTER::MESSAGING::TransferToMessenger;
 
 JSONRPC_STATUS CPlaylistOperations::GetPlaylists(const std::string &method, ITransportLayer *transport, IClient *client, const CVariant &parameterObject, CVariant &result)
 {

@@ -23,7 +23,7 @@
 
 #include <charconv>
 
-namespace KODI::VIDEO
+namespace UNIVERSAL MEDIA CENTER::VIDEO
 {
 
 bool CVideoGeneratedImageFileLoader::CanLoad(const std::string& specialType) const
@@ -77,4 +77,4 @@ std::unique_ptr<CTexture> CVideoGeneratedImageFileLoader::Load(
   return CDVDFileInfo::ExtractThumbToTexture(item, chapter);
 }
 
-} // namespace KODI::VIDEO
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO

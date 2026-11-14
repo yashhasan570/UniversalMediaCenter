@@ -13,7 +13,7 @@
 #include <optional>
 #include <string_view>
 
-namespace KODI::RDS
+namespace UNIVERSAL MEDIA CENTER::RDS
 {
 
 /*!
@@ -53,4 +53,4 @@ std::optional<LANGUAGE::CTerritory> Country(unsigned int extendedCountryCode,
                                             unsigned int countryCode,
                                             unsigned int index);
 
-} // namespace KODI::RDS
+} // namespace UNIVERSAL MEDIA CENTER::RDS

@@ -9,7 +9,7 @@
 #pragma once
 
 #include "addons/Addon.h"
-#include "addons/kodi-dev-kit/include/kodi/c-api/addon_base.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api/addon_base.h"
 
 #include <map>
 #include <memory>
@@ -90,14 +90,14 @@ public:
    * @param[in,out] instance The for addon used data structure for active instance
    * @return The status of addon after the creation.
    */
-  ADDON_STATUS CreateInstance(KODI_ADDON_INSTANCE_STRUCT* instance);
+  ADDON_STATUS CreateInstance(UNIVERSALMEDIA_ADDON_INSTANCE_STRUCT* instance);
 
   /*!
    * @brief Function to destroy a on addon created instance class
    *
    * @param[in] instance The for addon used data structure for active instance
    */
-  void DestroyInstance(const KODI_ADDON_INSTANCE_STRUCT* instance);
+  void DestroyInstance(const UNIVERSALMEDIA_ADDON_INSTANCE_STRUCT* instance);
 
   bool IsInUse() const override;
   void RegisterInformer(CAddonDllInformer* informer);
@@ -131,7 +131,7 @@ private:
    *                              This is used then to interact on interface.
    * @return The status of addon after the creation.
    */
-  ADDON_STATUS Create(KODI_ADDON_INSTANCE_STRUCT* firstUniversal Media CenterInstance);
+  ADDON_STATUS Create(UNIVERSALMEDIA_ADDON_INSTANCE_STRUCT* firstUniversal Media CenterInstance);
 
   /*!
    * @brief Main addon destroying call function
@@ -152,14 +152,14 @@ private:
    * This structure, which is fixed to the addon headers, makes use of the at
    * least supposed parts for the interface.
    * This structure is defined in:
-   * /xbmc/addons/kodi-dev-kit/include/kodi/AddonBase.h
+   * //addons/universalmediacenter-dev-kit/include/universalmediacenter/AddonBase.h
    */
   AddonGlobalInterface m_interface = {};
 
   std::shared_ptr<CBinaryAddonBase> m_binaryAddonBase;
   std::unique_ptr<DllAddon> m_pDll;
   bool m_initialized{false};
-  std::map<ADDON_INSTANCE_HANDLER, KODI_ADDON_INSTANCE_STRUCT*> m_usedInstances;
+  std::map<ADDON_INSTANCE_HANDLER, UNIVERSALMEDIA_ADDON_INSTANCE_STRUCT*> m_usedInstances;
   CAddonDllInformer* m_informer = nullptr;
 };
 

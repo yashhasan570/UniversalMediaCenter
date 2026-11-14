@@ -10,7 +10,7 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI::UTILS::DOLBYVISION;
+using namespace UNIVERSAL MEDIA CENTER::UTILS::DOLBYVISION;
 
 TEST(TestDolbyVisionRpu, HevcRpuToNalAddsHeaderAndRemovesEmulationPrevention)
 {

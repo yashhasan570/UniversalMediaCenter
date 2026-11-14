@@ -17,8 +17,8 @@
 #include <Python.h>
 #include <osdefs.h>
 
-// Host-side wrap helper compiled into the xbmcgui module
-extern "C" PyObject* Universal Media CenterSwig_wrapListItem(XBMCAddon::xbmcgui::ListItem* obj, int owned);
+// Host-side wrap helper compiled into the gui module
+extern "C" PyObject* Universal Media CenterSwig_wrapListItem(Addon::gui::ListItem* obj, int owned);
 
 CContextItemAddonInvoker::CContextItemAddonInvoker(ILanguageInvocationHandler* invocationHandler,
                                                    const CFileItemPtr& item)
@@ -33,7 +33,7 @@ void CContextItemAddonInvoker::onPythonModuleInitialization(void* moduleDict)
   CAddonPythonInvoker::onPythonModuleInitialization(moduleDict);
   if (m_item)
   {
-    XBMCAddon::xbmcgui::ListItem* arg = new XBMCAddon::xbmcgui::ListItem(m_item);
+    Addon::gui::ListItem* arg = new Addon::gui::ListItem(m_item);
     // the python wrapper holds the only reference and Releases on dealloc
     arg->Acquire();
     PyObject* pyItem = Universal Media CenterSwig_wrapListItem(arg, 1);

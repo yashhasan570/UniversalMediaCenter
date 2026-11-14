@@ -13,7 +13,7 @@
 #include <array>
 #include <string>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace MESSAGING
 {

@@ -26,7 +26,7 @@
 #include "video/guilib/VideoPlayActionProcessor.h"
 #include "video/guilib/VideoSelectActionProcessor.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 CGUIWindowFavourites::CGUIWindowFavourites()
   : CGUIMediaWindow(WINDOW_FAVOURITES, "MyFavourites.xml")
@@ -66,7 +66,7 @@ bool CGUIWindowFavourites::OnSelect(int itemIdx)
   // video select action setting is for files only, except exec func is playmedia...
   if (targetItem->HasVideoInfoTag() && (!targetItem->IsFolder() || isPlayMedia))
   {
-    KODI::VIDEO::GUILIB::CVideoSelectActionProcessor proc{targetItem};
+    UNIVERSAL MEDIA CENTER::VIDEO::GUILIB::CVideoSelectActionProcessor proc{targetItem};
     if (proc.ProcessDefaultAction())
       return true;
   }
@@ -93,7 +93,7 @@ bool CGUIWindowFavourites::OnAction(const CAction& action)
     // video play action setting is for files and folders...
     if (item->HasVideoInfoTag() || (item->IsFolder() && VIDEO::UTILS::IsItemPlayable(*item)))
     {
-      KODI::VIDEO::GUILIB::CVideoPlayActionProcessor proc{item};
+      UNIVERSAL MEDIA CENTER::VIDEO::GUILIB::CVideoPlayActionProcessor proc{item};
       if (proc.ProcessDefaultAction())
         return true;
     }

@@ -54,7 +54,7 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI::VIDEO;
+using namespace UNIVERSAL MEDIA CENTER::VIDEO;
 
 namespace
 {
@@ -68,13 +68,13 @@ constexpr const char* SCRAPER_ADDON = R"(<?xml version="1.0" encoding="UTF-8"?>
 <addon id="metadata.test.videoinfoscanner" name="Test scraper" version="1.0.0"
        provider-name="Team Universal Media Center">
   <requires>
-    <import addon="xbmc.metadata" version="2.1.0"/>
+    <import addon=".metadata" version="2.1.0"/>
   </requires>
-  <extension point="xbmc.metadata.scraper.movies" library="scraper.xml"
+  <extension point=".metadata.scraper.movies" library="scraper.xml"
              cachepersistence="01:00"/>
-  <extension point="xbmc.metadata.scraper.tvshows" library="scraper.xml"
+  <extension point=".metadata.scraper.tvshows" library="scraper.xml"
              cachepersistence="01:00"/>
-  <extension point="xbmc.addon.metadata">
+  <extension point=".addon.metadata">
     <platform>all</platform>
   </extension>
 </addon>)";
@@ -111,11 +111,11 @@ constexpr const char* OTHER_SCRAPER_ADDON = R"(<?xml version="1.0" encoding="UTF
 <addon id="metadata.alternative.videoinfoscanner" name="Other test scraper" version="1.0.0"
        provider-name="Team Universal Media Center">
   <requires>
-    <import addon="xbmc.metadata" version="2.1.0"/>
+    <import addon=".metadata" version="2.1.0"/>
   </requires>
-  <extension point="xbmc.metadata.scraper.movies" library="scraper.xml"/>
-  <extension point="xbmc.metadata.scraper.tvshows" library="scraper.xml"/>
-  <extension point="xbmc.addon.metadata">
+  <extension point=".metadata.scraper.movies" library="scraper.xml"/>
+  <extension point=".metadata.scraper.tvshows" library="scraper.xml"/>
+  <extension point=".addon.metadata">
     <platform>all</platform>
   </extension>
 </addon>)";
@@ -282,7 +282,7 @@ protected:
     CMediaSource source;
     source.FromNameAndPaths(m_root, {m_root});
     CMediaSourceSettings::GetInstance()
-        .GetSources(KODI::MEDIA::MediaSection::VIDEO)
+        .GetSources(UNIVERSAL MEDIA CENTER::MEDIA::MediaSection::VIDEO)
         .push_back(source);
     ASSERT_TRUE(m_db.ExecuteQuery(m_db.PrepareSQL(
         "UPDATE path SET strContent='movies', strScraper='metadata.local', useFolderNames=1, "
@@ -292,7 +292,7 @@ protected:
 
   void TearDown() override
   {
-    std::erase_if(CMediaSourceSettings::GetInstance().GetSources(KODI::MEDIA::MediaSection::VIDEO),
+    std::erase_if(CMediaSourceSettings::GetInstance().GetSources(UNIVERSAL MEDIA CENTER::MEDIA::MediaSection::VIDEO),
                   [this](const CMediaSource& source) { return source.strPath == m_root; });
     CServiceBroker::GetSettingsComponent()->GetAdvancedSettings()->m_bVideoLibraryUseFastHash =
         m_fastHash;
@@ -586,7 +586,7 @@ protected:
     tag.SetUniqueID("100", "tmdb", true);
     if (!imdb.empty())
       tag.SetUniqueID(imdb, "imdb");
-    return m_db.SetDetailsForMovie(tag, KODI::ART::Artwork{});
+    return m_db.SetDetailsForMovie(tag, UNIVERSAL MEDIA CENTER::ART::Artwork{});
   }
 
   //! Groups the similar videos found without asking, as the setting's default does
@@ -886,7 +886,7 @@ TEST_F(TestVideoInfoScanner, PlaylistsOfADiscAlreadyInTheLibraryKeepTheirMovie)
   tag.m_strTitle = "Film";
   tag.m_strFileNameAndPath = main;
   tag.m_strPath = URIUtils::GetDirectory(main);
-  const int idMovie{m_db.SetDetailsForMovie(tag, KODI::ART::Artwork{})};
+  const int idMovie{m_db.SetDetailsForMovie(tag, UNIVERSAL MEDIA CENTER::ART::Artwork{})};
   ASSERT_GT(idMovie, 0);
   CFileItem version{other, false};
   ASSERT_TRUE(m_db.AddVideoAsset(VideoDbContentType::MOVIES, idMovie, VIDEO_VERSION_ID_DEFAULT,
@@ -1334,7 +1334,7 @@ TEST_F(TestVideoInfoScanner, ARefreshWithAUrlNfoThatCantReadTheDetailsKeepsTheMo
   tag.m_strTitle = "Afilm";
   tag.m_strFileNameAndPath = film;
   tag.m_strPath = folder;
-  const int idMovie{m_db.SetDetailsForMovie(tag, KODI::ART::Artwork{})};
+  const int idMovie{m_db.SetDetailsForMovie(tag, UNIVERSAL MEDIA CENTER::ART::Artwork{})};
   ASSERT_GT(idMovie, 0);
 
   ASSERT_TRUE(m_db.GetMovieInfo({}, tag, idMovie));

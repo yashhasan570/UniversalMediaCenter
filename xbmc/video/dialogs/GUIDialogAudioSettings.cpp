@@ -383,7 +383,7 @@ void CGUIDialogAudioSettings::AudioStreamsOptionFiller(const SettingConstPtr& se
 
   if (appPlayer != nullptr)
   {
-    using namespace KODI::VIDEO;
+    using namespace UNIVERSAL MEDIA CENTER::VIDEO;
     const std::vector<AudioStreamInfoExt> streams =
         CVideoStreamSelect::GetAudioStreams(appPlayer.get());
     const int streamCount = streams.size();

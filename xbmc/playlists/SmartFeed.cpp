@@ -16,7 +16,7 @@
 #include <numeric>
 #include <utility>
 
-namespace KODI::PLAYLIST
+namespace UNIVERSAL MEDIA CENTER::PLAYLIST
 {
 
 CSmartFeed::CSmartFeed(int total, Fetch fetch)
@@ -24,7 +24,7 @@ CSmartFeed::CSmartFeed(int total, Fetch fetch)
     m_pool(static_cast<size_t>(std::max(total, 0)))
 {
   std::iota(m_pool.begin(), m_pool.end(), 0);
-  KODI::UTILS::RandomShuffle(m_pool.begin(), m_pool.end());
+  UNIVERSAL MEDIA CENTER::UTILS::RandomShuffle(m_pool.begin(), m_pool.end());
 }
 
 std::vector<std::shared_ptr<CFileItem>> CSmartFeed::Take(int count)
@@ -53,7 +53,7 @@ std::vector<std::shared_ptr<CFileItem>> CSmartFeed::Take(int count)
 void CSmartFeed::Restart()
 {
   std::unique_lock lock(m_critSection);
-  KODI::UTILS::RandomShuffle(m_pool.begin(), m_pool.end());
+  UNIVERSAL MEDIA CENTER::UTILS::RandomShuffle(m_pool.begin(), m_pool.end());
   m_next = 0;
 }
 
@@ -69,4 +69,4 @@ int CSmartFeed::GetLeft() const
   return static_cast<int>(m_pool.size() - m_next);
 }
 
-} // namespace KODI::PLAYLIST
+} // namespace UNIVERSAL MEDIA CENTER::PLAYLIST

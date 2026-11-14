@@ -10,7 +10,7 @@
 
 #include <EGL/egl.h>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace RETRO;
 
 CRPProcessInfoEGL::CRPProcessInfoEGL(std::string platformName)

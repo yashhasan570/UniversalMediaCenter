@@ -11,7 +11,7 @@
 #include <set>
 #include <string>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace KEYMAP
 {
@@ -50,4 +50,4 @@ public:
   virtual void OnPress(const std::string& keyName) = 0;
 };
 } // namespace KEYMAP
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

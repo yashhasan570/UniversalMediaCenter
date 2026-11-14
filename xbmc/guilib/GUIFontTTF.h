@@ -184,7 +184,7 @@ protected:
   void DrawTextInternal(CGraphicContext& context,
                         float x,
                         float y,
-                        std::span<const KODI::UTILS::COLOR::Color> colors,
+                        std::span<const UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color> colors,
                         std::span<const character_t> text,
                         uint32_t alignment,
                         float maxPixelWidth,
@@ -208,7 +208,7 @@ protected:
                        float posX,
                        float posY,
                        const Character* ch,
-                       KODI::UTILS::COLOR::Color color,
+                       UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color color,
                        bool roundX,
                        std::vector<SVertex>& vertices);
   void ClearCharacterCache();
@@ -255,7 +255,7 @@ protected:
   unsigned int GetTextureLineHeight() const;
   unsigned int GetMaxFontHeight() const;
 
-  KODI::UTILS::COLOR::Color m_color{KODI::UTILS::COLOR::NONE};
+  UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color m_color{UNIVERSAL MEDIA CENTER::UTILS::COLOR::NONE};
 
   std::vector<Character> m_char; // our characters
 

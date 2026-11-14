@@ -10,7 +10,7 @@
 
 #include "PrimitiveDetector.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace KEYMAP
 {
@@ -46,4 +46,4 @@ private:
   const unsigned int m_buttonIndex;
 };
 } // namespace JOYSTICK
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

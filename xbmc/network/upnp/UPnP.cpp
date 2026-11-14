@@ -1,5 +1,5 @@
 /*
- * UPnP Support for XBMC
+ * UPnP Support for 
  *  Copyright (c) 2006 c0diq (Sylvain Rebaud)
  *      Portions Copyright (c) by the authors of libPlatinum
  *      http://www.plutinosoft.com/blog/category/platinum/
@@ -40,7 +40,7 @@
 #include <Platinum/Source/Platinum/Platinum.h>
 
 using namespace UPNP;
-using namespace KODI::MESSAGING;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
 
 #define UPNP_DEFAULT_MAX_RETURNED_ITEMS 200
 #define UPNP_DEFAULT_MIN_RETURNED_ITEMS 30
@@ -206,7 +206,7 @@ public:
     if (watched)
     {
       CFileItem temp(item);
-      temp.SetProperty(KODI::ITEM::PROPERTY::ORIGINAL_LISTITEM_URL, item.GetPath());
+      temp.SetProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::ORIGINAL_LISTITEM_URL, item.GetPath());
       return SaveFileState(temp, CBookmark(), watched);
     }
     else
@@ -222,7 +222,7 @@ public:
 
   bool SaveFileState(const CFileItem& item, const CBookmark& bookmark, const bool updatePlayCount)
   {
-    std::string path = item.GetProperty(KODI::ITEM::PROPERTY::ORIGINAL_LISTITEM_URL).asString();
+    std::string path = item.GetProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::ORIGINAL_LISTITEM_URL).asString();
     if (!item.HasVideoInfoTag() || path.empty())
     {
       return false;
@@ -241,13 +241,13 @@ public:
                              (long)item.GetVideoInfoTag()->GetResumePoint().timeInSeconds),
           NPT_String::Format("<upnp:lastPlaybackPosition>%ld</upnp:lastPlaybackPosition>", time)));
 
-      NPT_String curr_value = "<xbmc:lastPlayerState>";
+      NPT_String curr_value = "<:lastPlayerState>";
       PLT_Didl::AppendXmlEscape(curr_value,
                                 item.GetVideoInfoTag()->GetResumePoint().playerState.c_str());
-      curr_value += "</xbmc:lastPlayerState>";
-      NPT_String new_value = "<xbmc:lastPlayerState>";
+      curr_value += "</:lastPlayerState>";
+      NPT_String new_value = "<:lastPlayerState>";
       PLT_Didl::AppendXmlEscape(new_value, bookmark.playerState.c_str());
-      new_value += "</xbmc:lastPlayerState>";
+      new_value += "</:lastPlayerState>";
       values.insert(std::make_pair(curr_value, new_value));
     }
     if (updatePlayCount)
@@ -553,7 +553,7 @@ CUPnP::CUPnP()
     m_CtrlPointHolder(new CCtrlPointReferenceHolder())
 {
   NPT_LogManager::GetDefault().Configure("plist:.level=FINE;.handlers=CustomHandler;");
-  NPT_LogHandler::Create("xbmc", "CustomHandler", m_LogHandler);
+  NPT_LogHandler::Create("", "CustomHandler", m_LogHandler);
   m_LogHandler->SetCustomHandlerFunction(&UPnPLogger);
 
   // initialize upnp context

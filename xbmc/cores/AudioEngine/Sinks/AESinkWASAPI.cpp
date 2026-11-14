@@ -1022,7 +1022,7 @@ void CAESinkWASAPI::Drain()
 
   // Wait for last data in buffer to play before stopping (current buffer + WriteLastBuffer).
   // If WriteLastBuffer() fails, it doesn't matter wait for the time of two buffers anyway.
-  KODI::TIME::Sleep(std::chrono::milliseconds(static_cast<int>(m_sinkLatency * 1000)));
+  UNIVERSAL MEDIA CENTER::TIME::Sleep(std::chrono::milliseconds(static_cast<int>(m_sinkLatency * 1000)));
 
   if (m_running)
   {

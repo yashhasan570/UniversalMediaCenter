@@ -18,7 +18,7 @@
 
 #include <mutex>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace RETRO;
 
 CGUIGameRenderManager::~CGUIGameRenderManager() = default;

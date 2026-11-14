@@ -12,17 +12,17 @@
 #include "LanguageHook.h"
 #include "filesystem/File.h"
 
-namespace XBMCAddon
+namespace Addon
 {
-  namespace xbmcvfs
+  namespace vfs
   {
     //
     /// \defgroup python_stat Stat
-    /// \ingroup python_xbmcvfs
+    /// \ingroup python_vfs
     /// @{
     /// @brief **Get file or file system status.**
     ///
-    /// \python_class{ xbmcvfs.Stat(path) }
+    /// \python_class{ vfs.Stat(path) }
     ///
     /// These class return information about a file. Execute (search) permission
     /// is required on all of the directories in path that lead to the file.
@@ -36,7 +36,7 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    ///   st = xbmcvfs.Stat(path)
+    ///   st = vfs.Stat(path)
     ///   modified = st.st_mtime()
     /// ..
     /// ~~~~~~~~~~~~~

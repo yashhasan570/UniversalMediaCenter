@@ -28,7 +28,7 @@ public:
   bool BeginRender() override { return true; }
   bool EndRender() override { return true; }
   void PresentRender(bool, bool) override {}
-  bool ClearBuffers(KODI::UTILS::COLOR::Color) override { return true; }
+  bool ClearBuffers(UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color) override { return true; }
   bool IsExtSupported(const char*) const override { return false; }
   void SetViewPort(const CRect&) override {}
   void GetViewPort(CRect&) override {}

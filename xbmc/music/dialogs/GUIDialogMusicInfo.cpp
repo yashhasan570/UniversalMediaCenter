@@ -60,9 +60,9 @@
 using namespace XFILE;
 using namespace MUSIC_INFO;
 using namespace MUSICDATABASEDIRECTORY;
-using namespace KODI;
-using namespace KODI::MESSAGING;
-using KODI::MEDIA::MediaSection;
+using namespace UNIVERSAL MEDIA CENTER;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaSection;
 
 #define CONTROL_BTN_REFRESH      6
 #define CONTROL_USERRATING       7
@@ -783,7 +783,7 @@ void CGUIDialogMusicInfo::OnGetArt()
     return; // Cancelled
 
   CFileItemList items;
-  const KODI::ART::Artwork& primeArt = m_item->GetArt(); // art without fallbacks
+  const UNIVERSAL MEDIA CENTER::ART::Artwork& primeArt = m_item->GetArt(); // art without fallbacks
   bool bHasArt = m_item->HasArt(type);
   bool bFallback(false);
   if (bHasArt)

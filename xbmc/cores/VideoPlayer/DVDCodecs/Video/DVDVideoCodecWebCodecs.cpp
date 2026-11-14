@@ -89,7 +89,7 @@ const WebCodecsPixelFormatInfo* FindPixelFormat(int pixelFormat)
 // Expose the bridge enums to JavaScript via Embind so the JS bridge can read
 // the canonical C++ values (Module.WebCodecsPixelFormat.NV12 etc.) instead of
 // duplicating them. Must live at global scope, hence outside any namespace.
-EMSCRIPTEN_BINDINGS(kodi_webcodecs_bridge)
+EMSCRIPTEN_BINDINGS(universalmediacenter_webcodecs_bridge)
 {
   emscripten::enum_<WebCodecsPixelFormat> pixelFormats("WebCodecsPixelFormat");
   pixelFormats.value("UNKNOWN", WEBCODECS_PIXFMT_UNKNOWN);

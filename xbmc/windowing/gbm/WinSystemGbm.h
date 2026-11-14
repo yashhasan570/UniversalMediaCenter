@@ -26,7 +26,7 @@
 
 class IDispResource;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace UTILS
 {
@@ -68,8 +68,8 @@ public:
   bool SetVideoOutput(const VideoPicture* videoPicture) override;
 
   void SetColorimetry(const VideoPicture* videoPicture) override;
-  KODI::UTILS::Colorimetry GetColorimetry() const override { return m_colorimetry; }
-  KODI::UTILS::Eotf GetEotf() const override { return m_eotf; }
+  UNIVERSAL MEDIA CENTER::UTILS::Colorimetry GetColorimetry() const override { return m_colorimetry; }
+  UNIVERSAL MEDIA CENTER::UTILS::Eotf GetEotf() const override { return m_eotf; }
   bool SetHDR(const VideoPicture* videoPicture) override;
   bool IsHDRDisplay() override;
   CHDRCapabilities GetDisplayHDRCapabilities() const override;
@@ -106,15 +106,15 @@ protected:
 private:
   static void ApplyLimitGuiSize(void* userptr);
 
-  KODI::MESSAGING::ThreadMessageCallback m_limitGuiSizeCallback{ApplyLimitGuiSize, this};
+  UNIVERSAL MEDIA CENTER::MESSAGING::ThreadMessageCallback m_limitGuiSizeCallback{ApplyLimitGuiSize, this};
 
   CDRMPropertyBlob m_hdrBlob;
-  KODI::UTILS::Eotf m_eotf = KODI::UTILS::Eotf::TRADITIONAL_SDR;
-  KODI::UTILS::Colorimetry m_colorimetry = KODI::UTILS::Colorimetry::DEFAULT;
+  UNIVERSAL MEDIA CENTER::UTILS::Eotf m_eotf = UNIVERSAL MEDIA CENTER::UTILS::Eotf::TRADITIONAL_SDR;
+  UNIVERSAL MEDIA CENTER::UTILS::Colorimetry m_colorimetry = UNIVERSAL MEDIA CENTER::UTILS::Colorimetry::DEFAULT;
 
   std::unique_ptr<UTILS::CDisplayInfo> m_info;
 };
 
 } // namespace GBM
 } // namespace WINDOWING
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

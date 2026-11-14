@@ -12,7 +12,7 @@
 #include "games/controllers/input/PhysicalFeature.h"
 #include "input/joysticks/DriverPrimitive.h"
 #include "input/joysticks/interfaces/IButtonMapper.h"
-#include "input/keyboard/XBMC_keysym.h"
+#include "input/keyboard/_keysym.h"
 #include "input/keyboard/interfaces/IKeyboardDriverHandler.h"
 #include "threads/CriticalSection.h"
 #include "threads/Event.h"
@@ -25,7 +25,7 @@
 #include <string>
 #include <vector>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace KEYMAP
 {
@@ -118,4 +118,4 @@ private:
   std::map<std::string, CPhysicalFeature> m_keyMap; // Key symbol -> feature
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

@@ -17,7 +17,7 @@
 #include <string>
 #include <vector>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -65,7 +65,7 @@ protected:
   void UpdateOutputSize(const float2 outputSize);
   void UpdateMVPs();
   bool PrepareParameters(IShaderTexture& sourceTexture);
-  void CalculateScaledSize(const KODI::SHADER::ShaderPass& pass,
+  void CalculateScaledSize(const UNIVERSAL MEDIA CENTER::SHADER::ShaderPass& pass,
                            const float2& prevSize,
                            float2& scaledSize);
   void DisposeShaders();
@@ -115,4 +115,4 @@ protected:
   double m_speed{1.0};
 };
 } // namespace SHADER
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

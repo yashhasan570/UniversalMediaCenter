@@ -15,7 +15,7 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI::RETRO;
+using namespace UNIVERSAL MEDIA CENTER::RETRO;
 using namespace std::chrono_literals;
 
 namespace

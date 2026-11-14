@@ -21,7 +21,7 @@ constexpr const char* LUNA_RESPONSE_SCREENSAVER =
     "luna://com.webos.service.tvpower/power/responseScreenSaverRequest";
 } // namespace
 
-namespace KODI::WINDOWING::WAYLAND
+namespace UNIVERSAL MEDIA CENTER::WINDOWING::WAYLAND
 {
 
 COSScreenSaverWebOS::~COSScreenSaverWebOS()
@@ -97,4 +97,4 @@ bool COSScreenSaverWebOS::OnScreenSaverAboutToStart(LSHandle* sh, LSMessage* rep
   return true;
 }
 
-} // namespace KODI::WINDOWING::WAYLAND
+} // namespace UNIVERSAL MEDIA CENTER::WINDOWING::WAYLAND

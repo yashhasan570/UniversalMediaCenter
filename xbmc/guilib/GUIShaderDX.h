@@ -96,7 +96,7 @@ public:
   // need to use aligned allocation because we use XMMATRIX in structures.
   void* operator new (size_t size)
   {
-    void* ptr = KODI::MEMORY::AlignedMalloc(size, __alignof(CGUIShaderDX));
+    void* ptr = UNIVERSAL MEDIA CENTER::MEMORY::AlignedMalloc(size, __alignof(CGUIShaderDX));
     if (!ptr)
       throw std::bad_alloc();
     return ptr;
@@ -104,7 +104,7 @@ public:
   // free aligned memory.
   void operator delete (void* ptr)
   {
-    KODI::MEMORY::AlignedFree(ptr);
+    UNIVERSAL MEDIA CENTER::MEMORY::AlignedFree(ptr);
   }
 
 private:

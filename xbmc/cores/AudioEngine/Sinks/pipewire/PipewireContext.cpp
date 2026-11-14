@@ -13,7 +13,7 @@
 
 #include <stdexcept>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace PIPEWIRE;
 
 CPipewireContext::CPipewireContext(CPipewireThreadLoop& loop) : m_threadLoop(loop)

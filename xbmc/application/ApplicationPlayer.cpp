@@ -35,7 +35,7 @@
 #include <mutex>
 #include <stdexcept>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace std::chrono_literals;
 
 std::shared_ptr<const IPlayer> CApplicationPlayer::GetInternal() const
@@ -1104,7 +1104,7 @@ void CApplicationPlayer::Render(bool clear, uint32_t alpha, bool gui)
     player->Render(clear, alpha, gui);
 }
 
-bool CApplicationPlayer::CompositeVideoCapture(KODI::RENDERING::CAPTURE::CaptureResult& result)
+bool CApplicationPlayer::CompositeVideoCapture(UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CaptureResult& result)
 {
   const std::shared_ptr<IPlayer> player = GetInternal();
   return !player || player->CompositeVideoCapture(result);

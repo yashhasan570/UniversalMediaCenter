@@ -156,13 +156,13 @@ void CGUIDialogColorPicker::SetItems(const CFileItemList& pList)
 
 void CGUIDialogColorPicker::LoadColors()
 {
-  LoadColors(CSpecialProtocol::TranslatePathConvertCase("special://xbmc/system/dialogcolors.xml"));
+  LoadColors(CSpecialProtocol::TranslatePathConvertCase("special:///system/dialogcolors.xml"));
 }
 
 void CGUIDialogColorPicker::LoadColors(const std::string& filePath)
 {
   CGUIColorManager colorManager;
-  std::vector<std::pair<std::string, KODI::UTILS::COLOR::ColorInfo>> colors;
+  std::vector<std::pair<std::string, UNIVERSAL MEDIA CENTER::UTILS::COLOR::ColorInfo>> colors;
   if (colorManager.LoadColorsListFromXML(filePath, colors, true))
   {
     for (auto& color : colors)

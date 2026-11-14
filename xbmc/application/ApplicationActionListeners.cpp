@@ -19,7 +19,7 @@ CApplicationActionListeners::CApplicationActionListeners(CCriticalSection& secti
 {
 }
 
-void CApplicationActionListeners::RegisterActionListener(KODI::ACTION::IActionListener* listener)
+void CApplicationActionListeners::RegisterActionListener(UNIVERSAL MEDIA CENTER::ACTION::IActionListener* listener)
 {
   std::unique_lock lock(m_critSection);
   const auto it = std::ranges::find(m_actionListeners, listener);
@@ -27,7 +27,7 @@ void CApplicationActionListeners::RegisterActionListener(KODI::ACTION::IActionLi
     m_actionListeners.push_back(listener);
 }
 
-void CApplicationActionListeners::UnregisterActionListener(KODI::ACTION::IActionListener* listener)
+void CApplicationActionListeners::UnregisterActionListener(UNIVERSAL MEDIA CENTER::ACTION::IActionListener* listener)
 {
   std::unique_lock lock(m_critSection);
   auto it = std::ranges::find(m_actionListeners, listener);

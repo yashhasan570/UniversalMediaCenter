@@ -32,7 +32,7 @@
 
 #include <EGL/eglext.h>
 
-using namespace KODI::WINDOWING::GBM;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::GBM;
 
 using namespace std::chrono_literals;
 
@@ -163,7 +163,7 @@ void CWinSystemGbmGLContext::PresentRender(bool rendered, bool videoLayer)
   }
   else
   {
-    KODI::TIME::Sleep(10ms);
+    UNIVERSAL MEDIA CENTER::TIME::Sleep(10ms);
   }
 
   if (m_dispReset && m_dispResetTimer.IsTimePast())
@@ -219,7 +219,7 @@ bool CWinSystemGbmGLContext::SetGuiCompositing(int colorTransfer)
     {
       std::string defines;
       if (UseLimitedColor())
-        defines += "#define KODI_LIMITED_RANGE 1\n";
+        defines += "#define UNIVERSALMEDIA_LIMITED_RANGE 1\n";
       m_compositeShader = std::make_unique<CGuiCompositeShaderGL>(defines);
       if (!m_compositeShader->CompileAndLink())
       {

@@ -9,7 +9,7 @@ import android.net.Uri;
  * Created by koyin on 17/12/2017.
  */
 
-public abstract class XBMCContentProvider extends ContentProvider
+public abstract class ContentProvider extends ContentProvider
 {
   protected static String TAG = "@APP_NAME@";
 

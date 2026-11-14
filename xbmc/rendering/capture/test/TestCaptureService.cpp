@@ -20,7 +20,7 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI::RENDERING::CAPTURE;
+using namespace UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE;
 using namespace std::chrono_literals;
 
 namespace

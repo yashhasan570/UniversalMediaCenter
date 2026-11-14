@@ -1,4 +1,4 @@
-#if defined(KODI_GAMMA)
+#if defined(UNIVERSAL MEDIA CENTER_GAMMA)
 #ifdef GL_FRAGMENT_PRECISION_HIGH
 #define GAMMA_PREC highp
 #else

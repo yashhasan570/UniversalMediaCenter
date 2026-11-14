@@ -8,7 +8,7 @@
 
 #pragma once
 
-namespace KODI::WEATHER
+namespace UNIVERSAL MEDIA CENTER::WEATHER
 {
 // Specification: https://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Weather_addons
 
@@ -81,4 +81,4 @@ constexpr const char* GENERAL_LOCATION_WITH_INDEX = "Location{}"; // Format: Loc
 // Weather condition codes
 constexpr const char* CONDITION_CODE_NOT_AVAILABLE = "na";
 
-} // namespace KODI::WEATHER
+} // namespace UNIVERSAL MEDIA CENTER::WEATHER

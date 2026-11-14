@@ -11,50 +11,50 @@
 #include "ServiceBroker.h"
 #include "URL.h"
 #include "addons/binary-addons/AddonDll.h"
-#include "addons/kodi-dev-kit/include/kodi/gui/dialogs/FileBrowser.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/gui/dialogs/FileBrowser.h"
 #include "dialogs/GUIDialogFileBrowser.h"
 #include "settings/MediaSourceSettings.h"
 #include "storage/MediaManager.h"
 #include "utils/URIUtils.h"
 #include "utils/log.h"
 
-using KODI::MEDIA::MediaSection;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaSection;
 
 namespace ADDON
 {
 
 void Interface_GUIDialogFileBrowser::Init(AddonGlobalInterface* addonInterface)
 {
-  addonInterface->toUniversal Media Center->kodi_gui->dialogFileBrowser =
-      new AddonToUniversal Media CenterFuncTable_kodi_gui_dialogFileBrowser();
+  addonInterface->toUniversal Media Center->->dialogFileBrowser =
+      new AddonToUniversal Media CenterFuncTable__dialogFileBrowser();
 
-  addonInterface->toUniversal Media Center->kodi_gui->dialogFileBrowser->show_and_get_directory =
+  addonInterface->toUniversal Media Center->->dialogFileBrowser->show_and_get_directory =
       show_and_get_directory;
-  addonInterface->toUniversal Media Center->kodi_gui->dialogFileBrowser->show_and_get_file = show_and_get_file;
-  addonInterface->toUniversal Media Center->kodi_gui->dialogFileBrowser->show_and_get_file_from_dir =
+  addonInterface->toUniversal Media Center->->dialogFileBrowser->show_and_get_file = show_and_get_file;
+  addonInterface->toUniversal Media Center->->dialogFileBrowser->show_and_get_file_from_dir =
       show_and_get_file_from_dir;
-  addonInterface->toUniversal Media Center->kodi_gui->dialogFileBrowser->show_and_get_file_list =
+  addonInterface->toUniversal Media Center->->dialogFileBrowser->show_and_get_file_list =
       show_and_get_file_list;
-  addonInterface->toUniversal Media Center->kodi_gui->dialogFileBrowser->show_and_get_source = show_and_get_source;
-  addonInterface->toUniversal Media Center->kodi_gui->dialogFileBrowser->show_and_get_image = show_and_get_image;
-  addonInterface->toUniversal Media Center->kodi_gui->dialogFileBrowser->show_and_get_image_list =
+  addonInterface->toUniversal Media Center->->dialogFileBrowser->show_and_get_source = show_and_get_source;
+  addonInterface->toUniversal Media Center->->dialogFileBrowser->show_and_get_image = show_and_get_image;
+  addonInterface->toUniversal Media Center->->dialogFileBrowser->show_and_get_image_list =
       show_and_get_image_list;
-  addonInterface->toUniversal Media Center->kodi_gui->dialogFileBrowser->clear_file_list = clear_file_list;
+  addonInterface->toUniversal Media Center->->dialogFileBrowser->clear_file_list = clear_file_list;
 }
 
 void Interface_GUIDialogFileBrowser::DeInit(AddonGlobalInterface* addonInterface)
 {
-  delete addonInterface->toUniversal Media Center->kodi_gui->dialogFileBrowser;
+  delete addonInterface->toUniversal Media Center->->dialogFileBrowser;
 }
 
-bool Interface_GUIDialogFileBrowser::show_and_get_directory(KODI_HANDLE kodiBase,
+bool Interface_GUIDialogFileBrowser::show_and_get_directory(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
                                                             const char* shares,
                                                             const char* heading,
                                                             const char* path_in,
                                                             char** path_out,
                                                             bool write_only)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon)
   {
     CLog::LogF(LOGERROR, "Invalid data");
@@ -82,7 +82,7 @@ bool Interface_GUIDialogFileBrowser::show_and_get_directory(KODI_HANDLE kodiBase
   return bRet;
 }
 
-bool Interface_GUIDialogFileBrowser::show_and_get_file(KODI_HANDLE kodiBase,
+bool Interface_GUIDialogFileBrowser::show_and_get_file(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
                                                        const char* shares,
                                                        const char* mask,
                                                        const char* heading,
@@ -91,7 +91,7 @@ bool Interface_GUIDialogFileBrowser::show_and_get_file(KODI_HANDLE kodiBase,
                                                        bool use_thumbs,
                                                        bool use_file_directories)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon)
   {
     CLog::LogF(LOGERROR, "Invalid data");
@@ -120,7 +120,7 @@ bool Interface_GUIDialogFileBrowser::show_and_get_file(KODI_HANDLE kodiBase,
   return bRet;
 }
 
-bool Interface_GUIDialogFileBrowser::show_and_get_file_from_dir(KODI_HANDLE kodiBase,
+bool Interface_GUIDialogFileBrowser::show_and_get_file_from_dir(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
                                                                 const char* directory,
                                                                 const char* mask,
                                                                 const char* heading,
@@ -130,7 +130,7 @@ bool Interface_GUIDialogFileBrowser::show_and_get_file_from_dir(KODI_HANDLE kodi
                                                                 bool use_file_directories,
                                                                 bool single_list)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon)
   {
     CLog::LogF(LOGERROR, "Invalid data");
@@ -156,7 +156,7 @@ bool Interface_GUIDialogFileBrowser::show_and_get_file_from_dir(KODI_HANDLE kodi
   return bRet;
 }
 
-bool Interface_GUIDialogFileBrowser::show_and_get_file_list(KODI_HANDLE kodiBase,
+bool Interface_GUIDialogFileBrowser::show_and_get_file_list(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
                                                             const char* shares,
                                                             const char* mask,
                                                             const char* heading,
@@ -165,7 +165,7 @@ bool Interface_GUIDialogFileBrowser::show_and_get_file_list(KODI_HANDLE kodiBase
                                                             bool use_thumbs,
                                                             bool use_file_directories)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon)
   {
     CLog::LogF(LOGERROR, "Invalid data");
@@ -201,14 +201,14 @@ bool Interface_GUIDialogFileBrowser::show_and_get_file_list(KODI_HANDLE kodiBase
   return bRet;
 }
 
-bool Interface_GUIDialogFileBrowser::show_and_get_source(KODI_HANDLE kodiBase,
+bool Interface_GUIDialogFileBrowser::show_and_get_source(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
                                                          const char* path_in,
                                                          char** path_out,
                                                          bool allowNetworkShares,
                                                          const char* additionalShare,
                                                          const char* strType)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon)
   {
     CLog::LogF(LOGERROR, "Invalid data");
@@ -231,19 +231,19 @@ bool Interface_GUIDialogFileBrowser::show_and_get_source(KODI_HANDLE kodiBase,
   if (additionalShare)
     GetVECShares(vecShares, additionalShare, strPath);
   const bool bRet{CGUIDialogFileBrowser::ShowAndGetSource(
-      strPath, allowNetworkShares, &vecShares, KODI::MEDIA::MediaSectionFromName(strType))};
+      strPath, allowNetworkShares, &vecShares, UNIVERSAL MEDIA CENTER::MEDIA::MediaSectionFromName(strType))};
   if (bRet)
     *path_out = strdup(strPath.c_str());
   return bRet;
 }
 
-bool Interface_GUIDialogFileBrowser::show_and_get_image(KODI_HANDLE kodiBase,
+bool Interface_GUIDialogFileBrowser::show_and_get_image(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
                                                         const char* shares,
                                                         const char* heading,
                                                         const char* path_in,
                                                         char** path_out)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon)
   {
     CLog::LogF(LOGERROR, "Invalid data");
@@ -269,13 +269,13 @@ bool Interface_GUIDialogFileBrowser::show_and_get_image(KODI_HANDLE kodiBase,
   return bRet;
 }
 
-bool Interface_GUIDialogFileBrowser::show_and_get_image_list(KODI_HANDLE kodiBase,
+bool Interface_GUIDialogFileBrowser::show_and_get_image_list(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
                                                              const char* shares,
                                                              const char* heading,
                                                              char*** file_list,
                                                              unsigned int* entries)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon)
   {
     CLog::LogF(LOGERROR, "Invalid data");
@@ -309,11 +309,11 @@ bool Interface_GUIDialogFileBrowser::show_and_get_image_list(KODI_HANDLE kodiBas
   return bRet;
 }
 
-void Interface_GUIDialogFileBrowser::clear_file_list(KODI_HANDLE kodiBase,
+void Interface_GUIDialogFileBrowser::clear_file_list(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
                                                      char*** file_list,
                                                      unsigned int entries)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon)
   {
     CLog::LogF(LOGERROR, "Invalid data");
@@ -355,7 +355,7 @@ void Interface_GUIDialogFileBrowser::GetVECShares(std::vector<CMediaSource>& vec
        {MediaSection::PROGRAMS, MediaSection::FILES, MediaSection::MUSIC, MediaSection::VIDEO,
         MediaSection::PICTURES})
   {
-    if (strShares.find(KODI::MEDIA::NameOf(section)) == std::string::npos)
+    if (strShares.find(UNIVERSAL MEDIA CENTER::MEDIA::NameOf(section)) == std::string::npos)
       continue;
 
     const std::vector<CMediaSource>& sources{

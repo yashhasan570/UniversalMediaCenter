@@ -17,7 +17,7 @@
 #include <memory>
 #include <string>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace ACTION
 {
@@ -111,4 +111,4 @@ private:
   std::string m_lastPressed;
 };
 } // namespace KEYMAP
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

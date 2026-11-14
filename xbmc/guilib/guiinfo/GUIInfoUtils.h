@@ -11,12 +11,12 @@
 #include <optional>
 #include <string>
 
-namespace KODI::LANGUAGE
+namespace UNIVERSAL MEDIA CENTER::LANGUAGE
 {
 class CLanguageTag;
 }
 
-namespace KODI::GUILIB::GUIINFO
+namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO
 {
 
 class CGUIInfoUtils
@@ -37,4 +37,4 @@ public:
   static std::string FormatLanguage(const LANGUAGE::CLanguageTag& language);
 };
 
-} // namespace KODI::GUILIB::GUIINFO
+} // namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO

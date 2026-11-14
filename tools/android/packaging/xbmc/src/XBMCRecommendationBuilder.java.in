@@ -12,7 +12,7 @@ import @APP_PACKAGE@.R;
 /*
  * This class builds recommendations as notifications with videos as inputs.
  */
-public class XBMCRecommendationBuilder
+public class RecommendationBuilder
 {
   private static final String TAG = "@APP_NAME@";
 
@@ -31,59 +31,59 @@ public class XBMCRecommendationBuilder
   final String API_NOTIFICATION_EXTRA_BACKGROUND_IMAGE_URI = "android.backgroundImageUri";
   final String API_NOTIFICATION_CATEGORY_RECOMMENDATION = "recommendation";
 
-  public XBMCRecommendationBuilder()
+  public RecommendationBuilder()
   {
   }
 
-  public XBMCRecommendationBuilder setContext(Context context)
+  public RecommendationBuilder setContext(Context context)
   {
     mContext = context;
     return this;
   }
 
-  public XBMCRecommendationBuilder setId(int id)
+  public RecommendationBuilder setId(int id)
   {
     mId = id;
     return this;
   }
 
-  public XBMCRecommendationBuilder setPriority(int priority)
+  public RecommendationBuilder setPriority(int priority)
   {
     mPriority = priority;
     return this;
   }
 
-  public XBMCRecommendationBuilder setTitle(String title)
+  public RecommendationBuilder setTitle(String title)
   {
     mTitle = title;
     return this;
   }
 
-  public XBMCRecommendationBuilder setDescription(String description)
+  public RecommendationBuilder setDescription(String description)
   {
     mDescription = description;
     return this;
   }
 
-  public XBMCRecommendationBuilder setBitmap(Bitmap bitmap)
+  public RecommendationBuilder setBitmap(Bitmap bitmap)
   {
     mBitmap = bitmap;
     return this;
   }
 
-  public XBMCRecommendationBuilder setBackground(String uri)
+  public RecommendationBuilder setBackground(String uri)
   {
     mBackgroundUri = uri;
     return this;
   }
 
-  public XBMCRecommendationBuilder setIntent(PendingIntent intent)
+  public RecommendationBuilder setIntent(PendingIntent intent)
   {
     mIntent = intent;
     return this;
   }
 
-  public XBMCRecommendationBuilder setSmallIcon(int resourceId)
+  public RecommendationBuilder setSmallIcon(int resourceId)
   {
     mSmallIcon = resourceId;
     return this;

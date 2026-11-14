@@ -9,7 +9,7 @@
 #pragma once
 
 #include "IDirectory.h"
-#include "utils/XBMCTinyXML.h"
+#include "utils/TinyXML.h"
 
 class TiXmlElement;
 
@@ -37,6 +37,6 @@ namespace XFILE
      */
     TiXmlElement *LoadXML(const std::string &xmlFile);
 
-    CXBMCTinyXML m_doc;
+    CTinyXML m_doc;
   };
 }

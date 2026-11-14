@@ -15,7 +15,7 @@
 
 #include <string_view>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace KEYMAP;
 
 namespace

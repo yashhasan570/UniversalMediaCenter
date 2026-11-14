@@ -23,9 +23,9 @@
 
 #import "platform/darwin/ios-common/DarwinEmbedNowPlayingInfoManager.h"
 #if defined(TARGET_DARWIN_IOS)
-#import "platform/darwin/ios/XBMCController.h"
+#import "platform/darwin/ios/Controller.h"
 #elif defined(TARGET_DARWIN_TVOS)
-#import "platform/darwin/tvos/XBMCController.h"
+#import "platform/darwin/tvos/Controller.h"
 #endif
 
 #import <UIKit/UIKit.h>
@@ -109,7 +109,7 @@ void AnnounceBridge(ANNOUNCEMENT::AnnouncementFlag flag,
     // we need to get title, track, album and artist from the db
     if (item_id >= 0)
     {
-      if (KODI::MEDIA::MediaTypeOf(item_type) == KODI::MEDIA::TYPE::SONG)
+      if (UNIVERSAL MEDIA CENTER::MEDIA::MediaTypeOf(item_type) == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::SONG)
       {
         CMusicDatabase db;
         if (db.Open())
@@ -200,7 +200,7 @@ void AnnounceBridge(ANNOUNCEMENT::AnnouncementFlag flag,
     item[@"thumb"] = @(iconRealPath.c_str());
 
     dispatch_async(dispatch_get_main_queue(), ^{
-      [g_xbmcController.MPNPInfoManager onPlay:item];
+      [g_Controller.MPNPInfoManager onPlay:item];
     });
   }
   else if (msg == "OnSpeedChanged" || msg == "OnPause")
@@ -211,19 +211,19 @@ void AnnounceBridge(ANNOUNCEMENT::AnnouncementFlag flag,
     item[@"elapsed"] = @(g_application.GetTime());
 
     dispatch_async(dispatch_get_main_queue(), ^{
-      [g_xbmcController.MPNPInfoManager OnSpeedChanged:item];
+      [g_Controller.MPNPInfoManager OnSpeedChanged:item];
     });
     if (msg == "OnPause")
     {
       dispatch_async(dispatch_get_main_queue(), ^{
-        [g_xbmcController.MPNPInfoManager onPause:item];
+        [g_Controller.MPNPInfoManager onPause:item];
       });
     }
   }
   else if (msg == "OnStop")
   {
     dispatch_async(dispatch_get_main_queue(), ^{
-      [g_xbmcController.MPNPInfoManager onStop:dict[@"item"]];
+      [g_Controller.MPNPInfoManager onStop:dict[@"item"]];
     });
   }
 }

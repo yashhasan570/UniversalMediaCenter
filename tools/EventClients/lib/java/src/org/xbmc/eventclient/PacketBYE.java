@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2008-2013 Team XBMC
+ *  Copyright (C) 2008-2013 Team 
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -16,11 +16,11 @@
  *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package org.xbmc.eventclient;
+package org..eventclient;
 /**
- * XBMC Event Client Class
+ *  Event Client Class
  *
- * A BYE packet terminates the connection to XBMC.
+ * A BYE packet terminates the connection to .
  * @author Stefan Agner
  *
  */
@@ -28,7 +28,7 @@ public class PacketBYE extends Packet
 {
 
 	/**
-	 * A BYE packet terminates the connection to XBMC.
+	 * A BYE packet terminates the connection to .
 	 */
 	public PacketBYE()
 	{

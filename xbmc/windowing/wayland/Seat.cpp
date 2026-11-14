@@ -18,7 +18,7 @@
 
 #include <unistd.h>
 
-using namespace KODI::WINDOWING::WAYLAND;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::WAYLAND;
 using namespace std::placeholders;
 
 namespace
@@ -83,13 +83,13 @@ CSeat::CSeat(std::uint32_t globalName, wayland::seat_t const& seat, CConnection&
 
 CSeat::~CSeat() noexcept = default;
 
-void CSeat::AddRawInputHandlerKeyboard(KODI::WINDOWING::WAYLAND::IRawInputHandlerKeyboard *rawKeyboardHandler)
+void CSeat::AddRawInputHandlerKeyboard(UNIVERSAL MEDIA CENTER::WINDOWING::WAYLAND::IRawInputHandlerKeyboard *rawKeyboardHandler)
 {
   assert(rawKeyboardHandler);
   m_rawKeyboardHandlers.emplace(rawKeyboardHandler);
 }
 
-void CSeat::RemoveRawInputHandlerKeyboard(KODI::WINDOWING::WAYLAND::IRawInputHandlerKeyboard *rawKeyboardHandler)
+void CSeat::RemoveRawInputHandlerKeyboard(UNIVERSAL MEDIA CENTER::WINDOWING::WAYLAND::IRawInputHandlerKeyboard *rawKeyboardHandler)
 {
   m_rawKeyboardHandlers.erase(rawKeyboardHandler);
 }
@@ -100,7 +100,7 @@ void CSeat::AddRawInputHandlerPointer(IRawInputHandlerPointer* rawPointerHandler
   m_rawPointerHandlers.emplace(rawPointerHandler);
 }
 
-void CSeat::RemoveRawInputHandlerPointer(KODI::WINDOWING::WAYLAND::IRawInputHandlerPointer *rawPointerHandler)
+void CSeat::RemoveRawInputHandlerPointer(UNIVERSAL MEDIA CENTER::WINDOWING::WAYLAND::IRawInputHandlerPointer *rawPointerHandler)
 {
   m_rawPointerHandlers.erase(rawPointerHandler);
 }
@@ -111,7 +111,7 @@ void CSeat::AddRawInputHandlerTouch(IRawInputHandlerTouch* rawTouchHandler)
   m_rawTouchHandlers.emplace(rawTouchHandler);
 }
 
-void CSeat::RemoveRawInputHandlerTouch(KODI::WINDOWING::WAYLAND::IRawInputHandlerTouch *rawTouchHandler)
+void CSeat::RemoveRawInputHandlerTouch(UNIVERSAL MEDIA CENTER::WINDOWING::WAYLAND::IRawInputHandlerTouch *rawTouchHandler)
 {
   m_rawTouchHandlers.erase(rawTouchHandler);
 }
@@ -144,8 +144,8 @@ void CSeat::HandleKeyboardCapability()
 {
   m_keyboard.on_keymap() = [this](wayland::keyboard_keymap_format format, int fd, std::uint32_t size)
   {
-    KODI::UTILS::POSIX::CFileHandle fdGuard{fd};
-    KODI::UTILS::POSIX::CMmap mmap{nullptr, size, PROT_READ, MAP_PRIVATE, fd, 0};
+    UNIVERSAL MEDIA CENTER::UTILS::POSIX::CFileHandle fdGuard{fd};
+    UNIVERSAL MEDIA CENTER::UTILS::POSIX::CMmap mmap{nullptr, size, PROT_READ, MAP_PRIVATE, fd, 0};
     std::string keymap{static_cast<const char*> (mmap.Data()), size};
     for (auto handler : m_rawKeyboardHandlers)
     {

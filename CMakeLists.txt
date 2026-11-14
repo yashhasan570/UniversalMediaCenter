@@ -3,7 +3,7 @@ if(WIN32)
   cmake_minimum_required(VERSION 3.30.6)
 endif()
 
-project(kodi LANGUAGES CXX C ASM)
+project(universalmediacenter LANGUAGES CXX C ASM)
 
 if(POLICY CMP0069)
   set(CMAKE_POLICY_DEFAULT_CMP0069 NEW)
@@ -59,12 +59,12 @@ endif()
 set(CORE_BUILD_DIR build)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-# set KODI_MIRROR to the default if not already set
-if(NOT DEFINED KODI_MIRROR)
-  set(KODI_MIRROR "https://mirrors.github.com/yashhasan570/UniversalMediaCenter")
+# set UNIVERSALMEDIA_MIRROR to the default if not already set
+if(NOT DEFINED UNIVERSALMEDIA_MIRROR)
+  set(UNIVERSALMEDIA_MIRROR "https://mirrors.github.com/yashhasan570/UniversalMediaCenter")
 endif()
 
-message(STATUS "Mirror download location: ${KODI_MIRROR}")
+message(STATUS "Mirror download location: ${UNIVERSALMEDIA_MIRROR}")
 message(STATUS "Source directory: ${CMAKE_SOURCE_DIR}")
 message(STATUS "Build directory: ${CMAKE_BINARY_DIR}")
 if(CMAKE_BINARY_DIR STREQUAL CMAKE_SOURCE_DIR)
@@ -152,7 +152,7 @@ endif()
 
 dependent_option(ENABLE_INTERNAL_TAGLIB "Enable internal taglib?")
 
-if(KODI_DEPENDSBUILD OR WIN32 OR WINDOWS_STORE)
+if(UNIVERSALMEDIA_DEPENDSBUILD OR WIN32 OR WINDOWS_STORE)
   dependent_option(ENABLE_INTERNAL_TINYXML2 "Enable internal TinyXML2?")
 endif()
 
@@ -195,14 +195,14 @@ add_custom_target(${APP_NAME_LC}-libraries)
 set(LIBRARY_FILES "" CACHE STRING "" FORCE)
 mark_as_advanced(LIBRARY_FILES)
 
-set(INCLUDES ${CMAKE_SOURCE_DIR}/xbmc
-             ${CMAKE_SOURCE_DIR}/xbmc/${PLATFORM_DIR}
-             ${CMAKE_SOURCE_DIR}/xbmc/cores/VideoPlayer
+set(INCLUDES ${CMAKE_SOURCE_DIR}/
+             ${CMAKE_SOURCE_DIR}//${PLATFORM_DIR}
+             ${CMAKE_SOURCE_DIR}//cores/VideoPlayer
              ${CMAKE_BINARY_DIR}/${CORE_BUILD_DIR}
              ${CMAKE_BINARY_DIR}/${CORE_BUILD_DIR}/include)
 
 if (NOT PLATFORMDEFS_DIR STREQUAL "")
-  list(APPEND INCLUDES ${CMAKE_SOURCE_DIR}/xbmc/${PLATFORMDEFS_DIR})
+  list(APPEND INCLUDES ${CMAKE_SOURCE_DIR}//${PLATFORMDEFS_DIR})
 endif()
 
 find_package(PkgConfig ${SEARCH_QUIET})
@@ -356,7 +356,7 @@ endif()
 # find all folders containing addon.xml.in
 # used to define ADDON_XML_OUTPUTS, ADDON_XML_DEPENDS and ADDON_INSTALL_DATA
 # Function defined in ./cmake/scripts/common/Macros.cmake
-set(outputFilterRegex "addons/xbmc.json")
+set(outputFilterRegex "addons/.json")
 find_addon_xml_in_files(${outputFilterRegex})
 
 if(TARGET ${APP_NAME_LC}::Alsa AND TARGET ${APP_NAME_LC}::PulseAudio)
@@ -364,7 +364,7 @@ if(TARGET ${APP_NAME_LC}::Alsa AND TARGET ${APP_NAME_LC}::PulseAudio)
 endif()
 
 # Compile Info
-add_custom_command(OUTPUT ${CORE_BUILD_DIR}/xbmc/CompileInfo.cpp
+add_custom_command(OUTPUT ${CORE_BUILD_DIR}//CompileInfo.cpp
                    COMMAND ${CMAKE_COMMAND} -DCORE_SOURCE_DIR=${CMAKE_SOURCE_DIR}
                                             -DCORE_SYSTEM_NAME=${CORE_SYSTEM_NAME}
                                             -DCORE_PLATFORM_NAME_LC="${CORE_PLATFORM_NAME_LC}"
@@ -380,12 +380,12 @@ add_custom_command(OUTPUT ${CORE_BUILD_DIR}/xbmc/CompileInfo.cpp
                                             -DAPP_SHARED_LIBRARY_SUFFIX="${APP_SHARED_LIBRARY_SUFFIX}"
                                             -DPYTHON_VERSION=${PYTHON_VERSION}
                                             -Dprefix=${CMAKE_BINARY_DIR}/${CORE_BUILD_DIR}
-                                            -DKODI_WEBSERVER_EXTRA_WHITELIST="${KODI_WEBSERVER_EXTRA_WHITELIST}"
+                                            -DUNIVERSALMEDIA_WEBSERVER_EXTRA_WHITELIST="${UNIVERSALMEDIA_WEBSERVER_EXTRA_WHITELIST}"
                                             -P ${CMAKE_SOURCE_DIR}/cmake/scripts/common/GenerateCompileInfo.cmake
                    DEPENDS ${CMAKE_SOURCE_DIR}/version.txt
-                           ${CMAKE_SOURCE_DIR}/xbmc/CompileInfo.cpp.in)
+                           ${CMAKE_SOURCE_DIR}//CompileInfo.cpp.in)
 list(APPEND install_data ${ADDON_INSTALL_DATA})
-add_library(compileinfo OBJECT ${CORE_BUILD_DIR}/xbmc/CompileInfo.cpp)
+add_library(compileinfo OBJECT ${CORE_BUILD_DIR}//CompileInfo.cpp)
 set_target_properties(compileinfo PROPERTIES FOLDER "Build Utilities")
 target_compile_options(compileinfo PRIVATE ${SYSTEM_DEFINES} ${ARCH_DEFINES})
 target_link_libraries(compileinfo PRIVATE ${APP_NAME_LC}::Fmt)
@@ -396,9 +396,9 @@ endif()
 
 # RC File
 if(WIN32)
-  configure_file(${CMAKE_SOURCE_DIR}/xbmc/platform/win32/XBMC_PC.rc.in
-                 ${CORE_BUILD_DIR}/xbmc/platform/win32/XBMC_PC.rc @ONLY)
-  add_library(windows_resources OBJECT ${CORE_BUILD_DIR}/xbmc/platform/win32/XBMC_PC.rc)
+  configure_file(${CMAKE_SOURCE_DIR}//platform/win32/_PC.rc.in
+                 ${CORE_BUILD_DIR}//platform/win32/_PC.rc @ONLY)
+  add_library(windows_resources OBJECT ${CORE_BUILD_DIR}//platform/win32/_PC.rc)
   set_target_properties(windows_resources PROPERTIES FOLDER "Build Utilities")
   target_include_directories(windows_resources PRIVATE ${CMAKE_SOURCE_DIR}/tools/windows/packaging/media)
   set(RESOURCES $<TARGET_OBJECTS:windows_resources>)
@@ -428,13 +428,13 @@ if(NOT ${CORE_SYSTEM_NAME} MATCHES "windows")
 endif()
 
 if(CORE_SYSTEM_NAME STREQUAL android)
-  configure_file(${CMAKE_SOURCE_DIR}/xbmc/DllPaths_generated_android.h.in
+  configure_file(${CMAKE_SOURCE_DIR}//DllPaths_generated_android.h.in
                  ${CORE_BUILD_DIR}/DllPaths_generated_android.h @ONLY)
 elseif(CORE_SYSTEM_NAME STREQUAL darwin_embedded)
-  configure_file(${CMAKE_SOURCE_DIR}/xbmc/DllPaths_generated_darwin_embedded.h.in
+  configure_file(${CMAKE_SOURCE_DIR}//DllPaths_generated_darwin_embedded.h.in
                  ${CORE_BUILD_DIR}/DllPaths_generated_darwin_embedded.h @ONLY)
 elseif(NOT CORE_SYSTEM_NAME STREQUAL windows AND NOT CORE_SYSTEM_NAME STREQUAL windowsstore)
-  configure_file(${CMAKE_SOURCE_DIR}/xbmc/DllPaths_generated.h.in
+  configure_file(${CMAKE_SOURCE_DIR}//DllPaths_generated.h.in
                  ${CORE_BUILD_DIR}/DllPaths_generated.h @ONLY)
 endif()
 
@@ -477,15 +477,15 @@ core_add_subdirs_from_filelist(${CMAKE_SOURCE_DIR}/cmake/treedata/common/*.txt
 core_add_optional_subdirs_from_filelist(${CMAKE_SOURCE_DIR}/cmake/treedata/optional/common/*.txt
                                         ${CMAKE_SOURCE_DIR}/cmake/treedata/optional/${CORE_SYSTEM_NAME}/*.txt)
 
-# core_DEPENDS: these are the artifact/object files of /xbmc/*
+# core_DEPENDS: these are the artifact/object files of //*
 # SYSTEM_LDFLAGS: system linker flags
 # DEPLIBS: system libraries for linking
 target_link_libraries(lib${APP_NAME_LC} PUBLIC ${core_DEPENDS} ${SYSTEM_LDFLAGS} ${DEPLIBS} ${CMAKE_DL_LIBS})
 core_target_link_libraries(lib${APP_NAME_LC})
-set_target_properties(lib${APP_NAME_LC} PROPERTIES PROJECT_LABEL "xbmc")
-source_group_by_folder(lib${APP_NAME_LC} RELATIVE ${CMAKE_SOURCE_DIR}/xbmc)
+set_target_properties(lib${APP_NAME_LC} PROPERTIES PROJECT_LABEL "")
+source_group_by_folder(lib${APP_NAME_LC} RELATIVE ${CMAKE_SOURCE_DIR}/)
 if(WIN32)
-  add_precompiled_header(lib${APP_NAME_LC} pch.h ${CMAKE_SOURCE_DIR}/xbmc/platform/win32/pch.cpp)
+  add_precompiled_header(lib${APP_NAME_LC} pch.h ${CMAKE_SOURCE_DIR}//platform/win32/pch.cpp)
 elseif(CORE_USE_PCH)
   core_add_precompiled_headers()
 endif()
@@ -581,7 +581,7 @@ if(WIN32)
   set_target_properties(${APP_NAME_LC} PROPERTIES WIN32_EXECUTABLE ON)
   set_property(DIRECTORY PROPERTY VS_STARTUP_PROJECT ${APP_NAME_LC})
   if(NOT CORE_SYSTEM_NAME STREQUAL windowsstore)
-    target_sources(${APP_NAME_LC} PRIVATE ${CMAKE_SOURCE_DIR}/xbmc/platform/win32/app.manifest)
+    target_sources(${APP_NAME_LC} PRIVATE ${CMAKE_SOURCE_DIR}//platform/win32/app.manifest)
   else()
     set_target_properties(${APP_NAME_LC} PROPERTIES VS_USER_PROPS ${VCPROJECT_PROPS_FILE}
                           VS_WINDOWS_TARGET_PLATFORM_MIN_VERSION ${VS_MINIMUM_SDK_VERSION})
@@ -605,7 +605,7 @@ if(HOST_CAN_EXECUTE_TARGET AND ENABLE_TESTING)
   find_package(Gtest 1.10.0 REQUIRED ${SEARCH_QUIET})
 
   copy_files_from_filelist_to_buildtree(${CMAKE_SOURCE_DIR}/cmake/installdata/test-reference-data.txt NO_INSTALL)
-  add_executable(${APP_NAME_LC}-test EXCLUDE_FROM_ALL ${CMAKE_SOURCE_DIR}/xbmc/test/xbmc-test.cpp ${test_sources})
+  add_executable(${APP_NAME_LC}-test EXCLUDE_FROM_ALL ${CMAKE_SOURCE_DIR}//test/-test.cpp ${test_sources})
 
   add_dependencies(${APP_NAME_LC}-test LIBRARY::Gtest)
   if(CORE_USE_PCH)
@@ -643,7 +643,7 @@ if(HOST_CAN_EXECUTE_TARGET AND ENABLE_TESTING)
       endif()
       add_test(NAME TestDarwinEmbeddedDebPackaging${_test_device}
                COMMAND ${CMAKE_COMMAND}
-                       -DKODI_SOURCE_DIR=${CMAKE_SOURCE_DIR}
+                       -DUNIVERSALMEDIA_SOURCE_DIR=${CMAKE_SOURCE_DIR}
                        -DTEST_BINARY_DIR=${CMAKE_BINARY_DIR}/test
                        -DDPKG_DEB_EXECUTABLE=${TEST_DPKG_DEB_EXECUTABLE}
                        -DTEST_PLATFORM=${_test_platform}
@@ -738,7 +738,7 @@ if(CMAKE_GENERATOR STREQUAL "Unix Makefiles")
 endif()
 
 # Prepare add-on build env
-include(${CORE_SOURCE_DIR}/xbmc/addons/AddonBindings.cmake)
+include(${CORE_SOURCE_DIR}//addons/AddonBindings.cmake)
 file(COPY ${CORE_ADDON_BINDINGS_FILES} ${CORE_ADDON_BINDINGS_DIRS}/
      DESTINATION ${CORE_BUILD_DIR}/include/${APP_NAME_LC}
      REGEX ".txt" EXCLUDE)

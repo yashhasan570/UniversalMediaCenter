@@ -29,7 +29,7 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI::VIDEO::GEOMETRY;
+using namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY;
 
 namespace
 {
@@ -217,9 +217,9 @@ TEST_F(TestVideoDatabaseContentGeometry, AFailureReadsAsMissingToEveryConsumer)
 //! An NFO is trusted for the file as it stands when it is imported.
 TEST_F(TestVideoDatabaseContentGeometry, ARecordWithNoIdentityTakesTheFilesOwn)
 {
-  XFILE::CFile* const file{XBMC_CREATETEMPFILE(".mkv")};
+  XFILE::CFile* const file{_CREATETEMPFILE(".mkv")};
   ASSERT_NE(nullptr, file);
-  const std::string path{XBMC_TEMPFILEPATH(file)};
+  const std::string path{_TEMPFILEPATH(file)};
   const int idFile{m_db.AddFile(path, URIUtils::GetDirectory(path))};
   ASSERT_GE(idFile, 0);
 
@@ -233,14 +233,14 @@ TEST_F(TestVideoDatabaseContentGeometry, ARecordWithNoIdentityTakesTheFilesOwn)
   EXPECT_EQ(ContentGeometryState::VALID, lookup.state);
   EXPECT_EQ(imported.aspects, lookup.record.aspects);
 
-  EXPECT_TRUE(XBMC_DELETETEMPFILE(file));
+  EXPECT_TRUE(_DELETETEMPFILE(file));
 }
 
 TEST_F(TestVideoDatabaseContentGeometry, AStoredRecordIsCheckedAgainstTheFileAtItsPath)
 {
-  XFILE::CFile* const file{XBMC_CREATETEMPFILE(".mkv")};
+  XFILE::CFile* const file{_CREATETEMPFILE(".mkv")};
   ASSERT_NE(nullptr, file);
-  const std::string path{XBMC_TEMPFILEPATH(file)};
+  const std::string path{_TEMPFILEPATH(file)};
   const int idFile{m_db.AddFile(path, URIUtils::GetDirectory(path))};
   ASSERT_GE(idFile, 0);
 
@@ -253,7 +253,7 @@ TEST_F(TestVideoDatabaseContentGeometry, AStoredRecordIsCheckedAgainstTheFileAtI
   ASSERT_TRUE(m_db.SetContentGeometry(idFile, MakeRecord(IDENTITY)));
   EXPECT_EQ(ContentGeometryState::MISSING, m_db.GetContentGeometryOfFile(idFile, path).state);
 
-  EXPECT_TRUE(XBMC_DELETETEMPFILE(file));
+  EXPECT_TRUE(_DELETETEMPFILE(file));
 }
 
 TEST_F(TestVideoDatabaseContentGeometry, AFileWithNoRowHasNothingStored)
@@ -360,7 +360,7 @@ TEST_F(TestVideoDatabaseContentGeometry, TheCascadeSurvivesTheAnalyticsCycleAnUp
   ASSERT_TRUE(DeleteFilesRow(idFile));
   ASSERT_EQ(1, CountRows(idFile)) << "analytics were not actually dropped";
 
-  KODI::DATABASE::CVideoDatabaseDDL::CreateAnalytics(m_db);
+  UNIVERSAL MEDIA CENTER::DATABASE::CVideoDatabaseDDL::CreateAnalytics(m_db);
 
   const int idSecond{AddTestFile("analyticscycle2.mkv")};
   ASSERT_TRUE(m_db.SetContentGeometry(idSecond, MakeRecord({8'000'000'000, 1'700'000'000})));
@@ -494,7 +494,7 @@ TEST_F(TestVideoDatabaseContentGeometry, AVersionStoresTheMeasurementItWasAddedW
   movie.m_strTitle = "Movie";
   movie.m_strFileNameAndPath = "/test/contentgeometry/movie.mkv";
   movie.m_strPath = "/test/contentgeometry/";
-  const int idMovie{m_db.SetDetailsForMovie(movie, KODI::ART::Artwork{})};
+  const int idMovie{m_db.SetDetailsForMovie(movie, UNIVERSAL MEDIA CENTER::ART::Artwork{})};
   ASSERT_GT(idMovie, 0);
 
   CFileItem version{"/test/contentgeometry/movie extended.mkv", false};
@@ -514,19 +514,19 @@ TEST_F(TestVideoDatabaseContentGeometry, AVersionStoresTheMeasurementItWasAddedW
  * The same storage and cascade against a real MySQL server, which the SQLite tests cannot
  * cover. Skipped unless pointed at one:
  *
- *   KODI_TEST_MYSQL_HOST=127.0.0.1 KODI_TEST_MYSQL_USER=kodi KODI_TEST_MYSQL_PASS=kodi
+ *   UNIVERSALMEDIA_TEST_MYSQL_HOST=127.0.0.1 UNIVERSALMEDIA_TEST_MYSQL_USER=universalmediacenter UNIVERSALMEDIA_TEST_MYSQL_PASS=universalmediacenter
  *
  * The named database is created if the user may create it, and is left behind afterwards.
  */
 TEST(TestVideoDatabaseContentGeometryMySQL, StoresAndCascadesOnMySQL)
 {
-  const char* const host{std::getenv("KODI_TEST_MYSQL_HOST")};
-  const char* const user{std::getenv("KODI_TEST_MYSQL_USER")};
-  const char* const pass{std::getenv("KODI_TEST_MYSQL_PASS")};
+  const char* const host{std::getenv("UNIVERSALMEDIA_TEST_MYSQL_HOST")};
+  const char* const user{std::getenv("UNIVERSALMEDIA_TEST_MYSQL_USER")};
+  const char* const pass{std::getenv("UNIVERSALMEDIA_TEST_MYSQL_PASS")};
 
   if (!host || !user || !pass)
   {
-    GTEST_SKIP() << "set KODI_TEST_MYSQL_HOST, KODI_TEST_MYSQL_USER and KODI_TEST_MYSQL_PASS "
+    GTEST_SKIP() << "set UNIVERSALMEDIA_TEST_MYSQL_HOST, UNIVERSALMEDIA_TEST_MYSQL_USER and UNIVERSALMEDIA_TEST_MYSQL_PASS "
                     "to run the MySQL half of these tests";
   }
 
@@ -535,12 +535,12 @@ TEST(TestVideoDatabaseContentGeometryMySQL, StoresAndCascadesOnMySQL)
   settings.host = host;
   settings.user = user;
   settings.pass = pass;
-  if (const char* const port{std::getenv("KODI_TEST_MYSQL_PORT")})
+  if (const char* const port{std::getenv("UNIVERSALMEDIA_TEST_MYSQL_PORT")})
     settings.port = port;
 
   CVideoDatabase db;
   ASSERT_EQ(CDatabase::ConnectionState::STATE_CONNECTED,
-            db.Connect("kodi_test_contentgeometry", settings, true))
+            db.Connect("universalmediacenter_test_contentgeometry", settings, true))
       << "could not create the test database on " << host;
 
   ASSERT_TRUE(db.ExecuteQuery("DELETE FROM contentgeometry"));

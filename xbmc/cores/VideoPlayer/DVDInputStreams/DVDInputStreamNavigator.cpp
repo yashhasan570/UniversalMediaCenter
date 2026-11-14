@@ -50,7 +50,7 @@ struct iovec
 #   include <sys/uio.h>                                      /* struct iovec */
 #endif
 
-using namespace KODI::LANGUAGE;
+using namespace UNIVERSAL MEDIA CENTER::LANGUAGE;
 using namespace std::chrono_literals;
 
 namespace
@@ -227,7 +227,7 @@ bool CDVDInputStreamNavigator::Open()
           sizeof(language_subtitle) - 1);
   language_subtitle[2] = '\0';
 
-  // set language settings in case they are not set in xbmc's configuration
+  // set language settings in case they are not set in 's configuration
   if (language_menu[0] == '\0') strcpy(language_menu, "en");
   if (language_audio[0] == '\0') strcpy(language_audio, "en");
   if (language_subtitle[0] == '\0') strcpy(language_subtitle, "en");

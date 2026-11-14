@@ -2,7 +2,7 @@
  *      Copyright (C) 2007 by Tobias Arrskog
  *      topfs@tobias
  *
- *      Copyright (C) 2007-2013 Team XBMC
+ *      Copyright (C) 2007-2013 Team 
  *      http://github.com/yashhasan570/UniversalMediaCenter
  *
  *  This Program is free software; you can redistribute it and/or modify
@@ -16,7 +16,7 @@
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with XBMC; see the file COPYING.  If not, see
+ *  along with ; see the file COPYING.  If not, see
  *  <http://www.gnu.org/licenses/>.
  *
  */
@@ -35,7 +35,7 @@
 #define MOUSE_MAX 65535
 #define MOUSE_MIN 0
 
-//The work area is from 0 - MAX but the one sent to XBMC is MIN - (MIN + MOUSE_MAX)
+//The work area is from 0 - MAX but the one sent to  is MIN - (MIN + MOUSE_MAX)
 #define WIIREMOTE_X_MIN MOUSE_MAX * DEADZONE_X
 #define WIIREMOTE_Y_MIN MOUSE_MAX * DEADZONE_Y
 
@@ -55,9 +55,9 @@
 #include <bluetooth/hci_lib.h>
 // UDP Client
 #ifdef DEB_PACK
-#include <xbmc/xbmcclient.h>
+#include </client.h>
 #else
-#include "../../lib/c++/xbmcclient.h"
+#include "../../lib/c++/client.h"
 #endif
 /*#include <stdio.h>*/
 #include <stdlib.h>

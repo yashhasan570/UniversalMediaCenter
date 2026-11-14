@@ -8,7 +8,7 @@
 
 #include "GameSettings.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 CGameSettings &CGameSettings::operator=(const CGameSettings &rhs)
 {

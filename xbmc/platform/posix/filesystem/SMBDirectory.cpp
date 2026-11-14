@@ -44,7 +44,7 @@ using namespace XFILE;
 namespace
 {
 
-KODI::TIME::FileTime GetDirEntryTime(const struct stat& st)
+UNIVERSAL MEDIA CENTER::TIME::FileTime GetDirEntryTime(const struct stat& st)
 {
   int64_t timeDate = 0;
 
@@ -55,10 +55,10 @@ KODI::TIME::FileTime GetDirEntryTime(const struct stat& st)
     timeDate = (st.st_mtime == 0) ? st.st_ctime : st.st_mtime;
   }
 
-  KODI::TIME::FileTime fileTime{};
-  KODI::TIME::FileTime localTime{};
-  KODI::TIME::TimeTToFileTime(timeDate, &fileTime);
-  KODI::TIME::FileTimeToLocalFileTime(&fileTime, &localTime);
+  UNIVERSAL MEDIA CENTER::TIME::FileTime fileTime{};
+  UNIVERSAL MEDIA CENTER::TIME::FileTime localTime{};
+  UNIVERSAL MEDIA CENTER::TIME::TimeTToFileTime(timeDate, &fileTime);
+  UNIVERSAL MEDIA CENTER::TIME::FileTimeToLocalFileTime(&fileTime, &localTime);
 
   return localTime;
 }

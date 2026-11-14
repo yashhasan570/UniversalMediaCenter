@@ -58,7 +58,7 @@ constexpr int CONTROL_CHECK_FOR_UPDATES = 9;
 
 using namespace ADDON;
 using namespace XFILE;
-using KODI::MEDIA::MediaSection;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaSection;
 
 CGUIWindowAddonBrowser::CGUIWindowAddonBrowser(void)
   : CGUIMediaWindow(WINDOW_ADDON_BROWSER, "AddonBrowser.xml")
@@ -141,7 +141,7 @@ bool CGUIWindowAddonBrowser::OnMessage(CGUIMessage& message)
         // iItem is checked for validity inside these routines
         if (iAction == ACTION_SHOW_INFO)
         {
-          if (!m_vecItems->Get(iItem)->GetProperty(KODI::ITEM::PROPERTY::ADDON_ID).empty())
+          if (!m_vecItems->Get(iItem)->GetProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::ADDON_ID).empty())
             return CGUIDialogAddonInfo::ShowForItem((*m_vecItems)[iItem]);
           return false;
         }
@@ -156,7 +156,7 @@ bool CGUIWindowAddonBrowser::OnMessage(CGUIMessage& message)
         for (int i = 0; i < m_vecItems->Size(); ++i)
         {
           CFileItemPtr item = m_vecItems->Get(i);
-          if (item->GetProperty(KODI::ITEM::PROPERTY::ADDON_ID) == message.GetStringParam())
+          if (item->GetProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::ADDON_ID) == message.GetStringParam())
           {
             UpdateStatus(item);
             FormatAndSort(*m_vecItems);
@@ -206,7 +206,7 @@ class UpdateAllowedAddons : public IRunnable
 
 void CGUIWindowAddonBrowser::InstallFromZip()
 {
-  using namespace KODI::MESSAGING::HELPERS;
+  using namespace UNIVERSAL MEDIA CENTER::MESSAGING::HELPERS;
 
   if (!CServiceBroker::GetSettingsComponent()->GetSettings()->GetBool(
           CSettings::SETTING_ADDONS_ALLOW_UNKNOWN_SOURCES))
@@ -235,18 +235,18 @@ void CGUIWindowAddonBrowser::InstallFromZip()
 bool CGUIWindowAddonBrowser::OnClick(int iItem, const std::string& player)
 {
   CFileItemPtr item = m_vecItems->Get(iItem);
-  if (item->GetPath() == KODI::ADDONS::INSTALL)
+  if (item->GetPath() == UNIVERSAL MEDIA CENTER::ADDONS::INSTALL)
   {
     InstallFromZip();
     return true;
   }
-  if (item->GetPath() == KODI::ADDONS::UPDATE_ALL)
+  if (item->GetPath() == UNIVERSAL MEDIA CENTER::ADDONS::UPDATE_ALL)
   {
     UpdateAddons updater;
     CGUIDialogBusy::Wait(&updater, 100, true);
     return true;
   }
-  if (item->GetPath() == KODI::ADDONS::UPDATE_ALLOWED)
+  if (item->GetPath() == UNIVERSAL MEDIA CENTER::ADDONS::UPDATE_ALLOWED)
   {
     UpdateAllowedAddons updater;
     CGUIDialogBusy::Wait(&updater, 100, true);
@@ -255,14 +255,14 @@ bool CGUIWindowAddonBrowser::OnClick(int iItem, const std::string& player)
   if (!item->IsFolder())
   {
     // cancel a downloading job
-    if (item->HasProperty(KODI::ITEM::PROPERTY::ADDON_DOWNLOADING))
+    if (item->HasProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::ADDON_DOWNLOADING))
     {
       if (CGUIDialogYesNo::ShowAndGetInput(CVariant{24000},
-                                           item->GetProperty(KODI::ITEM::PROPERTY::ADDON_NAME),
+                                           item->GetProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::ADDON_NAME),
                                            CVariant{24066}, CVariant{""}))
       {
         if (CAddonInstaller::GetInstance().Cancel(
-                item->GetProperty(KODI::ITEM::PROPERTY::ADDON_ID).asString()))
+                item->GetProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::ADDON_ID).asString()))
           Refresh();
       }
       return true;
@@ -271,7 +271,7 @@ bool CGUIWindowAddonBrowser::OnClick(int iItem, const std::string& player)
     CGUIDialogAddonInfo::ShowForItem(item);
     return true;
   }
-  if (item->IsPath(KODI::ADDONS::SEARCH))
+  if (item->IsPath(UNIVERSAL MEDIA CENTER::ADDONS::SEARCH))
   {
     Update(item->GetPath());
     return true;
@@ -345,7 +345,7 @@ bool CGUIWindowAddonBrowser::GetDirectory(const std::string& strDirectory, CFile
           //check if it's installed
           AddonPtr addon;
           if (!CServiceBroker::GetAddonMgr().GetAddon(
-                  items[i]->GetProperty(KODI::ITEM::PROPERTY::ADDON_ID).asString(), addon,
+                  items[i]->GetProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::ADDON_ID).asString(), addon,
                   OnlyEnabled::CHOICE_YES))
             items.Remove(i);
         }
@@ -367,17 +367,17 @@ void CGUIWindowAddonBrowser::UpdateStatus(const CFileItemPtr& item) const
   unsigned int percent;
   bool downloadFinshed;
   if (CAddonInstaller::GetInstance().GetProgress(
-          item->GetProperty(KODI::ITEM::PROPERTY::ADDON_ID).asString(), percent, downloadFinshed))
+          item->GetProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::ADDON_ID).asString(), percent, downloadFinshed))
   {
     std::string progress = StringUtils::Format(
         !downloadFinshed ? CServiceBroker::GetResourcesComponent().GetLocalizeStrings().Get(24042)
                          : CServiceBroker::GetResourcesComponent().GetLocalizeStrings().Get(24044),
         percent);
-    item->SetProperty(KODI::ITEM::PROPERTY::ADDON_STATUS, progress);
-    item->SetProperty(KODI::ITEM::PROPERTY::ADDON_DOWNLOADING, true);
+    item->SetProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::ADDON_STATUS, progress);
+    item->SetProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::ADDON_DOWNLOADING, true);
   }
   else
-    item->ClearProperty(KODI::ITEM::PROPERTY::ADDON_DOWNLOADING);
+    item->ClearProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::ADDON_DOWNLOADING);
 }
 
 bool CGUIWindowAddonBrowser::Update(const std::string& strDirectory,
@@ -585,7 +585,7 @@ int CGUIWindowAddonBrowser::SelectAddonID(const std::vector<AddonType>& types,
     auto item{std::make_shared<CFileItem>("", false)};
     item->SetLabel(CServiceBroker::GetResourcesComponent().GetLocalizeStrings().Get(231));
     item->SetLabel2(CServiceBroker::GetResourcesComponent().GetLocalizeStrings().Get(24040));
-    item->SetArt(KODI::ART::TYPE::ICON, KODI::ART::DEFAULT::ADDON_NONE);
+    item->SetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::ICON, UNIVERSAL MEDIA CENTER::ART::DEFAULT::ADDON_NONE);
     item->SetSpecialSort(SortSpecial::TOP);
     items.Add(std::move(item));
   }
@@ -648,13 +648,13 @@ int CGUIWindowAddonBrowser::SelectAddonID(const std::vector<AddonType>& types,
 
 std::string CGUIWindowAddonBrowser::GetStartFolder(const std::string& dir)
 {
-  if (StringUtils::StartsWith(dir, KODI::ADDONS::ROOT))
+  if (StringUtils::StartsWith(dir, UNIVERSAL MEDIA CENTER::ADDONS::ROOT))
   {
-    if (StringUtils::StartsWith(dir, KODI::ADDONS::DEFAULT_BINARY_ADDONS_SOURCE))
+    if (StringUtils::StartsWith(dir, UNIVERSAL MEDIA CENTER::ADDONS::DEFAULT_BINARY_ADDONS_SOURCE))
     {
       const bool all = CServiceBroker::GetPlatform().SupportsUserInstalledBinaryAddons();
-      return (all ? KODI::ADDONS::ALL : KODI::ADDONS::USER) +
-             dir.substr(std::string_view{KODI::ADDONS::DEFAULT_BINARY_ADDONS_SOURCE}.size());
+      return (all ? UNIVERSAL MEDIA CENTER::ADDONS::ALL : UNIVERSAL MEDIA CENTER::ADDONS::USER) +
+             dir.substr(std::string_view{UNIVERSAL MEDIA CENTER::ADDONS::DEFAULT_BINARY_ADDONS_SOURCE}.size());
     }
     else
       return dir;

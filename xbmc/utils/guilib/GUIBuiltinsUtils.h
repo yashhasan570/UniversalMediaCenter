@@ -13,7 +13,7 @@
 class CExecString;
 class CFileItem;
 
-namespace KODI::UTILS::GUILIB
+namespace UNIVERSAL MEDIA CENTER::UTILS::GUILIB
 {
 class CGUIBuiltinsUtils
 {
@@ -56,4 +56,4 @@ public:
    */
   static bool ExecuteQueueMedia(const std::shared_ptr<CFileItem>& item);
 };
-} // namespace KODI::UTILS::GUILIB
+} // namespace UNIVERSAL MEDIA CENTER::UTILS::GUILIB

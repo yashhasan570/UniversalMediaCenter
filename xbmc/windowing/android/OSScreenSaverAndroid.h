@@ -10,7 +10,7 @@
 
 #include "../OSScreenSaver.h"
 
-class COSScreenSaverAndroid : public KODI::WINDOWING::IOSScreenSaver
+class COSScreenSaverAndroid : public UNIVERSAL MEDIA CENTER::WINDOWING::IOSScreenSaver
 {
 public:
   explicit COSScreenSaverAndroid() = default;

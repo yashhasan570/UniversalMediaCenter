@@ -18,7 +18,7 @@ namespace PERIPHERALS
 class CPeripheral;
 }
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -137,4 +137,4 @@ private:
   const std::string m_strControllerId;
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

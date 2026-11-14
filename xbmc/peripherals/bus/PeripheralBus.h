@@ -17,13 +17,13 @@
 
 class CFileItemList;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace JOYSTICK
 {
 class IButtonMap;
 } // namespace JOYSTICK
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER
 
 namespace PERIPHERALS
 {
@@ -71,7 +71,7 @@ public:
    * \brief Initialize a joystick buttonmap, if possible
    */
   virtual bool InitializeButtonMap(const CPeripheral& peripheral,
-                                   KODI::JOYSTICK::IButtonMap& buttonMap) const
+                                   UNIVERSAL MEDIA CENTER::JOYSTICK::IButtonMap& buttonMap) const
   {
     return false;
   }

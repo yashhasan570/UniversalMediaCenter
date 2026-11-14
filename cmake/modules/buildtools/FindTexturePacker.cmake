@@ -15,7 +15,7 @@
 #   TexturePacker::TexturePacker::Installable  - The TexturePacker executable shipped in the Universal Media Center package
 
 if(NOT TARGET TexturePacker::TexturePacker::Executable)
-  if(KODI_DEPENDSBUILD)
+  if(UNIVERSALMEDIA_DEPENDSBUILD)
     get_filename_component(_tppath "${NATIVEPREFIX}/bin" ABSOLUTE)
     find_program(TEXTUREPACKER_EXECUTABLE NAMES "${APP_NAME_LC}-TexturePacker" TexturePacker
                                           HINTS ${_tppath})
@@ -23,7 +23,7 @@ if(NOT TARGET TexturePacker::TexturePacker::Executable)
     add_executable(TexturePacker::TexturePacker::Executable IMPORTED GLOBAL)
     set_target_properties(TexturePacker::TexturePacker::Executable PROPERTIES
                                           IMPORTED_LOCATION "${TEXTUREPACKER_EXECUTABLE}")
-    message(STATUS "External TexturePacker for KODI_DEPENDSBUILD will be executed during build: ${TEXTUREPACKER_EXECUTABLE}")
+    message(STATUS "External TexturePacker for UNIVERSALMEDIA_DEPENDSBUILD will be executed during build: ${TEXTUREPACKER_EXECUTABLE}")
   elseif(WIN32)
     get_filename_component(_tppath "${NATIVEPREFIX}/tools/TexturePacker" ABSOLUTE)
     find_program(TEXTUREPACKER_EXECUTABLE NAMES "${APP_NAME_LC}-TexturePacker.exe" TexturePacker.exe
@@ -84,7 +84,7 @@ if(NOT TARGET TexturePacker::TexturePacker::Executable)
                      "-DCMAKE_OBJDUMP=${CMAKE_OBJDUMP}"
                      "-DCMAKE_RANLIB=${CMAKE_RANLIB}"
                      "-DDEPENDS_PATH=${DEPENDS_PATH}"
-                     -DKODI_SOURCE_DIR=${CMAKE_SOURCE_DIR})
+                     -DUNIVERSALMEDIA_SOURCE_DIR=${CMAKE_SOURCE_DIR})
 
       # Create a list with an alternate separator; a pipe would split the clang-tidy header filter regex
       string(REPLACE ";" "^^" string_ARCH_DEFINES "${ARCH_DEFINES}")

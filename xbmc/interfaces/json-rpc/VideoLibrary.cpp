@@ -57,7 +57,7 @@ JSONRPC_STATUS CVideoLibrary::GetMovies(const std::string &method, ITransportLay
     return InvalidParams;
 
   CVideoDbUrl videoUrl;
-  if (!videoUrl.FromString(KODI::VIDEO::DB_PATH::MOVIE_TITLES))
+  if (!videoUrl.FromString(UNIVERSAL MEDIA CENTER::VIDEO::DB_PATH::MOVIE_TITLES))
     return InternalError;
 
   int genreID = -1, year = -1, setID = 0;
@@ -96,7 +96,7 @@ JSONRPC_STATUS CVideoLibrary::GetMovies(const std::string &method, ITransportLay
     setID = 0;
 
   CFileItemList items;
-  if (!videodatabase.GetMoviesNav(videoUrl.ToString(), items, genreID, year, -1, -1, -1, -1, setID, -1, sorting, RequiresAdditionalDetails(KODI::MEDIA::TYPE::MOVIE, parameterObject)))
+  if (!videodatabase.GetMoviesNav(videoUrl.ToString(), items, genreID, year, -1, -1, -1, -1, setID, -1, sorting, RequiresAdditionalDetails(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MOVIE, parameterObject)))
     return InvalidParams;
 
   return HandleItems("movieid", "movies", items, parameterObject, result, false);
@@ -112,7 +112,7 @@ JSONRPC_STATUS CVideoLibrary::GetMovieDetails(const std::string &method, ITransp
 
   CVideoInfoTag infos;
   if (!videodatabase.GetMovieInfo("", infos, id, -1, //! @todo API support for video version id
-                                  -1, RequiresAdditionalDetails(KODI::MEDIA::TYPE::MOVIE, parameterObject)) ||
+                                  -1, RequiresAdditionalDetails(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MOVIE, parameterObject)) ||
       infos.m_iDbId <= 0)
     return NotFound;
 
@@ -128,7 +128,7 @@ JSONRPC_STATUS CVideoLibrary::GetMovieSets(const std::string &method, ITransport
     return InternalError;
 
   CFileItemList items;
-  if (!videodatabase.GetSetsNav(KODI::VIDEO::DB_PATH::MOVIE_SETS, items, VideoDbContentType::MOVIES))
+  if (!videodatabase.GetSetsNav(UNIVERSAL MEDIA CENTER::VIDEO::DB_PATH::MOVIE_SETS, items, VideoDbContentType::MOVIES))
     return InternalError;
 
   HandleFileItemList("setid", false, "sets", items, parameterObject, result);
@@ -154,7 +154,7 @@ JSONRPC_STATUS CVideoLibrary::GetMovieSetDetails(const std::string &method, ITra
   // Get movies from the set
   CFileItemList items;
   if (!videodatabase.GetMoviesNav(
-          KODI::VIDEO::DB_PATH::MOVIE_TITLES, items, -1, -1, -1, -1, -1, -1, id, -1, SortDescription(), RequiresAdditionalDetails(KODI::MEDIA::TYPE::MOVIE, parameterObject["movies"])))
+          UNIVERSAL MEDIA CENTER::VIDEO::DB_PATH::MOVIE_TITLES, items, -1, -1, -1, -1, -1, -1, id, -1, SortDescription(), RequiresAdditionalDetails(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MOVIE, parameterObject["movies"])))
     return InternalError;
 
   return HandleItems("movieid", "movies", items, parameterObject["movies"], result["setdetails"], true);
@@ -172,7 +172,7 @@ JSONRPC_STATUS CVideoLibrary::GetTVShows(const std::string &method, ITransportLa
     return InvalidParams;
 
   CVideoDbUrl videoUrl;
-  if (!videoUrl.FromString(KODI::VIDEO::DB_PATH::TVSHOW_TITLES))
+  if (!videoUrl.FromString(UNIVERSAL MEDIA CENTER::VIDEO::DB_PATH::TVSHOW_TITLES))
     return InternalError;
 
   const CVariant &filter = parameterObject["filter"];
@@ -199,7 +199,7 @@ JSONRPC_STATUS CVideoLibrary::GetTVShows(const std::string &method, ITransportLa
 
   CFileItemList items;
   CDatabase::Filter nofilter;
-  if (!videodatabase.GetTvShowsByWhere(videoUrl.ToString(), nofilter, items, sorting, RequiresAdditionalDetails(KODI::MEDIA::TYPE::TV_SHOW, parameterObject)))
+  if (!videodatabase.GetTvShowsByWhere(videoUrl.ToString(), nofilter, items, sorting, RequiresAdditionalDetails(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::TV_SHOW, parameterObject)))
     return InvalidParams;
 
   return HandleItems("tvshowid", "tvshows", items, parameterObject, result, false);
@@ -215,7 +215,7 @@ JSONRPC_STATUS CVideoLibrary::GetTVShowDetails(const std::string &method, ITrans
 
   CFileItemPtr fileItem(new CFileItem());
   CVideoInfoTag infos;
-  if (!videodatabase.GetTvShowInfo("", infos, id, fileItem.get(), RequiresAdditionalDetails(KODI::MEDIA::TYPE::TV_SHOW, parameterObject)) || infos.m_iDbId <= 0)
+  if (!videodatabase.GetTvShowInfo("", infos, id, fileItem.get(), RequiresAdditionalDetails(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::TV_SHOW, parameterObject)) || infos.m_iDbId <= 0)
     return NotFound;
 
   fileItem->SetFromVideoInfoTag(infos);
@@ -231,7 +231,7 @@ JSONRPC_STATUS CVideoLibrary::GetSeasons(const std::string &method, ITransportLa
 
   int tvshowID = (int)parameterObject["tvshowid"].asInteger();
 
-  std::string strPath = StringUtils::Format("{}{}/", KODI::VIDEO::DB_PATH::TVSHOW_TITLES, tvshowID);
+  std::string strPath = StringUtils::Format("{}{}/", UNIVERSAL MEDIA CENTER::VIDEO::DB_PATH::TVSHOW_TITLES, tvshowID);
   CFileItemList items;
   if (!videodatabase.GetSeasonsNav(strPath, items, -1, -1, -1, -1, tvshowID, false))
     return InternalError;
@@ -272,7 +272,7 @@ JSONRPC_STATUS CVideoLibrary::GetEpisodes(const std::string &method, ITransportL
   int tvshowID = (int)parameterObject["tvshowid"].asInteger();
   int season   = (int)parameterObject["season"].asInteger();
 
-  std::string strPath = StringUtils::Format("{}{}/{}/", KODI::VIDEO::DB_PATH::TVSHOW_TITLES, tvshowID, season);
+  std::string strPath = StringUtils::Format("{}{}/{}/", UNIVERSAL MEDIA CENTER::VIDEO::DB_PATH::TVSHOW_TITLES, tvshowID, season);
 
   CVideoDbUrl videoUrl;
   if (!videoUrl.FromString(strPath))
@@ -309,7 +309,7 @@ JSONRPC_STATUS CVideoLibrary::GetEpisodes(const std::string &method, ITransportL
   }
 
   CFileItemList items;
-  if (!videodatabase.GetEpisodesByWhere(videoUrl.ToString(), CDatabase::Filter(), items, false, sorting, RequiresAdditionalDetails(KODI::MEDIA::TYPE::EPISODE, parameterObject)))
+  if (!videodatabase.GetEpisodesByWhere(videoUrl.ToString(), CDatabase::Filter(), items, false, sorting, RequiresAdditionalDetails(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::EPISODE, parameterObject)))
     return InvalidParams;
 
   return HandleItems("episodeid", "episodes", items, parameterObject, result, false);
@@ -324,7 +324,7 @@ JSONRPC_STATUS CVideoLibrary::GetEpisodeDetails(const std::string &method, ITran
   int id = (int)parameterObject["episodeid"].asInteger();
 
   CVideoInfoTag infos;
-  if (!videodatabase.GetEpisodeInfo("", infos, id, RequiresAdditionalDetails(KODI::MEDIA::TYPE::EPISODE, parameterObject)) || infos.m_iDbId <= 0)
+  if (!videodatabase.GetEpisodeInfo("", infos, id, RequiresAdditionalDetails(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::EPISODE, parameterObject)) || infos.m_iDbId <= 0)
     return NotFound;
 
   CFileItemPtr pItem = std::make_shared<CFileItem>(infos);
@@ -334,7 +334,7 @@ JSONRPC_STATUS CVideoLibrary::GetEpisodeDetails(const std::string &method, ITran
     tvshowid = videodatabase.GetTvShowForEpisode(id);
 
   std::string basePath =
-      StringUtils::Format("{}{}/{}/{}", KODI::VIDEO::DB_PATH::TVSHOW_TITLES, tvshowid, infos.m_iSeason, id);
+      StringUtils::Format("{}{}/{}/{}", UNIVERSAL MEDIA CENTER::VIDEO::DB_PATH::TVSHOW_TITLES, tvshowid, infos.m_iSeason, id);
   pItem->SetPath(basePath);
 
   HandleFileItem("episodeid", true, "episodedetails", pItem, parameterObject, parameterObject["properties"], result, false);
@@ -353,7 +353,7 @@ JSONRPC_STATUS CVideoLibrary::GetMusicVideos(const std::string &method, ITranspo
     return InvalidParams;
 
   CVideoDbUrl videoUrl;
-  if (!videoUrl.FromString(KODI::VIDEO::DB_PATH::MUSICVIDEO_TITLES))
+  if (!videoUrl.FromString(UNIVERSAL MEDIA CENTER::VIDEO::DB_PATH::MUSICVIDEO_TITLES))
     return InternalError;
 
   int genreID = -1, year = -1;
@@ -382,7 +382,7 @@ JSONRPC_STATUS CVideoLibrary::GetMusicVideos(const std::string &method, ITranspo
   }
 
   CFileItemList items;
-  if (!videodatabase.GetMusicVideosNav(videoUrl.ToString(), items, genreID, year, -1, -1, -1, -1, -1, sorting, RequiresAdditionalDetails(KODI::MEDIA::TYPE::MUSIC_VIDEO, parameterObject)))
+  if (!videodatabase.GetMusicVideosNav(videoUrl.ToString(), items, genreID, year, -1, -1, -1, -1, -1, sorting, RequiresAdditionalDetails(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MUSIC_VIDEO, parameterObject)))
     return InternalError;
 
   return HandleItems("musicvideoid", "musicvideos", items, parameterObject, result, false);
@@ -397,7 +397,7 @@ JSONRPC_STATUS CVideoLibrary::GetMusicVideoDetails(const std::string &method, IT
   int id = (int)parameterObject["musicvideoid"].asInteger();
 
   CVideoInfoTag infos;
-  if (!videodatabase.GetMusicVideoInfo("", infos, id, RequiresAdditionalDetails(KODI::MEDIA::TYPE::MUSIC_VIDEO, parameterObject)) || infos.m_iDbId <= 0)
+  if (!videodatabase.GetMusicVideoInfo("", infos, id, RequiresAdditionalDetails(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MUSIC_VIDEO, parameterObject)) || infos.m_iDbId <= 0)
     return NotFound;
 
   HandleFileItem("musicvideoid", true, "musicvideodetails", std::make_shared<CFileItem>(infos),
@@ -413,7 +413,7 @@ JSONRPC_STATUS CVideoLibrary::GetRecentlyAddedMovies(const std::string &method, 
 
   CFileItemList items;
   if (!videodatabase.GetRecentlyAddedMoviesNav(
-          KODI::VIDEO::DB_PATH::RECENTLY_ADDED_MOVIES, items, 0, RequiresAdditionalDetails(KODI::MEDIA::TYPE::MOVIE, parameterObject)))
+          UNIVERSAL MEDIA CENTER::VIDEO::DB_PATH::RECENTLY_ADDED_MOVIES, items, 0, RequiresAdditionalDetails(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MOVIE, parameterObject)))
     return InternalError;
 
   return HandleItems("movieid", "movies", items, parameterObject, result, true);
@@ -427,7 +427,7 @@ JSONRPC_STATUS CVideoLibrary::GetRecentlyAddedEpisodes(const std::string &method
 
   CFileItemList items;
   if (!videodatabase.GetRecentlyAddedEpisodesNav(
-          KODI::VIDEO::DB_PATH::RECENTLY_ADDED_EPISODES, items, 0, RequiresAdditionalDetails(KODI::MEDIA::TYPE::EPISODE, parameterObject)))
+          UNIVERSAL MEDIA CENTER::VIDEO::DB_PATH::RECENTLY_ADDED_EPISODES, items, 0, RequiresAdditionalDetails(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::EPISODE, parameterObject)))
     return InternalError;
 
   return HandleItems("episodeid", "episodes", items, parameterObject, result, true);
@@ -441,7 +441,7 @@ JSONRPC_STATUS CVideoLibrary::GetRecentlyAddedMusicVideos(const std::string &met
 
   CFileItemList items;
   if (!videodatabase.GetRecentlyAddedMusicVideosNav(
-          KODI::VIDEO::DB_PATH::RECENTLY_ADDED_MUSICVIDEOS, items, 0, RequiresAdditionalDetails(KODI::MEDIA::TYPE::MUSIC_VIDEO, parameterObject)))
+          UNIVERSAL MEDIA CENTER::VIDEO::DB_PATH::RECENTLY_ADDED_MUSICVIDEOS, items, 0, RequiresAdditionalDetails(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MUSIC_VIDEO, parameterObject)))
     return InternalError;
 
   return HandleItems("musicvideoid", "musicvideos", items, parameterObject, result, true);
@@ -455,8 +455,8 @@ JSONRPC_STATUS CVideoLibrary::GetInProgressTVShows(const std::string &method, IT
 
   CFileItemList items;
   if (!videodatabase.GetInProgressTvShowsNav(
-          KODI::VIDEO::DB_PATH::INPROGRESS_TVSHOWS, items,
-          RequiresAdditionalDetails(KODI::MEDIA::TYPE::TV_SHOW, parameterObject)))
+          UNIVERSAL MEDIA CENTER::VIDEO::DB_PATH::INPROGRESS_TVSHOWS, items,
+          RequiresAdditionalDetails(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::TV_SHOW, parameterObject)))
     return InternalError;
 
   return HandleItems("tvshowid", "tvshows", items, parameterObject, result, false);
@@ -468,19 +468,19 @@ JSONRPC_STATUS CVideoLibrary::GetGenres(const std::string &method, ITransportLay
   StringUtils::ToLower(media);
   VideoDbContentType idContent = VideoDbContentType::UNKNOWN;
 
-  std::string strPath = KODI::VIDEO::DB_PATH::ROOT;
+  std::string strPath = UNIVERSAL MEDIA CENTER::VIDEO::DB_PATH::ROOT;
   /* select which video content to get genres from*/
-  if (media == KODI::MEDIA::NameOf(KODI::MEDIA::TYPE::MOVIE))
+  if (media == UNIVERSAL MEDIA CENTER::MEDIA::NameOf(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MOVIE))
   {
     idContent = VideoDbContentType::MOVIES;
     strPath += "movies";
   }
-  else if (media == KODI::MEDIA::NameOf(KODI::MEDIA::TYPE::TV_SHOW))
+  else if (media == UNIVERSAL MEDIA CENTER::MEDIA::NameOf(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::TV_SHOW))
   {
     idContent = VideoDbContentType::TVSHOWS;
     strPath += "tvshows";
   }
-  else if (media == KODI::MEDIA::NameOf(KODI::MEDIA::TYPE::MUSIC_VIDEO))
+  else if (media == UNIVERSAL MEDIA CENTER::MEDIA::NameOf(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MUSIC_VIDEO))
   {
     idContent = VideoDbContentType::MUSICVIDEOS;
     strPath += "musicvideos";
@@ -509,19 +509,19 @@ JSONRPC_STATUS CVideoLibrary::GetTags(const std::string &method, ITransportLayer
   StringUtils::ToLower(media);
   VideoDbContentType idContent = VideoDbContentType::UNKNOWN;
 
-  std::string strPath = KODI::VIDEO::DB_PATH::ROOT;
+  std::string strPath = UNIVERSAL MEDIA CENTER::VIDEO::DB_PATH::ROOT;
   /* select which video content to get tags from*/
-  if (media == KODI::MEDIA::NameOf(KODI::MEDIA::TYPE::MOVIE))
+  if (media == UNIVERSAL MEDIA CENTER::MEDIA::NameOf(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MOVIE))
   {
     idContent = VideoDbContentType::MOVIES;
     strPath += "movies";
   }
-  else if (media == KODI::MEDIA::NameOf(KODI::MEDIA::TYPE::TV_SHOW))
+  else if (media == UNIVERSAL MEDIA CENTER::MEDIA::NameOf(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::TV_SHOW))
   {
     idContent = VideoDbContentType::TVSHOWS;
     strPath += "tvshows";
   }
-  else if (media == KODI::MEDIA::NameOf(KODI::MEDIA::TYPE::MUSIC_VIDEO))
+  else if (media == UNIVERSAL MEDIA CENTER::MEDIA::NameOf(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MUSIC_VIDEO))
   {
     idContent = VideoDbContentType::MUSICVIDEOS;
     strPath += "musicvideos";
@@ -546,19 +546,19 @@ JSONRPC_STATUS CVideoLibrary::GetTags(const std::string &method, ITransportLayer
 
 namespace
 {
-  const std::map<std::string, KODI::MEDIA::TYPE> mediaIDTypes = {
-    {"episodeid", KODI::MEDIA::TYPE::EPISODE},
-    {"tvshowid", KODI::MEDIA::TYPE::TV_SHOW},
-    {"seasonid", KODI::MEDIA::TYPE::SEASON},
-    {"movieid", KODI::MEDIA::TYPE::MOVIE},
-    {"setid", KODI::MEDIA::TYPE::VIDEO_COLLECTION},
-    {"musicvideoid", KODI::MEDIA::TYPE::MUSIC_VIDEO},
+  const std::map<std::string, UNIVERSAL MEDIA CENTER::MEDIA::TYPE> mediaIDTypes = {
+    {"episodeid", UNIVERSAL MEDIA CENTER::MEDIA::TYPE::EPISODE},
+    {"tvshowid", UNIVERSAL MEDIA CENTER::MEDIA::TYPE::TV_SHOW},
+    {"seasonid", UNIVERSAL MEDIA CENTER::MEDIA::TYPE::SEASON},
+    {"movieid", UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MOVIE},
+    {"setid", UNIVERSAL MEDIA CENTER::MEDIA::TYPE::VIDEO_COLLECTION},
+    {"musicvideoid", UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MUSIC_VIDEO},
   };
 }
 
 JSONRPC_STATUS CVideoLibrary::GetAvailableArtTypes(const std::string& method, ITransportLayer* transport, IClient* client, const CVariant& parameterObject, CVariant& result)
 {
-  KODI::MEDIA::TYPE mediaType{KODI::MEDIA::TYPE::NONE};
+  UNIVERSAL MEDIA CENTER::MEDIA::TYPE mediaType{UNIVERSAL MEDIA CENTER::MEDIA::TYPE::NONE};
   int mediaID = -1;
   for (const auto& mediaIDType : mediaIDTypes) {
     if (parameterObject["item"].isMember(mediaIDType.first))
@@ -588,7 +588,7 @@ JSONRPC_STATUS CVideoLibrary::GetAvailableArtTypes(const std::string& method, IT
 
 JSONRPC_STATUS CVideoLibrary::GetAvailableArt(const std::string& method, ITransportLayer* transport, IClient* client, const CVariant& parameterObject, CVariant& result)
 {
-  KODI::MEDIA::TYPE mediaType{KODI::MEDIA::TYPE::NONE};
+  UNIVERSAL MEDIA CENTER::MEDIA::TYPE mediaType{UNIVERSAL MEDIA CENTER::MEDIA::TYPE::NONE};
   int mediaID = -1;
   for (const auto& mediaIDType : mediaIDTypes) {
     if (parameterObject["item"].isMember(mediaIDType.first))
@@ -638,7 +638,7 @@ JSONRPC_STATUS CVideoLibrary::SetMovieDetails(const std::string &method, ITransp
     return NotFound;
 
   // get artwork
-  KODI::ART::Artwork artwork;
+  UNIVERSAL MEDIA CENTER::ART::Artwork artwork;
   videodatabase.GetArtForItem(infos.m_iDbId, infos.m_type, artwork);
 
   int playcount = infos.GetPlayCount();
@@ -653,7 +653,7 @@ JSONRPC_STATUS CVideoLibrary::SetMovieDetails(const std::string &method, ITransp
   if (videodatabase.UpdateDetailsForMovie(id, infos, artwork, updatedDetails) <= 0)
     return InternalError;
 
-  if (!videodatabase.RemoveArtForItem(infos.m_iDbId, KODI::MEDIA::TYPE::MOVIE, removedArtwork))
+  if (!videodatabase.RemoveArtForItem(infos.m_iDbId, UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MOVIE, removedArtwork))
     return InternalError;
 
   if (playcount != infos.GetPlayCount() || lastPlayed != infos.m_lastPlayed)
@@ -663,7 +663,7 @@ JSONRPC_STATUS CVideoLibrary::SetMovieDetails(const std::string &method, ITransp
     infos.SetPlayCount(playcount);
     videodatabase.SetPlayCount(CFileItem(infos), newPlaycount, infos.m_lastPlayed);
     if (newPlaycount != playcount)
-      KODI::VIDEO::UTILS::AnnouncePlayCountChanged(infos.m_strFileNameAndPath, newPlaycount);
+      UNIVERSAL MEDIA CENTER::VIDEO::UTILS::AnnouncePlayCountChanged(infos.m_strFileNameAndPath, newPlaycount);
   }
 
   UpdateResumePoint(parameterObject, infos, videodatabase);
@@ -689,7 +689,7 @@ JSONRPC_STATUS CVideoLibrary::SetMovieSetDetails(const std::string &method, ITra
   }
 
   // get artwork
-  KODI::ART::Artwork artwork;
+  UNIVERSAL MEDIA CENTER::ART::Artwork artwork;
   videodatabase.GetArtForItem(infos.m_iDbId, infos.m_type, artwork);
 
   std::set<std::string, std::less<>> removedArtwork;
@@ -720,10 +720,10 @@ JSONRPC_STATUS CVideoLibrary::SetTVShowDetails(const std::string &method, ITrans
     return NotFound;
 
   // get artwork
-  KODI::ART::Artwork artwork;
+  UNIVERSAL MEDIA CENTER::ART::Artwork artwork;
   videodatabase.GetArtForItem(infos.m_iDbId, infos.m_type, artwork);
 
-  KODI::ART::SeasonsArtwork seasonArt;
+  UNIVERSAL MEDIA CENTER::ART::SeasonsArtwork seasonArt;
   videodatabase.GetTvShowSeasonArt(infos.m_iDbId, seasonArt);
 
   std::set<std::string, std::less<>> removedArtwork;
@@ -735,18 +735,18 @@ JSONRPC_STATUS CVideoLibrary::SetTVShowDetails(const std::string &method, ITrans
   const bool watched =
       updatePlaycount
           ? infos.GetPlayCount() > 0
-          : showItem.GetProperty(KODI::ITEM::PROPERTY::WATCHED_EPISODES).asInteger() > 0;
+          : showItem.GetProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::WATCHED_EPISODES).asInteger() > 0;
   if (ClearsLastPlayed(parameterObject) && watched)
     return InvalidParams;
 
   // we need to manually remove tags/taglinks for now because they aren't replaced
   // due to scrapers not supporting them
-  videodatabase.RemoveTagsFromItem(id, KODI::MEDIA::TYPE::TV_SHOW);
+  videodatabase.RemoveTagsFromItem(id, UNIVERSAL MEDIA CENTER::MEDIA::TYPE::TV_SHOW);
 
   if (!videodatabase.UpdateDetailsForTvShow(id, infos, artwork, seasonArt))
     return InternalError;
 
-  if (!videodatabase.RemoveArtForItem(infos.m_iDbId, KODI::MEDIA::TYPE::TV_SHOW, removedArtwork))
+  if (!videodatabase.RemoveArtForItem(infos.m_iDbId, UNIVERSAL MEDIA CENTER::MEDIA::TYPE::TV_SHOW, removedArtwork))
     return InternalError;
 
   if (updatePlaycount || updateLastplayed)
@@ -775,7 +775,7 @@ JSONRPC_STATUS CVideoLibrary::SetTVShowDetails(const std::string &method, ITrans
       {
         videodatabase.SetPlayCount(*episode, update->playCount, update->lastPlayed);
         if (update->playCount != episode->GetVideoInfoTag()->GetPlayCount())
-          KODI::VIDEO::UTILS::AnnouncePlayCountChanged(
+          UNIVERSAL MEDIA CENTER::VIDEO::UTILS::AnnouncePlayCountChanged(
               episode->GetVideoInfoTag()->m_strFileNameAndPath, update->playCount);
       }
     }
@@ -803,7 +803,7 @@ JSONRPC_STATUS CVideoLibrary::SetSeasonDetails(const std::string &method, ITrans
   }
 
   // get artwork
-  KODI::ART::Artwork artwork;
+  UNIVERSAL MEDIA CENTER::ART::Artwork artwork;
   videodatabase.GetArtForItem(infos.m_iDbId, infos.m_type, artwork);
 
   std::set<std::string, std::less<>> removedArtwork;
@@ -815,7 +815,7 @@ JSONRPC_STATUS CVideoLibrary::SetSeasonDetails(const std::string &method, ITrans
   if (videodatabase.SetDetailsForSeason(infos, artwork, infos.m_iIdShow, id) <= 0)
     return InternalError;
 
-  if (!videodatabase.RemoveArtForItem(infos.m_iDbId, KODI::MEDIA::TYPE::SEASON, removedArtwork))
+  if (!videodatabase.RemoveArtForItem(infos.m_iDbId, UNIVERSAL MEDIA CENTER::MEDIA::TYPE::SEASON, removedArtwork))
     return InternalError;
 
   CJSONRPCUtils::NotifyItemUpdated();
@@ -846,7 +846,7 @@ JSONRPC_STATUS CVideoLibrary::SetEpisodeDetails(const std::string &method, ITran
   }
 
   // get artwork
-  KODI::ART::Artwork artwork;
+  UNIVERSAL MEDIA CENTER::ART::Artwork artwork;
   videodatabase.GetArtForItem(infos.m_iDbId, infos.m_type, artwork);
 
   int playcount = infos.GetPlayCount();
@@ -861,7 +861,7 @@ JSONRPC_STATUS CVideoLibrary::SetEpisodeDetails(const std::string &method, ITran
   if (videodatabase.SetDetailsForEpisode(infos, artwork, tvshowid, id) <= 0)
     return InternalError;
 
-  if (!videodatabase.RemoveArtForItem(infos.m_iDbId, KODI::MEDIA::TYPE::EPISODE, removedArtwork))
+  if (!videodatabase.RemoveArtForItem(infos.m_iDbId, UNIVERSAL MEDIA CENTER::MEDIA::TYPE::EPISODE, removedArtwork))
     return InternalError;
 
   if (playcount != infos.GetPlayCount() || lastPlayed != infos.m_lastPlayed)
@@ -871,7 +871,7 @@ JSONRPC_STATUS CVideoLibrary::SetEpisodeDetails(const std::string &method, ITran
     infos.SetPlayCount(playcount);
     videodatabase.SetPlayCount(CFileItem(infos), newPlaycount, infos.m_lastPlayed);
     if (newPlaycount != playcount)
-      KODI::VIDEO::UTILS::AnnouncePlayCountChanged(infos.m_strFileNameAndPath, newPlaycount);
+      UNIVERSAL MEDIA CENTER::VIDEO::UTILS::AnnouncePlayCountChanged(infos.m_strFileNameAndPath, newPlaycount);
   }
 
   UpdateResumePoint(parameterObject, infos, videodatabase);
@@ -897,7 +897,7 @@ JSONRPC_STATUS CVideoLibrary::SetMusicVideoDetails(const std::string &method, IT
   }
 
   // get artwork
-  KODI::ART::Artwork artwork;
+  UNIVERSAL MEDIA CENTER::ART::Artwork artwork;
   videodatabase.GetArtForItem(infos.m_iDbId, infos.m_type, artwork);
 
   int playcount = infos.GetPlayCount();
@@ -911,12 +911,12 @@ JSONRPC_STATUS CVideoLibrary::SetMusicVideoDetails(const std::string &method, IT
 
   // we need to manually remove tags/taglinks for now because they aren't replaced
   // due to scrapers not supporting them
-  videodatabase.RemoveTagsFromItem(id, KODI::MEDIA::TYPE::MUSIC_VIDEO);
+  videodatabase.RemoveTagsFromItem(id, UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MUSIC_VIDEO);
 
   if (videodatabase.SetDetailsForMusicVideo(infos, artwork, id) <= 0)
     return InternalError;
 
-  if (!videodatabase.RemoveArtForItem(infos.m_iDbId, KODI::MEDIA::TYPE::MUSIC_VIDEO, removedArtwork))
+  if (!videodatabase.RemoveArtForItem(infos.m_iDbId, UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MUSIC_VIDEO, removedArtwork))
     return InternalError;
 
   if (playcount != infos.GetPlayCount()|| lastPlayed != infos.m_lastPlayed)
@@ -926,7 +926,7 @@ JSONRPC_STATUS CVideoLibrary::SetMusicVideoDetails(const std::string &method, IT
     infos.SetPlayCount(playcount);
     videodatabase.SetPlayCount(CFileItem(infos), newPlaycount, infos.m_lastPlayed);
     if (newPlaycount != playcount)
-      KODI::VIDEO::UTILS::AnnouncePlayCountChanged(infos.m_strFileNameAndPath, newPlaycount);
+      UNIVERSAL MEDIA CENTER::VIDEO::UTILS::AnnouncePlayCountChanged(infos.m_strFileNameAndPath, newPlaycount);
   }
 
   UpdateResumePoint(parameterObject, infos, videodatabase);
@@ -1082,7 +1082,7 @@ JSONRPC_STATUS CVideoLibrary::SetSourceContent(const std::string& method,
   }
 
   // allAudio has no parameter, but SetScraperForPath() writes it in every branch.
-  KODI::VIDEO::SScanSettings existing;
+  UNIVERSAL MEDIA CENTER::VIDEO::SScanSettings existing;
   videodatabase.GetScraperForPath(parsed.path, existing);
   parsed.settings.m_allExtAudio = existing.m_allExtAudio;
 
@@ -1281,9 +1281,9 @@ bool CVideoLibrary::FillFileItemList(const CVariant &parameterObject, CFileItemL
   return success;
 }
 
-int CVideoLibrary::RequiresAdditionalDetails(KODI::MEDIA::TYPE mediaType, const CVariant &parameterObject)
+int CVideoLibrary::RequiresAdditionalDetails(UNIVERSAL MEDIA CENTER::MEDIA::TYPE mediaType, const CVariant &parameterObject)
 {
-  if (mediaType != KODI::MEDIA::TYPE::MOVIE && mediaType != KODI::MEDIA::TYPE::TV_SHOW && mediaType != KODI::MEDIA::TYPE::EPISODE && mediaType != KODI::MEDIA::TYPE::MUSIC_VIDEO)
+  if (mediaType != UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MOVIE && mediaType != UNIVERSAL MEDIA CENTER::MEDIA::TYPE::TV_SHOW && mediaType != UNIVERSAL MEDIA CENTER::MEDIA::TYPE::EPISODE && mediaType != UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MUSIC_VIDEO)
     return VideoDbDetailsNone;
 
   return GetDetailsFromJsonParameters(parameterObject);
@@ -1353,7 +1353,7 @@ void CVideoLibrary::UpdateResumePoint(const CVariant &parameterObject, CVideoInf
     if (position == 0.0)
     {
       videodatabase.ClearBookMarksOfFile(details.m_strFileNameAndPath, CBookmark::RESUME);
-      KODI::VIDEO::UTILS::AnnounceResumePointChanged(details.m_strFileNameAndPath, {});
+      UNIVERSAL MEDIA CENTER::VIDEO::UTILS::AnnounceResumePointChanged(details.m_strFileNameAndPath, {});
     }
     else
     {
@@ -1366,7 +1366,7 @@ void CVideoLibrary::UpdateResumePoint(const CVariant &parameterObject, CVideoInf
 
       bookmark.timeInSeconds = position;
       videodatabase.AddBookMarkToFile(details.m_strFileNameAndPath, bookmark, CBookmark::RESUME);
-      KODI::VIDEO::UTILS::AnnounceResumePointChanged(details.m_strFileNameAndPath, bookmark);
+      UNIVERSAL MEDIA CENTER::VIDEO::UTILS::AnnounceResumePointChanged(details.m_strFileNameAndPath, bookmark);
     }
   }
 }
@@ -1385,7 +1385,7 @@ void CVideoLibrary::UpdateVideoTagField(const CVariant& parameterObject,
 
 void CVideoLibrary::UpdateVideoTag(const CVariant& parameterObject,
                                    CVideoInfoTag& details,
-                                   KODI::ART::Artwork& artwork,
+                                   UNIVERSAL MEDIA CENTER::ART::Artwork& artwork,
                                    std::set<std::string, std::less<>>& removedArtwork,
                                    std::set<std::string, std::less<>>& updatedDetails)
 {
@@ -1543,13 +1543,13 @@ void CVideoLibrary::UpdateVideoTag(const CVariant& parameterObject,
   if (ParameterNotNull(parameterObject, "thumbnail"))
   {
     std::string value = parameterObject["thumbnail"].asString();
-    artwork[KODI::ART::TYPE::THUMB] = StringUtils::Trim(value);
+    artwork[UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB] = StringUtils::Trim(value);
     updatedDetails.insert("art.altered");
   }
   if (ParameterNotNull(parameterObject, "fanart"))
   {
     std::string value = parameterObject["fanart"].asString();
-    artwork[KODI::ART::TYPE::FANART] = StringUtils::Trim(value);
+    artwork[UNIVERSAL MEDIA CENTER::ART::TYPE::FANART] = StringUtils::Trim(value);
     updatedDetails.insert("art.altered");
   }
 

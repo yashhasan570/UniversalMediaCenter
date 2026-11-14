@@ -100,7 +100,7 @@ namespace SOCKETS
       if (saddr.saddr_generic.sa_family == AF_INET6)
       {
         // IPv4 coercion (see http://home.samfundet.no/~sesse/ipv6-porting.pdf).
-        // We hash the entire IPv6 address because XBMC might conceivably need to
+        // We hash the entire IPv6 address because  might conceivably need to
         // distinguish between different hosts in the same subnet.
         // This hash function (djbhash) is not too strong, but good enough.
         uint32_t hash = 5381;

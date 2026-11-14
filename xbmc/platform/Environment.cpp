@@ -11,7 +11,7 @@
  * \brief Implements CEnvironment class functions.
  *
  *  Some ideas were inspired by PostgreSQL's pgwin32_putenv function.
- *  Refined, updated, enhanced and modified for XBMC by Karlson2k.
+ *  Refined, updated, enhanced and modified for  by Karlson2k.
  */
 
 #include "Environment.h"

@@ -18,7 +18,7 @@
  * and writes it with Atomics through the address returned below. Entries are
  * indexed by the Emscripten fd; `native` holds the Tizen socket id plus one so
  * that zero means "not a socket". */
-struct kodi_sock_entry
+struct universalmediacenter_sock_entry
 {
   _Atomic int32_t native;
   _Atomic int32_t flags;
@@ -26,25 +26,25 @@ struct kodi_sock_entry
   _Atomic int32_t sndtimeo_ms;
 };
 
-static struct kodi_sock_entry g_sockets[KODI_SOCK_MAX_FD];
+static struct universalmediacenter_sock_entry g_sockets[UNIVERSALMEDIA_SOCK_MAX_FD];
 
 /* 0 = unknown, 1 = available, 2 = unavailable. */
 static _Atomic int32_t g_availability;
 
-extern int kodi_tizen_sockets_probe(void);
+extern int universalmediacenter_tizen_sockets_probe(void);
 
-EMSCRIPTEN_KEEPALIVE void* kodi_sock_table(void)
+EMSCRIPTEN_KEEPALIVE void* universalmediacenter_sock_table(void)
 {
   return g_sockets;
 }
 
-EMSCRIPTEN_KEEPALIVE int kodi_sock_max_fd(void)
+EMSCRIPTEN_KEEPALIVE int universalmediacenter_sock_max_fd(void)
 {
-  return KODI_SOCK_MAX_FD;
+  return UNIVERSALMEDIA_SOCK_MAX_FD;
 }
 
 /* The Tizen runtime reports Linux errno values; libc here uses its own. */
-EMSCRIPTEN_KEEPALIVE int kodi_sock_errno_from_linux(int code)
+EMSCRIPTEN_KEEPALIVE int universalmediacenter_sock_errno_from_linux(int code)
 {
   switch (code)
   {
@@ -139,12 +139,12 @@ EMSCRIPTEN_KEEPALIVE int kodi_sock_errno_from_linux(int code)
   }
 }
 
-int kodi_wasm_has_sockets(void)
+int universalmediacenter_wasm_has_sockets(void)
 {
   int32_t state = atomic_load(&g_availability);
   if (state == 0)
   {
-    state = kodi_tizen_sockets_probe() ? 1 : 2;
+    state = universalmediacenter_tizen_sockets_probe() ? 1 : 2;
     atomic_store(&g_availability, state);
   }
   return state == 1;

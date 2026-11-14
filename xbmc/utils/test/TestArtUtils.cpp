@@ -28,7 +28,7 @@
 #include <fmt/format.h>
 #include <gtest/gtest.h>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 namespace
 {
@@ -374,7 +374,7 @@ TEST_P(GetLocalFanartTest, GetLocalFanart)
   else
   {
     std::error_code ec;
-    auto tmpdir = KODI::PLATFORM::FILESYSTEM::temp_directory_path(ec);
+    auto tmpdir = UNIVERSAL MEDIA CENTER::PLATFORM::FILESYSTEM::temp_directory_path(ec);
     ASSERT_TRUE(!ec);
     // A random suffix can be mistaken for a stacked movie folder (e.g. "cd1").
     uniq = unique_path("%%%%%FanartTest");
@@ -1202,7 +1202,7 @@ INSTANTIATE_TEST_SUITE_P(TestArtUtils, GetTbnTest, testing::ValuesIn(tbn_tests))
 TEST(TestArtUtils, GetTbnStack)
 {
   std::error_code ec;
-  auto path = KODI::PLATFORM::FILESYSTEM::temp_directory_path(ec);
+  auto path = UNIVERSAL MEDIA CENTER::PLATFORM::FILESYSTEM::temp_directory_path(ec);
   ASSERT_TRUE(!ec);
   const auto file_path = URIUtils::AddFileToFolder(path, "foo-cd1.tbn");
   {

@@ -36,7 +36,7 @@
 #include "utils/StringUtils.h"
 #include "utils/URIUtils.h"
 #include "utils/Variant.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 #include "utils/log.h"
 #include "video/VideoDatabase.h"
 #include "video/VideoFileItemClassify.h"
@@ -50,12 +50,12 @@
 #include <ranges>
 #include <vector>
 
-namespace KODI::VIDEO::UTILS
+namespace UNIVERSAL MEDIA CENTER::VIDEO::UTILS
 {
 
 std::string FindTrailer(const CFileItem& item,
                         bool movieFolder,
-                        KODI::REGEXP::RegExpCache* cache /* = nullptr */)
+                        UNIVERSAL MEDIA CENTER::REGEXP::RegExpCache* cache /* = nullptr */)
 {
   std::string strFile2;
   std::string strFile = item.GetPath();
@@ -108,7 +108,7 @@ std::string FindTrailer(const CFileItem& item,
   for (const auto& strRegExp : strMatchRegExps)
   {
     if (std::shared_ptr<CRegExp> r =
-            KODI::REGEXP::GetRegExp(strRegExp, cache, true, CRegExp::autoUtf8);
+            UNIVERSAL MEDIA CENTER::REGEXP::GetRegExp(strRegExp, cache, true, CRegExp::autoUtf8);
         r != nullptr)
       matchRegExps.push_back(r);
   }
@@ -262,7 +262,7 @@ std::string GetFastHash(const std::string& directory, const std::vector<std::str
 
 std::string GetFastHash(const std::vector<std::string>& excludes, int64_t time)
 {
-  KODI::UTILITY::CDigest digest{KODI::UTILITY::CDigest::Type::MD5};
+  UNIVERSAL MEDIA CENTER::UTILITY::CDigest digest{UNIVERSAL MEDIA CENTER::UTILITY::CDigest::Type::MD5};
 
   if (!excludes.empty())
     digest.Update(StringUtils::Join(excludes, "|"));
@@ -276,7 +276,7 @@ int GetPathHash(const CFileItemList& items, std::string& hash)
   // Create a hash based on the filenames, filesize and filedate.  Also count the number of files
   if (0 == items.Size())
     return 0;
-  KODI::UTILITY::CDigest digest{KODI::UTILITY::CDigest::Type::MD5};
+  UNIVERSAL MEDIA CENTER::UTILITY::CDigest digest{UNIVERSAL MEDIA CENTER::UTILITY::CDigest::Type::MD5};
   int count = 0;
   for (int i = 0; i < items.Size(); ++i)
   {
@@ -304,7 +304,7 @@ int GetPathHash(const CFileItemList& items, std::string& hash)
       // for consistency, use less precise format instead which discard
       // milliseconds value.
       // Unless a modification occur during the 1 second window when
-      // kodi hash and update this particular file, we are safe.
+      // universalmediacenter hash and update this particular file, we are safe.
       if (const std::string stackParts{pItem->GetProperty(PROPERTY_STACK_DIGEST).asString()};
           !stackParts.empty())
       {
@@ -396,7 +396,7 @@ std::optional<int> GetNextPartFromBookmark(const CBookmark& bookmark)
   if (!bookmark.HasSavedPlayerState())
     return std::nullopt;
 
-  CXBMCTinyXML2 xmlDoc;
+  CTinyXML2 xmlDoc;
   if (!xmlDoc.Parse(bookmark.playerState))
     return std::nullopt;
 
@@ -409,7 +409,7 @@ std::optional<int> GetNextPartFromBookmark(const CBookmark& bookmark)
 
 std::string MakeNextPartPlayerState(int part, const std::string& playerState)
 {
-  CXBMCTinyXML2 xmlDoc;
+  CTinyXML2 xmlDoc;
   auto* eRoot{xmlDoc.NewElement("nextpart")};
   eRoot->SetText(part);
   if (!playerState.empty())
@@ -426,7 +426,7 @@ std::optional<std::string> GetNextPartPlayerStateFromBookmark(const CBookmark& b
   if (!bookmark.HasSavedPlayerState())
     return std::nullopt;
 
-  CXBMCTinyXML2 xmlDoc;
+  CTinyXML2 xmlDoc;
   if (!xmlDoc.Parse(bookmark.playerState))
     return std::nullopt;
 
@@ -784,4 +784,4 @@ void AnnounceResumePointChanged(const std::string& file, const CBookmark& resume
   data["resume"]["total"] = resumePoint.totalTimeInSeconds;
   AnnounceFileChange(file, "OnResumePointChanged", data);
 }
-} // namespace KODI::VIDEO::UTILS
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO::UTILS

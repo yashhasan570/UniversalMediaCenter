@@ -10,7 +10,7 @@
 
 #include "ServiceBroker.h"
 #include "addons/binary-addons/AddonDll.h"
-#include "addons/kodi-dev-kit/include/kodi/gui/controls/Label.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/gui/controls/Label.h"
 #include "guilib/GUIComponent.h"
 #include "guilib/GUILabelControl.h"
 #include "guilib/GUIWindowManager.h"
@@ -21,49 +21,49 @@ namespace ADDON
 
 void Interface_GUIControlLabel::Init(AddonGlobalInterface* addonInterface)
 {
-  addonInterface->toUniversal Media Center->kodi_gui->control_label =
-      new AddonToUniversal Media CenterFuncTable_kodi_gui_control_label();
+  addonInterface->toUniversal Media Center->->control_label =
+      new AddonToUniversal Media CenterFuncTable__control_label();
 
-  addonInterface->toUniversal Media Center->kodi_gui->control_label->set_visible = set_visible;
-  addonInterface->toUniversal Media Center->kodi_gui->control_label->set_label = set_label;
-  addonInterface->toUniversal Media Center->kodi_gui->control_label->get_label = get_label;
+  addonInterface->toUniversal Media Center->->control_label->set_visible = set_visible;
+  addonInterface->toUniversal Media Center->->control_label->set_label = set_label;
+  addonInterface->toUniversal Media Center->->control_label->get_label = get_label;
 }
 
 void Interface_GUIControlLabel::DeInit(AddonGlobalInterface* addonInterface)
 {
-  delete addonInterface->toUniversal Media Center->kodi_gui->control_label;
+  delete addonInterface->toUniversal Media Center->->control_label;
 }
 
-void Interface_GUIControlLabel::set_visible(KODI_HANDLE kodiBase,
-                                            KODI_GUI_CONTROL_HANDLE handle,
+void Interface_GUIControlLabel::set_visible(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                            UNIVERSALMEDIA_GUI_CONTROL_HANDLE handle,
                                             bool visible)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   auto* control = static_cast<CGUILabelControl*>(handle);
   if (!addon || !control)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}') "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}') "
                "on addon '{}'",
-               kodiBase, handle, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, addon ? addon->ID() : "unknown");
     return;
   }
 
   control->SetVisible(visible);
 }
 
-void Interface_GUIControlLabel::set_label(KODI_HANDLE kodiBase,
-                                          KODI_GUI_CONTROL_HANDLE handle,
+void Interface_GUIControlLabel::set_label(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                          UNIVERSALMEDIA_GUI_CONTROL_HANDLE handle,
                                           const char* label)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   const auto* control = static_cast<const CGUILabelControl*>(handle);
   if (!addon || !control || !label)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}', "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}', "
                "label='{}') on addon '{}'",
-               kodiBase, handle, static_cast<const void*>(label), addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, static_cast<const void*>(label), addon ? addon->ID() : "unknown");
     return;
   }
 
@@ -72,16 +72,16 @@ void Interface_GUIControlLabel::set_label(KODI_HANDLE kodiBase,
   CServiceBroker::GetGUI()->GetWindowManager().SendThreadMessage(msg, control->GetParentID());
 }
 
-char* Interface_GUIControlLabel::get_label(KODI_HANDLE kodiBase, KODI_GUI_CONTROL_HANDLE handle)
+char* Interface_GUIControlLabel::get_label(UNIVERSALMEDIA_HANDLE universalmediacenterBase, UNIVERSALMEDIA_GUI_CONTROL_HANDLE handle)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   const auto* control = static_cast<const CGUILabelControl*>(handle);
   if (!addon || !control)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}') "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}') "
                "on addon '{}'",
-               kodiBase, handle, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, addon ? addon->ID() : "unknown");
     return nullptr;
   }
 

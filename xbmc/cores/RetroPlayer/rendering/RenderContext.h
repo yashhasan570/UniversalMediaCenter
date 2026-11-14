@@ -31,7 +31,7 @@ enum class GL_SHADER_METHOD
   TEXTURE_NOALPHA,
 };
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -118,4 +118,4 @@ private:
   CGUIComponent* const m_guiComponent;
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

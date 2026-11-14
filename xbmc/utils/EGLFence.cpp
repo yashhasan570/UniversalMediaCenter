@@ -11,7 +11,7 @@
 #include "EGLUtils.h"
 #include "utils/log.h"
 
-using namespace KODI::UTILS::EGL;
+using namespace UNIVERSAL MEDIA CENTER::UTILS::EGL;
 
 CEGLFence::CEGLFence(EGLDisplay display)
   : m_display(display),

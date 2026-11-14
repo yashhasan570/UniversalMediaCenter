@@ -10,7 +10,7 @@
 
 #include <string>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -28,4 +28,4 @@ private:
   static CDialogGameSaves* GetDialog();
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

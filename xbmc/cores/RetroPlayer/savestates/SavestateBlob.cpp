@@ -12,7 +12,7 @@
 
 #include <limits>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace RETRO;
 
 namespace

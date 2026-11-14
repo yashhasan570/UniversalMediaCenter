@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "addons/kodi-dev-kit/include/kodi/c-api/addon-instance/pvr/pvr_general.h" // PVR_SETTING_TYPE
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api/addon-instance/pvr/pvr_general.h" // PVR_SETTING_TYPE
 #include "utils/Variant.h"
 
 #include <map>

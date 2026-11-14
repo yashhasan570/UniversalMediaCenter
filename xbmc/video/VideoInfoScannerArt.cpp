@@ -45,7 +45,7 @@
 
 using namespace XFILE;
 using namespace ADDON;
-using KODI::MEDIA::NameOf;
+using UNIVERSAL MEDIA CENTER::MEDIA::NameOf;
 
 namespace
 {
@@ -89,9 +89,9 @@ void CacheArtwork(const std::string& url,
 }
 
 //! \brief Drop the empty and duplicate urls from a set of artwork. Order is not preserved.
-void DedupeArt(std::vector<KODI::VIDEO::ArtToCache>& art)
+void DedupeArt(std::vector<UNIVERSAL MEDIA CENTER::VIDEO::ArtToCache>& art)
 {
-  using KODI::VIDEO::ArtToCache;
+  using UNIVERSAL MEDIA CENTER::VIDEO::ArtToCache;
 
   std::erase_if(art, [](const ArtToCache& a) { return a.url.empty(); });
 
@@ -114,18 +114,18 @@ std::string ContentToMediaType(ContentType content, bool folder)
   {
     using enum ContentType;
     case MOVIES:
-      return NameOf(KODI::MEDIA::TYPE::MOVIE);
+      return NameOf(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MOVIE);
     case MUSICVIDEOS:
-      return NameOf(KODI::MEDIA::TYPE::MUSIC_VIDEO);
+      return NameOf(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MUSIC_VIDEO);
     case TVSHOWS:
-      return folder ? NameOf(KODI::MEDIA::TYPE::TV_SHOW) : NameOf(KODI::MEDIA::TYPE::EPISODE);
+      return folder ? NameOf(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::TV_SHOW) : NameOf(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::EPISODE);
     default:
       return "";
   }
 }
 } // unnamed namespace
 
-namespace KODI::VIDEO
+namespace UNIVERSAL MEDIA CENTER::VIDEO
 {
 
 CVideoInfoScannerArt::CVideoInfoScannerArt()
@@ -145,7 +145,7 @@ void CVideoInfoScannerArt::Cache(const std::string& url, const std::string& know
   CacheArtwork(url, m_artRetrievalTiming == ArtRetrievalTiming::SYNCHRONOUS, knownHash);
 }
 
-void CVideoInfoScannerArt::Cache(const KODI::ART::Artwork& art) const
+void CVideoInfoScannerArt::Cache(const UNIVERSAL MEDIA CENTER::ART::Artwork& art) const
 {
   std::vector<ArtToCache> artToCache;
   artToCache.reserve(art.size());
@@ -273,7 +273,7 @@ void CVideoInfoScannerArt::GetArtwork(CFileItem* pItem,
   movieDetails.m_fanart.Unpack();
   movieDetails.m_strPictureURL.Parse();
 
-  KODI::ART::Artwork art = pItem->GetArt();
+  UNIVERSAL MEDIA CENTER::ART::Artwork art = pItem->GetArt();
 
   // get and cache thumb images
   std::string mediaType = ContentToMediaType(content, pItem->IsFolder());
@@ -366,7 +366,7 @@ void CVideoInfoScannerArt::GetArtwork(CFileItem* pItem,
           CVideoInfoScanner::GetMovieSetInfoFolder(movieDetails.m_set.GetTitle());
       if (!movieSetInfoPath.empty())
       {
-        KODI::ART::Artwork movieSetArt;
+        UNIVERSAL MEDIA CENTER::ART::Artwork movieSetArt;
         ART::AddLocalItemArtwork(movieSetArt, movieSetArtTypes, movieSetInfoPath, addAll, exactName,
                                  true);
         for (const auto& artItem : movieSetArt)
@@ -483,11 +483,11 @@ void CVideoInfoScannerArt::ApplyThumbToFolder(const std::string& folder,
 }
 
 void CVideoInfoScannerArt::GetSeasonThumbs(const CVideoInfoTag& show,
-                                           KODI::ART::SeasonsArtwork& seasonArt,
+                                           UNIVERSAL MEDIA CENTER::ART::SeasonsArtwork& seasonArt,
                                            const std::vector<std::string>& artTypes,
                                            bool useLocal /* = true */,
                                            UseRemoteArtWithLocalScraper useRemoteArt /* = yes */,
-                                           KODI::REGEXP::RegExpCache* cache /* = nullptr*/)
+                                           UNIVERSAL MEDIA CENTER::REGEXP::RegExpCache* cache /* = nullptr*/)
 {
   int artLevel = CServiceBroker::GetSettingsComponent()->GetSettings()->GetInt(
       CSettings::SETTING_VIDEOLIBRARY_ARTWORK_LEVEL);
@@ -507,7 +507,7 @@ void CVideoInfoScannerArt::GetSeasonThumbs(const CVideoInfoTag& show,
     extensions.erase(std::remove(extensions.begin(), extensions.end(), '.'), extensions.end());
     std::shared_ptr<CRegExp> reg;
     const std::string pattern = "season([0-9]+)(-[a-z0-9]+)?\\.(" + extensions + ")";
-    if (!items.IsEmpty() && (reg = KODI::REGEXP::GetRegExp(pattern, cache)) != nullptr)
+    if (!items.IsEmpty() && (reg = UNIVERSAL MEDIA CENTER::REGEXP::GetRegExp(pattern, cache)) != nullptr)
     {
       for (const auto& item : items)
       {
@@ -523,7 +523,7 @@ void CVideoInfoScannerArt::GetSeasonThumbs(const CVideoInfoTag& show,
     for (int season = -1; season <= maxSeasons; season++)
     {
       // Look for local art irrespective of scraper/existing art as it takes priority
-      KODI::ART::Artwork art;
+      UNIVERSAL MEDIA CENTER::ART::Artwork art;
       std::string basePath;
       if (season == -1)
         basePath = "season-all";
@@ -546,7 +546,7 @@ void CVideoInfoScannerArt::GetSeasonThumbs(const CVideoInfoTag& show,
     std::string aspect = url.m_aspect;
     if (aspect.empty())
       aspect = ART::TYPE::THUMB;
-    KODI::ART::Artwork& art = seasonArt[url.m_season];
+    UNIVERSAL MEDIA CENTER::ART::Artwork& art = seasonArt[url.m_season];
     if ((addAll || CVideoThumbLoader::IsArtTypeInWhitelist(aspect, artTypes, exactName)) &&
         !art.contains(aspect))
     {
@@ -620,4 +620,4 @@ void CVideoInfoScannerArt::FetchActorThumbs(
   Cache(std::move(artToCache));
 }
 
-} // namespace KODI::VIDEO
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO

@@ -27,7 +27,7 @@
 class CDateTime;
 class CSetting;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -56,7 +56,7 @@ namespace MOUSE
 {
 class IMouseDriverHandler;
 } // namespace MOUSE
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER
 
 namespace PERIPHERALS
 {
@@ -78,9 +78,9 @@ typedef enum
 /*!
  * \ingroup peripherals
  */
-class CPeripheral : public KODI::JOYSTICK::IInputProvider,
-                    public KODI::KEYBOARD::IKeyboardInputProvider,
-                    public KODI::MOUSE::IMouseInputProvider,
+class CPeripheral : public UNIVERSAL MEDIA CENTER::JOYSTICK::IInputProvider,
+                    public UNIVERSAL MEDIA CENTER::KEYBOARD::IKeyboardInputProvider,
+                    public UNIVERSAL MEDIA CENTER::MOUSE::IMouseInputProvider,
                     public std::enable_shared_from_this<CPeripheral>
 {
   friend class CGUIDialogPeripheralSettings;
@@ -250,46 +250,46 @@ public:
 
   virtual bool ErrorOccured(void) const { return m_bError; }
 
-  virtual void RegisterJoystickDriverHandler(KODI::JOYSTICK::IDriverHandler* handler,
+  virtual void RegisterJoystickDriverHandler(UNIVERSAL MEDIA CENTER::JOYSTICK::IDriverHandler* handler,
                                              bool bPromiscuous)
   {
   }
-  virtual void UnregisterJoystickDriverHandler(KODI::JOYSTICK::IDriverHandler* handler) {}
+  virtual void UnregisterJoystickDriverHandler(UNIVERSAL MEDIA CENTER::JOYSTICK::IDriverHandler* handler) {}
 
-  virtual void RegisterKeyboardDriverHandler(KODI::KEYBOARD::IKeyboardDriverHandler* handler,
+  virtual void RegisterKeyboardDriverHandler(UNIVERSAL MEDIA CENTER::KEYBOARD::IKeyboardDriverHandler* handler,
                                              bool bPromiscuous)
   {
   }
-  virtual void UnregisterKeyboardDriverHandler(KODI::KEYBOARD::IKeyboardDriverHandler* handler) {}
+  virtual void UnregisterKeyboardDriverHandler(UNIVERSAL MEDIA CENTER::KEYBOARD::IKeyboardDriverHandler* handler) {}
 
-  virtual void RegisterMouseDriverHandler(KODI::MOUSE::IMouseDriverHandler* handler,
+  virtual void RegisterMouseDriverHandler(UNIVERSAL MEDIA CENTER::MOUSE::IMouseDriverHandler* handler,
                                           bool bPromiscuous)
   {
   }
-  virtual void UnregisterMouseDriverHandler(KODI::MOUSE::IMouseDriverHandler* handler) {}
+  virtual void UnregisterMouseDriverHandler(UNIVERSAL MEDIA CENTER::MOUSE::IMouseDriverHandler* handler) {}
 
   // implementation of IInputProvider
-  void RegisterInputHandler(KODI::JOYSTICK::IInputHandler* handler, bool bPromiscuous) override;
-  void UnregisterInputHandler(KODI::JOYSTICK::IInputHandler* handler) override;
+  void RegisterInputHandler(UNIVERSAL MEDIA CENTER::JOYSTICK::IInputHandler* handler, bool bPromiscuous) override;
+  void UnregisterInputHandler(UNIVERSAL MEDIA CENTER::JOYSTICK::IInputHandler* handler) override;
 
   // implementation of IKeyboardInputProvider
-  void RegisterKeyboardHandler(KODI::KEYBOARD::IKeyboardInputHandler* handler,
+  void RegisterKeyboardHandler(UNIVERSAL MEDIA CENTER::KEYBOARD::IKeyboardInputHandler* handler,
                                bool bPromiscuous,
                                bool forceDefaultMap) override;
-  void UnregisterKeyboardHandler(KODI::KEYBOARD::IKeyboardInputHandler* handler) override;
+  void UnregisterKeyboardHandler(UNIVERSAL MEDIA CENTER::KEYBOARD::IKeyboardInputHandler* handler) override;
 
   // implementation of IMouseInputProvider
-  void RegisterMouseHandler(KODI::MOUSE::IMouseInputHandler* handler,
+  void RegisterMouseHandler(UNIVERSAL MEDIA CENTER::MOUSE::IMouseInputHandler* handler,
                             bool bPromiscuous,
                             bool forceDefaultMap) override;
-  void UnregisterMouseHandler(KODI::MOUSE::IMouseInputHandler* handler) override;
+  void UnregisterMouseHandler(UNIVERSAL MEDIA CENTER::MOUSE::IMouseInputHandler* handler) override;
 
-  virtual void RegisterJoystickButtonMapper(KODI::JOYSTICK::IButtonMapper* mapper);
-  virtual void UnregisterJoystickButtonMapper(KODI::JOYSTICK::IButtonMapper* mapper);
+  virtual void RegisterJoystickButtonMapper(UNIVERSAL MEDIA CENTER::JOYSTICK::IButtonMapper* mapper);
+  virtual void UnregisterJoystickButtonMapper(UNIVERSAL MEDIA CENTER::JOYSTICK::IButtonMapper* mapper);
 
-  virtual KODI::JOYSTICK::IDriverReceiver* GetDriverReceiver() { return nullptr; }
+  virtual UNIVERSAL MEDIA CENTER::JOYSTICK::IDriverReceiver* GetDriverReceiver() { return nullptr; }
 
-  virtual KODI::KEYMAP::IKeymap* GetKeymap(const std::string& controllerId) { return nullptr; }
+  virtual UNIVERSAL MEDIA CENTER::KEYMAP::IKeymap* GetKeymap(const std::string& controllerId) { return nullptr; }
 
   /*!
    * \brief Return the last time this peripheral was active
@@ -317,14 +317,14 @@ public:
    *
    * \return The controller profile, or empty if unknown
    */
-  virtual KODI::GAME::ControllerPtr ControllerProfile() const { return m_controllerProfile; }
+  virtual UNIVERSAL MEDIA CENTER::GAME::ControllerPtr ControllerProfile() const { return m_controllerProfile; }
 
   /*!
    * \brief Set the controller profile for this peripheral
    *
    * \param controller The new controller profile
    */
-  virtual void SetControllerProfile(const KODI::GAME::ControllerPtr& controller);
+  virtual void SetControllerProfile(const UNIVERSAL MEDIA CENTER::GAME::ControllerPtr& controller);
 
 protected:
   virtual void ClearSettings(void);
@@ -332,8 +332,8 @@ protected:
   // Helper functions
   void InstallController(
       const std::string& controllerId,
-      const std::function<void(const KODI::GAME::ControllerPtr& installedController)>& callback);
-  KODI::GAME::ControllerPtr InstallAsync(const std::string& controllerId);
+      const std::function<void(const UNIVERSAL MEDIA CENTER::GAME::ControllerPtr& installedController)>& callback);
+  UNIVERSAL MEDIA CENTER::GAME::ControllerPtr InstallAsync(const std::string& controllerId);
   static bool InstallSync(const std::string& controllerId);
 
   CPeripherals& m_manager;
@@ -360,16 +360,16 @@ protected:
   std::map<std::string, PeripheralDeviceSetting> m_settings;
   std::set<std::string> m_changedSettings;
   CPeripheralBus* m_bus;
-  std::map<KODI::JOYSTICK::IInputHandler*, std::unique_ptr<KODI::JOYSTICK::IDriverHandler>>
+  std::map<UNIVERSAL MEDIA CENTER::JOYSTICK::IInputHandler*, std::unique_ptr<UNIVERSAL MEDIA CENTER::JOYSTICK::IDriverHandler>>
       m_inputHandlers;
-  std::map<KODI::KEYBOARD::IKeyboardInputHandler*,
-           std::unique_ptr<KODI::KEYBOARD::IKeyboardDriverHandler>>
+  std::map<UNIVERSAL MEDIA CENTER::KEYBOARD::IKeyboardInputHandler*,
+           std::unique_ptr<UNIVERSAL MEDIA CENTER::KEYBOARD::IKeyboardDriverHandler>>
       m_keyboardHandlers;
-  std::map<KODI::MOUSE::IMouseInputHandler*, std::unique_ptr<KODI::MOUSE::IMouseDriverHandler>>
+  std::map<UNIVERSAL MEDIA CENTER::MOUSE::IMouseInputHandler*, std::unique_ptr<UNIVERSAL MEDIA CENTER::MOUSE::IMouseDriverHandler>>
       m_mouseHandlers;
-  std::map<KODI::JOYSTICK::IButtonMapper*, std::unique_ptr<CAddonButtonMapping>> m_buttonMappers;
-  KODI::GAME::ControllerPtr m_controllerProfile;
-  std::unique_ptr<KODI::GAME::CAgentController> m_controllerInput;
+  std::map<UNIVERSAL MEDIA CENTER::JOYSTICK::IButtonMapper*, std::unique_ptr<CAddonButtonMapping>> m_buttonMappers;
+  UNIVERSAL MEDIA CENTER::GAME::ControllerPtr m_controllerProfile;
+  std::unique_ptr<UNIVERSAL MEDIA CENTER::GAME::CAgentController> m_controllerInput;
   std::queue<std::string> m_controllersToInstall;
   std::vector<std::future<void>> m_installTasks;
   std::mutex m_controllerInstallMutex;

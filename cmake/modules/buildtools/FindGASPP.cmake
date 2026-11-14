@@ -17,7 +17,7 @@ if(NOT TARGET GASPP::GASPP)
   
   if(Perl_FOUND)
     # We only intend to use this for depends platforms, or windows.
-    if(KODI_DEPENDSBUILD OR (WIN32 OR WINDOWS_STORE))
+    if(UNIVERSALMEDIA_DEPENDSBUILD OR (WIN32 OR WINDOWS_STORE))
       set(GASPP_PL "${CMAKE_SOURCE_DIR}/tools/depends/native/gas-preprocessor/gas-preprocessor.pl" CACHE FILEPATH "Gas Pre-processor script")
     endif()
   endif()

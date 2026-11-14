@@ -11,8 +11,8 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI;
-using KODI::MEDIA::PluralNameOf;
+using namespace UNIVERSAL MEDIA CENTER;
+using UNIVERSAL MEDIA CENTER::MEDIA::PluralNameOf;
 
 // A list is given its media type's plural as its content in places, so the two must agree
 TEST(TestContentNames, AMediaTypesPluralIsItsContent)

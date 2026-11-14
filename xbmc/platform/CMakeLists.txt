@@ -1,10 +1,10 @@
 set(SOURCES Environment.cpp
-            xbmc.cpp)
+            .cpp)
 
 set(HEADERS Environment.h
             Filesystem.h
             MessagePrinter.h
             Platform.h
-            xbmc.h)
+            .h)
 
 core_add_library(platform_common)

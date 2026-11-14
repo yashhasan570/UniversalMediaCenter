@@ -25,7 +25,7 @@
 #include <utility>
 #include <vector>
 
-class CXBMCTinyXML2;
+class CTinyXML2;
 
 class CGUIColorManager
 {
@@ -35,7 +35,7 @@ public:
 
   void Load(const std::string &colorFile);
 
-  KODI::UTILS::COLOR::Color GetColor(const std::string& color) const;
+  UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color GetColor(const std::string& color) const;
 
   void Clear();
 
@@ -47,11 +47,11 @@ public:
   */
   bool LoadColorsListFromXML(
       const std::string& filePath,
-      std::vector<std::pair<std::string, KODI::UTILS::COLOR::ColorInfo>>& colors,
+      std::vector<std::pair<std::string, UNIVERSAL MEDIA CENTER::UTILS::COLOR::ColorInfo>>& colors,
       bool sortColors);
 
 protected:
-  bool LoadXML(CXBMCTinyXML2& xmlDoc);
+  bool LoadXML(CTinyXML2& xmlDoc);
 
-  std::map<std::string, KODI::UTILS::COLOR::Color> m_colors;
+  std::map<std::string, UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color> m_colors;
 };

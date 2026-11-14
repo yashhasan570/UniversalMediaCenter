@@ -9,7 +9,7 @@
 #include "application/AppEnvironment.h"
 #include "application/AppParamParser.h"
 #include "application/AppParams.h"
-#include "platform/xbmc.h"
+#include "platform/.h"
 
 #include <locale.h>
 #include <stdlib.h>
@@ -18,8 +18,8 @@ int main(int argc, char* argv[])
 {
   setlocale(LC_NUMERIC, "C");
 
-  // Emscripten VFS: data is preloaded under /kodi via --preload-file
-  setenv("KODI_HOME", "/kodi", 0);
+  // Emscripten VFS: data is preloaded under /universalmediacenter via --preload-file
+  setenv("UNIVERSALMEDIA_HOME", "/universalmediacenter", 0);
 
   CAppParamParser appParamParser;
   appParamParser.Parse(argv, argc);
@@ -27,7 +27,7 @@ int main(int argc, char* argv[])
 
   CAppEnvironment::SetUp(appParamParser.GetAppParams());
 
-  const int status = XBMC_Run(true);
+  const int status = _Run(true);
   // Only reached when startup fails: once the Emscripten main loop is installed the stack is
   // unwound and CApplication tears the environment down itself.
   CAppEnvironment::TearDown();

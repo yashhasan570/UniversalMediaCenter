@@ -245,7 +245,7 @@ constexpr unsigned int DEFAULT_NUM_PERIODS = 2;
 } // namespace
 
 using namespace AE::SINK;
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 std::unique_ptr<PIPEWIRE::CPipewire> pipewire;
 

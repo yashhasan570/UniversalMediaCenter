@@ -10,10 +10,10 @@
 
 #include "input/joysticks/DriverPrimitive.h"
 #include "input/joysticks/interfaces/IButtonMap.h"
-#include "input/keyboard/XBMC_keysym.h"
+#include "input/keyboard/_keysym.h"
 #include "input/keyboard/interfaces/IKeyboardInputHandler.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace KEYBOARD;
 
 CKeyboardInputHandling::CKeyboardInputHandling(IKeyboardInputHandler* handler,
@@ -27,7 +27,7 @@ bool CKeyboardInputHandling::OnKeyPress(const CKey& key)
 {
   bool bHandled = false;
 
-  JOYSTICK::CDriverPrimitive source(static_cast<XBMCKey>(key.GetKeycode()));
+  JOYSTICK::CDriverPrimitive source(static_cast<Key>(key.GetKeycode()));
 
   KeyName keyName;
   if (m_buttonMap->GetFeature(source, keyName))
@@ -41,7 +41,7 @@ bool CKeyboardInputHandling::OnKeyPress(const CKey& key)
 
 void CKeyboardInputHandling::OnKeyRelease(const CKey& key)
 {
-  JOYSTICK::CDriverPrimitive source(static_cast<XBMCKey>(key.GetKeycode()));
+  JOYSTICK::CDriverPrimitive source(static_cast<Key>(key.GetKeycode()));
 
   KeyName keyName;
   if (m_buttonMap->GetFeature(source, keyName))

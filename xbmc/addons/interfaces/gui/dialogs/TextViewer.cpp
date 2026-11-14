@@ -10,7 +10,7 @@
 
 #include "ServiceBroker.h"
 #include "addons/binary-addons/AddonDll.h"
-#include "addons/kodi-dev-kit/include/kodi/gui/dialogs/TextViewer.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/gui/dialogs/TextViewer.h"
 #include "dialogs/GUIDialogTextViewer.h"
 #include "guilib/GUIComponent.h"
 #include "guilib/GUIWindowManager.h"
@@ -21,22 +21,22 @@ namespace ADDON
 
 void Interface_GUIDialogTextViewer::Init(AddonGlobalInterface* addonInterface)
 {
-  addonInterface->toUniversal Media Center->kodi_gui->dialogTextViewer =
-      new AddonToUniversal Media CenterFuncTable_kodi_gui_dialogTextViewer();
+  addonInterface->toUniversal Media Center->->dialogTextViewer =
+      new AddonToUniversal Media CenterFuncTable__dialogTextViewer();
 
-  addonInterface->toUniversal Media Center->kodi_gui->dialogTextViewer->open = open;
+  addonInterface->toUniversal Media Center->->dialogTextViewer->open = open;
 }
 
 void Interface_GUIDialogTextViewer::DeInit(AddonGlobalInterface* addonInterface)
 {
-  delete addonInterface->toUniversal Media Center->kodi_gui->dialogTextViewer;
+  delete addonInterface->toUniversal Media Center->->dialogTextViewer;
 }
 
-void Interface_GUIDialogTextViewer::open(KODI_HANDLE kodiBase,
+void Interface_GUIDialogTextViewer::open(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
                                          const char* heading,
                                          const char* text)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon)
   {
     CLog::LogF(LOGERROR, "Invalid data");

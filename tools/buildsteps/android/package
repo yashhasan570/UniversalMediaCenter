@@ -1,5 +1,5 @@
 WORKSPACE=${WORKSPACE:-$( cd $(dirname $0)/../../.. ; pwd -P )}
-XBMC_PLATFORM_DIR=android
+_PLATFORM_DIR=android
 . $WORKSPACE/tools/buildsteps/defaultenv
 
 TARGET=apk
@@ -9,6 +9,6 @@ cd $WORKSPACE/build;make -j$BUILDTHREADS $TARGET
 cd $WORKSPACE
 
 #rename for upload
-#e.x. xbmc-20130314-8c2fb31-Frodo-armeabi-v7a.apk
-UPLOAD_FILENAME="kodi-$(getBuildRevDateStr)-armeabi-v7a"
-mv kodiapp-armeabi-*.apk $UPLOAD_FILENAME.apk
+#e.x. -20130314-8c2fb31-Frodo-armeabi-v7a.apk
+UPLOAD_FILENAME="universalmediacenter-$(getBuildRevDateStr)-armeabi-v7a"
+mv universalmediacenterapp-armeabi-*.apk $UPLOAD_FILENAME.apk

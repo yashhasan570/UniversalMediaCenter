@@ -26,10 +26,10 @@ public:
 
   static void TakeScreenshot();
   //! \brief Screenshot of the given content into the configured folder.
-  static void TakeScreenshot(KODI::RENDERING::CAPTURE::CaptureContent content);
+  static void TakeScreenshot(UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CaptureContent content);
   static void TakeScreenshot(const std::string& filename,
-                             KODI::RENDERING::CAPTURE::CaptureContent content =
-                                 KODI::RENDERING::CAPTURE::CaptureContent::COMPOSITE);
+                             UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CaptureContent content =
+                                 UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CaptureContent::COMPOSITE);
 
   //! \brief Capture the video-only image and the full composite from the same
   //! rendered frame into two files in the configured folder

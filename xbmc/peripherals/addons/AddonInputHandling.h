@@ -15,7 +15,7 @@
 
 #include <memory>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace JOYSTICK
 {
@@ -33,7 +33,7 @@ namespace MOUSE
 {
 class IMouseInputHandler;
 }
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER
 
 namespace PERIPHERALS
 {
@@ -44,27 +44,27 @@ class CPeripheralAddon;
 /*!
 * \ingroup peripherals
 */
-class CAddonInputHandling : public KODI::JOYSTICK::IDriverHandler,
-                            public KODI::JOYSTICK::IInputReceiver,
-                            public KODI::KEYBOARD::IKeyboardDriverHandler,
-                            public KODI::MOUSE::IMouseDriverHandler
+class CAddonInputHandling : public UNIVERSAL MEDIA CENTER::JOYSTICK::IDriverHandler,
+                            public UNIVERSAL MEDIA CENTER::JOYSTICK::IInputReceiver,
+                            public UNIVERSAL MEDIA CENTER::KEYBOARD::IKeyboardDriverHandler,
+                            public UNIVERSAL MEDIA CENTER::MOUSE::IMouseDriverHandler
 {
 public:
   CAddonInputHandling(CPeripherals& manager,
                       CPeripheral* peripheral,
                       std::shared_ptr<CPeripheralAddon> addon,
-                      KODI::JOYSTICK::IInputHandler* handler,
-                      KODI::JOYSTICK::IDriverReceiver* receiver);
+                      UNIVERSAL MEDIA CENTER::JOYSTICK::IInputHandler* handler,
+                      UNIVERSAL MEDIA CENTER::JOYSTICK::IDriverReceiver* receiver);
 
   CAddonInputHandling(CPeripherals& manager,
                       CPeripheral* peripheral,
                       std::shared_ptr<CPeripheralAddon> addon,
-                      KODI::KEYBOARD::IKeyboardInputHandler* handler);
+                      UNIVERSAL MEDIA CENTER::KEYBOARD::IKeyboardInputHandler* handler);
 
   CAddonInputHandling(CPeripherals& manager,
                       CPeripheral* peripheral,
                       std::shared_ptr<CPeripheralAddon> addon,
-                      KODI::MOUSE::IMouseInputHandler* handler);
+                      UNIVERSAL MEDIA CENTER::MOUSE::IMouseInputHandler* handler);
 
   ~CAddonInputHandling(void) override;
 
@@ -72,7 +72,7 @@ public:
 
   // implementation of IDriverHandler
   bool OnButtonMotion(unsigned int buttonIndex, bool bPressed) override;
-  bool OnHatMotion(unsigned int hatIndex, KODI::JOYSTICK::HAT_STATE state) override;
+  bool OnHatMotion(unsigned int hatIndex, UNIVERSAL MEDIA CENTER::JOYSTICK::HAT_STATE state) override;
   bool OnAxisMotion(unsigned int axisIndex,
                     float position,
                     int center,
@@ -85,27 +85,27 @@ public:
 
   // implementation of IMouseDriverHandler
   bool OnPosition(int x, int y) override;
-  bool OnButtonPress(KODI::MOUSE::BUTTON_ID button) override;
-  void OnButtonRelease(KODI::MOUSE::BUTTON_ID button) override;
+  bool OnButtonPress(UNIVERSAL MEDIA CENTER::MOUSE::BUTTON_ID button) override;
+  void OnButtonRelease(UNIVERSAL MEDIA CENTER::MOUSE::BUTTON_ID button) override;
 
   // implementation of IInputReceiver
-  bool SetRumbleState(const KODI::JOYSTICK::FeatureName& feature, float magnitude) override;
+  bool SetRumbleState(const UNIVERSAL MEDIA CENTER::JOYSTICK::FeatureName& feature, float magnitude) override;
 
 private:
   // Construction parameters
   CPeripherals& m_manager;
   CPeripheral* const m_peripheral;
   const std::shared_ptr<CPeripheralAddon> m_addon;
-  KODI::JOYSTICK::IInputHandler* const m_joystickInputHandler{nullptr};
-  KODI::JOYSTICK::IDriverReceiver* const m_joystickDriverReceiver{nullptr};
-  KODI::KEYBOARD::IKeyboardInputHandler* m_keyboardInputHandler{nullptr};
-  KODI::MOUSE::IMouseInputHandler* const m_mouseInputHandler{nullptr};
+  UNIVERSAL MEDIA CENTER::JOYSTICK::IInputHandler* const m_joystickInputHandler{nullptr};
+  UNIVERSAL MEDIA CENTER::JOYSTICK::IDriverReceiver* const m_joystickDriverReceiver{nullptr};
+  UNIVERSAL MEDIA CENTER::KEYBOARD::IKeyboardInputHandler* m_keyboardInputHandler{nullptr};
+  UNIVERSAL MEDIA CENTER::MOUSE::IMouseInputHandler* const m_mouseInputHandler{nullptr};
 
   // Input parameters
-  std::unique_ptr<KODI::JOYSTICK::IDriverHandler> m_joystickDriverHandler;
-  std::unique_ptr<KODI::JOYSTICK::IInputReceiver> m_joystickInputReceiver;
-  std::unique_ptr<KODI::KEYBOARD::IKeyboardDriverHandler> m_keyboardDriverHandler;
-  std::unique_ptr<KODI::MOUSE::IMouseDriverHandler> m_mouseDriverHandler;
-  std::unique_ptr<KODI::JOYSTICK::IButtonMap> m_buttonMap;
+  std::unique_ptr<UNIVERSAL MEDIA CENTER::JOYSTICK::IDriverHandler> m_joystickDriverHandler;
+  std::unique_ptr<UNIVERSAL MEDIA CENTER::JOYSTICK::IInputReceiver> m_joystickInputReceiver;
+  std::unique_ptr<UNIVERSAL MEDIA CENTER::KEYBOARD::IKeyboardDriverHandler> m_keyboardDriverHandler;
+  std::unique_ptr<UNIVERSAL MEDIA CENTER::MOUSE::IMouseDriverHandler> m_mouseDriverHandler;
+  std::unique_ptr<UNIVERSAL MEDIA CENTER::JOYSTICK::IButtonMap> m_buttonMap;
 };
 } // namespace PERIPHERALS

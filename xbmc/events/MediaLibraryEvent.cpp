@@ -19,13 +19,13 @@
 #include "utils/URIUtils.h"
 #include "video/VideoDbPaths.h"
 
-CMediaLibraryEvent::CMediaLibraryEvent(KODI::MEDIA::TYPE mediaType, const std::string& mediaPath, const CVariant& label, const CVariant& description, EventLevel level /* = EventLevel::Information */)
+CMediaLibraryEvent::CMediaLibraryEvent(UNIVERSAL MEDIA CENTER::MEDIA::TYPE mediaType, const std::string& mediaPath, const CVariant& label, const CVariant& description, EventLevel level /* = EventLevel::Information */)
   : CUniqueEvent(label, description, level),
     m_mediaType(mediaType),
     m_mediaPath(mediaPath)
 { }
 
-CMediaLibraryEvent::CMediaLibraryEvent(KODI::MEDIA::TYPE mediaType, const std::string& mediaPath, const CVariant& label, const CVariant& description, const std::string& icon, const CVariant& details, EventLevel level /* = EventLevel::Information */)
+CMediaLibraryEvent::CMediaLibraryEvent(UNIVERSAL MEDIA CENTER::MEDIA::TYPE mediaType, const std::string& mediaPath, const CVariant& label, const CVariant& description, const std::string& icon, const CVariant& details, EventLevel level /* = EventLevel::Information */)
   : CUniqueEvent(label, description, icon, details, level),
     m_mediaType(mediaType),
     m_mediaPath(mediaPath)
@@ -47,50 +47,50 @@ bool CMediaLibraryEvent::Execute() const
 
   int windowId = -1;
   std::string path = m_mediaPath;
-  if (m_mediaType == KODI::MEDIA::TYPE::VIDEO || m_mediaType == KODI::MEDIA::TYPE::MOVIE || m_mediaType == KODI::MEDIA::TYPE::VIDEO_COLLECTION ||
-      m_mediaType == KODI::MEDIA::TYPE::TV_SHOW || m_mediaType == KODI::MEDIA::TYPE::SEASON || m_mediaType == KODI::MEDIA::TYPE::EPISODE ||
-      m_mediaType == KODI::MEDIA::TYPE::MUSIC_VIDEO)
+  if (m_mediaType == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::VIDEO || m_mediaType == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MOVIE || m_mediaType == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::VIDEO_COLLECTION ||
+      m_mediaType == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::TV_SHOW || m_mediaType == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::SEASON || m_mediaType == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::EPISODE ||
+      m_mediaType == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MUSIC_VIDEO)
   {
     if (path.empty())
     {
-      if (m_mediaType == KODI::MEDIA::TYPE::VIDEO)
-        path = XFILE::CSourcesDirectory::PathOf(KODI::MEDIA::MediaSection::VIDEO);
-      else if (m_mediaType == KODI::MEDIA::TYPE::MOVIE)
-        path = KODI::VIDEO::DB_PATH::MOVIE_TITLES;
-      else if (m_mediaType == KODI::MEDIA::TYPE::VIDEO_COLLECTION)
-        path = KODI::VIDEO::DB_PATH::MOVIE_SETS;
-      else if (m_mediaType == KODI::MEDIA::TYPE::MUSIC_VIDEO)
-        path = KODI::VIDEO::DB_PATH::MUSICVIDEO_TITLES;
-      else if (m_mediaType == KODI::MEDIA::TYPE::TV_SHOW || m_mediaType == KODI::MEDIA::TYPE::SEASON || m_mediaType == KODI::MEDIA::TYPE::EPISODE)
-        path = KODI::VIDEO::DB_PATH::TVSHOW_TITLES;
+      if (m_mediaType == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::VIDEO)
+        path = XFILE::CSourcesDirectory::PathOf(UNIVERSAL MEDIA CENTER::MEDIA::MediaSection::VIDEO);
+      else if (m_mediaType == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MOVIE)
+        path = UNIVERSAL MEDIA CENTER::VIDEO::DB_PATH::MOVIE_TITLES;
+      else if (m_mediaType == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::VIDEO_COLLECTION)
+        path = UNIVERSAL MEDIA CENTER::VIDEO::DB_PATH::MOVIE_SETS;
+      else if (m_mediaType == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MUSIC_VIDEO)
+        path = UNIVERSAL MEDIA CENTER::VIDEO::DB_PATH::MUSICVIDEO_TITLES;
+      else if (m_mediaType == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::TV_SHOW || m_mediaType == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::SEASON || m_mediaType == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::EPISODE)
+        path = UNIVERSAL MEDIA CENTER::VIDEO::DB_PATH::TVSHOW_TITLES;
     }
     else
     {
       //! @todo remove the filename for now as CGUIMediaWindow::GetDirectory() can't handle it
-      if (m_mediaType == KODI::MEDIA::TYPE::MOVIE || m_mediaType == KODI::MEDIA::TYPE::MUSIC_VIDEO || m_mediaType == KODI::MEDIA::TYPE::EPISODE)
+      if (m_mediaType == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MOVIE || m_mediaType == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MUSIC_VIDEO || m_mediaType == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::EPISODE)
         path = URIUtils::GetDirectory(path);
     }
 
     windowId = WINDOW_VIDEO_NAV;
   }
-  else if (m_mediaType == KODI::MEDIA::TYPE::MUSIC || m_mediaType == KODI::MEDIA::TYPE::ARTIST ||
-           m_mediaType == KODI::MEDIA::TYPE::ALBUM || m_mediaType == KODI::MEDIA::TYPE::SONG)
+  else if (m_mediaType == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MUSIC || m_mediaType == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::ARTIST ||
+           m_mediaType == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::ALBUM || m_mediaType == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::SONG)
   {
     if (path.empty())
     {
-      if (m_mediaType == KODI::MEDIA::TYPE::MUSIC)
-        path = XFILE::CSourcesDirectory::PathOf(KODI::MEDIA::MediaSection::MUSIC);
-      else if (m_mediaType == KODI::MEDIA::TYPE::ARTIST)
-        path = KODI::MUSIC::DB_PATH::ARTISTS;
-      else if (m_mediaType == KODI::MEDIA::TYPE::ALBUM)
-        path = KODI::MUSIC::DB_PATH::ALBUMS;
-      else if (m_mediaType == KODI::MEDIA::TYPE::SONG)
-        path = KODI::MUSIC::DB_PATH::SONGS;
+      if (m_mediaType == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MUSIC)
+        path = XFILE::CSourcesDirectory::PathOf(UNIVERSAL MEDIA CENTER::MEDIA::MediaSection::MUSIC);
+      else if (m_mediaType == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::ARTIST)
+        path = UNIVERSAL MEDIA CENTER::MUSIC::DB_PATH::ARTISTS;
+      else if (m_mediaType == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::ALBUM)
+        path = UNIVERSAL MEDIA CENTER::MUSIC::DB_PATH::ALBUMS;
+      else if (m_mediaType == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::SONG)
+        path = UNIVERSAL MEDIA CENTER::MUSIC::DB_PATH::SONGS;
     }
     else
     {
       //! @todo remove the filename for now as CGUIMediaWindow::GetDirectory() can't handle it
-      if (m_mediaType == KODI::MEDIA::TYPE::SONG)
+      if (m_mediaType == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::SONG)
         path = URIUtils::GetDirectory(path);
     }
 

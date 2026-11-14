@@ -24,8 +24,8 @@
 
 #include <utility>
 
-using namespace KODI::MESSAGING;
-using KODI::UTILITY::CDigest;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
+using UNIVERSAL MEDIA CENTER::UTILITY::CDigest;
 
 CGUIDialogGamepad::CGUIDialogGamepad(void)
     : CGUIDialogBoxBase(WINDOW_DIALOG_GAMEPAD, "DialogConfirm.xml")

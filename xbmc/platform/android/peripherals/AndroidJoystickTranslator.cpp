@@ -13,7 +13,7 @@
 #include <android/input.h>
 #include <android/keycodes.h>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace PERIPHERALS;
 
 const char* CAndroidJoystickTranslator::TranslateAxis(int axisId)

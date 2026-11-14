@@ -15,7 +15,7 @@
 #include "utils/StreamUtils.h"
 #include "utils/StringUtils.h"
 
-using namespace KODI::GUILIB::GUIINFO;
+using namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO;
 
 std::optional<std::string> CGUIInfoUtils::FormatAudioChannels(const std::string& format,
                                                               int channels)
@@ -35,7 +35,7 @@ std::optional<std::string> CGUIInfoUtils::FormatAudioChannels(const std::string&
   return std::nullopt;
 }
 
-std::string CGUIInfoUtils::FormatLanguage(const KODI::LANGUAGE::CLanguageTag& language)
+std::string CGUIInfoUtils::FormatLanguage(const UNIVERSAL MEDIA CENTER::LANGUAGE::CLanguageTag& language)
 {
   const std::string name{language.GetEnglishName()};
   if (!name.empty())

@@ -537,7 +537,7 @@ void CGUITextureManager::FreeUnusedTextures(unsigned int timeDelay)
   for (unsigned int i = 0; i < m_unusedHwTextures.size(); ++i)
   {
     // on ios/tvos the hw textures might be deleted from the os
-    // when XBMC is backgrounded (e.x. for backgrounded music playback)
+    // when  is backgrounded (e.x. for backgrounded music playback)
     // sanity check before delete in that case.
 #if defined(TARGET_DARWIN_EMBEDDED)
     auto winSystem = dynamic_cast<WIN_SYSTEM_CLASS*>(CServiceBroker::GetWinSystem());

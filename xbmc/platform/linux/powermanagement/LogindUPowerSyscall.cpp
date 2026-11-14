@@ -293,7 +293,7 @@ int CLogindUPowerSyscall::InhibitDelayLock(const char *what)
 #ifdef DBUS_TYPE_UNIX_FD
   CDBusMessage message("org.freedesktop.login1", "/org/freedesktop/login1", "org.freedesktop.login1.Manager", "Inhibit");
   message.AppendArgument(what); // what to inhibit
-  message.AppendArgument("XBMC"); // who
+  message.AppendArgument(""); // who
   message.AppendArgument(""); // reason
   message.AppendArgument("delay"); // mode
 

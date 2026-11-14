@@ -23,7 +23,7 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI::MESSAGING;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
 using namespace std::chrono_literals;
 
 namespace
@@ -83,7 +83,7 @@ public:
 
 private:
   CWinSystemBase* m_previous;
-  KODI::GUILIB::TEST::CTestWinSystem m_winSystem;
+  UNIVERSAL MEDIA CENTER::GUILIB::TEST::CTestWinSystem m_winSystem;
 };
 } // unnamed namespace
 

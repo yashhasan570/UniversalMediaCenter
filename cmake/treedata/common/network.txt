@@ -1,2 +1,2 @@
-xbmc/network                           network
-xbmc/network/websocket                 network/websocket
+/network                           network
+/network/websocket                 network/websocket

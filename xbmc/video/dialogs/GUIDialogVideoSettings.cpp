@@ -547,7 +547,7 @@ void CGUIDialogVideoSettings::VideoStreamsOptionFiller(
 
   if (appPlayer != nullptr)
   {
-    using namespace KODI::VIDEO;
+    using namespace UNIVERSAL MEDIA CENTER::VIDEO;
     const std::vector<VideoStreamInfoExt> streams =
         CVideoStreamSelect::GetVideoStreams(appPlayer.get());
     const int streamCount = streams.size();

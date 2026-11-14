@@ -6,13 +6,13 @@ import android.util.Log;
  * Created by Maven85 on 16/03/2020.
  */
 
-public class XBMCTextureCache
+public class TextureCache
 {
   native String _unwrapImageURL(String image);
 
   private static final String TAG = "@APP_NAME@";
 
-  public XBMCTextureCache()
+  public TextureCache()
   {
   }
 

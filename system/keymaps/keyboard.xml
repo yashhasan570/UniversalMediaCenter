@@ -545,8 +545,8 @@
       <i>Info</i>
       <language>AudioNextLanguage</language>
       <p>ActivateWindow(VisualisationPresetList)</p>
-      <v>Addon.Default.OpenSettings(xbmc.player.musicviz)</v>
-      <text>Addon.Default.OpenSettings(xbmc.player.musicviz)</text>
+      <v>Addon.Default.OpenSettings(.player.musicviz)</v>
+      <text>Addon.Default.OpenSettings(.player.musicviz)</text>
       <n>ActivateWindow(MusicPlaylist)</n>
       <left>StepBack</left>
       <right>StepForward</right>
@@ -572,8 +572,8 @@
       <o>PlayerProcessInfo</o>
       <language>AudioNextLanguage</language>
       <p>ActivateWindow(VisualisationPresetList)</p>
-      <v>Addon.Default.OpenSettings(xbmc.player.musicviz)</v>
-      <text>Addon.Default.OpenSettings(xbmc.player.musicviz)</text>
+      <v>Addon.Default.OpenSettings(.player.musicviz)</v>
+      <text>Addon.Default.OpenSettings(.player.musicviz)</text>
       <n>ActivateWindow(MusicPlaylist)</n>
     </keyboard>
   </MusicOSD>

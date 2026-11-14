@@ -43,7 +43,7 @@
 #include <vector>
 
 using namespace PVR;
-using namespace KODI::MESSAGING;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
 
 namespace
 {
@@ -686,7 +686,7 @@ void CGUIDialogPVRTimerSettings::OnSettingAction(const std::shared_ptr<const CSe
   const std::string& settingId = setting->GetId();
   if (settingId == SETTING_TMR_BEGIN)
   {
-    KODI::TIME::SystemTime timerStartTime;
+    UNIVERSAL MEDIA CENTER::TIME::SystemTime timerStartTime;
     m_startLocalTime.GetAsSystemTime(timerStartTime);
     if (CGUIDialogNumeric::ShowAndGetTime(
             timerStartTime,
@@ -699,7 +699,7 @@ void CGUIDialogPVRTimerSettings::OnSettingAction(const std::shared_ptr<const CSe
   }
   else if (settingId == SETTING_TMR_END)
   {
-    KODI::TIME::SystemTime timerEndTime;
+    UNIVERSAL MEDIA CENTER::TIME::SystemTime timerEndTime;
     m_endLocalTime.GetAsSystemTime(timerEndTime);
     if (CGUIDialogNumeric::ShowAndGetTime(
             timerEndTime, CServiceBroker::GetResourcesComponent().GetLocalizeStrings().Get(14066)))
@@ -930,7 +930,7 @@ void CGUIDialogPVRTimerSettings::SetDateFromIndex(CDateTime& datetime, int date)
 }
 
 void CGUIDialogPVRTimerSettings::SetTimeFromSystemTime(CDateTime& datetime,
-                                                       const KODI::TIME::SystemTime& time)
+                                                       const UNIVERSAL MEDIA CENTER::TIME::SystemTime& time)
 {
   const CDateTime newTime(time);
   datetime.SetDateTime(datetime.GetYear(), datetime.GetMonth(), datetime.GetDay(),

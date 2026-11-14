@@ -24,27 +24,27 @@ index 01ef6e9..96839e4 100644
 @@ -590,9 +590,9 @@ PLT_MediaObject::ToDidl(NPT_UInt64 mask, NPT_String& didl)
      }
  
-     // xbmc votes
--    if (mask & PLT_FILTER_MASK_XBMC_VOTES && !m_XbmcInfo.votes.IsEmpty()) {
-+    if (mask & PLT_FILTER_MASK_XBMC_VOTES && m_XbmcInfo.votes != 0) {
-         didl += "<xbmc:votes>";
+     //  votes
+-    if (mask & PLT_FILTER_MASK__VOTES && !m_XbmcInfo.votes.IsEmpty()) {
++    if (mask & PLT_FILTER_MASK__VOTES && m_XbmcInfo.votes != 0) {
+         didl += "<:votes>";
 -        PLT_Didl::AppendXmlEscape(didl, m_XbmcInfo.votes);
 +        didl += NPT_String::Format("%i", m_XbmcInfo.votes);
-         didl += "</xbmc:votes>";
+         didl += "</:votes>";
      }
  
 @@ -841,7 +841,10 @@ PLT_MediaObject::FromDidl(NPT_XmlElementNode* entry)
      if (NPT_FAILED(str.ToFloat(floatValue))) floatValue = 0.0;
      m_XbmcInfo.rating = floatValue;
  
--    PLT_XmlHelper::GetChildText(entry, "votes", m_XbmcInfo.votes, didl_namespace_xbmc, 256);
-+    PLT_XmlHelper::GetChildText(entry, "votes", str, didl_namespace_xbmc, 256);
+-    PLT_XmlHelper::GetChildText(entry, "votes", m_XbmcInfo.votes, didl_namespace_, 256);
++    PLT_XmlHelper::GetChildText(entry, "votes", str, didl_namespace_, 256);
 +    NPT_Int32 intValue;
 +    if (NPT_FAILED(str.ToInteger(intValue))) intValue = 0;
 +    m_XbmcInfo.votes = intValue;
  
      children.Clear();
-     PLT_XmlHelper::GetChildren(entry, children, "artwork", didl_namespace_xbmc);
+     PLT_XmlHelper::GetChildren(entry, children, "artwork", didl_namespace_);
 diff --git a/lib/libUPnP/Platinum/Source/Devices/MediaServer/PltMediaItem.h b/lib/libUPnP/Platinum/Source/Devices/MediaServer/PltMediaItem.h
 index 98d47d8..5712b9a 100644
 --- a/lib/libUPnP/Platinum/Source/Devices/MediaServer/PltMediaItem.h

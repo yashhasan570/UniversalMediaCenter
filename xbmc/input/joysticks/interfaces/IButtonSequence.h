@@ -10,7 +10,7 @@
 
 #include "input/joysticks/JoystickTypes.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace JOYSTICK
 {
@@ -31,4 +31,4 @@ public:
   virtual bool IsCapturing() = 0;
 };
 } // namespace JOYSTICK
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

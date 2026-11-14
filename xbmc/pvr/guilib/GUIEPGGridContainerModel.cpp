@@ -761,7 +761,7 @@ std::unique_ptr<CFileItemList> CGUIEPGGridContainerModel::GetCurrentTimeLineItem
       // tags are sorted, so we can iterate and append
       for (const auto& tag : (*itEpg).second.tags)
       {
-        tag->SetProperty(KODI::ITEM::PROPERTY::TIMELINE_INDEX, i);
+        tag->SetProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::TIMELINE_INDEX, i);
         items->Add(tag);
         ++i;
       }
@@ -770,7 +770,7 @@ std::unique_ptr<CFileItemList> CGUIEPGGridContainerModel::GetCurrentTimeLineItem
     {
       // fake empty EPG
       const std::shared_ptr<CFileItem> tag = CreateGapItem(channel);
-      tag->SetProperty(KODI::ITEM::PROPERTY::TIMELINE_INDEX, i);
+      tag->SetProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::TIMELINE_INDEX, i);
       items->Add(tag);
       ++i;
     }

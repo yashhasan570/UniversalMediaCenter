@@ -14,9 +14,9 @@
 #include <optional>
 #include <utility>
 
-using namespace KODI::UTILS;
+using namespace UNIVERSAL MEDIA CENTER::UTILS;
 
-namespace KODI::VIDEO::GEOMETRY
+namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY
 {
 
 namespace
@@ -247,4 +247,4 @@ ContentAspectSet ContentAspectsOf(const EffectiveGeometry& geometry)
   return set;
 }
 
-} // namespace KODI::VIDEO::GEOMETRY
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY

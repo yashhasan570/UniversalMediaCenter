@@ -16,7 +16,7 @@
 #include "URL.h"
 #include "addons/Scraper.h"
 #include "filesystem/StackDirectory.h"
-#include "utils/XBMCTinyXML.h"
+#include "utils/TinyXML.h"
 
 #include <string>
 #include <utility>
@@ -47,7 +47,7 @@ public:
   {
     if (document)
     {
-      CXBMCTinyXML doc;
+      CTinyXML doc;
       doc.Parse(document, TIXML_ENCODING_UNKNOWN);
       return details.Load(doc.RootElement(), true, prioritise);
     }
@@ -93,7 +93,7 @@ private:
   ADDON::ScraperPtr m_info;
   CScraperUrl m_scurl;
 
-  mutable CXBMCTinyXML m_xmlDoc;
+  mutable CTinyXML m_xmlDoc;
   mutable bool m_xmlParsed = false;
 
   int Load(const CURL&);

@@ -13,11 +13,11 @@
 namespace jni
 {
 
-class CJNIXBMCDisplayManagerDisplayListener : public CJNIBase
+class CJNIDisplayManagerDisplayListener : public CJNIBase
 {
 public:
-  CJNIXBMCDisplayManagerDisplayListener();
-  CJNIXBMCDisplayManagerDisplayListener(const jni::jhobject &object) : CJNIBase(object) {}
+  CJNIDisplayManagerDisplayListener();
+  CJNIDisplayManagerDisplayListener(const jni::jhobject &object) : CJNIBase(object) {}
 
   static void RegisterNatives(JNIEnv* env);
 

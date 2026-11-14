@@ -13,7 +13,7 @@
 
 class CFileItem;
 
-namespace KODI::VIDEO
+namespace UNIVERSAL MEDIA CENTER::VIDEO
 {
 class CSetInfoTagLoaderFactory
 {
@@ -27,4 +27,4 @@ protected:
   CSetInfoTagLoaderFactory(void) = delete;
   virtual ~CSetInfoTagLoaderFactory() = delete;
 };
-} // namespace KODI::VIDEO
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO

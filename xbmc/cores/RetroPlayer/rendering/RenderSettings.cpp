@@ -8,7 +8,7 @@
 
 #include "RenderSettings.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace RETRO;
 
 void CRenderSettings::Reset()

@@ -19,10 +19,10 @@
 #include "utils/FileUtils.h"
 #include "utils/URIUtils.h"
 
-namespace XBMCAddon
+namespace Addon
 {
 
-  namespace xbmcvfs
+  namespace vfs
   {
     bool copy(const String& strSource, const String& strDestination)
     {
@@ -56,21 +56,21 @@ namespace XBMCAddon
     // make legal file name
     String makeLegalFilename(const String& filename)
     {
-      XBMC_TRACE;
+      _TRACE;
       return CUtil::MakeLegalPath(filename);
     }
 
     // translate path
     String translatePath(const String& path)
     {
-      XBMC_TRACE;
+      _TRACE;
       return CSpecialProtocol::TranslatePath(path);
     }
 
     // validate path
     String validatePath(const String& path)
     {
-      XBMC_TRACE;
+      _TRACE;
       return CUtil::ValidatePath(path, true);
     }
 

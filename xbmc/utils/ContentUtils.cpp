@@ -23,10 +23,10 @@ bool PrefersPoster(const CFileItem& item)
 
   switch (item.GetVideoInfoTag()->GetMediaType())
   {
-    case KODI::MEDIA::TYPE::MOVIE:
-    case KODI::MEDIA::TYPE::TV_SHOW:
-    case KODI::MEDIA::TYPE::SEASON:
-    case KODI::MEDIA::TYPE::VIDEO_COLLECTION:
+    case UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MOVIE:
+    case UNIVERSAL MEDIA CENTER::MEDIA::TYPE::TV_SHOW:
+    case UNIVERSAL MEDIA CENTER::MEDIA::TYPE::SEASON:
+    case UNIVERSAL MEDIA CENTER::MEDIA::TYPE::VIDEO_COLLECTION:
       return true;
     default:
       return false;
@@ -36,9 +36,9 @@ bool PrefersPoster(const CFileItem& item)
 
 const std::string ContentUtils::GetPreferredArtImage(const CFileItem& item)
 {
-  if (PrefersPoster(item) && item.HasArt(KODI::ART::TYPE::POSTER))
-    return item.GetArt(KODI::ART::TYPE::POSTER);
-  return item.GetArt(KODI::ART::TYPE::THUMB);
+  if (PrefersPoster(item) && item.HasArt(UNIVERSAL MEDIA CENTER::ART::TYPE::POSTER))
+    return item.GetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::POSTER);
+  return item.GetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB);
 }
 
 std::unique_ptr<CFileItem> ContentUtils::GeneratePlayableTrailerItem(const CFileItem& item,

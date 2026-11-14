@@ -9,12 +9,12 @@
 #pragma once
 
 #include "guilib/guiinfo/GUIInfoProvider.h"
-namespace KODI::GAME
+namespace UNIVERSAL MEDIA CENTER::GAME
 {
 class CAchievementRuntime;
-} // namespace KODI::GAME
+} // namespace UNIVERSAL MEDIA CENTER::GAME
 
-namespace KODI::GUILIB::GUIINFO
+namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO
 {
 
 class CGUIInfo;
@@ -23,13 +23,13 @@ class CGamesGUIInfo : public CGUIInfoProvider
 {
 public:
   CGamesGUIInfo() = default;
-  explicit CGamesGUIInfo(const KODI::GAME::CAchievementRuntime& achievementRuntime)
+  explicit CGamesGUIInfo(const UNIVERSAL MEDIA CENTER::GAME::CAchievementRuntime& achievementRuntime)
     : m_achievementRuntime(&achievementRuntime)
   {
   }
   ~CGamesGUIInfo() override = default;
 
-  // KODI::GUILIB::GUIINFO::IGUIInfoProvider implementation
+  // UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::IGUIInfoProvider implementation
   bool InitCurrentItem(CFileItem* item) override;
   bool GetLabel(std::string& value,
                 const CFileItem* item,
@@ -46,9 +46,9 @@ public:
                const CGUIInfo& info) const override;
 
 private:
-  const KODI::GAME::CAchievementRuntime& AchievementRuntime() const;
+  const UNIVERSAL MEDIA CENTER::GAME::CAchievementRuntime& AchievementRuntime() const;
 
-  const KODI::GAME::CAchievementRuntime* m_achievementRuntime{nullptr};
+  const UNIVERSAL MEDIA CENTER::GAME::CAchievementRuntime* m_achievementRuntime{nullptr};
 };
 
-} // namespace KODI::GUILIB::GUIINFO
+} // namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO

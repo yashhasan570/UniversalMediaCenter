@@ -16,7 +16,7 @@
 
 #include <utility>
 
-using namespace KODI::WINDOWING::GBM;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::GBM;
 using namespace DRMPRIME;
 
 CVideoLayerBridgeDRMPRIME::CVideoLayerBridgeDRMPRIME(std::shared_ptr<CDRMAtomic> drm)

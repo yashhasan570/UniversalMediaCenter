@@ -8,9 +8,9 @@
 import sys
 import urllib.parse
 
-import xbmcgui
-import xbmcplugin
-import xbmc
+import gui
+import plugin
+import 
 
 
 def get_params():
@@ -27,22 +27,22 @@ action = params.get('action')
 if action == 'find':
     title = params['title']
     year = params.get('year', 'not specified')
-    xbmc.log(f'Find movie with title "{title}" from year {year}', xbmc.LOGDEBUG)
+    .log(f'Find movie with title "{title}" from year {year}', .LOGDEBUG)
 
-    liz = xbmcgui.ListItem('Demo show 1', offscreen=True)
+    liz = gui.ListItem('Demo show 1', offscreen=True)
     liz.setArt({'thumb': 'DefaultVideo.png'})
     liz.setProperty('relevance', '0.5')
-    xbmcplugin.addDirectoryItem(handle=plugin_handle, url='/path/to/show', listitem=liz, isFolder=True)
-    liz = xbmcgui.ListItem('Demo show 2', offscreen=True)
+    plugin.addDirectoryItem(handle=plugin_handle, url='/path/to/show', listitem=liz, isFolder=True)
+    liz = gui.ListItem('Demo show 2', offscreen=True)
     liz.setArt({'thumb': 'DefaultVideo.png'})
     liz.setProperty('relevance', '0.3')
-    xbmcplugin.addDirectoryItem(handle=plugin_handle, url='/path/to/show2', listitem=liz, isFolder=True)
+    plugin.addDirectoryItem(handle=plugin_handle, url='/path/to/show2', listitem=liz, isFolder=True)
 
 elif action == 'getdetails':
     url = params['url']
     if url == '/path/to/show':
-        xbmc.log('Get tv show details callback', xbmc.LOGDEBUG)
-        liz = xbmcgui.ListItem('Demo show 1', offscreen=True)
+        .log('Get tv show details callback', .LOGDEBUG)
+        liz = gui.ListItem('Demo show 1', offscreen=True)
         tags = liz.getVideoInfoTag()
         tags.setTitle('Demo show 1')
         tags.setOriginalTitle('Demo shåvv 1')
@@ -68,42 +68,42 @@ elif action == 'getdetails':
         tags.setUniqueIDs({'imdb': 'tt8938399', 'tmdb': '9837493'}, defaultuniqueid='tvdb')
         tags.addSeason(1, 'Beautiful')
         tags.addSeason(2, 'Sun')
-        tags.setCast([xbmc.Actor('spiff', 'himself', order=2, thumbnail='/home/akva/Pictures/fish.jpg'),
-                      xbmc.Actor('monkey', 'orange', order=1, thumbnail='/home/akva/Pictures/coffee.jpg')])
+        tags.setCast([.Actor('spiff', 'himself', order=2, thumbnail='/home/akva/Pictures/fish.jpg'),
+                      .Actor('monkey', 'orange', order=1, thumbnail='/home/akva/Pictures/coffee.jpg')])
         tags.addAvailableArtwork('DefaultBackFanart.png', 'banner')
         tags.addAvailableArtwork('/home/akva/Pictures/hawaii-shirt.png', 'poster')
         tags.setAvailableFanart([{'image': 'DefaultBackFanart.png', 'preview': 'DefaultBackFanart.png'},
                                 {'image': '/home/akva/Pictures/hawaii-shirt.png',
                                  'preview': '/home/akva/Pictures/hawaii-shirt.png'}])
-        xbmcplugin.setResolvedUrl(handle=plugin_handle, succeeded=True, listitem=liz)
+        plugin.setResolvedUrl(handle=plugin_handle, succeeded=True, listitem=liz)
 
 elif action == 'getepisodelist':
     url = params['url']
-    xbmc.log(f'Get episode list callback "{url}"', xbmc.LOGDEBUG)
+    .log(f'Get episode list callback "{url}"', .LOGDEBUG)
     if url == '/path/to/show/guide':
-        liz = xbmcgui.ListItem('Demo Episode 1x1', offscreen=True)
+        liz = gui.ListItem('Demo Episode 1x1', offscreen=True)
         tags = liz.getVideoInfoTag()
         tags.setTitle('Demo Episode 1')
         tags.setSeason(1)
         tags.setEpisode(1)
         tags.setFirstAired('2015-01-01')
         tags.addAvailableArtwork('/path/to/episode1', 'banner')
-        xbmcplugin.addDirectoryItem(handle=plugin_handle, url="/path/to/episode1", listitem=liz, isFolder=False)
+        plugin.addDirectoryItem(handle=plugin_handle, url="/path/to/episode1", listitem=liz, isFolder=False)
 
-        liz = xbmcgui.ListItem('Demo Episode 2x2', offscreen=True)
+        liz = gui.ListItem('Demo Episode 2x2', offscreen=True)
         tags = liz.getVideoInfoTag()
         tags.setTitle('Demo Episode 2')
         tags.setSeason(2)
         tags.setEpisode(2)
         tags.setFirstAired('2014-01-01')
         tags.addAvailableArtwork('/path/to/episode2', 'banner')
-        xbmcplugin.addDirectoryItem(handle=plugin_handle, url="/path/to/episode1", listitem=liz, isFolder=False)
+        plugin.addDirectoryItem(handle=plugin_handle, url="/path/to/episode1", listitem=liz, isFolder=False)
 
 elif action == 'getepisodedetails':
     url = params['url']
     if url == '/path/to/episode1':
-        xbmc.log('Get episode 1 details callback', xbmc.LOGDEBUG)
-        liz = xbmcgui.ListItem('Demo Episode 1', offscreen=True)
+        .log('Get episode 1 details callback', .LOGDEBUG)
+        liz = gui.ListItem('Demo Episode 1', offscreen=True)
         tags = liz.getVideoInfoTag()
         tags.setTitle('Demo Episode 1')
         tags.setOriginalTitle('Demo æpisod 1x1')
@@ -129,18 +129,18 @@ elif action == 'getepisodedetails':
         tags.setUniqueIDs({'tvdb': '3894', 'imdb': 'tt384940'}, defaultuniqueid='tvdb')
         tags.addSeason(1, 'Beautiful')
         tags.addSeason(2, 'Sun')
-        tags.setCast([xbmc.Actor('spiff', 'himself', order=2, thumbnail='/home/akva/Pictures/fish.jpg'),
-                      xbmc.Actor('monkey', 'orange', order=1, thumbnail='/home/akva/Pictures/coffee.jpg')])
+        tags.setCast([.Actor('spiff', 'himself', order=2, thumbnail='/home/akva/Pictures/fish.jpg'),
+                      .Actor('monkey', 'orange', order=1, thumbnail='/home/akva/Pictures/coffee.jpg')])
         tags.addAvailableArtwork('DefaultBackFanart.png', 'banner')
         tags.addAvailableArtwork('/home/akva/Pictures/hawaii-shirt.png', 'poster')
         tags.setAvailableFanart([{'image': 'DefaultBackFanart.png', 'preview': 'DefaultBackFanart.png'},
                                 {'image': '/home/akva/Pictures/hawaii-shirt.png',
                                  'preview': '/home/akva/Pictures/hawaii-shirt.png'}])
-        xbmcplugin.setResolvedUrl(handle=plugin_handle, succeeded=True, listitem=liz)
+        plugin.setResolvedUrl(handle=plugin_handle, succeeded=True, listitem=liz)
 
     elif url == '/path/to/episode2':
-        xbmc.log('Get episode 2 details callback', xbmc.LOGDEBUG)
-        liz = xbmcgui.ListItem('Demo Episode 2', offscreen=True)
+        .log('Get episode 2 details callback', .LOGDEBUG)
+        liz = gui.ListItem('Demo Episode 2', offscreen=True)
         tags = liz.getVideoInfoTag()
         tags.setTitle('Demo Episode 2')
         tags.setOriginalTitle('Demo æpisod 2x2')
@@ -167,22 +167,22 @@ elif action == 'getepisodedetails':
         tags.setUniqueIDs({'tvdb': '3894', 'imdb': 'tt384940'}, defaultuniqueid='tvdb')
         tags.addSeason(1, 'Beautiful')
         tags.addSeason(2, 'Sun')
-        tags.setCast([xbmc.Actor('spiff', 'himself', order=2, thumbnail='/home/akva/Pictures/fish.jpg'),
-                      xbmc.Actor('monkey', 'orange', order=1, thumbnail='/home/akva/Pictures/coffee.jpg')])
+        tags.setCast([.Actor('spiff', 'himself', order=2, thumbnail='/home/akva/Pictures/fish.jpg'),
+                      .Actor('monkey', 'orange', order=1, thumbnail='/home/akva/Pictures/coffee.jpg')])
         tags.addAvailableArtwork('DefaultBackFanart.png', 'banner')
         tags.addAvailableArtwork('/home/akva/Pictures/hawaii-shirt.png', 'poster')
         tags.setAvailableFanart([{'image': 'DefaultBackFanart.png', 'preview': 'DefaultBackFanart.png'},
                                 {'image': '/home/akva/Pictures/hawaii-shirt.png',
                                  'preview': '/home/akva/Pictures/hawaii-shirt.png'}])
-        xbmcplugin.setResolvedUrl(handle=plugin_handle, succeeded=True, listitem=liz)
+        plugin.setResolvedUrl(handle=plugin_handle, succeeded=True, listitem=liz)
 
 elif action == 'nfourl':
     nfo = params['nfo']
-    xbmc.log('Find url from nfo file', xbmc.LOGDEBUG)
-    liz = xbmcgui.ListItem('Demo show 1', offscreen=True)
-    xbmcplugin.addDirectoryItem(handle=plugin_handle, url="/path/to/show", listitem=liz, isFolder=True)
+    .log('Find url from nfo file', .LOGDEBUG)
+    liz = gui.ListItem('Demo show 1', offscreen=True)
+    plugin.addDirectoryItem(handle=plugin_handle, url="/path/to/show", listitem=liz, isFolder=True)
 
 elif action is not None:
-    xbmc.log(f'Action "{action}" not implemented', xbmc.LOGDEBUG)
+    .log(f'Action "{action}" not implemented', .LOGDEBUG)
 
-xbmcplugin.endOfDirectory(plugin_handle)
+plugin.endOfDirectory(plugin_handle)

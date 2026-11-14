@@ -8,7 +8,7 @@
 
 #include "ShaderTextureGLESRef.h"
 
-using namespace KODI::SHADER;
+using namespace UNIVERSAL MEDIA CENTER::SHADER;
 
 CShaderTextureGLESRef::CShaderTextureGLESRef(uint32_t textureWidth,
                                              uint32_t textureHeight,

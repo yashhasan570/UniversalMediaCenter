@@ -10,7 +10,7 @@
 
 #include "InputTypes.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace INPUT
 {
@@ -52,4 +52,4 @@ public:
   static INTERCARDINAL_DIRECTION VectorToIntercardinalDirection(float x, float y);
 };
 } // namespace INPUT
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

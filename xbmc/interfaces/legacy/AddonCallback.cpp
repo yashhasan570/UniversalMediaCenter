@@ -7,7 +7,7 @@
  */
 #include "AddonCallback.h"
 
-namespace XBMCAddon
+namespace Addon
 {
   // need a place to put the vtab
   AddonCallback::~AddonCallback() = default;

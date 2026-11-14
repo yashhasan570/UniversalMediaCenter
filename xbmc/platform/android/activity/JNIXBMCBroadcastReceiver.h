@@ -13,7 +13,7 @@
 namespace jni
 {
 
-class CJNIXBMCBroadcastReceiver
+class CJNIBroadcastReceiver
 {
 public:
   static void RegisterNatives(JNIEnv* env);

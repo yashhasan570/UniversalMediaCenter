@@ -15,11 +15,11 @@
 #include "playlists/PlayListFileItemClassify.h"
 #include "utils/URIUtils.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
-namespace XBMCAddon
+namespace Addon
 {
-  namespace xbmc
+  namespace 
   {
     //! @todo need a means to check for a valid construction
     //!  either by throwing an exception or by an "isValid" check
@@ -37,7 +37,7 @@ namespace XBMCAddon
 
     PlayList::~PlayList() = default;
 
-    void PlayList::add(const String& url, XBMCAddon::xbmcgui::ListItem* listitem, int index)
+    void PlayList::add(const String& url, Addon::gui::ListItem* listitem, int index)
     {
       CFileItemList items;
 
@@ -130,7 +130,7 @@ namespace XBMCAddon
       return CServiceBroker::GetPlaylistPlayer().GetCurrentItemIdx();
     }
 
-    XBMCAddon::xbmcgui::ListItem* PlayList::operator [](long i)
+    Addon::gui::ListItem* PlayList::operator [](long i)
     {
       int iPlayListSize = size();
 
@@ -142,7 +142,7 @@ namespace XBMCAddon
 
       CFileItemPtr ptr((*pPlayList)[pos]);
 
-      return new XBMCAddon::xbmcgui::ListItem(ptr);
+      return new Addon::gui::ListItem(ptr);
     }
   }
 }

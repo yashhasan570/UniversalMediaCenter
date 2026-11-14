@@ -23,7 +23,7 @@
 class CCriticalSection;
 struct game_input_event;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace JOYSTICK
 {
@@ -212,4 +212,4 @@ private:
   std::unique_ptr<CGameClientHardware> m_hardware;
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

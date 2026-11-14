@@ -13,18 +13,18 @@
 #include "addons/Skin.h"
 #include "application/Application.h"
 #include "guilib/GUIComponent.h"
-#include "utils/XBMCTinyXML.h"
-#ifdef ENABLE_XBMC_TRACE_API
+#include "utils/TinyXML.h"
+#ifdef ENABLE__TRACE_API
 #include "utils/log.h"
 #endif
 
-namespace XBMCAddonUtils
+namespace AddonUtils
 {
-  GuiLock::GuiLock(XBMCAddon::LanguageHook* languageHook, bool offScreen)
+  GuiLock::GuiLock(Addon::LanguageHook* languageHook, bool offScreen)
     : m_languageHook(languageHook), m_offScreen(offScreen)
   {
     if (!m_languageHook)
-      m_languageHook = XBMCAddon::LanguageHook::GetLanguageHook();
+      m_languageHook = Addon::LanguageHook::GetLanguageHook();
     if (m_languageHook)
       m_languageHook->DelayedCallOpen();
 
@@ -73,7 +73,7 @@ namespace XBMCAddonUtils
     return "";
   }
 
-#ifdef ENABLE_XBMC_TRACE_API
+#ifdef ENABLE__TRACE_API
   static thread_local TraceGuard* tlParent;
 
   static char** getSpacesArray(int size)

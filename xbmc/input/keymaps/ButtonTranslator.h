@@ -22,7 +22,7 @@ namespace tinyxml2
 class XMLNode;
 }
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace KEYMAP
 {
@@ -106,4 +106,4 @@ private:
   std::map<std::string, IKeyMapper*> m_buttonMappers;
 };
 } // namespace KEYMAP
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

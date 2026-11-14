@@ -10,7 +10,7 @@
 
 #include "threads/Thread.h"
 #include "windowing/WinEvents.h"
-#include "windowing/XBMC_events.h"
+#include "windowing/_events.h"
 
 #include <memory>
 
@@ -23,7 +23,7 @@ public:
   CWinEventsOSX();
   ~CWinEventsOSX();
 
-  void MessagePush(XBMC_Event* newEvent);
+  void MessagePush(_Event* newEvent);
   bool MessagePump();
   size_t GetQueueSize();
 

@@ -13,7 +13,7 @@
 #include <atomic>
 #include <memory>
 
-namespace KODI::RETRO
+namespace UNIVERSAL MEDIA CENTER::RETRO
 {
 class CAutosaveCapture
 {
@@ -89,4 +89,4 @@ private:
   std::atomic<bool> m_requested{false};
   bool m_pinned{false};
 };
-} // namespace KODI::RETRO
+} // namespace UNIVERSAL MEDIA CENTER::RETRO

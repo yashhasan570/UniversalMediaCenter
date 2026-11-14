@@ -13,7 +13,7 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using ADDON::AddonType;
 using ADDON::CAddonInfo;
 

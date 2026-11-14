@@ -12,7 +12,7 @@
 
 #include <string>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace KEYMAP
 {
@@ -89,4 +89,4 @@ public:
   virtual const KeymapActionGroup& GetActions(int windowId, const std::string& keyName) const = 0;
 };
 } // namespace KEYMAP
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

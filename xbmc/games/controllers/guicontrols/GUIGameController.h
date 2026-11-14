@@ -13,7 +13,7 @@
 
 #include <mutex>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -72,4 +72,4 @@ private:
   std::mutex m_mutex;
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

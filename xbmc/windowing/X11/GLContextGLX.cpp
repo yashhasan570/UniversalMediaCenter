@@ -14,7 +14,7 @@
 
 #include "system_gl.h"
 
-using namespace KODI::WINDOWING::X11;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::X11;
 
 CGLContextGLX::CGLContextGLX(Display *dpy) : CGLContext(dpy)
 {

@@ -29,7 +29,7 @@ CAppInboundProtocol::CAppInboundProtocol(CApplication &app) : m_pApp(app)
 {
 }
 
-bool CAppInboundProtocol::OnEvent(const XBMC_Event& newEvent)
+bool CAppInboundProtocol::OnEvent(const _Event& newEvent)
 {
   std::unique_lock lock(m_portSection);
   if (m_closed)
@@ -61,11 +61,11 @@ void CAppInboundProtocol::HandleEvents()
     CSingleExit lock(m_portSection);
     switch (newEvent.type)
     {
-      case XBMC_QUIT:
+      case _QUIT:
         if (!m_pApp.m_bStop)
           CServiceBroker::GetAppMessenger()->PostMsg(TMSG_QUIT);
         break;
-      case XBMC_VIDEORESIZE:
+      case _VIDEORESIZE:
         if (CServiceBroker::GetGUI()->GetWindowManager().Initialized())
         {
           if (!CServiceBroker::GetSettingsComponent()->GetAdvancedSettings()->m_fullScreen)
@@ -86,21 +86,21 @@ void CAppInboundProtocol::HandleEvents()
           }
         }
         break;
-      case XBMC_VIDEOMOVE:
+      case _VIDEOMOVE:
       {
         CServiceBroker::GetWinSystem()->OnMove(newEvent.move.x, newEvent.move.y);
       }
       break;
-      case XBMC_MODECHANGE:
+      case _MODECHANGE:
         CServiceBroker::GetWinSystem()->GetGfxContext().ApplyModeChange(newEvent.mode.res);
         break;
-      case XBMC_SCREENCHANGE:
+      case _SCREENCHANGE:
         CServiceBroker::GetWinSystem()->OnChangeScreen(newEvent.screen.screenIdx);
         break;
-      case XBMC_USEREVENT:
+      case _USEREVENT:
         CServiceBroker::GetAppMessenger()->PostMsg(static_cast<uint32_t>(newEvent.user.code));
         break;
-      case XBMC_SETFOCUS:
+      case _SETFOCUS:
       {
         // Reset the screensaver
         const auto appPower = m_pApp.GetComponent<CApplicationPowerHandling>();

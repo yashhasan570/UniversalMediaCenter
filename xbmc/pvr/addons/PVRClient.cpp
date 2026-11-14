@@ -423,7 +423,7 @@ namespace PVR
 class CPVRClient::CPVRAddonInstanceHolder
 {
 public:
-  explicit CPVRAddonInstanceHolder(KODI_ADDON_INSTANCE_STRUCT& instanceStruct)
+  explicit CPVRAddonInstanceHolder(UNIVERSALMEDIA_ADDON_INSTANCE_STRUCT& instanceStruct)
   {
     instanceStruct.pvr = &m_instance;
     instanceStruct.pvr->props = &m_props;
@@ -504,7 +504,7 @@ void CPVRClient::ResetProperties()
       CServiceBroker::GetPVRManager().EpgContainer().GetFutureDaysToDisplay();
 
   *m_ifc.pvr->toUniversal Media Center = {};
-  m_ifc.pvr->toUniversal Media Center->kodiInstance = this;
+  m_ifc.pvr->toUniversal Media Center->universalmediacenterInstance = this;
   m_ifc.pvr->toUniversal Media Center->TransferEpgEntry = cb_transfer_epg_entry;
   m_ifc.pvr->toUniversal Media Center->TransferChannelEntry = cb_transfer_channel_entry;
   m_ifc.pvr->toUniversal Media Center->TransferProviderEntry = cb_transfer_provider_entry;
@@ -2189,14 +2189,14 @@ void CPVRClient::SetDateTimeFirstChannelsAdded(const CDateTime& dateTime)
 
 template<typename F, typename Universal Media CenterInstance>
 void CPVRClient::HandleAddonCallback(const char* strFunctionName,
-                                     Universal Media CenterInstance* kodiInstance,
+                                     Universal Media CenterInstance* universalmediacenterInstance,
                                      F function,
                                      bool bForceCall /* = false */)
 {
   using Client = std::conditional_t<std::is_const_v<Universal Media CenterInstance>, const CPVRClient, CPVRClient>;
 
   // Check preconditions.
-  auto* client{static_cast<Client*>(kodiInstance)};
+  auto* client{static_cast<Client*>(universalmediacenterInstance)};
   if (!client)
   {
     CLog::Log(LOGERROR, "{}: No instance pointer given!", strFunctionName);
@@ -2214,11 +2214,11 @@ void CPVRClient::HandleAddonCallback(const char* strFunctionName,
   function(client);
 }
 
-void CPVRClient::cb_transfer_channel_group(void* kodiInstance,
+void CPVRClient::cb_transfer_channel_group(void* universalmediacenterInstance,
                                            const PVR_HANDLE handle,
                                            const PVR_CHANNEL_GROUP* group)
 {
-  HandleAddonCallback(std::source_location::current().function_name(), kodiInstance,
+  HandleAddonCallback(std::source_location::current().function_name(), universalmediacenterInstance,
                       [handle, group](const CPVRClient* client)
                       {
                         if (!handle || !group)
@@ -2234,19 +2234,19 @@ void CPVRClient::cb_transfer_channel_group(void* kodiInstance,
                         }
 
                         // transfer this entry to the groups container
-                        auto* kodiGroups{static_cast<CPVRChannelGroups*>(handle->dataAddress)};
-                        const auto transferGroup = kodiGroups->GetGroupFactory()->CreateClientGroup(
-                            *group, client->GetID(), kodiGroups->GetGroupAll());
-                        kodiGroups->UpdateFromClient(transferGroup);
+                        auto* universalmediacenterGroups{static_cast<CPVRChannelGroups*>(handle->dataAddress)};
+                        const auto transferGroup = universalmediacenterGroups->GetGroupFactory()->CreateClientGroup(
+                            *group, client->GetID(), universalmediacenterGroups->GetGroupAll());
+                        universalmediacenterGroups->UpdateFromClient(transferGroup);
                       });
 }
 
-void CPVRClient::cb_transfer_channel_group_member(void* kodiInstance,
+void CPVRClient::cb_transfer_channel_group_member(void* universalmediacenterInstance,
                                                   const PVR_HANDLE handle,
                                                   const PVR_CHANNEL_GROUP_MEMBER* member)
 {
   HandleAddonCallback(
-      std::source_location::current().function_name(), kodiInstance,
+      std::source_location::current().function_name(), universalmediacenterInstance,
       [handle, member](const CPVRClient* client)
       {
         if (!handle || !member)
@@ -2273,11 +2273,11 @@ void CPVRClient::cb_transfer_channel_group_member(void* kodiInstance,
       });
 }
 
-void CPVRClient::cb_transfer_epg_entry(void* kodiInstance,
+void CPVRClient::cb_transfer_epg_entry(void* universalmediacenterInstance,
                                        const PVR_HANDLE handle,
                                        const EPG_TAG* epgentry)
 {
-  HandleAddonCallback(std::source_location::current().function_name(), kodiInstance,
+  HandleAddonCallback(std::source_location::current().function_name(), universalmediacenterInstance,
                       [handle, epgentry](const CPVRClient* client)
                       {
                         if (!handle || !epgentry)
@@ -2292,12 +2292,12 @@ void CPVRClient::cb_transfer_epg_entry(void* kodiInstance,
                       });
 }
 
-void CPVRClient::cb_transfer_provider_entry(void* kodiInstance,
+void CPVRClient::cb_transfer_provider_entry(void* universalmediacenterInstance,
                                             const PVR_HANDLE handle,
                                             const PVR_PROVIDER* provider)
 {
   HandleAddonCallback(
-      std::source_location::current().function_name(), kodiInstance,
+      std::source_location::current().function_name(), universalmediacenterInstance,
       [handle, provider](const CPVRClient* client)
       {
         if (!handle || !provider)
@@ -2307,18 +2307,18 @@ void CPVRClient::cb_transfer_provider_entry(void* kodiInstance,
         }
 
         // transfer this entry to the providers container
-        auto* kodiProviders{static_cast<CPVRProvidersContainer*>(handle->dataAddress)};
+        auto* universalmediacenterProviders{static_cast<CPVRProvidersContainer*>(handle->dataAddress)};
         const auto transferProvider{std::make_shared<CPVRProvider>(*provider, client->GetID())};
-        kodiProviders->UpdateFromClient(transferProvider);
+        universalmediacenterProviders->UpdateFromClient(transferProvider);
       });
 }
 
-void CPVRClient::cb_transfer_channel_entry(void* kodiInstance,
+void CPVRClient::cb_transfer_channel_entry(void* universalmediacenterInstance,
                                            const PVR_HANDLE handle,
                                            const PVR_CHANNEL* channel)
 {
   HandleAddonCallback(
-      std::source_location::current().function_name(), kodiInstance,
+      std::source_location::current().function_name(), universalmediacenterInstance,
       [handle, channel](const CPVRClient* client)
       {
         if (!handle || !channel)
@@ -2333,11 +2333,11 @@ void CPVRClient::cb_transfer_channel_entry(void* kodiInstance,
       });
 }
 
-void CPVRClient::cb_transfer_recording_entry(void* kodiInstance,
+void CPVRClient::cb_transfer_recording_entry(void* universalmediacenterInstance,
                                              const PVR_HANDLE handle,
                                              const PVR_RECORDING* recording)
 {
-  HandleAddonCallback(std::source_location::current().function_name(), kodiInstance,
+  HandleAddonCallback(std::source_location::current().function_name(), universalmediacenterInstance,
                       [handle, recording](const CPVRClient* client)
                       {
                         if (!handle || !recording)
@@ -2354,11 +2354,11 @@ void CPVRClient::cb_transfer_recording_entry(void* kodiInstance,
                       });
 }
 
-void CPVRClient::cb_transfer_timer_entry(void* kodiInstance,
+void CPVRClient::cb_transfer_timer_entry(void* universalmediacenterInstance,
                                          const PVR_HANDLE handle,
                                          const PVR_TIMER* timer)
 {
-  HandleAddonCallback(std::source_location::current().function_name(), kodiInstance,
+  HandleAddonCallback(std::source_location::current().function_name(), universalmediacenterInstance,
                       [handle, timer](const CPVRClient* client)
                       {
                         if (!handle || !timer)
@@ -2381,9 +2381,9 @@ void CPVRClient::cb_transfer_timer_entry(void* kodiInstance,
                       });
 }
 
-void CPVRClient::cb_add_menu_hook(void* kodiInstance, const PVR_MENUHOOK* hook)
+void CPVRClient::cb_add_menu_hook(void* universalmediacenterInstance, const PVR_MENUHOOK* hook)
 {
-  HandleAddonCallback(std::source_location::current().function_name(), kodiInstance,
+  HandleAddonCallback(std::source_location::current().function_name(), universalmediacenterInstance,
                       [hook](const CPVRClient* client)
                       {
                         if (!hook)
@@ -2396,13 +2396,13 @@ void CPVRClient::cb_add_menu_hook(void* kodiInstance, const PVR_MENUHOOK* hook)
                       });
 }
 
-void CPVRClient::cb_recording_notification(void* kodiInstance,
+void CPVRClient::cb_recording_notification(void* universalmediacenterInstance,
                                            const char* strName,
                                            const char* strFileName,
                                            bool bOnOff)
 {
   HandleAddonCallback(
-      std::source_location::current().function_name(), kodiInstance,
+      std::source_location::current().function_name(), universalmediacenterInstance,
       [strName, strFileName, bOnOff](const CPVRClient* client)
       {
         if (!strFileName)
@@ -2430,9 +2430,9 @@ void CPVRClient::cb_recording_notification(void* kodiInstance,
       });
 }
 
-void CPVRClient::cb_trigger_channel_update(void* kodiInstance)
+void CPVRClient::cb_trigger_channel_update(void* universalmediacenterInstance)
 {
-  HandleAddonCallback(std::source_location::current().function_name(), kodiInstance,
+  HandleAddonCallback(std::source_location::current().function_name(), universalmediacenterInstance,
                       [](const CPVRClient* client)
                       {
                         // update channels in the next iteration of the pvrmanager's main loop
@@ -2440,9 +2440,9 @@ void CPVRClient::cb_trigger_channel_update(void* kodiInstance)
                       });
 }
 
-void CPVRClient::cb_trigger_provider_update(void* kodiInstance)
+void CPVRClient::cb_trigger_provider_update(void* universalmediacenterInstance)
 {
-  HandleAddonCallback(std::source_location::current().function_name(), kodiInstance,
+  HandleAddonCallback(std::source_location::current().function_name(), universalmediacenterInstance,
                       [](const CPVRClient* client)
                       {
                         /* update the providers table in the next iteration of the pvrmanager's main loop */
@@ -2450,9 +2450,9 @@ void CPVRClient::cb_trigger_provider_update(void* kodiInstance)
                       });
 }
 
-void CPVRClient::cb_trigger_timer_update(void* kodiInstance)
+void CPVRClient::cb_trigger_timer_update(void* universalmediacenterInstance)
 {
-  HandleAddonCallback(std::source_location::current().function_name(), kodiInstance,
+  HandleAddonCallback(std::source_location::current().function_name(), universalmediacenterInstance,
                       [](const CPVRClient* client)
                       {
                         // update timers in the next iteration of the pvrmanager's main loop
@@ -2460,9 +2460,9 @@ void CPVRClient::cb_trigger_timer_update(void* kodiInstance)
                       });
 }
 
-void CPVRClient::cb_trigger_recording_update(void* kodiInstance)
+void CPVRClient::cb_trigger_recording_update(void* universalmediacenterInstance)
 {
-  HandleAddonCallback(std::source_location::current().function_name(), kodiInstance,
+  HandleAddonCallback(std::source_location::current().function_name(), universalmediacenterInstance,
                       [](const CPVRClient* client)
                       {
                         // update recordings in the next iteration of the pvrmanager's main loop
@@ -2470,9 +2470,9 @@ void CPVRClient::cb_trigger_recording_update(void* kodiInstance)
                       });
 }
 
-void CPVRClient::cb_trigger_channel_groups_update(void* kodiInstance)
+void CPVRClient::cb_trigger_channel_groups_update(void* universalmediacenterInstance)
 {
-  HandleAddonCallback(std::source_location::current().function_name(), kodiInstance,
+  HandleAddonCallback(std::source_location::current().function_name(), universalmediacenterInstance,
                       [](const CPVRClient* client)
                       {
                         // update all channel groups in the next iteration of the pvrmanager's main loop
@@ -2480,41 +2480,41 @@ void CPVRClient::cb_trigger_channel_groups_update(void* kodiInstance)
                       });
 }
 
-void CPVRClient::cb_trigger_epg_update(void* kodiInstance, unsigned int iChannelUid)
+void CPVRClient::cb_trigger_epg_update(void* universalmediacenterInstance, unsigned int iChannelUid)
 {
-  HandleAddonCallback(std::source_location::current().function_name(), kodiInstance,
+  HandleAddonCallback(std::source_location::current().function_name(), universalmediacenterInstance,
                       [iChannelUid](const CPVRClient* client) {
                         CServiceBroker::GetPVRManager().EpgContainer().UpdateRequest(
                             client->GetID(), iChannelUid);
                       });
 }
 
-void CPVRClient::cb_free_demux_packet(void* kodiInstance, DEMUX_PACKET* pPacket)
+void CPVRClient::cb_free_demux_packet(void* universalmediacenterInstance, DEMUX_PACKET* pPacket)
 {
   HandleAddonCallback(
-      std::source_location::current().function_name(), kodiInstance,
+      std::source_location::current().function_name(), universalmediacenterInstance,
       [pPacket](const CPVRClient* /*client*/)
       { CDVDDemuxUtils::FreeDemuxPacket(static_cast<DemuxPacket*>(pPacket)); }, true);
 }
 
-DEMUX_PACKET* CPVRClient::cb_allocate_demux_packet(void* kodiInstance, int iDataSize)
+DEMUX_PACKET* CPVRClient::cb_allocate_demux_packet(void* universalmediacenterInstance, int iDataSize)
 {
   DEMUX_PACKET* result = nullptr;
 
   HandleAddonCallback(
-      std::source_location::current().function_name(), kodiInstance,
+      std::source_location::current().function_name(), universalmediacenterInstance,
       [iDataSize, &result](const CPVRClient* /*client*/)
       { result = CDVDDemuxUtils::AllocateDemuxPacket(iDataSize); }, true);
 
   return result;
 }
 
-void CPVRClient::cb_connection_state_change(void* kodiInstance,
+void CPVRClient::cb_connection_state_change(void* universalmediacenterInstance,
                                             const char* strConnectionString,
                                             PVR_CONNECTION_STATE newState,
                                             const char* strMessage)
 {
-  HandleAddonCallback(std::source_location::current().function_name(), kodiInstance,
+  HandleAddonCallback(std::source_location::current().function_name(), universalmediacenterInstance,
                       [strConnectionString, newState, strMessage](CPVRClient* client)
                       {
                         if (!strConnectionString)
@@ -2542,12 +2542,12 @@ void CPVRClient::cb_connection_state_change(void* kodiInstance,
                       });
 }
 
-void CPVRClient::cb_epg_event_state_change(void* kodiInstance,
+void CPVRClient::cb_epg_event_state_change(void* universalmediacenterInstance,
                                            EPG_TAG* tag,
                                            EPG_EVENT_STATE newState)
 {
   HandleAddonCallback(
-      std::source_location::current().function_name(), kodiInstance,
+      std::source_location::current().function_name(), universalmediacenterInstance,
       [tag, newState](const CPVRClient* client)
       {
         if (!tag)
@@ -2629,12 +2629,12 @@ private:
   std::map<std::string, PVR_CODEC, std::less<>> m_lookup;
 };
 
-PVR_CODEC CPVRClient::cb_get_codec_by_name(const void* kodiInstance, const char* strCodecName)
+PVR_CODEC CPVRClient::cb_get_codec_by_name(const void* universalmediacenterInstance, const char* strCodecName)
 {
   PVR_CODEC result = PVR_INVALID_CODEC;
 
   HandleAddonCallback(
-      std::source_location::current().function_name(), kodiInstance,
+      std::source_location::current().function_name(), universalmediacenterInstance,
       [&result, strCodecName](const CPVRClient* client)
       { result = CCodecIds::GetInstance().GetCodecByName(strCodecName); }, true);
 

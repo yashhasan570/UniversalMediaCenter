@@ -12,7 +12,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -145,4 +145,4 @@ public:
   virtual void SetFrameCounter(uint64_t frameCount) = 0;
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

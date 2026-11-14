@@ -116,7 +116,7 @@ std::string GetClientIdsSQL(const std::vector<std::shared_ptr<CPVRClient>>& clie
 
 } // unnamed namespace
 
-CPVRDatabase::CPVRDatabase() : CDatabase(KODI::DATABASE::TYPE_TV)
+CPVRDatabase::CPVRDatabase() : CDatabase(UNIVERSAL MEDIA CENTER::DATABASE::TYPE_TV)
 {
 }
 

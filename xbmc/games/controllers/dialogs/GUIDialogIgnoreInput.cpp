@@ -20,7 +20,7 @@
 #include <algorithm>
 #include <iterator>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 bool CGUIDialogIgnoreInput::AcceptsPrimitive(JOYSTICK::PRIMITIVE_TYPE type) const

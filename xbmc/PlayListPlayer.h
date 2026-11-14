@@ -22,12 +22,12 @@ class CFileItemList;
 
 class CVariant;
 
-namespace KODI::PLAYLIST
+namespace UNIVERSAL MEDIA CENTER::PLAYLIST
 {
 class CPlayList;
 
 class CPlayListPlayer : public IMsgTargetCallback,
-                        public KODI::MESSAGING::IMessageTarget
+                        public UNIVERSAL MEDIA CENTER::MESSAGING::IMessageTarget
 {
 
 public:
@@ -36,7 +36,7 @@ public:
   bool OnMessage(CGUIMessage &message) override;
 
   int GetMessageMask() override;
-  void OnApplicationMessage(KODI::MESSAGING::ThreadMessage* pMsg) override;
+  void OnApplicationMessage(UNIVERSAL MEDIA CENTER::MESSAGING::ThreadMessage* pMsg) override;
 
   /*! \brief Play the next (or another) entry in the current playlist
    \param offset The offset from the current entry (defaults to 1, i.e. the next entry).
@@ -204,4 +204,4 @@ protected:
   };
 };
 
-} // namespace KODI::PLAYLIST
+} // namespace UNIVERSAL MEDIA CENTER::PLAYLIST

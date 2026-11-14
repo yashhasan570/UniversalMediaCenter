@@ -24,7 +24,7 @@
 #include <fmt/format.h>
 #include <libbluray/bluray.h>
 
-using namespace KODI::LANGUAGE;
+using namespace UNIVERSAL MEDIA CENTER::LANGUAGE;
 
 namespace XFILE
 {

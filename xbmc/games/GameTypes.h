@@ -11,7 +11,7 @@
 #include <memory>
 #include <vector>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -84,4 +84,4 @@ using GameAgentVec = std::vector<GameAgentPtr>;
  */
 constexpr auto GAME_CLIENT_RESOURCES_DIRECTORY = "resources";
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

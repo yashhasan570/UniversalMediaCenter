@@ -19,7 +19,7 @@ TEST(TestHttpResponse, General)
   a.AddHeader("content-type", "text/html");
   content = "<html>\r\n"
              "  <body>\r\n"
-             "    <h1>XBMC TestHttpResponse Page</h1>\r\n"
+             "    <h1> TestHttpResponse Page</h1>\r\n"
              "    <p>blah blah blah</p>\r\n"
              "  </body>\r\n"
              "</html>\r\n";
@@ -35,7 +35,7 @@ TEST(TestHttpResponse, General)
            "\r\n"
            "<html>\r\n"
            "  <body>\r\n"
-           "    <h1>XBMC TestHttpResponse Page</h1>\r\n"
+           "    <h1> TestHttpResponse Page</h1>\r\n"
            "    <p>blah blah blah</p>\r\n"
            "  </body>\r\n"
            "</html>\r\n";

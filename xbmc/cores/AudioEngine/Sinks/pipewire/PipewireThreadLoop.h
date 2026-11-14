@@ -13,7 +13,7 @@
 
 #include <pipewire/thread-loop.h>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace PIPEWIRE
 {
@@ -61,4 +61,4 @@ private:
 };
 
 } // namespace PIPEWIRE
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

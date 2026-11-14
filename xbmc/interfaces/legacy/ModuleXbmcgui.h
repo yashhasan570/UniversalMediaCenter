@@ -12,14 +12,14 @@
 #include "swighelper.h"
 
 #ifndef DOXYGEN_SHOULD_SKIP_THIS
-namespace XBMCAddon
+namespace Addon
 {
-  namespace xbmcgui
+  namespace gui
   {
 #endif /* DOXYGEN_SHOULD_SKIP_THIS */
 
     //
-    /// \defgroup python_xbmcgui Library - xbmcgui
+    /// \defgroup python_gui Library - gui
     /// @{
     /// @brief **GUI functions on Universal Media Center.**
     ///
@@ -29,8 +29,8 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmcgui
-    /// @brief \python_func{ xbmcgui.getCurrentWindowId() }
+    /// \ingroup python_gui
+    /// @brief \python_func{ gui.getCurrentWindowId() }
     /// Returns the id for the current 'active' window as an integer.
     ///
     /// @return                        The currently active window Id
@@ -41,7 +41,7 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// wid = xbmcgui.getCurrentWindowId()
+    /// wid = gui.getCurrentWindowId()
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -52,8 +52,8 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmcgui
-    /// @brief \python_func{ xbmcgui.getCurrentWindowDialogId() }
+    /// \ingroup python_gui
+    /// @brief \python_func{ gui.getCurrentWindowDialogId() }
     /// Returns the id for the current 'active' dialog as an integer.
     ///
     /// @return                        The currently active dialog Id
@@ -64,7 +64,7 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// wid = xbmcgui.getCurrentWindowDialogId()
+    /// wid = gui.getCurrentWindowDialogId()
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -75,7 +75,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmcgui
+    /// \ingroup python_gui
     /// @brief \python_func{ getScreenHeight() }
     /// Returns the height of this screen.
     ///
@@ -92,7 +92,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmcgui
+    /// \ingroup python_gui
     /// @brief \python_func{ getScreenWidth() }
     /// Returns the width of this screen.
     ///

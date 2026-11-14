@@ -168,11 +168,11 @@ bool CLinuxRendererGLES::ValidateRenderTarget()
 
 bool CLinuxRendererGLES::Configure(const VideoPicture &picture, float fps, unsigned int orientation)
 {
-  auto colorimetry = KODI::UTILS::GetColorimetry(picture);
+  auto colorimetry = UNIVERSAL MEDIA CENTER::UTILS::GetColorimetry(picture);
   bool inferred = (picture.color_space == AVCOL_SPC_UNSPECIFIED);
   CLog::Log(LOGDEBUG,
             "LinuxRendererGLES::Configure: fps: {:0.3f}, {}x{}, colorimetry: {}{}, {}bit, {} range",
-            fps, picture.iWidth, picture.iHeight, KODI::UTILS::ColorimetryToString(colorimetry),
+            fps, picture.iWidth, picture.iHeight, UNIVERSAL MEDIA CENTER::UTILS::ColorimetryToString(colorimetry),
             inferred ? " (inferred)" : "", picture.colorBits,
             picture.color_range == 1 ? "full" : "limited");
   m_format = picture.videoBuffer->GetFormat();
@@ -358,7 +358,7 @@ void CLinuxRendererGLES::LoadPlane(CYuvPlane& plane, int type,
                                    int stride, int bpp, void* data)
 {
   const GLvoid *pixelData = data;
-  int bps = bpp * KODI::UTILS::GL::glFormatElementByteCount(type);
+  int bps = bpp * UNIVERSAL MEDIA CENTER::UTILS::GL::glFormatElementByteCount(type);
 
   glBindTexture(m_textureTarget, plane.id);
 
@@ -725,7 +725,7 @@ void CLinuxRendererGLES::UpdateVideoFilter()
     // multi-pass FBO path. Matches GL 4.0+ single-pass / GL <4.0 multi-pass pattern.
     // On GLES, VAAPI maps to SHADER_NV12_RRG (GL maps it to SHADER_NV12).
     // Only patterns the filter shader implements may pass: >8-bit planar
-    // (XBMC_YV12_HI) has no sampling block there and takes the multipass path.
+    // (_YV12_HI) has no sampling block there and takes the multipass path.
     EShaderFormat fmt = GetShaderFormat();
     if (fmt == SHADER_NV12 || fmt == SHADER_NV12_RRG || fmt == SHADER_YV12)
     {
@@ -877,7 +877,7 @@ void CLinuxRendererGLES::LoadShaders(int field)
         if (glCreateProgram())
         {
           // Auto dithering (depth=0): decide per-video whether dithering is beneficial.
-          // Shaders are always compiled with XBMC_DITHER when the setting is on.
+          // Shaders are always compiled with _DITHER when the setting is on.
           // The m_ditherEnabled uniform controls whether the shader applies dithering.
           bool ditherActive = true;
           unsigned int effectiveDitherDepth = m_ditherDepth;
@@ -1210,7 +1210,7 @@ void CLinuxRendererGLES::RenderSinglePass(int index, int field)
   }
 
   pYUVShader->SetMatrices(glMatrixProject.Get(), glMatrixModview.Get());
-  pYUVShader->SetQuadTransform(KODI::UTILS::GL::QuadTransform(
+  pYUVShader->SetQuadTransform(UNIVERSAL MEDIA CENTER::UTILS::GL::QuadTransform(
       m_rotatedDestCoords[0], m_rotatedDestCoords[1], m_rotatedDestCoords[3]));
   for (int i = 0; i < 3; i++)
     pYUVShader->SetTextureRect(i, planes[i].rect);
@@ -1364,7 +1364,7 @@ void CLinuxRendererGLES::RenderToFBO(int index, int field)
 
   // 1st Pass to video frame size
   pYUVShader->SetQuadTransform(
-      KODI::UTILS::GL::QuadTransform({0.0f, 0.0f}, {m_fbo.width, 0.0f}, {0.0f, m_fbo.height}));
+      UNIVERSAL MEDIA CENTER::UTILS::GL::QuadTransform({0.0f, 0.0f}, {m_fbo.width, 0.0f}, {0.0f, m_fbo.height}));
   for (int i = 0; i < 3; i++)
     pYUVShader->SetTextureRect(i, planes[i].rect);
 
@@ -1434,7 +1434,7 @@ void CLinuxRendererGLES::RenderFromFBO()
     m_pVideoFilterShader->SetHeight(m_sourceHeight);
     m_pVideoFilterShader->SetAlpha(1.0f);
     m_pVideoFilterShader->SetMatrices(glMatrixProject.Get(), glMatrixModview.Get());
-    m_pVideoFilterShader->SetQuadTransform(KODI::UTILS::GL::QuadTransform(
+    m_pVideoFilterShader->SetQuadTransform(UNIVERSAL MEDIA CENTER::UTILS::GL::QuadTransform(
         m_rotatedDestCoords[0], m_rotatedDestCoords[1], m_rotatedDestCoords[3]));
     m_pVideoFilterShader->SetTextureRect(
         CRect(0.0f, 0.0f, m_fbo.width / m_sourceWidth, m_fbo.height / m_sourceHeight));

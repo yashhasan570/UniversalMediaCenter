@@ -14,7 +14,7 @@
 #include "utils/log.h"
 #include "video/VideoFileItemClassify.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace XFILE;
 
 CDVDInputStreamFile::CDVDInputStreamFile(const CFileItem& fileitem, unsigned int flags)

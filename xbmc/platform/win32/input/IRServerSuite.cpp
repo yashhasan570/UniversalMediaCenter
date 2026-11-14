@@ -122,7 +122,7 @@ bool CIRServerSuite::Connect(bool logMessages)
   {
     if (logMessages)
       CLog::LogF(LOGDEBUG, "getaddrinfo failed: {}",
-                 KODI::PLATFORM::WINDOWS::FromW(gai_strerror(res)));
+                 UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW(gai_strerror(res)));
     return false;
   }
 
@@ -381,12 +381,12 @@ bool CIRServerSuite::HandleRemoteEvent(CIrssMessage& message)
       m_irTranslator.Load(IRSS_MAP_FILENAME);
     }
 
-    //translate to a buttoncode xbmc understands
+    //translate to a buttoncode  understands
     CLog::LogF(LOGDEBUG, "remoteEvent: {} {}", deviceName, keycode);
     const uint32_t button = m_irTranslator.TranslateButton(deviceName, keycode);
 
-    XBMC_Event newEvent = {};
-    newEvent.type = XBMC_BUTTON;
+    _Event newEvent = {};
+    newEvent.type = _BUTTON;
     newEvent.keybutton.button = button;
     newEvent.keybutton.holdtime = 0;
     std::shared_ptr<CAppInboundProtocol> appPort = CServiceBroker::GetAppPort();

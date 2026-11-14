@@ -17,17 +17,17 @@ namespace MUSIC_INFO
 class CMusicInfoTag;
 }
 
-namespace XBMCAddon
+namespace Addon
 {
-  namespace xbmc
+  namespace 
   {
     //
     /// \defgroup python_InfoTagMusic InfoTagMusic
-    /// \ingroup python_xbmc
+    /// \ingroup python_
     /// @{
     /// @brief **Universal Media Center's music info tag class.**
     ///
-    /// \python_class{ xbmc.InfoTagMusic([offscreen]) }
+    /// \python_class{ .InfoTagMusic([offscreen]) }
     ///
     /// Access and / or modify the music metadata of a ListItem.
     ///
@@ -37,7 +37,7 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ...
-    /// tag = xbmc.Player().getMusicInfoTag()
+    /// tag = .Player().getMusicInfoTag()
     ///
     /// title = tag.getTitle()
     /// url   = tag.getURL()
@@ -60,7 +60,7 @@ namespace XBMCAddon
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
       /// \ingroup python_InfoTagMusic
-      /// @brief \python_func{ xbmc.InfoTagMusic([offscreen]) }
+      /// @brief \python_func{ .InfoTagMusic([offscreen]) }
       /// Create a music info tag.
       ///
       /// @param offscreen            [opt] bool (default `False`) - if GUI based locks should be
@@ -84,7 +84,7 @@ namespace XBMCAddon
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ...
-      /// musicinfo = xbmc.InfoTagMusic(offscreen=False)
+      /// musicinfo = .InfoTagMusic(offscreen=False)
       /// ...
       /// ~~~~~~~~~~~~~
       ///

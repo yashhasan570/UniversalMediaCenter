@@ -11,7 +11,7 @@
 #include "FileItem.h"
 #include "General.h"
 #include "addons/binary-addons/AddonDll.h"
-#include "addons/kodi-dev-kit/include/kodi/gui/ListItem.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/gui/ListItem.h"
 #include "utils/StringUtils.h"
 #include "utils/Variant.h"
 #include "utils/log.h"
@@ -21,35 +21,35 @@ namespace ADDON
 
 void Interface_GUIListItem::Init(AddonGlobalInterface* addonInterface)
 {
-  addonInterface->toUniversal Media Center->kodi_gui->listItem = new AddonToUniversal Media CenterFuncTable_kodi_gui_listItem();
+  addonInterface->toUniversal Media Center->->listItem = new AddonToUniversal Media CenterFuncTable__listItem();
 
-  addonInterface->toUniversal Media Center->kodi_gui->listItem->create = create;
-  addonInterface->toUniversal Media Center->kodi_gui->listItem->destroy = destroy;
-  addonInterface->toUniversal Media Center->kodi_gui->listItem->get_label = get_label;
-  addonInterface->toUniversal Media Center->kodi_gui->listItem->set_label = set_label;
-  addonInterface->toUniversal Media Center->kodi_gui->listItem->get_label2 = get_label2;
-  addonInterface->toUniversal Media Center->kodi_gui->listItem->set_label2 = set_label2;
-  addonInterface->toUniversal Media Center->kodi_gui->listItem->get_art = get_art;
-  addonInterface->toUniversal Media Center->kodi_gui->listItem->set_art = set_art;
-  addonInterface->toUniversal Media Center->kodi_gui->listItem->get_path = get_path;
-  addonInterface->toUniversal Media Center->kodi_gui->listItem->set_path = set_path;
-  addonInterface->toUniversal Media Center->kodi_gui->listItem->get_property = get_property;
-  addonInterface->toUniversal Media Center->kodi_gui->listItem->set_property = set_property;
-  addonInterface->toUniversal Media Center->kodi_gui->listItem->select = select;
-  addonInterface->toUniversal Media Center->kodi_gui->listItem->is_selected = is_selected;
+  addonInterface->toUniversal Media Center->->listItem->create = create;
+  addonInterface->toUniversal Media Center->->listItem->destroy = destroy;
+  addonInterface->toUniversal Media Center->->listItem->get_label = get_label;
+  addonInterface->toUniversal Media Center->->listItem->set_label = set_label;
+  addonInterface->toUniversal Media Center->->listItem->get_label2 = get_label2;
+  addonInterface->toUniversal Media Center->->listItem->set_label2 = set_label2;
+  addonInterface->toUniversal Media Center->->listItem->get_art = get_art;
+  addonInterface->toUniversal Media Center->->listItem->set_art = set_art;
+  addonInterface->toUniversal Media Center->->listItem->get_path = get_path;
+  addonInterface->toUniversal Media Center->->listItem->set_path = set_path;
+  addonInterface->toUniversal Media Center->->listItem->get_property = get_property;
+  addonInterface->toUniversal Media Center->->listItem->set_property = set_property;
+  addonInterface->toUniversal Media Center->->listItem->select = select;
+  addonInterface->toUniversal Media Center->->listItem->is_selected = is_selected;
 }
 
 void Interface_GUIListItem::DeInit(AddonGlobalInterface* addonInterface)
 {
-  delete addonInterface->toUniversal Media Center->kodi_gui->listItem;
+  delete addonInterface->toUniversal Media Center->->listItem;
 }
 
-KODI_GUI_LISTITEM_HANDLE Interface_GUIListItem::create(KODI_HANDLE kodiBase,
+UNIVERSALMEDIA_GUI_LISTITEM_HANDLE Interface_GUIListItem::create(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
                                                        const char* label,
                                                        const char* label2,
                                                        const char* path)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon)
   {
     CLog::LogF(LOGERROR, "Invalid data");
@@ -68,9 +68,9 @@ KODI_GUI_LISTITEM_HANDLE Interface_GUIListItem::create(KODI_HANDLE kodiBase,
   return item;
 }
 
-void Interface_GUIListItem::destroy(KODI_HANDLE kodiBase, KODI_GUI_LISTITEM_HANDLE handle)
+void Interface_GUIListItem::destroy(UNIVERSALMEDIA_HANDLE universalmediacenterBase, UNIVERSALMEDIA_GUI_LISTITEM_HANDLE handle)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon)
   {
     CLog::LogF(LOGERROR, "Invalid data");
@@ -82,16 +82,16 @@ void Interface_GUIListItem::destroy(KODI_HANDLE kodiBase, KODI_GUI_LISTITEM_HAND
     delete item;
 }
 
-char* Interface_GUIListItem::get_label(KODI_HANDLE kodiBase, KODI_GUI_LISTITEM_HANDLE handle)
+char* Interface_GUIListItem::get_label(UNIVERSALMEDIA_HANDLE universalmediacenterBase, UNIVERSALMEDIA_GUI_LISTITEM_HANDLE handle)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   const auto* item = static_cast<const std::shared_ptr<CFileItem>*>(handle);
   if (!addon || !item)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}') on "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}') on "
                "addon '{}'",
-               kodiBase, handle, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, addon ? addon->ID() : "unknown");
     return nullptr;
   }
 
@@ -107,18 +107,18 @@ char* Interface_GUIListItem::get_label(KODI_HANDLE kodiBase, KODI_GUI_LISTITEM_H
   return ret;
 }
 
-void Interface_GUIListItem::set_label(KODI_HANDLE kodiBase,
-                                      KODI_GUI_LISTITEM_HANDLE handle,
+void Interface_GUIListItem::set_label(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                      UNIVERSALMEDIA_GUI_LISTITEM_HANDLE handle,
                                       const char* label)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   const auto* item = static_cast<const std::shared_ptr<CFileItem>*>(handle);
   if (!addon || !item || !label)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}', "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}', "
                "label='{}') on addon '{}'",
-               kodiBase, handle, static_cast<const void*>(label), addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, static_cast<const void*>(label), addon ? addon->ID() : "unknown");
     return;
   }
 
@@ -133,16 +133,16 @@ void Interface_GUIListItem::set_label(KODI_HANDLE kodiBase,
   Interface_GUIGeneral::unlock();
 }
 
-char* Interface_GUIListItem::get_label2(KODI_HANDLE kodiBase, KODI_GUI_LISTITEM_HANDLE handle)
+char* Interface_GUIListItem::get_label2(UNIVERSALMEDIA_HANDLE universalmediacenterBase, UNIVERSALMEDIA_GUI_LISTITEM_HANDLE handle)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   const auto* item = static_cast<const std::shared_ptr<CFileItem>*>(handle);
   if (!addon || !item)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}') on "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}') on "
                "addon '{}'",
-               kodiBase, handle, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, addon ? addon->ID() : "unknown");
     return nullptr;
   }
 
@@ -158,18 +158,18 @@ char* Interface_GUIListItem::get_label2(KODI_HANDLE kodiBase, KODI_GUI_LISTITEM_
   return ret;
 }
 
-void Interface_GUIListItem::set_label2(KODI_HANDLE kodiBase,
-                                       KODI_GUI_LISTITEM_HANDLE handle,
+void Interface_GUIListItem::set_label2(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                       UNIVERSALMEDIA_GUI_LISTITEM_HANDLE handle,
                                        const char* label)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   const auto* item = static_cast<const std::shared_ptr<CFileItem>*>(handle);
   if (!addon || !item || !label)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}', "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}', "
                "label='{}') on addon '{}'",
-               kodiBase, handle, static_cast<const void*>(label), addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, static_cast<const void*>(label), addon ? addon->ID() : "unknown");
     return;
   }
 
@@ -184,18 +184,18 @@ void Interface_GUIListItem::set_label2(KODI_HANDLE kodiBase,
   Interface_GUIGeneral::unlock();
 }
 
-char* Interface_GUIListItem::get_art(KODI_HANDLE kodiBase,
-                                     KODI_GUI_LISTITEM_HANDLE handle,
+char* Interface_GUIListItem::get_art(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                     UNIVERSALMEDIA_GUI_LISTITEM_HANDLE handle,
                                      const char* type)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   const auto* item = static_cast<const std::shared_ptr<CFileItem>*>(handle);
   if (!addon || !item || !type)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', type='{}', "
+               "Invalid handler data (universalmediacenterBase='{}', type='{}', "
                "handle='{}') on addon '{}'",
-               kodiBase, handle, static_cast<const void*>(type), addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, static_cast<const void*>(type), addon ? addon->ID() : "unknown");
     return nullptr;
   }
 
@@ -211,19 +211,19 @@ char* Interface_GUIListItem::get_art(KODI_HANDLE kodiBase,
   return ret;
 }
 
-void Interface_GUIListItem::set_art(KODI_HANDLE kodiBase,
-                                    KODI_GUI_LISTITEM_HANDLE handle,
+void Interface_GUIListItem::set_art(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                    UNIVERSALMEDIA_GUI_LISTITEM_HANDLE handle,
                                     const char* type,
                                     const char* label)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   const auto* item = static_cast<const std::shared_ptr<CFileItem>*>(handle);
   if (!addon || !item || !type || !label)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}', type= "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}', type= "
                "'{}', label='{}') on addon '{}'",
-               kodiBase, handle, static_cast<const void*>(type), static_cast<const void*>(label),
+               universalmediacenterBase, handle, static_cast<const void*>(type), static_cast<const void*>(label),
                addon ? addon->ID() : "unknown");
     return;
   }
@@ -239,16 +239,16 @@ void Interface_GUIListItem::set_art(KODI_HANDLE kodiBase,
   Interface_GUIGeneral::unlock();
 }
 
-char* Interface_GUIListItem::get_path(KODI_HANDLE kodiBase, KODI_GUI_LISTITEM_HANDLE handle)
+char* Interface_GUIListItem::get_path(UNIVERSALMEDIA_HANDLE universalmediacenterBase, UNIVERSALMEDIA_GUI_LISTITEM_HANDLE handle)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   const auto* item = static_cast<const std::shared_ptr<CFileItem>*>(handle);
   if (!addon || !item)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}') on "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}') on "
                "addon '{}'",
-               kodiBase, handle, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, addon ? addon->ID() : "unknown");
     return nullptr;
   }
 
@@ -265,18 +265,18 @@ char* Interface_GUIListItem::get_path(KODI_HANDLE kodiBase, KODI_GUI_LISTITEM_HA
 }
 
 
-void Interface_GUIListItem::set_path(KODI_HANDLE kodiBase,
-                                     KODI_GUI_LISTITEM_HANDLE handle,
+void Interface_GUIListItem::set_path(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                     UNIVERSALMEDIA_GUI_LISTITEM_HANDLE handle,
                                      const char* path)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   const auto* item = static_cast<const std::shared_ptr<CFileItem>*>(handle);
   if (!addon || !item || !path)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', path='{}', "
+               "Invalid handler data (universalmediacenterBase='{}', path='{}', "
                "handle='{}') on addon '{}'",
-               kodiBase, handle, static_cast<const void*>(path), addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, static_cast<const void*>(path), addon ? addon->ID() : "unknown");
     return;
   }
 
@@ -291,19 +291,19 @@ void Interface_GUIListItem::set_path(KODI_HANDLE kodiBase,
   Interface_GUIGeneral::unlock();
 }
 
-void Interface_GUIListItem::set_property(KODI_HANDLE kodiBase,
-                                         KODI_GUI_LISTITEM_HANDLE handle,
+void Interface_GUIListItem::set_property(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                         UNIVERSALMEDIA_GUI_LISTITEM_HANDLE handle,
                                          const char* key,
                                          const char* value)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   const auto* item = static_cast<const std::shared_ptr<CFileItem>*>(handle);
   if (!addon || !item || !key || !value)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}', "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}', "
                "key='{}', value='{}') on addon '{}'",
-               kodiBase, handle, static_cast<const void*>(key), static_cast<const void*>(value),
+               universalmediacenterBase, handle, static_cast<const void*>(key), static_cast<const void*>(value),
                addon ? addon->ID() : "unknown");
     return;
   }
@@ -322,18 +322,18 @@ void Interface_GUIListItem::set_property(KODI_HANDLE kodiBase,
   Interface_GUIGeneral::unlock();
 }
 
-char* Interface_GUIListItem::get_property(KODI_HANDLE kodiBase,
-                                          KODI_GUI_LISTITEM_HANDLE handle,
+char* Interface_GUIListItem::get_property(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                          UNIVERSALMEDIA_GUI_LISTITEM_HANDLE handle,
                                           const char* key)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   const auto* item = static_cast<const std::shared_ptr<CFileItem>*>(handle);
   if (!addon || !item || !key)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}', "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}', "
                "key='{}') on addon '{}'",
-               kodiBase, handle, static_cast<const void*>(key), addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, static_cast<const void*>(key), addon ? addon->ID() : "unknown");
     return nullptr;
   }
 
@@ -353,18 +353,18 @@ char* Interface_GUIListItem::get_property(KODI_HANDLE kodiBase,
   return ret;
 }
 
-void Interface_GUIListItem::select(KODI_HANDLE kodiBase,
-                                   KODI_GUI_LISTITEM_HANDLE handle,
+void Interface_GUIListItem::select(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                   UNIVERSALMEDIA_GUI_LISTITEM_HANDLE handle,
                                    bool select)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   const auto* item = static_cast<const std::shared_ptr<CFileItem>*>(handle);
   if (!addon || !item)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}') on "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}') on "
                "addon '{}'",
-               kodiBase, handle, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, addon ? addon->ID() : "unknown");
     return;
   }
 
@@ -379,16 +379,16 @@ void Interface_GUIListItem::select(KODI_HANDLE kodiBase,
   Interface_GUIGeneral::unlock();
 }
 
-bool Interface_GUIListItem::is_selected(KODI_HANDLE kodiBase, KODI_GUI_LISTITEM_HANDLE handle)
+bool Interface_GUIListItem::is_selected(UNIVERSALMEDIA_HANDLE universalmediacenterBase, UNIVERSALMEDIA_GUI_LISTITEM_HANDLE handle)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   const auto* item = static_cast<const std::shared_ptr<CFileItem>*>(handle);
   if (!addon || !item)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}') on "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}') on "
                "addon '{}'",
-               kodiBase, handle, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, addon ? addon->ID() : "unknown");
     return false;
   }
 

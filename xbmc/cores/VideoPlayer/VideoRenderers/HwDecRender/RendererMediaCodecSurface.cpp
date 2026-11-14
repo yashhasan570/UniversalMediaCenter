@@ -19,7 +19,7 @@
 #include "windowing/GraphicContext.h"
 #include "windowing/WinSystem.h"
 
-#include "platform/android/activity/XBMCApp.h"
+#include "platform/android/activity/App.h"
 
 #include <chrono>
 #include <thread>
@@ -107,7 +107,7 @@ void CRendererMediaCodecSurface::ReleaseVideoBuffer(int idx, bool render)
     if (mcvb)
     {
       if (render && m_bConfigured)
-        mcvb->RenderUpdate(m_surfDestRect, CXBMCApp::Get().GetNextFrameTime());
+        mcvb->RenderUpdate(m_surfDestRect, CApp::Get().GetNextFrameTime());
       else
         mcvb->ReleaseOutputBuffer(render, 0);
     }

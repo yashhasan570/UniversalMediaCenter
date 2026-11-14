@@ -22,7 +22,7 @@
 #include "utils/StringUtils.h"
 #include "utils/URIUtils.h"
 #include "utils/Variant.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 #include "utils/log.h"
 
 #include <algorithm>
@@ -95,7 +95,7 @@ void CAddonInfoBuilderFromDB::SetArt(const std::string& type, std::string value)
   m_addonInfo->m_art[type] = std::move(value);
 }
 
-void CAddonInfoBuilderFromDB::SetArt(KODI::ART::Artwork art)
+void CAddonInfoBuilderFromDB::SetArt(UNIVERSAL MEDIA CENTER::ART::Artwork art)
 {
   m_addonInfo->m_art = std::move(art);
 }
@@ -196,7 +196,7 @@ AddonInfoPtr CAddonInfoBuilder::Generate(const std::string& addonPath, bool plat
 {
   auto addonRealPath = CSpecialProtocol::TranslatePath(addonPath);
 
-  CXBMCTinyXML2 xmlDoc;
+  CTinyXML2 xmlDoc;
   if (!xmlDoc.LoadFile(URIUtils::AddFileToFolder(addonRealPath, "addon.xml")))
   {
     CLog::LogF(LOGERROR, "Unable to load '{}', Line: {}, Error: {}",
@@ -385,7 +385,7 @@ bool CAddonInfoBuilder::ParseXML(const AddonInfoPtr& addon,
   {
     const std::string point = StringUtils::CreateFromCString(child->Attribute("point"));
 
-    if (point == "kodi.addon.metadata" || point == "xbmc.addon.metadata")
+    if (point == "universalmediacenter.addon.metadata" || point == ".addon.metadata")
     {
       /*
        * Parse addon.xml "<path">...</path>" (special related to repository path),
@@ -424,7 +424,7 @@ bool CAddonInfoBuilder::ParseXML(const AddonInfoPtr& addon,
              elementsAssets = elementsAssets->NextSiblingElement())
         {
           std::string value = elementsAssets->Value();
-          if (value == KODI::ART::TYPE::ICON)
+          if (value == UNIVERSAL MEDIA CENTER::ART::TYPE::ICON)
           {
             if (elementsAssets->GetText() != nullptr)
               addon->m_icon = URIUtils::AddFileToFolder(assetBasePath, elementsAssets->GetText());
@@ -434,12 +434,12 @@ bool CAddonInfoBuilder::ParseXML(const AddonInfoPtr& addon,
             if (elementsAssets->GetText() != nullptr)
               addon->m_screenshots.emplace_back(URIUtils::AddFileToFolder(assetBasePath, elementsAssets->GetText()));
           }
-          else if (value == KODI::ART::TYPE::FANART)
+          else if (value == UNIVERSAL MEDIA CENTER::ART::TYPE::FANART)
           {
             if (elementsAssets->GetText() != nullptr)
               addon->m_art[value] = URIUtils::AddFileToFolder(assetBasePath, elementsAssets->GetText());
           }
-          else if (value == KODI::ART::TYPE::BANNER)
+          else if (value == UNIVERSAL MEDIA CENTER::ART::TYPE::BANNER)
           {
             if (elementsAssets->GetText() != nullptr)
               addon->m_art[value] = URIUtils::AddFileToFolder(assetBasePath, elementsAssets->GetText());
@@ -449,7 +449,7 @@ bool CAddonInfoBuilder::ParseXML(const AddonInfoPtr& addon,
             if (elementsAssets->GetText() != nullptr)
               addon->m_art[value] = URIUtils::AddFileToFolder(assetBasePath, elementsAssets->GetText());
           }
-          else if (value == KODI::ART::TYPE::THUMB)
+          else if (value == UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB)
           {
             if (elementsAssets->GetText() != nullptr)
               addon->m_art[value] =
@@ -499,7 +499,7 @@ bool CAddonInfoBuilder::ParseXML(const AddonInfoPtr& addon,
       if (element && element->GetText() != nullptr)
       {
         addon->m_lifecycleState = AddonLifecycleState::BROKEN;
-        addon->m_lifecycleStateDescription.try_emplace(KODI_ADDON_DEFAULT_LANGUAGE_CODE,
+        addon->m_lifecycleStateDescription.try_emplace(UNIVERSALMEDIA_ADDON_DEFAULT_LANGUAGE_CODE,
                                                        element->GetText());
       }
 
@@ -552,7 +552,7 @@ bool CAddonInfoBuilder::ParseXML(const AddonInfoPtr& addon,
           CFile file;
           std::vector<uint8_t> buf;
           if (file.LoadFile(changelog, buf) > 0)
-            addon->m_changelog[KODI_ADDON_DEFAULT_LANGUAGE_CODE].assign(
+            addon->m_changelog[UNIVERSALMEDIA_ADDON_DEFAULT_LANGUAGE_CODE].assign(
                 reinterpret_cast<char*>(buf.data()), buf.size());
         }
       }
@@ -763,7 +763,7 @@ bool CAddonInfoBuilder::GetTextList(const tinyxml2::XMLElement* element,
         translatedValues.try_emplace(lang, text != nullptr ? text : "");
     }
     else
-      translatedValues.try_emplace(KODI_ADDON_DEFAULT_LANGUAGE_CODE, text != nullptr ? text : "");
+      translatedValues.try_emplace(UNIVERSALMEDIA_ADDON_DEFAULT_LANGUAGE_CODE, text != nullptr ? text : "");
   }
 
   return !translatedValues.empty();

@@ -1,11 +1,11 @@
 # Universal Media Center Media Center language file
 # Addon Name: Dim
-# Addon id: screensaver.xbmc.builtin.dim
+# Addon id: screensaver..builtin.dim
 # Addon Provider: Team Universal Media Center
 msgid ""
 msgstr ""
-"Project-Id-Version: KODI Main\n"
-"Report-Msgid-Bugs-To: https://github.com/xbmc/xbmc/issues/\n"
+"Project-Id-Version: UNIVERSAL MEDIA CENTER Main\n"
+"Report-Msgid-Bugs-To: https://github.com///issues/\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"

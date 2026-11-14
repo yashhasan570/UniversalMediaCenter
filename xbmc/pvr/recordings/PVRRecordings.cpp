@@ -9,7 +9,7 @@
 #include "PVRRecordings.h"
 
 #include "ServiceBroker.h"
-#include "addons/kodi-dev-kit/include/kodi/c-api/addon-instance/pvr/pvr_epg.h" // EPG_TAG_INVALID_UID
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api/addon-instance/pvr/pvr_epg.h" // EPG_TAG_INVALID_UID
 #include "pvr/PVRCachedImages.h"
 #include "pvr/PVRManager.h"
 #include "pvr/addons/PVRClients.h"
@@ -413,7 +413,7 @@ int CPVRRecordings::CleanupCachedImages()
   static const std::vector<PVRImagePattern> urlPatterns = {
       {CPVRRecording::IMAGE_OWNER_PATTERN,
        ""}, // client-supplied icon, thumbnail, fanart, parental rating icon
-      {"video", "pvr://recordings/"}, // kodi-generated video thumbnail
+      {"video", "pvr://recordings/"}, // universalmediacenter-generated video thumbnail
   };
   return CPVRCachedImages::Cleanup(urlPatterns, urlsToCheck);
 }

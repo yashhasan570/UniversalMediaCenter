@@ -20,7 +20,7 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 namespace
 {
@@ -41,15 +41,15 @@ void WriteFile(const std::string& path, const std::string& contents)
 
 std::string Extract(const std::string& contents)
 {
-  XFILE::CFile* file = XBMC_CREATETEMPFILE(".jpg");
+  XFILE::CFile* file = _CREATETEMPFILE(".jpg");
   EXPECT_NE(file, nullptr);
   if (!file)
     return {};
   file->Write(contents.data(), contents.size());
   file->Close();
 
-  const std::string clipPath = PICTURE::ExtractMotionPhotoClip(XBMC_TEMPFILEPATH(file));
-  XBMC_DELETETEMPFILE(file);
+  const std::string clipPath = PICTURE::ExtractMotionPhotoClip(_TEMPFILEPATH(file));
+  _DELETETEMPFILE(file);
 
   std::string clip;
   XFILE::CFile clipFile;

@@ -71,11 +71,11 @@ constexpr const char* LOCAL_CACHE =
 
 } // unnamed namespace
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace ADDON;
-using namespace KODI::ADDONS;
+using namespace UNIVERSAL MEDIA CENTER::ADDONS;
 using namespace XFILE;
-using namespace KODI::MESSAGING;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
 
 CGUIDialogAddonInfo::CGUIDialogAddonInfo(void)
   : CGUIDialog(WINDOW_DIALOG_ADDON_INFO, "DialogAddonInfo.xml"),
@@ -382,7 +382,7 @@ void CGUIDialogAddonInfo::OnSelectVersion()
         std::string path(items[i]->GetPath());
         if (database.GetPackageHash(processAddonId, items[i]->GetPath(), hash))
         {
-          std::string sha256 = CUtil::GetFileDigest(path, KODI::UTILITY::CDigest::Type::SHA256);
+          std::string sha256 = CUtil::GetFileDigest(path, UNIVERSAL MEDIA CENTER::UTILITY::CDigest::Type::SHA256);
 
           // don't offer locally cached packages that result in an invalid version.
           // usually this happens when the package filename gets malformed on the fs
@@ -782,7 +782,7 @@ bool CGUIDialogAddonInfo::ShowDependencyList(Reactivate reactivate, EntryPoint e
 
 void CGUIDialogAddonInfo::ShowSupportList() const
 {
-  std::vector<KODI::ADDONS::AddonSupportEntry> list;
+  std::vector<UNIVERSAL MEDIA CENTER::ADDONS::AddonSupportEntry> list;
   if (CanShowSupportList())
     list =
         CServiceBroker::GetExtsMimeSupportList().GetSupportedExtsAndMimeTypes(m_localAddon->ID());
@@ -793,7 +793,7 @@ void CGUIDialogAddonInfo::ShowSupportList() const
   for (const auto& entry : list)
   {
     // Ignore included extension about track support
-    if (StringUtils::EndsWith(entry.m_name, KODI_ADDON_AUDIODECODER_TRACK_EXT))
+    if (StringUtils::EndsWith(entry.m_name, UNIVERSALMEDIA_ADDON_AUDIODECODER_TRACK_EXT))
       continue;
 
     std::string label;

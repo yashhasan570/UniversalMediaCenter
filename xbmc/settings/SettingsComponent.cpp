@@ -64,13 +64,13 @@ bool InitDirectoriesLinux(UserDirectoriesLocation loc)
   /*
    The following is the directory mapping for Platform Specific Mode:
 
-   special://xbmc/          => [read-only] system directory (/usr/share/kodi)
-   special://home/          => [read-write] user's directory that will override special://kodi/ system-wide
+   special:///          => [read-only] system directory (/usr/share/universalmediacenter)
+   special://home/          => [read-write] user's directory that will override special://universalmediacenter/ system-wide
    installations like skins, screensavers, etc.
-   ($HOME/.kodi)
-   NOTE: XBMC will look in both special://xbmc/addons and special://home/addons for addons.
+   ($HOME/.universalmediacenter)
+   NOTE:  will look in both special:///addons and special://home/addons for addons.
    special://masterprofile/ => [read-write] userdata of master profile. It will by default be
-   mapped to special://home/userdata ($HOME/.kodi/userdata)
+   mapped to special://home/userdata ($HOME/.universalmediacenter/userdata)
    special://profile/       => [read-write] current profile's userdata directory.
    Generally special://masterprofile for the master profile or
    special://masterprofile/profiles/<profile_name> for other profiles.
@@ -84,13 +84,13 @@ bool InitDirectoriesLinux(UserDirectoriesLocation loc)
   std::string appName = CCompileInfo::GetAppName();
   std::string dotLowerAppName = "." + appName;
   StringUtils::ToLower(dotLowerAppName);
-  const char* envAppHome = "KODI_HOME";
-  const char* envAppBinHome = "KODI_BIN_HOME";
-  const char* envAppTemp = "KODI_TEMP";
+  const char* envAppHome = "UNIVERSALMEDIA_HOME";
+  const char* envAppBinHome = "UNIVERSALMEDIA_BIN_HOME";
+  const char* envAppTemp = "UNIVERSALMEDIA_TEMP";
 
   std::string userHome;
-  if (getenv("KODI_DATA"))
-    userHome = getenv("KODI_DATA");
+  if (getenv("UNIVERSALMEDIA_DATA"))
+    userHome = getenv("UNIVERSALMEDIA_DATA");
   else if (getenv("HOME"))
   {
     userHome = getenv("HOME");
@@ -110,8 +110,8 @@ bool InitDirectoriesLinux(UserDirectoriesLocation loc)
 
 
   std::string binaddonAltDir;
-  if (getenv("KODI_BINADDON_PATH"))
-    binaddonAltDir = getenv("KODI_BINADDON_PATH");
+  if (getenv("UNIVERSALMEDIA_BINADDON_PATH"))
+    binaddonAltDir = getenv("UNIVERSALMEDIA_BINADDON_PATH");
 
   const std::string appBinPath = CUtil::GetHomePath(envAppBinHome);
   // overridden by user
@@ -142,9 +142,9 @@ bool InitDirectoriesLinux(UserDirectoriesLocation loc)
   if (loc == UserDirectoriesLocation::PLATFORM)
   {
     // map our special drives
-    CSpecialProtocol::SetXBMCBinPath(appBinPath);
-    CSpecialProtocol::SetXBMCAltBinAddonPath(binaddonAltDir);
-    CSpecialProtocol::SetXBMCPath(appPath);
+    CSpecialProtocol::SetBinPath(appBinPath);
+    CSpecialProtocol::SetAltBinAddonPath(binaddonAltDir);
+    CSpecialProtocol::SetPath(appPath);
     CSpecialProtocol::SetHomePath(userHome);
     CSpecialProtocol::SetMasterProfilePath(userHome + "/userdata");
     CSpecialProtocol::SetTempPath(strTempPath);
@@ -157,9 +157,9 @@ bool InitDirectoriesLinux(UserDirectoriesLocation loc)
   {
     URIUtils::AddSlashAtEnd(appPath);
 
-    CSpecialProtocol::SetXBMCBinPath(appBinPath);
-    CSpecialProtocol::SetXBMCAltBinAddonPath(binaddonAltDir);
-    CSpecialProtocol::SetXBMCPath(appPath);
+    CSpecialProtocol::SetBinPath(appBinPath);
+    CSpecialProtocol::SetAltBinAddonPath(binaddonAltDir);
+    CSpecialProtocol::SetPath(appPath);
 
     const std::string homePath = URIUtils::AddFileToFolder(
         appPath, loc == UserDirectoriesLocation::PORTABLE ? PORTABLE_DIRECTORY : TEST_DIRECTORY);
@@ -174,7 +174,7 @@ bool InitDirectoriesLinux(UserDirectoriesLocation loc)
     CSpecialProtocol::SetLogPath(strTempPath);
     CreateUserDirs();
   }
-  CSpecialProtocol::SetXBMCBinAddonPath(appBinPath + "/addons");
+  CSpecialProtocol::SetBinAddonPath(appBinPath + "/addons");
 
   return true;
 #else
@@ -196,11 +196,11 @@ bool InitDirectoriesOSX(UserDirectoriesLocation)
     userHome = "/root";
 
   std::string binaddonAltDir;
-  if (getenv("KODI_BINADDON_PATH"))
-    binaddonAltDir = getenv("KODI_BINADDON_PATH");
+  if (getenv("UNIVERSALMEDIA_BINADDON_PATH"))
+    binaddonAltDir = getenv("UNIVERSALMEDIA_BINADDON_PATH");
 
   std::string appPath = CUtil::GetHomePath();
-  setenv("KODI_HOME", appPath.c_str(), 0);
+  setenv("UNIVERSALMEDIA_HOME", appPath.c_str(), 0);
 
 #if defined(TARGET_DARWIN_EMBEDDED)
   std::string fontconfigPath;
@@ -210,14 +210,14 @@ bool InitDirectoriesOSX(UserDirectoriesLocation)
 
   // setup path to our internal dylibs so loader can find them
   std::string frameworksPath = CUtil::GetFrameworksPath();
-  CSpecialProtocol::SetXBMCFrameworksPath(frameworksPath);
+  CSpecialProtocol::SetFrameworksPath(frameworksPath);
 
   if (loc == UserDirectoriesLocation::PLATFORM)
   {
     // map our special drives
-    CSpecialProtocol::SetXBMCBinPath(appPath);
-    CSpecialProtocol::SetXBMCAltBinAddonPath(binaddonAltDir);
-    CSpecialProtocol::SetXBMCPath(appPath);
+    CSpecialProtocol::SetBinPath(appPath);
+    CSpecialProtocol::SetAltBinAddonPath(binaddonAltDir);
+    CSpecialProtocol::SetPath(appPath);
 #if defined(TARGET_DARWIN_EMBEDDED)
     std::string appName = CCompileInfo::GetAppName();
     CSpecialProtocol::SetHomePath(userHome + "/" + CDarwinEmbedUtils::GetAppRootFolder() + "/" +
@@ -243,7 +243,7 @@ bool InitDirectoriesOSX(UserDirectoriesLocation)
 #endif
     CSpecialProtocol::SetTempPath(strTempPath);
 
-    // xbmc.log file location
+    // .log file location
 #if defined(TARGET_DARWIN_EMBEDDED)
     strTempPath = userHome + "/" + std::string(CDarwinEmbedUtils::GetAppRootFolder());
 #else
@@ -256,9 +256,9 @@ bool InitDirectoriesOSX(UserDirectoriesLocation)
   {
     URIUtils::AddSlashAtEnd(appPath);
 
-    CSpecialProtocol::SetXBMCBinPath(appPath);
-    CSpecialProtocol::SetXBMCAltBinAddonPath(binaddonAltDir);
-    CSpecialProtocol::SetXBMCPath(appPath);
+    CSpecialProtocol::SetBinPath(appPath);
+    CSpecialProtocol::SetAltBinAddonPath(binaddonAltDir);
+    CSpecialProtocol::SetPath(appPath);
 
     const std::string homePath = URIUtils::AddFileToFolder(
         appPath, loc == UserDirectoriesLocation::PORTABLE ? PORTABLE_DIRECTORY : TEST_DIRECTORY);
@@ -271,7 +271,7 @@ bool InitDirectoriesOSX(UserDirectoriesLocation)
     CSpecialProtocol::SetLogPath(strTempPath);
     CreateUserDirs();
   }
-  CSpecialProtocol::SetXBMCBinAddonPath(appPath + "/addons");
+  CSpecialProtocol::SetBinAddonPath(appPath + "/addons");
   return true;
 #else
   return false;
@@ -281,11 +281,11 @@ bool InitDirectoriesOSX(UserDirectoriesLocation)
 bool InitDirectoriesWin32(UserDirectoriesLocation loc)
 {
 #ifdef TARGET_WINDOWS
-  std::string xbmcPath = CUtil::GetHomePath();
-  CEnvironment::setenv("KODI_HOME", xbmcPath);
-  CSpecialProtocol::SetXBMCBinPath(xbmcPath);
-  CSpecialProtocol::SetXBMCPath(xbmcPath);
-  CSpecialProtocol::SetXBMCBinAddonPath(xbmcPath + "/addons");
+  std::string Path = CUtil::GetHomePath();
+  CEnvironment::setenv("UNIVERSALMEDIA_HOME", Path);
+  CSpecialProtocol::SetBinPath(Path);
+  CSpecialProtocol::SetPath(Path);
+  CSpecialProtocol::SetBinAddonPath(Path + "/addons");
 
   std::string strWin32UserFolder = CWIN32Util::GetProfilePath(loc);
   CSpecialProtocol::SetLogPath(strWin32UserFolder);
@@ -293,7 +293,7 @@ bool InitDirectoriesWin32(UserDirectoriesLocation loc)
   CSpecialProtocol::SetMasterProfilePath(URIUtils::AddFileToFolder(strWin32UserFolder, "userdata"));
   CSpecialProtocol::SetTempPath(URIUtils::AddFileToFolder(strWin32UserFolder,"cache"));
 
-  CEnvironment::setenv("KODI_PROFILE_USERDATA", CSpecialProtocol::TranslatePath("special://masterprofile/"));
+  CEnvironment::setenv("UNIVERSALMEDIA_PROFILE_USERDATA", CSpecialProtocol::TranslatePath("special://masterprofile/"));
 
   CreateUserDirs();
 
@@ -307,7 +307,7 @@ bool InitDirectoriesWin32(UserDirectoriesLocation loc)
 CSettingsComponent::CSettingsComponent()
   : m_settings(std::make_shared<CSettings>()),
     m_advancedSettings(std::make_shared<CAdvancedSettings>()),
-    m_subtitlesSettings(std::make_shared<KODI::SUBTITLES::CSubtitlesSettings>(m_settings)),
+    m_subtitlesSettings(std::make_shared<UNIVERSAL MEDIA CENTER::SUBTITLES::CSubtitlesSettings>(m_settings)),
     m_profileManager(std::make_shared<CProfileManager>())
 {
 }
@@ -402,7 +402,7 @@ std::shared_ptr<CAdvancedSettings> CSettingsComponent::GetAdvancedSettings() con
   return m_advancedSettings;
 }
 
-std::shared_ptr<KODI::SUBTITLES::CSubtitlesSettings> CSettingsComponent::GetSubtitlesSettings()
+std::shared_ptr<UNIVERSAL MEDIA CENTER::SUBTITLES::CSubtitlesSettings> CSettingsComponent::GetSubtitlesSettings()
     const
 {
   return m_subtitlesSettings;

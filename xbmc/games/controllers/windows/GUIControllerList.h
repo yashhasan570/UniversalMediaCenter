@@ -19,7 +19,7 @@ class CGUIButtonControl;
 class CGUIControlGroupList;
 class CGUIWindow;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -74,4 +74,4 @@ private:
   std::string m_controllerId;
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

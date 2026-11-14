@@ -10,7 +10,7 @@
 #include "addons/Skin.h"
 #include "addons/addoninfo/AddonInfoBuilder.h"
 #include "addons/addoninfo/AddonType.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 
 #include <string>
 
@@ -31,14 +31,14 @@ AddonInfoPtr SkinWithAspect(const std::string& aspect)
 {
   const std::string xml{R"xml(
 <addon id="skin.test" name="Test" version="1.0.0" provider-name="Team Universal Media Center">
-  <extension point="xbmc.gui.skin">
+  <extension point=".gui.skin">
     <res width="1920" height="1080" aspect=")xml" +
                         aspect + R"xml(" default="true" folder="xml" />
   </extension>
 </addon>
 )xml"};
 
-  CXBMCTinyXML2 doc;
+  CTinyXML2 doc;
   EXPECT_TRUE(doc.Parse(xml));
   return CAddonInfoBuilder::Generate(doc.RootElement(), RepositoryDirInfo{});
 }

@@ -30,5 +30,5 @@ list(APPEND final_message "Includedir: ${includedir}")
 list(APPEND final_message "Datarootdir: ${datarootdir}")
 list(APPEND final_message "Datadir: ${datadir}")
 
-set(PATH_DEFINES -DBIN_INSTALL_PATH=\"${libdir}/kodi\"
-                   -DINSTALL_PATH=\"${datarootdir}/kodi\")
+set(PATH_DEFINES -DBIN_INSTALL_PATH=\"${libdir}/universalmediacenter\"
+                   -DINSTALL_PATH=\"${datarootdir}/universalmediacenter\")

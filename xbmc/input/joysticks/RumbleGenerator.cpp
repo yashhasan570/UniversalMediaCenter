@@ -27,7 +27,7 @@ constexpr auto RUMBLE_NOTIFICATION_DURATION_MS = 300ms;
 #define WEAK_MOTOR_NAME "rightmotor"
 } // namespace
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace JOYSTICK;
 
 CRumbleGenerator::CRumbleGenerator()

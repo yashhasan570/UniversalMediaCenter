@@ -17,7 +17,7 @@
 #include "settings/lib/ISettingCallback.h"
 #include "threads/CriticalSection.h"
 #include "utils/Observer.h"
-#include "windowing/XBMC_events.h"
+#include "windowing/_events.h"
 
 #include <map>
 #include <memory>
@@ -27,7 +27,7 @@
 class CKey;
 class CProfileManager;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace CEC
 {
@@ -53,7 +53,7 @@ namespace MOUSE
 {
 class IMouseDriverHandler;
 }
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER
 
 /// \addtogroup input
 /// \{
@@ -70,7 +70,7 @@ class IMouseDriverHandler;
  * \copydoc mouse
  */
 class CInputManager : public ISettingCallback,
-                      public KODI::ACTION::IActionListener,
+                      public UNIVERSAL MEDIA CENTER::ACTION::IActionListener,
                       public Observable
 {
 public:
@@ -117,9 +117,9 @@ public:
    *
    * \param newEvent event details
    * \return true on successfully handled event
-   * \sa XBMC_Event
+   * \sa _Event
    */
-  bool OnEvent(XBMC_Event& newEvent);
+  bool OnEvent(_Event& newEvent);
 
   /*! \brief Control if the mouse is actively used or not
    *
@@ -196,7 +196,7 @@ public:
   void AddKeymap(const std::string& keymap);
   void RemoveKeymap(const std::string& keymap);
 
-  const KODI::KEYMAP::IKeymapEnvironment* KeymapEnvironment() const;
+  const UNIVERSAL MEDIA CENTER::KEYMAP::IKeymapEnvironment* KeymapEnvironment() const;
 
   /*! \brief Obtain the action configured for a given window and key
    *
@@ -218,7 +218,7 @@ public:
   bool TranslateTouchAction(
       int windowId, int touchAction, int touchPointers, int& action, std::string& actionString);
 
-  std::vector<std::shared_ptr<const KODI::KEYMAP::IWindowKeymap>> GetJoystickKeymaps() const;
+  std::vector<std::shared_ptr<const UNIVERSAL MEDIA CENTER::KEYMAP::IWindowKeymap>> GetJoystickKeymaps() const;
 
   /*!
    * \brief Queue an action to be processed on the next call to Process()
@@ -236,14 +236,14 @@ public:
   // implementation of IActionListener
   bool OnAction(const CAction& action) override;
 
-  void RegisterKeyboardDriverHandler(KODI::KEYBOARD::IKeyboardDriverHandler* handler);
-  void UnregisterKeyboardDriverHandler(KODI::KEYBOARD::IKeyboardDriverHandler* handler);
+  void RegisterKeyboardDriverHandler(UNIVERSAL MEDIA CENTER::KEYBOARD::IKeyboardDriverHandler* handler);
+  void UnregisterKeyboardDriverHandler(UNIVERSAL MEDIA CENTER::KEYBOARD::IKeyboardDriverHandler* handler);
 
-  virtual void RegisterMouseDriverHandler(KODI::MOUSE::IMouseDriverHandler* handler);
-  virtual void UnregisterMouseDriverHandler(KODI::MOUSE::IMouseDriverHandler* handler);
+  virtual void RegisterMouseDriverHandler(UNIVERSAL MEDIA CENTER::MOUSE::IMouseDriverHandler* handler);
+  virtual void UnregisterMouseDriverHandler(UNIVERSAL MEDIA CENTER::MOUSE::IMouseDriverHandler* handler);
 
-  void RegisterCecInputProvider(KODI::CEC::ICecInputProvider* handler);
-  void UnregisterCecInputProvider(KODI::CEC::ICecInputProvider* handler);
+  void RegisterCecInputProvider(UNIVERSAL MEDIA CENTER::CEC::ICecInputProvider* handler);
+  void UnregisterCecInputProvider(UNIVERSAL MEDIA CENTER::CEC::ICecInputProvider* handler);
 
 private:
   friend class TestInputManager;
@@ -297,8 +297,8 @@ private:
    */
   void ProcessQueuedActions();
 
-  KODI::KEYBOARD::CKeyboardStat m_Keyboard;
-  KODI::KEYMAP::CButtonStat m_buttonStat;
+  UNIVERSAL MEDIA CENTER::KEYBOARD::CKeyboardStat m_Keyboard;
+  UNIVERSAL MEDIA CENTER::KEYMAP::CButtonStat m_buttonStat;
   CMouseStat m_Mouse;
   CKey m_LastKey;
 
@@ -312,17 +312,17 @@ private:
   CCriticalSection m_cecHandlingMutex;
 
   // Button translation
-  std::unique_ptr<KODI::KEYMAP::IKeymapEnvironment> m_keymapEnvironment;
-  std::unique_ptr<KODI::KEYMAP::CButtonTranslator> m_buttonTranslator;
-  std::unique_ptr<KODI::KEYMAP::CCustomControllerTranslator> m_customControllerTranslator;
-  std::unique_ptr<KODI::KEYMAP::CTouchTranslator> m_touchTranslator;
-  std::unique_ptr<KODI::KEYMAP::CJoystickMapper> m_joystickTranslator;
+  std::unique_ptr<UNIVERSAL MEDIA CENTER::KEYMAP::IKeymapEnvironment> m_keymapEnvironment;
+  std::unique_ptr<UNIVERSAL MEDIA CENTER::KEYMAP::CButtonTranslator> m_buttonTranslator;
+  std::unique_ptr<UNIVERSAL MEDIA CENTER::KEYMAP::CCustomControllerTranslator> m_customControllerTranslator;
+  std::unique_ptr<UNIVERSAL MEDIA CENTER::KEYMAP::CTouchTranslator> m_touchTranslator;
+  std::unique_ptr<UNIVERSAL MEDIA CENTER::KEYMAP::CJoystickMapper> m_joystickTranslator;
 
-  std::vector<KODI::KEYBOARD::IKeyboardDriverHandler*> m_keyboardHandlers;
-  std::vector<KODI::MOUSE::IMouseDriverHandler*> m_mouseHandlers;
-  std::vector<KODI::CEC::ICecInputProvider*> m_cecInputProviders;
+  std::vector<UNIVERSAL MEDIA CENTER::KEYBOARD::IKeyboardDriverHandler*> m_keyboardHandlers;
+  std::vector<UNIVERSAL MEDIA CENTER::MOUSE::IMouseDriverHandler*> m_mouseHandlers;
+  std::vector<UNIVERSAL MEDIA CENTER::CEC::ICecInputProvider*> m_cecInputProviders;
 
-  std::unique_ptr<KODI::KEYBOARD::IKeyboardDriverHandler> m_keyboardEasterEgg;
+  std::unique_ptr<UNIVERSAL MEDIA CENTER::KEYBOARD::IKeyboardDriverHandler> m_keyboardEasterEgg;
 
   // Input state
   bool m_enableController = true;

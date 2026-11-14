@@ -13,7 +13,7 @@
 #include <stdexcept>
 #include <string>
 
-using namespace KODI::WINDOWING::GBM;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::GBM;
 
 CDRMCrtc::CDRMCrtc(int fd, uint32_t crtc, int offset)
   : CDRMObject(fd),

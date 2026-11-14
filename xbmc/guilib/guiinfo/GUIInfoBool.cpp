@@ -12,7 +12,7 @@
 #include "ServiceBroker.h"
 #include "guilib/GUIComponent.h"
 
-using namespace KODI::GUILIB::GUIINFO;
+using namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO;
 
 CGUIInfoBool::CGUIInfoBool(bool value) : m_value(value)
 {

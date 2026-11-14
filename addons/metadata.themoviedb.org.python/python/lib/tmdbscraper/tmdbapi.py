@@ -21,10 +21,10 @@
 import unicodedata
 from . import api_utils
 try:
-    import xbmc
+    import 
 except ModuleNotFoundError:
     # only used for logging HTTP calls, not available nor needed for testing
-    xbmc = None
+     = None
 try:
     from typing import Optional, Text, Dict, List, Any  # pylint: disable=unused-import
     InfoType = Dict[Text, Any]  # pylint: disable=invalid-name
@@ -46,8 +46,8 @@ COLLECTION_URL = BASE_URL.format('collection/{}')
 CONFIG_URL = BASE_URL.format('configuration')
 
 def log(message):
-    if xbmc:
-        xbmc.log(message, xbmc.LOGDEBUG)
+    if :
+        .log(message, .LOGDEBUG)
 
 def search_movie(query, year=None, language=None, page=None):
     # type: (Text) -> List[InfoType]

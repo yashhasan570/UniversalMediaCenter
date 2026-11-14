@@ -3,8 +3,8 @@
         name="IBM Model M Keyboard"
         version="1.1.50"
         provider-name="Team Universal Media Center">
-    <extension point="kodi.game.controller" library="resources/layout.xml"/>
-    <extension point="xbmc.addon.metadata">
+    <extension point="universalmediacenter.game.controller" library="resources/layout.xml"/>
+    <extension point=".addon.metadata">
         <platform>all</platform>
         <assets>
             <icon>resources/icon.png</icon>

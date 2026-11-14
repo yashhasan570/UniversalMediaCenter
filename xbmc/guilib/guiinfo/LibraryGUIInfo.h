@@ -14,7 +14,7 @@
 #include <utility>
 #include <vector>
 
-namespace KODI::GUILIB::GUIINFO
+namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO
 {
 
 class CGUIInfo;
@@ -25,7 +25,7 @@ public:
   CLibraryGUIInfo();
   ~CLibraryGUIInfo() override = default;
 
-  // KODI::GUILIB::GUIINFO::IGUIInfoProvider implementation
+  // UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::IGUIInfoProvider implementation
   bool InitCurrentItem(CFileItem* item) override;
   bool GetLabel(std::string& value,
                 const CFileItem* item,
@@ -60,4 +60,4 @@ private:
   mutable std::vector<std::pair<std::string, int>> m_libraryRoleCounts;
 };
 
-} // namespace KODI::GUILIB::GUIINFO
+} // namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO

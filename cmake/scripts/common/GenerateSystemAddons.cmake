@@ -5,8 +5,8 @@ core_find_versions()
 # add-on xml's
 file(GLOB ADDON_XML_IN_FILE ${CORE_SOURCE_DIR}/addons/*/addon.xml.in)
 
-# remove 'xbmc.json', will be created from 'xbmc/interfaces/json-rpc/schema/CMakeLists.txt'
-list(REMOVE_ITEM ADDON_XML_IN_FILE ${CORE_SOURCE_DIR}/addons/xbmc.json/addon.xml.in)
+# remove '.json', will be created from '/interfaces/json-rpc/schema/CMakeLists.txt'
+list(REMOVE_ITEM ADDON_XML_IN_FILE ${CORE_SOURCE_DIR}/addons/.json/addon.xml.in)
 
 foreach(loop_var ${ADDON_XML_IN_FILE})
   list(GET loop_var 0 xml_name)

@@ -1,7 +1,7 @@
-If you run Universal Media Center/XBMC standalone and/or do want to have password less upgrades, copy the file
+If you run Universal Media Center/ standalone and/or do want to have password less upgrades, copy the file
 10-allow-update.conf to /etc/polkit-1/localauthority/50-local.d/
 
-Make sure to adjust the username if it is different from "kodi"
+Make sure to adjust the username if it is different from "universalmediacenter"
 
 For this to work, you must have python-apt and python-aptdaemon installed:
 sudo apt-get install python-apt python-aptdaemon

@@ -106,7 +106,7 @@ public:
                 const CVariant& data) override;
 
   bool OnMessage(CGUIMessage& message) override;
-  EVENT_RESULT OnMouseEvent(const CPoint& point, const KODI::MOUSE::CMouseEvent& event) override;
+  EVENT_RESULT OnMouseEvent(const CPoint& point, const UNIVERSAL MEDIA CENTER::MOUSE::CMouseEvent& event) override;
   bool OnAction(const CAction& action) override;
   void Render() override;
   void RenderEx() override;

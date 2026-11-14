@@ -10,7 +10,7 @@
 
 #include <string>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GUILIB
 {
@@ -30,4 +30,4 @@ public:
 };
 
 } // namespace GUILIB
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

@@ -21,7 +21,7 @@
 #include <EGL/eglext.h>
 #endif
 
-namespace KODI::RETRO
+namespace UNIVERSAL MEDIA CENTER::RETRO
 {
 struct EGLCapabilities
 {
@@ -155,4 +155,4 @@ inline std::vector<EGLint> BuildEGLContextAttributes(const HwContextProperties& 
   return attributes;
 }
 #endif
-} // namespace KODI::RETRO
+} // namespace UNIVERSAL MEDIA CENTER::RETRO

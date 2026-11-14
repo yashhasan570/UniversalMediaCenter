@@ -34,9 +34,9 @@
 #include "video/VideoDatabase.h"
 #include "video/VideoLibraryQueue.h"
 
-using namespace KODI::MESSAGING;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
 
-namespace CONTENT = KODI::MEDIA::CONTENT;
+namespace CONTENT = UNIVERSAL MEDIA CENTER::MEDIA::CONTENT;
 
 namespace
 {
@@ -365,7 +365,7 @@ static int RefreshArtist(const std::vector<std::string>& params)
 
   // Set the artist id on the musicdb url
   CMusicDbUrl musicUrl;
-  if (!musicUrl.FromString(KODI::MUSIC::DB_PATH::ARTISTS))
+  if (!musicUrl.FromString(UNIVERSAL MEDIA CENTER::MUSIC::DB_PATH::ARTISTS))
     return -1;
   musicUrl.AddOption("artistid", params.front());
 
@@ -387,7 +387,7 @@ static int RefreshAlbum(const std::vector<std::string>& params)
 
   // Set the album id on the musicdb url
   CMusicDbUrl musicUrl;
-  if (!musicUrl.FromString(KODI::MUSIC::DB_PATH::ALBUMS))
+  if (!musicUrl.FromString(UNIVERSAL MEDIA CENTER::MUSIC::DB_PATH::ALBUMS))
     return -1;
   musicUrl.AddOption("albumid", params.front());
 

@@ -12,7 +12,7 @@
 
 #include <chrono>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -55,4 +55,4 @@ private:
   const std::chrono::steady_clock::time_point m_firstAutosaveTime;
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

@@ -10,7 +10,7 @@
 
 #include "utils/EGLUtils.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace WINDOWING
 {
@@ -34,4 +34,4 @@ protected:
 
 } // namespace LINUX
 } // namespace WINDOWING
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

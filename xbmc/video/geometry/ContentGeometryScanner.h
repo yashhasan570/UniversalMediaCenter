@@ -19,7 +19,7 @@
 
 class CFileItem;
 
-namespace KODI::VIDEO::GEOMETRY
+namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY
 {
 
 //! \brief The identity to measure \p item under. Nothing when the extractors' policy refuses
@@ -97,4 +97,4 @@ private:
   std::atomic<bool> m_opening{false};
 };
 
-} // namespace KODI::VIDEO::GEOMETRY
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY

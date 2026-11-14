@@ -12,8 +12,8 @@
 #define PREFIX_USR_PATH        "@prefix@"
 
 /* VideoPlayer */
-#define DLL_PATH_LIBDVDNAV     "special://xbmcbin/system/players/VideoPlayer/libdvdnav-@ARCH@.so"
+#define DLL_PATH_LIBDVDNAV     "special://bin/system/players/VideoPlayer/libdvdnav-@ARCH@.so"
 
 /* sse4 */
-#define DLL_PATH_LIBSSE4      "special://xbmcbin/system/libsse4-@ARCH@.so"
+#define DLL_PATH_LIBSSE4      "special://bin/system/libsse4-@ARCH@.so"
 

@@ -17,7 +17,7 @@
 
 #include <mutex>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 CControllerManager::CControllerManager(ADDON::CAddonMgr& addonManager)

@@ -15,7 +15,7 @@
 
 class CFileItemList;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -115,4 +115,4 @@ private:
   static bool ListZip(const std::string& path, std::vector<ArchiveMember>& members);
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

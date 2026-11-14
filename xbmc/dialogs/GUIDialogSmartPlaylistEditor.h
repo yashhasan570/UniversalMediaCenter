@@ -54,7 +54,7 @@ protected:
   std::string ConvertType(PLAYLIST_TYPE type);
   std::string GetLocalizedType(PLAYLIST_TYPE type);
 
-  KODI::PLAYLIST::CSmartPlaylist m_playlist;
+  UNIVERSAL MEDIA CENTER::PLAYLIST::CSmartPlaylist m_playlist;
 
   // our list of rules for display purposes
   CFileItemList* m_ruleLabels;

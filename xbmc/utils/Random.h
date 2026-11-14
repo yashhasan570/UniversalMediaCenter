@@ -11,7 +11,7 @@
 #include <algorithm>
 #include <random>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace UTILS
 {

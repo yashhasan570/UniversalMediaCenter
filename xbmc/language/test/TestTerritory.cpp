@@ -10,7 +10,7 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI::LANGUAGE;
+using namespace UNIVERSAL MEDIA CENTER::LANGUAGE;
 
 TEST(TestTerritory, NamesACountryInEveryNotation)
 {

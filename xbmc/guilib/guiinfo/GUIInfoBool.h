@@ -19,7 +19,7 @@
 
 class CGUIListItem;
 
-namespace KODI::GUILIB::GUIINFO
+namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO
 {
 
 class CGUIInfoBool
@@ -38,4 +38,4 @@ private:
   bool m_value;
 };
 
-} // namespace KODI::GUILIB::GUIINFO
+} // namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO

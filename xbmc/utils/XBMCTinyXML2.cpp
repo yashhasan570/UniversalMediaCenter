@@ -6,7 +6,7 @@
  *  See LICENSES/README.md for more information.
  */
 
-#include "XBMCTinyXML2.h"
+#include "TinyXML2.h"
 
 #include "RegExp.h"
 #include "filesystem/File.h"
@@ -52,7 +52,7 @@ void SetDeclaredEncodingToUtf8(tinyxml2::XMLDocument& doc)
 }
 } // namespace
 
-bool CXBMCTinyXML2::LoadFile(const std::string& filename)
+bool CTinyXML2::LoadFile(const std::string& filename)
 {
   m_filename = filename;
 
@@ -70,7 +70,7 @@ bool CXBMCTinyXML2::LoadFile(const std::string& filename)
                file.GetProperty(XFILE::FileProperty::CONTENT_CHARSET));
 }
 
-bool CXBMCTinyXML2::LoadFile(FILE* file)
+bool CTinyXML2::LoadFile(FILE* file)
 {
   std::string data;
   char buf[BUFFER_SIZE] = {};
@@ -80,7 +80,7 @@ bool CXBMCTinyXML2::LoadFile(FILE* file)
   return Parse(std::move(data));
 }
 
-bool CXBMCTinyXML2::SaveFile(const std::string& filename) const
+bool CTinyXML2::SaveFile(const std::string& filename) const
 {
   XFILE::CFile file;
   if (file.OpenForWrite(filename, true))
@@ -97,19 +97,19 @@ bool CXBMCTinyXML2::SaveFile(const std::string& filename) const
   return false;
 }
 
-bool CXBMCTinyXML2::Parse(std::string_view inputdata)
+bool CTinyXML2::Parse(std::string_view inputdata)
 {
   m_usedCharset = "UTF-8";
   return InternalParse(inputdata);
 }
 
-bool CXBMCTinyXML2::Parse(std::string&& inputdata)
+bool CTinyXML2::Parse(std::string&& inputdata)
 {
   m_usedCharset = "UTF-8";
   return InternalParse(std::move(inputdata));
 }
 
-bool CXBMCTinyXML2::Parse(const std::string& inputdata, const std::string& dataCharset)
+bool CTinyXML2::Parse(const std::string& inputdata, const std::string& dataCharset)
 {
   std::string suggestedCharset{dataCharset};
   StringUtils::ToUpper(suggestedCharset);
@@ -125,12 +125,12 @@ bool CXBMCTinyXML2::Parse(const std::string& inputdata, const std::string& dataC
   {
     if (!suggestedCharset.empty())
       CLog::Log(LOGWARNING,
-                "CXBMCTinyXML2::Parse: \"{}\" charset was used instead of suggested charset "
+                "CTinyXML2::Parse: \"{}\" charset was used instead of suggested charset "
                 "\"{}\" for {}",
                 m_usedCharset, suggestedCharset, source());
     else if (!detectedCharset.empty())
       CLog::Log(LOGWARNING,
-                "CXBMCTinyXML2::Parse: \"{}\" charset was used instead of detected charset "
+                "CTinyXML2::Parse: \"{}\" charset was used instead of detected charset "
                 "\"{}\" for {}",
                 m_usedCharset, detectedCharset, source());
   };
@@ -161,12 +161,12 @@ bool CXBMCTinyXML2::Parse(const std::string& inputdata, const std::string& dataC
   {
     if (!suggestedCharset.empty())
       CLog::Log(LOGWARNING,
-                "CXBMCTinyXML2::Parse: Processed {} as unknown encoding instead of suggested "
+                "CTinyXML2::Parse: Processed {} as unknown encoding instead of suggested "
                 "\"{}\"",
                 source(), suggestedCharset);
     else if (!detectedCharset.empty())
       CLog::Log(LOGWARNING,
-                "CXBMCTinyXML2::Parse: Processed {} as unknown encoding instead of detected "
+                "CTinyXML2::Parse: Processed {} as unknown encoding instead of detected "
                 "\"{}\"",
                 source(), detectedCharset);
     return true;
@@ -175,7 +175,7 @@ bool CXBMCTinyXML2::Parse(const std::string& inputdata, const std::string& dataC
   return false;
 }
 
-bool CXBMCTinyXML2::TryParse(const std::string& inputdata, const std::string& tryDataCharset)
+bool CTinyXML2::TryParse(const std::string& inputdata, const std::string& tryDataCharset)
 {
   bool parsed;
   if (tryDataCharset.empty() || tryDataCharset == "UTF-8")
@@ -200,7 +200,7 @@ bool CXBMCTinyXML2::TryParse(const std::string& inputdata, const std::string& tr
   return true;
 }
 
-bool CXBMCTinyXML2::InternalParse(std::string_view inputdata)
+bool CTinyXML2::InternalParse(std::string_view inputdata)
 {
   // TinyXML2 only uses UTF-8 charset
   // Preprocess string, replacing '&' with '&amp; for invalid XML entities
@@ -215,7 +215,7 @@ bool CXBMCTinyXML2::InternalParse(std::string_view inputdata)
   return ParseHelper(pos, std::string{inputdata});
 }
 
-bool CXBMCTinyXML2::InternalParse(std::string&& inputdata)
+bool CTinyXML2::InternalParse(std::string&& inputdata)
 {
   // TinyXML2 only uses UTF-8 charset
   // Preprocess string, replacing '&' with '&amp; for invalid XML entities
@@ -230,7 +230,7 @@ bool CXBMCTinyXML2::InternalParse(std::string&& inputdata)
   return ParseHelper(pos, std::move(inputdata));
 }
 
-bool CXBMCTinyXML2::ParseHelper(size_t pos, std::string&& inputdata)
+bool CTinyXML2::ParseHelper(size_t pos, std::string&& inputdata)
 {
   CRegExp re(false, CRegExp::asciiOnly,
              "^&(amp|lt|gt|quot|apos|#x[a-fA-F0-9]{1,4}|#[0-9]{1,5});.*");

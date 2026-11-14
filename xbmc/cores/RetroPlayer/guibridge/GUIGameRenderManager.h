@@ -14,7 +14,7 @@
 #include <map>
 #include <memory>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -181,4 +181,4 @@ private:
   CCriticalSection m_gameCallbackMutex;
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

@@ -9,7 +9,7 @@
 #include "PeripheralBusGCController.h"
 
 #include "ServiceBroker.h"
-#include "addons/kodi-dev-kit/include/kodi/addon-instance/peripheral/PeripheralUtils.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/addon-instance/peripheral/PeripheralUtils.h"
 #include "peripherals/bus/PeripheralBus.h"
 #include "peripherals/devices/PeripheralJoystick.h"
 #include "threads/CriticalSection.h"
@@ -129,13 +129,13 @@ void PERIPHERALS::CPeripheralBusGCController::SetScanResults(
 }
 
 void PERIPHERALS::CPeripheralBusGCController::GetEvents(
-    std::vector<kodi::addon::PeripheralEvent>& events)
+    std::vector<addon::PeripheralEvent>& events)
 {
   std::unique_lock lock(m_critSectionStates);
-  std::vector<kodi::addon::PeripheralEvent> digitalEvents;
+  std::vector<addon::PeripheralEvent> digitalEvents;
   digitalEvents = [m_peripheralGCController->callbackClass GetButtonEvents];
 
-  std::vector<kodi::addon::PeripheralEvent> axisEvents;
+  std::vector<addon::PeripheralEvent> axisEvents;
   axisEvents = [m_peripheralGCController->callbackClass GetAxisEvents];
 
   events.reserve(digitalEvents.size() + axisEvents.size()); // preallocate memory
@@ -161,7 +161,7 @@ bool PERIPHERALS::CPeripheralBusGCController::GetDeviceId(const std::string& dev
 
 void PERIPHERALS::CPeripheralBusGCController::ProcessEvents()
 {
-  std::vector<kodi::addon::PeripheralEvent> events;
+  std::vector<addon::PeripheralEvent> events;
   {
     std::unique_lock lock(m_critSectionStates);
 

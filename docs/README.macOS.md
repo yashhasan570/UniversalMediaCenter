@@ -10,11 +10,11 @@ This guide has been tested using Xcode 11.3.1 running on MacOS 10.14.4 (Mojave).
 4. **[Configure and build tools and dependencies](#4-configure-and-build-tools-and-dependencies)**  
   4.1. **[Advanced Configure Options](#41-advanced-configure-options)**  
 5. **[Build binary add-ons](#5-build-binary-add-ons)**
-6. **[Build Universal Media Center](#6-build-kodi)**  
+6. **[Build Universal Media Center](#6-build-universalmediacenter)**  
   6.1. **[Build with Xcode](#61-build-with-xcode)**  
   6.2. **[Build with xcodebuild](#62-build-with-xcodebuild)**  
   6.3. **[Build with make](#63-build-with-make)**
-7. **[Run Universal Media Center](#7-run-kodi)**  
+7. **[Run Universal Media Center](#7-run-universalmediacenter)**  
   7.1. **[Built with Xcode or xcodebuild](#71-built-with-xcode-or-xcodebuild)**  
   7.2. **[Built with make](#72-built-with-make)**
 8. **[Package](#8-package)**
@@ -32,17 +32,17 @@ and yet another one
 
 **Example:** Clone Universal Media Center's current master branch:
 ```
-git clone https://github.com/xbmc/xbmc kodi
+git clone https://github.com// universalmediacenter
 ```
 
 Commands that contain strings enclosed in angle brackets denote something you need to change to suit your needs.
 ```
-git clone -b <branch-name> https://github.com/xbmc/xbmc kodi
+git clone -b <branch-name> https://github.com// universalmediacenter
 ```
 
 **Example:** Clone Universal Media Center's current Krypton branch:
 ```
-git clone -b Krypton https://github.com/xbmc/xbmc kodi
+git clone -b Krypton https://github.com// universalmediacenter
 ```
 
 Several different strategies are used to draw your attention to certain pieces of information. In order of how critical the information is, these items are marked as a note, tip, or warning. For example:
@@ -81,13 +81,13 @@ cd $HOME
 
 Clone Universal Media Center's current master branch:
 ```
-git clone https://github.com/xbmc/xbmc kodi
+git clone https://github.com// universalmediacenter
 ```
 
 **[back to top](#table-of-contents)**
 
 ## 4. Configure and build tools and dependencies
-Universal Media Center can be built as either a 32bit or 64bit program. The dependencies are built in `$HOME/kodi/tools/depends` and installed into `/Users/Shared/xbmc-depends`.
+Universal Media Center can be built as either a 32bit or 64bit program. The dependencies are built in `$HOME/universalmediacenter/tools/depends` and installed into `/Users/Shared/-depends`.
 
 > [!TIP]
 > Look for comments starting with `Or ...` and only execute the command(s) you need.
@@ -97,14 +97,14 @@ Universal Media Center can be built as either a 32bit or 64bit program. The depe
 
 Configure build (x86 intel):
 ```
-cd $HOME/kodi/tools/depends
+cd $HOME/universalmediacenter/tools/depends
 ./bootstrap
 ./configure --host=x86_64-apple-darwin --with-platform=macos
 ```
 
 Configure build (apple silicon):
 ```
-cd $HOME/kodi/tools/depends
+cd $HOME/universalmediacenter/tools/depends
 ./bootstrap
 ./configure --host=aarch64-apple-darwin --with-platform=macos
 ```
@@ -150,7 +150,7 @@ make -j$(getconf _NPROCESSORS_ONLN)
 ```
 --with-tarballs=<path>
 ```
-  path where tarballs will be saved [prefix/xbmc-tarballs]
+  path where tarballs will be saved [prefix/-tarballs]
 
 ```
 --with-cpu=<cpu>
@@ -202,11 +202,11 @@ make -j$(getconf _NPROCESSORS_ONLN)
 **[back to top](#table-of-contents)** | **[back to section top](#4-configure-and-build-tools-and-dependencies)**
 
 ## 5. Build binary add-ons
-You can find a complete list of available binary add-ons **[here](https://github.com/xbmc/repo-binary-addons)**.
+You can find a complete list of available binary add-ons **[here](https://github.com//repo-binary-addons)**.
 
 Change to Universal Media Center's source code directory:
 ```
-cd $HOME/kodi
+cd $HOME/universalmediacenter
 ```
 
 There are multiple possibilities to choose which addons are built. The following 3 examples will give an idea.
@@ -237,15 +237,15 @@ Before you can use Xcode to build Universal Media Center, the Xcode project has 
 ### 6.1. Build with Xcode
 Create an out-of-source build directory:
 ```
-mkdir $HOME/kodi-build
+mkdir $HOME/universalmediacenter-build
 ```
 Generate Xcode project as per configure command in **[Configure and build tools and dependencies](#4-configure-and-build-tools-and-dependencies)**:
 ```
-make -C tools/depends/target/cmakebuildsys BUILD_DIR=$HOME/kodi-build GEN=Xcode
+make -C tools/depends/target/cmakebuildsys BUILD_DIR=$HOME/universalmediacenter-build GEN=Xcode
 ```
 
 > [!TIP]
-> BUILD_DIR can be omitted, and project will be created in $HOME/kodi/build
+> BUILD_DIR can be omitted, and project will be created in $HOME/universalmediacenter/build
 Change all relevant paths onwards if omitted.
 
 Additional cmake arguments can be supplied via the CMAKE_EXTRA_ARGUMENTS command line variable
@@ -254,23 +254,23 @@ Additional cmake arguments can be supplied via the CMAKE_EXTRA_ARGUMENTS command
 
 Change to build directory:
 ```
-cd $HOME/kodi-build
+cd $HOME/universalmediacenter-build
 ```
 
 Generate Xcode project (x86_64 intel):
 ```
-/Users/Shared/xbmc-depends/x86_64-darwin17.5.0-native/bin/cmake -G Xcode -DCMAKE_TOOLCHAIN_FILE=/Users/Shared/xbmc-depends/macosx10.15_x86_64-target-debug/share/Toolchain.cmake ../kodi
+/Users/Shared/-depends/x86_64-darwin17.5.0-native/bin/cmake -G Xcode -DCMAKE_TOOLCHAIN_FILE=/Users/Shared/-depends/macosx10.15_x86_64-target-debug/share/Toolchain.cmake ../universalmediacenter
 ```
 
 > [!WARNING]  
 > The toolchain file location differs depending on SDK version. You have to replace `x86_64-darwin17.5.0-native` and `macosx10.15_x86_64-target-debug` in the paths above with the correct ones on your system.
 
-You can check `Users/Shared/xbmc-depends` directory content with:
+You can check `Users/Shared/-depends` directory content with:
 ```
-ls -l /Users/Shared/xbmc-depends
+ls -l /Users/Shared/-depends
 ```
 
-**Start Xcode, open the Universal Media Center project file** (`kodi.xcodeproj`) located in `$HOME/kodi-build` and hit `Build`.
+**Start Xcode, open the Universal Media Center project file** (`universalmediacenter.xcodeproj`) located in `$HOME/universalmediacenter-build` and hit `Build`.
 
 > [!WARNING]  
 > If you have selected a specific SDK version in **[step 4](#4-configure-and-build-tools-and-dependencies)** then you might need to adapt the active target to use the same SDK version, otherwise build will fail. Be sure to select a device configuration. Building for simulator is **not** supported.
@@ -280,7 +280,7 @@ Alternatively, you can also build via Xcode from the command-line with `xcodebui
 
 Build Universal Media Center:
 ```
-cd $HOME/kodi-build
+cd $HOME/universalmediacenter-build
 xcodebuild -config "Debug"
 ```
 
@@ -291,7 +291,7 @@ xcodebuild -config "Debug"
 
 Build Universal Media Center:
 ```
-/Users/Shared/xbmc-depends/x86_64-darwin17.5.0-native/bin/cmake --build . --config "Debug" -- -verbose
+/Users/Shared/-depends/x86_64-darwin17.5.0-native/bin/cmake --build . --config "Debug" -- -verbose
 ```
 
 > [!TIP]
@@ -302,7 +302,7 @@ CMake is also able to generate makefiles that can be used to build with make.
 
 Change to Universal Media Center's source code directory:
 ```
-cd $HOME/kodi
+cd $HOME/universalmediacenter
 ```
 
 Generate makefiles:
@@ -313,8 +313,8 @@ make -C tools/depends/target/cmakebuildsys
 > [!TIP]
 > BUILD_DIR can be provided as an argument to cmakebuildsys. This allows you to provide an alternate build location. Change all paths onwards as required if BUILD_DIR option used.
 ```
-mkdir $HOME/kodi-build
-make -C tools/depends/target/cmakebuildsys BUILD_DIR=$HOME/kodi-build
+mkdir $HOME/universalmediacenter-build
+make -C tools/depends/target/cmakebuildsys BUILD_DIR=$HOME/universalmediacenter-build
 ```
 
 Build Universal Media Center:
@@ -322,7 +322,7 @@ Build Universal Media Center:
 make -j$(getconf _NPROCESSORS_ONLN) -C build
 ```
 
-**[back to top](#table-of-contents)** | **[back to section top](#6-build-kodi)**
+**[back to top](#table-of-contents)** | **[back to section top](#6-build-universalmediacenter)**
 
 ## 7. Run Universal Media Center
 ### 7.1. Built with Xcode or xcodebuild
@@ -330,18 +330,18 @@ After build finishes, you can run Universal Media Center from Xcode or from term
 
 Run `Debug` config from terminal:
 ```
-$HOME/kodi-build/Debug/kodi.bin
+$HOME/universalmediacenter-build/Debug/universalmediacenter.bin
 ```
 
 Run `Release` config from terminal:
 ```
-$HOME/kodi-build/Release/kodi.bin
+$HOME/universalmediacenter-build/Release/universalmediacenter.bin
 ```
 
 ### 7.2. Built with make
 After build finishes, you can run Universal Media Center from terminal:
 ```
-$HOME/kodi/build/kodi.bin
+$HOME/universalmediacenter/build/universalmediacenter.bin
 ```
 
 **[back to top](#table-of-contents)**
@@ -350,24 +350,24 @@ $HOME/kodi/build/kodi.bin
 CMake generates a target called `dmg` which will package Universal Media Center ready for distribution. After Universal Media Center has been built, the target can be triggered by selecting it in Xcode active scheme or manually running
 
 ```
-cd $HOME/kodi-build
+cd $HOME/universalmediacenter-build
 xcodebuild -target dmg
 ````
 **OR**
 ```
-cd $HOME/kodi-build
-/Users/Shared/xbmc-depends/x86_64-darwin17.5.0-native/bin/cmake --build . --target "dmg" --config "Debug"
+cd $HOME/universalmediacenter-build
+/Users/Shared/-depends/x86_64-darwin17.5.0-native/bin/cmake --build . --target "dmg" --config "Debug"
 ```
 
-Generated `dmg` file will be inside `$HOME/kodi-build/tools/darwin/packaging/osx/`.
+Generated `dmg` file will be inside `$HOME/universalmediacenter-build/tools/darwin/packaging/osx/`.
 
 Alternatively, if you built using make:
 ```
-cd $HOME/kodi-build
+cd $HOME/universalmediacenter-build
 make dmg
 ```
 
-Generated `dmg` file will be inside `$HOME/kodi-build/tools/darwin/packaging/osx/`.
+Generated `dmg` file will be inside `$HOME/universalmediacenter-build/tools/darwin/packaging/osx/`.
 
 **[back to top](#table-of-contents)**
 

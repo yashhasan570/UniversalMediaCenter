@@ -13,7 +13,7 @@
 #include "platform/Environment.h"
 #include "utils/log.h"
 
-using namespace KODI::WINDOWING::WAYLAND;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::WAYLAND;
 using namespace std::placeholders;
 
 using namespace wayland;

@@ -16,7 +16,7 @@ extern "C"
 #include <libavutil/pixfmt.h>
 }
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RENDERING
 {
@@ -53,4 +53,4 @@ bool ReadFramebufferRegion(int x,
 
 } // namespace CAPTURE
 } // namespace RENDERING
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

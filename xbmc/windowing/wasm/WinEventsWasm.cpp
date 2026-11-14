@@ -9,7 +9,7 @@
 #include "WasmKeyboard.h"
 #include "application/AppInboundProtocol.h"
 #include "guilib/GUIWindowManager.h"
-#include "input/keyboard/XBMC_keyboard.h"
+#include "input/keyboard/_keyboard.h"
 #include "input/mouse/MouseStat.h"
 #include "utils/CharsetConverter.h"
 
@@ -33,101 +33,101 @@ CWinEventsWasm* g_events = nullptr;
 
 constexpr const char* CANVAS_TARGET = "#canvas";
 
-XBMCMod TranslateModifiers(const EmscriptenKeyboardEvent* e)
+Mod TranslateModifiers(const EmscriptenKeyboardEvent* e)
 {
-  XBMCMod mod = XBMCKMOD_NONE;
+  Mod mod = KMOD_NONE;
 
   if (e->shiftKey)
-    mod = static_cast<XBMCMod>(mod | XBMCKMOD_LSHIFT);
+    mod = static_cast<Mod>(mod | KMOD_LSHIFT);
   if (e->ctrlKey)
-    mod = static_cast<XBMCMod>(mod | XBMCKMOD_LCTRL);
+    mod = static_cast<Mod>(mod | KMOD_LCTRL);
   if (e->altKey)
-    mod = static_cast<XBMCMod>(mod | XBMCKMOD_LALT);
+    mod = static_cast<Mod>(mod | KMOD_LALT);
   if (e->metaKey)
-    mod = static_cast<XBMCMod>(mod | XBMCKMOD_LMETA);
+    mod = static_cast<Mod>(mod | KMOD_LMETA);
 
   return mod;
 }
 
-XBMCKey TranslatePrintableKey(const char c)
+Key TranslatePrintableKey(const char c)
 {
   if (c >= 'a' && c <= 'z')
-    return static_cast<XBMCKey>(XBMCK_a + (c - 'a'));
+    return static_cast<Key>(K_a + (c - 'a'));
   if (c >= 'A' && c <= 'Z')
-    return static_cast<XBMCKey>(XBMCK_a + (c - 'A'));
+    return static_cast<Key>(K_a + (c - 'A'));
   if (c >= '0' && c <= '9')
-    return static_cast<XBMCKey>(XBMCK_0 + (c - '0'));
+    return static_cast<Key>(K_0 + (c - '0'));
 
   switch (c)
   {
     case ' ':
-      return XBMCK_SPACE;
+      return K_SPACE;
     case '!':
-      return XBMCK_EXCLAIM;
+      return K_EXCLAIM;
     case '"':
-      return XBMCK_QUOTEDBL;
+      return K_QUOTEDBL;
     case '#':
-      return XBMCK_HASH;
+      return K_HASH;
     case '$':
-      return XBMCK_DOLLAR;
+      return K_DOLLAR;
     case '%':
-      return XBMCK_PERCENT;
+      return K_PERCENT;
     case '&':
-      return XBMCK_AMPERSAND;
+      return K_AMPERSAND;
     case '\'':
-      return XBMCK_QUOTE;
+      return K_QUOTE;
     case '(':
-      return XBMCK_LEFTPAREN;
+      return K_LEFTPAREN;
     case ')':
-      return XBMCK_RIGHTPAREN;
+      return K_RIGHTPAREN;
     case '*':
-      return XBMCK_ASTERISK;
+      return K_ASTERISK;
     case '+':
-      return XBMCK_PLUS;
+      return K_PLUS;
     case ',':
-      return XBMCK_COMMA;
+      return K_COMMA;
     case '-':
-      return XBMCK_MINUS;
+      return K_MINUS;
     case '.':
-      return XBMCK_PERIOD;
+      return K_PERIOD;
     case '/':
-      return XBMCK_SLASH;
+      return K_SLASH;
     case ':':
-      return XBMCK_COLON;
+      return K_COLON;
     case ';':
-      return XBMCK_SEMICOLON;
+      return K_SEMICOLON;
     case '<':
-      return XBMCK_LESS;
+      return K_LESS;
     case '=':
-      return XBMCK_EQUALS;
+      return K_EQUALS;
     case '>':
-      return XBMCK_GREATER;
+      return K_GREATER;
     case '?':
-      return XBMCK_QUESTION;
+      return K_QUESTION;
     case '@':
-      return XBMCK_AT;
+      return K_AT;
     case '[':
-      return XBMCK_LEFTBRACKET;
+      return K_LEFTBRACKET;
     case '\\':
-      return XBMCK_BACKSLASH;
+      return K_BACKSLASH;
     case ']':
-      return XBMCK_RIGHTBRACKET;
+      return K_RIGHTBRACKET;
     case '^':
-      return XBMCK_CARET;
+      return K_CARET;
     case '_':
-      return XBMCK_UNDERSCORE;
+      return K_UNDERSCORE;
     case '`':
-      return XBMCK_BACKQUOTE;
+      return K_BACKQUOTE;
     case '{':
-      return XBMCK_LEFTBRACE;
+      return K_LEFTBRACE;
     case '|':
-      return XBMCK_PIPE;
+      return K_PIPE;
     case '}':
-      return XBMCK_RIGHTBRACE;
+      return K_RIGHTBRACE;
     case '~':
-      return XBMCK_TILDE;
+      return K_TILDE;
     default:
-      return XBMCK_UNKNOWN;
+      return K_UNKNOWN;
   }
 }
 
@@ -143,106 +143,106 @@ uint16_t TranslateUnicode(const EmscriptenKeyboardEvent* e)
   return static_cast<uint16_t>(codePoints[0]);
 }
 
-XBMCKey TranslateDomKey(const EmscriptenKeyboardEvent* e)
+Key TranslateDomKey(const EmscriptenKeyboardEvent* e)
 {
   // A TV remote's Back gets the remote rules keymaps give browser_back, not Escape's.
   if (std::strcmp(e->key, "Back") == 0)
-    return XBMCK_BROWSER_BACK;
+    return K_BROWSER_BACK;
 
   if (e->location == DOM_KEY_LOCATION_NUMPAD)
   {
     if (e->keyCode >= DOM_VK_NUMPAD0 && e->keyCode <= DOM_VK_NUMPAD9)
-      return static_cast<XBMCKey>(XBMCK_KP0 + (e->keyCode - DOM_VK_NUMPAD0));
+      return static_cast<Key>(K_KP0 + (e->keyCode - DOM_VK_NUMPAD0));
 
     switch (e->keyCode)
     {
       case DOM_VK_ADD:
-        return XBMCK_KP_PLUS;
+        return K_KP_PLUS;
       case DOM_VK_SUBTRACT:
-        return XBMCK_KP_MINUS;
+        return K_KP_MINUS;
       case DOM_VK_MULTIPLY:
-        return XBMCK_KP_MULTIPLY;
+        return K_KP_MULTIPLY;
       case DOM_VK_DIVIDE:
-        return XBMCK_KP_DIVIDE;
+        return K_KP_DIVIDE;
       case DOM_VK_DECIMAL:
       case DOM_VK_DELETE:
-        return XBMCK_KP_PERIOD;
+        return K_KP_PERIOD;
       case DOM_VK_RETURN:
       case DOM_VK_ENTER:
-        return XBMCK_KP_ENTER;
+        return K_KP_ENTER;
       default:
         break;
     }
   }
 
-  if (const XBMCKey printable = TranslatePrintableKey(e->key[0]);
-      e->key[0] != '\0' && e->key[1] == '\0' && printable != XBMCK_UNKNOWN)
+  if (const Key printable = TranslatePrintableKey(e->key[0]);
+      e->key[0] != '\0' && e->key[1] == '\0' && printable != K_UNKNOWN)
   {
     return printable;
   }
 
   if (e->keyCode >= DOM_VK_F1 && e->keyCode <= DOM_VK_F15)
-    return static_cast<XBMCKey>(XBMCK_F1 + (e->keyCode - DOM_VK_F1));
+    return static_cast<Key>(K_F1 + (e->keyCode - DOM_VK_F1));
 
   switch (e->keyCode)
   {
     case 10009: // Tizen TV hardware Back key
-      return XBMCK_BROWSER_BACK;
+      return K_BROWSER_BACK;
     case DOM_VK_BACK_SPACE:
-      return XBMCK_BACKSPACE;
+      return K_BACKSPACE;
     case DOM_VK_TAB:
-      return XBMCK_TAB;
+      return K_TAB;
     case DOM_VK_RETURN:
     case DOM_VK_ENTER:
-      return XBMCK_RETURN;
+      return K_RETURN;
     case DOM_VK_ESCAPE:
-      return XBMCK_ESCAPE;
+      return K_ESCAPE;
     case DOM_VK_SPACE:
-      return XBMCK_SPACE;
+      return K_SPACE;
     case DOM_VK_PAGE_UP:
-      return XBMCK_PAGEUP;
+      return K_PAGEUP;
     case DOM_VK_PAGE_DOWN:
-      return XBMCK_PAGEDOWN;
+      return K_PAGEDOWN;
     case DOM_VK_END:
-      return XBMCK_END;
+      return K_END;
     case DOM_VK_HOME:
-      return XBMCK_HOME;
+      return K_HOME;
     case DOM_VK_LEFT:
-      return XBMCK_LEFT;
+      return K_LEFT;
     case DOM_VK_UP:
-      return XBMCK_UP;
+      return K_UP;
     case DOM_VK_RIGHT:
-      return XBMCK_RIGHT;
+      return K_RIGHT;
     case DOM_VK_DOWN:
-      return XBMCK_DOWN;
+      return K_DOWN;
     case DOM_VK_INSERT:
-      return XBMCK_INSERT;
+      return K_INSERT;
     case DOM_VK_DELETE:
-      return XBMCK_DELETE;
+      return K_DELETE;
     case DOM_VK_SHIFT:
-      return e->location == DOM_KEY_LOCATION_RIGHT ? XBMCK_RSHIFT : XBMCK_LSHIFT;
+      return e->location == DOM_KEY_LOCATION_RIGHT ? K_RSHIFT : K_LSHIFT;
     case DOM_VK_CONTROL:
-      return e->location == DOM_KEY_LOCATION_RIGHT ? XBMCK_RCTRL : XBMCK_LCTRL;
+      return e->location == DOM_KEY_LOCATION_RIGHT ? K_RCTRL : K_LCTRL;
     case DOM_VK_ALT:
-      return e->location == DOM_KEY_LOCATION_RIGHT ? XBMCK_RALT : XBMCK_LALT;
+      return e->location == DOM_KEY_LOCATION_RIGHT ? K_RALT : K_LALT;
     case DOM_VK_WIN:
-      return e->location == DOM_KEY_LOCATION_RIGHT ? XBMCK_RSUPER : XBMCK_LSUPER;
+      return e->location == DOM_KEY_LOCATION_RIGHT ? K_RSUPER : K_LSUPER;
     case DOM_VK_CONTEXT_MENU:
-      return XBMCK_MENU;
+      return K_MENU;
     case DOM_VK_CAPS_LOCK:
-      return XBMCK_CAPSLOCK;
+      return K_CAPSLOCK;
     case DOM_VK_NUM_LOCK:
-      return XBMCK_NUMLOCK;
+      return K_NUMLOCK;
     case DOM_VK_SCROLL_LOCK:
-      return XBMCK_SCROLLOCK;
+      return K_SCROLLOCK;
     default:
-      return XBMCK_UNKNOWN;
+      return K_UNKNOWN;
   }
 }
 
-XBMC_Event TranslateKeyEvent(const EmscriptenKeyboardEvent* e, uint8_t type)
+_Event TranslateKeyEvent(const EmscriptenKeyboardEvent* e, uint8_t type)
 {
-  XBMC_Event ev{};
+  _Event ev{};
   ev.type = type;
   ev.key.keysym.scancode = e->keyCode;
   ev.key.keysym.sym = TranslateDomKey(e);
@@ -264,8 +264,8 @@ void TranslateMousePosition(const EmscriptenMouseEvent* e, uint16_t& x, uint16_t
 unsigned char TranslateMouseButton(unsigned short button)
 {
   if (button < 3)
-    return static_cast<unsigned char>(XBMC_BUTTON_LEFT + button);
-  return static_cast<unsigned char>(XBMC_BUTTON_X1 + button - 3);
+    return static_cast<unsigned char>(_BUTTON_LEFT + button);
+  return static_cast<unsigned char>(_BUTTON_X1 + button - 3);
 }
 
 // Keys typed into another field of the hosting page belong to that field.
@@ -298,7 +298,7 @@ EM_BOOL OnKeyDown(int /*eventType*/, const EmscriptenKeyboardEvent* e, void* /*u
 {
   if (!g_events)
     return EM_FALSE;
-  if (KODI::WINDOWING::WASM::CWasmKeyboard::IsActive())
+  if (UNIVERSAL MEDIA CENTER::WINDOWING::WASM::CWasmKeyboard::IsActive())
   {
     g_swallowedKeys.insert(e->keyCode);
     return EM_FALSE;
@@ -315,7 +315,7 @@ EM_BOOL OnKeyDown(int /*eventType*/, const EmscriptenKeyboardEvent* e, void* /*u
     g_swallowedKeys.insert(e->keyCode);
     return EM_FALSE;
   }
-  g_events->MessagePush(TranslateKeyEvent(e, XBMC_KEYDOWN));
+  g_events->MessagePush(TranslateKeyEvent(e, _KEYDOWN));
   return EM_TRUE;
 }
 
@@ -323,11 +323,11 @@ EM_BOOL OnKeyUp(int /*eventType*/, const EmscriptenKeyboardEvent* e, void* /*use
 {
   if (!g_events)
     return EM_FALSE;
-  if (KODI::WINDOWING::WASM::CWasmKeyboard::IsActive() || g_swallowedKeys.erase(e->keyCode) > 0)
+  if (UNIVERSAL MEDIA CENTER::WINDOWING::WASM::CWasmKeyboard::IsActive() || g_swallowedKeys.erase(e->keyCode) > 0)
     return EM_FALSE;
   if (IsTextFieldFocused())
     return EM_FALSE;
-  g_events->MessagePush(TranslateKeyEvent(e, XBMC_KEYUP));
+  g_events->MessagePush(TranslateKeyEvent(e, _KEYUP));
   return EM_TRUE;
 }
 
@@ -335,8 +335,8 @@ EM_BOOL OnMouseMove(int /*eventType*/, const EmscriptenMouseEvent* e, void* /*us
 {
   if (!g_events)
     return EM_FALSE;
-  XBMC_Event ev{};
-  ev.type = XBMC_MOUSEMOTION;
+  _Event ev{};
+  ev.type = _MOUSEMOTION;
   TranslateMousePosition(e, ev.motion.x, ev.motion.y);
   g_events->MessagePush(ev);
   return EM_FALSE;
@@ -346,8 +346,8 @@ EM_BOOL OnMouseButtonDown(int /*eventType*/, const EmscriptenMouseEvent* e, void
 {
   if (!g_events)
     return EM_FALSE;
-  XBMC_Event ev{};
-  ev.type = XBMC_MOUSEBUTTONDOWN;
+  _Event ev{};
+  ev.type = _MOUSEBUTTONDOWN;
   TranslateMousePosition(e, ev.button.x, ev.button.y);
   ev.button.button = TranslateMouseButton(e->button);
   g_events->MessagePush(ev);
@@ -358,8 +358,8 @@ EM_BOOL OnMouseButtonUp(int /*eventType*/, const EmscriptenMouseEvent* e, void* 
 {
   if (!g_events)
     return EM_FALSE;
-  XBMC_Event ev{};
-  ev.type = XBMC_MOUSEBUTTONUP;
+  _Event ev{};
+  ev.type = _MOUSEBUTTONUP;
   TranslateMousePosition(e, ev.button.x, ev.button.y);
   ev.button.button = TranslateMouseButton(e->button);
   g_events->MessagePush(ev);
@@ -373,12 +373,12 @@ EM_BOOL OnWheel(int /*eventType*/, const EmscriptenWheelEvent* e, void* /*userDa
   // Ctrl+wheel zooms the page.
   if (!g_events || e->deltaY == 0.0 || e->mouse.ctrlKey)
     return EM_FALSE;
-  XBMC_Event ev{};
-  ev.type = XBMC_MOUSEBUTTONDOWN;
+  _Event ev{};
+  ev.type = _MOUSEBUTTONDOWN;
   TranslateMousePosition(&e->mouse, ev.button.x, ev.button.y);
-  ev.button.button = e->deltaY < 0.0 ? XBMC_BUTTON_WHEELUP : XBMC_BUTTON_WHEELDOWN;
+  ev.button.button = e->deltaY < 0.0 ? _BUTTON_WHEELUP : _BUTTON_WHEELDOWN;
   g_events->MessagePush(ev);
-  ev.type = XBMC_MOUSEBUTTONUP;
+  ev.type = _MOUSEBUTTONUP;
   g_events->MessagePush(ev);
   return EM_TRUE;
 }
@@ -387,8 +387,8 @@ EM_BOOL OnResize(int /*eventType*/, const EmscriptenUiEvent* e, void* /*userData
 {
   if (!g_events)
     return EM_FALSE;
-  XBMC_Event ev{};
-  ev.type = XBMC_VIDEORESIZE;
+  _Event ev{};
+  ev.type = _VIDEORESIZE;
   ev.resize.width = e->windowInnerWidth;
   ev.resize.height = e->windowInnerHeight;
   ev.resize.scale = 1.0;
@@ -427,7 +427,7 @@ CWinEventsWasm::~CWinEventsWasm()
   g_events = nullptr;
 }
 
-void CWinEventsWasm::MessagePush(const XBMC_Event& newEvent)
+void CWinEventsWasm::MessagePush(const _Event& newEvent)
 {
   std::unique_lock lock(m_mutex);
   m_events.push_back(newEvent);
@@ -446,7 +446,7 @@ bool CWinEventsWasm::DispatchQueuedEvents()
   bool handledEvent = false;
   for (;;)
   {
-    XBMC_Event pumpEvent{};
+    _Event pumpEvent{};
     {
       std::unique_lock lock(m_mutex);
       if (m_events.empty())

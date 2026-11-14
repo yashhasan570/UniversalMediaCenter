@@ -17,7 +17,7 @@
 #include "guilib/GUIMessage.h"
 #include "guilib/WindowIDs.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 CDialogGameAdvancedSettings::CDialogGameAdvancedSettings()

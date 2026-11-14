@@ -16,13 +16,13 @@ out vec4 fragColor;
 // SM_FONTS and SM_FONTS_RGBA shader
 void main()
 {
-#if defined(KODI_FONTS_RGBA)
+#if defined(UNIVERSAL MEDIA CENTER_FONTS_RGBA)
   fragColor = m_colour * texture(m_samp0, m_cord0);
 #else
   fragColor = m_colour;
   fragColor.a *= texture(m_samp0, m_cord0).r;
 #endif
-#if defined(KODI_LIMITED_RANGE)
+#if defined(UNIVERSAL MEDIA CENTER_LIMITED_RANGE)
   fragColor.rgb *= (235.0-16.0) / 255.0;
   fragColor.rgb += 16.0 / 255.0;
 #endif

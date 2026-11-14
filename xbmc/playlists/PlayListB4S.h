@@ -10,7 +10,7 @@
 
 #include "PlayList.h"
 
-namespace KODI::PLAYLIST
+namespace UNIVERSAL MEDIA CENTER::PLAYLIST
 {
 
 class CPlayListB4S : public CPlayList
@@ -21,4 +21,4 @@ public:
   bool LoadData(std::istream& stream) override;
   void Save(const std::string& strFileName) const override;
 };
-} // namespace KODI::PLAYLIST
+} // namespace UNIVERSAL MEDIA CENTER::PLAYLIST

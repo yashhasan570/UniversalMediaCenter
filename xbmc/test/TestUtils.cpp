@@ -31,7 +31,7 @@
 
 #include <gtest/gtest.h>
 
-namespace fs = KODI::PLATFORM::FILESYSTEM;
+namespace fs = UNIVERSAL MEDIA CENTER::PLATFORM::FILESYSTEM;
 
 class CTempFile : public XFILE::CFile
 {
@@ -68,36 +68,36 @@ private:
   std::string m_ptempFilePath;
 };
 
-CXBMCTestUtils::CXBMCTestUtils()
+CTestUtils::CTestUtils()
 {
   probability = 0.01;
 }
 
-CXBMCTestUtils &CXBMCTestUtils::Instance()
+CTestUtils &CTestUtils::Instance()
 {
-  static CXBMCTestUtils instance;
+  static CTestUtils instance;
   return instance;
 }
 
-std::string CXBMCTestUtils::ReferenceFilePath(const std::string& path)
+std::string CTestUtils::ReferenceFilePath(const std::string& path)
 {
-  return CSpecialProtocol::TranslatePath(URIUtils::AddFileToFolder("special://xbmc", path));
+  return CSpecialProtocol::TranslatePath(URIUtils::AddFileToFolder("special://", path));
 }
 
-bool CXBMCTestUtils::SetReferenceFileBasePath()
+bool CTestUtils::SetReferenceFileBasePath()
 {
-  std::string xbmcPath = CUtil::GetHomePath();
-  if (xbmcPath.empty())
+  std::string Path = CUtil::GetHomePath();
+  if (Path.empty())
     return false;
 
-  /* Set xbmc, xbmcbin and home path */
-  CSpecialProtocol::SetXBMCPath(xbmcPath);
-  CSpecialProtocol::SetXBMCBinPath(xbmcPath);
+  /* Set , bin and home path */
+  CSpecialProtocol::SetPath(Path);
+  CSpecialProtocol::SetBinPath(Path);
 
   return true;
 }
 
-XFILE::CFile *CXBMCTestUtils::CreateTempFile(std::string const& suffix)
+XFILE::CFile *CTestUtils::CreateTempFile(std::string const& suffix)
 {
   CTempFile *f = new CTempFile();
   if (f->Create(suffix))
@@ -106,7 +106,7 @@ XFILE::CFile *CXBMCTestUtils::CreateTempFile(std::string const& suffix)
   return NULL;
 }
 
-bool CXBMCTestUtils::DeleteTempFile(XFILE::CFile *tempfile)
+bool CTestUtils::DeleteTempFile(XFILE::CFile *tempfile)
 {
   if (!tempfile)
     return true;
@@ -116,7 +116,7 @@ bool CXBMCTestUtils::DeleteTempFile(XFILE::CFile *tempfile)
   return retval;
 }
 
-std::string CXBMCTestUtils::TempFilePath(XFILE::CFile const* const tempfile)
+std::string CTestUtils::TempFilePath(XFILE::CFile const* const tempfile)
 {
   if (!tempfile)
     return "";
@@ -124,7 +124,7 @@ std::string CXBMCTestUtils::TempFilePath(XFILE::CFile const* const tempfile)
   return f->getTempFilePath();
 }
 
-std::string CXBMCTestUtils::TempFileDirectory(XFILE::CFile const* const tempfile)
+std::string CTestUtils::TempFileDirectory(XFILE::CFile const* const tempfile)
 {
   if (!tempfile)
     return "";
@@ -132,7 +132,7 @@ std::string CXBMCTestUtils::TempFileDirectory(XFILE::CFile const* const tempfile
   return f->getTempFileDirectory();
 }
 
-XFILE::CFile *CXBMCTestUtils::CreateCorruptedFile(std::string const& strFileName,
+XFILE::CFile *CTestUtils::CreateCorruptedFile(std::string const& strFileName,
   std::string const& suffix)
 {
   XFILE::CFile inputfile, *tmpfile = CreateTempFile(suffix);
@@ -172,41 +172,41 @@ XFILE::CFile *CXBMCTestUtils::CreateCorruptedFile(std::string const& strFileName
 }
 
 
-std::vector<std::string> &CXBMCTestUtils::getTestFileFactoryReadUrls()
+std::vector<std::string> &CTestUtils::getTestFileFactoryReadUrls()
 {
   return TestFileFactoryReadUrls;
 }
 
-std::vector<std::string> &CXBMCTestUtils::getTestFileFactoryWriteUrls()
+std::vector<std::string> &CTestUtils::getTestFileFactoryWriteUrls()
 {
   return TestFileFactoryWriteUrls;
 }
 
-std::string &CXBMCTestUtils::getTestFileFactoryWriteInputFile()
+std::string &CTestUtils::getTestFileFactoryWriteInputFile()
 {
   return TestFileFactoryWriteInputFile;
 }
 
-void CXBMCTestUtils::setTestFileFactoryWriteInputFile(std::string const& file)
+void CTestUtils::setTestFileFactoryWriteInputFile(std::string const& file)
 {
   TestFileFactoryWriteInputFile = file;
 }
 
-std::vector<std::string> &CXBMCTestUtils::getAdvancedSettingsFiles()
+std::vector<std::string> &CTestUtils::getAdvancedSettingsFiles()
 {
   return AdvancedSettingsFiles;
 }
 
-std::vector<std::string> &CXBMCTestUtils::getGUISettingsFiles()
+std::vector<std::string> &CTestUtils::getGUISettingsFiles()
 {
   return GUISettingsFiles;
 }
 
 static const char usage[] =
 "Universal Media Center Test Suite\n"
-"Usage: kodi-test [options]\n"
+"Usage: universalmediacenter-test [options]\n"
 "\n"
-"The following options are recognized by the kodi-test program.\n"
+"The following options are recognized by the universalmediacenter-test program.\n"
 "\n"
 "  --add-testfilefactory-readurl [URL]\n"
 "    Add a url to be used int the TestFileFactory read tests.\n"
@@ -246,7 +246,7 @@ static const char usage[] =
 "    as 1.0. The default probability is 0.01.\n"
 ;
 
-void CXBMCTestUtils::ParseArgs(int argc, char **argv)
+void CTestUtils::ParseArgs(int argc, char **argv)
 {
   int i;
   std::string arg;
@@ -317,7 +317,7 @@ void CXBMCTestUtils::ParseArgs(int argc, char **argv)
   }
 }
 
-std::string CXBMCTestUtils::getNewLineCharacters() const
+std::string CTestUtils::getNewLineCharacters() const
 {
 #ifdef TARGET_WINDOWS
   return "\r\n";

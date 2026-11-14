@@ -11,7 +11,7 @@
 #include <set>
 #include <string>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace KEYMAP
 {
@@ -41,4 +41,4 @@ struct KeymapActionGroup
   std::multiset<KeymapAction> actions;
 };
 } // namespace KEYMAP
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

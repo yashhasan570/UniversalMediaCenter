@@ -28,7 +28,7 @@ bool CPlatformWasm::InitStageOne()
     return false;
 
   setenv("SSL_CERT_FILE",
-         CSpecialProtocol::TranslatePath("special://xbmc/system/certs/cacert.pem").c_str(), 0);
+         CSpecialProtocol::TranslatePath("special:///system/certs/cacert.pem").c_str(), 0);
 
   CWinSystemWasmGLESContext::Register();
   CAESinkWasmAudioWorklet::Register();

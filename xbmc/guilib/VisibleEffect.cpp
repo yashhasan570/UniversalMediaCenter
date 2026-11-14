@@ -17,7 +17,7 @@
 #include "guilib/GUIComponent.h"
 #include "utils/ColorUtils.h"
 #include "utils/StringUtils.h"
-#include "utils/XBMCTinyXML.h"
+#include "utils/TinyXML.h"
 #include "utils/XMLUtils.h"
 #include "utils/log.h"
 #include "windowing/WinSystem.h"
@@ -183,10 +183,10 @@ CFadeEffect::CFadeEffect(const TiXmlElement* node, bool reverseDefaults, EFFECT_
     const char* start = node->Attribute("start");
     const char* end = node->Attribute("end");
     if (start)
-      m_startColor = KODI::UTILS::COLOR::ConvertToFloats(
+      m_startColor = UNIVERSAL MEDIA CENTER::UTILS::COLOR::ConvertToFloats(
           CServiceBroker::GetGUI()->GetColorManager().GetColor(start));
     if (end)
-      m_endColor = KODI::UTILS::COLOR::ConvertToFloats(
+      m_endColor = UNIVERSAL MEDIA CENTER::UTILS::COLOR::ConvertToFloats(
           CServiceBroker::GetGUI()->GetColorManager().GetColor(end));
   }
 }
@@ -197,13 +197,13 @@ CFadeEffect::CFadeEffect(float start, float end, unsigned int delay, unsigned in
   m_endAlpha = end;
 }
 
-CFadeEffect::CFadeEffect(KODI::UTILS::COLOR::Color start,
-                         KODI::UTILS::COLOR::Color end,
+CFadeEffect::CFadeEffect(UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color start,
+                         UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color end,
                          unsigned int delay,
                          unsigned int length)
   : CAnimEffect(delay, length, EFFECT_TYPE_FADE_DIFFUSE),
-    m_startColor(KODI::UTILS::COLOR::ConvertToFloats(start)),
-    m_endColor(KODI::UTILS::COLOR::ConvertToFloats(end))
+    m_startColor(UNIVERSAL MEDIA CENTER::UTILS::COLOR::ConvertToFloats(start)),
+    m_endColor(UNIVERSAL MEDIA CENTER::UTILS::COLOR::ConvertToFloats(end))
 {
   m_startAlpha = m_endAlpha = 1.0f;
 }

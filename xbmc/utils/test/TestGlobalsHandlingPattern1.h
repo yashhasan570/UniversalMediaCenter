@@ -12,7 +12,7 @@
 
 #include <iostream>
 
-namespace xbmcutil
+namespace util
 {
   namespace test
   {
@@ -36,5 +36,5 @@ namespace xbmcutil
   }
 }
 
-XBMC_GLOBAL_REF(xbmcutil::test::TestGlobalPattern1,g_testGlobalPattern1);
-#define g_testGlobalPattern1 XBMC_GLOBAL_USE(xbmcutil::test::TestGlobalPattern1)
+_GLOBAL_REF(util::test::TestGlobalPattern1,g_testGlobalPattern1);
+#define g_testGlobalPattern1 _GLOBAL_USE(util::test::TestGlobalPattern1)

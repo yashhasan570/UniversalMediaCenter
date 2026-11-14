@@ -12,7 +12,7 @@
 
 struct game_stream_video_properties;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -49,4 +49,4 @@ private:
 };
 
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

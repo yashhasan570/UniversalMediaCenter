@@ -14,7 +14,7 @@
 #include "input/mouse/interfaces/IMouseInputProvider.h"
 #include "peripherals/devices/Peripheral.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 CAgentMouse::CAgentMouse(PERIPHERALS::PeripheralPtr peripheral)

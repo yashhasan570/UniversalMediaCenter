@@ -93,12 +93,12 @@ ConvolutionFilterShader::ConvolutionFilterShader(ESCALINGMETHOD method,
 
   //don't compile in stretch support when it's not needed
   if (stretch)
-    defines += "#define XBMC_STRETCH 1\n";
+    defines += "#define _STRETCH 1\n";
   else
-    defines += "#define XBMC_STRETCH 0\n";
+    defines += "#define _STRETCH 0\n";
 
   if (gammaCorrection)
-    defines += "#define KODI_GAMMA_LINEARIZATION_FAST\n";
+    defines += "#define UNIVERSALMEDIA_GAMMA_LINEARIZATION_FAST\n";
 
   // get defines from the output stage if used
   m_glslOutput = output;

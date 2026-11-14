@@ -12,7 +12,7 @@
 #include "utils/TimeUtils.h"
 #include "utils/log.h"
 
-namespace KODI::UTILS::MOVING_SPEED
+namespace UNIVERSAL MEDIA CENTER::UTILS::MOVING_SPEED
 {
 
 void CMovingSpeed::AddEventConfig(uint32_t eventId,
@@ -124,4 +124,4 @@ EventType ParseEventType(std::string_view eventType)
   }
 }
 
-} // namespace KODI::UTILS::MOVING_SPEED
+} // namespace UNIVERSAL MEDIA CENTER::UTILS::MOVING_SPEED

@@ -236,7 +236,7 @@ CVFSEntry::CVFSEntry(const AddonInfoPtr& addonInfo)
   m_ifc.vfs->toAddon = new Universal Media CenterToAddonFuncTable_VFSEntry();
   m_ifc.vfs->toUniversal Media Center = new AddonToUniversal Media CenterFuncTable_VFSEntry();
 
-  m_ifc.vfs->toUniversal Media Center->kodiInstance = this;
+  m_ifc.vfs->toUniversal Media Center->universalmediacenterInstance = this;
   if (CreateInstance() != ADDON_STATUS_OK)
     CLog::Log(LOGFATAL, "CVFSEntry - Couldn't create instance on add-on '{}'", addonInfo->Name());
 }
@@ -392,18 +392,18 @@ int CVFSEntry::IoControl(void* ctx, XFILE::IOControl request, void* param) const
       if (!m_ifc.vfs->toAddon->io_control_get_cache_status)
         return -1;
 
-      auto* kodiData = static_cast<XFILE::SCacheStatus*>(param);
-      if (!kodiData)
+      auto* universalmediacenterData = static_cast<XFILE::SCacheStatus*>(param);
+      if (!universalmediacenterData)
         return -1;
 
       VFS_CACHE_STATUS_DATA status;
       int ret = m_ifc.vfs->toAddon->io_control_get_cache_status(m_ifc.vfs, ctx, &status) ? 0 : -1;
       if (ret >= 0)
       {
-        kodiData->forward = status.forward;
-        kodiData->maxrate = status.maxrate;
-        kodiData->currate = status.currate;
-        kodiData->lowrate = status.lowrate;
+        universalmediacenterData->forward = status.forward;
+        universalmediacenterData->maxrate = status.maxrate;
+        universalmediacenterData->currate = status.currate;
+        universalmediacenterData->lowrate = status.lowrate;
       }
       return ret;
     }

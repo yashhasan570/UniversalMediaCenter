@@ -13,7 +13,7 @@
 
 #include <vector>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -51,4 +51,4 @@ private:
   static const std::vector<StretchModeProperties> m_allStretchModes;
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

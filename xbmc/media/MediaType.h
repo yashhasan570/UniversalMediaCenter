@@ -13,7 +13,7 @@
 
 #include <fmt/format.h> //! \todo remove after upgrade to libfmt >= 10.0
 
-namespace KODI::MEDIA
+namespace UNIVERSAL MEDIA CENTER::MEDIA
 {
 
 //! \brief What a library item is.
@@ -58,17 +58,17 @@ bool IsContainer(TYPE type);
 //! \brief The localized name as a heading, e.g. "Movie". Empty for NONE.
 std::string GetCapitalLocalization(TYPE type);
 
-} // namespace KODI::MEDIA
+} // namespace UNIVERSAL MEDIA CENTER::MEDIA
 
 #if FMT_VERSION < 100000
 // user-type formatter for libfmt < 10.0
 //! \todo remove after libfmt upgrade
 template<>
-struct fmt::formatter<KODI::MEDIA::TYPE> : fmt::formatter<std::string_view>
+struct fmt::formatter<UNIVERSAL MEDIA CENTER::MEDIA::TYPE> : fmt::formatter<std::string_view>
 {
-  auto format(const KODI::MEDIA::TYPE& type, format_context& ctx) const
+  auto format(const UNIVERSAL MEDIA CENTER::MEDIA::TYPE& type, format_context& ctx) const
   {
-    return fmt::formatter<std::string_view>::format(KODI::MEDIA::format_as(type), ctx);
+    return fmt::formatter<std::string_view>::format(UNIVERSAL MEDIA CENTER::MEDIA::format_as(type), ctx);
   }
 };
 #endif

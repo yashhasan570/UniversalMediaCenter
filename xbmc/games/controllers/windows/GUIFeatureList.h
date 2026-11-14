@@ -22,7 +22,7 @@ class CGUIImage;
 class CGUILabelControl;
 class CGUIWindow;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -79,4 +79,4 @@ private:
   std::unique_ptr<IConfigurationWizard> m_wizard;
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

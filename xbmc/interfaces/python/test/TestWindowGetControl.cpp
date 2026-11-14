@@ -29,8 +29,8 @@ constexpr int WINDOW_ID = 5000;
 constexpr int BUTTON_ID = 5001;
 constexpr int TOGGLE_ID = 5002;
 
-using KODI::GUILIB::TEST::CTestGUIComponent;
-using KODI::GUILIB::TEST::CTestWinSystem;
+using UNIVERSAL MEDIA CENTER::GUILIB::TEST::CTestGUIComponent;
+using UNIVERSAL MEDIA CENTER::GUILIB::TEST::CTestWinSystem;
 
 class CTestGUITexture : public CGUITexture
 {
@@ -42,7 +42,7 @@ public:
   CGUITexture* Clone() const override { return new CTestGUITexture(*this); }
 
 protected:
-  void Begin(KODI::UTILS::COLOR::Color color) override {}
+  void Begin(UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color color) override {}
   void Draw(float* x,
             float* y,
             float* z,
@@ -64,7 +64,7 @@ protected:
         [](float posX, float posY, float width, float height,
            const CTextureInfo& texture) -> CGUITexture*
         { return new CTestGUITexture(posX, posY, width, height, texture); },
-        [](const CRect&, KODI::UTILS::COLOR::Color, CTexture*, const CRect*, float, bool) {});
+        [](const CRect&, UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color, CTexture*, const CRect*, float, bool) {});
 
     CServiceBroker::RegisterWinSystem(&m_winSystem);
     // The window code under test dereferences the info manager through CServiceBroker::GetGUI()
@@ -96,20 +96,20 @@ private:
 
 TEST_F(TestWindowGetControl, ButtonWrapsAsControlButton)
 {
-  XBMCAddon::xbmcgui::Window window(WINDOW_ID);
+  Addon::gui::Window window(WINDOW_ID);
 
-  XBMCAddon::xbmcgui::Control* control = nullptr;
+  Addon::gui::Control* control = nullptr;
   ASSERT_NO_THROW(control = window.getControl(BUTTON_ID));
   ASSERT_NE(control, nullptr);
-  EXPECT_NE(dynamic_cast<XBMCAddon::xbmcgui::ControlButton*>(control), nullptr);
+  EXPECT_NE(dynamic_cast<Addon::gui::ControlButton*>(control), nullptr);
 }
 
 TEST_F(TestWindowGetControl, ToggleButtonWrapsAsControlButton)
 {
-  XBMCAddon::xbmcgui::Window window(WINDOW_ID);
+  Addon::gui::Window window(WINDOW_ID);
 
-  XBMCAddon::xbmcgui::Control* control = nullptr;
+  Addon::gui::Control* control = nullptr;
   ASSERT_NO_THROW(control = window.getControl(TOGGLE_ID));
   ASSERT_NE(control, nullptr);
-  EXPECT_NE(dynamic_cast<XBMCAddon::xbmcgui::ControlButton*>(control), nullptr);
+  EXPECT_NE(dynamic_cast<Addon::gui::ControlButton*>(control), nullptr);
 }

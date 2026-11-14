@@ -19,7 +19,7 @@
 
 #include <wayland-client-protocol.hpp>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace WINDOWING
 {
@@ -42,9 +42,9 @@ public:
   /**
    * Handle input event
    * \param type input device type that caused the event
-   * \param event XBMC event data
+   * \param event  event data
    */
-  virtual void OnEvent(InputType type, XBMC_Event& event) {}
+  virtual void OnEvent(InputType type, _Event& event) {}
   /**
    * Handle focus enter
    * \param type input device type for which the surface has gained the focus
@@ -110,11 +110,11 @@ private:
 
   void OnPointerEnter(std::uint32_t seatGlobalName, std::uint32_t serial) override;
   void OnPointerLeave() override;
-  void OnPointerEvent(XBMC_Event& event) override;
+  void OnPointerEvent(_Event& event) override;
 
   void OnKeyboardEnter() override;
   void OnKeyboardLeave() override;
-  void OnKeyboardEvent(XBMC_Event& event) override;
+  void OnKeyboardEvent(_Event& event) override;
 
   struct SeatState
   {

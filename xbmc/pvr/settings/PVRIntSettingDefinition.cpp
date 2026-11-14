@@ -8,7 +8,7 @@
 
 #include "PVRIntSettingDefinition.h"
 
-#include "addons/kodi-dev-kit/include/kodi/c-api/addon-instance/pvr/pvr_general.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api/addon-instance/pvr/pvr_general.h"
 
 namespace PVR
 {

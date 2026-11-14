@@ -20,7 +20,7 @@ if(NOT TARGET ${APP_NAME_LC}::${CMAKE_FIND_PACKAGE_NAME})
   endif()
 
   # Only aim for static libs on windows or depends builds
-  if(KODI_DEPENDSBUILD OR (WIN32 OR WINDOWS_STORE))
+  if(UNIVERSALMEDIA_DEPENDSBUILD OR (WIN32 OR WINDOWS_STORE))
     set(OPENSSL_USE_STATIC_LIBS ON)
     set(OPENSSL_ROOT_DIR ${DEPENDS_PATH})
   endif()

@@ -9,7 +9,7 @@
 #include "GameClientDiscs.h"
 
 #include "URL.h"
-#include "addons/kodi-dev-kit/include/kodi/c-api/addon-instance/game.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api/addon-instance/game.h"
 #include "games/GameUtils.h"
 #include "games/addons/GameClient.h"
 #include "games/addons/disc/GameClientDiscM3U.h"
@@ -24,7 +24,7 @@
 #include <mutex>
 #include <vector>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 namespace

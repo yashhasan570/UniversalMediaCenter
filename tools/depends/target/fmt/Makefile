@@ -35,7 +35,7 @@ all: .installed-$(PLATFORM)
 .configured-$(PLATFORM): $(DEPS) | $(TARBALLS_LOCATION)/$(ARCHIVE).$(HASH_TYPE)
 ifeq ($(PREFIX),)
 	@echo
-	@echo "ERROR: please set PREFIX to the kodi install path e.g. make PREFIX=/usr/local"
+	@echo "ERROR: please set PREFIX to the universalmediacenter install path e.g. make PREFIX=/usr/local"
 	@exit 1
 endif
 	rm -rf $(PLATFORM); mkdir -p $(PLATFORM)

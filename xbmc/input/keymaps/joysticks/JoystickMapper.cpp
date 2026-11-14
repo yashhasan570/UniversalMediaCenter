@@ -22,7 +22,7 @@
 
 #include <tinyxml2.h>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace KEYMAP;
 
 #define JOYSTICK_XML_NODE_PROFILE "profile"

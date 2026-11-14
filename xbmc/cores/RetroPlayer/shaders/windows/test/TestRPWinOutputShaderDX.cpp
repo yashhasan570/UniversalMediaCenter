@@ -18,8 +18,8 @@
 #include <gtest/gtest.h>
 #include <windows.h>
 
-using namespace KODI;
-using namespace KODI::SHADER;
+using namespace UNIVERSAL MEDIA CENTER;
+using namespace UNIVERSAL MEDIA CENTER::SHADER;
 
 namespace
 {

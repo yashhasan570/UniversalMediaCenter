@@ -23,9 +23,9 @@
 #include "cores/VideoPlayer/VideoRenderers/HwDecRender/RendererVAAPIGLES.h"
 #endif
 
-using namespace KODI::WINDOWING::X11;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::X11;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace WINDOWING
 {
@@ -89,7 +89,7 @@ void VAAPIRegisterRenderGLES(CVaapiProxy* winSystem, bool& general, bool& deepCo
 }
 
 #else
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace WINDOWING
 {
@@ -139,7 +139,7 @@ void VAAPIRegisterRenderGLES(CVaapiProxy* winSystem, bool& general, bool& deepCo
 #include "VideoSyncGLX.h"
 #include "GLContextGLX.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace WINDOWING
 {
@@ -171,7 +171,7 @@ CVideoSync* GLXVideoSyncCreate(CVideoReferenceClock* clock, CWinSystemX11GLConte
 }
 #else
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace WINDOWING
 {
@@ -211,7 +211,7 @@ CVideoSync* GLXVideoSyncCreate(CVideoReferenceClock* clock, CWinSystemX11GLConte
 #include "cores/VideoPlayer/DVDCodecs/Video/VDPAU.h"
 #include "cores/VideoPlayer/VideoRenderers/HwDecRender/RendererVDPAU.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace WINDOWING
 {
@@ -233,7 +233,7 @@ void VDPAURegister()
 }
 #else
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace WINDOWING
 {

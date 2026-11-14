@@ -81,13 +81,13 @@
 
 using namespace XFILE::VIDEODATABASEDIRECTORY;
 using namespace XFILE;
-using namespace KODI;
-using namespace KODI::MESSAGING;
-using KODI::MEDIA::MediaSection;
+using namespace UNIVERSAL MEDIA CENTER;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaSection;
 
-using KODI::MEDIA::MediaTypeFromName;
-using KODI::MEDIA::MediaTypeOf;
-using KODI::MEDIA::PluralNameOf;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaTypeFromName;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaTypeOf;
+using UNIVERSAL MEDIA CENTER::MEDIA::PluralNameOf;
 
 #define CONTROL_IMAGE                3
 #define CONTROL_TEXTAREA             4
@@ -388,7 +388,7 @@ void CGUIDialogVideoInfo::SetMovie(const CFileItem *item)
       item->GetVideoInfoTag()->GetAssetInfo().GetType() == VideoAssetType::EXTRA)
   {
     CVideoDatabase database;
-    KODI::ART::Artwork art;
+    UNIVERSAL MEDIA CENTER::ART::Artwork art;
     if (database.Open() &&
         database.GetArtForItem(item->GetVideoInfoTag()->m_iDbId, MEDIA::TYPE::MOVIE, art))
     {
@@ -836,7 +836,7 @@ void CGUIDialogVideoInfo::Play(bool resume)
 
   if (resume)
   {
-    KODI::VIDEO::GUILIB::CVideoPlayActionProcessor proc{m_movieItem};
+    UNIVERSAL MEDIA CENTER::VIDEO::GUILIB::CVideoPlayActionProcessor proc{m_movieItem};
     proc.ProcessAction(VIDEO::GUILIB::ACTION_RESUME);
   }
   else
@@ -844,13 +844,13 @@ void CGUIDialogVideoInfo::Play(bool resume)
     if (GetControl(CONTROL_BTN_RESUME))
     {
       // if dialog has a resume button, play button has always the purpose to start from beginning
-      KODI::VIDEO::GUILIB::CVideoPlayActionProcessor proc{m_movieItem};
+      UNIVERSAL MEDIA CENTER::VIDEO::GUILIB::CVideoPlayActionProcessor proc{m_movieItem};
       proc.ProcessAction(VIDEO::GUILIB::ACTION_PLAY_FROM_BEGINNING);
     }
     else
     {
       // play button acts according to default play action setting
-      KODI::VIDEO::GUILIB::CVideoPlayActionProcessor proc{m_movieItem};
+      UNIVERSAL MEDIA CENTER::VIDEO::GUILIB::CVideoPlayActionProcessor proc{m_movieItem};
       proc.ProcessDefaultAction();
       if (proc.GetUserCancelled())
       {
@@ -887,7 +887,7 @@ void AddCurrentArtTypes(std::vector<std::string>& artTypes,
                         const CVideoInfoTag& tag,
                         CVideoDatabase& db)
 {
-  KODI::ART::Artwork currentArt;
+  UNIVERSAL MEDIA CENTER::ART::Artwork currentArt;
 
   if (tag.GetAssetInfo().GetId() >= 0)
     db.GetArtForAsset(tag.m_iFileId, ArtFallbackOptions::NONE, currentArt);
@@ -1340,7 +1340,7 @@ bool CGUIDialogVideoInfo::UpdateVideoItemTitle(const std::shared_ptr<CFileItem>&
   if (mediaType == MEDIA::TYPE::SEASON)
   {
     detail.m_strSortTitle = title;
-    KODI::ART::Artwork artwork;
+    UNIVERSAL MEDIA CENTER::ART::Artwork artwork;
     database.SetDetailsForSeason(detail, artwork, detail.m_iIdShow, detail.m_iDbId);
   }
   else
@@ -1768,8 +1768,8 @@ bool CGUIDialogVideoInfo::GetSetForMovie(const CFileItem* movieItem,
             false))
       return false;
     int idSet = videodb.AddSet(newSetTitle);
-    KODI::ART::Artwork movieArt;
-    KODI::ART::Artwork setArt;
+    UNIVERSAL MEDIA CENTER::ART::Artwork movieArt;
+    UNIVERSAL MEDIA CENTER::ART::Artwork setArt;
     if (!videodb.GetArtForItem(idSet, MEDIA::TYPE::VIDEO_COLLECTION, setArt))
     {
       videodb.GetArtForItem(movieItem->GetVideoInfoTag()->m_iDbId, MEDIA::TYPE::MOVIE, movieArt);

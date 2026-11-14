@@ -25,7 +25,7 @@
 #include "video/VideoDatabase.h"
 #include "video/VideoLibraryQueue.h"
 
-using namespace KODI::GUILIB::GUIINFO;
+using namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO;
 
 CLibraryGUIInfo::CLibraryGUIInfo()
 {
@@ -272,7 +272,7 @@ bool CLibraryGUIInfo::GetBool(bool& value,
       std::string libDir = profileManager->GetLibraryFolder();
       XFILE::CDirectory::GetDirectory(libDir, items, "", XFILE::DIR_FLAG_NO_FILE_DIRS);
       if (items.IsEmpty())
-        libDir = "special://xbmc/system/library/";
+        libDir = "special:///system/library/";
 
       std::string nodePath = URIUtils::AddFileToFolder(libDir, url.GetHostName() + "/");
       nodePath = URIUtils::AddFileToFolder(nodePath, url.GetFileName());

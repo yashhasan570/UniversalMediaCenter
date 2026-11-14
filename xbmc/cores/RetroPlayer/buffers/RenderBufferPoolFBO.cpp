@@ -32,7 +32,7 @@
 
 #include <utility>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace RETRO;
 
 CRenderBufferPoolFBO::CRenderBufferPoolFBO(CRenderContext& context)
@@ -207,7 +207,7 @@ void CRenderBufferPoolFBO::FlushRendered()
     {
       struct Callback
       {
-        KODI::MESSAGING::ThreadMessageCallback message;
+        UNIVERSAL MEDIA CENTER::MESSAGING::ThreadMessageCallback message;
         std::shared_ptr<RenderedBuffers> rendered;
         uint64_t generation;
       };

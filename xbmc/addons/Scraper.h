@@ -135,7 +135,7 @@ public:
                                                         const std::string& sArtist = "");
   std::vector<MUSIC_GRABBER::CMusicArtistInfo> FindArtist(XFILE::IHttpClient& fcurl,
                                                           const std::string& sArtist);
-  KODI::VIDEO::EPISODELIST GetEpisodeList(XFILE::IHttpClient& fcurl, const CScraperUrl& scurl);
+  UNIVERSAL MEDIA CENTER::VIDEO::EPISODELIST GetEpisodeList(XFILE::IHttpClient& fcurl, const CScraperUrl& scurl);
 
   struct StringHash
   {

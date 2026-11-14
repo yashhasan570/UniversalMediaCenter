@@ -9,7 +9,7 @@
 #include "GameClientKeyboard.h"
 
 #include "GameClientInput.h"
-#include "addons/kodi-dev-kit/include/kodi/addon-instance/Game.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/addon-instance/Game.h"
 #include "games/addons/GameClient.h"
 #include "games/addons/GameClientTranslator.h"
 #include "games/controllers/input/ControllerActivity.h"
@@ -18,7 +18,7 @@
 
 #include <utility>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 #define BUTTON_INDEX_MASK 0x01ff

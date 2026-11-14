@@ -28,7 +28,7 @@ namespace PERIPHERALS
 class CPeripherals;
 } // namespace PERIPHERALS
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace JOYSTICK
 {
@@ -212,4 +212,4 @@ private:
   std::set<PERIPHERALS::PeripheralPtr> m_disconnectedPeripherals;
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

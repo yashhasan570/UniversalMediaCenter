@@ -27,7 +27,7 @@
 
 @implementation CWinEventsOSXImpl
 {
-  std::queue<XBMC_Event> events;
+  std::queue<_Event> events;
   CCriticalSection m_inputlock;
   bool m_inputEnabled;
 
@@ -52,7 +52,7 @@
   return self;
 }
 
-- (void)MessagePush:(XBMC_Event*)newEvent
+- (void)MessagePush:(_Event*)newEvent
 {
   std::unique_lock lock(m_inputlock);
   events.emplace(*newEvent);
@@ -64,12 +64,12 @@
   bool ret = false;
 
   // Do not always loop, only pump the initial queued count events. else if ui keep pushing
-  // events the loop won't finish then it will block xbmc main message loop.
+  // events the loop won't finish then it will block  main message loop.
   for (size_t pumpEventCount = [self GetQueueSize]; pumpEventCount > 0; --pumpEventCount)
   {
     // Pop up only one event per time since in App::OnEvent it may init modal dialog which init
     // deeper message loop and call the deeper MessagePump from there.
-    XBMC_Event pumpEvent = {};
+    _Event pumpEvent = {};
     {
       std::unique_lock lock(m_inputlock);
       if (events.size() == 0)
@@ -95,97 +95,97 @@
   switch (character)
   {
     case NSLeftArrowFunctionKey:
-      return XBMCK_LEFT;
+      return K_LEFT;
     case NSRightArrowFunctionKey:
-      return XBMCK_RIGHT;
+      return K_RIGHT;
     case NSUpArrowFunctionKey:
-      return XBMCK_UP;
+      return K_UP;
     case NSDownArrowFunctionKey:
-      return XBMCK_DOWN;
+      return K_DOWN;
     case NSBackspaceCharacter:
     case NSDeleteCharacter:
-      return XBMCK_BACKSPACE;
+      return K_BACKSPACE;
     case NSCarriageReturnCharacter:
     case NSEnterCharacter:
-      return XBMCK_RETURN;
+      return K_RETURN;
     case NSF1FunctionKey:
-      return XBMCK_F1;
+      return K_F1;
     case NSF2FunctionKey:
-      return XBMCK_F2;
+      return K_F2;
     case NSF3FunctionKey:
-      return XBMCK_F3;
+      return K_F3;
     case NSF4FunctionKey:
-      return XBMCK_F4;
+      return K_F4;
     case NSF5FunctionKey:
-      return XBMCK_F5;
+      return K_F5;
     case NSF6FunctionKey:
-      return XBMCK_F6;
+      return K_F6;
     case NSF7FunctionKey:
-      return XBMCK_F7;
+      return K_F7;
     case NSF8FunctionKey:
-      return XBMCK_F8;
+      return K_F8;
     case NSF9FunctionKey:
-      return XBMCK_F9;
+      return K_F9;
     case NSF10FunctionKey:
-      return XBMCK_F10;
+      return K_F10;
     case NSF11FunctionKey:
-      return XBMCK_F11;
+      return K_F11;
     case NSF12FunctionKey:
-      return XBMCK_F12;
+      return K_F12;
     case NSF13FunctionKey:
-      return XBMCK_F13;
+      return K_F13;
     case NSF14FunctionKey:
-      return XBMCK_F14;
+      return K_F14;
     case NSF15FunctionKey:
-      return XBMCK_F15;
+      return K_F15;
     case NSHomeFunctionKey:
-      return XBMCK_HOME;
+      return K_HOME;
     case NSEndFunctionKey:
-      return XBMCK_END;
+      return K_END;
     case NSPageDownFunctionKey:
-      return XBMCK_PAGEDOWN;
+      return K_PAGEDOWN;
     case NSPageUpFunctionKey:
-      return XBMCK_PAGEUP;
+      return K_PAGEUP;
     case NSPauseFunctionKey:
-      return XBMCK_PAUSE;
+      return K_PAUSE;
     case NSInsertFunctionKey:
     case NSInsertCharFunctionKey:
-      return XBMCK_INSERT;
+      return K_INSERT;
     case NSDeleteFunctionKey:
     case NSDeleteCharFunctionKey:
-      return XBMCK_DELETE;
+      return K_DELETE;
     default:
       return character;
   }
 }
 
-- (XBMCMod)OsxMod2XbmcMod:(NSEventModifierFlags)appleModifier
+- (Mod)OsxMod2XbmcMod:(NSEventModifierFlags)appleModifier
 {
-  unsigned int xbmcModifier = XBMCKMOD_NONE;
+  unsigned int Modifier = KMOD_NONE;
   // shift
   if (appleModifier & NSEventModifierFlagShift)
-    xbmcModifier |= XBMCKMOD_SHIFT;
+    Modifier |= KMOD_SHIFT;
   // left ctrl
   if (appleModifier & NSEventModifierFlagControl)
-    xbmcModifier |= XBMCKMOD_CTRL;
+    Modifier |= KMOD_CTRL;
   // left alt/option
   if (appleModifier & NSEventModifierFlagOption)
-    xbmcModifier |= XBMCKMOD_ALT;
+    Modifier |= KMOD_ALT;
   // left command
   if (appleModifier & NSEventModifierFlagCommand)
-    xbmcModifier |= XBMCKMOD_LMETA;
+    Modifier |= KMOD_LMETA;
 
-  return static_cast<XBMCMod>(xbmcModifier);
+  return static_cast<Mod>(Modifier);
 }
 
-- (bool)ProcessOSXShortcuts:(XBMC_Event&)event
+- (bool)ProcessOSXShortcuts:(_Event&)event
 {
-  const auto cmd = (event.key.keysym.mod & (XBMCKMOD_LMETA | XBMCKMOD_RMETA)) != 0;
-  if (cmd && event.type == XBMC_KEYDOWN)
+  const auto cmd = (event.key.keysym.mod & (KMOD_LMETA | KMOD_RMETA)) != 0;
+  if (cmd && event.type == _KEYDOWN)
   {
     switch (event.key.keysym.sym)
     {
-      case XBMCK_s: // CMD-s to take a screenshot
+      case K_s: // CMD-s to take a screenshot
       {
         CAction* action = new CAction(ACTION_TAKE_SCREENSHOT);
         CServiceBroker::GetAppMessenger()->PostMsg(TMSG_GUI_ACTION, WINDOW_INVALID, -1,
@@ -240,57 +240,57 @@
 - (NSEvent*)InputEventHandler:(NSEvent*)nsEvent
 {
   bool passEvent = true;
-  XBMC_Event newEvent = {};
+  _Event newEvent = {};
 
   switch (nsEvent.type)
   {
-    // handle mouse events and transform them into the xbmc event world
+    // handle mouse events and transform them into the  event world
     case NSEventTypeLeftMouseUp:
     {
-      [self SendXBMCMouseButtonEvent:nsEvent
-                           xbmcEvent:newEvent
-                      mouseEventType:XBMC_MOUSEBUTTONUP
-                          buttonCode:XBMC_BUTTON_LEFT];
+      [self SendMouseButtonEvent:nsEvent
+                           Event:newEvent
+                      mouseEventType:_MOUSEBUTTONUP
+                          buttonCode:_BUTTON_LEFT];
       break;
     }
     case NSEventTypeLeftMouseDown:
     {
-      [self SendXBMCMouseButtonEvent:nsEvent
-                           xbmcEvent:newEvent
-                      mouseEventType:XBMC_MOUSEBUTTONDOWN
-                          buttonCode:XBMC_BUTTON_LEFT];
+      [self SendMouseButtonEvent:nsEvent
+                           Event:newEvent
+                      mouseEventType:_MOUSEBUTTONDOWN
+                          buttonCode:_BUTTON_LEFT];
       break;
     }
     case NSEventTypeRightMouseUp:
     {
-      [self SendXBMCMouseButtonEvent:nsEvent
-                           xbmcEvent:newEvent
-                      mouseEventType:XBMC_MOUSEBUTTONUP
-                          buttonCode:XBMC_BUTTON_RIGHT];
+      [self SendMouseButtonEvent:nsEvent
+                           Event:newEvent
+                      mouseEventType:_MOUSEBUTTONUP
+                          buttonCode:_BUTTON_RIGHT];
       break;
     }
     case NSEventTypeRightMouseDown:
     {
-      [self SendXBMCMouseButtonEvent:nsEvent
-                           xbmcEvent:newEvent
-                      mouseEventType:XBMC_MOUSEBUTTONDOWN
-                          buttonCode:XBMC_BUTTON_RIGHT];
+      [self SendMouseButtonEvent:nsEvent
+                           Event:newEvent
+                      mouseEventType:_MOUSEBUTTONDOWN
+                          buttonCode:_BUTTON_RIGHT];
       break;
     }
     case NSEventTypeOtherMouseUp:
     {
-      [self SendXBMCMouseButtonEvent:nsEvent
-                           xbmcEvent:newEvent
-                      mouseEventType:XBMC_MOUSEBUTTONUP
-                          buttonCode:XBMC_BUTTON_MIDDLE];
+      [self SendMouseButtonEvent:nsEvent
+                           Event:newEvent
+                      mouseEventType:_MOUSEBUTTONUP
+                          buttonCode:_BUTTON_MIDDLE];
       break;
     }
     case NSEventTypeOtherMouseDown:
     {
-      [self SendXBMCMouseButtonEvent:nsEvent
-                           xbmcEvent:newEvent
-                      mouseEventType:XBMC_MOUSEBUTTONDOWN
-                          buttonCode:XBMC_BUTTON_MIDDLE];
+      [self SendMouseButtonEvent:nsEvent
+                           Event:newEvent
+                      mouseEventType:_MOUSEBUTTONDOWN
+                          buttonCode:_BUTTON_MIDDLE];
       break;
     }
     case NSEventTypeMouseMoved:
@@ -302,7 +302,7 @@
       if (location.has_value())
       {
         NSPoint locationCoordinates = location.value();
-        newEvent.type = XBMC_MOUSEMOTION;
+        newEvent.type = _MOUSEMOTION;
         newEvent.motion.x = locationCoordinates.x;
         newEvent.motion.y = locationCoordinates.y;
         [self MessagePush:&newEvent];
@@ -315,27 +315,27 @@
       // with a zero deltaY. This reverses our scroll which is WTF? annoying. Trap them out here.
       if (nsEvent.deltaY != 0.0)
       {
-        auto button = nsEvent.scrollingDeltaY > 0 ? XBMC_BUTTON_WHEELUP : XBMC_BUTTON_WHEELDOWN;
-        if ([self SendXBMCMouseButtonEvent:nsEvent
-                                 xbmcEvent:newEvent
-                            mouseEventType:XBMC_MOUSEBUTTONDOWN
+        auto button = nsEvent.scrollingDeltaY > 0 ? _BUTTON_WHEELUP : _BUTTON_WHEELDOWN;
+        if ([self SendMouseButtonEvent:nsEvent
+                                 Event:newEvent
+                            mouseEventType:_MOUSEBUTTONDOWN
                                 buttonCode:button])
         {
           // scrollwhell need a subsequent button press with no button code
-          [self SendXBMCMouseButtonEvent:nsEvent
-                               xbmcEvent:newEvent
-                          mouseEventType:XBMC_MOUSEBUTTONUP
+          [self SendMouseButtonEvent:nsEvent
+                               Event:newEvent
+                          mouseEventType:_MOUSEBUTTONUP
                               buttonCode:std::nullopt];
         }
       }
       break;
     }
 
-    // handle keyboard events and transform them into the xbmc event world
+    // handle keyboard events and transform them into the  event world
     case NSEventTypeKeyUp:
     {
       newEvent = [self keyPressEvent:nsEvent];
-      newEvent.type = XBMC_KEYUP;
+      newEvent.type = _KEYUP;
 
       [self MessagePush:&newEvent];
       passEvent = false;
@@ -344,7 +344,7 @@
     case NSEventTypeKeyDown:
     {
       newEvent = [self keyPressEvent:nsEvent];
-      newEvent.type = XBMC_KEYDOWN;
+      newEvent.type = _KEYDOWN;
 
       if (![self ProcessOSXShortcuts:newEvent])
         [self MessagePush:&newEvent];
@@ -362,14 +362,14 @@
     return nullptr;
 }
 
-- (XBMC_Event)keyPressEvent:(NSEvent*)nsEvent
+- (_Event)keyPressEvent:(NSEvent*)nsEvent
 {
-  XBMC_Event newEvent = {};
+  _Event newEvent = {};
 
   // use characters to propagate the actual unicode character
   NSString* unicode = nsEvent.characters;
   // use charactersIgnoringModifiers to get the corresponding char without modifiers. This will
-  // keep shift so, lower case it as kodi shortcuts might depend on it. modifiers are propagated
+  // keep shift so, lower case it as universalmediacenter shortcuts might depend on it. modifiers are propagated
   // anyway in keysym.mod
   NSString* unicodeWithoutModifiers = [nsEvent.charactersIgnoringModifiers lowercaseString];
 
@@ -389,15 +389,15 @@
 
   newEvent.key.keysym.scancode = nsEvent.keyCode;
   newEvent.key.keysym.sym =
-      static_cast<XBMCKey>([self OsxKey2XbmcKey:[unicodeWithoutModifiers characterAtIndex:0]]);
+      static_cast<Key>([self OsxKey2XbmcKey:[unicodeWithoutModifiers characterAtIndex:0]]);
   newEvent.key.keysym.unicode = [unicode characterAtIndex:0];
   newEvent.key.keysym.mod = [self OsxMod2XbmcMod:nsEvent.modifierFlags];
 
   return newEvent;
 }
 
-- (BOOL)SendXBMCMouseButtonEvent:(NSEvent*)nsEvent
-                       xbmcEvent:(XBMC_Event&)xbmcEvent
+- (BOOL)SendMouseButtonEvent:(NSEvent*)nsEvent
+                       Event:(_Event&)Event
                   mouseEventType:(uint8_t)mouseEventType
                       buttonCode:(std::optional<uint8_t>)buttonCode
 {
@@ -405,14 +405,14 @@
   if (location.has_value())
   {
     NSPoint locationCoordinates = location.value();
-    xbmcEvent.type = mouseEventType;
+    Event.type = mouseEventType;
     if (buttonCode.has_value())
     {
-      xbmcEvent.button.button = buttonCode.value();
+      Event.button.button = buttonCode.value();
     }
-    xbmcEvent.button.x = locationCoordinates.x;
-    xbmcEvent.button.y = locationCoordinates.y;
-    [self MessagePush:&xbmcEvent];
+    Event.button.x = locationCoordinates.x;
+    Event.button.y = locationCoordinates.y;
+    [self MessagePush:&Event];
     return true;
   }
   return false;

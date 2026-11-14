@@ -13,17 +13,17 @@
 #include "SortFileItem.h"
 #include "filesystem/PluginDirectory.h"
 
-namespace XBMCAddon
+namespace Addon
 {
 
-  namespace xbmcplugin
+  namespace plugin
   {
-    bool addDirectoryItem(int handle, const String& url, const xbmcgui::ListItem* listItem,
+    bool addDirectoryItem(int handle, const String& url, const gui::ListItem* listItem,
                           bool isFolder, int totalItems)
     {
       if (listItem == nullptr)
-        throw new XBMCAddon::WrongTypeException("None not allowed as argument for listitem");
-      AddonClass::Ref<xbmcgui::ListItem> pListItem(listItem);
+        throw new Addon::WrongTypeException("None not allowed as argument for listitem");
+      AddonClass::Ref<gui::ListItem> pListItem(listItem);
       pListItem->item->SetPath(url);
       pListItem->item->SetFolder(isFolder);
 
@@ -32,14 +32,14 @@ namespace XBMCAddon
     }
 
     bool addDirectoryItems(int handle,
-                           const std::vector<Tuple<String,const XBMCAddon::xbmcgui::ListItem*,bool> >& items,
+                           const std::vector<Tuple<String,const Addon::gui::ListItem*,bool> >& items,
                            int totalItems)
     {
       CFileItemList fitems;
       for (const auto& item : items)
       {
         const String& url = item.first();
-        const XBMCAddon::xbmcgui::ListItem* pListItem = item.second();
+        const Addon::gui::ListItem* pListItem = item.second();
         bool bIsFolder = item.GetNumValuesSet() > 2 ? item.third() : false;
         pListItem->item->SetPath(url);
         pListItem->item->SetFolder(bIsFolder);
@@ -57,11 +57,11 @@ namespace XBMCAddon
       XFILE::CPluginDirectory::EndOfDirectory(handle, succeeded, updateListing, cacheToDisc);
     }
 
-    void setResolvedUrl(int handle, bool succeeded, const xbmcgui::ListItem* listItem)
+    void setResolvedUrl(int handle, bool succeeded, const gui::ListItem* listItem)
     {
       if (listItem == nullptr)
-        throw new XBMCAddon::WrongTypeException("None not allowed as argument for listitem");
-      AddonClass::Ref<xbmcgui::ListItem> pListItem(listItem);
+        throw new Addon::WrongTypeException("None not allowed as argument for listitem");
+      AddonClass::Ref<gui::ListItem> pListItem(listItem);
       XFILE::CPluginDirectory::SetResolvedUrl(handle, succeeded, pListItem->item.get());
     }
 

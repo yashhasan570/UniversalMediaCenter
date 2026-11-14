@@ -4,9 +4,9 @@
 		version="3.5.0"
 		provider-name="Team Universal Media Center">
   <requires>
-    <import addon="xbmc.addon" version="12.0.0"/>
+    <import addon=".addon" version="12.0.0"/>
   </requires>
-	<extension point="xbmc.addon.repository">
+	<extension point=".addon.repository">
 		<!-- Do not forget to bump add-on version when changing paths to force a repo refresh -->
 		<dir>
 			<info>https://mirrors.github.com/yashhasan570/UniversalMediaCenter/addons/piers/addons.xml.gz</info>
@@ -16,7 +16,7 @@
 			<hashes>sha256</hashes>
 		</dir>
 	</extension>
-	<extension point="xbmc.addon.metadata">
+	<extension point=".addon.metadata">
 		<platform>all</platform>
 		<assets>
 			<icon>icon.png</icon>

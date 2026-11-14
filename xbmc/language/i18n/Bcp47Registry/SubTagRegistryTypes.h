@@ -14,7 +14,7 @@
 
 #include <fmt/format.h> //! \todo remove after upgrade to libfmt >= 10.0
 
-namespace KODI::LANGUAGE::I18N
+namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N
 {
 struct RegistryFileRecord;
 
@@ -136,26 +136,26 @@ struct GrandfatheredTag : BaseSubTag
 struct RedundantTag : BaseSubTag
 {
 };
-} // namespace KODI::LANGUAGE::I18N
+} // namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N
 
 #if FMT_VERSION < 100000
 // user-type formatters for libfmt < 10.0
 //! \todo remove after libfmt upgrade
 template<>
-struct fmt::formatter<KODI::LANGUAGE::I18N::SubTagScope> : fmt::formatter<std::string_view>
+struct fmt::formatter<UNIVERSAL MEDIA CENTER::LANGUAGE::I18N::SubTagScope> : fmt::formatter<std::string_view>
 {
-  auto format(const KODI::LANGUAGE::I18N::SubTagScope& p, format_context& ctx) const
+  auto format(const UNIVERSAL MEDIA CENTER::LANGUAGE::I18N::SubTagScope& p, format_context& ctx) const
   {
-    return fmt::formatter<std::string_view>::format(KODI::LANGUAGE::I18N::format_as(p), ctx);
+    return fmt::formatter<std::string_view>::format(UNIVERSAL MEDIA CENTER::LANGUAGE::I18N::format_as(p), ctx);
   }
 };
 
 template<>
-struct fmt::formatter<KODI::LANGUAGE::I18N::SubTagType> : fmt::formatter<std::string_view>
+struct fmt::formatter<UNIVERSAL MEDIA CENTER::LANGUAGE::I18N::SubTagType> : fmt::formatter<std::string_view>
 {
-  auto format(const KODI::LANGUAGE::I18N::SubTagType& p, format_context& ctx) const
+  auto format(const UNIVERSAL MEDIA CENTER::LANGUAGE::I18N::SubTagType& p, format_context& ctx) const
   {
-    return fmt::formatter<std::string_view>::format(KODI::LANGUAGE::I18N::format_as(p), ctx);
+    return fmt::formatter<std::string_view>::format(UNIVERSAL MEDIA CENTER::LANGUAGE::I18N::format_as(p), ctx);
   }
 };
 #endif

@@ -29,8 +29,8 @@ class CGUIFontTTF;
 class CGraphicContext;
 
 ///
-/// \defgroup kodi_gui_font_alignment Font alignment flags
-/// \ingroup python_xbmcgui_control_radiobutton
+/// \defgroup _font_alignment Font alignment flags
+/// \ingroup python_gui_control_radiobutton
 /// @{
 /// @brief Flags for alignment
 ///
@@ -113,8 +113,8 @@ class CGUIFont
 public:
   CGUIFont(const std::string& strFontName,
            uint32_t style,
-           KODI::UTILS::COLOR::Color textColor,
-           KODI::UTILS::COLOR::Color shadowColor,
+           UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color textColor,
+           UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color shadowColor,
            float lineSpacing,
            float origHeight,
            CGUIFontTTF* font);
@@ -124,8 +124,8 @@ public:
 
   void DrawText(float x,
                 float y,
-                KODI::UTILS::COLOR::Color color,
-                KODI::UTILS::COLOR::Color shadowColor,
+                UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color color,
+                UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color shadowColor,
                 std::span<const character_t> text,
                 uint32_t alignment,
                 float maxPixelWidth)
@@ -135,8 +135,8 @@ public:
 
   void DrawText(float x,
                 float y,
-                std::span<const KODI::UTILS::COLOR::Color> colors,
-                KODI::UTILS::COLOR::Color shadowColor,
+                std::span<const UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color> colors,
+                UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color shadowColor,
                 std::span<const character_t> text,
                 uint32_t alignment,
                 float maxPixelWidth)
@@ -146,8 +146,8 @@ public:
 
   void DrawScrollingText(float x,
                          float y,
-                         std::span<const KODI::UTILS::COLOR::Color> colors,
-                         KODI::UTILS::COLOR::Color shadowColor,
+                         std::span<const UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color> colors,
+                         UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color shadowColor,
                          std::span<const character_t> text,
                          uint32_t alignment,
                          float maxPixelWidth,
@@ -155,8 +155,8 @@ public:
 
   void DrawVScrollingText(float x,
                           float y,
-                          std::span<const KODI::UTILS::COLOR::Color> colors,
-                          KODI::UTILS::COLOR::Color shadowColor,
+                          std::span<const UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color> colors,
+                          UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color shadowColor,
                           std::span<const character_t> text,
                           uint32_t alignment,
                           float maxPixelWidth,
@@ -190,8 +190,8 @@ public:
 protected:
   std::string m_strFontName;
   uint32_t m_style;
-  KODI::UTILS::COLOR::Color m_shadowColor;
-  KODI::UTILS::COLOR::Color m_textColor;
+  UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color m_shadowColor;
+  UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color m_textColor;
   float m_lineSpacing;
   float m_origHeight;
   CGUIFontTTF* m_font; // the font object has the size information
@@ -202,8 +202,8 @@ private:
 
   void DrawTextInternal(float x,
                         float y,
-                        std::span<const KODI::UTILS::COLOR::Color> colors,
-                        KODI::UTILS::COLOR::Color shadowColor,
+                        std::span<const UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color> colors,
+                        UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color shadowColor,
                         std::span<const character_t> text,
                         uint32_t alignment,
                         float maxPixelWidth,

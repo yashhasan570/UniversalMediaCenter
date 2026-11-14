@@ -79,7 +79,7 @@ public:
    * \brief Gets value of environment variable in UTF-8 encoding.
    * \param name The name of environment variable.
    * \return Copy of of environment variable value or empty string if variable in not present in environment.
-   * \sa xbmc_getenvUtf8, xbmc_getenvW
+   * \sa _getenvUtf8, _getenvW
    */
   static std::string getenv(const std::string &name);
 private:

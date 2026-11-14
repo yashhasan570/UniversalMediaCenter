@@ -11,7 +11,7 @@
 #include "ServiceBroker.h"
 #include "SettingDefinitions.h"
 #include "utils/StringUtils.h"
-#include "utils/XBMCTinyXML.h"
+#include "utils/TinyXML.h"
 #include "utils/log.h"
 
 Logger ISettingControl::s_logger;

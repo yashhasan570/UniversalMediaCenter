@@ -82,7 +82,7 @@ void CSetInfoTag::SetSortTitle(std::string_view title)
   m_sortTitle = StringUtils::Trim(m_sortTitle);
 }
 
-void CSetInfoTag::SetArt(const KODI::ART::Artwork& art)
+void CSetInfoTag::SetArt(const UNIVERSAL MEDIA CENTER::ART::Artwork& art)
 {
   m_art = art;
 }

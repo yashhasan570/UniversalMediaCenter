@@ -737,7 +737,7 @@ std::string CWinSystemWin10::GetClipboardText()
     unicode_text.append(text.c_str());
   }
 
-  return KODI::PLATFORM::WINDOWS::FromW(unicode_text);
+  return UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW(unicode_text);
 }
 
 bool CWinSystemWin10::UseLimitedColor()

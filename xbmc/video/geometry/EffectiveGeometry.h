@@ -17,7 +17,7 @@
 #include <string>
 #include <vector>
 
-namespace KODI::VIDEO::GEOMETRY
+namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY
 {
 
 //! \brief Where an effective geometry came from, in ascending precedence.
@@ -176,4 +176,4 @@ float ResolveDetectedAspect(const GeometryInputs& inputs);
 //! withheld on any stream but the first.
 GeometryInputs InputsForStream(const GeometryInputs& inputs, int videoStream);
 
-} // namespace KODI::VIDEO::GEOMETRY
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY

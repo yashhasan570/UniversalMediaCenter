@@ -10,7 +10,7 @@
 
 #include "input/hardware/IHardwareInput.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -41,4 +41,4 @@ private:
   CGameClient& m_gameClient;
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

@@ -13,7 +13,7 @@
 
 #include <utility>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace JOYSTICK;
 
 CDriverPrimitive::CDriverPrimitive(void) = default;
@@ -43,7 +43,7 @@ CDriverPrimitive::CDriverPrimitive(unsigned int axisIndex,
 {
 }
 
-CDriverPrimitive::CDriverPrimitive(XBMCKey keycode)
+CDriverPrimitive::CDriverPrimitive(Key keycode)
   : m_type(PRIMITIVE_TYPE::KEY),
     m_keycode(keycode)
 {
@@ -196,7 +196,7 @@ bool CDriverPrimitive::IsValid(void) const
   }
 
   if (m_type == PRIMITIVE_TYPE::KEY)
-    return m_keycode != XBMCK_UNKNOWN;
+    return m_keycode != K_UNKNOWN;
 
   if (m_type == PRIMITIVE_TYPE::RELATIVE_POINTER)
   {

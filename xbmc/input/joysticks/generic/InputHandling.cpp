@@ -19,7 +19,7 @@
 #include <cmath>
 #include <tuple>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace JOYSTICK;
 
 CGUIDialogNewJoystick* const CInputHandling::m_dialog = new CGUIDialogNewJoystick;

@@ -6,7 +6,7 @@
  *  See LICENSES/README.md for more information.
  */
 
-#include "utils/XBMCTinyXML.h"
+#include "utils/TinyXML.h"
 #include "utils/XMLUtils.h"
 #include "video/SetInfoTag.h"
 
@@ -16,7 +16,7 @@
 
 TEST(TestSetInfoTag, NfoVersionZero)
 {
-  CXBMCTinyXML input;
+  CTinyXML input;
   const std::string document =
       "<set><title>Test set</title><originaltitle>Original title</originaltitle>"
       "<overview>Test overview</overview><art><poster>poster.jpg</poster></art></set>";
@@ -28,7 +28,7 @@ TEST(TestSetInfoTag, NfoVersionZero)
   EXPECT_EQ("Test overview", details.GetOverview());
   EXPECT_EQ("poster.jpg", details.GetArt().at("poster"));
 
-  CXBMCTinyXML saved;
+  CTinyXML saved;
   ASSERT_TRUE(details.Save(&saved, "set"));
   ASSERT_NE(nullptr, saved.RootElement());
   EXPECT_STREQ("0", saved.RootElement()->Attribute("version"));
@@ -46,7 +46,7 @@ TEST(TestSetInfoTag, NfoVersionZero)
 
   saved.RootElement()->RemoveAttribute("version");
   EXPECT_TRUE(XMLUtils::AreNodesSerializationsEqual(input.RootElement(), saved.RootElement()));
-  CXBMCTinyXML unrelated;
+  CTinyXML unrelated;
   ASSERT_TRUE(details.Save(&unrelated, "details"));
   EXPECT_EQ(nullptr, unrelated.RootElement()->Attribute("version"));
 }
@@ -55,7 +55,7 @@ namespace
 {
 CSetInfoTag LoadFromXml(const std::string& document)
 {
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   doc.Parse(document, TIXML_ENCODING_UNKNOWN);
 
   CSetInfoTag tag;
@@ -65,7 +65,7 @@ CSetInfoTag LoadFromXml(const std::string& document)
 
 std::string SaveToXml(const CSetInfoTag& tag)
 {
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   EXPECT_TRUE(tag.Save(&doc, "set"));
 
   return XMLUtils::NodeStringSerialization(doc.RootElement(),
@@ -160,7 +160,7 @@ TEST(TestSetInfoTag, LoadWithoutAppendResetsSortTitle)
   CSetInfoTag tag;
   tag.SetSortTitle("Set, A");
 
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   doc.Parse(R"(<set><title>Another Set</title></set>)", TIXML_ENCODING_UNKNOWN);
   EXPECT_TRUE(tag.Load(doc.RootElement()));
 

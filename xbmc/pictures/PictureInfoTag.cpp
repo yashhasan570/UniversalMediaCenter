@@ -23,7 +23,7 @@
 #include <algorithm>
 #include <vector>
 
-using namespace KODI::ADDONS;
+using namespace UNIVERSAL MEDIA CENTER::ADDONS;
 
 void CPictureInfoTag::Reset()
 {

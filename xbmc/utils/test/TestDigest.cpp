@@ -10,8 +10,8 @@
 
 #include <gtest/gtest.h>
 
-using KODI::UTILITY::CDigest;
-using KODI::UTILITY::TypedDigest;
+using UNIVERSAL MEDIA CENTER::UTILITY::CDigest;
+using UNIVERSAL MEDIA CENTER::UTILITY::TypedDigest;
 
 TEST(TestDigest, Digest_Empty)
 {

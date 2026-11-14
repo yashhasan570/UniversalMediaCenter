@@ -19,9 +19,9 @@ IF "%NATIVEPLATFORM%" == "" SET NATIVEPLATFORM=win32
 ECHO TARGETPLATFORM: %TARGETPLATFORM%
 ECHO NATIVEPLATFORM: %NATIVEPLATFORM%
 
-REM If KODI_MIRROR is not set externally to this script, set it to the default mirror URL
-IF "%KODI_MIRROR%" == "" SET KODI_MIRROR=https://mirrors.kodi.tv
-echo Downloading from mirror %KODI_MIRROR%
+REM If UNIVERSALMEDIA_MIRROR is not set externally to this script, set it to the default mirror URL
+IF "%UNIVERSALMEDIA_MIRROR%" == "" SET UNIVERSALMEDIA_MIRROR=https://mirrors.universalmediacenter.tv
+echo Downloading from mirror %UNIVERSALMEDIA_MIRROR%
 
 REM Locate the BuildDependencies directory, based on the path of this script
 SET BUILD_DEPS_PATH=%WORKSPACE%\project\BuildDependencies
@@ -62,11 +62,11 @@ start /b /wait cmd.exe /c get_formed.cmd
 IF NOT EXIST %FORMED_OK_FLAG% (
   ECHO ERROR: Not all formed packages are ready!
   ECHO.
-  ECHO I tried to get the packages from %KODI_MIRROR%;
+  ECHO I tried to get the packages from %UNIVERSALMEDIA_MIRROR%;
   ECHO if this download mirror seems to be having problems, try choosing another from
-  ECHO the list on https://mirrors.kodi.tv/timestamp.txt?mirrorlist, and setting %%KODI_MIRROR%% to
+  ECHO the list on https://mirrors.universalmediacenter.tv/timestamp.txt?mirrorlist, and setting %%UNIVERSALMEDIA_MIRROR%% to
   ECHO point to it, like so:
-  ECHO   C:\^> SET KODI_MIRROR=https://example.com/pub/xbmc/
+  ECHO   C:\^> SET UNIVERSALMEDIA_MIRROR=https://example.com/pub//
   ECHO.
   ECHO Then, rerun this script.
   

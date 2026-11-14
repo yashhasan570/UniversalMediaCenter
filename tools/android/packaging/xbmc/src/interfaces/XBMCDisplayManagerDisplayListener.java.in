@@ -2,7 +2,7 @@ package @APP_PACKAGE@.interfaces;
 
 import android.hardware.display.DisplayManager;
 
-public class XBMCDisplayManagerDisplayListener implements DisplayManager.DisplayListener
+public class DisplayManagerDisplayListener implements DisplayManager.DisplayListener
 {
   native void _onDisplayAdded(int displayId);
   native void _onDisplayChanged(int displayId);

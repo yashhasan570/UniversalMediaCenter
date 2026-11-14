@@ -11,7 +11,7 @@
 #include "ServiceBroker.h"
 #include "messaging/ApplicationMessenger.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace MESSAGING
 {

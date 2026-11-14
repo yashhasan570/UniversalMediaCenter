@@ -13,7 +13,7 @@
 #include "input/keyboard/Key.h"
 #include "input/keymaps/keyboard/KeyIDs.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace ACTION;
 
 CAction::CAction() : m_id(ACTION_NONE)

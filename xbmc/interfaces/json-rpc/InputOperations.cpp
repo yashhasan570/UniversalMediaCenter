@@ -21,11 +21,11 @@
 #include "messaging/ApplicationMessenger.h"
 #include "messaging/MessengerPayload.h"
 #include "utils/Variant.h"
-#include "windowing/XBMC_events.h"
+#include "windowing/_events.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace JSONRPC;
-using KODI::MESSAGING::TransferToMessenger;
+using UNIVERSAL MEDIA CENTER::MESSAGING::TransferToMessenger;
 
 //! @todo the breakage of the screensaver should be refactored
 //! to one central super duper place for getting rid of
@@ -115,8 +115,8 @@ JSONRPC_STATUS CInputOperations::ButtonEvent(const std::string& method,
     return InvalidParams;
   }
 
-  auto newEvent = std::make_unique<XBMC_Event>();
-  newEvent->type = XBMC_BUTTON;
+  auto newEvent = std::make_unique<_Event>();
+  newEvent->type = _BUTTON;
   newEvent->keybutton.button = keycode;
   newEvent->keybutton.holdtime = holdtime;
 

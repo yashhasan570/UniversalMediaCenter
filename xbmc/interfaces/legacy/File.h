@@ -16,19 +16,19 @@
 
 #include <algorithm>
 
-namespace XBMCAddon
+namespace Addon
 {
 
-  namespace xbmcvfs
+  namespace vfs
   {
 
     //
     /// \defgroup python_file File
-    /// \ingroup python_xbmcvfs
+    /// \ingroup python_vfs
     /// @{
     /// @brief <b>Universal Media Center's file class.</b>
     ///
-    /// \python_class{ xbmcvfs.File(filepath, [mode]) }
+    /// \python_class{ vfs.File(filepath, [mode]) }
     ///
     /// @param filepath             string Selected file path
     /// @param mode                 [opt] string Additional mode options (if no mode is supplied, the default is Open for Read).
@@ -43,14 +43,14 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// f = xbmcvfs.File(file, 'w')
+    /// f = vfs.File(file, 'w')
     /// ..
     /// ~~~~~~~~~~~~~
     ///
     /// **Example (v19 and up):**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// with xbmcvfs.File(file, 'w') as f:
+    /// with vfs.File(file, 'w') as f:
     ///   ..
     /// ..
     /// ~~~~~~~~~~~~~
@@ -91,7 +91,7 @@ namespace XBMCAddon
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// f = xbmcvfs.File(file)
+      /// f = vfs.File(file)
       /// b = f.read()
       /// f.close()
       /// ..
@@ -100,7 +100,7 @@ namespace XBMCAddon
       /// **Example (v19 and up):**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// with xbmcvfs.File(file) as file:
+      /// with vfs.File(file) as file:
       ///   b = f.read()
       /// ..
       /// ~~~~~~~~~~~~~
@@ -130,7 +130,7 @@ namespace XBMCAddon
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// f = xbmcvfs.File(file)
+      /// f = vfs.File(file)
       /// b = f.readBytes()
       /// f.close()
       /// ..
@@ -139,7 +139,7 @@ namespace XBMCAddon
       /// **Example (v19 and up):**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// with xbmcvfs.File(file) as f:
+      /// with vfs.File(file) as f:
       ///   b = f.readBytes()
       /// ..
       /// ~~~~~~~~~~~~~
@@ -164,7 +164,7 @@ namespace XBMCAddon
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// f = xbmcvfs.File(file, 'w')
+      /// f = vfs.File(file, 'w')
       /// result = f.write(buffer)
       /// f.close()
       /// ..
@@ -173,7 +173,7 @@ namespace XBMCAddon
       /// **Example (v19 and up):**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// with xbmcvfs.File(file, 'w') as f:
+      /// with vfs.File(file, 'w') as f:
       ///   result = f.write(buffer)
       /// ..
       /// ~~~~~~~~~~~~~
@@ -197,7 +197,7 @@ namespace XBMCAddon
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// f = xbmcvfs.File(file)
+      /// f = vfs.File(file)
       /// s = f.size()
       /// f.close()
       /// ..
@@ -206,7 +206,7 @@ namespace XBMCAddon
       /// **Example (v19 and up):**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// with xbmcvfs.File(file) as f:
+      /// with vfs.File(file) as f:
       ///   s = f.size()
       /// ..
       /// ~~~~~~~~~~~~~
@@ -233,7 +233,7 @@ namespace XBMCAddon
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// f = xbmcvfs.File(file)
+      /// f = vfs.File(file)
       /// result = f.seek(8129, 0)
       /// f.close()
       /// ..
@@ -242,7 +242,7 @@ namespace XBMCAddon
       /// **Example (v19 and up):**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// with xbmcvfs.File(file) as f:
+      /// with vfs.File(file) as f:
       ///   result = f.seek(8129, 0)
       /// ..
       /// ~~~~~~~~~~~~~
@@ -267,7 +267,7 @@ namespace XBMCAddon
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// f = xbmcvfs.File(file)
+      /// f = vfs.File(file)
       /// s = f.tell()
       /// f.close()
       /// ..
@@ -276,7 +276,7 @@ namespace XBMCAddon
       /// **Example (v19 and up):**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// with xbmcvfs.File(file) as f:
+      /// with vfs.File(file) as f:
       ///   s = f.tell()
       /// ..
       /// ~~~~~~~~~~~~~
@@ -298,7 +298,7 @@ namespace XBMCAddon
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// f = xbmcvfs.File(file)
+      /// f = vfs.File(file)
       /// f.close()
       /// ..
       /// ~~~~~~~~~~~~~
@@ -306,7 +306,7 @@ namespace XBMCAddon
       /// **Example (v19 and up):**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// with xbmcvfs.File(file) as f:
+      /// with vfs.File(file) as f:
       ///   ..
       /// ..
       /// ~~~~~~~~~~~~~

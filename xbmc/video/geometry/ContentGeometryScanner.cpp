@@ -31,7 +31,7 @@
 #include <mutex>
 #include <utility>
 
-namespace KODI::VIDEO::GEOMETRY
+namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY
 {
 
 CContentGeometryScanner& CContentGeometryScanner::GetInstance()
@@ -261,4 +261,4 @@ void CContentGeometryScanner::OnJobAbort(unsigned int jobID, CJob* job)
   Ended();
 }
 
-} // namespace KODI::VIDEO::GEOMETRY
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY

@@ -62,13 +62,13 @@
 
 #include <Platinum/Source/Platinum/Platinum.h>
 
-NPT_SET_LOCAL_LOGGER("xbmc.upnp.server")
+NPT_SET_LOCAL_LOGGER(".upnp.server")
 
 using namespace ANNOUNCEMENT;
-using namespace KODI;
-using namespace KODI::VIDEO;
+using namespace UNIVERSAL MEDIA CENTER;
+using namespace UNIVERSAL MEDIA CENTER::VIDEO;
 using namespace XFILE;
-using KODI::UTILITY::CDigest;
+using UNIVERSAL MEDIA CENTER::UTILITY::CDigest;
 
 namespace UPNP
 {
@@ -133,7 +133,7 @@ NPT_Result CUPnPServer::SetupServices()
         "SortCapabilities",
         "res@duration,res@size,res@bitrate,dc:date,dc:title,dc:size,upnp:album,upnp:artist,upnp:"
         "albumArtist,upnp:episodeNumber,upnp:genre,upnp:originalTrackNumber,upnp:rating,upnp:"
-        "episodeCount,upnp:episodeSeason,xbmc:rating,xbmc:dateadded,xbmc:votes");
+        "episodeCount,upnp:episodeSeason,:rating,:dateadded,:votes");
   }
 
   m_scanning = true;
@@ -238,7 +238,7 @@ failed:
 +---------------------------------------------------------------------*/
 NPT_Result CUPnPServer::SetupIcons()
 {
-  NPT_String file_root = CSpecialProtocol::TranslatePath("special://xbmc/media/").c_str();
+  NPT_String file_root = CSpecialProtocol::TranslatePath("special:///media/").c_str();
   AddIcon(PLT_DeviceIcon("image/png", 256, 256, 8, "/icon256x256.png"), file_root);
   AddIcon(PLT_DeviceIcon("image/png", 120, 120, 8, "/icon120x120.png"), file_root);
   AddIcon(PLT_DeviceIcon("image/png", 48, 48, 8, "/icon48x48.png"), file_root);
@@ -371,7 +371,7 @@ PLT_MediaObject* CUPnPServer::Build(const std::shared_ptr<CFileItem>& item,
         }
 
         // all items apart from songs (artists, albums, etc) are folders
-        if (!item->HasMusicInfoTag() || item->GetMusicInfoTag()->GetMediaType() != KODI::MEDIA::TYPE::SONG)
+        if (!item->HasMusicInfoTag() || item->GetMusicInfoTag()->GetMediaType() != UNIVERSAL MEDIA CENTER::MEDIA::TYPE::SONG)
         {
           item->SetFolder(true);
         }
@@ -429,8 +429,8 @@ PLT_MediaObject* CUPnPServer::Build(const std::shared_ptr<CFileItem>& item,
           }
         }
 
-        if (item->GetVideoInfoTag()->GetMediaType() == KODI::MEDIA::TYPE::TV_SHOW ||
-            item->GetVideoInfoTag()->GetMediaType() == KODI::MEDIA::TYPE::SEASON)
+        if (item->GetVideoInfoTag()->GetMediaType() == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::TV_SHOW ||
+            item->GetVideoInfoTag()->GetMediaType() == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::SEASON)
         {
           // for tvshows and seasons, iEpisode and playCount are
           // invalid
@@ -559,7 +559,7 @@ void CUPnPServer::Announce(AnnouncementFlag flag,
     // as we don't differentiate 'updates' from 'adds' in RPC interface
     if (flag == VideoLibrary)
     {
-      if (item_type == KODI::MEDIA::NameOf(KODI::MEDIA::TYPE::EPISODE))
+      if (item_type == UNIVERSAL MEDIA CENTER::MEDIA::NameOf(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::EPISODE))
       {
         CVideoDatabase db;
         if (!db.Open())
@@ -571,23 +571,23 @@ void CUPnPServer::Announce(AnnouncementFlag flag,
                                             season_id, show_id));
         UpdateContainer(VIDEO::DB_PATH::RECENTLY_ADDED_EPISODES);
       }
-      else if (item_type == KODI::MEDIA::NameOf(KODI::MEDIA::TYPE::TV_SHOW))
+      else if (item_type == UNIVERSAL MEDIA CENTER::MEDIA::NameOf(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::TV_SHOW))
       {
         UpdateContainer(MEDIA::LIBRARY_PATH::TVSHOW_TITLES);
         UpdateContainer(VIDEO::DB_PATH::RECENTLY_ADDED_EPISODES);
       }
-      else if (item_type == KODI::MEDIA::NameOf(KODI::MEDIA::TYPE::MOVIE))
+      else if (item_type == UNIVERSAL MEDIA CENTER::MEDIA::NameOf(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MOVIE))
       {
         UpdateContainer(MEDIA::LIBRARY_PATH::MOVIE_TITLES);
         UpdateContainer(VIDEO::DB_PATH::RECENTLY_ADDED_MOVIES);
       }
-      else if (item_type == KODI::MEDIA::NameOf(KODI::MEDIA::TYPE::MUSIC_VIDEO))
+      else if (item_type == UNIVERSAL MEDIA CENTER::MEDIA::NameOf(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MUSIC_VIDEO))
       {
         UpdateContainer(MEDIA::LIBRARY_PATH::MUSICVIDEO_TITLES);
         UpdateContainer(VIDEO::DB_PATH::RECENTLY_ADDED_MUSICVIDEOS);
       }
     }
-    else if (flag == AudioLibrary && item_type == KODI::MEDIA::NameOf(KODI::MEDIA::TYPE::SONG))
+    else if (flag == AudioLibrary && item_type == UNIVERSAL MEDIA CENTER::MEDIA::NameOf(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::SONG))
     {
       // we also update the 'songs' container is maybe a performance drop too
       // high? would need to check if slow clients even cache at all anyway
@@ -727,15 +727,15 @@ NPT_Result CUPnPServer::OnBrowseMetadata(PLT_ActionReference& action,
       else if (StringUtils::StartsWithNoCase(child_id, "special://videoplaylists/"))
         parent = MEDIA::LIBRARY_PATH::VIDEO;
       else if (StringUtils::StartsWithNoCase(
-                   child_id, CSourcesDirectory::PathOf(KODI::MEDIA::MediaSection::VIDEO)))
+                   child_id, CSourcesDirectory::PathOf(UNIVERSAL MEDIA CENTER::MEDIA::MediaSection::VIDEO)))
         parent = MEDIA::LIBRARY_PATH::VIDEO;
-      else if (CUtil::IsInPlaylistsFolder(child_id, KODI::MEDIA::MediaSection::MUSIC))
+      else if (CUtil::IsInPlaylistsFolder(child_id, UNIVERSAL MEDIA CENTER::MEDIA::MediaSection::MUSIC))
         parent = "special://musicplaylists/";
-      else if (CUtil::IsInPlaylistsFolder(child_id, KODI::MEDIA::MediaSection::VIDEO))
+      else if (CUtil::IsInPlaylistsFolder(child_id, UNIVERSAL MEDIA CENTER::MEDIA::MediaSection::VIDEO))
         parent = "special://videoplaylists/";
       else
         parent = CSourcesDirectory::PathOf(
-            KODI::MEDIA::MediaSection::VIDEO); // this can only match video sources
+            UNIVERSAL MEDIA CENTER::MEDIA::MediaSection::VIDEO); // this can only match video sources
     }
 
     if (IsVideoDb(*item))
@@ -910,13 +910,13 @@ NPT_Result CUPnPServer::BuildResponse(PLT_ActionReference& action,
 
   if (URIUtils::IsVideoDb(items.GetPath()) ||
       StringUtils::StartsWithNoCase(items.GetPath(), MEDIA::LIBRARY_PATH::VIDEO) ||
-      CUtil::IsInPlaylistsFolder(items.GetPath(), KODI::MEDIA::MediaSection::VIDEO))
+      CUtil::IsInPlaylistsFolder(items.GetPath(), UNIVERSAL MEDIA CENTER::MEDIA::MediaSection::VIDEO))
   {
 
     thumb_loader = NPT_Reference<CThumbLoader>(new CVideoThumbLoader());
   }
   else if (URIUtils::IsMusicDb(items.GetPath()) ||
-           CUtil::IsInPlaylistsFolder(items.GetPath(), KODI::MEDIA::MediaSection::MUSIC))
+           CUtil::IsInPlaylistsFolder(items.GetPath(), UNIVERSAL MEDIA CENTER::MEDIA::MediaSection::MUSIC))
   {
 
     thumb_loader = NPT_Reference<CThumbLoader>(new CMusicThumbLoader());

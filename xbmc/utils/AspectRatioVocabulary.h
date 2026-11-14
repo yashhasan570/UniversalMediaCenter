@@ -15,7 +15,7 @@
 #include <string_view>
 #include <vector>
 
-namespace KODI::UTILS
+namespace UNIVERSAL MEDIA CENTER::UTILS
 {
 
 //! \brief A ratio Universal Media Center recognises, what it is called, and where it may be used.
@@ -110,4 +110,4 @@ public:
   static void Reset();
 };
 
-} // namespace KODI::UTILS
+} // namespace UNIVERSAL MEDIA CENTER::UTILS

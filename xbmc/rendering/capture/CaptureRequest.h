@@ -14,7 +14,7 @@
 #include <cstdint>
 #include <functional>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RENDERING
 {
@@ -50,4 +50,4 @@ struct CaptureRequest
 
 } // namespace CAPTURE
 } // namespace RENDERING
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

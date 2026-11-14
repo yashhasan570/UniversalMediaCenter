@@ -362,7 +362,7 @@ namespace JSONRPC
      \param transport Transport layer capabilities
      \param client Client requesting a print
      \param printDescriptions Whether to print descriptions or not
-     \param printMetadata Whether to print XBMC specific data or not
+     \param printMetadata Whether to print  specific data or not
      \param filterByTransport Whether to filter by transport or not
      */
     static JSONRPC_STATUS Print(CVariant &result, ITransportLayer *transport, IClient *client, bool printDescriptions = true, bool printMetadata = false, bool filterByTransport = true, const std::string &filterByName = "", const std::string &filterByType = "", bool printReferences = true);

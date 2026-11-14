@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.15)
 
-if(NOT KODI_SOURCE_DIR OR NOT TEST_BINARY_DIR OR NOT DPKG_DEB_EXECUTABLE OR
+if(NOT UNIVERSALMEDIA_SOURCE_DIR OR NOT TEST_BINARY_DIR OR NOT DPKG_DEB_EXECUTABLE OR
    NOT TEST_PLATFORM OR NOT TEST_BUNDLE_IDENTIFIER OR NOT TEST_ARCHITECTURE)
   message(FATAL_ERROR
     "Universal Media Center source, test binary, dpkg-deb and platform settings are required")
@@ -25,7 +25,7 @@ set(PLATFORM "${TEST_PLATFORM}")
 set(PLATFORM_BUNDLE_IDENTIFIER "${TEST_BUNDLE_IDENTIFIER}")
 
 configure_file(
-  "${KODI_SOURCE_DIR}/tools/darwin/packaging/darwin_embedded/mkdeb-darwin_embedded.sh.in"
+  "${UNIVERSALMEDIA_SOURCE_DIR}/tools/darwin/packaging/darwin_embedded/mkdeb-darwin_embedded.sh.in"
   "${_packaging_dir}/mkdeb-darwin_embedded.sh"
   @ONLY)
 
@@ -85,7 +85,7 @@ file(MAKE_DIRECTORY "${_unsafe_dir}")
 file(WRITE "${_unsafe_dir}/sentinel" "keep\n")
 set(PLATFORM_BUNDLE_IDENTIFIER "../unsafe-package")
 configure_file(
-  "${KODI_SOURCE_DIR}/tools/darwin/packaging/darwin_embedded/mkdeb-darwin_embedded.sh.in"
+  "${UNIVERSALMEDIA_SOURCE_DIR}/tools/darwin/packaging/darwin_embedded/mkdeb-darwin_embedded.sh.in"
   "${_packaging_dir}/mkdeb-unsafe.sh"
   @ONLY)
 execute_process(

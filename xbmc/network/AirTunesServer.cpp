@@ -162,8 +162,8 @@ void CAirTunesServer::RefreshCoverArt(const char *outputFilename/* = NULL*/)
     // UpdateInfo overwrites the mime type, and an empty url clears the previous thumbnail.
     CFileItem* item = new CFileItem();
     item->SetPath(pipeName);
-    item->SetMimeType("audio/x-xbmc-pcm");
-    item->SetArt(KODI::ART::TYPE::THUMB, CFile::Exists(coverArtFile) ? coverArtFile : "");
+    item->SetMimeType("audio/x--pcm");
+    item->SetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB, CFile::Exists(coverArtFile) ? coverArtFile : "");
 
     CServiceBroker::GetAppMessenger()->PostMsg(TMSG_UPDATE_PLAYER_ITEM, -1, -1,
                                                static_cast<void*>(item));
@@ -406,7 +406,7 @@ void* CAirTunesServer::AudioOutputFunctions::audio_init(void *cls, int bits, int
 
   CFileItem *item = new CFileItem();
   item->SetPath(pipe->GetName());
-  item->SetMimeType("audio/x-xbmc-pcm");
+  item->SetMimeType("audio/x--pcm");
   m_streamStarted = true;
   m_sampleRate = samplerate;
 
@@ -570,7 +570,7 @@ void  CAirTunesServer::AudioOutputFunctions::audio_destroy(void *cls, void *sess
 
 void shairplay_log(void *cls, int level, const char *msg)
 {
-  int xbmcLevel = LOGINFO;
+  int Level = LOGINFO;
   if (!CServiceBroker::GetLogging().CanLogComponent(LOGAIRTUNES))
     return;
 
@@ -579,25 +579,25 @@ void shairplay_log(void *cls, int level, const char *msg)
     case RAOP_LOG_EMERG:    // system is unusable
     case RAOP_LOG_ALERT:    // action must be taken immediately
     case RAOP_LOG_CRIT:     // critical conditions
-      xbmcLevel = LOGFATAL;
+      Level = LOGFATAL;
       break;
     case RAOP_LOG_ERR:      // error conditions
-      xbmcLevel = LOGERROR;
+      Level = LOGERROR;
       break;
     case RAOP_LOG_WARNING:  // warning conditions
-      xbmcLevel = LOGWARNING;
+      Level = LOGWARNING;
       break;
     case RAOP_LOG_NOTICE:   // normal but significant condition
     case RAOP_LOG_INFO:     // informational
-      xbmcLevel = LOGINFO;
+      Level = LOGINFO;
       break;
     case RAOP_LOG_DEBUG:    // debug-level messages
-      xbmcLevel = LOGDEBUG;
+      Level = LOGDEBUG;
       break;
     default:
       break;
   }
-  CLog::Log(xbmcLevel, "AIRTUNES: {}", msg);
+  CLog::Log(Level, "AIRTUNES: {}", msg);
 }
 
 bool CAirTunesServer::StartServer(int port, bool nonlocal, bool usePassword, const std::string &password/*=""*/)

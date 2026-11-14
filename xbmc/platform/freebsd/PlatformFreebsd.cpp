@@ -57,25 +57,25 @@ bool CPlatformFreebsd::InitStageOne()
 
 #if defined(HAS_GLES)
 #if defined(HAVE_WAYLAND)
-  KODI::WINDOWING::WAYLAND::CWinSystemWaylandEGLContextGLES::Register();
+  UNIVERSAL MEDIA CENTER::WINDOWING::WAYLAND::CWinSystemWaylandEGLContextGLES::Register();
 #endif
 #if defined(HAVE_X11)
-  KODI::WINDOWING::X11::CWinSystemX11GLESContext::Register();
+  UNIVERSAL MEDIA CENTER::WINDOWING::X11::CWinSystemX11GLESContext::Register();
 #endif
 #if defined(HAVE_GBM)
-  KODI::WINDOWING::GBM::CWinSystemGbmGLESContext::Register();
+  UNIVERSAL MEDIA CENTER::WINDOWING::GBM::CWinSystemGbmGLESContext::Register();
 #endif
 #endif
 
 #if defined(HAS_GL)
 #if defined(HAVE_WAYLAND)
-  KODI::WINDOWING::WAYLAND::CWinSystemWaylandEGLContextGL::Register();
+  UNIVERSAL MEDIA CENTER::WINDOWING::WAYLAND::CWinSystemWaylandEGLContextGL::Register();
 #endif
 #if defined(HAVE_X11)
-  KODI::WINDOWING::X11::CWinSystemX11GLContext::Register();
+  UNIVERSAL MEDIA CENTER::WINDOWING::X11::CWinSystemX11GLContext::Register();
 #endif
 #if defined(HAVE_GBM)
-  KODI::WINDOWING::GBM::CWinSystemGbmGLContext::Register();
+  UNIVERSAL MEDIA CENTER::WINDOWING::GBM::CWinSystemGbmGLContext::Register();
 #endif
 #endif
 

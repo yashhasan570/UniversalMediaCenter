@@ -11,7 +11,7 @@
 #include <array>
 #include <memory>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -83,4 +83,4 @@ enum class VideoRotation
 };
 
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

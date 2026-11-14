@@ -116,7 +116,7 @@ public:
 
   /*!
    *\brief Stop all running scripts
-   *\param wait if kodi should wait for each script to finish (default false)
+   *\param wait if universalmediacenter should wait for each script to finish (default false)
   */
   void StopRunningScripts(bool wait = false);
 

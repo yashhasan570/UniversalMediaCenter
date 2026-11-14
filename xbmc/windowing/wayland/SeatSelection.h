@@ -15,7 +15,7 @@
 
 #include <wayland-client-protocol.hpp>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace WINDOWING
 {

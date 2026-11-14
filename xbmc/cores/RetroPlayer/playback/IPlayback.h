@@ -10,7 +10,7 @@
 
 #include <string>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -46,4 +46,4 @@ public:
   virtual bool LoadSavestate(const std::string& savestatePath) = 0;
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

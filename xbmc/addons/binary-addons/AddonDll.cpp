@@ -15,7 +15,7 @@
 #include "addons/binary-addons/BinaryAddonManager.h"
 #include "addons/binary-addons/DllAddon.h"
 #include "addons/interfaces/AddonBase.h"
-#include "addons/kodi-dev-kit/include/kodi/versions.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/versions.h"
 #include "addons/settings/AddonSettings.h"
 #include "events/EventLog.h"
 #include "events/NotificationEvent.h"
@@ -34,7 +34,7 @@
 #include <algorithm>
 #include <utility>
 
-using namespace KODI::MESSAGING;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
 
 namespace ADDON
 {
@@ -64,12 +64,12 @@ std::string CAddonDll::GetDllPath(const std::string &libPath)
   if (strLibName.empty())
     return "";
 
-  /* Check if lib being loaded exists, else check in XBMC binary location */
+  /* Check if lib being loaded exists, else check in  binary location */
 #if defined(TARGET_ANDROID)
   if (XFILE::CFile::Exists(strFileName))
   {
     bool doCopy = true;
-    std::string dstfile = URIUtils::AddFileToFolder(CSpecialProtocol::TranslatePath("special://xbmcaltbinaddons/"), strLibName);
+    std::string dstfile = URIUtils::AddFileToFolder(CSpecialProtocol::TranslatePath("special://altbinaddons/"), strLibName);
 
     struct __stat64 dstFileStat;
     if (XFILE::CFile::Stat(dstfile, &dstFileStat) == 0)
@@ -92,7 +92,7 @@ std::string CAddonDll::GetDllPath(const std::string &libPath)
   }
   if (!XFILE::CFile::Exists(strFileName))
   {
-    std::string tempbin = getenv("KODI_ANDROID_LIBS");
+    std::string tempbin = getenv("UNIVERSALMEDIA_ANDROID_LIBS");
     strFileName = tempbin + "/" + strLibName;
   }
 #elif defined(TARGET_DARWIN_EMBEDDED)
@@ -106,13 +106,13 @@ std::string CAddonDll::GetDllPath(const std::string &libPath)
   {
     std::string strAltFileName;
 
-    std::string altbin = CSpecialProtocol::TranslatePath("special://xbmcaltbinaddons/");
+    std::string altbin = CSpecialProtocol::TranslatePath("special://altbinaddons/");
     if (!altbin.empty())
     {
       strAltFileName = altbin + strLibName;
       if (!XFILE::CFile::Exists(strAltFileName))
       {
-        std::string temp = CSpecialProtocol::TranslatePath("special://xbmc/addons/");
+        std::string temp = CSpecialProtocol::TranslatePath("special:///addons/");
         strAltFileName = strFileName;
         strAltFileName.erase(0, temp.size());
         strAltFileName = altbin + strAltFileName;
@@ -124,8 +124,8 @@ std::string CAddonDll::GetDllPath(const std::string &libPath)
       strFileName = strAltFileName;
     else
     {
-      std::string temp = CSpecialProtocol::TranslatePath("special://xbmc/");
-      std::string tempbin = CSpecialProtocol::TranslatePath("special://xbmcbin/");
+      std::string temp = CSpecialProtocol::TranslatePath("special:///");
+      std::string tempbin = CSpecialProtocol::TranslatePath("special://bin/");
       strFileName.erase(0, temp.size());
       strFileName = tempbin + strFileName;
       if (!XFILE::CFile::Exists(strFileName))
@@ -171,7 +171,7 @@ bool CAddonDll::LoadDll()
   return true;
 }
 
-ADDON_STATUS CAddonDll::Create(KODI_ADDON_INSTANCE_STRUCT* firstUniversal Media CenterInstance)
+ADDON_STATUS CAddonDll::Create(UNIVERSALMEDIA_ADDON_INSTANCE_STRUCT* firstUniversal Media CenterInstance)
 {
   CLog::Log(LOGDEBUG, "ADDON: Dll Initializing - {}", Name());
   m_initialized = false;
@@ -250,7 +250,7 @@ void CAddonDll::Destroy()
   m_initialized = false;
 }
 
-ADDON_STATUS CAddonDll::CreateInstance(KODI_ADDON_INSTANCE_STRUCT* instance)
+ADDON_STATUS CAddonDll::CreateInstance(UNIVERSALMEDIA_ADDON_INSTANCE_STRUCT* instance)
 {
   assert(instance != nullptr);
   assert(instance->functions != nullptr);
@@ -272,18 +272,18 @@ ADDON_STATUS CAddonDll::CreateInstance(KODI_ADDON_INSTANCE_STRUCT* instance)
 
   if (instance->info)
   {
-    m_usedInstances[instance->info->kodi] = instance;
+    m_usedInstances[instance->info->universalmediacenter] = instance;
   }
 
   return status;
 }
 
-void CAddonDll::DestroyInstance(const KODI_ADDON_INSTANCE_STRUCT* instance)
+void CAddonDll::DestroyInstance(const UNIVERSALMEDIA_ADDON_INSTANCE_STRUCT* instance)
 {
   if (m_usedInstances.empty())
     return;
 
-  auto it = m_usedInstances.find(instance->info->kodi);
+  auto it = m_usedInstances.find(instance->info->universalmediacenter);
   if (it != m_usedInstances.end())
   {
     m_interface.toAddon->destroy_instance(m_interface.addonBase, it->second);
@@ -374,8 +374,8 @@ ADDON_STATUS CAddonDll::TransferSettings(AddonInstanceId instanceId)
   auto settings = GetSettings(instanceId);
   if (settings != nullptr)
   {
-    const KODI_ADDON_INSTANCE_FUNC* instanceTarget{nullptr};
-    KODI_ADDON_INSTANCE_HDL instanceHandle{nullptr};
+    const UNIVERSALMEDIA_ADDON_INSTANCE_FUNC* instanceTarget{nullptr};
+    UNIVERSALMEDIA_ADDON_INSTANCE_HDL instanceHandle{nullptr};
     if (instanceId != ADDON_SETTINGS_ID)
     {
       const auto it = std::ranges::find_if(m_usedInstances, [instanceId](const auto& data)
@@ -519,7 +519,7 @@ ADDON_STATUS CAddonDll::TransferSettings(AddonInstanceId instanceId)
 bool CAddonDll::CheckAPIVersion(int type)
 {
   /* check the API version */
-  CAddonVersion kodiMinVersion(kodi::addon::GetTypeMinVersion(type));
+  CAddonVersion universalmediacenterMinVersion(addon::GetTypeMinVersion(type));
   CAddonVersion addonVersion(m_pDll->GetAddonTypeVersion(type));
   CAddonVersion addonMinVersion = m_pDll->GetAddonTypeMinVersion_available()
                                       ? CAddonVersion(m_pDll->GetAddonTypeMinVersion(type))
@@ -534,14 +534,14 @@ bool CAddonDll::CheckAPIVersion(int type)
   /* If a instance (not global) version becomes checked must be the version
    * present.
    */
-  if (kodiMinVersion > addonVersion ||
-      addonMinVersion > CAddonVersion(kodi::addon::GetTypeVersion(type)))
+  if (universalmediacenterMinVersion > addonVersion ||
+      addonMinVersion > CAddonVersion(addon::GetTypeVersion(type)))
   {
     CLog::Log(LOGERROR, "Add-on '{}' is using an incompatible API version for type '{}'. Universal Media Center API min version = '{}/{}', add-on API version '{}/{}'",
       Name(),
-      kodi::addon::GetTypeName(type),
-      kodi::addon::GetTypeVersion(type),
-      kodiMinVersion.asString(),
+      addon::GetTypeName(type),
+      addon::GetTypeVersion(type),
+      universalmediacenterMinVersion.asString(),
       addonMinVersion.asString(),
       addonVersion.asString());
 

@@ -15,14 +15,14 @@
 #include "games/ports/types/PortNode.h"
 #include "utils/FileUtils.h"
 #include "utils/URIUtils.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 #include "utils/XMLUtils.h"
 #include "utils/log.h"
 
 #include <algorithm>
 #include <cstring>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 namespace
@@ -74,7 +74,7 @@ void CPortManager::LoadXML()
 
   CLog::Log(LOGINFO, "Loading port layout: {}", CURL::GetRedacted(m_xmlPath));
 
-  CXBMCTinyXML2 xmlDoc;
+  CTinyXML2 xmlDoc;
   if (!xmlDoc.LoadFile(m_xmlPath))
   {
     CLog::Log(LOGDEBUG, "Unable to load file: {} at line {}", xmlDoc.ErrorStr(),
@@ -109,7 +109,7 @@ void CPortManager::SaveXMLAsync()
   std::future<void> task = std::async(std::launch::async,
                                       [this, ports = std::move(ports)]()
                                       {
-                                        CXBMCTinyXML2 doc;
+                                        CTinyXML2 doc;
                                         auto* node = doc.NewElement(XML_ROOT_PORTS);
                                         if (node == nullptr)
                                           return;

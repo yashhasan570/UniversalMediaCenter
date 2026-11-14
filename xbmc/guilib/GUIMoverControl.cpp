@@ -15,7 +15,7 @@
 #include "input/mouse/MouseStat.h"
 #include "utils/TimeUtils.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace UTILS;
 
 CGUIMoverControl::CGUIMoverControl(int parentID,
@@ -26,7 +26,7 @@ CGUIMoverControl::CGUIMoverControl(int parentID,
                                    float height,
                                    const CTextureInfo& textureFocus,
                                    const CTextureInfo& textureNoFocus,
-                                   KODI::UTILS::MOVING_SPEED::MapEventConfig& movingSpeedCfg)
+                                   UNIVERSAL MEDIA CENTER::UTILS::MOVING_SPEED::MapEventConfig& movingSpeedCfg)
   : CGUIControl(parentID, controlID, posX, posY, width, height),
     m_imgFocus(CGUITexture::CreateTexture(posX, posY, width, height, textureFocus)),
     m_imgNoFocus(CGUITexture::CreateTexture(posX, posY, width, height, textureNoFocus))

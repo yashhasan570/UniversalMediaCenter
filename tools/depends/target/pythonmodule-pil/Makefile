@@ -86,7 +86,7 @@ ifeq ($(OS),android)
 	cd $(PILPATHLIB)/PIL && \
           sed $(SED_FLAG) -e 's/import sys/import os, sys /' \
                           -e '/__file__/ s/_imaging/lib_imaging/g' \
-                          -e "s/\.*with.*joinpath('\(.*\)').*/__file__ = os.path.join(os.environ[\"KODI_ANDROID_LIBS\"], '\1')/" \
+                          -e "s/\.*with.*joinpath('\(.*\)').*/__file__ = os.path.join(os.environ[\"UNIVERSALMEDIA_ANDROID_LIBS\"], '\1')/" \
                           -e 's/^        /    /' \
                               _imaging*.py
 else ifeq ($(TARGET_PLATFORM),webos)

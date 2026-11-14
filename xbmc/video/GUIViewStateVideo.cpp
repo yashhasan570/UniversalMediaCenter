@@ -31,13 +31,13 @@
 #include "view/ViewStateNames.h"
 #include "view/ViewStateSettings.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace XFILE;
 using namespace VIDEODATABASEDIRECTORY;
 
-std::optional<KODI::MEDIA::MediaSection> CGUIViewStateWindowVideo::GetLockType()
+std::optional<UNIVERSAL MEDIA CENTER::MEDIA::MediaSection> CGUIViewStateWindowVideo::GetLockType()
 {
-  return KODI::MEDIA::MediaSection::VIDEO;
+  return UNIVERSAL MEDIA CENTER::MEDIA::MediaSection::VIDEO;
 }
 
 std::string CGUIViewStateWindowVideo::GetExtensions()

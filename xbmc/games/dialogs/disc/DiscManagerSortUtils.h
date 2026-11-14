@@ -12,7 +12,7 @@
 #include <string>
 #include <utility>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -22,4 +22,4 @@ namespace GAME
 std::optional<std::pair<std::string, int>> GetNormalizedStemAndTrailingNumber(
     const std::string& label);
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

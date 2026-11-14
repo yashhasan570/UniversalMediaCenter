@@ -62,7 +62,7 @@ struct hdr_output_metadata
 };
 #endif
 
-using namespace KODI::WINDOWING::GBM;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::GBM;
 
 using namespace std::chrono_literals;
 
@@ -72,25 +72,25 @@ namespace
 // These map to the definitions in the linux kernel
 // drivers/gpu/drm/drm_connector.c
 
-constexpr auto ColorimetryMap = make_map<KODI::UTILS::Colorimetry, std::string_view>({
-    {KODI::UTILS::Colorimetry::DEFAULT, "Default"},
-    {KODI::UTILS::Colorimetry::SMPTE_170M_YCC, "SMPTE_170M_YCC"},
-    {KODI::UTILS::Colorimetry::BT709_YCC, "BT709_YCC"},
-    {KODI::UTILS::Colorimetry::XVYCC_601, "XVYCC_601"},
-    {KODI::UTILS::Colorimetry::XVYCC_709, "XVYCC_709"},
-    {KODI::UTILS::Colorimetry::SYCC_601, "SYCC_601"},
-    {KODI::UTILS::Colorimetry::OPYCC_601, "opYCC_601"},
-    {KODI::UTILS::Colorimetry::OPRGB, "opRGB"},
-    {KODI::UTILS::Colorimetry::BT2020_CYCC, "BT2020_CYCC"},
-    {KODI::UTILS::Colorimetry::BT2020_RGB, "BT2020_RGB"},
-    {KODI::UTILS::Colorimetry::BT2020_YCC, "BT2020_YCC"},
-    {KODI::UTILS::Colorimetry::DCI_P3_RGB_D65, "DCI-P3_RGB_D65"},
-    {KODI::UTILS::Colorimetry::DCI_P3_RGB_THEATER, "DCI-P3_RGB_Theater"},
-    {KODI::UTILS::Colorimetry::RGB_WIDE_FIXED, "RGB_WIDE_FIXED"},
-    {KODI::UTILS::Colorimetry::RGB_WIDE_FLOAT, "RGB_WIDE_FLOAT"},
-    {KODI::UTILS::Colorimetry::BT601_YCC, "BT601_YCC"},
-    {KODI::UTILS::Colorimetry::ST2113_RGB, "Default"},
-    {KODI::UTILS::Colorimetry::ICTCP, "Default"},
+constexpr auto ColorimetryMap = make_map<UNIVERSAL MEDIA CENTER::UTILS::Colorimetry, std::string_view>({
+    {UNIVERSAL MEDIA CENTER::UTILS::Colorimetry::DEFAULT, "Default"},
+    {UNIVERSAL MEDIA CENTER::UTILS::Colorimetry::SMPTE_170M_YCC, "SMPTE_170M_YCC"},
+    {UNIVERSAL MEDIA CENTER::UTILS::Colorimetry::BT709_YCC, "BT709_YCC"},
+    {UNIVERSAL MEDIA CENTER::UTILS::Colorimetry::XVYCC_601, "XVYCC_601"},
+    {UNIVERSAL MEDIA CENTER::UTILS::Colorimetry::XVYCC_709, "XVYCC_709"},
+    {UNIVERSAL MEDIA CENTER::UTILS::Colorimetry::SYCC_601, "SYCC_601"},
+    {UNIVERSAL MEDIA CENTER::UTILS::Colorimetry::OPYCC_601, "opYCC_601"},
+    {UNIVERSAL MEDIA CENTER::UTILS::Colorimetry::OPRGB, "opRGB"},
+    {UNIVERSAL MEDIA CENTER::UTILS::Colorimetry::BT2020_CYCC, "BT2020_CYCC"},
+    {UNIVERSAL MEDIA CENTER::UTILS::Colorimetry::BT2020_RGB, "BT2020_RGB"},
+    {UNIVERSAL MEDIA CENTER::UTILS::Colorimetry::BT2020_YCC, "BT2020_YCC"},
+    {UNIVERSAL MEDIA CENTER::UTILS::Colorimetry::DCI_P3_RGB_D65, "DCI-P3_RGB_D65"},
+    {UNIVERSAL MEDIA CENTER::UTILS::Colorimetry::DCI_P3_RGB_THEATER, "DCI-P3_RGB_Theater"},
+    {UNIVERSAL MEDIA CENTER::UTILS::Colorimetry::RGB_WIDE_FIXED, "RGB_WIDE_FIXED"},
+    {UNIVERSAL MEDIA CENTER::UTILS::Colorimetry::RGB_WIDE_FLOAT, "RGB_WIDE_FLOAT"},
+    {UNIVERSAL MEDIA CENTER::UTILS::Colorimetry::BT601_YCC, "BT601_YCC"},
+    {UNIVERSAL MEDIA CENTER::UTILS::Colorimetry::ST2113_RGB, "Default"},
+    {UNIVERSAL MEDIA CENTER::UTILS::Colorimetry::ICTCP, "Default"},
 });
 } // namespace
 
@@ -499,10 +499,10 @@ void CWinSystemGbm::SetColorimetry(const VideoPicture* videoPicture)
   if (!connector || !connector->SupportsProperty("Colorspace"))
     return;
 
-  KODI::UTILS::Colorimetry colorimetry = KODI::UTILS::Colorimetry::DEFAULT;
+  UNIVERSAL MEDIA CENTER::UTILS::Colorimetry colorimetry = UNIVERSAL MEDIA CENTER::UTILS::Colorimetry::DEFAULT;
 
   if (videoPicture)
-    colorimetry = KODI::UTILS::GetColorimetry(*videoPicture);
+    colorimetry = UNIVERSAL MEDIA CENTER::UTILS::GetColorimetry(*videoPicture);
 
   m_colorimetry = colorimetry;
 
@@ -518,18 +518,18 @@ void CWinSystemGbm::SetColorimetry(const VideoPicture* videoPicture)
   // (BT.2020_RGB, DCI-P3_RGB). BT.709 RGB and BT.601 RGB are signaled via
   // "Default", with the sink inferring primaries from the transmitted mode
   // (HD resolution -> BT.709, SD resolution -> BT.601).
-  KODI::UTILS::Colorimetry scanoutColorimetry;
+  UNIVERSAL MEDIA CENTER::UTILS::Colorimetry scanoutColorimetry;
   switch (colorimetry)
   {
-    case KODI::UTILS::Colorimetry::BT2020_YCC:
-    case KODI::UTILS::Colorimetry::BT2020_CYCC:
-      scanoutColorimetry = KODI::UTILS::Colorimetry::BT2020_RGB;
+    case UNIVERSAL MEDIA CENTER::UTILS::Colorimetry::BT2020_YCC:
+    case UNIVERSAL MEDIA CENTER::UTILS::Colorimetry::BT2020_CYCC:
+      scanoutColorimetry = UNIVERSAL MEDIA CENTER::UTILS::Colorimetry::BT2020_RGB;
       break;
     default:
       // BT709_YCC, SMPTE_170M_YCC, and all other YCC variants map to Default,
       // which signals sRGB/BT.709 RGB (HD) or BT.601 RGB (SD) based on the
       // transmitted resolution.
-      scanoutColorimetry = KODI::UTILS::Colorimetry::DEFAULT;
+      scanoutColorimetry = UNIVERSAL MEDIA CENTER::UTILS::Colorimetry::DEFAULT;
       break;
   }
 
@@ -538,8 +538,8 @@ void CWinSystemGbm::SetColorimetry(const VideoPicture* videoPicture)
   if (colorspace)
   {
     CLog::LogF(LOGDEBUG, "setting connector colorspace to {} (source {})",
-               KODI::UTILS::ColorimetryToString(scanoutColorimetry),
-               KODI::UTILS::ColorimetryToString(colorimetry));
+               UNIVERSAL MEDIA CENTER::UTILS::ColorimetryToString(scanoutColorimetry),
+               UNIVERSAL MEDIA CENTER::UTILS::ColorimetryToString(colorimetry));
     drm->AddProperty(connector, "Colorspace", colorspace.value());
     drm->SetActive(true);
   }
@@ -577,7 +577,7 @@ bool CWinSystemGbm::SetHDR(const VideoPicture* videoPicture)
       m_hdrBlob.Reset();
     }
 
-    m_eotf = KODI::UTILS::Eotf::TRADITIONAL_SDR;
+    m_eotf = UNIVERSAL MEDIA CENTER::UTILS::Eotf::TRADITIONAL_SDR;
     return false;
   }
 
@@ -585,11 +585,11 @@ bool CWinSystemGbm::SetHDR(const VideoPicture* videoPicture)
   if (videoPicture->color_transfer != AVCOL_TRC_SMPTE2084 &&
       videoPicture->color_transfer != AVCOL_TRC_ARIB_STD_B67)
   {
-    m_eotf = KODI::UTILS::Eotf::TRADITIONAL_SDR;
+    m_eotf = UNIVERSAL MEDIA CENTER::UTILS::Eotf::TRADITIONAL_SDR;
     return false;
   }
 
-  KODI::UTILS::Eotf eotf = KODI::UTILS::GetEOTF(*videoPicture);
+  UNIVERSAL MEDIA CENTER::UTILS::Eotf eotf = UNIVERSAL MEDIA CENTER::UTILS::GetEOTF(*videoPicture);
   m_eotf = eotf;
 
   if (connector->SupportsProperty("HDR_OUTPUT_METADATA") && m_info &&
@@ -597,16 +597,16 @@ bool CWinSystemGbm::SetHDR(const VideoPicture* videoPicture)
   {
     hdr_output_metadata hdr_metadata = {};
 
-    hdr_metadata.metadata_type = KODI::UTILS::HDMI_STATIC_METADATA_TYPE1;
+    hdr_metadata.metadata_type = UNIVERSAL MEDIA CENTER::UTILS::HDMI_STATIC_METADATA_TYPE1;
     hdr_metadata.hdmi_metadata_type1.eotf = static_cast<uint8_t>(eotf);
-    hdr_metadata.hdmi_metadata_type1.metadata_type = KODI::UTILS::HDMI_STATIC_METADATA_TYPE1;
+    hdr_metadata.hdmi_metadata_type1.metadata_type = UNIVERSAL MEDIA CENTER::UTILS::HDMI_STATIC_METADATA_TYPE1;
 
     m_hdrBlob.Reset();
 
     if (hdr_metadata.hdmi_metadata_type1.eotf)
     {
       const AVMasteringDisplayMetadata* mdmd =
-          KODI::UTILS::GetMasteringDisplayMetadata(*videoPicture);
+          UNIVERSAL MEDIA CENTER::UTILS::GetMasteringDisplayMetadata(*videoPicture);
       if (mdmd && mdmd->has_primaries)
       {
         // Convert to unsigned 16-bit values in units of 0.00002,
@@ -651,7 +651,7 @@ bool CWinSystemGbm::SetHDR(const VideoPicture* videoPicture)
                   __FUNCTION__, hdr_metadata.hdmi_metadata_type1.min_display_mastering_luminance);
       }
 
-      const AVContentLightMetadata* clmd = KODI::UTILS::GetContentLightMetadata(*videoPicture);
+      const AVContentLightMetadata* clmd = UNIVERSAL MEDIA CENTER::UTILS::GetContentLightMetadata(*videoPicture);
       if (clmd)
       {
         hdr_metadata.hdmi_metadata_type1.max_cll = clmd->MaxCLL;

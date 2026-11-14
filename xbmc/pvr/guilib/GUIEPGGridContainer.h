@@ -78,7 +78,7 @@ public:
   bool OnMessage(CGUIMessage& message) override;
   void SetFocus(bool focus) override;
   std::string GetDescription() const override;
-  EVENT_RESULT OnMouseEvent(const CPoint& point, const KODI::MOUSE::CMouseEvent& event) override;
+  EVENT_RESULT OnMouseEvent(const CPoint& point, const UNIVERSAL MEDIA CENTER::MOUSE::CMouseEvent& event) override;
 
   void Process(unsigned int currentTime, CDirtyRegionList& dirtyregions) override;
   void Render() override;

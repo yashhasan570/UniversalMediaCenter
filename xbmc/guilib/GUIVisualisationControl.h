@@ -15,13 +15,13 @@
 #include <string>
 #include <vector>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace ADDONS
 {
 class CVisualization;
 } // namespace ADDONS
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER
 
 class CAudioBuffer
 {
@@ -100,5 +100,5 @@ private:
   std::string m_presetsPath; /*!< To add-on sended preset path */
   std::string m_profilePath; /*!< To add-on sended profile path */
 
-  std::unique_ptr<KODI::ADDONS::CVisualization> m_instance;
+  std::unique_ptr<UNIVERSAL MEDIA CENTER::ADDONS::CVisualization> m_instance;
 };

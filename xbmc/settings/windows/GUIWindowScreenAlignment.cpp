@@ -29,14 +29,14 @@
 #include <cmath>
 #include <mutex>
 
-using namespace KODI::UTILS;
+using namespace UNIVERSAL MEDIA CENTER::UTILS;
 
 namespace
 {
 constexpr const char* FONT_NAME = "__screenalignment__";
 
 //! \brief The frame colours, in the order ratios are enumerated. None is a saturated primary.
-constexpr KODI::UTILS::COLOR::Color FRAME_COLOURS[] = {
+constexpr UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color FRAME_COLOURS[] = {
     0xFFFF5050, // red
     0xFF50FF70, // green
     0xFF6090FF, // blue
@@ -50,10 +50,10 @@ constexpr KODI::UTILS::COLOR::Color FRAME_COLOURS[] = {
 //! \brief The frame to start from when the viewer has not stated their screen's shape.
 constexpr float DEFAULT_RATIO = 1.78f;
 
-std::string RowText(const KODI::UTILS::AspectRatioEntry& entry, bool enabled)
+std::string RowText(const UNIVERSAL MEDIA CENTER::UTILS::AspectRatioEntry& entry, bool enabled)
 {
   return StringUtils::Format("{} {}", enabled ? "[x]" : "[ ]",
-                             KODI::UTILS::CAspectRatioVocabulary::ChoiceLabel(entry));
+                             UNIVERSAL MEDIA CENTER::UTILS::CAspectRatioVocabulary::ChoiceLabel(entry));
 }
 } // namespace
 
@@ -263,8 +263,8 @@ void CGUIWindowScreenAlignment::Render()
     if (!shown.contains(CAspectRatioVocabulary::Key(entry.ratio)))
       continue;
 
-    const CRect frame = KODI::WINDOWING::ComputeRasterRect(grid, entry.ratio);
-    const KODI::UTILS::COLOR::Color colour = FrameColour(i);
+    const CRect frame = UNIVERSAL MEDIA CENTER::WINDOWING::ComputeRasterRect(grid, entry.ratio);
+    const UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color colour = FrameColour(i);
 
     DrawFrame(frame, colour, thickness);
     DrawLabel(frame.x1 + thickness * 2.0f, frame.y1 + thickness * 2.0f, XBFONT_LEFT, colour,
@@ -277,7 +277,7 @@ void CGUIWindowScreenAlignment::Render()
 }
 
 void CGUIWindowScreenAlignment::DrawFrame(const CRect& rect,
-                                          KODI::UTILS::COLOR::Color colour,
+                                          UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color colour,
                                           float thickness)
 {
   // Drawn inward from the edges.
@@ -290,7 +290,7 @@ void CGUIWindowScreenAlignment::DrawFrame(const CRect& rect,
 }
 
 void CGUIWindowScreenAlignment::DrawLabel(
-    float x, float y, uint32_t alignment, KODI::UTILS::COLOR::Color colour, const std::string& text)
+    float x, float y, uint32_t alignment, UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color colour, const std::string& text)
 {
   if (!m_layout)
     return;
@@ -345,7 +345,7 @@ RESOLUTION_INFO CGUIWindowScreenAlignment::RawGrid() const
   return grid;
 }
 
-KODI::UTILS::COLOR::Color CGUIWindowScreenAlignment::FrameColour(size_t index)
+UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color CGUIWindowScreenAlignment::FrameColour(size_t index)
 {
   return FRAME_COLOURS[index % std::size(FRAME_COLOURS)];
 }

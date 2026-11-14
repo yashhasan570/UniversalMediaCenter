@@ -13,7 +13,7 @@
 
 #include <cstdlib>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace JOYSTICK;
 
 // Axis must exceed this value to be mapped

@@ -16,7 +16,7 @@
 #include <string>
 #include <vector>
 
-namespace KODI::SHADER
+namespace UNIVERSAL MEDIA CENTER::SHADER
 {
 class IShaderLut;
 class IShaderTexture;
@@ -99,4 +99,4 @@ public:
    */
   virtual void ReleaseTextureReferences() {}
 };
-} // namespace KODI::SHADER
+} // namespace UNIVERSAL MEDIA CENTER::SHADER

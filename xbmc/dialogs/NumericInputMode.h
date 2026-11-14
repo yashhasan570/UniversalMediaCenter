@@ -8,7 +8,7 @@
 
 #pragma once
 
-namespace KODI::DIALOGS
+namespace UNIVERSAL MEDIA CENTER::DIALOGS
 {
 
 //! \brief What the numeric dialog asks for.
@@ -22,4 +22,4 @@ enum class NUMERIC_MODE
   TIME_SECONDS,
 };
 
-} // namespace KODI::DIALOGS
+} // namespace UNIVERSAL MEDIA CENTER::DIALOGS

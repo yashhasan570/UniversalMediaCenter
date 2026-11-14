@@ -21,7 +21,7 @@ using namespace XFILE;
 std::unique_ptr<IHttpClient> XFILE::CreateHttpClient()
 {
 #if defined(TARGET_WASM)
-  if (!kodi_wasm_has_sockets())
+  if (!universalmediacenter_wasm_has_sockets())
     return std::make_unique<CXhrHttpClient>();
 #endif
   return std::make_unique<CCurlHttpClient>();

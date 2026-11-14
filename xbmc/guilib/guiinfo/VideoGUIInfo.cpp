@@ -53,10 +53,10 @@
 #include <mutex>
 #include <string>
 
-using namespace KODI::GUILIB;
-using namespace KODI::GUILIB::GUIINFO;
-using namespace KODI;
-using KODI::MEDIA::PluralNameOf;
+using namespace UNIVERSAL MEDIA CENTER::GUILIB;
+using namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO;
+using namespace UNIVERSAL MEDIA CENTER;
+using UNIVERSAL MEDIA CENTER::MEDIA::PluralNameOf;
 
 CVideoGUIInfo::CVideoGUIInfo()
   : m_appPlayer(CServiceBroker::GetAppComponents().GetComponent<CApplicationPlayer>())
@@ -539,7 +539,7 @@ bool CVideoGUIInfo::GetLabel(std::string& value,
             CStreamDetails::VideoAspectToAspectDescription(tag->m_streamDetails.GetVideoAspect());
         return true;
       case LISTITEM_VIDEO_ASPECT_NAME:
-        value = KODI::UTILS::CAspectRatioVocabulary::Name(tag->m_streamDetails.GetVideoAspect());
+        value = UNIVERSAL MEDIA CENTER::UTILS::CAspectRatioVocabulary::Name(tag->m_streamDetails.GetVideoAspect());
         return true;
       case LISTITEM_CONTENT_ASPECT:
       case LISTITEM_CONTENT_ASPECT_NAME:
@@ -714,7 +714,7 @@ bool CVideoGUIInfo::GetLabel(std::string& value,
           CServiceBroker::GetDataCacheCore().GetVideoDAR());
       return true;
     case VIDEOPLAYER_VIDEO_ASPECT_NAME:
-      value = KODI::UTILS::CAspectRatioVocabulary::Name(
+      value = UNIVERSAL MEDIA CENTER::UTILS::CAspectRatioVocabulary::Name(
           CServiceBroker::GetDataCacheCore().GetVideoDAR());
       return true;
     case VIDEOPLAYER_CONTENT_ASPECT:

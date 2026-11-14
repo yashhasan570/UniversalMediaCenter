@@ -14,7 +14,7 @@ import sqlite3
 import time
 from urllib.request import Request, urlopen
 
-import xbmcvfs
+import vfs
 
 from lib import log
 from lib.config import ADDON, API_HEADERS
@@ -98,7 +98,7 @@ def _init_path():
     global _db_path
     if _db_path:
         return
-    addon_data = xbmcvfs.translatePath(ADDON.getAddonInfo('profile'))
+    addon_data = vfs.translatePath(ADDON.getAddonInfo('profile'))
     if not os.path.exists(addon_data):
         os.makedirs(addon_data)
     _db_path = os.path.join(addon_data, 'imdb_ratings.db')

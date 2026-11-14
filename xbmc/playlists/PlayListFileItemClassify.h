@@ -10,7 +10,7 @@
 
 class CFileItem;
 
-namespace KODI::PLAYLIST
+namespace UNIVERSAL MEDIA CENTER::PLAYLIST
 {
 
 //! \brief Check whether an item is a playlist.
@@ -19,4 +19,4 @@ bool IsPlayList(const CFileItem& item);
 //! \brief Check whether an item is a smart playlist.
 bool IsSmartPlayList(const CFileItem& item);
 
-} // namespace KODI::PLAYLIST
+} // namespace UNIVERSAL MEDIA CENTER::PLAYLIST

@@ -14,7 +14,7 @@
 
 #include <limits>
 
-using namespace KODI::GUILIB;
+using namespace UNIVERSAL MEDIA CENTER::GUILIB;
 
 CGUIListLabel::CGUIListLabel(int parentID, int controlID, float posX, float posY, float width, float height,
                              const CLabelInfo& labelInfo, const GUIINFO::CGUIInfoLabel &info, CGUIControl::GUISCROLLVALUE scroll)

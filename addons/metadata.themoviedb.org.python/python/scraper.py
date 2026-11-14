@@ -1,9 +1,9 @@
 import json
 import sys
-import xbmc
-import xbmcaddon
-import xbmcgui
-import xbmcplugin
+import 
+import addon
+import gui
+import plugin
 
 from lib.tmdbscraper.tmdb import TMDBMovieScraper
 from lib.tmdbscraper.fanarttv import get_details as get_fanarttv_artwork
@@ -14,11 +14,11 @@ from scraper_datahelper import combine_scraped_details_info_and_ratings, \
 from scraper_config import configure_scraped_details, PathSpecificSettings, \
     configure_tmdb_artwork, is_fanarttv_configured
 
-ADDON_SETTINGS = xbmcaddon.Addon()
+ADDON_SETTINGS = addon.Addon()
 ID = ADDON_SETTINGS.getAddonInfo('id')
 
-def log(msg, level=xbmc.LOGDEBUG):
-    xbmc.log(msg='[{addon}]: {msg}'.format(addon=ID, msg=msg), level=level)
+def log(msg, level=.LOGDEBUG):
+    .log(msg='[{addon}]: {msg}'.format(addon=ID, msg=msg), level=level)
 
 def get_tmdb_scraper(settings):
     language = settings.getSettingString('language')
@@ -27,7 +27,7 @@ def get_tmdb_scraper(settings):
     return TMDBMovieScraper(ADDON_SETTINGS, language, certcountry, search_language)
 
 def search_for_movie(title, year, handle, settings):
-    log("Find movie with title '{title}' from year '{year}'".format(title=title, year=year), xbmc.LOGINFO)
+    log("Find movie with title '{title}' from year '{year}'".format(title=title, year=year), .LOGINFO)
     title = _strip_trailing_article(title)
     scraper = get_tmdb_scraper(settings)
 
@@ -44,14 +44,14 @@ def search_for_movie(title, year, handle, settings):
 
     if 'error' in search_results:
         header = "The Movie Database Python error searching with web service TMDB"
-        xbmcgui.Dialog().notification(header, search_results['error'], xbmcgui.NOTIFICATION_WARNING)
-        log(header + ': ' + search_results['error'], xbmc.LOGWARNING)
+        gui.Dialog().notification(header, search_results['error'], gui.NOTIFICATION_WARNING)
+        log(header + ': ' + search_results['error'], .LOGWARNING)
         return
 
     for movie in search_results:
         listitem = _searchresult_to_listitem(movie)
         uniqueids = {'tmdb': str(movie['id'])}
-        xbmcplugin.addDirectoryItem(handle=handle, url=build_lookup_string(uniqueids),
+        plugin.addDirectoryItem(handle=handle, url=build_lookup_string(uniqueids),
             listitem=listitem, isFolder=True)
 
 _articles = [prefix + article for prefix in (', ', ' ') for article in ("the", "a", "an")]
@@ -69,7 +69,7 @@ def _searchresult_to_listitem(movie):
     if movie_year:
         movie_label += ' ({})'.format(movie_year)
 
-    listitem = xbmcgui.ListItem(movie_label, offscreen=True)
+    listitem = gui.ListItem(movie_label, offscreen=True)
 
     infotag = listitem.getVideoInfoTag()
     infotag.setTitle(movie['title'])
@@ -106,8 +106,8 @@ def get_details(input_uniqueids, handle, settings, fail_silently=False):
         if fail_silently:
             return False
         header = "The Movie Database Python error with web service TMDB"
-        xbmcgui.Dialog().notification(header, details['error'], xbmcgui.NOTIFICATION_WARNING)
-        log(header + ': ' + details['error'], xbmc.LOGWARNING)
+        gui.Dialog().notification(header, details['error'], gui.NOTIFICATION_WARNING)
+        log(header + ': ' + details['error'], .LOGWARNING)
         return False
 
     details = configure_tmdb_artwork(details, settings)
@@ -116,7 +116,7 @@ def get_details(input_uniqueids, handle, settings, fail_silently=False):
         imdbinfo = get_imdb_details(details['uniqueids'])
         if 'error' in imdbinfo:
             header = "The Movie Database Python error with website IMDB"
-            log(header + ': ' + imdbinfo['error'], xbmc.LOGWARNING)
+            log(header + ': ' + imdbinfo['error'], .LOGWARNING)
         else:
             details = combine_scraped_details_info_and_ratings(details, imdbinfo)
 
@@ -136,7 +136,7 @@ def get_details(input_uniqueids, handle, settings, fail_silently=False):
 
     details = configure_scraped_details(details, settings)
 
-    listitem = xbmcgui.ListItem(details['info']['title'], offscreen=True)
+    listitem = gui.ListItem(details['info']['title'], offscreen=True)
     infotag = listitem.getVideoInfoTag()
     set_info(infotag, details['info'])
     infotag.setCast(build_cast(details['cast']))
@@ -145,10 +145,10 @@ def get_details(input_uniqueids, handle, settings, fail_silently=False):
     IMAGE_LIMIT = settings.getSettingInt('maxartwork')
     add_artworks(listitem, details['available_art'], IMAGE_LIMIT)
 
-    xbmcplugin.setResolvedUrl(handle=handle, succeeded=True, listitem=listitem)
+    plugin.setResolvedUrl(handle=handle, succeeded=True, listitem=listitem)
     return True
 
-def set_info(infotag: xbmc.InfoTagVideo, info_dict):
+def set_info(infotag: .InfoTagVideo, info_dict):
     infotag.setTitle(info_dict['title'])
     infotag.setOriginalTitle(info_dict['originaltitle'])
     infotag.setPlot(info_dict['plot'])
@@ -174,7 +174,7 @@ def set_info(infotag: xbmc.InfoTagVideo, info_dict):
         infotag.setTop250(info_dict['top250'])
 
 def build_cast(cast_list):
-    return [xbmc.Actor(cast['name'], cast['role'], cast['order'], cast['thumbnail']) for cast in cast_list]
+    return [.Actor(cast['name'], cast['role'], cast['order'], cast['thumbnail']) for cast in cast_list]
 
 def build_ratings(rating_dict):
     return {key: (value['rating'], value.get('votes', 0)) for key, value in rating_dict.items()}
@@ -185,8 +185,8 @@ def find_defaultrating(rating_dict):
 def find_uniqueids_in_nfo(nfo, handle):
     uniqueids = find_uniqueids_in_text(nfo)
     if uniqueids:
-        listitem = xbmcgui.ListItem(offscreen=True)
-        xbmcplugin.addDirectoryItem(
+        listitem = gui.ListItem(offscreen=True)
+        plugin.addDirectoryItem(
             handle=handle, url=build_lookup_string(uniqueids), listitem=listitem, isFolder=True)
 
 def build_lookup_string(uniqueids):
@@ -196,7 +196,7 @@ def parse_lookup_string(uniqueids):
     try:
         return json.loads(uniqueids)
     except ValueError:
-        log("Can't parse this lookup string, is it from another add-on?\n" + uniqueids, xbmc.LOGWARNING)
+        log("Can't parse this lookup string, is it from another add-on?\n" + uniqueids, .LOGWARNING)
         return None
 
 def run():
@@ -204,7 +204,7 @@ def run():
     enddir = True
     if 'action' in params:
         settings = ADDON_SETTINGS if not params.get('pathSettings') else \
-            PathSpecificSettings(json.loads(params['pathSettings']), lambda msg: log(msg, xbmc.LOGWARNING))
+            PathSpecificSettings(json.loads(params['pathSettings']), lambda msg: log(msg, .LOGWARNING))
         action = params["action"]
         if action == 'find' and 'title' in params:
             search_for_movie(params["title"], params.get("year"), params['handle'], settings)
@@ -214,11 +214,11 @@ def run():
         elif action == 'NfoUrl' and 'nfo' in params:
             find_uniqueids_in_nfo(params["nfo"], params['handle'])
         else:
-            log("unhandled action: " + action, xbmc.LOGWARNING)
+            log("unhandled action: " + action, .LOGWARNING)
     else:
-        log("No action in 'params' to act on", xbmc.LOGWARNING)
+        log("No action in 'params' to act on", .LOGWARNING)
     if enddir:
-        xbmcplugin.endOfDirectory(params['handle'])
+        plugin.endOfDirectory(params['handle'])
 
 if __name__ == '__main__':
     run()

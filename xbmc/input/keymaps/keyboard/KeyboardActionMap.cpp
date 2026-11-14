@@ -15,7 +15,7 @@
 #include "input/actions/Action.h"
 #include "input/keyboard/Key.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace KEYMAP;
 
 unsigned int CKeyboardActionMap::GetActionID(const CKey& key)

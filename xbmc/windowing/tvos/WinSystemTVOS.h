@@ -39,7 +39,7 @@ public:
   // ITimerCallback interface
   virtual void OnTimeout() override {}
 
-  void MessagePush(XBMC_Event* newEvent);
+  void MessagePush(_Event* newEvent);
   size_t GetQueueSize();
   void AnnounceOnLostDevice();
   void AnnounceOnResetDevice();
@@ -95,7 +95,7 @@ public:
   bool MessagePump() override;
 
 protected:
-  virtual std::unique_ptr<KODI::WINDOWING::IOSScreenSaver> GetOSScreenSaverImpl() override;
+  virtual std::unique_ptr<UNIVERSAL MEDIA CENTER::WINDOWING::IOSScreenSaver> GetOSScreenSaverImpl() override;
   void PresentRenderImpl(bool rendered) override;
   void SetVSyncImpl(bool enable) override {}
 

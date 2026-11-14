@@ -12,7 +12,7 @@ import android.util.Log;
  * Created by Christian BROWET on 1/10/17.
  */
 
-public class XBMCMediaSession
+public class MediaSession
 {
   native void _onPlayRequested();
 
@@ -34,13 +34,13 @@ public class XBMCMediaSession
 
   private static final String TAG = "@APP_NAME@";
 
-  private class XBMCMediaSessionCallback extends MediaSession.Callback
+  private class MediaSessionCallback extends MediaSession.Callback
   {
 
     @Override
     public void onPlay()
     {
-      Log.d(TAG, "XBMCMediaSession.onPlay: ");
+      Log.d(TAG, "MediaSession.onPlay: ");
       super.onPlay();
       _onPlayRequested();
     }
@@ -48,7 +48,7 @@ public class XBMCMediaSession
     @Override
     public void onPause()
     {
-      Log.d(TAG, "XBMCMediaSession.onPause: ");
+      Log.d(TAG, "MediaSession.onPause: ");
       super.onPause();
       _onPauseRequested();
     }
@@ -56,7 +56,7 @@ public class XBMCMediaSession
     @Override
     public void onSkipToNext()
     {
-      Log.d(TAG, "XBMCMediaSession.onSkipToNext: ");
+      Log.d(TAG, "MediaSession.onSkipToNext: ");
       super.onSkipToNext();
       _onNextRequested();
     }
@@ -64,7 +64,7 @@ public class XBMCMediaSession
     @Override
     public void onSkipToPrevious()
     {
-      Log.d(TAG, "XBMCMediaSession.onSkipToPrevious: ");
+      Log.d(TAG, "MediaSession.onSkipToPrevious: ");
       super.onSkipToPrevious();
       _onPreviousRequested();
     }
@@ -72,7 +72,7 @@ public class XBMCMediaSession
     @Override
     public void onFastForward()
     {
-      Log.d(TAG, "XBMCMediaSession.onFastForward: ");
+      Log.d(TAG, "MediaSession.onFastForward: ");
       super.onFastForward();
       _onForwardRequested();
     }
@@ -80,7 +80,7 @@ public class XBMCMediaSession
     @Override
     public void onRewind()
     {
-      Log.d(TAG, "XBMCMediaSession.onRewind: ");
+      Log.d(TAG, "MediaSession.onRewind: ");
       super.onRewind();
       _onRewindRequested();
     }
@@ -88,7 +88,7 @@ public class XBMCMediaSession
     @Override
     public void onStop()
     {
-      Log.d(TAG, "XBMCMediaSession.onStop: ");
+      Log.d(TAG, "MediaSession.onStop: ");
       super.onStop();
       _onStopRequested();
     }
@@ -96,7 +96,7 @@ public class XBMCMediaSession
     @Override
     public void onSeekTo(long pos)
     {
-      Log.d(TAG, "XBMCMediaSession.onSeekTo: ");
+      Log.d(TAG, "MediaSession.onSeekTo: ");
       super.onSeekTo(pos);
       _onSeekRequested(pos);
     }
@@ -104,7 +104,7 @@ public class XBMCMediaSession
     @Override
     public boolean onMediaButtonEvent(Intent intent)
     {
-      Log.d(TAG, "XBMCMediaSession.onMediaButtonEvent: ");
+      Log.d(TAG, "MediaSession.onMediaButtonEvent: ");
       if (!_onMediaButtonEvent(intent))
         return super.onMediaButtonEvent(intent);
       return true;
@@ -112,13 +112,13 @@ public class XBMCMediaSession
   }
 
   private MediaSession mSession = null;
-  private XBMCMediaSessionCallback mMediaSessionCallback;
+  private MediaSessionCallback mMediaSessionCallback;
   private long mTotDurMs = 0;
 
-  public XBMCMediaSession()
+  public MediaSession()
   {
-    Log.d(TAG, "XBMCMediaSession init");
-    mSession = new MediaSession(Main.MainActivity, "XBMC_session");
+    Log.d(TAG, "MediaSession init");
+    mSession = new MediaSession(Main.MainActivity, "_session");
     if (Build.VERSION.SDK_INT < 26) {
       @SuppressWarnings("deprecation")
       int flags = MediaSession.FLAG_HANDLES_MEDIA_BUTTONS | MediaSession.FLAG_HANDLES_TRANSPORT_CONTROLS;
@@ -130,8 +130,8 @@ public class XBMCMediaSession
       @Override
       public void run()
       {
-        Log.d(TAG, "XBMCMediaSession callback");
-        mMediaSessionCallback = new XBMCMediaSessionCallback();
+        Log.d(TAG, "MediaSession callback");
+        mMediaSessionCallback = new MediaSessionCallback();
         mSession.setCallback(mMediaSessionCallback);
       }
     });

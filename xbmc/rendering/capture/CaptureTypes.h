@@ -20,7 +20,7 @@ extern "C"
 #include <libavutil/pixfmt.h>
 }
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RENDERING
 {
@@ -92,4 +92,4 @@ struct CaptureResult
 
 } // namespace CAPTURE
 } // namespace RENDERING
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

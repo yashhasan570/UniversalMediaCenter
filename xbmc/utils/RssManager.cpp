@@ -20,13 +20,13 @@
 #include "utils/FileUtils.h"
 #include "utils/RssReader.h"
 #include "utils/StringUtils.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 #include "utils/log.h"
 
 #include <mutex>
 #include <utility>
 
-using namespace KODI::MESSAGING;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
 
 
 CRssManager::CRssManager()
@@ -102,7 +102,7 @@ bool CRssManager::Load()
   if (!CFileUtils::Exists(rssXML))
     return false;
 
-  CXBMCTinyXML2 rssDoc;
+  CTinyXML2 rssDoc;
   if (!rssDoc.LoadFile(rssXML))
   {
     CLog::Log(LOGERROR, "CRssManager: error loading {}, Line {}\n{}", rssXML, rssDoc.ErrorLineNum(),

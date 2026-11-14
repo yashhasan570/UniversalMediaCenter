@@ -18,7 +18,7 @@
 #include <algorithm>
 #include <assert.h>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace KEYMAP;
 
 #define DIGITAL_ANALOG_THRESHOLD 0.5f

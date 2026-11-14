@@ -163,7 +163,7 @@ IFile* CFileFactory::CreateLoader(const CURL& url)
 #endif
 
 #if defined(TARGET_WASM)
-  if ((url.IsProtocol("http") || url.IsProtocol("https")) && !kodi_wasm_has_sockets())
+  if ((url.IsProtocol("http") || url.IsProtocol("https")) && !universalmediacenter_wasm_has_sockets())
     return new CXhrFile();
 #endif
   if (url.IsProtocol("ftp")

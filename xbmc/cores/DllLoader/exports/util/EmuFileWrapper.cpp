@@ -46,8 +46,8 @@ void CEmuFileWrapper::CleanUp()
   {
     if (file.used)
     {
-      file.file_xbmc->Close();
-      delete file.file_xbmc;
+      file.file_->Close();
+      delete file.file_;
 
       if (file.file_lock)
       {
@@ -73,7 +73,7 @@ EmuFileObject* CEmuFileWrapper::RegisterFileObject(XFILE::CFile* pFile)
       // found a free location
       object = &m_files[i];
       object->used = true;
-      object->file_xbmc = pFile;
+      object->file_ = pFile;
       object->fd = (i + FILE_WRAPPER_OFFSET);
       object->file_lock = new CCriticalSection();
       break;
@@ -179,7 +179,7 @@ XFILE::CFile* CEmuFileWrapper::GetFileXbmcByDescriptor(int fd)
   auto object = GetFileObjectByDescriptor(fd);
   if (object != nullptr && object->used)
   {
-    return object->file_xbmc;
+    return object->file_;
   }
   return nullptr;
 }
@@ -191,7 +191,7 @@ XFILE::CFile* CEmuFileWrapper::GetFileXbmcByStream(FILE* stream)
     EmuFileObject* object = reinterpret_cast<EmuFileObject*>(stream);
     if (object != nullptr && object->used)
     {
-      return object->file_xbmc;
+      return object->file_;
     }
   }
   return nullptr;

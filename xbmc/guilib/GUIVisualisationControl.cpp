@@ -275,7 +275,7 @@ void CGUIVisualisationControl::UpdateTrack()
   // get the current album art filename
   m_albumThumb = CSpecialProtocol::TranslatePath(
       CServiceBroker::GetGUI()->GetInfoManager().GetImage(MUSICPLAYER_COVER, WINDOW_INVALID));
-  if (m_albumThumb == KODI::ART::DEFAULT::ALBUM_COVER)
+  if (m_albumThumb == UNIVERSAL MEDIA CENTER::ART::DEFAULT::ALBUM_COVER)
     m_albumThumb = "";
   else
     CLog::Log(LOGDEBUG, "Updating visualization albumart: {}", m_albumThumb);
@@ -293,7 +293,7 @@ void CGUIVisualisationControl::UpdateTrack()
       tag->GetGenre(),
       CServiceBroker::GetSettingsComponent()->GetAdvancedSettings()->m_musicItemSeparator));
 
-  KODI_ADDON_VISUALIZATION_TRACK track = {};
+  UNIVERSALMEDIA_ADDON_VISUALIZATION_TRACK track = {};
   track.title = tag->GetTitle().c_str();
   track.artist = artist.c_str();
   track.album = tag->GetAlbum().c_str();
@@ -389,7 +389,7 @@ bool CGUIVisualisationControl::InitVisualization()
   if (y + h > context.GetHeight())
     h = context.GetHeight() - y;
 
-  m_instance = std::make_unique<KODI::ADDONS::CVisualization>(addonBase, x, y, w, h);
+  m_instance = std::make_unique<UNIVERSAL MEDIA CENTER::ADDONS::CVisualization>(addonBase, x, y, w, h);
   CreateBuffers();
 
   m_alreadyStarted = false;

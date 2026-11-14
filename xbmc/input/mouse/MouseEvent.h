@@ -8,7 +8,7 @@
 
 #pragma once
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace MOUSE
 {
@@ -34,4 +34,4 @@ public:
   float m_offsetY;
 };
 } // namespace MOUSE
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

@@ -54,7 +54,7 @@ std::unique_ptr<CDVDVideoCodec> CDVDFactoryCodec::CreateVideoCodec(CDVDStreamInf
   if (hint.externalInterfaces)
   {
     ADDON::AddonInfoPtr addonInfo;
-    KODI_HANDLE parentInstance;
+    UNIVERSALMEDIA_HANDLE parentInstance;
     hint.externalInterfaces->GetAddonInstance(ADDON::IAddonProvider::InstanceType::VIDEOCODEC,
                                               addonInfo, parentInstance);
     if (addonInfo && parentInstance)

@@ -40,7 +40,7 @@ using ::testing::Test;
 using ::testing::ValuesIn;
 using ::testing::WithParamInterface;
 
-using namespace KODI::VIDEO;
+using namespace UNIVERSAL MEDIA CENTER::VIDEO;
 
 TEST(TestUtil, GetQualifiedFilename)
 {
@@ -60,7 +60,7 @@ TEST(TestUtil, GetQualifiedFilename)
 
 TEST(TestUtil, IsInPlaylistsFolderFollowsThePlaylistsSetting)
 {
-  using KODI::MEDIA::MediaSection;
+  using UNIVERSAL MEDIA CENTER::MEDIA::MediaSection;
   const auto settings = CServiceBroker::GetSettingsComponent()->GetSettings();
   const std::string original{settings->GetString(CSettings::SETTING_SYSTEM_PLAYLISTSPATH)};
   settings->SetString(CSettings::SETTING_SYSTEM_PLAYLISTSPATH, "special://temp/lists/");
@@ -1169,7 +1169,7 @@ TEST_F(TestVersionSubtitles, EachOfSeveralIsosInAFolderHasOnlyItsOwnSubtitles)
 TEST_F(TestVersionSubtitles, AnotherVersionsArchivedSubtitlesAreNotOffered)
 {
   const std::string disc{File("M3GAN.iso")};
-  const std::string archive{XBMC_REF_FILE_PATH("xbmc/filesystem/test/reffile.txt.zip")};
+  const std::string archive{_REF_FILE_PATH("/filesystem/test/reffile.txt.zip")};
   for (const char* name : {"M3GAN-00800.zip", "M3GAN-00801.zip"})
     ASSERT_TRUE(XFILE::CFile::Copy(archive, URIUtils::AddFileToFolder(m_folder, name)));
 
@@ -1221,7 +1221,7 @@ TEST_F(TestVersionSubtitles, AVideoFileHasAllItsSubtitles)
 TEST_F(TestVersionSubtitles, AnotherVersionsArchivedSubtitlesOfAFolderRipAreNotOffered)
 {
   const std::string disc{File(URIUtils::AddFileToFolder("BDMV", "index.bdmv"))};
-  const std::string archive{XBMC_REF_FILE_PATH("xbmc/filesystem/test/reffile.txt.zip")};
+  const std::string archive{_REF_FILE_PATH("/filesystem/test/reffile.txt.zip")};
   for (const char* name : {"M3GAN-00800.zip", "M3GAN-00801.zip"})
     ASSERT_TRUE(XFILE::CFile::Copy(archive, URIUtils::AddFileToFolder(m_folder, name)));
 
@@ -1867,7 +1867,7 @@ TEST_F(TestVersionSubtitles, AnExtraOfAnIsoHasOnlyItsOwnSubtitles)
 TEST_F(TestVersionSubtitles, AnExtrasArchivedSubtitlesAreThoseOfItsOwnArchive)
 {
   const std::string disc{URIUtils::GetBlurayPlaylistPath(File("M3GAN.iso"), 805)};
-  const std::string archive{XBMC_REF_FILE_PATH("xbmc/filesystem/test/reffile.txt.zip")};
+  const std::string archive{_REF_FILE_PATH("/filesystem/test/reffile.txt.zip")};
   for (const char* name : {"M3GAN.zip", "M3GAN-00805.zip"})
     ASSERT_TRUE(XFILE::CFile::Copy(archive, URIUtils::AddFileToFolder(m_folder, name)));
 

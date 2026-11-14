@@ -34,7 +34,7 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI::VIDEO;
+using namespace UNIVERSAL MEDIA CENTER::VIDEO;
 
 namespace
 {
@@ -100,7 +100,7 @@ protected:
     CMediaSource source;
     source.FromNameAndPaths(m_root, {m_root});
     CMediaSourceSettings::GetInstance()
-        .GetSources(KODI::MEDIA::MediaSection::VIDEO)
+        .GetSources(UNIVERSAL MEDIA CENTER::MEDIA::MediaSection::VIDEO)
         .push_back(source);
     ASSERT_TRUE(m_db.ExecuteQuery(m_db.PrepareSQL(
         "UPDATE path SET strContent='movies', strScraper='metadata.local', useFolderNames=1, "
@@ -110,7 +110,7 @@ protected:
 
   void TearDown() override
   {
-    std::erase_if(CMediaSourceSettings::GetInstance().GetSources(KODI::MEDIA::MediaSection::VIDEO),
+    std::erase_if(CMediaSourceSettings::GetInstance().GetSources(UNIVERSAL MEDIA CENTER::MEDIA::MediaSection::VIDEO),
                   [this](const CMediaSource& source) { return source.strPath == m_root; });
     Settings()->SetBool(CSettings::SETTING_MYVIDEOS_EXTRACTTHUMB, m_extractThumb);
 
@@ -530,7 +530,7 @@ TEST_F(TestVideoInfoScannerArt, AnExtraOfAnIsoHasOnlyItsOwnArt)
   CFileItem extra{URIUtils::GetBlurayPlaylistPath(iso, 805), false};
   extra.GetVideoInfoTag()->m_strFileNameAndPath = extra.GetPath();
   extra.GetVideoInfoTag()->GetAssetInfo().SetType(VideoAssetType::EXTRA);
-  extra.SetProperty(KODI::ITEM::PROPERTY::BLURAY_PLAYLIST, 805);
+  extra.SetProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::BLURAY_PLAYLIST, 805);
   const CVideoInfoScannerArt art;
   art.GetArtwork(&extra, ADDON::ContentType::MOVIE_VERSIONS, true, true, "");
 
@@ -601,9 +601,9 @@ TEST_F(TestVideoInfoScannerArt, AMovieAndItsExtraOnADiscHaveTheirArtAgainAfterAn
       0x00, 0x00, 0x00, 0x00, 0x49, 0x45, 0x4e, 0x44, 0xae, 0x42, 0x60, 0x82};
   const std::string png(pngBytes.begin(), pngBytes.end());
   const std::string images{Folder(m_root, "images")};
-  ASSERT_TRUE(m_db.SetArtForItem(idMovie, KODI::MEDIA::TYPE::MOVIE, "poster",
+  ASSERT_TRUE(m_db.SetArtForItem(idMovie, UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MOVIE, "poster",
                                  File(images, "movie.png", png)));
-  ASSERT_TRUE(m_db.SetArtForItem(idExtra, KODI::MEDIA::TYPE::VIDEO_VERSION, "poster",
+  ASSERT_TRUE(m_db.SetArtForItem(idExtra, UNIVERSAL MEDIA CENTER::MEDIA::TYPE::VIDEO_VERSION, "poster",
                                  File(images, "extra.png", png)));
 
   Settings()->SetBool(CSettings::SETTING_VIDEOLIBRARY_RETRIEVEALLARTONEXPORT, true);

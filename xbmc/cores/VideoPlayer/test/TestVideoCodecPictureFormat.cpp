@@ -125,7 +125,7 @@ DecodedPicture DecodeFirstPicture(const std::string& path)
 TEST(TestVideoCodecPictureFormat, SquarePixelsAreDisplayedAtThePicturesOwnSize)
 {
   const DecodedPicture picture{DecodeFirstPicture(
-      XBMC_REF_FILE_PATH("xbmc/cores/VideoPlayer/test/testdata/h264_8bit_322x240.mkv"))};
+      _REF_FILE_PATH("/cores/VideoPlayer/test/testdata/h264_8bit_322x240.mkv"))};
 
   ASSERT_TRUE(picture.decoded) << "the 322x240 clip did not decode at all";
   EXPECT_EQ(322u, picture.displayWidth);
@@ -136,7 +136,7 @@ TEST(TestVideoCodecPictureFormat, SquarePixelsAreDisplayedAtThePicturesOwnSize)
 TEST(TestVideoCodecPictureFormat, WidePixelsKeepTheWidthAndReduceTheHeight)
 {
   const DecodedPicture picture{DecodeFirstPicture(
-      XBMC_REF_FILE_PATH("xbmc/cores/VideoPlayer/test/testdata/h264_8bit_322x244_sar_2_1.mkv"))};
+      _REF_FILE_PATH("/cores/VideoPlayer/test/testdata/h264_8bit_322x244_sar_2_1.mkv"))};
 
   ASSERT_TRUE(picture.decoded) << "the 322x244 clip did not decode at all";
   EXPECT_EQ(322u, picture.displayWidth);
@@ -147,7 +147,7 @@ TEST(TestVideoCodecPictureFormat, WidePixelsKeepTheWidthAndReduceTheHeight)
 TEST(TestVideoCodecPictureFormat, AV1ReportsItsPixelFormatAndBitDepth)
 {
   const DecodedPicture picture{DecodeFirstPicture(
-      XBMC_REF_FILE_PATH("xbmc/cores/VideoPlayer/test/testdata/av1_10bit_320x240.mkv"))};
+      _REF_FILE_PATH("/cores/VideoPlayer/test/testdata/av1_10bit_320x240.mkv"))};
 
   ASSERT_TRUE(picture.decoded) << "the AV1 clip did not decode at all";
   EXPECT_NE(AV_PIX_FMT_NONE, picture.pixelFormat);
@@ -159,7 +159,7 @@ TEST(TestVideoCodecPictureFormat, AV1ReportsItsPixelFormatAndBitDepth)
 TEST(TestVideoCodecPictureFormat, H264ReportsItsPixelFormatAndBitDepth)
 {
   const DecodedPicture picture{DecodeFirstPicture(
-      XBMC_REF_FILE_PATH("xbmc/cores/VideoPlayer/test/testdata/h264_8bit_320x240.mkv"))};
+      _REF_FILE_PATH("/cores/VideoPlayer/test/testdata/h264_8bit_320x240.mkv"))};
 
   ASSERT_TRUE(picture.decoded) << "the H.264 clip did not decode at all";
   EXPECT_NE(AV_PIX_FMT_NONE, picture.pixelFormat);

@@ -25,8 +25,8 @@
 
 #include <memory>
 
-using namespace KODI::GUILIB::GUIINFO;
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO;
+using namespace UNIVERSAL MEDIA CENTER;
 
 constexpr auto listitem2slideshow_map = make_map<int, int>({
     // clang-format off

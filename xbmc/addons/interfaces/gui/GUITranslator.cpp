@@ -12,9 +12,9 @@
 
 using namespace ADDON;
 
-ADDON_ACTION CAddonGUITranslator::TranslateActionIdToAddon(int kodiId)
+ADDON_ACTION CAddonGUITranslator::TranslateActionIdToAddon(int universalmediacenterId)
 {
-  switch (kodiId)
+  switch (universalmediacenterId)
   {
     case ACTION_NONE:
       return ADDON_ACTION_NONE;

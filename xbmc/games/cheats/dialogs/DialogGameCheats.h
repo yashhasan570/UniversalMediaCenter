@@ -14,7 +14,7 @@
 #include <cstdint>
 #include <vector>
 
-namespace KODI::GAME
+namespace UNIVERSAL MEDIA CENTER::GAME
 {
 /*! \ingroup games
  *  \brief Toggle the cheats available for the game being played.
@@ -49,4 +49,4 @@ private:
   int m_getMoreControl{0};
   bool m_restoreListFocus{false};
 };
-} // namespace KODI::GAME
+} // namespace UNIVERSAL MEDIA CENTER::GAME

@@ -49,7 +49,7 @@ enum class MeridiemSymbol
   AM
 };
 
-namespace KODI::LANGINFO
+namespace UNIVERSAL MEDIA CENTER::LANGINFO
 {
 // audio language special values
 constexpr std::string_view audioLanguageMediaDefault = "mediadefault";
@@ -61,7 +61,7 @@ constexpr std::string_view subLanguageNone = "none";
 constexpr std::string_view subLanguageForcedOnly = "forced_only";
 constexpr std::string_view subLanguageOriginal = "original";
 constexpr std::string_view subLanguageDefault = "default";
-} // namespace KODI::LANGINFO
+} // namespace UNIVERSAL MEDIA CENTER::LANGINFO
 
 class CLangInfo : public ISettingCallback, public ISettingsHandler
 {
@@ -131,7 +131,7 @@ public:
    *                      "original" or "mediadefault" the UI language is returned instead.
    * \return The language, empty when the setting names no language and allowFallback is false.
    */
-  const KODI::LANGUAGE::CLanguageTag& GetAudioLanguage(bool allowFallback) const;
+  const UNIVERSAL MEDIA CENTER::LANGUAGE::CLanguageTag& GetAudioLanguage(bool allowFallback) const;
 
   /*!
    * \brief Set the audio language.
@@ -147,7 +147,7 @@ public:
    *                      or "forced_only" the preferred audio language is returned instead.
    * \return The language, empty when the setting names no language and allowFallback is false.
    */
-  const KODI::LANGUAGE::CLanguageTag& GetSubtitleLanguage(bool allowFallback) const;
+  const UNIVERSAL MEDIA CENTER::LANGUAGE::CLanguageTag& GetSubtitleLanguage(bool allowFallback) const;
 
   /*!
    * \brief Set the subtitle language.
@@ -157,9 +157,9 @@ public:
    */
   void SetSubtitleLanguage(const std::string& language);
 
-  KODI::LANGUAGE::CLanguageTag GetDVDMenuLanguage() const;
-  KODI::LANGUAGE::CLanguageTag GetDVDAudioLanguage() const;
-  KODI::LANGUAGE::CLanguageTag GetDVDSubtitleLanguage() const;
+  UNIVERSAL MEDIA CENTER::LANGUAGE::CLanguageTag GetDVDMenuLanguage() const;
+  UNIVERSAL MEDIA CENTER::LANGUAGE::CLanguageTag GetDVDAudioLanguage() const;
+  UNIVERSAL MEDIA CENTER::LANGUAGE::CLanguageTag GetDVDSubtitleLanguage() const;
 
   const std::string& GetRegionLocale() const;
 
@@ -387,11 +387,11 @@ protected:
   CTemperature::Unit m_temperatureUnit;
   CSpeed::Unit m_speedUnit;
 
-  KODI::LANGUAGE::CLanguageTag m_audioLanguage;
-  KODI::LANGUAGE::CLanguageTag m_subtitleLanguage;
+  UNIVERSAL MEDIA CENTER::LANGUAGE::CLanguageTag m_audioLanguage;
+  UNIVERSAL MEDIA CENTER::LANGUAGE::CLanguageTag m_subtitleLanguage;
   //! An unset audio or subtitle preference falls back to this
-  KODI::LANGUAGE::CLanguageTag m_uiLanguage;
+  UNIVERSAL MEDIA CENTER::LANGUAGE::CLanguageTag m_uiLanguage;
 };
 
-XBMC_GLOBAL_REF(CLangInfo, g_langInfo);
-#define g_langInfo XBMC_GLOBAL_USE(CLangInfo)
+_GLOBAL_REF(CLangInfo, g_langInfo);
+#define g_langInfo _GLOBAL_USE(CLangInfo)

@@ -13,7 +13,7 @@ function(generate_file file)
   set(CPP_FILE ${file}.cpp)
   set(DEP_FILE ${CMAKE_CURRENT_BINARY_DIR}/${CPP_FILE}.d)
 
-  # AddonModuleXbmcgui.i -> low-level module/init name "xbmcgui"
+  # AddonModuleXbmcgui.i -> low-level module/init name "gui"
   get_filename_component(module_name ${file} NAME_WE)
   string(REPLACE "AddonModule" "" module_name ${module_name})
   string(TOLOWER ${module_name} module_name)
@@ -22,7 +22,7 @@ function(generate_file file)
   # themselves through DelayedCallGuard where they block.
   # -interface names the init symbol PyInit_<module> for the invoker inittabs
   # -w401/514: AddonClass base is deliberately unreflected; 389: operator[]; 362: operator= in %imported Tuple.h
-  # 302: kodi_generics.i declares Tuple/Alternative/Dictionary to carry their typemaps, so
+  # 302: universalmediacenter_generics.i declares Tuple/Alternative/Dictionary to carry their typemaps, so
   # SWIG ignores the header definitions it later sees. That is the intent, not a collision.
   # -pyi: PEP 484 stub files for addon authors, a build artifact beside the wrappers
   # -MMD/-MF/-MT: header dependencies as a depfile, so swig is not needed at configure
@@ -30,7 +30,7 @@ function(generate_file file)
   set(SWIG_ARGS -python -c++ -builtin -interface ${module_name} -pyi
                 -w401,389,514,362,302 -o ${CPP_FILE}
                 -MMD -MF ${DEP_FILE} -MT ${CMAKE_CURRENT_BINARY_DIR}/${CPP_FILE}
-                -I${CMAKE_SOURCE_DIR}/xbmc
+                -I${CMAKE_SOURCE_DIR}/
                 ${CMAKE_CURRENT_SOURCE_DIR}/${file})
 
   add_custom_command(OUTPUT ${CPP_FILE}

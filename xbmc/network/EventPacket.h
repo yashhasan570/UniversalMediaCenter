@@ -16,7 +16,7 @@ namespace EVENTPACKET
 {
   const int PACKET_SIZE       = 1024;
   const int HEADER_SIZE       = 32;
-  const char HEADER_SIG[]     = "XBMC";
+  const char HEADER_SIG[]     = "";
   const int HEADER_SIG_LENGTH = 4;
 
   /************************************************************************/
@@ -30,7 +30,7 @@ namespace EVENTPACKET
   /* - H7 must be set to zeros for now                                    */
   /*                                                                      */
   /*     -----------------------------                                    */
-  /*     | -H1 Signature ("XBMC")    | - 4  x CHAR                4B      */
+  /*     | -H1 Signature ("")    | - 4  x CHAR                4B      */
   /*     | -H2 Version (eg. 2.0)     | - 2  x UNSIGNED CHAR       2B      */
   /*     | -H3 PacketType            | - 1  x UNSIGNED SHORT      2B      */
   /*     | -H4 Sequence number       | - 1  x UNSIGNED LONG       4B      */

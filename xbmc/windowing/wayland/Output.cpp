@@ -15,7 +15,7 @@
 #include <stdexcept>
 #include <utility>
 
-using namespace KODI::WINDOWING::WAYLAND;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::WAYLAND;
 
 COutput::COutput(std::uint32_t globalName,
                  wayland::output_t const& output,

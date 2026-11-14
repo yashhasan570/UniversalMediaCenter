@@ -30,16 +30,16 @@ void CMouseStat::Initialize()
   SetResolution(720, 576, 1, 1);
 }
 
-void CMouseStat::HandleEvent(const XBMC_Event& newEvent)
+void CMouseStat::HandleEvent(const _Event& newEvent)
 {
   // Save the mouse position and the size of the last move
   int dx, dy;
-  if (newEvent.type == XBMC_MOUSEMOTION)
+  if (newEvent.type == _MOUSEMOTION)
   {
     dx = newEvent.motion.x - m_mouseState.x;
     dy = newEvent.motion.y - m_mouseState.y;
   }
-  else if (newEvent.type == XBMC_MOUSEBUTTONDOWN || newEvent.type == XBMC_MOUSEBUTTONUP)
+  else if (newEvent.type == _MOUSEBUTTONDOWN || newEvent.type == _MOUSEBUTTONUP)
   {
     dx = newEvent.button.x - m_mouseState.x;
     dy = newEvent.button.y - m_mouseState.y;
@@ -54,46 +54,46 @@ void CMouseStat::HandleEvent(const XBMC_Event& newEvent)
   m_mouseState.y = std::max(0, std::min(m_maxY, m_mouseState.y + dy));
 
   // Fill in the public members
-  if (newEvent.type == XBMC_MOUSEBUTTONDOWN)
+  if (newEvent.type == _MOUSEBUTTONDOWN)
   {
-    if (newEvent.button.button == XBMC_BUTTON_LEFT)
+    if (newEvent.button.button == _BUTTON_LEFT)
       m_mouseState.button[MOUSE_LEFT_BUTTON] = true;
-    if (newEvent.button.button == XBMC_BUTTON_RIGHT)
+    if (newEvent.button.button == _BUTTON_RIGHT)
       m_mouseState.button[MOUSE_RIGHT_BUTTON] = true;
-    if (newEvent.button.button == XBMC_BUTTON_MIDDLE)
+    if (newEvent.button.button == _BUTTON_MIDDLE)
       m_mouseState.button[MOUSE_MIDDLE_BUTTON] = true;
-    if (newEvent.button.button == XBMC_BUTTON_X1)
+    if (newEvent.button.button == _BUTTON_X1)
       m_mouseState.button[MOUSE_EXTRA_BUTTON1] = true;
-    if (newEvent.button.button == XBMC_BUTTON_X2)
+    if (newEvent.button.button == _BUTTON_X2)
       m_mouseState.button[MOUSE_EXTRA_BUTTON2] = true;
-    if (newEvent.button.button == XBMC_BUTTON_X3)
+    if (newEvent.button.button == _BUTTON_X3)
       m_mouseState.button[MOUSE_EXTRA_BUTTON3] = true;
-    if (newEvent.button.button == XBMC_BUTTON_X4)
+    if (newEvent.button.button == _BUTTON_X4)
       m_mouseState.button[MOUSE_EXTRA_BUTTON4] = true;
-    if (newEvent.button.button == XBMC_BUTTON_WHEELUP)
+    if (newEvent.button.button == _BUTTON_WHEELUP)
       m_mouseState.dz = 1;
-    if (newEvent.button.button == XBMC_BUTTON_WHEELDOWN)
+    if (newEvent.button.button == _BUTTON_WHEELDOWN)
       m_mouseState.dz = -1;
   }
-  else if (newEvent.type == XBMC_MOUSEBUTTONUP)
+  else if (newEvent.type == _MOUSEBUTTONUP)
   {
-    if (newEvent.button.button == XBMC_BUTTON_LEFT)
+    if (newEvent.button.button == _BUTTON_LEFT)
       m_mouseState.button[MOUSE_LEFT_BUTTON] = false;
-    if (newEvent.button.button == XBMC_BUTTON_RIGHT)
+    if (newEvent.button.button == _BUTTON_RIGHT)
       m_mouseState.button[MOUSE_RIGHT_BUTTON] = false;
-    if (newEvent.button.button == XBMC_BUTTON_MIDDLE)
+    if (newEvent.button.button == _BUTTON_MIDDLE)
       m_mouseState.button[MOUSE_MIDDLE_BUTTON] = false;
-    if (newEvent.button.button == XBMC_BUTTON_X1)
+    if (newEvent.button.button == _BUTTON_X1)
       m_mouseState.button[MOUSE_EXTRA_BUTTON1] = false;
-    if (newEvent.button.button == XBMC_BUTTON_X2)
+    if (newEvent.button.button == _BUTTON_X2)
       m_mouseState.button[MOUSE_EXTRA_BUTTON2] = false;
-    if (newEvent.button.button == XBMC_BUTTON_X3)
+    if (newEvent.button.button == _BUTTON_X3)
       m_mouseState.button[MOUSE_EXTRA_BUTTON3] = false;
-    if (newEvent.button.button == XBMC_BUTTON_X4)
+    if (newEvent.button.button == _BUTTON_X4)
       m_mouseState.button[MOUSE_EXTRA_BUTTON4] = false;
-    if (newEvent.button.button == XBMC_BUTTON_WHEELUP)
+    if (newEvent.button.button == _BUTTON_WHEELUP)
       m_mouseState.dz = 0;
-    if (newEvent.button.button == XBMC_BUTTON_WHEELDOWN)
+    if (newEvent.button.button == _BUTTON_WHEELDOWN)
       m_mouseState.dz = 0;
   }
 
@@ -144,7 +144,7 @@ void CMouseStat::HandleEvent(const XBMC_Event& newEvent)
     }
   }
 
-  // Now work out what action ID to send to XBMC.
+  // Now work out what action ID to send to .
 
   // ignore any mouse messages by default
   m_Key = KEY_MOUSE_NOOP;
@@ -211,7 +211,7 @@ void CMouseStat::HandleEvent(const XBMC_Event& newEvent)
       m_Key = KEY_MOUSE_WHEEL_DOWN;
 
     // Check for a mouse move that isn't a drag, ignoring messages with no movement at all
-    else if (newEvent.type == XBMC_MOUSEMOTION && (m_mouseState.dx || m_mouseState.dy))
+    else if (newEvent.type == _MOUSEMOTION && (m_mouseState.dx || m_mouseState.dy))
       m_Key = KEY_MOUSE_MOVE;
   }
 
@@ -241,8 +241,8 @@ void CMouseStat::SetActive(bool active /*=true*/)
   m_mouseState.active = active;
   // we show the OS mouse if:
   // 1. The mouse is active (it has been moved) AND
-  // 2. The XBMC mouse is disabled in settings AND
-  // 3. XBMC is not in fullscreen.
+  // 2. The  mouse is disabled in settings AND
+  // 3.  is not in fullscreen.
   CWinSystemBase* winSystem = CServiceBroker::GetWinSystem();
   if (winSystem)
     winSystem->ShowOSMouse(m_mouseState.active && !IsEnabled() &&

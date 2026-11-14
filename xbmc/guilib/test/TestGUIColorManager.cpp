@@ -9,7 +9,7 @@
 #include "filesystem/File.h"
 #include "guilib/GUIColorManager.h"
 #include "test/TestUtils.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 
 #include <string>
 #include <string_view>
@@ -33,7 +33,7 @@ class CTestColorManager : public CGUIColorManager
 public:
   bool LoadXMLFile(const std::string& path)
   {
-    CXBMCTinyXML2 xmlDoc;
+    CTinyXML2 xmlDoc;
     return xmlDoc.LoadFile(path) && LoadXML(xmlDoc);
   }
 };
@@ -44,16 +44,16 @@ protected:
   void TearDown() override
   {
     for (XFILE::CFile* file : m_files)
-      XBMC_DELETETEMPFILE(file);
+      _DELETETEMPFILE(file);
   }
 
   std::string CreateFile(std::string_view content)
   {
-    XFILE::CFile* file = XBMC_CREATETEMPFILE(".xml");
+    XFILE::CFile* file = _CREATETEMPFILE(".xml");
     m_files.push_back(file);
     file->Write(content.data(), content.size());
     file->Close();
-    return XBMC_TEMPFILEPATH(file);
+    return _TEMPFILEPATH(file);
   }
 
   std::vector<XFILE::CFile*> m_files;
@@ -83,7 +83,7 @@ TEST_F(TestGUIColorManager, LoadXMLWrongRoot)
 TEST_F(TestGUIColorManager, LoadColorsListFromXML)
 {
   CGUIColorManager colorManager;
-  std::vector<std::pair<std::string, KODI::UTILS::COLOR::ColorInfo>> colors;
+  std::vector<std::pair<std::string, UNIVERSAL MEDIA CENTER::UTILS::COLOR::ColorInfo>> colors;
   ASSERT_TRUE(colorManager.LoadColorsListFromXML(CreateFile(COLORS), colors, false));
   ASSERT_EQ(2u, colors.size());
   EXPECT_EQ("red", colors[0].first);
@@ -95,6 +95,6 @@ TEST_F(TestGUIColorManager, LoadColorsListFromXML)
 TEST_F(TestGUIColorManager, LoadColorsListFromXMLMissingFile)
 {
   CGUIColorManager colorManager;
-  std::vector<std::pair<std::string, KODI::UTILS::COLOR::ColorInfo>> colors;
+  std::vector<std::pair<std::string, UNIVERSAL MEDIA CENTER::UTILS::COLOR::ColorInfo>> colors;
   EXPECT_FALSE(colorManager.LoadColorsListFromXML("/nonexistent/colors.xml", colors, false));
 }

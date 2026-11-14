@@ -89,17 +89,17 @@ bool CVideoLibraryMarkWatchedJob::Work(CVideoDatabase &db)
       if (newLastPlayed.IsValid())
       {
         item->GetVideoInfoTag()->m_lastPlayed = newLastPlayed;
-        KODI::VIDEO::UTILS::AnnouncePlayCountChanged(item->GetPath(),
+        UNIVERSAL MEDIA CENTER::VIDEO::UTILS::AnnouncePlayCountChanged(item->GetPath(),
                                                      m_mark ? db.GetPlayCount(*item) : 0);
       }
 
       if (clearsRecordingResumePoint)
-        KODI::VIDEO::UTILS::AnnounceResumePointChanged(item->GetPath(), {});
+        UNIVERSAL MEDIA CENTER::VIDEO::UTILS::AnnounceResumePointChanged(item->GetPath(), {});
 
       if (m_mark)
       {
         auto file{std::make_unique<CFileItem>(*item)};
-        file->SetProperty(KODI::ITEM::PROPERTY::PLAYCOUNT_INCREMENTED, CVariant{true});
+        file->SetProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::PLAYCOUNT_INCREMENTED, CVariant{true});
         CServiceBroker::GetAppMessenger()->SendMsg(TMSG_PROCESS_DELETE_AFTER_WATCH, -1, -1,
                                                    static_cast<void*>(file.release()));
       }
@@ -132,7 +132,7 @@ bool CVideoLibraryMarkWatchedJob::Work(CVideoDatabase &db)
     // With both mark as watched and unwatched we want the resume bookmarks to be reset
     db.ClearBookMarksOfFile(path, CBookmark::RESUME);
     if (hadResumePoint)
-      KODI::VIDEO::UTILS::AnnounceResumePointChanged(path, {});
+      UNIVERSAL MEDIA CENTER::VIDEO::UTILS::AnnounceResumePointChanged(path, {});
 
     CDateTime newLastPlayed;
     if (m_mark)
@@ -144,7 +144,7 @@ bool CVideoLibraryMarkWatchedJob::Work(CVideoDatabase &db)
     {
       if (item->HasVideoInfoTag())
         item->GetVideoInfoTag()->m_lastPlayed = newLastPlayed;
-      KODI::VIDEO::UTILS::AnnouncePlayCountChanged(path, m_mark ? db.GetPlayCount(*item) : 0);
+      UNIVERSAL MEDIA CENTER::VIDEO::UTILS::AnnouncePlayCountChanged(path, m_mark ? db.GetPlayCount(*item) : 0);
     }
   }
 

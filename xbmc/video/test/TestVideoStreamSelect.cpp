@@ -11,8 +11,8 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI::VIDEO;
-using KODI::LANGUAGE::CLanguageTag;
+using namespace UNIVERSAL MEDIA CENTER::VIDEO;
+using UNIVERSAL MEDIA CENTER::LANGUAGE::CLanguageTag;
 
 namespace
 {

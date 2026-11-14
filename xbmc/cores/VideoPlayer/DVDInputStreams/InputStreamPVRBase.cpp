@@ -18,7 +18,7 @@
 #include "settings/SettingsComponent.h"
 #include "utils/log.h"
 
-using namespace KODI::LANGUAGE;
+using namespace UNIVERSAL MEDIA CENTER::LANGUAGE;
 
 CInputStreamPVRBase::CInputStreamPVRBase(const CFileItem& fileitem)
   : CDVDInputStream(DVDSTREAM_TYPE_PVRMANAGER, fileitem),

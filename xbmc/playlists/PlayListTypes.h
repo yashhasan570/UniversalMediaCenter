@@ -8,7 +8,7 @@
 
 #pragma once
 
-namespace KODI::PLAYLIST
+namespace UNIVERSAL MEDIA CENTER::PLAYLIST
 {
 
 enum class Id : int
@@ -36,4 +36,4 @@ enum class ExcludeUsedPlaylists : bool
   EXCLUDE_USED_PLAYLISTS
 };
 
-} // namespace KODI::PLAYLIST
+} // namespace UNIVERSAL MEDIA CENTER::PLAYLIST

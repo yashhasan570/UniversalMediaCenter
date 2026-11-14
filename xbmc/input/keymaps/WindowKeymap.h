@@ -14,7 +14,7 @@
 #include <map>
 #include <string>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace KEYMAP
 {
@@ -44,4 +44,4 @@ private:
   WindowMap m_windowKeymap;
 };
 } // namespace KEYMAP
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

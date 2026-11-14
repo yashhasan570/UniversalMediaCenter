@@ -39,7 +39,7 @@ class CURL;
 struct ExternalStreamInfo
 {
   std::string name;
-  KODI::LANGUAGE::CLanguageTag language;
+  UNIVERSAL MEDIA CENTER::LANGUAGE::CLanguageTag language;
   unsigned int flag = 0;
 };
 
@@ -81,10 +81,10 @@ public:
   static void GetQualifiedFilename(const std::string &strBasePath, std::string &strFilename);
   static void RunShortcut(const char* szPath);
   static std::string GetHomePath(
-      const std::string& strTarget = "KODI_HOME"); // default target is "KODI_HOME"
+      const std::string& strTarget = "UNIVERSALMEDIA_HOME"); // default target is "UNIVERSALMEDIA_HOME"
   static bool ExcludeFileOrFolder(const std::string& strFileOrFolder,
                                   const std::vector<std::string>& regexps,
-                                  KODI::REGEXP::RegExpCache* cache);
+                                  UNIVERSAL MEDIA CENTER::REGEXP::RegExpCache* cache);
   static void GetFileAndProtocol(const std::string& strURL, std::string& strDir);
   static int GetDVDIfoTitle(const std::string& strPathFile);
 
@@ -96,7 +96,7 @@ public:
    \param strPath - path to the file to MD5sum
    \return md5 sum of the file
    */
-  static std::string GetFileDigest(const std::string& strPath, KODI::UTILITY::CDigest::Type type);
+  static std::string GetFileDigest(const std::string& strPath, UNIVERSAL MEDIA CENTER::UTILITY::CDigest::Type type);
   static bool GetDirectoryName(const std::string& strFileName, std::string& strDescription);
   static void GetDVDDriveIcon(const std::string& strPath, std::string& strIcon);
   static void RemoveTempFiles();
@@ -185,11 +185,11 @@ public:
 
   //! \brief The path listing the playlists of \p section: special://musicplaylists/ or
   //! special://videoplaylists/. Empty for a section without playlists of its own.
-  static std::string PlaylistsPathOf(KODI::MEDIA::MediaSection section);
+  static std::string PlaylistsPathOf(UNIVERSAL MEDIA CENTER::MEDIA::MediaSection section);
 
   //! \brief Whether \p path lies in the playlists folder of \p section, under its special:// path or
   //! the folders that path resolves to, wherever the user keeps playlists.
-  static bool IsInPlaylistsFolder(const std::string& path, KODI::MEDIA::MediaSection section);
+  static bool IsInPlaylistsFolder(const std::string& path, UNIVERSAL MEDIA CENTER::MEDIA::MediaSection section);
 
   static void GetSkinThemes(std::vector<std::string>& vecTheme);
   static void GetRecursiveListing(const std::string& strPath, CFileItemList& items, const std::string& strMask, unsigned int flags = 0 /* DIR_FLAG_DEFAULTS */);

@@ -42,7 +42,7 @@ bool CPeripheralBusUSB::PerformDeviceScan(PeripheralScanResults &results)
 
 bool CPeripheralBusUSB::PerformDeviceScan(const GUID *guid, const PeripheralType defaultType, PeripheralScanResults &results)
 {
-  using KODI::PLATFORM::WINDOWS::FromW;
+  using UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW;
 
   bool     bReturn(false);
   DWORD    required = 0, iMemberIndex = 0;

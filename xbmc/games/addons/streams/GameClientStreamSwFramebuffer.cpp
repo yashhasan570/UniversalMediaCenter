@@ -8,11 +8,11 @@
 
 #include "GameClientStreamSwFramebuffer.h"
 
-#include "addons/kodi-dev-kit/include/kodi/addon-instance/Game.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/addon-instance/Game.h"
 #include "cores/RetroPlayer/streams/RetroPlayerVideo.h"
 #include "games/addons/GameClientTranslator.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 bool CGameClientStreamSwFramebuffer::GetBuffer(unsigned int width,

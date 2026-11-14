@@ -8,9 +8,9 @@
 
 #include "WsgiResponseBody.h"
 
-namespace XBMCAddon
+namespace Addon
 {
-  namespace xbmcwsgi
+  namespace wsgi
   {
     WsgiResponseBody::WsgiResponseBody()
       : m_data()

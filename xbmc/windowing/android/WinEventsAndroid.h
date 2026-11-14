@@ -24,8 +24,8 @@ public:
   CWinEventsAndroid();
   ~CWinEventsAndroid() override;
 
-  void            MessagePush(XBMC_Event *newEvent);
-  void            MessagePushRepeat(XBMC_Event *repeatEvent);
+  void            MessagePush(_Event *newEvent);
+  void            MessagePushRepeat(_Event *repeatEvent);
   bool MessagePump() override;
 
 private:
@@ -35,9 +35,9 @@ private:
   void Process() override;
 
   CCriticalSection             m_eventsCond;
-  std::list<XBMC_Event>        m_events;
+  std::list<_Event>        m_events;
 
   CCriticalSection             m_lasteventCond;
-  std::queue<XBMC_Event>       m_lastevent;
+  std::queue<_Event>       m_lastevent;
 };
 

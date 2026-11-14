@@ -10,7 +10,7 @@
 
 #include "windowing/OSScreenSaver.h"
 
-class COSScreenSaverTVOS : public KODI::WINDOWING::IOSScreenSaver
+class COSScreenSaverTVOS : public UNIVERSAL MEDIA CENTER::WINDOWING::IOSScreenSaver
 {
 public:
   COSScreenSaverTVOS() = default;

@@ -36,7 +36,7 @@ CFileItem GetPlayedMovie()
   movie.SetArt("poster", "image://poster.jpg/");
 
   CVideoInfoTag* tag{movie.GetVideoInfoTag()};
-  tag->SetMediaType(KODI::MEDIA::TYPE::MOVIE);
+  tag->SetMediaType(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MOVIE);
   tag->m_strTitle = "Movie";
   tag->m_strTrailer = TRAILER_PATH;
   tag->m_iDbId = 42;
@@ -134,7 +134,7 @@ TEST(TestContentUtils, GeneratePlayableTrailerItemKeepsMovieDetails)
   const CVideoInfoTag* tag{trailer->GetVideoInfoTag()};
 
   EXPECT_EQ(tag->m_strTitle, "Movie (Trailer)");
-  EXPECT_EQ(tag->GetMediaType(), KODI::MEDIA::TYPE::MOVIE);
+  EXPECT_EQ(tag->GetMediaType(), UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MOVIE);
   EXPECT_EQ(trailer->GetArt("poster"), "image://poster.jpg/");
 }
 

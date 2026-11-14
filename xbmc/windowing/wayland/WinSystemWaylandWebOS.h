@@ -14,7 +14,7 @@
 #include <wayland-webos-protocols.hpp>
 #include <webos-helpers/libhelpers.h>
 
-namespace KODI::WINDOWING::WAYLAND
+namespace UNIVERSAL MEDIA CENTER::WINDOWING::WAYLAND
 {
 
 class CWinSystemWaylandWebOS : public CWinSystemWayland
@@ -54,7 +54,7 @@ public:
   bool IsHDRDisplay() override;
 
 protected:
-  std::unique_ptr<KODI::WINDOWING::IOSScreenSaver> GetOSScreenSaverImpl() override;
+  std::unique_ptr<UNIVERSAL MEDIA CENTER::WINDOWING::IOSScreenSaver> GetOSScreenSaverImpl() override;
   std::unique_ptr<CSeat> CreateSeat(std::uint32_t name, wayland::seat_t& seat) override;
 
 private:
@@ -73,4 +73,4 @@ private:
                                                                  HUnregisterServiceCallback};
 };
 
-} // namespace KODI::WINDOWING::WAYLAND
+} // namespace UNIVERSAL MEDIA CENTER::WINDOWING::WAYLAND

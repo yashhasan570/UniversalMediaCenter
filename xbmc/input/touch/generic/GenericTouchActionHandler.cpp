@@ -16,7 +16,7 @@
 
 #include <cmath>
 
-using namespace KODI::MESSAGING;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
 
 CGenericTouchActionHandler& CGenericTouchActionHandler::GetInstance()
 {
@@ -181,8 +181,8 @@ void CGenericTouchActionHandler::sendEvent(int actionId,
                                            float y3,
                                            int pointers /* = 1 */)
 {
-  XBMC_Event newEvent{};
-  newEvent.type = XBMC_TOUCH;
+  _Event newEvent{};
+  newEvent.type = _TOUCH;
 
   newEvent.touch.action = actionId;
   newEvent.touch.x = x;
@@ -200,8 +200,8 @@ void CGenericTouchActionHandler::sendEvent(int actionId,
 
 void CGenericTouchActionHandler::focusControl(float x, float y)
 {
-  XBMC_Event newEvent{};
-  newEvent.type = XBMC_SETFOCUS;
+  _Event newEvent{};
+  newEvent.type = _SETFOCUS;
 
   newEvent.focus.x = static_cast<int>(std::round(x));
   newEvent.focus.y = static_cast<int>(std::round(y));

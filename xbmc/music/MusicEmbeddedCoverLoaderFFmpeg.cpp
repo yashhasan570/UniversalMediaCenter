@@ -46,7 +46,7 @@ void CMusicEmbeddedCoverLoaderFFmpeg::GetEmbeddedCover(AVFormatContext* fctx,
 
       tag.SetCoverArtInfo(pic_size, mimetype);
       if (art)
-        art->Set(pic, pic_size, mimetype, KODI::ART::TYPE::THUMB);
+        art->Set(pic, pic_size, mimetype, UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB);
       break; // just need one cover
     }
   }

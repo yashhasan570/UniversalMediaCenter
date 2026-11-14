@@ -27,7 +27,7 @@ public:
   ~CGUIPassword(void) override;
   template<typename T>
   bool IsItemUnlocked(T pItem,
-                      KODI::MEDIA::MediaSection section,
+                      UNIVERSAL MEDIA CENTER::MEDIA::MediaSection section,
                       const std::string& strLabel,
                       const std::string& strHeading);
   /*! \brief Tests if the user is allowed to access the share folder
@@ -35,13 +35,13 @@ public:
    \param section The section the share belongs to
    \return If access is granted, returns \e true
    */
-  bool IsItemUnlocked(CFileItem* pItem, KODI::MEDIA::MediaSection section);
+  bool IsItemUnlocked(CFileItem* pItem, UNIVERSAL MEDIA CENTER::MEDIA::MediaSection section);
   /*! \brief Tests if the user is allowed to access the Mediasource
    \param pItem The share folder item to access
    \param section The section the share belongs to
    \return If access is granted, returns \e true
    */
-  bool IsItemUnlocked(CMediaSource* pItem, KODI::MEDIA::MediaSection section);
+  bool IsItemUnlocked(CMediaSource* pItem, UNIVERSAL MEDIA CENTER::MEDIA::MediaSection section);
   bool CheckLock(LockMode btnType, const std::string& strPassword, int iHeading);
   bool CheckLock(LockMode btnType, const std::string& strPassword, int iHeading, bool& bCanceled);
   bool IsProfileLockUnlocked(int iProfile=-1);
@@ -66,7 +66,7 @@ public:
   bool IsVideoUnlocked();
   bool IsMusicUnlocked();
   bool SetMasterLockMode(bool bDetails=true);
-  bool LockSource(KODI::MEDIA::MediaSection section, const std::string& strName, bool bState);
+  bool LockSource(UNIVERSAL MEDIA CENTER::MEDIA::MediaSection section, const std::string& strName, bool bState);
   void LockSources(bool lock);
   void RemoveSourceLocks();
   bool IsDatabasePathUnlocked(const std::string& strPath, std::vector<CMediaSource>& sources);
@@ -78,7 +78,7 @@ public:
    \param file The file to check lock state for
    \return If access is granted, returns \e true
    */
-  bool IsMediaFileUnlocked(KODI::MEDIA::MediaSection section, const std::string& file) const;
+  bool IsMediaFileUnlocked(UNIVERSAL MEDIA CENTER::MEDIA::MediaSection section, const std::string& file) const;
 
   void SetMediaSourcePath(const std::string& strMediaSourcePath)
   {
@@ -98,7 +98,7 @@ private:
    \return If access is granted, returns \e true
    */
   bool IsMediaPathUnlocked(const std::shared_ptr<CProfileManager>& profileManager,
-                           KODI::MEDIA::MediaSection section) const;
+                           UNIVERSAL MEDIA CENTER::MEDIA::MediaSection section) const;
 
   std::string m_strMediaSourcePath;
   int VerifyPassword(LockMode btnType,

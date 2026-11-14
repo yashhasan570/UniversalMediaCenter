@@ -16,7 +16,7 @@
 #include <thread>
 #include <utility>
 
-namespace KODI::RETRO
+namespace UNIVERSAL MEDIA CENTER::RETRO
 {
 // One reusable snapshot limits both memory consumption and outstanding saves.
 template<typename Snapshot>
@@ -131,4 +131,4 @@ private:
   const std::function<void(Snapshot&)> m_commit;
   std::thread m_thread;
 };
-} // namespace KODI::RETRO
+} // namespace UNIVERSAL MEDIA CENTER::RETRO

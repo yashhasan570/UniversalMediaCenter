@@ -45,7 +45,7 @@
   }
 
   if (scope.XMLHttpRequest && scope.XMLHttpRequest.prototype &&
-      !scope.XMLHttpRequest.prototype.__kodiProxyPatched) {
+      !scope.XMLHttpRequest.prototype.__UniversalMediaCenter*roxyPatched) {
     var origOpen = scope.XMLHttpRequest.prototype.open;
     scope.XMLHttpRequest.prototype.open = function (method, url) {
       arguments[1] = rewrite(url);
@@ -58,10 +58,10 @@
         get: function () { return unwrap(responseURL.get.call(this)); }
       });
     }
-    scope.XMLHttpRequest.prototype.__kodiProxyPatched = true;
+    scope.XMLHttpRequest.prototype.__UniversalMediaCenter*roxyPatched = true;
   }
 
-  if (typeof scope.fetch === 'function' && !scope.fetch.__kodiProxyPatched) {
+  if (typeof scope.fetch === 'function' && !scope.fetch.__UniversalMediaCenter*roxyPatched) {
     var origFetch = scope.fetch.bind(scope);
     var patched = function (input, init) {
       if (typeof input === 'string') {
@@ -74,7 +74,7 @@
       }
       return origFetch(input, init);
     };
-    patched.__kodiProxyPatched = true;
+    patched.__UniversalMediaCenter*roxyPatched = true;
     scope.fetch = patched;
   }
 })(globalThis);

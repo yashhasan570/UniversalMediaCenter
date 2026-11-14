@@ -155,5 +155,5 @@ private:
   std::unordered_map<std::string, std::string, StringHash, std::equal_to<>> m_constants;
   std::unordered_map<std::string, std::string, StringHash, std::equal_to<>> m_expressions;
 
-  KODI::GUILIB::CSkinMapManager m_skinMapManager;
+  UNIVERSAL MEDIA CENTER::GUILIB::CSkinMapManager m_skinMapManager;
 };

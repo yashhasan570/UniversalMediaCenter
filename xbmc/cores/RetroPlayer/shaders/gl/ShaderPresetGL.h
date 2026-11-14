@@ -10,7 +10,7 @@
 
 #include "cores/RetroPlayer/shaders/ShaderPreset.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -41,4 +41,4 @@ protected:
                     IShaderTexture& targetTexture) override;
 };
 } // namespace SHADER
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

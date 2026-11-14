@@ -38,7 +38,7 @@ bool CPlatformDarwinOSX::InitStageOne()
   CCocoaPowerSyscall::Register();
 
   std::string install_path(CUtil::GetHomePath());
-  setenv("KODI_HOME", install_path.c_str(), 0);
+  setenv("UNIVERSALMEDIA_HOME", install_path.c_str(), 0);
   setenv("AACS_HOME", CSpecialProtocol::TranslatePath("special://home").c_str(), 1);
   setenv("LIBBLURAY_CP", (CDarwinUtils::GetJavaCPPath() + "/").c_str(), 1);
 

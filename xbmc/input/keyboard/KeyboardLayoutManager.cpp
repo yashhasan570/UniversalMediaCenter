@@ -15,16 +15,16 @@
 #include "filesystem/Directory.h"
 #include "settings/lib/Setting.h"
 #include "settings/lib/SettingDefinitions.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 #include "utils/log.h"
 
 #include <algorithm>
 #include <cstring>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace KEYBOARD;
 
-#define KEYBOARD_LAYOUTS_PATH "special://xbmc/system/keyboardlayouts"
+#define KEYBOARD_LAYOUTS_PATH "special:///system/keyboardlayouts"
 
 CKeyboardLayoutManager::~CKeyboardLayoutManager()
 {
@@ -65,7 +65,7 @@ bool CKeyboardLayoutManager::Load(const std::string& path /* = "" */)
     if (layoutPath.empty())
       continue;
 
-    CXBMCTinyXML2 xmlDoc;
+    CTinyXML2 xmlDoc;
     if (!xmlDoc.LoadFile(layoutPath))
     {
       CLog::Log(LOGWARNING, "CKeyboardLayoutManager: unable to open {}", layoutPath);

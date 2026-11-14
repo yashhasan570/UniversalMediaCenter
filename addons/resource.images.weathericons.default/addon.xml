@@ -4,11 +4,11 @@
        version="1.1.9"
        provider-name="Team Universal Media Center">
   <requires>
-    <import addon="kodi.resource" version="1.0.0"/>
+    <import addon="universalmediacenter.resource" version="1.0.0"/>
   </requires>
-  <extension point="kodi.resource.images"
+  <extension point="universalmediacenter.resource.images"
              type="weather" />
-  <extension point="xbmc.addon.metadata">
+  <extension point=".addon.metadata">
     <summary lang="en">Default Weather Icons</summary>
     <description lang="en">Default set of Weather Icons shipped with Universal Media Center</description>
     <platform>all</platform>

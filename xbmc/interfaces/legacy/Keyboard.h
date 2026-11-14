@@ -14,19 +14,19 @@
 
 class CGUIDialogKeyboardGeneric;
 
-namespace XBMCAddon
+namespace Addon
 {
-  namespace xbmc
+  namespace 
   {
-    XBMCCOMMONS_STANDARD_EXCEPTION(KeyboardException);
+    COMMONS_STANDARD_EXCEPTION(KeyboardException);
 
     ///
     /// \defgroup python_keyboard Keyboard
-    /// \ingroup python_xbmc
+    /// \ingroup python_
     /// @{
     /// @brief **Universal Media Center's keyboard class.**
     ///
-    /// \python_class{ xbmc.Keyboard([default, heading, hidden]) }
+    /// \python_class{ .Keyboard([default, heading, hidden]) }
     ///
     /// Creates a new Keyboard object with default text
     /// heading and hidden input flag if supplied.
@@ -41,7 +41,7 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// kb = xbmc.Keyboard('default', 'heading', True)
+    /// kb = .Keyboard('default', 'heading', True)
     /// kb.setDefault('password') # optional
     /// kb.setHeading('Enter password') # optional
     /// kb.setHiddenInput(True) # optional

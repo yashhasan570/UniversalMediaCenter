@@ -39,7 +39,7 @@ using AddonInstanceId = uint32_t;
  * Defines the default language code used as fallback in case the requested language is not
  * available. Used, for instance, to handle content from addon.xml.
  */
-constexpr const char* KODI_ADDON_DEFAULT_LANGUAGE_CODE = "en_GB";
+constexpr const char* UNIVERSALMEDIA_ADDON_DEFAULT_LANGUAGE_CODE = "en_GB";
 
 enum class AddonDisabledReason
 {
@@ -221,7 +221,7 @@ public:
   const std::string& ProfilePath() const { return m_profilePath; }
   const std::string& ChangeLog() const { return GetTranslatedText(m_changelog); }
   const std::string& Icon() const { return m_icon; }
-  const KODI::ART::Artwork& Art() const { return m_art; }
+  const UNIVERSAL MEDIA CENTER::ART::Artwork& Art() const { return m_art; }
   const std::vector<std::string>& Screenshots() const { return m_screenshots; }
   const std::string& Disclaimer() const { return GetTranslatedText(m_disclaimer); }
   const std::vector<DependencyInfo>& GetDependencies() const { return m_dependencies; }
@@ -289,7 +289,7 @@ private:
   std::string m_profilePath;
   CLocale::LocalizedStringsMap m_changelog;
   std::string m_icon;
-  KODI::ART::Artwork m_art;
+  UNIVERSAL MEDIA CENTER::ART::Artwork m_art;
   std::vector<std::string> m_screenshots;
   CLocale::LocalizedStringsMap m_disclaimer;
   std::vector<DependencyInfo> m_dependencies;

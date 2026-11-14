@@ -15,7 +15,7 @@
 #include <mutex>
 #include <vector>
 
-namespace XBMCAddon
+namespace Addon
 {
   class AsyncCallbackMessage : public AddonClass
   {
@@ -23,7 +23,7 @@ namespace XBMCAddon
     AddonClass::Ref<Callback> cb;
     AddonClass::Ref<RetardedAsyncCallbackHandler> handler;
     AsyncCallbackMessage(Callback* _cb, RetardedAsyncCallbackHandler* _handler) :
-      cb(_cb), handler(_handler) { XBMC_TRACE; }
+      cb(_cb), handler(_handler) { _TRACE; }
   };
 
   //********************************************************************
@@ -38,7 +38,7 @@ namespace XBMCAddon
 
   void RetardedAsyncCallbackHandler::invokeCallback(Callback* cb)
   {
-    XBMC_TRACE;
+    _TRACE;
     std::unique_lock lock(critSection);
     if (g_callQueueClosed)
     {
@@ -51,7 +51,7 @@ namespace XBMCAddon
 
   RetardedAsyncCallbackHandler::~RetardedAsyncCallbackHandler()
   {
-    XBMC_TRACE;
+    _TRACE;
     std::unique_lock lock(critSection);
 
     // find any messages that might be there because of me ... and remove them
@@ -70,7 +70,7 @@ namespace XBMCAddon
 
   void RetardedAsyncCallbackHandler::makePendingCalls()
   {
-    XBMC_TRACE;
+    _TRACE;
     std::unique_lock lock(critSection);
     CallbackQueue::iterator iter = g_callQueue.begin();
     while (iter != g_callQueue.end())
@@ -88,14 +88,14 @@ namespace XBMCAddon
         //  lock on the object. Not doing so results in deadlocks. We no
         //  longer are accessing the g_callQueue so it's fine to do this now
         {
-          XBMCAddonUtils::InvertSingleLockGuard unlock(lock);
+          AddonUtils::InvertSingleLockGuard unlock(lock);
 
           // make sure the object is not deallocating
 
           // we need to grab the object lock to see if the object of the call
           //  is deallocating. holding this lock should prevent it from
           //  deallocating during the execution of this call.
-#ifdef ENABLE_XBMC_TRACE_API
+#ifdef ENABLE__TRACE_API
           CLog::Log(LOGDEBUG, "{}NEWADDON executing callback 0x{:x}", _tg.getSpaces(),
                     (long)(p->cb.get()));
 #endif
@@ -131,7 +131,7 @@ namespace XBMCAddon
 
   void RetardedAsyncCallbackHandler::clearAllPendingCalls()
   {
-    XBMC_TRACE;
+    _TRACE;
     CallbackQueue pending;
     {
       std::unique_lock lock(critSection);
@@ -144,7 +144,7 @@ namespace XBMCAddon
 
   void RetardedAsyncCallbackHandler::clearPendingCalls(void* userData)
   {
-    XBMC_TRACE;
+    _TRACE;
     std::unique_lock lock(critSection);
     CallbackQueue::iterator iter = g_callQueue.begin();
     while (iter != g_callQueue.end())
@@ -153,7 +153,7 @@ namespace XBMCAddon
 
       if(p->handler->shouldRemoveCallback(p->cb->getObject(),userData))
       {
-#ifdef ENABLE_XBMC_TRACE_API
+#ifdef ENABLE__TRACE_API
         CLog::Log(LOGDEBUG,
                   "{}NEWADDON removing callback 0x{:x} for PyThreadState 0x{:x} from queue",
                   _tg.getSpaces(), (long)(p->cb.get()), (long)userData);

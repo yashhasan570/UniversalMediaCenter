@@ -32,8 +32,8 @@
 #include "video/VideoManagerTypes.h"
 #include "video/VideoUtils.h"
 
-using namespace KODI;
-using namespace KODI::VIDEO;
+using namespace UNIVERSAL MEDIA CENTER;
+using namespace UNIVERSAL MEDIA CENTER::VIDEO;
 
 void CSaveFileState::DoWork(CFileItem& item,
                             CBookmark& bookmark,

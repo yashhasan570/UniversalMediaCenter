@@ -22,7 +22,7 @@
 #include "peripherals/Peripherals.h"
 #include "windowing/WinSystem.h"
 
-namespace KODI::RETRO
+namespace UNIVERSAL MEDIA CENTER::RETRO
 {
 class CPlaybackTestEnvironment
 {
@@ -102,4 +102,4 @@ private:
   std::unique_ptr<CGUIGameMessenger> m_messenger;
   std::unique_ptr<CRPStreamManager> m_streams;
 };
-} // namespace KODI::RETRO
+} // namespace UNIVERSAL MEDIA CENTER::RETRO

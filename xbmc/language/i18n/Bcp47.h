@@ -16,7 +16,7 @@
 #include <string_view>
 #include <vector>
 
-namespace KODI::LANGUAGE::I18N
+namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N
 {
 class CBcp47Formatter;
 struct ParsedBcp47Tag;
@@ -115,4 +115,4 @@ private:
   //! against the same one. Not owned - a registry outlives the tags parsed from it.
   const CSubTagRegistryManager* m_registry{nullptr};
 };
-} // namespace KODI::LANGUAGE::I18N
+} // namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N

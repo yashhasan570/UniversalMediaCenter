@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "input/keyboard/XBMC_keysym.h"
+#include "input/keyboard/_keysym.h"
 
 #include <cstdint>
 #include <optional>
@@ -16,5 +16,5 @@
 class CEvdevKeyMapping
 {
 public:
-  static std::optional<XBMCKey> XBMCKeyForEvdevCode(uint32_t code);
+  static std::optional<Key> KeyForEvdevCode(uint32_t code);
 };

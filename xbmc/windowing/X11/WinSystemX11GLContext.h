@@ -19,7 +19,7 @@
 class CGLContext;
 class CVideoReferenceClock;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace WINDOWING
 {

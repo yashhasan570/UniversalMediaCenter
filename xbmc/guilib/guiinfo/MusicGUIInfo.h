@@ -10,7 +10,7 @@
 
 #include "guilib/guiinfo/GUIInfoProvider.h"
 
-namespace KODI::GUILIB::GUIINFO
+namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO
 {
 
 class CGUIInfo;
@@ -21,7 +21,7 @@ public:
   CMusicGUIInfo() = default;
   ~CMusicGUIInfo() override = default;
 
-  // KODI::GUILIB::GUIINFO::IGUIInfoProvider implementation
+  // UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::IGUIInfoProvider implementation
   bool InitCurrentItem(CFileItem* item) override;
   bool GetLabel(std::string& value,
                 const CFileItem* item,
@@ -47,4 +47,4 @@ private:
   bool GetPlaylistInfo(std::string& value, const CGUIInfo& info) const;
 };
 
-} // namespace KODI::GUILIB::GUIINFO
+} // namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO

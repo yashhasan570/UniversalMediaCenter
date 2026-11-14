@@ -15,7 +15,7 @@
 #include "utils/URIUtils.h"
 #include "utils/Variant.h"
 
-namespace KODI::PLAYLIST
+namespace UNIVERSAL MEDIA CENTER::PLAYLIST
 {
 
 bool IsPlayList(const CFileItem& item)
@@ -31,4 +31,4 @@ bool IsSmartPlayList(const CFileItem& item)
   return item.GetURL().HasExtension(".xsp");
 }
 
-} // namespace KODI::PLAYLIST
+} // namespace UNIVERSAL MEDIA CENTER::PLAYLIST

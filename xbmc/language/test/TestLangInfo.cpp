@@ -21,7 +21,7 @@ public:
   bool LoadLang(const std::string& language) { return Load(language); }
 };
 
-using KODI::LANGUAGE::CLanguageTag;
+using UNIVERSAL MEDIA CENTER::LANGUAGE::CLanguageTag;
 
 } // namespace
 

@@ -22,7 +22,7 @@
 
 #include <memory>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace XFILE::MUSICDATABASEDIRECTORY;
 
 bool CMusicFileItemListModifier::CanModify(const CFileItemList &items) const

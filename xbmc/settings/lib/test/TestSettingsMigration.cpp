@@ -9,7 +9,7 @@
 #include "settings/lib/ISettingsMigrationStep.h"
 #include "settings/lib/SettingsManager.h"
 #include "settings/lib/SettingsMigration.h"
-#include "utils/XBMCTinyXML.h"
+#include "utils/TinyXML.h"
 #include "utils/XMLUtils.h"
 
 #include <stdexcept>
@@ -19,7 +19,7 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI::SETTINGS;
+using namespace UNIVERSAL MEDIA CENTER::SETTINGS;
 
 struct StepSpec
 {
@@ -183,7 +183,7 @@ TEST_P(TestSettingsMigrationToV3VideoVersions, MigratesVideoVersionPreference)
   for (const int targetVersion : {3, static_cast<int>(CSettingsManager::Version)})
   {
     SCOPED_TRACE(targetVersion);
-    CXBMCTinyXML doc;
+    CTinyXML doc;
     ASSERT_TRUE(doc.Parse(xml));
 
     CSettingsMigration migration;
@@ -232,7 +232,7 @@ TEST_P(TestSettingsMigrationToV4ReplayGain, MigratesPreampSetting)
       std::to_string(params.oldValue) +
       "</setting><setting id=\"lookandfeel.skin\">skin.estuary</setting></settings>";
 
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   ASSERT_TRUE(doc.Parse(xml));
 
   CSettingsMigration migration;
@@ -264,17 +264,17 @@ class TestSettingsMigrationToV5ApplicationKeyboard : public testing::TestWithPar
 TEST_P(TestSettingsMigrationToV5ApplicationKeyboard, MigratesTvosKeyboardSetting)
 {
   const std::string& value = GetParam();
-  const std::string xml = "<settings version=\"4\"><setting id=\"input.tvosusekodikeyboard\">" +
+  const std::string xml = "<settings version=\"4\"><setting id=\"input.tvosuseuniversalmediacenterkeyboard\">" +
                           value + "</setting></settings>";
 
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   ASSERT_TRUE(doc.Parse(xml));
 
   CSettingsMigration migration;
   ASSERT_TRUE(migration.UpdateXMLSettings(doc.RootElement(), 4, 5));
 
   EXPECT_EQ(nullptr,
-            CSettingsManager::LocateSetting(doc.RootElement(), "input.tvosusekodikeyboard"));
+            CSettingsManager::LocateSetting(doc.RootElement(), "input.tvosuseuniversalmediacenterkeyboard"));
 
   const TiXmlElement* migratedSetting =
       CSettingsManager::LocateSetting(doc.RootElement(), "input.useapplicationkeyboard");

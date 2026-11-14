@@ -4,9 +4,9 @@ set(PACKAGE_OUTPUT_DIR ${CMAKE_BINARY_DIR}/build/${CORE_BUILD_CONFIG})
 
 set(APP_ICON_ICNS ${CMAKE_SOURCE_DIR}/tools/darwin/packaging/media/osx/${APP_NAME_LC}.icns)
 
-configure_file(${CMAKE_SOURCE_DIR}/xbmc/platform/darwin/osx/Info.plist.in
-               ${CMAKE_BINARY_DIR}/xbmc/platform/darwin/osx/Info.plist @ONLY)
-execute_process(COMMAND perl -p -i -e "s/r####/${APP_SCMID}/" ${CMAKE_BINARY_DIR}/xbmc/platform/darwin/osx/Info.plist)
+configure_file(${CMAKE_SOURCE_DIR}//platform/darwin/osx/Info.plist.in
+               ${CMAKE_BINARY_DIR}//platform/darwin/osx/Info.plist @ONLY)
+execute_process(COMMAND perl -p -i -e "s/r####/${APP_SCMID}/" ${CMAKE_BINARY_DIR}//platform/darwin/osx/Info.plist)
 
 # Create xcode target that allows to build binary-addons.
 if(CMAKE_GENERATOR MATCHES "Xcode")
@@ -66,14 +66,14 @@ endif()
 
 add_custom_command(TARGET ${APP_NAME_LC} POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_BINARY_DIR}/${CORE_BUILD_DIR}/DllPaths_generated.h
-                                     ${CMAKE_BINARY_DIR}/xbmc/DllPaths_generated.h
+                                     ${CMAKE_BINARY_DIR}//DllPaths_generated.h
     COMMAND "ACTION=build"
             "TARGET_BUILD_DIR=$<TARGET_BUNDLE_CONTENT_DIR:${APP_NAME_LC}>"
             "TARGET_NAME=${APP_NAME}.app"
             "APP_NAME=${APP_NAME}"
             "SRCROOT=${CMAKE_BINARY_DIR}"
             ${CMAKE_SOURCE_DIR}/tools/darwin/Support/CopyRootFiles-osx.command
-    COMMAND "XBMC_DEPENDS=${DEPENDS_PATH}"
+    COMMAND "_DEPENDS=${DEPENDS_PATH}"
             "TARGET_BUILD_DIR=$<TARGET_BUNDLE_CONTENT_DIR:${APP_NAME_LC}>"
             "TARGET_NAME=${APP_NAME}.app"
             "APP_NAME=${APP_NAME}"
@@ -87,8 +87,8 @@ add_custom_command(TARGET ${APP_NAME_LC} POST_BUILD
 configure_file(${CMAKE_SOURCE_DIR}/tools/darwin/packaging/osx/mkdmg-osx.sh.in
                ${CMAKE_BINARY_DIR}/tools/darwin/packaging/osx/mkdmg-osx.sh @ONLY)
 
-configure_file(${CMAKE_SOURCE_DIR}/xbmc/platform/darwin/Credits.html.in
-               ${CMAKE_BINARY_DIR}/xbmc/platform/darwin/Credits.html @ONLY)
+configure_file(${CMAKE_SOURCE_DIR}//platform/darwin/Credits.html.in
+               ${CMAKE_BINARY_DIR}//platform/darwin/Credits.html @ONLY)
 
 string(TOLOWER ${CORE_BUILD_CONFIG} CORE_BUILD_CONFIG_LOWERCASED)
 if(${CORE_BUILD_CONFIG_LOWERCASED} STREQUAL "release")
@@ -96,8 +96,8 @@ if(${CORE_BUILD_CONFIG_LOWERCASED} STREQUAL "release")
 else()
   set(ALLOW_DEBUGGER "true")
 endif()
-configure_file(${CMAKE_SOURCE_DIR}/tools/darwin/packaging/osx/Kodi.entitlements.in
-               ${CMAKE_BINARY_DIR}/tools/darwin/packaging/osx/Kodi.entitlements @ONLY)
+configure_file(${CMAKE_SOURCE_DIR}/tools/darwin/packaging/osx/Universal Media Center.entitlements.in
+               ${CMAKE_BINARY_DIR}/tools/darwin/packaging/osx/Universal Media Center.entitlements @ONLY)
 
 add_custom_target(dmg
     COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/tools/darwin/packaging/osx/

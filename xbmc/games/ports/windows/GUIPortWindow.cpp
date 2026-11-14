@@ -24,7 +24,7 @@
 #include "input/actions/ActionIDs.h"
 #include "utils/StringUtils.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 CGUIPortWindow::CGUIPortWindow()

@@ -11,15 +11,15 @@
 #include "network/ZeroconfBrowser.h"
 #include "threads/Event.h"
 
-#include "platform/android/activity/JNIXBMCNsdManagerDiscoveryListener.h"
-#include "platform/android/activity/JNIXBMCNsdManagerResolveListener.h"
+#include "platform/android/activity/JNINsdManagerDiscoveryListener.h"
+#include "platform/android/activity/JNINsdManagerResolveListener.h"
 
 #include <androidjni/NsdManager.h>
 #include <androidjni/NsdServiceInfo.h>
 
 class CZeroconfBrowserAndroid;
 
-class CZeroconfBrowserAndroidDiscover : public jni::CJNIXBMCNsdManagerDiscoveryListener
+class CZeroconfBrowserAndroidDiscover : public jni::CJNINsdManagerDiscoveryListener
 {
 public:
   explicit CZeroconfBrowserAndroidDiscover(CZeroconfBrowserAndroid* browser);
@@ -39,7 +39,7 @@ protected:
   bool m_isActive = false;
 };
 
-class CZeroconfBrowserAndroidResolve : public jni::CJNIXBMCNsdManagerResolveListener
+class CZeroconfBrowserAndroidResolve : public jni::CJNINsdManagerResolveListener
 {
 public:
   CZeroconfBrowserAndroidResolve();

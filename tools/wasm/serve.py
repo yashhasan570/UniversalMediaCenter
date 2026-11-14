@@ -15,7 +15,7 @@ Minimal HTTP server for Universal Media Center WASM builds.
 
 Usage:
   cd build-wasm
-  cp ../tools/wasm/kodi.html .
+  cp ../tools/wasm/universalmediacenter.html .
   python3 ../tools/wasm/serve.py          # http://127.0.0.1:8080
   python3 ../tools/wasm/serve.py 9000
   python3 ../tools/wasm/serve.py 0.0.0.0:8080  # serve media to a Universal Media Center on the LAN
@@ -195,6 +195,6 @@ if __name__ == "__main__":
         port = int(port_text)
     else:
         port = int(port_arg)
-    print(f"Serving http://{bind}:{port}/kodi.html  (Ctrl-C to stop)")
+    print(f"Serving http://{bind}:{port}/universalmediacenter.html  (Ctrl-C to stop)")
     print(f"Proxy:   http://{bind}:{port}/proxy?u=<url-encoded>")
     ThreadingServer((bind, port), Handler).serve_forever()

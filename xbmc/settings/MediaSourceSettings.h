@@ -40,21 +40,21 @@ public:
   bool Save(const std::string &file) const;
   void Clear();
 
-  std::vector<CMediaSource>& GetSources(KODI::MEDIA::MediaSection section);
-  const std::string& GetDefaultSource(KODI::MEDIA::MediaSection section) const;
-  void SetDefaultSource(KODI::MEDIA::MediaSection section, std::string_view source);
-  static bool HasDefaultSource(KODI::MEDIA::MediaSection section);
+  std::vector<CMediaSource>& GetSources(UNIVERSAL MEDIA CENTER::MEDIA::MediaSection section);
+  const std::string& GetDefaultSource(UNIVERSAL MEDIA CENTER::MEDIA::MediaSection section) const;
+  void SetDefaultSource(UNIVERSAL MEDIA CENTER::MEDIA::MediaSection section, std::string_view source);
+  static bool HasDefaultSource(UNIVERSAL MEDIA CENTER::MEDIA::MediaSection section);
 
-  bool UpdateSource(KODI::MEDIA::MediaSection section,
+  bool UpdateSource(UNIVERSAL MEDIA CENTER::MEDIA::MediaSection section,
                     std::string_view strOldName,
                     std::string_view strUpdateChild,
                     const std::string& strUpdateValue);
-  bool DeleteSource(KODI::MEDIA::MediaSection section,
+  bool DeleteSource(UNIVERSAL MEDIA CENTER::MEDIA::MediaSection section,
                     std::string_view strName,
                     std::string_view strPath,
                     bool virtualSource = false);
-  bool AddShare(KODI::MEDIA::MediaSection section, const CMediaSource& share);
-  bool UpdateShare(KODI::MEDIA::MediaSection section,
+  bool AddShare(UNIVERSAL MEDIA CENTER::MEDIA::MediaSection section, const CMediaSource& share);
+  bool UpdateShare(UNIVERSAL MEDIA CENTER::MEDIA::MediaSection section,
                    std::string_view oldName,
                    const CMediaSource& share);
 
@@ -71,18 +71,18 @@ private:
     std::string defaultSource;
   };
 
-  bool GetSource(KODI::MEDIA::MediaSection section,
+  bool GetSource(UNIVERSAL MEDIA CENTER::MEDIA::MediaSection section,
                  const tinyxml2::XMLNode* source,
                  CMediaSource& share) const;
   void GetSources(const tinyxml2::XMLNode* rootElement,
-                  KODI::MEDIA::MediaSection section,
+                  UNIVERSAL MEDIA CENTER::MEDIA::MediaSection section,
                   SectionSources& sources) const;
   bool SetSources(tinyxml2::XMLNode* rootNode,
-                  KODI::MEDIA::MediaSection section,
+                  UNIVERSAL MEDIA CENTER::MEDIA::MediaSection section,
                   const SectionSources& sources) const;
 
-  SectionSources& At(KODI::MEDIA::MediaSection section);
-  const SectionSources& At(KODI::MEDIA::MediaSection section) const;
+  SectionSources& At(UNIVERSAL MEDIA CENTER::MEDIA::MediaSection section);
+  const SectionSources& At(UNIVERSAL MEDIA CENTER::MEDIA::MediaSection section) const;
 
-  std::array<SectionSources, KODI::MEDIA::MEDIA_SECTIONS.size()> m_sections;
+  std::array<SectionSources, UNIVERSAL MEDIA CENTER::MEDIA::MEDIA_SECTIONS.size()> m_sections;
 };

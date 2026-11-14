@@ -27,8 +27,8 @@ public:
   void OnInitWindow() override;
   void OnDeinitWindow(int nextWindowID) override;
 
-  static bool EditRule(KODI::PLAYLIST::CSmartPlaylistRule& rule,
-                       const std::string& type = KODI::MEDIA::CONTENT::SONGS);
+  static bool EditRule(UNIVERSAL MEDIA CENTER::PLAYLIST::CSmartPlaylistRule& rule,
+                       const std::string& type = UNIVERSAL MEDIA CENTER::MEDIA::CONTENT::SONGS);
 
 protected:
   void OnField();
@@ -38,9 +38,9 @@ protected:
   void UpdateButtons();
   void OnBrowse();
   std::vector<std::pair<std::string, CDatabaseQueryRule::SearchOperator>> GetValidOperators(
-      const KODI::PLAYLIST::CSmartPlaylistRule& rule) const;
+      const UNIVERSAL MEDIA CENTER::PLAYLIST::CSmartPlaylistRule& rule) const;
 
-  KODI::PLAYLIST::CSmartPlaylistRule m_rule;
+  UNIVERSAL MEDIA CENTER::PLAYLIST::CSmartPlaylistRule m_rule;
   bool m_cancelled;
   std::string m_type;
 };

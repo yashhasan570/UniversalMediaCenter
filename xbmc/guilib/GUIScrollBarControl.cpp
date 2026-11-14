@@ -15,7 +15,7 @@
 #include "input/mouse/MouseStat.h"
 #include "utils/StringUtils.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 #define MIN_NIB_SIZE 4.0f
 

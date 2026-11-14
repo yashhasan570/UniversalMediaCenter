@@ -11,7 +11,7 @@
 #include "cores/GameSettings.h"
 #include "cores/RetroPlayer/RetroPlayerTypes.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -56,4 +56,4 @@ public:
                                       float displayAspectRatio);
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

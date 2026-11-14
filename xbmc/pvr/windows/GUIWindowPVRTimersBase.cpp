@@ -73,7 +73,7 @@ void CGUIWindowPVRTimersBase::OnPrepareFileItems(CFileItemList& items)
         CServiceBroker::GetResourcesComponent().GetLocalizeStrings().Get(19026)); // "Add timer..."
     item->SetLabelPreformatted(true);
     item->SetSpecialSort(SortSpecial::TOP);
-    item->SetArt(KODI::ART::TYPE::ICON, KODI::ART::DEFAULT::TV_SHOWS);
+    item->SetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::ICON, UNIVERSAL MEDIA CENTER::ART::DEFAULT::TV_SHOWS);
 
     items.AddFront(item, 0);
   }

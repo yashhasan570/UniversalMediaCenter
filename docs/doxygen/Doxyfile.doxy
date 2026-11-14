@@ -13,9 +13,9 @@
 # TAG += value [value, ...]
 # Values that contain spaces should be placed between quotes (\" \").
 
-# This includes a own file where used on Kodi itself and by kodi-dev-kit.
+# This includes a own file where used on Universal Media Center itself and by Universal Media Center-dev-kit.
 # Also used to have on new releases better overview which parts need update.
-@INCLUDE = ./kodi_values.doxy
+@INCLUDE = ./Universal Media Center_values.doxy
 
 #---------------------------------------------------------------------------
 # Project related configuration options
@@ -36,19 +36,19 @@ DOXYFILE_ENCODING      = UTF-8
 # title of most generated pages and in a few other places.
 # The default value is: My Project.
 
-PROJECT_NAME           = "Kodi Documentation"
+PROJECT_NAME           = "Universal Media Center Documentation"
 
 # The PROJECT_NUMBER tag can be used to enter a project or revision number. This
 # could be handy for archiving the generated documentation or if some version
 # control system is used.
 
-# PROJECT_NUMBER done by ./kodi_values.doxy
+# PROJECT_NUMBER done by ./Universal Media Center_values.doxy
 
 # Using the PROJECT_BRIEF tag one can provide an optional one line description
 # for a project that appears at the top of each page and should give viewer a
 # quick idea about the purpose of the project. Keep the description short.
 
-PROJECT_BRIEF          = "Kodi is an open source media player and entertainment hub."
+PROJECT_BRIEF          = "Universal Media Center is an open source media player and entertainment hub."
 
 # With the PROJECT_LOGO tag one can specify a logo or an icon that is included
 # in the documentation. The maximum height of the logo should not exceed 55
@@ -242,7 +242,7 @@ TAB_SIZE               = 2
 # "Side Effects:". You can put \n's in the value part of an alias to insert
 # newlines.
 
-# ALIASES done by ./kodi_values.doxy
+# ALIASES done by ./Universal Media Center_values.doxy
 
 # This tag can be used to specify a number of word-keyword mappings (TCL only).
 # A mapping has the form "name=value". For example adding "class=itcl::class"
@@ -785,7 +785,7 @@ WARN_LOGFILE           =
 # spaces. See also FILE_PATTERNS and EXTENSION_MAPPING
 # Note: If this tag is empty the current directory is searched.
 
-INPUT                  = ../../xbmc \
+INPUT                  = ../../ \
                          ../CODE_GUIDELINES.md \
                          .
 
@@ -1177,7 +1177,7 @@ HTML_STYLESHEET        =
 # list). For an example see the documentation.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
-HTML_EXTRA_STYLESHEET  = ./kodi_style.css
+HTML_EXTRA_STYLESHEET  = ./Universal Media Center_style.css
 
 # The HTML_EXTRA_FILES tag can be used to specify one or more extra images or
 # other source files which should be copied to the HTML output directory. Note

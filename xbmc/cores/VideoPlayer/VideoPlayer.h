@@ -206,7 +206,7 @@ struct SelectionStream
   int type_index = 0;
   std::string filename;
   std::string filename2;  // for vobsub subtitles, 2 files are necessary (idx/sub)
-  KODI::LANGUAGE::CLanguageTag language;
+  UNIVERSAL MEDIA CENTER::LANGUAGE::CLanguageTag language;
   std::string name;
   StreamFlags flags = StreamFlags::FLAG_NONE;
   int source = 0;
@@ -386,7 +386,7 @@ public:
 
   void FrameMove() override;
   void Render(bool clear, uint32_t alpha = 255, bool gui = true) override;
-  bool CompositeVideoCapture(KODI::RENDERING::CAPTURE::CaptureResult& result) override;
+  bool CompositeVideoCapture(UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CaptureResult& result) override;
   void FlushRenderer() override;
   void SetRenderViewMode(int mode, float zoom, float par, float shift, bool stretch) override;
   float GetRenderAspectRatio() const override;

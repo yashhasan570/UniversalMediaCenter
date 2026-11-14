@@ -11,7 +11,7 @@
 #include "addons/addoninfo/AddonInfo.h"
 #include "addons/addoninfo/AddonType.h"
 #include "addons/binary-addons/AddonDll.h"
-#include "addons/kodi-dev-kit/include/kodi/addon-instance/VideoCodec.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/addon-instance/VideoCodec.h"
 #include "cores/FFmpeg.h"
 #include "cores/VideoPlayer/DVDDemuxers/DVDDemux.h"
 #include "cores/VideoPlayer/DVDDemuxers/DVDDemuxUtils.h"
@@ -33,14 +33,14 @@ extern "C"
 }
 
 CInputStreamProvider::CInputStreamProvider(const ADDON::AddonInfoPtr& addonInfo,
-                                           KODI_HANDLE parentInstance)
+                                           UNIVERSALMEDIA_HANDLE parentInstance)
   : m_addonInfo(addonInfo), m_parentInstance(parentInstance)
 {
 }
 
 void CInputStreamProvider::GetAddonInstance(InstanceType instance_type,
                                             ADDON::AddonInfoPtr& addonInfo,
-                                            KODI_HANDLE& parentInstance)
+                                            UNIVERSALMEDIA_HANDLE& parentInstance)
 {
   if (instance_type == ADDON::IAddonProvider::InstanceType::VIDEOCODEC)
   {
@@ -52,7 +52,7 @@ void CInputStreamProvider::GetAddonInstance(InstanceType instance_type,
 /*****************************************************************************************************************/
 
 using namespace ADDON;
-using namespace KODI::LANGUAGE;
+using namespace UNIVERSAL MEDIA CENTER::LANGUAGE;
 
 CInputStreamAddon::CInputStreamAddon(const AddonInfoPtr& addonInfo,
                                      IVideoPlayer* player,
@@ -89,7 +89,7 @@ bool CInputStreamAddon::Supports(const AddonInfoPtr& addonInfo, const CFileItem&
   {
     CLog::LogF(
         LOGERROR,
-        "'inputstreamaddon' has been deprecated, please use `#KODIPROP:inputstream={}` instead",
+        "'inputstreamaddon' has been deprecated, please use `#UNIVERSAL MEDIA CENTERPROP:inputstream={}` instead",
         oldAddonProp.asString());
   }
 
@@ -144,7 +144,7 @@ bool CInputStreamAddon::Open()
   m_ifc.inputstream->toAddon = new Universal Media CenterToAddonFuncTable_InputStream();
   m_ifc.inputstream->toUniversal Media Center = new AddonToUniversal Media CenterFuncTable_InputStream();
 
-  m_ifc.inputstream->toUniversal Media Center->kodiInstance = this;
+  m_ifc.inputstream->toUniversal Media Center->universalmediacenterInstance = this;
   m_ifc.inputstream->toUniversal Media Center->free_demux_packet = cb_free_demux_packet;
   m_ifc.inputstream->toUniversal Media Center->allocate_demux_packet = cb_allocate_demux_packet;
   m_ifc.inputstream->toUniversal Media Center->allocate_encrypted_demux_packet = cb_allocate_encrypted_demux_packet;
@@ -382,7 +382,7 @@ std::vector<CDemuxStream*> CInputStreamAddon::GetStreams() const
 CDemuxStream* CInputStreamAddon::GetStream(int streamId) const
 {
   INPUTSTREAM_INFO stream{};
-  KODI_HANDLE demuxStream = nullptr;
+  UNIVERSALMEDIA_HANDLE demuxStream = nullptr;
   bool ret = m_ifc.inputstream->toAddon->get_stream(m_ifc.inputstream, streamId, &stream,
                                                     &demuxStream, cb_get_stream_transfer);
   if (!ret || stream.m_streamType == INPUTSTREAM_TYPE_NONE)
@@ -391,7 +391,7 @@ CDemuxStream* CInputStreamAddon::GetStream(int streamId) const
   return static_cast<CDemuxStream*>(demuxStream);
 }
 
-KODI_HANDLE CInputStreamAddon::cb_get_stream_transfer(KODI_HANDLE handle,
+UNIVERSALMEDIA_HANDLE CInputStreamAddon::cb_get_stream_transfer(UNIVERSALMEDIA_HANDLE handle,
                                                       int streamId,
                                                       INPUTSTREAM_INFO* stream)
 {
@@ -842,21 +842,21 @@ void CInputStreamAddon::DetectScreenResolution()
 }
 
 /*!
- * Callbacks from add-on to kodi
+ * Callbacks from add-on to universalmediacenter
  */
 //@{
-DEMUX_PACKET* CInputStreamAddon::cb_allocate_demux_packet(void* kodiInstance, int data_size)
+DEMUX_PACKET* CInputStreamAddon::cb_allocate_demux_packet(void* universalmediacenterInstance, int data_size)
 {
   return CDVDDemuxUtils::AllocateDemuxPacket(data_size);
 }
 
 DEMUX_PACKET* CInputStreamAddon::cb_allocate_encrypted_demux_packet(
-    void* kodiInstance, unsigned int dataSize, unsigned int encryptedSubsampleCount)
+    void* universalmediacenterInstance, unsigned int dataSize, unsigned int encryptedSubsampleCount)
 {
   return CDVDDemuxUtils::AllocateDemuxPacket(dataSize, encryptedSubsampleCount);
 }
 
-void CInputStreamAddon::cb_free_demux_packet(void* kodiInstance, DEMUX_PACKET* packet)
+void CInputStreamAddon::cb_free_demux_packet(void* universalmediacenterInstance, DEMUX_PACKET* packet)
 {
   CDVDDemuxUtils::FreeDemuxPacket(static_cast<DemuxPacket*>(packet));
 }

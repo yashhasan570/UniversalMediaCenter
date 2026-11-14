@@ -19,7 +19,7 @@
 int main(int argc, char **argv)
 {
   testing::InitGoogleTest(&argc, argv);
-  CXBMCTestUtils::Instance().ParseArgs(argc, argv);
+  CTestUtils::Instance().ParseArgs(argc, argv);
 
   if (!testing::AddGlobalTestEnvironment(new TestBasicEnvironment()))
   {

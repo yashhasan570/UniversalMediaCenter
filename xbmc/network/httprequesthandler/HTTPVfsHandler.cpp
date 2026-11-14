@@ -21,7 +21,7 @@
 #include <string_view>
 #include <vector>
 
-using KODI::MEDIA::MediaSection;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaSection;
 
 namespace
 {

@@ -11,7 +11,7 @@
 #include "PrimitiveDetector.h"
 #include "input/keyboard/KeyboardTypes.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace JOYSTICK
 {
@@ -25,7 +25,7 @@ class CButtonMapping;
 class CKeyDetector : public CPrimitiveDetector
 {
 public:
-  CKeyDetector(CButtonMapping* buttonMapping, XBMCKey keycode);
+  CKeyDetector(CButtonMapping* buttonMapping, Key keycode);
 
   /*!
    * \brief Key state has been updated
@@ -39,7 +39,7 @@ public:
 
 private:
   // Construction parameters
-  const XBMCKey m_keycode;
+  const Key m_keycode;
 };
 } // namespace JOYSTICK
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

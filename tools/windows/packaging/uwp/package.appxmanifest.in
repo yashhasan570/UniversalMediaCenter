@@ -41,7 +41,7 @@
       </uap:VisualElements>
       <Extensions>
         <uap:Extension Category="windows.fileTypeAssociation">
-          <uap:FileTypeAssociation Name="kodi.video">
+          <uap:FileTypeAssociation Name="universalmediacenter.video">
             <uap:SupportedFileTypes>
               <uap:FileType>.3g2</uap:FileType>
               <uap:FileType>.3gp</uap:FileType>
@@ -105,7 +105,7 @@
           </uap:FileTypeAssociation>
         </uap:Extension>
         <uap:Extension Category="windows.fileTypeAssociation">
-          <uap:FileTypeAssociation Name="kodi.picture">
+          <uap:FileTypeAssociation Name="universalmediacenter.picture">
             <uap:SupportedFileTypes>
               <uap:FileType>.apng</uap:FileType>
               <uap:FileType>.bmp</uap:FileType>
@@ -126,7 +126,7 @@
           </uap:FileTypeAssociation>
         </uap:Extension>
         <uap:Extension Category="windows.fileTypeAssociation">
-          <uap:FileTypeAssociation Name="kodi.music">
+          <uap:FileTypeAssociation Name="universalmediacenter.music">
             <uap:SupportedFileTypes>
               <uap:FileType>.aac</uap:FileType>
               <uap:FileType>.ac3</uap:FileType>
@@ -185,7 +185,7 @@
           </uap:FileTypeAssociation>
         </uap:Extension>
         <uap:Extension Category="windows.fileTypeAssociation">
-          <uap:FileTypeAssociation Name="kodi.subtitle">
+          <uap:FileTypeAssociation Name="universalmediacenter.subtitle">
             <uap:SupportedFileTypes>
               <uap:FileType>.aqt</uap:FileType>
               <uap:FileType>.ass</uap:FileType>
@@ -206,7 +206,7 @@
           </uap:FileTypeAssociation>
         </uap:Extension>
         <uap:Extension Category="windows.fileTypeAssociation">
-          <uap:FileTypeAssociation Name="kodi.other">
+          <uap:FileTypeAssociation Name="universalmediacenter.other">
             <uap:SupportedFileTypes>
               <uap:FileType>.ifo</uap:FileType>
               <uap:FileType>.img</uap:FileType>

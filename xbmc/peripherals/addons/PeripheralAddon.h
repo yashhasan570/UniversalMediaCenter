@@ -9,7 +9,7 @@
 #pragma once
 
 #include "addons/binary-addons/AddonInstanceHandler.h"
-#include "addons/kodi-dev-kit/include/kodi/addon-instance/Peripheral.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/addon-instance/Peripheral.h"
 #include "input/joysticks/JoystickTypes.h"
 #include "peripherals/PeripheralTypes.h"
 #include "threads/CriticalSection.h"
@@ -21,14 +21,14 @@
 
 class CFileItemList;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace JOYSTICK
 {
 class IButtonMap;
 class IDriverHandler;
 } // namespace JOYSTICK
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER
 
 namespace PERIPHERALS
 {
@@ -36,8 +36,8 @@ class CPeripheral;
 class CPeripheralJoystick;
 class CPeripherals;
 
-typedef std::vector<kodi::addon::DriverPrimitive> PrimitiveVector;
-typedef std::map<KODI::JOYSTICK::FeatureName, kodi::addon::JoystickFeature> FeatureMap;
+typedef std::vector<addon::DriverPrimitive> PrimitiveVector;
+typedef std::map<UNIVERSAL MEDIA CENTER::JOYSTICK::FeatureName, addon::JoystickFeature> FeatureMap;
 
 /*!
 * \ingroup peripherals
@@ -90,7 +90,7 @@ public:
                    FeatureMap& features);
   bool MapFeature(const CPeripheral* device,
                   const std::string& strControllerId,
-                  const kodi::addon::JoystickFeature& feature);
+                  const addon::JoystickFeature& feature);
   bool GetIgnoredPrimitives(const CPeripheral* device, PrimitiveVector& primitives);
   bool SetIgnoredPrimitives(const CPeripheral* device, const PrimitiveVector& primitives);
   void SaveButtonMap(const CPeripheral* device);
@@ -99,8 +99,8 @@ public:
   void PowerOffJoystick(unsigned int index);
   //@}
 
-  void RegisterButtonMap(CPeripheral* device, KODI::JOYSTICK::IButtonMap* buttonMap);
-  void UnregisterButtonMap(KODI::JOYSTICK::IButtonMap* buttonMap);
+  void RegisterButtonMap(CPeripheral* device, UNIVERSAL MEDIA CENTER::JOYSTICK::IButtonMap* buttonMap);
+  void UnregisterButtonMap(UNIVERSAL MEDIA CENTER::JOYSTICK::IButtonMap* buttonMap);
 
   static bool ProvidesJoysticks(const ADDON::AddonInfoPtr& addonInfo);
   static bool ProvidesButtonMaps(const ADDON::AddonInfoPtr& addonInfo);
@@ -118,11 +118,11 @@ private:
   /*!
    * @brief Helper functions
    */
-  static void GetPeripheralInfo(const CPeripheral* device, kodi::addon::Peripheral& peripheralInfo);
+  static void GetPeripheralInfo(const CPeripheral* device, addon::Peripheral& peripheralInfo);
 
-  static void GetJoystickInfo(const CPeripheral* device, kodi::addon::Joystick& joystickInfo);
+  static void GetJoystickInfo(const CPeripheral* device, addon::Joystick& joystickInfo);
   static void SetJoystickInfo(CPeripheralJoystick& joystick,
-                              const kodi::addon::Joystick& joystickInfo);
+                              const addon::Joystick& joystickInfo);
 
   /*!
    * @brief Reset all class members to their defaults. Called by the constructors
@@ -147,17 +147,17 @@ private:
   std::string m_strClientPath; /*!< @brief translated path to this add-on */
 
   /*!
-   * @brief Callback functions from addon to kodi
+   * @brief Callback functions from addon to universalmediacenter
    */
   //@{
-  static void cb_trigger_scan(void* kodiInstance);
-  static void cb_refresh_button_maps(void* kodiInstance,
+  static void cb_trigger_scan(void* universalmediacenterInstance);
+  static void cb_refresh_button_maps(void* universalmediacenterInstance,
                                      const char* deviceName,
                                      const char* controllerId);
-  static unsigned int cb_feature_count(void* kodiInstance,
+  static unsigned int cb_feature_count(void* universalmediacenterInstance,
                                        const char* controllerId,
                                        JOYSTICK_FEATURE_TYPE type);
-  static JOYSTICK_FEATURE_TYPE cb_feature_type(void* kodiInstance,
+  static JOYSTICK_FEATURE_TYPE cb_feature_type(void* universalmediacenterInstance,
                                                const char* controllerId,
                                                const char* featureName);
   //@}
@@ -172,7 +172,7 @@ private:
   std::map<unsigned int, PeripheralPtr> m_peripherals;
 
   /* @brief Button map observers */
-  std::vector<std::pair<CPeripheral*, KODI::JOYSTICK::IButtonMap*>> m_buttonMaps;
+  std::vector<std::pair<CPeripheral*, UNIVERSAL MEDIA CENTER::JOYSTICK::IButtonMap*>> m_buttonMaps;
   CCriticalSection m_buttonMapMutex;
 
   /* @brief Thread synchronization */

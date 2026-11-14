@@ -6,7 +6,7 @@ set(ARCH_DEFINES -DTARGET_POSIX -DTARGET_LINUX -DTARGET_ANDROID)
 set(SYSTEM_DEFINES -D__STDC_CONSTANT_MACROS -D__BIONIC_NO_PAGE_SIZE_MACRO)
 
 # Main cpp
-set(CORE_MAIN_SOURCE ${CMAKE_SOURCE_DIR}/xbmc/platform/android/activity/XBMCApp.cpp)
+set(CORE_MAIN_SOURCE ${CMAKE_SOURCE_DIR}//platform/android/activity/App.cpp)
 
 set(PLATFORM_DIR platform/linux)
 set(PLATFORMDEFS_DIR platform/posix)

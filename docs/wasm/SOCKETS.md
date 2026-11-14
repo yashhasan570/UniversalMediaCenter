@@ -5,7 +5,7 @@ does: the Tizen Sockets Extension exposes POSIX-style sockets and synchronous
 DNS to WASM pages through `window.tizentvwasm`. Samsung documents it only for
 their Emscripten fork (1.39.4, 2021), but the extension is a runtime feature,
 so an upstream Emscripten build can use it through a JS library. That is what
-`xbmc/platform/wasm/network/tizen_sockets.js` and `TizenSockets.c` do.
+`/platform/wasm/network/tizen_sockets.js` and `TizenSockets.c` do.
 
 ## Runtime surface
 
@@ -38,17 +38,17 @@ The `internet` privilege in `config.xml` is all that is required.
   POLLOUT and reads SO_ERROR.
 - **errno translation.** The runtime reports Linux errno values; Emscripten's
   libc uses its own numbering (EAGAIN is 6, EINPROGRESS is 26). Every error
-  passes through `kodi_sock_errno_from_linux`.
+  passes through `universalmediacenter_sock_errno_from_linux`.
 - **poll.** Socket-only sets go to `SocketsManager.poll`. File-only sets go to
   upstream. Mixed sets, which libcurl produces through its wakeup pipe, are
   served in 50 ms slices: sockets are polled with a bounded timeout and files
   are probed through the upstream zero-timeout poll on the main thread.
   `select()` is implemented by musl on top of `poll()`.
 - **Fallback.** The upstream implementations are re-registered as
-  `kodi_upstream_*` and used whenever `SocketsManager` is absent or an fd is
+  `universalmediacenter_upstream_*` and used whenever `SocketsManager` is absent or an fd is
   not a socket, so desktop browsers behave exactly as before.
 
-`kodi_wasm_has_sockets()` reports the capability to C++; the result is cached
+`universalmediacenter_wasm_has_sockets()` reports the capability to C++; the result is cached
 and identical on every thread.
 
 ## What Universal Media Center does with it
@@ -57,7 +57,7 @@ One binary serves both environments and picks the HTTP backend at runtime:
 
 | | Tizen (sockets) | Other browsers |
 |---|---|---|
-| `http`, `https` | `CCurlFile` (libcurl) | `CXhrFile` (XMLHttpRequest, `xbmc/filesystem/wasm/`) |
+| `http`, `https` | `CCurlFile` (libcurl) | `CXhrFile` (XMLHttpRequest, `/filesystem/wasm/`) |
 | Scrapers, `CreateHttpClient()` | `CCurlHttpClient` | `CXhrHttpClient` |
 | `CCurlFile::GetMimeType` and friends | libcurl | forwarded to `CXhrFile` |
 

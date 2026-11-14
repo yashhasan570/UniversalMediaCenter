@@ -13,7 +13,7 @@
 
 #include <memory>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace UTILS
 {
@@ -22,7 +22,7 @@ namespace EGL
 class CEGLFence;
 }
 } // namespace UTILS
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER
 
 namespace Shaders
 {
@@ -88,7 +88,7 @@ private:
   struct BUFFER
   {
     CVideoBuffer* videoBuffer = nullptr;
-    std::unique_ptr<KODI::UTILS::EGL::CEGLFence> fence;
+    std::unique_ptr<UNIVERSAL MEDIA CENTER::UTILS::EGL::CEGLFence> fence;
   } m_buffers[NUM_BUFFERS];
 
   CDRMPRIMETexturePool m_texturePool;

@@ -29,7 +29,7 @@
 
 #include "system_gl.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -117,4 +117,4 @@ private:
   unsigned int m_textureHeight{0};
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

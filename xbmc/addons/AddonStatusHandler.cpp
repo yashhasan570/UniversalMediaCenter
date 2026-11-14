@@ -25,7 +25,7 @@
 #include <mutex>
 #include <utility>
 
-using namespace KODI::MESSAGING;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
 
 namespace ADDON
 {

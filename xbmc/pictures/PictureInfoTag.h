@@ -17,19 +17,19 @@
 #include <string>
 #include <vector>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace ADDONS
 {
 class CImageDecoder;
 } /* namespace ADDONS */
-} /* namespace KODI */
+} /* namespace UNIVERSAL MEDIA CENTER */
 
 class CVariant;
 
 class CPictureInfoTag : public IArchivable, public ISerializable, public ISortable
 {
-  friend class KODI::ADDONS::CImageDecoder;
+  friend class UNIVERSAL MEDIA CENTER::ADDONS::CImageDecoder;
 
 public:
   CPictureInfoTag() { Reset(); }

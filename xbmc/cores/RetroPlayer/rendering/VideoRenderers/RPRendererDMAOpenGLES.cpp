@@ -18,7 +18,7 @@
 #include "utils/BufferObjectFactory.h"
 #include "utils/GLUtils.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace RETRO;
 
 // --- CRendererFactoryDMAOpenGLES ------------------------------------------------

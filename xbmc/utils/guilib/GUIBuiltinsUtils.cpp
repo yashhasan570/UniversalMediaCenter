@@ -17,7 +17,7 @@
 
 #include <string>
 
-namespace KODI::UTILS::GUILIB
+namespace UNIVERSAL MEDIA CENTER::UTILS::GUILIB
 {
 bool CGUIBuiltinsUtils::ExecuteAction(const CExecString& execute,
                                       const std::shared_ptr<CFileItem>& item)
@@ -58,4 +58,4 @@ bool CGUIBuiltinsUtils::ExecuteQueueMedia(const std::shared_ptr<CFileItem>& item
 {
   return ExecuteAction({"QueueMedia", *item, ""}, item);
 }
-} // namespace KODI::UTILS::GUILIB
+} // namespace UNIVERSAL MEDIA CENTER::UTILS::GUILIB

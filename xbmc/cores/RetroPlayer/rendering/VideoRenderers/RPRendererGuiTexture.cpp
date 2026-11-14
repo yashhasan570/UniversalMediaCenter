@@ -32,7 +32,7 @@ using namespace DirectX;
 
 #include <cstddef>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace RETRO;
 
 // --- CRendererFactoryGuiTexture ----------------------------------------------

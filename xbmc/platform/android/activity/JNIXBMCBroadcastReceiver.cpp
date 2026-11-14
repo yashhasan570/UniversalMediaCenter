@@ -6,7 +6,7 @@
  *  See LICENSES/README.md for more information.
  */
 
-#include "JNIXBMCBroadcastReceiver.h"
+#include "JNIBroadcastReceiver.h"
 
 #include "CompileInfo.h"
 
@@ -17,11 +17,11 @@ using namespace jni;
 namespace
 {
 
-static std::string className = std::string(CCompileInfo::GetClass()) + "/XBMCBroadcastReceiver";
+static std::string className = std::string(CCompileInfo::GetClass()) + "/BroadcastReceiver";
 
 } // namespace
 
-void CJNIXBMCBroadcastReceiver::RegisterNatives(JNIEnv* env)
+void CJNIBroadcastReceiver::RegisterNatives(JNIEnv* env)
 {
   jclass cClass = env->FindClass(className.c_str());
   if (cClass)

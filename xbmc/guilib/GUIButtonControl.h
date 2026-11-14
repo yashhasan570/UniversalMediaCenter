@@ -65,10 +65,10 @@ public:
 
   void PythonSetLabel(const std::string& strFont,
                       const std::string& strText,
-                      KODI::UTILS::COLOR::Color textColor,
-                      KODI::UTILS::COLOR::Color shadowColor,
-                      KODI::UTILS::COLOR::Color focusedColor);
-  void PythonSetDisabledColor(KODI::UTILS::COLOR::Color disabledColor);
+                      UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color textColor,
+                      UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color shadowColor,
+                      UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color focusedColor);
+  void PythonSetDisabledColor(UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color disabledColor);
 
   virtual void OnClick();
   bool HasClickActions() const { return m_clickActions.HasActionsMeetingCondition(); }
@@ -79,7 +79,7 @@ public:
 
 protected:
   friend class CGUISpinControlEx;
-  EVENT_RESULT OnMouseEvent(const CPoint& point, const KODI::MOUSE::CMouseEvent& event) override;
+  EVENT_RESULT OnMouseEvent(const CPoint& point, const UNIVERSAL MEDIA CENTER::MOUSE::CMouseEvent& event) override;
   void OnFocus() override;
   void OnUnFocus() override;
   virtual void ProcessText(unsigned int currentTime);
@@ -101,8 +101,8 @@ protected:
   float m_maxWidth;
   float m_labelMaxWidth{0};
 
-  KODI::GUILIB::GUIINFO::CGUIInfoLabel  m_info;
-  KODI::GUILIB::GUIINFO::CGUIInfoLabel  m_info2;
+  UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoLabel  m_info;
+  UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoLabel  m_info2;
   CGUILabel      m_label;
   CGUILabel      m_label2;
 

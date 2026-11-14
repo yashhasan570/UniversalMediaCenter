@@ -20,7 +20,7 @@ using namespace MUSIC_INFO;
 
 /*!
  * Construct a File object and opens the \a file.  \a file should be a
- * be an XBMC Vfile.
+ * be an  Vfile.
  */
 TagLibVFSStream::TagLibVFSStream(const std::string& strFileName, bool readOnly)
 {

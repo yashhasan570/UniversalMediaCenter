@@ -17,7 +17,7 @@
 
 #include <spa/utils/result.h>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace PIPEWIRE;
 
 CPipewireStream::CPipewireStream(CPipewireCore& core)

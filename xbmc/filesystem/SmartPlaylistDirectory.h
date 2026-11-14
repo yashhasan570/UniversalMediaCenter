@@ -12,7 +12,7 @@
 
 #include <string>
 
-namespace KODI::PLAYLIST
+namespace UNIVERSAL MEDIA CENTER::PLAYLIST
 {
 class CSmartPlaylist;
 }
@@ -29,7 +29,7 @@ namespace XFILE
     bool ContainsFiles(const CURL& url) override;
     bool Remove(const CURL& url) override;
 
-    static bool GetDirectory(const KODI::PLAYLIST::CSmartPlaylist& playlist,
+    static bool GetDirectory(const UNIVERSAL MEDIA CENTER::PLAYLIST::CSmartPlaylist& playlist,
                              CFileItemList& items,
                              const std::string& strBaseDir = "",
                              bool filter = false);

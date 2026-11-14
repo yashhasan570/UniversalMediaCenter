@@ -21,7 +21,7 @@ using namespace XFILE;
 //[InternetShortcut]
 //URL=http://msdn2.microsoft.com/en-us/library/ms812698.aspx
 
-namespace KODI::PLAYLIST
+namespace UNIVERSAL MEDIA CENTER::PLAYLIST
 {
 
 CPlayListURL::CPlayListURL(void) = default;
@@ -64,4 +64,4 @@ bool CPlayListURL::Load(const std::string& strFileName)
   return true;
 }
 
-} // namespace KODI::PLAYLIST
+} // namespace UNIVERSAL MEDIA CENTER::PLAYLIST

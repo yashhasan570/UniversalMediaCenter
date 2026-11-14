@@ -8,7 +8,7 @@
 
 #include "DVDOverlayStereoUtils.h"
 
-namespace KODI::VIDEO::SUBTITLES
+namespace UNIVERSAL MEDIA CENTER::VIDEO::SUBTITLES
 {
 bool IsStereoscopicOutputMode(RenderStereoMode renderMode)
 {
@@ -35,4 +35,4 @@ bool ShouldRenderStereoOverlay(DVDOverlayStereoView overlayView,
 
   return (overlayView == DVDOverlayStereoView::LEFT) == (renderView == RenderStereoView::LEFT);
 }
-} // namespace KODI::VIDEO::SUBTITLES
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO::SUBTITLES

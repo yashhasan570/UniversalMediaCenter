@@ -8,7 +8,7 @@
 
 #include "DefaultController.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 const char* CDefaultController::FEATURE_A = "a";

@@ -133,7 +133,7 @@ PLT_Artworks::ToDidl(NPT_String& didl, const NPT_String& tag)
          NPT_List<PLT_Artwork>::GetFirstItem(); it; it++) {
         if (it->type.IsEmpty()) continue;
 
-        tmp += "<xbmc:" + tag;
+        tmp += "<:" + tag;
         if (!it->type.IsEmpty()) {
             tmp += " type=\"";
             PLT_Didl::AppendXmlEscape(tmp, it->type);
@@ -141,7 +141,7 @@ PLT_Artworks::ToDidl(NPT_String& didl, const NPT_String& tag)
         }
         tmp += ">";
         PLT_Didl::AppendXmlEscape(tmp, it->url);
-        tmp += "</xbmc:" + tag + ">";
+        tmp += "</:" + tag + ">";
     }
 
     didl += tmp;
@@ -576,61 +576,61 @@ PLT_MediaObject::ToDidl(NPT_UInt64 mask, NPT_String& didl)
         didl += ">";
     }
 
-    // xbmc dateadded
-    if ((mask & PLT_FILTER_MASK_XBMC_DATEADDED) && !m_XbmcInfo.date_added.IsEmpty()) {
-        didl += "<xbmc:dateadded>";
+    //  dateadded
+    if ((mask & PLT_FILTER_MASK__DATEADDED) && !m_XbmcInfo.date_added.IsEmpty()) {
+        didl += "<:dateadded>";
         PLT_Didl::AppendXmlEscape(didl, m_XbmcInfo.date_added);
-        didl += "</xbmc:dateadded>";
+        didl += "</:dateadded>";
     } 
 
-    // xbmc rating
-    if (mask & PLT_FILTER_MASK_XBMC_RATING) {
-        didl += "<xbmc:rating>";
+    //  rating
+    if (mask & PLT_FILTER_MASK__RATING) {
+        didl += "<:rating>";
         didl += NPT_String::Format("%.1f", (double)m_XbmcInfo.rating);
-        didl += "</xbmc:rating>";
+        didl += "</:rating>";
     }
 
-    // xbmc votes
-    if (mask & PLT_FILTER_MASK_XBMC_VOTES && m_XbmcInfo.votes != 0) {
-        didl += "<xbmc:votes>";
+    //  votes
+    if (mask & PLT_FILTER_MASK__VOTES && m_XbmcInfo.votes != 0) {
+        didl += "<:votes>";
         didl += NPT_String::Format("%i", m_XbmcInfo.votes);
-        didl += "</xbmc:votes>";
+        didl += "</:votes>";
     }
 
-    // xbmc artwork
-    if (mask & PLT_FILTER_MASK_XBMC_ARTWORK) {
+    //  artwork
+    if (mask & PLT_FILTER_MASK__ARTWORK) {
         m_XbmcInfo.artwork.ToDidl(didl, "artwork");
     }
 
-    // xbmc unique identifier
-    if (mask & PLT_FILTER_MASK_XBMC_UNIQUE_IDENTIFIER && !m_XbmcInfo.unique_identifier.IsEmpty()) {
-        didl += "<xbmc:uniqueidentifier>";
+    //  unique identifier
+    if (mask & PLT_FILTER_MASK__UNIQUE_IDENTIFIER && !m_XbmcInfo.unique_identifier.IsEmpty()) {
+        didl += "<:uniqueidentifier>";
         PLT_Didl::AppendXmlEscape(didl, m_XbmcInfo.unique_identifier);
-        didl += "</xbmc:uniqueidentifier>";
+        didl += "</:uniqueidentifier>";
     }
 
     // country
-    if (mask & PLT_FILTER_MASK_XBMC_COUNTRY) {
+    if (mask & PLT_FILTER_MASK__COUNTRY) {
       for (NPT_List<NPT_String>::Iterator it =
         m_XbmcInfo.countries.GetFirstItem(); it; ++it) {
-        didl += "<xbmc:country>";
+        didl += "<:country>";
         PLT_Didl::AppendXmlEscape(didl, (*it));
-        didl += "</xbmc:country>";
+        didl += "</:country>";
       }
     }
 
     // user rating
-    if (mask & PLT_FILTER_MASK_XBMC_USERRATING) {
-      didl += "<xbmc:userrating>";
+    if (mask & PLT_FILTER_MASK__USERRATING) {
+      didl += "<:userrating>";
       didl += NPT_String::FromInteger(m_XbmcInfo.user_rating);
-      didl += "</xbmc:userrating>";
+      didl += "</:userrating>";
     }
 
-    // xbmc last playback state
-    if (mask & PLT_FILTER_MASK_XBMC_LASTPLAYERSTATE && !m_XbmcInfo.last_playerstate.IsEmpty()) {
-      didl += "<xbmc:lastPlayerState>";
+    //  last playback state
+    if (mask & PLT_FILTER_MASK__LASTPLAYERSTATE && !m_XbmcInfo.last_playerstate.IsEmpty()) {
+      didl += "<:lastPlayerState>";
       PLT_Didl::AppendXmlEscape(didl, m_XbmcInfo.last_playerstate);
-      didl += "</xbmc:lastPlayerState>";
+      didl += "</:lastPlayerState>";
     }
 
     // class is required
@@ -836,9 +836,9 @@ PLT_MediaObject::FromDidl(NPT_XmlElementNode* entry)
         m_Resources.Add(resource);
     }
 
-    PLT_XmlHelper::GetChildText(entry, "lastPlayerState", m_XbmcInfo.last_playerstate, didl_namespace_xbmc, 2048);
+    PLT_XmlHelper::GetChildText(entry, "lastPlayerState", m_XbmcInfo.last_playerstate, didl_namespace_, 2048);
 
-    PLT_XmlHelper::GetChildText(entry, "dateadded", m_XbmcInfo.date_added, didl_namespace_xbmc, 256);
+    PLT_XmlHelper::GetChildText(entry, "dateadded", m_XbmcInfo.date_added, didl_namespace_, 256);
     // parse date and make sure it's valid
     for (int format=0; format<=NPT_DateTime::FORMAT_RFC_1036; format++) {
         NPT_DateTime date;
@@ -849,21 +849,21 @@ PLT_MediaObject::FromDidl(NPT_XmlElementNode* entry)
     }
     m_XbmcInfo.date_added = parsed_date;
 
-    PLT_XmlHelper::GetChildText(entry, "rating", str, didl_namespace_xbmc);
+    PLT_XmlHelper::GetChildText(entry, "rating", str, didl_namespace_);
     NPT_Float floatValue;
     if (NPT_FAILED(str.ToFloat(floatValue))) floatValue = 0.0;
     m_XbmcInfo.rating = floatValue;
 
-    PLT_XmlHelper::GetChildText(entry, "votes", str, didl_namespace_xbmc, 256);
+    PLT_XmlHelper::GetChildText(entry, "votes", str, didl_namespace_, 256);
     NPT_Int32 intValue;
     if (NPT_FAILED(str.ToInteger(intValue))) intValue = 0;
     m_XbmcInfo.votes = intValue;
 
     children.Clear();
-    PLT_XmlHelper::GetChildren(entry, children, "artwork", didl_namespace_xbmc);
+    PLT_XmlHelper::GetChildren(entry, children, "artwork", didl_namespace_);
     m_XbmcInfo.artwork.FromDidl(children);
 
-    PLT_XmlHelper::GetChildText(entry, "uniqueidentifier", m_XbmcInfo.unique_identifier, didl_namespace_xbmc, 256);
+    PLT_XmlHelper::GetChildText(entry, "uniqueidentifier", m_XbmcInfo.unique_identifier, didl_namespace_, 256);
 
     // re serialize the entry didl as a we might need to pass it to a renderer
     // we may have modified the tree to "fix" issues, so as not to break a renderer

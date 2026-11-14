@@ -25,7 +25,7 @@
 
 #include <algorithm>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 CPlayerSelectionRule::CPlayerSelectionRule(tinyxml2::XMLElement* pRule)
 {

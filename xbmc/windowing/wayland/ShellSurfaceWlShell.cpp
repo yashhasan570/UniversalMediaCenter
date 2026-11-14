@@ -12,7 +12,7 @@
 
 #include <cmath>
 
-using namespace KODI::WINDOWING::WAYLAND;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::WAYLAND;
 using namespace std::placeholders;
 
 CShellSurfaceWlShell::CShellSurfaceWlShell(IShellSurfaceHandler& handler,

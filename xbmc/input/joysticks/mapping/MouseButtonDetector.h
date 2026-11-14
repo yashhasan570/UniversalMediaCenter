@@ -11,7 +11,7 @@
 #include "PrimitiveDetector.h"
 #include "input/mouse/MouseTypes.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace JOYSTICK
 {
@@ -42,4 +42,4 @@ private:
   const MOUSE::BUTTON_ID m_buttonIndex;
 };
 } // namespace JOYSTICK
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

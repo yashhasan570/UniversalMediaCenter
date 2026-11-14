@@ -18,7 +18,7 @@
 #include "Util.h"
 #include "cores/VideoPlayer/DVDStreamInfo.h"
 #include "filesystem/File.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 #include "utils/XMLUtils.h"
 #include "utils/log.h"
 
@@ -124,7 +124,7 @@ bool CDecoderFilterManager::Load()
 
   CLog::LogF(LOGINFO, "loading filters from {}", fileName);
 
-  CXBMCTinyXML2 xmlDoc;
+  CTinyXML2 xmlDoc;
   if (!xmlDoc.LoadFile(fileName))
   {
     CLog::LogF(LOGERROR, "error loading: line {}, {}", xmlDoc.ErrorLineNum(), xmlDoc.ErrorStr());
@@ -155,7 +155,7 @@ bool CDecoderFilterManager::Save() const
   if (!m_dirty || m_filters.empty())
     return true;
 
-  CXBMCTinyXML2 doc;
+  CTinyXML2 doc;
   auto* xmlRootElement = doc.NewElement(TAG_ROOT);
   if (xmlRootElement == nullptr)
     return false;

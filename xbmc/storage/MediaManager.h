@@ -226,7 +226,7 @@ private:
    \return the given CMediaSource for the addon root directory, empty for a section with no
    add-ons of its own
    */
-  CMediaSource GetRootAddonTypeSource(KODI::MEDIA::MediaSection section) const;
+  CMediaSource GetRootAddonTypeSource(UNIVERSAL MEDIA CENTER::MEDIA::MediaSection section) const;
 
   /*! \brief Generate the addons source for the given content type
    \param type the type of addon content desired

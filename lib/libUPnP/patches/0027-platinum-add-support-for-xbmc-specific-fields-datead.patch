@@ -1,13 +1,13 @@
 From ac80794eedc6e240671ce3b60ecb4a24c58f84ab Mon Sep 17 00:00:00 2001
-From: montellese <montellese@xbmc.org>
+From: montellese <montellese@.org>
 Date: Mon, 19 May 2014 20:56:25 +0200
-Subject: [PATCH 04/11] platinum: add support for xbmc specific fields
+Subject: [PATCH 04/11] platinum: add support for  specific fields
  dateadded, rating, votes and artwork
 
-xbmc:dateadded to pass dateadded with items and not need to stat upnp resources for that
-xbmc:rating for number-based rating
-xbmc:votes for string-based votes number
-xbmc:artwork for a type-url-based mapping of artwork
+:dateadded to pass dateadded with items and not need to stat upnp resources for that
+:rating for number-based rating
+:votes for string-based votes number
+:artwork for a type-url-based mapping of artwork
 ---
  .../Source/Devices/MediaServer/PltDidl.cpp         |  12 ++-
  .../Platinum/Source/Devices/MediaServer/PltDidl.h  |  11 +++
@@ -26,12 +26,12 @@ index 0758ad5..2bb6a04 100644
                                              " xmlns:upnp=\"urn:schemas-upnp-org:metadata-1-0/upnp/\""
 -                                            " xmlns:dlna=\"urn:schemas-dlna-org:metadata-1-0/\">";
 +                                            " xmlns:dlna=\"urn:schemas-dlna-org:metadata-1-0/\""
-+                                            " xmlns:xbmc=\"urn:schemas-xbmc-org:metadata-1-0/\">";
++                                            " xmlns:=\"urn:schemas--org:metadata-1-0/\">";
  const char* didl_footer         = "</DIDL-Lite>";
  const char* didl_namespace_dc   = "http://purl.org/dc/elements/1.1/";
  const char* didl_namespace_upnp = "urn:schemas-upnp-org:metadata-1-0/upnp/";
  const char* didl_namespace_dlna = "urn:schemas-dlna-org:metadata-1-0/";
-+const char* didl_namespace_xbmc = "urn:schemas-xbmc-org:metadata-1-0/";
++const char* didl_namespace_ = "urn:schemas--org:metadata-1-0/";
  
  /*----------------------------------------------------------------------
  |   PLT_Didl::ConvertFilterToMask
@@ -39,14 +39,14 @@ index 0758ad5..2bb6a04 100644
              mask |= PLT_FILTER_MASK_EPISODE_COUNT;
          } else if (NPT_String::CompareN(s+i, PLT_FILTER_FIELD_EPISODE_SEASON, len, true) == 0) {
              mask |= PLT_FILTER_MASK_EPISODE_SEASON;
-+        } else if (NPT_String::CompareN(s+i, PLT_FILTER_FIELD_XBMC_DATEADDED, len, true) == 0) {
-+            mask |= PLT_FILTER_MASK_XBMC_DATEADDED;
-+        } else if (NPT_String::CompareN(s+i, PLT_FILTER_FIELD_XBMC_RATING, len, true) == 0) {
-+            mask |= PLT_FILTER_MASK_XBMC_RATING;
-+        } else if (NPT_String::CompareN(s+i, PLT_FILTER_FIELD_XBMC_VOTES, len, true) == 0) {
-+            mask |= PLT_FILTER_MASK_XBMC_VOTES;
-+        } else if (NPT_String::CompareN(s+i, PLT_FILTER_FIELD_XBMC_ARTWORK, len, true) == 0) {
-+            mask |= PLT_FILTER_MASK_XBMC_ARTWORK;
++        } else if (NPT_String::CompareN(s+i, PLT_FILTER_FIELD__DATEADDED, len, true) == 0) {
++            mask |= PLT_FILTER_MASK__DATEADDED;
++        } else if (NPT_String::CompareN(s+i, PLT_FILTER_FIELD__RATING, len, true) == 0) {
++            mask |= PLT_FILTER_MASK__RATING;
++        } else if (NPT_String::CompareN(s+i, PLT_FILTER_FIELD__VOTES, len, true) == 0) {
++            mask |= PLT_FILTER_MASK__VOTES;
++        } else if (NPT_String::CompareN(s+i, PLT_FILTER_FIELD__ARTWORK, len, true) == 0) {
++            mask |= PLT_FILTER_MASK__ARTWORK;
          }
  
          if (next_comma < 0) {
@@ -58,10 +58,10 @@ index 2271162..0f7c892 100644
  #define PLT_FILTER_MASK_EPISODE_COUNT               NPT_UINT64_C(0x0000001000000000)
  #define PLT_FILTER_MASK_EPISODE_SEASON              NPT_UINT64_C(0x0000002000000000)
  
-+#define PLT_FILTER_MASK_XBMC_DATEADDED              NPT_UINT64_C(0x0000100000000000)
-+#define PLT_FILTER_MASK_XBMC_RATING                 NPT_UINT64_C(0x0000200000000000)
-+#define PLT_FILTER_MASK_XBMC_VOTES                  NPT_UINT64_C(0x0000300000000000)
-+#define PLT_FILTER_MASK_XBMC_ARTWORK                NPT_UINT64_C(0x0000400000000000)
++#define PLT_FILTER_MASK__DATEADDED              NPT_UINT64_C(0x0000100000000000)
++#define PLT_FILTER_MASK__RATING                 NPT_UINT64_C(0x0000200000000000)
++#define PLT_FILTER_MASK__VOTES                  NPT_UINT64_C(0x0000300000000000)
++#define PLT_FILTER_MASK__ARTWORK                NPT_UINT64_C(0x0000400000000000)
 +
  #define PLT_FILTER_FIELD_TITLE                      "dc:title"
  #define PLT_FILTER_FIELD_CREATOR                    "dc:creator"
@@ -70,17 +70,17 @@ index 2271162..0f7c892 100644
  #define PLT_FILTER_FIELD_EPISODE_COUNT              "upnp:episodeCount"
  #define PLT_FILTER_FIELD_EPISODE_SEASON             "upnp:episodeSeason"
  
-+#define PLT_FILTER_FIELD_XBMC_DATEADDED             "xbmc:dateadded"
-+#define PLT_FILTER_FIELD_XBMC_RATING                "xbmc:rating"
-+#define PLT_FILTER_FIELD_XBMC_VOTES                 "xbmc:votes"
-+#define PLT_FILTER_FIELD_XBMC_ARTWORK               "xbmc:artwork"
++#define PLT_FILTER_FIELD__DATEADDED             ":dateadded"
++#define PLT_FILTER_FIELD__RATING                ":rating"
++#define PLT_FILTER_FIELD__VOTES                 ":votes"
++#define PLT_FILTER_FIELD__ARTWORK               ":artwork"
 +
  extern const char* didl_header;
  extern const char* didl_footer;
  extern const char* didl_namespace_dc;
  extern const char* didl_namespace_upnp;
  extern const char* didl_namespace_dlna;
-+extern const char* didl_namespace_xbmc;
++extern const char* didl_namespace_;
  
  /*----------------------------------------------------------------------
  |   PLT_Didl
@@ -115,7 +115,7 @@ index a8855cc..5c2ec84 100644
 +         NPT_List<PLT_Artwork>::GetFirstItem(); it; it++) {
 +        if (it->type.IsEmpty()) continue;
 +
-+        tmp += "<xbmc:" + tag;
++        tmp += "<:" + tag;
 +        if (!it->type.IsEmpty()) {
 +            tmp += " type=\"";
 +            PLT_Didl::AppendXmlEscape(tmp, it->type);
@@ -123,7 +123,7 @@ index a8855cc..5c2ec84 100644
 +        }
 +        tmp += ">";
 +        PLT_Didl::AppendXmlEscape(tmp, it->url);
-+        tmp += "</xbmc:" + tag + ">";
++        tmp += "</:" + tag + ">";
 +    }
 +
 +    didl += tmp;
@@ -167,29 +167,29 @@ index a8855cc..5c2ec84 100644
          }
      }
  
-+    // xbmc dateadded
-+    if ((mask & PLT_FILTER_MASK_XBMC_DATEADDED) && !m_XbmcInfo.date_added.IsEmpty()) {
-+        didl += "<xbmc:dateadded>";
++    //  dateadded
++    if ((mask & PLT_FILTER_MASK__DATEADDED) && !m_XbmcInfo.date_added.IsEmpty()) {
++        didl += "<:dateadded>";
 +        PLT_Didl::AppendXmlEscape(didl, m_XbmcInfo.date_added);
-+        didl += "</xbmc:dateadded>";
++        didl += "</:dateadded>";
 +    } 
 +
-+    // xbmc rating
-+    if (mask & PLT_FILTER_MASK_XBMC_RATING) {
-+        didl += "<xbmc:rating>";
++    //  rating
++    if (mask & PLT_FILTER_MASK__RATING) {
++        didl += "<:rating>";
 +        didl += NPT_String::Format("%.1f", m_XbmcInfo.rating);
-+        didl += "</xbmc:rating>";
++        didl += "</:rating>";
 +    }
 +
-+    // xbmc votes
-+    if (mask & PLT_FILTER_MASK_XBMC_VOTES && !m_XbmcInfo.votes.IsEmpty()) {
-+        didl += "<xbmc:votes>";
++    //  votes
++    if (mask & PLT_FILTER_MASK__VOTES && !m_XbmcInfo.votes.IsEmpty()) {
++        didl += "<:votes>";
 +        PLT_Didl::AppendXmlEscape(didl, m_XbmcInfo.votes);
-+        didl += "</xbmc:votes>";
++        didl += "</:votes>";
 +    }
 +
-+    // xbmc artwork
-+    if (mask & PLT_FILTER_MASK_XBMC_ARTWORK) {
++    //  artwork
++    if (mask & PLT_FILTER_MASK__ARTWORK) {
 +        m_XbmcInfo.artwork.ToDidl(didl, "artwork");
 +    }
 +
@@ -200,7 +200,7 @@ index a8855cc..5c2ec84 100644
          m_Resources.Add(resource);
      }
  
-+    PLT_XmlHelper::GetChildText(entry, "dateadded", m_XbmcInfo.date_added, didl_namespace_xbmc, 256);
++    PLT_XmlHelper::GetChildText(entry, "dateadded", m_XbmcInfo.date_added, didl_namespace_, 256);
 +    // parse date and make sure it's valid
 +    for (int format=0; format<=NPT_DateTime::FORMAT_RFC_1036; format++) {
 +        NPT_DateTime date;
@@ -211,15 +211,15 @@ index a8855cc..5c2ec84 100644
 +    }
 +    m_XbmcInfo.date_added = parsed_date;
 +
-+    PLT_XmlHelper::GetChildText(entry, "rating", str, didl_namespace_xbmc);
++    PLT_XmlHelper::GetChildText(entry, "rating", str, didl_namespace_);
 +    NPT_Float floatValue;
 +    if (NPT_FAILED(str.ToFloat(floatValue))) floatValue = 0.0;
 +    m_XbmcInfo.rating = floatValue;
 +
-+    PLT_XmlHelper::GetChildText(entry, "votes", m_XbmcInfo.votes, didl_namespace_xbmc, 256);
++    PLT_XmlHelper::GetChildText(entry, "votes", m_XbmcInfo.votes, didl_namespace_, 256);
 +
 +    children.Clear();
-+    PLT_XmlHelper::GetChildren(entry, children, "artwork", didl_namespace_xbmc);
++    PLT_XmlHelper::GetChildren(entry, children, "artwork", didl_namespace_);
 +    m_XbmcInfo.artwork.FromDidl(children);
 +
      // re serialize the entry didl as a we might need to pass it to a renderer
@@ -260,7 +260,7 @@ index 34a69b7..56291a7 100644
      /* resources related */
      NPT_Array<PLT_MediaItemResource> m_Resources;
  
-+    /* XBMC specific */
++    /*  specific */
 +    PLT_XbmcInfo m_XbmcInfo;
 +
      /* original DIDL for Control Points to pass to a renderer when invoking SetAVTransportURI */
@@ -275,7 +275,7 @@ index 3c14dff..ffdddda 100644
                            NPT_Int32                count,
                            bool                     browse_metadata = false,
 -                          const char*              filter = "dc:date,dc:description,upnp:longDescription,upnp:genre,res,res@duration,res@size,upnp:albumArtURI,upnp:rating,upnp:lastPlaybackPosition,upnp:lastPlaybackTime,upnp:playbackCount,upnp:originalTrackNumber,upnp:episodeNumber,upnp:programTitle,upnp:seriesTitle,upnp:album,upnp:artist,upnp:author,upnp:director,dc:publisher,searchable,childCount,dc:title,dc:creator,upnp:actor,res@resolution,upnp:episodeCount,upnp:episodeSeason", // explicitely specify res otherwise WMP won't return a URL!
-+                          const char*              filter = "dc:date,dc:description,upnp:longDescription,upnp:genre,res,res@duration,res@size,upnp:albumArtURI,upnp:rating,upnp:lastPlaybackPosition,upnp:lastPlaybackTime,upnp:playbackCount,upnp:originalTrackNumber,upnp:episodeNumber,upnp:programTitle,upnp:seriesTitle,upnp:album,upnp:artist,upnp:author,upnp:director,dc:publisher,searchable,childCount,dc:title,dc:creator,upnp:actor,res@resolution,upnp:episodeCount,upnp:episodeSeason,xbmc:dateadded,xbmc:rating,xbmc:votes,xbmc:artwork", // explicitely specify res otherwise WMP won't return a URL!
++                          const char*              filter = "dc:date,dc:description,upnp:longDescription,upnp:genre,res,res@duration,res@size,upnp:albumArtURI,upnp:rating,upnp:lastPlaybackPosition,upnp:lastPlaybackTime,upnp:playbackCount,upnp:originalTrackNumber,upnp:episodeNumber,upnp:programTitle,upnp:seriesTitle,upnp:album,upnp:artist,upnp:author,upnp:director,dc:publisher,searchable,childCount,dc:title,dc:creator,upnp:actor,res@resolution,upnp:episodeCount,upnp:episodeSeason,:dateadded,:rating,:votes,:artwork", // explicitely specify res otherwise WMP won't return a URL!
                            const char*              sort = "");
  private:
      NPT_Result Find(const char* ip, PLT_DeviceDataReference& device);

@@ -27,7 +27,7 @@ using namespace MUSIC_INFO;
 
 TEST(TestMusicInfoTagLoaderMatroska, ReadsAFileWithNoChapters)
 {
-  const std::string path = XBMC_REF_FILE_PATH("xbmc/filesystem/test/data/audiobook/singlefile.mka");
+  const std::string path = _REF_FILE_PATH("/filesystem/test/data/audiobook/singlefile.mka");
 
   CMusicInfoTag tag;
   CMusicInfoTagLoaderMatroska loader;
@@ -59,7 +59,7 @@ TEST(TestMusicInfoTagLoaderMatroska, ReadsAFileWithNoChapters)
 TEST(TestMusicInfoTagLoaderMatroska, TitlesASongAfterItsAlbumWhenTheFileNamesNoSong)
 {
   const std::string path =
-      XBMC_REF_FILE_PATH("xbmc/filesystem/test/data/audiobook/singlefile-notitle.mka");
+      _REF_FILE_PATH("/filesystem/test/data/audiobook/singlefile-notitle.mka");
 
   CMusicInfoTag tag;
   CMusicInfoTagLoaderMatroska loader;
@@ -77,7 +77,7 @@ TEST(TestMusicInfoTagLoaderMatroska, TitlesASongAfterItsAlbumWhenTheFileNamesNoS
 TEST(TestMusicInfoTagLoaderMatroska, SkipsAChapterTooShortToBeTheSong)
 {
   const std::string path =
-      XBMC_REF_FILE_PATH("xbmc/filesystem/test/data/audiobook/onetrackplusartefact.mka");
+      _REF_FILE_PATH("/filesystem/test/data/audiobook/onetrackplusartefact.mka");
 
   CMusicInfoTag tag;
   CMusicInfoTagLoaderMatroska loader;
@@ -101,7 +101,7 @@ TEST(TestMusicInfoTagLoaderMatroska, SkipsAChapterTooShortToBeTheSong)
  */
 TEST(TestMusicInfoTagLoaderMatroska, DoesNotGiveTheOnlyChapterATagNamingAnotherOne)
 {
-  const CURL url(XBMC_REF_FILE_PATH("xbmc/filesystem/test/data/audiobook/straychapteruid.mka"));
+  const CURL url(_REF_FILE_PATH("/filesystem/test/data/audiobook/straychapteruid.mka"));
 
   const MatroskaAlbum album = ReadMatroskaTags(url, nullptr);
 

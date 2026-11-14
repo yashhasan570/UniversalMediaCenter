@@ -10,7 +10,7 @@
 
 #include "input/mouse/MouseTypes.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace MOUSE
 {
@@ -54,4 +54,4 @@ public:
   virtual void OnButtonRelease(BUTTON_ID button) = 0;
 };
 } // namespace MOUSE
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

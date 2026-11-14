@@ -13,7 +13,7 @@
 #include <stdint.h>
 #include <string>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace KEYBOARD
 {
@@ -67,4 +67,4 @@ public:
   virtual void OnKeyRelease(const KeyName& key, Modifier mod, uint32_t unicode) = 0;
 };
 } // namespace KEYBOARD
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

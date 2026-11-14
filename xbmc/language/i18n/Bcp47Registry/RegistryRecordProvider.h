@@ -15,7 +15,7 @@
 
 #include <fmt/format.h> //! \todo remove after upgrade to libfmt >= 10.0
 
-namespace KODI::LANGUAGE::I18N
+namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N
 {
 struct RegistryFileField
 {
@@ -62,17 +62,17 @@ public:
   virtual const std::vector<RegistryFileRecord>& GetRecords() const = 0;
   virtual ~IRegistryRecordProvider() {}
 };
-} // namespace KODI::LANGUAGE::I18N
+} // namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N
 
 #if FMT_VERSION < 100000
 // user-type formatters for libfmt < 10.0
 //! \todo remove after libfmt upgrade
 template<>
-struct fmt::formatter<KODI::LANGUAGE::I18N::RegistryFileRecord> : fmt::formatter<std::string>
+struct fmt::formatter<UNIVERSAL MEDIA CENTER::LANGUAGE::I18N::RegistryFileRecord> : fmt::formatter<std::string>
 {
-  auto format(const KODI::LANGUAGE::I18N::RegistryFileRecord& p, format_context& ctx) const
+  auto format(const UNIVERSAL MEDIA CENTER::LANGUAGE::I18N::RegistryFileRecord& p, format_context& ctx) const
   {
-    return fmt::formatter<std::string>::format(KODI::LANGUAGE::I18N::format_as(p), ctx);
+    return fmt::formatter<std::string>::format(UNIVERSAL MEDIA CENTER::LANGUAGE::I18N::format_as(p), ctx);
   }
 };
 #endif

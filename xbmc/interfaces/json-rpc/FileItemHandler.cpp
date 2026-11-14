@@ -15,7 +15,7 @@
 #include "ServiceBroker.h"
 #include "Util.h"
 #include "VideoLibrary.h"
-#include "addons/kodi-dev-kit/include/kodi/c-api/addon-instance/pvr/pvr_epg.h" // EPG_TAG_INVALID_UID
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api/addon-instance/pvr/pvr_epg.h" // EPG_TAG_INVALID_UID
 #include "filesystem/Directory.h"
 #include "imagefiles/ImageFileURL.h"
 #include "music/MusicThumbLoader.h"
@@ -176,7 +176,7 @@ bool CFileItemHandler::GetField(const std::string& field,
 
     if (field == "art")
     {
-      if (thumbLoader && !item->GetProperty(KODI::ITEM::PROPERTY::LIBRARY_ART_FILLED).asBoolean() &&
+      if (thumbLoader && !item->GetProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::LIBRARY_ART_FILLED).asBoolean() &&
           !fetchedArt &&
           ((item->HasVideoInfoTag() && item->GetVideoInfoTag()->m_iDbId > -1) ||
            (item->HasMusicInfoTag() && item->GetMusicInfoTag()->GetDatabaseId() > -1)))
@@ -185,7 +185,7 @@ bool CFileItemHandler::GetField(const std::string& field,
         fetchedArt = true;
       }
 
-      const KODI::ART::Artwork& artMap = item->GetArt();
+      const UNIVERSAL MEDIA CENTER::ART::Artwork& artMap = item->GetArt();
       CVariant artObj(CVariant::VariantTypeObject);
       for (const auto& artIt : artMap)
       {
@@ -199,17 +199,17 @@ bool CFileItemHandler::GetField(const std::string& field,
 
     if (field == "thumbnail")
     {
-      if (thumbLoader != NULL && !item->HasArt(KODI::ART::TYPE::THUMB) && !fetchedArt &&
+      if (thumbLoader != NULL && !item->HasArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB) && !fetchedArt &&
         ((item->HasVideoInfoTag() && item->GetVideoInfoTag()->m_iDbId > -1) || (item->HasMusicInfoTag() && item->GetMusicInfoTag()->GetDatabaseId() > -1)))
       {
         thumbLoader->FillLibraryArt(*item);
         fetchedArt = true;
       }
-      else if (item->HasPictureInfoTag() && !item->HasArt(KODI::ART::TYPE::THUMB))
-        item->SetArt(KODI::ART::TYPE::THUMB, IMAGE_FILES::URLFromFile(item->GetPath()));
+      else if (item->HasPictureInfoTag() && !item->HasArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB))
+        item->SetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB, IMAGE_FILES::URLFromFile(item->GetPath()));
 
-      if (item->HasArt(KODI::ART::TYPE::THUMB))
-        result["thumbnail"] = IMAGE_FILES::URLFromFile(item->GetArt(KODI::ART::TYPE::THUMB));
+      if (item->HasArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB))
+        result["thumbnail"] = IMAGE_FILES::URLFromFile(item->GetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB));
       else
         result["thumbnail"] = "";
 
@@ -218,15 +218,15 @@ bool CFileItemHandler::GetField(const std::string& field,
 
     if (field == "fanart")
     {
-      if (thumbLoader != NULL && !item->HasArt(KODI::ART::TYPE::FANART) && !fetchedArt &&
+      if (thumbLoader != NULL && !item->HasArt(UNIVERSAL MEDIA CENTER::ART::TYPE::FANART) && !fetchedArt &&
         ((item->HasVideoInfoTag() && item->GetVideoInfoTag()->m_iDbId > -1) || (item->HasMusicInfoTag() && item->GetMusicInfoTag()->GetDatabaseId() > -1)))
       {
         thumbLoader->FillLibraryArt(*item);
         fetchedArt = true;
       }
 
-      if (item->HasArt(KODI::ART::TYPE::FANART))
-        result["fanart"] = IMAGE_FILES::URLFromFile(item->GetArt(KODI::ART::TYPE::FANART));
+      if (item->HasArt(UNIVERSAL MEDIA CENTER::ART::TYPE::FANART))
+        result["fanart"] = IMAGE_FILES::URLFromFile(item->GetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::FANART));
       else
         result["fanart"] = "";
 
@@ -237,12 +237,12 @@ bool CFileItemHandler::GetField(const std::string& field,
     {
       if (item->GetVideoInfoTag()->m_iSeason < 0 && field == "season")
       {
-        result[field] = (int)item->GetProperty(KODI::ITEM::PROPERTY::TOTAL_SEASONS).asInteger();
+        result[field] = (int)item->GetProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::TOTAL_SEASONS).asInteger();
         return true;
       }
       if (field == "watchedepisodes")
       {
-        result[field] = (int)item->GetProperty(KODI::ITEM::PROPERTY::WATCHED_EPISODES).asInteger();
+        result[field] = (int)item->GetProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::WATCHED_EPISODES).asInteger();
         return true;
       }
     }
@@ -428,15 +428,15 @@ void CFileItemHandler::HandleFileItem(const char* ID,
         else if (item->HasMusicInfoTag())
         {
           std::string type = item->GetMusicInfoTag()->GetType();
-          if (type == KODI::MEDIA::NameOf(KODI::MEDIA::TYPE::ALBUM) || type == KODI::MEDIA::NameOf(KODI::MEDIA::TYPE::SONG) || type == KODI::MEDIA::NameOf(KODI::MEDIA::TYPE::ARTIST))
+          if (type == UNIVERSAL MEDIA CENTER::MEDIA::NameOf(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::ALBUM) || type == UNIVERSAL MEDIA CENTER::MEDIA::NameOf(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::SONG) || type == UNIVERSAL MEDIA CENTER::MEDIA::NameOf(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::ARTIST))
             object["type"] = type;
           else if (!item->IsFolder())
-            object["type"] = KODI::MEDIA::NameOf(KODI::MEDIA::TYPE::SONG);
+            object["type"] = UNIVERSAL MEDIA CENTER::MEDIA::NameOf(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::SONG);
         }
         else if (item->HasVideoInfoTag() && !item->GetVideoInfoTag()->m_type.empty())
         {
           std::string type = item->GetVideoInfoTag()->m_type;
-          if (type == KODI::MEDIA::NameOf(KODI::MEDIA::TYPE::MOVIE) || type == KODI::MEDIA::NameOf(KODI::MEDIA::TYPE::TV_SHOW) || type == KODI::MEDIA::NameOf(KODI::MEDIA::TYPE::EPISODE) || type == KODI::MEDIA::NameOf(KODI::MEDIA::TYPE::MUSIC_VIDEO))
+          if (type == UNIVERSAL MEDIA CENTER::MEDIA::NameOf(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MOVIE) || type == UNIVERSAL MEDIA CENTER::MEDIA::NameOf(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::TV_SHOW) || type == UNIVERSAL MEDIA CENTER::MEDIA::NameOf(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::EPISODE) || type == UNIVERSAL MEDIA CENTER::MEDIA::NameOf(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MUSIC_VIDEO))
             object["type"] = type;
         }
         else if (item->HasPictureInfoTag())

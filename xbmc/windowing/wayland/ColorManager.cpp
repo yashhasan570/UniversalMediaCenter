@@ -221,7 +221,7 @@ public:
 
 #undef CASE
 
-using namespace KODI::WINDOWING::WAYLAND;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::WAYLAND;
 
 CColorManager::CColorManager(CConnection& connection)
 {
@@ -446,7 +446,7 @@ void CColorManager::SetLightMetadata(
 
 #else
 
-using namespace KODI::WINDOWING::WAYLAND;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::WAYLAND;
 
 CColorManager::CColorManager(CConnection& /*connection*/)
 {

@@ -13,7 +13,7 @@
 
 class IPlayer;
 class IPlayerCallback;
-class CXBMCTinyXML2;
+class CTinyXML2;
 
 namespace tinyxml2
 {
@@ -60,5 +60,5 @@ public:
   bool m_bPlaysAudio{false};
   bool m_bPlaysVideo{false};
   bool m_bPlaysGame{false};
-  std::unique_ptr<CXBMCTinyXML2> m_config;
+  std::unique_ptr<CTinyXML2> m_config;
 };

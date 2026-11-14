@@ -10,7 +10,7 @@
 
 #include "GUIGameRenderManager.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace RETRO;
 
 CGUIGameVideoHandle::CGUIGameVideoHandle(CGUIGameRenderManager& renderManager)

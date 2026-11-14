@@ -25,7 +25,7 @@ public:
   bool UsesCache() const { return m_use_cache; }
 
 protected:
-  void Begin(KODI::UTILS::COLOR::Color color) override {}
+  void Begin(UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color color) override {}
   void Draw(float* x,
             float* y,
             float* z,
@@ -58,7 +58,7 @@ protected:
         [](float posX, float posY, float width, float height,
            const CTextureInfo& texture) -> CGUITexture*
         { return new CTestGUITexture(posX, posY, width, height, texture); },
-        [](const CRect&, KODI::UTILS::COLOR::Color, CTexture*, const CRect*, float, bool) {});
+        [](const CRect&, UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color, CTexture*, const CRect*, float, bool) {});
   }
 };
 

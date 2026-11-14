@@ -154,7 +154,7 @@ bool CGUIDialogSubtitles::OnMessage(CGUIMessage& message)
       if (item >= 0 && item < m_serviceItems->Size())
       {
         SetService(
-            m_serviceItems->Get(item)->GetProperty(KODI::ITEM::PROPERTY::ADDON_ID).asString());
+            m_serviceItems->Get(item)->GetProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::ADDON_ID).asString());
         Search();
       }
       return true;
@@ -342,7 +342,7 @@ const CFileItemPtr CGUIDialogSubtitles::GetService() const
 {
   for (int i = 0; i < m_serviceItems->Size(); i++)
   {
-    if (m_serviceItems->Get(i)->GetProperty(KODI::ITEM::PROPERTY::ADDON_ID) == m_currentService)
+    if (m_serviceItems->Get(i)->GetProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::ADDON_ID) == m_currentService)
       return m_serviceItems->Get(i);
   }
   return CFileItemPtr();
@@ -376,7 +376,7 @@ void CGUIDialogSubtitles::Search(const std::string &search/*=""*/)
 
   std::string preferredLanguage = settings->GetString(CSettings::SETTING_LOCALE_SUBTITLELANGUAGE);
 
-  if (StringUtils::EqualsNoCase(preferredLanguage, KODI::LANGINFO::subLanguageOriginal))
+  if (StringUtils::EqualsNoCase(preferredLanguage, UNIVERSAL MEDIA CENTER::LANGINFO::subLanguageOriginal))
   {
     AudioStreamInfo info;
 
@@ -391,7 +391,7 @@ void CGUIDialogSubtitles::Search(const std::string &search/*=""*/)
     if (preferredLanguage.empty())
       preferredLanguage = "Unknown";
   }
-  else if (StringUtils::EqualsNoCase(preferredLanguage, KODI::LANGINFO::subLanguageDefault))
+  else if (StringUtils::EqualsNoCase(preferredLanguage, UNIVERSAL MEDIA CENTER::LANGINFO::subLanguageDefault))
     preferredLanguage = g_langInfo.GetEnglishLanguageName();
 
   url.SetOption("preferredlanguage", preferredLanguage);
@@ -455,7 +455,7 @@ void CGUIDialogSubtitles::OnSubtitleServiceContextMenu(int itemIdx)
     {
       AddonPtr addon;
       if (CServiceBroker::GetAddonMgr().GetAddon(
-              service->GetProperty(KODI::ITEM::PROPERTY::ADDON_ID).asString(), addon,
+              service->GetProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::ADDON_ID).asString(), addon,
               AddonType::SUBTITLE_MODULE, OnlyEnabled::CHOICE_YES))
       {
         CGUIDialogAddonSettings::ShowForAddon(addon);
@@ -463,17 +463,17 @@ void CGUIDialogSubtitles::OnSubtitleServiceContextMenu(int itemIdx)
       else
       {
         CLog::Log(LOGERROR, "{} - Could not open settings for addon: {}", __FUNCTION__,
-                  service->GetProperty(KODI::ITEM::PROPERTY::ADDON_ID).asString());
+                  service->GetProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::ADDON_ID).asString());
       }
       break;
     }
     case SUBTITLE_SERVICE_CONTEXT_BUTTONS::ADDON_DISABLE:
     {
       CServiceBroker::GetAddonMgr().DisableAddon(
-          service->GetProperty(KODI::ITEM::PROPERTY::ADDON_ID).asString(),
+          service->GetProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::ADDON_ID).asString(),
           AddonDisabledReason::USER);
       const bool currentActiveServiceWasDisabled =
-          m_currentService == service->GetProperty(KODI::ITEM::PROPERTY::ADDON_ID).asString();
+          m_currentService == service->GetProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::ADDON_ID).asString();
       FillServices();
       // restart search if the current active service was disabled
       if (currentActiveServiceWasDisabled && !m_serviceItems->IsEmpty())

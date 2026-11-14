@@ -13,7 +13,7 @@
 #include <map>
 #include <string>
 
-namespace KODI::PLAYLIST
+namespace UNIVERSAL MEDIA CENTER::PLAYLIST
 {
 class CPlayListM3U : public CPlayList
 {

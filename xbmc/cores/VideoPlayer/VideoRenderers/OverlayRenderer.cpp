@@ -31,7 +31,7 @@
 #include <mutex>
 #include <utility>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace OVERLAY;
 
 COverlay::COverlay()
@@ -167,7 +167,7 @@ void CRenderer::Render(int idx, float depth)
       if (!o)
         continue;
 
-      if (!KODI::VIDEO::SUBTITLES::ShouldRenderStereoOverlay(it->overlay_dvd->m_stereoView,
+      if (!UNIVERSAL MEDIA CENTER::VIDEO::SUBTITLES::ShouldRenderStereoOverlay(it->overlay_dvd->m_stereoView,
                                                              stereoView, m_stereomode))
         continue;
 
@@ -200,7 +200,7 @@ void CRenderer::RenderHDROverlays(int idx)
       if (!o || !o->m_isHDROverlay)
         continue;
 
-      if (!KODI::VIDEO::SUBTITLES::ShouldRenderStereoOverlay(it->overlay_dvd->m_stereoView,
+      if (!UNIVERSAL MEDIA CENTER::VIDEO::SUBTITLES::ShouldRenderStereoOverlay(it->overlay_dvd->m_stereoView,
                                                              stereoView, m_stereomode))
         continue;
 
@@ -339,7 +339,7 @@ void CRenderer::SetContentRect(SUBTITLES::STYLE::renderOpts& opts) const
   const auto geometry =
       CServiceBroker::GetAppComponents().GetComponent<CApplicationContentGeometry>();
   const CRect picture =
-      KODI::VIDEO::GEOMETRY::PictureOnScreen(geometry->GetRenderInputs().geometry, m_rs, m_rd);
+      UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::PictureOnScreen(geometry->GetRenderInputs().geometry, m_rs, m_rd);
   opts.contentWidth = picture.Width();
   opts.contentHeight = picture.Height();
 }

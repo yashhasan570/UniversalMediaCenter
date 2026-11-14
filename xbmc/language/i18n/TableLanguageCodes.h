@@ -16,7 +16,7 @@
 #include <string_view>
 #include <utility>
 
-namespace KODI::LANGUAGE::I18N
+namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N
 {
 struct ISO639_1
 {
@@ -273,4 +273,4 @@ constexpr std::optional<std::string_view> Alpha2OfAlpha3B(std::string_view alpha
 
   return it->alpha2;
 }
-} // namespace KODI::LANGUAGE::I18N
+} // namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N

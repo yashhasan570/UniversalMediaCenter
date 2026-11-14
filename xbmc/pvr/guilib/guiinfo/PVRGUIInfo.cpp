@@ -60,7 +60,7 @@
 #include <vector>
 
 using namespace PVR;
-using namespace KODI::GUILIB::GUIINFO;
+using namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO;
 using namespace std::chrono_literals;
 
 namespace

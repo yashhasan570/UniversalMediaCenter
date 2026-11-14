@@ -10,7 +10,7 @@
 
 #include "PlatformDefs.h"
 
-namespace KODI::NETWORK
+namespace UNIVERSAL MEDIA CENTER::NETWORK
 {
 /*!
   \brief Enable SO_REUSEADDR so a socket may bind to a busy address.
@@ -27,4 +27,4 @@ bool SetReusePort(SOCKET sock);
   \return True if the option was set or the platform skipped it (WASM).
  */
 bool SetIPv6Only(SOCKET sock, int v6only);
-} // namespace KODI::NETWORK
+} // namespace UNIVERSAL MEDIA CENTER::NETWORK

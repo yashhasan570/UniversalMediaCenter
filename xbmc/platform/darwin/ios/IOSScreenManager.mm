@@ -11,7 +11,7 @@
 #import "IOSEAGLView.h"
 #import "IOSExternalTouchController.h"
 #include "ServiceBroker.h"
-#import "XBMCController.h"
+#import "Controller.h"
 #include "application/Application.h"
 #include "cores/AudioEngine/Interfaces/AE.h"
 #include "settings/DisplaySettings.h"
@@ -89,7 +89,7 @@ static CEvent screenChangeEvent;
 
     [_glView setScreen:newScreen withFrameBufferResize:TRUE];//will also resize the framebuffer
 
-    [g_xbmcController activateScreen:newScreen withOrientation:UIInterfaceOrientationPortrait];// will attach the screen to xbmc mainwindow
+    [g_Controller activateScreen:newScreen withOrientation:UIInterfaceOrientationPortrait];// will attach the screen to  mainwindow
 
     if(toExternal)//changing the external screen might need some time ...
     {
@@ -107,7 +107,7 @@ static CEvent screenChangeEvent;
     {
       [[IOSScreenManager sharedInstance] fadeFromBlack:timeSwitchingToInternalSecs];
     }
-    [g_xbmcController setGUIInsetsFromMainThread:YES];
+    [g_Controller setGUIInsetsFromMainThread:YES];
 
     int w = [[newScreen currentMode] size].width;
     int h = [[newScreen currentMode] size].height;

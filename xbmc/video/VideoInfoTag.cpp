@@ -179,7 +179,7 @@ bool CVideoInfoTag::Save(TiXmlNode *node, const std::string &tag, bool savePathI
     if (!m_EpBookmark.playerState.empty())
     {
       TiXmlElement playerstate("playerstate");
-      CXBMCTinyXML doc;
+      CTinyXML doc;
       doc.Parse(m_EpBookmark.playerState);
       playerstate.InsertEndChild(*doc.RootElement());
       epbookmark.InsertEndChild(playerstate);
@@ -208,7 +208,7 @@ bool CVideoInfoTag::Save(TiXmlNode *node, const std::string &tag, bool savePathI
     XMLUtils::SetInt(movie, "runtime", runtime);
   if (m_strPictureURL.HasData())
   {
-    CXBMCTinyXML doc;
+    CTinyXML doc;
     doc.Parse(m_strPictureURL.GetData());
     const TiXmlNode* thumb = doc.FirstChild("thumb");
     while (thumb)
@@ -219,7 +219,7 @@ bool CVideoInfoTag::Save(TiXmlNode *node, const std::string &tag, bool savePathI
   }
   if (!m_fanart.m_xml.empty())
   {
-    CXBMCTinyXML doc;
+    CTinyXML doc;
     doc.Parse(m_fanart.m_xml);
     movie->InsertEndChild(*doc.RootElement());
   }
@@ -241,7 +241,7 @@ bool CVideoInfoTag::Save(TiXmlNode *node, const std::string &tag, bool savePathI
   }
   if (!m_strEpisodeGuide.empty())
   {
-    CXBMCTinyXML doc;
+    CTinyXML doc;
     doc.Parse(m_strEpisodeGuide);
     if (doc.RootElement())
       movie->InsertEndChild(*doc.RootElement());
@@ -346,7 +346,7 @@ bool CVideoInfoTag::Save(TiXmlNode *node, const std::string &tag, bool savePathI
   }  /* if has stream details */
 
   if (HasContentGeometry())
-    KODI::VIDEO::GEOMETRY::SaveContentGeometryXML(*movie, m_contentGeometry.Get());
+    UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::SaveContentGeometryXML(*movie, m_contentGeometry.Get());
 
   // cast
   for (auto it = m_cast.begin(); it != m_cast.end(); ++it)
@@ -370,7 +370,7 @@ bool CVideoInfoTag::Save(TiXmlNode *node, const std::string &tag, bool savePathI
   if (!m_resumePoint.playerState.empty())
   {
     TiXmlElement playerstate("playerstate");
-    CXBMCTinyXML doc;
+    CTinyXML doc;
     doc.Parse(m_resumePoint.playerState);
     playerstate.InsertEndChild(*doc.RootElement());
     resume.InsertEndChild(playerstate);
@@ -660,7 +660,7 @@ void CVideoInfoTag::Archive(CArchive& ar)
     ar << m_iBookmarkId;
     ar << m_iTrack;
     ar << dynamic_cast<IArchivable&>(m_streamDetails);
-    KODI::VIDEO::GEOMETRY::Archive(ar, m_contentGeometry);
+    UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::Archive(ar, m_contentGeometry);
     ar << m_showLink;
     ar << static_cast<int>(m_seasons.size());
     for (const auto& [number, attr] : m_seasons)
@@ -781,7 +781,7 @@ void CVideoInfoTag::Archive(CArchive& ar)
     ar >> m_iBookmarkId;
     ar >> m_iTrack;
     ar >> dynamic_cast<IArchivable&>(m_streamDetails);
-    KODI::VIDEO::GEOMETRY::Archive(ar, m_contentGeometry);
+    UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::Archive(ar, m_contentGeometry);
     ar >> m_showLink;
     int namedSeasonSize;
     ar >> namedSeasonSize;
@@ -1585,7 +1585,7 @@ void CVideoInfoTag::ParseNative(const TiXmlElement* movie, bool prioritise)
   }
   SetArtist(artist);
 
-  if (const auto record = KODI::VIDEO::GEOMETRY::LoadContentGeometryXML(*movie))
+  if (const auto record = UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::LoadContentGeometryXML(*movie))
     m_contentGeometry.Set(*record);
 
   node = movie->FirstChildElement("fileinfo");
@@ -1720,14 +1720,14 @@ void CVideoInfoTag::ParseNative(const TiXmlElement* movie, bool prioritise)
     CLog::LogF(LOGWARNING, "<originallanguage> tag value {} is not recognized", value);
 }
 
-KODI::MEDIA::TYPE CVideoInfoTag::GetMediaType() const
+UNIVERSAL MEDIA CENTER::MEDIA::TYPE CVideoInfoTag::GetMediaType() const
 {
-  return KODI::MEDIA::MediaTypeOf(m_type);
+  return UNIVERSAL MEDIA CENTER::MEDIA::MediaTypeOf(m_type);
 }
 
-void CVideoInfoTag::SetMediaType(KODI::MEDIA::TYPE type)
+void CVideoInfoTag::SetMediaType(UNIVERSAL MEDIA CENTER::MEDIA::TYPE type)
 {
-  m_type = KODI::MEDIA::NameOf(type);
+  m_type = UNIVERSAL MEDIA CENTER::MEDIA::NameOf(type);
 }
 
 bool CVideoInfoTag::HasStreamDetails() const
@@ -1748,9 +1748,9 @@ bool CVideoInfoTag::HasContentGeometry() const
   return m_contentGeometry.HasReading();
 }
 
-KODI::VIDEO::GEOMETRY::EffectiveGeometry CVideoInfoTag::ResolveContentGeometry() const
+UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::EffectiveGeometry CVideoInfoTag::ResolveContentGeometry() const
 {
-  KODI::VIDEO::GEOMETRY::ContentGeometryRecord record{m_contentGeometry.Get()};
+  UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::ContentGeometryRecord record{m_contentGeometry.Get()};
   if (!record.HasReading())
     return {};
 
@@ -1760,16 +1760,16 @@ KODI::VIDEO::GEOMETRY::EffectiveGeometry CVideoInfoTag::ResolveContentGeometry()
     return {};
 
   // Neither rotation nor a declaration is applied.
-  KODI::VIDEO::GEOMETRY::GeometryInputs inputs;
-  inputs.stream = KODI::VIDEO::GEOMETRY::MeasuredStreamGeometry(
+  UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::GeometryInputs inputs;
+  inputs.stream = UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::MeasuredStreamGeometry(
       m_streamDetails.GetStereoMode(), static_cast<unsigned int>(width),
       static_cast<unsigned int>(height), m_streamDetails.GetVideoAspect());
-  inputs.cached.state = KODI::VIDEO::GEOMETRY::StateOf(record);
+  inputs.cached.state = UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::StateOf(record);
   inputs.cached.record = std::move(record);
-  inputs.policy = KODI::VIDEO::GEOMETRY::ContentGeometryPolicyFromSettings();
-  inputs.atRestAspect = KODI::VIDEO::GEOMETRY::ContentGeometryAtRestFromSettings();
+  inputs.policy = UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::ContentGeometryPolicyFromSettings();
+  inputs.atRestAspect = UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::ContentGeometryAtRestFromSettings();
 
-  return KODI::VIDEO::GEOMETRY::ResolveEffectiveGeometry(inputs);
+  return UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::ResolveEffectiveGeometry(inputs);
 }
 
 bool CVideoInfoTag::IsEmpty() const

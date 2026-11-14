@@ -16,7 +16,7 @@ class CFileItem;
 class CSetInfoTag;
 class EmbeddedArt;
 
-namespace KODI::VIDEO
+namespace UNIVERSAL MEDIA CENTER::VIDEO
 {
 
 //! \brief Base class for set tag loaders.
@@ -41,4 +41,4 @@ protected:
   const std::string m_title;
 };
 
-} // namespace KODI::VIDEO
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO

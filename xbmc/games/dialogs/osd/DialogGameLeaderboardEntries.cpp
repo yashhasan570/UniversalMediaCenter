@@ -36,7 +36,7 @@
 #include <mutex>
 #include <optional>
 
-using namespace KODI::GAME;
+using namespace UNIVERSAL MEDIA CENTER::GAME;
 
 namespace
 {
@@ -416,7 +416,7 @@ void CDialogGameLeaderboardEntries::PopulateList()
 
       // A face against every name, the way the site shows them
       if (!entry.username.empty())
-        item->SetArt(KODI::ART::TYPE::ICON,
+        item->SetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::ICON,
                      StringUtils::Format(USER_PIC_URL, CURL::Encode(entry.username)));
 
       item->SetProperty(PROPERTY_ITEM_RANK, static_cast<int>(entry.rank));

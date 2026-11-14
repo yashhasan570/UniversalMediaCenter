@@ -11,55 +11,55 @@ set(APP_LIB_DIR ${libdir}/${APP_NAME_LC})
 set(APP_DATA_DIR ${datarootdir}/${APP_NAME_LC})
 set(APP_INCLUDE_DIR ${includedir}/${APP_NAME_LC})
 
-# Set XBMC_STANDALONE_SH_PULSE so we can insert PulseAudio block into kodi-standalone
-if(EXISTS ${CMAKE_SOURCE_DIR}/tools/Linux/kodi-standalone.sh.pulse)
+# Set _STANDALONE_SH_PULSE so we can insert PulseAudio block into universalmediacenter-standalone
+if(EXISTS ${CMAKE_SOURCE_DIR}/tools/Linux/universalmediacenter-standalone.sh.pulse)
   if(ENABLE_PULSEAUDIO AND TARGET ${APP_NAME_LC}::PulseAudio)
-    file(READ "${CMAKE_SOURCE_DIR}/tools/Linux/kodi-standalone.sh.pulse" pulse_content)
-    set(XBMC_STANDALONE_SH_PULSE ${pulse_content})
+    file(READ "${CMAKE_SOURCE_DIR}/tools/Linux/universalmediacenter-standalone.sh.pulse" pulse_content)
+    set(_STANDALONE_SH_PULSE ${pulse_content})
   endif()
 endif()
 
 # Configure startup scripts
-configure_file(${CMAKE_SOURCE_DIR}/tools/Linux/kodi.sh.in
+configure_file(${CMAKE_SOURCE_DIR}/tools/Linux/universalmediacenter.sh.in
                ${CORE_BUILD_DIR}/scripts/${APP_NAME_LC} @ONLY)
-configure_file(${CMAKE_SOURCE_DIR}/tools/Linux/kodi-standalone.sh.in
+configure_file(${CMAKE_SOURCE_DIR}/tools/Linux/universalmediacenter-standalone.sh.in
                ${CORE_BUILD_DIR}/scripts/${APP_NAME_LC}-standalone @ONLY)
 
 # Configure cmake files
-configure_file(${CMAKE_SOURCE_DIR}/cmake/KodiConfig.cmake.in
+configure_file(${CMAKE_SOURCE_DIR}/cmake/UniversalMediaCenterConfig.cmake.in
                ${CORE_BUILD_DIR}/scripts/${APP_NAME}Config.cmake @ONLY)
 
 # Configure gbm session entry
-configure_file(${CMAKE_SOURCE_DIR}/tools/Linux/kodi-gbm-session.desktop.in
+configure_file(${CMAKE_SOURCE_DIR}/tools/Linux/universalmediacenter-gbm-session.desktop.in
                ${CORE_BUILD_DIR}/${APP_NAME_LC}-gbm-session.desktop @ONLY)
 
 # Configure xsession entry
-configure_file(${CMAKE_SOURCE_DIR}/tools/Linux/kodi-xsession.desktop.in
+configure_file(${CMAKE_SOURCE_DIR}/tools/Linux/universalmediacenter-xsession.desktop.in
                ${CORE_BUILD_DIR}/${APP_NAME_LC}-xsession.desktop @ONLY)
 
 # Configure desktop entry
-configure_file(${CMAKE_SOURCE_DIR}/tools/Linux/kodi.desktop.in
+configure_file(${CMAKE_SOURCE_DIR}/tools/Linux/universalmediacenter.desktop.in
                ${CORE_BUILD_DIR}/${APP_NAME_LC}.desktop @ONLY)
 
 # Configure metainfo
-configure_file(${CMAKE_SOURCE_DIR}/tools/Linux/kodi.metainfo.xml.in
+configure_file(${CMAKE_SOURCE_DIR}/tools/Linux/universalmediacenter.metainfo.xml.in
                ${CORE_BUILD_DIR}/${APP_PACKAGE}.metainfo.xml @ONLY)
 
 # Install app
 install(TARGETS ${APP_NAME_LC}
         DESTINATION ${libdir}/${APP_NAME_LC}
-        COMPONENT kodi-bin)
+        COMPONENT universalmediacenter-bin)
 if(TARGET ${APP_NAME_LC}::X AND TARGET ${APP_NAME_LC}::XRandR)
   install(TARGETS ${APP_NAME_LC}-xrandr
           DESTINATION ${libdir}/${APP_NAME_LC}
-          COMPONENT kodi-bin)
+          COMPONENT universalmediacenter-bin)
 endif()
 
 # Install scripts
 install(PROGRAMS ${CMAKE_BINARY_DIR}/${CORE_BUILD_DIR}/scripts/${APP_NAME_LC}
                  ${CMAKE_BINARY_DIR}/${CORE_BUILD_DIR}/scripts/${APP_NAME_LC}-standalone
         DESTINATION ${bindir}
-        COMPONENT kodi-bin)
+        COMPONENT universalmediacenter-bin)
 
 # Install libraries
 foreach(library ${LIBRARY_FILES})
@@ -67,130 +67,130 @@ foreach(library ${LIBRARY_FILES})
   string(REPLACE "${CMAKE_BINARY_DIR}/" "" dir ${dir})
   install(PROGRAMS ${library}
           DESTINATION ${libdir}/${APP_NAME_LC}/${dir}
-          COMPONENT kodi-bin)
+          COMPONENT universalmediacenter-bin)
 endforeach()
 
 # Install add-ons, fonts, icons, keyboard maps, keymaps, etc
-# (addons, media, system, userdata folders in share/kodi/)
+# (addons, media, system, userdata folders in share/universalmediacenter/)
 foreach(file ${install_data})
   get_filename_component(dir ${file} DIRECTORY)
   install(FILES ${CMAKE_BINARY_DIR}/${file}
           DESTINATION ${datarootdir}/${APP_NAME_LC}/${dir}
-          COMPONENT kodi)
+          COMPONENT universalmediacenter)
 endforeach()
 
 # Install gbm session entry
 install(FILES ${CMAKE_BINARY_DIR}/${CORE_BUILD_DIR}/${APP_NAME_LC}-gbm-session.desktop
         RENAME ${APP_NAME_LC}-gbm.desktop
         DESTINATION ${datarootdir}/wayland-sessions
-        COMPONENT kodi)
+        COMPONENT universalmediacenter)
 
 # Install xsession entry
 install(FILES ${CMAKE_BINARY_DIR}/${CORE_BUILD_DIR}/${APP_NAME_LC}-xsession.desktop
         RENAME ${APP_NAME_LC}.desktop
         DESTINATION ${datarootdir}/xsessions
-        COMPONENT kodi)
+        COMPONENT universalmediacenter)
 
 # Install desktop entry
 install(FILES ${CMAKE_BINARY_DIR}/${CORE_BUILD_DIR}/${APP_NAME_LC}.desktop
         DESTINATION ${datarootdir}/applications
-        COMPONENT kodi)
+        COMPONENT universalmediacenter)
 
 # Install metainfo
 install(FILES ${CMAKE_BINARY_DIR}/${CORE_BUILD_DIR}/${APP_PACKAGE}.metainfo.xml
         DESTINATION ${datarootdir}/metainfo
-        COMPONENT kodi)
+        COMPONENT universalmediacenter)
 
 # Install icons
 install(FILES ${CMAKE_SOURCE_DIR}/tools/Linux/packaging/media/icon16x16.png
         RENAME ${APP_NAME_LC}.png
         DESTINATION ${datarootdir}/icons/hicolor/16x16/apps
-        COMPONENT kodi)
+        COMPONENT universalmediacenter)
 install(FILES ${CMAKE_SOURCE_DIR}/tools/Linux/packaging/media/icon22x22.png
         RENAME ${APP_NAME_LC}.png
         DESTINATION ${datarootdir}/icons/hicolor/22x22/apps
-        COMPONENT kodi)
+        COMPONENT universalmediacenter)
 install(FILES ${CMAKE_SOURCE_DIR}/tools/Linux/packaging/media/icon24x24.png
         RENAME ${APP_NAME_LC}.png
         DESTINATION ${datarootdir}/icons/hicolor/24x24/apps
-        COMPONENT kodi)
+        COMPONENT universalmediacenter)
 install(FILES ${CMAKE_SOURCE_DIR}/tools/Linux/packaging/media/icon32x32.png
         RENAME ${APP_NAME_LC}.png
         DESTINATION ${datarootdir}/icons/hicolor/32x32/apps
-        COMPONENT kodi)
+        COMPONENT universalmediacenter)
 install(FILES ${CMAKE_SOURCE_DIR}/tools/Linux/packaging/media/icon48x48.png
         RENAME ${APP_NAME_LC}.png
         DESTINATION ${datarootdir}/icons/hicolor/48x48/apps
-        COMPONENT kodi)
+        COMPONENT universalmediacenter)
 install(FILES ${CMAKE_SOURCE_DIR}/tools/Linux/packaging/media/icon64x64.png
         RENAME ${APP_NAME_LC}.png
         DESTINATION ${datarootdir}/icons/hicolor/64x64/apps
-        COMPONENT kodi)
+        COMPONENT universalmediacenter)
 install(FILES ${CMAKE_SOURCE_DIR}/tools/Linux/packaging/media/icon128x128.png
         RENAME ${APP_NAME_LC}.png
         DESTINATION ${datarootdir}/icons/hicolor/128x128/apps
-        COMPONENT kodi)
+        COMPONENT universalmediacenter)
 install(FILES ${CMAKE_SOURCE_DIR}/tools/Linux/packaging/media/icon256x256.png
         RENAME ${APP_NAME_LC}.png
         DESTINATION ${datarootdir}/icons/hicolor/256x256/apps
-        COMPONENT kodi)
+        COMPONENT universalmediacenter)
 install(FILES ${CMAKE_SOURCE_DIR}/tools/Linux/packaging/media/iconScalable.svg
         RENAME ${APP_NAME_LC}.svg
         DESTINATION ${datarootdir}/icons/hicolor/scalable/apps
-        COMPONENT kodi)
+        COMPONENT universalmediacenter)
 
 # Install firewalld service definitions
-install(FILES ${CMAKE_SOURCE_DIR}/tools/Linux/firewalld-services/kodi-eventserver.xml
-              ${CMAKE_SOURCE_DIR}/tools/Linux/firewalld-services/kodi-http.xml
-              ${CMAKE_SOURCE_DIR}/tools/Linux/firewalld-services/kodi-jsonrpc.xml
+install(FILES ${CMAKE_SOURCE_DIR}/tools/Linux/firewalld-services/universalmediacenter-eventserver.xml
+              ${CMAKE_SOURCE_DIR}/tools/Linux/firewalld-services/universalmediacenter-http.xml
+              ${CMAKE_SOURCE_DIR}/tools/Linux/firewalld-services/universalmediacenter-jsonrpc.xml
         DESTINATION ${prefix}/lib/firewalld/services
-        COMPONENT kodi)
+        COMPONENT universalmediacenter)
 
 # Install docs
 install(FILES ${CMAKE_SOURCE_DIR}/LICENSE.md
               ${CMAKE_SOURCE_DIR}/version.txt
               ${CMAKE_SOURCE_DIR}/docs/README.Linux.md
         DESTINATION ${docdir}
-        COMPONENT kodi)
+        COMPONENT universalmediacenter)
 
 install(FILES ${CMAKE_SOURCE_DIR}/privacy-policy.txt
         DESTINATION ${datarootdir}/${APP_NAME_LC}
-        COMPONENT kodi)
+        COMPONENT universalmediacenter)
 
-# Install kodi-tools-texturepacker
+# Install universalmediacenter-tools-texturepacker
 if(INTERNAL_TEXTUREPACKER_INSTALLABLE)
   install(PROGRAMS $<TARGET_FILE:TexturePacker::TexturePacker::Installable>
           DESTINATION ${bindir}
           RENAME "${APP_NAME_LC}-TexturePacker"
-          COMPONENT kodi-tools-texturepacker)
+          COMPONENT universalmediacenter-tools-texturepacker)
 endif()
 
-# Install kodi-addon-dev headers
-include(${CMAKE_SOURCE_DIR}/xbmc/addons/AddonBindings.cmake)
+# Install universalmediacenter-addon-dev headers
+include(${CMAKE_SOURCE_DIR}//addons/AddonBindings.cmake)
 install(DIRECTORY ${CORE_ADDON_BINDINGS_DIRS}/
         DESTINATION ${includedir}/${APP_NAME_LC}
-        COMPONENT kodi-addon-dev
+        COMPONENT universalmediacenter-addon-dev
         REGEX ".txt" EXCLUDE)
 
 install(FILES ${CORE_ADDON_BINDINGS_FILES}
         DESTINATION ${includedir}/${APP_NAME_LC}
-        COMPONENT kodi-addon-dev)
+        COMPONENT universalmediacenter-addon-dev)
 
-# Install kodi-addon-dev python api stub files
+# Install universalmediacenter-addon-dev python api stub files
 set(python_stubs "")
-foreach(module xbmc xbmcaddon xbmcdrm xbmcgui xbmcplugin xbmcvfs)
+foreach(module  addon drm gui plugin vfs)
   list(APPEND python_stubs ${CMAKE_BINARY_DIR}/${CORE_BUILD_DIR}/swig/${module}.pyi)
 endforeach()
 if(TARGET ${APP_NAME_LC}::MicroHttpd)
-  list(APPEND python_stubs ${CMAKE_BINARY_DIR}/${CORE_BUILD_DIR}/swig/xbmcwsgi.pyi)
+  list(APPEND python_stubs ${CMAKE_BINARY_DIR}/${CORE_BUILD_DIR}/swig/wsgi.pyi)
 endif()
 # SWIG writes the stubs at build time, so an install from a configured but unbuilt tree has none
 install(FILES ${python_stubs}
         DESTINATION ${datarootdir}/${APP_NAME_LC}/python-stubs
-        COMPONENT kodi-addon-dev
+        COMPONENT universalmediacenter-addon-dev
         OPTIONAL)
 
-# Install kodi-addon-dev add-on bindings
+# Install universalmediacenter-addon-dev add-on bindings
 install(FILES ${CMAKE_SOURCE_DIR}/cmake/scripts/common/AddonHelpers.cmake
               ${CMAKE_SOURCE_DIR}/cmake/scripts/common/AddOptions.cmake
               ${CMAKE_SOURCE_DIR}/cmake/scripts/common/ArchSetup.cmake
@@ -204,76 +204,76 @@ install(FILES ${CMAKE_SOURCE_DIR}/cmake/scripts/common/AddonHelpers.cmake
               ${CMAKE_SOURCE_DIR}/cmake/scripts/common/ProjectMacros.cmake
               ${CMAKE_SOURCE_DIR}/cmake/scripts/linux/PathSetup.cmake
         DESTINATION ${datarootdir}/${APP_NAME_LC}/cmake
-        COMPONENT kodi-addon-dev)
+        COMPONENT universalmediacenter-addon-dev)
 # ${APP_NAME}Config.cmake contains architecture-specific paths so it
 # should be installed in ${libdir}/${APP_NAME_LC}/${dir}
 install(FILES ${CMAKE_BINARY_DIR}/${CORE_BUILD_DIR}/scripts/${APP_NAME}Config.cmake
         DESTINATION ${libdir}/${APP_NAME_LC}/cmake
-        COMPONENT kodi-addon-dev)
+        COMPONENT universalmediacenter-addon-dev)
 
 if(ENABLE_EVENTCLIENTS)
   find_package(PythonInterpreter REQUIRED ${SEARCH_QUIET})
   execute_process(COMMAND ${PYTHON_EXECUTABLE} -c "from sysconfig import get_path; print(get_path('platlib', scheme='posix_prefix', vars={'platbase':'${CMAKE_INSTALL_PREFIX}'}))"
                   OUTPUT_VARIABLE PYTHON_LIB_PATH OUTPUT_STRIP_TRAILING_WHITESPACE)
-  # Install kodi-eventclients-common BT python files
+  # Install universalmediacenter-eventclients-common BT python files
   install(PROGRAMS ${CMAKE_SOURCE_DIR}/tools/EventClients/lib/python/bt/__init__.py
                    ${CMAKE_SOURCE_DIR}/tools/EventClients/lib/python/bt/bt.py
                    ${CMAKE_SOURCE_DIR}/tools/EventClients/lib/python/bt/hid.py
           DESTINATION ${PYTHON_LIB_PATH}/${APP_NAME_LC}/bt
-          COMPONENT kodi-eventclients-common)
+          COMPONENT universalmediacenter-eventclients-common)
 
-  # Install kodi-eventclients-common PS3 python files
+  # Install universalmediacenter-eventclients-common PS3 python files
   install(PROGRAMS ${CMAKE_SOURCE_DIR}/tools/EventClients/lib/python/ps3/__init__.py
                    ${CMAKE_SOURCE_DIR}/tools/EventClients/lib/python/ps3/keymaps.py
                    ${CMAKE_SOURCE_DIR}/tools/EventClients/lib/python/ps3/sixaxis.py
                    ${CMAKE_SOURCE_DIR}/tools/EventClients/lib/python/ps3/sixpair.py
                    ${CMAKE_SOURCE_DIR}/tools/EventClients/lib/python/ps3/sixwatch.py
           DESTINATION ${PYTHON_LIB_PATH}/${APP_NAME_LC}/ps3
-          COMPONENT kodi-eventclients-common)
+          COMPONENT universalmediacenter-eventclients-common)
 
-  # Install kodi-eventclients-common python files
+  # Install universalmediacenter-eventclients-common python files
   file(WRITE ${CMAKE_BINARY_DIR}/packages/deb/defs.py ICON_PATH="/usr/share/pixmaps/${APP_NAME_LC}/")
   install(PROGRAMS ${CMAKE_BINARY_DIR}/packages/deb/defs.py
                    ${CMAKE_SOURCE_DIR}/tools/EventClients/lib/python/__init__.py
                    ${CMAKE_SOURCE_DIR}/tools/EventClients/Clients/PS3BDRemote/ps3_remote.py
-                   ${CMAKE_SOURCE_DIR}/tools/EventClients/lib/python/xbmcclient.py
+                   ${CMAKE_SOURCE_DIR}/tools/EventClients/lib/python/client.py
                    ${CMAKE_SOURCE_DIR}/tools/EventClients/lib/python/zeroconf.py
           DESTINATION ${PYTHON_LIB_PATH}/${APP_NAME_LC}
-          COMPONENT kodi-eventclients-common)
+          COMPONENT universalmediacenter-eventclients-common)
 
-  # Install kodi-eventclients-common icons
+  # Install universalmediacenter-eventclients-common icons
   install(FILES ${CMAKE_SOURCE_DIR}/tools/EventClients/icons/bluetooth.png
                 ${CMAKE_SOURCE_DIR}/tools/EventClients/icons/phone.png
                 ${CMAKE_SOURCE_DIR}/tools/EventClients/icons/mail.png
                 ${CMAKE_SOURCE_DIR}/tools/EventClients/icons/mouse.png
           DESTINATION ${datarootdir}/pixmaps/${APP_NAME_LC}
-          COMPONENT kodi-eventclients-common)
+          COMPONENT universalmediacenter-eventclients-common)
 
-  # Install kodi-eventclients-dev headers
-  install(FILES ${CMAKE_SOURCE_DIR}/tools/EventClients/lib/c++/xbmcclient.h
+  # Install universalmediacenter-eventclients-dev headers
+  install(FILES ${CMAKE_SOURCE_DIR}/tools/EventClients/lib/c++/client.h
           DESTINATION ${includedir}/${APP_NAME_LC}
-          COMPONENT kodi-eventclients-dev)
+          COMPONENT universalmediacenter-eventclients-dev)
 
-  # Install kodi-eventclients-dev C# examples
-  install(FILES "${CMAKE_SOURCE_DIR}/tools/EventClients/examples/c#/XBMCDemoClient1.cs"
+  # Install universalmediacenter-eventclients-dev C# examples
+  install(FILES "${CMAKE_SOURCE_DIR}/tools/EventClients/examples/c#/DemoClient1.cs"
           DESTINATION "${docdir}/${APP_NAME_LC}-eventclients-dev/examples/C#"
-          COMPONENT kodi-eventclients-dev)
+          COMPONENT universalmediacenter-eventclients-dev)
 
-  # Install kodi-eventclients-dev C++ examples
+  # Install universalmediacenter-eventclients-dev C++ examples
   install(FILES ${CMAKE_SOURCE_DIR}/tools/EventClients/examples/c++/example_notification.cpp
                 ${CMAKE_SOURCE_DIR}/tools/EventClients/examples/c++/example_log.cpp
                 ${CMAKE_SOURCE_DIR}/tools/EventClients/examples/c++/example_button1.cpp
                 ${CMAKE_SOURCE_DIR}/tools/EventClients/examples/c++/example_mouse.cpp
                 ${CMAKE_SOURCE_DIR}/tools/EventClients/examples/c++/example_button2.cpp
           DESTINATION ${docdir}/${APP_NAME_LC}-eventclients-dev/examples/C++
-          COMPONENT kodi-eventclients-dev)
+          COMPONENT universalmediacenter-eventclients-dev)
 
-  # Install kodi-eventclients-dev java examples
-  install(FILES ${CMAKE_SOURCE_DIR}/tools/EventClients/examples/java/XBMCDemoClient1.java
+  # Install universalmediacenter-eventclients-dev java examples
+  install(FILES ${CMAKE_SOURCE_DIR}/tools/EventClients/examples/java/DemoClient1.java
           DESTINATION ${docdir}/${APP_NAME_LC}-eventclients-dev/examples/java
-          COMPONENT kodi-eventclients-dev)
+          COMPONENT universalmediacenter-eventclients-dev)
 
-  # Install kodi-eventclients-dev python examples
+  # Install universalmediacenter-eventclients-dev python examples
   install(PROGRAMS ${CMAKE_SOURCE_DIR}/tools/EventClients/examples/python/example_mouse.py
                    ${CMAKE_SOURCE_DIR}/tools/EventClients/examples/python/example_button1.py
                    ${CMAKE_SOURCE_DIR}/tools/EventClients/examples/python/example_notification.py
@@ -281,26 +281,26 @@ if(ENABLE_EVENTCLIENTS)
                    ${CMAKE_SOURCE_DIR}/tools/EventClients/examples/python/example_button2.py
                    ${CMAKE_SOURCE_DIR}/tools/EventClients/examples/python/example_simple.py
           DESTINATION ${docdir}/${APP_NAME_LC}-eventclients-dev/examples/python
-          COMPONENT kodi-eventclients-dev)
+          COMPONENT universalmediacenter-eventclients-dev)
 
-  # Install kodi-eventclients-ps3
+  # Install universalmediacenter-eventclients-ps3
   install(PROGRAMS ${CMAKE_SOURCE_DIR}/tools/EventClients/Clients/PS3BDRemote/ps3_remote.py
           RENAME ${APP_NAME_LC}-ps3remote
           DESTINATION ${bindir}
-          COMPONENT kodi-eventclients-ps3)
+          COMPONENT universalmediacenter-eventclients-ps3)
 
   if(TARGET ${APP_NAME_LC}::Bluetooth AND TARGET ${APP_NAME_LC}::CWiid AND TARGET ${APP_NAME_LC}::GLU)
-    # Install kodi-eventclients-wiiremote
+    # Install universalmediacenter-eventclients-wiiremote
     install(PROGRAMS ${CMAKE_BINARY_DIR}/${CORE_BUILD_DIR}/WiiRemote/${APP_NAME_LC}-wiiremote
             DESTINATION ${bindir}
-            COMPONENT kodi-eventclients-wiiremote)
+            COMPONENT universalmediacenter-eventclients-wiiremote)
   endif()
 
-  # Install kodi-eventclients-kodi-send
-  install(PROGRAMS ${CMAKE_SOURCE_DIR}/tools/EventClients/Clients/KodiSend/kodi-send.py
+  # Install universalmediacenter-eventclients-universalmediacenter-send
+  install(PROGRAMS ${CMAKE_SOURCE_DIR}/tools/EventClients/Clients/UniversalMediaCenterSend/universalmediacenter-send.py
           RENAME ${APP_NAME_LC}-send
           DESTINATION ${bindir}
-          COMPONENT kodi-eventclients-kodi-send)
+          COMPONENT universalmediacenter-eventclients-universalmediacenter-send)
 endif()
 
 # Install XBT skin files
@@ -309,7 +309,7 @@ foreach(texture ${XBT_FILES})
   get_filename_component(dir ${dir} DIRECTORY)
   install(FILES ${texture}
           DESTINATION ${datarootdir}/${APP_NAME_LC}/${dir}
-          COMPONENT kodi)
+          COMPONENT universalmediacenter)
 endforeach()
 
 # generate packages? yes please, if everything checks out

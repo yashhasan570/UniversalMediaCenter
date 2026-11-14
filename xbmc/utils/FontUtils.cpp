@@ -26,7 +26,7 @@
 
 using namespace XFILE;
 
-namespace KODI::UTILS::FONT
+namespace UNIVERSAL MEDIA CENTER::UTILS::FONT
 {
 
 namespace
@@ -271,4 +271,4 @@ std::string FONTPATH::GetSystemFontPath(const std::string& filename)
   return "";
 }
 
-} // namespace KODI::UTILS::FONT
+} // namespace UNIVERSAL MEDIA CENTER::UTILS::FONT

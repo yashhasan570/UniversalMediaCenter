@@ -13,7 +13,7 @@
 struct AddonInstance_Game;
 class CCriticalSection;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -86,4 +86,4 @@ protected:
 };
 
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

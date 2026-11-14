@@ -28,7 +28,7 @@ public:
   CWinEventsWin10();
   virtual ~CWinEventsWin10();
 
-  void MessagePush(XBMC_Event *newEvent);
+  void MessagePush(_Event *newEvent);
   bool MessagePump() override;
   virtual size_t GetQueueSize();
 
@@ -78,7 +78,7 @@ private:
   bool HasJoystickPeripheral() const;
   void TriggerGamepadScan();
 
-  Concurrency::concurrent_queue<XBMC_Event> m_events;
+  Concurrency::concurrent_queue<_Event> m_events;
   winrt::Windows::Media::SystemMediaTransportControls m_smtc{ nullptr };
   bool m_bResized{ false };
   bool m_bMoved{ false };

@@ -11,7 +11,7 @@
 #include "games/addons/GameClient.h"
 #include "utils/log.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 CGameClientHardware::CGameClientHardware(CGameClient& gameClient) : m_gameClient(gameClient)

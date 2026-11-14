@@ -20,18 +20,18 @@ namespace DRM
   class CCryptoSession;
 }
 
-namespace XBMCAddon
+namespace Addon
 {
 
   typedef std::vector<char> charVec;
 
-  namespace xbmcdrm
+  namespace drm
   {
 
-    XBMCCOMMONS_STANDARD_EXCEPTION(DRMException);
+    COMMONS_STANDARD_EXCEPTION(DRMException);
 
     //
-    /// \defgroup python_xbmcdrm Library - xbmcdrm
+    /// \defgroup python_drm Library - drm
     ///@{
     /// @brief **Universal Media Center's %DRM class.**
     ///
@@ -41,23 +41,23 @@ namespace XBMCAddon
     /// This type of functionality is closely related to the type of %DRM
     /// used and the service to be implemented.
     ///
-    /// Using the \ref xbmcdrm_CryptoSession "CryptoSession" constructor allow you
+    /// Using the \ref drm_CryptoSession "CryptoSession" constructor allow you
     /// to have access to a %DRM session.
     /// With a %DRM session you can read and write the %DRM properties
-    /// \ref xbmcdrm_GetPropertyString "GetPropertyString",
-    /// \ref xbmcdrm_SetPropertyString "SetPropertyString"
+    /// \ref drm_GetPropertyString "GetPropertyString",
+    /// \ref drm_SetPropertyString "SetPropertyString"
     /// and establish session keys with
-    /// \ref xbmcdrm_GetKeyRequest "GetKeyRequest" and
-    /// \ref xbmcdrm_ProvideKeyResponse "ProvideKeyResponse",
+    /// \ref drm_GetKeyRequest "GetKeyRequest" and
+    /// \ref drm_ProvideKeyResponse "ProvideKeyResponse",
     /// or resume previous session keys with
-    /// \ref xbmcdrm_RestoreKeys "RestoreKeys".
+    /// \ref drm_RestoreKeys "RestoreKeys".
     ///
     /// When the session keys are established you can use these methods
     /// to perform various operations:
-    /// \ref xbmcdrm_Encrypt "Encrypt" /
-    /// \ref xbmcdrm_Decrypt "Decrypt" for data encryption / decryption,
-    /// \ref xbmcdrm_Sign "Sign" /
-    /// \ref xbmcdrm_Verify "Verify" for make or verify data-signature.
+    /// \ref drm_Encrypt "Encrypt" /
+    /// \ref drm_Decrypt "Decrypt" for data encryption / decryption,
+    /// \ref drm_Sign "Sign" /
+    /// \ref drm_Verify "Verify" for make or verify data-signature.
     /// Useful for example to implement encrypted communication between
     /// a client and the server.
     ///
@@ -70,8 +70,8 @@ namespace XBMCAddon
     ///--------------------------------------------------------------------------
     /// Constructor for %DRM crypto session
     ///
-    /// \anchor xbmcdrm_CryptoSession
-    /// \python_class{ xbmcdrm.CryptoSession(UUID, cipherAlgorithm, macAlgorithm) }
+    /// \anchor drm_CryptoSession
+    /// \python_class{ drm.CryptoSession(UUID, cipherAlgorithm, macAlgorithm) }
     ///
     /// @param UUID             string - 16 byte UUID of the %DRM system to use
     /// @param cipherAlgorithm  string - Algorithm used for encryption / decryption ciphers
@@ -88,7 +88,7 @@ namespace XBMCAddon
     /// ~~~~~~~~~~~~~{.py}
     /// ..
     /// uuid_widevine = 'edef8ba9-79d6-4ace-a3c8-27dcd51d21ed'
-    /// crypto_session = xbmcdrm.CryptoSession(uuid_widevine, 'AES/CBC/NoPadding', 'HmacSHA256')
+    /// crypto_session = drm.CryptoSession(uuid_widevine, 'AES/CBC/NoPadding', 'HmacSHA256')
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -101,7 +101,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcdrm
+      /// \ingroup python_drm
       /// @brief \python_func{ GetKeyRequest(init, mimeType, offlineKey, optionalParameters) }
       /// Generate a key request
       ///
@@ -109,8 +109,8 @@ namespace XBMCAddon
       /// and a license server to obtain or release keys used to decrypt encrypted content.
       /// After the app has received the key request response from the license server,
       /// it should deliver to the response to the %DRM instance using
-      /// the method \ref xbmcdrm_ProvideKeyResponse "ProvideKeyResponse", to activate the keys.
-      // \anchor xbmcdrm_GetKeyRequest
+      /// the method \ref drm_ProvideKeyResponse "ProvideKeyResponse", to activate the keys.
+      // \anchor drm_GetKeyRequest
       ///
       /// @param      init            byte - Initialization bytes container-specific data,
       ///                             its meaning is interpreted based on the mime type provided
@@ -139,11 +139,11 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcdrm
+      /// \ingroup python_drm
       /// @brief \python_func{ GetPropertyString(name) }
       /// Request a system specific property value of the %DRM system.
       ///
-      ///\anchor xbmcdrm_GetPropertyString
+      ///\anchor drm_GetPropertyString
       /// @param      Name    string - Name of the property to query
       ///
       /// @return     Value of the requested property
@@ -159,14 +159,14 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcdrm
+      /// \ingroup python_drm
       /// @brief \python_func{ ProvideKeyResponse(response) }
       /// Provide a key response
       ///
-      /// \anchor xbmcdrm_ProvideKeyResponse
+      /// \anchor drm_ProvideKeyResponse
       /// When a key response is received from the license server,
       /// must be sent to the %DRM instance by using provideKeyResponse.
-      /// See also \ref xbmcdrm_GetKeyRequest "GetKeyRequest".
+      /// See also \ref drm_GetKeyRequest "GetKeyRequest".
       ///
       /// @param      response   byte - Key data returned from the license server
       ///
@@ -186,7 +186,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcdrm
+      /// \ingroup python_drm
       /// @brief \python_func{ RemoveKeys() }
       /// Removes all keys currently loaded in a session.
       ///
@@ -201,11 +201,11 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcdrm
+      /// \ingroup python_drm
       /// @brief \python_func{ RestoreKeys(keySetId) }
       /// Restores session keys stored during previous
-      /// \ref xbmcdrm_ProvideKeyResponse "ProvideKeyResponse" call.
-      /// \anchor xbmcdrm_RestoreKeys
+      /// \ref drm_ProvideKeyResponse "ProvideKeyResponse" call.
+      /// \anchor drm_RestoreKeys
       ///
       /// @param     keySetId   string - Identifies the saved key set to restore.
       ///                                This value must never be null.
@@ -221,11 +221,11 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcdrm
+      /// \ingroup python_drm
       /// @brief \python_func{ SetPropertyString(name, value) }
       /// Set a system specific property value in the %DRM system.
       ///
-      /// \anchor xbmcdrm_SetPropertyString
+      /// \anchor drm_SetPropertyString
       ///
       /// @param     name   string - Name of the property. This value must never be null.
       /// @param     value  string - Value of the property to set. This value must never be null.
@@ -243,11 +243,11 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcdrm
+      /// \ingroup python_drm
       /// @brief \python_func{ Decrypt(cipherKeyId, input, iv) }
       /// Decrypt an encrypted data by using session keys.
       ///
-      /// \anchor xbmcdrm_Decrypt
+      /// \anchor drm_Decrypt
       ///
       /// @param     cipherKeyId byte - Encryption key id (provided from a service handshake)
       /// @param     input       byte - Cipher text to decrypt
@@ -267,11 +267,11 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcdrm
+      /// \ingroup python_drm
       /// @brief \python_func{ Encrypt(cipherKeyId, input, iv) }
       /// Encrypt data by using session keys.
       ///
-      /// \anchor xbmcdrm_Encrypt
+      /// \anchor drm_Encrypt
       ///
       /// @param     cipherKeyId byte - Encryption key id (provided from a service handshake)
       /// @param     input       byte - Encrypted text
@@ -291,11 +291,11 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcdrm
+      /// \ingroup python_drm
       /// @brief \python_func{ Sign(macKeyId, message) }
       /// Generate a %DRM encrypted signature for a text message.
       ///
-      /// \anchor xbmcdrm_Sign
+      /// \anchor drm_Sign
       ///
       /// @param     macKeyId  byte - HMAC key id (provided from a service handshake)
       /// @param     message   byte - Message text on which to base the signature
@@ -314,11 +314,11 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcdrm
+      /// \ingroup python_drm
       /// @brief \python_func{ Verify(macKeyId, message, signature) }
       /// Verify the validity of a %DRM signature of a text message.
       ///
-      /// \anchor xbmcdrm_Verify
+      /// \anchor drm_Verify
       ///
       /// @param     macKeyId  byte - HMAC key id (provided from a service handshake)
       /// @param     message   byte - Message text on which the signature is based

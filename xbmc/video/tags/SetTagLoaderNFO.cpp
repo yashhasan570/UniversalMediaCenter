@@ -26,9 +26,9 @@ using namespace ADDON;
 
 CSetTagLoaderNFO::CSetTagLoaderNFO(const std::string& title) : ISetInfoTagLoader(title)
 {
-  if (!title.empty() && !KODI::VIDEO::CVideoInfoScanner::GetMovieSetInfoFolder(title).empty())
+  if (!title.empty() && !UNIVERSAL MEDIA CENTER::VIDEO::CVideoInfoScanner::GetMovieSetInfoFolder(title).empty())
   {
-    const std::string msif{KODI::VIDEO::CVideoInfoScanner::GetMovieSetInfoFolder(title)};
+    const std::string msif{UNIVERSAL MEDIA CENTER::VIDEO::CVideoInfoScanner::GetMovieSetInfoFolder(title)};
     m_path = URIUtils::AddFileToFolder(msif, "set.nfo");
   }
 }

@@ -4,12 +4,12 @@
 # Addon Provider: Team Universal Media Center
 msgid ""
 msgstr ""
-"Project-Id-Version: KODI Main\n"
-"Report-Msgid-Bugs-To: https://github.com/xbmc/xbmc/issues/\n"
+"Project-Id-Version: UNIVERSAL MEDIA CENTER Main\n"
+"Report-Msgid-Bugs-To: https://github.com///issues/\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: 2026-06-11 02:16+0000\n"
 "Last-Translator: A B <maxtherabbit85@gmail.com>\n"
-"Language-Team: Finnish <https://kodi.weblate.cloud/projects/kodi-add-ons-skins/skin-estuary/fi_fi/>\n"
+"Language-Team: Finnish <https://universalmediacenter.weblate.cloud/projects/Universal Media Center-add-ons-skins/skin-estuary/fi_fi/>\n"
 "Language: fi_fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,15 +19,15 @@ msgstr ""
 
 msgctxt "Addon Summary"
 msgid "Estuary skin by phil65. (Universal Media Center's default skin)"
-msgstr "Estuary-ulkoasun ovat kehittäneet phil65 ja Piers. (Universal Media Centern oletusulkoasu)"
+msgstr "Estuary-ulkoasun ovat kehittäneet phil65 ja Piers. (UniversalMediaCenter* oletusulkoasu)"
 
 msgctxt "Addon Description"
 msgid "Estuary is the default skin for Universal Media Center 17.0 and above. It attempts to be easy for first time Universal Media Center users to understand and use."
-msgstr "Estuary on Universal Media Centern oletusulkoasu alkaen versiosta 17.0. Sen on tarkoitus olla uusille Universal Media Center-käyttäjille selkeä ja helppokäyttöinen."
+msgstr "Estuary on UniversalMediaCenter* oletusulkoasu alkaen versiosta 17.0. Sen on tarkoitus olla uusille Universal Media Center-käyttäjille selkeä ja helppokäyttöinen."
 
 msgctxt "Addon Disclaimer"
 msgid "Estuary is the default skin for Universal Media Center, removing it may cause issues"
-msgstr "Estuary on Universal Media Centern oletusulkoasu ja sen poisto voi aiheuttaa ongelmia"
+msgstr "Estuary on UniversalMediaCenter* oletusulkoasu ja sen poisto voi aiheuttaa ongelmia"
 
 msgctxt "#31000"
 msgid "Now playing"
@@ -463,7 +463,7 @@ msgstr "Avaa lisäosaselain"
 
 msgctxt "#31119"
 msgid "You do not have any add-ons installed yet. Visit our add-on browser to browse through our collection and improve your Universal Media Center experience."
-msgstr "Lisäosia ei ole vielä asennettu. Lisäosaselaimella voit tutkia Universal Media Centern virallista lisäosavalikoimaa ja parantaa käyttökokemustasi."
+msgstr "Lisäosia ei ole vielä asennettu. Lisäosaselaimella voit tutkia UniversalMediaCenter* virallista lisäosavalikoimaa ja parantaa käyttökokemustasi."
 
 msgctxt "#31120"
 msgid "You did not set up a weather provider yet. In order to view weather information, choose a weather provider and set up your location."

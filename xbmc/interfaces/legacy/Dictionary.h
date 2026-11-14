@@ -12,7 +12,7 @@
 
 #include <map>
 
-namespace XBMCAddon
+namespace Addon
 {
   // This is a hack in order to handle int's as strings. The correct fix for
   // this is to get rid of Alternative all together and make the codegenerator

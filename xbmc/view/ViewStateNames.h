@@ -9,7 +9,7 @@
 #pragma once
 
 //! \brief The names of the view states CViewStateSettings keeps, as stored in guisettings.xml.
-namespace KODI::VIEW::STATE
+namespace UNIVERSAL MEDIA CENTER::VIEW::STATE
 {
 
 inline constexpr char MUSIC_NAV_ARTISTS[] = "musicnavartists";
@@ -33,4 +33,4 @@ inline constexpr char VIDEO_FILES[] = "videofiles";
 inline constexpr char MUSIC_FILES[] = "musicfiles";
 inline constexpr char GAMES[] = "gamefiles";
 
-} // namespace KODI::VIEW::STATE
+} // namespace UNIVERSAL MEDIA CENTER::VIEW::STATE

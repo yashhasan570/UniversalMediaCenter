@@ -16,7 +16,7 @@
 #include <OpenGL/OpenGL.h>
 #include <OpenGL/gl3.h>
 
-using namespace KODI::RETRO;
+using namespace UNIVERSAL MEDIA CENTER::RETRO;
 
 namespace
 {
@@ -197,7 +197,7 @@ private:
 };
 } // namespace
 
-std::unique_ptr<IHwRenderingContext> KODI::RETRO::CreateHwRenderingContextOSX(
+std::unique_ptr<IHwRenderingContext> UNIVERSAL MEDIA CENTER::RETRO::CreateHwRenderingContextOSX(
     NSOpenGLContext* shareContext)
 {
   return std::make_unique<CHwRenderingContextOSX>(shareContext);

@@ -12,7 +12,7 @@
 
 #include <memory>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -55,4 +55,4 @@ private:
   std::unique_ptr<CDialogGameOSDHelp> m_helpDialog;
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

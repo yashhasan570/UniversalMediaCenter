@@ -2,14 +2,14 @@
 
 set -ux
 
-EXTERNAL_LIBS="$XBMC_DEPENDS"
+EXTERNAL_LIBS="$_DEPENDS"
 
 TARGET_BINARY="$TARGET_BUILD_DIR/$EXECUTABLE_PATH"
 TARGET_CONTENTS="$TARGET_BUILD_DIR/$FULL_PRODUCT_NAME"
 TARGET_FRAMEWORKS="$TARGET_BUILD_DIR/$FRAMEWORKS_FOLDER_PATH"
 
 DYLIB_NAMEPATH="@executable_path/Frameworks"
-XBMC_HOME="$TARGET_CONTENTS/AppData/AppHome"
+_HOME="$TARGET_CONTENTS/AppData/AppHome"
 
 function log
 {
@@ -35,7 +35,7 @@ function build_framework_name_python
 }
 
 # "returns" variable FRAMEWORK_BINARY_PATH
-function check_xbmc_dylib_depends
+function check__dylib_depends
 {
   local binaryPath="$1"
   buildFrameworkNameFunc="$2"
@@ -51,7 +51,7 @@ function check_xbmc_dylib_depends
     changeRpathCommands+="-change $externalLibPath $DYLIB_NAMEPATH/$frameworkName.framework/$frameworkName "
     # TODO: external libs must be copied to app bundle first
     # TODO: when processing a python native module, external libs must use static `build_framework_name`
-    check_xbmc_dylib_depends "$externalLibPath" "$buildFrameworkNameFunc"
+    check__dylib_depends "$externalLibPath" "$buildFrameworkNameFunc"
   done < <(dyld_info -linked_dylibs "$binaryPath" | awk -v p="$EXTERNAL_LIBS" 'NR>3 && index($1, p) { print $1 }')
   [ -n "$changeRpathCommands" ] && install_name_tool $changeRpathCommands "$binaryPath"
 
@@ -90,13 +90,13 @@ function check_xbmc_dylib_depends
   fi
 }
 
-function check_xbmc_dylib_depends_in_dir
+function check__dylib_depends_in_dir
 {
   dir="$1"
   buildFrameworkNameFunc="$2"
   extraProcessorFunc="${3:-}"
   while IFS= read -r -d '' libPath ; do
-    check_xbmc_dylib_depends "$libPath" "$buildFrameworkNameFunc"
+    check__dylib_depends "$libPath" "$buildFrameworkNameFunc"
     [ -z "$extraProcessorFunc" ] || "$extraProcessorFunc" "$libPath"
   done < <(find "$dir" -type f \( -iname '*.dylib' -or -iname '*.so' \) -print0)
 }
@@ -176,16 +176,16 @@ rm -rf "$pythonDst/config"
 cd "$TARGET_FRAMEWORKS"
 
 log "Checking $FULL_PRODUCT_NAME for dylib dependencies"
-check_xbmc_dylib_depends "$TARGET_BINARY" build_framework_name 1
+check__dylib_depends "$TARGET_BINARY" build_framework_name 1
 
 for dir in addons system ; do
   log "Checking '$dir' for dylib dependencies"
-  check_xbmc_dylib_depends_in_dir "$XBMC_HOME/$dir" build_framework_name
+  check__dylib_depends_in_dir "$_HOME/$dir" build_framework_name
 done
 
 # TODO: enable for tvOS once Python is built as a real tvOS platform
 if [[ $PLATFORM_NAME == iphone* ]] ; then
   log "Packaging python packages as frameworks"
   pythonSitePackagesDir="$pythonDst/site-packages"
-  check_xbmc_dylib_depends_in_dir "$pythonSitePackagesDir" build_framework_name_python package_python_lib
+  check__dylib_depends_in_dir "$pythonSitePackagesDir" build_framework_name_python package_python_lib
 fi

@@ -6,7 +6,7 @@
  *  See LICENSES/README.md for more information.
  */
 
-#include "JNIXBMCSurfaceTextureOnFrameAvailableListener.h"
+#include "JNISurfaceTextureOnFrameAvailableListener.h"
 
 #include "CompileInfo.h"
 
@@ -15,9 +15,9 @@
 
 using namespace jni;
 
-static std::string s_className = std::string(CCompileInfo::GetClass()) + "/interfaces/XBMCSurfaceTextureOnFrameAvailableListener";
+static std::string s_className = std::string(CCompileInfo::GetClass()) + "/interfaces/SurfaceTextureOnFrameAvailableListener";
 
-CJNIXBMCSurfaceTextureOnFrameAvailableListener::CJNIXBMCSurfaceTextureOnFrameAvailableListener()
+CJNISurfaceTextureOnFrameAvailableListener::CJNISurfaceTextureOnFrameAvailableListener()
   : CJNIBase(s_className)
 {
   m_object = new_object(CJNIContext::getClassLoader().loadClass(ToDotClassName(s_className)));
@@ -26,36 +26,36 @@ CJNIXBMCSurfaceTextureOnFrameAvailableListener::CJNIXBMCSurfaceTextureOnFrameAva
   add_instance(m_object, this);
 }
 
-CJNIXBMCSurfaceTextureOnFrameAvailableListener::CJNIXBMCSurfaceTextureOnFrameAvailableListener(const CJNIXBMCSurfaceTextureOnFrameAvailableListener& other)
+CJNISurfaceTextureOnFrameAvailableListener::CJNISurfaceTextureOnFrameAvailableListener(const CJNISurfaceTextureOnFrameAvailableListener& other)
   : CJNIBase(other)
 {
   add_instance(m_object, this);
 }
 
-CJNIXBMCSurfaceTextureOnFrameAvailableListener::~CJNIXBMCSurfaceTextureOnFrameAvailableListener()
+CJNISurfaceTextureOnFrameAvailableListener::~CJNISurfaceTextureOnFrameAvailableListener()
 {
   remove_instance(this);
 }
 
-void CJNIXBMCSurfaceTextureOnFrameAvailableListener::RegisterNatives(JNIEnv* env)
+void CJNISurfaceTextureOnFrameAvailableListener::RegisterNatives(JNIEnv* env)
 {
   jclass cClass = env->FindClass(s_className.c_str());
   if(cClass)
   {
     JNINativeMethod methods[] =
     {
-      {"_onFrameAvailable", "(Landroid/graphics/SurfaceTexture;)V", (void*)&CJNIXBMCSurfaceTextureOnFrameAvailableListener::_onFrameAvailable},
+      {"_onFrameAvailable", "(Landroid/graphics/SurfaceTexture;)V", (void*)&CJNISurfaceTextureOnFrameAvailableListener::_onFrameAvailable},
     };
 
     env->RegisterNatives(cClass, methods, sizeof(methods)/sizeof(methods[0]));
   }
 }
 
-void CJNIXBMCSurfaceTextureOnFrameAvailableListener::_onFrameAvailable(JNIEnv* env, jobject thiz, jobject surface)
+void CJNISurfaceTextureOnFrameAvailableListener::_onFrameAvailable(JNIEnv* env, jobject thiz, jobject surface)
 {
   (void)env;
 
-  CJNIXBMCSurfaceTextureOnFrameAvailableListener *inst = find_instance(thiz);
+  CJNISurfaceTextureOnFrameAvailableListener *inst = find_instance(thiz);
   if (inst)
     inst->onFrameAvailable(CJNISurfaceTexture(jhobject::fromJNI(surface)));
 }

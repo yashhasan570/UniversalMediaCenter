@@ -15,7 +15,7 @@ extern "C"
 #include <libavutil/pixfmt.h>
 }
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RENDERING
 {
@@ -28,8 +28,8 @@ ImageColorMetadata GetOutputColorMetadata(CWinSystemBase& winSystem)
   // the winsystem HDR state. SDR is tagged sRGB, the coding the GUI and games
   // are drawn in, as whether an SDR display decodes it as sRGB or BT.1886
   // isn't known.
-  using KODI::UTILS::Colorimetry;
-  using KODI::UTILS::Eotf;
+  using UNIVERSAL MEDIA CENTER::UTILS::Colorimetry;
+  using UNIVERSAL MEDIA CENTER::UTILS::Eotf;
   ImageColorMetadata color;
   color.primaries = AVCOL_PRI_BT709;
   const Colorimetry colorimetry = winSystem.GetColorimetry();
@@ -56,4 +56,4 @@ ImageColorMetadata GetOutputColorMetadata(CWinSystemBase& winSystem)
 
 } // namespace CAPTURE
 } // namespace RENDERING
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

@@ -4,12 +4,12 @@
 # Addon Provider: Team Universal Media Center
 msgid ""
 msgstr ""
-"Project-Id-Version: KODI Main\n"
-"Report-Msgid-Bugs-To: https://github.com/xbmc/xbmc/issues/\n"
+"Project-Id-Version: UNIVERSAL MEDIA CENTER Main\n"
+"Report-Msgid-Bugs-To: https://github.com///issues/\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: 2026-11-02 22:25+0000\n"
 "Last-Translator: Daniel Nylander <daniel@danielnylander.se>\n"
-"Language-Team: Swedish <https://kodi.weblate.cloud/projects/kodi-add-ons-skins/skin-estuary/sv_se/>\n"
+"Language-Team: Swedish <https://universalmediacenter.weblate.cloud/projects/Universal Media Center-add-ons-skins/skin-estuary/sv_se/>\n"
 "Language: sv_se\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,7 +27,7 @@ msgstr "Estuary är standardskalet för Universal Media Center 17.0 och uppåt. 
 
 msgctxt "Addon Disclaimer"
 msgid "Estuary is the default skin for Universal Media Center, removing it may cause issues"
-msgstr "Estuary är Universal Media Centers standardskal. Om du tar bort det kan det orsaka problem"
+msgstr "Estuary är UniversalMediaCenter* standardskal. Om du tar bort det kan det orsaka problem"
 
 msgctxt "#31000"
 msgid "Now playing"

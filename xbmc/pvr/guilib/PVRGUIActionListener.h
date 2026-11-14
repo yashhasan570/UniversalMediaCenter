@@ -17,7 +17,7 @@ namespace PVR
 class CPVRManager;
 enum class ChannelSwitchMode;
 
-class CPVRGUIActionListener : public KODI::ACTION::IActionListener, public ISettingCallback
+class CPVRGUIActionListener : public UNIVERSAL MEDIA CENTER::ACTION::IActionListener, public ISettingCallback
 {
 public:
   CPVRGUIActionListener();

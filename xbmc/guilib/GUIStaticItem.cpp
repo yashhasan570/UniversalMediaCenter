@@ -17,7 +17,7 @@
 #include "utils/Variant.h"
 #include "utils/XMLUtils.h"
 
-using namespace KODI::GUILIB;
+using namespace UNIVERSAL MEDIA CENTER::GUILIB;
 
 CGUIStaticItem::CGUIStaticItem(const TiXmlElement *item, int parentID) : CFileItem()
 {
@@ -37,8 +37,8 @@ CGUIStaticItem::CGUIStaticItem(const TiXmlElement *item, int parentID) : CFileIt
   CGUIControlFactory::GetActions(item, "onclick", m_clickActions);
   SetLabel(label.GetLabel(parentID));
   SetLabel2(label2.GetLabel(parentID));
-  SetArt(KODI::ART::TYPE::THUMB, thumb.GetLabel(parentID, true));
-  SetArt(KODI::ART::TYPE::ICON, icon.GetLabel(parentID, true));
+  SetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB, thumb.GetLabel(parentID, true));
+  SetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::ICON, icon.GetLabel(parentID, true));
   if (!label.IsConstant())
     m_info.emplace_back(label, "label");
   if (!label2.IsConstant())
@@ -92,9 +92,9 @@ void CGUIStaticItem::UpdateProperties(int contextWindow)
     else if (StringUtils::EqualsNoCase(name, "label2"))
       SetLabel2(value);
     else if (StringUtils::EqualsNoCase(name, "thumb"))
-      SetArt(KODI::ART::TYPE::THUMB, value);
+      SetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB, value);
     else if (StringUtils::EqualsNoCase(name, "icon"))
-      SetArt(KODI::ART::TYPE::ICON, value);
+      SetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::ICON, value);
     else
       SetProperty(name, value.c_str());
   }

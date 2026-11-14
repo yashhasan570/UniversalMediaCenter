@@ -15,11 +15,11 @@
 #include "windowing/WinSystem.h"
 
 using namespace ADDON;
-using namespace KODI::ADDONS;
+using namespace UNIVERSAL MEDIA CENTER::ADDONS;
 
 namespace
 {
-void get_properties(const KODI_HANDLE hdl, struct KODI_ADDON_SCREENSAVER_PROPS* props)
+void get_properties(const UNIVERSALMEDIA_HANDLE hdl, struct UNIVERSALMEDIA_ADDON_SCREENSAVER_PROPS* props)
 {
   if (hdl)
     static_cast<CScreenSaver*>(hdl)->GetProperties(props);
@@ -34,14 +34,14 @@ CScreenSaver::CScreenSaver(const AddonInfoPtr& addonInfo)
   m_ifc.screensaver->toUniversal Media Center = new AddonToUniversal Media CenterFuncTable_Screensaver();
   m_ifc.screensaver->toUniversal Media Center->get_properties = get_properties;
 
-  /* Open the class "kodi::addon::CInstanceScreensaver" on add-on side */
+  /* Open the class "addon::CInstanceScreensaver" on add-on side */
   if (CreateInstance() != ADDON_STATUS_OK)
     CLog::Log(LOGFATAL, "Screensaver: failed to create instance for '{}' and not usable!", ID());
 }
 
 CScreenSaver::~CScreenSaver()
 {
-  /* Destroy the class "kodi::addon::CInstanceScreensaver" on add-on side */
+  /* Destroy the class "addon::CInstanceScreensaver" on add-on side */
   DestroyInstance();
 
   delete m_ifc.screensaver->toAddon;
@@ -68,7 +68,7 @@ void CScreenSaver::Render()
     m_ifc.screensaver->toAddon->render(m_ifc.hdl);
 }
 
-void CScreenSaver::GetProperties(struct KODI_ADDON_SCREENSAVER_PROPS* props) const
+void CScreenSaver::GetProperties(struct UNIVERSALMEDIA_ADDON_SCREENSAVER_PROPS* props) const
 {
   if (!props)
     return;

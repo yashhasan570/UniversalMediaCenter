@@ -10,7 +10,7 @@
 
 #include "Seat.h"
 
-namespace KODI::WINDOWING::WAYLAND
+namespace UNIVERSAL MEDIA CENTER::WINDOWING::WAYLAND
 {
 
 class CSeatWebOS final : public CSeat
@@ -30,4 +30,4 @@ protected:
   void InstallKeyboardRepeatInfo() override;
 };
 
-} // namespace KODI::WINDOWING::WAYLAND
+} // namespace UNIVERSAL MEDIA CENTER::WINDOWING::WAYLAND

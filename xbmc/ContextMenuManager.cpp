@@ -36,10 +36,10 @@ using namespace ADDON;
 using namespace PVR;
 
 const CContextMenuItem CContextMenuManager::MAIN(CContextMenuItem::CGroup{
-    .groupId = "kodi.core.main",
+    .groupId = "universalmediacenter.core.main",
 });
 const CContextMenuItem CContextMenuManager::MANAGE(CContextMenuItem::CGroup{
-    .groupId = "kodi.core.manage",
+    .groupId = "universalmediacenter.core.manage",
 });
 
 CContextMenuManager::CContextMenuManager(CAddonMgr& addonMgr)

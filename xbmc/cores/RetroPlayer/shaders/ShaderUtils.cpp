@@ -10,7 +10,7 @@
 
 #include <string_view>
 
-using namespace KODI::SHADER;
+using namespace UNIVERSAL MEDIA CENTER::SHADER;
 
 std::string CShaderUtils::StripParameterPragmas(std::string source)
 {

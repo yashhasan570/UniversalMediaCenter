@@ -137,11 +137,11 @@ public:
   }
 };
 
-class XBMCClientUtils
+class ClientUtils
 {
 public:
-  XBMCClientUtils() = default;
-  ~XBMCClientUtils() = default;
+  ClientUtils() = default;
+  ~ClientUtils() = default;
   static unsigned int GetUniqueIdentifier()
   {
     static time_t id = time(NULL);
@@ -179,7 +179,7 @@ class CPacket
      - H7 must be set to zeros for now
 
          -----------------------------
-         | -H1 Signature ("XBMC")    | - 4  x CHAR                4B
+         | -H1 Signature ("")    | - 4  x CHAR                4B
          | -H2 Version (eg. 2.0)     | - 2  x UNSIGNED CHAR       2B
          | -H3 PacketType            | - 1  x UNSIGNED SHORT      2B
          | -H4 Sequence number       | - 1  x UNSIGNED LONG       4B
@@ -198,7 +198,7 @@ public:
   }
   virtual ~CPacket() = default;
 
-  bool Send(int Socket, CAddress &Addr, unsigned int UID = XBMCClientUtils::GetUniqueIdentifier())
+  bool Send(int Socket, CAddress &Addr, unsigned int UID = ClientUtils::GetUniqueIdentifier())
   {
     if (m_Payload.empty())
       ConstructPayload();
@@ -246,7 +246,7 @@ protected:
 
   static void ConstructHeader(int PacketType, int NumberOfPackets, int CurrentPacket, unsigned short PayloadSize, unsigned int UniqueToken, char *Header)
   {
-    sprintf(Header, "XBMC");
+    sprintf(Header, "");
     for (int i = 4; i < HEADER_SIZE; i++)
       Header[i] = 0;
     Header[4]  = MAJOR_VERSION;
@@ -727,14 +727,14 @@ public:
   ~CPacketACTION() override = default;
 };
 
-class CXBMCClient
+class CClient
 {
 private:
   CAddress      m_Addr;
   int           m_Socket;
   unsigned int  m_UID;
 public:
-  CXBMCClient(const char *IP = "127.0.0.1", int Port = 9777, int Socket = -1, unsigned int UID = 0)
+  CClient(const char *IP = "127.0.0.1", int Port = 9777, int Socket = -1, unsigned int UID = 0)
   {
     m_Addr = CAddress(IP, Port);
     if (Socket == -1)
@@ -745,7 +745,7 @@ public:
     if (UID)
       m_UID = UID;
     else
-      m_UID = XBMCClientUtils::GetUniqueIdentifier();
+      m_UID = ClientUtils::GetUniqueIdentifier();
   }
 
   void SendNOTIFICATION(const char *Title, const char *Message, unsigned short IconType, const char *IconFile = NULL)

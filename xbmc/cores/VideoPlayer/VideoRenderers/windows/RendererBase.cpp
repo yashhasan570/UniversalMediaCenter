@@ -457,7 +457,7 @@ void CRendererBase::OnCMSConfigChanged(AVColorPrimaries srcPrimaries)
     if (!CColorManager::Get3dLutSize(CMS_DATA_FMT_RGBA, &lutSize, &dataSize))
       return 0;
 
-    const auto lutData = static_cast<uint16_t*>(KODI::MEMORY::AlignedMalloc(dataSize, 16));
+    const auto lutData = static_cast<uint16_t*>(UNIVERSAL MEDIA CENTER::MEMORY::AlignedMalloc(dataSize, 16));
     bool success = m_colorManager->GetVideo3dLut(srcPrimaries, &m_cmsToken, CMS_DATA_FMT_RGBA,
                                                  lutSize, lutData);
     if (success)
@@ -467,7 +467,7 @@ void CRendererBase::OnCMSConfigChanged(AVColorPrimaries srcPrimaries)
     else
       CLog::Log(LOGERROR, "CRendererBase::OnCMSConfigChanged: unable to loading the 3dlut data.");
 
-    KODI::MEMORY::AlignedFree(lutData);
+    UNIVERSAL MEDIA CENTER::MEMORY::AlignedFree(lutData);
     if (!success)
       return 0;
 

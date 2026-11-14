@@ -11,7 +11,7 @@
 #include "ServiceBroker.h"
 #include "windowing/gbm/WinSystemGbm.h"
 
-using namespace KODI::WINDOWING::GBM;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::GBM;
 
 CGBMDPMSSupport::CGBMDPMSSupport()
 {

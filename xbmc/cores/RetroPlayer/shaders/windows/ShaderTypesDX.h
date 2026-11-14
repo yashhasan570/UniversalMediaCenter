@@ -10,7 +10,7 @@
 
 #include <cstddef>
 
-namespace KODI::SHADER
+namespace UNIVERSAL MEDIA CENTER::SHADER
 {
 struct CUSTOMVERTEX
 {
@@ -27,4 +27,4 @@ struct CUSTOMVERTEX
 
 static_assert(offsetof(CUSTOMVERTEX, tu2) == 5 * sizeof(float));
 static_assert(sizeof(CUSTOMVERTEX) == 7 * sizeof(float));
-} // namespace KODI::SHADER
+} // namespace UNIVERSAL MEDIA CENTER::SHADER

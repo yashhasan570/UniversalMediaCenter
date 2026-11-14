@@ -26,7 +26,7 @@
 #include "SystemOperations.h"
 #include "TextureOperations.h"
 #include "VideoLibrary.h"
-#include "XBMCOperations.h"
+#include "Operations.h"
 #include "utils/JSONVariantParser.h"
 #include "utils/StringUtils.h"
 #include "utils/log.h"
@@ -262,9 +262,9 @@ JsonRpcMethodMap CJSONServiceDescription::m_methodMaps[] = {
   { "Settings.GetSkinSettingValue",                 CSettingsOperations::GetSkinSettingValue },
   { "Settings.SetSkinSettingValue",                 CSettingsOperations::SetSkinSettingValue },
 
-// XBMC operations
-  { "XBMC.GetInfoLabels",                           CXBMCOperations::GetInfoLabels },
-  { "XBMC.GetInfoBooleans",                         CXBMCOperations::GetInfoBooleans },
+//  operations
+  { ".GetInfoLabels",                           COperations::GetInfoLabels },
+  { ".GetInfoBooleans",                         COperations::GetInfoBooleans },
 
 // Database operations
   { "Database.GetDatabaseName",                     CDatabaseOperations::GetDatabaseNameByType },
@@ -1306,7 +1306,7 @@ JsonRpcMethod::JsonRpcMethod()
 
 bool JsonRpcMethod::Parse(const CVariant &value)
 {
-  // Parse XBMC specific information about the method
+  // Parse  specific information about the method
   if (value.isMember("transport") && value["transport"].isArray())
   {
     int transport = 0;

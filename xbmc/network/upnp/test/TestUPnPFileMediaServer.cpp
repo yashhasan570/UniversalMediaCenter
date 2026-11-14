@@ -160,13 +160,13 @@ protected:
     std::random_device random;
     const FilePath base =
         std::filesystem::temp_directory_path() /
-        ("kodi-upnp-file-server-" + std::to_string(random()) + std::to_string(random()));
+        ("universalmediacenter-upnp-file-server-" + std::to_string(random()) + std::to_string(random()));
     ASSERT_TRUE(std::filesystem::create_directory(base));
     m_base = base;
 #else
     const char* temp = std::getenv("TMPDIR");
     std::string directory =
-        std::string(temp && *temp ? temp : "/tmp") + "/kodi-upnp-file-server-XXXXXX";
+        std::string(temp && *temp ? temp : "/tmp") + "/universalmediacenter-upnp-file-server-XXXXXX";
     ASSERT_NE(nullptr, mkdtemp(directory.data()));
     m_base = directory;
     m_directories.push_back(m_base);

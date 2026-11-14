@@ -15,7 +15,7 @@
 
 #include <memory>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace WINDOWING
 {
@@ -24,7 +24,7 @@ namespace GBM
 
 class CVaapiProxy;
 
-class CWinSystemGbmEGLContext : public KODI::WINDOWING::LINUX::CWinSystemEGL, public CWinSystemGbm
+class CWinSystemGbmEGLContext : public UNIVERSAL MEDIA CENTER::WINDOWING::LINUX::CWinSystemEGL, public CWinSystemGbm
 {
 public:
   ~CWinSystemGbmEGLContext() override = default;
@@ -61,7 +61,7 @@ protected:
 
   EGLint m_renderableType{0};
 
-  std::unique_ptr<KODI::UTILS::EGL::CEGLFence> m_eglFence;
+  std::unique_ptr<UNIVERSAL MEDIA CENTER::UTILS::EGL::CEGLFence> m_eglFence;
 
   struct delete_CVaapiProxy
   {
@@ -72,4 +72,4 @@ protected:
 
 } // namespace GBM
 } // namespace WINDOWING
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

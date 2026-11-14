@@ -103,7 +103,7 @@ constexpr auto glErrorSeverity = make_map<GLenum, std::string_view>({
 
 } // namespace
 
-void KODI::UTILS::GL::GlErrorCallback(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar* message, const void* userParam)
+void UNIVERSAL MEDIA CENTER::UTILS::GL::GlErrorCallback(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar* message, const void* userParam)
 {
 #ifdef TARGET_LINUX
   const std::string_view sourceStr = glErrorSource.get(source).value_or("");
@@ -250,7 +250,7 @@ void LogGraphicsInfo()
 #endif /* !HAS_GL */
 }
 
-int KODI::UTILS::GL::glFormatElementByteCount(GLenum format)
+int UNIVERSAL MEDIA CENTER::UTILS::GL::glFormatElementByteCount(GLenum format)
 {
   switch (format)
   {
@@ -285,7 +285,7 @@ int KODI::UTILS::GL::glFormatElementByteCount(GLenum format)
   }
 }
 
-std::array<GLfloat, 16> KODI::UTILS::GL::QuadTransform(const CPoint& origin,
+std::array<GLfloat, 16> UNIVERSAL MEDIA CENTER::UTILS::GL::QuadTransform(const CPoint& origin,
                                                        const CPoint& right,
                                                        const CPoint& down)
 {
@@ -297,20 +297,20 @@ std::array<GLfloat, 16> KODI::UTILS::GL::QuadTransform(const CPoint& origin,
   // clang-format on
 }
 
-uint8_t KODI::UTILS::GL::GetChannelFromARGB(const KODI::UTILS::GL::ColorChannel colorChannel,
+uint8_t UNIVERSAL MEDIA CENTER::UTILS::GL::GetChannelFromARGB(const UNIVERSAL MEDIA CENTER::UTILS::GL::ColorChannel colorChannel,
                                             const uint32_t argb)
 {
   switch (colorChannel)
   {
-    case KODI::UTILS::GL::ColorChannel::A:
+    case UNIVERSAL MEDIA CENTER::UTILS::GL::ColorChannel::A:
       return (argb >> 24) & 0xFF;
-    case KODI::UTILS::GL::ColorChannel::R:
+    case UNIVERSAL MEDIA CENTER::UTILS::GL::ColorChannel::R:
       return (argb >> 16) & 0xFF;
-    case KODI::UTILS::GL::ColorChannel::G:
+    case UNIVERSAL MEDIA CENTER::UTILS::GL::ColorChannel::G:
       return (argb >> 8) & 0xFF;
-    case KODI::UTILS::GL::ColorChannel::B:
+    case UNIVERSAL MEDIA CENTER::UTILS::GL::ColorChannel::B:
       return (argb >> 0) & 0xFF;
     default:
-      throw std::runtime_error("KODI::UTILS::GL::GetChannelFromARGB: ColorChannel not handled");
+      throw std::runtime_error("UNIVERSAL MEDIA CENTER::UTILS::GL::GetChannelFromARGB: ColorChannel not handled");
   };
 }

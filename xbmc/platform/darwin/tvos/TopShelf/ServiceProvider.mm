@@ -55,12 +55,12 @@
 
   // Retrieve Universal Media Center URL Scheme
   static auto const mainAppBundle = [tvosShared mainAppBundle];
-  auto kodiUrlScheme = @"kodi"; // fallback value
+  auto universalmediacenterUrlScheme = @"universalmediacenter"; // fallback value
   for (NSDictionary* dic in [mainAppBundle objectForInfoDictionaryKey:@"CFBundleURLTypes"])
   {
     if ([dic[@"CFBundleURLName"] isEqualToString:mainAppBundle.bundleIdentifier])
     {
-      kodiUrlScheme = dic[@"CFBundleURLSchemes"][0];
+      universalmediacenterUrlScheme = dic[@"CFBundleURLSchemes"][0];
       break;
     }
   }
@@ -86,9 +86,9 @@
       contentItem.title = item[@"title"];
       NSString* url = item[@"url"];
       contentItem.displayURL = [NSURL
-          URLWithString:[NSString stringWithFormat:@"%@://display/movie/%@", kodiUrlScheme, url]];
+          URLWithString:[NSString stringWithFormat:@"%@://display/movie/%@", universalmediacenterUrlScheme, url]];
       contentItem.playURL = [NSURL
-          URLWithString:[NSString stringWithFormat:@"%@://play/movie/%@", kodiUrlScheme, url]];
+          URLWithString:[NSString stringWithFormat:@"%@://play/movie/%@", universalmediacenterUrlScheme, url]];
       [contentItems addObject:contentItem];
     }
     return contentItems;

@@ -20,7 +20,7 @@
 #include <sstream>
 #include <string>
 
-using KODI::UTILITY::CDigest;
+using UNIVERSAL MEDIA CENTER::UTILITY::CDigest;
 
 #define WS_HTTP_METHOD          "GET"
 #define WS_HTTP_TAG             "HTTP/"

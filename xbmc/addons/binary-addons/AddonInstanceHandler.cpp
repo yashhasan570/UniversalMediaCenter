@@ -13,7 +13,7 @@
 #include "addons/binary-addons/AddonDll.h"
 #include "addons/binary-addons/BinaryAddonManager.h"
 #include "addons/interfaces/AddonBase.h"
-#include "addons/kodi-dev-kit/include/kodi/AddonBase.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/AddonBase.h"
 #include "addons/settings/AddonSettings.h"
 #include "filesystem/Directory.h"
 #include "filesystem/SpecialProtocol.h"
@@ -32,7 +32,7 @@ IAddonInstanceHandler::IAddonInstanceHandler(
     ADDON_TYPE type,
     const AddonInfoPtr& addonInfo,
     AddonInstanceId instanceId /* = ADDON_INSTANCE_ID_UNUSED */,
-    KODI_HANDLE parentInstance /* = nullptr*/,
+    UNIVERSALMEDIA_HANDLE parentInstance /* = nullptr*/,
     const std::string& uniqueWorkID /* = ""*/)
   : m_type(type), m_instanceId(instanceId), m_parentInstance(parentInstance), m_addonInfo(addonInfo)
 {
@@ -43,9 +43,9 @@ IAddonInstanceHandler::IAddonInstanceHandler(
 
   m_info.number = m_instanceId; // @todo change within next big API change to "instance_id"
   m_info.id = m_uniqueWorkID.c_str(); // @todo change within next big API change to "unique_work_id"
-  m_info.version = kodi::addon::GetTypeVersion(m_type);
+  m_info.version = addon::GetTypeVersion(m_type);
   m_info.type = m_type;
-  m_info.kodi = this;
+  m_info.universalmediacenter = this;
   m_info.parent = m_parentInstance;
   m_info.first_instance = m_addon && !m_addon->Initialized();
   m_info.functions = &m_callbacks;
@@ -119,7 +119,7 @@ ADDON_STATUS IAddonInstanceHandler::CreateInstance()
   if (status != ADDON_STATUS_OK)
   {
     CLog::LogF(LOGERROR, "{} returned bad status \"{}\" during instance creation", m_addon->ID(),
-               kodi::addon::TranslateAddonStatus(status));
+               addon::TranslateAddonStatus(status));
   }
   return status;
 }
@@ -149,7 +149,7 @@ std::shared_ptr<CSetting> IAddonInstanceHandler::GetSetting(const std::string& s
   return value;
 }
 
-char* IAddonInstanceHandler::get_instance_user_path(const KODI_ADDON_INSTANCE_BACKEND_HDL hdl)
+char* IAddonInstanceHandler::get_instance_user_path(const UNIVERSALMEDIA_ADDON_INSTANCE_BACKEND_HDL hdl)
 {
   const auto* instance = static_cast<const IAddonInstanceHandler*>(hdl);
   if (!instance)
@@ -162,7 +162,7 @@ char* IAddonInstanceHandler::get_instance_user_path(const KODI_ADDON_INSTANCE_BA
 }
 
 bool IAddonInstanceHandler::is_instance_setting_using_default(
-    const KODI_ADDON_INSTANCE_BACKEND_HDL hdl, const char* id)
+    const UNIVERSALMEDIA_ADDON_INSTANCE_BACKEND_HDL hdl, const char* id)
 {
   const auto* instance = static_cast<const IAddonInstanceHandler*>(hdl);
   if (!instance || !id)
@@ -175,7 +175,7 @@ bool IAddonInstanceHandler::is_instance_setting_using_default(
   return setting->IsDefault();
 }
 
-bool IAddonInstanceHandler::get_instance_setting_bool(const KODI_ADDON_INSTANCE_BACKEND_HDL hdl,
+bool IAddonInstanceHandler::get_instance_setting_bool(const UNIVERSALMEDIA_ADDON_INSTANCE_BACKEND_HDL hdl,
                                                       const char* id,
                                                       bool* value)
 {
@@ -197,7 +197,7 @@ bool IAddonInstanceHandler::get_instance_setting_bool(const KODI_ADDON_INSTANCE_
   return true;
 }
 
-bool IAddonInstanceHandler::get_instance_setting_int(const KODI_ADDON_INSTANCE_BACKEND_HDL hdl,
+bool IAddonInstanceHandler::get_instance_setting_int(const UNIVERSALMEDIA_ADDON_INSTANCE_BACKEND_HDL hdl,
                                                      const char* id,
                                                      int* value)
 {
@@ -222,7 +222,7 @@ bool IAddonInstanceHandler::get_instance_setting_int(const KODI_ADDON_INSTANCE_B
   return true;
 }
 
-bool IAddonInstanceHandler::get_instance_setting_float(const KODI_ADDON_INSTANCE_BACKEND_HDL hdl,
+bool IAddonInstanceHandler::get_instance_setting_float(const UNIVERSALMEDIA_ADDON_INSTANCE_BACKEND_HDL hdl,
                                                        const char* id,
                                                        float* value)
 {
@@ -244,7 +244,7 @@ bool IAddonInstanceHandler::get_instance_setting_float(const KODI_ADDON_INSTANCE
   return true;
 }
 
-bool IAddonInstanceHandler::get_instance_setting_string(const KODI_ADDON_INSTANCE_BACKEND_HDL hdl,
+bool IAddonInstanceHandler::get_instance_setting_string(const UNIVERSALMEDIA_ADDON_INSTANCE_BACKEND_HDL hdl,
                                                         const char* id,
                                                         char** value)
 {
@@ -266,7 +266,7 @@ bool IAddonInstanceHandler::get_instance_setting_string(const KODI_ADDON_INSTANC
   return true;
 }
 
-bool IAddonInstanceHandler::set_instance_setting_bool(const KODI_ADDON_INSTANCE_BACKEND_HDL hdl,
+bool IAddonInstanceHandler::set_instance_setting_bool(const UNIVERSALMEDIA_ADDON_INSTANCE_BACKEND_HDL hdl,
                                                       const char* id,
                                                       bool value)
 {
@@ -289,7 +289,7 @@ bool IAddonInstanceHandler::set_instance_setting_bool(const KODI_ADDON_INSTANCE_
   return true;
 }
 
-bool IAddonInstanceHandler::set_instance_setting_int(const KODI_ADDON_INSTANCE_BACKEND_HDL hdl,
+bool IAddonInstanceHandler::set_instance_setting_int(const UNIVERSALMEDIA_ADDON_INSTANCE_BACKEND_HDL hdl,
                                                      const char* id,
                                                      int value)
 {
@@ -317,7 +317,7 @@ bool IAddonInstanceHandler::set_instance_setting_int(const KODI_ADDON_INSTANCE_B
   return true;
 }
 
-bool IAddonInstanceHandler::set_instance_setting_float(const KODI_ADDON_INSTANCE_BACKEND_HDL hdl,
+bool IAddonInstanceHandler::set_instance_setting_float(const UNIVERSALMEDIA_ADDON_INSTANCE_BACKEND_HDL hdl,
                                                        const char* id,
                                                        float value)
 {
@@ -346,7 +346,7 @@ bool IAddonInstanceHandler::set_instance_setting_float(const KODI_ADDON_INSTANCE
   return true;
 }
 
-bool IAddonInstanceHandler::set_instance_setting_string(const KODI_ADDON_INSTANCE_BACKEND_HDL hdl,
+bool IAddonInstanceHandler::set_instance_setting_string(const UNIVERSALMEDIA_ADDON_INSTANCE_BACKEND_HDL hdl,
                                                         const char* id,
                                                         const char* value)
 {

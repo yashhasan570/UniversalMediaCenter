@@ -23,7 +23,7 @@ class TestRssReader : public testing::Test
 
 TEST(TestRssReader, ParseCorrectRss)
 {
-  std::ifstream fstr(XBMC_REF_FILE_PATH("/xbmc/utils/test/rss.xml"));
+  std::ifstream fstr(_REF_FILE_PATH("//utils/test/rss.xml"));
   std::stringstream buffer;
   buffer << fstr.rdbuf();
 
@@ -37,7 +37,7 @@ TEST(TestRssReader, ParseCorrectRss)
 
 TEST(TestRssReader, ParseCorruptRss)
 {
-  std::ifstream fstr(XBMC_REF_FILE_PATH("/xbmc/utils/test/rss.xml"));
+  std::ifstream fstr(_REF_FILE_PATH("//utils/test/rss.xml"));
   std::stringstream buffer;
   buffer << fstr.rdbuf();
 

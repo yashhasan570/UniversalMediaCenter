@@ -175,7 +175,7 @@ if(NOT TARGET ${APP_NAME_LC}::${CMAKE_FIND_PACKAGE_NAME})
     if(TARGET PkgConfig::${${CMAKE_FIND_PACKAGE_NAME}_SEARCH_NAME} AND NOT TARGET ${${${CMAKE_FIND_PACKAGE_NAME}_MODULE}_BUILD_NAME})
       set(_mariadb_libs ${${${CMAKE_FIND_PACKAGE_NAME}_SEARCH_NAME}_LINK_LIBRARIES})
       list(GET _mariadb_libs 0 _mariadb_lib)
-      if(KODI_DEPENDSBUILD AND NOT (WIN32 OR WINDOWS_STORE) AND _mariadb_lib MATCHES "\\${CMAKE_STATIC_LIBRARY_SUFFIX}$")
+      if(UNIVERSALMEDIA_DEPENDSBUILD AND NOT (WIN32 OR WINDOWS_STORE) AND _mariadb_lib MATCHES "\\${CMAKE_STATIC_LIBRARY_SUFFIX}$")
         # In a depends build, a static libmariadb in the prefix comes from an earlier internal
         # build, which has the zstd plugin built in, but libmariadb.pc doesn't list zstd. Make
         # libmariadb itself depend on zstd, so zstd follows it on the link line even when another

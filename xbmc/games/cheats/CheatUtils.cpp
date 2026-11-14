@@ -10,7 +10,7 @@
 
 #include "utils/URIUtils.h"
 
-using namespace KODI::GAME;
+using namespace UNIVERSAL MEDIA CENTER::GAME;
 
 std::string CCheatUtils::GetCheatFileName(const std::string& gamePath)
 {

@@ -19,7 +19,7 @@ namespace tinyxml2
 class XMLElement;
 }
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace KEYBOARD
 {
@@ -61,4 +61,4 @@ private:
   IInputCodingTablePtr m_codingtable;
 };
 } // namespace KEYBOARD
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

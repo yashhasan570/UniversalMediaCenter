@@ -13,7 +13,7 @@
 
 #include "system_gl.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -43,4 +43,4 @@ private:
   GLuint m_bpp = 0;
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

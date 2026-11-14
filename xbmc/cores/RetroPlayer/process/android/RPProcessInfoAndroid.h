@@ -10,7 +10,7 @@
 
 #include "cores/RetroPlayer/process/egl/RPProcessInfoEGL.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -23,4 +23,4 @@ public:
   static void Register();
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

@@ -13,7 +13,7 @@
 
 #include <X11/Xlib.h>
 
-class COSScreenSaverX11 : public KODI::WINDOWING::IOSScreenSaver
+class COSScreenSaverX11 : public UNIVERSAL MEDIA CENTER::WINDOWING::IOSScreenSaver
 {
 public:
   explicit COSScreenSaverX11(Display* dpy);

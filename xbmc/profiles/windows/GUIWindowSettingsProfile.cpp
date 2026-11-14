@@ -81,7 +81,7 @@ void CGUIWindowSettingsProfile::OnPopupMenu(int iItem)
       const std::string msg{StringUtils::Format(
           CServiceBroker::GetResourcesComponent().GetLocalizeStrings().Get(13202),
           profileManager->GetProfile(iItem)->getName())};
-      using namespace KODI::MESSAGING::HELPERS;
+      using namespace UNIVERSAL MEDIA CENTER::MESSAGING::HELPERS;
       if (ShowYesNoDialogText(CVariant{13200} /* Profiles */, CVariant{msg} /* Reload profile?*/) !=
           DialogResponse::CHOICE_YES)
         return;
@@ -95,7 +95,7 @@ void CGUIWindowSettingsProfile::OnPopupMenu(int iItem)
     const std::string msg{
         StringUtils::Format(CServiceBroker::GetResourcesComponent().GetLocalizeStrings().Get(13201),
                             profileManager->GetProfile(iItem)->getName())};
-    using namespace KODI::MESSAGING::HELPERS;
+    using namespace UNIVERSAL MEDIA CENTER::MESSAGING::HELPERS;
     if (ShowYesNoDialogText(CVariant{13200} /* Profiles */, CVariant{msg} /* Delete profile?*/) !=
         DialogResponse::CHOICE_YES)
       return;
@@ -216,7 +216,7 @@ void CGUIWindowSettingsProfile::LoadList()
     const CProfile *profile = profileManager->GetProfile(i);
     CFileItemPtr item(new CFileItem(profile->getName()));
     item->SetLabel2(profile->getDate());
-    item->SetArt(KODI::ART::TYPE::THUMB, profile->getThumb());
+    item->SetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB, profile->getThumb());
     item->SetOverlayImage(profile->getLockMode() == LockMode::EVERYONE
                               ? CGUIListItem::ICON_OVERLAY_NONE
                               : CGUIListItem::ICON_OVERLAY_LOCKED);
@@ -269,7 +269,7 @@ bool CGUIWindowSettingsProfile::GetAutoLoginProfileChoice(int &iProfile)
   CFileItemPtr item(new CFileItem());
   item->SetLabel(
       CServiceBroker::GetResourcesComponent().GetLocalizeStrings().Get(37014)); // Last used profile
-  item->SetArt(KODI::ART::TYPE::ICON, KODI::ART::DEFAULT::USER);
+  item->SetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::ICON, UNIVERSAL MEDIA CENTER::ART::DEFAULT::USER);
   items.Add(item);
 
   for (unsigned int i = 0; i < profileManager->GetNumberOfProfiles(); i++)
@@ -281,8 +281,8 @@ bool CGUIWindowSettingsProfile::GetAutoLoginProfileChoice(int &iProfile)
     item->SetLabel2(locked); // lock setting
     std::string thumb = profile->getThumb();
     if (thumb.empty())
-      thumb = KODI::ART::DEFAULT::USER;
-    item->SetArt(KODI::ART::TYPE::ICON, thumb);
+      thumb = UNIVERSAL MEDIA CENTER::ART::DEFAULT::USER;
+    item->SetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::ICON, thumb);
     items.Add(item);
   }
 

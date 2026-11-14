@@ -33,8 +33,8 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI;
-namespace fs = KODI::PLATFORM::FILESYSTEM;
+using namespace UNIVERSAL MEDIA CENTER;
+namespace fs = UNIVERSAL MEDIA CENTER::PLATFORM::FILESYSTEM;
 
 namespace
 {

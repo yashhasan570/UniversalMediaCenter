@@ -24,7 +24,7 @@
 #include <memory>
 #include <mutex>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace PERIPHERALS;
 
 CPeripheralBusAddon::CPeripheralBusAddon(CPeripherals& manager)

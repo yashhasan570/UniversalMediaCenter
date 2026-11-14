@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-#   Copyright (C) 2008-2013 Team XBMC
+#   Copyright (C) 2008-2013 Team 
 #
 #   This program is free software; you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
@@ -37,29 +37,29 @@ import sys
 try:
     # try loading modules from source directory
     sys.path.append("../../lib/python")
-    from xbmcclient import *
+    from client import *
     from ps3.keymaps import keymap_remote as g_keymap # look here to change the keymapping
     from bt.bt import *
     ICON_PATH = "../../icons/"
 except:
     # fallback to system wide modules
-    from kodi.xbmcclient import *
-    from kodi.ps3.keymaps import keymap_remote as g_keymap # look here to change the keymapping
-    from kodi.bt.bt import *
-    from kodi.defs import *
+    from universalmediacenter.client import *
+    from universalmediacenter.ps3.keymaps import keymap_remote as g_keymap # look here to change the keymapping
+    from universalmediacenter.bt.bt import *
+    from universalmediacenter.defs import *
 
 import os
 import time
 
-xbmc = None
+ = None
 bticon = ICON_PATH + "/bluetooth.png"
 
 def get_remote_address(remote, target_name = "BD Remote Control"):
-    global xbmc
+    global 
     target_connected = False
     target_address = None
     while target_connected is False:
-        xbmc.send_notification("Action Required!",
+        .send_notification("Action Required!",
                                "Hold Start+Enter on your remote.",
                                bticon)
         print("Searching for %s" % target_name)
@@ -72,7 +72,7 @@ def get_remote_address(remote, target_name = "BD Remote Control"):
             except Exception as e:
                 print("Error performing bluetooth discovery")
                 print(str(e))
-                xbmc.send_notification("Error", "Unable to find devices.", bticon)
+                .send_notification("Error", "Unable to find devices.", bticon)
                 time.sleep(5)
                 continue
 
@@ -86,7 +86,7 @@ def get_remote_address(remote, target_name = "BD Remote Control"):
 
         if target_address is not None:
             print("Found %s with address %s" % (target_name, target_address))
-            xbmc.send_notification("Found Device",
+            .send_notification("Found Device",
                                    "Pairing %s, please wait." % target_name,
                                    bticon)
             print("Attempting to pair with remote")
@@ -95,7 +95,7 @@ def get_remote_address(remote, target_name = "BD Remote Control"):
                 remote.connect((target_address,19))
                 target_connected = True
                 print("Remote Paired.\a")
-                xbmc.send_notification("Pairing Successful",
+                .send_notification("Pairing Successful",
                                        "Your remote was successfully "\
                                            "paired and is ready to be used.",
                                        bticon)
@@ -103,13 +103,13 @@ def get_remote_address(remote, target_name = "BD Remote Control"):
                 del remote
                 remote = bt_create_socket()
                 target_address = None
-                xbmc.send_notification("Pairing Failed",
+                .send_notification("Pairing Failed",
                                        "An error occurred while attempting to "\
                                            "pair.", bticon)
                 print("ERROR - Could Not Connect. Trying again...")
                 time.sleep(2)
         else:
-            xbmc.send_notification("Error", "No remotes were found.", bticon)
+            .send_notification("Error", "No remotes were found.", bticon)
             print("Could not find BD Remote Control. Trying again...")
             time.sleep(2)
     return (remote,target_address)
@@ -117,18 +117,18 @@ def get_remote_address(remote, target_name = "BD Remote Control"):
 
 def usage():
     print("""
-PS3 Blu-Ray Remote Control Client for XBMC v0.1
+PS3 Blu-Ray Remote Control Client for  v0.1
 
 Usage: ps3_remote.py <address> [port]
 
-  address => address of system that XBMC is running on
+  address => address of system that  is running on
              ("localhost" if it is this machine)
 
      port => port to send packets to
              (default 9777)
 """)
 
-def process_keys(remote, xbmc):
+def process_keys(remote, ):
     """
     Return codes:
     0 - key was processed normally
@@ -141,11 +141,11 @@ def process_keys(remote, xbmc):
     done = 0
 
     try:
-        xbmc.previous_key
+        .previous_key
     except:
-        xbmc.previous_key = ""
+        .previous_key = ""
 
-    xbmc.connect()
+    .connect()
     datalen = 0
     try:
         data = remote.recv(1024)
@@ -161,29 +161,29 @@ def process_keys(remote, xbmc):
     if datalen == 13:
         keycode = data.hex()[10:12]
         if keycode == "ff":
-            xbmc.release_button()
+            .release_button()
             return done
         try:
             # if the user presses the PS button followed by skip + or skip -
             # return different codes.
-            if xbmc.previous_key == "43":
-                xbmc.previous_key = keycode
+            if .previous_key == "43":
+                .previous_key = keycode
                 if keycode == "31":    # skip +
                     return 3
                 elif keycode == "30":  # skip -
                     return 4
 
             # save previous key press
-            xbmc.previous_key = keycode
+            .previous_key = keycode
 
             if g_keymap[keycode]:
-                xbmc.send_remote_button(g_keymap[keycode])
+                .send_remote_button(g_keymap[keycode])
         except Exception as e:
             print("Unknown data: %s" % str(e))
     return done
 
 def main():
-    global xbmc, bticon
+    global , bticon
 
     host = "127.0.0.1"
     port = 9777
@@ -198,16 +198,16 @@ def main():
         return usage()
 
     loop_forever = True
-    xbmc = XBMCClient("PS3 Bluetooth Remote",
+     = Client("PS3 Bluetooth Remote",
                       icon_file=bticon)
 
     while loop_forever is True:
         target_connected = False
         remote = bt_create_socket()
-        xbmc.connect(host, port)
+        .connect(host, port)
         (remote,target_address) = get_remote_address(remote)
         while True:
-            if process_keys(remote, xbmc):
+            if process_keys(remote, ):
                 break
         print("Disconnected.")
         try:

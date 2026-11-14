@@ -21,7 +21,7 @@ class CBinaryAddonManager;
 class CShaderPresetAddon;
 } // namespace ADDON
 
-namespace KODI::SHADER
+namespace UNIVERSAL MEDIA CENTER::SHADER
 {
 class IShaderPresetLoader;
 
@@ -87,4 +87,4 @@ private:
   std::map<std::string, std::unique_ptr<ADDON::CShaderPresetAddon>, std::less<>> m_shaderAddons;
   std::map<std::string, std::unique_ptr<ADDON::CShaderPresetAddon>, std::less<>> m_failedAddons;
 };
-} // namespace KODI::SHADER
+} // namespace UNIVERSAL MEDIA CENTER::SHADER

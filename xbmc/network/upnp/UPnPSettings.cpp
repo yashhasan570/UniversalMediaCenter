@@ -11,7 +11,7 @@
 #include "ServiceBroker.h"
 #include "utils/FileUtils.h"
 #include "utils/StringUtils.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 #include "utils/XMLUtils.h"
 #include "utils/log.h"
 
@@ -54,7 +54,7 @@ bool CUPnPSettings::Load(const std::string &file)
   if (!CFileUtils::Exists(file))
     return false;
 
-  CXBMCTinyXML2 doc;
+  CTinyXML2 doc;
   if (!doc.LoadFile(file))
   {
     m_logger->error("error loading {}, Line {}\n{}", file, doc.ErrorLineNum(), doc.ErrorStr());
@@ -82,7 +82,7 @@ bool CUPnPSettings::Save(const std::string &file) const
 {
   std::unique_lock lock(m_critical);
 
-  CXBMCTinyXML2 doc;
+  CTinyXML2 doc;
   auto* element = doc.NewElement(XML_UPNP);
   auto* rootNode = doc.InsertFirstChild(element);
   if (!rootNode)

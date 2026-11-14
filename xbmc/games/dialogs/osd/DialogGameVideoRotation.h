@@ -13,7 +13,7 @@
 #include <string>
 #include <vector>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -44,4 +44,4 @@ private:
   std::vector<unsigned int> m_rotations; // Degrees counter-clockwise
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

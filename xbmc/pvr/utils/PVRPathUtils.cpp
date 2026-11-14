@@ -10,7 +10,7 @@
 
 #include "ServiceBroker.h"
 #include "URL.h"
-#include "addons/kodi-dev-kit/include/kodi/c-api/addon-instance/pvr/pvr_providers.h" // PVR_PROVIDER_INVALID_UID
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api/addon-instance/pvr/pvr_providers.h" // PVR_PROVIDER_INVALID_UID
 #include "pvr/PVRConstants.h" // PVR_CLIENT_INVALID_UID
 #include "pvr/PVRManager.h"
 #include "pvr/providers/PVRProvider.h"

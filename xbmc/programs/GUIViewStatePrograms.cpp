@@ -26,7 +26,7 @@
 #endif
 
 using namespace XFILE;
-using KODI::MEDIA::MediaSection;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaSection;
 
 CGUIViewStateWindowPrograms::CGUIViewStateWindowPrograms(const CFileItemList& items) : CGUIViewState(items)
 {
@@ -37,7 +37,7 @@ CGUIViewStateWindowPrograms::CGUIViewStateWindowPrograms(const CFileItemList& it
                     ? SortAttributeIgnoreArticle
                     : SortAttributeNone);
 
-  const CViewState* viewState = CViewStateSettings::GetInstance().Get(KODI::VIEW::STATE::PROGRAMS);
+  const CViewState* viewState = CViewStateSettings::GetInstance().Get(UNIVERSAL MEDIA CENTER::VIEW::STATE::PROGRAMS);
   SetSortMethod(viewState->m_sortDescription);
   SetViewAsControl(viewState->m_viewMode);
   SetSortOrder(viewState->m_sortDescription.sortOrder);
@@ -48,12 +48,12 @@ CGUIViewStateWindowPrograms::CGUIViewStateWindowPrograms(const CFileItemList& it
 void CGUIViewStateWindowPrograms::SaveViewState()
 {
   SaveViewToDb(m_items.GetPath(), WINDOW_PROGRAMS,
-               CViewStateSettings::GetInstance().Get(KODI::VIEW::STATE::PROGRAMS));
+               CViewStateSettings::GetInstance().Get(UNIVERSAL MEDIA CENTER::VIEW::STATE::PROGRAMS));
 }
 
-std::optional<KODI::MEDIA::MediaSection> CGUIViewStateWindowPrograms::GetLockType()
+std::optional<UNIVERSAL MEDIA CENTER::MEDIA::MediaSection> CGUIViewStateWindowPrograms::GetLockType()
 {
-  return KODI::MEDIA::MediaSection::PROGRAMS;
+  return UNIVERSAL MEDIA CENTER::MEDIA::MediaSection::PROGRAMS;
 }
 
 std::string CGUIViewStateWindowPrograms::GetExtensions()
@@ -68,8 +68,8 @@ std::vector<CMediaSource>& CGUIViewStateWindowPrograms::GetSources()
     CMediaSource source;
     source.strPath = "androidapp://sources/apps/";
     source.strName = CServiceBroker::GetResourcesComponent().GetLocalizeStrings().Get(20244);
-    if (CServiceBroker::GetGUI()->GetTextureManager().HasTexture(KODI::ART::DEFAULT::PROGRAM))
-      source.m_strThumbnailImage = KODI::ART::DEFAULT::PROGRAM;
+    if (CServiceBroker::GetGUI()->GetTextureManager().HasTexture(UNIVERSAL MEDIA CENTER::ART::DEFAULT::PROGRAM))
+      source.m_strThumbnailImage = UNIVERSAL MEDIA CENTER::ART::DEFAULT::PROGRAM;
     source.m_iDriveType = SourceType::LOCAL;
     source.m_ignore = true;
     m_sources.emplace_back(std::move(source));

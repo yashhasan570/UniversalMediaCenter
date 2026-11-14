@@ -62,7 +62,7 @@ public:
   float m_v;
 
 private:
-  KODI::UTILS::GL::CGLBufferObject m_VBO{GL_ARRAY_BUFFER};
+  UNIVERSAL MEDIA CENTER::UTILS::GL::CGLBufferObject m_VBO{GL_ARRAY_BUFFER};
   GLsizei m_vertexCount = 0;
 };
 

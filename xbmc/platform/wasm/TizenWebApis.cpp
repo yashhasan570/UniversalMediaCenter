@@ -14,7 +14,7 @@
 
 #include <emscripten/em_asm.h>
 
-namespace KODI::PLATFORM::WASM
+namespace UNIVERSAL MEDIA CENTER::PLATFORM::WASM
 {
 namespace
 {
@@ -75,7 +75,7 @@ TizenNetworkInfo CTizenWebApis::GetNetworkInfo()
           out[key] = fn();
         } catch (e) {
           if (!(e && e.name === 'InvalidStateError'))
-            console.warn('[kodi] webapis.network.' + key + ':', e);
+            console.warn('[universalmediacenter] webapis.network.' + key + ':', e);
         }
       };
       read('type', () => net.getActiveConnectionType());
@@ -94,7 +94,7 @@ TizenNetworkInfo CTizenWebApis::GetNetworkInfo()
       }
       return stringToNewUTF8(JSON.stringify(out));
     } catch (e) {
-      console.warn('[kodi] webapis.network snapshot failed:', e);
+      console.warn('[universalmediacenter] webapis.network snapshot failed:', e);
       return 0;
     }
   }));
@@ -145,7 +145,7 @@ WasmDeviceInfo CTizenWebApis::GetDeviceInfo()
         try {
           out[key] = fn();
         } catch (e) {
-          console.warn('[kodi] tizen device info ' + key + ':', e);
+          console.warn('[universalmediacenter] tizen device info ' + key + ':', e);
         }
       };
       if (hasProduct) {
@@ -159,7 +159,7 @@ WasmDeviceInfo CTizenWebApis::GetDeviceInfo()
       }
       return stringToNewUTF8(JSON.stringify(out));
     } catch (e) {
-      console.warn('[kodi] tizen device info snapshot failed:', e);
+      console.warn('[universalmediacenter] tizen device info snapshot failed:', e);
       return 0;
     }
   }));
@@ -194,8 +194,8 @@ bool CTizenWebApis::SetScreenSaverEnabled(bool enabled)
     try {
       if (typeof webapis === 'undefined' || !webapis.appcommon)
         return 0;
-      const kodi = (Module.kodi = Module.kodi || {});
-      const report = (ok, message) => console[ok ? 'info' : 'warn']('[kodi] ' + message);
+      const universalmediacenter = (Module.universalmediacenter = Module.universalmediacenter || {});
+      const report = (ok, message) => console[ok ? 'info' : 'warn']('[universalmediacenter] ' + message);
       const describe = (e) => e ? String(e.name || "") + " " + String(e.message || e.code || "") : "";
       const apply = (on) => {
         const states = webapis.appcommon.AppCommonScreenSaverState;
@@ -203,23 +203,23 @@ bool CTizenWebApis::SetScreenSaverEnabled(bool enabled)
             () => report(true, 'TV confirmed screensaver ' + (on ? 'on' : 'off')),
             (e) => report(false, 'TV refused screensaver ' + (on ? 'on' : 'off') + ': ' + describe(e)));
       };
-      kodi.screenSaverOn = !!$0;
-      if (!kodi.screenSaverHook) {
-        kodi.screenSaverHook = true;
+      universalmediacenter.screenSaverOn = !!$0;
+      if (!universalmediacenter.screenSaverHook) {
+        universalmediacenter.screenSaverHook = true;
         // The TV may drop the request while its own screensaver covers the app.
         document.addEventListener('visibilitychange', () => {
-          if (document.visibilityState === 'visible' && kodi.screenSaverOn === false)
+          if (document.visibilityState === 'visible' && universalmediacenter.screenSaverOn === false)
             apply(false);
         });
       }
-      apply(kodi.screenSaverOn);
+      apply(universalmediacenter.screenSaverOn);
       return 1;
     } catch (e) {
-      console.warn('[kodi] webapis.appcommon.setScreenSaver failed:', e);
+      console.warn('[universalmediacenter] webapis.appcommon.setScreenSaver failed:', e);
       return 0;
     }
   }), enabled ? 1 : 0) != 0;
   // clang-format on
 }
 
-} // namespace KODI::PLATFORM::WASM
+} // namespace UNIVERSAL MEDIA CENTER::PLATFORM::WASM

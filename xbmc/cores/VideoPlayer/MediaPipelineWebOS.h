@@ -451,7 +451,7 @@ private:
       long acbId, long taskId, long eventType, long appState, long playState, const char* reply);
 
   /**
-   * @brief Get the number of bytes in the pipeline and kodi message queue
+   * @brief Get the number of bytes in the pipeline and universalmediacenter message queue
    * @param type Stream type (audio or video)
    * @return Total number of bytes in the queue
    */

@@ -16,7 +16,7 @@
 
 //! \brief The paths of the entries offered alongside image files by
 //! CGUIDialogFileBrowser::ShowAndGetImage(), which stand for a choice rather than an image.
-namespace KODI::ART::CHOICE
+namespace UNIVERSAL MEDIA CENTER::ART::CHOICE
 {
 
 inline constexpr std::string_view CURRENT = "thumb://Current";
@@ -49,4 +49,4 @@ inline std::optional<std::size_t> RemoteIndexOf(std::string_view path)
   return index;
 }
 
-} // namespace KODI::ART::CHOICE
+} // namespace UNIVERSAL MEDIA CENTER::ART::CHOICE

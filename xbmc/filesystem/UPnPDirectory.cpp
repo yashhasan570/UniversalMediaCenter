@@ -1,5 +1,5 @@
 /*
- * UPnP Support for XBMC
+ * UPnP Support for 
  *  Copyright (c) 2006 c0diq (Sylvain Rebaud)
  *      Portions Copyright (c) by the authors of libPlatinum
  *      http://www.plutinosoft.com/blog/category/platinum/
@@ -33,7 +33,7 @@ using namespace MUSIC_INFO;
 using namespace XFILE;
 using namespace UPNP;
 
-namespace CONTENT = KODI::MEDIA::CONTENT;
+namespace CONTENT = UNIVERSAL MEDIA CENTER::MEDIA::CONTENT;
 
 namespace XFILE
 {
@@ -212,7 +212,7 @@ CUPnPDirectory::GetDirectory(const CURL& url, CFileItemList &items)
             auto pItem{std::make_shared<CFileItem>(static_cast<const char*>(name))};
             pItem->SetPath(static_cast<const char*>("upnp://" + uuid + "/"));
             pItem->SetFolder(true);
-            pItem->SetArt(KODI::ART::TYPE::THUMB,
+            pItem->SetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB,
                           static_cast<const char*>((*device)->GetIconUrl("image/png")));
 
             items.Add(std::move(pItem));
@@ -274,8 +274,8 @@ CUPnPDirectory::GetDirectory(const CURL& url, CFileItemList &items)
         }
 
 #ifdef DISABLE_SPECIALCASE
-        // same thing but special case for XBMC
-        if (object_id == "0" && ((device->m_ModelName.Find("XBMC", 0, true) >= 0) ||
+        // same thing but special case for 
+        if (object_id == "0" && ((device->m_ModelName.Find("", 0, true) >= 0) ||
                                  (device->m_ModelName.Find("Xbox Media Center", 0, true) >= 0))) {
             // look for a specific type to differentiate which folder we want
             if (audio && !video && !image) {

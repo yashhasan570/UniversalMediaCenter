@@ -20,4 +20,4 @@ Checks: "\
   readability-container-data-pointer,\
   readability-container-size-empty,\
 "
-HeaderFilterRegex: '(^|/)(tools|xbmc)/'
+HeaderFilterRegex: '(^|/)(tools|)/'

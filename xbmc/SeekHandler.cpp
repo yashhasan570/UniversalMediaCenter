@@ -39,7 +39,7 @@
 #include <numeric>
 #include <stdlib.h>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 void CSeekHandler::Configure()
 {

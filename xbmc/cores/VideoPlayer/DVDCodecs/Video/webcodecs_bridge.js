@@ -103,7 +103,7 @@ mergeInto(LibraryManager.library, {
     },
 
     // Pull the canonical enum numeric values out of the Embind bindings
-    // registered by EMSCRIPTEN_BINDINGS(kodi_webcodecs_bridge) in
+    // registered by EMSCRIPTEN_BINDINGS(Universal Media Center_webcodecs_bridge) in
     // DVDVideoCodecWebCodecs.cpp. Embind exposes each C++ enum value as an
     // object with a .value property holding the underlying integer.
     syncEnumsFromEmbind : function() {

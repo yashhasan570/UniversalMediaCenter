@@ -11,10 +11,10 @@
 #include "GUIInfoManager.h"
 #include "ServiceBroker.h"
 #include "guilib/GUIComponent.h"
-#include "utils/XBMCTinyXML.h"
+#include "utils/TinyXML.h"
 
 using namespace INFO;
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 const CSkinVariableString* CSkinVariable::CreateFromXML(const TiXmlElement& node, int context)
 {

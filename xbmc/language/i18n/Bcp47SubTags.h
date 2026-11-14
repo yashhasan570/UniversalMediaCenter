@@ -13,7 +13,7 @@
 #include <optional>
 #include <vector>
 
-namespace KODI::LANGUAGE::I18N
+namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N
 {
 //! @todo what is the best place for this? inside SubTagRegistryTypes.h instead?
 struct TagSubTags
@@ -25,4 +25,4 @@ struct TagSubTags
   std::vector<VariantSubTag> m_variants;
   std::optional<GrandfatheredTag> m_grandfathered;
 };
-} // namespace KODI::LANGUAGE::I18N
+} // namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N

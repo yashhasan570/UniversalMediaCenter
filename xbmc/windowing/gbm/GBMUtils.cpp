@@ -12,7 +12,7 @@
 
 #include <mutex>
 
-using namespace KODI::WINDOWING::GBM;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::GBM;
 
 namespace
 {

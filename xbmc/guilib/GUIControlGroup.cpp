@@ -16,7 +16,7 @@
 #include <cassert>
 #include <utility>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 CGUIControlGroup::CGUIControlGroup()
 {

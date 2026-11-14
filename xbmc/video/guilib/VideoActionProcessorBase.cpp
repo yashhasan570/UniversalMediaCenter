@@ -8,7 +8,7 @@
 
 #include "VideoActionProcessorBase.h"
 
-namespace KODI::VIDEO::GUILIB
+namespace UNIVERSAL MEDIA CENTER::VIDEO::GUILIB
 {
 
 bool CVideoActionProcessorBase::ProcessDefaultAction()
@@ -23,4 +23,4 @@ bool CVideoActionProcessorBase::ProcessAction(Action action)
   return Process(action);
 }
 
-} // namespace KODI::VIDEO::GUILIB
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO::GUILIB

@@ -1,10 +1,10 @@
 /*!
 \addtogroup cpp_cmake
 
-Kodi which uses it as a library for its binary addons has a special build
+Universal Media Center which uses it as a library for its binary addons has a special build
 system for this.
 
-To implement this, a CMake macro brought by Kodi is used, this is
+To implement this, a CMake macro brought by Universal Media Center is used, this is
 "build_addon (...)". This processes various definitions passed by the addon to
 process the construction.
 
@@ -19,9 +19,9 @@ project(example.addon)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR})
 
-find_package(Kodi REQUIRED)
+find_package(Universal Media Center REQUIRED)
 
-include_directories(${KODI_INCLUDE_DIR}
+include_directories(${UNIVERSAL MEDIA CENTER_INCLUDE_DIR}
 
 set(DEPLIBS ) # Here empty
 set(EXAMPLE_SOURCES src/main.cpp)

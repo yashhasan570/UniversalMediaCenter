@@ -8,7 +8,7 @@
 
 #pragma once
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace MOUSE
 {
@@ -45,4 +45,4 @@ public:
   virtual void UnregisterMouseHandler(IMouseInputHandler* handler) = 0;
 };
 } // namespace MOUSE
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

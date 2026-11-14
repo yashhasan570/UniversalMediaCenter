@@ -44,11 +44,11 @@ enum RenderMethods
 
 struct VideoPicture;
 
-namespace KODI::RENDERING::CAPTURE
+namespace UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE
 {
 struct CaptureSpec;
 struct CaptureResult;
-} // namespace KODI::RENDERING::CAPTURE
+} // namespace UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE
 
 class CBaseRenderer
 {
@@ -74,13 +74,13 @@ public:
   //! \brief Render this renderer's video frame for screencap into result.
   //! Overridden by renderers whose VideoBypassesFramebuffer() is true.
   //! Default: capture unavailable.
-  virtual bool CaptureVideoFrame(const KODI::RENDERING::CAPTURE::CaptureSpec& spec,
-                                 KODI::RENDERING::CAPTURE::CaptureResult& result)
+  virtual bool CaptureVideoFrame(const UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CaptureSpec& spec,
+                                 UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CaptureResult& result)
   {
     return false;
   }
   //! Composite externally rendered video into a finished framebuffer capture.
-  virtual bool CompositeVideoCapture(KODI::RENDERING::CAPTURE::CaptureResult& result)
+  virtual bool CompositeVideoCapture(UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CaptureResult& result)
   {
     return true;
   }

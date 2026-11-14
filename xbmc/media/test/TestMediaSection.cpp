@@ -10,7 +10,7 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI::MEDIA;
+using namespace UNIVERSAL MEDIA CENTER::MEDIA;
 
 TEST(TestMediaSection, EverySectionReadsBackFromItsName)
 {

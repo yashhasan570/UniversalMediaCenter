@@ -14,10 +14,10 @@
 
 #include <tinyxml2.h>
 
-class CXBMCTinyXML2 : public tinyxml2::XMLDocument
+class CTinyXML2 : public tinyxml2::XMLDocument
 {
 public:
-  CXBMCTinyXML2() = default;
+  CTinyXML2() = default;
   /*!
    * \brief Load a file, detecting its charset and converting it to UTF-8
    */

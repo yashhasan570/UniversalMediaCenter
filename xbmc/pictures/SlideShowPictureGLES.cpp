@@ -22,7 +22,7 @@ std::unique_ptr<CSlideShowPic> CSlideShowPic::CreateSlideShowPicture()
 void CSlideShowPicGLES::Render(float* x,
                                float* y,
                                CTexture* pTexture,
-                               KODI::UTILS::COLOR::Color color)
+                               UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color color)
 {
   CRenderSystemGLES* renderSystem =
       dynamic_cast<CRenderSystemGLES*>(CServiceBroker::GetRenderSystem());
@@ -54,10 +54,10 @@ void CSlideShowPicGLES::Render(float* x,
   GLint depthLoc = renderSystem->GUIShaderGetDepth();
 
   // Setup Colour values
-  col[0] = KODI::UTILS::GL::GetChannelFromARGB(KODI::UTILS::GL::ColorChannel::R, color);
-  col[1] = KODI::UTILS::GL::GetChannelFromARGB(KODI::UTILS::GL::ColorChannel::G, color);
-  col[2] = KODI::UTILS::GL::GetChannelFromARGB(KODI::UTILS::GL::ColorChannel::B, color);
-  col[3] = KODI::UTILS::GL::GetChannelFromARGB(KODI::UTILS::GL::ColorChannel::A, color);
+  col[0] = UNIVERSAL MEDIA CENTER::UTILS::GL::GetChannelFromARGB(UNIVERSAL MEDIA CENTER::UTILS::GL::ColorChannel::R, color);
+  col[1] = UNIVERSAL MEDIA CENTER::UTILS::GL::GetChannelFromARGB(UNIVERSAL MEDIA CENTER::UTILS::GL::ColorChannel::G, color);
+  col[2] = UNIVERSAL MEDIA CENTER::UTILS::GL::GetChannelFromARGB(UNIVERSAL MEDIA CENTER::UTILS::GL::ColorChannel::B, color);
+  col[3] = UNIVERSAL MEDIA CENTER::UTILS::GL::GetChannelFromARGB(UNIVERSAL MEDIA CENTER::UTILS::GL::ColorChannel::A, color);
 
   if (CServiceBroker::GetWinSystem()->UseLimitedColor())
   {

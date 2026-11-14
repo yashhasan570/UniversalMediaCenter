@@ -8,7 +8,7 @@
 #pragma once
 
 #include "addons/binary-addons/AddonInstanceHandler.h"
-#include "addons/kodi-dev-kit/include/kodi/addon-instance/ShaderPreset.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/addon-instance/ShaderPreset.h"
 #include "cores/RetroPlayer/shaders/IShaderPresetLoader.h"
 #include "cores/RetroPlayer/shaders/ShaderTypes.h"
 #include "threads/SharedSection.h"
@@ -71,7 +71,7 @@ private:
 /*!
  * \brief Wrapper class that wraps the shader presets add-on
  */
-class CShaderPresetAddon : public IAddonInstanceHandler, public KODI::SHADER::IShaderPresetLoader
+class CShaderPresetAddon : public IAddonInstanceHandler, public UNIVERSAL MEDIA CENTER::SHADER::IShaderPresetLoader
 {
 public:
   explicit CShaderPresetAddon(const AddonInfoPtr& addonInfo);
@@ -94,7 +94,7 @@ public:
 
   // Implementation of IShaderPresetLoader
   bool LoadPreset(const std::string& presetPath,
-                  KODI::SHADER::IShaderPreset& shaderPreset) override;
+                  UNIVERSAL MEDIA CENTER::SHADER::IShaderPreset& shaderPreset) override;
 
 private:
   /*!
@@ -103,15 +103,15 @@ private:
   void ResetProperties(void);
 
   static void TranslateShaderPreset(const video_shader& shader,
-                                    KODI::SHADER::IShaderPreset& shaderPreset);
+                                    UNIVERSAL MEDIA CENTER::SHADER::IShaderPreset& shaderPreset);
   static void TranslateShaderPass(const video_shader_pass& pass,
-                                  KODI::SHADER::ShaderPass& shaderPass);
-  static void TranslateShaderLut(const video_shader_lut& lut, KODI::SHADER::ShaderLut& shaderLut);
+                                  UNIVERSAL MEDIA CENTER::SHADER::ShaderPass& shaderPass);
+  static void TranslateShaderLut(const video_shader_lut& lut, UNIVERSAL MEDIA CENTER::SHADER::ShaderLut& shaderLut);
   static void TranslateShaderParameter(const video_shader_parameter& param,
-                                       KODI::SHADER::ShaderParameter& shaderParam);
-  static KODI::SHADER::FilterType TranslateFilterType(SHADER_FILTER_TYPE type);
-  static KODI::SHADER::WrapType TranslateWrapType(SHADER_WRAP_TYPE type);
-  static KODI::SHADER::ScaleType TranslateScaleType(SHADER_SCALE_TYPE type);
+                                       UNIVERSAL MEDIA CENTER::SHADER::ShaderParameter& shaderParam);
+  static UNIVERSAL MEDIA CENTER::SHADER::FilterType TranslateFilterType(SHADER_FILTER_TYPE type);
+  static UNIVERSAL MEDIA CENTER::SHADER::WrapType TranslateWrapType(SHADER_WRAP_TYPE type);
+  static UNIVERSAL MEDIA CENTER::SHADER::ScaleType TranslateScaleType(SHADER_SCALE_TYPE type);
 
   // Cache for const char* members in AddonProps_ShaderPreset
   std::string m_strUserPath; /*!< \brief Translated path to the user profile */

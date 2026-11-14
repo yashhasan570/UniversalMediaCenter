@@ -37,7 +37,7 @@
 #include "utils/Variant.h"
 #include "view/ViewState.h"
 
-using namespace KODI::MESSAGING;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
 
 #define CONTROL_BIG_LIST               52
 #define CONTROL_LABEL_HEADER            2
@@ -215,9 +215,9 @@ void CGUIWindowLoginScreen::Update()
           profile->getDate());
 
     item->SetLabel2(strLabel);
-    item->SetArt(KODI::ART::TYPE::THUMB, profile->getThumb());
+    item->SetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB, profile->getThumb());
     if (profile->getThumb().empty())
-      item->SetArt(KODI::ART::TYPE::THUMB, KODI::ART::DEFAULT::USER);
+      item->SetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB, UNIVERSAL MEDIA CENTER::ART::DEFAULT::USER);
     item->SetLabelPreformatted(true);
 
     m_vecItems->Add(item);

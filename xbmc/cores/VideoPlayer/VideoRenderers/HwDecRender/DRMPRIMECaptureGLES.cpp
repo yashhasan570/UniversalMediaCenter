@@ -22,8 +22,8 @@
 #include <memory>
 
 bool CaptureDRMPRIMEVideo(CVideoBufferDRMPRIME* buffer,
-                          const KODI::RENDERING::CAPTURE::CaptureSpec& spec,
-                          KODI::RENDERING::CAPTURE::CaptureResult& result)
+                          const UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CaptureSpec& spec,
+                          UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CaptureResult& result)
 {
 #if HAS_GLES != 3
   // the capture FBO uses GLES 3 sized formats (GL_RGB10_A2 for the HDR case)
@@ -32,7 +32,7 @@ bool CaptureDRMPRIMEVideo(CVideoBufferDRMPRIME* buffer,
   (void)result;
   return false;
 #else
-  using namespace KODI::RENDERING::CAPTURE;
+  using namespace UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE;
 
   auto* renderSystem = dynamic_cast<CRenderSystemGLES*>(CServiceBroker::GetRenderSystem());
   if (!renderSystem)

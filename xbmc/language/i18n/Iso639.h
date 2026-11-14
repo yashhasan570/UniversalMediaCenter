@@ -16,7 +16,7 @@
 #include <string>
 #include <string_view>
 
-namespace KODI::LANGUAGE::I18N
+namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N
 {
 //! How many characters a code packed into a 32 bit integer can hold, one per byte
 inline constexpr std::size_t LONG_CODE_LENGTH{4};
@@ -73,7 +73,7 @@ public:
   static std::optional<std::string> BCodeToTCode(std::string_view bCode);
 };
 
-} // namespace KODI::LANGUAGE::I18N
+} // namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N
 
 namespace
 {
@@ -86,7 +86,7 @@ constexpr uint32_t StringToLongCode(std::string_view a)
 {
   const size_t len = a.length();
 
-  assert(len <= KODI::LANGUAGE::I18N::LONG_CODE_LENGTH);
+  assert(len <= UNIVERSAL MEDIA CENTER::LANGUAGE::I18N::LONG_CODE_LENGTH);
 
   return static_cast<uint32_t>(len >= 4 ? a[len - 4] : 0) << (3 * CHAR_BIT) |
          static_cast<uint32_t>(len >= 3 ? a[len - 3] : 0) << (2 * CHAR_BIT) |

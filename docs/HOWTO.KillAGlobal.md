@@ -1,7 +1,7 @@
 ![Universal Media Center Logo](resources/banner_slim.png)
 
 # HOW-TO: Kill a Global
-Guide originally published at **[PR13658](https://github.com/xbmc/xbmc/pull/13658)**. To better understand this document, you should read the original *Pull Request*.
+Guide originally published at **[PR13658](https://github.com///pull/13658)**. To better understand this document, you should read the original *Pull Request*.
 
 ## Table of Contents
 1. **[What is the root issue?](#1-what-is-the-root-issue)**
@@ -50,26 +50,26 @@ However, on shutdown, singletons are effectively globals, because we don't contr
 
 ## 3. What is the solution?
 
-Fernet has implemented a useful architectural tool for removing globals from our codebase. See **[PR13657](https://github.com/xbmc/xbmc/pull/13657)** for an overview of this system.
+Fernet has implemented a useful architectural tool for removing globals from our codebase. See **[PR13657](https://github.com///pull/13657)** for an overview of this system.
 
 **[back to top](#table-of-contents)**
 
 ## 4. Step 1: Identify and remove the instance
 
-Identify if the service is instantiated as a global or singleton. Remove this instance: **[Remove CStereoscopicsManager instance](https://github.com/garbear/xbmc/commit/35dc0e9~11)**.
+Identify if the service is instantiated as a global or singleton. Remove this instance: **[Remove CStereoscopicsManager instance](https://github.com/garbear//commit/35dc0e9~11)**.
 Singletons usually have private constructors. Make all constructors public.
 
 **[back to top](#table-of-contents)**
 
 ## 5. Step 2: Add instance to CServiceManager
 
-First, identify if lines of code are listed in alphabetical or chronological order. Add the instance and try to match the ordering. In this case, services in CServiceManager are roughly in chronological order: **[Add CStereoscopicsManager instance to CServiceManager](https://github.com/garbear/xbmc/commit/35dc0e9~10)**.
+First, identify if lines of code are listed in alphabetical or chronological order. Add the instance and try to match the ordering. In this case, services in CServiceManager are roughly in chronological order: **[Add CStereoscopicsManager instance to CServiceManager](https://github.com/garbear//commit/35dc0e9~10)**.
 
 **[back to top](#table-of-contents)**
 
 ## 6. Step 3: Move initialization and deinitialization to CServiceManager
 
-This part is tricky. Identify the closest stage where the instance is initialized and move it to CServiceManager: **[Move CStereoscopicsManager init/deinit to CServiceManager](https://github.com/garbear/xbmc/commit/35dc0e9~9)**.
+This part is tricky. Identify the closest stage where the instance is initialized and move it to CServiceManager: **[Move CStereoscopicsManager init/deinit to CServiceManager](https://github.com/garbear//commit/35dc0e9~9)**.
 
 In this case, it was pretty easy. Init occurred right before Stage 3, so we move it into CServiceManager at the top of Stage 3.
 
@@ -94,23 +94,23 @@ Here is a list of all dependencies in StereoscopicsManager.cpp:
 * `g_graphicsContext`
 * `g_application`
 
-We'll ignore the `g_` globals and Render System for now and focus on removing the first two CServiceBroker ones. If you're feeling adventurous, you can recursively kill the globals and singletons you come across. **[PR13443](https://github.com/xbmc/xbmc/pull/13443)** is my record of 4 in a single PR :)
+We'll ignore the `g_` globals and Render System for now and focus on removing the first two CServiceBroker ones. If you're feeling adventurous, you can recursively kill the globals and singletons you come across. **[PR13443](https://github.com///pull/13443)** is my record of 4 in a single PR :)
 
 ### 7.1. Step 4.1 - Settings
 
-Because CStereoscopicsManager now belongs to CServiceManager, we can remove the use of CServiceBroker by passing references to the constructor upon creation. For example, here we replace access to CSettings with a reference that comes from CServiceManager: **[Replace global access to Settings with a reference](https://github.com/garbear/xbmc/commit/35dc0e9~8)**.
+Because CStereoscopicsManager now belongs to CServiceManager, we can remove the use of CServiceBroker by passing references to the constructor upon creation. For example, here we replace access to CSettings with a reference that comes from CServiceManager: **[Replace global access to Settings with a reference](https://github.com/garbear//commit/35dc0e9~8)**.
 
 Note that the reference was placed first in the list of private variables. Some helpful comments were added so future authors will know where to add new variables.
 
 ### 7.2. Step 4.2 - Data Cache Core
 
-Next, we do the same thing with CDataCacheCore. Notice that we place the new reference on the next line so we can scale to handle lots of dependencies with a clean git history: **[Replace global access to Data Cache Core with reference](https://github.com/garbear/xbmc/commit/35dc0e9~7)**.
+Next, we do the same thing with CDataCacheCore. Notice that we place the new reference on the next line so we can scale to handle lots of dependencies with a clean git history: **[Replace global access to Data Cache Core with reference](https://github.com/garbear//commit/35dc0e9~7)**.
 
 **[back to top](#table-of-contents)**
 
 ## 8. Step 5: Make service registration local
 
-Now we begin removing external access to the service. Move all service registration to the constructor, using the references we just exposed: **[Make service registration local](https://github.com/garbear/xbmc/commit/35dc0e9~6)**.
+Now we begin removing external access to the service. Move all service registration to the constructor, using the references we just exposed: **[Make service registration local](https://github.com/garbear//commit/35dc0e9~6)**.
 
 **[back to top](#table-of-contents)**
 
@@ -118,8 +118,8 @@ Now we begin removing external access to the service. Move all service registrat
 
 Take this opportunity to fix non-const and non-static functions:
 
-* **[Make functions const-correct and static](https://github.com/garbear/xbmc/commit/35dc0e9~5)**
-* **[Make functions private that are only used internally](https://github.com/garbear/xbmc/commit/35dc0e9~4)**
+* **[Make functions const-correct and static](https://github.com/garbear//commit/35dc0e9~5)**
+* **[Make functions private that are only used internally](https://github.com/garbear//commit/35dc0e9~4)**
 
 Calls to these functions are made throughout the codebase. Because we're touching all these calls, we can take this opportunity to propagate const-correctness and static-correctness through the codebase.
 
@@ -127,7 +127,7 @@ Calls to these functions are made throughout the codebase. Because we're touchin
 
 ## 10. Step 7: Replace external uses with CServiceBroker calls
 
-The final step is to grep the codebase and make all the substitutions required: **[Replace uses of singleton with CServiceBroker](https://github.com/garbear/xbmc/commit/35dc0e9~3)**.
+The final step is to grep the codebase and make all the substitutions required: **[Replace uses of singleton with CServiceBroker](https://github.com/garbear//commit/35dc0e9~3)**.
 
 Notice how our const-correctness and static-correctness are extended almost everywhere.
 
@@ -143,9 +143,9 @@ It's important that all code cleanup is separate from functional changes. Cleanu
 
 I've performed the following cleanup:
 
-* **[Cleanup: Replace C-style casts with C++ style casts](https://github.com/garbear/xbmc/commit/35dc0e9~2)**
-* **[Cleanup: Fix early return](https://github.com/garbear/xbmc/commit/35dc0e9~1)**
-* **[Cleanup: Whitespace improvements](https://github.com/garbear/xbmc/commit/35dc0e9)**
+* **[Cleanup: Replace C-style casts with C++ style casts](https://github.com/garbear//commit/35dc0e9~2)**
+* **[Cleanup: Fix early return](https://github.com/garbear//commit/35dc0e9~1)**
+* **[Cleanup: Whitespace improvements](https://github.com/garbear//commit/35dc0e9)**
 
 **[back to top](#table-of-contents)**
 

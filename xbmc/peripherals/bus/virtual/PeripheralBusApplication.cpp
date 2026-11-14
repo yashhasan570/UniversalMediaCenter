@@ -25,7 +25,7 @@
 #include "utils/StringUtils.h"
 #include "utils/Variant.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace PERIPHERALS;
 
 CPeripheralBusApplication::CPeripheralBusApplication(CPeripherals& manager)

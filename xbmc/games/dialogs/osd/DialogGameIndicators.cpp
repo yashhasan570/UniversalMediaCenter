@@ -17,7 +17,7 @@
 #include "guilib/WindowIDs.h"
 #include "messaging/ApplicationMessenger.h"
 
-using namespace KODI::GAME;
+using namespace UNIVERSAL MEDIA CENTER::GAME;
 
 CDialogGameIndicators::CDialogGameIndicators()
   : CGUIDialog(

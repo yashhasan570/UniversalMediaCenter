@@ -10,7 +10,7 @@ import android.view.SurfaceHolder;
  * Created by cbro on 5/13/17.
  */
 
-public class XBMCMainView extends SurfaceView implements SurfaceHolder.Callback
+public class MainView extends SurfaceView implements SurfaceHolder.Callback
 {
   native void _attach();
   native void _surfaceChanged(SurfaceHolder holder, int format, int width, int height);
@@ -21,20 +21,20 @@ public class XBMCMainView extends SurfaceView implements SurfaceHolder.Callback
 
   public boolean mIsCreated = false;
 
-  public XBMCMainView(Context context)
+  public MainView(Context context)
   {
     super(context);
     setZOrderOnTop(true);
     getHolder().addCallback(this);
     getHolder().setFormat(PixelFormat.TRANSPARENT);
 
-    Log.d(TAG, "XBMCMainView: Created");
+    Log.d(TAG, "MainView: Created");
 }
 
   @Override
   public void surfaceCreated(SurfaceHolder holder)
   {
-    Log.d(TAG, "XBMCMainView: Surface Created");
+    Log.d(TAG, "MainView: Surface Created");
     mIsCreated = true;
     _attach();
     _surfaceCreated(holder);
@@ -46,14 +46,14 @@ public class XBMCMainView extends SurfaceView implements SurfaceHolder.Callback
     if (holder != getHolder())
       return;
 
-    Log.d(TAG, "XBMCMainView: Surface Changed, format:" + format + ", width:" + width + ", height:" + height);
+    Log.d(TAG, "MainView: Surface Changed, format:" + format + ", width:" + width + ", height:" + height);
     _surfaceChanged(holder, format, width, height);
   }
 
   @Override
   public void surfaceDestroyed(SurfaceHolder holder)
   {
-    Log.d(TAG, "XBMCMainView: Surface Destroyed");
+    Log.d(TAG, "MainView: Surface Destroyed");
     mIsCreated = false;
     _surfaceDestroyed(holder);
   }

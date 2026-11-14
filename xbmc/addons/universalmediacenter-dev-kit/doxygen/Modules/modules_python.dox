@@ -1,0 +1,305 @@
+/*!
+
+
+\defgroup python Python
+\image html logo-python.png
+\brief \htmlonly
+      <h3><span  style="text-decoration: underline;"><span  style="font-style: italic;"><span
+               style="color: rgb(102, 102, 102);">Python Add-On Development</span></span></span></h3>
+       \endhtmlonly
+
+Universal Media Center includes a built-in [Python interpreter](http://en.wikipedia.org/wiki/Python_%28programming_language%29)
+that allows users to develop add-ons (scripts and plugins) that interface easily
+and cleanly with the Universal Media Center dashboard. These add-ons can extend the functionality
+of Universal Media Center without requiring extensive programming experience or ability. While you
+may not feel comfortable browsing the Universal Media Center source code and submitting patches (or
+even bug reports), you can learn how to write a script or plugin with just a few
+hours' practice, using the information available in these pages.
+
+This page is intended as an introduction to Universal Media Center Python for new developers, and
+a quick reference for more experienced programmers. If you're not interested in
+programming, you might want to visit [this page](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Add-ons)
+for information about installing and using Python add-ons as an end user. If
+you're already familiar with Universal Media Center Python, you can probably skip on down to the
+[environment details](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Python_Development#Environment_details)
+or the [resource links](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Python_Development#Resource_links)
+below for quick reference material.
+
+_ _ _
+
+Built-in modules
+----------------
+
+In addition to the standard libraries, Universal Media Center [Python](https://www.python.org/)
+uses a handful of custom modules to expose Universal Media Center functionality to Python.
+
+| Module                              | Description                                                |
+|------------------------------------:|:-----------------------------------------------------------|
+| \ref python_       ""       | Offers classes and functions that provide information about the media currently playing and that allow manipulation of the media player (such as starting a new song). You can also find system information using the functions available in this library.
+| \ref python_gui    "gui"    | Offers classes and functions that manipulate the Graphical User Interface through windows, dialogs, and various control widgets.
+| \ref python_plugin "plugin" | Offers classes and functions that allow a developer to present information through Universal Media Center's standard menu structure. While plugins don't have the same flexibility as scripts, they boast significantly quicker development time and a more consistent user experience.
+| \ref python_addon  "addon"  | Offers classes and functions that manipulate the add-on settings, information and localization.
+| \ref python_vfs    "vfs"    | Offers classes and functions that allow access to the Virtual File Server (VFS) which you can use to manipulate files and folders.
+| \ref python_wsgi   "wsgi"   | The [<b>Web Server Gateway Interface (WSGI)</b>](https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface) is a specification for simple and universal interface between web servers and web applications or frameworks for the Python programming language.
+| \ref python_drm    "drm"    | Offers classes and functions to create and manipulate a DRM CryptoSession .
+
+_ _ _
+
+Installing additional modules
+----------------
+
+Additional modules may be installed by simply adding the module to the root
+folder of your add-on.
+
+A common way to organized third-party modules that are not part of add-on source
+code itself, is to add a lib directory and place an __init__.py file and other
+third-party modules inside it. These modules may then normally be imported using
+from lib import some module.
+
+_ _ _
+
+Python plugins versus scripts
+----------------
+
+Please do not confuse "Plugins" with "Scripts". Unlike the Scripts, Plugins are
+not meant to be directly invoked by the user. Instead, Plugins are automatically
+invoked when the user enters such a virtual folder. Do not try to run Plugins
+files from the scripts window as that will only give you a weird error message.
+Plugins, unlike Scripts, do not really provide new functionality to Universal Media Center,
+instead what they do do is provide an easy way to present content listings in
+Universal Media Center through the native GUI interface.
+
+_ _ _
+
+Script development
+----------------
+
+If you're new to Python programming (or just new to Universal Media Center Python), the easiest
+way to get started is with a script. The traditional Hello World program,
+written as an Universal Media Center Python script, would look like this:
+~~~~~~~~~~~~~{.py}
+print("Hello World!")
+~~~~~~~~~~~~~
+That's the same code you would enter at the Python command line, because Universal Media Center
+runs a full-featured, standard Python interpreter (for more information
+concerning the current version number and included modules see the environment
+details below). If you're already familiar with Python programming, the only new
+challenge is learning the custom modules that allow you to gather information
+from Universal Media Center and manipulate the Graphical User Interface (GUI).
+
+There are some excellent tutorials available to introduce you to Universal Media Center scripting
+(and Python in general). See the [HOW-TO](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/HOW-TO_write_Python_Scripts)
+included in the Universal Media Center Online Manual, or visit Alexpoet's Universal Media Center Scripting site for
+a popular beginner's tutorial (PDF).
+
+_ _ _
+Plugin development
+----------------
+
+While scripts offer you flexibility and full control over the Universal Media Center GUI, plugins
+allow you to quickly and consistently present information to the user through
+the standard Universal Media Center menu structure.
+
+When a user launches a plugin, the plugin generates a list of menu items and
+hands them to Universal Media Center to draw on the screen (regardless of screen resolution, skin,
+or any other user setting). While plugin developers lose some amount of control
+over the presentation, they no longer have to make up their own UIs, or worry
+about creating a usable look and feel across multiple displays.
+
+Plugins are most commonly used to scrape websites for links to streaming videos,
+displaying the video list in Universal Media Center just like it would movie files on the local
+hard drive, but a plugin can be used anywhere a script could, as long as the
+menu structure is a sufficient GUI for the add-on's needs.
+
+Also, note that a script can launch a plugin, and a plugin can launch a script
+(and, for that matter, it can call all the same functions available to a script)
+so the distinction is more theoretical than practical.
+
+
+@{
+\ingroup python
+\defgroup python_ Library - 
+
+\ingroup python
+\defgroup python_gui Library - gui
+
+\ingroup python
+\defgroup python_plugin Library - plugin
+
+\ingroup python
+\defgroup python_addon Library - addon
+
+\ingroup python
+\defgroup python_vfs Library - vfs
+
+\ingroup python
+\defgroup python_wsgi Library - wsgi
+@brief **Web Server Gateway Interface**
+
+The [<b>Web Server Gateway Interface (WSGI)</b>](https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface)
+is a specification for simple and universal interface between web servers and
+web applications or frameworks for the Python programming language.
+
+\ingroup python
+\defgroup python_drm Library - drm
+@}
+
+*/
+
+/*!
+@page python_v23 Python API v23
+@page python_v22 Python API v22
+@page python_v21 Python API v21
+@page python_v20 Python API v20
+\python_removed_function{
+      translatePath,
+      "",
+      <b>.translatePath()</b> function was removed completely. Use <b>vfs.translatePath()</b>.
+}
+@page python_v19 Python API v19
+\python_removed_function{
+      onDatabaseUpdated,
+      "",
+      <b>.monitor().onDatabaseUpdated()</b> function was removed completely.
+}
+\python_removed_function{
+      onDatabaseScanStarted,
+      "",
+      <b>.monitor().onDatabaseScanStarted()</b> function was removed completely.
+}
+\python_removed_function{
+      onAbortRequested,
+      "",
+      <b>.monitor().onAbortRequested()</b> function was removed completely.
+}
+\python_removed_function{
+      create,
+      "",
+      <b>gui.DialogBusy().create()</b> function was removed completely.
+}
+\python_removed_function{
+      update,
+      "",
+      <b>gui.DialogBusy().update()</b> function was removed completely.
+}
+\python_removed_function{
+      close,
+      "",
+      <b>gui.DialogBusy().close()</b> function was removed completely.
+}
+\python_removed_function{
+      iscanceled,
+      "",
+      <b>gui.DialogBusy().iscanceled()</b> function was removed completely.
+}
+\python_removed_function{
+      setIconImage,
+      "",
+      <b>gui.ListItem().setIconImage()</b> function was removed completely.
+}
+\python_removed_function{
+      setThumbnailImage,
+      "",
+      <b>gui.ListItem().setThumbnailImage()</b> function was removed completely.
+}
+\python_removed_function{
+      getdescription,
+      "",
+      <b>gui.ListItem().getdescription()</b> function was removed completely.
+}
+\python_removed_function{
+      getduration,
+      "",
+      <b>gui.ListItem().getduration()</b> function was removed completely.
+}
+\python_removed_function{
+      getfilename,
+      "",
+      <b>gui.ListItem().getfilename()</b> function was removed completely.
+}
+\python_removed_function{
+      getfilename,
+      "",
+      <b>gui.Window().getResolution()</b> function was removed completely.
+}
+\python_removed_function{
+      setCoordinateResolution,
+      "",
+      <b>gui.Window().setCoordinateResolution()</b> function was removed completely.
+}
+\python_removed_function{
+      makeLegalFilename,
+      "",
+      <b>.makeLegalFilename()</b> function was moved to the vfs module.
+}
+\python_removed_function{
+      validatePath,
+      "",
+      <b>.validatePath()</b> function was moved to the vfs module.
+}
+\python_removed_function{
+      abortRequested,
+      "",
+      <b>.abortRequested</b> flag was removed completely. Use .Monitor().abortRequested().
+}
+*/
+/*!
+@page python_v18 Python API v18
+*/
+/*!
+@page python_v17 Python API v17
+\python_removed_function{
+      getCaptureState,
+      http://mirrors.github.com/yashhasan570/UniversalMediaCenter/docs/python-docs/16.x-jarvis/.html#RenderCapture-getCaptureState,
+      <b>.RenderCapture().getCaptureState()</b> function was removed completely.
+}
+\python_removed_function{
+      waitForCaptureStateChangeEvent,
+      http://mirrors.github.com/yashhasan570/UniversalMediaCenter/docs/python-docs/16.x-jarvis/.html#RenderCapture-waitForCaptureStateChangeEvent,
+      <b>.RenderCapture().waitForCaptureStateChangeEvent()</b> function was removed completely.
+}
+\python_removed_function{
+      disableSubtitles,
+      http://mirrors.github.com/yashhasan570/UniversalMediaCenter/docs/python-docs/16.x-jarvis/.html#Player,
+      <b>.Player().disableSubtitles()</b> function was removed completely.
+      Use \endhtmlonly \link Addon::::Player::showSubtitles() .Player().showSubtitles(...) \endlink \htmlonly instead.
+}
+*/
+/*!
+@page python_v16 Python API v16
+*/
+/*!
+@page python_v15 Python API v15
+*/
+/*!
+@page python_v14 Python API v14
+*/
+/*!
+@page python_v13 Python API v13
+*/
+/*!
+@page python_v12 Python API v12
+\python_removed_function{
+      executehttpapi,
+      http://mirrors.github.com/yashhasan570/UniversalMediaCenter/docs/python-docs/12.2-frodo/.html#-executehttpapi,
+      <b>.executehttpapi()</b> function was removed completely.
+}
+*/
+/*!
+@page python_revisions Python API Changes
+@brief Overview of changes on Python API for Universal Media Center
+
+- @subpage python_v23
+- @subpage python_v22
+- @subpage python_v21
+- @subpage python_v20
+- @subpage python_v19
+- @subpage python_v18
+- @subpage python_v17
+- @subpage python_v16
+- @subpage python_v15
+- @subpage python_v14
+- @subpage python_v13
+- @subpage python_v12
+
+*/

@@ -11,7 +11,7 @@
 #include "games/GameTypes.h"
 #include "games/controllers/ControllerTypes.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -59,4 +59,4 @@ public:
 };
 
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

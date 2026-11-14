@@ -20,7 +20,7 @@
 
 class CScroller;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -72,4 +72,4 @@ private:
   const uint32_t m_alignment;
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

@@ -31,7 +31,7 @@
 #include "settings/Settings.h"
 #include "settings/SettingsComponent.h"
 #include "test/TestUtils.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 #include "windowing/WinSystem.h"
 
 #if defined(HAS_GL)
@@ -47,10 +47,10 @@
 
 #include <gtest/gtest.h>
 
-AddonGlobalInterface* kodi::addon::CPrivateBase::m_interface = nullptr;
+AddonGlobalInterface* addon::CPrivateBase::m_interface = nullptr;
 
-using namespace KODI;
-using namespace KODI::GAME;
+using namespace UNIVERSAL MEDIA CENTER;
+using namespace UNIVERSAL MEDIA CENTER::GAME;
 
 namespace
 {
@@ -291,41 +291,41 @@ class DevKitInstance
 {
 public:
   explicit DevKitInstance(CGameClientStreams& streams,
-                          const char* kodiVersion = ADDON_INSTANCE_VERSION_GAME,
+                          const char* universalmediacenterVersion = ADDON_INSTANCE_VERSION_GAME,
                           const char* libretroCore = nullptr)
-    : m_previous(kodi::addon::CPrivateBase::m_interface)
+    : m_previous(addon::CPrivateBase::m_interface)
   {
     m_props.libretro_core = libretroCore;
-    m_callbacks.kodiInstance = &streams;
-    m_callbacks.OpenStream = [](KODI_HANDLE instance,
-                                const game_stream_properties* properties) -> KODI_GAME_STREAM_HANDLE
+    m_callbacks.universalmediacenterInstance = &streams;
+    m_callbacks.OpenStream = [](UNIVERSALMEDIA_HANDLE instance,
+                                const game_stream_properties* properties) -> UNIVERSALMEDIA_GAME_STREAM_HANDLE
     { return static_cast<CGameClientStreams*>(instance)->OpenStream(*properties); };
-    m_callbacks.StartStream = [](KODI_HANDLE instance, KODI_GAME_STREAM_HANDLE stream)
+    m_callbacks.StartStream = [](UNIVERSALMEDIA_HANDLE instance, UNIVERSALMEDIA_GAME_STREAM_HANDLE stream)
     {
       return static_cast<CGameClientStreams*>(instance)->StartStream(
           static_cast<IGameClientStream*>(stream));
     };
-    m_callbacks.CloseStream = [](KODI_HANDLE instance, KODI_GAME_STREAM_HANDLE stream)
+    m_callbacks.CloseStream = [](UNIVERSALMEDIA_HANDLE instance, UNIVERSALMEDIA_GAME_STREAM_HANDLE stream)
     {
       static_cast<CGameClientStreams*>(instance)->CloseStream(
           static_cast<IGameClientStream*>(stream));
     };
-    m_callbacks.GetStreamBuffer = [](KODI_HANDLE, KODI_GAME_STREAM_HANDLE stream,
+    m_callbacks.GetStreamBuffer = [](UNIVERSALMEDIA_HANDLE, UNIVERSALMEDIA_GAME_STREAM_HANDLE stream,
                                      unsigned int width, unsigned int height,
                                      game_stream_buffer* buffer)
     { return static_cast<IGameClientStream*>(stream)->GetBuffer(width, height, *buffer); };
-    m_info.version = kodiVersion;
+    m_info.version = universalmediacenterVersion;
     m_instance.info = &m_info;
     m_instance.functions = &m_functions;
     m_instance.game = &m_game;
     m_global.firstUniversal Media CenterInstance = &m_instance;
-    kodi::addon::CPrivateBase::m_interface = &m_global;
-    m_addon = std::make_unique<kodi::addon::CInstanceGame>();
+    addon::CPrivateBase::m_interface = &m_global;
+    m_addon = std::make_unique<addon::CInstanceGame>();
   }
   ~DevKitInstance()
   {
     m_addon.reset();
-    kodi::addon::CPrivateBase::m_interface = m_previous;
+    addon::CPrivateBase::m_interface = m_previous;
   }
 
   std::string LibretroCore() const { return m_addon->LibretroCore(); }
@@ -341,11 +341,11 @@ private:
   Universal Media CenterToAddonFuncTable_Game m_addonCallbacks{};
   AddonProps_Game m_props{};
   AddonInstance_Game m_game{&m_props, &m_callbacks, &m_addonCallbacks};
-  KODI_ADDON_INSTANCE_INFO m_info{};
-  KODI_ADDON_INSTANCE_FUNC m_functions{};
-  KODI_ADDON_INSTANCE_STRUCT m_instance{};
+  UNIVERSALMEDIA_ADDON_INSTANCE_INFO m_info{};
+  UNIVERSALMEDIA_ADDON_INSTANCE_FUNC m_functions{};
+  UNIVERSALMEDIA_ADDON_INSTANCE_STRUCT m_instance{};
   AddonGlobalInterface m_global{};
-  std::unique_ptr<kodi::addon::CInstanceGame> m_addon;
+  std::unique_ptr<addon::CInstanceGame> m_addon;
 };
 } // namespace
 
@@ -359,11 +359,11 @@ protected:
     m_previousRepositoryUpdater = std::move(repositoryUpdater);
     repositoryUpdater = std::make_unique<ADDON::CRepositoryUpdater>(CServiceBroker::GetAddonMgr());
 
-    CXBMCTinyXML2 xml;
+    CTinyXML2 xml;
     const std::string addonXml =
         R"(<addon id="game.test.hardware" name="Hardware test" version="1.0.0">
-      <extension point="kodi.gameclient" library="test.so"><extensions>rom</extensions></extension>
-      <extension point="kodi.addon.metadata"><platform>all</platform></extension>
+      <extension point="universalmediacenter.gameclient" library="test.so"><extensions>rom</extensions></extension>
+      <extension point="universalmediacenter.addon.metadata"><platform>all</platform></extension>
     </addon>)";
     ASSERT_TRUE(xml.Parse(addonXml));
     const auto info =
@@ -531,9 +531,9 @@ protected:
 
   void CheckStartupRestore(RETRO::CPlaybackTestEnvironment& environment)
   {
-    std::unique_ptr<XFILE::CFile> file(XBMC_CREATETEMPFILE(".sav"));
+    std::unique_ptr<XFILE::CFile> file(_CREATETEMPFILE(".sav"));
     ASSERT_NE(file, nullptr);
-    const std::string path = XBMC_TEMPFILEPATH(file.get());
+    const std::string path = _TEMPFILEPATH(file.get());
     file->Close();
     RETRO::CSavestateFlatBuffer savestate;
     *savestate.GetMemoryBuffer(1) = 1;
@@ -552,7 +552,7 @@ protected:
       EXPECT_EQ(m_client->GetSerializeSize(), 1U);
       EXPECT_EQ(m_core.sizeQueries, 1U);
     }
-    EXPECT_TRUE(XBMC_DELETETEMPFILE(file.release()));
+    EXPECT_TRUE(_DELETETEMPFILE(file.release()));
   }
 
   void PrepareCloseFile()
@@ -1202,13 +1202,13 @@ TEST_F(TestGameClientHardwareRendering, RewindRetriesUntilSerializationBecomesAv
 
 TEST_F(TestGameClientHardwareRendering, PropertiesPassTheLibretroCore)
 {
-  CXBMCTinyXML2 xml;
+  CTinyXML2 xml;
   const std::string addonXml =
       R"(<addon id="game.test.core" name="Core test" version="1.0.0">
-      <extension point="kodi.gameclient" library="test.so">
+      <extension point="universalmediacenter.gameclient" library="test.so">
         <libretro_core>test_libretro</libretro_core>
       </extension>
-      <extension point="kodi.addon.metadata"><platform>all</platform></extension>
+      <extension point="universalmediacenter.addon.metadata"><platform>all</platform></extension>
     </addon>)";
   ASSERT_TRUE(xml.Parse(addonXml));
   CGameClient client(
@@ -1462,7 +1462,7 @@ TEST_F(TestGameClientHardwareRendering, DevKitInstallsHandleBeforeSingleReset)
   UseRenderingStream(environment, process, state);
   ASSERT_TRUE(Negotiate());
   DevKitInstance addon(m_client->Streams());
-  kodi::addon::CInstanceGame::CStream stream;
+  addon::CInstanceGame::CStream stream;
   m_core.onReset = [&]
   {
     EXPECT_GT(m_manager.depth, 0U);
@@ -1523,7 +1523,7 @@ TEST_F(TestGameClientHardwareRendering, DevKitResetFailureClosesOnceAndReopens)
   UseRenderingStream(environment, process, state);
   ASSERT_TRUE(Negotiate());
   DevKitInstance addon(m_client->Streams());
-  kodi::addon::CInstanceGame::CStream stream;
+  addon::CInstanceGame::CStream stream;
   m_core.onReset = [&]
   {
     EXPECT_TRUE(stream.IsOpen());
@@ -1665,7 +1665,7 @@ TEST_F(TestGameClientHardwareRendering, ResetMayCloseItsStreamWithoutDeletingAct
   UseRenderingStream(environment, process, state);
   ASSERT_TRUE(Negotiate());
   DevKitInstance addon(m_client->Streams());
-  kodi::addon::CInstanceGame::CStream stream;
+  addon::CInstanceGame::CStream stream;
   m_core.onReset = [&] { stream.Close(); };
   game_stream_properties properties{};
   properties.type = GAME_STREAM_HW_FRAMEBUFFER;
@@ -1689,7 +1689,7 @@ TEST_F(TestGameClientHardwareRendering, FailedOuterResetDoesNotCloseReopenedStre
   UseRenderingStream(environment, process, state);
   ASSERT_TRUE(Negotiate());
   DevKitInstance addon(m_client->Streams());
-  kodi::addon::CInstanceGame::CStream stream;
+  addon::CInstanceGame::CStream stream;
   game_stream_properties properties{};
   properties.type = GAME_STREAM_HW_FRAMEBUFFER;
   properties.hw_framebuffer.max_width = 640;

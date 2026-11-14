@@ -10,7 +10,7 @@
 
 #include "XBDateTime.h"
 #include "addons/binary-addons/AddonDll.h"
-#include "addons/kodi-dev-kit/include/kodi/gui/dialogs/Numeric.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/gui/dialogs/Numeric.h"
 #include "dialogs/GUIDialogNumeric.h"
 #include "utils/log.h"
 
@@ -19,30 +19,30 @@ namespace ADDON
 
 void Interface_GUIDialogNumeric::Init(AddonGlobalInterface* addonInterface)
 {
-  addonInterface->toUniversal Media Center->kodi_gui->dialogNumeric =
-      new AddonToUniversal Media CenterFuncTable_kodi_gui_dialogNumeric();
+  addonInterface->toUniversal Media Center->->dialogNumeric =
+      new AddonToUniversal Media CenterFuncTable__dialogNumeric();
 
-  addonInterface->toUniversal Media Center->kodi_gui->dialogNumeric->show_and_verify_new_password =
+  addonInterface->toUniversal Media Center->->dialogNumeric->show_and_verify_new_password =
       show_and_verify_new_password;
-  addonInterface->toUniversal Media Center->kodi_gui->dialogNumeric->show_and_verify_password =
+  addonInterface->toUniversal Media Center->->dialogNumeric->show_and_verify_password =
       show_and_verify_password;
-  addonInterface->toUniversal Media Center->kodi_gui->dialogNumeric->show_and_verify_input = show_and_verify_input;
-  addonInterface->toUniversal Media Center->kodi_gui->dialogNumeric->show_and_get_time = show_and_get_time;
-  addonInterface->toUniversal Media Center->kodi_gui->dialogNumeric->show_and_get_date = show_and_get_date;
-  addonInterface->toUniversal Media Center->kodi_gui->dialogNumeric->show_and_get_ip_address =
+  addonInterface->toUniversal Media Center->->dialogNumeric->show_and_verify_input = show_and_verify_input;
+  addonInterface->toUniversal Media Center->->dialogNumeric->show_and_get_time = show_and_get_time;
+  addonInterface->toUniversal Media Center->->dialogNumeric->show_and_get_date = show_and_get_date;
+  addonInterface->toUniversal Media Center->->dialogNumeric->show_and_get_ip_address =
       show_and_get_ip_address;
-  addonInterface->toUniversal Media Center->kodi_gui->dialogNumeric->show_and_get_number = show_and_get_number;
-  addonInterface->toUniversal Media Center->kodi_gui->dialogNumeric->show_and_get_seconds = show_and_get_seconds;
+  addonInterface->toUniversal Media Center->->dialogNumeric->show_and_get_number = show_and_get_number;
+  addonInterface->toUniversal Media Center->->dialogNumeric->show_and_get_seconds = show_and_get_seconds;
 }
 
 void Interface_GUIDialogNumeric::DeInit(AddonGlobalInterface* addonInterface)
 {
-  delete addonInterface->toUniversal Media Center->kodi_gui->dialogNumeric;
+  delete addonInterface->toUniversal Media Center->->dialogNumeric;
 }
 
-bool Interface_GUIDialogNumeric::show_and_verify_new_password(KODI_HANDLE kodiBase, char** password)
+bool Interface_GUIDialogNumeric::show_and_verify_new_password(UNIVERSALMEDIA_HANDLE universalmediacenterBase, char** password)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon)
   {
     CLog::LogF(LOGERROR, "Invalid data");
@@ -56,12 +56,12 @@ bool Interface_GUIDialogNumeric::show_and_verify_new_password(KODI_HANDLE kodiBa
   return bRet;
 }
 
-int Interface_GUIDialogNumeric::show_and_verify_password(KODI_HANDLE kodiBase,
+int Interface_GUIDialogNumeric::show_and_verify_password(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
                                                          const char* password,
                                                          const char* heading,
                                                          int retries)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon)
   {
     CLog::LogF(LOGERROR, "Invalid data");
@@ -81,13 +81,13 @@ int Interface_GUIDialogNumeric::show_and_verify_password(KODI_HANDLE kodiBase,
   return CGUIDialogNumeric::ShowAndVerifyPassword(pw, heading, retries);
 }
 
-bool Interface_GUIDialogNumeric::show_and_verify_input(KODI_HANDLE kodiBase,
+bool Interface_GUIDialogNumeric::show_and_verify_input(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
                                                        const char* verify_in,
                                                        char** verify_out,
                                                        const char* heading,
                                                        bool verify_input)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon)
   {
     CLog::LogF(LOGERROR, "Invalid data");
@@ -114,11 +114,11 @@ bool Interface_GUIDialogNumeric::show_and_verify_input(KODI_HANDLE kodiBase,
   return false;
 }
 
-bool Interface_GUIDialogNumeric::show_and_get_time(KODI_HANDLE kodiBase,
+bool Interface_GUIDialogNumeric::show_and_get_time(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
                                                    tm* time,
                                                    const char* heading)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon)
   {
     CLog::LogF(LOGERROR, "Invalid data");
@@ -134,7 +134,7 @@ bool Interface_GUIDialogNumeric::show_and_get_time(KODI_HANDLE kodiBase,
     return false;
   }
 
-  KODI::TIME::SystemTime systemTime;
+  UNIVERSAL MEDIA CENTER::TIME::SystemTime systemTime;
   CDateTime dateTime(*time);
   dateTime.GetAsSystemTime(systemTime);
   if (CGUIDialogNumeric::ShowAndGetTime(systemTime, heading))
@@ -146,11 +146,11 @@ bool Interface_GUIDialogNumeric::show_and_get_time(KODI_HANDLE kodiBase,
   return false;
 }
 
-bool Interface_GUIDialogNumeric::show_and_get_date(KODI_HANDLE kodiBase,
+bool Interface_GUIDialogNumeric::show_and_get_date(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
                                                    tm* date,
                                                    const char* heading)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon)
   {
     CLog::LogF(LOGERROR, "Invalid data");
@@ -166,7 +166,7 @@ bool Interface_GUIDialogNumeric::show_and_get_date(KODI_HANDLE kodiBase,
     return false;
   }
 
-  KODI::TIME::SystemTime systemTime;
+  UNIVERSAL MEDIA CENTER::TIME::SystemTime systemTime;
   CDateTime dateTime(*date);
   dateTime.GetAsSystemTime(systemTime);
   if (CGUIDialogNumeric::ShowAndGetDate(systemTime, heading))
@@ -178,12 +178,12 @@ bool Interface_GUIDialogNumeric::show_and_get_date(KODI_HANDLE kodiBase,
   return false;
 }
 
-bool Interface_GUIDialogNumeric::show_and_get_ip_address(KODI_HANDLE kodiBase,
+bool Interface_GUIDialogNumeric::show_and_get_ip_address(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
                                                          const char* ip_address_in,
                                                          char** ip_address_out,
                                                          const char* heading)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon)
   {
     CLog::LogF(LOGERROR, "Invalid data");
@@ -207,13 +207,13 @@ bool Interface_GUIDialogNumeric::show_and_get_ip_address(KODI_HANDLE kodiBase,
   return bRet;
 }
 
-bool Interface_GUIDialogNumeric::show_and_get_number(KODI_HANDLE kodiBase,
+bool Interface_GUIDialogNumeric::show_and_get_number(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
                                                      const char* number_in,
                                                      char** number_out,
                                                      const char* heading,
                                                      unsigned int auto_close_ms)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon)
   {
     CLog::LogF(LOGERROR, "Invalid data");
@@ -237,12 +237,12 @@ bool Interface_GUIDialogNumeric::show_and_get_number(KODI_HANDLE kodiBase,
   return bRet;
 }
 
-bool Interface_GUIDialogNumeric::show_and_get_seconds(KODI_HANDLE kodiBase,
+bool Interface_GUIDialogNumeric::show_and_get_seconds(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
                                                       const char* time_in,
                                                       char** time_out,
                                                       const char* heading)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon)
   {
     CLog::LogF(LOGERROR, "Invalid data");

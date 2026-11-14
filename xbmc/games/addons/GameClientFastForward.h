@@ -11,7 +11,7 @@
 #include <functional>
 #include <memory>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -102,4 +102,4 @@ private:
   const std::shared_ptr<State> m_state;
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

@@ -19,7 +19,7 @@
 #include <algorithm>
 #include <utility>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace KEYMAP;
 
 CKeymapHandling::CKeymapHandling(JOYSTICK::IInputProvider* inputProvider,

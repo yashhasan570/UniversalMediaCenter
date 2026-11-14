@@ -41,7 +41,7 @@ extern "C"
 #include <libavutil/pixfmt.h>
 }
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace DirectX;
 using namespace DirectX::PackedVector;
 using namespace Microsoft::WRL;
@@ -93,7 +93,7 @@ bool CRenderSystemDX::InitRenderSystem()
   SetCameraPosition(camPoint, outputSize.Width, outputSize.Height);
 
   const DXGI_ADAPTER_DESC AIdentifier = m_deviceResources->GetAdapterDesc();
-  m_RenderRenderer = KODI::PLATFORM::WINDOWS::FromW(AIdentifier.Description);
+  m_RenderRenderer = UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW(AIdentifier.Description);
   uint32_t version = 0;
   for (uint32_t decimal = m_deviceResources->GetDeviceFeatureLevel() >> 8, round = 0; decimal > 0; decimal >>= 4, ++round)
     version += (decimal % 16) * std::pow(10, round);
@@ -365,7 +365,7 @@ void CRenderSystemDX::InvalidateColorBuffer()
   m_deviceResources->ClearDepthStencil(GetEnabledFrontToBackRendering());
 }
 
-bool CRenderSystemDX::ClearBuffers(KODI::UTILS::COLOR::Color color)
+bool CRenderSystemDX::ClearBuffers(UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color color)
 {
   if (!m_bRenderCreated)
     return false;

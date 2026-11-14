@@ -11,7 +11,7 @@
 #include "PrimitiveDetector.h"
 #include "input/joysticks/JoystickTypes.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace JOYSTICK
 {
@@ -51,4 +51,4 @@ private:
   unsigned int m_frameCount = 0;
 };
 } // namespace JOYSTICK
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

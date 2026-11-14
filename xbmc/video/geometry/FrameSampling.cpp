@@ -11,7 +11,7 @@
 #include <algorithm>
 #include <cmath>
 
-namespace KODI::VIDEO::GEOMETRY
+namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY
 {
 
 std::pair<double, double> SampleWindow(double durationSeconds, const SamplingParams& params)
@@ -97,4 +97,4 @@ std::vector<double> UnsampledOffsets(const std::vector<double>& candidates,
   return wanted;
 }
 
-} // namespace KODI::VIDEO::GEOMETRY
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY

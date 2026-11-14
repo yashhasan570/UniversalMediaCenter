@@ -26,7 +26,7 @@
 #include "rendering/dx/RenderSystemDX.h"
 #endif
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace RETRO;
 
 CRenderContext::CRenderContext(CRenderSystemBase* rendering,

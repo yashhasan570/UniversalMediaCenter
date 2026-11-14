@@ -6,12 +6,12 @@
  *  See LICENSES/README.md for more information.
  */
 
-#include "JNIXBMCMediaSession.h"
+#include "JNIMediaSession.h"
 
 #include "AndroidKey.h"
 #include "CompileInfo.h"
 #include "ServiceBroker.h"
-#include "XBMCApp.h"
+#include "App.h"
 #include "application/Application.h"
 #include "application/ApplicationComponents.h"
 #include "application/ApplicationPlayer.h"
@@ -25,9 +25,9 @@
 
 using namespace jni;
 
-static std::string s_className = std::string(CCompileInfo::GetClass()) + "/XBMCMediaSession";
+static std::string s_className = std::string(CCompileInfo::GetClass()) + "/MediaSession";
 
-CJNIXBMCMediaSession::CJNIXBMCMediaSession()
+CJNIMediaSession::CJNIMediaSession()
   : CJNIBase(s_className)
 {
   m_object = new_object(CJNIContext::getClassLoader().loadClass(ToDotClassName(s_className)));
@@ -36,40 +36,40 @@ CJNIXBMCMediaSession::CJNIXBMCMediaSession()
   add_instance(m_object, this);
 }
 
-CJNIXBMCMediaSession::CJNIXBMCMediaSession(const CJNIXBMCMediaSession& other)
+CJNIMediaSession::CJNIMediaSession(const CJNIMediaSession& other)
   : CJNIBase(other)
 {
   add_instance(m_object, this);
 }
 
-CJNIXBMCMediaSession::~CJNIXBMCMediaSession()
+CJNIMediaSession::~CJNIMediaSession()
 {
   remove_instance(this);
 }
 
-void CJNIXBMCMediaSession::RegisterNatives(JNIEnv* env)
+void CJNIMediaSession::RegisterNatives(JNIEnv* env)
 {
   jclass cClass = env->FindClass(s_className.c_str());
   if(cClass)
   {
     JNINativeMethod methods[] =
     {
-      {"_onPlayRequested", "()V", (void*)&CJNIXBMCMediaSession::_onPlayRequested},
-      {"_onPauseRequested", "()V", (void*)&CJNIXBMCMediaSession::_onPauseRequested},
-      {"_onNextRequested", "()V", (void*)&CJNIXBMCMediaSession::_onNextRequested},
-      {"_onPreviousRequested", "()V", (void*)&CJNIXBMCMediaSession::_onPreviousRequested},
-      {"_onForwardRequested", "()V", (void*)&CJNIXBMCMediaSession::_onForwardRequested},
-      {"_onRewindRequested", "()V", (void*)&CJNIXBMCMediaSession::_onRewindRequested},
-      {"_onStopRequested", "()V", (void*)&CJNIXBMCMediaSession::_onStopRequested},
-      {"_onSeekRequested", "(J)V", (void*)&CJNIXBMCMediaSession::_onSeekRequested},
-      {"_onMediaButtonEvent", "(Landroid/content/Intent;)Z", (void*)&CJNIXBMCMediaSession::_onMediaButtonEvent},
+      {"_onPlayRequested", "()V", (void*)&CJNIMediaSession::_onPlayRequested},
+      {"_onPauseRequested", "()V", (void*)&CJNIMediaSession::_onPauseRequested},
+      {"_onNextRequested", "()V", (void*)&CJNIMediaSession::_onNextRequested},
+      {"_onPreviousRequested", "()V", (void*)&CJNIMediaSession::_onPreviousRequested},
+      {"_onForwardRequested", "()V", (void*)&CJNIMediaSession::_onForwardRequested},
+      {"_onRewindRequested", "()V", (void*)&CJNIMediaSession::_onRewindRequested},
+      {"_onStopRequested", "()V", (void*)&CJNIMediaSession::_onStopRequested},
+      {"_onSeekRequested", "(J)V", (void*)&CJNIMediaSession::_onSeekRequested},
+      {"_onMediaButtonEvent", "(Landroid/content/Intent;)Z", (void*)&CJNIMediaSession::_onMediaButtonEvent},
     };
 
     env->RegisterNatives(cClass, methods, sizeof(methods)/sizeof(methods[0]));
   }
 }
 
-void CJNIXBMCMediaSession::activate(bool state)
+void CJNIMediaSession::activate(bool state)
 {
   if (state == m_isActive)
     return;
@@ -80,28 +80,28 @@ void CJNIXBMCMediaSession::activate(bool state)
   m_isActive = state;
 }
 
-void CJNIXBMCMediaSession::updatePlaybackState(const CJNIPlaybackState& state)
+void CJNIMediaSession::updatePlaybackState(const CJNIPlaybackState& state)
 {
   call_method<void>(m_object,
                     "updatePlaybackState", "(Landroid/media/session/PlaybackState;)V",
                     state.get_raw());
 }
 
-void CJNIXBMCMediaSession::updateMetadata(const CJNIMediaMetadata& myData)
+void CJNIMediaSession::updateMetadata(const CJNIMediaMetadata& myData)
 {
   call_method<void>(m_object,
                     "updateMetadata", "(Landroid/media/MediaMetadata;)V",
                     myData.get_raw());
 }
 
-void CJNIXBMCMediaSession::updateIntent(const CJNIIntent& intent)
+void CJNIMediaSession::updateIntent(const CJNIIntent& intent)
 {
   call_method<void>(m_object,
                     "updateIntent", "(Landroid/content/Intent;)V",
                     intent.get_raw());
 }
 
-void CJNIXBMCMediaSession::OnPlayRequested()
+void CJNIMediaSession::OnPlayRequested()
 {
   const auto& components = CServiceBroker::GetAppComponents();
   const auto appPlayer = components.GetComponent<CApplicationPlayer>();
@@ -113,7 +113,7 @@ void CJNIXBMCMediaSession::OnPlayRequested()
   }
 }
 
-void CJNIXBMCMediaSession::OnPauseRequested()
+void CJNIMediaSession::OnPauseRequested()
 {
   const auto& components = CServiceBroker::GetAppComponents();
   const auto appPlayer = components.GetComponent<CApplicationPlayer>();
@@ -125,7 +125,7 @@ void CJNIXBMCMediaSession::OnPauseRequested()
   }
 }
 
-void CJNIXBMCMediaSession::OnNextRequested()
+void CJNIMediaSession::OnNextRequested()
 {
   const auto& components = CServiceBroker::GetAppComponents();
   const auto appPlayer = components.GetComponent<CApplicationPlayer>();
@@ -134,7 +134,7 @@ void CJNIXBMCMediaSession::OnNextRequested()
                                                static_cast<void*>(new CAction(ACTION_NEXT_ITEM)));
 }
 
-void CJNIXBMCMediaSession::OnPreviousRequested()
+void CJNIMediaSession::OnPreviousRequested()
 {
   const auto& components = CServiceBroker::GetAppComponents();
   const auto appPlayer = components.GetComponent<CApplicationPlayer>();
@@ -143,7 +143,7 @@ void CJNIXBMCMediaSession::OnPreviousRequested()
                                                static_cast<void*>(new CAction(ACTION_PREV_ITEM)));
 }
 
-void CJNIXBMCMediaSession::OnForwardRequested()
+void CJNIMediaSession::OnForwardRequested()
 {
   const auto& components = CServiceBroker::GetAppComponents();
   const auto appPlayer = components.GetComponent<CApplicationPlayer>();
@@ -155,7 +155,7 @@ void CJNIXBMCMediaSession::OnForwardRequested()
   }
 }
 
-void CJNIXBMCMediaSession::OnRewindRequested()
+void CJNIMediaSession::OnRewindRequested()
 {
   const auto& components = CServiceBroker::GetAppComponents();
   const auto appPlayer = components.GetComponent<CApplicationPlayer>();
@@ -166,7 +166,7 @@ void CJNIXBMCMediaSession::OnRewindRequested()
   }
 }
 
-void CJNIXBMCMediaSession::OnStopRequested()
+void CJNIMediaSession::OnStopRequested()
 {
   const auto& components = CServiceBroker::GetAppComponents();
   const auto appPlayer = components.GetComponent<CApplicationPlayer>();
@@ -175,105 +175,105 @@ void CJNIXBMCMediaSession::OnStopRequested()
                                                static_cast<void*>(new CAction(ACTION_STOP)));
 }
 
-void CJNIXBMCMediaSession::OnSeekRequested(int64_t pos)
+void CJNIMediaSession::OnSeekRequested(int64_t pos)
 {
   g_application.SeekTime(pos / 1000.0);
 }
 
-bool CJNIXBMCMediaSession::OnMediaButtonEvent(const CJNIIntent& intent)
+bool CJNIMediaSession::OnMediaButtonEvent(const CJNIIntent& intent)
 {
-  if (CXBMCApp::Get().HasFocus())
+  if (CApp::Get().HasFocus())
   {
-    CXBMCApp::Get().onReceive(intent);
+    CApp::Get().onReceive(intent);
     return true;
   }
   return false;
 }
 
-bool CJNIXBMCMediaSession::isActive() const
+bool CJNIMediaSession::isActive() const
 {
   return m_isActive;
 }
 
 /**********************/
 
-void CJNIXBMCMediaSession::_onPlayRequested(JNIEnv* env, jobject thiz)
+void CJNIMediaSession::_onPlayRequested(JNIEnv* env, jobject thiz)
 {
   (void)env;
 
-  CJNIXBMCMediaSession *inst = find_instance(thiz);
+  CJNIMediaSession *inst = find_instance(thiz);
   if (inst)
     inst->OnPlayRequested();
 }
 
-void CJNIXBMCMediaSession::_onPauseRequested(JNIEnv* env, jobject thiz)
+void CJNIMediaSession::_onPauseRequested(JNIEnv* env, jobject thiz)
 {
   (void)env;
 
-  CJNIXBMCMediaSession *inst = find_instance(thiz);
+  CJNIMediaSession *inst = find_instance(thiz);
   if (inst)
     inst->OnPauseRequested();
 }
 
-void CJNIXBMCMediaSession::_onNextRequested(JNIEnv* env, jobject thiz)
+void CJNIMediaSession::_onNextRequested(JNIEnv* env, jobject thiz)
 {
   (void)env;
 
-  CJNIXBMCMediaSession *inst = find_instance(thiz);
+  CJNIMediaSession *inst = find_instance(thiz);
   if (inst)
     inst->OnNextRequested();
 }
 
-void CJNIXBMCMediaSession::_onPreviousRequested(JNIEnv* env, jobject thiz)
+void CJNIMediaSession::_onPreviousRequested(JNIEnv* env, jobject thiz)
 {
   (void)env;
 
-  CJNIXBMCMediaSession *inst = find_instance(thiz);
+  CJNIMediaSession *inst = find_instance(thiz);
   if (inst)
     inst->OnPreviousRequested();
 }
 
-void CJNIXBMCMediaSession::_onForwardRequested(JNIEnv* env, jobject thiz)
+void CJNIMediaSession::_onForwardRequested(JNIEnv* env, jobject thiz)
 {
   (void)env;
 
-  CJNIXBMCMediaSession *inst = find_instance(thiz);
+  CJNIMediaSession *inst = find_instance(thiz);
   if (inst)
     inst->OnForwardRequested();
 }
 
-void CJNIXBMCMediaSession::_onRewindRequested(JNIEnv* env, jobject thiz)
+void CJNIMediaSession::_onRewindRequested(JNIEnv* env, jobject thiz)
 {
   (void)env;
 
-  CJNIXBMCMediaSession *inst = find_instance(thiz);
+  CJNIMediaSession *inst = find_instance(thiz);
   if (inst)
     inst->OnRewindRequested();
 }
 
-void CJNIXBMCMediaSession::_onStopRequested(JNIEnv* env, jobject thiz)
+void CJNIMediaSession::_onStopRequested(JNIEnv* env, jobject thiz)
 {
   (void)env;
 
-  CJNIXBMCMediaSession *inst = find_instance(thiz);
+  CJNIMediaSession *inst = find_instance(thiz);
   if (inst)
     inst->OnStopRequested();
 }
 
-void CJNIXBMCMediaSession::_onSeekRequested(JNIEnv* env, jobject thiz, jlong pos)
+void CJNIMediaSession::_onSeekRequested(JNIEnv* env, jobject thiz, jlong pos)
 {
   (void)env;
 
-  CJNIXBMCMediaSession *inst = find_instance(thiz);
+  CJNIMediaSession *inst = find_instance(thiz);
   if (inst)
     inst->OnSeekRequested(pos);
 }
 
-bool CJNIXBMCMediaSession::_onMediaButtonEvent(JNIEnv* env, jobject thiz, jobject intent)
+bool CJNIMediaSession::_onMediaButtonEvent(JNIEnv* env, jobject thiz, jobject intent)
 {
   (void)env;
 
-  CJNIXBMCMediaSession *inst = find_instance(thiz);
+  CJNIMediaSession *inst = find_instance(thiz);
   if (inst)
     return inst->OnMediaButtonEvent(CJNIIntent(jhobject::fromJNI(intent)));
   return false;

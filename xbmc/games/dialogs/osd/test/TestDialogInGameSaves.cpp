@@ -14,7 +14,7 @@
 
 namespace
 {
-class CTestDialogInGameSaves : public KODI::GAME::CDialogInGameSaves
+class CTestDialogInGameSaves : public UNIVERSAL MEDIA CENTER::GAME::CDialogInGameSaves
 {
 public:
   using CDialogInGameSaves::GetFocusedItem;

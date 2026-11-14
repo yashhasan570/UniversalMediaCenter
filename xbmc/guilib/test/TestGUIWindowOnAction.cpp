@@ -28,7 +28,7 @@ constexpr int GROUP_ID = 5001;
 constexpr int CHILD_ID = 5002;
 constexpr int DEFAULT_CONTROL_ID = 5003;
 
-using KODI::GUILIB::TEST::CTestWinSystem;
+using UNIVERSAL MEDIA CENTER::GUILIB::TEST::CTestWinSystem;
 
 class CScopedWinSystemRegistration
 {

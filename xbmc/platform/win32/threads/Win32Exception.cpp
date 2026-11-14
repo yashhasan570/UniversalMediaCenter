@@ -63,21 +63,21 @@ std::string win32_exception::m_platformDir;
 
 bool win32_exception::write_minidump(EXCEPTION_POINTERS* pEp)
 {
-  // Create the dump file where the xbmc.exe resides
+  // Create the dump file where the .exe resides
   bool returncode = false;
   std::string dumpFileName;
   std::wstring dumpFileNameW;
-  KODI::TIME::SystemTime stLocalTime;
-  KODI::TIME::GetLocalTime(&stLocalTime);
+  UNIVERSAL MEDIA CENTER::TIME::SystemTime stLocalTime;
+  UNIVERSAL MEDIA CENTER::TIME::GetLocalTime(&stLocalTime);
 
-  dumpFileName = StringUtils::Format("kodi_crashlog-{}-{:04}{:02}{:02}-{:02}{:02}{:02}.dmp",
+  dumpFileName = StringUtils::Format("universalmediacenter_crashlog-{}-{:04}{:02}{:02}-{:02}{:02}{:02}.dmp",
                                      mVersion, stLocalTime.year, stLocalTime.month, stLocalTime.day,
                                      stLocalTime.hour, stLocalTime.minute, stLocalTime.second);
 
   dumpFileName = CWIN32Util::SmbToUnc(
       URIUtils::AddFileToFolder(m_platformDir, CUtil::MakeLegalFileName(std::move(dumpFileName))));
 
-  dumpFileNameW = KODI::PLATFORM::WINDOWS::ToW(dumpFileName);
+  dumpFileNameW = UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::ToW(dumpFileName);
   HANDLE hDumpFile = CreateFileW(dumpFileNameW.c_str(), GENERIC_WRITE, 0, 0, CREATE_ALWAYS, 0, 0);
 
   HMODULE hDbgHelpDll = nullptr;
@@ -131,7 +131,7 @@ cleanup:
   return returncode;
 }
 
-/* \brief Writes a simple stack trace to the XBMC user directory.
+/* \brief Writes a simple stack trace to the  user directory.
    It needs a valid .pdb file to show the method, filename and
    line number where the exception took place.
 */
@@ -143,8 +143,8 @@ bool win32_exception::write_stacktrace(EXCEPTION_POINTERS* pEp)
   std::wstring dumpFileNameW;
   CHAR cTemp[STACKWALK_MAX_NAMELEN];
   DWORD dwBytes;
-  KODI::TIME::SystemTime stLocalTime;
-  KODI::TIME::GetLocalTime(&stLocalTime);
+  UNIVERSAL MEDIA CENTER::TIME::SystemTime stLocalTime;
+  UNIVERSAL MEDIA CENTER::TIME::GetLocalTime(&stLocalTime);
   bool returncode = false;
   STACKFRAME64 frame = {};
   HANDLE hCurProc = GetCurrentProcess();
@@ -186,14 +186,14 @@ bool win32_exception::write_stacktrace(EXCEPTION_POINTERS* pEp)
      pSFTA == NULL || pSGMB == NULL)
     goto cleanup;
 
-  dumpFileName = StringUtils::Format("kodi_stacktrace-{}-{:04}{:02}{:02}-{:02}{:02}{:02}.txt",
+  dumpFileName = StringUtils::Format("universalmediacenter_stacktrace-{}-{:04}{:02}{:02}-{:02}{:02}{:02}.txt",
                                      mVersion, stLocalTime.year, stLocalTime.month, stLocalTime.day,
                                      stLocalTime.hour, stLocalTime.minute, stLocalTime.second);
 
   dumpFileName = CWIN32Util::SmbToUnc(
       URIUtils::AddFileToFolder(m_platformDir, CUtil::MakeLegalFileName(std::move(dumpFileName))));
 
-  dumpFileNameW = KODI::PLATFORM::WINDOWS::ToW(dumpFileName);
+  dumpFileNameW = UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::ToW(dumpFileName);
   hDumpFile = CreateFileW(dumpFileNameW.c_str(), GENERIC_WRITE, 0, 0, CREATE_ALWAYS, 0, 0);
 
   if (hDumpFile == INVALID_HANDLE_VALUE)

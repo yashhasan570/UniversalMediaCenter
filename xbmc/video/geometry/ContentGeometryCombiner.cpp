@@ -14,7 +14,7 @@
 #include <array>
 #include <cstdlib>
 
-namespace KODI::VIDEO::GEOMETRY
+namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY
 {
 
 namespace
@@ -174,4 +174,4 @@ CombinedGeometry CombineGeometrySamples(std::span<const GeometrySample> samples,
   return result;
 }
 
-} // namespace KODI::VIDEO::GEOMETRY
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY

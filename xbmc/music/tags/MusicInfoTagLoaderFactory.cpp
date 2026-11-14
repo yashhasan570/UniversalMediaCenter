@@ -26,8 +26,8 @@
 #include "utils/StringUtils.h"
 #include "utils/URIUtils.h"
 
-using namespace KODI;
-using namespace KODI::ADDONS;
+using namespace UNIVERSAL MEDIA CENTER;
+using namespace UNIVERSAL MEDIA CENTER::ADDONS;
 using namespace MUSIC_INFO;
 
 CMusicInfoTagLoaderFactory::CMusicInfoTagLoaderFactory() = default;

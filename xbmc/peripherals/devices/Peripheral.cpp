@@ -31,14 +31,14 @@
 #include "utils/DefaultArt.h"
 #include "utils/FileUtils.h"
 #include "utils/StringUtils.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 #include "utils/XMLUtils.h"
 #include "utils/log.h"
 
 #include <utility>
 #include <vector>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace JOYSTICK;
 using namespace PERIPHERALS;
 
@@ -647,7 +647,7 @@ void CPeripheral::SetAddonSetting(const std::string& strKey, const std::string& 
 
 void CPeripheral::PersistSettings(bool bExiting /* = false */)
 {
-  CXBMCTinyXML2 doc;
+  CTinyXML2 doc;
   auto* node = doc.NewElement("settings");
   if (node == nullptr)
     return;
@@ -714,7 +714,7 @@ void CPeripheral::PersistSettings(bool bExiting /* = false */)
 
 void CPeripheral::LoadPersistedSettings(void)
 {
-  CXBMCTinyXML2 doc;
+  CTinyXML2 doc;
   if (doc.LoadFile(m_strSettingsFileLoad))
   {
     const auto* setting = doc.RootElement()->FirstChildElement("setting");
@@ -791,7 +791,7 @@ void CPeripheral::RegisterKeyboardHandler(KEYBOARD::IKeyboardInputHandler* handl
   auto it = m_keyboardHandlers.find(handler);
   if (it == m_keyboardHandlers.end())
   {
-    std::unique_ptr<KODI::KEYBOARD::IKeyboardDriverHandler> keyboardDriverHandler;
+    std::unique_ptr<UNIVERSAL MEDIA CENTER::KEYBOARD::IKeyboardDriverHandler> keyboardDriverHandler;
 
     if (!forceDefaultMap)
     {
@@ -811,8 +811,8 @@ void CPeripheral::RegisterKeyboardHandler(KEYBOARD::IKeyboardInputHandler* handl
 
     if (!keyboardDriverHandler)
     {
-      std::unique_ptr<KODI::KEYBOARD::CDefaultKeyboardHandling> defaultInput =
-          std::make_unique<KODI::KEYBOARD::CDefaultKeyboardHandling>(this, handler);
+      std::unique_ptr<UNIVERSAL MEDIA CENTER::KEYBOARD::CDefaultKeyboardHandling> defaultInput =
+          std::make_unique<UNIVERSAL MEDIA CENTER::KEYBOARD::CDefaultKeyboardHandling>(this, handler);
       if (defaultInput->Load())
         keyboardDriverHandler = std::move(defaultInput);
     }
@@ -842,7 +842,7 @@ void CPeripheral::RegisterMouseHandler(MOUSE::IMouseInputHandler* handler,
   auto it = m_mouseHandlers.find(handler);
   if (it == m_mouseHandlers.end())
   {
-    std::unique_ptr<KODI::MOUSE::IMouseDriverHandler> mouseDriverHandler;
+    std::unique_ptr<UNIVERSAL MEDIA CENTER::MOUSE::IMouseDriverHandler> mouseDriverHandler;
 
     if (!forceDefaultMap)
     {
@@ -862,8 +862,8 @@ void CPeripheral::RegisterMouseHandler(MOUSE::IMouseInputHandler* handler,
 
     if (!mouseDriverHandler)
     {
-      std::unique_ptr<KODI::MOUSE::CDefaultMouseHandling> defaultInput =
-          std::make_unique<KODI::MOUSE::CDefaultMouseHandling>(this, handler);
+      std::unique_ptr<UNIVERSAL MEDIA CENTER::MOUSE::CDefaultMouseHandling> defaultInput =
+          std::make_unique<UNIVERSAL MEDIA CENTER::MOUSE::CDefaultMouseHandling>(this, handler);
       if (defaultInput->Load())
         mouseDriverHandler = std::move(defaultInput);
     }
@@ -1021,7 +1021,7 @@ void CPeripheral::SetControllerProfile(const GAME::ControllerPtr& controller)
 
 void CPeripheral::InstallController(
     const std::string& controllerId,
-    const std::function<void(const KODI::GAME::ControllerPtr& installedController)>& callback)
+    const std::function<void(const UNIVERSAL MEDIA CENTER::GAME::ControllerPtr& installedController)>& callback)
 {
   std::unique_lock<std::mutex> lock(m_controllerInstallMutex);
 

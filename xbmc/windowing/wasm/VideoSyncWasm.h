@@ -9,7 +9,7 @@
 
 #include <cstdint>
 
-namespace KODI::WINDOWING::WASM
+namespace UNIVERSAL MEDIA CENTER::WINDOWING::WASM
 {
 class CVideoSyncWasm : public CVideoSync
 {
@@ -25,4 +25,4 @@ private:
   int64_t m_lastVBlankTime{0};
   bool m_rateSettled{false};
 };
-} // namespace KODI::WINDOWING::WASM
+} // namespace UNIVERSAL MEDIA CENTER::WINDOWING::WASM

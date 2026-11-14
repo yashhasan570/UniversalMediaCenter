@@ -13,7 +13,7 @@
 #include <string>
 #include <vector>
 
-namespace KODI::PLAYLIST
+namespace UNIVERSAL MEDIA CENTER::PLAYLIST
 {
 class CPlayListPLS : public CPlayList
 {

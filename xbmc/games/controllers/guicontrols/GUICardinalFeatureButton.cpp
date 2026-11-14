@@ -14,7 +14,7 @@
 
 #include <string>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 CGUICardinalFeatureButton::CGUICardinalFeatureButton(const CGUIButtonControl& buttonTemplate,
@@ -83,7 +83,7 @@ bool CGUICardinalFeatureButton::IsFinished(void) const
   return m_state >= STATE::FINISHED;
 }
 
-KODI::INPUT::CARDINAL_DIRECTION CGUICardinalFeatureButton::GetCardinalDirection(void) const
+UNIVERSAL MEDIA CENTER::INPUT::CARDINAL_DIRECTION CGUICardinalFeatureButton::GetCardinalDirection(void) const
 {
   using namespace INPUT;
 

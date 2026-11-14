@@ -15,7 +15,7 @@ TEST(TestHttpParser, General)
   HttpParser a;
   std::string str = "POST /path/script.cgi HTTP/1.0\r\n"
                    "From: amejia@github.com/yashhasan570/UniversalMediaCenter\r\n"
-                   "User-Agent: XBMC/snapshot (compatible; MSIE 5.5; Windows NT"
+                   "User-Agent: /snapshot (compatible; MSIE 5.5; Windows NT"
                      " 4.0)\r\n"
                    "Content-Type: application/x-www-form-urlencoded\r\n"
                    "Content-Length: 35\r\n"

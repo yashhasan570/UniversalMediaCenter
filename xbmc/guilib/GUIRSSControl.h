@@ -29,8 +29,8 @@ class CGUIRSSControl : public CGUIControl, public IRssObserver
 {
 public:
   CGUIRSSControl(int parentID, int controlID, float posX, float posY, float width, float height,
-                 const CLabelInfo& labelInfo, const KODI::GUILIB::GUIINFO::CGUIInfoColor &channelColor,
-                 const KODI::GUILIB::GUIINFO::CGUIInfoColor &headlineColor, std::string& strRSSTags);
+                 const CLabelInfo& labelInfo, const UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoColor &channelColor,
+                 const UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoColor &headlineColor, std::string& strRSSTags);
   CGUIRSSControl(const CGUIRSSControl &from);
   ~CGUIRSSControl(void) override;
   CGUIRSSControl* Clone() const override { return new CGUIRSSControl(*this); }
@@ -58,8 +58,8 @@ protected:
   std::string m_strRSSTags;
 
   CLabelInfo m_label;
-  KODI::GUILIB::GUIINFO::CGUIInfoColor m_channelColor;
-  KODI::GUILIB::GUIINFO::CGUIInfoColor m_headlineColor;
+  UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoColor m_channelColor;
+  UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoColor m_headlineColor;
 
   std::vector<std::string> m_vecUrls;
   std::vector<int> m_vecIntervals;

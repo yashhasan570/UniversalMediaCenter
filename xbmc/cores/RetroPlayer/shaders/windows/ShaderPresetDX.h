@@ -13,7 +13,7 @@
 #include <d3d11.h>
 #include <wrl/client.h>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -53,4 +53,4 @@ private:
   Microsoft::WRL::ComPtr<ID3D11SamplerState> m_pSampLinear;
 };
 } // namespace SHADER
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

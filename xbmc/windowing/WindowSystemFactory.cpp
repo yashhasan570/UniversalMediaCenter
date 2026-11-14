@@ -10,7 +10,7 @@
 
 #include <algorithm>
 
-using namespace KODI::WINDOWING;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING;
 
 std::list<std::pair<std::string, std::function<std::unique_ptr<CWinSystemBase>()>>>
     CWindowSystemFactory::m_windowSystems;

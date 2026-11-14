@@ -20,7 +20,7 @@
 
 #include <sstream>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace RETRO;
 
 CGUIGameControl::CGUIGameControl(
@@ -67,7 +67,7 @@ void CGUIGameControl::SetStretchMode(const GUILIB::GUIINFO::CGUIInfoLabel& stret
   m_stretchModeInfo = stretchMode;
 }
 
-void CGUIGameControl::SetRotation(const KODI::GUILIB::GUIINFO::CGUIInfoLabel& rotation)
+void CGUIGameControl::SetRotation(const UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoLabel& rotation)
 {
   m_rotationInfo = rotation;
 }

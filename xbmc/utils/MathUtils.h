@@ -96,7 +96,7 @@ namespace MathUtils
      * of the offset causes a round *up* to an exact integer, due to the finite
      * level of precision available in floating point. You need to be aware of
      * this when calling this function, although at present it is not believed
-     * that XBMC ever attempts to round numbers in this window.
+     * that  ever attempts to round numbers in this window.
      *
      * It is worth proving the size of the affected window. Recall that double
      * precision employs a mantissa of 52 bits.

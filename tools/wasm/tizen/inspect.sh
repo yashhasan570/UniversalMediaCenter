@@ -3,8 +3,8 @@
 # DevTools port it opens to localhost. See docs/README.WASM.md §7.4.
 set -eu
 
-APP_ID="${KODI_TIZEN_APP_ID:-kodiplayer.Universal Media Center}"
-LOCAL_PORT="${KODI_TIZEN_INSPECT_PORT:-7011}"
+APP_ID="${UNIVERSALMEDIA_TIZEN_APP_ID:-universalmediacenterplayer.Universal Media Center}"
+LOCAL_PORT="${UNIVERSALMEDIA_TIZEN_INSPECT_PORT:-7011}"
 SDB="${SDB:-$(command -v sdb || echo "$HOME/tizen-studio/tools/sdb")}"
 
 set -- 

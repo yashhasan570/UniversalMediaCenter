@@ -10,13 +10,13 @@
 
 #include "GameClientDevice.h"
 #include "GameClientPort.h"
-#include "addons/kodi-dev-kit/include/kodi/c-api/addon-instance/game.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api/addon-instance/game.h"
 #include "games/controllers/Controller.h"
 
 #include <sstream>
 #include <utility>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 #define CONTROLLER_ADDRESS_SEPARATOR '/'

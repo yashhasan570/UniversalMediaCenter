@@ -43,5 +43,5 @@ private:
   SOCKET m_socket;
   CEvent m_event;
   CCriticalSection m_critSection;
-  KODI::KEYMAP::CIRTranslator m_irTranslator;
+  UNIVERSAL MEDIA CENTER::KEYMAP::CIRTranslator m_irTranslator;
 };

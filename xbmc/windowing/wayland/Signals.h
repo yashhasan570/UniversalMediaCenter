@@ -14,7 +14,7 @@
 #include <memory>
 #include <mutex>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 
 using RegistrationIdentifierType = int;

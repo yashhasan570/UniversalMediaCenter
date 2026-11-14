@@ -22,17 +22,17 @@ CPeripheralNyxboard::CPeripheralNyxboard(CPeripherals& manager,
   m_features.push_back(FEATURE_NYXBOARD);
 }
 
-bool CPeripheralNyxboard::LookupSymAndUnicode(XBMC_keysym& keysym, uint16_t* key, char* unicode)
+bool CPeripheralNyxboard::LookupSymAndUnicode(_keysym& keysym, uint16_t* key, char* unicode)
 {
   std::string strCommand;
-  if (keysym.sym == XBMCK_F7 && keysym.mod == XBMCKMOD_NONE &&
+  if (keysym.sym == K_F7 && keysym.mod == KMOD_NONE &&
       GetSettingBool("enable_flip_commands"))
   {
     /* switched to keyboard side */
     CLog::Log(LOGDEBUG, "{} - switched to keyboard side", __FUNCTION__);
     strCommand = GetSettingString("flip_keyboard");
   }
-  else if (keysym.sym == XBMCK_F7 && keysym.mod == XBMCKMOD_LCTRL &&
+  else if (keysym.sym == K_F7 && keysym.mod == KMOD_LCTRL &&
            GetSettingBool("enable_flip_commands"))
   {
     /* switched to remote side */
@@ -43,7 +43,7 @@ bool CPeripheralNyxboard::LookupSymAndUnicode(XBMC_keysym& keysym, uint16_t* key
   if (!strCommand.empty())
   {
     CLog::Log(LOGDEBUG, "{} - executing command '{}'", __FUNCTION__, strCommand);
-    if (g_application.ExecuteXBMCAction(strCommand))
+    if (g_application.ExecuteAction(strCommand))
     {
       *key = 0;
       *unicode = (char)0;

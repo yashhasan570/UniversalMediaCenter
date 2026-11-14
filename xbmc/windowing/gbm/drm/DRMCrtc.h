@@ -10,7 +10,7 @@
 
 #include "DRMObject.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace WINDOWING
 {
@@ -45,4 +45,4 @@ private:
 
 } // namespace GBM
 } // namespace WINDOWING
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

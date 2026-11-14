@@ -51,7 +51,7 @@ protected:
   // specialization of CGUIDialogSettingsManualBase
   void InitializeSettings() override;
 
-  void UpdateIcon(const KODI::GAME::ControllerPtr& controller);
+  void UpdateIcon(const UNIVERSAL MEDIA CENTER::GAME::ControllerPtr& controller);
 
   // Dialog state
   CPeripherals* m_manager{nullptr};

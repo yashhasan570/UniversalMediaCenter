@@ -6,9 +6,9 @@ import json
 import re
 import time
 
-import xbmc
-import xbmcgui
-import xbmcplugin
+import 
+import gui
+import plugin
 
 from lib import art_cache, log
 from lib.artwork import set_artwork
@@ -100,7 +100,7 @@ def run_action(handle, action, params):
         func(handle, api, params, settings)
     else:
         log.info('unknown action: {}'.format(action))
-        xbmcplugin.endOfDirectory(handle)
+        plugin.endOfDirectory(handle)
 
 
 def _evict_previous_show(cache, new_show_id):
@@ -164,7 +164,7 @@ def _find(handle, api, params, _settings):
             parts.append(origins[0])
         if parts:
             label = '{} ({})'.format(name, ', '.join(parts))
-        li = xbmcgui.ListItem(label, offscreen=True)
+        li = gui.ListItem(label, offscreen=True)
         vtag = li.getVideoInfoTag()
         vtag.setTitle(name)
         vtag.setOriginalTitle(show.get('original_name', ''))
@@ -180,11 +180,11 @@ def _find(handle, api, params, _settings):
                 preview='{}w500{}'.format(img_base, poster),
             )
         li.setProperty('relevance', str(show['_relevance']))
-        xbmcplugin.addDirectoryItem(
+        plugin.addDirectoryItem(
             handle=handle, url=str(show_id),
             listitem=li, isFolder=True,
         )
-    xbmcplugin.endOfDirectory(handle)
+    plugin.endOfDirectory(handle)
 
 
 def _getdetails(handle, api, params, settings):
@@ -211,24 +211,24 @@ def _getdetails(handle, api, params, settings):
     merge_fanarttv_artwork(show, settings)
     art_cache.store(show_id, show)
 
-    li = xbmcgui.ListItem(show.get('name', ''), offscreen=True)
+    li = gui.ListItem(show.get('name', ''), offscreen=True)
     _populate_show(li, show, settings, ep_grouping, named_seasons,
                    ep_group_data)
     set_artwork(li, show, settings)
-    xbmcplugin.setResolvedUrl(handle, True, li)
+    plugin.setResolvedUrl(handle, True, li)
 
 
 def _getepisodelist(handle, api, params, settings):
     show_id, ep_grouping = _resolve_episode_guide(api, params)
     if not show_id:
-        xbmcplugin.endOfDirectory(handle)
+        plugin.endOfDirectory(handle)
         return
 
     api.prefetch_episodes(show_id)
 
     episodes = api.get_cached_episodes(show_id)
     if not episodes:
-        xbmcplugin.endOfDirectory(handle)
+        plugin.endOfDirectory(handle)
         return
 
     # Prefetch Trakt ratings per-season instead of per-episode
@@ -251,7 +251,7 @@ def _getepisodelist(handle, api, params, settings):
 
     for (snum, enum) in sorted(episodes.keys()):
         ep = episodes[(snum, enum)]
-        li = xbmcgui.ListItem(ep.get('name', ''), offscreen=True)
+        li = gui.ListItem(ep.get('name', ''), offscreen=True)
         vtag = li.getVideoInfoTag()
         vtag.setSeason(snum)
         vtag.setEpisode(enum)
@@ -263,11 +263,11 @@ def _getepisodelist(handle, api, params, settings):
         org_s = ep.get('org_seasonnum', snum)
         org_e = ep.get('org_epnum', enum)
         ep_url = '{}/{}/{}'.format(show_id, org_s, org_e)
-        xbmcplugin.addDirectoryItem(
+        plugin.addDirectoryItem(
             handle=handle, url=ep_url,
             listitem=li, isFolder=False,
         )
-    xbmcplugin.endOfDirectory(handle)
+    plugin.endOfDirectory(handle)
 
 
 def _getepisodedetails(handle, api, params, settings):
@@ -295,11 +295,11 @@ def _getepisodedetails(handle, api, params, settings):
     if show:
         show_imdb_id = show.get('external_ids', {}).get('imdb_id', '')
 
-    li = xbmcgui.ListItem(ep.get('name', ''), offscreen=True)
+    li = gui.ListItem(ep.get('name', ''), offscreen=True)
     _populate_episode(
         li, ep, season_num, episode_num, settings, show_imdb_id
     )
-    xbmcplugin.setResolvedUrl(handle, True, li)
+    plugin.setResolvedUrl(handle, True, li)
 
 
 def _getartwork(handle, api, params, settings):
@@ -325,9 +325,9 @@ def _getartwork(handle, api, params, settings):
                 return
             merge_fanarttv_artwork(show, settings)
 
-    li = xbmcgui.ListItem(show.get('name', ''), offscreen=True)
+    li = gui.ListItem(show.get('name', ''), offscreen=True)
     set_artwork(li, show, settings)
-    xbmcplugin.setResolvedUrl(handle, True, li)
+    plugin.setResolvedUrl(handle, True, li)
 
 
 def _nfo_url(handle, params):
@@ -335,7 +335,7 @@ def _nfo_url(handle, params):
 
     # Universal Media Center handles complete NFOs (with <uniqueid>) itself, skip
     if '<uniqueid' in nfo:
-        xbmcplugin.endOfDirectory(handle)
+        plugin.endOfDirectory(handle)
         return
 
     show_id, provider, ep_grouping, named_seasons = _parse_nfo(nfo)
@@ -343,7 +343,7 @@ def _nfo_url(handle, params):
         show_id, provider, ep_grouping or 'none'))
 
     if not show_id:
-        xbmcplugin.endOfDirectory(handle)
+        plugin.endOfDirectory(handle)
         return
 
     # IMDB/TVDB URLs need conversion to TMDB ID via /find
@@ -352,7 +352,7 @@ def _nfo_url(handle, params):
         api = TmdbApi(settings)
         tmdb_id = api.find_by_external_id(show_id, provider)
         if not tmdb_id:
-            xbmcplugin.endOfDirectory(handle)
+            plugin.endOfDirectory(handle)
             return
         show_id = tmdb_id
 
@@ -363,12 +363,12 @@ def _nfo_url(handle, params):
         ns = json.dumps({str(k): v for k, v in named_seasons.items()})
         url = '{}|ns:{}'.format(url, ns)
 
-    li = xbmcgui.ListItem(offscreen=True)
+    li = gui.ListItem(offscreen=True)
     li.getVideoInfoTag().setUniqueIDs({'tmdb': show_id}, 'tmdb')
-    xbmcplugin.addDirectoryItem(
+    plugin.addDirectoryItem(
         handle=handle, url=url, listitem=li, isFolder=True,
     )
-    xbmcplugin.endOfDirectory(handle)
+    plugin.endOfDirectory(handle)
 
 
 _RE_PUNCT = re.compile(r'[:\-,.!?…\u2013\u2014\']+')
@@ -607,7 +607,7 @@ def _make_actor(member):
     thumb = ''
     if member.get('profile_path'):
         thumb = '{}original{}'.format(get_image_base(), member['profile_path'])
-    return xbmc.Actor(
+    return .Actor(
         member.get('name', ''), member.get('character', ''),
         member.get('order', 0), thumb,
     )
@@ -625,8 +625,8 @@ def _clean_plot(text):
 
 
 def _fail(handle):
-    xbmcplugin.setResolvedUrl(
-        handle, False, xbmcgui.ListItem(offscreen=True)
+    plugin.setResolvedUrl(
+        handle, False, gui.ListItem(offscreen=True)
     )
 
 

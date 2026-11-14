@@ -13,7 +13,7 @@
 #include "addons/AddonManager.h"
 #include "addons/AddonVersion.h"
 #include "addons/binary-addons/AddonDll.h"
-#include "addons/kodi-dev-kit/include/kodi/General.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/General.h"
 #include "application/ApplicationComponents.h"
 #include "application/ApplicationPowerHandling.h"
 #include "dialogs/GUIDialogKaiToast.h"
@@ -33,8 +33,8 @@
 #include <limits>
 #include <string.h>
 
-using namespace kodi; // addon-dev-kit namespace
-using namespace KODI;
+using namespace universalmediacenter; // addon-dev-kit namespace
+using namespace UNIVERSAL MEDIA CENTER;
 using UTILITY::CDigest;
 
 namespace ADDON
@@ -42,38 +42,38 @@ namespace ADDON
 
 void Interface_General::Init(AddonGlobalInterface* addonInterface)
 {
-  addonInterface->toUniversal Media Center->kodi = static_cast<AddonToUniversal Media CenterFuncTable_kodi*>(malloc(sizeof(AddonToUniversal Media CenterFuncTable_kodi)));
+  addonInterface->toUniversal Media Center->universalmediacenter = static_cast<AddonToUniversal Media CenterFuncTable_universalmediacenter*>(malloc(sizeof(AddonToUniversal Media CenterFuncTable_universalmediacenter)));
 
-  addonInterface->toUniversal Media Center->kodi->unknown_to_utf8 = unknown_to_utf8;
-  addonInterface->toUniversal Media Center->kodi->get_language = get_language;
-  addonInterface->toUniversal Media Center->kodi->queue_notification = queue_notification;
-  addonInterface->toUniversal Media Center->kodi->get_md5 = get_md5;
-  addonInterface->toUniversal Media Center->kodi->get_region = get_region;
-  addonInterface->toUniversal Media Center->kodi->get_free_mem = get_free_mem;
-  addonInterface->toUniversal Media Center->kodi->get_global_idle_time = get_global_idle_time;
-  addonInterface->toUniversal Media Center->kodi->is_addon_available = is_addon_available;
-  addonInterface->toUniversal Media Center->kodi->kodi_version = kodi_version;
-  addonInterface->toUniversal Media Center->kodi->get_current_skin_id = get_current_skin_id;
-  addonInterface->toUniversal Media Center->kodi->get_keyboard_layout = get_keyboard_layout;
-  addonInterface->toUniversal Media Center->kodi->change_keyboard_layout = change_keyboard_layout;
+  addonInterface->toUniversal Media Center->universalmediacenter->unknown_to_utf8 = unknown_to_utf8;
+  addonInterface->toUniversal Media Center->universalmediacenter->get_language = get_language;
+  addonInterface->toUniversal Media Center->universalmediacenter->queue_notification = queue_notification;
+  addonInterface->toUniversal Media Center->universalmediacenter->get_md5 = get_md5;
+  addonInterface->toUniversal Media Center->universalmediacenter->get_region = get_region;
+  addonInterface->toUniversal Media Center->universalmediacenter->get_free_mem = get_free_mem;
+  addonInterface->toUniversal Media Center->universalmediacenter->get_global_idle_time = get_global_idle_time;
+  addonInterface->toUniversal Media Center->universalmediacenter->is_addon_available = is_addon_available;
+  addonInterface->toUniversal Media Center->universalmediacenter->universalmediacenter_version = universalmediacenter_version;
+  addonInterface->toUniversal Media Center->universalmediacenter->get_current_skin_id = get_current_skin_id;
+  addonInterface->toUniversal Media Center->universalmediacenter->get_keyboard_layout = get_keyboard_layout;
+  addonInterface->toUniversal Media Center->universalmediacenter->change_keyboard_layout = change_keyboard_layout;
 }
 
 void Interface_General::DeInit(AddonGlobalInterface* addonInterface)
 {
   if (addonInterface->toUniversal Media Center && /* <-- needed as long as the old addon way is used */
-      addonInterface->toUniversal Media Center->kodi)
+      addonInterface->toUniversal Media Center->universalmediacenter)
   {
-    free(addonInterface->toUniversal Media Center->kodi);
-    addonInterface->toUniversal Media Center->kodi = nullptr;
+    free(addonInterface->toUniversal Media Center->universalmediacenter);
+    addonInterface->toUniversal Media Center->universalmediacenter = nullptr;
   }
 }
 
-char* Interface_General::unknown_to_utf8(void* kodiBase, const char* source, bool* ret, bool failOnBadChar)
+char* Interface_General::unknown_to_utf8(void* universalmediacenterBase, const char* source, bool* ret, bool failOnBadChar)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !source || !ret)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', source='{}', ret='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', source='{}', ret='{}')", universalmediacenterBase,
                static_cast<const void*>(source), static_cast<void*>(ret));
     return nullptr;
   }
@@ -83,12 +83,12 @@ char* Interface_General::unknown_to_utf8(void* kodiBase, const char* source, boo
   return strdup(string.c_str());
 }
 
-char* Interface_General::get_language(void* kodiBase, int format, bool region)
+char* Interface_General::get_language(void* universalmediacenterBase, int format, bool region)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}')", kodiBase);
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}')", universalmediacenterBase);
     return nullptr;
   }
 
@@ -111,15 +111,15 @@ char* Interface_General::get_language(void* kodiBase, int format, bool region)
   return strdup(g_langInfo.GetLanguageAs(langFormat, region).c_str());
 }
 
-bool Interface_General::queue_notification(void* kodiBase, int type, const char* header,
+bool Interface_General::queue_notification(void* universalmediacenterBase, int type, const char* header,
                                            const char* message, const char* imageFile,
                                            unsigned int displayTime, bool withSound,
                                            unsigned int messageTime)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !message)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', message='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', message='{}')", universalmediacenterBase,
                static_cast<const void*>(message));
     return false;
   }
@@ -172,12 +172,12 @@ bool Interface_General::queue_notification(void* kodiBase, int type, const char*
   return true;
 }
 
-void Interface_General::get_md5(void* kodiBase, const char* text, char* md5)
+void Interface_General::get_md5(void* universalmediacenterBase, const char* text, char* md5)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !text)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', text='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', text='{}')", universalmediacenterBase,
                static_cast<const void*>(text));
     return;
   }
@@ -186,12 +186,12 @@ void Interface_General::get_md5(void* kodiBase, const char* text, char* md5)
   strncpy(md5, md5Int.c_str(), 40);
 }
 
-char* Interface_General::get_region(void* kodiBase, const char* id)
+char* Interface_General::get_region(void* universalmediacenterBase, const char* id)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !id)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', id='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', id='{}')", universalmediacenterBase,
                static_cast<const void*>(id));
     return nullptr;
   }
@@ -244,18 +244,18 @@ char* Interface_General::get_region(void* kodiBase, const char* id)
   return strdup(result.c_str());
 }
 
-void Interface_General::get_free_mem(void* kodiBase, long* free, long* total, bool as_bytes)
+void Interface_General::get_free_mem(void* universalmediacenterBase, long* free, long* total, bool as_bytes)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !free || !total)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', free='{}', total='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', free='{}', total='{}')", universalmediacenterBase,
                static_cast<void*>(free), static_cast<void*>(total));
     return;
   }
 
-  KODI::MEMORY::MemoryStatus stat{};
-  KODI::MEMORY::GetMemoryStatus(&stat);
+  UNIVERSAL MEDIA CENTER::MEMORY::MemoryStatus stat{};
+  UNIVERSAL MEDIA CENTER::MEMORY::GetMemoryStatus(&stat);
   if (stat.totalPhys == 0)
     return;
 
@@ -268,12 +268,12 @@ void Interface_General::get_free_mem(void* kodiBase, long* free, long* total, bo
   *total = static_cast<long>(std::min<uint64_t>(stat.totalPhys, std::numeric_limits<long>::max()));
 }
 
-int Interface_General::get_global_idle_time(void* kodiBase)
+int Interface_General::get_global_idle_time(void* universalmediacenterBase)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}')", kodiBase);
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}')", universalmediacenterBase);
     return -1;
   }
 
@@ -282,15 +282,15 @@ int Interface_General::get_global_idle_time(void* kodiBase)
   return appPower->GlobalIdleTime();
 }
 
-bool Interface_General::is_addon_available(void* kodiBase,
+bool Interface_General::is_addon_available(void* universalmediacenterBase,
                                            const char* id,
                                            char** version,
                                            bool* enabled)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !id || !version || !enabled)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', id='{}', version='{}', enabled='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', id='{}', version='{}', enabled='{}')", universalmediacenterBase,
                static_cast<const void*>(id), static_cast<void*>(version),
                static_cast<void*>(enabled));
     return false;
@@ -305,15 +305,15 @@ bool Interface_General::is_addon_available(void* kodiBase,
   return true;
 }
 
-void Interface_General::kodi_version(void* kodiBase, char** compile_name, int* major, int* minor, char** revision, char** tag, char** tagversion)
+void Interface_General::universalmediacenter_version(void* universalmediacenterBase, char** compile_name, int* major, int* minor, char** revision, char** tag, char** tagversion)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !compile_name || !major || !minor || !revision || !tag || !tagversion)
   {
     CLog::LogF(LOGERROR,
                "Invalid data (addon='{}', compile_name='{}', major='{}', "
                "minor='{}', revision='{}', tag='{}', tagversion='{}')",
-               kodiBase, static_cast<void*>(compile_name), static_cast<void*>(major),
+               universalmediacenterBase, static_cast<void*>(compile_name), static_cast<void*>(major),
                static_cast<void*>(minor), static_cast<void*>(revision), static_cast<void*>(tag),
                static_cast<void*>(tagversion));
     return;
@@ -345,24 +345,24 @@ void Interface_General::kodi_version(void* kodiBase, char** compile_name, int* m
     *tag = strdup("prealpha");
 }
 
-char* Interface_General::get_current_skin_id(void* kodiBase)
+char* Interface_General::get_current_skin_id(void* universalmediacenterBase)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}')", kodiBase);
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}')", universalmediacenterBase);
     return nullptr;
   }
 
   return strdup(CServiceBroker::GetSettingsComponent()->GetSettings()->GetString(CSettings::SETTING_LOOKANDFEEL_SKIN).c_str());
 }
 
-bool Interface_General::get_keyboard_layout(void* kodiBase, char** layout_name, int modifier_key, AddonKeyboardKeyTable* c_layout)
+bool Interface_General::get_keyboard_layout(void* universalmediacenterBase, char** layout_name, int modifier_key, AddonKeyboardKeyTable* c_layout)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !c_layout || !layout_name)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', c_layout='{}', layout_name='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', c_layout='{}', layout_name='{}')", universalmediacenterBase,
                static_cast<void*>(c_layout), static_cast<void*>(layout_name));
     return false;
   }
@@ -394,12 +394,12 @@ bool Interface_General::get_keyboard_layout(void* kodiBase, char** layout_name, 
   return true;
 }
 
-bool Interface_General::change_keyboard_layout(void* kodiBase, char** layout_name)
+bool Interface_General::change_keyboard_layout(void* universalmediacenterBase, char** layout_name)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !layout_name)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', layout_name='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', layout_name='{}')", universalmediacenterBase,
                static_cast<void*>(layout_name));
     return false;
   }

@@ -30,8 +30,8 @@ public:
   virtual bool HasSymbols() = 0;
 
   const char *GetName() const; // eg "mplayer.dll"
-  const char *GetFileName() const; // "special://xbmcbin/system/mplayer/players/mplayer.dll"
-  const char *GetPath() const; // "special://xbmcbin/system/mplayer/players/"
+  const char *GetFileName() const; // "special://bin/system/mplayer/players/mplayer.dll"
+  const char *GetPath() const; // "special://bin/system/mplayer/players/"
 
   int IncrRef();
   int DecrRef();

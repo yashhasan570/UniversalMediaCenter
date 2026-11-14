@@ -95,7 +95,7 @@ protected:
   bool OnPlayAndQueueMedia(const CFileItemPtr& item, const std::string& player = "") override;
   using CGUIMediaWindow::LoadPlayList;
   void LoadPlayList(const std::string& strPlayList,
-                    KODI::PLAYLIST::Id playlistId = KODI::PLAYLIST::Id::TYPE_VIDEO);
+                    UNIVERSAL MEDIA CENTER::PLAYLIST::Id playlistId = UNIVERSAL MEDIA CENTER::PLAYLIST::Id::TYPE_VIDEO);
 
   /*!
    \brief Lookup the information of an item and display an Info dialog
@@ -128,7 +128,7 @@ protected:
   void OnSearchItemFound(const CFileItem* pSelItem);
   int GetScraperForItem(CFileItem* item,
                         ADDON::ScraperPtr& info,
-                        KODI::VIDEO::SScanSettings& settings);
+                        UNIVERSAL MEDIA CENTER::VIDEO::SScanSettings& settings);
 
   static bool OnUnAssignContent(const std::string &path, int header, int text);
 
@@ -142,7 +142,7 @@ protected:
 
   CVideoThumbLoader m_thumbLoader;
   bool m_restartThumbLoader{false}; //!< stopped for playback, restarted if the window stays active
-  KODI::MESSAGING::ThreadMessageCallback m_restartThumbLoaderCallback{
+  UNIVERSAL MEDIA CENTER::MESSAGING::ThreadMessageCallback m_restartThumbLoaderCallback{
       [](void* window) { static_cast<CGUIWindowVideoBase*>(window)->RestartThumbLoader(); }, this};
   bool m_stackingAvailable;
 

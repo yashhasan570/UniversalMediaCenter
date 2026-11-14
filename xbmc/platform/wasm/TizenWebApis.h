@@ -12,7 +12,7 @@
 
 #include <string>
 
-namespace KODI::PLATFORM::WASM
+namespace UNIVERSAL MEDIA CENTER::PLATFORM::WASM
 {
 
 /*!
@@ -70,4 +70,4 @@ public:
   static bool SetScreenSaverEnabled(bool enabled);
 };
 
-} // namespace KODI::PLATFORM::WASM
+} // namespace UNIVERSAL MEDIA CENTER::PLATFORM::WASM

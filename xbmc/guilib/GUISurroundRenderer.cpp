@@ -23,7 +23,7 @@
 namespace
 {
 
-void PaintBands(const CRect (&bands)[4], KODI::UTILS::COLOR::Color colour)
+void PaintBands(const CRect (&bands)[4], UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color colour)
 {
   for (const CRect& band : bands)
   {
@@ -76,7 +76,7 @@ const CGUISurroundRenderer::SurroundArt& CGUISurroundRenderer::Art()
   }
 
   if (!colour.empty())
-    m_art.colour = KODI::UTILS::COLOR::ConvertHexToColor(colour);
+    m_art.colour = UNIVERSAL MEDIA CENTER::UTILS::COLOR::ConvertHexToColor(colour);
 
   return m_art;
 }
@@ -161,7 +161,7 @@ bool CGUISurroundRenderer::FitImage(const CRect& raster)
   CRect fitted = raster;
   const float textureHeight = m_image->GetTextureHeight();
   if (textureHeight > 0.0f)
-    fitted = KODI::VIDEO::GEOMETRY::FitAspect(
+    fitted = UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::FitAspect(
         m_image->GetTextureWidth() / textureHeight, raster,
         CServiceBroker::GetWinSystem()->GetGfxContext().GetResInfo().fPixelRatio);
 

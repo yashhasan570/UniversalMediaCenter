@@ -30,7 +30,7 @@
 #include "weather/WeatherProperties.h"
 
 using namespace ADDON;
-using namespace KODI::WEATHER;
+using namespace UNIVERSAL MEDIA CENTER::WEATHER;
 
 CWeatherManager::CWeatherManager(ADDON::CAddonMgr& addonManager)
   : CInfoLoader(WEATHER_REFRESH_INTERVAL_MS),

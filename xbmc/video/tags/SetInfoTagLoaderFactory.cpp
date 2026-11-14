@@ -10,7 +10,7 @@
 
 #include "SetTagLoaderNFO.h"
 
-using namespace KODI::VIDEO;
+using namespace UNIVERSAL MEDIA CENTER::VIDEO;
 
 std::unique_ptr<ISetInfoTagLoader> CSetInfoTagLoaderFactory::CreateLoader(const std::string& title)
 {

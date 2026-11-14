@@ -53,7 +53,7 @@ public:
   bool GetFromEventServer() const { return m_fromEventServer; }
 
   inline uint32_t GetButtonCode() const { return m_buttonCode; }
-  inline uint32_t GetKeycode() const { return m_keycode; } // XBMCKey enum in XBMC_keysym.h
+  inline uint32_t GetKeycode() const { return m_keycode; } // Key enum in _keysym.h
   inline uint16_t GetVKey() const { return m_vkey; }
   inline wchar_t GetUnicode() const { return m_unicode; }
   inline char GetAscii() const { return m_ascii; }

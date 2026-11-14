@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-#   Copyright (C) 2008-2013 Team XBMC
+#   Copyright (C) 2008-2013 Team 
 #
 #   This program is free software; you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
@@ -153,8 +153,8 @@ if __name__ == "__main__":
             print(key+" : "+str( service[key] ))
 
     browser = Browser( {
-            '_xbmc-events._udp' : service_handler,
-            '_xbmc-web._tcp'    : service_handler
+            '_-events._udp' : service_handler,
+            '_-web._tcp'    : service_handler
             } )
     browser.run()
 

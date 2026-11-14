@@ -27,7 +27,7 @@
 
 #include <mutex>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 using namespace std::chrono_literals;
 
@@ -111,7 +111,7 @@ bool CGUIConfigurationWizard::Abort(bool bWait /* = true */)
 
 void CGUIConfigurationWizard::RegisterKey(const CPhysicalFeature& key)
 {
-  if (key.Keycode() != XBMCK_UNKNOWN)
+  if (key.Keycode() != K_UNKNOWN)
     m_keyMap[KEYBOARD::CKeyboardTranslator::TranslateKeycode(key.Keycode())] = key;
 }
 

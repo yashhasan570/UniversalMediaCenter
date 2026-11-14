@@ -10,7 +10,7 @@
 
 #include "cores/RetroPlayer/rendering/RenderTranslator.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace RETRO;
 
 bool CRenderBufferSysMem::Allocate(AVPixelFormat format, unsigned int width, unsigned int height)

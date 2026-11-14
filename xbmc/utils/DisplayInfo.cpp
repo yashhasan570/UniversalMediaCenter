@@ -18,7 +18,7 @@ extern "C"
 #include <libdisplay-info/info.h>
 }
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace UTILS;
 
 void CDisplayInfo::DiInfoDeleter::operator()(di_info* p)

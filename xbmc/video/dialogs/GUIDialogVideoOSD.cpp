@@ -21,7 +21,7 @@
 #include "settings/Settings.h"
 #include "settings/SettingsComponent.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace PVR;
 
 CGUIDialogVideoOSD::CGUIDialogVideoOSD(void)

@@ -16,11 +16,11 @@
 #include "utils/StringUtils.h"
 #include "utils/Variant.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace XFILE;
 using namespace XFILE::MUSICDATABASEDIRECTORY;
 
-namespace CONTENT = KODI::MEDIA::CONTENT;
+namespace CONTENT = UNIVERSAL MEDIA CENTER::MEDIA::CONTENT;
 
 CMusicDbUrl::CMusicDbUrl()
   : CDbUrl()

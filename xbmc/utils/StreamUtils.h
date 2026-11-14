@@ -30,7 +30,7 @@ public:
   struct AudioPreferences
   {
     //! \brief The language wanted. Empty when the preference is not a language.
-    KODI::LANGUAGE::CLanguageTag language;
+    UNIVERSAL MEDIA CENTER::LANGUAGE::CLanguageTag language;
 
     //! \brief The preference is "original language": prefer whichever stream is flagged original.
     bool preferOriginal{false};
@@ -60,7 +60,7 @@ public:
    */
   struct AudioCandidate
   {
-    KODI::LANGUAGE::CLanguageTag language;
+    UNIVERSAL MEDIA CENTER::LANGUAGE::CLanguageTag language;
     std::string_view codec;
     int channels{0};
     StreamFlags flags{StreamFlags::FLAG_NONE};

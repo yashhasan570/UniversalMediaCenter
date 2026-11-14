@@ -151,7 +151,7 @@ public:
   CTestFont() : CGUIFontTTFGLES("groupmask-test") {}
   void Paint(CGraphicContext& context)
   {
-    const std::array<KODI::UTILS::COLOR::Color, 1> colors{0xffffffff};
+    const std::array<UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color, 1> colors{0xffffffff};
     const vecText text{'M', 'A', 'S', 'K', 'M', 'A', 'S', 'K'};
     DrawTextInternal(context, 0, 48, colors, text, 0, 0, false, false);
   }
@@ -466,7 +466,7 @@ TEST_P(TestGUIControlGroupMaskGLES, DisjointMasksShareABucket)
 TEST_P(TestGUIControlGroupMaskGLES, TextUsesTheSameStencilMask)
 {
   CTestFont font;
-  ASSERT_TRUE(font.Load(XBMC_REF_FILE_PATH("media/Fonts/arial.ttf"), 32));
+  ASSERT_TRUE(font.Load(_REF_FILE_PATH("media/Fonts/arial.ttf"), 32));
   font.Paint(Context());
   const auto unmasked = ReadPixels();
   ASSERT_TRUE(m_window->ClearBuffers(0));
@@ -604,7 +604,7 @@ TEST_P(TestGUIControlGroupMaskGLES, SeparateStencilAttachmentAndMissingStencil)
   texture.Paint();
   EXPECT_EQ(ReadPixels(), Pixels{});
   CTestFont font;
-  ASSERT_TRUE(font.Load(XBMC_REF_FILE_PATH("media/Fonts/arial.ttf"), 32));
+  ASSERT_TRUE(font.Load(_REF_FILE_PATH("media/Fonts/arial.ttf"), 32));
   font.Paint(Context());
   EXPECT_EQ(ReadPixels(), Pixels{});
   Context().RestoreStencilLayer();

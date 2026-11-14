@@ -50,10 +50,10 @@
 #include <fmt/format.h>
 
 using namespace XFILE;
-using namespace KODI::MESSAGING;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
 using namespace std::chrono_literals;
 
-using KODI::MESSAGING::HELPERS::DialogResponse;
+using UNIVERSAL MEDIA CENTER::MESSAGING::HELPERS::DialogResponse;
 
 namespace
 {
@@ -187,8 +187,8 @@ static float ParseDeclaredAspect(const std::string& strAspect, const std::string
   {
     aspect = StringUtils::ToFloat(strAspect);
 
-    const float canonical = KODI::UTILS::CAspectRatioVocabulary::RatioForKey(
-        KODI::UTILS::CAspectRatioVocabulary::Key(aspect));
+    const float canonical = UNIVERSAL MEDIA CENTER::UTILS::CAspectRatioVocabulary::RatioForKey(
+        UNIVERSAL MEDIA CENTER::UTILS::CAspectRatioVocabulary::Key(aspect));
     if (canonical > 0.0f)
       aspect = canonical;
   }
@@ -585,7 +585,7 @@ void GetFontsetsFromFile(const std::string& fontsetFilePath,
                          const std::string& settingValue,
                          bool* currentValueSet)
 {
-  CXBMCTinyXML xmlDoc;
+  CTinyXML xmlDoc;
   if (xmlDoc.LoadFile(fontsetFilePath))
   {
     TiXmlElement* rootElement = xmlDoc.RootElement();
@@ -945,7 +945,7 @@ bool CSkinInfo::SettingsLoaded(AddonInstanceId id /* = ADDON_SETTINGS_ID */) con
   return !m_strings.empty() || !m_bools.empty();
 }
 
-bool CSkinInfo::SettingsFromXML(const CXBMCTinyXML& doc,
+bool CSkinInfo::SettingsFromXML(const CTinyXML& doc,
                                 bool loadDefaults,
                                 AddonInstanceId id /* = ADDON_SETTINGS_ID */)
 {
@@ -985,7 +985,7 @@ bool CSkinInfo::SettingsFromXML(const CXBMCTinyXML& doc,
   return true;
 }
 
-bool CSkinInfo::SettingsToXML(CXBMCTinyXML& doc, AddonInstanceId id /* = ADDON_SETTINGS_ID */) const
+bool CSkinInfo::SettingsToXML(CTinyXML& doc, AddonInstanceId id /* = ADDON_SETTINGS_ID */) const
 {
   // add the <skinsettings> tag
   TiXmlElement rootElement(XML_SETTINGS);

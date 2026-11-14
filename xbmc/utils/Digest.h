@@ -17,7 +17,7 @@
 
 #include <openssl/evp.h>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace UTILITY
 {

@@ -239,7 +239,7 @@ bool CTagLoaderTagLib::ParseTag(ASF::Tag* asf,
   return true;
 }
 
-int CTagLoaderTagLib::POPMtoXBMC(int popm)
+int CTagLoaderTagLib::POPMto(int popm)
 {
   // Ratings:
   // FROM: http://www.mediamonkey.com/forum/viewtopic.php?f=7&t=40532&start=30#p391067
@@ -469,7 +469,7 @@ bool CTagLoaderTagLib::ParseTag(ID3v2::Tag* id3v2,
               popFrame->email() != "rating@winamp.com")
             CLog::Log(LOGDEBUG, "unrecognized ratings schema detected: {}",
                       popFrame->email().toCString(true));
-          tag.SetUserrating(POPMtoXBMC(popFrame->rating()));
+          tag.SetUserrating(POPMto(popFrame->rating()));
         }
       }
     else if (it->first == "CHAP")

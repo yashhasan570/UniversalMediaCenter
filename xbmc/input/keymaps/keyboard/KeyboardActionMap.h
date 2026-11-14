@@ -10,7 +10,7 @@
 
 #include "input/keymaps/interfaces/IKeyboardActionMap.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace KEYMAP
 {
@@ -28,4 +28,4 @@ public:
   unsigned int GetActionID(const CKey& key) override;
 };
 } // namespace KEYMAP
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

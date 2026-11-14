@@ -21,7 +21,7 @@
 
 #include "PlatformDefs.h"
 
-using namespace KODI::WINDOWING::GBM;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::GBM;
 
 std::unique_ptr<CBufferObject> CDumbBufferObject::Create()
 {

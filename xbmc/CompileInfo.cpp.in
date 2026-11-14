@@ -124,5 +124,5 @@ std::string CCompileInfo::GetPythonVersion()
 
 std::vector<std::string> CCompileInfo::GetWebserverExtraWhitelist()
 {
-  return StringUtils::Split("@KODI_WEBSERVER_EXTRA_WHITELIST@", ',');
+  return StringUtils::Split("@UNIVERSALMEDIA_WEBSERVER_EXTRA_WHITELIST@", ',');
 }

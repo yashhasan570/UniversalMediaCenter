@@ -12,7 +12,7 @@
 
 #include <string>
 
-namespace KODI::DATABASE
+namespace UNIVERSAL MEDIA CENTER::DATABASE
 {
 class CVideoDatabaseDDL
 {
@@ -43,4 +43,4 @@ private:
   static void CreateViews(CDatabase& db);
   static void InitializeVideoVersionTypeTable(CDatabase& db);
 };
-} // namespace KODI::DATABASE
+} // namespace UNIVERSAL MEDIA CENTER::DATABASE

@@ -21,7 +21,7 @@
 #include <algorithm>
 #include <functional>
 
-namespace KODI::VIDEO
+namespace UNIVERSAL MEDIA CENTER::VIDEO
 {
 namespace
 {
@@ -134,7 +134,7 @@ VideoStreamInfoExt::VideoStreamInfoExt(int id, const VideoStreamInfo& info) : Vi
 {
   streamId = id;
 
-  languageDesc = KODI::GUILIB::GUIINFO::CGUIInfoUtils::FormatLanguage(info.language);
+  languageDesc = UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoUtils::FormatLanguage(info.language);
 
   isDefault = info.flags & StreamFlags::FLAG_DEFAULT;
   isForced = info.flags & StreamFlags::FLAG_FORCED;
@@ -150,7 +150,7 @@ AudioStreamInfoExt::AudioStreamInfoExt(int id, const AudioStreamInfo& info) : Au
 {
   streamId = id;
 
-  languageDesc = KODI::GUILIB::GUIINFO::CGUIInfoUtils::FormatLanguage(info.language);
+  languageDesc = UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoUtils::FormatLanguage(info.language);
 
   isDefault = info.flags & StreamFlags::FLAG_DEFAULT;
   isForced = info.flags & StreamFlags::FLAG_FORCED;
@@ -164,7 +164,7 @@ SubtitleStreamInfoExt::SubtitleStreamInfoExt(int id, const SubtitleStreamInfo& i
 {
   streamId = id;
 
-  languageDesc = KODI::GUILIB::GUIINFO::CGUIInfoUtils::FormatLanguage(info.language);
+  languageDesc = UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoUtils::FormatLanguage(info.language);
 
   isDefault = info.flags & StreamFlags::FLAG_DEFAULT;
   isForced = info.flags & StreamFlags::FLAG_FORCED;
@@ -280,4 +280,4 @@ void CVideoStreamSelect::OrderSubtitleStreams(std::vector<SubtitleStreamInfoExt>
   if (order == TrackOrder::SORTED)
     std::sort(streams.begin(), streams.end(), SortComparerStreamSubtitle());
 }
-} // namespace KODI::VIDEO
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO

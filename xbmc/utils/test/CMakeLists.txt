@@ -63,8 +63,8 @@ set(SOURCES TestAlarmClock.cpp
             TestUrlOptions.cpp
             TestUrlParsing.cpp
             TestVariant.cpp
-            TestXBMCTinyXML.cpp
-            TestXBMCTinyXML2.cpp
+            TestTinyXML.cpp
+            TestTinyXML2.cpp
             TestXMLUtils.cpp)
 
 if(TARGET ${APP_NAME_LC}::Bluray)

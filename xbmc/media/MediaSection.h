@@ -12,7 +12,7 @@
 #include <optional>
 #include <string_view>
 
-namespace KODI::MEDIA
+namespace UNIVERSAL MEDIA CENTER::MEDIA
 {
 
 //! \brief A section of Universal Media Center, each with sources of its own.
@@ -38,4 +38,4 @@ std::string_view NameOf(MediaSection section);
 //! other text.
 std::optional<MediaSection> MediaSectionFromName(std::string_view name);
 
-} // namespace KODI::MEDIA
+} // namespace UNIVERSAL MEDIA CENTER::MEDIA

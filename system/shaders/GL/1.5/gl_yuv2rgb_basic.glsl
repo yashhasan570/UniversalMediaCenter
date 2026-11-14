@@ -1,6 +1,6 @@
 #version 150
 
-#if(XBMC_texture_rectangle)
+#if(_texture_rectangle)
 # define texture2D texture2DRect
 # define sampler2D sampler2DRect
 #endif
@@ -25,11 +25,11 @@ out vec4 fragColor;
 
 vec2 stretch(vec2 pos)
 {
-#if (XBMC_STRETCH)
+#if (_STRETCH)
   // our transform should map [0..1] to itself, with f(0) = 0, f(1) = 1, f(0.5) = 0.5, and f'(0.5) = b.
   // a simple curve to do this is g(x) = b(x-0.5) + (1-b)2^(n-1)(x-0.5)^n + 0.5
   // where the power preserves sign. n = 2 is the simplest non-linear case (required when b != 1)
-  #if(XBMC_texture_rectangle)
+  #if(_texture_rectangle)
     float x = (pos.x * m_step.x) - 0.5;
     return vec2((mix(2.0 * x * abs(x), x, m_stretch) + 0.5) / m_step.x, pos.y);
   #else
@@ -46,20 +46,20 @@ vec4 process()
   vec4 rgb;
   vec4 yuv;
 
-#if defined(XBMC_YV12)
+#if defined(_YV12)
 
   yuv.rgba = vec4( texture(m_sampY, stretch(m_cordY)).r
                  , texture(m_sampU, stretch(m_cordU)).r
                  , texture(m_sampV, stretch(m_cordV)).r
                  , 1.0 );
 
-#elif defined(XBMC_NV12)
+#elif defined(_NV12)
 
   yuv.rgba = vec4( texture(m_sampY, stretch(m_cordY)).r
                  , texture(m_sampU, stretch(m_cordU)).rg
                  , 1.0 );
 
-#elif defined(XBMC_YUY2) || defined(XBMC_UYVY)
+#elif defined(_YUY2) || defined(_UYVY)
 
   vec2 stepxy = m_step;
   vec2 pos    = stretch(m_cordY);
@@ -74,7 +74,7 @@ vec4 process()
   /* each pixel has two Y subpixels and one UV subpixel
      YUV  Y  YUV
      check if we're left or right of the middle Y subpixel and interpolate accordingly*/
-#ifdef XBMC_YUY2 //BGRA = YUYV
+#ifdef _YUY2 //BGRA = YUYV
   float leftY   = mix(c1.b, c1.r, f.x * 2.0);
   float rightY  = mix(c1.r, c2.b, f.x * 2.0 - 1.0);
   vec2  outUV   = mix(c1.ga, c2.ga, f.x);
@@ -82,7 +82,7 @@ vec4 process()
   float leftY   = mix(c1.g, c1.a, f.x * 2.0);
   float rightY  = mix(c1.a, c2.g, f.x * 2.0 - 1.0);
   vec2  outUV   = mix(c1.br, c2.br, f.x);
-#endif //XBMC_YUY2
+#endif //_YUY2
 
   float outY = mix(leftY, rightY, step(0.5, f.x));
 
@@ -91,28 +91,28 @@ vec4 process()
 #endif
 
   rgb = m_yuvmat * yuv;
-#if defined(KODI_HUESAT_PQ) || defined(KODI_HUESAT_HLG)
+#if defined(UNIVERSAL MEDIA CENTER_HUESAT_PQ) || defined(UNIVERSAL MEDIA CENTER_HUESAT_HLG)
   rgb.rgb = hueSaturation(rgb.rgb);
 #endif
   rgb.a = m_alpha;
 
-#if defined(XBMC_COL_CONVERSION)
+#if defined(_COL_CONVERSION)
   rgb.rgb = pow(max(vec3(0), rgb.rgb), vec3(m_gammaSrc));
   rgb.rgb = max(vec3(0), m_primMat * rgb.rgb);
   rgb.rgb = pow(rgb.rgb, vec3(m_gammaDstInv));
 
-#if defined(KODI_TONE_MAPPING_REINHARD)
+#if defined(UNIVERSAL MEDIA CENTER_TONE_MAPPING_REINHARD)
   float luma = dot(rgb.rgb, m_coefsDst);
   rgb.rgb *= reinhard(luma) / luma;
 
-#elif defined(KODI_TONE_MAPPING_ACES)
+#elif defined(UNIVERSAL MEDIA CENTER_TONE_MAPPING_ACES)
   rgb.rgb = inversePQ(rgb.rgb);
   rgb.rgb *= (10000.0 / m_luminance) * (2.0 / m_toneP1);
   rgb.rgb = aces(rgb.rgb);
   rgb.rgb *= (1.24 / m_toneP1);
   rgb.rgb = pow(rgb.rgb, vec3(0.27));
 
-#elif defined(KODI_TONE_MAPPING_HABLE)
+#elif defined(UNIVERSAL MEDIA CENTER_TONE_MAPPING_HABLE)
   rgb.rgb = inversePQ(rgb.rgb);
   rgb.rgb *= m_toneP1;
   float wp = m_luminance / 100.0;
@@ -122,11 +122,11 @@ vec4 process()
 
 #endif
 
-#if defined(KODI_GAMMA)
+#if defined(UNIVERSAL MEDIA CENTER_GAMMA)
   rgb.rgb = pow(clamp((rgb.rgb - m_gammaRange.y) / m_gammaRange.x, 0.0, 1.0), vec3(m_gammaInv)) * m_gammaRange.x + m_gammaRange.y;
 #endif
 
-#if defined(KODI_GAMMA_LINEARIZATION_FAST)
+#if defined(UNIVERSAL MEDIA CENTER_GAMMA_LINEARIZATION_FAST)
   rgb.rgb = sqrt(rgb.rgb);
 #endif
 

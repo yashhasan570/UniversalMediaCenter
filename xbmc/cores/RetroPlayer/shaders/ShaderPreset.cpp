@@ -20,7 +20,7 @@
 
 #include <cmath>
 
-using namespace KODI::SHADER;
+using namespace UNIVERSAL MEDIA CENTER::SHADER;
 
 CShaderPreset::CShaderPreset(RETRO::CRenderContext& context,
                              unsigned videoWidth,
@@ -200,7 +200,7 @@ bool CShaderPreset::PrepareParameters(IShaderTexture& sourceTexture)
   return true;
 }
 
-void CShaderPreset::CalculateScaledSize(const KODI::SHADER::ShaderPass& pass,
+void CShaderPreset::CalculateScaledSize(const UNIVERSAL MEDIA CENTER::SHADER::ShaderPass& pass,
                                         const float2& prevSize,
                                         float2& scaledSize)
 {

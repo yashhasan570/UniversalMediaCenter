@@ -21,7 +21,7 @@
 #include "cores/VideoPlayer/VideoRenderers/HwDecRender/RendererVAAPIGLES.h"
 #endif
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace WINDOWING
 {
@@ -81,11 +81,11 @@ void VAAPIRegisterRenderGLES(CVaapiProxy* winSystem, bool& general, bool& deepCo
 
 } // namespace WAYLAND
 } // namespace WINDOWING
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER
 
 #else
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace WINDOWING
 {
@@ -130,7 +130,7 @@ void VAAPIRegisterRenderGLES(CVaapiProxy* winSystem, bool& general, bool& deepCo
 
 } // namespace WAYLAND
 } // namespace WINDOWING
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER
 
 #endif
 

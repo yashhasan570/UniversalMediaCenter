@@ -8,11 +8,11 @@
 
 #pragma once
 
-namespace KODI::SHADER
+namespace UNIVERSAL MEDIA CENTER::SHADER
 {
 class IShaderSampler
 {
 public:
   virtual ~IShaderSampler() = default;
 };
-} // namespace KODI::SHADER
+} // namespace UNIVERSAL MEDIA CENTER::SHADER

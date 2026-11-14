@@ -19,7 +19,7 @@
 #include "utils/URIUtils.h"
 #include "weather/WeatherManager.h"
 
-using namespace KODI::GUILIB::GUIINFO;
+using namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO;
 
 bool CWeatherGUIInfo::InitCurrentItem(CFileItem* item)
 {

@@ -31,7 +31,7 @@ struct AddonEvent;
 }
 class CGUIFont;
 class CGUIFontTTF;
-class CXBMCTinyXML;
+class CTinyXML;
 class TiXmlNode;
 class CSetting;
 struct StringSettingOption;
@@ -82,8 +82,8 @@ public:
   void LoadFonts(const std::string& fontSet);
   CGUIFont* LoadTTF(const std::string& strFontName,
                     const std::string& strFilename,
-                    KODI::UTILS::COLOR::Color textColor,
-                    KODI::UTILS::COLOR::Color shadowColor,
+                    UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color textColor,
+                    UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color shadowColor,
                     const int iSize,
                     const int iStyle,
                     bool border = false,
@@ -163,5 +163,5 @@ private:
  \ingroup textures
  \brief
  */
-XBMC_GLOBAL_REF(GUIFontManager, g_fontManager);
-#define g_fontManager XBMC_GLOBAL_USE(GUIFontManager)
+_GLOBAL_REF(GUIFontManager, g_fontManager);
+#define g_fontManager _GLOBAL_USE(GUIFontManager)

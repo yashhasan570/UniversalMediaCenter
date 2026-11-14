@@ -89,12 +89,12 @@ bool CMusicDatabaseDirectory::GetDirectory(const CURL& url, CFileItemList &items
   for (int i=0;i<items.Size();++i)
   {
     CFileItemPtr item = items[i];
-    if (item->IsFolder() && !item->HasArt(KODI::ART::TYPE::ICON) &&
-        !item->HasArt(KODI::ART::TYPE::THUMB))
+    if (item->IsFolder() && !item->HasArt(UNIVERSAL MEDIA CENTER::ART::TYPE::ICON) &&
+        !item->HasArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB))
     {
       std::string strImage = GetIcon(item->GetPath());
       if (!strImage.empty() && CServiceBroker::GetGUI()->GetTextureManager().HasTexture(strImage))
-        item->SetArt(KODI::ART::TYPE::ICON, strImage);
+        item->SetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::ICON, strImage);
     }
   }
   if (items.GetLabel().empty())
@@ -327,33 +327,33 @@ std::string CMusicDatabaseDirectory::GetIcon(const std::string &strDirectory)
   switch (GetDirectoryChildType(strDirectory))
   {
     case NodeType::ARTIST:
-      return KODI::ART::DEFAULT::MUSIC_ARTISTS;
+      return UNIVERSAL MEDIA CENTER::ART::DEFAULT::MUSIC_ARTISTS;
     case NodeType::GENRE:
-      return KODI::ART::DEFAULT::MUSIC_GENRES;
+      return UNIVERSAL MEDIA CENTER::ART::DEFAULT::MUSIC_GENRES;
     case NodeType::SOURCE:
-      return KODI::ART::DEFAULT::MUSIC_SOURCES;
+      return UNIVERSAL MEDIA CENTER::ART::DEFAULT::MUSIC_SOURCES;
     case NodeType::ROLE:
-      return KODI::ART::DEFAULT::MUSIC_ROLES;
+      return UNIVERSAL MEDIA CENTER::ART::DEFAULT::MUSIC_ROLES;
     case NodeType::TOP100:
-      return KODI::ART::DEFAULT::MUSIC_TOP_100;
+      return UNIVERSAL MEDIA CENTER::ART::DEFAULT::MUSIC_TOP_100;
     case NodeType::ALBUM:
-      return KODI::ART::DEFAULT::MUSIC_ALBUMS;
+      return UNIVERSAL MEDIA CENTER::ART::DEFAULT::MUSIC_ALBUMS;
     case NodeType::ALBUM_RECENTLY_ADDED:
     case NodeType::ALBUM_RECENTLY_ADDED_SONGS:
-      return KODI::ART::DEFAULT::MUSIC_RECENTLY_ADDED;
+      return UNIVERSAL MEDIA CENTER::ART::DEFAULT::MUSIC_RECENTLY_ADDED;
     case NodeType::ALBUM_RECENTLY_PLAYED:
     case NodeType::ALBUM_RECENTLY_PLAYED_SONGS:
-      return KODI::ART::DEFAULT::MUSIC_RECENTLY_PLAYED;
+      return UNIVERSAL MEDIA CENTER::ART::DEFAULT::MUSIC_RECENTLY_PLAYED;
     case NodeType::SINGLES:
     case NodeType::SONG:
-      return KODI::ART::DEFAULT::MUSIC_SONGS;
+      return UNIVERSAL MEDIA CENTER::ART::DEFAULT::MUSIC_SONGS;
     case NodeType::ALBUM_TOP100:
     case NodeType::ALBUM_TOP100_SONGS:
-      return KODI::ART::DEFAULT::MUSIC_TOP_100_ALBUMS;
+      return UNIVERSAL MEDIA CENTER::ART::DEFAULT::MUSIC_TOP_100_ALBUMS;
     case NodeType::SONG_TOP100:
-      return KODI::ART::DEFAULT::MUSIC_TOP_100_SONGS;
+      return UNIVERSAL MEDIA CENTER::ART::DEFAULT::MUSIC_TOP_100_SONGS;
     case NodeType::YEAR:
-      return KODI::ART::DEFAULT::MUSIC_YEARS;
+      return UNIVERSAL MEDIA CENTER::ART::DEFAULT::MUSIC_YEARS;
     default:
       break;
   }

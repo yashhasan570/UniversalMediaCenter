@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "addons/kodi-dev-kit/include/kodi/c-api/addon-instance/pvr/pvr_general.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api/addon-instance/pvr/pvr_general.h"
 #include "interfaces/IAnnouncer.h"
 #include "powermanagement/PowerState.h"
 #include "pvr/PVRComponentRegistration.h"
@@ -96,7 +96,7 @@ class CPVRManager : private CThread, public ANNOUNCEMENT::IAnnouncer, public CPo
 {
 public:
   /*!
-   * @brief Create a new CPVRManager instance, which handles all PVR related operations in XBMC.
+   * @brief Create a new CPVRManager instance, which handles all PVR related operations in .
    */
   CPVRManager();
 

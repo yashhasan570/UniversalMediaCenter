@@ -30,13 +30,13 @@
 #undef DECLARATION
 #undef TYPECOUNT
 
-class CXBMCTinyXML : public TiXmlDocument
+class CTinyXML : public TiXmlDocument
 {
 public:
-  CXBMCTinyXML();
-  explicit CXBMCTinyXML(const char*);
-  explicit CXBMCTinyXML(const std::string& documentName);
-  CXBMCTinyXML(const std::string& documentName, const std::string& documentCharset);
+  CTinyXML();
+  explicit CTinyXML(const char*);
+  explicit CTinyXML(const std::string& documentName);
+  CTinyXML(const std::string& documentName, const std::string& documentCharset);
   bool LoadFile(TiXmlEncoding encoding = TIXML_DEFAULT_ENCODING);
   bool LoadFile(const char*, TiXmlEncoding encoding = TIXML_DEFAULT_ENCODING);
   bool LoadFile(const std::string& _filename, TiXmlEncoding encoding = TIXML_DEFAULT_ENCODING);

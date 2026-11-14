@@ -24,12 +24,12 @@
 
 #include <Python.h>
 
-#define MODULE      "xbmc"
+#define MODULE      ""
 
 #define RUNSCRIPT_PREAMBLE \
   "" \
   "import " MODULE "\n" \
-  "class xbmcout:\n" \
+  "class out:\n" \
   "  def __init__(self, loglevel=" MODULE ".LOGINFO):\n" \
   "    self.ll=loglevel\n" \
   "  def write(self, data):\n" \
@@ -39,8 +39,8 @@
   "  def flush(self):\n" \
   "    " MODULE ".log('.')\n" \
   "import sys\n" \
-  "sys.stdout = xbmcout()\n" \
-  "sys.stderr = xbmcout(" MODULE ".LOGERROR)\n" \
+  "sys.stdout = out()\n" \
+  "sys.stderr = out(" MODULE ".LOGERROR)\n" \
   ""
 
 #define RUNSCRIPT_SETUPTOOLS_HACK \
@@ -70,17 +70,17 @@
 
 extern "C"
 {
-  PyObject* PyInit_xbmc(void);
-  PyObject* PyInit_xbmcaddon(void);
-  PyObject* PyInit_xbmcwsgi(void);
+  PyObject* PyInit_(void);
+  PyObject* PyInit_addon(void);
+  PyObject* PyInit_wsgi(void);
 }
 
-// Host-side wrap helpers compiled into the xbmcwsgi module
+// Host-side wrap helpers compiled into the wsgi module
 extern "C"
 {
-  PyObject* Universal Media CenterSwig_wrapWsgiResponse(XBMCAddon::xbmcwsgi::WsgiResponse* obj, int owned);
-  PyObject* Universal Media CenterSwig_wrapWsgiInputStream(XBMCAddon::xbmcwsgi::WsgiInputStream* obj, int owned);
-  PyObject* Universal Media CenterSwig_wrapWsgiErrorStream(XBMCAddon::xbmcwsgi::WsgiErrorStream* obj, int owned);
+  PyObject* Universal Media CenterSwig_wrapWsgiResponse(Addon::wsgi::WsgiResponse* obj, int owned);
+  PyObject* Universal Media CenterSwig_wrapWsgiInputStream(Addon::wsgi::WsgiInputStream* obj, int owned);
+  PyObject* Universal Media CenterSwig_wrapWsgiErrorStream(Addon::wsgi::WsgiErrorStream* obj, int owned);
 }
 
 namespace
@@ -88,9 +88,9 @@ namespace
 // clang-format off
 const _inittab PythonModules[] =
 {
-  { "xbmc",           PyInit_xbmc },
-  { "xbmcaddon",      PyInit_xbmcaddon },
-  { "xbmcwsgi",       PyInit_xbmcwsgi },
+  { "",           PyInit_ },
+  { "addon",      PyInit_addon },
+  { "wsgi",       PyInit_wsgi },
   { nullptr,          nullptr }
 };
 // clang-format on
@@ -124,7 +124,7 @@ void getPythonString(std::string& buf,
       return;
     }
   }
-  throw XBMCAddon::WrongTypeException("argument \"%s\" for \"%s\" must be a string", argumentName,
+  throw Addon::WrongTypeException("argument \"%s\" for \"%s\" must be a string", argumentName,
                                       methodname);
 }
 } // namespace
@@ -224,7 +224,7 @@ void CHTTPPythonWsgiInvoker::executeScript(FILE* fp, const std::string& script, 
   }
 
   // prepare the WsgiResponse object
-  m_wsgiResponse = new XBMCAddon::xbmcwsgi::WsgiResponse();
+  m_wsgiResponse = new Addon::wsgi::WsgiResponse();
   if (m_wsgiResponse == NULL)
   {
     logger->error("failed to create WsgiResponse object");
@@ -250,7 +250,7 @@ void CHTTPPythonWsgiInvoker::executeScript(FILE* fp, const std::string& script, 
     // add the WSGI-specific environment variables
     addWsgiEnvironment(m_request, pyEnviron);
   }
-  catch (const XBMCAddon::WrongTypeException& e)
+  catch (const Addon::WrongTypeException& e)
   {
     logger->error("failed to prepare WsgiResponse object with wrong type exception: {}",
                   e.GetExMessage());
@@ -297,7 +297,7 @@ void CHTTPPythonWsgiInvoker::executeScript(FILE* fp, const std::string& script, 
     {
       getPythonString(result, pyIterResult, "result", "handle_request");
     }
-    catch (const XBMCAddon::WrongTypeException& e)
+    catch (const Addon::WrongTypeException& e)
     {
       logger->error("failed to parse result iterable object with wrong type exception: {}",
                     e.GetExMessage());
@@ -452,7 +452,7 @@ void CHTTPPythonWsgiInvoker::addWsgiEnvironment(HTTPPythonRequest* request, void
   }
   {
     // wsgi.input
-    XBMCAddon::xbmcwsgi::WsgiInputStream* wsgiInputStream = new XBMCAddon::xbmcwsgi::WsgiInputStream();
+    Addon::wsgi::WsgiInputStream* wsgiInputStream = new Addon::wsgi::WsgiInputStream();
     if (request != NULL)
       wsgiInputStream->SetRequest(request);
 
@@ -464,7 +464,7 @@ void CHTTPPythonWsgiInvoker::addWsgiEnvironment(HTTPPythonRequest* request, void
   }
   {
     // wsgi.errors
-    XBMCAddon::xbmcwsgi::WsgiErrorStream* wsgiErrorStream = new XBMCAddon::xbmcwsgi::WsgiErrorStream();
+    Addon::wsgi::WsgiErrorStream* wsgiErrorStream = new Addon::wsgi::WsgiErrorStream();
     if (request != NULL)
       wsgiErrorStream->SetRequest(request);
 

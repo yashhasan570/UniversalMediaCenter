@@ -1,6 +1,6 @@
-xbmc/video           video
-xbmc/video/dialogs   video/dialogs
-xbmc/video/guilib    video/guilib
-xbmc/video/jobs      video/jobs
-xbmc/video/tags      video/tags
-xbmc/video/windows   video/windows
+/video           video
+/video/dialogs   video/dialogs
+/video/guilib    video/guilib
+/video/jobs      video/jobs
+/video/tags      video/tags
+/video/windows   video/windows

@@ -10,7 +10,7 @@
 #include <cstdint>
 #include <string>
 
-namespace KODI::WINDOWING::WASM
+namespace UNIVERSAL MEDIA CENTER::WINDOWING::WASM
 {
 // Text entry through a DOM <input> on the browser main thread, which is what
 // brings up the browser's or the TV's own on-screen keyboard.
@@ -56,4 +56,4 @@ private:
   Shared m_shared{};
   bool m_shown{false};
 };
-} // namespace KODI::WINDOWING::WASM
+} // namespace UNIVERSAL MEDIA CENTER::WINDOWING::WASM

@@ -40,7 +40,7 @@
 #include <vector>
 
 using namespace XFILE;
-using KODI::MEDIA::MediaSection;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaSection;
 
 bool CFileUtils::DeleteItem(const std::string &strPath)
 {
@@ -272,15 +272,15 @@ bool CFileUtils::CheckFileAccessAllowed(const std::string &filePath)
     "server.key",
     "/.ssh/",
   };
-  // ALLOW kodi paths
+  // ALLOW universalmediacenter paths
   std::vector<std::string> whitelist = {
       CSpecialProtocol::TranslatePath("special://home"),
-      CSpecialProtocol::TranslatePath("special://xbmc"),
+      CSpecialProtocol::TranslatePath("special://"),
       CSpecialProtocol::TranslatePath("special://musicartistsinfo"),
   };
 
-  auto kodiExtraWhitelist = CCompileInfo::GetWebserverExtraWhitelist();
-  whitelist.insert(whitelist.end(), kodiExtraWhitelist.begin(), kodiExtraWhitelist.end());
+  auto universalmediacenterExtraWhitelist = CCompileInfo::GetWebserverExtraWhitelist();
+  whitelist.insert(whitelist.end(), universalmediacenterExtraWhitelist.begin(), universalmediacenterExtraWhitelist.end());
 
   bool isImage = false;
   std::string decodePath = CURL::Decode(filePath);

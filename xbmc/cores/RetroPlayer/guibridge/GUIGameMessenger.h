@@ -12,7 +12,7 @@
 
 class CGUIComponent;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -39,4 +39,4 @@ private:
   CGUIComponent* const m_guiComponent;
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

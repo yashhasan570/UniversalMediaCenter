@@ -22,9 +22,9 @@
 #include <array>
 #include <string_view>
 
-using namespace KODI::MESSAGING;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
 
-using KODI::MESSAGING::HELPERS::DialogResponse;
+using UNIVERSAL MEDIA CENTER::MESSAGING::HELPERS::DialogResponse;
 
 namespace
 {

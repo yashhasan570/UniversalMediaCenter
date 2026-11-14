@@ -16,13 +16,13 @@
 namespace jni
 {
 
-class CJNIXBMCMediaSession : public CJNIBase, public CJNIInterfaceImplem<CJNIXBMCMediaSession>
+class CJNIMediaSession : public CJNIBase, public CJNIInterfaceImplem<CJNIMediaSession>
 {
 public:
-  CJNIXBMCMediaSession();
-  CJNIXBMCMediaSession(const CJNIXBMCMediaSession& other);
-  CJNIXBMCMediaSession(const jni::jhobject &object) : CJNIBase(object) {}
-  ~CJNIXBMCMediaSession() override;
+  CJNIMediaSession();
+  CJNIMediaSession(const CJNIMediaSession& other);
+  CJNIMediaSession(const jni::jhobject &object) : CJNIBase(object) {}
+  ~CJNIMediaSession() override;
 
   static void RegisterNatives(JNIEnv* env);
 

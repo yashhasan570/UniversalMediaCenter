@@ -19,7 +19,7 @@ class CJNIContext;
 
 namespace jni
 {
-class CJNIXBMCSpeechRecognitionListener;
+class CJNISpeechRecognitionListener;
 }
 
 class CSpeechRecognitionAndroid : public ISpeechRecognitionCallback,
@@ -34,7 +34,7 @@ public:
       const std::shared_ptr<speech::ISpeechRecognitionListener>& listener) override;
 
   // ISpeechRecognitionCallback implementation
-  void SpeechRecognitionDone(jni::CJNIXBMCSpeechRecognitionListener* listener) override;
+  void SpeechRecognitionDone(jni::CJNISpeechRecognitionListener* listener) override;
 
 private:
   CSpeechRecognitionAndroid() = delete;
@@ -43,5 +43,5 @@ private:
 
   const CJNIContext& m_context;
   CCriticalSection m_speechRecognitionListenersMutex;
-  std::vector<std::unique_ptr<jni::CJNIXBMCSpeechRecognitionListener>> m_speechRecognitionListeners;
+  std::vector<std::unique_ptr<jni::CJNISpeechRecognitionListener>> m_speechRecognitionListeners;
 };

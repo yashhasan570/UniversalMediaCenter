@@ -19,7 +19,7 @@
 #include "resources/ResourcesComponent.h"
 #include "utils/StringUtils.h"
 
-using namespace KODI::GUILIB::GUIINFO;
+using namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO;
 
 bool CAddonsGUIInfo::InitCurrentItem(CFileItem* item)
 {

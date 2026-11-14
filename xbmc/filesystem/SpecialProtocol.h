@@ -17,28 +17,28 @@ class CProfileManager;
 
 /* paths are as follows:
 
- special://xbmc/          - the main XBMC folder (i.e. where the app resides).
- special://home/          - a writeable version of the main XBMC folder
-                             Linux: ~/.kodi/
+ special:///          - the main  folder (i.e. where the app resides).
+ special://home/          - a writeable version of the main  folder
+                             Linux: ~/.universalmediacenter/
                              OS X:  ~/Library/Application Support/Universal Media Center/
-                             Win32: ~/Application Data/XBMC/
+                             Win32: ~/Application Data//
  special://envhome/       - on posix systems this will be equal to the $HOME
  special://userhome/      - a writable version of the user home directory
-                             Linux, OS X: ~/.kodi
+                             Linux, OS X: ~/.universalmediacenter
                              Win32: home directory of user
  special://masterprofile/ - the master users userdata folder - usually special://home/userdata
-                             Linux: ~/.kodi/userdata/
+                             Linux: ~/.universalmediacenter/userdata/
                              OS X:  ~/Library/Application Support/Universal Media Center/UserData/
-                             Win32: ~/Application Data/XBMC/UserData/
+                             Win32: ~/Application Data//UserData/
  special://profile/       - the current users userdata folder - usually special://masterprofile/profiles/<current_profile>
-                             Linux: ~/.kodi/userdata/profiles/<current_profile>
+                             Linux: ~/.universalmediacenter/userdata/profiles/<current_profile>
                              OS X:  ~/Library/Application Support/Universal Media Center/UserData/profiles/<current_profile>
-                             Win32: ~/Application Data/XBMC/UserData/profiles/<current_profile>
+                             Win32: ~/Application Data//UserData/profiles/<current_profile>
 
  special://temp/          - the temporary directory.
-                             Linux: ~/.kodi/temp
+                             Linux: ~/.universalmediacenter/temp
                              OS X:  ~/
-                             Win32: ~/Application Data/XBMC/cache
+                             Win32: ~/Application Data//cache
 */
 class CURL;
 class CSpecialProtocol
@@ -48,11 +48,11 @@ public:
   static void UnregisterProfileManager();
 
   static void SetProfilePath(const std::string &path);
-  static void SetXBMCPath(const std::string &path);
-  static void SetXBMCBinPath(const std::string &path);
-  static void SetXBMCBinAddonPath(const std::string &path);
-  static void SetXBMCAltBinAddonPath(const std::string &path);
-  static void SetXBMCFrameworksPath(const std::string &path);
+  static void SetPath(const std::string &path);
+  static void SetBinPath(const std::string &path);
+  static void SetBinAddonPath(const std::string &path);
+  static void SetAltBinAddonPath(const std::string &path);
+  static void SetFrameworksPath(const std::string &path);
   static void SetHomePath(const std::string &path);
   static void SetUserHomePath(const std::string &path);
   static void SetEnvHomePath(const std::string &path);

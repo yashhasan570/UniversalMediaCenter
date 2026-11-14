@@ -6,9 +6,9 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.util.Log;
 
-import @APP_PACKAGE@.XBMCJsonRPC;
+import @APP_PACKAGE@.JsonRPC;
 
-public class XBMCMediaContentProvider extends XBMCContentProvider
+public class MediaContentProvider extends ContentProvider
 {
   public static final String AUTHORITY = AUTHORITY_ROOT + ".media";
   public static final String SUGGEST_PATH = "suggestions";
@@ -17,7 +17,7 @@ public class XBMCMediaContentProvider extends XBMCContentProvider
   private static final int SEARCH_SUGGEST = 0;
   private static final UriMatcher URI_MATCHER = buildUriMatcher();
 
-  private XBMCJsonRPC mJsonRPC = null;
+  private JsonRPC mJsonRPC = null;
 
   private static UriMatcher buildUriMatcher()
   {
@@ -30,7 +30,7 @@ public class XBMCMediaContentProvider extends XBMCContentProvider
   @Override
   public boolean onCreate()
   {
-    mJsonRPC  = new XBMCJsonRPC(getContext());
+    mJsonRPC  = new JsonRPC(getContext());
     return true;
   }
 
@@ -38,7 +38,7 @@ public class XBMCMediaContentProvider extends XBMCContentProvider
   public Cursor query(Uri uri, String[] projection, String selection,
           String[] selectionArgs, String sortOrder)
   {
-    Log.d(TAG, "XBMCMediaContentProvider.query: " + uri.toString());
+    Log.d(TAG, "MediaContentProvider.query: " + uri.toString());
 
     switch (URI_MATCHER.match(uri))
     {

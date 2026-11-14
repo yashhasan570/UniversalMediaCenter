@@ -37,7 +37,7 @@ int64_t days_from_civil(int64_t y, unsigned m, unsigned d)
   return era * 146097LL + static_cast<int64_t>(doe) - 719468LL;
 }
 
-std::optional<time_t> SystemTimeToTimeT(const KODI::TIME::SystemTime& systemTime)
+std::optional<time_t> SystemTimeToTimeT(const UNIVERSAL MEDIA CENTER::TIME::SystemTime& systemTime)
 {
   // Basic range validation
   if (systemTime.month < 1 || systemTime.month > 12 || systemTime.day < 1 || systemTime.day > 31 ||
@@ -62,7 +62,7 @@ std::optional<time_t> SystemTimeToTimeT(const KODI::TIME::SystemTime& systemTime
 }
 } // unnamed namespace
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace TIME
 {
@@ -264,4 +264,4 @@ int TimeTToFileTime(time_t timeT, FileTime* localFileTime)
 }
 
 } // namespace TIME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

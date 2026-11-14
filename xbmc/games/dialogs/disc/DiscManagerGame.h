@@ -17,7 +17,7 @@
 #include <optional>
 #include <string>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -52,4 +52,4 @@ private:
   uint64_t m_pendingRestoreGeneration{0};
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

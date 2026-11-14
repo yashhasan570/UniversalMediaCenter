@@ -34,7 +34,7 @@
 #include <X11/Xatom.h>
 #include <X11/extensions/Xrandr.h>
 
-using namespace KODI::WINDOWING::X11;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::X11;
 
 using namespace std::chrono_literals;
 
@@ -493,7 +493,7 @@ void CWinSystemX11::ShowOSMouse(bool show)
     XDefineCursor(m_dpy,m_mainWindow, m_invisibleCursor);
 }
 
-std::unique_ptr<KODI::WINDOWING::IOSScreenSaver> CWinSystemX11::GetOSScreenSaverImpl()
+std::unique_ptr<UNIVERSAL MEDIA CENTER::WINDOWING::IOSScreenSaver> CWinSystemX11::GetOSScreenSaverImpl()
 {
   std::unique_ptr<IOSScreenSaver> ret;
   if (m_dpy)
@@ -916,7 +916,7 @@ bool CWinSystemX11::CreateIconPixmap()
   bRatio = vis->blue_mask / 255.0;
 
   std::unique_ptr<CTexture> iconTexture =
-      CTexture::LoadFromFile("special://xbmc/media/icon256x256.png");
+      CTexture::LoadFromFile("special:///media/icon256x256.png");
 
   if (!iconTexture)
     return false;

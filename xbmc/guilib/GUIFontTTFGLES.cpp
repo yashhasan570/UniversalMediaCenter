@@ -316,7 +316,7 @@ CVertexBuffer CGUIFontTTFGLES::CreateVertexBuffer(const std::vector<SVertex>& ve
   if (!vertices.empty())
   {
     const size_t size = vertices.size() * sizeof(SVertex);
-    const KODI::UTILS::GL::CGLBufferArena::Range range = VertexArena().Allocate(size);
+    const UNIVERSAL MEDIA CENTER::UTILS::GL::CGLBufferArena::Range range = VertexArena().Allocate(size);
     if (VertexArena().IsValid(range))
     {
       VertexArena().Upload(range, vertices.data(), size);
@@ -477,12 +477,12 @@ void CGUIFontTTFGLES::DestroyStaticVertexBuffers(void)
 GLuint CGUIFontTTFGLES::m_elementArrayHandle{0};
 bool CGUIFontTTFGLES::m_staticVertexBufferCreated{false};
 
-KODI::UTILS::GL::CGLBufferArena& CGUIFontTTFGLES::VertexArena()
+UNIVERSAL MEDIA CENTER::UTILS::GL::CGLBufferArena& CGUIFontTTFGLES::VertexArena()
 {
   // Longer text runs get their own buffer, where page rounding wastes about as much as a shared
   // slot would.
   // Never destroyed: the font manager's destructor still uses it during static destruction.
-  static auto* arena = new KODI::UTILS::GL::CGLBufferArena{
+  static auto* arena = new UNIVERSAL MEDIA CENTER::UTILS::GL::CGLBufferArena{
       {4 * CHARACTER_SIZE, 8 * CHARACTER_SIZE, 12 * CHARACTER_SIZE, 16 * CHARACTER_SIZE,
        24 * CHARACTER_SIZE, 32 * CHARACTER_SIZE, 48 * CHARACTER_SIZE},
       16 * 1024};

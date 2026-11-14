@@ -1,7 +1,7 @@
 # Stage a Tizen web app wrapper around wasm build artifacts.
 set(WASM_TIZEN_TEMPLATE_DIR "${CMAKE_SOURCE_DIR}/tools/wasm/tizen")
-set(WASM_TIZEN_STAGE_DIR "${CMAKE_BINARY_DIR}/tizen_packaging/Kodi")
-set(WASM_TIZEN_OUTPUT_NAME "Kodi")
+set(WASM_TIZEN_STAGE_DIR "${CMAKE_BINARY_DIR}/tizen_packaging/Universal Media Center")
+set(WASM_TIZEN_OUTPUT_NAME "Universal Media Center")
 if(CMAKE_BUILD_TYPE STREQUAL Debug)
   set(WASM_TIZEN_BUILD_TYPE "Debug")
 else()
@@ -34,7 +34,7 @@ add_custom_target(package_tizen
           "${WASM_TIZEN_PROJECT_YAML}"
           "${WASM_TIZEN_STAGE_DIR}/tizen_web_project.yaml"
   COMMAND ${CMAKE_COMMAND} -E copy_if_different
-          "${CMAKE_SOURCE_DIR}/tools/wasm/kodi.html"
+          "${CMAKE_SOURCE_DIR}/tools/wasm/universalmediacenter.html"
           "${WASM_TIZEN_STAGE_DIR}/index.html"
   COMMAND ${CMAKE_COMMAND} -E copy_if_different
           "${CMAKE_SOURCE_DIR}/media/splash.jpg"
@@ -115,7 +115,7 @@ if(WASM_TIZEN_TZ_EXECUTABLE)
               "SDB=${WASM_TIZEN_SDB_EXECUTABLE}"
               "TIZEN_TARGET_SERIAL=${WASM_TIZEN_INSTALL_SERIAL}"
               sh "${WASM_TIZEN_TEMPLATE_DIR}/inspect.sh"
-      COMMENT "Launching Kodi on the TV under the Web Inspector"
+      COMMENT "Launching Universal Media Center on the TV under the Web Inspector"
       USES_TERMINAL
       VERBATIM
     )

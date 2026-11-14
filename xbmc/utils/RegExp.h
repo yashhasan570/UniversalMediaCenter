@@ -148,7 +148,7 @@ private:
 
 std::vector<CRegExp> CompileRegexes(const std::vector<std::string>& regExpPatterns);
 
-namespace KODI::REGEXP
+namespace UNIVERSAL MEDIA CENTER::REGEXP
 {
 struct StringHash
 {
@@ -196,4 +196,4 @@ std::shared_ptr<CRegExp> GetRegExp(const std::string& pattern,
 
   return regexp;
 }
-} // namespace KODI::REGEXP
+} // namespace UNIVERSAL MEDIA CENTER::REGEXP

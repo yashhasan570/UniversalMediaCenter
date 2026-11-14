@@ -53,15 +53,15 @@
 
 #include <vector>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
-namespace XBMCAddon
+namespace Addon
 {
 
-  namespace xbmc
+  namespace 
   {
     /*****************************************************************
-     * start of xbmc methods
+     * start of  methods
      *****************************************************************/
 
     void log(const char* msg, int level)
@@ -74,19 +74,19 @@ namespace XBMCAddon
 
     void shutdown()
     {
-      XBMC_TRACE;
+      _TRACE;
       CServiceBroker::GetAppMessenger()->PostMsg(TMSG_SHUTDOWN);
     }
 
     void restart()
     {
-      XBMC_TRACE;
+      _TRACE;
       CServiceBroker::GetAppMessenger()->PostMsg(TMSG_RESTART);
     }
 
     void executescript(const char* script)
     {
-      XBMC_TRACE;
+      _TRACE;
       if (! script)
         return;
 
@@ -95,7 +95,7 @@ namespace XBMCAddon
 
     void executebuiltin(const char* function, bool wait /* = false*/)
     {
-      XBMC_TRACE;
+      _TRACE;
       if (! function)
         return;
 
@@ -130,7 +130,7 @@ namespace XBMCAddon
 
     String executeJSONRPC(const char* jsonrpccommand)
     {
-      XBMC_TRACE;
+      _TRACE;
       DelayedCallGuard dg;
       String ret;
 
@@ -147,7 +147,7 @@ namespace XBMCAddon
 
     void sleep(long timemillis)
     {
-      XBMC_TRACE;
+      _TRACE;
 
       XbmcThreads::EndTime<> endTime{std::chrono::milliseconds(timemillis)};
       while (!endTime.IsTimePast())
@@ -159,7 +159,7 @@ namespace XBMCAddon
           long nextSleep = endTime.GetTimeLeft().count();
           if (nextSleep > 100)
             nextSleep = 100; // only sleep for 100 millis
-          KODI::TIME::Sleep(std::chrono::milliseconds(nextSleep));
+          UNIVERSAL MEDIA CENTER::TIME::Sleep(std::chrono::milliseconds(nextSleep));
         }
         if (lh != NULL)
           lh->MakePendingCalls();
@@ -168,7 +168,7 @@ namespace XBMCAddon
 
     String getLocalizedString(int id)
     {
-      XBMC_TRACE;
+      _TRACE;
       if (ADDON::IsSkinStringId(id))
       {
         auto gui = CServiceBroker::GetGUI();
@@ -185,13 +185,13 @@ namespace XBMCAddon
 
     String getSkinDir()
     {
-      XBMC_TRACE;
+      _TRACE;
       return CServiceBroker::GetSettingsComponent()->GetSettings()->GetString(CSettings::SETTING_LOOKANDFEEL_SKIN);
     }
 
     String getLanguage(int format /* = CLangCodeExpander::ENGLISH_NAME */, bool region /*= false*/)
     {
-      XBMC_TRACE;
+      _TRACE;
       switch (format)
       {
         case CLangCodeExpander::ENGLISH_NAME:
@@ -207,7 +207,7 @@ namespace XBMCAddon
 
     String getIPAddress()
     {
-      XBMC_TRACE;
+      _TRACE;
       char cTitleIP[32];
       snprintf(cTitleIP, sizeof(cTitleIP), "127.0.0.1");
       CNetworkInterface* iface = CServiceBroker::GetNetwork().GetFirstConnectedInterface();
@@ -219,15 +219,15 @@ namespace XBMCAddon
 
     long getDVDState()
     {
-      XBMC_TRACE;
+      _TRACE;
       return static_cast<long>(CServiceBroker::GetMediaManager().GetDriveStatus());
     }
 
     long getFreeMem()
     {
-      XBMC_TRACE;
-      KODI::MEMORY::MemoryStatus stat;
-      KODI::MEMORY::GetMemoryStatus(&stat);
+      _TRACE;
+      UNIVERSAL MEDIA CENTER::MEMORY::MemoryStatus stat;
+      UNIVERSAL MEDIA CENTER::MEMORY::GetMemoryStatus(&stat);
       return static_cast<long>(stat.availPhys  / ( 1024 * 1024 ));
     }
 
@@ -237,9 +237,9 @@ namespace XBMCAddon
       "getCpuTemp() -- Returns the current cpu temperature as an integer."
       ""
       "example:"
-      "  - cputemp = xbmc.getCpuTemp()");
+      "  - cputemp = .getCpuTemp()");
 
-      PyObject* XBMC_GetCpuTemp(PyObject *self, PyObject *args)
+      PyObject* _GetCpuTemp(PyObject *self, PyObject *args)
       {
       unsigned short cputemp;
       unsigned short cpudec;
@@ -266,7 +266,7 @@ namespace XBMCAddon
 
     String getInfoLabel(const char* cLine)
     {
-      XBMC_TRACE;
+      _TRACE;
       DelayedCallGuard dg;
       if (!cLine)
       {
@@ -286,7 +286,7 @@ namespace XBMCAddon
 
     String getInfoImage(const char * infotag)
     {
-      XBMC_TRACE;
+      _TRACE;
       DelayedCallGuard dg;
       if (!infotag)
         {
@@ -301,7 +301,7 @@ namespace XBMCAddon
 
     String getDatabaseName(const char* dbType)
     {
-      XBMC_TRACE;
+      _TRACE;
       if (!dbType)
       {
         String ret;
@@ -313,7 +313,7 @@ namespace XBMCAddon
 
     void playSFX(const char* filename, bool useCached)
     {
-      XBMC_TRACE;
+      _TRACE;
       if (!filename)
         return;
 
@@ -326,7 +326,7 @@ namespace XBMCAddon
 
     void stopSFX()
     {
-      XBMC_TRACE;
+      _TRACE;
       DelayedCallGuard dg;
       CGUIComponent* gui = CServiceBroker::GetGUI();
       if (gui)
@@ -335,7 +335,7 @@ namespace XBMCAddon
 
     void enableNavSounds(bool yesNo)
     {
-      XBMC_TRACE;
+      _TRACE;
       CGUIComponent* gui = CServiceBroker::GetGUI();
       if (gui)
         gui->GetAudioManager().Enable(yesNo);
@@ -343,13 +343,13 @@ namespace XBMCAddon
 
     bool getCondVisibility(const char *condition)
     {
-      XBMC_TRACE;
+      _TRACE;
       if (!condition)
         return false;
 
       bool ret;
       {
-        XBMCAddonUtils::GuiLock lock(nullptr, false);
+        AddonUtils::GuiLock lock(nullptr, false);
 
         int id = CServiceBroker::GetGUI()->GetWindowManager().GetTopmostModalDialog();
         if (id == WINDOW_INVALID)
@@ -362,7 +362,7 @@ namespace XBMCAddon
 
     int getGlobalIdleTime()
     {
-      XBMC_TRACE;
+      _TRACE;
       auto& components = CServiceBroker::GetAppComponents();
       const auto appPower = components.GetComponent<CApplicationPowerHandling>();
       return appPower->GlobalIdleTime();
@@ -370,7 +370,7 @@ namespace XBMCAddon
 
     int getDevicePowerStatus(const String& adapterName /* = emptyString */)
     {
-      XBMC_TRACE;
+      _TRACE;
       // libCEC may block briefly on a CEC bus request when its cache is stale,
       // so release the GIL for the duration of the call.
       DelayedCallGuard dg;
@@ -379,20 +379,20 @@ namespace XBMCAddon
 
     std::vector<String> getCecAdapterNames()
     {
-      XBMC_TRACE;
+      _TRACE;
       return CServiceBroker::GetPeripherals().GetCecAdapterNames();
     }
 
     String getCacheThumbName(const String& path)
     {
-      XBMC_TRACE;
+      _TRACE;
       auto crc = Crc32::ComputeFromLowerCase(path);
       return StringUtils::Format("{:08x}.tbn", crc);
     }
 
     Tuple<String,String> getCleanMovieTitle(const String& path, bool usefoldername)
     {
-      XBMC_TRACE;
+      _TRACE;
       CFileItem item(path, false);
       std::string strName = item.GetMovieName(usefoldername);
 
@@ -405,7 +405,7 @@ namespace XBMCAddon
 
     String getRegion(const char* id)
     {
-      XBMC_TRACE;
+      _TRACE;
       std::string result;
       CDateTime now = CDateTime::GetCurrentDateTime();
 
@@ -473,7 +473,7 @@ namespace XBMCAddon
     //! @todo Add a mediaType enum
     String getSupportedMedia(const char* mediaType)
     {
-      XBMC_TRACE;
+      _TRACE;
       String result;
       if (StringUtils::CompareNoCase(mediaType, "video") == 0)
         result = CServiceBroker::GetFileExtensionProvider().GetVideoExtensions();
@@ -491,14 +491,14 @@ namespace XBMCAddon
 
     bool skinHasImage(const char* image)
     {
-      XBMC_TRACE;
+      _TRACE;
       return CServiceBroker::GetGUI()->GetTextureManager().HasTexture(image);
     }
 
 
     bool startServer(int iTyp, bool bStart)
     {
-      XBMC_TRACE;
+      _TRACE;
       DelayedCallGuard dg;
       return CServiceBroker::GetNetwork().GetServices().StartServer(
           static_cast<CNetworkServices::ESERVERS>(iTyp), bStart != 0);
@@ -535,15 +535,15 @@ namespace XBMCAddon
           break;
         }
       case CLangCodeExpander::ISO_639_1:
-        if (const auto tag = KODI::LANGUAGE::CLanguageTag::TryParse(language); tag.has_value())
+        if (const auto tag = UNIVERSAL MEDIA CENTER::LANGUAGE::CLanguageTag::TryParse(language); tag.has_value())
           convertedLanguage = tag->AsIso6391();
         break;
       case CLangCodeExpander::ISO_639_2:
-        if (const auto tag = KODI::LANGUAGE::CLanguageTag::TryParse(language); tag.has_value())
+        if (const auto tag = UNIVERSAL MEDIA CENTER::LANGUAGE::CLanguageTag::TryParse(language); tag.has_value())
           convertedLanguage = tag->AsIso6392B();
         break;
       case CLangCodeExpander::ISO_NAME:
-        if (const auto tag = KODI::LANGUAGE::CLanguageTag::TryParse(language); tag.has_value())
+        if (const auto tag = UNIVERSAL MEDIA CENTER::LANGUAGE::CLanguageTag::TryParse(language); tag.has_value())
           convertedLanguage = tag->GetEnglishLanguageName();
         break;
       default:

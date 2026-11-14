@@ -48,7 +48,7 @@ namespace ADDON
 class IAddon;
 }
 
-namespace KODI::GAME
+namespace UNIVERSAL MEDIA CENTER::GAME
 {
 class CGameInfoTag;
 }
@@ -230,8 +230,8 @@ public:
   const CDateTime& GetDateTime() const { return m_dateTime; }
   void SetDateTime(const CDateTime& dateTime) { m_dateTime = dateTime; }
   void SetDateTime(time_t dateTime) { m_dateTime = dateTime; }
-  void SetDateTime(KODI::TIME::SystemTime dateTime) { m_dateTime = dateTime; }
-  void SetDateTime(KODI::TIME::FileTime dateTime) { m_dateTime = dateTime; }
+  void SetDateTime(UNIVERSAL MEDIA CENTER::TIME::SystemTime dateTime) { m_dateTime = dateTime; }
+  void SetDateTime(UNIVERSAL MEDIA CENTER::TIME::FileTime dateTime) { m_dateTime = dateTime; }
   int64_t GetSize() const { return m_dwSize; }
   void SetSize(int64_t size) { m_dwSize = size; }
   const std::string& GetTitle() const { return m_strTitle; }
@@ -378,9 +378,9 @@ public:
 
   inline bool HasGameInfoTag() const { return m_gameInfoTag != nullptr; }
 
-  KODI::GAME::CGameInfoTag* GetGameInfoTag();
+  UNIVERSAL MEDIA CENTER::GAME::CGameInfoTag* GetGameInfoTag();
 
-  inline const KODI::GAME::CGameInfoTag* GetGameInfoTag() const
+  inline const UNIVERSAL MEDIA CENTER::GAME::CGameInfoTag* GetGameInfoTag() const
   {
     return m_gameInfoTag;
   }
@@ -544,13 +544,13 @@ public:
   \brief Retrieve item's lock information, like lock code, lock mode, etc.
   \return The lock information
   */
-  KODI::UTILS::CLockInfo& GetLockInfo() { return m_lockInfo; }
+  UNIVERSAL MEDIA CENTER::UTILS::CLockInfo& GetLockInfo() { return m_lockInfo; }
 
   /*!
   \brief Retrieve item's lock information, like lock code, lock mode, etc.
   \return The lock information
   */
-  const KODI::UTILS::CLockInfo& GetLockInfo() const { return m_lockInfo; }
+  const UNIVERSAL MEDIA CENTER::UTILS::CLockInfo& GetLockInfo() const { return m_lockInfo; }
 
   void SetCueDocument(const std::shared_ptr<CCueDocument>& cuePtr);
   void LoadEmbeddedCue();
@@ -607,7 +607,7 @@ private:
   int m_programCount{0};
   int m_depth{1};
   int m_lStartPartNumber{1};
-  KODI::UTILS::CLockInfo m_lockInfo;
+  UNIVERSAL MEDIA CENTER::UTILS::CLockInfo m_lockInfo;
   SortSpecial m_specialSort{SortSpecial::NONE};
   bool m_bIsParentFolder{false};
   bool m_bCanQueue{true};
@@ -625,7 +625,7 @@ private:
   std::shared_ptr<PVR::CPVRProvider> m_pvrProviderInfoTag;
   CPictureInfoTag* m_pictureInfoTag{nullptr};
   std::shared_ptr<const ADDON::IAddon> m_addonInfo;
-  KODI::GAME::CGameInfoTag* m_gameInfoTag{nullptr};
+  UNIVERSAL MEDIA CENTER::GAME::CGameInfoTag* m_gameInfoTag{nullptr};
   std::shared_ptr<const IEvent> m_eventLogEntry;
   bool m_bIsAlbum{false};
   int64_t m_lStartOffset{0};

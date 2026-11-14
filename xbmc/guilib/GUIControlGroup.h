@@ -43,7 +43,7 @@ public:
   bool CanFocus() const override;
   void AssignDepth() override;
 
-  EVENT_RESULT SendMouseEvent(const CPoint& point, const KODI::MOUSE::CMouseEvent& event) override;
+  EVENT_RESULT SendMouseEvent(const CPoint& point, const UNIVERSAL MEDIA CENTER::MOUSE::CMouseEvent& event) override;
   void UnfocusFromPoint(const CPoint &point) override;
 
   void SetInitialVisibility() override;

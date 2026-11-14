@@ -176,5 +176,5 @@ private:
   class CInnerConverter;
 };
 
-XBMC_GLOBAL_REF(CCharsetConverter,g_charsetConverter);
-#define g_charsetConverter XBMC_GLOBAL_USE(CCharsetConverter)
+_GLOBAL_REF(CCharsetConverter,g_charsetConverter);
+#define g_charsetConverter _GLOBAL_USE(CCharsetConverter)

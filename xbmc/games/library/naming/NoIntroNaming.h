@@ -14,7 +14,7 @@
 #include <string>
 #include <string_view>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -111,4 +111,4 @@ public:
   static bool IsArticle(std::string_view word);
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

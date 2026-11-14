@@ -24,7 +24,7 @@
 #include "settings/MediaSourceSettings.h"
 #include "utils/StringUtils.h"
 
-using KODI::MEDIA::MediaSection;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaSection;
 
 #define CONTROL_BTNVIEWASICONS 2
 #define CONTROL_BTNSORTBY      3

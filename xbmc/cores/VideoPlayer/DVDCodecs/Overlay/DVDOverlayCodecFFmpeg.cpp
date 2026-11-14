@@ -25,7 +25,7 @@
 #include <cstddef>
 #include <utility>
 
-using namespace KODI::VIDEO::SUBTITLES;
+using namespace UNIVERSAL MEDIA CENTER::VIDEO::SUBTITLES;
 
 namespace
 {

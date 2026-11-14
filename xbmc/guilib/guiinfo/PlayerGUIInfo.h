@@ -22,7 +22,7 @@ class CApplicationPlayer;
 class CApplicationVolumeHandling;
 class CDataCacheCore;
 
-namespace KODI::GUILIB::GUIINFO
+namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO
 {
 
 class CGUIInfo;
@@ -43,7 +43,7 @@ public:
 
   CEventStream<PlayerShowInfoChangedEvent>& Events() { return m_events; }
 
-  // KODI::GUILIB::GUIINFO::IGUIInfoProvider implementation
+  // UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::IGUIInfoProvider implementation
   bool InitCurrentItem(CFileItem* item) override;
   bool GetLabel(std::string& value,
                 const CFileItem* item,
@@ -96,4 +96,4 @@ private:
   CEventSource<PlayerShowInfoChangedEvent> m_events;
 };
 
-} // namespace KODI::GUILIB::GUIINFO
+} // namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO

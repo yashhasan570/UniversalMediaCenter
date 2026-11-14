@@ -15,7 +15,7 @@
 #include "utils/log.h"
 #include "windowing/WindowSystemFactory.h"
 
-#include "platform/android/activity/XBMCApp.h"
+#include "platform/android/activity/App.h"
 
 #include <memory>
 
@@ -27,7 +27,7 @@
 
 void CWinSystemAndroidGLESContext::Register()
 {
-  KODI::WINDOWING::CWindowSystemFactory::RegisterWindowSystem(CreateWinSystem);
+  UNIVERSAL MEDIA CENTER::WINDOWING::CWindowSystemFactory::RegisterWindowSystem(CreateWinSystem);
 }
 
 std::unique_ptr<CWinSystemBase> CWinSystemAndroidGLESContext::CreateWinSystem()
@@ -141,12 +141,12 @@ void CWinSystemAndroidGLESContext::PresentRenderImpl(bool rendered)
   if (rendered && !m_pGLContext.TrySwapBuffers())
     CEGLUtils::Log(LOGERROR, "eglSwapBuffers failed");
 
-  CXBMCApp::Get().WaitVSync(1000);
+  CApp::Get().WaitVSync(1000);
 }
 
 float CWinSystemAndroidGLESContext::GetFrameLatencyAdjustment()
 {
-  return CXBMCApp::Get().GetFrameLatencyMs();
+  return CApp::Get().GetFrameLatencyMs();
 }
 
 EGLDisplay CWinSystemAndroidGLESContext::GetEGLDisplay() const
@@ -281,14 +281,14 @@ int CWinSystemAndroidGLESContext::GetOutputBitDepth() const
   return m_pGLContext.GetConfigAttrib(EGL_RED_SIZE, m_HDRColorSpace != EGL_NONE);
 }
 
-KODI::UTILS::Eotf CWinSystemAndroidGLESContext::GetEotf() const
+UNIVERSAL MEDIA CENTER::UTILS::Eotf CWinSystemAndroidGLESContext::GetEotf() const
 {
-  return m_HDRColorSpace == EGL_GL_COLORSPACE_BT2020_PQ_EXT ? KODI::UTILS::Eotf::PQ
-                                                            : KODI::UTILS::Eotf::TRADITIONAL_SDR;
+  return m_HDRColorSpace == EGL_GL_COLORSPACE_BT2020_PQ_EXT ? UNIVERSAL MEDIA CENTER::UTILS::Eotf::PQ
+                                                            : UNIVERSAL MEDIA CENTER::UTILS::Eotf::TRADITIONAL_SDR;
 }
 
-KODI::UTILS::Colorimetry CWinSystemAndroidGLESContext::GetColorimetry() const
+UNIVERSAL MEDIA CENTER::UTILS::Colorimetry CWinSystemAndroidGLESContext::GetColorimetry() const
 {
-  return m_HDRColorSpace == EGL_GL_COLORSPACE_BT2020_PQ_EXT ? KODI::UTILS::Colorimetry::BT2020_RGB
-                                                            : KODI::UTILS::Colorimetry::DEFAULT;
+  return m_HDRColorSpace == EGL_GL_COLORSPACE_BT2020_PQ_EXT ? UNIVERSAL MEDIA CENTER::UTILS::Colorimetry::BT2020_RGB
+                                                            : UNIVERSAL MEDIA CENTER::UTILS::Colorimetry::DEFAULT;
 }

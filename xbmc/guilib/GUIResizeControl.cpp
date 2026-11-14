@@ -14,7 +14,7 @@
 #include "input/mouse/MouseEvent.h"
 #include "input/mouse/MouseStat.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace UTILS;
 
 CGUIResizeControl::CGUIResizeControl(int parentID,
@@ -25,7 +25,7 @@ CGUIResizeControl::CGUIResizeControl(int parentID,
                                      float height,
                                      const CTextureInfo& textureFocus,
                                      const CTextureInfo& textureNoFocus,
-                                     KODI::UTILS::MOVING_SPEED::MapEventConfig& movingSpeedCfg)
+                                     UNIVERSAL MEDIA CENTER::UTILS::MOVING_SPEED::MapEventConfig& movingSpeedCfg)
   : CGUIControl(parentID, controlID, posX, posY, width, height),
     m_imgFocus(CGUITexture::CreateTexture(posX, posY, width, height, textureFocus)),
     m_imgNoFocus(CGUITexture::CreateTexture(posX, posY, width, height, textureNoFocus))

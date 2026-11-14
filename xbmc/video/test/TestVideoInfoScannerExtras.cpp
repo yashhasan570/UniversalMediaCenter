@@ -20,7 +20,7 @@
 
 #include <gtest/gtest.h>
 
-using KODI::VIDEO::FindExtraOnAnotherDisc;
+using UNIVERSAL MEDIA CENTER::VIDEO::FindExtraOnAnotherDisc;
 
 // The same extra on two discs of a movie is found by its name and length, and one playing all of a
 // kind by its length alone, as each disc may code the kind differently

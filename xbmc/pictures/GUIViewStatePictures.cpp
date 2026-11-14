@@ -22,7 +22,7 @@
 
 using namespace XFILE;
 using namespace ADDON;
-using KODI::MEDIA::MediaSection;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaSection;
 
 CGUIViewStateWindowPictures::CGUIViewStateWindowPictures(const CFileItemList& items) : CGUIViewState(items)
 {
@@ -50,7 +50,7 @@ CGUIViewStateWindowPictures::CGUIViewStateWindowPictures(const CFileItemList& it
                   LABEL_MASKS("%L", "%I", "%L", "")); // Filename, Size | FolderName, empty
 
     const CViewState* viewState =
-        CViewStateSettings::GetInstance().Get(KODI::VIEW::STATE::PICTURES);
+        CViewStateSettings::GetInstance().Get(UNIVERSAL MEDIA CENTER::VIEW::STATE::PICTURES);
     SetSortMethod(viewState->m_sortDescription);
     SetViewAsControl(viewState->m_viewMode);
     SetSortOrder(viewState->m_sortDescription.sortOrder);
@@ -61,12 +61,12 @@ CGUIViewStateWindowPictures::CGUIViewStateWindowPictures(const CFileItemList& it
 void CGUIViewStateWindowPictures::SaveViewState()
 {
   SaveViewToDb(m_items.GetPath(), WINDOW_PICTURES,
-               CViewStateSettings::GetInstance().Get(KODI::VIEW::STATE::PICTURES));
+               CViewStateSettings::GetInstance().Get(UNIVERSAL MEDIA CENTER::VIEW::STATE::PICTURES));
 }
 
-std::optional<KODI::MEDIA::MediaSection> CGUIViewStateWindowPictures::GetLockType()
+std::optional<UNIVERSAL MEDIA CENTER::MEDIA::MediaSection> CGUIViewStateWindowPictures::GetLockType()
 {
-  return KODI::MEDIA::MediaSection::PICTURES;
+  return UNIVERSAL MEDIA CENTER::MEDIA::MediaSection::PICTURES;
 }
 
 std::string CGUIViewStateWindowPictures::GetExtensions()

@@ -138,7 +138,7 @@ class CTempDisc
 public:
   CTempDisc()
     : m_root(std::filesystem::temp_directory_path() /
-             (std::string("kodi-test-m2ts-") +
+             (std::string("universalmediacenter-test-m2ts-") +
               testing::UnitTest::GetInstance()->current_test_info()->name()))
   {
     std::filesystem::remove_all(m_root);

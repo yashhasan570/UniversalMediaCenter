@@ -48,7 +48,7 @@
 #include <chrono>
 #include <memory>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace std::chrono_literals;
 
 void CApplicationPlayerCallback::OnPlayBackEnded()

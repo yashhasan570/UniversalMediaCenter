@@ -28,7 +28,7 @@
 
 #include "PlatformDefs.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace std::chrono_literals;
 
 CLirc::CLirc() : CThread("Lirc"), m_irTranslator(std::make_unique<KEYMAP::CIRTranslator>())
@@ -86,7 +86,7 @@ void CLirc::Process()
         continue;
       }
 
-      m_fd = lirc_init(const_cast<char*>("kodi"), 0);
+      m_fd = lirc_init(const_cast<char*>("universalmediacenter"), 0);
       if (m_fd <= 0)
       {
         CSingleExit lock(m_critSection);
@@ -156,8 +156,8 @@ void CLirc::ProcessCode(char *buf)
               &deviceName[0], buttonName);
     m_firstClickTime = std::chrono::steady_clock::now();
 
-    XBMC_Event newEvent = {};
-    newEvent.type = XBMC_BUTTON;
+    _Event newEvent = {};
+    newEvent.type = _BUTTON;
     newEvent.keybutton.button = button;
     newEvent.keybutton.holdtime = 0;
     std::shared_ptr<CAppInboundProtocol> appPort = CServiceBroker::GetAppPort();
@@ -167,8 +167,8 @@ void CLirc::ProcessCode(char *buf)
   }
   else if (repeat > CServiceBroker::GetSettingsComponent()->GetAdvancedSettings()->m_remoteDelay)
   {
-    XBMC_Event newEvent = {};
-    newEvent.type = XBMC_BUTTON;
+    _Event newEvent = {};
+    newEvent.type = _BUTTON;
     newEvent.keybutton.button = button;
 
     auto now = std::chrono::steady_clock::now();

@@ -13,7 +13,7 @@
 #include "guilib/GUIComponent.h"
 #include "guilib/GUIWindowManager.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace RETRO;
 
 CGUIPlaybackControl::CGUIPlaybackControl(IPlaybackCallback& callback) : m_callback(callback)

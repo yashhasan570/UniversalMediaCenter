@@ -17,7 +17,7 @@
 #include "GameClientTopology.h"
 #include "ServiceBroker.h"
 #include "addons/addoninfo/AddonInfo.h"
-#include "addons/kodi-dev-kit/include/kodi/addon-instance/Game.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/addon-instance/Game.h"
 #include "games/GameServices.h"
 #include "games/addons/GameClient.h"
 #include "games/addons/GameClientCallbacks.h"
@@ -38,7 +38,7 @@
 #include <memory>
 #include <mutex>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 CGameClientInput::CGameClientInput(CGameClient& gameClient,

@@ -12,7 +12,7 @@
 
 #include <string>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace JOYSTICK
 {
@@ -31,7 +31,7 @@ public:
   /*!
    * \brief The add-on ID of the game controller associated with this input handler
    *
-   * \return The ID of the add-on extending kodi.game.controller
+   * \return The ID of the add-on extending universalmediacenter.game.controller
    */
   virtual std::string ControllerID(void) const = 0;
 
@@ -176,4 +176,4 @@ private:
   IInputReceiver* m_receiver = nullptr;
 };
 } // namespace JOYSTICK
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

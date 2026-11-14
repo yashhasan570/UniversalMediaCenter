@@ -38,7 +38,7 @@ class CGUIRangesControl : public CGUIControl
     void FreeResources(bool bImmediately);
     void DynamicResourceAlloc(bool bOnOff);
     void SetInvalid();
-    bool SetDiffuseColor(const KODI::GUILIB::GUIINFO::CGUIInfoColor& color);
+    bool SetDiffuseColor(const UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoColor& color);
 
     bool Process(unsigned int iCurrentTime);
     void Render();

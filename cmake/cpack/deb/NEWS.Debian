@@ -1,8 +1,8 @@
 @CPACK_PACKAGE_NAME@ (@CPACK_DEBIAN_PACKAGE_VERSION@) @DISTRO_CODENAME@; urgency=high
-  * Kodi Krypton (v17.0) will have an awesome new default skin, Estuary.
-    However the vast improvements are deep in the bowels of Kodi core code.
+  * Universal Media Center Krypton (v17.0) will have an awesome new default skin, Estuary.
+    However the vast improvements are deep in the bowels of Universal Media Center core code.
     .
-    Since the beginning of XBMC back in the days while it was running on
+    Since the beginning of  back in the days while it was running on
     the XBOX there was something like DVDPlayer. As the name probably
     implies it was used to playback DVD discs/files. During the years this
     DVDPlayer was improved and patched up to stay within modern day
@@ -13,7 +13,7 @@
     .
     Together with some platform developers they ripped out the old
     DVDPlayer code, chopped it into pieces, put it in the blender, picked
-    the needed pieces and put it back in without breaking the rest of Kodi.
+    the needed pieces and put it back in without breaking the rest of Universal Media Center.
     This certainly wasn’t an easy job as DVDPlayer was like the bottom
     block of a Jenga tower that needed to be replaced while still being
     entangled throughout the whole tower. It had it’s tentacles in parts

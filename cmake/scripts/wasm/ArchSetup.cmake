@@ -1,7 +1,7 @@
 # WebAssembly (Emscripten) architecture setup
 include(cmake/scripts/wasm/Linkers.txt)
 
-set(CORE_MAIN_SOURCE ${CMAKE_SOURCE_DIR}/xbmc/platform/wasm/main.cpp)
+set(CORE_MAIN_SOURCE ${CMAKE_SOURCE_DIR}//platform/wasm/main.cpp)
 
 list(APPEND ARCH_DEFINES -DTARGET_POSIX -DTARGET_WASM)
 set(PLATFORM_DIR platform/wasm)
@@ -49,20 +49,20 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Emscripten")
     "SHELL:-sPROXY_TO_PTHREAD"
     "SHELL:-sMIN_WEBGL_VERSION=2"
     "SHELL:-sMAX_WEBGL_VERSION=2"
-    # The WebGL context lives on the browser main thread; GL calls from the Kodi
+    # The WebGL context lives on the browser main thread; GL calls from the Universal Media Center
     # pthread are proxied to it and presented with wasm_webgl_commit_frame().
     "SHELL:-sOFFSCREEN_FRAMEBUFFER=1"
     "SHELL:-sGL_SUPPORT_EXPLICIT_SWAP_CONTROL=1"
     "SHELL:-lidbfs.js"
     "SHELL:-lembind"
-    # kodi_pre.js uses Module.ccall('kodi_wasm_dispatch_paste', ...) for clipboard paste.
+    # universalmediacenter_pre.js uses Module.ccall('universalmediacenter_wasm_dispatch_paste', ...) for clipboard paste.
     "SHELL:-sEXPORTED_RUNTIME_METHODS=ccall,cwrap"
-    "SHELL:--pre-js ${CMAKE_SOURCE_DIR}/xbmc/platform/wasm/kodi_pre.js"
-    "SHELL:--js-library ${CMAKE_SOURCE_DIR}/xbmc/windowing/wasm/webgl_commit.js"
+    "SHELL:--pre-js ${CMAKE_SOURCE_DIR}//platform/wasm/universalmediacenter_pre.js"
+    "SHELL:--js-library ${CMAKE_SOURCE_DIR}//windowing/wasm/webgl_commit.js"
     # BSD sockets over the Tizen Sockets Extension; falls back to the upstream
     # implementation in ordinary browsers.
-    "SHELL:--js-library ${CMAKE_SOURCE_DIR}/xbmc/platform/wasm/network/tizen_sockets.js"
-    "SHELL:--js-library ${CMAKE_SOURCE_DIR}/xbmc/cores/VideoPlayer/DVDCodecs/Video/webcodecs_bridge.js"
+    "SHELL:--js-library ${CMAKE_SOURCE_DIR}//platform/wasm/network/tizen_sockets.js"
+    "SHELL:--js-library ${CMAKE_SOURCE_DIR}//cores/VideoPlayer/DVDCodecs/Video/webcodecs_bridge.js"
   )
 
   # tizen_sockets.js returns one getaddrinfo() node per address, and older
@@ -111,10 +111,10 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Emscripten")
   endif()
 endif()
 
-# Preload Kodi data directories into the Emscripten virtual filesystem under /kodi.
+# Preload Universal Media Center data directories into the Emscripten virtual filesystem under /universalmediacenter.
 # The data is copied into the build tree by cmake install rules; we reference it from there.
 set(WASM_PRELOAD_ROOT "${CMAKE_BINARY_DIR}")
-set(WASM_VFS_PREFIX "/kodi")
+set(WASM_VFS_PREFIX "/universalmediacenter")
 foreach(_dir addons media system userdata)
   add_link_options("SHELL:--preload-file ${WASM_PRELOAD_ROOT}/${_dir}@${WASM_VFS_PREFIX}/${_dir}")
 endforeach()

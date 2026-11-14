@@ -25,7 +25,7 @@ enum class SeekType
   MUSIC = 1
 };
 
-class CSeekHandler : public ISettingCallback, public KODI::ACTION::IActionListener
+class CSeekHandler : public ISettingCallback, public UNIVERSAL MEDIA CENTER::ACTION::IActionListener
 {
 public:
   CSeekHandler() = default;

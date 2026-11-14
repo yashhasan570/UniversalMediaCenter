@@ -10,7 +10,7 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI::SUBTITLES::STYLE;
+using namespace UNIVERSAL MEDIA CENTER::SUBTITLES::STYLE;
 
 namespace
 {

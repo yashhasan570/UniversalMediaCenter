@@ -18,7 +18,7 @@
 #include <mmdeviceapi.h>
 #include <wrl/client.h>
 
-using KODI::PLATFORM::WINDOWS::FromW;
+using UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW;
 
 class CMMNotificationClient : public IMMNotificationClient
 {

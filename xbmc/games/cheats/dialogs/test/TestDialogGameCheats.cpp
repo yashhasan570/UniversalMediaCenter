@@ -55,7 +55,7 @@ public:
   {
   }
   CTestTexture* Clone() const override { return new CTestTexture(*this); }
-  void Begin(KODI::UTILS::COLOR::Color) override {}
+  void Begin(UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color) override {}
   void Draw(float*, float*, float*, const CRect&, const CRect&, int) override {}
   void End() override {}
 };
@@ -124,7 +124,7 @@ private:
   unsigned int m_time{0};
 };
 
-class CTestDialogGameCheats : public KODI::GAME::CDialogGameCheats, public IMsgTargetCallback
+class CTestDialogGameCheats : public UNIVERSAL MEDIA CENTER::GAME::CDialogGameCheats, public IMsgTargetCallback
 {
 public:
   explicit CTestDialogGameCheats(bool showOnePage = true)
@@ -209,10 +209,10 @@ public:
 protected:
   void InitializeControls() override
   {
-    std::vector<KODI::GAME::Cheat> cheats(cheatCount);
+    std::vector<UNIVERSAL MEDIA CENTER::GAME::Cheat> cheats(cheatCount);
     for (int i = 0; i < cheatCount; ++i)
       cheats[i].description = "Cheat " + std::to_string(i);
-    KODI::GAME::CGameClientCheats::PackState packs;
+    UNIVERSAL MEDIA CENTER::GAME::CGameClientCheats::PackState packs;
     packs.fileName = fileName;
     packs.cheats = std::move(cheats);
     if (hasMatch)

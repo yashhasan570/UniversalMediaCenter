@@ -10,7 +10,7 @@
 
 #include <system_error>
 
-using namespace KODI::UTILS::POSIX;
+using namespace UNIVERSAL MEDIA CENTER::UTILS::POSIX;
 
 CMmap::CMmap(void* addr, std::size_t length, int prot, int flags, int fildes, off_t offset)
 : m_size{length}, m_memory{mmap(addr, length, prot, flags, fildes, offset)}

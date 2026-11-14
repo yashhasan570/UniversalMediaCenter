@@ -14,7 +14,7 @@
 #include <string>
 #include <string_view>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -93,4 +93,4 @@ public:
   static std::string TranslationLanguage(std::string_view code);
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

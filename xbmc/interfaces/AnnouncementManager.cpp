@@ -28,9 +28,9 @@
 #define LOOKUP_PROPERTY "database-lookup"
 
 using namespace ANNOUNCEMENT;
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
-const std::string CAnnouncementManager::ANNOUNCEMENT_SENDER = "xbmc";
+const std::string CAnnouncementManager::ANNOUNCEMENT_SENDER = "";
 
 namespace
 {
@@ -87,7 +87,7 @@ void CopyVideoTagInfoToObject(CFileItem& item, CVariant& object)
     objItem["type"] = tag.m_type;
   else
     objItem["type"] =
-        KODI::MEDIA::NameOf(DatabaseUtils::MediaTypeFromVideoContentType(item.GetVideoContentType()));
+        UNIVERSAL MEDIA CENTER::MEDIA::NameOf(DatabaseUtils::MediaTypeFromVideoContentType(item.GetVideoContentType()));
 
   if (id <= 0)
   {
@@ -136,7 +136,7 @@ void CopyMusicTagInfoToObject(CFileItem& item, CVariant& object)
 
   auto& objItem = object["item"];
   int id = tag.GetDatabaseId();
-  objItem["type"] = KODI::MEDIA::NameOf(KODI::MEDIA::TYPE::SONG);
+  objItem["type"] = UNIVERSAL MEDIA CENTER::MEDIA::NameOf(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::SONG);
 
   //! @todo Can be removed once this is properly handled when starting playback of a file
   if (id <= 0 && !item.GetPath().empty() && item.GetProperty(LOOKUP_PROPERTY).asBoolean(true))

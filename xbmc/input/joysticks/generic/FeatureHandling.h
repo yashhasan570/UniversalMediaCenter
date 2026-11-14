@@ -13,7 +13,7 @@
 #include <chrono>
 #include <memory>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace JOYSTICK
 {
@@ -299,4 +299,4 @@ protected:
   float m_zAxisState = 0.0f;
 };
 } // namespace JOYSTICK
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

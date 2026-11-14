@@ -1,4 +1,4 @@
-#if defined(KODI_HUESAT_PQ) || defined(KODI_HUESAT_HLG)
+#if defined(UNIVERSAL MEDIA CENTER_HUESAT_PQ) || defined(UNIVERSAL MEDIA CENTER_HUESAT_HLG)
 // PQ needs the precision of highp
 #ifdef GL_FRAGMENT_PRECISION_HIGH
 #define HS_PREC highp
@@ -11,7 +11,7 @@ uniform HS_PREC vec3 m_hsCoefs;
 uniform HS_PREC float m_hsPeak; // linear, 1.0 = PQ 10000 cd/m2 or HLG nominal peak
 uniform HS_PREC vec2 m_hsRange;
 
-#if defined(KODI_HUESAT_PQ)
+#if defined(UNIVERSAL MEDIA CENTER_HUESAT_PQ)
 const HS_PREC float HS_PQ_m1 = 2610.0 / (4096.0 * 4.0);
 const HS_PREC float HS_PQ_m2 = (2523.0 / 4096.0) * 128.0;
 const HS_PREC float HS_PQ_c1 = 3424.0 / 4096.0;
@@ -72,7 +72,7 @@ HS_PREC vec3 hsEncodeHLG(HS_PREC vec3 x)
 HS_PREC vec3 hueSaturation(HS_PREC vec3 color)
 {
   color = (color - m_hsRange.y) / m_hsRange.x;
-#if defined(KODI_HUESAT_PQ)
+#if defined(UNIVERSAL MEDIA CENTER_HUESAT_PQ)
   HS_PREC vec3 lin = hsDecodePQ(color);
 #else
   HS_PREC vec3 lin = hsDecodeHLG(color);
@@ -95,7 +95,7 @@ HS_PREC vec3 hueSaturation(HS_PREC vec3 color)
           + above * (min(vec3(top - luma), positiveDen) / positiveDen - 1.0);
   lin = max(luma + clamp(min(limit.r, min(limit.g, limit.b)), 0.0, 1.0) * chroma, vec3(0.0));
 
-#if defined(KODI_HUESAT_PQ)
+#if defined(UNIVERSAL MEDIA CENTER_HUESAT_PQ)
   return hsEncodePQ(lin) * m_hsRange.x + m_hsRange.y;
 #else
   return hsEncodeHLG(lin) * m_hsRange.x + m_hsRange.y;

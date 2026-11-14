@@ -43,11 +43,11 @@ std::string GLSLOutput::GetDefines()
 {
   std::string defines;
   if (m_dither)
-    defines += "#define XBMC_DITHER\n";
+    defines += "#define _DITHER\n";
   if (m_fullRange)
-    defines += "#define XBMC_FULLRANGE\n";
+    defines += "#define _FULLRANGE\n";
   if (m_3DLUT)
-    defines += "#define KODI_3DLUT\n";
+    defines += "#define UNIVERSALMEDIA_3DLUT\n";
   return defines;
 }
 

@@ -43,7 +43,7 @@ static void LoadTexture(GLenum target
   GLenum internalFormat = alpha ? GL_RED : GL_RGBA;
   GLenum externalFormat = alpha ? GL_RED : GL_BGRA;
 
-  int bytesPerPixel = KODI::UTILS::GL::glFormatElementByteCount(externalFormat);
+  int bytesPerPixel = UNIVERSAL MEDIA CENTER::UTILS::GL::glFormatElementByteCount(externalFormat);
 
   glPixelStorei(GL_UNPACK_ROW_LENGTH, stride / bytesPerPixel);
 

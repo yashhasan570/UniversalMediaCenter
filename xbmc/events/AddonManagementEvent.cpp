@@ -70,7 +70,7 @@ bool CAddonManagementEvent::Execute() const
     return false;
 
   CFileItemPtr addonItem = XFILE::CAddonsDirectory::FileItemFromAddon(
-      m_addon, URIUtils::AddFileToFolder(KODI::ADDONS::ROOT, m_addon->ID()));
+      m_addon, URIUtils::AddFileToFolder(UNIVERSAL MEDIA CENTER::ADDONS::ROOT, m_addon->ID()));
   if (addonItem == nullptr)
     return false;
 

@@ -16,7 +16,7 @@
 
 class CFileItem;
 
-namespace KODI::ART
+namespace UNIVERSAL MEDIA CENTER::ART
 {
 
 enum class AdditionalIdentifiers : uint8_t
@@ -96,4 +96,4 @@ void AddLocalItemArtwork(Artwork& itemArt,
 */
 std::string GetTBNFile(const CFileItem& item, int season = -1, int episode = -1);
 
-} // namespace KODI::ART
+} // namespace UNIVERSAL MEDIA CENTER::ART

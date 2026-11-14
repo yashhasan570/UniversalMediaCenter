@@ -8,12 +8,12 @@
 
 #pragma once
 
-#include "utils/XBMCTinyXML.h"
+#include "utils/TinyXML.h"
 
 #include <memory>
 #include <vector>
 
-namespace KODI::SETTINGS
+namespace UNIVERSAL MEDIA CENTER::SETTINGS
 {
 class ISettingsMigrationStep
 {
@@ -24,4 +24,4 @@ public:
 };
 
 using MigrationStepList = std::vector<std::shared_ptr<ISettingsMigrationStep>>;
-} // namespace KODI::SETTINGS
+} // namespace UNIVERSAL MEDIA CENTER::SETTINGS

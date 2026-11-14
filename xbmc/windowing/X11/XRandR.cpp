@@ -11,7 +11,7 @@
 #include "CompileInfo.h"
 #include "threads/SystemClock.h"
 #include "utils/StringUtils.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 #include "utils/XTimeUtils.h"
 #include "utils/log.h"
 
@@ -44,7 +44,7 @@ bool CXRandR::Query(bool force, bool ignoreoff)
 
   m_bInit = true;
 
-  if (getenv("KODI_BIN_HOME") == NULL)
+  if (getenv("UNIVERSALMEDIA_BIN_HOME") == NULL)
     return false;
 
   m_outputs.clear();
@@ -64,9 +64,9 @@ bool CXRandR::Query(bool force, int screennum, bool ignoreoff)
   std::string cmd;
   std::string appname = CCompileInfo::GetAppName();
   StringUtils::ToLower(appname);
-  if (getenv("KODI_BIN_HOME"))
+  if (getenv("UNIVERSALMEDIA_BIN_HOME"))
   {
-    cmd  = getenv("KODI_BIN_HOME");
+    cmd  = getenv("UNIVERSALMEDIA_BIN_HOME");
     cmd += "/" + appname + "-xrandr";
     cmd = StringUtils::Format("{} -q --screen {}", cmd, screennum);
   }
@@ -78,7 +78,7 @@ bool CXRandR::Query(bool force, int screennum, bool ignoreoff)
     return false;
   }
 
-  CXBMCTinyXML2 xmlDoc;
+  CTinyXML2 xmlDoc;
   if (!xmlDoc.LoadFile(file))
   {
     CLog::Log(LOGERROR, "CXRandR::Query - unable to open xrandr xml");
@@ -156,9 +156,9 @@ bool CXRandR::TurnOffOutput(const std::string& name)
   std::string appname = CCompileInfo::GetAppName();
   StringUtils::ToLower(appname);
 
-  if (getenv("KODI_BIN_HOME"))
+  if (getenv("UNIVERSALMEDIA_BIN_HOME"))
   {
-    cmd  = getenv("KODI_BIN_HOME");
+    cmd  = getenv("UNIVERSALMEDIA_BIN_HOME");
     cmd += "/" + appname + "-xrandr";
     cmd = StringUtils::Format("{} --screen {} --output {} --off", cmd, output->screen, name);
   }
@@ -215,7 +215,7 @@ bool CXRandR::TurnOnOutput(const std::string& name)
     if (output && output->h > 0)
       return true;
 
-    KODI::TIME::Sleep(200ms);
+    UNIVERSAL MEDIA CENTER::TIME::Sleep(200ms);
   }
 
   return false;
@@ -331,9 +331,9 @@ bool CXRandR::SetMode(const XOutput& output, const XMode& mode)
   StringUtils::ToLower(appname);
   char cmd[255];
 
-  if (getenv("KODI_BIN_HOME"))
+  if (getenv("UNIVERSALMEDIA_BIN_HOME"))
     snprintf(cmd, sizeof(cmd), "%s/%s-xrandr --screen %d --output %s --mode %s",
-               getenv("KODI_BIN_HOME"),appname.c_str(),
+               getenv("UNIVERSALMEDIA_BIN_HOME"),appname.c_str(),
                outputFound.screen, outputFound.name.c_str(), modeFound.id.c_str());
   else
     return false;
@@ -397,9 +397,9 @@ XMode CXRandR::GetPreferredMode(const std::string& outputName)
 void CXRandR::LoadCustomModeLinesToAllOutputs(void)
 {
   Query();
-  CXBMCTinyXML2 xmlDoc;
+  CTinyXML2 xmlDoc;
 
-  if (!xmlDoc.LoadFile("special://xbmc/userdata/ModeLines.xml"))
+  if (!xmlDoc.LoadFile("special:///userdata/ModeLines.xml"))
   {
     return;
   }
@@ -425,9 +425,9 @@ void CXRandR::LoadCustomModeLinesToAllOutputs(void)
     std::string appname = CCompileInfo::GetAppName();
     StringUtils::ToLower(appname);
 
-    if (getenv("KODI_BIN_HOME"))
+    if (getenv("UNIVERSALMEDIA_BIN_HOME"))
     {
-      snprintf(cmd, sizeof(cmd), "%s/%s-xrandr --newmode \"%s\" %s > /dev/null 2>&1", getenv("KODI_BIN_HOME"),
+      snprintf(cmd, sizeof(cmd), "%s/%s-xrandr --newmode \"%s\" %s > /dev/null 2>&1", getenv("UNIVERSALMEDIA_BIN_HOME"),
                appname.c_str(), name.c_str(), strModeLine.c_str());
       if (system(cmd) != 0)
         CLog::Log(LOGERROR, "Unable to create modeline \"{}\"", name);
@@ -435,9 +435,9 @@ void CXRandR::LoadCustomModeLinesToAllOutputs(void)
 
     for (unsigned int i = 0; i < m_outputs.size(); i++)
     {
-      if (getenv("KODI_BIN_HOME"))
+      if (getenv("UNIVERSALMEDIA_BIN_HOME"))
       {
-        snprintf(cmd, sizeof(cmd), "%s/%s-xrandr --addmode %s \"%s\"  > /dev/null 2>&1", getenv("KODI_BIN_HOME"),
+        snprintf(cmd, sizeof(cmd), "%s/%s-xrandr --addmode %s \"%s\"  > /dev/null 2>&1", getenv("UNIVERSALMEDIA_BIN_HOME"),
                  appname.c_str(), m_outputs[i].name.c_str(), name.c_str());
         if (system(cmd) != 0)
           CLog::Log(LOGERROR, "Unable to add modeline \"{}\"", name);

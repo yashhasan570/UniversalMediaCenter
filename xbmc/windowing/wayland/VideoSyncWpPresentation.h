@@ -15,7 +15,7 @@
 #include <ctime>
 #include <optional>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace WINDOWING
 {

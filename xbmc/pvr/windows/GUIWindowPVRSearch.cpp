@@ -45,7 +45,7 @@
 #include <vector>
 
 using namespace PVR;
-using namespace KODI::MESSAGING;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
 
 namespace
 {
@@ -155,7 +155,7 @@ void CGUIWindowPVRSearchBase::OnPrepareFileItems(CFileItemList& items)
         m_searchfilter == nullptr ? 19335 : 19336)); // "New search..." / "Edit search..."
     item->SetLabelPreformatted(true);
     item->SetSpecialSort(SortSpecial::TOP);
-    item->SetArt(KODI::ART::TYPE::ICON, KODI::ART::DEFAULT::PVR_SEARCH);
+    item->SetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::ICON, UNIVERSAL MEDIA CENTER::ART::DEFAULT::PVR_SEARCH);
     items.Add(item);
 
     item = std::make_shared<CFileItem>(IsRadio() ? CPVREpgSearchPath::PATH_RADIO_SAVEDSEARCHES
@@ -165,7 +165,7 @@ void CGUIWindowPVRSearchBase::OnPrepareFileItems(CFileItemList& items)
         19337)); // "Saved searches"
     item->SetLabelPreformatted(true);
     item->SetSpecialSort(SortSpecial::TOP);
-    item->SetArt(KODI::ART::TYPE::ICON, KODI::ART::DEFAULT::FOLDER);
+    item->SetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::ICON, UNIVERSAL MEDIA CENTER::ART::DEFAULT::FOLDER);
     items.Add(item);
   }
 

@@ -18,7 +18,7 @@
 #include "utils/URIUtils.h"
 #include "utils/log.h"
 
-#include "platform/android/activity/XBMCApp.h"
+#include "platform/android/activity/App.h"
 
 #include <vector>
 
@@ -35,7 +35,7 @@ bool CAndroidAppDirectory::GetDirectory(const CURL& url, CFileItemList &items)
 
   if (dirname == "apps")
   {
-    const std::vector<androidPackage> applications = CXBMCApp::Get().GetApplications();
+    const std::vector<androidPackage> applications = CApp::Get().GetApplications();
     if (applications.empty())
     {
       CLog::Log(LOGERROR, "CAndroidAppDirectory::GetDirectory Application lookup listing failed");
@@ -51,7 +51,7 @@ bool CAndroidAppDirectory::GetDirectory(const CURL& url, CFileItemList &items)
           StringUtils::Format("androidapp://{}/{}/{}", url.GetHostName(), dirname, i.packageName);
       pItem->SetPath(path);
       pItem->SetLabel(i.packageLabel);
-      pItem->SetArt(KODI::ART::TYPE::THUMB, path + ".png");
+      pItem->SetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB, path + ".png");
       pItem->SetSize(-1); // No size
       items.Add(pItem);
     }

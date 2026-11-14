@@ -26,7 +26,7 @@
 #include "messaging/ApplicationMessenger.h"
 #include "settings/MediaSettings.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 namespace
 {
@@ -47,9 +47,9 @@ std::shared_ptr<CApplicationPlayer> getAppPlayerMut()
 
 } // namespace
 
-namespace XBMCAddon
+namespace Addon
 {
-  namespace xbmc
+  namespace 
   {
   PlayParameter Player::defaultPlayParameter;
 
@@ -78,28 +78,28 @@ namespace XBMCAddon
     }
 
     void Player::play(const Alternative<String, const PlayList* > & item,
-                      const XBMCAddon::xbmcgui::ListItem* listitem, bool windowed, int startpos)
+                      const Addon::gui::ListItem* listitem, bool windowed, int startpos)
     {
-      XBMC_TRACE;
+      _TRACE;
 
       if (&item == &defaultPlayParameter)
         playCurrent(windowed);
-      else if (item.which() == XBMCAddon::first)
+      else if (item.which() == Addon::first)
         playStream(item.former(), listitem, windowed);
       else // item is a PlayListItem
         playPlaylist(item.later(),windowed,startpos);
     }
 
-    void Player::playStream(const String& item, const xbmcgui::ListItem* plistitem, bool windowed)
+    void Player::playStream(const String& item, const gui::ListItem* plistitem, bool windowed)
     {
-      XBMC_TRACE;
+      _TRACE;
       DelayedCallGuard dc(languageHook);
       if (!item.empty())
       {
         // set fullscreen or windowed
         CMediaSettings::GetInstance().SetMediaStartWindowed(windowed);
 
-        const AddonClass::Ref<xbmcgui::ListItem> listitem(plistitem);
+        const AddonClass::Ref<gui::ListItem> listitem(plistitem);
 
         if (listitem.isSet())
         {
@@ -122,7 +122,7 @@ namespace XBMCAddon
 
     void Player::playCurrent(bool windowed)
     {
-      XBMC_TRACE;
+      _TRACE;
       DelayedCallGuard dc(languageHook);
       // set fullscreen or windowed
       CMediaSettings::GetInstance().SetMediaStartWindowed(windowed);
@@ -136,7 +136,7 @@ namespace XBMCAddon
 
     void Player::playPlaylist(const PlayList* playlist, bool windowed, int startpos)
     {
-      XBMC_TRACE;
+      _TRACE;
       DelayedCallGuard dc(languageHook);
       if (playlist != NULL)
       {
@@ -156,19 +156,19 @@ namespace XBMCAddon
 
     void Player::stop()
     {
-      XBMC_TRACE;
+      _TRACE;
       CServiceBroker::GetAppMessenger()->SendMsg(TMSG_MEDIA_STOP);
     }
 
     void Player::pause()
     {
-      XBMC_TRACE;
+      _TRACE;
       CServiceBroker::GetAppMessenger()->SendMsg(TMSG_MEDIA_PAUSE);
     }
 
     void Player::playnext()
     {
-      XBMC_TRACE;
+      _TRACE;
       DelayedCallGuard dc(languageHook);
 
       CServiceBroker::GetAppMessenger()->SendMsg(TMSG_PLAYLISTPLAYER_NEXT);
@@ -176,7 +176,7 @@ namespace XBMCAddon
 
     void Player::playprevious()
     {
-      XBMC_TRACE;
+      _TRACE;
       DelayedCallGuard dc(languageHook);
 
       CServiceBroker::GetAppMessenger()->SendMsg(TMSG_PLAYLISTPLAYER_PREV);
@@ -184,7 +184,7 @@ namespace XBMCAddon
 
     void Player::playselected(int selected)
     {
-      XBMC_TRACE;
+      _TRACE;
       DelayedCallGuard dc(languageHook);
 
       if (CServiceBroker::GetPlaylistPlayer().GetCurrentPlaylist() != PLAYLIST::Id{iPlayList})
@@ -203,7 +203,7 @@ namespace XBMCAddon
       // We only have fileItem due to us having to
       // implement the interface, we can't send it to python
       // as we're not able to serialize it.
-      XBMC_TRACE;
+      _TRACE;
       invokeCallback(new CallbackFunction<Player>(this, &Player::onPlayBackStarted));
     }
 
@@ -212,188 +212,188 @@ namespace XBMCAddon
       // We only have fileItem due to us having to
       // implement the interface, we can't send it to python
       // as we're not able to serialize it.
-      XBMC_TRACE;
+      _TRACE;
       invokeCallback(new CallbackFunction<Player>(this, &Player::onAVStarted));
     }
 
     void Player::OnAVChange()
     {
-      XBMC_TRACE;
+      _TRACE;
       invokeCallback(new CallbackFunction<Player>(this, &Player::onAVChange));
     }
 
     void Player::OnPlayBackEnded()
     {
-      XBMC_TRACE;
+      _TRACE;
       invokeCallback(new CallbackFunction<Player>(this,&Player::onPlayBackEnded));
     }
 
     void Player::OnPlayBackStopped()
     {
-      XBMC_TRACE;
+      _TRACE;
       invokeCallback(new CallbackFunction<Player>(this,&Player::onPlayBackStopped));
     }
 
     void Player::OnPlayBackError()
     {
-      XBMC_TRACE;
+      _TRACE;
       invokeCallback(new CallbackFunction<Player>(this,&Player::onPlayBackError));
     }
 
     void Player::OnPlayBackPaused()
     {
-      XBMC_TRACE;
+      _TRACE;
       invokeCallback(new CallbackFunction<Player>(this,&Player::onPlayBackPaused));
     }
 
     void Player::OnPlayBackResumed()
     {
-      XBMC_TRACE;
+      _TRACE;
       invokeCallback(new CallbackFunction<Player>(this,&Player::onPlayBackResumed));
     }
 
     void Player::OnQueueNextItem()
     {
-      XBMC_TRACE;
+      _TRACE;
       invokeCallback(new CallbackFunction<Player>(this,&Player::onQueueNextItem));
     }
 
     void Player::OnPlayBackSpeedChanged(int speed)
     {
-      XBMC_TRACE;
+      _TRACE;
       invokeCallback(new CallbackFunction<Player,int>(this,&Player::onPlayBackSpeedChanged,speed));
     }
 
     void Player::OnPlayBackSeek(int64_t time, int64_t seekOffset)
     {
-      XBMC_TRACE;
+      _TRACE;
       invokeCallback(new CallbackFunction<Player,int,int>(this,&Player::onPlayBackSeek,static_cast<int>(time),static_cast<int>(seekOffset)));
     }
 
     void Player::OnPlayBackSeekChapter(int chapter)
     {
-      XBMC_TRACE;
+      _TRACE;
       invokeCallback(new CallbackFunction<Player,int>(this,&Player::onPlayBackSeekChapter,chapter));
     }
 
     void Player::onPlayBackStarted()
     {
-      XBMC_TRACE;
+      _TRACE;
     }
 
     void Player::onAVStarted()
     {
-      XBMC_TRACE;
+      _TRACE;
     }
 
     void Player::onAVChange()
     {
-      XBMC_TRACE;
+      _TRACE;
     }
 
     void Player::onPlayBackEnded()
     {
-      XBMC_TRACE;
+      _TRACE;
     }
 
     void Player::onPlayBackStopped()
     {
-      XBMC_TRACE;
+      _TRACE;
     }
 
     void Player::onPlayBackError()
     {
-      XBMC_TRACE;
+      _TRACE;
     }
 
     void Player::onPlayBackPaused()
     {
-      XBMC_TRACE;
+      _TRACE;
     }
 
     void Player::onPlayBackResumed()
     {
-      XBMC_TRACE;
+      _TRACE;
     }
 
     void Player::onQueueNextItem()
     {
-      XBMC_TRACE;
+      _TRACE;
     }
 
     void Player::onPlayBackSpeedChanged(int speed)
     {
-      XBMC_TRACE;
+      _TRACE;
     }
 
     void Player::onPlayBackSeek(int time, int seekOffset)
     {
-      XBMC_TRACE;
+      _TRACE;
     }
 
     void Player::onPlayBackSeekChapter(int chapter)
     {
-      XBMC_TRACE;
+      _TRACE;
     }
 
     bool Player::isPlaying()
     {
-      XBMC_TRACE;
+      _TRACE;
       return getAppPlayer()->IsPlaying();
     }
 
     bool Player::isPlayingAudio()
     {
-      XBMC_TRACE;
+      _TRACE;
       return getAppPlayer()->IsPlayingAudio();
     }
 
     bool Player::isPlayingVideo()
     {
-      XBMC_TRACE;
+      _TRACE;
       return getAppPlayer()->IsPlayingVideo();
     }
 
     bool Player::isPlayingRDS()
     {
-      XBMC_TRACE;
+      _TRACE;
       return getAppPlayer()->IsPlayingRDS();
     }
 
     bool Player::isPlayingGame()
     {
-      XBMC_TRACE;
+      _TRACE;
       return getAppPlayer()->IsPlayingGame();
     }
 
     bool Player::isExternalPlayer()
     {
-      XBMC_TRACE;
+      _TRACE;
       return getAppPlayer()->IsExternalPlaying();
     }
 
     String Player::getPlayingFile()
     {
-      XBMC_TRACE;
+      _TRACE;
       if (!getAppPlayer()->IsPlaying())
         throw PlayerException("Universal Media Center is not playing any file");
 
       return g_application.CurrentFileItem().GetDynPath();
     }
 
-    XBMCAddon::xbmcgui::ListItem* Player::getPlayingItem()
+    Addon::gui::ListItem* Player::getPlayingItem()
     {
-      XBMC_TRACE;
+      _TRACE;
       if (!getAppPlayer()->IsPlaying())
         throw PlayerException("Universal Media Center is not playing any item");
 
       CFileItemPtr itemPtr = std::make_shared<CFileItem>(g_application.CurrentFileItem());
-      return new XBMCAddon::xbmcgui::ListItem(itemPtr);
+      return new Addon::gui::ListItem(itemPtr);
     }
 
     InfoTagVideo* Player::getVideoInfoTag()
     {
-      XBMC_TRACE;
+      _TRACE;
       if (!getAppPlayer()->IsPlayingVideo())
         throw PlayerException("Universal Media Center is not playing any videofile");
 
@@ -406,7 +406,7 @@ namespace XBMCAddon
 
     ContentGeometry* Player::getContentGeometry()
     {
-      XBMC_TRACE;
+      _TRACE;
 
       return new ContentGeometry(
           CServiceBroker::GetAppComponents().GetComponent<CApplicationContentGeometry>()->Get());
@@ -414,7 +414,7 @@ namespace XBMCAddon
 
     InfoTagMusic* Player::getMusicInfoTag()
     {
-      XBMC_TRACE;
+      _TRACE;
       if (getAppPlayer()->IsPlayingVideo() || !getAppPlayer()->IsPlayingAudio())
         throw PlayerException("Universal Media Center is not playing any music file");
 
@@ -425,9 +425,9 @@ namespace XBMCAddon
       return new InfoTagMusic(true);
     }
 
-    void Player::updateInfoTag(const XBMCAddon::xbmcgui::ListItem* item)
+    void Player::updateInfoTag(const Addon::gui::ListItem* item)
     {
-      XBMC_TRACE;
+      _TRACE;
       if (!getAppPlayer()->IsPlaying())
         throw PlayerException("Universal Media Center is not playing any file");
 
@@ -437,11 +437,11 @@ namespace XBMCAddon
 
     InfoTagGame* Player::getGameInfoTag()
     {
-      XBMC_TRACE;
+      _TRACE;
       if (!getAppPlayer()->IsPlayingGame())
         throw PlayerException("Universal Media Center is not playing any game file");
 
-      const KODI::GAME::CGameInfoTag* game =
+      const UNIVERSAL MEDIA CENTER::GAME::CGameInfoTag* game =
           CServiceBroker::GetGUI()->GetInfoManager().GetCurrentGameTag();
       if (game)
         return new InfoTagGame(game);
@@ -451,7 +451,7 @@ namespace XBMCAddon
 
     InfoTagRadioRDS* Player::getRadioRDSInfoTag()
     {
-      XBMC_TRACE;
+      _TRACE;
       if (getAppPlayer()->IsPlayingVideo() || !getAppPlayer()->IsPlayingRDS())
         throw PlayerException("Universal Media Center is not playing any music file with RDS");
 
@@ -464,7 +464,7 @@ namespace XBMCAddon
 
     double Player::getTotalTime()
     {
-      XBMC_TRACE;
+      _TRACE;
       if (!getAppPlayer()->IsPlaying())
         throw PlayerException("Universal Media Center is not playing any media file");
 
@@ -473,7 +473,7 @@ namespace XBMCAddon
 
     double Player::getTime()
     {
-      XBMC_TRACE;
+      _TRACE;
       if (!getAppPlayer()->IsPlaying())
         throw PlayerException("Universal Media Center is not playing any media file");
 
@@ -482,7 +482,7 @@ namespace XBMCAddon
 
     void Player::seekTime(double pTime)
     {
-      XBMC_TRACE;
+      _TRACE;
       if (!getAppPlayer()->IsPlaying())
         throw PlayerException("Universal Media Center is not playing any media file");
 
@@ -491,7 +491,7 @@ namespace XBMCAddon
 
     void Player::setSubtitles(const char* cLine)
     {
-      XBMC_TRACE;
+      _TRACE;
       if (getAppPlayer()->HasPlayer())
       {
         getAppPlayerMut()->AddSubtitle(cLine);
@@ -500,7 +500,7 @@ namespace XBMCAddon
 
     void Player::showSubtitles(bool bVisible)
     {
-      XBMC_TRACE;
+      _TRACE;
       if (getAppPlayer()->HasPlayer())
       {
         getAppPlayerMut()->SetSubtitleVisible(bVisible != 0);
@@ -509,7 +509,7 @@ namespace XBMCAddon
 
     String Player::getSubtitles()
     {
-      XBMC_TRACE;
+      _TRACE;
       if (getAppPlayer()->HasPlayer())
       {
         SubtitleStreamInfo info;

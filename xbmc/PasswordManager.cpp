@@ -15,7 +15,7 @@
 #include "settings/SettingsComponent.h"
 #include "utils/FileUtils.h"
 #include "utils/StringUtils.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 #include "utils/XMLUtils.h"
 #include "utils/log.h"
 
@@ -147,7 +147,7 @@ void CPasswordManager::Load()
   std::string passwordsFile = profileManager->GetUserDataItem("passwords.xml");
   if (CFileUtils::Exists(passwordsFile))
   {
-    CXBMCTinyXML2 doc;
+    CTinyXML2 doc;
     if (!doc.LoadFile(passwordsFile))
     {
       CLog::LogF(LOGERROR, "Unable to load: {}, Line {}\n{}", passwordsFile, doc.ErrorLineNum(),
@@ -184,7 +184,7 @@ void CPasswordManager::Save() const
   if (m_permanentCache.empty())
     return;
 
-  CXBMCTinyXML2 doc;
+  CTinyXML2 doc;
   auto* rootElement = doc.NewElement("passwords");
   if (rootElement == nullptr)
     return;

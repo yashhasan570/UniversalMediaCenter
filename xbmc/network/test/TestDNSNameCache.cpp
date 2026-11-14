@@ -88,6 +88,6 @@ TEST(TestDNSNameCache, SelectAddress)
         results[i - 1].ai_next = &result;
     }
 
-    EXPECT_EQ(test.expected, KODI::NETWORK::SelectDNSAddress(results.data()));
+    EXPECT_EQ(test.expected, UNIVERSAL MEDIA CENTER::NETWORK::SelectDNSAddress(results.data()));
   }
 }

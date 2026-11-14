@@ -8,7 +8,7 @@
 
 #include "WinSystemEGL.h"
 
-using namespace KODI::WINDOWING::LINUX;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::LINUX;
 
 CWinSystemEGL::CWinSystemEGL(EGLenum platform, std::string const& platformExtension)
   : m_eglContext{platform, platformExtension}

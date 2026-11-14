@@ -12,7 +12,7 @@
 // VAAPI
 //-----------------------------------------------------------------------------
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace WINDOWING
 {
@@ -32,4 +32,4 @@ void VAAPIRegisterRenderGLES(CVaapiProxy* winSystem, bool& general, bool& deepCo
 #endif
 } // namespace GBM
 } // namespace WINDOWING
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.util.Log;
 
-public class XBMCBroadcastReceiver extends BroadcastReceiver
+public class BroadcastReceiver extends BroadcastReceiver
 {
   native void _onReceive(Intent intent);
 
@@ -17,7 +17,7 @@ public class XBMCBroadcastReceiver extends BroadcastReceiver
   {
     if (Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction()))
     {
-      if (XBMCProperties.getBoolProperty("xbmc.autostart"))
+      if (Properties.getBoolProperty(".autostart"))
       {
         // Run @APP_NAME@
         Intent i = new Intent();
@@ -35,7 +35,7 @@ public class XBMCBroadcastReceiver extends BroadcastReceiver
       }
       catch (UnsatisfiedLinkError e)
       {
-        Log.e(TAG, "XBMCBroadcastReceiver: Native not registered");
+        Log.e(TAG, "BroadcastReceiver: Native not registered");
       }
     }
   }

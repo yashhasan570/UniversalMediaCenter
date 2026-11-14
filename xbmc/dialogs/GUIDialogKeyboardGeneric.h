@@ -79,7 +79,7 @@ class CGUIDialogKeyboardGeneric : public CGUIDialog, public CGUIKeyboard
     bool m_isKeyboardNavigationMode;
     int m_previouslyFocusedButton;
 
-    std::vector<KODI::KEYBOARD::CKeyboardLayout> m_layouts;
+    std::vector<UNIVERSAL MEDIA CENTER::KEYBOARD::CKeyboardLayout> m_layouts;
     unsigned int                 m_currentLayout;
 
     std::string m_strHeading;

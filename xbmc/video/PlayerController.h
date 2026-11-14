@@ -18,7 +18,7 @@
  altering subtitles and audio tracks, changing aspect ratio, subtitle placement,
  and placement of the video on screen.
  */
-class CPlayerController : public ISliderCallback, public KODI::ACTION::IActionListener
+class CPlayerController : public ISliderCallback, public UNIVERSAL MEDIA CENTER::ACTION::IActionListener
 {
 public:
   static CPlayerController& GetInstance();
@@ -58,5 +58,5 @@ private:
   bool NextAudioStream();
 
   int m_sliderAction = 0; ///< \brief set to the action id for a slider being displayed \sa ShowSlider
-  KODI::UTILS::MOVING_SPEED::CMovingSpeed m_movingSpeed;
+  UNIVERSAL MEDIA CENTER::UTILS::MOVING_SPEED::CMovingSpeed m_movingSpeed;
 };

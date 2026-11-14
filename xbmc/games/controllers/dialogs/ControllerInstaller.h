@@ -10,7 +10,7 @@
 
 #include "threads/Thread.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -28,4 +28,4 @@ protected:
   void Process() override;
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

@@ -56,7 +56,7 @@
 
 #define CONTROL_THUMBS                11
 
-using namespace KODI::VIDEO;
+using namespace UNIVERSAL MEDIA CENTER::VIDEO;
 
 CGUIDialogVideoBookmarks::CGUIDialogVideoBookmarks()
   : CGUIDialog(WINDOW_DIALOG_VIDEO_BOOKMARKS, "VideoOSDBookmarks.xml")
@@ -265,7 +265,7 @@ void CGUIDialogVideoBookmarks::OnRefreshList()
 
     CFileItemPtr item(new CFileItem(StringUtils::Format(localizeStrings.Get(299), i + 1)));
     item->SetLabel2(bookmarkTime);
-    item->SetArt(KODI::ART::TYPE::THUMB, m_bookmarks[i].thumbNailImage);
+    item->SetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB, m_bookmarks[i].thumbNailImage);
     item->SetProperty("resumepoint", m_bookmarks[i].timeInSeconds);
     item->SetProperty("playerstate", m_bookmarks[i].playerState);
     item->SetProperty("isbookmark", "true");
@@ -295,7 +295,7 @@ void CGUIDialogVideoBookmarks::OnRefreshList()
     {
       auto chapterPath = IMAGE_FILES::CImageFileURL::FromFile(m_filePath, "video");
       chapterPath.AddOption("chapter", std::to_string(i));
-      item->SetArt(KODI::ART::TYPE::THUMB, chapterPath.ToCacheKey());
+      item->SetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB, chapterPath.ToCacheKey());
     }
 
     item->SetProperty("chapter", i);
@@ -467,7 +467,7 @@ bool CGUIDialogVideoBookmarks::AddBookmark(CVideoInfoTag* tag)
     }
   }
 
-  using namespace KODI::RENDERING::CAPTURE;
+  using namespace UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE;
 
   const auto captureService = CServiceBroker::GetCaptureService();
   if (!captureService)

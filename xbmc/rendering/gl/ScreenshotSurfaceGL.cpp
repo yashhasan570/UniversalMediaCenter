@@ -28,7 +28,7 @@ std::unique_ptr<IScreenshotSurface> CScreenshotSurfaceGL::CreateSurface()
 
 bool CScreenshotSurfaceGL::Read(const ScreenshotContext& ctx)
 {
-  using namespace KODI::RENDERING::CAPTURE;
+  using namespace UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE;
 
   glReadBuffer(GL_BACK);
 

@@ -27,7 +27,7 @@
 
 #include <exception>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 namespace
 {

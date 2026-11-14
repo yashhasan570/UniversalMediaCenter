@@ -69,8 +69,8 @@ void CGUITextLayout::SetFont(CGUIFont* font)
 void CGUITextLayout::Render(float x,
                             float y,
                             float angle,
-                            KODI::UTILS::COLOR::Color color,
-                            KODI::UTILS::COLOR::Color shadowColor,
+                            UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color color,
+                            UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color shadowColor,
                             uint32_t alignment,
                             float maxWidth,
                             bool solid)
@@ -124,8 +124,8 @@ bool CGUITextLayout::UpdateScrollinfo(CScrollInfo &scrollInfo)
 void CGUITextLayout::RenderScrolling(float x,
                                      float y,
                                      float angle,
-                                     KODI::UTILS::COLOR::Color color,
-                                     KODI::UTILS::COLOR::Color shadowColor,
+                                     UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color color,
+                                     UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color shadowColor,
                                      uint32_t alignment,
                                      float maxWidth,
                                      const CScrollInfo& scrollInfo)
@@ -168,8 +168,8 @@ void CGUITextLayout::RenderScrolling(float x,
 
 void CGUITextLayout::RenderOutline(float x,
                                    float y,
-                                   KODI::UTILS::COLOR::Color color,
-                                   KODI::UTILS::COLOR::Color outlineColor,
+                                   UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color color,
+                                   UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color outlineColor,
                                    uint32_t alignment,
                                    float maxWidth)
 {
@@ -259,7 +259,7 @@ void CGUITextLayout::UpdateCommon(const std::wstring &text, float maxWidth, bool
 {
   // parse the text for style information
   vecText parsedText;
-  std::vector<KODI::UTILS::COLOR::Color> colors;
+  std::vector<UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color> colors;
   ParseText(text, m_font ? m_font->GetStyle() : 0, m_textColor, colors, parsedText);
 
   // and update
@@ -267,7 +267,7 @@ void CGUITextLayout::UpdateCommon(const std::wstring &text, float maxWidth, bool
 }
 
 void CGUITextLayout::UpdateStyled(const vecText& text,
-                                  const std::vector<KODI::UTILS::COLOR::Color>& colors,
+                                  const std::vector<UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color>& colors,
                                   float maxWidth,
                                   bool forceLTRReadingOrder)
 {
@@ -355,7 +355,7 @@ void CGUITextLayout::Filter(std::string &text)
 {
   std::wstring utf16;
   g_charsetConverter.utf8ToW(text, utf16, false);
-  std::vector<KODI::UTILS::COLOR::Color> colors;
+  std::vector<UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color> colors;
   vecText parsedText;
   ParseText(utf16, 0, 0xffffffff, colors, parsedText);
   std::u32string utf32;
@@ -367,8 +367,8 @@ void CGUITextLayout::Filter(std::string &text)
 
 void CGUITextLayout::ParseText(const std::wstring& text,
                                uint32_t defaultStyle,
-                               KODI::UTILS::COLOR::Color defaultColor,
-                               std::vector<KODI::UTILS::COLOR::Color>& colors,
+                               UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color defaultColor,
+                               std::vector<UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color>& colors,
                                vecText& parsedText)
 {
   // run through the string, searching for:
@@ -379,10 +379,10 @@ void CGUITextLayout::ParseText(const std::wstring& text,
   // [TABS] tab amount [/TABS] -> add tabulator space in view
 
   uint32_t currentStyle = defaultStyle; // start with the default font's style
-  KODI::UTILS::COLOR::Color currentColor = 0;
+  UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color currentColor = 0;
 
   colors.push_back(defaultColor);
-  std::stack<KODI::UTILS::COLOR::Color> colorStack;
+  std::stack<UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color> colorStack;
   colorStack.push(0);
 
   // Boolean style tags ([B], [I], [LIGHT], [UPPERCASE], [LOWERCASE], [CAPITALIZE])
@@ -404,7 +404,7 @@ void CGUITextLayout::ParseText(const std::wstring& text,
   while (pos != std::wstring::npos && pos + 1 < text.size())
   {
     uint32_t newStyle = 0;
-    KODI::UTILS::COLOR::Color newColor = currentColor;
+    UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color newColor = currentColor;
     bool colorTagChange = false;
     bool newLine = false;
     int tabs = 0;
@@ -520,7 +520,7 @@ void CGUITextLayout::ParseText(const std::wstring& text,
       {
         std::string t;
         g_charsetConverter.wToUTF8(text.substr(pos + 5, finish - pos - 5), t);
-        KODI::UTILS::COLOR::Color color = CServiceBroker::GetGUI()->GetColorManager().GetColor(t);
+        UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color color = CServiceBroker::GetGUI()->GetColorManager().GetColor(t);
         const auto& it = std::ranges::find(colors, color);
         if (it == colors.end())
         { // create new color
@@ -841,8 +841,8 @@ std::string CGUITextLayout::GetText() const
 void CGUITextLayout::DrawText(CGUIFont* font,
                               float x,
                               float y,
-                              KODI::UTILS::COLOR::Color color,
-                              KODI::UTILS::COLOR::Color shadowColor,
+                              UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color color,
+                              UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color shadowColor,
                               const std::string& text,
                               uint32_t align)
 {

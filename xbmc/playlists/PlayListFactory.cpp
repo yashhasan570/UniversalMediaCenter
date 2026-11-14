@@ -23,7 +23,7 @@
 #include "utils/StringUtils.h"
 #include "utils/URIUtils.h"
 
-namespace KODI::PLAYLIST
+namespace UNIVERSAL MEDIA CENTER::PLAYLIST
 {
 
 CPlayList* CPlayListFactory::Create(const CURL& url)
@@ -161,4 +161,4 @@ bool CPlayListFactory::IsPlaylist(const std::string& filename)
                      ".m3u|.m3u8|.b4s|.pls|.strm|.wpl|.asx|.ram|.url|.pxml|.xspf");
 }
 
-} // namespace KODI::PLAYLIST
+} // namespace UNIVERSAL MEDIA CENTER::PLAYLIST

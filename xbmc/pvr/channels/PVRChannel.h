@@ -9,8 +9,8 @@
 #pragma once
 
 #include "XBDateTime.h"
-#include "addons/kodi-dev-kit/include/kodi/c-api/addon-instance/pvr/pvr_channels.h"
-#include "addons/kodi-dev-kit/include/kodi/c-api/addon-instance/pvr/pvr_providers.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api/addon-instance/pvr/pvr_channels.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api/addon-instance/pvr/pvr_providers.h"
 #include "pvr/PVRCachedImage.h"
 #include "pvr/PVRConstants.h" // PVR_CLIENT_INVALID_UID
 #include "pvr/channels/PVRChannelNumber.h"
@@ -189,12 +189,12 @@ public:
   bool SetIconPath(const std::string& strIconPath, bool bIsUserSetIcon = false);
 
   /*!
-   * @return The name for this channel used by XBMC.
+   * @return The name for this channel used by .
    */
   std::string ChannelName() const;
 
   /*!
-   * @brief Set the name for this channel used by XBMC.
+   * @brief Set the name for this channel used by .
    * @param strChannelName The new channel name.
    * @param bIsUserSetName whether the change was triggered by the user directly
    * @return True if something changed, false otherwise.
@@ -298,7 +298,7 @@ public:
   /*!
    * @brief Return true if this channel is encrypted.
    *
-   * Return true if this channel is encrypted. Does not inform whether XBMC can play the file.
+   * Return true if this channel is encrypted. Does not inform whether  can play the file.
    * Decryption should be done by the client.
    *
    * @return Return true if this channel is encrypted.

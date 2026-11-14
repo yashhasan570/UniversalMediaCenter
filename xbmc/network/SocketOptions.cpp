@@ -19,7 +19,7 @@
 #endif
 #endif
 
-namespace KODI::NETWORK
+namespace UNIVERSAL MEDIA CENTER::NETWORK
 {
 #if defined(TARGET_WASM)
 
@@ -67,4 +67,4 @@ bool SetIPv6Only(SOCKET sock, int v6only)
 }
 
 #endif
-} // namespace KODI::NETWORK
+} // namespace UNIVERSAL MEDIA CENTER::NETWORK

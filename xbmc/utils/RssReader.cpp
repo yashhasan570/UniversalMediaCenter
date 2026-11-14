@@ -76,8 +76,8 @@ void CRssReader::Create(IRssObserver* aObserver, const std::vector<std::string>&
   for (unsigned int i = 0; i < m_vecUpdateTimes.size(); ++i)
   {
     AddToQueue(i);
-    KODI::TIME::SystemTime* time = new KODI::TIME::SystemTime;
-    KODI::TIME::GetLocalTime(time);
+    UNIVERSAL MEDIA CENTER::TIME::SystemTime* time = new UNIVERSAL MEDIA CENTER::TIME::SystemTime;
+    UNIVERSAL MEDIA CENTER::TIME::GetLocalTime(time);
     m_vecTimeStamps.push_back(time);
   }
 }
@@ -376,8 +376,8 @@ void CRssReader::UpdateObserver()
 
 void CRssReader::CheckForUpdates()
 {
-  KODI::TIME::SystemTime time;
-  KODI::TIME::GetLocalTime(&time);
+  UNIVERSAL MEDIA CENTER::TIME::SystemTime time;
+  UNIVERSAL MEDIA CENTER::TIME::GetLocalTime(&time);
 
   for (unsigned int i = 0;i < m_vecUpdateTimes.size(); ++i )
   {
@@ -387,7 +387,7 @@ void CRssReader::CheckForUpdates()
                                 m_vecUpdateTimes[i])
     {
       CLog::Log(LOGDEBUG, "Updating RSS");
-      KODI::TIME::GetLocalTime(m_vecTimeStamps[i]);
+      UNIVERSAL MEDIA CENTER::TIME::GetLocalTime(m_vecTimeStamps[i]);
       AddToQueue(i);
     }
   }

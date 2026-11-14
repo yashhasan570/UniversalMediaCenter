@@ -48,7 +48,7 @@ std::vector<std::string> PVR::CPVRChannelGroupImageFileLoader::GetChannelGroupIc
 
   for (const auto& channel : channels)
   {
-    const std::string& icon{channel->GetArt(KODI::ART::TYPE::THUMB)};
+    const std::string& icon{channel->GetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB)};
     if (!icon.empty())
       icons.emplace_back(icon);
 

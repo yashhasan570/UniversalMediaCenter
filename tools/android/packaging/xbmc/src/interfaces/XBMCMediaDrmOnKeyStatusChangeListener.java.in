@@ -4,7 +4,7 @@ import android.media.MediaDrm;
 import android.media.MediaDrm.OnKeyStatusChangeListener;
 import java.util.List;
 
-public class XBMCMediaDrmOnKeyStatusChangeListener implements OnKeyStatusChangeListener
+public class MediaDrmOnKeyStatusChangeListener implements OnKeyStatusChangeListener
 {
   native void _onKeyStatusChange(MediaDrm md, byte[] sessionId, List<MediaDrm.KeyStatus> keyInformation, boolean hasNewUsableKey);
 

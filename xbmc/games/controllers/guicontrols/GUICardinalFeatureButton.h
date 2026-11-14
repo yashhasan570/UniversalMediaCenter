@@ -10,7 +10,7 @@
 
 #include "GUIFeatureButton.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -49,4 +49,4 @@ private:
 using CGUIAnalogStickButton = CGUICardinalFeatureButton;
 using CGUIRelativePointerButton = CGUICardinalFeatureButton;
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

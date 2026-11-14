@@ -53,7 +53,7 @@ public:
   /*!
    \brief Enqueue a music library update job, scanning tags embedded in music files and optionally scraping additional data.
    \param[in] strDirectory Directory to scan or "" (empty string) for a global scan.
-   \param[in] flags Flags for controlling the scanning process.  See xbmc/music/infoscanner/MusicInfoScanner.h for possible values.
+   \param[in] flags Flags for controlling the scanning process.  See /music/infoscanner/MusicInfoScanner.h for possible values.
    \param[in] showProgress Whether or not to show a progress dialog. Defaults to true
    */
   void ScanLibrary(const std::string& strDirectory, int flags = 0, bool showProgress = true);

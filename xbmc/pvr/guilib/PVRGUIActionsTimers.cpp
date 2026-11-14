@@ -53,7 +53,7 @@
 #include <utility>
 
 using namespace PVR;
-using namespace KODI::MESSAGING;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
 
 namespace
 {
@@ -903,7 +903,7 @@ void AddEventLogEntry(const std::shared_ptr<const CPVRTimerInfoTag>& timer, int 
   else
   {
     name = CSysInfo::GetAppName();
-    icon = "special://xbmc/media/icon256x256.png";
+    icon = "special:///media/icon256x256.png";
   }
 
   auto* job{new CPVREventLogJob};

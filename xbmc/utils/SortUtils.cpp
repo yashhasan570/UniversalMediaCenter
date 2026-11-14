@@ -20,7 +20,7 @@
 #include <array>
 #include <limits>
 
-using KODI::MEDIA::NameOf;
+using UNIVERSAL MEDIA CENTER::MEDIA::NameOf;
 
 std::string ArrayToString(SortAttribute attributes, const CVariant &variant, const std::string &separator = " / ")
 {
@@ -353,7 +353,7 @@ std::string ByEpisodeNumber(SortAttribute attributes, const SortItem &values)
 
   std::string title;
   if (values.contains(Field::MEDIA_TYPE) &&
-      values.at(Field::MEDIA_TYPE).asString() == NameOf(KODI::MEDIA::TYPE::MOVIE))
+      values.at(Field::MEDIA_TYPE).asString() == NameOf(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MOVIE))
     title = BySortTitle(attributes, values);
   if (title.empty())
     title = ByLabel(attributes, values);
@@ -845,16 +845,16 @@ const SqlSortFields ARTIST_SORT_FIELDS{
     {SortBy::DATE_ADDED, {Field::DATE_ADDED}},
 };
 
-const SqlSortFields& SqlSortFieldsOf(KODI::MEDIA::TYPE mediaType)
+const SqlSortFields& SqlSortFieldsOf(UNIVERSAL MEDIA CENTER::MEDIA::TYPE mediaType)
 {
   static const SqlSortFields none;
   switch (mediaType)
   {
-    case KODI::MEDIA::TYPE::ALBUM:
+    case UNIVERSAL MEDIA CENTER::MEDIA::TYPE::ALBUM:
       return ALBUM_SORT_FIELDS;
-    case KODI::MEDIA::TYPE::SONG:
+    case UNIVERSAL MEDIA CENTER::MEDIA::TYPE::SONG:
       return SONG_SORT_FIELDS;
-    case KODI::MEDIA::TYPE::ARTIST:
+    case UNIVERSAL MEDIA CENTER::MEDIA::TYPE::ARTIST:
       return ARTIST_SORT_FIELDS;
     default:
       return none;
@@ -862,10 +862,10 @@ const SqlSortFields& SqlSortFieldsOf(KODI::MEDIA::TYPE mediaType)
 }
 } // namespace
 
-void SortUtils::GetFieldsForSQLSort(KODI::MEDIA::TYPE mediaType, SortBy sortMethod, FieldList& fields)
+void SortUtils::GetFieldsForSQLSort(UNIVERSAL MEDIA CENTER::MEDIA::TYPE mediaType, SortBy sortMethod, FieldList& fields)
 {
   fields.clear();
-  if (mediaType == KODI::MEDIA::TYPE::NONE)
+  if (mediaType == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::NONE)
     return;
 
   const SqlSortFields& sortFields{SqlSortFieldsOf(mediaType)};
@@ -967,7 +967,7 @@ void SortUtils::Sort(const SortDescription &sortDescription, SortItems& items)
 }
 
 bool SortUtils::SortFromDataset(const SortDescription& sortDescription,
-                                KODI::MEDIA::TYPE mediaType,
+                                UNIVERSAL MEDIA CENTER::MEDIA::TYPE mediaType,
                                 dbiplus::Dataset& dataset,
                                 DatabaseResults& results)
 {

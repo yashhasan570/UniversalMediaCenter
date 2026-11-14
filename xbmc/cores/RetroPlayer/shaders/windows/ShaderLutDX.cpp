@@ -17,7 +17,7 @@
 
 #include <utility>
 
-using namespace KODI::SHADER;
+using namespace UNIVERSAL MEDIA CENTER::SHADER;
 
 CShaderLutDX::CShaderLutDX(std::string id, std::string path)
   : IShaderLut(std::move(id), std::move(path))

@@ -34,8 +34,8 @@
 #include <utility>
 
 using enum CDatabaseQueryRule::FieldType;
-using namespace KODI;
-using KODI::MEDIA::MediaSection;
+using namespace UNIVERSAL MEDIA CENTER;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaSection;
 
 #define CONTROL_FIELD           15
 #define CONTROL_OPERATOR        16

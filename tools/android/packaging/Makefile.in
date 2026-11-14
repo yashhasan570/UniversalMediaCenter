@@ -10,20 +10,20 @@ EXCLUDED_ADDONS =
 CMAKE_SOURCE_DIR = $(shell cd $(CURDIR)/../../..; pwd)
 APP_PACKAGE_DIR = $(subst .,/,@APP_PACKAGE@)
 
-ifeq ($(KODI_ANDROID_STORE_FILE),)
-export KODI_ANDROID_STORE_FILE:=$(HOME)/.android/debug.keystore
+ifeq ($(UNIVERSALMEDIA_ANDROID_STORE_FILE),)
+export UNIVERSALMEDIA_ANDROID_STORE_FILE:=$(HOME)/.android/debug.keystore
 endif
 
-ifeq ($(KODI_ANDROID_STORE_PASSWORD),)
-export KODI_ANDROID_STORE_PASSWORD:=android
+ifeq ($(UNIVERSALMEDIA_ANDROID_STORE_PASSWORD),)
+export UNIVERSALMEDIA_ANDROID_STORE_PASSWORD:=android
 endif
 
-ifeq ($(KODI_ANDROID_KEY_ALIAS),)
-export KODI_ANDROID_KEY_ALIAS:=androiddebugkey
+ifeq ($(UNIVERSALMEDIA_ANDROID_KEY_ALIAS),)
+export UNIVERSALMEDIA_ANDROID_KEY_ALIAS:=androiddebugkey
 endif
 
-ifeq ($(KODI_ANDROID_KEY_PASSWORD),)
-export KODI_ANDROID_KEY_PASSWORD:=android
+ifeq ($(UNIVERSALMEDIA_ANDROID_KEY_PASSWORD),)
+export UNIVERSALMEDIA_ANDROID_KEY_PASSWORD:=android
 endif
 
 # Gradle takes exclusive locks on its user home, so parallel builds that share
@@ -42,77 +42,77 @@ all: apk
 
 apk: apk-clean sharedapk package
 
-xbmc/assets:
-	mkdir -p xbmc/assets
+/assets:
+	mkdir -p /assets
 
 shared:
 	mkdir -p assets
 	cp -rfp $(PREFIX)/share/@APP_NAME_LC@/* ./assets
-	cp -rfp $(DEPENDS_PATH)/share/kodi/* ./assets || true
+	cp -rfp $(DEPENDS_PATH)/share/universalmediacenter/* ./assets || true
 	find `pwd`/assets/ -depth -name ".git" -exec rm -rf {} \;
 	find `pwd`/assets/ -name "*.so" -exec rm {} \;
 	find `pwd`/assets/addons/skin.*/media/* -depth -not -iname "*.xbt" -exec rm -rf {} \;
 	cd `pwd`/assets/addons; rm -rf $(EXCLUDED_ADDONS)
 	cp $(CMAKE_SOURCE_DIR)/privacy-policy.txt assets
 
-sharedapk: shared | xbmc/assets
-	cp -rfp assets/* ./xbmc/assets
+sharedapk: shared | /assets
+	cp -rfp assets/* .//assets
 
-python: | xbmc/assets
-	mkdir -p xbmc/assets/python@PYTHON_VERSION@/lib/
-	cp -rfp $(PREFIX)/lib/python@PYTHON_VERSION@ xbmc/assets/python@PYTHON_VERSION@/lib/
-	cd xbmc/assets/python@PYTHON_VERSION@/lib/python@PYTHON_VERSION@/; rm -rf test config config-@PYTHON_VERSION@ lib-dynload ; find . -name "*.so" -exec rm -f {} \;
+python: | /assets
+	mkdir -p /assets/python@PYTHON_VERSION@/lib/
+	cp -rfp $(PREFIX)/lib/python@PYTHON_VERSION@ /assets/python@PYTHON_VERSION@/lib/
+	cd /assets/python@PYTHON_VERSION@/lib/python@PYTHON_VERSION@/; rm -rf test config config-@PYTHON_VERSION@ lib-dynload ; find . -name "*.so" -exec rm -f {} \;
 
 res:
-	mkdir -p xbmc/res xbmc/res/values xbmc/res/xml
-	cp -rfp media/mipmap-* xbmc/res/
-	cp -fp $(CMAKE_SOURCE_DIR)/media/applaunch_screen.png xbmc/res/drawable/
-	cp -fp $(CMAKE_SOURCE_DIR)/media/applaunch_screen.png xbmc/res/drawable-xxxhdpi/
-	cp xbmc/strings.xml xbmc/res/values/
-	cp xbmc/colors.xml xbmc/res/values/
-	cp xbmc/searchable.xml xbmc/res/xml/
+	mkdir -p /res /res/values /res/xml
+	cp -rfp media/mipmap-* /res/
+	cp -fp $(CMAKE_SOURCE_DIR)/media/applaunch_screen.png /res/drawable/
+	cp -fp $(CMAKE_SOURCE_DIR)/media/applaunch_screen.png /res/drawable-xxxhdpi/
+	cp /strings.xml /res/values/
+	cp /colors.xml /res/values/
+	cp /searchable.xml /res/xml/
 
 libs: $(PREFIX)/lib/@APP_NAME_LC@/lib@APP_NAME_LC@.so
-	rm -rf xbmc/lib/$(CPU) xbmc/obj/local/$(CPU)
-	mkdir -p xbmc/lib/$(CPU) xbmc/assets/python@PYTHON_VERSION@/lib/ xbmc/obj/local/$(CPU)
-	cp -fpL $(SRCLIBS) xbmc/obj/local/$(CPU)/
-	cp -fp $(PREFIX)/lib/@APP_NAME_LC@/lib@APP_NAME_LC@.so xbmc/obj/local/$(CPU)/
+	rm -rf /lib/$(CPU) /obj/local/$(CPU)
+	mkdir -p /lib/$(CPU) /assets/python@PYTHON_VERSION@/lib/ /obj/local/$(CPU)
+	cp -fpL $(SRCLIBS) /obj/local/$(CPU)/
+	cp -fp $(PREFIX)/lib/@APP_NAME_LC@/lib@APP_NAME_LC@.so /obj/local/$(CPU)/
 	(test -d $(PREFIX)/lib/@APP_NAME_LC@/addons && \
-	  find $(PREFIX)/lib/@APP_NAME_LC@/addons -name "*.so" -exec cp -fp {} xbmc/obj/local/$(CPU)/ \;) || true
-	find $(PREFIX)/share/@APP_NAME_LC@/addons -name "*.so" -exec cp -fp {} xbmc/obj/local/$(CPU)/ \; || true
-	find $(DEPENDS_PATH)/share/kodi/addons -name "*.so" -exec cp -fp {} xbmc/obj/local/$(CPU)/ \; || true
-	(test -d $(DEPENDS_PATH)/lib/kodi/addons && \
-	  find $(DEPENDS_PATH)/lib/kodi/addons -name "*.so" -exec cp -fp {} xbmc/obj/local/$(CPU)/ \;) || true
-	find $(PREFIX)/lib/@APP_NAME_LC@/system -name "*.so" -exec cp -fp {} xbmc/obj/local/$(CPU)/ \;
-	DIR=${CURDIR}; cd $(PREFIX)/lib/python@PYTHON_VERSION@/site-packages; for i in `find Cryptodome -name \*.so` ; do FN=`echo $$i | cut -c1- | tr "/" "_" | sed -e 's/\.abi[0-9]\\././'` ;cp $$i $$DIR/xbmc/obj/local/$(CPU)/$$FN ; done
-	cd xbmc/obj/local/$(CPU)/; find . -name "*.so" -not -name "lib*.so" | sed "s/\.\///" | xargs -I@ mv @ lib@
-	cp -fp xbmc/obj/local/$(CPU)/*.so xbmc/lib/$(CPU)/
-	$(STRIP) --strip-unneeded xbmc/lib/$(CPU)/*.so
-	(test -s $(STLLIB) && install -p $(STLLIB) ./xbmc/lib/$(CPU)/) || true
+	  find $(PREFIX)/lib/@APP_NAME_LC@/addons -name "*.so" -exec cp -fp {} /obj/local/$(CPU)/ \;) || true
+	find $(PREFIX)/share/@APP_NAME_LC@/addons -name "*.so" -exec cp -fp {} /obj/local/$(CPU)/ \; || true
+	find $(DEPENDS_PATH)/share/universalmediacenter/addons -name "*.so" -exec cp -fp {} /obj/local/$(CPU)/ \; || true
+	(test -d $(DEPENDS_PATH)/lib/universalmediacenter/addons && \
+	  find $(DEPENDS_PATH)/lib/universalmediacenter/addons -name "*.so" -exec cp -fp {} /obj/local/$(CPU)/ \;) || true
+	find $(PREFIX)/lib/@APP_NAME_LC@/system -name "*.so" -exec cp -fp {} /obj/local/$(CPU)/ \;
+	DIR=${CURDIR}; cd $(PREFIX)/lib/python@PYTHON_VERSION@/site-packages; for i in `find Cryptodome -name \*.so` ; do FN=`echo $$i | cut -c1- | tr "/" "_" | sed -e 's/\.abi[0-9]\\././'` ;cp $$i $$DIR//obj/local/$(CPU)/$$FN ; done
+	cd /obj/local/$(CPU)/; find . -name "*.so" -not -name "lib*.so" | sed "s/\.\///" | xargs -I@ mv @ lib@
+	cp -fp /obj/local/$(CPU)/*.so /lib/$(CPU)/
+	$(STRIP) --strip-unneeded /lib/$(CPU)/*.so
+	(test -s $(STLLIB) && install -p $(STLLIB) .//lib/$(CPU)/) || true
 
 java: res
-	mkdir -p xbmc/java/$(APP_PACKAGE_DIR) xbmc/obj
-	@cp -R xbmc/src/* xbmc/java/$(APP_PACKAGE_DIR)/
+	mkdir -p /java/$(APP_PACKAGE_DIR) /obj
+	@cp -R /src/* /java/$(APP_PACKAGE_DIR)/
 
 package: libs python java
 	@echo "Gradle build and sign..."
 	ANDROID_HOME=$(SDKROOT) ./gradlew assemble$(BUILD_TYPE)
-	@cp xbmc/build/outputs/apk/$(BUILD_TYPE_LC)/xbmc-$(BUILD_TYPE_LC).apk $(CMAKE_SOURCE_DIR)/@APP_NAME_LC@app-$(CPU)-$(BUILD_TYPE_LC).apk
+	@cp /build/outputs/apk/$(BUILD_TYPE_LC)/-$(BUILD_TYPE_LC).apk $(CMAKE_SOURCE_DIR)/@APP_NAME_LC@app-$(CPU)-$(BUILD_TYPE_LC).apk
 
-$(PREFIX)/lib/xbmc/lib@APP_NAME_LC@.so: $(SRCLIBS)
-	$(MAKE) -C ../../depends/target/xbmc
+$(PREFIX)/lib//lib@APP_NAME_LC@.so: $(SRCLIBS)
+	$(MAKE) -C ../../depends/target/
 
 $(SRCLIBS):
 
 apk-clean:
-	rm -rf xbmc/java
-	rm -rf xbmc/lib
-	rm -rf xbmc/assets
-	rm -rf xbmc/obj
-	rm -rf xbmc/res/values
-	rm -rf xbmc/res/mipmap-*
-	rm -f xbmc/res/drawable/applaunch_screen.png
-	rm -f xbmc/res/drawable-xxxhdpi/applaunch_screen.png
+	rm -rf /java
+	rm -rf /lib
+	rm -rf /assets
+	rm -rf /obj
+	rm -rf /res/values
+	rm -rf /res/mipmap-*
+	rm -f /res/drawable/applaunch_screen.png
+	rm -f /res/drawable-xxxhdpi/applaunch_screen.png
 	rm -rf assets
 
 .PHONY: force libs assets python sharedapk res package

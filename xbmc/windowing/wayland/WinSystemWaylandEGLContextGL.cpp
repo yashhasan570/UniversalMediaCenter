@@ -23,7 +23,7 @@
 
 #include <EGL/eglext.h>
 
-using namespace KODI::WINDOWING::WAYLAND;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::WAYLAND;
 
 void CWinSystemWaylandEGLContextGL::Register()
 {

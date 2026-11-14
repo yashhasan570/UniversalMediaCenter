@@ -101,7 +101,7 @@ bool CAddonRepos::LoadAddonsFromDatabase(const std::string& addonId,
       {
 
         // could not connect to repository
-        KODI::MESSAGING::HELPERS::ShowOKDialogText(CVariant{repoAddon->Name()}, CVariant{24991});
+        UNIVERSAL MEDIA CENTER::MESSAGING::HELPERS::ShowOKDialogText(CVariant{repoAddon->Name()}, CVariant{24991});
         return false;
       }
     }

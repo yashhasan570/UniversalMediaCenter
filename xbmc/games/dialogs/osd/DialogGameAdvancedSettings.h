@@ -10,7 +10,7 @@
 
 #include "guilib/GUIDialog.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -27,4 +27,4 @@ public:
   bool OnMessage(CGUIMessage& message) override;
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

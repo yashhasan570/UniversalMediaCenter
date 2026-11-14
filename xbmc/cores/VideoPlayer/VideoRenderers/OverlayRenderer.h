@@ -200,7 +200,7 @@ namespace OVERLAY {
 
     //! \brief Set the picture rectangle on \p opts, so subtitles aligned inside the video are
     //! placed inside the picture rather than in the coded bars.
-    void SetContentRect(KODI::SUBTITLES::STYLE::renderOpts& opts) const;
+    void SetContentRect(UNIVERSAL MEDIA CENTER::SUBTITLES::STYLE::renderOpts& opts) const;
 
     void Release(std::vector<SElement>& list);
     void ReleaseCache();
@@ -228,8 +228,8 @@ namespace OVERLAY {
     void UpdateSubtitlePosition(SubtitleResolution& resolution);
 
     //! \brief The libass render options for \p overlay drawn with \p style on the current frame.
-    KODI::SUBTITLES::STYLE::renderOpts GetRenderOptions(const CDVDOverlayLibass& overlay,
-                                                        const KODI::SUBTITLES::STYLE::style& style,
+    UNIVERSAL MEDIA CENTER::SUBTITLES::STYLE::renderOpts GetRenderOptions(const CDVDOverlayLibass& overlay,
+                                                        const UNIVERSAL MEDIA CENTER::SUBTITLES::STYLE::style& style,
                                                         const SubtitleResolution& resolution) const;
 
     enum PositonResInfoState
@@ -253,14 +253,14 @@ namespace OVERLAY {
     int m_subtitlePosResInfo{POSRESINFO_UNSET};
     int m_subtitleVerticalMargin{0};
     bool m_saveSubtitlePosition{false}; // To save subtitle position permanently
-    KODI::SUBTITLES::HorizontalAlign m_subtitleHorizontalAlign{
-        KODI::SUBTITLES::HorizontalAlign::CENTER};
-    KODI::SUBTITLES::Align m_subtitleAlign{KODI::SUBTITLES::Align::BOTTOM_OUTSIDE};
+    UNIVERSAL MEDIA CENTER::SUBTITLES::HorizontalAlign m_subtitleHorizontalAlign{
+        UNIVERSAL MEDIA CENTER::SUBTITLES::HorizontalAlign::CENTER};
+    UNIVERSAL MEDIA CENTER::SUBTITLES::Align m_subtitleAlign{UNIVERSAL MEDIA CENTER::SUBTITLES::Align::BOTTOM_OUTSIDE};
     //! \brief Measure alignment against the picture rather than the whole video.
     bool m_subtitleAlignToContent{false};
     bool m_subtitleKeepAuthoredPositions{false};
 
-    std::shared_ptr<struct KODI::SUBTITLES::STYLE::style> m_overlayStyle;
+    std::shared_ptr<struct UNIVERSAL MEDIA CENTER::SUBTITLES::STYLE::style> m_overlayStyle;
     std::atomic<bool> m_isSettingsChanged{false};
     // Whether last frame had any image/SPU overlay. Used by PrepareOverlays
     // to detect arrival/disappearance transitions (image/SPU have no

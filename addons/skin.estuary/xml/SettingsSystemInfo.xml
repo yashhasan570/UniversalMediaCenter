@@ -129,7 +129,7 @@
 				<control type="multiimage" id="103">
 					<top>110</top>
 					<height>620</height>
-					<imagepath>special://xbmc/media/qr/kodilove/</imagepath>
+					<imagepath>special:///media/qr/universalmediacenterlove/</imagepath>
 					<aspectratio>keep</aspectratio>
 					<timeperimage>5000</timeperimage>
 					<fadetime>1000</fadetime>
@@ -348,7 +348,7 @@
 					<width>820</width>
 					<orientation>horizontal</orientation>
 					<control type="label">
-						<description>kodi Compiled Text</description>
+						<description>universalmediacenter Compiled Text</description>
 						<width>auto</width>
 						<height>40</height>
 						<font>font12</font>

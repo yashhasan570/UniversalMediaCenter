@@ -20,7 +20,7 @@
 #include <algorithm>
 #include <string>
 
-using namespace KODI::SHADER;
+using namespace UNIVERSAL MEDIA CENTER::SHADER;
 
 CShaderPresetFactory::CShaderPresetFactory(ADDON::CAddonMgr& addons) : m_addons(addons)
 {

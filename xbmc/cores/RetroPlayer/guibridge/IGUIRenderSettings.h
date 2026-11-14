@@ -11,7 +11,7 @@
 #include "cores/RetroPlayer/rendering/RenderSettings.h"
 #include "utils/Geometry.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -55,4 +55,4 @@ public:
   virtual CRect GetDimensions() const { return CRect{}; }
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

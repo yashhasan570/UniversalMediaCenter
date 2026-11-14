@@ -163,7 +163,7 @@ std::string CVideoTagLoaderNFO::FindNFO(const CFileItem& item,
 {
   std::string nfoFile;
   // Find a matching .nfo file
-  if (!KODI::VIDEO::IsBrowsableFolder(item))
+  if (!UNIVERSAL MEDIA CENTER::VIDEO::IsBrowsableFolder(item))
   {
     if (URIUtils::IsInArchive(item.GetPath())) // check outside the archive
     {
@@ -295,12 +295,12 @@ std::string CVideoTagLoaderNFO::FindNFO(const CFileItem& item,
 
   // folders (or stacked dvds) can take any nfo file if there's a unique one
   if (nfoFile.empty() &&
-      (KODI::VIDEO::IsBrowsableFolder(item) || item.IsOpticalMediaFile() || movieFolder))
+      (UNIVERSAL MEDIA CENTER::VIDEO::IsBrowsableFolder(item) || item.IsOpticalMediaFile() || movieFolder))
   {
     // see if there is a unique nfo file in this folder, and if so, use that
     // if we are looking for a specific episode nfo the file name must end with SxxEyy
     // (otherwise it could match the wrong episode nfo)
-    const std::string strPath{KODI::VIDEO::IsBrowsableFolder(item) ? item.GetPath()
+    const std::string strPath{UNIVERSAL MEDIA CENTER::VIDEO::IsBrowsableFolder(item) ? item.GetPath()
                               : item.IsStack() ? CStackDirectory::GetBasePath(item.GetPath())
                                                : URIUtils::GetDirectory(item.GetPath())};
     CFileItemList items;

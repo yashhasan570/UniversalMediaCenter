@@ -24,7 +24,7 @@
 
 class CFileItem;
 
-@interface XBMCController : UIViewController
+@interface Controller : UIViewController
 {
   BOOL m_isPlayingBeforeInactive;
   UIBackgroundTaskIdentifier m_enterBackgroundTaskId;
@@ -81,4 +81,4 @@ class CFileItem;
 
 @end
 
-extern XBMCController* g_xbmcController;
+extern Controller* g_Controller;

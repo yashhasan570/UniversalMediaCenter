@@ -36,8 +36,8 @@
 
 #include <algorithm>
 
-using namespace KODI;
-using namespace KODI::MESSAGING;
+using namespace UNIVERSAL MEDIA CENTER;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
 
 #define QUEUE_DEPTH       10
 
@@ -170,7 +170,7 @@ bool CPartyModeManager::Enable(PartyModeContext context /*= PARTYMODECONTEXT_MUS
 
   // Songs and music videos are random from query, but need mixing together when have both
   if (songcount > 0 && videocount > 0 )
-    KODI::UTILS::RandomShuffle(m_songIDCache.begin(), m_songIDCache.end());
+    UNIVERSAL MEDIA CENTER::UTILS::RandomShuffle(m_songIDCache.begin(), m_songIDCache.end());
 
   CLog::Log(LOGINFO,"PARTY MODE MANAGER: Matching songs = {0}", m_iMatchingSongs);
   CLog::Log(LOGINFO,"PARTY MODE MANAGER: Party mode enabled!");

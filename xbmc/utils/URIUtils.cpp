@@ -1189,7 +1189,7 @@ bool URIUtils::IsOnDVD(const std::string& strFile)
 #if defined(TARGET_WINDOWS_STORE)
   CLog::Log(LOGDEBUG, "{} is not implemented", __FUNCTION__);
 #elif defined(TARGET_WINDOWS_DESKTOP)
-  using KODI::PLATFORM::WINDOWS::ToW;
+  using UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::ToW;
   if (strFile.size() >= 2 && strFile.substr(1, 1) == ":")
     return (GetDriveType(ToW(strFile.substr(0, 3)).c_str()) == DRIVE_CDROM);
 #endif
@@ -1318,7 +1318,7 @@ bool URIUtils::IsDVD(const std::string& strFile)
     return false;
 
 #ifndef TARGET_WINDOWS_STORE
-  if(GetDriveType(KODI::PLATFORM::WINDOWS::ToW(strFile).c_str()) == DRIVE_CDROM)
+  if(GetDriveType(UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::ToW(strFile).c_str()) == DRIVE_CDROM)
     return true;
 #endif
 #else

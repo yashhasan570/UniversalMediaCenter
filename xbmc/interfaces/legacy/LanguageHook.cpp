@@ -10,18 +10,18 @@
 
 #include "utils/GlobalsHandling.h"
 
-namespace XBMCAddon
+namespace Addon
 {
   // just need a place for the vtab
   LanguageHook::~LanguageHook() = default;
 
   static thread_local LanguageHook* addonLanguageHookTls;
   static bool threadLocalInitialized = false;
-  static xbmcutil::InitFlag initer(threadLocalInitialized);
+  static util::InitFlag initer(threadLocalInitialized);
 
   void LanguageHook::SetLanguageHook(LanguageHook* languageHook)
   {
-    XBMC_TRACE;
+    _TRACE;
     languageHook->Acquire();
     addonLanguageHookTls = languageHook;
   }

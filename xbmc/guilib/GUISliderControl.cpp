@@ -21,7 +21,7 @@
 #include "utils/StringUtils.h"
 #include "windowing/WinSystem.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 static const SliderAction actions[] = {
     {"seek", "PlayerControl(SeekPercentage({:2f}))", PLAYER_PROGRESS, false},

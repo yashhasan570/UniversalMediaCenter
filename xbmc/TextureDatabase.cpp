@@ -92,7 +92,7 @@ void CTextureRule::GetAvailableFields(std::vector<std::string>& fieldList)
                          [](const auto& f) { return std::string(f.string); });
 }
 
-CTextureDatabase::CTextureDatabase() : CDatabase(KODI::DATABASE::TYPE_TEXTURES)
+CTextureDatabase::CTextureDatabase() : CDatabase(UNIVERSAL MEDIA CENTER::DATABASE::TYPE_TEXTURES)
 {
 }
 

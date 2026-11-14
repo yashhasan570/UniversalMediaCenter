@@ -11,7 +11,7 @@
 #include "input/InputTranslator.h"
 #include "input/joysticks/DriverPrimitive.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace JOYSTICK;
 
 CPointerDetector::CPointerDetector(CButtonMapping* buttonMapping)
@@ -47,7 +47,7 @@ bool CPointerDetector::OnPosition(int x, int y)
   return true;
 }
 
-KODI::INPUT::INTERCARDINAL_DIRECTION CPointerDetector::GetPointerDirection(int x, int y)
+UNIVERSAL MEDIA CENTER::INPUT::INTERCARDINAL_DIRECTION CPointerDetector::GetPointerDirection(int x, int y)
 {
   using namespace INPUT;
 

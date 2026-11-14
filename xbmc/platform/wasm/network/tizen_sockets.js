@@ -17,7 +17,7 @@
 // implemented with poll() on top of them.
 //
 // Without the extension every entry point falls through to the upstream
-// Emscripten implementation, re-registered below under `kodi_upstream_*`.
+// Emscripten implementation, re-registered below under `Universal Media Center_upstream_*`.
 
 (() => {
   const lib = LibraryManager.library;
@@ -47,7 +47,7 @@
     getaddrinfo: 'getaddrinfo',
   };
   for (const [name, suffix] of Object.entries(names)) {
-    const alias = 'kodi_upstream_' + suffix;
+    const alias = 'Universal Media Center_upstream_' + suffix;
     upstream[alias] = lib[name];
     upstream[alias + '__deps'] = lib[name + '__deps'] || [];
     upstream[alias + '__proxy'] = lib[name + '__proxy'] || 'sync';
@@ -59,9 +59,9 @@
 
 addToLibrary({
   $TizenSockets__deps: [
-    'kodi_sock_table', 'kodi_sock_max_fd', 'kodi_sock_errno_from_linux',
-    '_kodi_sock_fd_reserve', '_kodi_sock_fd_release',
-    'kodi_upstream_poll_nonblocking',
+    'Universal Media Center_sock_table', 'Universal Media Center_sock_max_fd', 'Universal Media Center_sock_errno_from_linux',
+    '_Universal Media Center_sock_fd_reserve', '_Universal Media Center_sock_fd_release',
+    'Universal Media Center_upstream_poll_nonblocking',
     'malloc', 'free', 'freeaddrinfo',
     '$inetPton4', '$inetPton6', '$UTF8ToString',
   ],
@@ -82,8 +82,8 @@ addToLibrary({
 
     init() {
       if (!TizenSockets.table) {
-        TizenSockets.table = _kodi_sock_table();
-        TizenSockets.maxFd = _kodi_sock_max_fd();
+        TizenSockets.table = _Universal Media Center_sock_table();
+        TizenSockets.maxFd = _Universal Media Center_sock_max_fd();
       }
     },
 
@@ -122,10 +122,10 @@ addToLibrary({
 
     register(nativeId, flags) {
       TizenSockets.init();
-      const fd = __kodi_sock_fd_reserve();
+      const fd = __Universal Media Center_sock_fd_reserve();
       if (fd < 0) return fd;
       if (fd >= TizenSockets.maxFd) {
-        __kodi_sock_fd_release(fd);
+        __Universal Media Center_sock_fd_release(fd);
         return -{{{ cDefs.EMFILE }}};
       }
       Atomics.store(HEAP32, TizenSockets.slot(fd, TizenSockets.FLAGS), flags);
@@ -137,7 +137,7 @@ addToLibrary({
 
     unregister(fd) {
       Atomics.store(HEAP32, TizenSockets.slot(fd, TizenSockets.NATIVE), 0);
-      __kodi_sock_fd_release(fd);
+      __Universal Media Center_sock_fd_release(fd);
     },
 
     // errno of a failed SocketsManager call, translated from the Linux value
@@ -154,7 +154,7 @@ addToLibrary({
         const m = /\((\d+)\)\s*$/.exec(String(e && e.message || ''));
         if (m) code = parseInt(m[1], 10);
       }
-      return code ? _kodi_sock_errno_from_linux(code) : {{{ cDefs.EINVAL }}};
+      return code ? _Universal Media Center_sock_errno_from_linux(code) : {{{ cDefs.EINVAL }}};
     },
 
     familyName(af) {
@@ -322,7 +322,7 @@ addToLibrary({
       if (r === 0) return -{{{ cDefs.ETIMEDOUT }}};
       try {
         const err = tizentvwasm.SocketsManager.getSockOpt(nativeId, 'sol_socket', 'so_error');
-        return err ? -_kodi_sock_errno_from_linux(err) : 0;
+        return err ? -_Universal Media Center_sock_errno_from_linux(err) : 0;
       } catch (e) {
         return -TizenSockets.errno(e, nativeId);
       }
@@ -613,7 +613,7 @@ addToLibrary({
       } catch (e) {
         return -TizenSockets.errno(e, nativeId);
       }
-      if (opt.name === 'so_error') return writeInt(value ? _kodi_sock_errno_from_linux(Number(value)) : 0);
+      if (opt.name === 'so_error') return writeInt(value ? _Universal Media Center_sock_errno_from_linux(Number(value)) : 0);
       if (opt.kind === 'linger') {
         if (capacity < 8) return -{{{ cDefs.EINVAL }}};
         {{{ makeSetValue('optval', 0, 'value.onoff | 0', 'i32') }}};
@@ -691,7 +691,7 @@ addToLibrary({
         const dst = tmp + k * {{{ C_STRUCTS.pollfd.__size__ }}};
         HEAPU8.copyWithin(dst, src, src + {{{ C_STRUCTS.pollfd.__size__ }}});
       }
-      const ready = _kodi_upstream_poll_nonblocking(tmp, indices.length);
+      const ready = _Universal Media Center_upstream_poll_nonblocking(tmp, indices.length);
       for (let k = 0; k < indices.length; k++) {
         const src = tmp + k * {{{ C_STRUCTS.pollfd.__size__ }}};
         const dst = fds + indices[k] * {{{ C_STRUCTS.pollfd.__size__ }}};
@@ -730,10 +730,10 @@ addToLibrary({
   // Reserve and release Emscripten fds for sockets. The FS lives on the main
   // thread, so these run there; the placeholder stream keeps the fd out of the
   // file descriptor space and has no I/O operations of its own.
-  _kodi_sock_fd_reserve__proxy: 'sync',
-  _kodi_sock_fd_reserve__sig: 'i',
-  _kodi_sock_fd_reserve__deps: ['$FS'],
-  _kodi_sock_fd_reserve: () => {
+  _Universal Media Center_sock_fd_reserve__proxy: 'sync',
+  _Universal Media Center_sock_fd_reserve__sig: 'i',
+  _Universal Media Center_sock_fd_reserve__deps: ['$FS'],
+  _Universal Media Center_sock_fd_reserve: () => {
     try {
       const node = FS.createNode(null, 'tizen-socket', {{{ cDefs.S_IFSOCK }}} | 0o666, 0);
       const stream = FS.createStream({ path: 'tizen-socket', node, flags: 2, seekable: false, stream_ops: {} });
@@ -743,10 +743,10 @@ addToLibrary({
     }
   },
 
-  _kodi_sock_fd_release__proxy: 'sync',
-  _kodi_sock_fd_release__sig: 'vi',
-  _kodi_sock_fd_release__deps: ['$FS'],
-  _kodi_sock_fd_release: (fd) => {
+  _Universal Media Center_sock_fd_release__proxy: 'sync',
+  _Universal Media Center_sock_fd_release__sig: 'vi',
+  _Universal Media Center_sock_fd_release__deps: ['$FS'],
+  _Universal Media Center_sock_fd_release: (fd) => {
     const stream = FS.getStream(fd);
     if (stream) {
       FS.destroyNode(stream.node);
@@ -754,88 +754,88 @@ addToLibrary({
     }
   },
 
-  // Called once by kodi_wasm_has_sockets(); the result is cached in C.
-  kodi_tizen_sockets_probe__proxy: 'none',
-  kodi_tizen_sockets_probe__sig: 'i',
-  kodi_tizen_sockets_probe__deps: ['$TizenSockets'],
-  kodi_tizen_sockets_probe: () => TizenSockets.available() ? 1 : 0,
+  // Called once by Universal Media Center_wasm_has_sockets(); the result is cached in C.
+  Universal Media Center_tizen_sockets_probe__proxy: 'none',
+  Universal Media Center_tizen_sockets_probe__sig: 'i',
+  Universal Media Center_tizen_sockets_probe__deps: ['$TizenSockets'],
+  Universal Media Center_tizen_sockets_probe: () => TizenSockets.available() ? 1 : 0,
 
-  __syscall_socket__deps: ['$TizenSockets', 'kodi_upstream_socket'],
+  __syscall_socket__deps: ['$TizenSockets', 'Universal Media Center_upstream_socket'],
   __syscall_socket__proxy: 'none',
   __syscall_socket: (domain, type, protocol, u1, u2, u3) => {
-    if (!TizenSockets.available()) return _kodi_upstream_socket(domain, type, protocol);
+    if (!TizenSockets.available()) return _Universal Media Center_upstream_socket(domain, type, protocol);
     return TizenSockets.socket(domain, type, protocol);
   },
 
-  __syscall_bind__deps: ['$TizenSockets', 'kodi_upstream_bind'],
+  __syscall_bind__deps: ['$TizenSockets', 'Universal Media Center_upstream_bind'],
   __syscall_bind__proxy: 'none',
   __syscall_bind: (fd, addr, len, u1, u2, u3) => {
     const n = TizenSockets.native(fd);
-    if (n < 0) return _kodi_upstream_bind(fd, addr, len);
+    if (n < 0) return _Universal Media Center_upstream_bind(fd, addr, len);
     return TizenSockets.bind(n, addr, len);
   },
 
-  __syscall_connect__deps: ['$TizenSockets', 'kodi_upstream_connect'],
+  __syscall_connect__deps: ['$TizenSockets', 'Universal Media Center_upstream_connect'],
   __syscall_connect__proxy: 'none',
   __syscall_connect: (fd, addr, len, u1, u2, u3) => {
     const n = TizenSockets.native(fd);
-    if (n < 0) return _kodi_upstream_connect(fd, addr, len);
+    if (n < 0) return _Universal Media Center_upstream_connect(fd, addr, len);
     return TizenSockets.connect(fd, n, addr, len);
   },
 
-  __syscall_listen__deps: ['$TizenSockets', 'kodi_upstream_listen'],
+  __syscall_listen__deps: ['$TizenSockets', 'Universal Media Center_upstream_listen'],
   __syscall_listen__proxy: 'none',
   __syscall_listen: (fd, backlog, u1, u2, u3, u4) => {
     const n = TizenSockets.native(fd);
-    if (n < 0) return _kodi_upstream_listen(fd, backlog);
+    if (n < 0) return _Universal Media Center_upstream_listen(fd, backlog);
     return TizenSockets.listen(n, backlog);
   },
 
-  __syscall_accept4__deps: ['$TizenSockets', 'kodi_upstream_accept4'],
+  __syscall_accept4__deps: ['$TizenSockets', 'Universal Media Center_upstream_accept4'],
   __syscall_accept4__proxy: 'none',
   __syscall_accept4: (fd, addr, len, flags, u1, u2) => {
     const n = TizenSockets.native(fd);
-    if (n < 0) return _kodi_upstream_accept4(fd, addr, len, flags);
+    if (n < 0) return _Universal Media Center_upstream_accept4(fd, addr, len, flags);
     return TizenSockets.accept4(fd, n, addr, len, flags);
   },
 
-  __syscall_getsockname__deps: ['$TizenSockets', 'kodi_upstream_getsockname'],
+  __syscall_getsockname__deps: ['$TizenSockets', 'Universal Media Center_upstream_getsockname'],
   __syscall_getsockname__proxy: 'none',
   __syscall_getsockname: (fd, addr, len, u1, u2, u3) => {
     const n = TizenSockets.native(fd);
-    if (n < 0) return _kodi_upstream_getsockname(fd, addr, len);
+    if (n < 0) return _Universal Media Center_upstream_getsockname(fd, addr, len);
     return TizenSockets.name(n, addr, len, false);
   },
 
-  __syscall_getpeername__deps: ['$TizenSockets', 'kodi_upstream_getpeername'],
+  __syscall_getpeername__deps: ['$TizenSockets', 'Universal Media Center_upstream_getpeername'],
   __syscall_getpeername__proxy: 'none',
   __syscall_getpeername: (fd, addr, len, u1, u2, u3) => {
     const n = TizenSockets.native(fd);
-    if (n < 0) return _kodi_upstream_getpeername(fd, addr, len);
+    if (n < 0) return _Universal Media Center_upstream_getpeername(fd, addr, len);
     return TizenSockets.name(n, addr, len, true);
   },
 
-  __syscall_sendto__deps: ['$TizenSockets', 'kodi_upstream_sendto'],
+  __syscall_sendto__deps: ['$TizenSockets', 'Universal Media Center_upstream_sendto'],
   __syscall_sendto__proxy: 'none',
   __syscall_sendto: (fd, buf, len, flags, addr, alen) => {
     const n = TizenSockets.native(fd);
-    if (n < 0) return _kodi_upstream_sendto(fd, buf, len, flags, addr, alen);
+    if (n < 0) return _Universal Media Center_upstream_sendto(fd, buf, len, flags, addr, alen);
     return TizenSockets.send(fd, n, HEAPU8.subarray(buf, buf + len), flags, addr, alen);
   },
 
-  __syscall_recvfrom__deps: ['$TizenSockets', 'kodi_upstream_recvfrom'],
+  __syscall_recvfrom__deps: ['$TizenSockets', 'Universal Media Center_upstream_recvfrom'],
   __syscall_recvfrom__proxy: 'none',
   __syscall_recvfrom: (fd, buf, len, flags, addr, alen) => {
     const n = TizenSockets.native(fd);
-    if (n < 0) return _kodi_upstream_recvfrom(fd, buf, len, flags, addr, alen);
+    if (n < 0) return _Universal Media Center_upstream_recvfrom(fd, buf, len, flags, addr, alen);
     return TizenSockets.recv(fd, n, HEAPU8.subarray(buf, buf + len), flags, addr, alen);
   },
 
-  __syscall_sendmsg__deps: ['$TizenSockets', 'kodi_upstream_sendmsg'],
+  __syscall_sendmsg__deps: ['$TizenSockets', 'Universal Media Center_upstream_sendmsg'],
   __syscall_sendmsg__proxy: 'none',
   __syscall_sendmsg: (fd, message, flags, u1, u2, u3) => {
     const n = TizenSockets.native(fd);
-    if (n < 0) return _kodi_upstream_sendmsg(fd, message, flags);
+    if (n < 0) return _Universal Media Center_upstream_sendmsg(fd, message, flags);
     const iov = {{{ makeGetValue('message', C_STRUCTS.msghdr.msg_iov, '*') }}};
     const iovcnt = {{{ makeGetValue('message', C_STRUCTS.msghdr.msg_iovlen, 'i32') }}};
     const name = {{{ makeGetValue('message', C_STRUCTS.msghdr.msg_name, '*') }}};
@@ -843,11 +843,11 @@ addToLibrary({
     return TizenSockets.send(fd, n, TizenSockets.gather(iov, iovcnt), flags, name, namelen);
   },
 
-  __syscall_recvmsg__deps: ['$TizenSockets', 'kodi_upstream_recvmsg'],
+  __syscall_recvmsg__deps: ['$TizenSockets', 'Universal Media Center_upstream_recvmsg'],
   __syscall_recvmsg__proxy: 'none',
   __syscall_recvmsg: (fd, message, flags, u1, u2, u3) => {
     const n = TizenSockets.native(fd);
-    if (n < 0) return _kodi_upstream_recvmsg(fd, message, flags);
+    if (n < 0) return _Universal Media Center_upstream_recvmsg(fd, message, flags);
     const iov = {{{ makeGetValue('message', C_STRUCTS.msghdr.msg_iov, '*') }}};
     const iovcnt = {{{ makeGetValue('message', C_STRUCTS.msghdr.msg_iovlen, 'i32') }}};
     const name = {{{ makeGetValue('message', C_STRUCTS.msghdr.msg_name, '*') }}};
@@ -860,79 +860,79 @@ addToLibrary({
     return got;
   },
 
-  __syscall_getsockopt__deps: ['$TizenSockets', 'kodi_upstream_getsockopt'],
+  __syscall_getsockopt__deps: ['$TizenSockets', 'Universal Media Center_upstream_getsockopt'],
   __syscall_getsockopt__proxy: 'none',
   __syscall_getsockopt: (fd, level, optname, optval, optlen, unused) => {
     const n = TizenSockets.native(fd);
-    if (n < 0) return _kodi_upstream_getsockopt(fd, level, optname, optval, optlen);
+    if (n < 0) return _Universal Media Center_upstream_getsockopt(fd, level, optname, optval, optlen);
     return TizenSockets.getsockopt(fd, n, level, optname, optval, optlen);
   },
 
-  __syscall_setsockopt__deps: ['$TizenSockets', 'kodi_upstream_setsockopt'],
+  __syscall_setsockopt__deps: ['$TizenSockets', 'Universal Media Center_upstream_setsockopt'],
   __syscall_setsockopt__proxy: 'none',
   __syscall_setsockopt: (fd, level, optname, optval, optlen, unused) => {
     const n = TizenSockets.native(fd);
-    if (n < 0) return _kodi_upstream_setsockopt(fd, level, optname, optval, optlen);
+    if (n < 0) return _Universal Media Center_upstream_setsockopt(fd, level, optname, optval, optlen);
     return TizenSockets.setsockopt(fd, n, level, optname, optval, optlen);
   },
 
-  __syscall_shutdown__deps: ['$TizenSockets', 'kodi_upstream_shutdown'],
+  __syscall_shutdown__deps: ['$TizenSockets', 'Universal Media Center_upstream_shutdown'],
   __syscall_shutdown__proxy: 'none',
   __syscall_shutdown: (fd, how, u1, u2, u3, u4) => {
     const n = TizenSockets.native(fd);
-    if (n < 0) return _kodi_upstream_shutdown(fd, how);
+    if (n < 0) return _Universal Media Center_upstream_shutdown(fd, how);
     return TizenSockets.shutdown(n, how);
   },
 
-  __syscall_poll__deps: ['$TizenSockets', 'kodi_upstream_poll'],
+  __syscall_poll__deps: ['$TizenSockets', 'Universal Media Center_upstream_poll'],
   __syscall_poll__proxy: 'none',
   __syscall_poll__async: false,
   __syscall_poll: (fds, nfds, timeout) => {
     const { sockets, files } = TizenSockets.classify(fds, nfds);
-    if (!sockets.length) return _kodi_upstream_poll(fds, nfds, timeout);
+    if (!sockets.length) return _Universal Media Center_upstream_poll(fds, nfds, timeout);
     if (!files.length) return TizenSockets.pollSockets(fds, sockets, timeout);
     return TizenSockets.pollMixed(fds, sockets, files, timeout);
   },
 
-  __syscall_poll_nonblocking__deps: ['$TizenSockets', 'kodi_upstream_poll_nonblocking'],
+  __syscall_poll_nonblocking__deps: ['$TizenSockets', 'Universal Media Center_upstream_poll_nonblocking'],
   __syscall_poll_nonblocking__proxy: 'none',
   __syscall_poll_nonblocking: (fds, nfds) => {
     const { sockets, files } = TizenSockets.classify(fds, nfds);
-    if (!sockets.length) return _kodi_upstream_poll_nonblocking(fds, nfds);
+    if (!sockets.length) return _Universal Media Center_upstream_poll_nonblocking(fds, nfds);
     const s = TizenSockets.pollSockets(fds, sockets, 0);
     if (s < 0 || !files.length) return s;
     const f = TizenSockets.pollFilesNow(fds, files);
     return f < 0 ? f : s + f;
   },
 
-  __syscall_fcntl64__deps: ['$TizenSockets', 'kodi_upstream_fcntl64'],
+  __syscall_fcntl64__deps: ['$TizenSockets', 'Universal Media Center_upstream_fcntl64'],
   __syscall_fcntl64__proxy: 'none',
   __syscall_fcntl64: (fd, cmd, varargs) => {
-    if (TizenSockets.native(fd) < 0) return _kodi_upstream_fcntl64(fd, cmd, varargs);
+    if (TizenSockets.native(fd) < 0) return _Universal Media Center_upstream_fcntl64(fd, cmd, varargs);
     return TizenSockets.fcntl(fd, cmd, varargs);
   },
 
-  __syscall_ioctl__deps: ['$TizenSockets', 'kodi_upstream_ioctl'],
+  __syscall_ioctl__deps: ['$TizenSockets', 'Universal Media Center_upstream_ioctl'],
   __syscall_ioctl__proxy: 'none',
   __syscall_ioctl: (fd, op, varargs) => {
-    if (TizenSockets.native(fd) < 0) return _kodi_upstream_ioctl(fd, op, varargs);
+    if (TizenSockets.native(fd) < 0) return _Universal Media Center_upstream_ioctl(fd, op, varargs);
     return TizenSockets.ioctl(fd, op, varargs);
   },
 
   // WASI entry points return a positive errno.
-  fd_close__deps: ['$TizenSockets', 'kodi_upstream_fd_close'],
+  fd_close__deps: ['$TizenSockets', 'Universal Media Center_upstream_fd_close'],
   fd_close__proxy: 'none',
   fd_close: (fd) => {
     const n = TizenSockets.native(fd);
-    if (n < 0) return _kodi_upstream_fd_close(fd);
+    if (n < 0) return _Universal Media Center_upstream_fd_close(fd);
     return -TizenSockets.close(fd, n);
   },
 
-  fd_read__deps: ['$TizenSockets', 'kodi_upstream_fd_read'],
+  fd_read__deps: ['$TizenSockets', 'Universal Media Center_upstream_fd_read'],
   fd_read__proxy: 'none',
   fd_read: (fd, iov, iovcnt, pnum) => {
     const n = TizenSockets.native(fd);
-    if (n < 0) return _kodi_upstream_fd_read(fd, iov, iovcnt, pnum);
+    if (n < 0) return _Universal Media Center_upstream_fd_read(fd, iov, iovcnt, pnum);
     const buffer = new Uint8Array(TizenSockets.iovTotal(iov, iovcnt));
     const got = TizenSockets.recv(fd, n, buffer, 0, 0, 0);
     if (got < 0) return -got;
@@ -941,21 +941,21 @@ addToLibrary({
     return 0;
   },
 
-  fd_write__deps: ['$TizenSockets', 'kodi_upstream_fd_write'],
+  fd_write__deps: ['$TizenSockets', 'Universal Media Center_upstream_fd_write'],
   fd_write__proxy: 'none',
   fd_write: (fd, iov, iovcnt, pnum) => {
     const n = TizenSockets.native(fd);
-    if (n < 0) return _kodi_upstream_fd_write(fd, iov, iovcnt, pnum);
+    if (n < 0) return _Universal Media Center_upstream_fd_write(fd, iov, iovcnt, pnum);
     const sent = TizenSockets.send(fd, n, TizenSockets.gather(iov, iovcnt), 0, 0, 0);
     if (sent < 0) return -sent;
     {{{ makeSetValue('pnum', 0, 'sent', '*') }}};
     return 0;
   },
 
-  getaddrinfo__deps: ['$TizenSockets', 'kodi_upstream_getaddrinfo'],
+  getaddrinfo__deps: ['$TizenSockets', 'Universal Media Center_upstream_getaddrinfo'],
   getaddrinfo__proxy: 'none',
   getaddrinfo: (node, service, hint, out) => {
-    if (!TizenSockets.available()) return _kodi_upstream_getaddrinfo(node, service, hint, out);
+    if (!TizenSockets.available()) return _Universal Media Center_upstream_getaddrinfo(node, service, hint, out);
 
     let flags = 0, family = {{{ cDefs.AF_UNSPEC }}}, type = 0, proto = 0;
     if (hint) {

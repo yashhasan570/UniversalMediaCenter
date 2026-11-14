@@ -19,7 +19,7 @@
 
 #include <gtest/gtest.h>
 
-using KODI::LANGUAGE::CLanguageTag;
+using UNIVERSAL MEDIA CENTER::LANGUAGE::CLanguageTag;
 
 TEST(TestStreamDetails, General)
 {
@@ -747,7 +747,7 @@ StreamUtils::AudioPreferences ForLanguage(std::string_view language)
   if (language.empty())
     preferences.mediaDefault = true;
   else
-    preferences.language = KODI::LANGUAGE::CLanguageTag::Parse(std::string{language});
+    preferences.language = UNIVERSAL MEDIA CENTER::LANGUAGE::CLanguageTag::Parse(std::string{language});
   return preferences;
 }
 } // namespace
@@ -1106,7 +1106,7 @@ TEST(TestStreamDetails, PreferredAudio_MediaDefaultIgnoresLanguageAndImpairedFla
 
   StreamUtils::AudioPreferences preferences;
   preferences.mediaDefault = true;
-  preferences.language = KODI::LANGUAGE::CLanguageTag::Parse("eng"); // must be disregarded
+  preferences.language = UNIVERSAL MEDIA CENTER::LANGUAGE::CLanguageTag::Parse("eng"); // must be disregarded
 
   EXPECT_EQ(2, details.GetPreferredAudioStreamIndex(preferences));
 }

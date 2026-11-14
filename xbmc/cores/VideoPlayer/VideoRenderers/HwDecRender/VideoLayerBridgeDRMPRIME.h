@@ -16,7 +16,7 @@
 
 #include <drm_mode.h>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace WINDOWING
 {
@@ -25,14 +25,14 @@ namespace GBM
 class CDRMAtomic;
 }
 } // namespace WINDOWING
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER
 
 class CVideoBufferDRMPRIME;
 
-class CVideoLayerBridgeDRMPRIME : public KODI::WINDOWING::GBM::CVideoLayerBridge
+class CVideoLayerBridgeDRMPRIME : public UNIVERSAL MEDIA CENTER::WINDOWING::GBM::CVideoLayerBridge
 {
 public:
-  CVideoLayerBridgeDRMPRIME(std::shared_ptr<KODI::WINDOWING::GBM::CDRMAtomic> drm);
+  CVideoLayerBridgeDRMPRIME(std::shared_ptr<UNIVERSAL MEDIA CENTER::WINDOWING::GBM::CDRMAtomic> drm);
   ~CVideoLayerBridgeDRMPRIME() override;
   void Disable() override;
 
@@ -41,7 +41,7 @@ public:
   virtual void UpdateVideoPlane();
 
 protected:
-  std::shared_ptr<KODI::WINDOWING::GBM::CDRMAtomic> m_DRM;
+  std::shared_ptr<UNIVERSAL MEDIA CENTER::WINDOWING::GBM::CDRMAtomic> m_DRM;
 
 private:
   void Acquire(CVideoBufferDRMPRIME* buffer, uint32_t fbId);

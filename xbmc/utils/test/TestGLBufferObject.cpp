@@ -18,8 +18,8 @@
 #include <EGL/egl.h>
 #include <EGL/eglext.h>
 
-using KODI::UTILS::GL::CGLBufferArena;
-using KODI::UTILS::GL::CGLBufferObject;
+using UNIVERSAL MEDIA CENTER::UTILS::GL::CGLBufferArena;
+using UNIVERSAL MEDIA CENTER::UTILS::GL::CGLBufferObject;
 
 namespace
 {

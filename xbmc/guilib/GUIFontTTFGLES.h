@@ -41,7 +41,7 @@ protected:
   void DeleteHardwareTexture() override;
 
   static GLuint m_elementArrayHandle;
-  static KODI::UTILS::GL::CGLBufferArena& VertexArena();
+  static UNIVERSAL MEDIA CENTER::UTILS::GL::CGLBufferArena& VertexArena();
 
 private:
   unsigned int m_updateY1{0};

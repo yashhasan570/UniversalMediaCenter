@@ -22,9 +22,9 @@ protected:
   TestFileFactory()
   {
     std::vector<std::string> advancedsettings =
-      CXBMCTestUtils::Instance().getAdvancedSettingsFiles();
+      CTestUtils::Instance().getAdvancedSettingsFiles();
     std::vector<std::string> guisettings =
-      CXBMCTestUtils::Instance().getGUISettingsFiles();
+      CTestUtils::Instance().getGUISettingsFiles();
 
     const std::shared_ptr<CSettings> settings = CServiceBroker::GetSettingsComponent()->GetSettings();
     for (const auto& it : guisettings)
@@ -57,7 +57,7 @@ TEST_F(TestFileFactory, Read)
   int64_t count = 0;
 
   std::vector<std::string> urls =
-    CXBMCTestUtils::Instance().getTestFileFactoryReadUrls();
+    CTestUtils::Instance().getTestFileFactoryReadUrls();
 
   for (const auto& url : urls)
   {
@@ -106,11 +106,11 @@ TEST_F(TestFileFactory, Write)
   unsigned char buf[16];
   int64_t count = 0;
 
-  str = CXBMCTestUtils::Instance().getTestFileFactoryWriteInputFile();
+  str = CTestUtils::Instance().getTestFileFactoryWriteInputFile();
   ASSERT_TRUE(inputfile.Open(str));
 
   std::vector<std::string> urls =
-    CXBMCTestUtils::Instance().getTestFileFactoryWriteUrls();
+    CTestUtils::Instance().getTestFileFactoryWriteUrls();
 
   for (const auto& url : urls)
   {

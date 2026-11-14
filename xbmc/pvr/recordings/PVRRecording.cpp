@@ -202,9 +202,9 @@ void CPVRRecording::Serialize(CVariant& value) const
   if (!value.isMember("art"))
     value["art"] = CVariant(CVariant::VariantTypeObject);
   if (!ThumbnailPath().empty())
-    value["art"][KODI::ART::TYPE::THUMB] = ThumbnailPath();
+    value["art"][UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB] = ThumbnailPath();
   if (!FanartPath().empty())
-    value["art"][KODI::ART::TYPE::FANART] = FanartPath();
+    value["art"][UNIVERSAL MEDIA CENTER::ART::TYPE::FANART] = FanartPath();
 
   value["clientid"] = m_iClientId;
 }
@@ -336,7 +336,7 @@ CBookmark CPVRRecording::GetResumePoint() const
   if (client && client->GetClientCapabilities().SupportsRecordingsLastPlayedPosition() &&
       m_resumePointRefetchTimeout.IsTimePast())
   {
-    // @todo: root cause should be fixed. details: https://github.com/xbmc/xbmc/pull/14961
+    // @todo: root cause should be fixed. details: https://github.com///pull/14961
     m_resumePointRefetchTimeout.Set(10s); // update resume point from backend at most every 10 secs
 
     int pos = -1;
@@ -361,7 +361,7 @@ bool CPVRRecording::UpdateRecordingSize()
   if (client && client->GetClientCapabilities().SupportsRecordingsSize() &&
       m_recordingSizeRefetchTimeout.IsTimePast())
   {
-    // @todo: root cause should be fixed. details: https://github.com/xbmc/xbmc/pull/14961
+    // @todo: root cause should be fixed. details: https://github.com///pull/14961
     m_recordingSizeRefetchTimeout.Set(10s); // update size from backend at most every 10 secs
 
     int64_t sizeInBytes = -1;

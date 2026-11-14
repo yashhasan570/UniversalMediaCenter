@@ -12,17 +12,17 @@
 
 #if defined(WL_EGL_PLATFORM)
 #undef WL_EGL_PLATFORM
-#define KODI_WL_EGL_PLATFORM
+#define UNIVERSALMEDIA_WL_EGL_PLATFORM
 #endif
 
 #if defined(__GBM__)
 #undef __GBM__
-#define KODI__GBM__
+#define UNIVERSALMEDIA__GBM__
 #endif
 
 #if defined(USE_X11)
 #undef USE_X11
-#define KODI_USE_X11
+#define UNIVERSALMEDIA_USE_X11
 #endif
 
 #define EGL_NO_X11
@@ -33,18 +33,18 @@
 
 #if defined(TARGET_LINUX) || defined(TARGET_FREEBSD)
 
-#if defined(KODI_WL_EGL_PLATFORM)
-#undef KODI_WL_EGL_PLATFORM
+#if defined(UNIVERSALMEDIA_WL_EGL_PLATFORM)
+#undef UNIVERSALMEDIA_WL_EGL_PLATFORM
 #define WL_EGL_PLATFORM
 #endif
 
-#if defined(KODI__GBM__)
-#undef KODI__GBM__
+#if defined(UNIVERSALMEDIA__GBM__)
+#undef UNIVERSALMEDIA__GBM__
 #define __GBM__
 #endif
 
-#if defined(KODI_USE_X11)
-#undef KODI_USE_X11
+#if defined(UNIVERSALMEDIA_USE_X11)
+#undef UNIVERSALMEDIA_USE_X11
 #define USE_X11
 #endif
 

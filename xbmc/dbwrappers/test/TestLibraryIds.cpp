@@ -180,13 +180,13 @@ template<typename DB, std::size_t N>
 void ExpectAMySqlDatabaseNeverReusesAnId(const std::string& name,
                                          const std::array<IdTable, N>& tables)
 {
-  const char* const host{std::getenv("KODI_TEST_MYSQL_HOST")};
-  const char* const user{std::getenv("KODI_TEST_MYSQL_USER")};
-  const char* const pass{std::getenv("KODI_TEST_MYSQL_PASS")};
+  const char* const host{std::getenv("UNIVERSALMEDIA_TEST_MYSQL_HOST")};
+  const char* const user{std::getenv("UNIVERSALMEDIA_TEST_MYSQL_USER")};
+  const char* const pass{std::getenv("UNIVERSALMEDIA_TEST_MYSQL_PASS")};
 
   if (!host || !user || !pass)
   {
-    GTEST_SKIP() << "set KODI_TEST_MYSQL_HOST, KODI_TEST_MYSQL_USER and KODI_TEST_MYSQL_PASS "
+    GTEST_SKIP() << "set UNIVERSALMEDIA_TEST_MYSQL_HOST, UNIVERSALMEDIA_TEST_MYSQL_USER and UNIVERSALMEDIA_TEST_MYSQL_PASS "
                     "to run the MySQL half of these tests";
   }
 
@@ -195,7 +195,7 @@ void ExpectAMySqlDatabaseNeverReusesAnId(const std::string& name,
   settings.host = host;
   settings.user = user;
   settings.pass = pass;
-  if (const char* const port{std::getenv("KODI_TEST_MYSQL_PORT")})
+  if (const char* const port{std::getenv("UNIVERSALMEDIA_TEST_MYSQL_PORT")})
     settings.port = port;
 
   DB db;
@@ -212,15 +212,15 @@ void ExpectAMySqlDatabaseNeverReusesAnId(const std::string& name,
  * The library tables as MySQL creates them from the SQLite definitions. Skipped unless pointed at
  * a server:
  *
- *   KODI_TEST_MYSQL_HOST=127.0.0.1 KODI_TEST_MYSQL_USER=kodi KODI_TEST_MYSQL_PASS=kodi
+ *   UNIVERSALMEDIA_TEST_MYSQL_HOST=127.0.0.1 UNIVERSALMEDIA_TEST_MYSQL_USER=universalmediacenter UNIVERSALMEDIA_TEST_MYSQL_PASS=universalmediacenter
  */
 TEST(TestLibraryIdsMySql, ANewVideoDatabaseNeverReusesAnId)
 {
-  ExpectAMySqlDatabaseNeverReusesAnId<CVideoDatabase>("kodi_test_libraryids_video", VIDEO_TABLES);
+  ExpectAMySqlDatabaseNeverReusesAnId<CVideoDatabase>("universalmediacenter_test_libraryids_video", VIDEO_TABLES);
 }
 
 TEST(TestLibraryIdsMySql, ANewMusicDatabaseNeverReusesAnId)
 {
-  ExpectAMySqlDatabaseNeverReusesAnId<CMusicDatabase>("kodi_test_libraryids_music", MUSIC_TABLES);
+  ExpectAMySqlDatabaseNeverReusesAnId<CMusicDatabase>("universalmediacenter_test_libraryids_music", MUSIC_TABLES);
 }
 #endif

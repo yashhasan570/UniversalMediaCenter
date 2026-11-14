@@ -50,7 +50,7 @@ extern "C" {
 #include <libswscale/swscale.h>
 }
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 bool CDVDFileInfo::GetFileDuration(const std::string& path, int& duration)
 {

@@ -8,7 +8,7 @@
 
 #include "PVREpgFields.h"
 
-#include "addons/kodi-dev-kit/include/kodi/c-api/addon-instance/pvr/pvr_epg.h" // EPG_STRING_TOKEN_SEPARATOR
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api/addon-instance/pvr/pvr_epg.h" // EPG_STRING_TOKEN_SEPARATOR
 #include "utils/StringUtils.h"
 #include "utils/Variant.h"
 

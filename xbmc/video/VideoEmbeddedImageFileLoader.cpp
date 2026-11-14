@@ -17,7 +17,7 @@
 #include "video/tags/IVideoInfoTagLoader.h"
 #include "video/tags/VideoInfoTagLoaderFactory.h"
 
-namespace KODI::VIDEO
+namespace UNIVERSAL MEDIA CENTER::VIDEO
 {
 
 bool CVideoEmbeddedImageFileLoader::CanLoad(const std::string& specialType) const
@@ -61,4 +61,4 @@ std::unique_ptr<CTexture> CVideoEmbeddedImageFileLoader::Load(
   return {};
 }
 
-} // namespace KODI::VIDEO
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO

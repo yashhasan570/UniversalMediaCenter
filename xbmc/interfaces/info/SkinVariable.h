@@ -44,7 +44,7 @@ private:
   struct ConditionLabelPair
   {
     INFO::InfoPtr m_condition;
-    KODI::GUILIB::GUIINFO::CGUIInfoLabel m_label;
+    UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoLabel m_label;
   };
 
   typedef std::vector<ConditionLabelPair> VECCONDITIONLABELPAIR;

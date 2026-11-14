@@ -14,7 +14,7 @@
 #include "music/tags/MusicInfoTag.h"
 #include "utils/StringUtils.h"
 #include "utils/URIUtils.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 #include "utils/XMLUtils.h"
 #include "utils/log.h"
 
@@ -40,7 +40,7 @@ using namespace XFILE;
  </WinampXML>
 ------------------------ end of example b4s playlist file ---------------------------------*/
 
-namespace KODI::PLAYLIST
+namespace UNIVERSAL MEDIA CENTER::PLAYLIST
 {
 
 CPlayListB4S::CPlayListB4S(void) = default;
@@ -50,7 +50,7 @@ CPlayListB4S::~CPlayListB4S(void) = default;
 
 bool CPlayListB4S::LoadData(std::istream& stream)
 {
-  CXBMCTinyXML2 xmlDoc;
+  CTinyXML2 xmlDoc;
 
   std::string b4sStream(std::istreambuf_iterator<char>(stream), {});
 
@@ -143,4 +143,4 @@ void CPlayListB4S::Save(const std::string& strFileName) const
   file.Close();
 }
 
-} // namespace KODI::PLAYLIST
+} // namespace UNIVERSAL MEDIA CENTER::PLAYLIST

@@ -17,8 +17,8 @@ class CEpisodeUtils
 {
 public:
   static bool EnumerateEpisodeItem(const CFileItem* item,
-                                   KODI::VIDEO::EPISODELIST& episodeList,
-                                   KODI::REGEXP::RegExpCache* cache = nullptr);
+                                   UNIVERSAL MEDIA CENTER::VIDEO::EPISODELIST& episodeList,
+                                   UNIVERSAL MEDIA CENTER::REGEXP::RegExpCache* cache = nullptr);
 
   static std::string GetEpisodesLabel(const CFileItem& item);
 };

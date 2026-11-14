@@ -10,7 +10,7 @@
 
 #include "imagefiles/SpecialImageFileLoader.h"
 
-namespace KODI::VIDEO
+namespace UNIVERSAL MEDIA CENTER::VIDEO
 {
 /*!
  * @brief Generates a texture for an image embedded in a video file.
@@ -25,4 +25,4 @@ public:
   std::unique_ptr<CTexture> Load(const IMAGE_FILES::CImageFileURL& imageFile) const override;
 };
 
-} // namespace KODI::VIDEO
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO

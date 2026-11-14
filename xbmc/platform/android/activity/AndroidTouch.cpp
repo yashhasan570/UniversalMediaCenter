@@ -11,7 +11,7 @@
 #include "input/touch/generic/GenericTouchActionHandler.h"
 #include "input/touch/generic/GenericTouchInputHandler.h"
 
-#include "platform/android/activity/XBMCApp.h"
+#include "platform/android/activity/App.h"
 
 CAndroidTouch::CAndroidTouch()
 {
@@ -31,7 +31,7 @@ bool CAndroidTouch::onTouchEvent(AInputEvent* event)
   size_t numPointers = AMotionEvent_getPointerCount(event);
   if (numPointers <= 0)
   {
-    CXBMCApp::android_printf(" => aborting touch event because there are no active pointers");
+    CApp::android_printf(" => aborting touch event because there are no active pointers");
     return false;
   }
 

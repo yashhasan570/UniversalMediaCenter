@@ -17,7 +17,7 @@ struct di_info;
 struct di_cta_colorimetry_block;
 struct di_cta_hdr_static_metadata_block;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace UTILS
 {
@@ -89,4 +89,4 @@ private:
 };
 
 } // namespace UTILS
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

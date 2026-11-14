@@ -28,7 +28,7 @@
 #include <utility>
 #include <vector>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace JOYSTICK;
 
 // Guard against repeated input
@@ -127,7 +127,7 @@ bool CButtonMapping::OnKeyPress(const CKey& key)
   if (!m_buttonMapper->AcceptsPrimitive(PRIMITIVE_TYPE::KEY))
     return false;
 
-  return GetKey(static_cast<XBMCKey>(key.GetKeycode())).OnMotion(true);
+  return GetKey(static_cast<Key>(key.GetKeycode())).OnMotion(true);
 }
 
 bool CButtonMapping::OnPosition(int x, int y)
@@ -289,7 +289,7 @@ CAxisDetector& CButtonMapping::GetAxis(
   return itAxis->second;
 }
 
-CKeyDetector& CButtonMapping::GetKey(XBMCKey keycode)
+CKeyDetector& CButtonMapping::GetKey(Key keycode)
 {
   auto itKey = m_keys.find(keycode);
 

@@ -86,12 +86,12 @@ using namespace XFILE;
 using namespace MUSICDATABASEDIRECTORY;
 using namespace MUSIC_GRABBER;
 using namespace MUSIC_INFO;
-using namespace KODI;
-using namespace KODI::MESSAGING;
-using KODI::MESSAGING::HELPERS::DialogResponse;
+using namespace UNIVERSAL MEDIA CENTER;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
+using UNIVERSAL MEDIA CENTER::MESSAGING::HELPERS::DialogResponse;
 
 using namespace std::chrono_literals;
-using KODI::MEDIA::MediaSection;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaSection;
 
 #define CONTROL_BTNVIEWASICONS  2
 #define CONTROL_BTNSORTBY       3
@@ -554,7 +554,7 @@ bool CGUIWindowMusicBase::OnContextButton(int itemNumber, CONTEXT_BUTTON button)
 
 #ifdef HAS_CDDA_RIPPER
   case CONTEXT_BUTTON_CANCEL_RIP_CD:
-    KODI::CDRIP::CCDDARipper::GetInstance().CancelJobs();
+    UNIVERSAL MEDIA CENTER::CDRIP::CCDDARipper::GetInstance().CancelJobs();
     return true;
 #endif
 
@@ -594,7 +594,7 @@ void CGUIWindowMusicBase::OnRipCD()
     if (!MUSIC::IsCDDA(g_application.CurrentFileItem()))
     {
 #ifdef HAS_CDDA_RIPPER
-      KODI::CDRIP::CCDDARipper::GetInstance().RipCD();
+      UNIVERSAL MEDIA CENTER::CDRIP::CCDDARipper::GetInstance().RipCD();
 #endif
     }
     else
@@ -610,7 +610,7 @@ void CGUIWindowMusicBase::OnRipTrack(int iItem)
     {
 #ifdef HAS_CDDA_RIPPER
       CFileItemPtr item = m_vecItems->Get(iItem);
-      KODI::CDRIP::CCDDARipper::GetInstance().RipTrack(item.get());
+      UNIVERSAL MEDIA CENTER::CDRIP::CCDDARipper::GetInstance().RipTrack(item.get());
 #endif
     }
     else
@@ -800,7 +800,7 @@ void CGUIWindowMusicBase::OnRetrieveMusicInfo(CFileItemList& items)
         m_dlgProgress->Progress();
       }
     } // if (bShowProgress)
-    KODI::TIME::Sleep(1ms);
+    UNIVERSAL MEDIA CENTER::TIME::Sleep(1ms);
   } // while (m_musicInfoLoader.IsLoading())
 
   if (bProgressVisible && m_dlgProgress)
@@ -842,7 +842,7 @@ bool CGUIWindowMusicBase::GetDirectory(const std::string &strDirectory, CFileIte
       std::string dirType = NameOf(MEDIA::TYPE::ARTIST);
       if (params.GetAlbumId() > 0)
         dirType = NameOf(MEDIA::TYPE::ALBUM);
-      KODI::ART::Artwork artmap;
+      UNIVERSAL MEDIA CENTER::ART::Artwork artmap;
       for (auto artitem : art)
       {
         std::string artname;

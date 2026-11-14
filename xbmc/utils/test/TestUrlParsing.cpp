@@ -23,7 +23,7 @@
  *
  * ## Test Data
  * The input and expected output for these tests are stored as JSON files
- * under `xbmc/utils/test/testdata/`. As there are many such test files, it
+ * under `/utils/test/testdata/`. As there are many such test files, it
  * is often easier to regenerate them rather than edit each file manually.
  *
  * To regenerate all test case JSON files, define the following symbol before
@@ -34,20 +34,20 @@
  * @endcode
  *
  * This can be defined either inline in this test file or passed via the
- * build system when building `kodi-test`. When defined, executing the tests
+ * build system when building `universalmediacenter-test`. When defined, executing the tests
  * will generate updated JSON test case files in your **CMake build
  * directory**.
  *
  * After generation, the new JSON files should be reviewed and copied or moved
- * into the `xbmc/utils/test/testdata/` directory before committing them with
+ * into the `/utils/test/testdata/` directory before committing them with
  * your branch.
  *
  * ## Running the Tests
- * These tests are part of the `kodi-test` suite and are executed using
+ * These tests are part of the `universalmediacenter-test` suite and are executed using
  * GoogleTest. To run all URL parsing tests:
  *
  * @code
- * kodi-test --gtest_filter=TestURLParse*
+ * universalmediacenter-test --gtest_filter=TestURLParse*
  * @endcode
  *
  * ## Modifying or Adding Tests
@@ -61,7 +61,7 @@
  *   no regressions were introduced.
  *
  * @see CURL
- * @see xbmc/utils/test/testdata/
+ * @see /utils/test/testdata/
  */
 
 #include "URL.h"
@@ -722,10 +722,10 @@ class TestURLParseDetails : public testing::Test, public testing::WithParamInter
 
 TEST_P(TestURLParseDetails, DISABLED_RunTest)
 {
-  std::string filename = "xbmc/utils/test/testdata/";
+  std::string filename = "/utils/test/testdata/";
   filename.append(std::to_string(GetParam()));
   filename.append(".json");
-  filename = XBMC_REF_FILE_PATH(filename);
+  filename = _REF_FILE_PATH(filename);
 
   RunParseTest(filename, CreateParamFromJson(filename));
 }

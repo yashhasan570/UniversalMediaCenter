@@ -233,7 +233,7 @@ TEST_F(TestTagLoaderTagLib, SplitMBID)
 /*! .mp2 holds MPEG-1 Layer II, which TagLib's MPEG reader parses exactly as Layer III. */
 TEST(TestTagLoaderTagLibMp2, ReadsID3v2FromALayerIIFile)
 {
-  const std::string path = XBMC_REF_FILE_PATH("xbmc/music/tags/test/testdata/tagged.mp2");
+  const std::string path = _REF_FILE_PATH("/music/tags/test/testdata/tagged.mp2");
 
   CMusicInfoTag tag;
   CTagLoaderTagLib loader;

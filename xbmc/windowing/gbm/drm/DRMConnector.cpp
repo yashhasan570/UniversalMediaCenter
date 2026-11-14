@@ -14,7 +14,7 @@
 #include <algorithm>
 #include <map>
 
-using namespace KODI::WINDOWING::GBM;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::GBM;
 
 using namespace std::chrono_literals;
 
@@ -68,7 +68,7 @@ bool CDRMConnector::CheckConnector()
   {
     CLog::LogF(LOGDEBUG, "connector is disconnected");
     retryCnt--;
-    KODI::TIME::Sleep(1s);
+    UNIVERSAL MEDIA CENTER::TIME::Sleep(1s);
 
     m_connector.reset(drmModeGetConnector(m_fd, m_connector->connector_id));
   }

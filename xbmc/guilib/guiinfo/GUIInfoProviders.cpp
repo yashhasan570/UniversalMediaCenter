@@ -12,7 +12,7 @@
 
 #include <algorithm>
 
-using namespace KODI::GUILIB::GUIINFO;
+using namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO;
 
 CGUIInfoProviders::CGUIInfoProviders()
 {

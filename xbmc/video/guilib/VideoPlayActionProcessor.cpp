@@ -32,7 +32,7 @@
 #include "video/VideoUtils.h"
 #include "video/guilib/VideoGUIUtils.h"
 
-namespace KODI::VIDEO::GUILIB
+namespace UNIVERSAL MEDIA CENTER::VIDEO::GUILIB
 {
 namespace
 {
@@ -258,7 +258,7 @@ void CVideoPlayActionProcessor::Play(const std::string& player)
     item->SetFolder(false);
   }
 
-  item->SetProperty("playlist_type_hint", static_cast<int>(KODI::PLAYLIST::Id::TYPE_VIDEO));
+  item->SetProperty("playlist_type_hint", static_cast<int>(UNIVERSAL MEDIA CENTER::PLAYLIST::Id::TYPE_VIDEO));
   const ContentUtils::PlayMode mode{
       item->GetProperty(ITEM::PROPERTY::CHECK_AUTOPLAY_NEXT_ITEM).asBoolean()
           ? ContentUtils::PlayMode::CHECK_AUTO_PLAY_NEXT_ITEM
@@ -266,4 +266,4 @@ void CVideoPlayActionProcessor::Play(const std::string& player)
   VIDEO::UTILS::PlayItem(item, player, mode);
 }
 
-} // namespace KODI::VIDEO::GUILIB
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO::GUILIB

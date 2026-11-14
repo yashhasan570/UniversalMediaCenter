@@ -13,13 +13,13 @@
 
 #include <chrono>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace PIPEWIRE
 {
 class CPipewireStream;
 }
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER
 
 namespace AE
 {
@@ -53,7 +53,7 @@ private:
   AEAudioFormat m_format;
   std::chrono::duration<double, std::ratio<1>> m_latency;
 
-  std::unique_ptr<KODI::PIPEWIRE::CPipewireStream> m_stream;
+  std::unique_ptr<UNIVERSAL MEDIA CENTER::PIPEWIRE::CPipewireStream> m_stream;
 };
 
 } // namespace SINK

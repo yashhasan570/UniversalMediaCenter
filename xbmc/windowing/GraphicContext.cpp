@@ -32,8 +32,8 @@
 #include <cmath>
 #include <mutex>
 
-using namespace KODI::WINDOWING;
-using KODI::UTILS::COLOR::Color;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING;
+using UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color;
 
 CGraphicContext::CGraphicContext() = default;
 CGraphicContext::~CGraphicContext() = default;

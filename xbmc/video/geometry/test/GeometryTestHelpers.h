@@ -16,7 +16,7 @@
 
 #include <gtest/gtest.h>
 
-namespace KODI::VIDEO::GEOMETRY::TEST
+namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::TEST
 {
 
 //! \brief A 16:9 UHD frame with square pixels.
@@ -97,4 +97,4 @@ inline void ExpectRect(const CRectInt& actual, int x1, int y1, int x2, int y2)
   EXPECT_EQ(y2, actual.y2);
 }
 
-} // namespace KODI::VIDEO::GEOMETRY::TEST
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::TEST

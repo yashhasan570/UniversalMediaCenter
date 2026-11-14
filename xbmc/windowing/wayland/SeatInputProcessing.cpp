@@ -11,7 +11,7 @@
 #include <cassert>
 #include <memory>
 
-using namespace KODI::WINDOWING::WAYLAND;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::WAYLAND;
 
 CSeatInputProcessing::CSeatInputProcessing(wayland::surface_t const& inputSurface, IInputHandler& handler)
 : m_inputSurface{inputSurface}, m_handler{handler}
@@ -54,7 +54,7 @@ void CSeatInputProcessing::OnPointerLeave()
   m_handler.OnLeave(InputType::POINTER);
 }
 
-void CSeatInputProcessing::OnPointerEvent(XBMC_Event& event)
+void CSeatInputProcessing::OnPointerEvent(_Event& event)
 {
   m_handler.OnEvent(InputType::POINTER, event);
 }
@@ -69,7 +69,7 @@ void CSeatInputProcessing::OnKeyboardLeave()
   m_handler.OnLeave(InputType::KEYBOARD);
 }
 
-void CSeatInputProcessing::OnKeyboardEvent(XBMC_Event& event)
+void CSeatInputProcessing::OnKeyboardEvent(_Event& event)
 {
   m_handler.OnEvent(InputType::KEYBOARD, event);
 }

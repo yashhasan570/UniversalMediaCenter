@@ -22,7 +22,7 @@
 
 #include <tinyxml2.h>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 using namespace JOYSTICK;
 
@@ -154,7 +154,7 @@ bool CPhysicalFeature::Deserialize(const tinyxml2::XMLElement* pElement,
     else
     {
       m_keycode = KEYBOARD::CKeyboardTranslator::TranslateKeysym(strSymbol);
-      if (m_keycode == XBMCK_UNKNOWN)
+      if (m_keycode == K_UNKNOWN)
       {
         CLog::Log(LOGERROR, "<{}> tag - attribute \"{}\" is invalid: \"{}\"", strType,
                   LAYOUT_XML_ATTR_KEY_SYMBOL, strSymbol);

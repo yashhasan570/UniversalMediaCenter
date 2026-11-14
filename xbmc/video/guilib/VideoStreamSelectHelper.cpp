@@ -108,7 +108,7 @@ bool SupportsSubtitleFeature(IPlayerSubtitleCaps feature,
 
 } // unnamed namespace
 
-void KODI::VIDEO::GUILIB::OpenDialogSelectVideoStream()
+void UNIVERSAL MEDIA CENTER::VIDEO::GUILIB::OpenDialogSelectVideoStream()
 {
   CGUIDialogSelect* dialog{CServiceBroker::GetGUI()->GetWindowManager().GetWindow<CGUIDialogSelect>(
       WINDOW_DIALOG_SELECT_VIDEO_STREAM)};
@@ -129,7 +129,7 @@ void KODI::VIDEO::GUILIB::OpenDialogSelectVideoStream()
 
   const int selectedId = appPlayer->GetVideoStream();
 
-  using namespace KODI::VIDEO;
+  using namespace UNIVERSAL MEDIA CENTER::VIDEO;
   const std::vector<VideoStreamInfoExt> streams =
       CVideoStreamSelect::GetVideoStreams(appPlayer.get());
 
@@ -178,7 +178,7 @@ void KODI::VIDEO::GUILIB::OpenDialogSelectVideoStream()
   }
 }
 
-void KODI::VIDEO::GUILIB::OpenDialogSelectAudioStream()
+void UNIVERSAL MEDIA CENTER::VIDEO::GUILIB::OpenDialogSelectAudioStream()
 {
   CGUIDialogSelect* dialog{CServiceBroker::GetGUI()->GetWindowManager().GetWindow<CGUIDialogSelect>(
       WINDOW_DIALOG_SELECT_AUDIO_STREAM)};
@@ -204,7 +204,7 @@ void KODI::VIDEO::GUILIB::OpenDialogSelectAudioStream()
 
   const int selectedId = appPlayer->GetAudioStream();
 
-  using namespace KODI::VIDEO;
+  using namespace UNIVERSAL MEDIA CENTER::VIDEO;
   const std::vector<AudioStreamInfoExt> streams =
       CVideoStreamSelect::GetAudioStreams(appPlayer.get());
 
@@ -245,7 +245,7 @@ void KODI::VIDEO::GUILIB::OpenDialogSelectAudioStream()
   }
 }
 
-void KODI::VIDEO::GUILIB::OpenDialogSelectSubtitleStream()
+void UNIVERSAL MEDIA CENTER::VIDEO::GUILIB::OpenDialogSelectSubtitleStream()
 {
   CGUIDialogSelect* dialog{CServiceBroker::GetGUI()->GetWindowManager().GetWindow<CGUIDialogSelect>(
       WINDOW_DIALOG_SELECT_SUBTITLE_STREAM)};
@@ -272,7 +272,7 @@ void KODI::VIDEO::GUILIB::OpenDialogSelectSubtitleStream()
   const int selectedId = appPlayer->GetSubtitle();
   const bool isSubtitleEnabled = appPlayer->GetSubtitleVisible();
 
-  using namespace KODI::VIDEO;
+  using namespace UNIVERSAL MEDIA CENTER::VIDEO;
   const std::vector<SubtitleStreamInfoExt> streams =
       CVideoStreamSelect::GetSubtitleStreams(appPlayer.get());
 

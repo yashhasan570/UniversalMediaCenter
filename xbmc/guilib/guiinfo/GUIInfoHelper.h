@@ -21,7 +21,7 @@ class CGUIControl;
 class CGUIMediaWindow;
 class CGUIWindow;
 
-namespace KODI::GUILIB::GUIINFO
+namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO
 {
 
 std::string GetPlaylistLabel(int item, PLAYLIST::Id playlistid = PLAYLIST::Id::TYPE_NONE);
@@ -36,4 +36,4 @@ std::shared_ptr<CGUIListItem> GetCurrentListItem(int contextWindow,
 
 std::string GetFileInfoLabelValueFromPath(int info, const std::string& filenameAndPath);
 
-} // namespace KODI::GUILIB::GUIINFO
+} // namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO

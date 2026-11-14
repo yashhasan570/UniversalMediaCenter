@@ -1,2 +1,2 @@
-xbmc/network/httprequesthandler network/httprequesthandler # MICROHTTPD
-xbmc/network/httprequesthandler/python network/httprequesthandler/python # MICROHTTPD
+/network/httprequesthandler network/httprequesthandler # MICROHTTPD
+/network/httprequesthandler/python network/httprequesthandler/python # MICROHTTPD

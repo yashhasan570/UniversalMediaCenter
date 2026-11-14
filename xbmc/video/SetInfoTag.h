@@ -54,9 +54,9 @@ public:
   bool HasSortTitle() const { return !m_sortTitle.empty(); }
   const std::string& GetSortTitle() const { return m_sortTitle; }
 
-  void SetArt(const KODI::ART::Artwork& art);
+  void SetArt(const UNIVERSAL MEDIA CENTER::ART::Artwork& art);
   bool HasArt() const { return !m_art.empty(); }
-  const KODI::ART::Artwork& GetArt() const { return m_art; }
+  const UNIVERSAL MEDIA CENTER::ART::Artwork& GetArt() const { return m_art; }
 
   void Merge(const CSetInfoTag& other);
   bool Save(TiXmlNode* node,
@@ -72,7 +72,7 @@ private:
   std::string m_originalTitle; // Original title of movie set (from scraper)
   std::string m_sortTitle; // Title used to sort the movie set in the library
   std::string m_overview; // Overview/description of the movie set
-  KODI::ART::Artwork m_art; // Art information
+  UNIVERSAL MEDIA CENTER::ART::Artwork m_art; // Art information
   int m_id{-1}; // ID of movie set in database
 
   bool m_updateSetOverview{false}; // If overview has been set

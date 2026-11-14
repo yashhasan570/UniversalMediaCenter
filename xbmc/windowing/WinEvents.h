@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "XBMC_events.h"
+#include "_events.h"
 
 class IWinEvents
 {

@@ -15,7 +15,7 @@
 #include <vector>
 
 //! \brief Video tag loader using nfo files.
-class CVideoTagLoaderNFO : public KODI::VIDEO::IVideoInfoTagLoader
+class CVideoTagLoaderNFO : public UNIVERSAL MEDIA CENTER::VIDEO::IVideoInfoTagLoader
 {
 public:
   CVideoTagLoaderNFO(const CFileItem& item,

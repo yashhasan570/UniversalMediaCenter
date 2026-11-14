@@ -452,7 +452,7 @@ std::vector<CVariant> CPVRClients::GetClientProviderInfos() const
       clientProviderInfo["name"] = addonInfo->Name();
       clientProviderInfo["icon"] = addonInfo->Icon();
       auto& artMap = addonInfo->Art();
-      auto thumbEntry = artMap.find(KODI::ART::TYPE::THUMB);
+      auto thumbEntry = artMap.find(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB);
       if (thumbEntry != artMap.end())
         clientProviderInfo["thumb"] = thumbEntry->second;
 

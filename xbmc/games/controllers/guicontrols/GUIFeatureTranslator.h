@@ -11,7 +11,7 @@
 #include "GUIControlTypes.h"
 #include "input/joysticks/JoystickTypes.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -27,4 +27,4 @@ public:
   static BUTTON_TYPE GetButtonType(JOYSTICK::FEATURE_TYPE featureType);
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

@@ -10,7 +10,7 @@
 #include "settings/lib/Setting.h"
 #include "settings/lib/SettingsManager.h"
 #include "threads/Event.h"
-#include "utils/XBMCTinyXML.h"
+#include "utils/TinyXML.h"
 #include "utils/XMLUtils.h"
 
 #include <atomic>
@@ -171,7 +171,7 @@ TEST_P(TestLocateSetting, Locate)
 {
   const auto& params = GetParam();
 
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   ASSERT_TRUE(doc.Parse(std::string{params.m_document}));
 
   TiXmlElement* elem = CSettingsManager::LocateSetting(doc.RootElement(), params.m_settingId);
@@ -203,7 +203,7 @@ TEST(TestSettingsManager, LocateSettingNull)
            <setting id="foo.bar">v2</setting>
          </settings>)";
 
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   ASSERT_TRUE(doc.Parse(document));
 
   elem = CSettingsManager::LocateSetting(doc.RootElement(), "");
@@ -242,7 +242,7 @@ public:
 } // namespace
 
 // A setting change must not prevent another thread from reading the same setting while the
-// OnSettingChanging handler runs. Regression test for xbmc/xbmc#20371 (JSON-RPC deadlock when
+// OnSettingChanging handler runs. Regression test for /#20371 (JSON-RPC deadlock when
 // setting videoscreen.blankdisplays).
 TEST(TestSettingsManager, ValueIsReadableFromAnotherThreadDuringOnSettingChanging)
 {
@@ -255,7 +255,7 @@ TEST(TestSettingsManager, ValueIsReadableFromAnotherThreadDuringOnSettingChangin
 
   EXPECT_TRUE(callback.m_readCompleted.load())
       << "the setting could not be read from another thread while OnSettingChanging ran - "
-         "SetValue held the setting's exclusive lock across the callback (xbmc/xbmc#20371)";
+         "SetValue held the setting's exclusive lock across the callback (/#20371)";
 }
 
 namespace

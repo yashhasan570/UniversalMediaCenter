@@ -43,8 +43,8 @@
 #endif
 
 using namespace ADDON;
-using namespace KODI;
-using KODI::MESSAGING::HELPERS::DialogResponse;
+using namespace UNIVERSAL MEDIA CENTER;
+using UNIVERSAL MEDIA CENTER::MESSAGING::HELPERS::DialogResponse;
 
 /*! \brief Install an addon.
  *  \param params The parameters.

@@ -17,12 +17,12 @@
 namespace jni
 {
 
-  class CJNIXBMCFile : public CJNIBase, public CJNIInterfaceImplem<CJNIXBMCFile>
+  class CJNIFile : public CJNIBase, public CJNIInterfaceImplem<CJNIFile>
   {
   public:
-    CJNIXBMCFile();
-    CJNIXBMCFile(const jni::jhobject &object) : CJNIBase(object) {}
-    ~CJNIXBMCFile() override = default;
+    CJNIFile();
+    CJNIFile(const jni::jhobject &object) : CJNIBase(object) {}
+    ~CJNIFile() override = default;
 
     static void RegisterNatives(JNIEnv* env);
 

@@ -1087,7 +1087,7 @@ CDVDVideoCodec::VCReturn CDecoder::Check(AVCodecContext* avctx)
   {
     // if there is no other error, sleep for a short while
     // in order not to drain player's message queue
-    KODI::TIME::Sleep(10ms);
+    UNIVERSAL MEDIA CENTER::TIME::Sleep(10ms);
 
     return CDVDVideoCodec::VC_NOBUFFER;
   }
@@ -2978,7 +2978,7 @@ CFFmpegPostproc::CFFmpegPostproc()
 CFFmpegPostproc::~CFFmpegPostproc()
 {
   Close();
-  KODI::MEMORY::AlignedFree(m_cache);
+  UNIVERSAL MEDIA CENTER::MEMORY::AlignedFree(m_cache);
   m_dllSSE4.Unload();
   av_frame_free(&m_pFilterFrameIn);
   av_frame_free(&m_pFilterFrameOut);
@@ -3025,7 +3025,7 @@ bool CFFmpegPostproc::PreInit(CVaapiConfig &config, SDiMethods *methods)
 
   if (use_filter)
   {
-    m_cache = static_cast<uint8_t*>(KODI::MEMORY::AlignedMalloc(CACHED_BUFFER_SIZE, 64));
+    m_cache = static_cast<uint8_t*>(UNIVERSAL MEDIA CENTER::MEMORY::AlignedMalloc(CACHED_BUFFER_SIZE, 64));
     if (methods)
     {
       methods->diMethods[methods->numDiMethods++] = VS_INTERLACEMETHOD_DEINTERLACE;

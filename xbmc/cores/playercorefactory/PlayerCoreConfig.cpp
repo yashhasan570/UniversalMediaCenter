@@ -20,7 +20,7 @@
 #include "VideoPlayerWebOS.h"
 #endif
 #include "utils/StringUtils.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 #include "utils/log.h"
 
 #include <utility>
@@ -35,7 +35,7 @@ CPlayerCoreConfig::CPlayerCoreConfig(std::string name,
 {
   if (pConfig)
   {
-    m_config = std::make_unique<CXBMCTinyXML2>();
+    m_config = std::make_unique<CTinyXML2>();
     m_config->InsertEndChild(pConfig->DeepClone(m_config.get()));
     const char* sAudio = pConfig->Attribute("audio");
     const char* sVideo = pConfig->Attribute("video");
@@ -66,7 +66,7 @@ std::shared_ptr<IPlayer> CPlayerCoreConfig::CreatePlayer(IPlayerCallback& callba
   }
   else if (m_type.compare("game") == 0)
   {
-    player = std::make_shared<KODI::RETRO::CRetroPlayer>(callback);
+    player = std::make_shared<UNIVERSAL MEDIA CENTER::RETRO::CRetroPlayer>(callback);
   }
   else if (m_type.compare("external") == 0)
   {

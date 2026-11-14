@@ -12,9 +12,9 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI::VIDEO::GEOMETRY;
-using namespace KODI::VIDEO::GEOMETRY::TEST;
-using namespace KODI::UTILS;
+using namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY;
+using namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::TEST;
+using namespace UNIVERSAL MEDIA CENTER::UTILS;
 
 TEST(TestGeometryTransforms, SquarePixelsWhenNoDisplayAspectIsDeclared)
 {

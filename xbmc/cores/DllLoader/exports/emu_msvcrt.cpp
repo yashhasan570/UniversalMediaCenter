@@ -113,7 +113,7 @@ extern "C" void __stdcall init_emu_environ()
 
   // python
 #if defined(TARGET_WINDOWS_DESKTOP)
-  using KODI::PLATFORM::WINDOWS::FromW;
+  using UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW;
   // fill our array with the windows system vars
   LPTSTR lpszVariable;
   LPTCH lpvEnv = NULL;
@@ -139,7 +139,7 @@ extern "C" void __stdcall init_emu_environ()
   dll_putenv("OS=unknown");
 #endif
 
-  // check if we are running as real xbmc.app or just binary
+  // check if we are running as real .app or just binary
   if (!CUtil::GetFrameworksPath(true).empty())
   {
     // using external python, it's build looking for xxx/lib/python(VERSIONMAJOR.MINOR)
@@ -148,7 +148,7 @@ extern "C" void __stdcall init_emu_environ()
     dll_putenv(("PYTHONPATH=" + pythonRootPath).c_str());
     dll_putenv(("PYTHONHOME=" + pythonRootPath).c_str());
     dll_putenv(
-        ("PATH=.;" + CSpecialProtocol::TranslatePath("special://xbmc") + ";" + pythonRootPath)
+        ("PATH=.;" + CSpecialProtocol::TranslatePath("special://") + ";" + pythonRootPath)
             .c_str());
   }
   else
@@ -156,17 +156,17 @@ extern "C" void __stdcall init_emu_environ()
     // default PYTHONPATH/PYTHONHOME are correct for darwin_embedded
 #if !defined(TARGET_DARWIN_EMBEDDED)
     dll_putenv(("PYTHONPATH=" +
-      CSpecialProtocol::TranslatePath("special://xbmc/system/python/DLLs") + ";" +
-      CSpecialProtocol::TranslatePath("special://xbmc/system/python/Lib")).c_str());
+      CSpecialProtocol::TranslatePath("special:///system/python/DLLs") + ";" +
+      CSpecialProtocol::TranslatePath("special:///system/python/Lib")).c_str());
     dll_putenv(("PYTHONHOME=" +
-      CSpecialProtocol::TranslatePath("special://xbmc/system/python")).c_str());
+      CSpecialProtocol::TranslatePath("special:///system/python")).c_str());
 #endif
-    dll_putenv(("PATH=.;" + CSpecialProtocol::TranslatePath("special://xbmc") + ";" +
-      CSpecialProtocol::TranslatePath("special://xbmc/system/python")).c_str());
+    dll_putenv(("PATH=.;" + CSpecialProtocol::TranslatePath("special://") + ";" +
+      CSpecialProtocol::TranslatePath("special:///system/python")).c_str());
   }
 
 #if defined(TARGET_ANDROID)
-  std::string apkPath = getenv("KODI_ANDROID_APK");
+  std::string apkPath = getenv("UNIVERSALMEDIA_ANDROID_APK");
   apkPath += "/assets/python" + CCompileInfo::GetPythonVersion();
   dll_putenv(("PYTHONHOME=" + apkPath).c_str());
   dll_putenv("PYTHONOPTIMIZE=");
@@ -288,7 +288,7 @@ static void to_wfinddata64i32(_finddata64i32_t *data, _wfinddata64i32_t *wdata)
 
 extern "C"
 {
-  void dll_sleep(unsigned long imSec) { KODI::TIME::Sleep(std::chrono::milliseconds(imSec)); }
+  void dll_sleep(unsigned long imSec) { UNIVERSAL MEDIA CENTER::TIME::Sleep(std::chrono::milliseconds(imSec)); }
 
   // FIXME, XXX, !!!!!!
   void dllReleaseAll( )
@@ -1829,7 +1829,7 @@ extern "C"
   const char* dll_getcwd(char *buffer, int maxlen)
   {
     not_implement("msvcrt.dll fake function dll_getcwd() called\n");
-    return "special://xbmc/";
+    return "special:///";
   }
 
   int dll_putenv(const char* envstring)
@@ -2061,7 +2061,7 @@ extern "C"
     if (mountPoint)
       return mountPoint;
 
-    // warn if this is a kodi vfs file not associated with a mountpoint
+    // warn if this is a universalmediacenter vfs file not associated with a mountpoint
     CFile* pFile = g_emuFileWrapper.GetFileXbmcByStream(fp);
     if (pFile)
     {

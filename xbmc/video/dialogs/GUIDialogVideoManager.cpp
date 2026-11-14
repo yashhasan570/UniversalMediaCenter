@@ -44,8 +44,8 @@
 #include <string>
 #include <utility>
 
-using namespace KODI;
-using KODI::MEDIA::PluralNameOf;
+using namespace UNIVERSAL MEDIA CENTER;
+using UNIVERSAL MEDIA CENTER::MEDIA::PluralNameOf;
 
 static constexpr unsigned int CONTROL_LABEL_TITLE = 2;
 
@@ -303,7 +303,7 @@ void CGUIDialogVideoManager::Play()
 {
   CloseAll();
 
-  KODI::VIDEO::GUILIB::CVideoPlayActionProcessor proc{m_selectedVideoAsset};
+  UNIVERSAL MEDIA CENTER::VIDEO::GUILIB::CVideoPlayActionProcessor proc{m_selectedVideoAsset};
   proc.ProcessDefaultAction();
 }
 
@@ -552,14 +552,14 @@ bool CGUIDialogVideoManager::ChoosePlaylist(const std::shared_ptr<CFileItem>& it
   const std::string oldPath{item->GetDynPath()};
 
   CFileItem chosen{*item};
-  if (!KODI::VIDEO::UTILS::ChooseDiscPlaylist(chosen))
+  if (!UNIVERSAL MEDIA CENTER::VIDEO::UTILS::ChooseDiscPlaylist(chosen))
     return false;
 
-  const CFileItem& owner{item->GetVideoInfoTag()->GetMediaType() == KODI::MEDIA::TYPE::VIDEO_VERSION
+  const CFileItem& owner{item->GetVideoInfoTag()->GetMediaType() == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::VIDEO_VERSION
                              ? *m_videoAsset
                              : *item};
   const VideoAssetInfo existing{m_database.GetVideoVersionInfo(chosen.GetDynPath())};
-  if (existing.m_idFile >= 0 && existing.m_mediaType == KODI::MEDIA::TYPE::MOVIE &&
+  if (existing.m_idFile >= 0 && existing.m_mediaType == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MOVIE &&
       existing.m_idMedia == owner.GetVideoInfoTag()->m_iDbId &&
       (replaceExistingFile == ReplaceExistingFile::NO ||
        existing.m_idFile != item->GetVideoInfoTag()->m_iFileId))
@@ -594,21 +594,21 @@ bool CGUIDialogVideoManager::ChoosePlaylist(const std::shared_ptr<CFileItem>& it
   try
   {
     int idFile{-1};
-    std::optional<std::pair<KODI::MEDIA::TYPE, int>> announce;
+    std::optional<std::pair<UNIVERSAL MEDIA CENTER::MEDIA::TYPE, int>> announce;
     m_database.BeginTransaction();
     if (replaceExistingFile == ReplaceExistingFile::YES)
     {
-      idFile = KODI::VIDEO::UTILS::SaveDiscPlaylistToLibrary(
+      idFile = UNIVERSAL MEDIA CENTER::VIDEO::UTILS::SaveDiscPlaylistToLibrary(
           *item, owner.GetVideoContentType(), owner.GetVideoInfoTag()->m_iDbId, m_database);
       videoDbSuccess = idFile > 0;
       if (videoDbSuccess)
       {
         CVideoInfoTag* tag{item->GetVideoInfoTag()};
         const int oldFileId{tag->m_iFileId};
-        if (tag->GetMediaType() == KODI::MEDIA::TYPE::VIDEO_VERSION)
+        if (tag->GetMediaType() == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::VIDEO_VERSION)
           tag->m_iDbId = idFile;
         tag->m_iFileId = idFile;
-        KODI::VIDEO::UTILS::NotifyItemPathChanged(*item, oldPath, oldFileId);
+        UNIVERSAL MEDIA CENTER::VIDEO::UTILS::NotifyItemPathChanged(*item, oldPath, oldFileId);
         announce = {owner.GetVideoInfoTag()->GetMediaType(), owner.GetVideoInfoTag()->m_iDbId};
       }
     }
@@ -640,7 +640,7 @@ bool CGUIDialogVideoManager::ChoosePlaylist(const std::shared_ptr<CFileItem>& it
             m_database);
 
       // New disc video version will not have any art so use the art from the disc
-      m_database.SetArtForItem(idFile, KODI::MEDIA::TYPE::VIDEO_VERSION, item->GetArt());
+      m_database.SetArtForItem(idFile, UNIVERSAL MEDIA CENTER::MEDIA::TYPE::VIDEO_VERSION, item->GetArt());
 
       m_database.CommitTransaction();
 

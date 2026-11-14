@@ -27,8 +27,8 @@ int WINAPI MessageBox(void* hWnd, const char* lpText, const char* lpCaption, UIN
   if (!coreWindow)
     return IDOK;
 
-  auto wText = KODI::PLATFORM::WINDOWS::ToW(lpText);
-  auto wCaption = KODI::PLATFORM::WINDOWS::ToW(lpCaption);
+  auto wText = UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::ToW(lpText);
+  auto wCaption = UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::ToW(lpCaption);
 
   auto handler = winrt::Windows::UI::Core::DispatchedHandler([wText, wCaption]()
   {

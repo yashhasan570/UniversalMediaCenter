@@ -6,18 +6,18 @@
  *  See LICENSES/README.md for more information.
  */
 
-#import "XBMCApplication.h"
+#import "Application.h"
 
 #import "IOSScreenManager.h"
-#import "XBMCController.h"
+#import "Controller.h"
 
 #import "platform/darwin/NSLogDebugHelpers.h"
 
 #import <AVFoundation/AVAudioSession.h>
 
-@implementation XBMCApplicationDelegate
+@implementation ApplicationDelegate
 {
-  XBMCController* m_xbmcController;
+  Controller* m_Controller;
 }
 
 // - iOS6 rotation API - will be called on iOS7 runtime!--------
@@ -33,16 +33,16 @@
 {
   PRINT_SIGNATURE();
 
-  [m_xbmcController pauseAnimation];
-  [m_xbmcController becomeInactive];
+  [m_Controller pauseAnimation];
+  [m_Controller becomeInactive];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
   PRINT_SIGNATURE();
 
-  [m_xbmcController resumeAnimation];
-  [m_xbmcController enterForeground];
+  [m_Controller resumeAnimation];
+  [m_Controller enterForeground];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -52,7 +52,7 @@
   if (application.applicationState == UIApplicationStateBackground)
   {
     // the app is turn into background, not in by screen lock which has app state inactive.
-    [m_xbmcController enterBackground];
+    [m_Controller enterBackground];
   }
 }
 
@@ -60,7 +60,7 @@
 {
   PRINT_SIGNATURE();
 
-  [m_xbmcController stopAnimation];
+  [m_Controller stopAnimation];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -110,8 +110,8 @@
   [[UIDevice currentDevice] setBatteryMonitoringEnabled:YES];
   UIScreen *currentScreen = [UIScreen mainScreen];
 
-  m_xbmcController = [[XBMCController alloc] initWithFrame: [currentScreen bounds] withScreen:currentScreen];
-  [m_xbmcController startAnimation];
+  m_Controller = [[Controller alloc] initWithFrame: [currentScreen bounds] withScreen:currentScreen];
+  [m_Controller startAnimation];
   [self registerScreenNotifications:YES];
 
   NSError *err = nil;
@@ -149,22 +149,22 @@
 
 - (void)upPressed
 {
-  [g_xbmcController sendKey:XBMCK_UP];
+  [g_Controller sendKey:K_UP];
 }
 
 - (void)downPressed
 {
-  [g_xbmcController sendKey:XBMCK_DOWN];
+  [g_Controller sendKey:K_DOWN];
 }
 
 - (void)leftPressed
 {
-  [g_xbmcController sendKey:XBMCK_LEFT];
+  [g_Controller sendKey:K_LEFT];
 }
 
 - (void)rightPressed
 {
-  [g_xbmcController sendKey:XBMCK_RIGHT];
+  [g_Controller sendKey:K_RIGHT];
 }
 
 @end
@@ -184,7 +184,7 @@ int main(int argc, char *argv[]) {
 
     @try
     {
-      retVal = UIApplicationMain(argc, argv, nil, NSStringFromClass(XBMCApplicationDelegate.class));
+      retVal = UIApplicationMain(argc, argv, nil, NSStringFromClass(ApplicationDelegate.class));
     }
     @catch (id theException)
     {

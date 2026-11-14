@@ -38,7 +38,7 @@
 
 #include <gtest/gtest.h>
 
-namespace fs = KODI::PLATFORM::FILESYSTEM;
+namespace fs = UNIVERSAL MEDIA CENTER::PLATFORM::FILESYSTEM;
 
 TestBasicEnvironment::TestBasicEnvironment() = default;
 
@@ -49,7 +49,7 @@ void TestBasicEnvironment::SetUp()
 
   CAppEnvironment::SetUp(params);
 
-  CServiceBroker::RegisterAppMessenger(std::make_shared<KODI::MESSAGING::CApplicationMessenger>());
+  CServiceBroker::RegisterAppMessenger(std::make_shared<UNIVERSAL MEDIA CENTER::MESSAGING::CApplicationMessenger>());
 
   CServiceBroker::RegisterAnnouncementManager(
       std::make_shared<ANNOUNCEMENT::CAnnouncementManager>());
@@ -58,17 +58,17 @@ void TestBasicEnvironment::SetUp()
 
   g_application.m_ServiceManager.reset(new CServiceManager());
 
-  if (!CXBMCTestUtils::Instance().SetReferenceFileBasePath())
+  if (!CTestUtils::Instance().SetReferenceFileBasePath())
     SetUpError();
-  CXBMCTestUtils::Instance().setTestFileFactoryWriteInputFile(
-    XBMC_REF_FILE_PATH("xbmc/filesystem/test/reffile.txt")
+  CTestUtils::Instance().setTestFileFactoryWriteInputFile(
+    _REF_FILE_PATH("/filesystem/test/reffile.txt")
   );
 
 //for darwin set framework path - else we get assert
 //in guisettings init below
 #ifdef TARGET_DARWIN
   std::string frameworksPath = CUtil::GetFrameworksPath();
-  CSpecialProtocol::SetXBMCFrameworksPath(frameworksPath);
+  CSpecialProtocol::SetFrameworksPath(frameworksPath);
 #endif
   /**
    * @todo Something should be done about all the asserts in GUISettings so
@@ -98,8 +98,8 @@ void TestBasicEnvironment::SetUp()
   /** @todo Make the initialization of the VFS here optional so it can be
    * testable in a test case.
    */
-  f = XBMC_CREATETEMPFILE("");
-  if (!f || !XBMC_DELETETEMPFILE(f))
+  f = _CREATETEMPFILE("");
+  if (!f || !_DELETETEMPFILE(f))
   {
     TearDown();
     SetUpError();

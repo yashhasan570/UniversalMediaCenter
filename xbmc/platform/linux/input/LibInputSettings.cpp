@@ -15,7 +15,7 @@
 #include "settings/lib/Setting.h"
 #include "settings/lib/SettingDefinitions.h"
 #include "settings/lib/SettingsManager.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 #include "utils/log.h"
 
 #include <algorithm>
@@ -62,7 +62,7 @@ CLibInputSettings::CLibInputSettings(CLibInputHandler *handler) :
   /* load the keyboard layouts from xkeyboard-config */
   std::string xkbFile("/usr/share/X11/xkb/rules/base.xml");
 
-  CXBMCTinyXML2 xmlDoc;
+  CTinyXML2 xmlDoc;
   if (!xmlDoc.LoadFile(xkbFile))
   {
     CLog::Log(LOGWARNING, "CLibInputSettings: unable to open: {}", xkbFile);

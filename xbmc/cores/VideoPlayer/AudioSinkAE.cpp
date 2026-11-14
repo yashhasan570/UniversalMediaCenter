@@ -156,7 +156,7 @@ unsigned int CAudioSinkAE::AddPackets(const DVDAudioFrame &audioframe)
     }
 
     lock.unlock();
-    KODI::TIME::Sleep(1ms);
+    UNIVERSAL MEDIA CENTER::TIME::Sleep(1ms);
     lock.lock();
   } while (!m_bAbort);
 

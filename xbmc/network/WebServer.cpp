@@ -61,7 +61,7 @@ typedef struct
 } HttpFileDownloadContext;
 
 CWebServer::CWebServer()
-  : m_authenticationUsername("kodi"),
+  : m_authenticationUsername("universalmediacenter"),
     m_authenticationPassword(""),
     m_key(),
     m_cert(),

@@ -14,9 +14,9 @@
 #include "GUIInfoManager.h"
 #include "GUIListLabel.h"
 #include "ServiceBroker.h"
-#include "utils/XBMCTinyXML.h"
+#include "utils/TinyXML.h"
 
-using namespace KODI::GUILIB;
+using namespace UNIVERSAL MEDIA CENTER::GUILIB;
 
 CGUIListItemLayout::CGUIListItemLayout()
 : m_group(0, 0, 0, 0, 0, 0)

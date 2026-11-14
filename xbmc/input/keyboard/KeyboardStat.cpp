@@ -16,18 +16,18 @@
 #include "ServiceBroker.h"
 #include "input/keyboard/KeyboardTranslator.h"
 #include "input/keyboard/KeyboardTypes.h"
-#include "input/keyboard/XBMC_keytable.h"
-#include "input/keyboard/XBMC_vkeys.h"
+#include "input/keyboard/_keytable.h"
+#include "input/keyboard/_vkeys.h"
 #include "input/keymaps/keyboard/KeyIDs.h"
 #include "peripherals/Peripherals.h"
 #include "peripherals/devices/PeripheralHID.h"
 #include "utils/log.h"
-#include "windowing/XBMC_events.h"
+#include "windowing/_events.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace KEYBOARD;
 
-bool operator==(const XBMC_keysym& lhs, const XBMC_keysym& rhs)
+bool operator==(const _keysym& lhs, const _keysym& rhs)
 {
   return lhs.mod == rhs.mod && lhs.scancode == rhs.scancode && lhs.sym == rhs.sym &&
          lhs.unicode == rhs.unicode;
@@ -43,7 +43,7 @@ void CKeyboardStat::Initialize()
 {
 }
 
-bool CKeyboardStat::LookupSymAndUnicodePeripherals(XBMC_keysym& keysym,
+bool CKeyboardStat::LookupSymAndUnicodePeripherals(_keysym& keysym,
                                                    uint16_t* key,
                                                    char* unicode)
 {
@@ -63,7 +63,7 @@ bool CKeyboardStat::LookupSymAndUnicodePeripherals(XBMC_keysym& keysym,
   return false;
 }
 
-CKey CKeyboardStat::TranslateKey(XBMC_keysym& keysym) const
+CKey CKeyboardStat::TranslateKey(_keysym& keysym) const
 {
   uint32_t keycode;
   uint16_t vkey;
@@ -72,26 +72,26 @@ CKey CKeyboardStat::TranslateKey(XBMC_keysym& keysym) const
   uint32_t modifiers;
   uint32_t lockingModifiers;
   std::chrono::milliseconds held;
-  XBMCKEYTABLE keytable;
+  KEYTABLE keytable;
 
   modifiers = 0;
-  if (keysym.mod & XBMCKMOD_CTRL)
+  if (keysym.mod & KMOD_CTRL)
     modifiers |= CKey::MODIFIER_CTRL;
-  if (keysym.mod & XBMCKMOD_SHIFT)
+  if (keysym.mod & KMOD_SHIFT)
     modifiers |= CKey::MODIFIER_SHIFT;
-  if (keysym.mod & XBMCKMOD_ALT)
+  if (keysym.mod & KMOD_ALT)
     modifiers |= CKey::MODIFIER_ALT;
-  if (keysym.mod & XBMCKMOD_SUPER)
+  if (keysym.mod & KMOD_SUPER)
     modifiers |= CKey::MODIFIER_SUPER;
-  if (keysym.mod & XBMCKMOD_META)
+  if (keysym.mod & KMOD_META)
     modifiers |= CKey::MODIFIER_META;
 
   lockingModifiers = 0;
-  if (keysym.mod & XBMCKMOD_NUM)
+  if (keysym.mod & KMOD_NUM)
     lockingModifiers |= CKey::MODIFIER_NUMLOCK;
-  if (keysym.mod & XBMCKMOD_CAPS)
+  if (keysym.mod & KMOD_CAPS)
     lockingModifiers |= CKey::MODIFIER_CAPSLOCK;
-  if (keysym.mod & XBMCKMOD_MODE)
+  if (keysym.mod & KMOD_MODE)
     lockingModifiers |= CKey::MODIFIER_SCROLLLOCK;
 
   CLog::Log(LOGDEBUG,
@@ -151,20 +151,20 @@ CKey CKeyboardStat::TranslateKey(XBMC_keysym& keysym) const
   {
     if (!vkey && !ascii)
     {
-      if (keysym.mod & XBMCKMOD_LSHIFT)
+      if (keysym.mod & KMOD_LSHIFT)
         vkey = 0xa0;
-      else if (keysym.mod & XBMCKMOD_RSHIFT)
+      else if (keysym.mod & KMOD_RSHIFT)
         vkey = 0xa1;
-      else if (keysym.mod & XBMCKMOD_LALT)
+      else if (keysym.mod & KMOD_LALT)
         vkey = 0xa4;
-      else if (keysym.mod & XBMCKMOD_RALT)
+      else if (keysym.mod & KMOD_RALT)
         vkey = 0xa5;
-      else if (keysym.mod & XBMCKMOD_LCTRL)
+      else if (keysym.mod & KMOD_LCTRL)
         vkey = 0xa2;
-      else if (keysym.mod & XBMCKMOD_RCTRL)
+      else if (keysym.mod & KMOD_RCTRL)
         vkey = 0xa3;
       else if (keysym.unicode > 32 && keysym.unicode < 128)
-        // only TRUE ASCII! (Otherwise XBMC crashes! No unicode not even latin 1!)
+        // only TRUE ASCII! (Otherwise  crashes! No unicode not even latin 1!)
         ascii = (char)(keysym.unicode & 0xff);
     }
   }
@@ -186,7 +186,7 @@ CKey CKeyboardStat::TranslateKey(XBMC_keysym& keysym) const
   // the Nyxboard remote uses keys like Shift-F3 for some buttons.
   if (modifiers == CKey::MODIFIER_SHIFT)
     if ((unicode < 'A' || unicode > 'Z') && (unicode < 'a' || unicode > 'z') &&
-        (vkey < XBMCVK_F1 || vkey > XBMCVK_F24))
+        (vkey < VK_F1 || vkey > VK_F24))
       modifiers = 0;
 
   // Create and return a CKey
@@ -196,7 +196,7 @@ CKey CKeyboardStat::TranslateKey(XBMC_keysym& keysym) const
   return key;
 }
 
-void CKeyboardStat::ProcessKeyDown(XBMC_keysym& keysym)
+void CKeyboardStat::ProcessKeyDown(_keysym& keysym)
 {
   if (!(m_lastKeysym == keysym))
   {
@@ -218,7 +218,7 @@ void CKeyboardStat::ProcessKeyUp(void)
 std::string CKeyboardStat::GetKeyName(uint32_t keyId)
 {
   std::string keyName;
-  XBMCKEYTABLE keytable;
+  KEYTABLE keytable;
 
   keyName.clear();
 

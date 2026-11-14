@@ -16,7 +16,7 @@
 #include "threads/Event.h"
 #include "utils/StringUtils.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 using namespace std::chrono_literals;
 

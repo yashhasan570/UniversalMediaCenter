@@ -43,7 +43,7 @@
 
 #define LIBBLURAY_BYTESEEK 0
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace std::chrono_literals;
 
 namespace
@@ -657,7 +657,7 @@ void CDVDInputStreamBluray::ProcessEvent() {
     break;
 
   case BD_EVENT_IDLE:
-    KODI::TIME::Sleep(100ms);
+    UNIVERSAL MEDIA CENTER::TIME::Sleep(100ms);
     break;
 
   case BD_EVENT_SOUND_EFFECT:

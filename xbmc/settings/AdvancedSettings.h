@@ -230,13 +230,13 @@ class CAdvancedSettings : public ISettingCallback, public ISettingsHandler
     int m_airPlayPort;
 
     /*! \brief Only used in linux for the udisks and udisks2 providers
-    * defines if kodi should automount media drives
-    * @note if kodi is running standalone (--standalone option) it will
+    * defines if universalmediacenter should automount media drives
+    * @note if universalmediacenter is running standalone (--standalone option) it will
     * be set to tue
     */
     bool m_handleMounting;
     /*! \brief Only used in linux for the udisks and udisks2 providers
-    * defines if kodi should automount optical discs
+    * defines if universalmediacenter should automount optical discs
     */
     bool m_autoMountOpticalMedia{true};
 
@@ -248,7 +248,7 @@ class CAdvancedSettings : public ISettingCallback, public ISettingsHandler
     //! \brief The patterns a listing of \p section leaves out: none for a section without its
     //! own.
     const std::vector<std::string>& GetExcludeFromListingRegExps(
-        KODI::MEDIA::MediaSection section) const;
+        UNIVERSAL MEDIA CENTER::MEDIA::MediaSection section) const;
     std::vector<std::string> m_videoExcludeFromListingRegExps;
     std::vector<std::string> m_allExcludeFromScanRegExps;
     std::vector<std::string> m_moviesExcludeFromScanRegExps;
@@ -356,7 +356,7 @@ class CAdvancedSettings : public ISettingCallback, public ISettingsHandler
     bool m_showExitButton; /* Ideal for appliances to hide a 'useless' button */
     bool m_canWindowed;
     bool m_splashImage;
-    bool m_alwaysOnTop;  /* makes xbmc to run always on top .. osx/win32 only .. */
+    bool m_alwaysOnTop;  /* makes  to run always on top .. osx/win32 only .. */
     int m_playlistRetries;
     int m_playlistTimeout;
     bool m_GLRectangleHack;

@@ -26,12 +26,12 @@
       </uap:VisualElements>
       <Extensions>
         <uap:Extension Category="windows.protocol">
-          <uap:Protocol Name="kodi" DesiredView="useMore">
+          <uap:Protocol Name="universalmediacenter" DesiredView="useMore">
             <uap:DisplayName>@APP_NAME@</uap:DisplayName>
           </uap:Protocol>
         </uap:Extension>
         <uap:Extension Category="windows.fileTypeAssociation">
-          <uap:FileTypeAssociation Name="kodi">
+          <uap:FileTypeAssociation Name="universalmediacenter">
             <uap:DisplayName>@APP_NAME@</uap:DisplayName>
             <uap:SupportedFileTypes>
               <uap:FileType>.3g2</uap:FileType>

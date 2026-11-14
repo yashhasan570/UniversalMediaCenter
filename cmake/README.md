@@ -78,7 +78,7 @@ Add-on developers can build single add-ons into the Universal Media Center build
 ```
 mkdir pvr.demo-build
 cd pvr.demo-build
-cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_PREFIX_PATH=<KODI_BUILD_DIR>/build -DKODI_BUILD_DIR=<KODI_BUILD_DIR> <pvr.demo-SRC>
+cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_PREFIX_PATH=<UNIVERSALMEDIA_BUILD_DIR>/build -DUNIVERSALMEDIA_BUILD_DIR=<UNIVERSALMEDIA_BUILD_DIR> <pvr.demo-SRC>
 make
 ```
 

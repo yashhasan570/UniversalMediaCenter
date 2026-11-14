@@ -16,7 +16,7 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI::VIDEO::GEOMETRY;
+using namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY;
 
 /*
  * End to end cover for the sampler: open a file, seek, decode, detect, combine.
@@ -60,7 +60,7 @@ constexpr int BAR = 40;
 
 CFileItem Clip(const std::string& name)
 {
-  return CFileItem(XBMC_REF_FILE_PATH("xbmc/cores/VideoPlayer/test/testdata/" + name), false);
+  return CFileItem(_REF_FILE_PATH("/cores/VideoPlayer/test/testdata/" + name), false);
 }
 
 CFileItem LetterboxedClip()
@@ -152,7 +152,7 @@ TEST(TestContentGeometrySampler, IsRepeatable)
 
 TEST(TestContentGeometrySampler, HonoursTheRequestedPointCount)
 {
-  KODI::VIDEO::GEOMETRY::SamplingParams sampling;
+  UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::SamplingParams sampling;
   sampling.points = 3;
   sampling.escalatedPoints = 0; // no densification, so the count is exactly what was asked
 
@@ -189,13 +189,13 @@ TEST(TestContentGeometrySampler, ABlurayTitleIsMeasurable)
   EXPECT_TRUE(CVideoFileGeometry::CanMeasure(disc));
 }
 
-//! Needs a real Blu-ray, which CI does not have. To run it, set KODI_TEST_BLURAY to a title's
+//! Needs a real Blu-ray, which CI does not have. To run it, set UNIVERSALMEDIA_TEST_BLURAY to a title's
 //! bluray:// playlist path and pass --gtest_also_run_disabled_tests.
 TEST(TestContentGeometrySampler, DISABLED_MeasuresABlurayTitle)
 {
-  const char* path = std::getenv("KODI_TEST_BLURAY");
+  const char* path = std::getenv("UNIVERSALMEDIA_TEST_BLURAY");
   if (!path || !*path)
-    GTEST_SKIP() << "KODI_TEST_BLURAY is not set";
+    GTEST_SKIP() << "UNIVERSALMEDIA_TEST_BLURAY is not set";
 
   const SampledGeometry scan = CVideoFileGeometry::ExtractContentGeometry(CFileItem(path, false));
 
@@ -209,7 +209,7 @@ TEST(TestContentGeometrySampler, DISABLED_MeasuresABlurayTitle)
 TEST(TestContentGeometrySampler, MissingFileYieldsNoReading)
 {
   const CFileItem missing(
-      XBMC_REF_FILE_PATH("xbmc/cores/VideoPlayer/test/testdata/nonexistent.mp4"), false);
+      _REF_FILE_PATH("/cores/VideoPlayer/test/testdata/nonexistent.mp4"), false);
 
   const SampledGeometry scan = CVideoFileGeometry::ExtractContentGeometry(missing);
 

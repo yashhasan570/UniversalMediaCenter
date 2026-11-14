@@ -650,7 +650,7 @@ bool CMediaPipelineWebOS::Load(CDVDStreamInfo videoHint, CDVDStreamInfo audioHin
     contents["DolbyHdrInfo"]["trackType"] = videoHint.dovi.el_present_flag ? "dual" : "single";
   }
 
-  using namespace KODI::WINDOWING::WAYLAND;
+  using namespace UNIVERSAL MEDIA CENTER::WINDOWING::WAYLAND;
   const auto winSystem = dynamic_cast<CWinSystemWaylandWebOS*>(CServiceBroker::GetWinSystem());
   if (winSystem->SupportsExportedWindow())
   {

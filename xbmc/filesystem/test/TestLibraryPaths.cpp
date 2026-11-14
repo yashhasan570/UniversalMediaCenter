@@ -16,7 +16,7 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 namespace
 {
@@ -25,7 +25,7 @@ bool IsShippedNode(const std::string& path)
 {
   if (!StringUtils::StartsWith(path, MEDIA::LIBRARY_PATH::ROOT))
     return false;
-  std::string node{"special://xbmc/system/library/" +
+  std::string node{"special:///system/library/" +
                    path.substr(std::string{MEDIA::LIBRARY_PATH::ROOT}.size())};
   if (XFILE::CDirectory::Exists(node))
     return true;

@@ -2,7 +2,7 @@ if(CORE_PLATFORM_NAME_LC STREQUAL tvos)
   # top shelf extension
   set(TOPSHELF_EXTENSION_NAME "${APP_NAME_LC}-topshelf")
   set(TOPSHELF_BUNDLE_EXTENSION appex)
-  set(TOPSHELF_DIR "${CMAKE_SOURCE_DIR}/xbmc/platform/darwin/tvos/TopShelf")
+  set(TOPSHELF_DIR "${CMAKE_SOURCE_DIR}//platform/darwin/tvos/TopShelf")
   # same path as the output Info.plist, taken from cmGlobalXCodeGenerator::ComputeInfoPListLocation()
   set(ENTITLEMENTS_OUT_PATH "${CMAKE_BINARY_DIR}/CMakeFiles/${TOPSHELF_EXTENSION_NAME}.dir/TopShelf.entitlements")
 

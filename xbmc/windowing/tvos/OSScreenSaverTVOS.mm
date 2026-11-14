@@ -8,14 +8,14 @@
 
 #import "OSScreenSaverTVOS.h"
 
-#import "platform/darwin/tvos/XBMCController.h"
+#import "platform/darwin/tvos/Controller.h"
 
 void COSScreenSaverTVOS::Inhibit()
 {
-  [g_xbmcController disableScreenSaver];
+  [g_Controller disableScreenSaver];
 }
 
 void COSScreenSaverTVOS::Uninhibit()
 {
-  [g_xbmcController enableScreenSaver];
+  [g_Controller enableScreenSaver];
 }

@@ -8,7 +8,7 @@
 
 #pragma once
 
-namespace KODI::UTILS
+namespace UNIVERSAL MEDIA CENTER::UTILS
 {
 
 // Skin tone modifiers
@@ -25,4 +25,4 @@ constexpr bool ContinuesEmoji(char32_t codepoint)
          IsEmojiModifier(codepoint) || (codepoint >= 0xE0020 && codepoint <= 0xE007F);
 }
 
-} // namespace KODI::UTILS
+} // namespace UNIVERSAL MEDIA CENTER::UTILS

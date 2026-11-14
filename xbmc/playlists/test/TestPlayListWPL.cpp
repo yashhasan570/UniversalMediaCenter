@@ -18,11 +18,11 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 TEST(TestPlayListWPL, LoadData)
 {
-  const std::string filename = XBMC_REF_FILE_PATH("/xbmc/playlists/test/test.wpl");
+  const std::string filename = _REF_FILE_PATH("//playlists/test/test.wpl");
   PLAYLIST::CPlayListWPL playlist;
 
   std::filebuf fb;

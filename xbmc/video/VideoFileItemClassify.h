@@ -12,7 +12,7 @@
 
 class CFileItem;
 
-namespace KODI::VIDEO
+namespace UNIVERSAL MEDIA CENTER::VIDEO
 {
 
 //! \brief Check whether an item is a blu-ray file.
@@ -58,4 +58,4 @@ bool IsVideoExtrasFolderName(std::string_view name);
 //! \brief Check whether an item is a video extras folder item.
 bool IsVideoExtrasFolder(const CFileItem& item);
 
-} // namespace KODI::VIDEO
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO

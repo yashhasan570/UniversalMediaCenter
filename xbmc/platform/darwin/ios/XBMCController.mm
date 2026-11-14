@@ -6,7 +6,7 @@
  *  See LICENSES/README.md for more information.
  */
 
-#import "XBMCController.h"
+#import "Controller.h"
 
 #include "CompileInfo.h"
 #include "FileItem.h"
@@ -19,7 +19,7 @@
 #include "guilib/GUIControl.h"
 #include "input/actions/Action.h"
 #include "input/actions/ActionIDs.h"
-#include "input/keyboard/XBMC_keysym.h"
+#include "input/keyboard/_keysym.h"
 #include "input/touch/generic/GenericTouchActionHandler.h"
 #include "messaging/ApplicationMessenger.h"
 #include "music/tags/MusicInfoTag.h"
@@ -35,14 +35,14 @@
 #include "utils/TimeUtils.h"
 #include "utils/URIUtils.h"
 #include "utils/log.h"
-#include "windowing/XBMC_events.h"
+#include "windowing/_events.h"
 #import "windowing/ios/WinSystemIOS.h"
 
 #import "platform/darwin/NSLogDebugHelpers.h"
 #import "platform/darwin/ios-common/DarwinEmbedNowPlayingInfoManager.h"
 #import "platform/darwin/ios/IOSEAGLView.h"
 #import "platform/darwin/ios/IOSScreenManager.h"
-#import "platform/darwin/ios/XBMCApplication.h"
+#import "platform/darwin/ios/Application.h"
 
 #define id _id
 #include "TextureCache.h"
@@ -59,7 +59,7 @@
 #endif
 #define RADIANS_TO_DEGREES(radians) ((radians) * (180.0 / M_PI))
 
-XBMCController *g_xbmcController;
+Controller *g_Controller;
 
 class DebugLogSharingPresenter : ISettingCallback
 {
@@ -124,7 +124,7 @@ public:
 //--------------------------------------------------------------
 //
 
-@interface XBMCController ()
+@interface Controller ()
 {
   std::unique_ptr<DebugLogSharingPresenter> m_debugLogSharingPresenter;
 }
@@ -135,7 +135,7 @@ public:
 -(void) terminateWithSuccess;
 @end
 
-@implementation XBMCController
+@implementation Controller
 @synthesize animating;
 @synthesize lastGesturePoint;
 @synthesize screenScale;
@@ -146,16 +146,16 @@ public:
 @synthesize MPNPInfoManager;
 @synthesize nativeKeyboardActive;
 //--------------------------------------------------------------
-- (void) sendKeypressEvent: (XBMC_Event) event
+- (void) sendKeypressEvent: (_Event) event
 {
   std::shared_ptr<CAppInboundProtocol> appPort = CServiceBroker::GetAppPort();
 
   if (appPort)
   {
-    event.type = XBMC_KEYDOWN;
+    event.type = _KEYDOWN;
     appPort->OnEvent(event);
 
-    event.type = XBMC_KEYUP;
+    event.type = _KEYUP;
     appPort->OnEvent(event);
   }
 }
@@ -177,21 +177,21 @@ public:
     return;
   }
 
-  XBMC_Event newEvent = {};
+  _Event newEvent = {};
   unichar currentKey = [text characterAtIndex:0];
 
   // handle upper case letters
   if (currentKey >= 'A' && currentKey <= 'Z')
   {
-    newEvent.key.keysym.mod = XBMCKMOD_LSHIFT;
+    newEvent.key.keysym.mod = KMOD_LSHIFT;
     currentKey += 0x20;// convert to lower case
   }
 
   // handle return
   if (currentKey == '\n' || currentKey == '\r')
-    currentKey = XBMCK_RETURN;
+    currentKey = K_RETURN;
 
-  newEvent.key.keysym.sym = (XBMCKey)currentKey;
+  newEvent.key.keysym.sym = (Key)currentKey;
   newEvent.key.keysym.unicode = currentKey;
 
   [self sendKeypressEvent:newEvent];
@@ -199,7 +199,7 @@ public:
 
 - (void)deleteBackward
 {
-  [self sendKey:XBMCK_BACKSPACE];
+  [self sendKey:K_BACKSPACE];
 }
 // END OF UIKeyInput protocol
 
@@ -213,9 +213,9 @@ public:
 	return orientation;
 }
 
--(void)sendKey:(XBMCKey) key
+-(void)sendKey:(Key) key
 {
-  XBMC_Event newEvent = {};
+  _Event newEvent = {};
 
   //newEvent.key.keysym.unicode = key;
   newEvent.key.keysym.sym = key;
@@ -363,7 +363,7 @@ public:
 //--------------------------------------------------------------
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-  if( m_glView && [m_glView isXBMCAlive] )//NO GESTURES BEFORE WE ARE UP AND RUNNING
+  if( m_glView && [m_glView isAlive] )//NO GESTURES BEFORE WE ARE UP AND RUNNING
   {
     UITouch *touch = (UITouch *)[[touches allObjects] objectAtIndex:0];
     CGPoint point = [touch locationInView:m_glView];
@@ -375,7 +375,7 @@ public:
 //--------------------------------------------------------------
 -(void)handlePinch:(UIPinchGestureRecognizer*)sender
 {
-  if( m_glView && [m_glView isXBMCAlive] && sender.numberOfTouches )//NO GESTURES BEFORE WE ARE UP AND RUNNING
+  if( m_glView && [m_glView isAlive] && sender.numberOfTouches )//NO GESTURES BEFORE WE ARE UP AND RUNNING
   {
     CGPoint point = [sender locationOfTouch:0 inView:m_glView];
     point.x *= screenScale;
@@ -401,7 +401,7 @@ public:
 //--------------------------------------------------------------
 -(void)handleRotate:(UIRotationGestureRecognizer*)sender
 {
-  if( m_glView && [m_glView isXBMCAlive] && sender.numberOfTouches )//NO GESTURES BEFORE WE ARE UP AND RUNNING
+  if( m_glView && [m_glView isAlive] && sender.numberOfTouches )//NO GESTURES BEFORE WE ARE UP AND RUNNING
   {
     CGPoint point = [sender locationOfTouch:0 inView:m_glView];
     point.x *= screenScale;
@@ -426,7 +426,7 @@ public:
 //--------------------------------------------------------------
 - (IBAction)handlePan:(UIPanGestureRecognizer *)sender
 {
-  if( m_glView && [m_glView isXBMCAlive] )//NO GESTURES BEFORE WE ARE UP AND RUNNING
+  if( m_glView && [m_glView isAlive] )//NO GESTURES BEFORE WE ARE UP AND RUNNING
   {
     CGPoint velocity = [sender velocityInView:m_glView];
 
@@ -487,7 +487,7 @@ public:
 //--------------------------------------------------------------
 - (IBAction)handleSwipe:(UISwipeGestureRecognizer *)sender
 {
-  if( m_glView && [m_glView isXBMCAlive] && sender.numberOfTouches )//NO GESTURES BEFORE WE ARE UP AND RUNNING
+  if( m_glView && [m_glView isAlive] && sender.numberOfTouches )//NO GESTURES BEFORE WE ARE UP AND RUNNING
   {
 
 
@@ -525,7 +525,7 @@ public:
 {
   //Allow the tap gesture during init
   //(for allowing the user to tap away any messageboxes during init)
-  if( ([m_glView isReadyToRun] && [sender numberOfTouches] == 1) || [m_glView isXBMCAlive])
+  if( ([m_glView isReadyToRun] && [sender numberOfTouches] == 1) || [m_glView isAlive])
   {
     CGPoint point = [sender locationOfTouch:0 inView:m_glView];
     point.x *= screenScale;
@@ -537,7 +537,7 @@ public:
 //--------------------------------------------------------------
 - (IBAction)handleSingleFingerSingleLongTap:(UIGestureRecognizer *)sender
 {
-  if( m_glView && [m_glView isXBMCAlive] && sender.numberOfTouches)//NO GESTURES BEFORE WE ARE UP AND RUNNING
+  if( m_glView && [m_glView isAlive] && sender.numberOfTouches)//NO GESTURES BEFORE WE ARE UP AND RUNNING
   {
     CGPoint point = [sender locationOfTouch:0 inView:m_glView];
     point.x *= screenScale;
@@ -592,7 +592,7 @@ public:
   orientation = UIInterfaceOrientationLandscapeLeft;
 
   [m_window makeKeyAndVisible];
-  g_xbmcController = self;
+  g_Controller = self;
   MPNPInfoManager = [DarwinEmbedNowPlayingInfoManager new];
 
   return self;

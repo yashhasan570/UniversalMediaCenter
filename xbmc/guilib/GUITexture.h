@@ -30,7 +30,7 @@ public:
                bool fill,
                int orient,
                std::string diff,
-               KODI::GUILIB::GUIINFO::CGUIInfoColor color,
+               UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoColor color,
                std::string f)
     : useLarge(large),
       border(bord),
@@ -50,7 +50,7 @@ public:
   bool m_subpixel{false}; // if true, corners are not snapped to whole pixels while moving
   int        orientation;     // orientation of the texture (0 - 7 == EXIForientation - 1)
   std::string diffuse;         // diffuse overlay texture
-  KODI::GUILIB::GUIINFO::CGUIInfoColor diffuseColor; // diffuse color
+  UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoColor diffuseColor; // diffuse color
   std::string filename;        // main texture file
 };
 
@@ -59,7 +59,7 @@ class CGUITexture;
 using CreateGUITextureFunc = std::function<CGUITexture*(
     float posX, float posY, float width, float height, const CTextureInfo& texture)>;
 using DrawQuadFunc = std::function<void(const CRect& coords,
-                                        KODI::UTILS::COLOR::Color color,
+                                        UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color color,
                                         CTexture* texture,
                                         const CRect* texCoords,
                                         const float depth,
@@ -91,7 +91,7 @@ public:
   static float SnapToPixel(float coord, bool subpixel);
 
   static void DrawQuad(const CRect& coords,
-                       KODI::UTILS::COLOR::Color color,
+                       UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color color,
                        CTexture* texture = nullptr,
                        const CRect* texCoords = nullptr,
                        const float depth = 1.0,
@@ -110,7 +110,7 @@ public:
 
   bool SetVisible(bool visible);
   bool SetAlpha(unsigned char alpha);
-  bool SetDiffuseColor(KODI::UTILS::COLOR::Color color, const CGUIListItem* item = nullptr);
+  bool SetDiffuseColor(UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color color, const CGUIListItem* item = nullptr);
   bool SetPosition(float x, float y);
   bool SetWidth(float width);
   bool SetHeight(float height);
@@ -135,7 +135,7 @@ public:
    * @brief Get the diffuse color (info color) associated to this texture
    * @return the infocolor associated to this texture
   */
-  KODI::GUILIB::GUIINFO::CGUIInfoColor GetDiffuseColor() const { return m_info.diffuseColor; }
+  UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoColor GetDiffuseColor() const { return m_info.diffuseColor; }
 
   bool HitTest(const CPoint& point) const
   {
@@ -178,7 +178,7 @@ protected:
   // functions that our implementation classes handle
   virtual void Allocate() {}; ///< called after our textures have been allocated
   virtual void Free() {};     ///< called after our textures have been freed
-  virtual void Begin(KODI::UTILS::COLOR::Color color) = 0;
+  virtual void Begin(UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color color) = 0;
   virtual void Draw(float* x,
                     float* y,
                     float* z,
@@ -201,7 +201,7 @@ protected:
   }
 
   bool m_visible;
-  KODI::UTILS::COLOR::Color m_diffuseColor;
+  UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color m_diffuseColor;
 
   float m_posX;         // size of the frame
   float m_posY;

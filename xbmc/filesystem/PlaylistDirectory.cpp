@@ -16,7 +16,7 @@
 #include "playlists/PlayList.h"
 #include "utils/ItemProperties.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace XFILE;
 
 CPlaylistDirectory::CPlaylistDirectory() = default;

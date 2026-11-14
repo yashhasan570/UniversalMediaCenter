@@ -95,7 +95,7 @@ void CGUIListItem::SetArt(const std::string& type, std::string_view url)
   }
 }
 
-void CGUIListItem::SetArt(const KODI::ART::Artwork& art)
+void CGUIListItem::SetArt(const UNIVERSAL MEDIA CENTER::ART::Artwork& art)
 {
   m_art = art;
   SetInvalid();
@@ -110,10 +110,10 @@ void CGUIListItem::ClearArt()
 {
   m_art.clear();
   m_artFallbacks.clear();
-  SetProperty(KODI::ITEM::PROPERTY::LIBRARY_ART_FILLED, false);
+  SetProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::LIBRARY_ART_FILLED, false);
 }
 
-void CGUIListItem::AppendArt(const KODI::ART::Artwork& art, const std::string& prefix)
+void CGUIListItem::AppendArt(const UNIVERSAL MEDIA CENTER::ART::Artwork& art, const std::string& prefix)
 {
   for (const auto& [type, url] : art)
     SetArt(prefix.empty() ? type : prefix + '.' + type, url);
@@ -135,7 +135,7 @@ std::string CGUIListItem::GetArt(const std::string &type) const
   return "";
 }
 
-const KODI::ART::Artwork& CGUIListItem::GetArt() const
+const UNIVERSAL MEDIA CENTER::ART::Artwork& CGUIListItem::GetArt() const
 {
   return m_art;
 }

@@ -11,7 +11,7 @@
 #include "input/keyboard/interfaces/IKeyboardInputHandler.h"
 #include "peripherals/PeripheralTypes.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace KEYBOARD
 {
@@ -77,4 +77,4 @@ private:
   std::unique_ptr<CControllerActivity> m_keyboardActivity;
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

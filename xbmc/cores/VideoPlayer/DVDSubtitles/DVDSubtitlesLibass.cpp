@@ -21,15 +21,15 @@
 #include "utils/FontUtils.h"
 #include "utils/StringUtils.h"
 #include "utils/URIUtils.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 #include "utils/log.h"
 
 #include <algorithm>
 #include <cstring>
 #include <mutex>
 
-using namespace KODI::SUBTITLES::STYLE;
-using namespace KODI::UTILS;
+using namespace UNIVERSAL MEDIA CENTER::SUBTITLES::STYLE;
+using namespace UNIVERSAL MEDIA CENTER::UTILS;
 
 namespace
 {
@@ -117,7 +117,7 @@ void CDVDSubtitlesLibass::Configure()
       XFILE::CDirectory::Create(fontconfigCacheDir);
 
     // Create fontconfig configuration using XML library
-    CXBMCTinyXML2 xmlDoc;
+    CTinyXML2 xmlDoc;
     xmlDoc.InsertEndChild(xmlDoc.NewDeclaration("xml version=\"1.0\""));
     xmlDoc.InsertEndChild(xmlDoc.NewUnknown("DOCTYPE fontconfig SYSTEM \"fonts.dtd\""));
 
@@ -471,7 +471,7 @@ void CDVDSubtitlesLibass::ApplyStyle(const std::shared_ptr<struct style>& subSty
 
     // It is mandatory set the FontName, the text is case sensitive
     free(style->FontName);
-    if (subStyle->fontName == KODI::SUBTITLES::FONT_DEFAULT_FAMILYNAME)
+    if (subStyle->fontName == UNIVERSAL MEDIA CENTER::SUBTITLES::FONT_DEFAULT_FAMILYNAME)
       style->FontName = strdup(m_defaultFontFamilyName.c_str());
     else
       style->FontName = strdup(subStyle->fontName.c_str());

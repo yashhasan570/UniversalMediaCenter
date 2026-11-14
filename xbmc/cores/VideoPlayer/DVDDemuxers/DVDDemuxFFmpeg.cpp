@@ -58,7 +58,7 @@ extern "C"
 #include <libavutil/pixdesc.h>
 }
 
-using namespace KODI::LANGUAGE;
+using namespace UNIVERSAL MEDIA CENTER::LANGUAGE;
 using namespace std::chrono_literals;
 
 struct StereoModeConversionMap
@@ -941,7 +941,7 @@ AVDictionary* CDVDDemuxFFmpeg::GetFFMpegOptionsFromInput()
     }
     if (!hasUserAgent)
     {
-      // set default xbmc user-agent.
+      // set default  user-agent.
       av_dict_set(&options, "user_agent", CServiceBroker::GetSettingsComponent()->GetAdvancedSettings()->m_userAgent.c_str(), 0);
     }
 
@@ -1431,7 +1431,7 @@ bool CDVDDemuxFFmpeg::SeekTime(double time, bool backwards, double* startpts)
       if (pkt)
         CDVDDemuxUtils::FreeDemuxPacket(pkt);
       else
-        KODI::TIME::Sleep(10ms);
+        UNIVERSAL MEDIA CENTER::TIME::Sleep(10ms);
       m_pkt.result = -1;
       av_packet_unref(&m_pkt.pkt);
 
@@ -1527,7 +1527,7 @@ bool CDVDDemuxFFmpeg::SeekTime(double time, bool backwards, double* startpts)
       DemuxPacket* pkt = ReadInternal(true);
       if (!pkt)
       {
-        KODI::TIME::Sleep(10ms);
+        UNIVERSAL MEDIA CENTER::TIME::Sleep(10ms);
         continue;
       }
       CDVDDemuxUtils::FreeDemuxPacket(pkt);
@@ -2179,7 +2179,7 @@ CDemuxStream* CDVDDemuxFFmpeg::AddStream(int streamIdx)
           //! @todo: temporary font file management should be completely
           //! removed, by sending font data to the subtitle renderer and
           //! using libass ass_add_font to add the fonts directly in memory.
-          std::string filePath{KODI::UTILS::FONT::FONTPATH::TEMP};
+          std::string filePath{UNIVERSAL MEDIA CENTER::UTILS::FONT::FONTPATH::TEMP};
           XFILE::CDirectory::Create(filePath);
 
           AVDictionaryEntry* nameTag = av_dict_get(pStream->metadata, "filename", NULL, 0);

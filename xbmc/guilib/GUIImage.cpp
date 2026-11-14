@@ -18,7 +18,7 @@
 #include <cassert>
 #include <memory>
 
-using namespace KODI::GUILIB;
+using namespace UNIVERSAL MEDIA CENTER::GUILIB;
 
 CGUIImage::CGUIImage(int parentID,
                      int controlID,

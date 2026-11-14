@@ -36,7 +36,7 @@ protected:
     PyConfig_InitPythonConfig(&config);
 #if defined(TARGET_WINDOWS)
     // same stdlib location init_emu_environ hands the running app
-    const std::string home = CSpecialProtocol::TranslatePath("special://xbmc/system/python");
+    const std::string home = CSpecialProtocol::TranslatePath("special:///system/python");
     PyConfig_SetBytesString(&config, &config.home, home.c_str());
 #endif
     const PyStatus status = Py_InitializeFromConfig(&config);
@@ -46,7 +46,7 @@ protected:
     s_pythonUp = !PyStatus_Exception(status);
     // first import must run in the main interpreter: the binding types are created once per process and the main interpreter is the one never destroyed
     if (s_pythonUp)
-      s_mainImportOk = RunPy("import xbmc, xbmcgui, xbmcplugin, xbmcaddon, xbmcvfs, xbmcdrm\n");
+      s_mainImportOk = RunPy("import , gui, plugin, addon, vfs, drm\n");
   }
 
   // no TearDownTestSuite: Py_Finalize would destroy the process-wide binding types
@@ -71,8 +71,8 @@ TEST_F(TestPythonBindings, DirectConstructWithKwargs)
     GTEST_SKIP() << "python runtime not initialized";
   ASSERT_TRUE(s_mainImportOk);
   EXPECT_TRUE(RunPy(R"py(
-import xbmcgui
-li = xbmcgui.ListItem('direct', offscreen=True)
+import gui
+li = gui.ListItem('direct', offscreen=True)
 assert li.getLabel() == 'direct', li.getLabel()
 )py"));
 }
@@ -84,8 +84,8 @@ TEST_F(TestPythonBindings, SubclassExtraKwargs)
     GTEST_SKIP() << "python runtime not initialized";
   ASSERT_TRUE(s_mainImportOk);
   EXPECT_TRUE(RunPy(R"py(
-import xbmcgui
-class Item(xbmcgui.ListItem):
+import gui
+class Item(gui.ListItem):
     def __init__(self, label, label2, path, offscreen, extra=None):
         super().__init__(label, label2, path, offscreen)
         self.extra = extra
@@ -102,8 +102,8 @@ TEST_F(TestPythonBindings, SubclassNeverCallsSuper)
     GTEST_SKIP() << "python runtime not initialized";
   ASSERT_TRUE(s_mainImportOk);
   EXPECT_TRUE(RunPy(R"py(
-import xbmcgui
-class A(xbmcgui.Action):
+import gui
+class A(gui.Action):
     def __init__(self):
         pass
 a = A()
@@ -117,8 +117,8 @@ TEST_F(TestPythonBindings, NoneInsideContainers)
     GTEST_SKIP() << "python runtime not initialized";
   ASSERT_TRUE(s_mainImportOk);
   EXPECT_TRUE(RunPy(R"py(
-import xbmcgui
-li = xbmcgui.ListItem('none-in-containers', '', '', True)
+import gui
+li = gui.ListItem('none-in-containers', '', '', True)
 
 li.setArt({'thumb': 'a.png', 'poster': None})
 assert li.getArt('thumb') == 'a.png', li.getArt('thumb')
@@ -141,8 +141,8 @@ TEST_F(TestPythonBindings, BytesAsString)
   ASSERT_TRUE(s_mainImportOk);
   EXPECT_TRUE(RunPy(R"py(
 import pickle
-import xbmcgui
-li = xbmcgui.ListItem('bytes-as-string', '', '', True)
+import gui
+li = gui.ListItem('bytes-as-string', '', '', True)
 
 li.setProperty('ascii', b'plain')
 assert li.getProperty('ascii') == 'plain', repr(li.getProperty('ascii'))
@@ -176,28 +176,28 @@ TEST_F(TestPythonBindings, FileContextManager)
     GTEST_SKIP() << "python runtime not initialized";
   ASSERT_TRUE(s_mainImportOk);
   EXPECT_TRUE(RunPy(R"py(
-import xbmcvfs
+import vfs
 p = 'special://temp/swig-ctx.txt'
-with xbmcvfs.File(p, 'w') as f:
+with vfs.File(p, 'w') as f:
     f.write('hello')
-with xbmcvfs.File(p) as f:
+with vfs.File(p) as f:
     assert f.read() == 'hello', repr(f.read())
-xbmcvfs.delete(p)
+vfs.delete(p)
 )py"));
 }
 
-// an xbmc type passed through an xbmcgui-obtained object crosses the shared type table
+// an  type passed through an gui-obtained object crosses the shared type table
 TEST_F(TestPythonBindings, CrossModule)
 {
   if (!s_pythonUp)
     GTEST_SKIP() << "python runtime not initialized";
   ASSERT_TRUE(s_mainImportOk);
   EXPECT_TRUE(RunPy(R"py(
-import xbmc, xbmcgui
-li = xbmcgui.ListItem('cast', '', '', True)
+import , gui
+li = gui.ListItem('cast', '', '', True)
 tag = li.getVideoInfoTag()
-assert isinstance(tag, xbmc.InfoTagVideo)
-tag.setCast([xbmc.Actor('a', 'lead'), xbmc.Actor('b')])
+assert isinstance(tag, .InfoTagVideo)
+tag.setCast([.Actor('a', 'lead'), .Actor('b')])
 )py"));
 }
 
@@ -208,11 +208,11 @@ TEST_F(TestPythonBindings, ListElementsAreOwned)
     GTEST_SKIP() << "python runtime not initialized";
   ASSERT_TRUE(s_mainImportOk);
   EXPECT_TRUE(RunPy(R"py(
-import xbmc, xbmcgui
-li = xbmcgui.ListItem('owned', '', '', True)
+import , gui
+li = gui.ListItem('owned', '', '', True)
 tag = li.getVideoInfoTag()
 assert tag.thisown
-tag.setCast([xbmc.Actor('a', 'lead'), xbmc.Actor('b')])
+tag.setCast([.Actor('a', 'lead'), .Actor('b')])
 actors = tag.getActors()
 assert [a.getName() for a in actors] == ['a', 'b'], [a.getName() for a in actors]
 assert all(a.thisown for a in actors), [a.thisown for a in actors]
@@ -229,13 +229,13 @@ TEST_F(TestPythonBindings, NoInitInjection)
     GTEST_SKIP() << "python runtime not initialized";
   ASSERT_TRUE(s_mainImportOk);
   EXPECT_TRUE(RunPy(R"py(
-import xbmc, xbmcaddon, xbmcdrm, xbmcgui, xbmcvfs
-for cls in (xbmcgui.ListItem, xbmcgui.Action, xbmcgui.Window, xbmcgui.Dialog,
-            xbmc.Actor, xbmcvfs.File, xbmcvfs.Stat, xbmcaddon.Addon,
-            xbmcdrm.CryptoSession):
+import , addon, drm, gui, vfs
+for cls in (gui.ListItem, gui.Action, gui.Window, gui.Dialog,
+            .Actor, vfs.File, vfs.Stat, addon.Addon,
+            drm.CryptoSession):
     kind = type(vars(cls)['__init__']).__name__
     assert kind == 'wrapper_descriptor', (cls, kind)
-assert xbmcgui.ListItem.setLabel.__doc__
+assert gui.ListItem.setLabel.__doc__
 )py"));
 }
 
@@ -250,8 +250,8 @@ TEST_F(TestPythonBindings, TwoSubInterpreters)
   PyThreadState* first = Py_NewInterpreter();
   ASSERT_NE(first, nullptr);
   EXPECT_TRUE(RunPy(R"py(
-import xbmcgui
-li = xbmcgui.ListItem('first', '', '', True)
+import gui
+li = gui.ListItem('first', '', '', True)
 assert li.getLabel() == 'first'
 )py"));
 
@@ -259,8 +259,8 @@ assert li.getLabel() == 'first'
   PyThreadState* second = Py_NewInterpreter();
   ASSERT_NE(second, nullptr);
   EXPECT_TRUE(RunPy(R"py(
-import xbmcgui
-li = xbmcgui.ListItem('second', '', '', True)
+import gui
+li = gui.ListItem('second', '', '', True)
 assert li.getLabel() == 'second'
 del li
 )py"));
@@ -268,7 +268,7 @@ del li
 
   PyThreadState_Swap(first);
   EXPECT_TRUE(RunPy(R"py(
-li2 = xbmcgui.ListItem('again', '', '', True)
+li2 = gui.ListItem('again', '', '', True)
 assert li2.getLabel() == 'again'
 assert type(li2) is type(li)
 del li, li2
@@ -277,12 +277,12 @@ del li, li2
 
   PyThreadState_Swap(mainState);
   EXPECT_TRUE(RunPy(R"py(
-import xbmcgui
-assert xbmcgui.ListItem('main', '', '', True).getLabel() == 'main'
+import gui
+assert gui.ListItem('main', '', '', True).getLabel() == 'main'
 )py"));
 }
 
-// shared types must take process-wide method-cache tags; Player.__init__ consults the metatype first, so base and metatype count too (xbmc/xbmc#29309)
+// shared types must take process-wide method-cache tags; Player.__init__ consults the metatype first, so base and metatype count too (/#29309)
 TEST_F(TestPythonBindings, SharedTypesImmutable)
 {
 #if PY_VERSION_HEX < 0x030A0000
@@ -296,9 +296,9 @@ TEST_F(TestPythonBindings, SharedTypesImmutable)
   PyThreadState* sub = Py_NewInterpreter();
   ASSERT_NE(sub, nullptr);
   EXPECT_TRUE(RunPy(R"py(
-import xbmc, xbmcgui
+import , gui
 IMMUTABLE = 1 << 8
-for cls in (xbmc.Player, xbmc.Monitor, xbmcgui.WindowXMLDialog):
+for cls in (.Player, .Monitor, gui.WindowXMLDialog):
     for t in (type(cls), *cls.__mro__):
         assert t.__flags__ & IMMUTABLE, t
 )py"));

@@ -12,14 +12,14 @@
 #include "utils/StringUtils.h"
 
 using namespace ADDON;
-using namespace KODI::ADDONS;
+using namespace UNIVERSAL MEDIA CENTER::ADDONS;
 
 namespace
 {
 
 struct AddonFormat
 {
-  unsigned int kodiFormat;
+  unsigned int universalmediacenterFormat;
   ADDON_IMG_FMT addonFormat;
   bool hasAlpha;
 };
@@ -70,7 +70,7 @@ bool CImageDecoder::LoadInfoTag(const std::string& fileName, CPictureInfoTag* ta
   if (!m_created || !m_ifc.imagedecoder->toAddon->read_tag || !tag)
     return false;
 
-  KODI_ADDON_IMAGEDECODER_INFO_TAG ifcTag = {};
+  UNIVERSALMEDIA_ADDON_IMAGEDECODER_INFO_TAG ifcTag = {};
   bool ret = m_ifc.imagedecoder->toAddon->read_tag(m_ifc.hdl, fileName.c_str(), &ifcTag);
   if (ret)
   {
@@ -202,7 +202,7 @@ bool CImageDecoder::Decode(unsigned char* const pixels,
     return false;
 
   const auto it =
-      std::ranges::find_if(Universal Media CenterToAddonFormat, [format](auto& f) { return f.kodiFormat == format; });
+      std::ranges::find_if(Universal Media CenterToAddonFormat, [format](auto& f) { return f.universalmediacenterFormat == format; });
   if (it == Universal Media CenterToAddonFormat.end())
     return false;
 

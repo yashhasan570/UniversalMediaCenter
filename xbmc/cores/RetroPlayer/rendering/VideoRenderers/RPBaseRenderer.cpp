@@ -15,7 +15,7 @@
 #include "cores/RetroPlayer/shaders/IShaderPreset.h"
 #include "utils/log.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace RETRO;
 
 // Consider renderer visible until this many frames have passed without rendering

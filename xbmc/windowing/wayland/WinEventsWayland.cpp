@@ -25,8 +25,8 @@
 #include <unistd.h>
 #include <wayland-client.hpp>
 
-using namespace KODI::UTILS::POSIX;
-using namespace KODI::WINDOWING::WAYLAND;
+using namespace UNIVERSAL MEDIA CENTER::UTILS::POSIX;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::WAYLAND;
 
 namespace
 {
@@ -247,7 +247,7 @@ bool CWinEventsWayland::MessagePump()
   // Forward any events that may have been pushed to our queue
   while (true)
   {
-    XBMC_Event event;
+    _Event event;
     {
       // Scoped lock for reentrancy
       std::unique_lock lock(m_queueMutex);
@@ -270,7 +270,7 @@ bool CWinEventsWayland::MessagePump()
   return true;
 }
 
-void CWinEventsWayland::MessagePush(XBMC_Event* ev)
+void CWinEventsWayland::MessagePush(_Event* ev)
 {
   std::unique_lock lock(m_queueMutex);
   m_queue.emplace(*ev);

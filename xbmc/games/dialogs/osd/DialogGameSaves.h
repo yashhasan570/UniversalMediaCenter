@@ -18,7 +18,7 @@ class CFileItemList;
 class CGUIMessage;
 class CGUIViewControl;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -119,4 +119,4 @@ private:
   std::string m_currentGameClientVersion;
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

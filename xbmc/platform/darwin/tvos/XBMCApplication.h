@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface XBMCApplicationDelegate : UIResponder <UIApplicationDelegate>
+@interface ApplicationDelegate : UIResponder <UIApplicationDelegate>
 @property(nullable, nonatomic, strong) UIWindow* window;
 @end

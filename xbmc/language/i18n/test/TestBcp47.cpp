@@ -16,16 +16,16 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI::LANGUAGE::I18N;
+using namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N;
 
-namespace KODI::LANGUAGE::I18N
+namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N
 {
 std::ostream& operator<<(std::ostream& os, const CBcp47& obj)
 {
   os << obj.Format(Bcp47FormattingStyle::FORMAT_DEBUG);
   return os;
 }
-} // namespace KODI::LANGUAGE::I18N
+} // namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N
 
 struct TestBcp47ParseTag
 {

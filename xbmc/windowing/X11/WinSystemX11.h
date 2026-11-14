@@ -22,7 +22,7 @@
 
 class IDispResource;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace WINDOWING
 {
@@ -76,7 +76,7 @@ public:
   bool MessagePump() override;
 
 protected:
-  std::unique_ptr<KODI::WINDOWING::IOSScreenSaver> GetOSScreenSaverImpl() override;
+  std::unique_ptr<UNIVERSAL MEDIA CENTER::WINDOWING::IOSScreenSaver> GetOSScreenSaverImpl() override;
 
   virtual bool SetWindow(int width, int height, bool fullscreen, const std::string &output, int *winstate = NULL) = 0;
   virtual XVisualInfo* GetVisual() = 0;

@@ -18,7 +18,7 @@
 #include <pipewire/node.h>
 #include <pipewire/type.h>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace PIPEWIRE;
 
 CPipewireRegistry::CPipewireRegistry(CPipewireCore& core)

@@ -41,7 +41,7 @@
 #include <gtest/gtest.h>
 #include <objc/runtime.h>
 
-using namespace KODI::RETRO;
+using namespace UNIVERSAL MEDIA CENTER::RETRO;
 
 class TestHwRenderingContextOSX : public testing::Test
 {
@@ -415,7 +415,7 @@ protected:
     if (HasFatalFailure() || IsSkipped())
       return;
 
-    auto messenger = std::make_shared<KODI::MESSAGING::CApplicationMessenger>();
+    auto messenger = std::make_shared<UNIVERSAL MEDIA CENTER::MESSAGING::CApplicationMessenger>();
     messenger->SetProcessThread(std::this_thread::get_id());
     CServiceBroker::RegisterAppMessenger(messenger);
 
@@ -450,7 +450,7 @@ protected:
         static_cast<CRenderBufferFBO*>(m_pool->CaptureClientFrame(client, width, height)));
   }
 
-  std::shared_ptr<KODI::MESSAGING::CApplicationMessenger> m_previousMessenger{
+  std::shared_ptr<UNIVERSAL MEDIA CENTER::MESSAGING::CApplicationMessenger> m_previousMessenger{
       CServiceBroker::GetAppMessenger()};
   std::unique_ptr<CPlaybackTestEnvironment> m_environment;
   std::shared_ptr<CRenderBufferPoolFBO> m_pool;
@@ -539,7 +539,7 @@ TEST_F(TestRenderBufferPoolFBOOSX, OrdinaryDestructionDeletesResourcesAndRetires
 
 TEST_F(TestRenderBufferPoolFBOOSX, AbandonedGameStreamReleasesManagerAndPoolForNextGame)
 {
-  class CCallbacks : public KODI::GAME::IHwFramebufferCallback
+  class CCallbacks : public UNIVERSAL MEDIA CENTER::GAME::IHwFramebufferCallback
   {
   public:
     bool HardwareContextReset() override
@@ -560,7 +560,7 @@ TEST_F(TestRenderBufferPoolFBOOSX, AbandonedGameStreamReleasesManagerAndPoolForN
   hardware.context_type = GAME_HW_CONTEXT_OPENGL_CORE;
   hardware.version_major = 3;
   hardware.version_minor = 2;
-  KODI::GAME::CGameClientStreamHwFramebuffer stream(callbacks, hardware);
+  UNIVERSAL MEDIA CENTER::GAME::CGameClientStreamHwFramebuffer stream(callbacks, hardware);
   game_stream_properties properties{};
   properties.type = GAME_STREAM_HW_FRAMEBUFFER;
   properties.hw_framebuffer.max_width = properties.hw_framebuffer.max_height = 4;
@@ -1026,15 +1026,15 @@ private:
   CWinSystemBase* m_previous;
 };
 
-class CDirectionalTestPreset : public KODI::SHADER::CShaderPresetGL
+class CDirectionalTestPreset : public UNIVERSAL MEDIA CENTER::SHADER::CShaderPresetGL
 {
 public:
   explicit CDirectionalTestPreset(CRenderContext& context, bool sRGBPass) : CShaderPresetGL(context)
   {
     m_presetPath = "directional-alpha-test";
-    KODI::SHADER::ShaderPass pass;
+    UNIVERSAL MEDIA CENTER::SHADER::ShaderPass pass;
     pass.sourcePath = "directional-alpha-test.glsl";
-    pass.filterType = KODI::SHADER::FilterType::NEAREST;
+    pass.filterType = UNIVERSAL MEDIA CENTER::SHADER::FilterType::NEAREST;
     pass.vertexSource = R"(#version 150
 #ifdef VERTEX
 in vec4 VertexCoord;
@@ -1065,11 +1065,11 @@ void main()
     EXPECT_TRUE(CreateShaders());
   }
 
-  bool RenderUpdate(KODI::SHADER::IShaderTexture& source,
-                    KODI::SHADER::IShaderTexture& target) override
+  bool RenderUpdate(UNIVERSAL MEDIA CENTER::SHADER::IShaderTexture& source,
+                    UNIVERSAL MEDIA CENTER::SHADER::IShaderTexture& target) override
   {
     ++calls;
-    sourceID = static_cast<KODI::SHADER::CShaderTextureGLRef&>(source).GetTextureID();
+    sourceID = static_cast<UNIVERSAL MEDIA CENTER::SHADER::CShaderTextureGLRef&>(source).GetTextureID();
     rendered = CShaderPresetGL::RenderUpdate(source, target);
     return rendered;
   }
@@ -1094,7 +1094,7 @@ private:
   bool m_fail{false};
 };
 
-class CRecordingTestPreset : public KODI::SHADER::CShaderPresetGL
+class CRecordingTestPreset : public UNIVERSAL MEDIA CENTER::SHADER::CShaderPresetGL
 {
 public:
   explicit CRecordingTestPreset(CRenderContext& context) : CShaderPresetGL(context)
@@ -1102,8 +1102,8 @@ public:
     m_passes.emplace_back();
   }
 
-  bool RenderUpdate(KODI::SHADER::IShaderTexture& source,
-                    KODI::SHADER::IShaderTexture& target) override
+  bool RenderUpdate(UNIVERSAL MEDIA CENTER::SHADER::IShaderTexture& source,
+                    UNIVERSAL MEDIA CENTER::SHADER::IShaderTexture& target) override
   {
     sourceTexture = &source;
     targetTexture = &target;
@@ -1111,8 +1111,8 @@ public:
     return true;
   }
 
-  KODI::SHADER::IShaderTexture* sourceTexture{nullptr};
-  KODI::SHADER::IShaderTexture* targetTexture{nullptr};
+  UNIVERSAL MEDIA CENTER::SHADER::IShaderTexture* sourceTexture{nullptr};
+  UNIVERSAL MEDIA CENTER::SHADER::IShaderTexture* targetTexture{nullptr};
   unsigned int calls{0};
 };
 
@@ -1133,7 +1133,7 @@ public:
     return result;
   }
 
-  void UsePreset(std::unique_ptr<KODI::SHADER::IShaderPreset> preset)
+  void UsePreset(std::unique_ptr<UNIVERSAL MEDIA CENTER::SHADER::IShaderPreset> preset)
   {
     m_shaderPreset = std::move(preset);
     m_bShadersNeedUpdate = false;
@@ -1253,7 +1253,7 @@ TEST_F(TestRPRendererFBOOSX, ShaderTextureCacheTracksBuffersDestinationSizeAndFl
   EXPECT_EQ(recording->targetTexture->GetWidth(), 4);
   EXPECT_EQ(recording->targetTexture->GetHeight(), 4);
   const GLuint targetID =
-      static_cast<KODI::SHADER::CShaderTextureGL*>(recording->targetTexture)->GetTextureID();
+      static_cast<UNIVERSAL MEDIA CENTER::SHADER::CShaderTextureGL*>(recording->targetTexture)->GetTextureID();
   EXPECT_TRUE(glIsTexture(targetID));
   renderer.Flush();
   EXPECT_EQ(renderer.CachedTextureCount(), 0u);
@@ -1264,7 +1264,7 @@ TEST_F(TestRPRendererFBOOSX, ShaderTextureCacheTracksBuffersDestinationSizeAndFl
   EXPECT_EQ(recording->calls, calls + 1);
   EXPECT_EQ(renderer.CachedTextureCount(), 1u);
   EXPECT_TRUE(glIsTexture(
-      static_cast<KODI::SHADER::CShaderTextureGL*>(recording->targetTexture)->GetTextureID()));
+      static_cast<UNIVERSAL MEDIA CENTER::SHADER::CShaderTextureGL*>(recording->targetTexture)->GetTextureID()));
   EXPECT_EQ(recording->targetTexture->GetWidth(), 4);
   EXPECT_EQ(recording->targetTexture->GetHeight(), 4);
   EXPECT_EQ(glGetError(), GL_NO_ERROR);

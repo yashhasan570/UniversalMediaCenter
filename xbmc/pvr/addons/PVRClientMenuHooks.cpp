@@ -9,7 +9,7 @@
 #include "PVRClientMenuHooks.h"
 
 #include "ServiceBroker.h"
-#include "addons/kodi-dev-kit/include/kodi/c-api/addon-instance/pvr/pvr_menu_hook.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api/addon-instance/pvr/pvr_menu_hook.h"
 #include "pvr/PVRContextMenus.h"
 #include "resources/LocalizeStrings.h"
 #include "resources/ResourcesComponent.h"

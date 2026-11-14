@@ -16,10 +16,10 @@ It should work if you're using macOS. If that is the case, read **[macOS specifi
 5. **[Build tools and dependencies](#5-build-tools-and-dependencies)**  
   5.1. **[Advanced Configure Options](#51-advanced-configure-options)**  
 6. **[Build binary add-ons](#6-build-binary-add-ons)**
-7. **[Build Universal Media Center](#7-build-kodi)**
+7. **[Build Universal Media Center](#7-build-universalmediacenter)**
 8. **[Package](#8-package)**
 9. **[Install](#9-install)**
-10. **[Debugging Universal Media Center](#10-debugging-kodi)**
+10. **[Debugging Universal Media Center](#10-debugging-universalmediacenter)**
 
 ## 1. Document conventions
 This guide assumes you are using `terminal`, also known as `console`, `command-line` or simply `cli`. Commands need to be run at the terminal, one at a time and in the provided order.
@@ -33,17 +33,17 @@ and yet another one
 
 **Example:** Clone Universal Media Center's current master branch:
 ```
-git clone https://github.com/xbmc/xbmc kodi
+git clone https://github.com// universalmediacenter
 ```
 
 Commands that contain strings enclosed in angle brackets denote something you need to change to suit your needs.
 ```
-git clone -b <branch-name> https://github.com/xbmc/xbmc kodi
+git clone -b <branch-name> https://github.com// universalmediacenter
 ```
 
 **Example:** Clone Universal Media Center's current Krypton branch:
 ```
-git clone -b Krypton https://github.com/xbmc/xbmc kodi
+git clone -b Krypton https://github.com// universalmediacenter
 ```
 
 Several different strategies are used to draw your attention to certain pieces of information. In order of how critical the information is, these items are marked as a note, tip, or warning. For example:
@@ -120,13 +120,13 @@ cd $HOME
 
 Clone Universal Media Center's current master branch:
 ```
-git clone https://github.com/xbmc/xbmc kodi
+git clone https://github.com// universalmediacenter
 ```
 
 ## 5. Build tools and dependencies
 Prepare to configure build:
 ```
-cd $HOME/kodi/tools/depends
+cd $HOME/universalmediacenter/tools/depends
 ./bootstrap
 ```
 
@@ -135,22 +135,22 @@ cd $HOME/kodi/tools/depends
 
 Configure build for aarch64:
 ```
-./configure --with-tarballs=$HOME/android-tools/xbmc-tarballs --host=aarch64-linux-android --with-sdk-path=$HOME/android-tools/android-sdk-linux --prefix=$HOME/android-tools/xbmc-depends
+./configure --with-tarballs=$HOME/android-tools/-tarballs --host=aarch64-linux-android --with-sdk-path=$HOME/android-tools/android-sdk-linux --prefix=$HOME/android-tools/-depends
 ```
 
 Or configure build for arm:
 ```
-./configure --with-tarballs=$HOME/android-tools/xbmc-tarballs --host=arm-linux-androideabi --with-sdk-path=$HOME/android-tools/android-sdk-linux --prefix=$HOME/android-tools/xbmc-depends
+./configure --with-tarballs=$HOME/android-tools/-tarballs --host=arm-linux-androideabi --with-sdk-path=$HOME/android-tools/android-sdk-linux --prefix=$HOME/android-tools/-depends
 ```
 
 Or configure build for x86:
 ```
-./configure --with-tarballs=$HOME/android-tools/xbmc-tarballs --host=i686-linux-android --with-sdk-path=$HOME/android-tools/android-sdk-linux --prefix=$HOME/android-tools/xbmc-depends
+./configure --with-tarballs=$HOME/android-tools/-tarballs --host=i686-linux-android --with-sdk-path=$HOME/android-tools/android-sdk-linux --prefix=$HOME/android-tools/-depends
 ```
 
 Or configure build for x86_64:
 ```
-./configure --with-tarballs=$HOME/android-tools/xbmc-tarballs --host=x86_64-linux-android --with-sdk-path=$HOME/android-tools/android-sdk-linux --prefix=$HOME/android-tools/xbmc-depends
+./configure --with-tarballs=$HOME/android-tools/-tarballs --host=x86_64-linux-android --with-sdk-path=$HOME/android-tools/android-sdk-linux --prefix=$HOME/android-tools/-depends
 ```
 
 > [!NOTE]  
@@ -190,7 +190,7 @@ make -j$(getconf _NPROCESSORS_ONLN)
 ```
 --with-tarballs=<path>
 ```
-  path where tarballs will be saved [prefix/xbmc-tarballs]
+  path where tarballs will be saved [prefix/-tarballs]
 
 ```
 --with-cpu=<cpu>
@@ -254,11 +254,11 @@ make -j$(getconf _NPROCESSORS_ONLN)
 **[back to top](#table-of-contents)** | **[back to section top](#5-build-tools-and-dependencies)**
 
 ## 6. Build binary add-ons
-You can find a complete list of available binary add-ons **[here](https://github.com/xbmc/repo-binary-addons)**.
+You can find a complete list of available binary add-ons **[here](https://github.com//repo-binary-addons)**.
 
 Change to Universal Media Center's source code directory:
 ```
-cd $HOME/kodi
+cd $HOME/universalmediacenter
 ```
 
 Build all add-ons:
@@ -288,7 +288,7 @@ For additional information on regular expression usage for ADDONS_TO_BUILD, view
 ## 7. Build Universal Media Center
 Configure CMake build:
 ```
-cd $HOME/kodi
+cd $HOME/universalmediacenter
 make -C tools/depends/target/cmakebuildsys
 ```
 
@@ -296,13 +296,13 @@ make -C tools/depends/target/cmakebuildsys
 > BUILD_DIR can be provided as an argument to cmakebuildsys. This allows you to provide an alternate build location. Change all paths onwards as required if BUILD_DIR option used.
 
 ```
-mkdir $HOME/kodi-build
-make -C tools/depends/target/cmakebuildsys BUILD_DIR=$HOME/kodi-build
+mkdir $HOME/universalmediacenter-build
+make -C tools/depends/target/cmakebuildsys BUILD_DIR=$HOME/universalmediacenter-build
 ```
 
 Build Universal Media Center:
 ```
-cd $HOME/kodi-build
+cd $HOME/universalmediacenter-build
 make -j$(getconf _NPROCESSORS_ONLN)
 ```
 
@@ -316,7 +316,7 @@ Create package:
 make apk
 ```
 
-Generated `apk` file will be inside `$HOME/kodi`.
+Generated `apk` file will be inside `$HOME/universalmediacenter`.
 
 **[back to top](#table-of-contents)**
 
@@ -330,7 +330,7 @@ sudo apt install adb
 
 Install Universal Media Center:
 ```
-cd $HOME/kodi-android
+cd $HOME/universalmediacenter-android
 adb devices
 adb -s <device-id> install -r <generated-apk-name-here>.apk
 ```
@@ -349,7 +349,7 @@ adb -s <device-id> logcat
 
 Install a new build over the existing one:
 ```
-adb -e install -r images/xbmcapp-debug.apk
+adb -e install -r images/app-debug.apk
 ```
 
 Launch Universal Media Center on Android Emulator without the GUI:
@@ -359,7 +359,7 @@ adb shell am start -n com.universalmediacenter.app/com.universalmediacenter.app.
 
 Kill a misbehaving Universal Media Center:
 ```
-adb shell ps | grep org.xbmc | awk '{print $2}' | xargs adb shell kill
+adb shell ps | grep org. | awk '{print $2}' | xargs adb shell kill
 ```
 
 Filter logcat messages by a specific tag (e.g. `Universal Media Center`):
@@ -373,14 +373,14 @@ adb shell setprop debug.checkjni 1
 ```
 
 > [!NOTE]  
-> These commands assume that current directory is `$HOME/kodi-build/tools/android/packaging` and that the proper SDK/NDK paths are set.
+> These commands assume that current directory is `$HOME/universalmediacenter-build/tools/android/packaging` and that the proper SDK/NDK paths are set.
 
-GDB can be used to debug, though the support is rather primitive. Rather than using `gdb` directly, you will need to use `ndk-gdb` which wraps it. You can use the `-p/--project` switches or instead you will need to `cd` to `$HOME/kodi-build/tools/android/packaging/xbmc` and execute it from there.
+GDB can be used to debug, though the support is rather primitive. Rather than using `gdb` directly, you will need to use `ndk-gdb` which wraps it. You can use the `-p/--project` switches or instead you will need to `cd` to `$HOME/universalmediacenter-build/tools/android/packaging/` and execute it from there.
 ```
  ndk-gdb --verbose
 ```
 
 This will open the installed version of Universal Media Center and break. The warnings can be ignored as we have the appropriate paths already setup.
 
-**[back to top](#table-of-contents)** | **[back to section top](#10-debugging-kodi)**
+**[back to top](#table-of-contents)** | **[back to section top](#10-debugging-universalmediacenter)**
 

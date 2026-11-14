@@ -33,7 +33,7 @@
 
 #include <string.h>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace JSONRPC;
 
 bool CJSONRPC::m_initialized = false;
@@ -352,7 +352,7 @@ void CJSONRPCUtils::NotifyItemUpdated(const std::shared_ptr<CFileItem>& item)
   wm.SendThreadMessage(message);
 }
 
-void CJSONRPCUtils::NotifyItemUpdated(const CVideoInfoTag& info, const KODI::ART::Artwork& artwork)
+void CJSONRPCUtils::NotifyItemUpdated(const CVideoInfoTag& info, const UNIVERSAL MEDIA CENTER::ART::Artwork& artwork)
 {
   CFileItemPtr msgItem(new CFileItem(info));
   if (!artwork.empty())

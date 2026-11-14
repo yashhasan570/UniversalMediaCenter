@@ -10,7 +10,7 @@
 
     python3 tools/testdata/mkmp2.py [outdir]
 
-Writes to xbmc/music/tags/test/testdata/ unless told otherwise.
+Writes to /music/tags/test/testdata/ unless told otherwise.
 
 The file is an ID3v2.4 tag followed by silent MPEG-1 Layer II frames, each built field by field
 from the tables below rather than encoded from audio, so it stays a few kilobytes and holds only
@@ -96,7 +96,7 @@ def id3v2() -> bytes:
 
 
 def main() -> None:
-    outdir = Path(sys.argv[1]) if len(sys.argv) > 1 else Path("xbmc/music/tags/test/testdata")
+    outdir = Path(sys.argv[1]) if len(sys.argv) > 1 else Path("/music/tags/test/testdata")
     outdir.mkdir(parents=True, exist_ok=True)
     path = outdir / "tagged.mp2"
     path.write_bytes(id3v2() + audio())

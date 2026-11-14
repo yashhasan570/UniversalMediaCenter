@@ -14,9 +14,9 @@
 
 #include <Windows.h>
 
-namespace win = KODI::PLATFORM::WINDOWS;
+namespace win = UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace PLATFORM
 {
@@ -99,9 +99,9 @@ std::string create_temp_directory(std::error_code& ec)
 {
   wchar_t lpTempPathBuffer[MAX_PATH + 1];
 
-  std::wstring xbmcTempPath = temp_directory_path_w(ec);
+  std::wstring TempPath = temp_directory_path_w(ec);
 
-  if (!GetTempFileNameW(xbmcTempPath.c_str(), L"xbm", 0, lpTempPathBuffer))
+  if (!GetTempFileNameW(TempPath.c_str(), L"xbm", 0, lpTempPathBuffer))
   {
     ec.assign(GetLastError(), std::system_category());
     return std::string();
@@ -131,7 +131,7 @@ std::string temp_file_path(const std::string& suffix, std::error_code& ec)
 {
   wchar_t lpTempPathBuffer[MAX_PATH + 1];
 
-  std::wstring xbmcTempPath = temp_directory_path_w(ec);
+  std::wstring TempPath = temp_directory_path_w(ec);
 
   if (ec)
     return std::string();
@@ -140,7 +140,7 @@ std::string temp_file_path(const std::string& suffix, std::error_code& ec)
   constexpr unsigned int maxAttempts = 100;
   for (unsigned int attempt = 0; attempt < maxAttempts; ++attempt)
   {
-    if (!GetTempFileNameW(xbmcTempPath.c_str(), L"xbm", 0, lpTempPathBuffer))
+    if (!GetTempFileNameW(TempPath.c_str(), L"xbm", 0, lpTempPathBuffer))
     {
       ec.assign(GetLastError(), std::system_category());
       return std::string();
@@ -173,4 +173,4 @@ std::string temp_file_path(const std::string& suffix, std::error_code& ec)
 
 } // namespace FILESYSTEM
 } // namespace PLATFORM
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

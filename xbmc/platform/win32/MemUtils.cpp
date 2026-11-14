@@ -11,7 +11,7 @@
 #include <malloc.h>
 #include <windows.h>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace MEMORY
 {

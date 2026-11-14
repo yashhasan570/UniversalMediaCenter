@@ -7,7 +7,7 @@ import json
 import sys
 from urllib.parse import parse_qsl
 
-from xbmcaddon import Addon
+from addon import Addon
 
 ADDON = Addon()
 

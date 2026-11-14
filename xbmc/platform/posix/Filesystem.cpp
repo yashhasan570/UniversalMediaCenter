@@ -25,7 +25,7 @@
 #include <string.h>
 #include <unistd.h>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace PLATFORM
 {
@@ -83,7 +83,7 @@ std::string create_temp_directory(std::error_code &ec)
 
   auto path = temp_directory_path(ec);
 
-  strncpy(buf, (path + "xbmctempXXXXXX").c_str(), sizeof(buf) - 1);
+  strncpy(buf, (path + "tempXXXXXX").c_str(), sizeof(buf) - 1);
   buf[sizeof(buf) - 1] = '\0';
 
   auto tmp = mkdtemp(buf);
@@ -105,7 +105,7 @@ std::string temp_file_path(const std::string& suffix, std::error_code& ec)
   if (ec)
     return std::string();
 
-  tempPath = URIUtils::AddFileToFolder(tempPath, "xbmctempfileXXXXXX" + suffix);
+  tempPath = URIUtils::AddFileToFolder(tempPath, "tempfileXXXXXX" + suffix);
   if (tempPath.length() >= PATH_MAX)
   {
     ec.assign(EOVERFLOW, std::system_category());

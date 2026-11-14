@@ -10,7 +10,7 @@
 
 #include <memory>
 
-namespace KODI::RETRO
+namespace UNIVERSAL MEDIA CENTER::RETRO
 {
 class CRenderContext;
 struct HwContextProperties;
@@ -33,4 +33,4 @@ public:
 };
 
 std::unique_ptr<IHwRenderingContext> CreateHwRenderingContext(CRenderContext& context);
-} // namespace KODI::RETRO
+} // namespace UNIVERSAL MEDIA CENTER::RETRO

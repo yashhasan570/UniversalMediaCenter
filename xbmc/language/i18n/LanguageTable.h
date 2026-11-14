@@ -15,7 +15,7 @@
 #include <string>
 #include <string_view>
 
-namespace KODI::LANGUAGE::I18N
+namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N
 {
 /*!
  * \brief Every language Universal Media Center can name, and the codes each answers to.
@@ -92,4 +92,4 @@ private:
   //! Declarations arrive on the thread loading a language while any thread may be parsing
   mutable CSharedSection m_section;
 };
-} // namespace KODI::LANGUAGE::I18N
+} // namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N

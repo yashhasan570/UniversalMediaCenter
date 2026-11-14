@@ -22,15 +22,15 @@
 #include <cstdint>
 #include <memory>
 
-namespace XBMCAddon
+namespace Addon
 {
-  namespace xbmc
+  namespace 
   {
-    XBMCCOMMONS_STANDARD_EXCEPTION(RenderCaptureException);
+    COMMONS_STANDARD_EXCEPTION(RenderCaptureException);
 
     //
-    /// \defgroup python_xbmc_RenderCapture RenderCapture
-    /// \ingroup python_xbmc
+    /// \defgroup python__RenderCapture RenderCapture
+    /// \ingroup python_
     /// @{
     /// @brief **Universal Media Center's render capture.**
     ///
@@ -43,8 +43,8 @@ namespace XBMCAddon
     class RenderCapture : public AddonClass
     {
       //! the service outlives the handle: it is unregistered before script shutdown
-      std::shared_ptr<KODI::RENDERING::CAPTURE::CCaptureService> m_service;
-      std::unique_ptr<KODI::RENDERING::CAPTURE::CCaptureHandle> m_handle;
+      std::shared_ptr<UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CCaptureService> m_service;
+      std::unique_ptr<UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CCaptureHandle> m_handle;
       unsigned int m_width{0};
       unsigned int m_height{0};
       std::unique_ptr<uint8_t[]> m_buffer;
@@ -55,7 +55,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmc_RenderCapture
+      /// \ingroup python__RenderCapture
       /// @brief \python_func{ getWidth() }
       /// Get width
       ///
@@ -71,7 +71,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmc_RenderCapture
+      /// \ingroup python__RenderCapture
       /// @brief \python_func{ getHeight() }
       /// Get height
       ///
@@ -86,7 +86,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmc_RenderCapture
+      /// \ingroup python__RenderCapture
       /// @brief \python_func{ getAspectRatio() }
       /// Get aspect ratio of currently displayed video.
       ///
@@ -105,7 +105,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmc_RenderCapture
+      /// \ingroup python__RenderCapture
       /// @brief \python_func{ getImageFormat() }
       /// Get image format
       ///
@@ -125,7 +125,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmc_RenderCapture
+      /// \ingroup python__RenderCapture
       /// @brief \python_func{ getImage([msecs]) }
       /// Returns captured image as a bytearray.
       ///
@@ -153,7 +153,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmc_RenderCapture
+      /// \ingroup python__RenderCapture
       /// @brief \python_func{ capture(width, height) }
       /// Issue capture request.
       ///
@@ -180,9 +180,9 @@ namespace XBMCAddon
         if (!m_service)
           return;
 
-        KODI::RENDERING::CAPTURE::CaptureSpec spec;
-        spec.content = KODI::RENDERING::CAPTURE::CaptureContent::VIDEO;
-        spec.cadence = KODI::RENDERING::CAPTURE::CaptureCadence::CONTINUOUS;
+        UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CaptureSpec spec;
+        spec.content = UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CaptureContent::VIDEO;
+        spec.cadence = UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CaptureCadence::CONTINUOUS;
         spec.width = m_width;
         spec.height = m_height;
         m_handle = m_service->Submit(spec);
@@ -196,10 +196,10 @@ namespace XBMCAddon
           return false;
         if (!m_handle->WaitNext(std::chrono::milliseconds(msec ? msec : 1000)))
           return false;
-        const KODI::RENDERING::CAPTURE::CaptureResult result = m_handle->CopyResult();
+        const UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CaptureResult result = m_handle->CopyResult();
         // legacy contract: raw output-coded 8-bit BGRA, never tonemapped; an
         // HDR session delivers PQ/HLG-coded bytes exactly as glReadPixels did
-        return KODI::RENDERING::CAPTURE::CaptureCopyBGRA8(result, m_width, m_height,
+        return UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CaptureCopyBGRA8(result, m_width, m_height,
                                                           m_buffer.get());
       }
 #endif

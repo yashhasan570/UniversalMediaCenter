@@ -14,7 +14,7 @@
 #include <utility>
 #include <vector>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -54,4 +54,4 @@ private:
   AxisVector m_detectedAxes;
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

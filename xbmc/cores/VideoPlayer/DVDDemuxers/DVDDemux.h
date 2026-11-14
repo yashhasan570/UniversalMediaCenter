@@ -136,7 +136,7 @@ public:
   FFmpegExtraData extraData;
 
   StreamFlags flags{StreamFlags::FLAG_NONE};
-  KODI::LANGUAGE::CLanguageTag language; // empty when the container declares no language at all
+  UNIVERSAL MEDIA CENTER::LANGUAGE::CLanguageTag language; // empty when the container declares no language at all
   bool disabled{false}; // set when stream is disabled. (when no decoder exists)
 
   std::string name;

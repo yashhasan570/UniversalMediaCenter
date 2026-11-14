@@ -255,12 +255,12 @@ TEST(TestRegExp, GetMatchNoMatch)
 
 namespace
 {
-void RegExpCacheTest(KODI::REGEXP::RegExpCache* cache)
+void RegExpCacheTest(UNIVERSAL MEDIA CENTER::REGEXP::RegExpCache* cache)
 {
   std::shared_ptr<CRegExp> regexp;
 
   // Invalid pattern
-  regexp = KODI::REGEXP::GetRegExp("(abc", cache);
+  regexp = UNIVERSAL MEDIA CENTER::REGEXP::GetRegExp("(abc", cache);
 
   EXPECT_EQ(nullptr, regexp);
   if (cache != nullptr)
@@ -270,7 +270,7 @@ void RegExpCacheTest(KODI::REGEXP::RegExpCache* cache)
   }
 
   // The cache doesn't grow for known patterns
-  regexp = KODI::REGEXP::GetRegExp("(abc", cache);
+  regexp = UNIVERSAL MEDIA CENTER::REGEXP::GetRegExp("(abc", cache);
 
   EXPECT_EQ(nullptr, regexp);
   if (cache != nullptr)
@@ -279,7 +279,7 @@ void RegExpCacheTest(KODI::REGEXP::RegExpCache* cache)
     EXPECT_EQ(1, cache->size());
   }
 
-  regexp = KODI::REGEXP::GetRegExp("^(Test)", cache);
+  regexp = UNIVERSAL MEDIA CENTER::REGEXP::GetRegExp("^(Test)", cache);
 
   if (cache != nullptr)
   {
@@ -294,7 +294,7 @@ void RegExpCacheTest(KODI::REGEXP::RegExpCache* cache)
   }
 
   // The cache doesn't grow for known patterns
-  KODI::REGEXP::GetRegExp("^(Test)", cache);
+  UNIVERSAL MEDIA CENTER::REGEXP::GetRegExp("^(Test)", cache);
 
   if (cache != nullptr)
   {
@@ -304,7 +304,7 @@ void RegExpCacheTest(KODI::REGEXP::RegExpCache* cache)
 
   // Return a cached regexp
   std::shared_ptr<CRegExp> regexp2;
-  regexp2 = KODI::REGEXP::GetRegExp("^(Test)", cache);
+  regexp2 = UNIVERSAL MEDIA CENTER::REGEXP::GetRegExp("^(Test)", cache);
 
   if (cache != nullptr)
   {
@@ -320,7 +320,7 @@ void RegExpCacheTest(KODI::REGEXP::RegExpCache* cache)
 
 TEST(TestRegExpCache, WithCache)
 {
-  KODI::REGEXP::RegExpCache cache;
+  UNIVERSAL MEDIA CENTER::REGEXP::RegExpCache cache;
   EXPECT_TRUE(cache.empty());
 
   RegExpCacheTest(&cache);
@@ -336,7 +336,7 @@ TEST(TestRegExpCache, CtorArgs)
   std::shared_ptr<CRegExp> regexp;
 
   // Default constructor: case sensitive
-  regexp = KODI::REGEXP::GetRegExp("^(Test)", nullptr);
+  regexp = UNIVERSAL MEDIA CENTER::REGEXP::GetRegExp("^(Test)", nullptr);
 
   EXPECT_NE(nullptr, regexp);
   if (regexp != nullptr)
@@ -346,7 +346,7 @@ TEST(TestRegExpCache, CtorArgs)
   }
 
   // ctor argument for case sensitive match
-  regexp = KODI::REGEXP::GetRegExp("^(Test)", nullptr, true, CRegExp::forceUtf8);
+  regexp = UNIVERSAL MEDIA CENTER::REGEXP::GetRegExp("^(Test)", nullptr, true, CRegExp::forceUtf8);
 
   EXPECT_NE(nullptr, regexp);
   if (regexp != nullptr)
@@ -357,7 +357,7 @@ TEST(TestRegExpCache, CtorArgs)
   }
 
   // Default constructor: ascii mode
-  regexp = KODI::REGEXP::GetRegExp("\\x{00E0}", nullptr);
+  regexp = UNIVERSAL MEDIA CENTER::REGEXP::GetRegExp("\\x{00E0}", nullptr);
   EXPECT_NE(nullptr, regexp);
   if (regexp != nullptr)
   {
@@ -366,7 +366,7 @@ TEST(TestRegExpCache, CtorArgs)
   }
 
   // Constructor argument for unicode mode
-  regexp = KODI::REGEXP::GetRegExp("\\x{00E0}", nullptr, false, CRegExp::forceUtf8);
+  regexp = UNIVERSAL MEDIA CENTER::REGEXP::GetRegExp("\\x{00E0}", nullptr, false, CRegExp::forceUtf8);
 
   EXPECT_NE(nullptr, regexp);
   if (regexp != nullptr)

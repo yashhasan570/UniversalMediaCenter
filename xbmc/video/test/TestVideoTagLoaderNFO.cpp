@@ -52,7 +52,7 @@ class ArchiveNfoTestFixture : public testing::WithParamInterface<ArchiveNfoTest>
 TEST_P(ArchiveNfoTestFixture, FindNFO)
 {
   std::error_code ec;
-  const std::string tmpdir{KODI::PLATFORM::FILESYSTEM::temp_directory_path(ec)};
+  const std::string tmpdir{UNIVERSAL MEDIA CENTER::PLATFORM::FILESYSTEM::temp_directory_path(ec)};
   ASSERT_FALSE(ec);
   std::string dir{URIUtils::AddFileToFolder(
       tmpdir, fmt::format("NfoArchiveTest{:08x}", std::random_device{}()))};
@@ -107,7 +107,7 @@ class StackNfoTestFixture : public testing::WithParamInterface<StackNfoTest>, pu
 TEST_P(StackNfoTestFixture, FindNFO)
 {
   std::error_code ec;
-  const std::string tmpdir{KODI::PLATFORM::FILESYSTEM::temp_directory_path(ec)};
+  const std::string tmpdir{UNIVERSAL MEDIA CENTER::PLATFORM::FILESYSTEM::temp_directory_path(ec)};
   ASSERT_FALSE(ec);
   std::string dir{
       URIUtils::AddFileToFolder(tmpdir, fmt::format("NfoStackTest{:08x}", std::random_device{}()))};
@@ -178,7 +178,7 @@ class DiscNfoTestFixture : public testing::WithParamInterface<DiscNfoTest>, publ
 TEST_P(DiscNfoTestFixture, FindNFO)
 {
   std::error_code ec;
-  const std::string tmpdir{KODI::PLATFORM::FILESYSTEM::temp_directory_path(ec)};
+  const std::string tmpdir{UNIVERSAL MEDIA CENTER::PLATFORM::FILESYSTEM::temp_directory_path(ec)};
   ASSERT_FALSE(ec);
   std::string dir{
       URIUtils::AddFileToFolder(tmpdir, fmt::format("NfoDiscTest{:08x}", std::random_device{}()))};
@@ -200,7 +200,7 @@ TEST_P(DiscNfoTestFixture, FindNFO)
   if (GetParam().hybridFolder)
   {
     item.SetFolder(true);
-    item.SetProperty(KODI::ITEM::PROPERTY::IS_HYBRID_FOLDER, true);
+    item.SetProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::IS_HYBRID_FOLDER, true);
   }
   const CVideoTagLoaderNFO loader(item, nullptr, GetParam().movieFolder);
 

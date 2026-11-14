@@ -9,9 +9,9 @@
 #import "DarwinEmbedNowPlayingInfoManager.h"
 
 #if defined(TARGET_DARWIN_IOS)
-#include "platform/darwin/ios/XBMCController.h"
+#include "platform/darwin/ios/Controller.h"
 #elif defined(TARGET_DARWIN_TVOS)
-#include "platform/darwin/tvos/XBMCController.h"
+#include "platform/darwin/tvos/Controller.h"
 #endif
 
 #import <AVFoundation/AVFoundation.h>
@@ -95,7 +95,7 @@
   self.playbackState = DARWINEMBED_PLAYBACK_PLAYING;
 
 #if defined(TARGET_DARWIN_IOS)
-  [g_xbmcController disableNetworkAutoSuspend];
+  [g_Controller disableNetworkAutoSuspend];
 #endif
 }
 
@@ -116,7 +116,7 @@
 
 #if defined(TARGET_DARWIN_IOS)
   // schedule set network auto suspend state for save power if idle.
-  [g_xbmcController rescheduleNetworkAutoSuspend];
+  [g_Controller rescheduleNetworkAutoSuspend];
 #endif
 }
 
@@ -128,7 +128,7 @@
 
 #if defined(TARGET_DARWIN_IOS)
   // delay set network auto suspend state in case we are switching playing item.
-  [g_xbmcController rescheduleNetworkAutoSuspend];
+  [g_Controller rescheduleNetworkAutoSuspend];
 #endif
 }
 

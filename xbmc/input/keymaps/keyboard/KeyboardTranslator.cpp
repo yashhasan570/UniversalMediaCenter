@@ -9,7 +9,7 @@
 #include "KeyboardTranslator.h"
 
 #include "input/keyboard/Key.h"
-#include "input/keyboard/XBMC_keytable.h"
+#include "input/keyboard/_keytable.h"
 #include "input/keymaps/keyboard/KeyIDs.h"
 #include "utils/StringUtils.h"
 #include "utils/log.h"
@@ -19,7 +19,7 @@
 
 #include <tinyxml2.h>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace KEYMAP;
 
 uint32_t CKeyboardTranslator::TranslateButton(const tinyxml2::XMLElement* pButton)
@@ -84,7 +84,7 @@ uint32_t CKeyboardTranslator::TranslateButton(const tinyxml2::XMLElement* pButto
 uint32_t CKeyboardTranslator::TranslateString(const std::string& szButton)
 {
   uint32_t buttonCode = 0;
-  KEYBOARD::XBMCKEYTABLE keytable;
+  KEYBOARD::KEYTABLE keytable;
 
   // Look up the key name
   if (KEYBOARD::KeyTable::LookupName(szButton, &keytable))

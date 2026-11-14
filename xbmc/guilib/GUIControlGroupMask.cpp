@@ -16,7 +16,7 @@
 #include "windowing/GraphicContext.h"
 #include "windowing/WinSystem.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 CGUIControlGroupMask::CGUIControlGroupMask(
     int parentID, int controlID, float posX, float posY, float width, float height)

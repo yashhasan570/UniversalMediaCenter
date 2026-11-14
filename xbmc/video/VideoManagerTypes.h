@@ -64,6 +64,6 @@ struct VideoAssetInfo
   int m_assetTypeId{-1};
   std::string m_assetTypeName;
   int m_idMedia{-1};
-  KODI::MEDIA::TYPE m_mediaType{KODI::MEDIA::TYPE::NONE};
+  UNIVERSAL MEDIA CENTER::MEDIA::TYPE m_mediaType{UNIVERSAL MEDIA CENTER::MEDIA::TYPE::NONE};
   VideoAssetType m_assetType{VideoAssetType::UNKNOWN};
 };

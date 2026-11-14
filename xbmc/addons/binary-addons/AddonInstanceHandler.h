@@ -9,8 +9,8 @@
 #pragma once
 
 #include "addons/IAddon.h"
-#include "addons/kodi-dev-kit/include/kodi/c-api/addon_base.h"
-#include "addons/kodi-dev-kit/include/kodi/versions.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api/addon_base.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/versions.h"
 #include "threads/CriticalSection.h"
 
 #include <memory>
@@ -45,7 +45,7 @@ public:
    *                           **Currently used values:**
    * | Parent | Target | Description
    * |--------|--------|-------------
-   * | @ref kodi::addon::CInstanceInputStream | @ref kodi::addon::CInstanceVideoCodec | In order to be able to access the overlying input stream instance in the video codec created by Universal Media Center on the add-on.
+   * | @ref addon::CInstanceInputStream | @ref addon::CInstanceVideoCodec | In order to be able to access the overlying input stream instance in the video codec created by Universal Media Center on the add-on.
    * @param[in] uniqueWorkID *[opt]* Identification value intended to pass any special
    *                         values to the instance to be opened.
    *                         If not used, the IAddonInstanceHandler class pointer
@@ -53,13 +53,13 @@ public:
    *                         **Currently used values:**
    * | Add-on instance type | Description
    * |----------------------|---------------------
-   * | @ref kodi::addon::CInstanceInputStream "Inputstream" | To transfer special values to inputstream using the property @ref STREAM_PROPERTY_INPUTSTREAM_INSTANCE_ID from external space, for example PVR add-on which also supports inputstream can exchange special values with it, e.g. select the necessary add-on processing class, since it is not known at the start what is being executed ( live TV, radio, recordings...) and add-on may use different classes.
+   * | @ref addon::CInstanceInputStream "Inputstream" | To transfer special values to inputstream using the property @ref STREAM_PROPERTY_INPUTSTREAM_INSTANCE_ID from external space, for example PVR add-on which also supports inputstream can exchange special values with it, e.g. select the necessary add-on processing class, since it is not known at the start what is being executed ( live TV, radio, recordings...) and add-on may use different classes.
    * | All other | The used class pointer of Universal Media Center's @ref IAddonInstanceHandler is used as a value to have an individually different value.
    */
   IAddonInstanceHandler(ADDON_TYPE type,
                         const AddonInfoPtr& addonInfo,
                         AddonInstanceId instanceId = ADDON_INSTANCE_ID_UNUSED,
-                        KODI_HANDLE parentInstance = nullptr,
+                        UNIVERSALMEDIA_HANDLE parentInstance = nullptr,
                         const std::string& uniqueWorkID = "");
   virtual ~IAddonInstanceHandler();
 
@@ -87,7 +87,7 @@ public:
   virtual void OnPostUnInstall() {}
 
 protected:
-  KODI_ADDON_INSTANCE_STRUCT m_ifc{};
+  UNIVERSALMEDIA_ADDON_INSTANCE_STRUCT m_ifc{};
 
 private:
   IAddonInstanceHandler(const IAddonInstanceHandler&) = delete;
@@ -95,42 +95,42 @@ private:
 
   std::shared_ptr<CSetting> GetSetting(const std::string& setting) const;
 
-  static char* get_instance_user_path(const KODI_ADDON_INSTANCE_BACKEND_HDL hdl);
-  static bool is_instance_setting_using_default(const KODI_ADDON_INSTANCE_BACKEND_HDL hdl,
+  static char* get_instance_user_path(const UNIVERSALMEDIA_ADDON_INSTANCE_BACKEND_HDL hdl);
+  static bool is_instance_setting_using_default(const UNIVERSALMEDIA_ADDON_INSTANCE_BACKEND_HDL hdl,
                                                 const char* id);
-  static bool get_instance_setting_bool(const KODI_ADDON_INSTANCE_BACKEND_HDL hdl,
+  static bool get_instance_setting_bool(const UNIVERSALMEDIA_ADDON_INSTANCE_BACKEND_HDL hdl,
                                         const char* id,
                                         bool* value);
-  static bool get_instance_setting_int(const KODI_ADDON_INSTANCE_BACKEND_HDL hdl,
+  static bool get_instance_setting_int(const UNIVERSALMEDIA_ADDON_INSTANCE_BACKEND_HDL hdl,
                                        const char* id,
                                        int* value);
-  static bool get_instance_setting_float(const KODI_ADDON_INSTANCE_BACKEND_HDL hdl,
+  static bool get_instance_setting_float(const UNIVERSALMEDIA_ADDON_INSTANCE_BACKEND_HDL hdl,
                                          const char* id,
                                          float* value);
-  static bool get_instance_setting_string(const KODI_ADDON_INSTANCE_BACKEND_HDL hdl,
+  static bool get_instance_setting_string(const UNIVERSALMEDIA_ADDON_INSTANCE_BACKEND_HDL hdl,
                                           const char* id,
                                           char** value);
-  static bool set_instance_setting_bool(const KODI_ADDON_INSTANCE_BACKEND_HDL hdl,
+  static bool set_instance_setting_bool(const UNIVERSALMEDIA_ADDON_INSTANCE_BACKEND_HDL hdl,
                                         const char* id,
                                         bool value);
-  static bool set_instance_setting_int(const KODI_ADDON_INSTANCE_BACKEND_HDL hdl,
+  static bool set_instance_setting_int(const UNIVERSALMEDIA_ADDON_INSTANCE_BACKEND_HDL hdl,
                                        const char* id,
                                        int value);
-  static bool set_instance_setting_float(const KODI_ADDON_INSTANCE_BACKEND_HDL hdl,
+  static bool set_instance_setting_float(const UNIVERSALMEDIA_ADDON_INSTANCE_BACKEND_HDL hdl,
                                          const char* id,
                                          float value);
-  static bool set_instance_setting_string(const KODI_ADDON_INSTANCE_BACKEND_HDL hdl,
+  static bool set_instance_setting_string(const UNIVERSALMEDIA_ADDON_INSTANCE_BACKEND_HDL hdl,
                                           const char* id,
                                           const char* value);
 
-  KODI_ADDON_INSTANCE_INFO m_info;
-  KODI_ADDON_INSTANCE_FUNC_CB m_callbacks;
-  KODI_ADDON_INSTANCE_FUNC m_functions;
+  UNIVERSALMEDIA_ADDON_INSTANCE_INFO m_info;
+  UNIVERSALMEDIA_ADDON_INSTANCE_FUNC_CB m_callbacks;
+  UNIVERSALMEDIA_ADDON_INSTANCE_FUNC m_functions;
 
   const ADDON_TYPE m_type;
   const AddonInstanceId m_instanceId;
   std::string m_uniqueWorkID;
-  KODI_HANDLE m_parentInstance;
+  UNIVERSALMEDIA_HANDLE m_parentInstance;
   AddonInfoPtr m_addonInfo;
   std::shared_ptr<CBinaryAddonBase> m_addonBase;
   std::shared_ptr<CAddonDll> m_addon;

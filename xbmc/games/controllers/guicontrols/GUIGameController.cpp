@@ -26,7 +26,7 @@
 #include <mutex>
 #include <tuple>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 CGUIGameController::CGUIGameController(int parentID,

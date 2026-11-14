@@ -18,7 +18,7 @@
 class CApplicationPlayer;
 class CVideoInfoTag;
 
-namespace KODI::GUILIB::GUIINFO
+namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO
 {
 
 class CGUIInfo;
@@ -32,7 +32,7 @@ public:
   //! \brief Expire the content geometry resolved during the info refresh that is ending.
   void ResetContentGeometry();
 
-  // KODI::GUILIB::GUIINFO::IGUIInfoProvider implementation
+  // UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::IGUIInfoProvider implementation
   bool InitCurrentItem(CFileItem* item) override;
   bool GetLabel(std::string& value,
                 const CFileItem* item,
@@ -66,13 +66,13 @@ private:
 
   //! \brief The ratios in force for \p item, or for the player when it is null. The player's
   //! are resolved once per refresh, so every label agrees though live detection moves on.
-  KODI::VIDEO::GEOMETRY::ContentAspectSet ContentAspects(const CFileItem* item) const;
+  UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::ContentAspectSet ContentAspects(const CFileItem* item) const;
 
   mutable CCriticalSection m_geometrySection;
   mutable bool m_playerAspectsValid{false};
-  mutable KODI::VIDEO::GEOMETRY::ContentAspectSet m_playerAspects;
+  mutable UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::ContentAspectSet m_playerAspects;
 
   const std::shared_ptr<CApplicationPlayer> m_appPlayer;
 };
 
-} // namespace KODI::GUILIB::GUIINFO
+} // namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO

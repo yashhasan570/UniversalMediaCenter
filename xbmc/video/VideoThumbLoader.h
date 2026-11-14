@@ -22,7 +22,7 @@ class CStreamDetails;
 class CVideoDatabase;
 class EmbeddedArt;
 
-using ArtCache = std::map<std::pair<std::string, int>, KODI::ART::Artwork>;
+using ArtCache = std::map<std::pair<std::string, int>, UNIVERSAL MEDIA CENTER::ART::Artwork>;
 
 class CVideoThumbLoader : public CThumbLoader
 {
@@ -62,9 +62,9 @@ public:
    \sa GetLocalArt
    */
   static std::vector<std::string> GetArtTypes(const std::string &type);
-  static std::vector<std::string> GetArtTypes(KODI::MEDIA::TYPE type)
+  static std::vector<std::string> GetArtTypes(UNIVERSAL MEDIA CENTER::MEDIA::TYPE type)
   {
-    return GetArtTypes(KODI::MEDIA::NameOf(type));
+    return GetArtTypes(UNIVERSAL MEDIA CENTER::MEDIA::NameOf(type));
   }
 
   static bool IsValidArtType(const std::string& potentialArtType);
@@ -99,10 +99,10 @@ protected:
    */
   void DetectAndAddMissingItemData(CFileItem &item);
 
-  const KODI::ART::Artwork& GetArtFromCache(const std::string& mediaType, const int id);
+  const UNIVERSAL MEDIA CENTER::ART::Artwork& GetArtFromCache(const std::string& mediaType, const int id);
 
 private:
-  int SetDetailsForItem(CVideoInfoTag& details, const KODI::ART::Artwork& artwork);
+  int SetDetailsForItem(CVideoInfoTag& details, const UNIVERSAL MEDIA CENTER::ART::Artwork& artwork);
 
   /*! \brief Prefetch() the next list batch, unless the item is in one. */
   void PrefetchFrom(const CFileItem& item);
@@ -111,7 +111,7 @@ private:
   void PrefetchArt(std::map<std::string, std::vector<int>> artIds);
 
   /*! \brief Get an item's own art, taking it from the art cache when it holds it. */
-  bool GetItemArt(const CVideoInfoTag& tag, KODI::ART::Artwork& artwork);
+  bool GetItemArt(const CVideoInfoTag& tag, UNIVERSAL MEDIA CENTER::ART::Artwork& artwork);
 
   size_t m_prefetchEnd{0};
   std::set<const CFileItem*> m_batched;

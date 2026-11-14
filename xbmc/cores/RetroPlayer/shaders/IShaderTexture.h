@@ -8,7 +8,7 @@
 
 #pragma once
 
-namespace KODI::SHADER
+namespace UNIVERSAL MEDIA CENTER::SHADER
 {
 /*!
  * \brief Interface for a shader texture
@@ -35,4 +35,4 @@ public:
    */
   virtual float GetHeight() const = 0;
 };
-} // namespace KODI::SHADER
+} // namespace UNIVERSAL MEDIA CENTER::SHADER

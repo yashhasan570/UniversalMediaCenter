@@ -18,7 +18,7 @@
 #include "utils/FileUtils.h"
 #include "utils/StringUtils.h"
 #include "utils/URIUtils.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 #include "utils/XMLUtils.h"
 #include "utils/log.h"
 
@@ -26,7 +26,7 @@
 #include <cstdlib>
 #include <cstring>
 
-using KODI::MEDIA::MediaSection;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaSection;
 
 namespace
 {
@@ -35,7 +35,7 @@ constexpr const char* XML_SOURCES = "sources";
 constexpr const char* XML_SOURCE = "source";
 
 //! The order sources.xml is written in
-constexpr std::array<MediaSection, KODI::MEDIA::MEDIA_SECTIONS.size()> SAVE_ORDER{
+constexpr std::array<MediaSection, UNIVERSAL MEDIA CENTER::MEDIA::MEDIA_SECTIONS.size()> SAVE_ORDER{
     MediaSection::PROGRAMS, MediaSection::VIDEO, MediaSection::MUSIC,
     MediaSection::PICTURES, MediaSection::FILES, MediaSection::GAMES};
 } // unnamed namespace
@@ -92,7 +92,7 @@ bool CMediaSourceSettings::Load(const std::string& file)
   CLog::Log(LOGINFO, "CMediaSourceSettings: loading media sources from {}", file);
 
   // load xml file
-  CXBMCTinyXML2 xmlDoc;
+  CTinyXML2 xmlDoc;
   if (!xmlDoc.LoadFile(file))
   {
     CLog::Log(LOGERROR, "CMediaSourceSettings: error loading {}: Line {}, {}", file,
@@ -104,7 +104,7 @@ bool CMediaSourceSettings::Load(const std::string& file)
   if (!rootElement || !StringUtils::EqualsNoCase(rootElement->Value(), XML_SOURCES))
     CLog::Log(LOGERROR, "CMediaSourceSettings: sources.xml file does not contain <sources>");
 
-  for (const MediaSection section : KODI::MEDIA::MEDIA_SECTIONS)
+  for (const MediaSection section : UNIVERSAL MEDIA CENTER::MEDIA::MEDIA_SECTIONS)
     GetSources(rootElement, section, At(section));
 
   return true;
@@ -117,7 +117,7 @@ bool CMediaSourceSettings::Save() const
 
 bool CMediaSourceSettings::Save(const std::string& file) const
 {
-  CXBMCTinyXML2 doc;
+  CTinyXML2 doc;
   tinyxml2::XMLElement* element = doc.NewElement(XML_SOURCES);
   tinyxml2::XMLNode* rootNode = doc.InsertFirstChild(element);
 
@@ -396,7 +396,7 @@ bool CMediaSourceSettings::GetSource(MediaSection section,
 
   share.FromNameAndPaths(name, verifiedPaths);
 
-  KODI::UTILS::CLockInfo& lockInfo{share.GetLockInfo()};
+  UNIVERSAL MEDIA CENTER::UTILS::CLockInfo& lockInfo{share.GetLockInfo()};
   lockInfo.ResetBadPasswordCount();
   if (lockModeElement)
   {
@@ -428,7 +428,7 @@ void CMediaSourceSettings::GetSources(const tinyxml2::XMLNode* rootElement,
 {
   sources = {};
 
-  const std::string tagName{KODI::MEDIA::NameOf(section)};
+  const std::string tagName{UNIVERSAL MEDIA CENTER::MEDIA::NameOf(section)};
 
   const tinyxml2::XMLElement* childElement = rootElement->FirstChildElement(tagName.c_str());
   if (!childElement)
@@ -475,7 +475,7 @@ bool CMediaSourceSettings::SetSources(tinyxml2::XMLNode* root,
 {
   tinyxml2::XMLDocument* doc = root->GetDocument();
   tinyxml2::XMLElement* newElement =
-      doc->NewElement(std::string{KODI::MEDIA::NameOf(section)}.c_str());
+      doc->NewElement(std::string{UNIVERSAL MEDIA CENTER::MEDIA::NameOf(section)}.c_str());
   tinyxml2::XMLNode* sectionNode = root->InsertEndChild(newElement);
 
   if (!sectionNode)
@@ -494,7 +494,7 @@ bool CMediaSourceSettings::SetSources(tinyxml2::XMLNode* root,
     for (const auto& path : share.vecPaths)
       XMLUtils::SetPath(sourceElement, "path", path);
 
-    const KODI::UTILS::CLockInfo& lockInfo{share.GetLockInfo()};
+    const UNIVERSAL MEDIA CENTER::UTILS::CLockInfo& lockInfo{share.GetLockInfo()};
     if (lockInfo.GetState() > LOCK_STATE_NO_LOCK)
     {
       XMLUtils::SetInt(sourceElement, "lockmode", static_cast<int>(lockInfo.GetMode()));

@@ -19,7 +19,7 @@ class event_queue_t;
 class display_t;
 }
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace WINDOWING
 {
@@ -30,7 +30,7 @@ class CWinEventsWayland : public IWinEvents
 {
 public:
   bool MessagePump() override;
-  void MessagePush(XBMC_Event* ev);
+  void MessagePush(_Event* ev);
   /// Write buffered messages to the compositor
   static void Flush();
   /// Do a roundtrip on the specified queue from the event processing thread
@@ -41,7 +41,7 @@ private:
   static void SetDisplay(wayland::display_t* display);
 
   CCriticalSection m_queueMutex;
-  std::queue<XBMC_Event> m_queue;
+  std::queue<_Event> m_queue;
 };
 
 }

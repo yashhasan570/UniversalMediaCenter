@@ -12,7 +12,7 @@
 
 class CGUIDialogProgress;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -46,4 +46,4 @@ protected:
   CGUIDialogProgress* m_dlgProgress = nullptr;
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

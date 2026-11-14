@@ -129,8 +129,8 @@ void CGUIDialogTeletext::Render()
     MarkDirtyRegion();
   }
 
-  KODI::UTILS::COLOR::Color color =
-      (static_cast<KODI::UTILS::COLOR::Color>(teletextFadeAmount * 2.55f) & 0xff) << 24 | 0xFFFFFF;
+  UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color color =
+      (static_cast<UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color>(teletextFadeAmount * 2.55f) & 0xff) << 24 | 0xFFFFFF;
   CGUITexture::DrawQuad(m_vertCoords, color, m_pTxtTexture.get(), nullptr, -1.0f);
 
   CGUIDialog::Render();

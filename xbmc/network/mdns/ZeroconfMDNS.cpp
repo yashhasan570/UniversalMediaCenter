@@ -165,9 +165,9 @@ bool CZeroconfMDNS::doForceReAnnounceService(const std::string& fcr_identifier)
     // to change a txt record - so we diddle between
     // even and odd dummy records here
     if ( (it->second.updateNumber % 2) == 0)
-      TXTRecordSetValue(&it->second.txtRecordRef, "xbmcdummy", strlen("evendummy"), "evendummy");
+      TXTRecordSetValue(&it->second.txtRecordRef, "dummy", strlen("evendummy"), "evendummy");
     else
-      TXTRecordSetValue(&it->second.txtRecordRef, "xbmcdummy", strlen("odddummy"), "odddummy");
+      TXTRecordSetValue(&it->second.txtRecordRef, "dummy", strlen("odddummy"), "odddummy");
     it->second.updateNumber++;
 
     if (DNSServiceUpdateRecord(it->second.serviceRef, NULL, 0, TXTRecordGetLength(&it->second.txtRecordRef), TXTRecordGetBytesPtr(&it->second.txtRecordRef), 0) ==  kDNSServiceErr_NoError)

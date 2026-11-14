@@ -18,7 +18,7 @@ extern "C"
 #include <memory>
 #include <stdint.h>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -81,4 +81,4 @@ protected:
   unsigned int m_rotationDegCCW = 0;
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

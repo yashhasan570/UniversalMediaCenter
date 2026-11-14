@@ -17,7 +17,7 @@
 #include <cmath>
 #include <vector>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace JOYSTICK;
 
 //! Allowed noise for detecting discrete D-pads (value of 0.007 when centered

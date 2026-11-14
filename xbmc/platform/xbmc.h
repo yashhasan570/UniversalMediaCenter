@@ -12,4 +12,4 @@
 
 class CAppParams;
 
-extern "C" int XBMC_Run(bool renderGUI);
+extern "C" int _Run(bool renderGUI);

@@ -40,7 +40,7 @@
 #include <cmath>
 #include <memory>
 
-using namespace KODI::GUILIB::GUIINFO;
+using namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO;
 
 CPlayerGUIInfo::CPlayerGUIInfo()
   : m_appPlayer(CServiceBroker::GetAppComponents().GetComponent<CApplicationPlayer>()),
@@ -311,11 +311,11 @@ bool CPlayerGUIInfo::GetLabel(std::string& value,
       value = item->GetArt(info.GetData3());
       return true;
     case PLAYER_ICON:
-      value = item->GetArt(KODI::ART::TYPE::THUMB);
+      value = item->GetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB);
       if (value.empty())
-        value = item->GetArt(KODI::ART::TYPE::ICON);
+        value = item->GetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::ICON);
       if (fallback)
-        *fallback = item->GetArt(KODI::ART::TYPE::ICON);
+        *fallback = item->GetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::ICON);
       return true;
     case PLAYER_EDITLIST:
     case PLAYER_CUTS:

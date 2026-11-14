@@ -17,16 +17,16 @@
 
 TEST(TestAliasShortcutUtils, IsAliasShortcut)
 {
-  XFILE::CFile *tmpFile = XBMC_CREATETEMPFILE("noaliastest");
-  std::string noalias = XBMC_TEMPFILEPATH(tmpFile);
+  XFILE::CFile *tmpFile = _CREATETEMPFILE("noaliastest");
+  std::string noalias = _TEMPFILEPATH(tmpFile);
 
 #if defined(TARGET_DARWIN_OSX)
-  XFILE::CFile *aliasDestFile = XBMC_CREATETEMPFILE("aliastest");
-  std::string alias = XBMC_TEMPFILEPATH(aliasDestFile);
+  XFILE::CFile *aliasDestFile = _CREATETEMPFILE("aliastest");
+  std::string alias = _TEMPFILEPATH(aliasDestFile);
 
   //we only need the path here so delete the alias file
   //which will be recreated as shortcut later:
-  XBMC_DELETETEMPFILE(aliasDestFile);
+  _DELETETEMPFILE(aliasDestFile);
 
   // create alias from a pointing to /Volumes
   CDarwinUtils::CreateAliasShortcut(alias, "/Volumes");
@@ -39,7 +39,7 @@ TEST(TestAliasShortcutUtils, IsAliasShortcut)
 
   // a regular file is not a shortcut
   EXPECT_FALSE(IsAliasShortcut(noalias, false));
-  XBMC_DELETETEMPFILE(tmpFile);
+  _DELETETEMPFILE(tmpFile);
 
   // empty string is not an alias
   std::string emptyString;
@@ -52,17 +52,17 @@ TEST(TestAliasShortcutUtils, IsAliasShortcut)
 
 TEST(TestAliasShortcutUtils, TranslateAliasShortcut)
 {
-  XFILE::CFile *tmpFile = XBMC_CREATETEMPFILE("noaliastest");
-  std::string noalias = XBMC_TEMPFILEPATH(tmpFile);
+  XFILE::CFile *tmpFile = _CREATETEMPFILE("noaliastest");
+  std::string noalias = _TEMPFILEPATH(tmpFile);
   std::string noaliastemp = noalias;
 
 #if defined(TARGET_DARWIN_OSX)
-  XFILE::CFile *aliasDestFile = XBMC_CREATETEMPFILE("aliastest");
-  std::string alias = XBMC_TEMPFILEPATH(aliasDestFile);
+  XFILE::CFile *aliasDestFile = _CREATETEMPFILE("aliastest");
+  std::string alias = _TEMPFILEPATH(aliasDestFile);
 
   //we only need the path here so delete the alias file
   //which will be recreated as shortcut later:
-  XBMC_DELETETEMPFILE(aliasDestFile);
+  _DELETETEMPFILE(aliasDestFile);
 
   // create alias from a pointing to /Volumes
   CDarwinUtils::CreateAliasShortcut(alias, "/Volumes");
@@ -76,7 +76,7 @@ TEST(TestAliasShortcutUtils, TranslateAliasShortcut)
   // translating a non-shortcut url should result in no change...
   TranslateAliasShortcut(noaliastemp);
   EXPECT_STREQ(noaliastemp.c_str(), noalias.c_str());
-  XBMC_DELETETEMPFILE(tmpFile);
+  _DELETETEMPFILE(tmpFile);
 
   //translate empty should stay empty
   std::string emptyString;

@@ -24,7 +24,7 @@
 class CD3DTexture;
 struct SwsContext;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace SHADER
 {
@@ -143,4 +143,4 @@ protected:
   std::map<CWinRenderBuffer*, std::unique_ptr<RenderBufferTextures>> m_RBTexturesMap;
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

@@ -29,7 +29,7 @@
 
 #include <zlib.h>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 namespace
@@ -309,7 +309,7 @@ bool CGameFileIdentity::HashWhole(const std::string& path, GameFile& file, uint6
   // The catalogues key ROMs by the CRC-32 that PKZIP and the No-Intro sets use.
   // Universal Media Center's own Crc32 is the non-reflected variant and matches none of them.
   uLong crc = crc32(0UL, nullptr, 0);
-  KODI::UTILITY::CDigest md5(KODI::UTILITY::CDigest::Type::MD5);
+  UNIVERSAL MEDIA CENTER::UTILITY::CDigest md5(UNIVERSAL MEDIA CENTER::UTILITY::CDigest::Type::MD5);
   std::vector<char> buffer(CHUNK_SIZE);
   uint64_t total = 0;
 

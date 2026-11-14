@@ -51,7 +51,7 @@ public:
   static bool ShowAndGetSource(std::string& path,
                                bool allowNetworkShares,
                                std::vector<CMediaSource>* additionalShare = NULL,
-                               std::optional<KODI::MEDIA::MediaSection> section = {});
+                               std::optional<UNIVERSAL MEDIA CENTER::MEDIA::MediaSection> section = {});
   static bool ShowAndGetFileList(const std::vector<CMediaSource>& shares,
                                  const std::string& mask,
                                  const std::string& heading,
@@ -104,7 +104,7 @@ protected:
   int m_bFlip;
   bool m_addNetworkShareEnabled;
   bool m_flipEnabled;
-  std::optional<KODI::MEDIA::MediaSection> m_addSourceSection;
+  std::optional<UNIVERSAL MEDIA CENTER::MEDIA::MediaSection> m_addSourceSection;
   bool m_browsingForImages;
   bool m_useFileDirectories;
   bool m_singleList;              // if true, we have no shares or anything

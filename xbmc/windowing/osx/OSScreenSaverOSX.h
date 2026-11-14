@@ -12,7 +12,7 @@
 
 #import <IOKit/pwr_mgt/IOPMLib.h>
 
-class COSScreenSaverOSX : public KODI::WINDOWING::IOSScreenSaver
+class COSScreenSaverOSX : public UNIVERSAL MEDIA CENTER::WINDOWING::IOSScreenSaver
 {
 public:
   COSScreenSaverOSX() = default;

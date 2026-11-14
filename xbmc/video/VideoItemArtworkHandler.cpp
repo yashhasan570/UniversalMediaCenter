@@ -40,9 +40,9 @@
 #include "video/tags/VideoTagExtractionHelper.h"
 
 using namespace XFILE;
-using KODI::MEDIA::NameOf;
+using UNIVERSAL MEDIA CENTER::MEDIA::NameOf;
 
-namespace KODI::VIDEO
+namespace UNIVERSAL MEDIA CENTER::VIDEO
 {
 
 namespace
@@ -473,7 +473,7 @@ std::vector<std::string> CVideoItemArtworkMovieSetHandler::GetRemoteArt() const
 
   std::vector<std::string> remoteArt;
   const std::string baseDir =
-      StringUtils::Format("{}{}", KODI::VIDEO::DB_PATH::MOVIE_SETS, m_item->GetVideoInfoTag()->m_iDbId);
+      StringUtils::Format("{}{}", UNIVERSAL MEDIA CENTER::VIDEO::DB_PATH::MOVIE_SETS, m_item->GetVideoInfoTag()->m_iDbId);
   CFileItemList items;
   if (videodb.GetMoviesNav(baseDir, items))
   {
@@ -658,4 +658,4 @@ std::unique_ptr<IVideoItemArtworkHandler> IVideoItemArtworkHandlerFactory::Creat
   return artHandler;
 }
 
-} // namespace KODI::VIDEO
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO

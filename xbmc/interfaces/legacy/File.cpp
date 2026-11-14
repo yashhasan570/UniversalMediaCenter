@@ -8,9 +8,9 @@
 
 #include "File.h"
 
-namespace XBMCAddon
+namespace Addon
 {
-  namespace xbmcvfs
+  namespace vfs
   {
     XbmcCommons::Buffer File::readBytes(unsigned long numBytes)
     {

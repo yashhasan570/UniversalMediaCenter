@@ -1,2 +1,2 @@
-xbmc/events         events
-xbmc/events/windows events/windows
+/events         events
+/events/windows events/windows

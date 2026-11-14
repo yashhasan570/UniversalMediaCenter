@@ -25,8 +25,8 @@
 #include "video/guilib/VideoGUIUtils.h"
 
 using namespace CONTEXTMENU;
-using namespace KODI;
-using namespace KODI::UTILS::GUILIB;
+using namespace UNIVERSAL MEDIA CENTER;
+using namespace UNIVERSAL MEDIA CENTER::UTILS::GUILIB;
 
 bool CFavouriteContextMenuAction::IsVisible(const CFileItem& item) const
 {

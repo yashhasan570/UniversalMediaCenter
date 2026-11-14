@@ -1,20 +1,20 @@
 Event Client Examples and PS3 Sixaxis and Blu-Ray Remote Support
 ----------------------------------------------------------------
 
-This directory contains 6 sample programs that demonstrate XBMC's
+This directory contains 6 sample programs that demonstrate 's
 event server (which is still in development). The programs are in
-Python and C++. XBMC also needs to be running (obviously) so that it
+Python and C++.  also needs to be running (obviously) so that it
 can receive the events.
 
 - example_button1.py       | example_button1.cpp
 - example_button2.py       | example_button2.cpp
 - example_notification.py  | example_notification.cpp
 
-The first 2 show how button / key presses can be sent to XBMC.
-The third one shows how to display notifications in XBMC.
+The first 2 show how button / key presses can be sent to .
+The third one shows how to display notifications in .
 
-- xbmcclient.py
-- xbmcclient.h
+- client.py
+- client.h
 
 These are the Python module and C++ header that you can use when
 writing your own programs. It is not yet complete and likely to change
@@ -59,7 +59,7 @@ Using the PS3 Sixaxis Controller
 
 Currently, all that is supported with the Sixaxis controller is to be able
 emulate the mouse behavior. Hold down the PS button and wave the controller
-around and watch the mouse in XBMC mouse. Tilt it from left to right (along
+around and watch the mouse in  mouse. Tilt it from left to right (along
 your Z axis) to control horizontal motion. Tilt it towards and away from you
 along (along your X axis) to control vertical mouse movement.
 

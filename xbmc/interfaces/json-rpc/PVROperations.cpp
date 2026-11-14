@@ -35,7 +35,7 @@
 
 using namespace JSONRPC;
 using namespace PVR;
-using namespace KODI::MESSAGING;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
 
 JSONRPC_STATUS CPVROperations::GetProperties(const std::string& method,
                                              ITransportLayer* transport,

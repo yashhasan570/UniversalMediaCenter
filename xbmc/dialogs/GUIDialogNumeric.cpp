@@ -15,7 +15,7 @@
 #include "guilib/GUIWindowManager.h"
 #include "input/actions/Action.h"
 #include "input/actions/ActionIDs.h"
-#include "input/keyboard/XBMC_vkeys.h"
+#include "input/keyboard/_vkeys.h"
 #include "input/keymaps/keyboard/KeyIDs.h"
 #include "interfaces/AnnouncementManager.h"
 #include "messaging/helpers/DialogOKHelper.h"
@@ -36,9 +36,9 @@
 #define CONTROL_NEXT          22
 #define CONTROL_BACKSPACE     23
 
-using namespace KODI::MESSAGING;
-using KODI::DIALOGS::NUMERIC_MODE;
-using KODI::UTILITY::CDigest;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
+using UNIVERSAL MEDIA CENTER::DIALOGS::NUMERIC_MODE;
+using UNIVERSAL MEDIA CENTER::UTILITY::CDigest;
 
 namespace
 {
@@ -51,7 +51,7 @@ bool IsDateOrTime(NUMERIC_MODE mode)
 
 CGUIDialogNumeric::CGUIDialogNumeric(void) : CGUIDialog(WINDOW_DIALOG_NUMERIC, "DialogNumeric.xml")
 {
-  memset(&m_datetime, 0, sizeof(KODI::TIME::SystemTime));
+  memset(&m_datetime, 0, sizeof(UNIVERSAL MEDIA CENTER::TIME::SystemTime));
   m_loadType = KEEP_IN_MEMORY;
 }
 
@@ -120,15 +120,15 @@ bool CGUIDialogNumeric::OnAction(const CAction &action)
   {
     // input from the keyboard (vkey, not ascii)
     uint16_t b = action.GetID() - KEY_VKEY;
-    if (b == XBMCVK_LEFT)
+    if (b == VK_LEFT)
       OnPrevious();
-    else if (b == XBMCVK_RIGHT)
+    else if (b == VK_RIGHT)
       OnNext();
-    else if (b == XBMCVK_RETURN || b == XBMCVK_NUMPADENTER)
+    else if (b == VK_RETURN || b == VK_NUMPADENTER)
       OnOK();
-    else if (b == XBMCVK_BACK)
+    else if (b == VK_BACK)
       OnBackSpace();
-    else if (b == XBMCVK_ESCAPE)
+    else if (b == VK_ESCAPE)
       OnCancel();
   }
   else if (action.GetID() == KEY_UNICODE)
@@ -383,7 +383,7 @@ void CGUIDialogNumeric::OnNumber(uint32_t num)
   }
 }
 
-void CGUIDialogNumeric::SetMode(NUMERIC_MODE mode, const KODI::TIME::SystemTime& initial)
+void CGUIDialogNumeric::SetMode(NUMERIC_MODE mode, const UNIVERSAL MEDIA CENTER::TIME::SystemTime& initial)
 {
   m_mode = mode;
   m_block = 0;
@@ -453,7 +453,7 @@ void CGUIDialogNumeric::SetMode(NUMERIC_MODE mode, const std::string &initial)
     m_number = initial;
 }
 
-KODI::TIME::SystemTime CGUIDialogNumeric::GetOutput() const
+UNIVERSAL MEDIA CENTER::TIME::SystemTime CGUIDialogNumeric::GetOutput() const
 {
   assert(IsDateOrTime(m_mode));
   return m_datetime;
@@ -487,7 +487,7 @@ bool CGUIDialogNumeric::ShowAndGetSeconds(std::string &timeString, const std::st
   CGUIDialogNumeric *pDialog = CServiceBroker::GetGUI()->GetWindowManager().GetWindow<CGUIDialogNumeric>(WINDOW_DIALOG_NUMERIC);
   if (!pDialog) return false;
   int seconds = StringUtils::TimeStringToSeconds(timeString);
-  KODI::TIME::SystemTime time = {};
+  UNIVERSAL MEDIA CENTER::TIME::SystemTime time = {};
   time.hour = seconds / 3600;
   time.minute = (seconds - time.hour * 3600) / 60;
   time.second = seconds - time.hour * 3600 - time.minute * 60;
@@ -502,7 +502,7 @@ bool CGUIDialogNumeric::ShowAndGetSeconds(std::string &timeString, const std::st
   return true;
 }
 
-bool CGUIDialogNumeric::ShowAndGetTime(KODI::TIME::SystemTime& time, const std::string& heading)
+bool CGUIDialogNumeric::ShowAndGetTime(UNIVERSAL MEDIA CENTER::TIME::SystemTime& time, const std::string& heading)
 {
   CGUIDialogNumeric *pDialog = CServiceBroker::GetGUI()->GetWindowManager().GetWindow<CGUIDialogNumeric>(WINDOW_DIALOG_NUMERIC);
   if (!pDialog) return false;
@@ -515,7 +515,7 @@ bool CGUIDialogNumeric::ShowAndGetTime(KODI::TIME::SystemTime& time, const std::
   return true;
 }
 
-bool CGUIDialogNumeric::ShowAndGetDate(KODI::TIME::SystemTime& date, const std::string& heading)
+bool CGUIDialogNumeric::ShowAndGetDate(UNIVERSAL MEDIA CENTER::TIME::SystemTime& date, const std::string& heading)
 {
   CGUIDialogNumeric *pDialog = CServiceBroker::GetGUI()->GetWindowManager().GetWindow<CGUIDialogNumeric>(WINDOW_DIALOG_NUMERIC);
   if (!pDialog) return false;

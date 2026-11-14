@@ -52,7 +52,7 @@ public:
   void Register(IDispResource *resource) override;
   void Unregister(IDispResource *resource) override;
 
-  void MessagePush(XBMC_Event *newEvent);
+  void MessagePush(_Event *newEvent);
 
   // winevents override
   bool MessagePump() override;
@@ -62,7 +62,7 @@ public:
   float GetGuiSdrPeakLuminance() const override;
 
 protected:
-  std::unique_ptr<KODI::WINDOWING::IOSScreenSaver> GetOSScreenSaverImpl() override;
+  std::unique_ptr<UNIVERSAL MEDIA CENTER::WINDOWING::IOSScreenSaver> GetOSScreenSaverImpl() override;
   void OnTimeout() override;
 
   CAndroidUtils *m_android;

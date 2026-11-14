@@ -17,7 +17,7 @@
 
 #include <algorithm>
 
-using KODI::PLATFORM::WASM::CWasmAudioWorkletManager;
+using UNIVERSAL MEDIA CENTER::PLATFORM::WASM::CWasmAudioWorkletManager;
 
 namespace
 {

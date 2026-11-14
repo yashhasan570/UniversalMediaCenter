@@ -72,7 +72,7 @@
 #include <memory>
 
 #ifdef TARGET_ANDROID
-#include "platform/android/activity/XBMCApp.h"
+#include "platform/android/activity/App.h"
 #endif
 #ifdef TARGET_DARWIN_EMBEDDED
 #include "platform/darwin/DarwinUtils.h"
@@ -81,7 +81,7 @@
 #include "platform/win32/WIN32Util.h"
 #endif
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 namespace
 {
@@ -290,7 +290,7 @@ void CApplicationMessageHandling::OnApplicationMessage(MESSAGING::ThreadMessage*
 #if defined(TARGET_ANDROID)
       if (!pMsg->params.empty())
       {
-        CXBMCApp::StartActivity(pMsg->params[0], pMsg->params.size() > 1 ? pMsg->params[1] : "",
+        CApp::StartActivity(pMsg->params[0], pMsg->params.size() > 1 ? pMsg->params[1] : "",
                                 pMsg->params.size() > 2 ? pMsg->params[2] : "",
                                 pMsg->params.size() > 3 ? pMsg->params[3] : "",
                                 pMsg->params.size() > 4 ? pMsg->params[4] : "",
@@ -320,8 +320,8 @@ void CApplicationMessageHandling::OnApplicationMessage(MESSAGING::ThreadMessage*
     }
     case TMSG_VIDEORESIZE:
     {
-      XBMC_Event newEvent = {};
-      newEvent.type = XBMC_VIDEORESIZE;
+      _Event newEvent = {};
+      newEvent.type = _VIDEORESIZE;
       newEvent.resize.width = pMsg->param1;
       newEvent.resize.height = pMsg->param2;
       newEvent.resize.scale = 1.0;
@@ -361,9 +361,9 @@ void CApplicationMessageHandling::OnApplicationMessage(MESSAGING::ThreadMessage*
 #elif defined(TARGET_POSIX)
       CUtil::RunCommandLine(pMsg->strParam, (pMsg->param1 == 1));
 #elif defined(TARGET_WINDOWS)
-      CWIN32Util::XBMCShellExecute(pMsg->strParam, (pMsg->param1 == 1));
+      CWIN32Util::ShellExecute(pMsg->strParam, (pMsg->param1 == 1));
 #endif
-      // Resume AE processing of XBMC native audio
+      // Resume AE processing of  native audio
       if (audioengine && !audioengine->Resume())
         CLog::LogF(LOGFATAL, "Failed to restart AudioEngine after return from external player");
 
@@ -455,7 +455,7 @@ void CApplicationMessageHandling::OnApplicationMessage(MESSAGING::ThreadMessage*
         if (items.IsEmpty())
         {
           CServiceBroker::GetSettingsComponent()->GetSettings()->SetString(
-              CSettings::SETTING_SCREENSAVER_MODE, "screensaver.xbmc.builtin.dim");
+              CSettings::SETTING_SCREENSAVER_MODE, "screensaver..builtin.dim");
           m_app.GetComponent<CApplicationPowerHandling>()->ActivateScreenSaver();
         }
         else
@@ -478,7 +478,7 @@ void CApplicationMessageHandling::OnApplicationMessage(MESSAGING::ThreadMessage*
     {
       if (pMsg->lpVoid)
       {
-        const auto* event{static_cast<XBMC_Event*>(pMsg->lpVoid)};
+        const auto* event{static_cast<_Event*>(pMsg->lpVoid)};
         this->OnEvent(*event);
         delete event;
       }
@@ -563,7 +563,7 @@ bool CApplicationMessageHandling::OnMessage(const CGUIMessage& message)
             appVolume->GetVolumeRatio() <= CApplicationVolumeHandling::VOLUME_MINIMUM)
           appVolume->ShowVolumeBar();
 
-        // offer enabling addons at kodi startup that are disabled due to
+        // offer enabling addons at universalmediacenter startup that are disabled due to
         // e.g. os package manager installation on linux
         m_app.ConfigureAndEnableAddons();
 
@@ -935,7 +935,7 @@ bool CApplicationMessageHandling::OnMessage(const CGUIMessage& message)
     break;
     case GUI_MSG_EXECUTE:
       if (message.GetNumStringParams())
-        return m_app.ExecuteXBMCAction(message.GetStringParam(), message.GetItem());
+        return m_app.ExecuteAction(message.GetStringParam(), message.GetItem());
       break;
     default:
       break;

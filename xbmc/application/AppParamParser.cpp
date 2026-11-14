@@ -42,7 +42,7 @@ Arguments:
   --version             Print version information
   --test                Enable test mode. [FILE] required.
   --settings=<filename> Loads specified file after advancedsettings.xml replacing any settings specified
-                        specified file must exist in special://xbmc/system/
+                        specified file must exist in special:///system/
 )""";
 
 } // namespace

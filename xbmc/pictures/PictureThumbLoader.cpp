@@ -32,7 +32,7 @@
 #include "video/VideoFileItemClassify.h"
 #include "video/VideoThumbLoader.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace XFILE;
 
 CPictureThumbLoader::CPictureThumbLoader() : CThumbLoader()

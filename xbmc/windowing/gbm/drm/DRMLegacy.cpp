@@ -23,7 +23,7 @@
 #include <poll.h>
 #include <unistd.h>
 
-using namespace KODI::WINDOWING::GBM;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::GBM;
 
 static int flip_happening = 0;
 

@@ -46,7 +46,7 @@ bool CDirectoryNodeTitleTvShows::GetContent(CFileItemList& items) const
   CollectQueryParams(params);
 
   const int details =
-      items.GetProperty(KODI::ITEM::PROPERTY::SET_VIDEODB_DETAILS).asInteger32(VideoDbDetailsNone);
+      items.GetProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::SET_VIDEODB_DETAILS).asInteger32(VideoDbDetailsNone);
 
   bool bSuccess = videodatabase.GetTvShowsNav(
       BuildPath(), items, params.GetGenreId(), params.GetYear(), params.GetActorId(),

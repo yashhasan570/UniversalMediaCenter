@@ -10,7 +10,7 @@
 
 #include "dbwrappers/DatabaseQuery.h"
 #include "utils/SortUtils.h"
-#include "utils/XBMCTinyXML.h"
+#include "utils/TinyXML.h"
 
 #include <optional>
 #include <set>
@@ -23,7 +23,7 @@ class CURL;
 class CVariant;
 enum class WatchedMode;
 
-namespace KODI::PLAYLIST
+namespace UNIVERSAL MEDIA CENTER::PLAYLIST
 {
 
 class CSmartPlaylistRule : public CDatabaseQueryRule
@@ -75,7 +75,7 @@ private:
   std::string GetVideoResolutionQuery(const std::string &parameter) const;
   static std::string FormatLinkQuery(const char* field,
                                      const char* table,
-                                     KODI::MEDIA::TYPE mediaType,
+                                     UNIVERSAL MEDIA CENTER::MEDIA::TYPE mediaType,
                                      const std::string& mediaField,
                                      const std::string& parameter);
   std::string FormatYearQuery(const std::string& field,
@@ -204,7 +204,7 @@ private:
   bool m_groupMixed;
   std::optional<WatchedMode> m_watchedMode;
 
-  CXBMCTinyXML m_xmlDoc;
+  CTinyXML m_xmlDoc;
 };
 
-} // namespace KODI::PLAYLIST
+} // namespace UNIVERSAL MEDIA CENTER::PLAYLIST

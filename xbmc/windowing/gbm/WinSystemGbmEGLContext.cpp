@@ -14,8 +14,8 @@
 #include "cores/VideoPlayer/VideoRenderers/RenderFactory.h"
 #include "utils/log.h"
 
-using namespace KODI::WINDOWING::GBM;
-using namespace KODI::WINDOWING::LINUX;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::GBM;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::LINUX;
 
 bool CWinSystemGbmEGLContext::InitWindowSystemEGL(EGLint renderableType, EGLint apiType)
 {
@@ -54,7 +54,7 @@ bool CWinSystemGbmEGLContext::InitWindowSystemEGL(EGLint renderableType, EGLint 
   {
     if (m_DRM->SupportsFencing())
     {
-      m_eglFence = std::make_unique<KODI::UTILS::EGL::CEGLFence>(m_eglContext.GetEGLDisplay());
+      m_eglFence = std::make_unique<UNIVERSAL MEDIA CENTER::UTILS::EGL::CEGLFence>(m_eglContext.GetEGLDisplay());
     }
     else
     {
@@ -263,7 +263,7 @@ bool CWinSystemGbmEGLContext::SetVideoOutput(const VideoPicture* videoPicture)
     // surface destroy (primary-plane invariant). Force a full modeset on
     // the next commit to re-enable the CRTC. No-op on drivers without the
     // quirk (Intel, RPi, etc.) so they keep the fast-flip path.
-    if (m_DRM->HasQuirk(KODI::WINDOWING::GBM::QUIRK_NEEDSPRIMARY))
+    if (m_DRM->HasQuirk(UNIVERSAL MEDIA CENTER::WINDOWING::GBM::QUIRK_NEEDSPRIMARY))
       m_DRM->SetActive(true);
 
     // The chained base reads the active plane's cached format and

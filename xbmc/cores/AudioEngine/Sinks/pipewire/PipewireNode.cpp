@@ -20,7 +20,7 @@
 #include <spa/param/format.h>
 #include <spa/pod/iter.h>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace PIPEWIRE;
 
 CPipewireNode::CPipewireNode(CPipewireRegistry& registry, uint32_t id, const char* type)

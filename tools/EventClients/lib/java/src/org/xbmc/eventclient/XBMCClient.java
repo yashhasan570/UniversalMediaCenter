@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2008-2013 Team XBMC
+ *  Copyright (C) 2008-2013 Team 
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -16,22 +16,22 @@
  *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package org.xbmc.eventclient;
+package org..eventclient;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.InetAddress;
 
 /**
- * XBMC Event Client Class
+ *  Event Client Class
  *
- * Implements an XBMC-Client. This class can be used to implement your own application which
- * should act as a Input device for XBMC. Also starts a Ping-Thread, which tells the XBMC EventServer
+ * Implements an -Client. This class can be used to implement your own application which
+ * should act as a Input device for . Also starts a Ping-Thread, which tells the  EventServer
  * that the client is alive. Therefore if you close your application you SHOULD call stopClient()!
  * @author Stefan Agner
  *
  */
-public class XBMCClient
+public class Client
 {
 	private boolean hasIcon = false;
 	private String deviceName;
@@ -42,14 +42,14 @@ public class XBMCClient
 	private int hostPort;
 
 	/**
-	 * Starts a XBMC EventClient.
-	 * @param hostAddress Address of the Host running XBMC
-	 * @param hostPort Port of the Host running XBMC (default 9777)
+	 * Starts a  EventClient.
+	 * @param hostAddress Address of the Host running 
+	 * @param hostPort Port of the Host running  (default 9777)
 	 * @param deviceName Name of the Device
 	 * @param iconFile Path to the Iconfile (PNG, JPEG or GIF)
 	 * @throws IOException
 	 */
-	public XBMCClient(InetAddress hostAddress, int hostPort, String deviceName, String iconFile) throws IOException
+	public Client(InetAddress hostAddress, int hostPort, String deviceName, String iconFile) throws IOException
 	{
 		byte iconType = Packet.ICON_PNG;
 		// Assume png as icon type
@@ -73,28 +73,28 @@ public class XBMCClient
 
 
 	/**
-	 * Starts a XBMC EventClient.
-	 * @param hostAddress Address of the Host running XBMC
-	 * @param hostPort Port of the Host running XBMC (default 9777)
+	 * Starts a  EventClient.
+	 * @param hostAddress Address of the Host running 
+	 * @param hostPort Port of the Host running  (default 9777)
 	 * @param deviceName Name of the Device
 	 * @param iconType Type of the icon file (see Packet.ICON_PNG, Packet.ICON_JPEG or Packet.ICON_GIF)
 	 * @param iconData The icon itself as a Byte-Array
 	 * @throws IOException
 	 */
-	public XBMCClient(InetAddress hostAddress, int hostPort, String deviceName, byte iconType, byte[] iconData) throws IOException
+	public Client(InetAddress hostAddress, int hostPort, String deviceName, byte iconType, byte[] iconData) throws IOException
 	{
 		hasIcon = true;
 		startClient(hostAddress, hostPort, deviceName, iconType, iconData);
 	}
 
 	/**
-	 * Starts a XBMC EventClient without an icon.
-	 * @param hostAddress Address of the Host running XBMC
-	 * @param hostPort Port of the Host running XBMC (default 9777)
+	 * Starts a  EventClient without an icon.
+	 * @param hostAddress Address of the Host running 
+	 * @param hostPort Port of the Host running  (default 9777)
 	 * @param deviceName Name of the Device
 	 * @throws IOException
 	 */
-	public XBMCClient(InetAddress hostAddress, int hostPort, String deviceName) throws IOException
+	public Client(InetAddress hostAddress, int hostPort, String deviceName) throws IOException
 	{
 		hasIcon = false;
 		byte iconType = Packet.ICON_NONE;
@@ -104,9 +104,9 @@ public class XBMCClient
 
 
 	/**
-	 * Starts a XBMC EventClient.
-	 * @param hostAddress Address of the Host running XBMC
-	 * @param hostPort Port of the Host running XBMC (default 9777)
+	 * Starts a  EventClient.
+	 * @param hostAddress Address of the Host running 
+	 * @param hostPort Port of the Host running  (default 9777)
 	 * @param deviceName Name of the Device
 	 * @param iconType Type of the icon file (see Packet.ICON_PNG, Packet.ICON_JPEG or Packet.ICON_GIF)
 	 * @param iconData The icon itself as a Byte-Array
@@ -137,7 +137,7 @@ public class XBMCClient
 	}
 
 	/**
-	 * Stops the XBMC EventClient (especially the Ping-Thread)
+	 * Stops the  EventClient (especially the Ping-Thread)
 	 * @throws IOException
 	 */
 	public void stopClient() throws IOException
@@ -152,7 +152,7 @@ public class XBMCClient
 
 
 	/**
-	 * Displays a notification window in XBMC.
+	 * Displays a notification window in .
 	 * @param title Message title
 	 * @param message The actual message
 	 */
@@ -221,7 +221,7 @@ public class XBMCClient
 	}
 
 	/**
-	 * Sets the mouse position in XBMC
+	 * Sets the mouse position in 
 	 * @param x horizontal position ranging from 0 to 65535
 	 * @param y vertical position ranging from 0 to 65535
 	 */
@@ -232,7 +232,7 @@ public class XBMCClient
 	}
 
 	/**
-	 * Sends a ping to the XBMC EventServer
+	 * Sends a ping to the  EventServer
 	 * @throws IOException
 	 */
 	public void ping() throws IOException
@@ -242,8 +242,8 @@ public class XBMCClient
 	}
 
 	/**
-	 * Tells XBMC to log the message to xbmc.log with the loglevel as specified.
-	 * @param loglevel the loglevel, follows XBMC standard.
+	 * Tells  to log the message to .log with the loglevel as specified.
+	 * @param loglevel the loglevel, follows  standard.
 	 * <ul>
 	 * <li>0 = DEBUG</li>
 	 * <li>1 = INFO</li>
@@ -261,7 +261,7 @@ public class XBMCClient
 	}
 
 	/**
-	 * Tells XBMC to do the action specified, based on the type it knows were it needs to be sent.
+	 * Tells  to do the action specified, based on the type it knows were it needs to be sent.
 	 * @param actionmessage Actionmessage (as in scripting/skinning)
 	 */
 	public void sendAction(String actionmessage) throws IOException
@@ -271,7 +271,7 @@ public class XBMCClient
 	}
 
 	/**
-	 * Implements a PingThread which tells XBMC EventServer that the Client is alive (this should
+	 * Implements a PingThread which tells  EventServer that the Client is alive (this should
 	 * be done at least every 60 seconds!
 	 * @author Stefan Agner
 	 *
@@ -285,7 +285,7 @@ public class XBMCClient
 
 		public PingThread(InetAddress hostAddress, int hostPort, int sleepTime)
 		{
-			super("XBMC EventClient Ping-Thread");
+			super(" EventClient Ping-Thread");
 			this.hostAddress = hostAddress;
 			this.hostPort = hostPort;
 			this.sleepTime = sleepTime;

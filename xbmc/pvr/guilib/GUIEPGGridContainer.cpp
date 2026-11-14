@@ -37,7 +37,7 @@
 
 #include <tinyxml.h>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace PVR;
 
 CGUIEPGGridContainer::CGUIEPGGridContainer(int parentID,

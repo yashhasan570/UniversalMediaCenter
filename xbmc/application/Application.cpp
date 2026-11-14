@@ -161,7 +161,7 @@
 #include "windowing/WinSystem.h"
 #include "windowing/WindowSystemFactory.h"
 #if defined(TARGET_ANDROID)
-#include "platform/android/activity/XBMCApp.h"
+#include "platform/android/activity/App.h"
 #endif
 #ifdef TARGET_DARWIN
 #include "platform/darwin/DarwinUtils.h"
@@ -205,14 +205,14 @@ using namespace EVENTSERVER;
 using namespace JSONRPC;
 using namespace PVR;
 using namespace PERIPHERALS;
-using namespace KODI;
-using namespace KODI::MESSAGING;
+using namespace UNIVERSAL MEDIA CENTER;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
 using namespace ActiveAE;
 
 using namespace XbmcThreads;
 using namespace std::chrono_literals;
 
-using KODI::MESSAGING::HELPERS::DialogResponse;
+using UNIVERSAL MEDIA CENTER::MESSAGING::HELPERS::DialogResponse;
 
 using namespace std::chrono_literals;
 
@@ -270,7 +270,7 @@ bool CApplication::Create()
 
   // Screen capture service
   CServiceBroker::RegisterCaptureService(
-      std::make_shared<KODI::RENDERING::CAPTURE::CCaptureService>());
+      std::make_shared<UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CCaptureService>());
 
   // Announcement service
   m_pAnnouncementManager = std::make_shared<ANNOUNCEMENT::CAnnouncementManager>();
@@ -313,7 +313,7 @@ bool CApplication::Create()
       UserDirectoriesLocation::PLATFORM)
 #endif
   {
-    CDirectory::Create("special://xbmc/addons");
+    CDirectory::Create("special:///addons");
   }
 
   // Init our DllLoaders emu env
@@ -414,7 +414,7 @@ bool CApplication::CreateGUI()
   const auto appPower = GetComponent<CApplicationPowerHandling>();
   appPower->SetRenderGUI(true);
 
-  auto windowSystems = KODI::WINDOWING::CWindowSystemFactory::GetWindowSystems();
+  auto windowSystems = UNIVERSAL MEDIA CENTER::WINDOWING::CWindowSystemFactory::GetWindowSystems();
 
   const std::string& windowing = CServiceBroker::GetAppParams()->GetWindowing();
 
@@ -425,7 +425,7 @@ bool CApplication::CreateGUI()
   {
     CLog::Log(LOGDEBUG, "CApplication::{} - trying to init {} windowing system", __FUNCTION__,
               windowSystem);
-    m_pWinSystem = KODI::WINDOWING::CWindowSystemFactory::CreateWindowSystem(windowSystem);
+    m_pWinSystem = UNIVERSAL MEDIA CENTER::WINDOWING::CWindowSystemFactory::CreateWindowSystem(windowSystem);
 
     if (!m_pWinSystem)
       continue;
@@ -508,7 +508,7 @@ bool CApplication::CreateGUI()
   else
   {
     // If OS has no screen saver, use Universal Media Center one by default
-    screensaverModeSetting->SetDefault("screensaver.xbmc.builtin.dim");
+    screensaverModeSetting->SetDefault("screensaver..builtin.dim");
   }
 
   if (sav_res)
@@ -588,11 +588,11 @@ bool CApplication::Initialize()
                           g_sysinfo.GetAppName()),
       StringUtils::Format(CServiceBroker::GetResourcesComponent().GetLocalizeStrings().Get(178),
                           g_sysinfo.GetAppName()),
-      "special://xbmc/media/icon256x256.png", EventLevel::Basic)));
+      "special:///media/icon256x256.png", EventLevel::Basic)));
 
   m_ServiceManager->GetNetwork().WaitForNet();
 
-  KODI::UTILS::CAspectRatioVocabulary::Load();
+  UNIVERSAL MEDIA CENTER::UTILS::CAspectRatioVocabulary::Load();
 
   // The raster was shaped before the viewer's own ratios were known
   ApplyRasterSettings();
@@ -647,7 +647,7 @@ bool CApplication::Initialize()
     {
       CServiceBroker::GetRenderSystem()->ShowSplash(
           StringUtils::Format(dbInitFailedExiting, secondsLeftUntilExit));
-      KODI::TIME::Sleep(1s);
+      UNIVERSAL MEDIA CENTER::TIME::Sleep(1s);
       secondsLeftUntilExit--;
     }
     return false;
@@ -862,7 +862,7 @@ namespace
 // presented.
 void ServiceCaptureTaps(CApplicationPlayer& player)
 {
-  using namespace KODI::RENDERING::CAPTURE;
+  using namespace UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE;
 
   const auto captureService = CServiceBroker::GetCaptureService();
   if (!captureService)
@@ -1419,7 +1419,7 @@ void CApplication::FrameMove(bool processEvents, bool processGUI)
       if (!appPlayer->IsPlayingVideo() || appPlayer->IsPausedPlayback())
         max_sleep = 80;
       unsigned int sleepTime = std::max(static_cast<unsigned int>(2), std::min(m_ProcessedExternalCalls >> 2, max_sleep));
-      KODI::TIME::Sleep(std::chrono::milliseconds(sleepTime));
+      UNIVERSAL MEDIA CENTER::TIME::Sleep(std::chrono::milliseconds(sleepTime));
       m_frameMoveGuard.lock();
       m_ProcessedExternalDecay = 5;
     }
@@ -1537,7 +1537,7 @@ void CApplication::RunIteration()
     const auto frameTime = std::chrono::duration_cast<std::chrono::milliseconds>(
         std::chrono::steady_clock::now() - lastFrameTime);
     if (frameTime < noRenderFrameTime)
-      KODI::TIME::Sleep(noRenderFrameTime - frameTime);
+      UNIVERSAL MEDIA CENTER::TIME::Sleep(noRenderFrameTime - frameTime);
   }
 }
 
@@ -1554,10 +1554,10 @@ void CApplication::WasmRunIteration()
   Cleanup();
   CLog::Log(LOGINFO, "Exiting the application...");
   CAppEnvironment::TearDown();
-  // The page keeps showing the last frame unless it closes itself; see kodi_pre.js.
+  // The page keeps showing the last frame unless it closes itself; see universalmediacenter_pre.js.
   MAIN_THREAD_ASYNC_EM_ASM({
-    if (Module.kodi && Module.kodi.onExit)
-      Module.kodi.onExit();
+    if (Module.universalmediacenter && Module.universalmediacenter.onExit)
+      Module.universalmediacenter.onExit();
   });
 }
 #endif
@@ -1689,7 +1689,7 @@ bool CApplication::Stop(int exitCode)
 #if defined(TARGET_ANDROID)
   // Note: On Android, the app must be stopped asynchronously, once Android has
   // signalled that the app shall be destroyed. See android_main() implementation.
-  if (!CXBMCApp::Get().Stop(exitCode))
+  if (!CApp::Get().Stop(exitCode))
     return false;
 #endif
 
@@ -1707,7 +1707,7 @@ bool CApplication::Stop(int exitCode)
     XbmcThreads::EndTime<> timer(1000ms);
     while (m_pMsgHandling.use_count() > 1)
     {
-      KODI::TIME::Sleep(100ms);
+      UNIVERSAL MEDIA CENTER::TIME::Sleep(100ms);
       if (timer.IsTimePast())
       {
         CLog::Log(LOGERROR, "CApplication::Stop - CAppPort still in use, app may crash");
@@ -1742,7 +1742,7 @@ bool CApplication::Stop(int exitCode)
     else
       CLog::Log(LOGINFO, "Not saving settings (settings.xml is not present)");
 
-    // kodi may crash or deadlock during exit (shutdown / reboot) due to
+    // universalmediacenter may crash or deadlock during exit (shutdown / reboot) due to
     // either a bug in core or misbehaving addons. so try saving
     // skin settings early
     CLog::Log(LOGINFO, "Saving skin settings");
@@ -2144,7 +2144,7 @@ bool CApplication::OnMessage(CGUIMessage& message)
   return m_pMsgHandling->OnMessage(message);
 }
 
-bool CApplication::ExecuteXBMCAction(std::string actionStr,
+bool CApplication::ExecuteAction(std::string actionStr,
                                      const std::shared_ptr<CGUIListItem>& item /* = NULL */)
 {
   // see if it is a user set string
@@ -2372,7 +2372,7 @@ void CApplication::ProcessSlow()
 
 #ifdef TARGET_ANDROID
   // Pass the slow loop to droid
-  CXBMCApp::Get().ProcessSlow();
+  CApp::Get().ProcessSlow();
 #endif
 
   // check for any idle curl connections
@@ -2408,7 +2408,7 @@ void CApplication::ProcessSlow()
   CServiceBroker::GetMediaManager().ProcessEvents();
 
   // if we don't render the gui there's no reason to start the screensaver.
-  // that way the screensaver won't kick in if we maximize the XBMC window
+  // that way the screensaver won't kick in if we maximize the  window
   // after the screensaver start time.
   if (!appPower->GetRenderGUI())
     appPower->ResetScreenSaverTimer();
@@ -2834,7 +2834,7 @@ void CApplication::PrintStartupLog()
             StringUtils::Join(CCompileInfo::GetWebserverExtraWhitelist(), ", "));
 #endif
 
-  // Check, whether libkodi.so was reused (happens on Android, where the system does not unload
+  // Check, whether libuniversalmediacenter.so was reused (happens on Android, where the system does not unload
   // the lib on activity end, but keeps it loaded (as long as there is enough memory) and reuses
   // it on next activity start.
   static bool firstRun = true;

@@ -24,7 +24,7 @@ endif()
 if(CMAKE_HOST_WIN32 AND NOT PATCH_EXE)
   set(PATCH_ARCHIVE_NAME "patch-2.7.6-bin")
   set(PATCH_ARCHIVE "${PATCH_ARCHIVE_NAME}.zip")
-  set(PATCH_URL "${KODI_MIRROR}/build-deps/win32/${PATCH_ARCHIVE}")
+  set(PATCH_URL "${UNIVERSALMEDIA_MIRROR}/build-deps/win32/${PATCH_ARCHIVE}")
   set(PATCH_DOWNLOAD ${TARBALL_DIR}/${PATCH_ARCHIVE})
 
   # download the archive containing patch.exe

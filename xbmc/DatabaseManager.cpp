@@ -81,7 +81,7 @@ bool CDatabaseManager::InitializeInternal()
   //       before CVideoDatabase.
   if (CViewDatabase db; !UpdateDatabase(db))
     return false;
-  if (KODI::GAME::CGameDatabase db; !UpdateDatabase(db))
+  if (UNIVERSAL MEDIA CENTER::GAME::CGameDatabase db; !UpdateDatabase(db))
     return false;
   if (CTextureDatabase db; !UpdateDatabase(db))
     return false;

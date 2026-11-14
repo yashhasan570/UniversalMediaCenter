@@ -4,12 +4,12 @@
 # Addon Provider: Team Universal Media Center
 msgid ""
 msgstr ""
-"Project-Id-Version: KODI Main\n"
-"Report-Msgid-Bugs-To: https://github.com/xbmc/xbmc/issues/\n"
+"Project-Id-Version: UNIVERSAL MEDIA CENTER Main\n"
+"Report-Msgid-Bugs-To: https://github.com///issues/\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: 2023-12-04 09:42+0000\n"
 "Last-Translator: Christian Gade <gade@github.com/yashhasan570/UniversalMediaCenter>\n"
-"Language-Team: Croatian <https://kodi.weblate.cloud/projects/kodi-add-ons-skins/skin-estuary/hr_hr/>\n"
+"Language-Team: Croatian <https://universalmediacenter.weblate.cloud/projects/Universal Media Center-add-ons-skins/skin-estuary/hr_hr/>\n"
 "Language: hr_hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +23,7 @@ msgstr "Estuary presvlaka autora phil65 i Piersa. (Zadana Universal Media Center
 
 msgctxt "Addon Description"
 msgid "Estuary is the default skin for Universal Media Center 17.0 and above. It attempts to be easy for first time Universal Media Center users to understand and use."
-msgstr "Estuary je zadana presvlaka za Universal Media Center 17.0 i novije inačice. To je pokušaj da se novim korisnicima olakša prvo korištenje i kasnija upotreba Universal Media Centerja."
+msgstr "Estuary je zadana presvlaka za Universal Media Center 17.0 i novije inačice. To je pokušaj da se novim korisnicima olakša prvo korištenje i kasnija upotreba UniversalMediaCenter*a."
 
 msgctxt "Addon Disclaimer"
 msgid "Estuary is the default skin for Universal Media Center, removing it may cause issues"
@@ -463,7 +463,7 @@ msgstr "Otvori pregled dodataka"
 
 msgctxt "#31119"
 msgid "You do not have any add-ons installed yet. Visit our add-on browser to browse through our collection and improve your Universal Media Center experience."
-msgstr "Nemate niti jedan dodatak instaliran. Posjetite naš preglednik dodataka kako bi pregledali našu kolekciju i poboljšali svoje iskustvo s Universal Media Centerjem."
+msgstr "Nemate niti jedan dodatak instaliran. Posjetite naš preglednik dodataka kako bi pregledali našu kolekciju i poboljšali svoje iskustvo s UniversalMediaCenter*em."
 
 msgctxt "#31120"
 msgid "You did not set up a weather provider yet. In order to view weather information, choose a weather provider and set up your location."

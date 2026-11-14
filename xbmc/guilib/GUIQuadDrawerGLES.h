@@ -19,7 +19,7 @@ class CGUIQuadDrawerGLES
 {
 public:
   void DrawQuad(const CRect& coords,
-                KODI::UTILS::COLOR::Color color,
+                UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color color,
                 CTexture* texture,
                 const CRect* texCoords,
                 float depth,

@@ -23,7 +23,7 @@
 #include "settings/Settings.h"
 #include "settings/SettingsComponent.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace MUSIC_INFO;
 
 #define START_FADE_LENGTH  2.0f // 2 seconds on startup

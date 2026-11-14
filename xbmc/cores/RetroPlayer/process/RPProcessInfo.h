@@ -25,7 +25,7 @@ extern "C"
 
 class CDataCacheCore;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -231,4 +231,4 @@ private:
 };
 
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

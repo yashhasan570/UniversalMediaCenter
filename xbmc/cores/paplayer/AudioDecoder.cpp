@@ -23,7 +23,7 @@
 #include <cmath>
 #include <mutex>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 CAudioDecoder::CAudioDecoder()
 {

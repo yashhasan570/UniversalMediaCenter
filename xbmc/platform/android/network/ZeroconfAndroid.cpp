@@ -48,11 +48,11 @@ bool CZeroconfAndroid::doPublishService(const std::string& fcr_identifier,
 
   m_manager.registerService(newService.serviceInfo, 1 /* PROTOCOL_DNS_SD */,
                             newService.registrationListener);
-  if (xbmc_jnienv()->ExceptionCheck())
+  if (_jnienv()->ExceptionCheck())
   {
     std::string ex = CJNIBase::ExceptionToString();
     CLog::Log(LOGERROR, "ZeroconfAndroid: {}", ex);
-    xbmc_jnienv()->ExceptionClear();
+    _jnienv()->ExceptionClear();
     return false;
   }
 
@@ -74,20 +74,20 @@ bool CZeroconfAndroid::doForceReAnnounceService(const std::string& fcr_identifie
     // to change a txt record - so we diddle between
     // even and odd dummy records here
     if ( (it->second.updateNumber % 2) == 0)
-      it->second.serviceInfo.setAttribute("xbmcdummy", "evendummy");
+      it->second.serviceInfo.setAttribute("dummy", "evendummy");
     else
-      it->second.serviceInfo.setAttribute("xbmcdummy", "odddummy");
+      it->second.serviceInfo.setAttribute("dummy", "odddummy");
     it->second.updateNumber++;
 
     m_manager.unregisterService(it->second.registrationListener);
-    it->second.registrationListener = jni::CJNIXBMCNsdManagerRegistrationListener();
+    it->second.registrationListener = jni::CJNINsdManagerRegistrationListener();
     m_manager.registerService(it->second.serviceInfo, 1 /* PROTOCOL_DNS_SD */,
                               it->second.registrationListener);
-    if (xbmc_jnienv()->ExceptionCheck())
+    if (_jnienv()->ExceptionCheck())
     {
       std::string ex = CJNIBase::ExceptionToString();
       CLog::Log(LOGERROR, "ZeroconfAndroid: {}", ex);
-      xbmc_jnienv()->ExceptionClear();
+      _jnienv()->ExceptionClear();
     }
   }
   return ret;

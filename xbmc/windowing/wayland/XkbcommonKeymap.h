@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "input/keyboard/XBMC_keysym.h"
+#include "input/keyboard/_keysym.h"
 
 #include <cstdint>
 #include <memory>
@@ -20,7 +20,7 @@
 #include <xkbcommon/xkbcommon-webos-keysyms.h>
 #endif
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace WINDOWING
 {
@@ -109,13 +109,13 @@ public:
    */
   xkb_mod_mask_t CurrentModifiers() const;
   /**
-   * Get XBMCKey for provided keycode
+   * Get Key for provided keycode
    */
-  XBMCKey XBMCKeyForKeycode(xkb_keycode_t code) const;
+  Key KeyForKeycode(xkb_keycode_t code) const;
   /**
-   * \ref CurrentModifiers with XBMC flags
+   * \ref CurrentModifiers with  flags
    */
-  XBMCMod ActiveXBMCModifiers() const;
+  Mod ActiveModifiers() const;
   /**
    * Get Unicode codepoint/UTF32 code for provided keycode
    */
@@ -140,7 +140,7 @@ public:
    */
   void KeyComposerFlush();
 
-  static XBMCKey XBMCKeyForKeysym(xkb_keysym_t sym);
+  static Key KeyForKeysym(xkb_keysym_t sym);
 
 private:
   struct XkbStateDeleter
@@ -162,9 +162,9 @@ private:
   struct ModifierMapping
   {
     xkb_mod_index_t xkb;
-    XBMCMod xbmc;
-    ModifierMapping(xkb_mod_index_t xkb, XBMCMod xbmc)
-    : xkb{xkb}, xbmc{xbmc}
+    Mod ;
+    ModifierMapping(xkb_mod_index_t xkb, Mod )
+    : xkb{xkb}, {}
     {}
   };
   std::vector<ModifierMapping> m_modifierMappings;

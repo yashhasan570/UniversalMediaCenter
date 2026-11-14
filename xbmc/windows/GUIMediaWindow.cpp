@@ -29,7 +29,7 @@
 #include "network/NetworkFileItemClassify.h"
 #include "playlists/PlayListFileItemClassify.h"
 #if defined(TARGET_ANDROID)
-#include "platform/android/activity/XBMCApp.h"
+#include "platform/android/activity/App.h"
 #endif
 #include "dialogs/GUIDialogBusy.h"
 #include "dialogs/GUIDialogKaiToast.h"
@@ -91,9 +91,9 @@
 #define PLUGIN_REFRESH_DELAY 200
 
 using namespace ADDON;
-using namespace KODI;
-using namespace KODI::MESSAGING;
-using KODI::MEDIA::MediaSection;
+using namespace UNIVERSAL MEDIA CENTER;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaSection;
 using namespace std::chrono_literals;
 
 CGUIMediaWindow::CGUIMediaWindow(int id, const char *xmlFile)
@@ -823,21 +823,21 @@ bool CGUIMediaWindow::GetDirectory(const std::string &strDirectory, CFileItemLis
     items.AddFront(pItem, 0);
   }
 
-  std::optional<KODI::MEDIA::MediaSection> section;
+  std::optional<UNIVERSAL MEDIA CENTER::MEDIA::MediaSection> section;
   //! @todo Do we want to limit the directories we apply the video ones to?
   if (GetID() == WINDOW_VIDEO_NAV)
-    section = KODI::MEDIA::MediaSection::VIDEO;
+    section = UNIVERSAL MEDIA CENTER::MEDIA::MediaSection::VIDEO;
   else if (GetID() == WINDOW_MUSIC_NAV)
-    section = KODI::MEDIA::MediaSection::MUSIC;
+    section = UNIVERSAL MEDIA CENTER::MEDIA::MediaSection::MUSIC;
   else if (GetID() == WINDOW_PICTURES)
-    section = KODI::MEDIA::MediaSection::PICTURES;
+    section = UNIVERSAL MEDIA CENTER::MEDIA::MediaSection::PICTURES;
 
   if (section)
   {
     const std::vector<std::string> regexps{
         CServiceBroker::GetSettingsComponent()->GetAdvancedSettings()->GetExcludeFromListingRegExps(
             *section)};
-    KODI::REGEXP::RegExpCache cache;
+    UNIVERSAL MEDIA CENTER::REGEXP::RegExpCache cache;
     for (int i=0; i < items.Size();)
     {
       if (CUtil::ExcludeFileOrFolder(items[i]->GetPath(), regexps, &cache))
@@ -1133,7 +1133,7 @@ bool CGUIMediaWindow::OnClick(int iItem, const std::string &player)
   {
     if (pItem->IsShareOrDrive())
     {
-      const std::optional<KODI::MEDIA::MediaSection> lockSection{m_guiState->GetLockType()};
+      const std::optional<UNIVERSAL MEDIA CENTER::MEDIA::MediaSection> lockSection{m_guiState->GetLockType()};
       if (profileManager->GetMasterProfile().getLockMode() != LockMode::EVERYONE)
         if (lockSection && !g_passwordManager.IsItemUnlocked(pItem.get(), *lockSection))
             return true;
@@ -1194,7 +1194,7 @@ bool CGUIMediaWindow::OnClick(int iItem, const std::string &player)
   {
     std::string appName = URIUtils::GetFileName(pItem->GetPath());
     CLog::Log(LOGDEBUG, "CGUIMediaWindow::OnClick Trying to run: {}", appName);
-    return CXBMCApp::StartActivity(appName);
+    return CApp::StartActivity(appName);
   }
 #endif
   else

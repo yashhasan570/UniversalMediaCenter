@@ -16,7 +16,7 @@
 #include <utility>
 #include <vector>
 
-namespace KODI::GAME
+namespace UNIVERSAL MEDIA CENTER::GAME
 {
 
 /*!
@@ -605,4 +605,4 @@ private:
   unsigned int m_accountGeneration{0};
 };
 
-} // namespace KODI::GAME
+} // namespace UNIVERSAL MEDIA CENTER::GAME

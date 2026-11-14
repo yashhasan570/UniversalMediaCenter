@@ -9,7 +9,7 @@
 #include "filesystem/File.h"
 #include "guilib/GUIControlProfiler.h"
 #include "test/TestUtils.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 
 #include <string>
 
@@ -17,10 +17,10 @@
 
 TEST(TestGUIControlProfiler, SaveResults)
 {
-  XFILE::CFile* file = XBMC_CREATETEMPFILE(".xml");
+  XFILE::CFile* file = _CREATETEMPFILE(".xml");
   ASSERT_NE(nullptr, file);
   file->Close();
-  const std::string path = XBMC_TEMPFILEPATH(file);
+  const std::string path = _TEMPFILEPATH(file);
 
   CGUIControlProfiler& profiler = CGUIControlProfiler::Instance();
   const int maxFrameCount = profiler.GetMaxFrameCount();
@@ -32,9 +32,9 @@ TEST(TestGUIControlProfiler, SaveResults)
   profiler.SetOutputFile("");
   EXPECT_FALSE(CGUIControlProfiler::IsRunning());
 
-  CXBMCTinyXML2 doc;
+  CTinyXML2 doc;
   const bool loaded = doc.LoadFile(path);
-  XBMC_DELETETEMPFILE(file);
+  _DELETETEMPFILE(file);
   ASSERT_TRUE(loaded);
 
   ASSERT_NE(nullptr, doc.FirstChild());

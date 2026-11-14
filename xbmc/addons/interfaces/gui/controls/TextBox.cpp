@@ -10,7 +10,7 @@
 
 #include "ServiceBroker.h"
 #include "addons/binary-addons/AddonDll.h"
-#include "addons/kodi-dev-kit/include/kodi/gui/controls/TextBox.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/gui/controls/TextBox.h"
 #include "guilib/GUIComponent.h"
 #include "guilib/GUITextBox.h"
 #include "guilib/GUIWindowManager.h"
@@ -21,50 +21,50 @@ namespace ADDON
 
 void Interface_GUIControlTextBox::Init(AddonGlobalInterface* addonInterface)
 {
-  addonInterface->toUniversal Media Center->kodi_gui->control_text_box =
-      new AddonToUniversal Media CenterFuncTable_kodi_gui_control_text_box();
+  addonInterface->toUniversal Media Center->->control_text_box =
+      new AddonToUniversal Media CenterFuncTable__control_text_box();
 
-  addonInterface->toUniversal Media Center->kodi_gui->control_text_box->set_visible = set_visible;
-  addonInterface->toUniversal Media Center->kodi_gui->control_text_box->reset = reset;
-  addonInterface->toUniversal Media Center->kodi_gui->control_text_box->set_text = set_text;
-  addonInterface->toUniversal Media Center->kodi_gui->control_text_box->get_text = get_text;
-  addonInterface->toUniversal Media Center->kodi_gui->control_text_box->scroll = scroll;
-  addonInterface->toUniversal Media Center->kodi_gui->control_text_box->set_auto_scrolling = set_auto_scrolling;
+  addonInterface->toUniversal Media Center->->control_text_box->set_visible = set_visible;
+  addonInterface->toUniversal Media Center->->control_text_box->reset = reset;
+  addonInterface->toUniversal Media Center->->control_text_box->set_text = set_text;
+  addonInterface->toUniversal Media Center->->control_text_box->get_text = get_text;
+  addonInterface->toUniversal Media Center->->control_text_box->scroll = scroll;
+  addonInterface->toUniversal Media Center->->control_text_box->set_auto_scrolling = set_auto_scrolling;
 }
 
 void Interface_GUIControlTextBox::DeInit(AddonGlobalInterface* addonInterface)
 {
-  delete addonInterface->toUniversal Media Center->kodi_gui->control_text_box;
+  delete addonInterface->toUniversal Media Center->->control_text_box;
 }
 
-void Interface_GUIControlTextBox::set_visible(KODI_HANDLE kodiBase,
-                                              KODI_GUI_CONTROL_HANDLE handle,
+void Interface_GUIControlTextBox::set_visible(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                              UNIVERSALMEDIA_GUI_CONTROL_HANDLE handle,
                                               bool visible)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   auto* control = static_cast<CGUITextBox*>(handle);
   if (!addon || !control)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', "
+               "Invalid handler data (universalmediacenterBase='{}', "
                "handle='{}') on addon '{}'",
-               kodiBase, handle, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, addon ? addon->ID() : "unknown");
     return;
   }
 
   control->SetVisible(visible);
 }
 
-void Interface_GUIControlTextBox::reset(KODI_HANDLE kodiBase, KODI_GUI_CONTROL_HANDLE handle)
+void Interface_GUIControlTextBox::reset(UNIVERSALMEDIA_HANDLE universalmediacenterBase, UNIVERSALMEDIA_GUI_CONTROL_HANDLE handle)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   const auto* control = static_cast<const CGUITextBox*>(handle);
   if (!addon || !control)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', "
+               "Invalid handler data (universalmediacenterBase='{}', "
                "handle='{}') on addon '{}'",
-               kodiBase, handle, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, addon ? addon->ID() : "unknown");
     return;
   }
 
@@ -72,18 +72,18 @@ void Interface_GUIControlTextBox::reset(KODI_HANDLE kodiBase, KODI_GUI_CONTROL_H
   CServiceBroker::GetGUI()->GetWindowManager().SendThreadMessage(msg, control->GetParentID());
 }
 
-void Interface_GUIControlTextBox::set_text(KODI_HANDLE kodiBase,
-                                           KODI_GUI_CONTROL_HANDLE handle,
+void Interface_GUIControlTextBox::set_text(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                           UNIVERSALMEDIA_GUI_CONTROL_HANDLE handle,
                                            const char* text)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   const auto* control = static_cast<const CGUITextBox*>(handle);
   if (!addon || !control || !text)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', "
+               "Invalid handler data (universalmediacenterBase='{}', "
                "handle='{}', text='{}') on addon '{}'",
-               kodiBase, handle, static_cast<const void*>(text), addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, static_cast<const void*>(text), addon ? addon->ID() : "unknown");
     return;
   }
 
@@ -92,34 +92,34 @@ void Interface_GUIControlTextBox::set_text(KODI_HANDLE kodiBase,
   CServiceBroker::GetGUI()->GetWindowManager().SendThreadMessage(msg, control->GetParentID());
 }
 
-char* Interface_GUIControlTextBox::get_text(KODI_HANDLE kodiBase, KODI_GUI_CONTROL_HANDLE handle)
+char* Interface_GUIControlTextBox::get_text(UNIVERSALMEDIA_HANDLE universalmediacenterBase, UNIVERSALMEDIA_GUI_CONTROL_HANDLE handle)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   const auto* control = static_cast<const CGUITextBox*>(handle);
   if (!addon || !control)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', "
+               "Invalid handler data (universalmediacenterBase='{}', "
                "handle='{}') on addon '{}'",
-               kodiBase, handle, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, addon ? addon->ID() : "unknown");
     return nullptr;
   }
 
   return strdup(control->GetDescription().c_str());
 }
 
-void Interface_GUIControlTextBox::scroll(KODI_HANDLE kodiBase,
-                                         KODI_GUI_CONTROL_HANDLE handle,
+void Interface_GUIControlTextBox::scroll(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                         UNIVERSALMEDIA_GUI_CONTROL_HANDLE handle,
                                          unsigned int position)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   auto* control = static_cast<CGUITextBox*>(handle);
   if (!addon || !control)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', "
+               "Invalid handler data (universalmediacenterBase='{}', "
                "handle='{}') on addon '{}'",
-               kodiBase, handle, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, addon ? addon->ID() : "unknown");
     return;
   }
 
@@ -127,16 +127,16 @@ void Interface_GUIControlTextBox::scroll(KODI_HANDLE kodiBase,
 }
 
 void Interface_GUIControlTextBox::set_auto_scrolling(
-    KODI_HANDLE kodiBase, KODI_GUI_CONTROL_HANDLE handle, int delay, int time, int repeat)
+    UNIVERSALMEDIA_HANDLE universalmediacenterBase, UNIVERSALMEDIA_GUI_CONTROL_HANDLE handle, int delay, int time, int repeat)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   auto* control = static_cast<CGUITextBox*>(handle);
   if (!addon || !control)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', "
+               "Invalid handler data (universalmediacenterBase='{}', "
                "handle='{}') on addon '{}'",
-               kodiBase, handle, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, addon ? addon->ID() : "unknown");
     return;
   }
 

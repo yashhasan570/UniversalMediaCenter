@@ -10,7 +10,7 @@
 
 #include "input/touch/generic/GenericTouchInputHandler.h"
 
-using namespace KODI::WINDOWING::WAYLAND;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::WAYLAND;
 
 CInputProcessorTouch::CInputProcessorTouch(wayland::surface_t const& surface)
 : m_surface{surface}
@@ -31,21 +31,21 @@ void CInputProcessorTouch::OnTouchDown(CSeat* seat,
   }
 
   // Find free Universal Media Center pointer number
-  int kodiPointer{-1};
+  int universalmediacenterPointer{-1};
   // Not optimal, but irrelevant for the small number of iterations
   for (int testPointer{0}; testPointer < CGenericTouchInputHandler::MAX_POINTERS; testPointer++)
   {
     if (std::ranges::all_of(m_touchPoints, [=](const auto& pair)
-                            { return (pair.second.kodiPointerNumber != testPointer); }))
+                            { return (pair.second.universalmediacenterPointerNumber != testPointer); }))
     {
-      kodiPointer = testPointer;
+      universalmediacenterPointer = testPointer;
       break;
     }
   }
 
-  if (kodiPointer != -1)
+  if (universalmediacenterPointer != -1)
   {
-    auto it = m_touchPoints.emplace(std::piecewise_construct, std::forward_as_tuple(id), std::forward_as_tuple(time, kodiPointer, x * m_coordinateScale, y * m_coordinateScale, 0.0f)).first;
+    auto it = m_touchPoints.emplace(std::piecewise_construct, std::forward_as_tuple(id), std::forward_as_tuple(time, universalmediacenterPointer, x * m_coordinateScale, y * m_coordinateScale, 0.0f)).first;
     SendTouchPointEvent(TouchInputDown, it->second);
   }
 }
@@ -118,10 +118,10 @@ void CInputProcessorTouch::SendTouchPointEvent(TouchInput event, const TouchPoin
       UpdateTouchPoint(point.second);
     }
   }
-  CGenericTouchInputHandler::GetInstance().HandleTouchInput(event, point.x, point.y, point.lastEventTime * INT64_C(1000000), point.kodiPointerNumber, point.size);
+  CGenericTouchInputHandler::GetInstance().HandleTouchInput(event, point.x, point.y, point.lastEventTime * INT64_C(1000000), point.universalmediacenterPointerNumber, point.size);
 }
 
 void CInputProcessorTouch::UpdateTouchPoint(const TouchPoint& point)
 {
-  CGenericTouchInputHandler::GetInstance().UpdateTouchPointer(point.kodiPointerNumber, point.x, point.y, point.lastEventTime * INT64_C(1000000), point.size);
+  CGenericTouchInputHandler::GetInstance().UpdateTouchPointer(point.universalmediacenterPointerNumber, point.x, point.y, point.lastEventTime * INT64_C(1000000), point.size);
 }

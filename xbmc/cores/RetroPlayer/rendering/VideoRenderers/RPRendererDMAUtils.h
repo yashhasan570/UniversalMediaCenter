@@ -10,7 +10,7 @@
 
 #include "cores/GameSettings.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -28,4 +28,4 @@ public:
   static bool SupportsScalingMethod(SCALINGMETHOD method);
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

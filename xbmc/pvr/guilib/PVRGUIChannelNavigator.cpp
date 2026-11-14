@@ -30,7 +30,7 @@
 #include <memory>
 #include <mutex>
 
-using namespace KODI::GUILIB::GUIINFO;
+using namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO;
 using namespace PVR;
 using namespace std::chrono_literals;
 
@@ -62,7 +62,7 @@ public:
         OnTimeout();
         return true;
       }
-      KODI::TIME::Sleep(10ms);
+      UNIVERSAL MEDIA CENTER::TIME::Sleep(10ms);
     }
     return false;
   }

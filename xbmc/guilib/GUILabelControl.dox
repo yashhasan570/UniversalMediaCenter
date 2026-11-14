@@ -48,7 +48,7 @@ to the right of the actual label text no matter how wide the label is.
    <width min="29" max="200">auto</width>
 ~~~~~~~~~~~~~
 
-As of XBMC Gotham, simply specifying <b>`<width>auto</width>`</b> is also supported.
+As of  Gotham, simply specifying <b>`<width>auto</width>`</b> is also supported.
 
 
 --------------------------------------------------------------------------------

@@ -1,6 +1,6 @@
 # IOS/TVOS packaging
 
-set(ASSET_CATALOG "${CMAKE_SOURCE_DIR}/xbmc/platform/darwin/${CORE_PLATFORM_NAME_LC}/Assets.xcassets")
+set(ASSET_CATALOG "${CMAKE_SOURCE_DIR}//platform/darwin/${CORE_PLATFORM_NAME_LC}/Assets.xcassets")
 set(COPY_AS_RESOURCES ${ASSET_CATALOG})
 
 if(CORE_PLATFORM_NAME_LC STREQUAL tvos)
@@ -12,8 +12,8 @@ if(CORE_PLATFORM_NAME_LC STREQUAL tvos)
   execute_process(COMMAND ${CMAKE_SOURCE_DIR}/tools/darwin/Support/GenerateMissingImages-tvos.py "${ASSET_CATALOG}" ${ASSET_CATALOG_APPICON} ${ASSET_CATALOG_LAUNCH_IMAGE})
 
   # entitlements
-  set(ENTITLEMENTS_OUT_PATH "${CMAKE_BINARY_DIR}/CMakeFiles/${APP_NAME_LC}.dir/Kodi.entitlements")
-  configure_file(${CMAKE_SOURCE_DIR}/xbmc/platform/darwin/tvos/Kodi.entitlements.in ${ENTITLEMENTS_OUT_PATH} @ONLY)
+  set(ENTITLEMENTS_OUT_PATH "${CMAKE_BINARY_DIR}/CMakeFiles/${APP_NAME_LC}.dir/Universal Media Center.entitlements")
+  configure_file(${CMAKE_SOURCE_DIR}//platform/darwin/tvos/Universal Media Center.entitlements.in ${ENTITLEMENTS_OUT_PATH} @ONLY)
 
   set_target_properties(${APP_NAME_LC} PROPERTIES
     XCODE_ATTRIBUTE_ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME ${ASSET_CATALOG_LAUNCH_IMAGE}
@@ -25,7 +25,7 @@ else()
 
   list(APPEND COPY_AS_RESOURCES
     "${CMAKE_SOURCE_DIR}/media/splash.jpg"
-    "${CMAKE_SOURCE_DIR}/xbmc/platform/darwin/ios/LaunchScreen.storyboard"
+    "${CMAKE_SOURCE_DIR}//platform/darwin/ios/LaunchScreen.storyboard"
   )
 
 endif()
@@ -45,7 +45,7 @@ set(CODE_SIGN_IDENTITY $<IF:$<BOOL:${DEVELOPMENT_TEAM}>,iPhone\ Developer,> CACH
 
 # app provisioning profile
 set(CODE_SIGN_STYLE_APP Automatic)
-set(PROVISIONING_PROFILE_APP "" CACHE STRING "Provisioning profile name for the Kodi app")
+set(PROVISIONING_PROFILE_APP "" CACHE STRING "Provisioning profile name for the Universal Media Center app")
 if(PROVISIONING_PROFILE_APP)
   set(CODE_SIGN_STYLE_APP Manual)
 endif()
@@ -94,13 +94,13 @@ unset(_addons)
 add_custom_command(TARGET ${APP_NAME_LC} POST_BUILD
     COMMAND "ACTION=build"
             "APP_NAME=${APP_NAME}"
-            "XBMC_DEPENDS=${DEPENDS_PATH}"
+            "_DEPENDS=${DEPENDS_PATH}"
             "SRCROOT=${CMAKE_BINARY_DIR}"
             ${CMAKE_SOURCE_DIR}/tools/darwin/Support/CopyRootFiles-darwin_embedded.command
-    COMMAND "XBMC_DEPENDS=${DEPENDS_PATH}"
+    COMMAND "_DEPENDS=${DEPENDS_PATH}"
             "PYTHON_VERSION=${PYTHON_VERSION}"
             ${CMAKE_SOURCE_DIR}/tools/darwin/Support/copyframeworks-darwin_embedded.command
-    COMMAND "XBMC_DEPENDS=${DEPENDS_PATH}"
+    COMMAND "_DEPENDS=${DEPENDS_PATH}"
             "NATIVEPREFIX=${NATIVEPREFIX}"
             ${CMAKE_SOURCE_DIR}/tools/darwin/Support/Codesign.command
 )
@@ -136,8 +136,8 @@ set(DARWIN_EMBEDDED_CPACK_PACKAGE_NAME ${DARWIN_EMBEDDED_PACKAGE})
 configure_file(${CMAKE_SOURCE_DIR}/tools/darwin/packaging/darwin_embedded/CPackConfig-darwin_embedded.cmake.in
                ${DARWIN_EMBEDDED_CPACK_DIR}/${DARWIN_EMBEDDED_IPA_CPACK_CONFIG} @ONLY)
 
-configure_file(${CMAKE_SOURCE_DIR}/xbmc/platform/darwin/Credits.html.in
-               ${CMAKE_BINARY_DIR}/xbmc/platform/darwin/Credits.html @ONLY)
+configure_file(${CMAKE_SOURCE_DIR}//platform/darwin/Credits.html.in
+               ${CMAKE_BINARY_DIR}//platform/darwin/Credits.html @ONLY)
 
 add_custom_target(deb
     COMMAND sh ./mkdeb-darwin_embedded.sh ${CORE_BUILD_CONFIG}

@@ -7,7 +7,7 @@
  */
 
 #include "utils/LangCodeExpander.h"
-#include "utils/XBMCTinyXML.h"
+#include "utils/TinyXML.h"
 
 #include <gtest/gtest.h>
 
@@ -42,7 +42,7 @@ TEST(TestLangCodeExpander, ParseUserCodes)
            </languagecodes>
          </advancedsettings>)";
 
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   doc.Parse(xml);
   ASSERT_TRUE(doc.RootElement() != nullptr);
   ASSERT_TRUE(doc.RootElement()->FirstChildElement("languagecodes") != nullptr);

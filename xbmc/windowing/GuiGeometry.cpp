@@ -13,9 +13,9 @@
 #include <algorithm>
 #include <cmath>
 
-using KODI::UTILS::CAspectRatioVocabulary;
+using UNIVERSAL MEDIA CENTER::UTILS::CAspectRatioVocabulary;
 
-namespace KODI::WINDOWING
+namespace UNIVERSAL MEDIA CENTER::WINDOWING
 {
 
 namespace
@@ -150,4 +150,4 @@ bool ComputeGuiKeepShape(bool hold, bool fullScreenVideo, bool screenTool)
   return hold && !fullScreenVideo && !screenTool;
 }
 
-} // namespace KODI::WINDOWING
+} // namespace UNIVERSAL MEDIA CENTER::WINDOWING

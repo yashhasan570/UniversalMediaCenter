@@ -36,7 +36,7 @@
 
 #include <memory>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 std::shared_ptr<CDVDInputStream> CDVDFactoryInputStream::CreateInputStream(IVideoPlayer* pPlayer, const CFileItem &fileitem, bool scanforextaudio)
 {

@@ -11,7 +11,7 @@
 #include "IRenderBuffer.h"
 #include "cores/RetroPlayer/buffers/BaseRenderBufferPool.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -40,4 +40,4 @@ private:
   int m_fourcc = 0;
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

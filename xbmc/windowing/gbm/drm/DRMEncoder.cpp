@@ -13,7 +13,7 @@
 #include <stdexcept>
 #include <string>
 
-using namespace KODI::WINDOWING::GBM;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::GBM;
 
 CDRMEncoder::CDRMEncoder(int fd, uint32_t encoder)
   : CDRMObject(fd), m_encoder(drmModeGetEncoder(m_fd, encoder))

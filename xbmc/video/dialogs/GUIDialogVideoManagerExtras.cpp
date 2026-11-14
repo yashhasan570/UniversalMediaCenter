@@ -37,7 +37,7 @@
 #include <memory>
 #include <string>
 
-using KODI::MEDIA::MediaSection;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaSection;
 
 static constexpr unsigned int CONTROL_BUTTON_ADD_EXTRAS = 23;
 static constexpr unsigned int CONTROL_BUTTON_RENAME_EXTRA = 28;
@@ -113,7 +113,7 @@ bool CGUIDialogVideoManagerExtras::AddVideoExtra()
 {
   // @todo: combine with versions add file logic, structured similarly and sharing most logic.
 
-  const KODI::MEDIA::TYPE mediaType{m_videoAsset->GetVideoInfoTag()->GetMediaType()};
+  const UNIVERSAL MEDIA CENTER::MEDIA::TYPE mediaType{m_videoAsset->GetVideoInfoTag()->GetMediaType()};
 
   // An extra chosen from a disc starts as the movie, so that the movie's own playlists are
   // recognised, but takes nothing else of it
@@ -213,7 +213,7 @@ bool CGUIDialogVideoManagerExtras::AddVideoExtra()
       }
 
       std::string videoTitle;
-      if (newAsset.m_mediaType == KODI::MEDIA::TYPE::MOVIE)
+      if (newAsset.m_mediaType == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MOVIE)
       {
         videoTitle = m_database.GetMovieTitle(newAsset.m_idMedia);
       }
@@ -289,7 +289,7 @@ bool CGUIDialogVideoManagerExtras::AddVideoExtra()
 
     m_database.AddVideoAsset(itemType, dbId, idNewVideoVersion, VideoAssetType::EXTRA, item);
 
-    KODI::VIDEO::GEOMETRY::CContentGeometryScanner::GetInstance().Sweep();
+    UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::CContentGeometryScanner::GetInstance().Sweep();
 
     return true;
   }

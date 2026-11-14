@@ -7,15 +7,15 @@
  */
 
 #include "AddonClass.h"
-#ifdef XBMC_ADDON_DEBUG_MEMORY
+#ifdef _ADDON_DEBUG_MEMORY
 #include "utils/log.h"
 #endif
 #include "LanguageHook.h"
 #include "AddonUtils.h"
 
-using namespace XBMCAddonUtils;
+using namespace AddonUtils;
 
-namespace XBMCAddon
+namespace Addon
 {
   // need a place to put the vtab
   AddonClass::~AddonClass()
@@ -25,7 +25,7 @@ namespace XBMCAddon
     if (languageHook != NULL)
       languageHook->Release();
 
-#ifdef XBMC_ADDON_DEBUG_MEMORY
+#ifdef _ADDON_DEBUG_MEMORY
     isDeleted = false;
 #endif
   }
@@ -33,7 +33,7 @@ namespace XBMCAddon
   AddonClass::AddonClass() : refs(0L),
                              languageHook(NULL)
   {
-#ifdef XBMC_ADDON_DEBUG_MEMORY
+#ifdef _ADDON_DEBUG_MEMORY
     isDeleted = false;
 #endif
 
@@ -51,7 +51,7 @@ namespace XBMCAddon
     }
   }
 
-#ifdef XBMC_ADDON_DEBUG_MEMORY
+#ifdef _ADDON_DEBUG_MEMORY
   void AddonClass::Release() const
   {
     if (isDeleted)

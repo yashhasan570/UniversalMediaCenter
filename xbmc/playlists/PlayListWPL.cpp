@@ -13,7 +13,7 @@
 #include "filesystem/File.h"
 #include "utils/StringUtils.h"
 #include "utils/URIUtils.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 #include "utils/XMLUtils.h"
 #include "utils/log.h"
 
@@ -41,7 +41,7 @@ using namespace XFILE;
 ------------------------ end of example wpl playlist file ---------------------------------*/
 //Note: File is utf-8 encoded by default
 
-namespace KODI::PLAYLIST
+namespace UNIVERSAL MEDIA CENTER::PLAYLIST
 {
 
 CPlayListWPL::CPlayListWPL(void) = default;
@@ -51,7 +51,7 @@ CPlayListWPL::~CPlayListWPL(void) = default;
 
 bool CPlayListWPL::LoadData(std::istream& stream)
 {
-  CXBMCTinyXML2 xmlDoc;
+  CTinyXML2 xmlDoc;
 
   std::string wplStream(std::istreambuf_iterator<char>(stream), {});
   xmlDoc.Parse(wplStream);
@@ -139,4 +139,4 @@ void CPlayListWPL::Save(const std::string& strFileName) const
   file.Close();
 }
 
-} // namespace KODI::PLAYLIST
+} // namespace UNIVERSAL MEDIA CENTER::PLAYLIST

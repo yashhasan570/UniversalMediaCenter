@@ -14,12 +14,12 @@
 #include <Python.h>
 #include <osdefs.h>
 
-#define MODULE "xbmc"
+#define MODULE ""
 
 #define RUNSCRIPT_PREAMBLE \
         "" \
         "import " MODULE "\n" \
-        "class xbmcout:\n" \
+        "class out:\n" \
         "  def __init__(self, loglevel=" MODULE ".LOGDEBUG):\n" \
         "    self.ll=loglevel\n" \
         "  def write(self, data):\n" \
@@ -29,8 +29,8 @@
         "  def flush(self):\n" \
         "    " MODULE ".log('.')\n" \
         "import sys\n" \
-        "sys.stdout = xbmcout()\n" \
-        "sys.stderr = xbmcout(" MODULE ".LOGERROR)\n" \
+        "sys.stdout = out()\n" \
+        "sys.stderr = out(" MODULE ".LOGERROR)\n" \
         ""
 
 #define RUNSCRIPT_SETUPTOOLS_HACK \
@@ -64,12 +64,12 @@
 
 extern "C"
 {
-  PyObject* PyInit_xbmcdrm(void);
-  PyObject* PyInit_xbmcgui(void);
-  PyObject* PyInit_xbmc(void);
-  PyObject* PyInit_xbmcplugin(void);
-  PyObject* PyInit_xbmcaddon(void);
-  PyObject* PyInit_xbmcvfs(void);
+  PyObject* PyInit_drm(void);
+  PyObject* PyInit_gui(void);
+  PyObject* PyInit_(void);
+  PyObject* PyInit_plugin(void);
+  PyObject* PyInit_addon(void);
+  PyObject* PyInit_vfs(void);
 }
 
 namespace
@@ -77,12 +77,12 @@ namespace
 // clang-format off
 const _inittab PythonModules[] =
   {
-    { "xbmcdrm",    PyInit_xbmcdrm    },
-    { "xbmcgui",    PyInit_xbmcgui    },
-    { "xbmc",       PyInit_xbmc       },
-    { "xbmcplugin", PyInit_xbmcplugin },
-    { "xbmcaddon",  PyInit_xbmcaddon  },
-    { "xbmcvfs",    PyInit_xbmcvfs    },
+    { "drm",    PyInit_drm    },
+    { "gui",    PyInit_gui    },
+    { "",       PyInit_       },
+    { "plugin", PyInit_plugin },
+    { "addon",  PyInit_addon  },
+    { "vfs",    PyInit_vfs    },
     { nullptr,      nullptr }
   };
 // clang-format on

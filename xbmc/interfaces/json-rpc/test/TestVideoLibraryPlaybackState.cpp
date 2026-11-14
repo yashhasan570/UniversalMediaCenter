@@ -162,7 +162,7 @@ protected:
   int AddMovie(int playCount)
   {
     CVideoInfoTag tag = Tag("movie.mkv");
-    m_movieId = m_db.SetDetailsForMovie(tag, KODI::ART::Artwork{});
+    m_movieId = m_db.SetDetailsForMovie(tag, UNIVERSAL MEDIA CENTER::ART::Artwork{});
     Play("movie.mkv", playCount);
     return m_movieId;
   }
@@ -170,15 +170,15 @@ protected:
   int AddShow(int firstPlayCount, int secondPlayCount)
   {
     CVideoInfoTag show = Tag("");
-    m_showId = m_db.SetDetailsForTvShow({show.m_strPath}, show, KODI::ART::Artwork{},
-                                        KODI::ART::SeasonsArtwork{});
+    m_showId = m_db.SetDetailsForTvShow({show.m_strPath}, show, UNIVERSAL MEDIA CENTER::ART::Artwork{},
+                                        UNIVERSAL MEDIA CENTER::ART::SeasonsArtwork{});
     for (int episode : {1, 2})
     {
       const std::string file = "episode" + std::to_string(episode) + ".mkv";
       CVideoInfoTag tag = Tag(file);
       tag.m_iSeason = 1;
       tag.m_iEpisode = episode;
-      const int id = m_db.SetDetailsForEpisode(tag, KODI::ART::Artwork{}, m_showId);
+      const int id = m_db.SetDetailsForEpisode(tag, UNIVERSAL MEDIA CENTER::ART::Artwork{}, m_showId);
       if (episode == 1)
         m_episodeId = id;
       Play(file, episode == 1 ? firstPlayCount : secondPlayCount);
@@ -189,7 +189,7 @@ protected:
   int AddMusicVideo(int playCount)
   {
     CVideoInfoTag tag = Tag("musicvideo.mkv");
-    m_musicVideoId = m_db.SetDetailsForMusicVideo(tag, KODI::ART::Artwork{});
+    m_musicVideoId = m_db.SetDetailsForMusicVideo(tag, UNIVERSAL MEDIA CENTER::ART::Artwork{});
     Play("musicvideo.mkv", playCount);
     return m_musicVideoId;
   }

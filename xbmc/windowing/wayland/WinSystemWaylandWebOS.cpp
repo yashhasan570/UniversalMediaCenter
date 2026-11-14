@@ -45,7 +45,7 @@ constexpr unsigned int SCREEN_WIDTH_1080P = 1920;
 constexpr unsigned int SCREEN_HEIGHT_1080P = 1080;
 } // namespace
 
-namespace KODI::WINDOWING::WAYLAND
+namespace UNIVERSAL MEDIA CENTER::WINDOWING::WAYLAND
 {
 
 bool CWinSystemWaylandWebOS::InitWindowSystem()
@@ -155,7 +155,7 @@ IShellSurface* CWinSystemWaylandWebOS::CreateShellSurface(const std::string& nam
                                      std::string(CCompileInfo::GetAppName()));
 }
 
-std::unique_ptr<KODI::WINDOWING::IOSScreenSaver> CWinSystemWaylandWebOS::GetOSScreenSaverImpl()
+std::unique_ptr<UNIVERSAL MEDIA CENTER::WINDOWING::IOSScreenSaver> CWinSystemWaylandWebOS::GetOSScreenSaverImpl()
 {
   return std::make_unique<COSScreenSaverWebOS>();
 }
@@ -247,4 +247,4 @@ bool CWinSystemWaylandWebOS::IsHDRDisplay()
   return WebOSTVPlatformConfig::SupportsHDR();
 }
 
-} // namespace KODI::WINDOWING::WAYLAND
+} // namespace UNIVERSAL MEDIA CENTER::WINDOWING::WAYLAND

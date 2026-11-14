@@ -11,7 +11,7 @@
 #include "cores/VideoPlayer/Interface/StreamInfo.h"
 #include "guilib/guiinfo/IGUIInfoProvider.h"
 
-namespace KODI::GUILIB::GUIINFO
+namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO
 {
 
 class CGUIInfo;
@@ -46,4 +46,4 @@ protected:
   SubtitleStreamInfo m_subtitleInfo;
 };
 
-} // namespace KODI::GUILIB::GUIINFO
+} // namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO

@@ -27,7 +27,7 @@
 #include <stdint.h>
 #include <vector>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -205,4 +205,4 @@ private:
   unsigned int m_cacheTimeMs = 0;
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

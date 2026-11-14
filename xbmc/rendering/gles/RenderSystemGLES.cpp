@@ -125,7 +125,7 @@ bool CRenderSystemGLES::InitRenderSystem()
       auto glDebugMessageControl = CEGLUtils::GetRequiredProcAddress<PFNGLDEBUGMESSAGECONTROLKHRPROC>("glDebugMessageControlKHR");
 
       glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS_KHR);
-      glDebugMessageCallback(KODI::UTILS::GL::GlErrorCallback, nullptr);
+      glDebugMessageCallback(UNIVERSAL MEDIA CENTER::UTILS::GL::GlErrorCallback, nullptr);
 
       // ignore shader compilation information
       glDebugMessageControl(GL_DEBUG_SOURCE_SHADER_COMPILER_KHR, GL_DEBUG_TYPE_OTHER_KHR, GL_DONT_CARE, 0, nullptr, GL_FALSE);
@@ -244,7 +244,7 @@ void CRenderSystemGLES::DrawGUIQuad(const CPoint& origin,
                                     const CRect* texCoords)
 {
   glUniformMatrix4fv(GUIShaderGetGUIMatrix(), 1, GL_FALSE,
-                     KODI::UTILS::GL::QuadTransform(origin, right, down).data());
+                     UNIVERSAL MEDIA CENTER::UTILS::GL::QuadTransform(origin, right, down).data());
 
   BindGUIUnitQuad();
   const GLint posLoc = GUIShaderGetPos();
@@ -257,7 +257,7 @@ void CRenderSystemGLES::DrawGUIQuad(const CPoint& origin,
     const CRect& tex = *texCoords;
     glUniformMatrix4fv(
         GUIShaderGetCoord0Matrix(), 1, GL_FALSE,
-        KODI::UTILS::GL::QuadTransform({tex.x1, tex.y1}, {tex.x2, tex.y1}, {tex.x1, tex.y2})
+        UNIVERSAL MEDIA CENTER::UTILS::GL::QuadTransform({tex.x1, tex.y1}, {tex.x2, tex.y1}, {tex.x1, tex.y2})
             .data());
     glVertexAttribPointer(texLoc, 2, GL_FLOAT, GL_FALSE, 0, 0);
     glEnableVertexAttribArray(texLoc);
@@ -323,15 +323,15 @@ void CRenderSystemGLES::InvalidateColorBuffer()
   ClearBuffersWithStencil(GetEnabledFrontToBackRendering() ? GL_DEPTH_BUFFER_BIT : 0);
 }
 
-bool CRenderSystemGLES::ClearBuffers(KODI::UTILS::COLOR::Color color)
+bool CRenderSystemGLES::ClearBuffers(UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color color)
 {
   if (!m_bRenderCreated)
     return false;
 
-  float r = KODI::UTILS::GL::GetChannelFromARGB(KODI::UTILS::GL::ColorChannel::R, color) / 255.0f;
-  float g = KODI::UTILS::GL::GetChannelFromARGB(KODI::UTILS::GL::ColorChannel::G, color) / 255.0f;
-  float b = KODI::UTILS::GL::GetChannelFromARGB(KODI::UTILS::GL::ColorChannel::B, color) / 255.0f;
-  float a = KODI::UTILS::GL::GetChannelFromARGB(KODI::UTILS::GL::ColorChannel::A, color) / 255.0f;
+  float r = UNIVERSAL MEDIA CENTER::UTILS::GL::GetChannelFromARGB(UNIVERSAL MEDIA CENTER::UTILS::GL::ColorChannel::R, color) / 255.0f;
+  float g = UNIVERSAL MEDIA CENTER::UTILS::GL::GetChannelFromARGB(UNIVERSAL MEDIA CENTER::UTILS::GL::ColorChannel::G, color) / 255.0f;
+  float b = UNIVERSAL MEDIA CENTER::UTILS::GL::GetChannelFromARGB(UNIVERSAL MEDIA CENTER::UTILS::GL::ColorChannel::B, color) / 255.0f;
+  float a = UNIVERSAL MEDIA CENTER::UTILS::GL::GetChannelFromARGB(UNIVERSAL MEDIA CENTER::UTILS::GL::ColorChannel::A, color) / 255.0f;
 
   glClearColor(r, g, b, a);
 
@@ -374,7 +374,7 @@ void CRenderSystemGLES::PresentRender(bool rendered, bool videoLayer)
 
   // if video is rendered to a separate layer, we should not block this thread
   if (!rendered && !videoLayer)
-    KODI::TIME::Sleep(40ms);
+    UNIVERSAL MEDIA CENTER::TIME::Sleep(40ms);
 }
 
 void CRenderSystemGLES::SetVSync(bool enable)
@@ -551,12 +551,12 @@ void CRenderSystemGLES::InitialiseShaders()
                         !CServiceBroker::GetWinSystem()->IsHdrComposite();
   if (m_limitedColorRange)
   {
-    defines += "#define KODI_LIMITED_RANGE 1\n";
+    defines += "#define UNIVERSALMEDIA_LIMITED_RANGE 1\n";
   }
 
   if (m_transferPQ)
   {
-    defines += "#define KODI_TRANSFER_PQ 1\n";
+    defines += "#define UNIVERSALMEDIA_TRANSFER_PQ 1\n";
   }
 
   m_pShader[ShaderMethodGLES::SM_DEFAULT] =
@@ -719,7 +719,7 @@ void CRenderSystemGLES::InitialiseShaders()
     CLog::Log(LOGERROR, "GUI Shader gles_shader_texture_noalpha.frag - compile and link failed");
   }
 
-  const std::string definesFontsRGBA = defines + "#define KODI_FONTS_RGBA 1\n";
+  const std::string definesFontsRGBA = defines + "#define UNIVERSALMEDIA_FONTS_RGBA 1\n";
 
   m_pShader[ShaderMethodGLES::SM_FONTS_RGBA] = std::make_unique<CGLESShader>(
       "gles_shader_simple.vert", "gles_shader_fonts.frag", definesFontsRGBA);
@@ -1022,7 +1022,7 @@ std::string CRenderSystemGLES::GetShaderPath(const std::string& filename)
 
   if (m_RenderVersionMajor >= 3 && m_RenderVersionMinor >= 1)
   {
-    std::string file = "special://xbmc/system/shaders/GLES/3.1/" + filename;
+    std::string file = "special:///system/shaders/GLES/3.1/" + filename;
     const CURL pathToUrl(file);
     if (CFileUtils::Exists(pathToUrl.Get()))
       return "GLES/3.1/";

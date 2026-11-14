@@ -10,7 +10,7 @@
 
 #include "ServiceBroker.h"
 #include "Util.h"
-#import "XBMCController.h"
+#import "Controller.h"
 #include "filesystem/SpecialProtocol.h"
 #include "input/mouse/MouseStat.h"
 #include "resources/LocalizeStrings.h"
@@ -29,8 +29,8 @@ const CGFloat timeFadeSecs                    = 2.0;
   self = [super init];
   if (self)
   {
-    UIImage       *xbmcLogo;
-    UIImageView   *xbmcLogoView;
+    UIImage       *Logo;
+    UIImageView   *LogoView;
     UILabel       *descriptionLabel;
 
     _internalWindow = [[UIWindow alloc] initWithFrame:frame];
@@ -44,19 +44,19 @@ const CGFloat timeFadeSecs                    = 2.0;
 
     //load the splash image
     std::string strUserSplash = CUtil::GetSplashPath();
-    xbmcLogo = [UIImage imageWithContentsOfFile:[NSString stringWithUTF8String:strUserSplash.c_str()]];
+    Logo = [UIImage imageWithContentsOfFile:[NSString stringWithUTF8String:strUserSplash.c_str()]];
     
     //make a view with the image
-    xbmcLogoView = [[UIImageView alloc] initWithImage:xbmcLogo];
+    LogoView = [[UIImageView alloc] initWithImage:Logo];
     //center the image and add it to the view
-    [xbmcLogoView setFrame:frame];
-    [xbmcLogoView setContentMode:UIViewContentModeScaleAspectFill];
+    [LogoView setFrame:frame];
+    [LogoView setContentMode:UIViewContentModeScaleAspectFill];
     //autoresize the image frame
-    [xbmcLogoView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
-    [xbmcLogoView setAutoresizesSubviews:YES];
-    [_touchView addSubview:xbmcLogoView];
+    [LogoView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
+    [LogoView setAutoresizesSubviews:YES];
+    [_touchView addSubview:LogoView];
     //send the image to the background
-    [_touchView sendSubviewToBack:xbmcLogoView];
+    [_touchView sendSubviewToBack:LogoView];
 
     CGRect labelRect = frame;
     labelRect.size.height/=2;
@@ -237,7 +237,7 @@ const CGFloat timeFadeSecs                    = 2.0;
 {
   if([self wakeUpFromSleep])
   {
-    [g_xbmcController sendKey:XBMCK_BACKSPACE];
+    [g_Controller sendKey:K_BACKSPACE];
   }
 }
 //--------------------------------------------------------------
@@ -245,7 +245,7 @@ const CGFloat timeFadeSecs                    = 2.0;
 {
   if([self wakeUpFromSleep])
   {
-    [g_xbmcController sendKey:XBMCK_LEFT];
+    [g_Controller sendKey:K_LEFT];
   }
 }
 //--------------------------------------------------------------
@@ -253,7 +253,7 @@ const CGFloat timeFadeSecs                    = 2.0;
 {
   if([self wakeUpFromSleep])
   {
-    [g_xbmcController sendKey:XBMCK_RIGHT];
+    [g_Controller sendKey:K_RIGHT];
   }
 }
 //--------------------------------------------------------------
@@ -261,7 +261,7 @@ const CGFloat timeFadeSecs                    = 2.0;
 {
   if([self wakeUpFromSleep])
   {
-    [g_xbmcController sendKey:XBMCK_UP];
+    [g_Controller sendKey:K_UP];
   }
 }
 //--------------------------------------------------------------
@@ -269,7 +269,7 @@ const CGFloat timeFadeSecs                    = 2.0;
 {
   if([self wakeUpFromSleep])
   {
-    [g_xbmcController sendKey:XBMCK_DOWN];
+    [g_Controller sendKey:K_DOWN];
   }
 }
 //--------------------------------------------------------------
@@ -277,7 +277,7 @@ const CGFloat timeFadeSecs                    = 2.0;
 {
   if([self wakeUpFromSleep])
   {
-    [g_xbmcController sendKey:XBMCK_c];
+    [g_Controller sendKey:K_c];
   }
 }
 //--------------------------------------------------------------
@@ -296,7 +296,7 @@ const CGFloat timeFadeSecs                    = 2.0;
 {
   if([self wakeUpFromSleep])
   {
-    [g_xbmcController sendKey:XBMCK_RETURN];
+    [g_Controller sendKey:K_RETURN];
   }
 }
 //--------------------------------------------------------------

@@ -17,24 +17,24 @@
 #include <mutex>
 #include <vector>
 
-namespace XBMCAddon
+namespace Addon
 {
-  namespace xbmcgui
+  namespace gui
   {
     // Forward declare the interceptor as the AddonWindowInterceptor.h
     // file needs to include the Window class because of the template
     class InterceptorBase;
 
     //
-    /// \defgroup python_xbmcgui_action Action
-    /// \ingroup python_xbmcgui
+    /// \defgroup python_gui_action Action
+    /// \ingroup python_gui
     ///@{
     /// @brief **Action class.**
     ///
-    /// \python_class{ xbmcgui.Action(): }
+    /// \python_class{ gui.Action(): }
     ///
     /// This class serves in addition to identify carried out
-    /// \ref kodi_key_action_ids of Universal Media Center and to be able to carry out thereby own
+    /// \ref universalmediacenter_key_action_ids of Universal Media Center and to be able to carry out thereby own
     /// necessary steps.
     ///
     /// The data of this class are always transmitted by callback
@@ -63,13 +63,13 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_action
+      /// \ingroup python_gui_action
       /// @brief \python_func{ getId() }
-      /// To get \ref kodi_key_action_ids
+      /// To get \ref universalmediacenter_key_action_ids
       ///
       /// This function returns the identification code used by the explained
       /// order, it is necessary to determine the type of command from
-      /// \ref kodi_key_action_ids.
+      /// \ref universalmediacenter_key_action_ids.
       ///
       /// @return                      The action's current id as a long or 0 if
       ///                              no action is mapped in the xml's.
@@ -88,12 +88,12 @@ namespace XBMCAddon
       ///
       getId();
 #else
-      long getId() { XBMC_TRACE; return id; }
+      long getId() { _TRACE; return id; }
 #endif
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_action
+      /// \ingroup python_gui_action
       /// @brief \python_func{ getButtonCode() }
       /// Returns the button code for this action.
       ///
@@ -101,12 +101,12 @@ namespace XBMCAddon
       ///
       getButtonCode();
 #else
-      long getButtonCode() { XBMC_TRACE; return buttonCode; }
+      long getButtonCode() { _TRACE; return buttonCode; }
 #endif
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_action
+      /// \ingroup python_gui_action
       /// @brief \python_func{ getAmount1() }
       /// Returns the first amount of force applied to the thumbstick.
       ///
@@ -114,12 +114,12 @@ namespace XBMCAddon
       ///
       getAmount1();
 #else
-      float getAmount1() { XBMC_TRACE; return fAmount1; }
+      float getAmount1() { _TRACE; return fAmount1; }
 #endif
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_action
+      /// \ingroup python_gui_action
       /// @brief \python_func{ getAmount2() }
       /// Returns the second amount of force applied to the thumbstick.
       ///
@@ -127,18 +127,18 @@ namespace XBMCAddon
       ///
       getAmount2();
 #else
-      float getAmount2() { XBMC_TRACE; return fAmount2; }
+      float getAmount2() { _TRACE; return fAmount2; }
 #endif
     };
     ///@}
 
     //==========================================================================
-    // This is the main class for the xbmcgui.Window functionality. It is tied
+    // This is the main class for the gui.Window functionality. It is tied
     //  into the main Universal Media Center windowing system via the Interceptor
     //==========================================================================
     //
-    /// \defgroup python_xbmcgui_window Window
-    /// \ingroup python_xbmcgui
+    /// \defgroup python_gui_window Window
+    /// \ingroup python_gui
     /// @{
     /// @brief __GUI window class for Add-Ons.__
     ///
@@ -146,9 +146,9 @@ namespace XBMCAddon
     /// can be accessed from an Add-On.
     ///
     /// Likewise, all functions from here as well in the other window classes
-    /// \ref python_xbmcgui_window_dialog "WindowDialog",
-    /// \ref python_xbmcgui_window_xml "WindowXML" and
-    /// \ref python_xbmcgui_window_dialog_xml "WindowXMLDialog"
+    /// \ref python_gui_window_dialog "WindowDialog",
+    /// \ref python_gui_window_xml "WindowXML" and
+    /// \ref python_gui_window_dialog_xml "WindowXMLDialog"
     /// with inserted and available.
     ///
     ///
@@ -156,7 +156,7 @@ namespace XBMCAddon
     /// Constructor for window
     /// ----------------------------
     ///
-    /// \python_class{ xbmcgui.Window([existingWindowId]): }
+    /// \python_class{ gui.Window([existingWindowId]): }
     ///
     /// Creates a new from Add-On usable window class. This is to create
     /// window for related controls by system calls.
@@ -176,7 +176,7 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// win = xbmcgui.Window()
+    /// win = gui.Window()
     /// width = win.getWidth()
     /// ..
     /// ~~~~~~~~~~~~~
@@ -260,22 +260,22 @@ namespace XBMCAddon
 
       SWIGHIDDENVIRTUAL bool IsDialogRunning() const
       {
-        XBMC_TRACE;
+        _TRACE;
         return false;
       }
       SWIGHIDDENVIRTUAL bool IsDialog() const
       {
-        XBMC_TRACE;
+        _TRACE;
         return false;
       }
       SWIGHIDDENVIRTUAL bool IsModalDialog() const
       {
-        XBMC_TRACE;
+        _TRACE;
         return false;
       }
       SWIGHIDDENVIRTUAL bool IsMediaWindow() const
       {
-        XBMC_TRACE;
+        _TRACE;
         return false;
       }
       SWIGHIDDENVIRTUAL void    dispose();
@@ -292,29 +292,29 @@ namespace XBMCAddon
 #endif
 
       //
-      /// @defgroup python_xbmcgui_window_cb Callback functions from Universal Media Center to add-on
-      /// \ingroup python_xbmcgui_window
+      /// @defgroup python_gui_window_cb Callback functions from Universal Media Center to add-on
+      /// \ingroup python_gui_window
       /// @{
       /// @brief __GUI window callback functions.__
       ///
       /// Functions to handle control callbacks from Universal Media Center.
       ///
       /// Likewise, all functions from here as well in the all window classes
-      /// (\ref python_xbmcgui_window "Window",
-      /// \ref python_xbmcgui_window_dialog "WindowDialog",
-      /// \ref python_xbmcgui_window_xml "WindowXML" and
-      /// \ref python_xbmcgui_window_dialog_xml "WindowXMLDialog") with inserted
+      /// (\ref python_gui_window "Window",
+      /// \ref python_gui_window_dialog "WindowDialog",
+      /// \ref python_gui_window_xml "WindowXML" and
+      /// \ref python_gui_window_dialog_xml "WindowXMLDialog") with inserted
       /// and available.
       ///
       /// ------------------------------------------------------------------------
       ///
-      /// @link python_xbmcgui_window Go back to normal functions from window@endlink
+      /// @link python_gui_window Go back to normal functions from window@endlink
       //
 
       // callback takes a parameter
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_window_cb
+      /// \ingroup python_gui_window_cb
       /// @brief \python_func{ onAction(self, Action action) }
       /// **onAction method.**
       ///
@@ -323,7 +323,7 @@ namespace XBMCAddon
       ///
       /// @param self                Own base class pointer
       /// @param action              The action id to perform, see
-      ///                            \ref python_xbmcgui_action to get use
+      ///                            \ref python_gui_action to get use
       ///                            of them
       ///
       /// @note
@@ -361,7 +361,7 @@ namespace XBMCAddon
       // on control is not actually on Window in the api but is called into Python anyway.
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_window_cb
+      /// \ingroup python_gui_window_cb
       /// @brief \python_func{ onControl(self, Control) }
       /// **onControl method.**
       ///
@@ -369,7 +369,7 @@ namespace XBMCAddon
       /// controls when the control itself doesn't handle the message.
       ///
       /// @param self                Own base class pointer
-      /// @param control             The \ref python_xbmcgui_control "Control" class
+      /// @param control             The \ref python_gui_control "Control" class
       ///
       ///
       ///-----------------------------------------------------------------------
@@ -390,7 +390,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_window_cb
+      /// \ingroup python_gui_window_cb
       /// @brief \python_func{ onClick(self, int controlId) }
       /// **onClick method.**
       ///
@@ -421,7 +421,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_window_cb
+      /// \ingroup python_gui_window_cb
       /// @brief \python_func{ onDoubleClick(self, int controlId) }
       /// __onDoubleClick method.__
       ///
@@ -452,7 +452,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_window_cb
+      /// \ingroup python_gui_window_cb
       /// @brief \python_func{ onFocus(self, int controlId) }
       /// __onFocus method.__
       ///
@@ -482,7 +482,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_window_cb
+      /// \ingroup python_gui_window_cb
       /// @brief \python_func{ onInit(self) }
       /// __onInit method.__
       ///
@@ -510,7 +510,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_window
+      /// \ingroup python_gui_window
       /// @brief \python_func{ show() }
       /// Show this window.
       ///
@@ -528,12 +528,12 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_window
+      /// \ingroup python_gui_window
       /// @brief \python_func{ setFocus(Control) }
       /// Give the supplied control focus.
       ///
-      /// @param Control             \ref python_xbmcgui_control "Control" class to focus
-      /// @throws TypeError          If supplied argument is not a \ref python_xbmcgui_control "Control"
+      /// @param Control             \ref python_gui_control "Control" class to focus
+      /// @throws TypeError          If supplied argument is not a \ref python_gui_control "Control"
       ///                            type
       /// @throws SystemError        On Internal error
       /// @throws RuntimeError       If control is not added to a window
@@ -545,7 +545,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_window
+      /// \ingroup python_gui_window
       /// @brief \python_func{ setFocusId(ControlId) }
       /// Gives the control with the supplied focus.
       ///
@@ -560,7 +560,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_window
+      /// \ingroup python_gui_window
       /// @brief \python_func{ getFocus(Control) }
       /// Returns the control which is focused.
       ///
@@ -575,7 +575,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_window
+      /// \ingroup python_gui_window
       /// @brief \python_func{ getFocusId(int) }
       /// Returns the id of the control which is focused.
       ///
@@ -590,12 +590,12 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_window
+      /// \ingroup python_gui_window
       /// @brief \python_func{ removeControl(Control) }
       /// Removes the control from this window.
       ///
-      /// @param Control             \ref python_xbmcgui_control "Control" class to remove
-      /// @throws TypeError          If supplied argument is not a \ref python_xbmcgui_control
+      /// @param Control             \ref python_gui_control "Control" class to remove
+      /// @throws TypeError          If supplied argument is not a \ref python_gui_control
       ///                            type
       /// @throws RuntimeError       If control is not added to this window
       ///
@@ -608,12 +608,12 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_window
+      /// \ingroup python_gui_window
       /// @brief \python_func{ removeControls(List) }
       /// Removes a list of controls from this window.
       ///
       /// @param List               List with controls to remove
-      /// @throws TypeError         If supplied argument is not a \ref python_xbmcgui_control
+      /// @throws TypeError         If supplied argument is not a \ref python_gui_control
       ///                           type
       /// @throws RuntimeError      If control is not added to this window
       ///
@@ -627,7 +627,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_window
+      /// \ingroup python_gui_window
       /// @brief \python_func{ getHeight() }
       /// Returns the height of this Window instance.
       ///
@@ -643,7 +643,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_window
+      /// \ingroup python_gui_window
       /// @brief \python_func{ getWidth() }
       /// Returns the width of this Window instance.
       ///
@@ -659,7 +659,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_window
+      /// \ingroup python_gui_window
       /// @brief \python_func{ setProperty(key, value) }
       /// Sets a window property, similar to an infolabel.
       ///
@@ -679,7 +679,7 @@ namespace XBMCAddon
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// win = xbmcgui.Window(xbmcgui.getCurrentWindowId())
+      /// win = gui.Window(gui.getCurrentWindowId())
       /// win.setProperty('Category', 'Newest')
       /// ..
       /// ~~~~~~~~~~~~~
@@ -691,7 +691,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_window
+      /// \ingroup python_gui_window
       /// @brief \python_func{ getProperty(key) }
       /// Returns a window property as a string, similar to an infolabel.
       ///
@@ -709,7 +709,7 @@ namespace XBMCAddon
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// win = xbmcgui.Window(xbmcgui.getCurrentWindowId())
+      /// win = gui.Window(gui.getCurrentWindowId())
       /// category = win.getProperty('Category')
       /// ..
       /// ~~~~~~~~~~~~~
@@ -721,7 +721,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_window
+      /// \ingroup python_gui_window
       /// @brief \python_func{ clearProperty(key) }
       /// Clears the specific window property.
       ///
@@ -739,7 +739,7 @@ namespace XBMCAddon
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// win = xbmcgui.Window(xbmcgui.getCurrentWindowId())
+      /// win = gui.Window(gui.getCurrentWindowId())
       /// win.clearProperty('Category')
       /// ..
       /// ~~~~~~~~~~~~~
@@ -751,7 +751,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_window
+      /// \ingroup python_gui_window
       /// @brief \python_func{ clearProperties() }
       /// Clears all window properties.
       ///
@@ -761,7 +761,7 @@ namespace XBMCAddon
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// win = xbmcgui.Window(xbmcgui.getCurrentWindowId())
+      /// win = gui.Window(gui.getCurrentWindowId())
       /// win.clearProperties()
       /// ..
       /// ~~~~~~~~~~~~~
@@ -773,7 +773,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_window
+      /// \ingroup python_gui_window
       /// @brief \python_func{ close() }
       /// Closes this window.
       ///
@@ -788,7 +788,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_window
+      /// \ingroup python_gui_window
       /// @brief \python_func{ doModal() }
       /// Display this window until close() is called.
       ///
@@ -800,12 +800,12 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_window
+      /// \ingroup python_gui_window
       /// @brief \python_func{ addControl(Control) }
-      /// Add a \ref python_xbmcgui_control "Control" to this window.
+      /// Add a \ref python_gui_control "Control" to this window.
       ///
-      /// @param Control                \ref python_xbmcgui_control "Control" to add
-      /// @throws TypeError             If supplied argument is not a \ref python_xbmcgui_control
+      /// @param Control                \ref python_gui_control "Control" to add
+      /// @throws TypeError             If supplied argument is not a \ref python_gui_control
       ///                               type
       /// @throws ReferenceError        If control is already used in another
       ///                               window
@@ -814,20 +814,20 @@ namespace XBMCAddon
       /// The next controls can be added to a window atm
       ///   | Control-class       | Description                                                |
       ///   |---------------------|------------------------------------------------------------|
-      ///   | \ref python_xbmcgui_control_label       "ControlLabel"        | Label control to show text
-      ///   | \ref python_xbmcgui_control_fadelabel   "ControlFadeLabel"    | The fadelabel has multiple labels which it cycles through
-      ///   | \ref python_xbmcgui_control_textbox     "ControlTextBox"      | To show bigger text field
-      ///   | \ref python_xbmcgui_control_button      "ControlButton"       | Brings a button to do some actions
-      ///   | \ref python_xbmcgui_control_edit        "ControlEdit"         | The edit control allows a user to input text in Universal Media Center
-      ///   | \ref python_xbmcgui_control_fadelabel   "ControlFadeLabel"    | The fade label control is used for displaying multiple pieces of text in the same space in Universal Media Center
-      ///   | \ref python_xbmcgui_control_list        "ControlList"         | Add a list for something like files
-      ///   | \ref python_xbmcgui_control_group       "ControlGroup"        | Is for a group which brings the others together
-      ///   | \ref python_xbmcgui_control_image       "ControlImage"        | Controls a image on skin
-      ///   | \ref python_xbmcgui_control_radiobutton "ControlRadioButton"  | For a radio button which handle boolean values
-      ///   | \ref python_xbmcgui_control_progress    "ControlProgress"     | Progress bar for a performed work or something else
-      ///   | \ref python_xbmcgui_control_slider      "ControlSlider"       | The slider control is used for things where a sliding bar best represents the operation at hand
-      ///   | \ref python_xbmcgui_control_spin        "ControlSpin"         | The spin control is used for when a list of options can be chosen
-      ///   | \ref python_xbmcgui_control_textbox     "ControlTextBox"      | The text box is used for showing a large multipage piece of text in Universal Media Center
+      ///   | \ref python_gui_control_label       "ControlLabel"        | Label control to show text
+      ///   | \ref python_gui_control_fadelabel   "ControlFadeLabel"    | The fadelabel has multiple labels which it cycles through
+      ///   | \ref python_gui_control_textbox     "ControlTextBox"      | To show bigger text field
+      ///   | \ref python_gui_control_button      "ControlButton"       | Brings a button to do some actions
+      ///   | \ref python_gui_control_edit        "ControlEdit"         | The edit control allows a user to input text in Universal Media Center
+      ///   | \ref python_gui_control_fadelabel   "ControlFadeLabel"    | The fade label control is used for displaying multiple pieces of text in the same space in Universal Media Center
+      ///   | \ref python_gui_control_list        "ControlList"         | Add a list for something like files
+      ///   | \ref python_gui_control_group       "ControlGroup"        | Is for a group which brings the others together
+      ///   | \ref python_gui_control_image       "ControlImage"        | Controls a image on skin
+      ///   | \ref python_gui_control_radiobutton "ControlRadioButton"  | For a radio button which handle boolean values
+      ///   | \ref python_gui_control_progress    "ControlProgress"     | Progress bar for a performed work or something else
+      ///   | \ref python_gui_control_slider      "ControlSlider"       | The slider control is used for things where a sliding bar best represents the operation at hand
+      ///   | \ref python_gui_control_spin        "ControlSpin"         | The spin control is used for when a list of options can be chosen
+      ///   | \ref python_gui_control_textbox     "ControlTextBox"      | The text box is used for showing a large multipage piece of text in Universal Media Center
       ///
       addControl(...);
 #else
@@ -836,13 +836,13 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_window
+      /// \ingroup python_gui_window
       /// @brief \python_func{ addControls(List) }
       /// Add a list of Controls to this window.
       ///
       /// @param List                   List with controls to add
       /// @throws TypeError             If supplied argument is not of List
-      ///                               type, or a control is not of \ref python_xbmcgui_control
+      ///                               type, or a control is not of \ref python_gui_control
       ///                               type
       /// @throws ReferenceError        If control is already used in another
       ///                               window
@@ -855,18 +855,18 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_window
+      /// \ingroup python_gui_window
       /// @brief \python_func{ getControl(controlId) }
       /// Gets the control from this window.
       ///
-      /// @param controlId              \ref python_xbmcgui_control id to get
-      /// @throws Exception             If \ref python_xbmcgui_control doesn't exist
+      /// @param controlId              \ref python_gui_control id to get
+      /// @throws Exception             If \ref python_gui_control doesn't exist
       ///
       /// @remark controlId doesn't have to be a python control, it can be a
       /// control id from a Universal Media Center window too (you can find id's in the xml files.
       ///
       /// @note Not python controls are not completely usable yet
-      /// You can only use the \ref python_xbmcgui_control functions
+      /// You can only use the \ref python_gui_control functions
       ///
       getControl(...);
 #else

@@ -17,7 +17,7 @@
 #include <mutex>
 #include <sstream>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace PERIPHERALS;
 
 CPeripheralKeyboard::CPeripheralKeyboard(CPeripherals& manager,
@@ -58,7 +58,7 @@ bool CPeripheralKeyboard::InitialiseFeature(const PeripheralFeature feature)
 }
 
 void CPeripheralKeyboard::RegisterKeyboardDriverHandler(
-    KODI::KEYBOARD::IKeyboardDriverHandler* handler, bool bPromiscuous)
+    UNIVERSAL MEDIA CENTER::KEYBOARD::IKeyboardDriverHandler* handler, bool bPromiscuous)
 {
   std::unique_lock lock(m_mutex);
 
@@ -67,7 +67,7 @@ void CPeripheralKeyboard::RegisterKeyboardDriverHandler(
 }
 
 void CPeripheralKeyboard::UnregisterKeyboardDriverHandler(
-    KODI::KEYBOARD::IKeyboardDriverHandler* handler)
+    UNIVERSAL MEDIA CENTER::KEYBOARD::IKeyboardDriverHandler* handler)
 {
   std::unique_lock lock(m_mutex);
 

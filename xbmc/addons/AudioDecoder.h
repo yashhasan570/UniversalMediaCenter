@@ -10,12 +10,12 @@
 #include "addons/IAddonSupportCheck.h"
 #include "addons/IAddonSupportList.h"
 #include "addons/binary-addons/AddonInstanceHandler.h"
-#include "addons/kodi-dev-kit/include/kodi/addon-instance/AudioDecoder.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/addon-instance/AudioDecoder.h"
 #include "cores/paplayer/ICodec.h"
 #include "filesystem/MusicFileDirectory.h"
 #include "music/tags/ImusicInfoTagLoader.h"
 
-namespace KODI::ADDONS
+namespace UNIVERSAL MEDIA CENTER::ADDONS
 {
 
 class CAudioDecoder : public ADDON::IAddonInstanceHandler,
@@ -44,4 +44,4 @@ private:
   bool m_hasTags;
 };
 
-} // namespace KODI::ADDONS
+} // namespace UNIVERSAL MEDIA CENTER::ADDONS

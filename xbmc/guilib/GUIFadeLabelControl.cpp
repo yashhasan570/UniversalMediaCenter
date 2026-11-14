@@ -13,7 +13,7 @@
 #include "utils/Random.h"
 #include "windowing/WinSystem.h"
 
-using namespace KODI::GUILIB;
+using namespace UNIVERSAL MEDIA CENTER::GUILIB;
 
 CGUIFadeLabelControl::CGUIFadeLabelControl(int parentID, int controlID, float posX, float posY, float width, float height, const CLabelInfo& labelInfo, bool scrollOut, unsigned int timeToDelayAtEnd, bool resetOnLabelChange, bool randomized)
     : CGUIControl(parentID, controlID, posX, posY, width, height), m_label(labelInfo), m_scrollInfo(50, labelInfo.offsetX, labelInfo.scrollSpeed)
@@ -58,7 +58,7 @@ void CGUIFadeLabelControl::SetInfo(const std::vector<GUIINFO::CGUIInfoLabel> &in
   m_infoLabels = infoLabels;
   m_allLabelsShown = m_infoLabels.empty();
   if (m_randomized)
-    KODI::UTILS::RandomShuffle(m_infoLabels.begin(), m_infoLabels.end());
+    UNIVERSAL MEDIA CENTER::UTILS::RandomShuffle(m_infoLabels.begin(), m_infoLabels.end());
 }
 
 void CGUIFadeLabelControl::AddLabel(const std::string &label)

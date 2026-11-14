@@ -30,7 +30,7 @@
 #include <vector>
 
 using namespace ADDON;
-using namespace KODI::ADDONS;
+using namespace UNIVERSAL MEDIA CENTER::ADDONS;
 
 constexpr std::array ADDON_TYPES{AddonType::VFS, AddonType::IMAGEDECODER, AddonType::AUDIODECODER};
 
@@ -201,19 +201,19 @@ std::string CFileExtensionProvider::GetSubtitleExtensions() const
                        });
 }
 
-std::string CFileExtensionProvider::GetMediaExtensions(KODI::MEDIA::MediaSection section) const
+std::string CFileExtensionProvider::GetMediaExtensions(UNIVERSAL MEDIA CENTER::MEDIA::MediaSection section) const
 {
   switch (section)
   {
-    case KODI::MEDIA::MediaSection::VIDEO:
+    case UNIVERSAL MEDIA CENTER::MEDIA::MediaSection::VIDEO:
       return GetVideoExtensions();
-    case KODI::MEDIA::MediaSection::MUSIC:
+    case UNIVERSAL MEDIA CENTER::MEDIA::MediaSection::MUSIC:
       return GetMusicExtensions();
-    case KODI::MEDIA::MediaSection::PICTURES:
+    case UNIVERSAL MEDIA CENTER::MEDIA::MediaSection::PICTURES:
       return GetPictureExtensions();
-    case KODI::MEDIA::MediaSection::FILES:
-    case KODI::MEDIA::MediaSection::PROGRAMS:
-    case KODI::MEDIA::MediaSection::GAMES:
+    case UNIVERSAL MEDIA CENTER::MEDIA::MediaSection::FILES:
+    case UNIVERSAL MEDIA CENTER::MEDIA::MediaSection::PROGRAMS:
+    case UNIVERSAL MEDIA CENTER::MEDIA::MediaSection::GAMES:
       break;
   }
   return {};
@@ -313,7 +313,7 @@ bool CFileExtensionProvider::CanOperateExtension(const std::string& path)
   StringUtils::ToLower(strExtension);
   if (!strExtension.empty() && CServiceBroker::IsAddonInterfaceUp())
   {
-    std::vector<std::unique_ptr<KODI::ADDONS::IAddonSupportCheck>> supportList;
+    std::vector<std::unique_ptr<UNIVERSAL MEDIA CENTER::ADDONS::IAddonSupportCheck>> supportList;
 
     auto addonInfos = CServiceBroker::GetExtsMimeSupportList().GetExtensionSupportedAddonInfos(
         strExtension, CExtsMimeSupportList::FilterSelect::all);

@@ -16,7 +16,7 @@ namespace XFILE
 class CFile;
 }
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace CDRIP
 {
@@ -89,4 +89,4 @@ protected:
 };
 
 } /* namespace CDRIP */
-} /* namespace KODI */
+} /* namespace UNIVERSAL MEDIA CENTER */

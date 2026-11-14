@@ -14,7 +14,7 @@
 
 class CFileItem;
 
-namespace KODI::VIDEO::GUILIB
+namespace UNIVERSAL MEDIA CENTER::VIDEO::GUILIB
 {
 class CVideoActionProcessorBase
 {
@@ -41,4 +41,4 @@ private:
   std::shared_ptr<CFileItem> m_item;
   bool m_userCancelled{false};
 };
-} // namespace KODI::VIDEO::GUILIB
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO::GUILIB

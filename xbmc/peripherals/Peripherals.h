@@ -36,7 +36,7 @@ namespace tinyxml2
 class XMLElement;
 }
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -47,7 +47,7 @@ namespace JOYSTICK
 {
 class IButtonMapper;
 }
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER
 
 namespace PERIPHERALS
 {
@@ -58,14 +58,14 @@ class CEventScanner;
  */
 class CPeripherals : public ISettingCallback,
                      public Observable,
-                     public KODI::MESSAGING::IMessageTarget,
+                     public UNIVERSAL MEDIA CENTER::MESSAGING::IMessageTarget,
                      public IEventScannerCallback,
                      public ANNOUNCEMENT::IAnnouncer,
                      public IMsgTargetCallback
 {
 public:
   explicit CPeripherals(CInputManager& inputManager,
-                        KODI::GAME::CControllerManager& controllerProfiles);
+                        UNIVERSAL MEDIA CENTER::GAME::CControllerManager& controllerProfiles);
 
   ~CPeripherals() override;
 
@@ -338,20 +338,20 @@ public:
    * \ref CPeripheral::RegisterJoystickButtonMapper for what is done to the
    * mapper after being given to the peripheral.
    */
-  void RegisterJoystickButtonMapper(KODI::JOYSTICK::IButtonMapper* mapper);
+  void RegisterJoystickButtonMapper(UNIVERSAL MEDIA CENTER::JOYSTICK::IButtonMapper* mapper);
 
   /*!
    * \brief Unregister a button mapper interface
    * \param mapper The button mapper
    */
-  void UnregisterJoystickButtonMapper(KODI::JOYSTICK::IButtonMapper* mapper);
+  void UnregisterJoystickButtonMapper(UNIVERSAL MEDIA CENTER::JOYSTICK::IButtonMapper* mapper);
 
   // implementation of ISettingCallback
   void OnSettingChanged(const std::shared_ptr<const CSetting>& setting) override;
   void OnSettingAction(const std::shared_ptr<const CSetting>& setting) override;
 
   // implementation of IMessageTarget
-  void OnApplicationMessage(KODI::MESSAGING::ThreadMessage* pMsg) override;
+  void OnApplicationMessage(UNIVERSAL MEDIA CENTER::MESSAGING::ThreadMessage* pMsg) override;
   int GetMessageMask() override;
 
   // implementation of IAnnouncer
@@ -371,7 +371,7 @@ public:
   /*!
    * \brief Access controller profiles through the construction parameter
    */
-  KODI::GAME::CControllerManager& GetControllerProfiles() { return m_controllerProfiles; }
+  UNIVERSAL MEDIA CENTER::GAME::CControllerManager& GetControllerProfiles() { return m_controllerProfiles; }
 
   /*!
    * \brief Get a mutex that allows for add-on install tasks to block on each other
@@ -404,7 +404,7 @@ private:
 
   // Construction parameters
   CInputManager& m_inputManager;
-  KODI::GAME::CControllerManager& m_controllerProfiles;
+  UNIVERSAL MEDIA CENTER::GAME::CControllerManager& m_controllerProfiles;
 
 #if !defined(HAVE_LIBCEC)
   bool m_bMissingLibCecWarningDisplayed = false;

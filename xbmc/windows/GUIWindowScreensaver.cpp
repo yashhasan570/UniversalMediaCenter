@@ -22,7 +22,7 @@
 #include "settings/SettingsComponent.h"
 #include "windowing/WinSystem.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 CGUIWindowScreensaver::CGUIWindowScreensaver()
   : CGUIDialog(WINDOW_SCREENSAVER, "", DialogModalityType::MODELESS)
@@ -99,7 +99,7 @@ bool CGUIWindowScreensaver::OnMessage(CGUIMessage& message)
           CServiceBroker::GetAddonMgr().GetAddonInfo(addon, ADDON::AddonType::SCREENSAVER);
       if (!addonBase)
         return false;
-      m_addon = std::make_unique<KODI::ADDONS::CScreenSaver>(addonBase);
+      m_addon = std::make_unique<UNIVERSAL MEDIA CENTER::ADDONS::CScreenSaver>(addonBase);
       return m_addon->Start();
     }
 

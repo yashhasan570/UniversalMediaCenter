@@ -12,7 +12,7 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI::SHADER;
+using namespace UNIVERSAL MEDIA CENTER::SHADER;
 
 TEST(TestShaderUtilsGLES, DropsTheProfileFromTheVersion)
 {

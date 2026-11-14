@@ -16,7 +16,7 @@
 #include "utils/log.h"
 #include "windowing/WinSystem.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 CGUIButtonControl::CGUIButtonControl(int parentID,
                                      int controlID,
@@ -384,9 +384,9 @@ std::string CGUIButtonControl::GetLabel2() const
 
 void CGUIButtonControl::PythonSetLabel(const std::string& strFont,
                                        const std::string& strText,
-                                       KODI::UTILS::COLOR::Color textColor,
-                                       KODI::UTILS::COLOR::Color shadowColor,
-                                       KODI::UTILS::COLOR::Color focusedColor)
+                                       UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color textColor,
+                                       UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color shadowColor,
+                                       UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color focusedColor)
 {
   m_label.SetLabelFont(g_fontManager.GetFont(strFont));
   m_label.GetLabelInfo().textColor = textColor;
@@ -396,7 +396,7 @@ void CGUIButtonControl::PythonSetLabel(const std::string& strFont,
   SetLabel(strText);
 }
 
-void CGUIButtonControl::PythonSetDisabledColor(KODI::UTILS::COLOR::Color disabledColor)
+void CGUIButtonControl::PythonSetDisabledColor(UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color disabledColor)
 {
   m_label.GetLabelInfo().disabledColor = disabledColor;
 }

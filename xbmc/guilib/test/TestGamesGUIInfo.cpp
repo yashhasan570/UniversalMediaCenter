@@ -21,8 +21,8 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI::GAME;
-using namespace KODI::GUILIB::GUIINFO;
+using namespace UNIVERSAL MEDIA CENTER::GAME;
+using namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO;
 
 class TestGamesGUIInfo : public testing::Test
 {
@@ -99,7 +99,7 @@ TEST_F(TestGamesGUIInfo, NamesAnAttemptByItsPlace)
 TEST_F(TestGamesGUIInfo, AnswersAnAttemptByItsPlace)
 {
   // Game services, which hold the setting that turns the indicators off
-  KODI::RETRO::CPlaybackTestEnvironment environment;
+  UNIVERSAL MEDIA CENTER::RETRO::CPlaybackTestEnvironment environment;
   auto settings = CServiceBroker::GetSettingsComponent()->GetSettings();
   const bool indicatorOriginal = settings->GetBool("gamesachievements.challengeindicator");
   settings->SetBool("gamesachievements.challengeindicator", true);

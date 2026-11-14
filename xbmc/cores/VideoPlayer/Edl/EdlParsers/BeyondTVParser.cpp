@@ -10,7 +10,7 @@
 
 #include "FileItem.h"
 #include "utils/URIUtils.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 #include "utils/log.h"
 
 #include <chrono>
@@ -32,7 +32,7 @@ CEdlParserResult CBeyondTVParser::Parse(const CFileItem& item,
 
   const std::string beyondTVFilename = GetEdlFilePath(item);
 
-  CXBMCTinyXML2 xmlDoc;
+  CTinyXML2 xmlDoc;
   if (!xmlDoc.LoadFile(beyondTVFilename))
   {
     CLog::LogF(LOGERROR, "Could not load Beyond TV file: {}. {}",

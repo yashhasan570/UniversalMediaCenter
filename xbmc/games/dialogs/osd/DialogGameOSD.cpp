@@ -18,7 +18,7 @@
 #include "input/actions/Action.h"
 #include "input/actions/ActionIDs.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 namespace

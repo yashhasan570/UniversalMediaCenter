@@ -44,27 +44,27 @@ void CSpecialProtocol::SetProfilePath(const std::string &dir)
   CLog::Log(LOGINFO, "special://profile/ is mapped to: {}", GetPath("profile"));
 }
 
-void CSpecialProtocol::SetXBMCPath(const std::string &dir)
+void CSpecialProtocol::SetPath(const std::string &dir)
 {
-  SetPath("xbmc", dir);
+  SetPath("", dir);
 }
 
-void CSpecialProtocol::SetXBMCBinPath(const std::string &dir)
+void CSpecialProtocol::SetBinPath(const std::string &dir)
 {
-  SetPath("xbmcbin", dir);
+  SetPath("bin", dir);
 }
 
-void CSpecialProtocol::SetXBMCBinAddonPath(const std::string &dir)
+void CSpecialProtocol::SetBinAddonPath(const std::string &dir)
 {
-  SetPath("xbmcbinaddons", dir);
+  SetPath("binaddons", dir);
 }
 
-void CSpecialProtocol::SetXBMCAltBinAddonPath(const std::string &dir)
+void CSpecialProtocol::SetAltBinAddonPath(const std::string &dir)
 {
-  SetPath("xbmcaltbinaddons", dir);
+  SetPath("altbinaddons", dir);
 }
 
-void CSpecialProtocol::SetXBMCFrameworksPath(const std::string &dir)
+void CSpecialProtocol::SetFrameworksPath(const std::string &dir)
 {
   SetPath("frameworks", dir);
 }
@@ -176,10 +176,10 @@ std::string CSpecialProtocol::TranslatePath(const CURL &url)
       translatedPath = URIUtils::AddFileToFolder(winSystem->GetGfxContext().GetMediaDir(), FileName);
   }
   // from here on, we have our "real" special paths
-  else if (RootDir == "xbmc" ||
-           RootDir == "xbmcbin" ||
-           RootDir == "xbmcbinaddons" ||
-           RootDir == "xbmcaltbinaddons" ||
+  else if (RootDir == "" ||
+           RootDir == "bin" ||
+           RootDir == "binaddons" ||
+           RootDir == "altbinaddons" ||
            RootDir == "home" ||
            RootDir == "envhome" ||
            RootDir == "userhome" ||
@@ -272,9 +272,9 @@ std::string CSpecialProtocol::TranslatePathConvertCase(const std::string& path)
 
 void CSpecialProtocol::LogPaths()
 {
-  CLog::Log(LOGINFO, "special://xbmc/ is mapped to: {}", GetPath("xbmc"));
-  CLog::Log(LOGINFO, "special://xbmcbin/ is mapped to: {}", GetPath("xbmcbin"));
-  CLog::Log(LOGINFO, "special://xbmcbinaddons/ is mapped to: {}", GetPath("xbmcbinaddons"));
+  CLog::Log(LOGINFO, "special:/// is mapped to: {}", GetPath(""));
+  CLog::Log(LOGINFO, "special://bin/ is mapped to: {}", GetPath("bin"));
+  CLog::Log(LOGINFO, "special://binaddons/ is mapped to: {}", GetPath("binaddons"));
   CLog::Log(LOGINFO, "special://masterprofile/ is mapped to: {}", GetPath("masterprofile"));
 #if defined(TARGET_POSIX)
   CLog::Log(LOGINFO, "special://envhome/ is mapped to: {}", GetPath("envhome"));

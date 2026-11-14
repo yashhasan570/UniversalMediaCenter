@@ -12,7 +12,7 @@
 
 class CWinSystemBase;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RENDERING
 {
@@ -24,4 +24,4 @@ ImageColorMetadata GetOutputColorMetadata(CWinSystemBase& winSystem);
 
 } // namespace CAPTURE
 } // namespace RENDERING
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

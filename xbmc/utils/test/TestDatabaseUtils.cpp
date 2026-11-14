@@ -109,7 +109,7 @@ struct FieldCase
   std::string expected;
 };
 
-void ExpectFields(KODI::MEDIA::TYPE type, std::span<const FieldCase> cases)
+void ExpectFields(UNIVERSAL MEDIA CENTER::MEDIA::TYPE type, std::span<const FieldCase> cases)
 {
   for (const FieldCase& c : cases)
     EXPECT_EQ(DatabaseUtils::GetField(c.field, type, c.part), c.expected)
@@ -122,7 +122,7 @@ struct IndexCase
   int expected;
 };
 
-void ExpectIndexes(KODI::MEDIA::TYPE type, std::span<const IndexCase> cases)
+void ExpectIndexes(UNIVERSAL MEDIA CENTER::MEDIA::TYPE type, std::span<const IndexCase> cases)
 {
   for (const IndexCase& c : cases)
     EXPECT_EQ(DatabaseUtils::GetFieldIndex(c.field, type), c.expected)
@@ -133,9 +133,9 @@ void ExpectIndexes(KODI::MEDIA::TYPE type, std::span<const IndexCase> cases)
 TEST(TestDatabaseUtils, GetField_None)
 {
   EXPECT_EQ(
-      DatabaseUtils::GetField(Field::NONE, KODI::MEDIA::TYPE::NONE, DatabaseQueryPart::SELECT), "");
+      DatabaseUtils::GetField(Field::NONE, UNIVERSAL MEDIA CENTER::MEDIA::TYPE::NONE, DatabaseQueryPart::SELECT), "");
   EXPECT_EQ(
-      DatabaseUtils::GetField(Field::NONE, KODI::MEDIA::TYPE::MOVIE, DatabaseQueryPart::SELECT),
+      DatabaseUtils::GetField(Field::NONE, UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MOVIE, DatabaseQueryPart::SELECT),
       "");
 }
 
@@ -163,7 +163,7 @@ TEST(TestDatabaseUtils, GetField_MediaTypeAlbum)
       {Field::ALBUM, DatabaseQueryPart::WHERE, "albumview.strAlbum"},
       {Field::ALBUM, DatabaseQueryPart::ORDER_BY, "albumview.strAlbum"},
   };
-  ExpectFields(KODI::MEDIA::TYPE::ALBUM, cases);
+  ExpectFields(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::ALBUM, cases);
 }
 
 TEST(TestDatabaseUtils, GetField_MediaTypeSong)
@@ -193,7 +193,7 @@ TEST(TestDatabaseUtils, GetField_MediaTypeSong)
       {Field::PATH, DatabaseQueryPart::WHERE, "songview.strPath"},
       {Field::PATH, DatabaseQueryPart::ORDER_BY, "songview.strPath"},
   };
-  ExpectFields(KODI::MEDIA::TYPE::SONG, cases);
+  ExpectFields(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::SONG, cases);
 }
 
 TEST(TestDatabaseUtils, GetField_MediaTypeMusicVideo)
@@ -228,7 +228,7 @@ TEST(TestDatabaseUtils, GetField_MediaTypeMusicVideo)
       {Field::PATH, DatabaseQueryPart::ORDER_BY, "musicvideo_view.strPath"},
       {Field::USER_RATING, DatabaseQueryPart::SELECT, "musicvideo_view.userrating"},
   };
-  ExpectFields(KODI::MEDIA::TYPE::MUSIC_VIDEO, cases);
+  ExpectFields(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MUSIC_VIDEO, cases);
 }
 
 TEST(TestDatabaseUtils, GetField_MediaTypeMovie)
@@ -277,7 +277,7 @@ TEST(TestDatabaseUtils, GetField_MediaTypeMovie)
       {Field::USER_RATING, DatabaseQueryPart::SELECT, "movie_view.userrating"},
       {Field::RANDOM, DatabaseQueryPart::SELECT, ""},
   };
-  ExpectFields(KODI::MEDIA::TYPE::MOVIE, cases);
+  ExpectFields(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MOVIE, cases);
 }
 
 TEST(TestDatabaseUtils, GetField_MediaTypeTvShow)
@@ -314,7 +314,7 @@ TEST(TestDatabaseUtils, GetField_MediaTypeTvShow)
       {Field::USER_RATING, DatabaseQueryPart::SELECT, "tvshow_view.userrating"},
       {Field::RANDOM, DatabaseQueryPart::SELECT, ""},
   };
-  ExpectFields(KODI::MEDIA::TYPE::TV_SHOW, cases);
+  ExpectFields(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::TV_SHOW, cases);
 }
 
 TEST(TestDatabaseUtils, GetField_MediaTypeEpisode)
@@ -351,7 +351,7 @@ TEST(TestDatabaseUtils, GetField_MediaTypeEpisode)
       {Field::USER_RATING, DatabaseQueryPart::SELECT, "episode_view.userrating"},
       {Field::RANDOM, DatabaseQueryPart::SELECT, ""},
   };
-  ExpectFields(KODI::MEDIA::TYPE::EPISODE, cases);
+  ExpectFields(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::EPISODE, cases);
 }
 
 TEST(TestDatabaseUtils, GetField_FieldRandom)
@@ -361,13 +361,13 @@ TEST(TestDatabaseUtils, GetField_FieldRandom)
       {Field::RANDOM, DatabaseQueryPart::WHERE, ""},
       {Field::RANDOM, DatabaseQueryPart::ORDER_BY, "RANDOM()"},
   };
-  ExpectFields(KODI::MEDIA::TYPE::EPISODE, cases);
+  ExpectFields(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::EPISODE, cases);
 }
 
 TEST(TestDatabaseUtils, GetFieldIndex_None)
 {
-  EXPECT_EQ(DatabaseUtils::GetFieldIndex(Field::RANDOM, KODI::MEDIA::TYPE::NONE), -1);
-  EXPECT_EQ(DatabaseUtils::GetFieldIndex(Field::NONE, KODI::MEDIA::TYPE::ALBUM), -1);
+  EXPECT_EQ(DatabaseUtils::GetFieldIndex(Field::RANDOM, UNIVERSAL MEDIA CENTER::MEDIA::TYPE::NONE), -1);
+  EXPECT_EQ(DatabaseUtils::GetFieldIndex(Field::NONE, UNIVERSAL MEDIA CENTER::MEDIA::TYPE::ALBUM), -1);
 }
 
 //! @todo Should enums in CMusicDatabase be made public instead?
@@ -392,7 +392,7 @@ TEST(TestDatabaseUtils, GetFieldIndex_MediaTypeAlbum)
       {Field::DATE_ADDED, a.album_dtDateAdded},
       {Field::RANDOM, -1},
   };
-  ExpectIndexes(KODI::MEDIA::TYPE::ALBUM, cases);
+  ExpectIndexes(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::ALBUM, cases);
 }
 
 TEST(TestDatabaseUtils, GetFieldIndex_MediaTypeSong)
@@ -419,7 +419,7 @@ TEST(TestDatabaseUtils, GetFieldIndex_MediaTypeSong)
       {Field::GENRE, a.song_strGenres},
       {Field::RANDOM, -1},
   };
-  ExpectIndexes(KODI::MEDIA::TYPE::SONG, cases);
+  ExpectIndexes(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::SONG, cases);
 }
 
 TEST(TestDatabaseUtils, GetFieldIndex_MediaTypeMusicVideo)
@@ -444,7 +444,7 @@ TEST(TestDatabaseUtils, GetFieldIndex_MediaTypeMusicVideo)
       {Field::YEAR, VIDEODB_DETAILS_MUSICVIDEO_PREMIERED},
       {Field::RANDOM, -1},
   };
-  ExpectIndexes(KODI::MEDIA::TYPE::MUSIC_VIDEO, cases);
+  ExpectIndexes(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MUSIC_VIDEO, cases);
 }
 
 TEST(TestDatabaseUtils, GetFieldIndex_MediaTypeMovie)
@@ -476,7 +476,7 @@ TEST(TestDatabaseUtils, GetFieldIndex_MediaTypeMovie)
       {Field::YEAR, VIDEODB_DETAILS_MOVIE_PREMIERED},
       {Field::RANDOM, -1},
   };
-  ExpectIndexes(KODI::MEDIA::TYPE::MOVIE, cases);
+  ExpectIndexes(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MOVIE, cases);
 }
 
 TEST(TestDatabaseUtils, GetFieldIndex_MediaTypeTvShow)
@@ -501,7 +501,7 @@ TEST(TestDatabaseUtils, GetFieldIndex_MediaTypeTvShow)
       {Field::RATING, VIDEODB_DETAILS_TVSHOW_RATING},
       {Field::RANDOM, -1},
   };
-  ExpectIndexes(KODI::MEDIA::TYPE::TV_SHOW, cases);
+  ExpectIndexes(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::TV_SHOW, cases);
 }
 
 TEST(TestDatabaseUtils, GetFieldIndex_MediaTypeEpisode)
@@ -530,7 +530,7 @@ TEST(TestDatabaseUtils, GetFieldIndex_MediaTypeEpisode)
       {Field::RATING, VIDEODB_DETAILS_EPISODE_RATING},
       {Field::RANDOM, -1},
   };
-  ExpectIndexes(KODI::MEDIA::TYPE::EPISODE, cases);
+  ExpectIndexes(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::EPISODE, cases);
 }
 
 TEST(TestDatabaseUtils, GetSelectFields)
@@ -538,13 +538,13 @@ TEST(TestDatabaseUtils, GetSelectFields)
   Fields fields;
   FieldList fieldlist;
 
-  EXPECT_FALSE(DatabaseUtils::GetSelectFields(fields, KODI::MEDIA::TYPE::ALBUM, fieldlist));
+  EXPECT_FALSE(DatabaseUtils::GetSelectFields(fields, UNIVERSAL MEDIA CENTER::MEDIA::TYPE::ALBUM, fieldlist));
 
   fields = {
       Field::ID, Field::GENRE, Field::ALBUM, Field::ARTIST, Field::TITLE,
   };
-  EXPECT_FALSE(DatabaseUtils::GetSelectFields(fields, KODI::MEDIA::TYPE::NONE, fieldlist));
-  EXPECT_TRUE(DatabaseUtils::GetSelectFields(fields, KODI::MEDIA::TYPE::ALBUM, fieldlist));
+  EXPECT_FALSE(DatabaseUtils::GetSelectFields(fields, UNIVERSAL MEDIA CENTER::MEDIA::TYPE::NONE, fieldlist));
+  EXPECT_TRUE(DatabaseUtils::GetSelectFields(fields, UNIVERSAL MEDIA CENTER::MEDIA::TYPE::ALBUM, fieldlist));
   EXPECT_FALSE(fieldlist.empty());
 }
 
@@ -565,7 +565,7 @@ TEST(TestDatabaseUtils, GetFieldValue)
 //! @todo Need some way to test this function
 // TEST(TestDatabaseUtils, GetDatabaseResults)
 // {
-//   static bool GetDatabaseResults(KODI::MEDIA::TYPE mediaType, const FieldList &fields,
+//   static bool GetDatabaseResults(UNIVERSAL MEDIA CENTER::MEDIA::TYPE mediaType, const FieldList &fields,
 //                                  const std::unique_ptr<dbiplus::Dataset> &dataset,
 //                                  DatabaseResults &results);
 // }

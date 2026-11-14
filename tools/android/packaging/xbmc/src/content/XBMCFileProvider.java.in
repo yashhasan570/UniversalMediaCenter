@@ -4,9 +4,9 @@ import @APP_PACKAGE@.R;
 
 import androidx.core.content.FileProvider;
 
-public class XBMCFileProvider extends FileProvider
+public class FileProvider extends FileProvider
 {
-  public XBMCFileProvider()
+  public FileProvider()
   {
     super(R.xml.file_paths);
   }

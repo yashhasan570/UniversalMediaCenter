@@ -28,10 +28,10 @@
 //
 // Note: The file is encoded in utf-8. The code can handle unix and windows line terminators.
 
-using namespace KODI::LANGUAGE::I18N;
+using namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N;
 
 static const std::string DEFAULTREGISTRYFILEPATH(
-    "special://xbmc/system/language-subtag-registry.txt");
+    "special:///system/language-subtag-registry.txt");
 
 CSubTagRegistryManager::~CSubTagRegistryManager()
 {

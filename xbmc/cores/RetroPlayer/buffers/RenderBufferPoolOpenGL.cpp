@@ -13,7 +13,7 @@
 #include "cores/RetroPlayer/rendering/VideoRenderers/RPRendererOpenGL.h"
 #include "utils/GLUtils.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace RETRO;
 
 bool CRenderBufferPoolOpenGL::IsCompatible(const CRenderVideoSettings& renderSettings) const

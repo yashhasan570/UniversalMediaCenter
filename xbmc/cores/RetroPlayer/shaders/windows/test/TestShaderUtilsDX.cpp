@@ -17,7 +17,7 @@
 #include <windows.h>
 #include <wrl/client.h>
 
-using namespace KODI::SHADER;
+using namespace UNIVERSAL MEDIA CENTER::SHADER;
 
 namespace
 {

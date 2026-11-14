@@ -28,8 +28,8 @@ public:
   void FromNameAndPaths(std::string_view name, const std::vector<std::string>& paths);
   bool IsWritable() const;
 
-  KODI::UTILS::CLockInfo& GetLockInfo() { return m_lockInfo; }
-  const KODI::UTILS::CLockInfo& GetLockInfo() const { return m_lockInfo; }
+  UNIVERSAL MEDIA CENTER::UTILS::CLockInfo& GetLockInfo() { return m_lockInfo; }
+  const UNIVERSAL MEDIA CENTER::UTILS::CLockInfo& GetLockInfo() const { return m_lockInfo; }
 
   std::string strName; ///< Name of the share, can be chosen freely.
   std::string strStatus; ///< Status of the share (eg has disk etc.)
@@ -56,7 +56,7 @@ public:
   */
   SourceType m_iDriveType = SourceType::UNKNOWN;
 
-  KODI::UTILS::CLockInfo m_lockInfo;
+  UNIVERSAL MEDIA CENTER::UTILS::CLockInfo m_lockInfo;
 
   std::string
       m_strThumbnailImage; ///< Path to a thumbnail image for the share, or blank for default

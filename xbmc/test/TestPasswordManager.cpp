@@ -14,7 +14,7 @@
 
 namespace
 {
-constexpr const char* USERNAME = "kodi";
+constexpr const char* USERNAME = "universalmediacenter";
 constexpr const char* PASSWORD = "secret";
 
 CURL AuthenticatedUrl(const std::string& path)

@@ -35,7 +35,7 @@
 
 class IDispResource;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace WINDOWING
 {
@@ -103,7 +103,7 @@ public:
   bool MessagePump() override;
 
 protected:
-  std::unique_ptr<KODI::WINDOWING::IOSScreenSaver> GetOSScreenSaverImpl() override;
+  std::unique_ptr<UNIVERSAL MEDIA CENTER::WINDOWING::IOSScreenSaver> GetOSScreenSaverImpl() override;
   CSizeInt GetBufferSize() const
   {
     return m_bufferSize;
@@ -133,7 +133,7 @@ private:
   // IInputHandler
   void OnEnter(InputType type) override;
   void OnLeave(InputType type) override;
-  void OnEvent(InputType type, XBMC_Event& event) override;
+  void OnEvent(InputType type, _Event& event) override;
   void OnSetCursor(std::uint32_t seatGlobalName, std::uint32_t serial) override;
 
   // IWindowDecorationHandler

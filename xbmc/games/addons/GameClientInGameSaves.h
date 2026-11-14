@@ -8,13 +8,13 @@
 
 #pragma once
 
-#include "addons/kodi-dev-kit/include/kodi/addon-instance/Game.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/addon-instance/Game.h"
 
 #include <string>
 
 struct GameClient;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -65,4 +65,4 @@ private:
   const AddonInstance_Game* const m_dllStruct;
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

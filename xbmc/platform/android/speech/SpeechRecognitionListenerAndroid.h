@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "platform/android/activity/JNIXBMCSpeechRecognitionListener.h"
+#include "platform/android/activity/JNISpeechRecognitionListener.h"
 
 #include <memory>
 
@@ -19,7 +19,7 @@ class ISpeechRecognitionListener;
 
 class ISpeechRecognitionCallback;
 
-class CSpeechRecognitionListenerAndroid : public jni::CJNIXBMCSpeechRecognitionListener
+class CSpeechRecognitionListenerAndroid : public jni::CJNISpeechRecognitionListener
 {
 public:
   CSpeechRecognitionListenerAndroid(

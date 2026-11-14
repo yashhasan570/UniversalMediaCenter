@@ -3,8 +3,8 @@ project(TexturePacker)
 
 # If we are building inside the Universal Media Center project, add its Find module paths
 # otherwise point to TexturePacker's source for the Find modules
-if(${KODI_SOURCE_DIR} STREQUAL ${CMAKE_SOURCE_DIR})
-  list(APPEND CMAKE_MODULE_PATH ${KODI_SOURCE_DIR}/cmake/modules)
+if(${UNIVERSALMEDIA_SOURCE_DIR} STREQUAL ${CMAKE_SOURCE_DIR})
+  list(APPEND CMAKE_MODULE_PATH ${UNIVERSALMEDIA_SOURCE_DIR}/cmake/modules)
 else()
   list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR})
 endif()
@@ -50,7 +50,7 @@ set(SOURCES md5.cpp
             decoder/GifHelper.cpp
             decoder/JPGDecoder.cpp
             decoder/PNGDecoder.cpp
-            ${KODI_SOURCE_DIR}/xbmc/guilib/XBTF.cpp)
+            ${UNIVERSALMEDIA_SOURCE_DIR}//guilib/XBTF.cpp)
 
 if(WIN32)
   list(APPEND SOURCES Win32/dirent.c)
@@ -63,7 +63,7 @@ target_include_directories(TexturePacker
                            PRIVATE ${PNG_INCLUDE_DIRS}
                                    ${JPEG_INCLUDE_DIR}
                                    ${GIF_INCLUDE_DIR}
-                                   ${KODI_SOURCE_DIR}/xbmc
+                                   ${UNIVERSALMEDIA_SOURCE_DIR}/
                                    ${CMAKE_CURRENT_SOURCE_DIR}
                                    ${CMAKE_CURRENT_SOURCE_DIR}/decoder)
 if(WIN32)

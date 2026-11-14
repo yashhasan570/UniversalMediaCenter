@@ -42,7 +42,7 @@
 #include "view/ViewStateSettings.h"
 
 using namespace ADDON;
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace MESSAGING;
 
 namespace

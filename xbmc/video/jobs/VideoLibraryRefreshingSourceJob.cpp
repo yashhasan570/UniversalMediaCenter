@@ -150,12 +150,12 @@ bool CVideoLibraryRefreshingSourceJob::Work(CVideoDatabase& db)
     // joined, though its disc wasn't refreshed.
     CVideoInfoTag tag;
     bool found{false};
-    if (listed.GetMediaType() == KODI::MEDIA::TYPE::MOVIE)
+    if (listed.GetMediaType() == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MOVIE)
     {
       const int idMovie{db.GetMovieId(listed.m_strFileNameAndPath)};
       found = idMovie > 0 && db.GetMovieInfo({}, tag, idMovie);
     }
-    else if (listed.GetMediaType() == KODI::MEDIA::TYPE::TV_SHOW)
+    else if (listed.GetMediaType() == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::TV_SHOW)
       found = db.GetTvShowInfo({}, tag, listed.m_iDbId);
     else
       found = db.GetMusicVideoInfo({}, tag, listed.m_iDbId);
@@ -165,11 +165,11 @@ bool CVideoLibraryRefreshingSourceJob::Work(CVideoDatabase& db)
     // A playlist an earlier item merged into this movie may have become its default. Refreshing
     // the movie from that would refresh the earlier item's disc again rather than this one's, so
     // the movie gets back the default it was listed with.
-    if (listed.GetMediaType() == KODI::MEDIA::TYPE::MOVIE && tag.m_iFileId != listed.m_iFileId &&
+    if (listed.GetMediaType() == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MOVIE && tag.m_iFileId != listed.m_iFileId &&
         db.GetSingleValueInt(db.PrepareSQL(
             "SELECT COUNT(1) FROM videoversion WHERE idFile = %i AND idMedia = %i AND "
             "media_type = '%s' AND itemType = %i",
-            listed.m_iFileId, tag.m_iDbId, KODI::MEDIA::NameOf(KODI::MEDIA::TYPE::MOVIE).c_str(),
+            listed.m_iFileId, tag.m_iDbId, UNIVERSAL MEDIA CENTER::MEDIA::NameOf(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MOVIE).c_str(),
             static_cast<int>(VideoAssetType::VERSION))) > 0 &&
         db.SetDefaultVideoVersion(VideoDbContentType::MOVIES, tag.m_iDbId, listed.m_iFileId) &&
         !db.GetMovieInfo({}, tag, tag.m_iDbId))
@@ -200,7 +200,7 @@ bool CVideoLibraryRefreshingSourceJob::Work(CVideoDatabase& db)
       continue;
     }
 
-    KODI::ART::Artwork art;
+    UNIVERSAL MEDIA CENTER::ART::Artwork art;
     if (!db.GetArtForItem(tag.m_iDbId, tag.m_type, art))
     {
       CLog::LogF(LOGERROR, "Failed to load artwork for {} with database id {}", tag.m_type,

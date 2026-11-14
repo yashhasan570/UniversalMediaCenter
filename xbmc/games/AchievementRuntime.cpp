@@ -11,7 +11,7 @@
 #include <algorithm>
 #include <unordered_map>
 
-using namespace KODI::GAME;
+using namespace UNIVERSAL MEDIA CENTER::GAME;
 
 bool AchievementState::IsSetEnabled(unsigned int setId) const
 {

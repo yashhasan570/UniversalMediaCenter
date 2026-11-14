@@ -45,7 +45,7 @@
 #define CONTROL_PLAYLIST         100
 #define CONTROL_LABEL_PLAYLIST   101
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 CGUIWindowMusicPlaylistEditor::CGUIWindowMusicPlaylistEditor(void)
     : CGUIWindowMusicBase(WINDOW_MUSIC_PLAYLIST_EDITOR, "MyMusicPlaylistEditor.xml")
@@ -187,7 +187,7 @@ bool CGUIWindowMusicPlaylistEditor::GetDirectory(const std::string &strDirectory
   if (strDirectory.empty())
   { // root listing - list files:// and musicdb://
     CFileItemPtr files(
-        new CFileItem(XFILE::CSourcesDirectory::PathOf(KODI::MEDIA::MediaSection::MUSIC), true));
+        new CFileItem(XFILE::CSourcesDirectory::PathOf(UNIVERSAL MEDIA CENTER::MEDIA::MediaSection::MUSIC), true));
     files->SetLabel(CServiceBroker::GetResourcesComponent().GetLocalizeStrings().Get(744));
     files->SetLabelPreformatted(true);
     files->SetIsShareOrDrive(true);

@@ -16,7 +16,7 @@
 #include "utils/StringUtils.h"
 #include "windowing/WinSystem.h"
 
-using namespace KODI::GUILIB;
+using namespace UNIVERSAL MEDIA CENTER::GUILIB;
 
 CGUILabelControl::CGUILabelControl(int parentID, int controlID, float posX, float posY, float width, float height, const CLabelInfo& labelInfo, bool wrapMultiLine, bool bHasPath)
     : CGUIControl(parentID, controlID, posX, posY, width, height)
@@ -77,10 +77,10 @@ void CGUILabelControl::UpdateInfo(const CGUIListItem *item)
     std::wstring utf16;
     g_charsetConverter.utf8ToW(label, utf16);
     vecText text; text.reserve(utf16.size()+1);
-    std::vector<KODI::UTILS::COLOR::Color> colors;
+    std::vector<UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color> colors;
     colors.push_back(m_label.GetLabelInfo().textColor);
     colors.push_back(m_label.GetLabelInfo().disabledColor);
-    KODI::UTILS::COLOR::Color select = m_label.GetLabelInfo().selectedColor;
+    UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color select = m_label.GetLabelInfo().selectedColor;
     if (!select)
       select = 0xFFFF0000;
     colors.push_back(select);

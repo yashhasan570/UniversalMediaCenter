@@ -18,7 +18,7 @@
 #include "settings/MediaSettings.h"
 #include "utils/Variant.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 CDialogGameVideoRotation::CDialogGameVideoRotation()

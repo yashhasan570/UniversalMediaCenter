@@ -23,8 +23,8 @@
 @implementation CBPeripheralBusGCControllerManager
 {
   PERIPHERALS::CPeripheralBusGCController* parentClass;
-  std::vector<kodi::addon::PeripheralEvent> m_digitalEvents;
-  std::vector<kodi::addon::PeripheralEvent> m_axisEvents;
+  std::vector<addon::PeripheralEvent> m_digitalEvents;
+  std::vector<addon::PeripheralEvent> m_axisEvents;
   CCriticalSection m_eventMutex;
 }
 
@@ -64,14 +64,14 @@
   return self;
 }
 
-- (void)SetDigitalEvent:(kodi::addon::PeripheralEvent)event
+- (void)SetDigitalEvent:(addon::PeripheralEvent)event
 {
   std::unique_lock lock(m_eventMutex);
 
   m_digitalEvents.emplace_back(event);
 }
 
-- (void)SetAxisEvent:(kodi::addon::PeripheralEvent)event
+- (void)SetAxisEvent:(addon::PeripheralEvent)event
 {
   std::unique_lock lock(m_eventMutex);
 
@@ -80,9 +80,9 @@
 
 #pragma mark - GetEvents
 
-- (std::vector<kodi::addon::PeripheralEvent>)GetAxisEvents
+- (std::vector<addon::PeripheralEvent>)GetAxisEvents
 {
-  std::vector<kodi::addon::PeripheralEvent> events;
+  std::vector<addon::PeripheralEvent> events;
   std::unique_lock lock(m_eventMutex);
 
   for (unsigned int i = 0; i < m_axisEvents.size(); i++)
@@ -93,13 +93,13 @@
   return events;
 }
 
-- (std::vector<kodi::addon::PeripheralEvent>)GetButtonEvents
+- (std::vector<addon::PeripheralEvent>)GetButtonEvents
 {
-  std::vector<kodi::addon::PeripheralEvent> events;
+  std::vector<addon::PeripheralEvent> events;
 
   std::unique_lock lock(m_eventMutex);
   // Only report a single event per button (avoids dropping rapid presses)
-  std::vector<kodi::addon::PeripheralEvent> repeatButtons;
+  std::vector<addon::PeripheralEvent> repeatButtons;
 
   for (const auto& digitalEvent : m_digitalEvents)
   {

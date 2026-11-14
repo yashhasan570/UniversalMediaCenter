@@ -236,7 +236,7 @@ std::unique_ptr<CTexture> CTextureBundleXBT::ConvertFrameToTexture(const std::st
     buffer = std::move(unpacked);
   }
 
-  // create an xbmc texture
+  // create an  texture
   std::unique_ptr<CTexture> texture = CTexture::CreateTexture();
 
   if (frame.GetKDFormatType())

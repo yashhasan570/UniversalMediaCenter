@@ -1,4 +1,4 @@
-![Universal Media Center logo](https://github.com/xbmc/xbmc/raw/master/docs/resources/banner_slim.png)
+![Universal Media Center logo](https://github.com///raw/master/docs/resources/banner_slim.png)
 # Universal Media Center add-ons CMake based buildsystem
 This directory contains the cmake-based buildsystem for Universal Media Center add-ons. It looks into the directory pointed to by the *ADDONS_DEFINITION_DIR* option (which defaults to the *addons* sub-directory) and parses all *.txt files recursively. Each add-on must have its own `<addon-id>.txt` file in a separate sub-directory that must follow one of the defined formats:
 
@@ -36,7 +36,7 @@ The buildsystem uses the following addon-related variables (which can be passed 
 - `ADDON_DEPENDS_PATH` points to the directory containing the *include* and *lib* directories of the add-ons' dependencies.
 - `CORE_SOURCE_DIR` points to the root directory of the project (default is the absolute representation of ../../.. starting from this directory)
 - `BUILD_DIR` points to the directory where the add-ons and their dependencies will be downloaded and built
-- `PACKAGE_ZIP=ON` means that the add-ons will be 'packaged' into a common folder, rather than being placed in `<CMAKE_INSTALL_PREFIX>/lib/kodi/addons` and `<CMAKE_INSTALL_PREFIX>/share/kodi/addons`
+- `PACKAGE_ZIP=ON` means that the add-ons will be 'packaged' into a common folder, rather than being placed in `<CMAKE_INSTALL_PREFIX>/lib/universalmediacenter/addons` and `<CMAKE_INSTALL_PREFIX>/share/universalmediacenter/addons`
 - `PACKAGE_DIR` points to the directory where the ZIP archived add-ons will be stored after they have been packaged (defaults to `<BUILD_DIR>/zips`)
 - `ADDON_TARBALL_CACHING` specifies whether downloaded add-on source tarballs should be cached or not (defaults to *ON*)
 

@@ -11,7 +11,7 @@
 #include "WinSystemWaylandEGLContext.h"
 #include "rendering/gl/RenderSystemGL.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace WINDOWING
 {

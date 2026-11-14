@@ -18,7 +18,7 @@
 #include "video/VideoFileItemClassify.h"
 #include "video/guilib/VideoGUIUtils.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 bool CPlayerUtils::IsItemPlayable(const CFileItem& itemIn)
 {

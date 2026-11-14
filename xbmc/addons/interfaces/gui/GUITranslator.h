@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "addons/kodi-dev-kit/include/kodi/c-api/gui/input/action_ids.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api/gui/input/action_ids.h"
 
 namespace ADDON
 {
@@ -25,10 +25,10 @@ class CAddonGUITranslator
 public:
   /*!
    * \brief Translate Universal Media Center's action id's to addon
-   * \param kodiId Universal Media Center's action identifier
+   * \param universalmediacenterId Universal Media Center's action identifier
    * \return Addon action identifier
    */
-  static ADDON_ACTION TranslateActionIdToAddon(int kodiId);
+  static ADDON_ACTION TranslateActionIdToAddon(int universalmediacenterId);
 
   /*!
    * \brief Translate addon's action id's to Universal Media Center

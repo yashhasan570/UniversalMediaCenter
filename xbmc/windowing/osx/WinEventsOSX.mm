@@ -28,7 +28,7 @@ CWinEventsOSX::~CWinEventsOSX()
   StopThread(true);
 }
 
-void CWinEventsOSX::MessagePush(XBMC_Event* newEvent)
+void CWinEventsOSX::MessagePush(_Event* newEvent)
 {
   [m_eventsImplWrapper->callbackClass MessagePush:newEvent];
 }

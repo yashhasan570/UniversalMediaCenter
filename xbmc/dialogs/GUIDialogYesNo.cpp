@@ -199,7 +199,7 @@ CGUIDialogYesNo::DialogResult CGUIDialogYesNo::ShowAndGetInput(
 }
 
 CGUIDialogYesNo::DialogResult CGUIDialogYesNo::ShowAndGetInput(
-    const KODI::MESSAGING::HELPERS::DialogYesNoMessage& options)
+    const UNIVERSAL MEDIA CENTER::MESSAGING::HELPERS::DialogYesNoMessage& options)
 {
   //Set default yes/no labels, these might be overwritten further down if specified
   //by the caller

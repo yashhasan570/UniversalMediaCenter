@@ -58,8 +58,8 @@ class TestMediaManager : public testing::Test
 {
 protected:
   using Clock = std::chrono::steady_clock;
-  static constexpr const char* DEVICE_PATH = "?:\\kodi-test-nonexistent-optical-drive";
-  static constexpr const char* SECOND_DEVICE_PATH = "!:\\kodi-test-second-optical-drive";
+  static constexpr const char* DEVICE_PATH = "?:\\universalmediacenter-test-nonexistent-optical-drive";
+  static constexpr const char* SECOND_DEVICE_PATH = "!:\\universalmediacenter-test-second-optical-drive";
 
   void SetUp() override
   {

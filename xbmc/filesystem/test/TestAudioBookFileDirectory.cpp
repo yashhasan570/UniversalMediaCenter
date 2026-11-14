@@ -27,12 +27,12 @@ using namespace XFILE;
 
 namespace
 {
-constexpr const char* DATA_PATH = "xbmc/filesystem/test/data/audiobook/";
+constexpr const char* DATA_PATH = "/filesystem/test/data/audiobook/";
 
 //! Expand one fixture the way a music scan would.
 void Expand(const std::string& fixture, CFileItemList& items)
 {
-  const CURL url(XBMC_REF_FILE_PATH(DATA_PATH + fixture));
+  const CURL url(_REF_FILE_PATH(DATA_PATH + fixture));
   CAudioBookFileDirectory dir;
   ASSERT_TRUE(dir.ContainsFiles(url)) << fixture;
   ASSERT_TRUE(dir.GetDirectory(url, items)) << fixture;
@@ -232,7 +232,7 @@ TEST(TestAudioBookFileDirectory, ExpandsAFileWhoseChaptersDeclareNoUid)
  */
 TEST(TestAudioBookFileDirectory, RefusesAChapteredFileThatNamesNoAlbum)
 {
-  const CURL url(XBMC_REF_FILE_PATH(std::string(DATA_PATH) + "untagged.mka"));
+  const CURL url(_REF_FILE_PATH(std::string(DATA_PATH) + "untagged.mka"));
   CAudioBookFileDirectory dir;
 
   EXPECT_FALSE(dir.ContainsFiles(url));
@@ -241,7 +241,7 @@ TEST(TestAudioBookFileDirectory, RefusesAChapteredFileThatNamesNoAlbum)
 /*!
  * A chapter that declares no end looks zero seconds long where it also starts at zero, which is
  * every first chapter of a file whose ChapterTimeEnds are unset - and such files are common enough
- * that scanning a concert lost its opening song (xbmc/xbmc#28902). Ends are worked out from the
+ * that scanning a concert lost its opening song (/#28902). Ends are worked out from the
  * next chapter's start before anything decides what is too short to be a track, so the whole
  * running order survives, not just the first one.
  */
@@ -330,7 +330,7 @@ TEST(TestAudioBookFileDirectory, ReadsTheSecondFileWhenReusedAcrossURLs)
 {
   CAudioBookFileDirectory dir;
 
-  const CURL first(XBMC_REF_FILE_PATH(std::string(DATA_PATH) + "chaptered.mka"));
+  const CURL first(_REF_FILE_PATH(std::string(DATA_PATH) + "chaptered.mka"));
   CFileItemList firstItems;
   ASSERT_TRUE(dir.ContainsFiles(first));
   ASSERT_TRUE(dir.GetDirectory(first, firstItems));
@@ -339,7 +339,7 @@ TEST(TestAudioBookFileDirectory, ReadsTheSecondFileWhenReusedAcrossURLs)
 
   // The same instance, another file, asked for straight away: a caller holding a directory it has
   // already established contains files has no reason to ask that again.
-  const CURL second(XBMC_REF_FILE_PATH(std::string(DATA_PATH) + "precedence.mka"));
+  const CURL second(_REF_FILE_PATH(std::string(DATA_PATH) + "precedence.mka"));
   CFileItemList secondItems;
   ASSERT_TRUE(dir.GetDirectory(second, secondItems));
 

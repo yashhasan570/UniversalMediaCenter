@@ -11,7 +11,7 @@
 #include "GameClientTable.h"
 #include "dbwrappers/Database.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -60,4 +60,4 @@ private:
   CGameClientTable m_gameClients{*this};
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

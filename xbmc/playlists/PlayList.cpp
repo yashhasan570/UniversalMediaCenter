@@ -34,7 +34,7 @@
 using namespace MUSIC_INFO;
 using namespace XFILE;
 
-namespace KODI::PLAYLIST
+namespace UNIVERSAL MEDIA CENTER::PLAYLIST
 {
 
 CPlayList::CPlayList(Id id /* = PLAYLIST::TYPE_NONE */) : m_id(id)
@@ -274,7 +274,7 @@ void CPlayList::Shuffle(int iPosition)
     CLog::Log(LOGDEBUG, "{} shuffling at pos:{}", __FUNCTION__, iPosition);
 
     ivecItems it = m_vecItems.begin() + iPosition;
-    KODI::UTILS::RandomShuffle(it, m_vecItems.end());
+    UNIVERSAL MEDIA CENTER::UTILS::RandomShuffle(it, m_vecItems.end());
 
     // the list is now shuffled!
     m_bShuffled = true;
@@ -529,4 +529,4 @@ const std::string& CPlayList::ResolveURL(const std::shared_ptr<CFileItem>& item)
     return item->GetDynPath();
 }
 
-} // namespace KODI::PLAYLIST
+} // namespace UNIVERSAL MEDIA CENTER::PLAYLIST

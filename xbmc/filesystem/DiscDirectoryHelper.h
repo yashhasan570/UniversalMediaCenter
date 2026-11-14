@@ -162,8 +162,8 @@ using PlaylistMap = std::map<unsigned int, PlaylistInformation>;
 //! listing says what the disc calls a title, not just which it is.
 using PlaylistNames = std::map<unsigned int, std::string>;
 using ClipMap = std::map<unsigned int, ClipInfo>;
-using Episode = KODI::VIDEO::EPISODE;
-using Episodes = std::vector<KODI::VIDEO::EPISODE>;
+using Episode = UNIVERSAL MEDIA CENTER::VIDEO::EPISODE;
+using Episodes = std::vector<UNIVERSAL MEDIA CENTER::VIDEO::EPISODE>;
 
 // Episodes
 static constexpr std::chrono::milliseconds MAX_EPISODE_DIFFERENCE{30 * 1000}; // 30 seconds

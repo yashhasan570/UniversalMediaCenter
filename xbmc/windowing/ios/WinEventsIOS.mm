@@ -12,7 +12,7 @@
 #include "application/AppInboundProtocol.h"
 #include "guilib/GUIWindowManager.h"
 #include "input/InputManager.h"
-#include "input/keyboard/XBMC_vkeys.h"
+#include "input/keyboard/_vkeys.h"
 #include "threads/CriticalSection.h"
 #include "utils/log.h"
 
@@ -21,7 +21,7 @@
 
 static CCriticalSection g_inputCond;
 
-static std::list<XBMC_Event> events;
+static std::list<_Event> events;
 
 bool CWinEventsIOS::MessagePump()
 {
@@ -29,12 +29,12 @@ bool CWinEventsIOS::MessagePump()
   std::shared_ptr<CAppInboundProtocol> appPort = CServiceBroker::GetAppPort();
 
   // Do not always loop, only pump the initial queued count events. else if ui keep pushing
-  // events the loop won't finish then it will block xbmc main message loop.
+  // events the loop won't finish then it will block  main message loop.
   for (size_t pumpEventCount = GetQueueSize(); pumpEventCount > 0; --pumpEventCount)
   {
     // Pop up only one event per time since in App::OnEvent it may init modal dialog which init
     // deeper message loop and call the deeper MessagePump from there.
-    XBMC_Event pumpEvent;
+    _Event pumpEvent;
     {
       std::unique_lock lock(g_inputCond);
       if (events.empty())

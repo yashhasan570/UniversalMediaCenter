@@ -33,7 +33,7 @@
 
 using namespace JSONRPC;
 using namespace ADDON;
-using KODI::MESSAGING::TransferToMessenger;
+using UNIVERSAL MEDIA CENTER::MESSAGING::TransferToMessenger;
 
 JSONRPC_STATUS CGUIOperations::GetProperties(const std::string &method, ITransportLayer *transport, IClient *client, const CVariant &parameterObject, CVariant &result)
 {
@@ -153,7 +153,7 @@ JSONRPC_STATUS CGUIOperations::TakeScreenshot(const std::string& method,
                                               const CVariant& parameterObject,
                                               CVariant& result)
 {
-  using KODI::RENDERING::CAPTURE::CaptureContent;
+  using UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CaptureContent;
 
   const std::string content = parameterObject["content"].asString();
 

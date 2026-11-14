@@ -38,8 +38,8 @@
 #include "utils/DefaultArt.h"
 #include "utils/FileUtils.h"
 
-using namespace KODI;
-using KODI::MEDIA::MediaSection;
+using namespace UNIVERSAL MEDIA CENTER;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaSection;
 
 #define CONTROL_BTN_REFRESH       6
 #define CONTROL_USERRATING        7
@@ -346,7 +346,7 @@ void CGUIDialogSongInfo::OnGetArt()
     return; // Cancelled
 
   CFileItemList items;
-  KODI::ART::Artwork primeArt = m_song->GetArt(); // Song art without fallbacks
+  UNIVERSAL MEDIA CENTER::ART::Artwork primeArt = m_song->GetArt(); // Song art without fallbacks
   bool bHasArt = m_song->HasArt(type);
   bool bFallback(false);
   if (bHasArt)

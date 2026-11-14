@@ -10,7 +10,7 @@
 
 #include <cstdint>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RENDERING
 {
@@ -40,4 +40,4 @@ bool CaptureToBGRA(const CaptureResult& result,
 
 } // namespace CAPTURE
 } // namespace RENDERING
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

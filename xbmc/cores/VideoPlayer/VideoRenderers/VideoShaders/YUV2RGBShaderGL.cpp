@@ -57,20 +57,20 @@ BaseYUV2RGBGLSLShader::BaseYUV2RGBGLSLShader(bool rect,
   }
 
   if (rect)
-    m_defines += "#define XBMC_texture_rectangle 1\n";
+    m_defines += "#define _texture_rectangle 1\n";
   else
-    m_defines += "#define XBMC_texture_rectangle 0\n";
+    m_defines += "#define _texture_rectangle 0\n";
 
   if (CServiceBroker::GetSettingsComponent()->GetAdvancedSettings()->m_GLRectangleHack)
-    m_defines += "#define XBMC_texture_rectangle_hack 1\n";
+    m_defines += "#define _texture_rectangle_hack 1\n";
   else
-    m_defines += "#define XBMC_texture_rectangle_hack 0\n";
+    m_defines += "#define _texture_rectangle_hack 0\n";
 
   //don't compile in stretch support when it's not needed
   if (stretch)
-    m_defines += "#define XBMC_STRETCH 1\n";
+    m_defines += "#define _STRETCH 1\n";
   else
-    m_defines += "#define XBMC_STRETCH 0\n";
+    m_defines += "#define _STRETCH 0\n";
 
   if (m_format == SHADER_YV12 ||
       m_format == SHADER_YV12_9 ||
@@ -78,13 +78,13 @@ BaseYUV2RGBGLSLShader::BaseYUV2RGBGLSLShader(bool rect,
       m_format == SHADER_YV12_12 ||
       m_format == SHADER_YV12_14 ||
       m_format == SHADER_YV12_16)
-    m_defines += "#define XBMC_YV12\n";
+    m_defines += "#define _YV12\n";
   else if (m_format == SHADER_NV12)
-    m_defines += "#define XBMC_NV12\n";
+    m_defines += "#define _NV12\n";
   else if (m_format == SHADER_YUY2)
-    m_defines += "#define XBMC_YUY2\n";
+    m_defines += "#define _YUY2\n";
   else if (m_format == SHADER_UYVY)
-    m_defines += "#define XBMC_UYVY\n";
+    m_defines += "#define _UYVY\n";
   else
     CLog::Log(LOGERROR, "GL: BaseYUV2RGBGLSLShader - unsupported format {}",
               fmt::formatter<EShaderFormat>::ToString(m_format));
@@ -92,35 +92,35 @@ BaseYUV2RGBGLSLShader::BaseYUV2RGBGLSLShader(bool rect,
   if (dstPrimaries != srcPrimaries)
   {
     m_colorConversion = true;
-    m_defines += "#define XBMC_COL_CONVERSION\n";
+    m_defines += "#define _COL_CONVERSION\n";
   }
 
   if (toneMap)
   {
     m_toneMapping = true;
     m_toneMappingMethod = toneMapMethod;
-    m_defines += "#define XBMC_TONE_MAPPING\n";
+    m_defines += "#define _TONE_MAPPING\n";
     if (toneMapMethod == VS_TONEMAPMETHOD_REINHARD)
-      m_defines += "#define KODI_TONE_MAPPING_REINHARD\n";
+      m_defines += "#define UNIVERSALMEDIA_TONE_MAPPING_REINHARD\n";
     else if (toneMapMethod == VS_TONEMAPMETHOD_ACES)
-      m_defines += "#define KODI_TONE_MAPPING_ACES\n";
+      m_defines += "#define UNIVERSALMEDIA_TONE_MAPPING_ACES\n";
     else if (toneMapMethod == VS_TONEMAPMETHOD_HABLE)
-      m_defines += "#define KODI_TONE_MAPPING_HABLE\n";
+      m_defines += "#define UNIVERSALMEDIA_TONE_MAPPING_HABLE\n";
   }
 
   if (hueSatTransfer == AVCOL_TRC_SMPTE2084)
   {
     m_hueSatTransfer = hueSatTransfer;
-    m_defines += "#define KODI_HUESAT_PQ\n";
+    m_defines += "#define UNIVERSALMEDIA_HUESAT_PQ\n";
   }
   else if (hueSatTransfer == AVCOL_TRC_ARIB_STD_B67)
   {
     m_hueSatTransfer = hueSatTransfer;
-    m_defines += "#define KODI_HUESAT_HLG\n";
+    m_defines += "#define UNIVERSALMEDIA_HUESAT_HLG\n";
   }
 
   if (gamma)
-    m_defines += "#define KODI_GAMMA\n";
+    m_defines += "#define UNIVERSALMEDIA_GAMMA\n";
 
   VertexShader()->LoadSource("gl_yuv2rgb_vertex.glsl", m_defines);
 
@@ -346,7 +346,7 @@ YUV2RGBProgressiveShader::YUV2RGBProgressiveShader(bool rect,
                           std::move(output))
 {
   if (gammaCorrection)
-    m_defines += "#define KODI_GAMMA_LINEARIZATION_FAST\n";
+    m_defines += "#define UNIVERSALMEDIA_GAMMA_LINEARIZATION_FAST\n";
 
   PixelShader()->LoadSource("gl_yuv2rgb_basic.glsl", m_defines);
   PixelShader()->AppendSource("gl_output.glsl");

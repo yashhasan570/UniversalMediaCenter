@@ -18,7 +18,7 @@
 
 #include <assert.h>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 // The names RetroArch uses, so saves can be copied between the two

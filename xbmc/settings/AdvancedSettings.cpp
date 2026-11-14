@@ -72,20 +72,20 @@ void ParseDatabaseSettings(const TiXmlElement* element, DatabaseSettings& settin
 } // unnamed namespace
 
 const std::vector<std::string>& CAdvancedSettings::GetExcludeFromListingRegExps(
-    KODI::MEDIA::MediaSection section) const
+    UNIVERSAL MEDIA CENTER::MEDIA::MediaSection section) const
 {
   static const std::vector<std::string> none;
   switch (section)
   {
-    case KODI::MEDIA::MediaSection::VIDEO:
+    case UNIVERSAL MEDIA CENTER::MEDIA::MediaSection::VIDEO:
       return m_videoExcludeFromListingRegExps;
-    case KODI::MEDIA::MediaSection::MUSIC:
+    case UNIVERSAL MEDIA CENTER::MEDIA::MediaSection::MUSIC:
       return m_audioExcludeFromListingRegExps;
-    case KODI::MEDIA::MediaSection::PICTURES:
+    case UNIVERSAL MEDIA CENTER::MEDIA::MediaSection::PICTURES:
       return m_pictureExcludeFromListingRegExps;
-    case KODI::MEDIA::MediaSection::FILES:
-    case KODI::MEDIA::MediaSection::PROGRAMS:
-    case KODI::MEDIA::MediaSection::GAMES:
+    case UNIVERSAL MEDIA CENTER::MEDIA::MediaSection::FILES:
+    case UNIVERSAL MEDIA CENTER::MEDIA::MediaSection::PROGRAMS:
+    case UNIVERSAL MEDIA CENTER::MEDIA::MediaSection::GAMES:
       break;
   }
   return none;
@@ -572,7 +572,7 @@ bool CAdvancedSettings::Load(const CProfileManager &profileManager)
   //       it should instead use the versions of GetString/Integer/Float that
   //       don't take defaults in.  Defaults are set in the constructor above
   Initialize(); // In case of profile switch.
-  ParseSettingsFile("special://xbmc/system/advancedsettings.xml");
+  ParseSettingsFile("special:///system/advancedsettings.xml");
   for (const auto& file : m_settingsFiles)
     ParseSettingsFile(file);
 
@@ -587,7 +587,7 @@ bool CAdvancedSettings::Load(const CProfileManager &profileManager)
 
 void CAdvancedSettings::ParseSettingsFile(const std::string &file)
 {
-  CXBMCTinyXML advancedXML;
+  CTinyXML advancedXML;
   if (!CFileUtils::Exists(file))
   {
     CLog::Log(LOGINFO, "No settings file to load ({})", file);
@@ -612,7 +612,7 @@ void CAdvancedSettings::ParseSettingsFile(const std::string &file)
   CLog::Log(LOGINFO, "Loaded settings file from {}", file);
 
   //Make a copy of the AS.xml and hide advancedsettings passwords
-  CXBMCTinyXML advancedXMLCopy(advancedXML);
+  CTinyXML advancedXMLCopy(advancedXML);
   TiXmlNode *pRootElementCopy = advancedXMLCopy.RootElement();
   for (const auto& dbname : { "videodatabase", "musicdatabase", "tvdatabase", "epgdatabase" })
   {

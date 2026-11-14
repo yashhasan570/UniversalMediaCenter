@@ -113,7 +113,7 @@ bool CAESinkDirectSound::Initialize(AEAudioFormat& format, std::string& device)
   if (StringUtils::EndsWithNoCase(device, "default"))
     strDeviceGUID = CAESinkFactoryWin::GetDefaultDeviceId();
 
-  hr = CLSIDFromString(KODI::PLATFORM::WINDOWS::ToW(strDeviceGUID).c_str(), &deviceGUID);
+  hr = CLSIDFromString(UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::ToW(strDeviceGUID).c_str(), &deviceGUID);
   if (FAILED(hr))
     CLog::LogF(LOGERROR, "Failed to convert the device '{}' to a GUID, with error {}.",
                strDeviceGUID, CWIN32Util::FormatHRESULT(hr));
@@ -325,7 +325,7 @@ unsigned int CAESinkDirectSound::AddPackets(uint8_t **data, unsigned int frames,
       return INT_MAX;
     else
     {
-      KODI::TIME::Sleep(
+      UNIVERSAL MEDIA CENTER::TIME::Sleep(
           std::chrono::milliseconds(static_cast<int>(total * 1000 / m_AvgBytesPerSec)));
     }
   }

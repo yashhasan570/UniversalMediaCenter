@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "addons/kodi-dev-kit/include/kodi/c-api/addon-instance/pvr/pvr_timers.h" // PVR_TIMER_STATE
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api/addon-instance/pvr/pvr_timers.h" // PVR_TIMER_STATE
 #include "pvr/settings/PVRCustomProperty.h"
 
 #include <map>

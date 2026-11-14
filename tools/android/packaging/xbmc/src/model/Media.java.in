@@ -29,7 +29,7 @@ public class Media implements Serializable
   private String cardImageUrl = null;
   private String cardImageAspectRatio = null;
   private String videoUrl = null;
-  private String xbmcUrl = null;
+  private String Url = null;
   private String category;
   // Program id / Watch Next id returned from the TV Provider.
   private long programId;
@@ -108,12 +108,12 @@ public class Media implements Serializable
 
   public String getXbmcUrl()
   {
-    return xbmcUrl;
+    return Url;
   }
 
-  public void setXbmcUrl(String xbmcUrl)
+  public void setXbmcUrl(String Url)
   {
-    this.xbmcUrl = xbmcUrl;
+    this.Url = Url;
   }
 
   public String getBackgroundImageUrl()

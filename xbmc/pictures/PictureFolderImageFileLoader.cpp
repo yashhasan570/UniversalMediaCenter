@@ -21,7 +21,7 @@
 #include "settings/SettingsComponent.h"
 #include "utils/FileExtensionProvider.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace XFILE;
 
 bool CPictureFolderImageFileLoader::CanLoad(const std::string& specialType) const

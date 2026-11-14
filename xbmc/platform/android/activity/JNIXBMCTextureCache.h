@@ -13,15 +13,15 @@
 namespace jni
 {
 
-class CJNIXBMCTextureCache : public CJNIBase
+class CJNITextureCache : public CJNIBase
 {
 public:
-  CJNIXBMCTextureCache(const jni::jhobject& object) : CJNIBase(object) {}
+  CJNITextureCache(const jni::jhobject& object) : CJNIBase(object) {}
 
   static void RegisterNatives(JNIEnv* env);
 
 protected:
-  ~CJNIXBMCTextureCache() override = default;
+  ~CJNITextureCache() override = default;
 
   static jstring _unwrapImageURL(JNIEnv* env, jobject thiz, jstring image);
 };

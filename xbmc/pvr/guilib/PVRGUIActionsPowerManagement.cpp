@@ -28,7 +28,7 @@
 #include <vector>
 
 using namespace PVR;
-using namespace KODI::MESSAGING;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
 
 CPVRGUIActionsPowerManagement::CPVRGUIActionsPowerManagement()
   : m_settings(std::make_unique<CPVRSettings>(

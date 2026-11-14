@@ -137,7 +137,7 @@ void CVideoSyncD3D::Run(CEvent& stopEvent)
   m_lostEvent.Set();
   while (!stopEvent.Signaled() && m_displayLost && !m_displayReset)
   {
-    KODI::TIME::Sleep(10ms);
+    UNIVERSAL MEDIA CENTER::TIME::Sleep(10ms);
   }
 }
 

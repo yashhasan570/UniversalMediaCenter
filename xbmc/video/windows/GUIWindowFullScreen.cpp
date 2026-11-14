@@ -40,7 +40,7 @@
 #include "platform/posix/PosixResourceCounter.h"
 #endif
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GUILIB;
 using namespace MESSAGING;
 

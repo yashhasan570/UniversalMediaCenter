@@ -10,7 +10,7 @@
 
 #include "PlayList.h"
 
-namespace KODI::PLAYLIST
+namespace UNIVERSAL MEDIA CENTER::PLAYLIST
 {
 
 class CPlayListWPL : public CPlayList

@@ -20,7 +20,7 @@
 #include "addons/RepositoryUpdater.h"
 #include "addons/addoninfo/AddonInfo.h"
 #include "addons/addoninfo/AddonType.h"
-#include "addons/kodi-dev-kit/include/kodi/c-api/addon-instance/game.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api/addon-instance/game.h"
 #include "filesystem/Directory.h"
 #include "filesystem/File.h"
 #include "games/GameUtils.h"
@@ -37,7 +37,7 @@
 #include "threads/CriticalSection.h"
 #include "utils/StringUtils.h"
 #include "utils/URIUtils.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 #include "utils/log.h"
 
 #include <algorithm>
@@ -45,7 +45,7 @@
 #include <map>
 #include <utility>
 
-using namespace KODI::GAME;
+using namespace UNIVERSAL MEDIA CENTER::GAME;
 
 namespace
 {
@@ -575,7 +575,7 @@ std::string CGameClientCheats::ReadChoice(const std::string& gamePath) const
 {
   if (gamePath.empty())
     return {};
-  CXBMCTinyXML2 xml;
+  CTinyXML2 xml;
   if (xml.LoadFile(GetSelectionPath(gamePath)))
   {
     const auto* root = xml.FirstChildElement("cheatpack");
@@ -591,7 +591,7 @@ std::string CGameClientCheats::ReadChoice(const std::string& gamePath) const
 void CGameClientCheats::SaveChoice(const std::string& gamePath, const std::string& candidate) const
 {
   const std::string path = GetSelectionPath(gamePath);
-  CXBMCTinyXML2 xml;
+  CTinyXML2 xml;
   auto* root = xml.NewElement("cheatpack");
   root->SetAttribute("game", gamePath.c_str());
   root->SetAttribute("candidate", candidate.c_str());

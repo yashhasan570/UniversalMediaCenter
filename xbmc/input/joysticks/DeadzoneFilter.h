@@ -13,7 +13,7 @@ namespace PERIPHERALS
 class CPeripheral;
 }
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace JOYSTICK
 {
@@ -84,4 +84,4 @@ private:
   PERIPHERALS::CPeripheral* const m_peripheral;
 };
 } // namespace JOYSTICK
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

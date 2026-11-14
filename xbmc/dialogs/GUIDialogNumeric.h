@@ -34,20 +34,20 @@ public:
 
   bool IsConfirmed() const;
   bool IsCanceled() const;
-  bool IsInputHidden() const { return m_mode == KODI::DIALOGS::NUMERIC_MODE::PASSWORD; }
+  bool IsInputHidden() const { return m_mode == UNIVERSAL MEDIA CENTER::DIALOGS::NUMERIC_MODE::PASSWORD; }
 
   static bool ShowAndVerifyNewPassword(std::string& strNewPassword);
   static int ShowAndVerifyPassword(std::string& strPassword, const std::string& strHeading, int iRetries);
   static InputVerificationResult ShowAndVerifyInput(std::string& strPassword, const std::string& strHeading, bool bGetUserInput);
 
   void SetHeading(const std::string &strHeading);
-  void SetMode(KODI::DIALOGS::NUMERIC_MODE mode, const KODI::TIME::SystemTime& initial);
-  void SetMode(KODI::DIALOGS::NUMERIC_MODE mode, const std::string &initial);
-  KODI::TIME::SystemTime GetOutput() const;
+  void SetMode(UNIVERSAL MEDIA CENTER::DIALOGS::NUMERIC_MODE mode, const UNIVERSAL MEDIA CENTER::TIME::SystemTime& initial);
+  void SetMode(UNIVERSAL MEDIA CENTER::DIALOGS::NUMERIC_MODE mode, const std::string &initial);
+  UNIVERSAL MEDIA CENTER::TIME::SystemTime GetOutput() const;
   std::string GetOutputString() const;
 
-  static bool ShowAndGetTime(KODI::TIME::SystemTime& time, const std::string& heading);
-  static bool ShowAndGetDate(KODI::TIME::SystemTime& date, const std::string& heading);
+  static bool ShowAndGetTime(UNIVERSAL MEDIA CENTER::TIME::SystemTime& time, const std::string& heading);
+  static bool ShowAndGetDate(UNIVERSAL MEDIA CENTER::TIME::SystemTime& date, const std::string& heading);
   static bool ShowAndGetIPAddress(std::string &IPAddress, const std::string &heading);
   static bool ShowAndGetNumber(std::string& strInput, const std::string &strHeading, unsigned int iAutoCloseTimeoutMs = 0, bool bSetHidden = false);
   static bool ShowAndGetSeconds(std::string& timeString, const std::string &heading);
@@ -72,9 +72,9 @@ protected:
   bool m_bConfirmed = false;
   bool m_bCanceled = false;
 
-  KODI::DIALOGS::NUMERIC_MODE m_mode =
-      KODI::DIALOGS::NUMERIC_MODE::PASSWORD; // the current input mode
-  KODI::TIME::SystemTime m_datetime; // for time and date modes
+  UNIVERSAL MEDIA CENTER::DIALOGS::NUMERIC_MODE m_mode =
+      UNIVERSAL MEDIA CENTER::DIALOGS::NUMERIC_MODE::PASSWORD; // the current input mode
+  UNIVERSAL MEDIA CENTER::TIME::SystemTime m_datetime; // for time and date modes
   uint8_t m_ip[4];                  // for ip address mode
   uint32_t m_block{}; // for time, date, and IP methods.
   uint32_t m_lastblock{};

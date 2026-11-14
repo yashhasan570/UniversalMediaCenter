@@ -27,7 +27,7 @@
 #include <wayland-cursor.hpp>
 #include <wayland-extra-protocols.hpp>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace WINDOWING
 {
@@ -196,7 +196,7 @@ private:
   wayland::viewporter_t m_viewporter;
   wayland::surface_t m_mainSurface;
 
-  std::unique_ptr<KODI::UTILS::POSIX::CSharedMemory> m_memory;
+  std::unique_ptr<UNIVERSAL MEDIA CENTER::UTILS::POSIX::CSharedMemory> m_memory;
   std::size_t m_memoryAllocatedSize{};
 
   struct BorderSurface

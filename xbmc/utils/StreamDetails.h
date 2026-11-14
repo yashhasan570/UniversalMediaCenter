@@ -250,7 +250,7 @@ public:
 
   static std::string VideoDimsToResolutionDescription(int iWidth, int iHeight);
 
-  //! \brief The label Universal Media Center reports for \p fAspect. See KODI::UTILS::CAspectRatioVocabulary.
+  //! \brief The label Universal Media Center reports for \p fAspect. See UNIVERSAL MEDIA CENTER::UTILS::CAspectRatioVocabulary.
   static std::string VideoAspectToAspectDescription(float fAspect);
 
   /*!

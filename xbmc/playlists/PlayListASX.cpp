@@ -12,7 +12,7 @@
 #include "PlayListFactory.h"
 #include "filesystem/File.h"
 #include "utils/StringUtils.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 #include "utils/XMLUtils.h"
 #include "utils/log.h"
 #include "video/VideoFileItemClassify.h"
@@ -25,7 +25,7 @@
 
 using namespace XFILE;
 
-namespace KODI::PLAYLIST
+namespace UNIVERSAL MEDIA CENTER::PLAYLIST
 {
 
 bool CPlayListASX::LoadAsxIniInfo(std::istream& stream)
@@ -86,7 +86,7 @@ bool CPlayListASX::LoadData(std::istream& stream)
   {
     std::string asxStream(std::istreambuf_iterator<char>(stream), {});
 
-    CXBMCTinyXML2 xmlDoc;
+    CTinyXML2 xmlDoc;
     xmlDoc.Parse(asxStream);
 
     if (xmlDoc.Error())
@@ -233,4 +233,4 @@ void CPlayListASX::recurseLowercaseNames(tinyxml2::XMLNode& targetNode,
   }
 }
 
-} // namespace KODI::PLAYLIST
+} // namespace UNIVERSAL MEDIA CENTER::PLAYLIST

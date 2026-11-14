@@ -17,8 +17,8 @@
 #include "video/VideoDatabaseColumns.h"
 #include "video/VideoManagerTypes.h"
 
-using namespace KODI::DATABASE;
-using KODI::MEDIA::NameOf;
+using namespace UNIVERSAL MEDIA CENTER::DATABASE;
+using UNIVERSAL MEDIA CENTER::MEDIA::NameOf;
 
 void CVideoDatabaseDDL::InitializeVideoVersionTypeTable(CDatabase& db)
 {
@@ -652,9 +652,9 @@ void CVideoDatabaseDDL::CreateViews(CDatabase& db)
       "    path.idPath = files.idPath"
       "  LEFT JOIN bookmark ON"
       "    bookmark.idFile = vv.idFile AND bookmark.type = 1",
-      NameOf(KODI::MEDIA::TYPE::MOVIE).c_str(), VideoAssetType::VERSION, NameOf(KODI::MEDIA::TYPE::MOVIE).c_str(),
+      NameOf(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MOVIE).c_str(), VideoAssetType::VERSION, NameOf(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MOVIE).c_str(),
       VideoAssetType::EXTRA, VideoAssetType::VERSION, VIDEODB_ID_RATING_ID, VIDEODB_ID_IDENT_ID,
-      NameOf(KODI::MEDIA::TYPE::MOVIE).c_str());
+      NameOf(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MOVIE).c_str());
 
   db.ExecuteQuery(movieview);
 }

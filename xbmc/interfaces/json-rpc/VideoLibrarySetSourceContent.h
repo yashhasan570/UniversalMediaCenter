@@ -39,7 +39,7 @@ struct ParsedSetSourceContent
 
   /*! m_allExtAudio has no parameter and is left default constructed; the handler carries the
       path's stored value across. */
-  KODI::VIDEO::SScanSettings settings;
+  UNIVERSAL MEDIA CENTER::VIDEO::SScanSettings settings;
 };
 
 /*! \brief Parse and validate the parameters of VideoLibrary.SetSourceContent.

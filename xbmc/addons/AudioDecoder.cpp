@@ -21,13 +21,13 @@
 #include "utils/log.h"
 
 using namespace ADDON;
-using namespace KODI::ADDONS;
+using namespace UNIVERSAL MEDIA CENTER::ADDONS;
 
 CAudioDecoder::CAudioDecoder(const AddonInfoPtr& addonInfo)
   : IAddonInstanceHandler(ADDON_INSTANCE_AUDIODECODER, addonInfo)
 {
   m_CodecName = addonInfo->Type(AddonType::AUDIODECODER)->GetValue("@name").asString();
-  m_strExt = m_CodecName + KODI_ADDON_AUDIODECODER_TRACK_EXT;
+  m_strExt = m_CodecName + UNIVERSALMEDIA_ADDON_AUDIODECODER_TRACK_EXT;
   m_hasTags = addonInfo->Type(AddonType::AUDIODECODER)->GetValue("@tags").asBoolean();
 
   // Create all interface parts independent to make API changes easier if
@@ -35,7 +35,7 @@ CAudioDecoder::CAudioDecoder(const AddonInfoPtr& addonInfo)
   m_ifc.audiodecoder = new AddonInstance_AudioDecoder;
   m_ifc.audiodecoder->toAddon = new Universal Media CenterToAddonFuncTable_AudioDecoder();
   m_ifc.audiodecoder->toUniversal Media Center = new AddonToUniversal Media CenterFuncTable_AudioDecoder();
-  m_ifc.audiodecoder->toUniversal Media Center->kodiInstance = this;
+  m_ifc.audiodecoder->toUniversal Media Center->universalmediacenterInstance = this;
 }
 
 CAudioDecoder::~CAudioDecoder()
@@ -136,7 +136,7 @@ bool CAudioDecoder::Load(const std::string& fileName,
   if (!m_ifc.audiodecoder->toAddon->read_tag)
     return false;
 
-  KODI_ADDON_AUDIODECODER_INFO_TAG ifcTag = {};
+  UNIVERSALMEDIA_ADDON_AUDIODECODER_INFO_TAG ifcTag = {};
   bool ret = m_ifc.audiodecoder->toAddon->read_tag(m_ifc.hdl, fileName.c_str(), &ifcTag);
   if (ret)
   {

@@ -13,7 +13,7 @@
 
 using namespace ADDON;
 
-namespace CONTENT = KODI::MEDIA::CONTENT;
+namespace CONTENT = UNIVERSAL MEDIA CENTER::MEDIA::CONTENT;
 
 TEST(TestScraper, TranslateContentNamesEachType)
 {

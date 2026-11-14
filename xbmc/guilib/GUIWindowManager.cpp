@@ -172,7 +172,7 @@ constexpr int MAX_BUFFER_AGE = 10;
 #include "games/ports/windows/GUIPortWindow.h"
 #include "games/windows/GUIWindowGames.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace PVR;
 using namespace PERIPHERALS;
 
@@ -1744,10 +1744,10 @@ void CGUIWindowManager::SendThreadMessage(const CGUIMessage& message, int window
 
 void CGUIWindowManager::DispatchThreadMessages()
 {
-  // This method only be called in the xbmc main thread.
+  // This method only be called in the  main thread.
 
   // XXX: for more info of this method
-  //      check the pr here: https://github.com/xbmc/xbmc/pull/2253
+  //      check the pr here: https://github.com///pull/2253
 
   // As a thread message queue service, it should follow these rules:
   // 1. [Must] Thread safe, message can be pushed into queue in arbitrary thread context.
@@ -1755,7 +1755,7 @@ void CGUIWindowManager::DispatchThreadMessages()
   //    order as they be pushed into the queue.
   // 3. Dispatch function [must] support call itself during message process procedure,
   //    and do not break other rules listed here. to make it clear: in the
-  //    SendMessage(), it could start another xbmc main thread loop, calling
+  //    SendMessage(), it could start another  main thread loop, calling
   //    DispatchThreadMessages() in it's internal loop, this must be supported.
   // 4. During DispatchThreadMessages() processing, any new pushed message [should] not
   //    be processed by the current loop in DispatchThreadMessages(), prevent dead loop.
@@ -1774,7 +1774,7 @@ void CGUIWindowManager::DispatchThreadMessages()
 
     lock.unlock();
 
-    // XXX: during SendMessage(), there could be a deeper 'xbmc main loop' inited by e.g. doModal
+    // XXX: during SendMessage(), there could be a deeper ' main loop' inited by e.g. doModal
     //      which may loop there and callback to DispatchThreadMessages() multiple times.
     if (window)
       SendMessage( *pMsg, window );

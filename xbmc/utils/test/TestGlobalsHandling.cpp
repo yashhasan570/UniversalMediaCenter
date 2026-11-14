@@ -10,7 +10,7 @@
 
 #include <gtest/gtest.h>
 
-using namespace xbmcutil;
+using namespace util;
 using namespace test;
 
 bool TestGlobalPattern1::ctorCalled = false;

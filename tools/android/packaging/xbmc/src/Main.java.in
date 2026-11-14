@@ -31,11 +31,11 @@ public class Main extends NativeActivity implements Choreographer.FrameCallback
   private static final String TAG = "@APP_NAME@";
 
   public static Main MainActivity = null;
-  public XBMCMainView mMainView = null;
+  public MainView mMainView = null;
 
-  private XBMCSettingsContentObserver mSettingsContentObserver;
-  private XBMCInputDeviceListener mInputDeviceListener;
-  private XBMCJsonRPC mJsonRPC = null;
+  private SettingsContentObserver mSettingsContentObserver;
+  private InputDeviceListener mInputDeviceListener;
+  private JsonRPC mJsonRPC = null;
   private View mDecorView = null;
   private Handler handler = new Handler(Looper.myLooper());
 
@@ -82,7 +82,7 @@ public class Main extends NativeActivity implements Choreographer.FrameCallback
           mJsonRPC.updateLeanback(Main.this);
         }
       }.start();
-      handler.postDelayed(this, XBMCProperties.getIntProperty("xbmc.leanbackrefresh", 60 * 60) * 1000L);
+      handler.postDelayed(this, Properties.getIntProperty(".leanbackrefresh", 60 * 60) * 1000L);
     }
   };
 
@@ -124,7 +124,7 @@ public class Main extends NativeActivity implements Choreographer.FrameCallback
     setContentView(R.layout.activity_main);
     setVolumeControlStream(AudioManager.STREAM_MUSIC);
 
-    mSettingsContentObserver = new XBMCSettingsContentObserver(this, handler);
+    mSettingsContentObserver = new SettingsContentObserver(this, handler);
     getApplicationContext().getContentResolver().registerContentObserver(android.provider.Settings.System.CONTENT_URI, true, mSettingsContentObserver);
 
     // Delayed Intent
@@ -151,14 +151,14 @@ public class Main extends NativeActivity implements Choreographer.FrameCallback
                && getLauncherName().equals("com.google.android.leanbacklauncher"))
       {
         // Leanback
-        mJsonRPC = new XBMCJsonRPC(getApplicationContext());
+        mJsonRPC = new JsonRPC(getApplicationContext());
         handler.removeCallbacks(leanbackUpdateRunnable);
         handler.postDelayed(leanbackUpdateRunnable, 30 * 1000);
       }
     }
 
     // register the InputDeviceListener implementation
-    mInputDeviceListener = new XBMCInputDeviceListener();
+    mInputDeviceListener = new InputDeviceListener();
     InputManager manager = (InputManager) getSystemService(INPUT_SERVICE);
     manager.registerInputDeviceListener(mInputDeviceListener, handler);
 
@@ -168,7 +168,7 @@ public class Main extends NativeActivity implements Choreographer.FrameCallback
     setContentView(R.layout.activity_main);
     RelativeLayout videoLayout = findViewById(R.id.VideoLayout);
 
-    mMainView = new XBMCMainView(this);
+    mMainView = new MainView(this);
     RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
     mMainView.setElevation(1);  // Always on Top
     videoLayout.addView(mMainView, layoutParams);

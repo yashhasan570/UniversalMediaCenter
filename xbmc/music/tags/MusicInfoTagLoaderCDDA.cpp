@@ -121,7 +121,7 @@ bool CMusicInfoTagLoaderCDDA::Load(const std::string& strFileName, CMusicInfoTag
         tag.SetTitle(strTitle);
 
         // Get info for track zero, as we may have and need CD-Text Album info
-        xbmc_cdtext_t discCDText = pCdInfo->GetDiscCDTextInformation();
+        _cdtext_t discCDText = pCdInfo->GetDiscCDTextInformation();
 
         // Artist: Use track artist or disc artist
         std::string strArtist = ti.cdtext[CDTEXT_FIELD_PERFORMER];

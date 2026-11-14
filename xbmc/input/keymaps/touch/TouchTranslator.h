@@ -19,7 +19,7 @@ class XMLElement;
 class XMLNode;
 } // namespace tinyxml2
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace KEYMAP
 {
@@ -69,4 +69,4 @@ private:
   TouchMap m_touchMap;
 };
 } // namespace KEYMAP
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

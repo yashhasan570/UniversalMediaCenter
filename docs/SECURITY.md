@@ -10,7 +10,7 @@ Security fixes are made on the `master` branch and backported to the current sta
 
 Report them privately through GitHub instead:
 
-1. Go to the **[Security tab](https://github.com/xbmc/xbmc/security)** of this repository.
+1. Go to the **[Security tab](https://github.com///security)** of this repository.
 2. Click **Report a vulnerability** and fill in the form.
 
 Please include as much of the following as you can:
@@ -23,7 +23,7 @@ Please include as much of the following as you can:
 Team Universal Media Center is made up of volunteers, so please be patient. We will acknowledge your report and keep you updated in the private advisory as we triage it. If we confirm the issue, we will:
 * Work on a fix in a private fork and coordinate the release timing with you.
 * Ship the fix in a security release, announced on the **[Universal Media Center news page](https://github.com/yashhasan570/UniversalMediaCenter/blog/)** with advice to update.
-* Publish a **[GitHub security advisory](https://github.com/xbmc/xbmc/security/advisories)** once the fixed release is available, request a CVE where appropriate and credit you unless you prefer to remain anonymous.
+* Publish a **[GitHub security advisory](https://github.com///security/advisories)** once the fixed release is available, request a CVE where appropriate and credit you unless you prefer to remain anonymous.
 
 Please keep the details private until the advisory is published.
 

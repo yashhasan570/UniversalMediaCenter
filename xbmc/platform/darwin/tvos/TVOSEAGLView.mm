@@ -13,14 +13,14 @@
 #include "utils/log.h"
 
 #import "platform/darwin/DarwinUtils.h"
-#import "platform/darwin/tvos/XBMCController.h"
+#import "platform/darwin/tvos/Controller.h"
 
 #import <signal.h>
 #import <stdio.h>
 
 #import <OpenGLES/ES2/glext.h>
 
-using namespace KODI::MESSAGING;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
 
 @implementation TVOSEAGLView
 @synthesize m_context;

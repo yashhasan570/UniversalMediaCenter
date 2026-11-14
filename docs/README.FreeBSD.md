@@ -10,12 +10,12 @@ Several other distributions have **[specific build guides](README.md)** and a ge
 2. **[Get the source code](#2-get-the-source-code)**
 3. **[Install the required packages](#3-install-the-required-packages)**  
   3.1. **[Build missing dependencies](#31-build-missing-dependencies)**
-4. **[Build Universal Media Center](#4-build-kodi)**  
+4. **[Build Universal Media Center](#4-build-universalmediacenter)**  
   4.1. **[Configure build](#41-configure-build)**  
   4.2. **[Build](#42-build)**
 5. **[Build binary add-ons](#5-build-binary-add-ons)**
-6. **[Run Universal Media Center](#6-run-kodi)**
-7. **[Uninstall Universal Media Center](#7-uninstall-kodi)**
+6. **[Run Universal Media Center](#6-run-universalmediacenter)**
+7. **[Uninstall Universal Media Center](#7-uninstall-universalmediacenter)**
 8. **[Test suite](#8-test-suite)**
 
 ## 1. Document conventions
@@ -30,17 +30,17 @@ and yet another one
 
 **Example:** Clone Universal Media Center's current master branch:
 ```
-git clone https://github.com/xbmc/xbmc kodi
+git clone https://github.com// universalmediacenter
 ```
 
 Commands that contain strings enclosed in angle brackets denote something you need to change to suit your needs.
 ```
-git clone -b <branch-name> https://github.com/xbmc/xbmc kodi
+git clone -b <branch-name> https://github.com// universalmediacenter
 ```
 
 **Example:** Clone Universal Media Center's current Omega branch:
 ```
-git clone -b Omega https://github.com/xbmc/xbmc kodi
+git clone -b Omega https://github.com// universalmediacenter
 ```
 
 Several different strategies are used to draw your attention to certain pieces of information. In order of how critical the information is, these items are marked as a note, tip, or warning. For example:
@@ -69,7 +69,7 @@ cd $HOME
 
 Clone Universal Media Center's current master branch:
 ```
-git clone https://github.com/xbmc/xbmc kodi
+git clone https://github.com// universalmediacenter
 ```
 
 **[back to top](#table-of-contents)**
@@ -118,17 +118,17 @@ If you get a `Could NOT find...` error message during CMake configuration step, 
 
 Create an out-of-source build directory:
 ```
-mkdir $HOME/kodi-build
+mkdir $HOME/universalmediacenter-build
 ```
 
 Change to build directory:
 ```
-cd $HOME/kodi-build
+cd $HOME/universalmediacenter-build
 ```
 
 Configure build:
 ```
-cmake ../kodi -DCMAKE_INSTALL_PREFIX=/usr/local -DAPP_RENDER_SYSTEM="gl"
+cmake ../universalmediacenter -DCMAKE_INSTALL_PREFIX=/usr/local -DAPP_RENDER_SYSTEM="gl"
 ```
 > [!NOTE]  
 > You can use `gles` instead of `gl` if you want to build with `GLES`.
@@ -142,7 +142,7 @@ cmake --build . -- VERBOSE=1 -j$(sysctl hw.ncpu | awk '{print $2}')
 
 After the build process completes successfully you can test your shiny new Universal Media Center build while in the build directory:
 ```
-./kodi.bin
+./universalmediacenter.bin
 ```
 
 If everything was OK during your test you can now install the binaries to their place, in this example */usr/local*.
@@ -159,17 +159,17 @@ This will install Universal Media Center in the prefix provided in **[section 4.
 > To override Universal Media Center's install location, use `DESTDIR=<path>`. For example:
 
 ```
-sudo gmake install DESTDIR=$HOME/kodi
+sudo gmake install DESTDIR=$HOME/universalmediacenter
 ```
 
-**[back to top](#table-of-contents)** | **[back to section top](#4-build-kodi)**
+**[back to top](#table-of-contents)** | **[back to section top](#4-build-universalmediacenter)**
 
 ## 5. Build binary add-ons
-You can find a complete list of available binary add-ons **[here](https://github.com/xbmc/repo-binary-addons)**.
+You can find a complete list of available binary add-ons **[here](https://github.com//repo-binary-addons)**.
 
 Change to Universal Media Center's source code directory:
 ```
-cd $HOME/kodi
+cd $HOME/universalmediacenter
 ```
 
 Build all add-ons:
@@ -200,16 +200,16 @@ For additional information on regular expression usage for ADDONS_TO_BUILD, view
 **[back to top](#table-of-contents)**
 
 ## 6. Run Universal Media Center
-If you chose to install Universal Media Center using `/usr` or `/usr/local` as the `-DCMAKE_INSTALL_PREFIX=`, you can just issue *kodi* in a terminal session.
+If you chose to install Universal Media Center using `/usr` or `/usr/local` as the `-DCMAKE_INSTALL_PREFIX=`, you can just issue *universalmediacenter* in a terminal session.
 
 If you changed `-DCMAKE_INSTALL_PREFIX=` to install Universal Media Center into some non-standard location, you will have to run Universal Media Center directly:
 ```
-<CMAKE_INSTALL_PREFIX>/bin/kodi
+<CMAKE_INSTALL_PREFIX>/bin/universalmediacenter
 ```
 
 To run Universal Media Center in *portable* mode (useful for testing):
 ```
-<CMAKE_INSTALL_PREFIX>/bin/kodi -p
+<CMAKE_INSTALL_PREFIX>/bin/universalmediacenter -p
 ```
 
 **[back to top](#table-of-contents)**
@@ -223,7 +223,7 @@ sudo gmake uninstall
 
 If you would like to also remove any settings and third-party addons (skins, scripts, etc.) and Universal Media Center configuration files, you should also run:
 ```
-rm -rf ~/.kodi
+rm -rf ~/.universalmediacenter
 ```
 
 **[back to top](#table-of-contents)**
@@ -238,17 +238,17 @@ gmake check
 
 Build Universal Media Center's test suite without running it:
 ```
-gmake kodi-test
+gmake universalmediacenter-test
 ```
 
 Run Universal Media Center's test suite manually:
 ```
-./kodi-test
+./universalmediacenter-test
 ```
 
 Show Universal Media Center's test suite *help* notes:
 ```
-./kodi-test --gtest_help
+./universalmediacenter-test --gtest_help
 ```
 
 Useful options:

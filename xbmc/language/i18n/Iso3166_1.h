@@ -12,7 +12,7 @@
 #include <string>
 #include <string_view>
 
-namespace KODI::LANGUAGE::I18N
+namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N
 {
 class CIso3166_1
 {
@@ -40,4 +40,4 @@ public:
    */
   static bool ContainsAlpha2(std::string_view code);
 };
-} // namespace KODI::LANGUAGE::I18N
+} // namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N

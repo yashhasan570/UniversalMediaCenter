@@ -9,7 +9,7 @@
 #pragma once
 
 #include "Peripheral.h"
-#include "input/keyboard/XBMC_keyboard.h"
+#include "input/keyboard/_keyboard.h"
 
 namespace PERIPHERALS
 {
@@ -24,7 +24,7 @@ public:
                  CPeripheralBus* bus);
   ~CPeripheralHID(void) override;
   bool InitialiseFeature(const PeripheralFeature feature) override;
-  virtual bool LookupSymAndUnicode(XBMC_keysym& keysym, uint16_t* key, char* unicode)
+  virtual bool LookupSymAndUnicode(_keysym& keysym, uint16_t* key, char* unicode)
   {
     return false;
   }

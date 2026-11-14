@@ -57,7 +57,7 @@ public:
 
   void FrameMove();
   void Render(bool clear, uint32_t alpha = 255, bool gui = true);
-  bool CompositeVideoCapture(KODI::RENDERING::CAPTURE::CaptureResult& result);
+  bool CompositeVideoCapture(UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CaptureResult& result);
   void FlushRenderer();
   void SetRenderViewMode(int mode, float zoom, float par, float shift, bool stretch);
   float GetRenderAspectRatio() const;
@@ -99,7 +99,7 @@ public:
   int64_t GetChapterPos(int chapterIdx = -1) const;
   float GetPercentage() const;
   std::string GetPlayerState();
-  KODI::PLAYLIST::Id GetPreferredPlaylist() const;
+  UNIVERSAL MEDIA CENTER::PLAYLIST::Id GetPreferredPlaylist() const;
   int GetSubtitleDelay() const;
   int GetSubtitle();
   void GetSubtitleCapabilities(std::vector<IPlayerSubtitleCaps>& caps) const;

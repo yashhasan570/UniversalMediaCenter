@@ -48,7 +48,7 @@
 #include <string>
 #include <vector>
 
-using KODI::MEDIA::MediaSection;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaSection;
 
 #define SETTING_SUBTITLE_ENABLE                "subtitles.enable"
 #define SETTING_SUBTITLE_DELAY                 "subtitles.delay"
@@ -417,7 +417,7 @@ void CGUIDialogSubtitleSettings::SubtitleStreamsOptionFiller(
 
   if (appPlayer != nullptr)
   {
-    using namespace KODI::VIDEO;
+    using namespace UNIVERSAL MEDIA CENTER::VIDEO;
     const std::vector<SubtitleStreamInfoExt> streams =
         CVideoStreamSelect::GetSubtitleStreams(appPlayer.get());
     const int streamCount = streams.size();

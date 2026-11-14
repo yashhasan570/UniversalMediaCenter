@@ -11,7 +11,7 @@
 #include "FileItemList.h"
 #include "addons/binary-addons/AddonDll.h"
 #include "addons/binary-addons/AddonInstanceHandler.h"
-#include "addons/kodi-dev-kit/include/kodi/addon-instance/VFS.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/addon-instance/VFS.h"
 #include "filesystem/IDirectory.h"
 #include "filesystem/IFile.h"
 #include "filesystem/IFileDirectory.h"

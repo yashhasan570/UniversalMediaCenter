@@ -18,7 +18,7 @@
 
 #include <mutex>
 
-using namespace KODI::GUILIB;
+using namespace UNIVERSAL MEDIA CENTER::GUILIB;
 
 CGUIRSSControl::CGUIRSSControl(int parentID,
                                int controlID,
@@ -163,7 +163,7 @@ void CGUIRSSControl::Render()
 
     if (m_label.font)
     {
-      std::vector<KODI::UTILS::COLOR::Color> colors;
+      std::vector<UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color> colors;
       colors.push_back(m_label.textColor);
       colors.push_back(m_headlineColor);
       colors.push_back(m_channelColor);

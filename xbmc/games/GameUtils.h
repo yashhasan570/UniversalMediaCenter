@@ -25,7 +25,7 @@ using AddonPtr = std::shared_ptr<IAddon>;
 using VECADDONS = std::vector<AddonPtr>;
 } // namespace ADDON
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -197,4 +197,4 @@ private:
   static std::mutex m_installableMutex;
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

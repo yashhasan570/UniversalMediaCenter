@@ -32,7 +32,7 @@
 #include "view/ViewStateNames.h"
 #include "view/ViewStateSettings.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace XFILE;
 using namespace MUSICDATABASEDIRECTORY;
 
@@ -81,9 +81,9 @@ bool CGUIViewStateWindowMusic::AutoPlayNextItem()
          !settings->GetBool(CSettings::SETTING_MUSICPLAYER_QUEUEBYDEFAULT);
 }
 
-std::optional<KODI::MEDIA::MediaSection> CGUIViewStateWindowMusic::GetLockType()
+std::optional<UNIVERSAL MEDIA CENTER::MEDIA::MediaSection> CGUIViewStateWindowMusic::GetLockType()
 {
-  return KODI::MEDIA::MediaSection::MUSIC;
+  return UNIVERSAL MEDIA CENTER::MEDIA::MediaSection::MUSIC;
 }
 
 std::string CGUIViewStateWindowMusic::GetExtensions()

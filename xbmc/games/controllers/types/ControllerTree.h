@@ -18,7 +18,7 @@
 //
 #include "ControllerHub.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -31,4 +31,4 @@ namespace GAME
 using CControllerTree = CControllerHub;
 
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

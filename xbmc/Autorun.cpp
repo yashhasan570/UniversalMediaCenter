@@ -55,12 +55,12 @@
 
 using namespace XFILE;
 using namespace MEDIA_DETECT;
-using namespace KODI;
-using namespace KODI::MESSAGING;
-using namespace KODI::VIDEO;
+using namespace UNIVERSAL MEDIA CENTER;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
+using namespace UNIVERSAL MEDIA CENTER::VIDEO;
 using namespace std::chrono_literals;
 
-using KODI::MESSAGING::HELPERS::DialogResponse;
+using UNIVERSAL MEDIA CENTER::MESSAGING::HELPERS::DialogResponse;
 
 CAutorun::CAutorun()
 {
@@ -94,7 +94,7 @@ bool CAutorun::ExecuteAutorun(const std::string& path)
   if (action == AutoCDAction::RIP && pInfo->IsAudio(1) &&
       !profileManager->GetCurrentProfile().musicLocked())
   {
-    success = KODI::CDRIP::CCDDARipper::GetInstance().RipCD();
+    success = UNIVERSAL MEDIA CENTER::CDRIP::CCDDARipper::GetInstance().RipCD();
   }
   else
 #endif

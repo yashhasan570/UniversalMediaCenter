@@ -36,7 +36,7 @@
 
 static float zoomamount[10] = { 1.0f, 1.2f, 1.5f, 2.0f, 2.8f, 4.0f, 6.0f, 9.0f, 13.5f, 20.0f };
 
-using KODI::UTILS::COLOR::Color;
+using UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color;
 
 CSlideShowPic::CSlideShowPic() : m_pImage(nullptr)
 {

@@ -15,7 +15,7 @@
 #include <memory>
 #include <vector>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -48,4 +48,4 @@ protected:
   mutable CCriticalSection m_critSection;
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

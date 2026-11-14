@@ -14,9 +14,9 @@
 #include "utils/log.h"
 
 #if defined(TARGET_DARWIN_IOS)
-#include "platform/darwin/ios/XBMCController.h"
+#include "platform/darwin/ios/Controller.h"
 #elif defined(TARGET_DARWIN_TVOS)
-#include "platform/darwin/tvos/XBMCController.h"
+#include "platform/darwin/tvos/Controller.h"
 #endif
 
 using namespace std::chrono_literals;
@@ -94,7 +94,7 @@ static CEvent keyboardFinishedEvent;
 - (void)activate
 {
   dispatch_sync(dispatch_get_main_queue(), ^{
-    [g_xbmcController activateKeyboard:self];
+    [g_Controller activateKeyboard:self];
     [self layoutIfNeeded];
     [m_inputTextField becomeFirstResponder];
     keyboardFinishedEvent.Reset();
@@ -124,7 +124,7 @@ static CEvent keyboardFinishedEvent;
   dispatch_async(dispatch_get_main_queue(), ^{
     // always called in the mainloop context
     // detach the keyboard view from our main controller
-    [g_xbmcController deactivateKeyboard:self];
+    [g_Controller deactivateKeyboard:self];
 
     // no more notification we want to receive.
     [[NSNotificationCenter defaultCenter] removeObserver:self];

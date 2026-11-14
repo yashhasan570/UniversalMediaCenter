@@ -55,7 +55,7 @@ std::vector<uint8_t> ParseAv1T35(const uint8_t* data, size_t size)
 #endif
 } // namespace
 
-namespace KODI::UTILS::DOLBYVISION
+namespace UNIVERSAL MEDIA CENTER::UTILS::DOLBYVISION
 {
 std::vector<uint8_t> HevcRpuToNal(const uint8_t* data, size_t size)
 {
@@ -115,4 +115,4 @@ std::vector<uint8_t> ExtractAv1Rpu([[maybe_unused]] const uint8_t* data,
 #endif
   return {};
 }
-} // namespace KODI::UTILS::DOLBYVISION
+} // namespace UNIVERSAL MEDIA CENTER::UTILS::DOLBYVISION

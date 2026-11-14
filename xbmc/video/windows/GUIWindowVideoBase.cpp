@@ -91,9 +91,9 @@
 using namespace XFILE;
 using namespace VIDEODATABASEDIRECTORY;
 using namespace ADDON;
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace PVR;
-using namespace KODI::MESSAGING;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
 
 #define CONTROL_BTNVIEWASICONS     2
 #define CONTROL_BTNSORTBY          3
@@ -282,7 +282,7 @@ bool CGUIWindowVideoBase::OnItemInfo(const CFileItem& fileItem)
     return CGUIDialogAddonInfo::ShowForItem(std::make_shared<CFileItem>(fileItem));
 
   if (URIUtils::IsPVR(fileItem.GetPath()))
-    return KODI::UTILS::GUILIB::CGUIContentUtils::ShowInfoForItem(fileItem);
+    return UNIVERSAL MEDIA CENTER::UTILS::GUILIB::CGUIContentUtils::ShowInfoForItem(fileItem);
 
   // Video version
   if (fileItem.HasVideoInfoTag() &&
@@ -317,7 +317,7 @@ bool CGUIWindowVideoBase::OnItemInfo(const CFileItem& fileItem)
   const ADDON::ScraperPtr scraper = m_database.GetScraperForPath(strDir, settings, foundDirectly);
 
   if (!fileItem.HasVideoInfoTag() && !scraper && !(fileItem.IsPlugin() || fileItem.IsScript()) &&
-      !KODI::VIDEO::UTILS::HasItemVideoDbInformation(fileItem))
+      !UNIVERSAL MEDIA CENTER::VIDEO::UTILS::HasItemVideoDbInformation(fileItem))
   {
     // We have no chance to fill a video info tag, neither scraper nor db data available.
     HELPERS::ShowOKDialogText(CVariant{20176}, // Show video information
@@ -366,7 +366,7 @@ bool CGUIWindowVideoBase::OnItemInfo(const CFileItem& fileItem)
       const std::vector<std::string>& excludeFromScan = CServiceBroker::GetSettingsComponent()
                                                             ->GetAdvancedSettings()
                                                             ->m_moviesExcludeFromScanRegExps;
-      KODI::REGEXP::RegExpCache cache;
+      UNIVERSAL MEDIA CENTER::REGEXP::RegExpCache cache;
       for (const auto& i : items)
       {
         if (VIDEO::IsVideo(*i) && !PLAYLIST::IsPlayList(*i) &&

@@ -18,13 +18,13 @@ class CPVRChannel;
 class CPVRRadioRDSInfoTag;
 }
 
-namespace XBMCAddon
+namespace Addon
 {
-  namespace xbmc
+  namespace 
   {
     //
     /// \defgroup python_InfoTagRadioRDS InfoTagRadioRDS
-    /// \ingroup python_xbmc
+    /// \ingroup python_
     /// @{
     /// @brief **Universal Media Center's radio RDS info tag class.**
     ///
@@ -42,7 +42,7 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ...
-    /// tag = xbmc.Player().getRadioRDSInfoTag()
+    /// tag = .Player().getRadioRDSInfoTag()
     ///
     /// title  = tag.getTitle()
     /// artist = tag.getArtist()

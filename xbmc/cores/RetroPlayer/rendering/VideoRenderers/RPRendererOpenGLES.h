@@ -17,7 +17,7 @@
 
 #include "system_gl.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace SHADER
 {
@@ -74,4 +74,4 @@ protected:
   const GLenum m_textureTarget = GL_TEXTURE_2D;
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

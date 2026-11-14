@@ -17,10 +17,10 @@
 #include <d3d11_4.h>
 #include <wrl/client.h>
 
-namespace KODI::VIDEO::GEOMETRY
+namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY
 {
 struct ReducedFrame;
-} // namespace KODI::VIDEO::GEOMETRY
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY
 
 namespace DXVA
 {
@@ -40,7 +40,7 @@ public:
                          unsigned int sourceWidth,
                          unsigned int sourceHeight,
                          bool fullRange,
-                         KODI::VIDEO::GEOMETRY::ReducedFrame& reduction,
+                         UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::ReducedFrame& reduction,
                          unsigned int targetWidth);
 
 private:
@@ -58,7 +58,7 @@ private:
 
   //! \brief Read the slot the previous frame filled, if the GPU has finished with it, leaving
   //! it filled when it has not.
-  ReductionResult ReadFilledSlot(KODI::VIDEO::GEOMETRY::ReducedFrame& reduction);
+  ReductionResult ReadFilledSlot(UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::ReducedFrame& reduction);
 
   //! \brief Say what went wrong once, then retry quietly.
   void RuntimeFail(const char* what, HRESULT hr);

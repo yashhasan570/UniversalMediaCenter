@@ -12,7 +12,7 @@
 #include <cmath>
 #include <vector>
 
-namespace KODI::VIDEO::GEOMETRY
+namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY
 {
 
 namespace
@@ -151,4 +151,4 @@ bool ReduceFrame(const ReductionSource& source, unsigned int targetWidth, Reduce
   return true;
 }
 
-} // namespace KODI::VIDEO::GEOMETRY
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY

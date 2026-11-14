@@ -108,7 +108,7 @@ void CResolutionUtils::FindResolutionFromWhitelist(float fps, int width, int hei
       if (info.iScreenHeight >= curr.iScreenHeight && info.iScreenWidth >= curr.iScreenWidth &&
           (info.dwFlags & D3DPRESENTFLAG_MODEMASK) == (curr.dwFlags & D3DPRESENTFLAG_MODEMASK))
       {
-        // do not add half refreshrates (25, 29.97 by default) as kodi cannot cope with
+        // do not add half refreshrates (25, 29.97 by default) as universalmediacenter cannot cope with
         // them on playback start. Especially interlaced content is not properly detected
         // and this causes ugly double switching.
         // This won't allow 25p / 30p playback on native refreshrate by default

@@ -1,5 +1,5 @@
 AC_PREREQ(2.59)
-AC_INIT([xbmc-depends], [2.00], [https://github.com/xbmc/xbmc])
+AC_INIT([-depends], [2.00], [https://github.com//])
 : ${CFLAGS=""}
 AC_CONFIG_AUX_DIR([build-aux])
 # Only touch Makefile.include's mtime if its content actually changed, since every
@@ -19,7 +19,7 @@ AC_CONFIG_COMMANDS([Makefile.include],
 AC_CANONICAL_HOST
 AC_CANONICAL_BUILD
 
-m4_include([m4/xbmc_arch.m4])
+m4_include([m4/_arch.m4])
 m4_include([m4/ax_cxx_compile_stdcxx.m4])
 m4_include([m4/ax_compare_version.m4])
 
@@ -73,7 +73,7 @@ AC_ARG_WITH([firmware],
 
 AC_ARG_WITH([tarballs],
   [AS_HELP_STRING([--with-tarballs],
-  [path where tarballs will be saved [prefix/xbmc-tarballs]])],
+  [path where tarballs will be saved [prefix/-tarballs]])],
   [use_tarballs=$withval])
 
 AC_ARG_WITH([cpu],
@@ -218,7 +218,7 @@ case $build in
     host_cxxflags="-std=c++17"
 
     if test "x$prefix" = "xNONE"; then
-      prefix=/Users/Shared/xbmc-depends
+      prefix=/Users/Shared/-depends
     fi
   ;;
   *)
@@ -602,7 +602,7 @@ case $use_platform in
     AC_MSG_ERROR(unsupported platform ($use_platform))
 esac
 
-XBMC_SETUP_ARCH_DEFINES()
+_SETUP_ARCH_DEFINES()
 
 case $build in
   *darwin*)
@@ -635,7 +635,7 @@ if test "$ac_cv_search_iconv_open" != "none required"; then
 fi
 
 if test "x$prefix" = "xNONE"; then
-  AC_MSG_ERROR([No prefix path defined. Use for ex: --prefix=/opt/xbmc-depends]);
+  AC_MSG_ERROR([No prefix path defined. Use for ex: --prefix=/opt/-depends]);
 fi
 
 if test "$use_ccache" = "yes"; then
@@ -643,7 +643,7 @@ if test "$use_ccache" = "yes"; then
 fi
 
 if test -z $use_tarballs; then
-  use_tarballs=$prefix/xbmc-tarballs
+  use_tarballs=$prefix/-tarballs
 fi
 
 if test "$platform_os" = "linux"; then

@@ -11,7 +11,7 @@
 #include "network/Zeroconf.h"
 #include "threads/CriticalSection.h"
 
-#include "platform/android/activity/JNIXBMCNsdManagerRegistrationListener.h"
+#include "platform/android/activity/JNINsdManagerRegistrationListener.h"
 
 #include <androidjni/NsdManager.h>
 #include <androidjni/NsdServiceInfo.h>
@@ -37,7 +37,7 @@ private:
   struct tServiceRef
   {
     jni::CJNINsdServiceInfo serviceInfo;
-    jni::CJNIXBMCNsdManagerRegistrationListener registrationListener;
+    jni::CJNINsdManagerRegistrationListener registrationListener;
     int updateNumber;
   };
   typedef std::map<std::string, struct tServiceRef> tServiceMap;

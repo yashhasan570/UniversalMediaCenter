@@ -12,7 +12,7 @@
 
 #include <atomic>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -90,4 +90,4 @@ private:
   static std::atomic<bool> m_overGame;
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

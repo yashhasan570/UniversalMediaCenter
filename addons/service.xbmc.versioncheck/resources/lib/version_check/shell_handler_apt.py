@@ -2,10 +2,10 @@
 
 """
 
-    Copyright (C) 2013-2014 Team-XBMC
+    Copyright (C) 2013-2014 Team-
     Copyright (C) 2014-2019 Team Universal Media Center
 
-    This file is part of service.xbmc.versioncheck
+    This file is part of service..versioncheck
 
     SPDX-License-Identifier: GPL-3.0-or-later
     See LICENSES/GPL-3.0-or-later.txt for more information.
@@ -32,7 +32,7 @@ class ShellHandlerApt(Handler):
         Handler.__init__(self)
         self.sudo = use_sudo
         self._update = False
-        installed, _ = self._check_versions('kodi')
+        installed, _ = self._check_versions('universalmediacenter')
         if not installed:
             # there is no package installed via repo, so we exit here
             log('No installed package found, exiting')

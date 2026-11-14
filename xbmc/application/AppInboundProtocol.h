@@ -9,7 +9,7 @@
 #pragma once
 
 #include "threads/CriticalSection.h"
-#include "windowing/XBMC_events.h"
+#include "windowing/_events.h"
 
 #include <deque>
 
@@ -21,7 +21,7 @@ class CAppInboundProtocol
 
 public:
   CAppInboundProtocol(CApplication& app);
-  bool OnEvent(const XBMC_Event& newEvent);
+  bool OnEvent(const _Event& newEvent);
   void SetRenderGUI(bool renderGUI);
   void Close();
 
@@ -30,6 +30,6 @@ protected:
 
   bool m_closed = false;
   CApplication &m_pApp;
-  std::deque<XBMC_Event> m_portEvents;
+  std::deque<_Event> m_portEvents;
   CCriticalSection m_portSection;
 };

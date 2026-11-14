@@ -21,7 +21,7 @@
 #include "system_gl.h"
 #endif
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RENDERING
 {
@@ -190,4 +190,4 @@ bool ReadFramebufferRegion(int, int, unsigned int, unsigned int, int, bool, Read
 
 } // namespace CAPTURE
 } // namespace RENDERING
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

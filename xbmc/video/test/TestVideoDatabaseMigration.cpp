@@ -36,13 +36,13 @@ class CRepairableDatabase : public CVideoDatabase
 public:
   void RepairAssetTypes(int fromVersion)
   {
-    KODI::DATABASE::MIGRATION::RepairVideoAssetTypesV154(*this, *m_pDS, *m_pDS2, fromVersion);
+    UNIVERSAL MEDIA CENTER::DATABASE::MIGRATION::RepairVideoAssetTypesV154(*this, *m_pDS, *m_pDS2, fromVersion);
   }
 };
 
 /*!
  * Upgrades from schema < 131 by Universal Media Center 22 builds turned versions and their types into extras
- * (https://github.com/xbmc/xbmc/issues/29918). The tests damage a database the same way and
+ * (https://github.com///issues/29918). The tests damage a database the same way and
  * repair it.
  */
 class TestVideoDatabaseMigration : public ::testing::Test

@@ -62,10 +62,10 @@
 #include <memory>
 #include <tuple>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace JSONRPC;
 using namespace PVR;
-using KODI::MESSAGING::TransferToMessenger;
+using UNIVERSAL MEDIA CENTER::MESSAGING::TransferToMessenger;
 
 namespace
 {

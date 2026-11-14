@@ -13,14 +13,14 @@
 #include "URL.h"
 #include "addons/addoninfo/AddonType.h"
 #include "games/controllers/input/PhysicalTopology.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 #include "utils/XMLUtils.h"
 #include "utils/log.h"
 
 #include <algorithm>
 #include <cstring>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 // --- FeatureTypeEqual --------------------------------------------------------
@@ -125,7 +125,7 @@ bool CController::LoadLayout(void)
 
     CLog::Log(LOGINFO, "Loading controller layout: {}", CURL::GetRedacted(strLayoutXmlPath));
 
-    CXBMCTinyXML2 xmlDoc;
+    CTinyXML2 xmlDoc;
     if (!xmlDoc.LoadFile(strLayoutXmlPath))
     {
       CLog::Log(LOGDEBUG, "Unable to load file: {} at line {}", xmlDoc.ErrorStr(),

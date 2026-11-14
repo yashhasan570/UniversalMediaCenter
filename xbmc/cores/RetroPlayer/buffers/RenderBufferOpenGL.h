@@ -12,7 +12,7 @@
 
 #include "system_gl.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -41,4 +41,4 @@ private:
   void DeleteTexture();
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

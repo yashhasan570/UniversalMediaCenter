@@ -16,7 +16,7 @@
 #include <set>
 #include <string>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -96,4 +96,4 @@ private:
   CCriticalSection m_mutex;
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

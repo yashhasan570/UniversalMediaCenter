@@ -4,7 +4,7 @@
 # Addon Provider: Team Universal Media Center
 msgid ""
 msgstr ""
-"Project-Id-Version: KODI Main\n"
+"Project-Id-Version: UNIVERSAL MEDIA CENTER Main\n"
 "Report-Msgid-Bugs-To: translations@github.com/yashhasan570/UniversalMediaCenter\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"

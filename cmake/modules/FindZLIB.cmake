@@ -19,14 +19,14 @@ if(NOT TARGET ${APP_NAME_LC}::${CMAKE_FIND_PACKAGE_NAME})
     set(REQ "REQUIRED")
   endif()
 
-  if(KODI_DEPENDSBUILD OR (WIN32 OR WINDOWS_STORE))
+  if(UNIVERSALMEDIA_DEPENDSBUILD OR (WIN32 OR WINDOWS_STORE))
     set(ZLIB_ROOT ${DEPENDS_PATH})
   endif()
 
   # Darwin platforms link against toolchain provided zlib regardless
   # They will fail when searching for static. All other platforms, prefer static
   # if possible (requires cmake 3.24+ otherwise variable is a no-op)
-  if(KODI_DEPENDSBUILD AND NOT CMAKE_SYSTEM_NAME MATCHES "Darwin")
+  if(UNIVERSALMEDIA_DEPENDSBUILD AND NOT CMAKE_SYSTEM_NAME MATCHES "Darwin")
     set(ZLIB_USE_STATIC_LIBS ON)
   endif()
 

@@ -18,7 +18,7 @@
 #include <memory>
 #include <string>
 
-namespace KODI::GUILIB::TEST
+namespace UNIVERSAL MEDIA CENTER::GUILIB::TEST
 {
 //! \brief A render system that does nothing, for tests that need one to exist
 class CTestRenderSystem : public CRenderSystemBase
@@ -30,7 +30,7 @@ public:
   bool BeginRender() override { return true; }
   bool EndRender() override { return true; }
   void PresentRender(bool rendered, bool videoLayer) override {}
-  bool ClearBuffers(KODI::UTILS::COLOR::Color color) override { return true; }
+  bool ClearBuffers(UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color color) override { return true; }
   bool IsExtSupported(const char* extension) const override { return false; }
   void SetViewPort(const CRect& viewPort) override {}
   void GetViewPort(CRect& viewPort) override {}
@@ -93,4 +93,4 @@ public:
       m_pWindowManager.reset();
   }
 };
-} // namespace KODI::GUILIB::TEST
+} // namespace UNIVERSAL MEDIA CENTER::GUILIB::TEST

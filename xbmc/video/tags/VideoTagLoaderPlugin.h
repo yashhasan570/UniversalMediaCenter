@@ -18,7 +18,7 @@
 #include <vector>
 
 //! \brief Video tag loader from plugin source.
-class CVideoTagLoaderPlugin : public KODI::VIDEO::IVideoInfoTagLoader
+class CVideoTagLoaderPlugin : public UNIVERSAL MEDIA CENTER::VIDEO::IVideoInfoTagLoader
 {
 public:
   CVideoTagLoaderPlugin(const CFileItem& item, bool forceRefresh);
@@ -34,10 +34,10 @@ public:
                               bool prioritise,
                               std::vector<EmbeddedArt>* = nullptr) override;
 
-  inline std::unique_ptr<KODI::ART::Artwork>& GetArt() { return m_art; }
+  inline std::unique_ptr<UNIVERSAL MEDIA CENTER::ART::Artwork>& GetArt() { return m_art; }
 
 protected:
   std::unique_ptr<CVideoInfoTag> m_tag;
-  std::unique_ptr<KODI::ART::Artwork> m_art;
+  std::unique_ptr<UNIVERSAL MEDIA CENTER::ART::Artwork> m_art;
   bool m_force_refresh;
 };

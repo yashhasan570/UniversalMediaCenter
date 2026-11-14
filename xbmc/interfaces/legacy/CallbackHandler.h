@@ -11,7 +11,7 @@
 #include "AddonClass.h"
 #include "CallbackFunction.h"
 
-namespace XBMCAddon
+namespace Addon
 {
   /**
    * This is the abstraction representing different ways to handle

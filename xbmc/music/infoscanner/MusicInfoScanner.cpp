@@ -66,13 +66,13 @@
 #include <string_view>
 #include <utility>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace MUSIC_INFO;
 using namespace XFILE;
 using namespace MUSICDATABASEDIRECTORY;
 using namespace MUSIC_GRABBER;
 using namespace ADDON;
-using KODI::UTILITY::CDigest;
+using UNIVERSAL MEDIA CENTER::UTILITY::CDigest;
 
 CMusicInfoScanner::CMusicInfoScanner()
 : m_fileCountReader(this, "MusicFileCounter")
@@ -1304,7 +1304,7 @@ int CMusicInfoScanner::GetPathHash(const CFileItemList &items, std::string &hash
     digest.Update(pItem->GetPath());
     const int64_t size{pItem->GetSize()};
     digest.Update(&size, sizeof(size));
-    KODI::TIME::FileTime time{};
+    UNIVERSAL MEDIA CENTER::TIME::FileTime time{};
     pItem->GetDateTime().GetAsTimeStamp(time);
     digest.Update(&time, sizeof(time));
     if (MUSIC::IsAudio(*pItem) && !PLAYLIST::IsPlayList(*pItem) && !pItem->IsNFO())

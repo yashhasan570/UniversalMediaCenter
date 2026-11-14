@@ -16,10 +16,10 @@
 #endif
 
 #if defined(TARGET_ANDROID)
-#include "platform/android/activity/XBMCApp.h"
+#include "platform/android/activity/App.h"
 #endif
 
-extern "C" int XBMC_Run(bool renderGUI)
+extern "C" int _Run(bool renderGUI)
 {
   int status = -1;
 
@@ -30,7 +30,7 @@ extern "C" int XBMC_Run(bool renderGUI)
   }
 
 #if defined(TARGET_ANDROID)
-  CXBMCApp::Get().Initialize();
+  CApp::Get().Initialize();
 #endif
 
   if (renderGUI && !g_application.CreateGUI())
@@ -74,7 +74,7 @@ extern "C" int XBMC_Run(bool renderGUI)
 #endif
 
 #if defined(TARGET_ANDROID)
-  CXBMCApp::Get().Deinitialize();
+  CApp::Get().Deinitialize();
 #endif
 
   return status;

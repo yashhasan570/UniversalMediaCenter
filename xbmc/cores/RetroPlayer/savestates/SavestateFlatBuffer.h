@@ -15,7 +15,7 @@
 
 #include <flatbuffers/flatbuffers.h>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -145,4 +145,4 @@ private:
   std::optional<GAME::GameClientDiscState> m_discState;
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

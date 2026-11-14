@@ -19,7 +19,7 @@
 #include <memory>
 #include <string>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 COverlayCodecWebVTT::COverlayCodecWebVTT()
   : CDVDOverlayCodec("WebVTT Subtitle Decoder"), m_pOverlay(nullptr)

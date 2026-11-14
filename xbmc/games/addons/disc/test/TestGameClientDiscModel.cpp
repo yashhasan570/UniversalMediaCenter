@@ -14,7 +14,7 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 class TestGameClientDiscModel : public testing::Test
@@ -22,13 +22,13 @@ class TestGameClientDiscModel : public testing::Test
 protected:
   std::string CreateDisc()
   {
-    XFILE::CFile* file = XBMC_CREATETEMPFILE(".chd");
+    XFILE::CFile* file = _CREATETEMPFILE(".chd");
     EXPECT_NE(file, nullptr);
     if (!file)
       return {};
     file->Close();
     m_files.push_back(file);
-    return XBMC_TEMPFILEPATH(file);
+    return _TEMPFILEPATH(file);
   }
 
   std::string CreateDiscWithSameName(const std::string& path)
@@ -54,7 +54,7 @@ protected:
       EXPECT_TRUE(XFILE::CDirectory::Remove(directory));
     }
     for (XFILE::CFile* file : m_files)
-      XBMC_DELETETEMPFILE(file);
+      _DELETETEMPFILE(file);
   }
 
 private:

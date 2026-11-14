@@ -16,16 +16,16 @@
 namespace jni
 {
 
-  class CJNIXBMCJsonHandler : public CJNIBase
+  class CJNIJsonHandler : public CJNIBase
   {
   public:
-    CJNIXBMCJsonHandler(const jni::jhobject &object) : CJNIBase(object) {}
+    CJNIJsonHandler(const jni::jhobject &object) : CJNIBase(object) {}
 
     static void RegisterNatives(JNIEnv* env);
 
 
   protected:
-    ~CJNIXBMCJsonHandler() override = default;
+    ~CJNIJsonHandler() override = default;
 
     static jstring _requestJSON(JNIEnv* env, jobject thiz, jstring request);
 

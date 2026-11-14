@@ -22,7 +22,7 @@ class CFileItemList;
 class CGUIViewControl;
 class CGUIWindow;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -75,4 +75,4 @@ private:
   std::map<std::string, unsigned int> m_addressToItem; // port address -> item index
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

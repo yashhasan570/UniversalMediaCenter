@@ -9,9 +9,9 @@
 #pragma once
 
 /**
- * \defgroup kodi_key_action_ids Action Id's
- * \ingroup python_xbmcgui_window_cb
- * \ingroup python_xbmcgui_action
+ * \defgroup universalmediacenter_key_action_ids Action Id's
+ * \ingroup python_gui_window_cb
+ * \ingroup python_gui_action
  * @{
  * @brief Actions that we have defined.
  */

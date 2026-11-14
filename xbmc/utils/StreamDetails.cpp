@@ -219,8 +219,8 @@ bool CStreamDetailSubtitle::IsWorseThan(const CStreamDetail& that) const
   if (that.m_eType != CStreamDetail::SUBTITLE)
     return true;
 
-  const KODI::LANGUAGE::CLanguageTag language{KODI::LANGUAGE::CLanguageTag::Parse(m_strLanguage)};
-  const KODI::LANGUAGE::CLanguageTag other{KODI::LANGUAGE::CLanguageTag::Parse(
+  const UNIVERSAL MEDIA CENTER::LANGUAGE::CLanguageTag language{UNIVERSAL MEDIA CENTER::LANGUAGE::CLanguageTag::Parse(m_strLanguage)};
+  const UNIVERSAL MEDIA CENTER::LANGUAGE::CLanguageTag other{UNIVERSAL MEDIA CENTER::LANGUAGE::CLanguageTag::Parse(
       static_cast<const CStreamDetailSubtitle&>(that).m_strLanguage)};
 
   if (language.Matches(other))
@@ -670,7 +670,7 @@ int CStreamDetails::GetPreferredAudioStreamIndex(
     // which would otherwise pay for it once per stream compared rather than once per stream
     const auto* audio{static_cast<const CStreamDetailAudio*>(iter.get())};
     const StreamUtils::AudioCandidate candidate{
-        .language = KODI::LANGUAGE::CLanguageTag::Parse(audio->m_strLanguage),
+        .language = UNIVERSAL MEDIA CENTER::LANGUAGE::CLanguageTag::Parse(audio->m_strLanguage),
         .codec = audio->m_strCodec,
         .channels = audio->m_iChannels,
         .flags = audio->m_flags};
@@ -844,7 +844,7 @@ std::string CStreamDetails::VideoAspectToAspectDescription(float fAspect)
   // Given that we're never going to be able to handle every single possibility in
   // aspect ratios, particularly when cropping prior to video encoding is taken into account
   // the best we can do is take the "common" aspect ratios, and return the closest one available.
-  return KODI::UTILS::CAspectRatioVocabulary::Label(fAspect);
+  return UNIVERSAL MEDIA CENTER::UTILS::CAspectRatioVocabulary::Label(fAspect);
 }
 
 bool CStreamDetails::SetStreams(const VideoStreamInfo& videoInfo,

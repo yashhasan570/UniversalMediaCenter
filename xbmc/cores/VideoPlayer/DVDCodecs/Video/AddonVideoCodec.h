@@ -11,7 +11,7 @@
 #include "DVDVideoCodec.h"
 #include "addons/AddonProvider.h"
 #include "addons/binary-addons/AddonInstanceHandler.h"
-#include "addons/kodi-dev-kit/include/kodi/addon-instance/VideoCodec.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/addon-instance/VideoCodec.h"
 
 class BufferPool;
 
@@ -22,7 +22,7 @@ class CAddonVideoCodec
 public:
   CAddonVideoCodec(CProcessInfo& processInfo,
                    ADDON::AddonInfoPtr& addonInfo,
-                   KODI_HANDLE parentInstance);
+                   UNIVERSALMEDIA_HANDLE parentInstance);
   ~CAddonVideoCodec() override;
 
   bool Open(CDVDStreamInfo &hints, CDVDCodecOptions &options) override;
@@ -42,14 +42,14 @@ private:
    * In case buffer allocation fails, return false.
    */
   bool GetFrameBuffer(VIDEOCODEC_PICTURE &picture);
-  void ReleaseFrameBuffer(KODI_HANDLE videoBufferHandle);
-  bool GetFrameBufferPlatformHandle(KODI_HANDLE videoBufferHandle,
+  void ReleaseFrameBuffer(UNIVERSALMEDIA_HANDLE videoBufferHandle);
+  bool GetFrameBufferPlatformHandle(UNIVERSALMEDIA_HANDLE videoBufferHandle,
                                     VIDEOCODEC_PLATFORM_BUFFER& platformBuffer);
 
-  static bool get_frame_buffer(void* kodiInstance, VIDEOCODEC_PICTURE *picture);
-  static void release_frame_buffer(void* kodiInstance, KODI_HANDLE videoBufferHandle);
-  static bool get_frame_buffer_platform_handle(void* kodiInstance,
-                                               KODI_HANDLE videoBufferHandle,
+  static bool get_frame_buffer(void* universalmediacenterInstance, VIDEOCODEC_PICTURE *picture);
+  static void release_frame_buffer(void* universalmediacenterInstance, UNIVERSALMEDIA_HANDLE videoBufferHandle);
+  static bool get_frame_buffer_platform_handle(void* universalmediacenterInstance,
+                                               UNIVERSALMEDIA_HANDLE videoBufferHandle,
                                                VIDEOCODEC_PLATFORM_BUFFER* platformBuffer);
 
   int m_codecFlags = 0;
@@ -66,6 +66,6 @@ private:
 
   // Scratch descriptor filled by GetFrameBufferPlatformHandle and pointed at
   // via VIDEOCODEC_PLATFORM_BUFFER::handle. Keeps the addon API free of
-  // ffmpeg types (see KODI_DRM_FRAME_DESCRIPTOR in video_codec.h).
-  KODI_DRM_FRAME_DESCRIPTOR m_drmFrameDesc{};
+  // ffmpeg types (see UNIVERSALMEDIA_DRM_FRAME_DESCRIPTOR in video_codec.h).
+  UNIVERSALMEDIA_DRM_FRAME_DESCRIPTOR m_drmFrameDesc{};
 };

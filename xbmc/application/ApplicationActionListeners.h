@@ -16,13 +16,13 @@ class CAction;
 class CApplication;
 class CCriticalSection;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace ACTION
 {
 class IActionListener;
 } // namespace ACTION
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER
 
 /*!
  * \brief Class handling application support for action listeners.
@@ -38,12 +38,12 @@ public:
    \brief Register an action listener.
    \param listener The listener to register
    */
-  void RegisterActionListener(KODI::ACTION::IActionListener* listener);
+  void RegisterActionListener(UNIVERSAL MEDIA CENTER::ACTION::IActionListener* listener);
   /*!
    \brief Unregister an action listener.
    \param listener The listener to unregister
    */
-  void UnregisterActionListener(KODI::ACTION::IActionListener* listener);
+  void UnregisterActionListener(UNIVERSAL MEDIA CENTER::ACTION::IActionListener* listener);
 
 protected:
   /*!
@@ -53,7 +53,7 @@ protected:
    */
   bool NotifyActionListeners(const CAction& action) const;
 
-  std::vector<KODI::ACTION::IActionListener*> m_actionListeners;
+  std::vector<UNIVERSAL MEDIA CENTER::ACTION::IActionListener*> m_actionListeners;
 
   CCriticalSection& m_critSection;
 };

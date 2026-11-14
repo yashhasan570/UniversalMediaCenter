@@ -12,9 +12,9 @@
 
 using namespace XbmcCommons;
 
-namespace XBMCAddon
+namespace Addon
 {
-  namespace xbmcdrm
+  namespace drm
   {
   CryptoSession::CryptoSession(const String& UUID,
                                const String& cipherAlgorithm,
@@ -104,5 +104,5 @@ namespace XBMCAddon
       return false;
     }
 
-  } //namespace xbmcdrm
-} //namespace XBMCAddon
+  } //namespace drm
+} //namespace Addon

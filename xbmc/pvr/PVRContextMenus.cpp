@@ -188,7 +188,7 @@ bool PlayRecording::Execute(const CFileItemPtr& item) const
   if (!recording)
     return false;
 
-  KODI::VIDEO::GUILIB::CVideoPlayActionProcessor proc{std::make_shared<CFileItem>(recording)};
+  UNIVERSAL MEDIA CENTER::VIDEO::GUILIB::CVideoPlayActionProcessor proc{std::make_shared<CFileItem>(recording)};
   return proc.ProcessDefaultAction();
 }
 
@@ -456,7 +456,7 @@ bool DeleteWatchedRecordings::IsVisible(const CFileItem& item) const
 {
   // recordings folder?
   if (item.IsFolder() && !item.IsParentFolder() && CPVRRecordingsPath(item.GetPath()).IsValid())
-    return item.GetProperty(KODI::ITEM::PROPERTY::WATCHED_EPISODES).asInteger() > 0;
+    return item.GetProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::WATCHED_EPISODES).asInteger() > 0;
 
   return false;
 }

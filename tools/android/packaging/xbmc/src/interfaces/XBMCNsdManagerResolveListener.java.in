@@ -3,7 +3,7 @@ package @APP_PACKAGE@.interfaces;
 import android.net.nsd.NsdManager;
 import android.net.nsd.NsdServiceInfo;
 
-public class XBMCNsdManagerResolveListener implements NsdManager.ResolveListener
+public class NsdManagerResolveListener implements NsdManager.ResolveListener
 {
   native void _onResolveFailed(NsdServiceInfo serviceInfo, int errorCode);
 

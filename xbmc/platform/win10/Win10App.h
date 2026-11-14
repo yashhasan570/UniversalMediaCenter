@@ -11,9 +11,9 @@
 #include "rendering/dx/DeviceResources.h"
 #include "utils/CharsetConverter.h" // Required to initialize converters before usage
 
-struct XBMC_keysym;
+struct _keysym;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
   namespace PLATFORM
   {
@@ -45,5 +45,5 @@ private:
 };
     } // namespace WINDOWS10
   } // namespace PLATFORM
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER
 

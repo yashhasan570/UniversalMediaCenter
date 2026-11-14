@@ -55,7 +55,7 @@ public:
   void SetColorDimensions(float posX, float posY, float width, float height);
   bool IsSelected() const { return m_bSelected; }
   void SetImageBoxColor(const std::string& hexColor);
-  void SetImageBoxColor(KODI::GUILIB::GUIINFO::CGUIInfoColor color);
+  void SetImageBoxColor(UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoColor color);
 
 protected:
   bool UpdateColors(const CGUIListItem* item) override;
@@ -66,6 +66,6 @@ protected:
   std::unique_ptr<CGUITexture> m_imgColorDisabledMask;
   float m_colorPosX;
   float m_colorPosY;
-  KODI::GUILIB::GUIINFO::CGUIInfoColor m_imgBoxColor;
+  UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoColor m_imgBoxColor;
   CGUILabel m_labelInfo;
 };

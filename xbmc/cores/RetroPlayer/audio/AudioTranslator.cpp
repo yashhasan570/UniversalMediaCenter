@@ -8,7 +8,7 @@
 
 #include "AudioTranslator.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace RETRO;
 
 AEDataFormat CAudioTranslator::TranslatePCMFormat(PCMFormat format)

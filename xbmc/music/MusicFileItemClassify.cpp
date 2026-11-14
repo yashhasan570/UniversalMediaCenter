@@ -16,7 +16,7 @@
 
 #include <string>
 
-namespace KODI::MUSIC
+namespace UNIVERSAL MEDIA CENTER::MUSIC
 {
 
 bool IsAudio(const CFileItem& item)
@@ -81,4 +81,4 @@ bool IsMusicDb(const CFileItem& item)
   return item.GetURL().IsMusicDb();
 }
 
-} // namespace KODI::MUSIC
+} // namespace UNIVERSAL MEDIA CENTER::MUSIC

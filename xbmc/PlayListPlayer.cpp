@@ -44,10 +44,10 @@
 #include "video/VideoDatabase.h"
 #include "video/VideoFileItemClassify.h"
 
-using namespace KODI::MESSAGING;
-using namespace KODI::VIDEO;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
+using namespace UNIVERSAL MEDIA CENTER::VIDEO;
 
-namespace KODI::PLAYLIST
+namespace UNIVERSAL MEDIA CENTER::PLAYLIST
 {
 
 CPlayListPlayer::CPlayListPlayer(void)
@@ -315,7 +315,7 @@ bool CPlayListPlayer::Play(const CFileItemPtr& pItem, const std::string& player)
   {
     CLog::LogF(LOGWARNING, "ListItem type must be audio or video type. The type can be specified "
                            "by using ListItem::getVideoInfoTag or ListItem::getMusicInfoTag, in "
-                           "the case of playlist entries by adding #KODIPROP mimetype value.");
+                           "the case of playlist entries by adding #UNIVERSAL MEDIA CENTERPROP mimetype value.");
     return false;
   }
 
@@ -864,7 +864,7 @@ int PLAYLIST::CPlayListPlayer::GetMessageMask()
   return TMSG_MASK_PLAYLISTPLAYER;
 }
 
-void PLAYLIST::CPlayListPlayer::OnApplicationMessage(KODI::MESSAGING::ThreadMessage* pMsg)
+void PLAYLIST::CPlayListPlayer::OnApplicationMessage(UNIVERSAL MEDIA CENTER::MESSAGING::ThreadMessage* pMsg)
 {
   auto& components = CServiceBroker::GetAppComponents();
   const auto appPlayer = components.GetComponent<CApplicationPlayer>();
@@ -1127,4 +1127,4 @@ void PLAYLIST::CPlayListPlayer::OnApplicationMessage(KODI::MESSAGING::ThreadMess
   }
 }
 
-} // namespace KODI::PLAYLIST
+} // namespace UNIVERSAL MEDIA CENTER::PLAYLIST

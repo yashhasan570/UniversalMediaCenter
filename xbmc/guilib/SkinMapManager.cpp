@@ -14,7 +14,7 @@
 
 #include <tinyxml.h>
 
-using namespace KODI::GUILIB;
+using namespace UNIVERSAL MEDIA CENTER::GUILIB;
 
 void CSkinMapManager::Clear()
 {

@@ -17,7 +17,7 @@
 #include "utils/URIUtils.h"
 #include "utils/log.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace ADDON;
 
 // --- CShaderPreset -----------------------------------------------------------
@@ -105,7 +105,7 @@ void CShaderPresetAddon::ResetProperties(void)
   m_ifc.shaderpreset->props->user_path = m_strUserPath.c_str();
   m_ifc.shaderpreset->props->addon_path = m_strClientPath.c_str();
 
-  m_ifc.shaderpreset->toUniversal Media Center->kodiInstance = this;
+  m_ifc.shaderpreset->toUniversal Media Center->universalmediacenterInstance = this;
 
   memset(m_ifc.shaderpreset->toAddon, 0, sizeof(Universal Media CenterToAddonFuncTable_ShaderPreset));
 }
@@ -239,7 +239,7 @@ SHADER::FilterType CShaderPresetAddon::TranslateFilterType(SHADER_FILTER_TYPE ty
 {
   switch (type)
   {
-    using enum KODI::SHADER::FilterType;
+    using enum UNIVERSAL MEDIA CENTER::SHADER::FilterType;
     case SHADER_FILTER_TYPE_LINEAR:
       return LINEAR;
     case SHADER_FILTER_TYPE_NEAREST:
@@ -255,7 +255,7 @@ SHADER::WrapType CShaderPresetAddon::TranslateWrapType(SHADER_WRAP_TYPE type)
 {
   switch (type)
   {
-    using enum KODI::SHADER::WrapType;
+    using enum UNIVERSAL MEDIA CENTER::SHADER::WrapType;
     case SHADER_WRAP_TYPE_BORDER:
       return BORDER;
     case SHADER_WRAP_TYPE_EDGE:
@@ -275,7 +275,7 @@ SHADER::ScaleType CShaderPresetAddon::TranslateScaleType(SHADER_SCALE_TYPE type)
 {
   switch (type)
   {
-    using enum KODI::SHADER::ScaleType;
+    using enum UNIVERSAL MEDIA CENTER::SHADER::ScaleType;
     case SHADER_SCALE_TYPE_INPUT:
       return INPUT;
     case SHADER_SCALE_TYPE_ABSOLUTE:

@@ -25,14 +25,14 @@
 
 using namespace XFILE;
 
-namespace KODI::PLAYLIST
+namespace UNIVERSAL MEDIA CENTER::PLAYLIST
 {
 
 const char* CPlayListM3U::StartMarker = "#EXTCPlayListM3U::M3U";
 const char* CPlayListM3U::InfoMarker = "#EXTINF";
 const char* CPlayListM3U::ArtistMarker = "#EXTART";
 const char* CPlayListM3U::AlbumMarker = "#EXTALB";
-const char* CPlayListM3U::PropertyMarker = "#KODIPROP";
+const char* CPlayListM3U::PropertyMarker = "#UNIVERSAL MEDIA CENTERPROP";
 const char* CPlayListM3U::VLCOptMarker = "#EXTVLCOPT";
 const char* CPlayListM3U::StreamMarker = "#EXT-X-STREAM-INF";
 const char* CPlayListM3U::BandwidthMarker = "BANDWIDTH";
@@ -42,7 +42,7 @@ const char* CPlayListM3U::OffsetMarker = "#EXT-KX-OFFSET";
 //   #EXTM3U
 //   #EXTART:Demo Artist
 //   #EXTALB:Demo Album
-//   #KODIPROP:name=value
+//   #UNIVERSAL MEDIA CENTERPROP:name=value
 //   #EXTINF:5,demo
 //   E:\Program Files\Winamp3\demo.mp3
 
@@ -318,4 +318,4 @@ std::map< std::string, std::string > CPlayListM3U::ParseStreamLine(const std::st
   return params;
 }
 
-} // namespace KODI::PLAYLIST
+} // namespace UNIVERSAL MEDIA CENTER::PLAYLIST

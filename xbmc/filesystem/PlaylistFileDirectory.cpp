@@ -15,7 +15,7 @@
 #include "playlists/PlayList.h"
 #include "playlists/PlayListFactory.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 namespace XFILE
 {

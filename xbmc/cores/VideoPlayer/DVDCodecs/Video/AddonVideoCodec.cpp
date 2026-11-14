@@ -109,7 +109,7 @@ StreamHdrType ConvertHdrType(const VIDEOCODEC_HDR_TYPE type)
 
 CAddonVideoCodec::CAddonVideoCodec(CProcessInfo& processInfo,
                                    ADDON::AddonInfoPtr& addonInfo,
-                                   KODI_HANDLE parentInstance)
+                                   UNIVERSALMEDIA_HANDLE parentInstance)
   : CDVDVideoCodec(processInfo),
     IAddonInstanceHandler(
         ADDON_INSTANCE_VIDEOCODEC, addonInfo, ADDON::ADDON_INSTANCE_ID_UNUSED, parentInstance)
@@ -119,7 +119,7 @@ CAddonVideoCodec::CAddonVideoCodec(CProcessInfo& processInfo,
   m_ifc.videocodec->toAddon = new Universal Media CenterToAddonFuncTable_VideoCodec();
   m_ifc.videocodec->toUniversal Media Center = new AddonToUniversal Media CenterFuncTable_VideoCodec();
 
-  m_ifc.videocodec->toUniversal Media Center->kodiInstance = this;
+  m_ifc.videocodec->toUniversal Media Center->universalmediacenterInstance = this;
   m_ifc.videocodec->toUniversal Media Center->get_frame_buffer = get_frame_buffer;
   m_ifc.videocodec->toUniversal Media Center->release_frame_buffer = release_frame_buffer;
   m_ifc.videocodec->toUniversal Media Center->get_frame_buffer_platform_handle = get_frame_buffer_platform_handle;
@@ -549,13 +549,13 @@ bool CAddonVideoCodec::GetFrameBuffer(VIDEOCODEC_PICTURE &picture)
   return true;
 }
 
-void CAddonVideoCodec::ReleaseFrameBuffer(KODI_HANDLE videoBufferHandle)
+void CAddonVideoCodec::ReleaseFrameBuffer(UNIVERSALMEDIA_HANDLE videoBufferHandle)
 {
   if (videoBufferHandle)
     static_cast<CVideoBuffer*>(videoBufferHandle)->Release();
 }
 
-bool CAddonVideoCodec::GetFrameBufferPlatformHandle(KODI_HANDLE videoBufferHandle,
+bool CAddonVideoCodec::GetFrameBufferPlatformHandle(UNIVERSALMEDIA_HANDLE videoBufferHandle,
                                                     VIDEOCODEC_PLATFORM_BUFFER& platformBuffer)
 {
   platformBuffer.type = VIDEOCODEC_PLATFORM_BUFFER_NONE;
@@ -569,7 +569,7 @@ bool CAddonVideoCodec::GetFrameBufferPlatformHandle(KODI_HANDLE videoBufferHandl
   // DRM-PRIME DMA-BUF platforms (Linux GBM/Wayland) override GetDescriptor()
   // to return an AVDRMFrameDescriptor carrying fd/fourcc/modifier/planes.
   // Non-DRM-PRIME buffer types return nullptr from the base class default.
-  // Translate ffmpeg's descriptor into the Universal Media Center-native KODI_DRM_FRAME_DESCRIPTOR
+  // Translate ffmpeg's descriptor into the Universal Media Center-native UNIVERSALMEDIA_DRM_FRAME_DESCRIPTOR
   // so the addon API doesn't leak ffmpeg types (see video_codec.h). Layout is
   // identical by design, but the copy insulates addons from any future ffmpeg
   // ABI churn in AVDRMFrameDescriptor.
@@ -577,18 +577,18 @@ bool CAddonVideoCodec::GetFrameBufferPlatformHandle(KODI_HANDLE videoBufferHandl
   {
     m_drmFrameDesc = {};
     m_drmFrameDesc.nb_objects = static_cast<uint32_t>(src->nb_objects);
-    for (int i = 0; i < src->nb_objects && i < KODI_DRM_MAX_PLANES; ++i)
+    for (int i = 0; i < src->nb_objects && i < UNIVERSALMEDIA_DRM_MAX_PLANES; ++i)
     {
       m_drmFrameDesc.objects[i].fd = src->objects[i].fd;
       m_drmFrameDesc.objects[i].size = static_cast<uint32_t>(src->objects[i].size);
       m_drmFrameDesc.objects[i].format_modifier = src->objects[i].format_modifier;
     }
     m_drmFrameDesc.nb_layers = static_cast<uint32_t>(src->nb_layers);
-    for (int l = 0; l < src->nb_layers && l < KODI_DRM_MAX_PLANES; ++l)
+    for (int l = 0; l < src->nb_layers && l < UNIVERSALMEDIA_DRM_MAX_PLANES; ++l)
     {
       m_drmFrameDesc.layers[l].format = src->layers[l].format;
       m_drmFrameDesc.layers[l].nb_planes = static_cast<uint32_t>(src->layers[l].nb_planes);
-      for (int p = 0; p < src->layers[l].nb_planes && p < KODI_DRM_MAX_PLANES; ++p)
+      for (int p = 0; p < src->layers[l].nb_planes && p < UNIVERSALMEDIA_DRM_MAX_PLANES; ++p)
       {
         m_drmFrameDesc.layers[l].planes[p].object_index =
             static_cast<uint32_t>(src->layers[l].planes[p].object_index);
@@ -606,31 +606,31 @@ bool CAddonVideoCodec::GetFrameBufferPlatformHandle(KODI_HANDLE videoBufferHandl
   return false;
 }
 
-/*********************     ADDON-TO-KODI    **********************/
+/*********************     ADDON-TO-UNIVERSAL MEDIA CENTER    **********************/
 
-bool CAddonVideoCodec::get_frame_buffer(void* kodiInstance, VIDEOCODEC_PICTURE *picture)
+bool CAddonVideoCodec::get_frame_buffer(void* universalmediacenterInstance, VIDEOCODEC_PICTURE *picture)
 {
-  if (!kodiInstance)
+  if (!universalmediacenterInstance)
     return false;
 
-  return static_cast<CAddonVideoCodec*>(kodiInstance)->GetFrameBuffer(*picture);
+  return static_cast<CAddonVideoCodec*>(universalmediacenterInstance)->GetFrameBuffer(*picture);
 }
 
-void CAddonVideoCodec::release_frame_buffer(void* kodiInstance, KODI_HANDLE videoBufferHandle)
+void CAddonVideoCodec::release_frame_buffer(void* universalmediacenterInstance, UNIVERSALMEDIA_HANDLE videoBufferHandle)
 {
-  if (!kodiInstance)
+  if (!universalmediacenterInstance)
     return;
 
-  static_cast<CAddonVideoCodec*>(kodiInstance)->ReleaseFrameBuffer(videoBufferHandle);
+  static_cast<CAddonVideoCodec*>(universalmediacenterInstance)->ReleaseFrameBuffer(videoBufferHandle);
 }
 
-bool CAddonVideoCodec::get_frame_buffer_platform_handle(void* kodiInstance,
-                                                        KODI_HANDLE videoBufferHandle,
+bool CAddonVideoCodec::get_frame_buffer_platform_handle(void* universalmediacenterInstance,
+                                                        UNIVERSALMEDIA_HANDLE videoBufferHandle,
                                                         VIDEOCODEC_PLATFORM_BUFFER* platformBuffer)
 {
-  if (!kodiInstance || !platformBuffer)
+  if (!universalmediacenterInstance || !platformBuffer)
     return false;
 
-  return static_cast<CAddonVideoCodec*>(kodiInstance)
+  return static_cast<CAddonVideoCodec*>(universalmediacenterInstance)
       ->GetFrameBufferPlatformHandle(videoBufferHandle, *platformBuffer);
 }

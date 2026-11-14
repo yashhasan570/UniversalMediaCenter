@@ -16,7 +16,7 @@
 struct game_input_device;
 struct game_input_port;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -107,4 +107,4 @@ private:
   GameClientDeviceVec m_acceptedDevices;
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

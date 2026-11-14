@@ -13,7 +13,7 @@
 
 #include <drm_fourcc.h>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace RETRO;
 
 bool CRenderBufferPoolDMA::IsCompatible(const CRenderVideoSettings& renderSettings) const

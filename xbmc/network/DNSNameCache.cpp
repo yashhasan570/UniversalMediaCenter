@@ -75,7 +75,7 @@ bool IsUnusableForRemoteHost(const addrinfo* info)
 }
 } // unnamed namespace
 
-std::string KODI::NETWORK::SelectDNSAddress(const addrinfo* results)
+std::string UNIVERSAL MEDIA CENTER::NETWORK::SelectDNSAddress(const addrinfo* results)
 {
   // take the first address that can reach a remote host, but keep an unreachable one as a
   // fallback so that a name which only resolves to loopback, e.g. "localhost", still works
@@ -130,7 +130,7 @@ bool CDNSNameCache::Lookup(const std::string& strHostName, std::string& strIpAdd
 
   if (getaddrinfo(strHostName.c_str(), nullptr, &hints, &res) == 0)
   {
-    strIpAddress = KODI::NETWORK::SelectDNSAddress(res);
+    strIpAddress = UNIVERSAL MEDIA CENTER::NETWORK::SelectDNSAddress(res);
     freeaddrinfo(res);
 
     if (!strIpAddress.empty())

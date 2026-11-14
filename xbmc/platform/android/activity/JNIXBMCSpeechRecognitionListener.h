@@ -14,13 +14,13 @@
 namespace jni
 {
 
-class CJNIXBMCSpeechRecognitionListener
+class CJNISpeechRecognitionListener
   : public CJNISpeechRecognitionListener,
-    public CJNIInterfaceImplem<CJNIXBMCSpeechRecognitionListener>
+    public CJNIInterfaceImplem<CJNISpeechRecognitionListener>
 {
 public:
-  CJNIXBMCSpeechRecognitionListener();
-  ~CJNIXBMCSpeechRecognitionListener() override;
+  CJNISpeechRecognitionListener();
+  ~CJNISpeechRecognitionListener() override;
 
   static void RegisterNatives(JNIEnv* env);
 

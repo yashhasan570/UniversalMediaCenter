@@ -28,7 +28,7 @@ namespace XFILE
 
 typedef struct stEmuFileObject
 {
-  XFILE::CFile*  file_xbmc;
+  XFILE::CFile*  file_;
   CCriticalSection *file_lock;
   int mode;
   //Stick this last to avoid 3-7 bytes of padding
@@ -43,7 +43,7 @@ public:
   ~CEmuFileWrapper();
 
   /**
-   * Only to be called when shutting down xbmc
+   * Only to be called when shutting down 
    */
   void CleanUp();
 

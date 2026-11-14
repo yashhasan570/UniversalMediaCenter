@@ -62,8 +62,8 @@ constexpr int CHAR_CHUNK = 64; // 64 chars allocated at a time (2048 bytes)
 constexpr int GLYPH_STRENGTH_BOLD = 24;
 constexpr int GLYPH_STRENGTH_LIGHT = -48;
 constexpr int TAB_SPACE_LENGTH = 4;
-constexpr const char* EMOJI_FONT = "special://xbmc/media/Fonts/TwemojiMozilla.ttf";
-constexpr const char* SYMBOLS_FONT = "special://xbmc/media/Fonts/UnicodeSymbols.ttf";
+constexpr const char* EMOJI_FONT = "special:///media/Fonts/TwemojiMozilla.ttf";
+constexpr const char* SYMBOLS_FONT = "special:///media/Fonts/UnicodeSymbols.ttf";
 // face identity in Character::m_glyphAndStyle
 constexpr character_t FONT_FACE_MASK = 3 << 24;
 // set in Character::m_glyphAndStyle for glyphs cached in their own colors
@@ -351,8 +351,8 @@ private:
   FallbackFont m_symbolsFontFile{SYMBOLS_FONT};
 };
 
-XBMC_GLOBAL_REF(CFreeTypeLibrary, g_freeTypeLibrary); // our freetype library
-#define g_freeTypeLibrary XBMC_GLOBAL_USE(CFreeTypeLibrary)
+_GLOBAL_REF(CFreeTypeLibrary, g_freeTypeLibrary); // our freetype library
+#define g_freeTypeLibrary _GLOBAL_USE(CFreeTypeLibrary)
 
 CGUIFontTTF::CGUIFontTTF(const std::string& fontIdent)
   : m_fontIdent(fontIdent),
@@ -460,7 +460,7 @@ bool CGUIFontTTF::Load(
   /*
    the values used are described below
 
-      XBMC coords                                     Freetype coords
+       coords                                     Freetype coords
 
                 0  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _  bbox.yMax, ascender
                         A                 \
@@ -552,7 +552,7 @@ void CGUIFontTTF::End()
 void CGUIFontTTF::DrawTextInternal(CGraphicContext& context,
                                    float x,
                                    float y,
-                                   std::span<const KODI::UTILS::COLOR::Color> colors,
+                                   std::span<const UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color> colors,
                                    std::span<const character_t> text,
                                    uint32_t alignment,
                                    float maxPixelWidth,
@@ -805,7 +805,7 @@ void CGUIFontTTF::DrawTextInternal(CGraphicContext& context,
     {
       // If starting text on a new line, determine justification effects
       // Get the current letter in the CStdString
-      KODI::UTILS::COLOR::Color color = (text[itGlyph->m_glyphInfo.cluster] >> 32) & 0xff;
+      UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color color = (text[itGlyph->m_glyphInfo.cluster] >> 32) & 0xff;
       if (color >= colors.size())
         color = 0;
       color = colors[color];
@@ -1058,7 +1058,7 @@ std::vector<CGUIFontTTF::Glyph> CGUIFontTTF::GetHarfBuzzShapedGlyphs(
   for (size_t i = 0; i < text.size(); ++i)
   {
     const char32_t codepoint = static_cast<char32_t>(text[i] & 0xffffffff);
-    if (i > 0 && (KODI::UTILS::ContinuesEmoji(codepoint) ||
+    if (i > 0 && (UNIVERSAL MEDIA CENTER::UTILS::ContinuesEmoji(codepoint) ||
                   (fontFaces[i - 1] == FontFace::Emoji && (text[i - 1] & 0xffffffff) == 0x200D)))
     {
       fontFaces[i] = fontFaces[i - 1];
@@ -1066,7 +1066,7 @@ std::vector<CGUIFontTTF::Glyph> CGUIFontTTF::GetHarfBuzzShapedGlyphs(
     }
     const char32_t next = i + 1 < text.size() ? static_cast<char32_t>(text[i + 1] & 0xffffffff) : 0;
     const bool emojiPresentation = next == 0xFE0F || next == 0x20E3 ||
-                                   KODI::UTILS::IsEmojiModifier(next) ||
+                                   UNIVERSAL MEDIA CENTER::UTILS::IsEmojiModifier(next) ||
                                    (next != 0xFE0E && HasEmojiPresentation(codepoint));
     if (m_hbEmojiFont && (emojiPresentation || !FT_Get_Char_Index(m_face, codepoint)) &&
         FT_Get_Char_Index(m_emojiFace, codepoint))
@@ -1486,7 +1486,7 @@ void CGUIFontTTF::RenderCharacter(CGraphicContext& context,
                                   float posX,
                                   float posY,
                                   const Character* ch,
-                                  KODI::UTILS::COLOR::Color color,
+                                  UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color color,
                                   bool roundX,
                                   std::vector<SVertex>& vertices)
 {
@@ -1528,10 +1528,10 @@ void CGUIFontTTF::RenderCharacter(CGraphicContext& context,
   m_color = color;
 
 #if !defined(HAS_DX)
-  uint8_t r = KODI::UTILS::GL::GetChannelFromARGB(KODI::UTILS::GL::ColorChannel::R, color);
-  uint8_t g = KODI::UTILS::GL::GetChannelFromARGB(KODI::UTILS::GL::ColorChannel::G, color);
-  uint8_t b = KODI::UTILS::GL::GetChannelFromARGB(KODI::UTILS::GL::ColorChannel::B, color);
-  uint8_t a = KODI::UTILS::GL::GetChannelFromARGB(KODI::UTILS::GL::ColorChannel::A, color);
+  uint8_t r = UNIVERSAL MEDIA CENTER::UTILS::GL::GetChannelFromARGB(UNIVERSAL MEDIA CENTER::UTILS::GL::ColorChannel::R, color);
+  uint8_t g = UNIVERSAL MEDIA CENTER::UTILS::GL::GetChannelFromARGB(UNIVERSAL MEDIA CENTER::UTILS::GL::ColorChannel::G, color);
+  uint8_t b = UNIVERSAL MEDIA CENTER::UTILS::GL::GetChannelFromARGB(UNIVERSAL MEDIA CENTER::UTILS::GL::ColorChannel::B, color);
+  uint8_t a = UNIVERSAL MEDIA CENTER::UTILS::GL::GetChannelFromARGB(UNIVERSAL MEDIA CENTER::UTILS::GL::ColorChannel::A, color);
 #endif
 
   for (int i = 0; i < VERTEX_PER_GLYPH; i++)

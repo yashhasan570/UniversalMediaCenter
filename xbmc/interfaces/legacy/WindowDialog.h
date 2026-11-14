@@ -11,17 +11,17 @@
 #include "Window.h"
 #include "WindowDialogMixin.h"
 
-namespace XBMCAddon
+namespace Addon
 {
-  namespace xbmcgui
+  namespace gui
   {
     //
-    /// \defgroup python_xbmcgui_window_dialog Subclass - WindowDialog
-    /// \ingroup python_xbmcgui_window
+    /// \defgroup python_gui_window_dialog Subclass - WindowDialog
+    /// \ingroup python_gui_window
     /// @{
     /// @brief __GUI window dialog class for Add-Ons.__
     ///
-    /// \python_class{ xbmcgui.WindowDialog(int windowId): }
+    /// \python_class{ gui.WindowDialog(int windowId): }
     ///
     /// Creates a new window from Add-On usable dialog class. This is to create
     /// window for related controls by system calls.
@@ -41,7 +41,7 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// dialog = xbmcgui.WindowDialog()
+    /// dialog = gui.WindowDialog()
     /// width = dialog.getWidth()
     /// ..
     /// ~~~~~~~~~~~~~
@@ -62,23 +62,23 @@ namespace XBMCAddon
       bool IsDialogRunning() const override { return WindowDialogMixin::IsDialogRunning(); }
       bool IsModalDialog() const override
       {
-        XBMC_TRACE;
+        _TRACE;
         return true;
       };
       bool IsDialog() const override
       {
-        XBMC_TRACE;
+        _TRACE;
         return true;
       };
 
       inline void show() override
       {
-        XBMC_TRACE;
+        _TRACE;
         WindowDialogMixin::show();
       }
       inline void close() override
       {
-        XBMC_TRACE;
+        _TRACE;
         WindowDialogMixin::close();
       }
 #endif

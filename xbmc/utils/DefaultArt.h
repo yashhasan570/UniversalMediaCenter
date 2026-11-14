@@ -9,7 +9,7 @@
 #pragma once
 
 //! \brief The images a skin provides for items and views that have no art of their own.
-namespace KODI::ART::DEFAULT
+namespace UNIVERSAL MEDIA CENTER::ART::DEFAULT
 {
 
 inline constexpr char ACTOR[] = "DefaultActor.png";
@@ -129,4 +129,4 @@ inline constexpr char VIDEO_PLAYLISTS[] = "DefaultVideoPlaylists.png";
 inline constexpr char VIDEO_VERSIONS[] = "DefaultVideoVersions.png";
 inline constexpr char YEAR[] = "DefaultYear.png";
 
-} // namespace KODI::ART::DEFAULT
+} // namespace UNIVERSAL MEDIA CENTER::ART::DEFAULT

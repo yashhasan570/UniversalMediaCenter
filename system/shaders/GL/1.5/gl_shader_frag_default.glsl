@@ -15,7 +15,7 @@ out vec4 fragColor;
 void main()
 {
   fragColor = m_unicol;
-#if defined(KODI_LIMITED_RANGE)
+#if defined(UNIVERSAL MEDIA CENTER_LIMITED_RANGE)
  fragColor.rgb *= (235.0-16.0) / 255.0;
  fragColor.rgb += 16.0 / 255.0;
 #endif

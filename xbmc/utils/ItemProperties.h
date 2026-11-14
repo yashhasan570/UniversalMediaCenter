@@ -10,7 +10,7 @@
 
 //! \brief The keys of list item properties that one part of Universal Media Center sets and another reads back.
 //! Property keys are case-insensitive.
-namespace KODI::ITEM::PROPERTY
+namespace UNIVERSAL MEDIA CENTER::ITEM::PROPERTY
 {
 
 // Playback
@@ -80,4 +80,4 @@ inline constexpr char ADDON_VALID_UPDATE_ORIGIN[] = "Addon.ValidUpdateOrigin";
 inline constexpr char ADDON_VALID_UPDATE_VERSION[] = "Addon.ValidUpdateVersion";
 inline constexpr char ADDON_DOWNLOADING[] = "Addon.Downloading";
 
-} // namespace KODI::ITEM::PROPERTY
+} // namespace UNIVERSAL MEDIA CENTER::ITEM::PROPERTY

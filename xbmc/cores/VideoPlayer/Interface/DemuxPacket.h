@@ -9,7 +9,7 @@
 #pragma once
 
 #include "TimingConstants.h"
-#include "addons/kodi-dev-kit/include/kodi/c-api/addon-instance/inputstream/demux_packet.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api/addon-instance/inputstream/demux_packet.h"
 
 #define DMX_SPECIALID_STREAMINFO DEMUX_SPECIALID_STREAMINFO
 #define DMX_SPECIALID_STREAMCHANGE DEMUX_SPECIALID_STREAMCHANGE

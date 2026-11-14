@@ -49,8 +49,8 @@
 #define CONTROL_BTNPREVIOUS 25
 #define CONTROL_BTNREPEAT 26
 
-using namespace KODI;
-using KODI::MEDIA::MediaSection;
+using namespace UNIVERSAL MEDIA CENTER;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaSection;
 
 CGUIWindowVideoPlaylist::CGUIWindowVideoPlaylist()
   : CGUIWindowVideoBase(WINDOW_VIDEO_PLAYLIST, "MyPlaylist.xml")

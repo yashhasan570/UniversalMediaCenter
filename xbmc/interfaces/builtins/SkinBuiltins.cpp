@@ -281,7 +281,7 @@ static int SetFile(const std::vector<std::string>& params)
     std::string replace;
     if (CGUIDialogFileBrowser::ShowAndGetFile(url.Get(), strMask, CAddonInfo::TranslateType(type, true), replace, true, true, true))
     {
-      if (StringUtils::StartsWithNoCase(replace, KODI::ADDONS::ROOT))
+      if (StringUtils::StartsWithNoCase(replace, UNIVERSAL MEDIA CENTER::ADDONS::ROOT))
         CSkinSettings::GetInstance().SetString(string, URIUtils::GetFileName(replace));
       else
         CSkinSettings::GetInstance().SetString(string, replace);
@@ -589,8 +589,8 @@ static int SkinTimerStop(const std::vector<std::string>& params)
 ///     ,
 ///     Pops up a select dialog and allows the user to select an add-on of the
 ///     given type to be used elsewhere in the skin via the info tag
-///     `Skin.String(string)`. The most common types are xbmc.addon.video\,
-///     xbmc.addon.audio\, xbmc.addon.image and xbmc.addon.executable.
+///     `Skin.String(string)`. The most common types are .addon.video\,
+///     .addon.audio\, .addon.image and .addon.executable.
 ///     @param[in] string[0]             Skin setting to store result in.
 ///     @param[in] type[1\,...]           Add-on types to allow selecting.
 ///   }

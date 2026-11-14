@@ -22,7 +22,7 @@ using namespace XFILE;
 bool CEventsDirectory::GetDirectory(const CURL& url, CFileItemList &items)
 {
   items.ClearProperties();
-  items.SetContent(KODI::MEDIA::CONTENT::EVENTS);
+  items.SetContent(UNIVERSAL MEDIA CENTER::MEDIA::CONTENT::EVENTS);
 
   auto log = CServiceBroker::GetEventLog();
   Events events;

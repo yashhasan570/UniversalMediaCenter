@@ -16,7 +16,7 @@
 
 #include "system_gl.h"
 
-namespace KODI::SHADER
+namespace UNIVERSAL MEDIA CENTER::SHADER
 {
 class CTextureBase;
 struct ShaderLut;
@@ -39,4 +39,4 @@ private:
   ShaderLut m_lut;
   bool m_released{false};
 };
-} // namespace KODI::SHADER
+} // namespace UNIVERSAL MEDIA CENTER::SHADER

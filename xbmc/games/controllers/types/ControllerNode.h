@@ -20,7 +20,7 @@ namespace tinyxml2
 class XMLElement;
 } // namespace tinyxml2
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -159,4 +159,4 @@ private:
 
 using ControllerNodeVec = std::vector<CControllerNode>;
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

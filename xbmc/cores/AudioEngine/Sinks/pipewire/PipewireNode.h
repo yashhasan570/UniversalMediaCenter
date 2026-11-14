@@ -17,7 +17,7 @@
 #include <spa/param/audio/iec958.h>
 #include <spa/param/audio/raw.h>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace PIPEWIRE
 {
@@ -72,4 +72,4 @@ private:
 };
 
 } // namespace PIPEWIRE
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

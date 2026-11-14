@@ -29,7 +29,7 @@
 #include <mutex>
 #include <queue>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace EVENTSERVER;
 using namespace EVENTPACKET;
 using namespace EVENTCLIENT;
@@ -152,7 +152,7 @@ void CEventServer::Run()
 
   // publish service
   std::vector<std::pair<std::string, std::string>> txt;
-  CZeroconf::GetInstance()->PublishService("servers.eventserver", "_xbmc-events._udp",
+  CZeroconf::GetInstance()->PublishService("servers.eventserver", "_-events._udp",
                                            CSysInfo::GetDeviceName() + " eventserver", m_iPort,
                                            txt);
 

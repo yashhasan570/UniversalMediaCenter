@@ -16,7 +16,7 @@
 #include <array>
 #include <string_view>
 
-namespace KODI::SETTINGS
+namespace UNIVERSAL MEDIA CENTER::SETTINGS
 {
 
 using enum SettingConversionResult;
@@ -71,7 +71,7 @@ public:
   int TargetVersion() const override { return 5; }
   bool Apply(TiXmlElement* root) override
   {
-    constexpr std::string_view oldSettingId = "input.tvosusekodikeyboard";
+    constexpr std::string_view oldSettingId = "input.tvosuseuniversalmediacenterkeyboard";
     constexpr std::string_view newSettingId = "input.useapplicationkeyboard";
 
     return FAILURE != impl::ConvertSingleSetting<CSettingBool, CSettingBool>(
@@ -89,4 +89,4 @@ MigrationStepList BuildMigrationSteps()
   };
 }
 
-} // namespace KODI::SETTINGS
+} // namespace UNIVERSAL MEDIA CENTER::SETTINGS

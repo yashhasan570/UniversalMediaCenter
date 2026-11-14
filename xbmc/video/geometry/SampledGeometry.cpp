@@ -12,7 +12,7 @@
 
 #include <algorithm>
 
-namespace KODI::VIDEO::GEOMETRY
+namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY
 {
 
 ContentGeometryRecord MakeContentGeometryRecord(const SampledGeometry& scan,
@@ -35,4 +35,4 @@ ContentGeometryRecord MakeContentGeometryRecord(const SampledGeometry& scan,
   return record;
 }
 
-} // namespace KODI::VIDEO::GEOMETRY
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY

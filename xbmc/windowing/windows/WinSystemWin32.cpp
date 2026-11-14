@@ -67,7 +67,7 @@ CWinSystemWin32::CWinSystemWin32()
   std::string cacert = CEnvironment::getenv("SSL_CERT_FILE");
   if (cacert.empty() || !XFILE::CFile::Exists(cacert))
   {
-    cacert = CSpecialProtocol::TranslatePath("special://xbmc/system/certs/cacert.pem");
+    cacert = CSpecialProtocol::TranslatePath("special:///system/certs/cacert.pem");
     if (XFILE::CFile::Exists(cacert))
       CEnvironment::setenv("SSL_CERT_FILE", cacert, 1);
   }
@@ -117,7 +117,7 @@ bool CWinSystemWin32::DestroyWindowSystem()
 
 bool CWinSystemWin32::CreateNewWindow(const std::string& name, bool fullScreen, RESOLUTION_INFO& res)
 {
-  using KODI::PLATFORM::WINDOWS::ToW;
+  using UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::ToW;
   auto nameW = ToW(name);
 
   m_hInstance = static_cast<HINSTANCE>(GetModuleHandle(nullptr));
@@ -727,7 +727,7 @@ std::vector<std::string> CWinSystemWin32::GetConnectedOutputs()
 
   for (auto& display : m_displays)
   {
-    outputs.emplace_back(KODI::PLATFORM::WINDOWS::FromW(display.MonitorNameW));
+    outputs.emplace_back(UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW(display.MonitorNameW));
   }
 
   return outputs;
@@ -745,16 +745,16 @@ void CWinSystemWin32::RestoreDesktopResolution(MONITOR_DETAILS* details)
     info.fRefreshRate = static_cast<float>(details->RefreshRate + 1) / 1.001f;
   else
     info.fRefreshRate = static_cast<float>(details->RefreshRate);
-  info.strOutput = KODI::PLATFORM::WINDOWS::FromW(details->DeviceNameW);
+  info.strOutput = UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW(details->DeviceNameW);
   info.dwFlags = details->Interlaced ? D3DPRESENTFLAG_INTERLACED : 0;
 
-  CLog::LogF(LOGDEBUG, "restoring desktop resolution for '{}'.", KODI::PLATFORM::WINDOWS::FromW(details->MonitorNameW));
+  CLog::LogF(LOGDEBUG, "restoring desktop resolution for '{}'.", UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW(details->MonitorNameW));
   ChangeResolution(info);
 }
 
 MONITOR_DETAILS* CWinSystemWin32::GetDisplayDetails(const std::string& name)
 {
-  using KODI::PLATFORM::WINDOWS::ToW;
+  using UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::ToW;
 
   if (!name.empty() && name != "Default")
   {
@@ -822,7 +822,7 @@ RECT CWinSystemWin32::ScreenRect(HMONITOR handle)
 
 void CWinSystemWin32::GetConnectedDisplays(std::vector<MONITOR_DETAILS>& outputs)
 {
-  using KODI::PLATFORM::WINDOWS::FromW;
+  using UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW;
 
   DISPLAY_DEVICEW ddAdapter = {};
   ddAdapter.cb = sizeof(ddAdapter);
@@ -910,7 +910,7 @@ void CWinSystemWin32::GetConnectedDisplays(std::vector<MONITOR_DETAILS>& outputs
 
 bool CWinSystemWin32::ChangeResolution(const RESOLUTION_INFO& res, bool forceChange /*= false*/)
 {
-  using KODI::PLATFORM::WINDOWS::ToW;
+  using UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::ToW;
   std::wstring outputW = ToW(res.strOutput);
 
   DEVMODEW sDevMode = {};
@@ -1003,7 +1003,7 @@ bool CWinSystemWin32::ChangeResolution(const RESOLUTION_INFO& res, bool forceCha
 
 void CWinSystemWin32::UpdateResolutions()
 {
-  using KODI::PLATFORM::WINDOWS::FromW;
+  using UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW;
 
   m_displays.clear();
 
@@ -1268,7 +1268,7 @@ std::string CWinSystemWin32::GetClipboardText()
     CloseClipboard();
   }
 
-  return KODI::PLATFORM::WINDOWS::FromW(unicode_text);
+  return UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW(unicode_text);
 }
 
 bool CWinSystemWin32::UseLimitedColor()

@@ -12,7 +12,7 @@
 #include <string>
 #include <string_view>
 
-namespace KODI::LANGUAGE
+namespace UNIVERSAL MEDIA CENTER::LANGUAGE
 {
 class CLanguageTag;
 
@@ -85,4 +85,4 @@ private:
 
   std::string m_code;
 };
-} // namespace KODI::LANGUAGE
+} // namespace UNIVERSAL MEDIA CENTER::LANGUAGE

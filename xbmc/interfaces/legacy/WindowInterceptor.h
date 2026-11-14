@@ -11,9 +11,9 @@
 #include "Window.h"
 #include "guilib/GUIWindow.h"
 
-namespace XBMCAddon
+namespace Addon
 {
-  namespace xbmcgui
+  namespace gui
   {
 
 #ifndef SWIG
@@ -41,9 +41,9 @@ namespace XBMCAddon
        * ref(window)->UpCall()
        *
        * during the context of 'UpCall' it's possible that another call will
-       *  be made back on the window from the xbmc core side (this happens in
+       *  be made back on the window from the  core side (this happens in
        *  sometimes in OnMessage). In that case, if upcall is still 'true', than
-       *  the call will wrongly proceed back to the xbmc core side rather than
+       *  the call will wrongly proceed back to the  core side rather than
        *  to the Addon API side.
        */
       static bool up() { bool ret = ((upcallTls) != NULL); upcallTls = NULL; return ret; }
@@ -64,9 +64,9 @@ namespace XBMCAddon
     /**
      * Guard class. But instead of managing memory or thread resources,
      * any call made using the operator-> results in an 'upcall.' That is,
-     * it expects the call about to be made to have come from the XBMCAddon
-     * xbmcgui Window API and not from either the scripting language or the
-     * XBMC core Windowing system.
+     * it expects the call about to be made to have come from the Addon
+     * gui Window API and not from either the scripting language or the
+     *  core Windowing system.
      *
      * This class is meant to hold references to instances of Interceptor<P>.
      *   see that template definition below.
@@ -84,16 +84,16 @@ namespace XBMCAddon
     /**
      * The intention of this class is to intercept calls from
      *  multiple points in the CGUIWindow class hierarchy and pass
-     *  those calls over to the XBMCAddon API Window hierarchy. It
+     *  those calls over to the Addon API Window hierarchy. It
      *  is a class template that uses the type template parameter
      *  to determine the parent class.
      *
      * Since this class also maintains two way communication between
-     *  the XBMCAddon API Window hierarchy and the core XBMC CGUIWindow
+     *  the Addon API Window hierarchy and the core  CGUIWindow
      *  hierarchy, it is used as a general bridge. For calls going
      *  TO the window hierarchy (as in callbacks) it operates in a
      *  straightforward manner. In the reverse direction (from the
-     *  XBMCAddon hierarchy) it uses some hackery in a "smart pointer"
+     *  Addon hierarchy) it uses some hackery in a "smart pointer"
      *  overloaded -> operator.
      */
 
@@ -112,8 +112,8 @@ namespace XBMCAddon
                   Window* _window, int windowid) : P(windowid, ""),
         classname("Interceptor<" + std::string(specializedName) + ">")
       {
-#ifdef ENABLE_XBMC_TRACE_API
-        XBMCAddonUtils::TraceGuard tg;
+#ifdef ENABLE__TRACE_API
+        AddonUtils::TraceGuard tg;
         CLog::Log(LOGDEBUG, "{}NEWADDON constructing {} 0x{:x}", tg.getSpaces(), classname,
                   (long)(((void*)this)));
 #endif
@@ -126,8 +126,8 @@ namespace XBMCAddon
                   const char* xmlfile) : P(windowid, xmlfile),
         classname("Interceptor<" + std::string(specializedName) + ">")
       {
-#ifdef ENABLE_XBMC_TRACE_API
-        XBMCAddonUtils::TraceGuard tg;
+#ifdef ENABLE__TRACE_API
+        AddonUtils::TraceGuard tg;
         CLog::Log(LOGDEBUG, "{}NEWADDON constructing {} 0x{:x}", tg.getSpaces(), classname,
                   (long)(((void*)this)));
 #endif
@@ -135,10 +135,10 @@ namespace XBMCAddon
         P::SetLoadType(CGUIWindow::LOAD_ON_GUI_INIT);
       }
 
-#ifdef ENABLE_XBMC_TRACE_API
+#ifdef ENABLE__TRACE_API
       ~Interceptor() override
       {
-        XBMCAddonUtils::TraceGuard tg;
+        AddonUtils::TraceGuard tg;
         CLog::Log(LOGDEBUG, "{}NEWADDON LIFECYCLE destroying {} 0x{:x}", tg.getSpaces(), classname,
                   (long)(((void*)this)));
       }
@@ -147,43 +147,43 @@ namespace XBMCAddon
 #endif
 
       bool OnMessage(CGUIMessage& message) override
-      { XBMC_TRACE; return up() ? P::OnMessage(message) : checkedb(OnMessage(message)); }
+      { _TRACE; return up() ? P::OnMessage(message) : checkedb(OnMessage(message)); }
       bool OnAction(const CAction &action) override
-      { XBMC_TRACE; return up() ? P::OnAction(action) : checkedb(OnAction(action)); }
+      { _TRACE; return up() ? P::OnAction(action) : checkedb(OnAction(action)); }
 
       // NOTE!!: This ALWAYS skips up to the CGUIWindow instance.
       bool OnBack(int actionId) override
-      { XBMC_TRACE; return up() ? CGUIWindow::OnBack(actionId) : checkedb(OnBack(actionId)); }
+      { _TRACE; return up() ? CGUIWindow::OnBack(actionId) : checkedb(OnBack(actionId)); }
 
       void OnDeinitWindow(int nextWindowID) override
-      { XBMC_TRACE; if(up()) P::OnDeinitWindow(nextWindowID); else checkedv(OnDeinitWindow(nextWindowID)); }
+      { _TRACE; if(up()) P::OnDeinitWindow(nextWindowID); else checkedv(OnDeinitWindow(nextWindowID)); }
 
       bool IsModalDialog() const override
       {
-        XBMC_TRACE;
+        _TRACE;
         return checkedb(IsModalDialog());
       }
 
       bool IsDialogRunning() const override
       {
-        XBMC_TRACE;
+        _TRACE;
         return checkedb(IsDialogRunning());
       }
       bool IsDialog() const override
       {
-        XBMC_TRACE;
+        _TRACE;
         return checkedb(IsDialog());
       }
       bool IsMediaWindow() const override
       {
-        XBMC_TRACE;
+        _TRACE;
         return checkedb(IsMediaWindow());
       }
 
-      void SetRenderOrder(int renderOrder) override { XBMC_TRACE; P::m_renderOrder = renderOrder; }
+      void SetRenderOrder(int renderOrder) override { _TRACE; P::m_renderOrder = renderOrder; }
 
-      void setActive(bool active) override { XBMC_TRACE; P::m_active = active; }
-      bool isActive() override { XBMC_TRACE; return P::m_active; }
+      void setActive(bool active) override { _TRACE; P::m_active = active; }
+      bool isActive() override { _TRACE; return P::m_active; }
     };
 
     template <class P /* extends CGUIWindow*/> class InterceptorDialog :

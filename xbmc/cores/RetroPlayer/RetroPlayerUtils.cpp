@@ -8,7 +8,7 @@
 
 #include "RetroPlayerUtils.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace RETRO;
 
 const char* CRetroPlayerUtils::StretchModeToIdentifier(STRETCHMODE stretchMode)

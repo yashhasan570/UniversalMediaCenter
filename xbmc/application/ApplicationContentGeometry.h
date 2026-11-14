@@ -29,7 +29,7 @@ public:
 
   //! \brief Take the stored inputs for the file that is opening, \p cached already verified
   //! against it.
-  void SetFileInputs(const KODI::VIDEO::GEOMETRY::ContentGeometryLookup& cached);
+  void SetFileInputs(const UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::ContentGeometryLookup& cached);
 
   //! \brief Resolve again against the stream that is playing now.
   void Refresh();
@@ -42,21 +42,21 @@ public:
 
   //! \brief Take what an automation has stated for this playback, over the settings. Cleared
   //! as the next file opens.
-  void SetOverrides(const KODI::VIDEO::GEOMETRY::GeometryOverrides& overrides);
+  void SetOverrides(const UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::GeometryOverrides& overrides);
 
   //! \brief Arm overrides for the file that is about to open. SetFileInputs() promotes them.
-  void SetPendingOverrides(const KODI::VIDEO::GEOMETRY::GeometryOverrides& overrides);
+  void SetPendingOverrides(const UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::GeometryOverrides& overrides);
 
   //! \brief Disarm without disturbing the playback in progress.
   void ClearPendingOverrides();
 
-  KODI::VIDEO::GEOMETRY::GeometryOverrides GetOverrides() const;
+  UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::GeometryOverrides GetOverrides() const;
 
   //! \brief The raster in force, the override before the setting. Zero means the display's own.
   float RasterAspect() const;
 
   //! \brief Where the OSD is laid out, the override taking precedence over the setting.
-  KODI::VIDEO::GEOMETRY::OsdPlacement OsdPlacementInForce() const;
+  UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::OsdPlacement OsdPlacementInForce() const;
 
   //! \brief Take the OSD placement setting. Call once the settings store is up; after that
   //! OnSettingChanged() keeps it current.
@@ -64,20 +64,20 @@ public:
 
   //! \brief Take where the renderer has just drawn the picture, in screen pixels, or empty
   //! rectangles while nothing is drawn. Announced only when it moves.
-  void SetDrawn(const KODI::VIDEO::GEOMETRY::DrawnGeometry& drawn);
+  void SetDrawn(const UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::DrawnGeometry& drawn);
 
   //! \brief Where the picture was last drawn, empty while nothing is on the screen.
-  KODI::VIDEO::GEOMETRY::DrawnGeometry Drawn() const;
+  UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::DrawnGeometry Drawn() const;
 
   //! \brief Forget the file, leaving the answer describing the GUI rather than nothing.
   void Clear();
 
-  KODI::VIDEO::GEOMETRY::EffectiveGeometry Get() const;
+  UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::EffectiveGeometry Get() const;
 
   //! \brief Everything the render path reads, scalars only.
   struct RenderInputs
   {
-    KODI::VIDEO::GEOMETRY::RenderGeometry geometry;
+    UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::RenderGeometry geometry;
 
     //! \brief The widest shape the stored measurement found, zero when nothing was measured.
     float maskAspect{0.0f};
@@ -88,7 +88,7 @@ public:
   RenderInputs GetRenderInputs() const;
 
 private:
-  void Set(const KODI::VIDEO::GEOMETRY::EffectiveGeometry& geometry);
+  void Set(const UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::EffectiveGeometry& geometry);
 
   //! \brief The widest ratio the stored measurement holds, which the mask opens to. Zero when
   //! nothing was measured.
@@ -98,18 +98,18 @@ private:
   void ApplyRaster();
 
   mutable CCriticalSection m_section;
-  KODI::VIDEO::GEOMETRY::GeometryInputs m_inputs;
-  KODI::VIDEO::GEOMETRY::EffectiveGeometry m_current;
-  KODI::VIDEO::GEOMETRY::DrawnGeometry m_drawn;
-  KODI::VIDEO::GEOMETRY::GeometryOverrides m_overrides;
-  KODI::VIDEO::GEOMETRY::GeometryOverrides m_pending;
+  UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::GeometryInputs m_inputs;
+  UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::EffectiveGeometry m_current;
+  UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::DrawnGeometry m_drawn;
+  UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::GeometryOverrides m_overrides;
+  UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::GeometryOverrides m_pending;
 
   bool m_haveStream{false};
 
   //! \brief Where the OSD is laid out, mirrored out of the settings because the layout asks
   //! for it every frame. Refreshed by OnSettingChanged().
-  std::atomic<KODI::VIDEO::GEOMETRY::OsdPlacement> m_osdPlacement{
-      KODI::VIDEO::GEOMETRY::OsdPlacement::Raster};
+  std::atomic<UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::OsdPlacement> m_osdPlacement{
+      UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::OsdPlacement::Raster};
 
   //! \brief A promotion moved the raster and the layout has not been told yet.
   bool m_carryRaster{false};

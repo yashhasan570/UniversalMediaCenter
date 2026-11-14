@@ -14,7 +14,7 @@
 #include "guilib/GUIWindowManager.h"
 #include "utils/log.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 bool CGUIDialogSelectSavestate::ShowAndGetSavestate(const std::string& gamePath,

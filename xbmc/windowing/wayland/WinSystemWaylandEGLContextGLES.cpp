@@ -24,7 +24,7 @@
 #include "utils/log.h"
 #include "windowing/WindowSystemFactory.h"
 
-using namespace KODI::WINDOWING::WAYLAND;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::WAYLAND;
 
 void CWinSystemWaylandEGLContextGLES::Register()
 {

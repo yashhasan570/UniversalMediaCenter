@@ -43,11 +43,11 @@
 #include "utils/log.h"
 
 using namespace ADDON;
-using namespace KODI;
-using namespace KODI::ADDONS;
+using namespace UNIVERSAL MEDIA CENTER;
+using namespace UNIVERSAL MEDIA CENTER::ADDONS;
 using namespace XFILE;
 using namespace PLAYLIST;
-using KODI::MEDIA::MediaSection;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaSection;
 
 namespace
 {
@@ -120,7 +120,7 @@ IFileDirectory* CFileDirectoryFactory::Create(const CURL& url, CFileItem* pItem,
      * @note: Do not check audio decoder files that are already open, they cannot
      * contain any further sub-folders.
      */
-    if (!StringUtils::EndsWith(strExtension, KODI_ADDON_AUDIODECODER_TRACK_EXT))
+    if (!StringUtils::EndsWith(strExtension, UNIVERSALMEDIA_ADDON_AUDIODECODER_TRACK_EXT))
     {
       auto addonInfos = CServiceBroker::GetExtsMimeSupportList().GetExtensionSupportedAddonInfos(
           strExtension, CExtsMimeSupportList::FilterSelect::hasTracks);
@@ -265,7 +265,7 @@ IFileDirectory* CFileDirectoryFactory::Create(const CURL& url, CFileItem* pItem,
     return new CXbtDirectory();
   }
   if (url.IsFileType("xsp"))
-  { // XBMC Smart playlist - just XML renamed to XSP
+  { //  Smart playlist - just XML renamed to XSP
     // read the name of the playlist in
     CSmartPlaylist playlist;
     if (playlist.OpenAndReadName(url))

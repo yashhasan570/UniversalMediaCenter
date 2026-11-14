@@ -79,11 +79,11 @@
 
 using namespace XFILE;
 using namespace ADDON;
-using namespace KODI::MESSAGING;
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
+using namespace UNIVERSAL MEDIA CENTER;
 
-using KODI::MESSAGING::HELPERS::DialogResponse;
-using KODI::UTILITY::CDigest;
+using UNIVERSAL MEDIA CENTER::MESSAGING::HELPERS::DialogResponse;
+using UNIVERSAL MEDIA CENTER::UTILITY::CDigest;
 
 namespace
 {
@@ -156,7 +156,7 @@ void OnDirectoryScanned(const std::string& strDirectory)
 
 } // namespace
 
-namespace KODI::VIDEO
+namespace UNIVERSAL MEDIA CENTER::VIDEO
 {
 
 CVideoInfoScanner::CVideoInfoScanner()
@@ -2013,7 +2013,7 @@ CVideoInfoScanner::~CVideoInfoScanner()
 
     if (ret == InfoRet::ADDED)
     {
-      KODI::ART::SeasonsArtwork seasonArt;
+      UNIVERSAL MEDIA CENTER::ART::SeasonsArtwork seasonArt;
       m_database.GetTvShowSeasonArt(showID, seasonArt);
 
       const bool updateSeasonArt{
@@ -2406,7 +2406,7 @@ CVideoInfoScanner::~CVideoInfoScanner()
                        useRemoteArt);
 
     // ensure the art map isn't completely empty by specifying an empty thumb
-    KODI::ART::Artwork art = pItem->GetArt();
+    UNIVERSAL MEDIA CENTER::ART::Artwork art = pItem->GetArt();
     if (art.empty())
       art[ART::TYPE::THUMB] = "";
 
@@ -2592,7 +2592,7 @@ CVideoInfoScanner::~CVideoInfoScanner()
         if (!URIUtils::IsMultiPath(path) || !CMultiPathDirectory::GetPaths(path, multipath))
           multipath.push_back(path);
 
-        KODI::ART::SeasonsArtwork seasonArt;
+        UNIVERSAL MEDIA CENTER::ART::SeasonsArtwork seasonArt;
 
         if (!libraryImport)
         {
@@ -3429,4 +3429,4 @@ CVideoInfoScanner::~CVideoInfoScanner()
     }
     return count;
   }
-  } // namespace KODI::VIDEO
+  } // namespace UNIVERSAL MEDIA CENTER::VIDEO

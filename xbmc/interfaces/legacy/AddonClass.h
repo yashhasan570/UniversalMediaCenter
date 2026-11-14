@@ -18,7 +18,7 @@
 //#define LOG_LIFECYCLE_EVENTS
 
 /**
- * Defining XBMC_ADDON_DEBUG_MEMORY will make the Acquire and Release
+ * Defining _ADDON_DEBUG_MEMORY will make the Acquire and Release
  *  methods virtual allow the developer to overload them in a sub-class
  *  and set breakpoints to aid in debugging. It will also cause the
  *  reference counting mechanism to never actually delete any AddonClass
@@ -27,19 +27,19 @@
  *
  * Comment out (or uncomment out) to change the setting.
  */
-//#define XBMC_ADDON_DEBUG_MEMORY
+//#define _ADDON_DEBUG_MEMORY
 
 #include "AddonString.h"
 
 #include <mutex>
-#ifdef XBMC_ADDON_DEBUG_MEMORY
+#ifdef _ADDON_DEBUG_MEMORY
 #include "utils/log.h"
 #endif
 #include "AddonUtils.h"
 
 #include <atomic>
 
-namespace XBMCAddon
+namespace Addon
 {
   class LanguageHook;
 
@@ -62,7 +62,7 @@ namespace XBMCAddon
     // no copying
     inline AddonClass(const AddonClass&) = delete;
 
-#ifdef XBMC_ADDON_DEBUG_MEMORY
+#ifdef _ADDON_DEBUG_MEMORY
     bool isDeleted;
 #endif
 
@@ -96,15 +96,15 @@ namespace XBMCAddon
      *  on the object. It will prevent the deallocation during
      *  the time it's held.
      */
-    bool isDeallocating() { XBMC_TRACE; return m_isDeallocating; }
+    bool isDeallocating() { _TRACE; return m_isDeallocating; }
 
-#ifdef XBMC_ADDON_DEBUG_MEMORY
+#ifdef _ADDON_DEBUG_MEMORY
     virtual
 #else
     inline
 #endif
     void Release() const
-#ifndef XBMC_ADDON_DEBUG_MEMORY
+#ifndef _ADDON_DEBUG_MEMORY
     {
       long ct = --refs;
 #ifdef LOG_LIFECYCLE_EVENTS
@@ -119,13 +119,13 @@ namespace XBMCAddon
 #endif
 
 
-#ifdef XBMC_ADDON_DEBUG_MEMORY
+#ifdef _ADDON_DEBUG_MEMORY
     virtual
 #else
     inline
 #endif
     void Acquire() const
-#ifndef XBMC_ADDON_DEBUG_MEMORY
+#ifndef _ADDON_DEBUG_MEMORY
     {
 #ifdef LOG_LIFECYCLE_EVENTS
       CLog::Log(LOGDEBUG, "NEWADDON REFCNT incrementing to {} on {} 0x{:x}", ++refs, GetClassname(),

@@ -1,7 +1,7 @@
 include(cmake/scripts/linux/Linkers.txt)
 
 # Main cpp
-set(CORE_MAIN_SOURCE ${CMAKE_SOURCE_DIR}/xbmc/platform/posix/main.cpp)
+set(CORE_MAIN_SOURCE ${CMAKE_SOURCE_DIR}//platform/posix/main.cpp)
 
 # we always want to use GNU features if available, so set _GNU_SOURCE
 list(APPEND ARCH_DEFINES -DTARGET_POSIX -DTARGET_LINUX -D_GNU_SOURCE)
@@ -111,7 +111,7 @@ if(CMAKE_BUILD_TYPE STREQUAL Release OR CMAKE_BUILD_TYPE STREQUAL MinSizeRel)
   endif()
 endif()
 
-if(KODI_DEPENDSBUILD)
+if(UNIVERSALMEDIA_DEPENDSBUILD)
   # Binaries should be directly runnable from host, so include rpath to depends
   set(CMAKE_INSTALL_RPATH "${DEPENDS_PATH}/lib")
   set(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE)
@@ -196,7 +196,7 @@ endif()
 
 # Build internal libs
 if(NOT USE_INTERNAL_LIBS)
-  if(KODI_DEPENDSBUILD)
+  if(UNIVERSALMEDIA_DEPENDSBUILD)
     set(USE_INTERNAL_LIBS ON)
   else()
     set(USE_INTERNAL_LIBS OFF)

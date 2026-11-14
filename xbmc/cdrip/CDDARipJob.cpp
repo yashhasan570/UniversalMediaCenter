@@ -43,8 +43,8 @@
 using namespace ADDON;
 using namespace MUSIC_INFO;
 using namespace XFILE;
-using namespace KODI;
-using namespace KODI::CDRIP;
+using namespace UNIVERSAL MEDIA CENTER;
+using namespace UNIVERSAL MEDIA CENTER::CDRIP;
 
 CCDDARipJob::CCDDARipJob(const std::string& input,
                          const std::string& output,
@@ -190,8 +190,8 @@ std::unique_ptr<CEncoder> CCDDARipJob::SetupEncoder(CFile& reader)
   std::unique_ptr<CEncoder> encoder;
   const auto audioEncoder = CServiceBroker::GetSettingsComponent()->GetSettings()->GetString(
       CSettings::SETTING_AUDIOCDS_ENCODER);
-  if (audioEncoder == "audioencoder.kodi.builtin.aac" ||
-      audioEncoder == "audioencoder.kodi.builtin.wma")
+  if (audioEncoder == "audioencoder.universalmediacenter.builtin.aac" ||
+      audioEncoder == "audioencoder.universalmediacenter.builtin.wma")
   {
     encoder = std::make_unique<CEncoderFFmpeg>();
   }
@@ -234,7 +234,7 @@ std::string CCDDARipJob::SetupTempFile()
 {
   std::array<char, MAX_PATH + 1> tmp{};
 #if defined(TARGET_WINDOWS)
-  using namespace KODI::PLATFORM::WINDOWS;
+  using namespace UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS;
   std::array<wchar_t, MAX_PATH + 1> tmpW;
   GetTempFileName(ToW(CSpecialProtocol::TranslatePath("special://temp/")).c_str(), L"riptrack", 0,
                   tmpW.data());

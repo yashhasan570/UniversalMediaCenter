@@ -94,7 +94,7 @@ enum class CURLOptionType
  * connection-timeout: Set the connection timeout in seconds
  * cookie: Set the "cookie" header
  * customrequest: Set a custom HTTP request like DELETE
- * noshout: Set to true if kodi detects a stream as shoutcast by mistake.
+ * noshout: Set to true if universalmediacenter detects a stream as shoutcast by mistake.
  * postdata: Set the post body (value needs to be base64 encoded). (Implicitly sets the request to POST)
  * referer: Set the "referer" header
  * user-agent: Set the "user-agent" header

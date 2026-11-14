@@ -133,7 +133,7 @@ static bool appendWindows10NameVersion(std::string& osNameVer)
     obtained = true;
   }
   if (obtained)
-    osNameVer.append(StringUtils::Format(" {}", KODI::PLATFORM::WINDOWS::FromW(versionW)));
+    osNameVer.append(StringUtils::Format(" {}", UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW(versionW)));
 
   return obtained;
 }
@@ -544,7 +544,7 @@ const std::string& CSysInfo::GetAppName(void)
 
 bool CSysInfo::GetDiskSpace(std::string drive,int& iTotal, int& iTotalFree, int& iTotalUsed, int& iPercentFree, int& iPercentUsed)
 {
-  using namespace KODI::PLATFORM::FILESYSTEM;
+  using namespace UNIVERSAL MEDIA CENTER::PLATFORM::FILESYSTEM;
 
   space_info total = {};
   std::error_code ec;
@@ -564,7 +564,7 @@ bool CSysInfo::GetDiskSpace(std::string drive,int& iTotal, int& iTotalFree, int&
   }
 
 #ifdef TARGET_WINDOWS_DESKTOP
-  using KODI::PLATFORM::WINDOWS::ToW;
+  using UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::ToW;
   UINT uidriveType = GetDriveType(ToW(drive + ":\\").c_str());
   if (uidriveType != DRIVE_UNKNOWN && uidriveType != DRIVE_NO_ROOT_DIR)
     total = space(drive + ":\\", ec);
@@ -701,7 +701,7 @@ std::string CSysInfo::GetOsName(bool emptyIfUnknown /* = false*/)
 #elif defined(TARGET_WEBOS)
     osName = "webOS";
 #elif defined(TARGET_WASM)
-    osName = KODI::PLATFORM::WASM::CWasmWebApis::GetDeviceInfo().osName;
+    osName = UNIVERSAL MEDIA CENTER::PLATFORM::WASM::CWasmWebApis::GetDeviceInfo().osName;
 #elif defined(TARGET_LINUX)
     osName = getValueFromOs_release("NAME");
     if (osName.empty())
@@ -746,7 +746,7 @@ std::string CSysInfo::GetOsVersion(void)
       osVersion += ".0";
   }
 #elif defined(TARGET_WASM)
-  osVersion = KODI::PLATFORM::WASM::CWasmWebApis::GetDeviceInfo().platformVersion;
+  osVersion = UNIVERSAL MEDIA CENTER::PLATFORM::WASM::CWasmWebApis::GetDeviceInfo().platformVersion;
 #elif defined(TARGET_LINUX)
   osVersion = getValueFromOs_release("VERSION_ID");
   if (osVersion.empty())
@@ -877,7 +877,7 @@ std::string CSysInfo::GetManufacturerName(void)
     auto manufacturer = eas.SystemManufacturer();
     g_charsetConverter.wToUTF8(std::wstring(manufacturer.c_str()), manufName);
 #elif defined(TARGET_WASM)
-    manufName = KODI::PLATFORM::WASM::CWasmWebApis::GetDeviceInfo().manufacturer;
+    manufName = UNIVERSAL MEDIA CENTER::PLATFORM::WASM::CWasmWebApis::GetDeviceInfo().manufacturer;
 #elif defined(TARGET_LINUX)
 
     auto cpuInfo = CServiceBroker::GetCPUInfo();
@@ -918,7 +918,7 @@ std::string CSysInfo::GetModelName(void)
     auto manufacturer = eas.SystemProductName();
     g_charsetConverter.wToUTF8(std::wstring(manufacturer.c_str()), modelName);
 #elif defined(TARGET_WASM)
-    modelName = KODI::PLATFORM::WASM::CWasmWebApis::GetDeviceInfo().model;
+    modelName = UNIVERSAL MEDIA CENTER::PLATFORM::WASM::CWasmWebApis::GetDeviceInfo().model;
 #elif defined(TARGET_LINUX)
     auto cpuInfo = CServiceBroker::GetCPUInfo();
     modelName = cpuInfo->GetCPUHardware();
@@ -1562,7 +1562,7 @@ std::string CSysInfo::GetPrivacyPolicy()
   {
     CFile file;
     std::vector<uint8_t> buf;
-    if (file.LoadFile("special://xbmc/privacy-policy.txt", buf) > 0)
+    if (file.LoadFile("special:///privacy-policy.txt", buf) > 0)
     {
       m_privacyPolicy = std::string(reinterpret_cast<char*>(buf.data()), buf.size());
     }

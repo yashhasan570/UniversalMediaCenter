@@ -15,7 +15,7 @@
 #pragma comment(lib, "Ntdll.lib")
 #endif
 
-using namespace KODI::PLATFORM::WINDOWS10;
+using namespace UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS10;
 
 int __stdcall WinMain(HINSTANCE, HINSTANCE, PCSTR, int)
 {

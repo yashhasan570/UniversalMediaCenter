@@ -9,42 +9,42 @@
 #include "YesNo.h"
 
 #include "addons/binary-addons/AddonDll.h"
-#include "addons/kodi-dev-kit/include/kodi/gui/dialogs/YesNo.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/gui/dialogs/YesNo.h"
 #include "dialogs/GUIDialogYesNo.h"
 #include "messaging/helpers/DialogHelper.h"
 #include "utils/log.h"
 
-using namespace KODI::MESSAGING;
-using KODI::MESSAGING::HELPERS::DialogResponse;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
+using UNIVERSAL MEDIA CENTER::MESSAGING::HELPERS::DialogResponse;
 
 namespace ADDON
 {
 
 void Interface_GUIDialogYesNo::Init(AddonGlobalInterface* addonInterface)
 {
-  addonInterface->toUniversal Media Center->kodi_gui->dialogYesNo = new AddonToUniversal Media CenterFuncTable_kodi_gui_dialogYesNo();
+  addonInterface->toUniversal Media Center->->dialogYesNo = new AddonToUniversal Media CenterFuncTable__dialogYesNo();
 
-  addonInterface->toUniversal Media Center->kodi_gui->dialogYesNo->show_and_get_input_single_text =
+  addonInterface->toUniversal Media Center->->dialogYesNo->show_and_get_input_single_text =
       show_and_get_input_single_text;
-  addonInterface->toUniversal Media Center->kodi_gui->dialogYesNo->show_and_get_input_line_text =
+  addonInterface->toUniversal Media Center->->dialogYesNo->show_and_get_input_line_text =
       show_and_get_input_line_text;
-  addonInterface->toUniversal Media Center->kodi_gui->dialogYesNo->show_and_get_input_line_button_text =
+  addonInterface->toUniversal Media Center->->dialogYesNo->show_and_get_input_line_button_text =
       show_and_get_input_line_button_text;
 }
 
 void Interface_GUIDialogYesNo::DeInit(AddonGlobalInterface* addonInterface)
 {
-  delete addonInterface->toUniversal Media Center->kodi_gui->dialogYesNo;
+  delete addonInterface->toUniversal Media Center->->dialogYesNo;
 }
 
-bool Interface_GUIDialogYesNo::show_and_get_input_single_text(KODI_HANDLE kodiBase,
+bool Interface_GUIDialogYesNo::show_and_get_input_single_text(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
                                                               const char* heading,
                                                               const char* text,
                                                               bool* canceled,
                                                               const char* noLabel,
                                                               const char* yesLabel)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon)
   {
     CLog::LogF(LOGERROR, "Invalid data");
@@ -67,7 +67,7 @@ bool Interface_GUIDialogYesNo::show_and_get_input_single_text(KODI_HANDLE kodiBa
   return (result == DialogResponse::CHOICE_YES);
 }
 
-bool Interface_GUIDialogYesNo::show_and_get_input_line_text(KODI_HANDLE kodiBase,
+bool Interface_GUIDialogYesNo::show_and_get_input_line_text(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
                                                             const char* heading,
                                                             const char* line0,
                                                             const char* line1,
@@ -75,7 +75,7 @@ bool Interface_GUIDialogYesNo::show_and_get_input_line_text(KODI_HANDLE kodiBase
                                                             const char* noLabel,
                                                             const char* yesLabel)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon)
   {
     CLog::LogF(LOGERROR, "Invalid data");
@@ -98,7 +98,7 @@ bool Interface_GUIDialogYesNo::show_and_get_input_line_text(KODI_HANDLE kodiBase
          DialogResponse::CHOICE_YES;
 }
 
-bool Interface_GUIDialogYesNo::show_and_get_input_line_button_text(KODI_HANDLE kodiBase,
+bool Interface_GUIDialogYesNo::show_and_get_input_line_button_text(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
                                                                    const char* heading,
                                                                    const char* line0,
                                                                    const char* line1,
@@ -107,7 +107,7 @@ bool Interface_GUIDialogYesNo::show_and_get_input_line_button_text(KODI_HANDLE k
                                                                    const char* noLabel,
                                                                    const char* yesLabel)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon)
   {
     CLog::LogF(LOGERROR, "Invalid data");

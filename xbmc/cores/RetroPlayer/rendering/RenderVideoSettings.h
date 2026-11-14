@@ -13,7 +13,7 @@
 #include <string>
 #include <string_view>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -60,4 +60,4 @@ private:
   std::string m_shaderPreset;
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

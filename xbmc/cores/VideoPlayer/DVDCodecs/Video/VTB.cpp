@@ -71,12 +71,12 @@ CVPixelBufferRef CVideoBufferVTB::GetPB()
   return m_pbRef;
 }
 
-ReductionResult CVideoBufferVTB::ReduceForAnalysis(KODI::VIDEO::GEOMETRY::ReducedFrame& reduction,
+ReductionResult CVideoBufferVTB::ReduceForAnalysis(UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::ReducedFrame& reduction,
                                                    unsigned int sourceWidth,
                                                    unsigned int sourceHeight,
                                                    unsigned int targetWidth)
 {
-  using namespace KODI::VIDEO::GEOMETRY;
+  using namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY;
 
   if (!m_pbRef)
     return ReductionResult::Unsupported;

@@ -12,7 +12,7 @@
 #include "input/joysticks/interfaces/IInputHandler.h"
 #include "peripherals/PeripheralTypes.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -72,4 +72,4 @@ private:
   ControllerPtr m_controllerAppearance;
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

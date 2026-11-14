@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2016 Lauri Mylläri
- *      http://kodi.org
+ *      http://universalmediacenter.org
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.

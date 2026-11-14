@@ -12,7 +12,7 @@
 #include "threads/CriticalSection.h"
 #include "threads/Event.h"
 
-#include "platform/android/activity/JNIXBMCNativeKeyboard.h"
+#include "platform/android/activity/JNINativeKeyboard.h"
 
 #include <memory>
 #include <string>
@@ -20,7 +20,7 @@
 /*!
  * \brief Native Android on-screen keyboard implementation.
  *
- * Wraps the Java soft keyboard dialog (jni::CJNIXBMCNativeKeyboard) and blocks
+ * Wraps the Java soft keyboard dialog (jni::CJNINativeKeyboard) and blocks
  * the calling thread until the user has either confirmed or canceled the
  * input, as required by the CGUIKeyboard interface.
  */
@@ -48,7 +48,7 @@ private:
   //! Keyboard shown via CGUIKeyboardFactory; passed to the char callback so that typing resets
   //! its auto-close timer.
   CGUIKeyboard& m_owner;
-  std::unique_ptr<jni::CJNIXBMCNativeKeyboard> m_keyboard;
+  std::unique_ptr<jni::CJNINativeKeyboard> m_keyboard;
   char_callback_t m_pCallback{nullptr};
 
   CCriticalSection m_critSection;
@@ -59,7 +59,7 @@ private:
   //! \brief Set by SetTextToKeyboard() when closeKeyboard is true.
   //!
   //! The Java bridge only exposes hide(), which always dismisses the dialog as if
-  //! canceled (see XBMCNativeKeyboard.java.in cancelInput()). To still honor the
+  //! canceled (see NativeKeyboard.java.in cancelInput()). To still honor the
   //! CGUIKeyboard::SetTextToKeyboard(text, closeKeyboard=true) contract of confirming
   //! and closing (as done by CDarwinEmbedKeyboard on iOS/tvOS), the resulting
   //! OnInputCanceled() callback is reinterpreted as a confirmation whenever this flag

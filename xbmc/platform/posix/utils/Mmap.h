@@ -12,7 +12,7 @@
 
 #include <sys/mman.h>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace UTILS
 {

@@ -311,39 +311,39 @@ void COutputShader::GetDefines(DefinesMap& map) const
 {
   if (m_useLut)
   {
-    map["KODI_3DLUT"] = "";
+    map["UNIVERSALMEDIA_3DLUT"] = "";
   }
   if (m_useDithering)
   {
-    map["KODI_DITHER"] = "";
+    map["UNIVERSALMEDIA_DITHER"] = "";
   }
   if (m_toneMapping && m_toneMappingMethod == VS_TONEMAPMETHOD_REINHARD)
   {
-    map["KODI_TONE_MAPPING_REINHARD"] = "";
+    map["UNIVERSALMEDIA_TONE_MAPPING_REINHARD"] = "";
   }
   else if (m_toneMapping && m_toneMappingMethod == VS_TONEMAPMETHOD_ACES)
   {
-    map["KODI_TONE_MAPPING_ACES"] = "";
+    map["UNIVERSALMEDIA_TONE_MAPPING_ACES"] = "";
   }
   else if (m_toneMapping && m_toneMappingMethod == VS_TONEMAPMETHOD_HABLE)
   {
-    map["KODI_TONE_MAPPING_HABLE"] = "";
+    map["UNIVERSALMEDIA_TONE_MAPPING_HABLE"] = "";
   }
   if (m_useHLGtoPQ)
   {
-    map["KODI_HLG_TO_PQ"] = "";
+    map["UNIVERSALMEDIA_HLG_TO_PQ"] = "";
   }
   if (m_hueSatTransfer == AVCOL_TRC_SMPTE2084)
   {
-    map["KODI_HUESAT_PQ"] = "";
+    map["UNIVERSALMEDIA_HUESAT_PQ"] = "";
   }
   else if (m_hueSatTransfer == AVCOL_TRC_ARIB_STD_B67)
   {
-    map["KODI_HUESAT_HLG"] = "";
+    map["UNIVERSALMEDIA_HUESAT_HLG"] = "";
   }
   if (m_useGamma)
   {
-    map["KODI_GAMMA"] = "";
+    map["UNIVERSALMEDIA_GAMMA"] = "";
   }
 }
 
@@ -370,10 +370,10 @@ bool COutputShader::Create(bool useLUT,
     CreateDitherView();
 
   DefinesMap defines;
-  defines["KODI_OUTPUT_T"] = "";
+  defines["UNIVERSALMEDIA_OUTPUT_T"] = "";
   GetDefines(defines);
 
-  std::string effectString("special://xbmc/system/shaders/output_d3d.fx");
+  std::string effectString("special:///system/shaders/output_d3d.fx");
 
   if (!LoadEffect(effectString, &defines))
   {
@@ -446,7 +446,7 @@ bool COutputShader::CreateLUTView(int lutSize, uint16_t* lutData, bool isRGB, ID
   {
     // repack data to RGBA
     const unsigned samples = lutSize * lutSize * lutSize;
-    cData = reinterpret_cast<uint16_t*>(KODI::MEMORY::AlignedMalloc(samples * sizeof(uint16_t) * 4, 16));
+    cData = reinterpret_cast<uint16_t*>(UNIVERSAL MEDIA CENTER::MEMORY::AlignedMalloc(samples * sizeof(uint16_t) * 4, 16));
     auto rgba = static_cast<uint16_t*>(cData);
     for (unsigned i = 0; i < samples - 1; ++i, rgba += 4, lutData += 3)
     {
@@ -471,7 +471,7 @@ bool COutputShader::CreateLUTView(int lutSize, uint16_t* lutData, bool isRGB, ID
 
   HRESULT hr = pDevice->CreateTexture3D(&txDesc, &texData, pLUTTex.GetAddressOf());
   if (isRGB)
-    KODI::MEMORY::AlignedFree(cData);
+    UNIVERSAL MEDIA CENTER::MEMORY::AlignedFree(cData);
 
   if (FAILED(hr))
   {
@@ -645,22 +645,22 @@ bool CYUV2RGBShader::Create(AVPixelFormat fmt,
   case AV_PIX_FMT_YUV420P:
   case AV_PIX_FMT_YUV420P10:
   case AV_PIX_FMT_YUV420P16:
-    defines["XBMC_YV12"] = "";
+    defines["_YV12"] = "";
     break;
   case AV_PIX_FMT_D3D11VA_VLD:
   case AV_PIX_FMT_NV12:
   case AV_PIX_FMT_P010:
   case AV_PIX_FMT_P016:
-    defines["XBMC_NV12"] = "";
+    defines["_NV12"] = "";
     // FL 9.x doesn't support DXGI_FORMAT_R8G8_UNORM, so we have to use SNORM and correct values in shader
     if (!DX::Windowing()->IsFormatSupport(DXGI_FORMAT_R8G8_UNORM, D3D11_FORMAT_SUPPORT_TEXTURE2D))
       defines["NV12_SNORM_UV"] = "";
     break;
   case AV_PIX_FMT_UYVY422:
-    defines["XBMC_UYVY"] = "";
+    defines["_UYVY"] = "";
     break;
   case AV_PIX_FMT_YUYV422:
-    defines["XBMC_YUY2"] = "";
+    defines["_YUY2"] = "";
     break;
   default:
     return false;
@@ -669,20 +669,20 @@ bool CYUV2RGBShader::Create(AVPixelFormat fmt,
   if (srcPrimaries != dstPrimaries)
   {
     m_colorConversion = true;
-    defines["XBMC_COL_CONVERSION"] = "";
+    defines["_COL_CONVERSION"] = "";
   }
 
   if (m_hueSatTransfer == AVCOL_TRC_SMPTE2084)
-    defines["KODI_HUESAT_PQ"] = "";
+    defines["UNIVERSALMEDIA_HUESAT_PQ"] = "";
   else if (m_hueSatTransfer == AVCOL_TRC_ARIB_STD_B67)
-    defines["KODI_HUESAT_HLG"] = "";
+    defines["UNIVERSALMEDIA_HUESAT_HLG"] = "";
   if (m_hueSatTransfer != AVCOL_TRC_UNSPECIFIED)
-    defines["KODI_HUESAT_YUV"] = "";
+    defines["UNIVERSALMEDIA_HUESAT_YUV"] = "";
 
   if (m_pOutShader)
     m_pOutShader->GetDefines(defines);
 
-  std::string effectString = "special://xbmc/system/shaders/yuv2rgb_d3d.fx";
+  std::string effectString = "special:///system/shaders/yuv2rgb_d3d.fx";
 
   if(!LoadEffect(effectString, &defines))
   {
@@ -918,11 +918,11 @@ bool CConvolutionShader1Pass::Create(ESCALINGMETHOD method, const std::shared_pt
     case VS_SCALINGMETHOD_LANCZOS2:
     case VS_SCALINGMETHOD_SPLINE36_FAST:
     case VS_SCALINGMETHOD_LANCZOS3_FAST:
-      effectString = "special://xbmc/system/shaders/convolution-4x4_d3d.fx";
+      effectString = "special:///system/shaders/convolution-4x4_d3d.fx";
       break;
     case VS_SCALINGMETHOD_SPLINE36:
     case VS_SCALINGMETHOD_LANCZOS3:
-      effectString = "special://xbmc/system/shaders/convolution-6x6_d3d.fx";
+      effectString = "special:///system/shaders/convolution-6x6_d3d.fx";
       break;
     default:
       CLog::LogF(LOGERROR, "scaling method {} not supported.", method);
@@ -1051,11 +1051,11 @@ bool CConvolutionShaderSeparable::Create(ESCALINGMETHOD method, const std::share
     case VS_SCALINGMETHOD_LANCZOS2:
     case VS_SCALINGMETHOD_SPLINE36_FAST:
     case VS_SCALINGMETHOD_LANCZOS3_FAST:
-      effectString = "special://xbmc/system/shaders/convolutionsep-4x4_d3d.fx";
+      effectString = "special:///system/shaders/convolutionsep-4x4_d3d.fx";
       break;
     case VS_SCALINGMETHOD_SPLINE36:
     case VS_SCALINGMETHOD_LANCZOS3:
-      effectString = "special://xbmc/system/shaders/convolutionsep-6x6_d3d.fx";
+      effectString = "special:///system/shaders/convolutionsep-6x6_d3d.fx";
       break;
     default:
       CLog::LogF(LOGERROR, "scaling method {} not supported.", method);

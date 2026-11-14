@@ -27,7 +27,7 @@
 #include "utils/XMLUtils.h"
 #include "utils/log.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace XFILE;
 
 CLibraryDirectory::CLibraryDirectory(void) = default;
@@ -168,7 +168,7 @@ std::string CLibraryDirectory::GetNode(const CURL& url)
 {
   std::string libDir = URIUtils::AddFileToFolder(m_profileManager->GetLibraryFolder(), url.GetHostName() + "/");
   if (!CDirectory::Exists(libDir))
-    libDir = URIUtils::AddFileToFolder("special://xbmc/system/library/", url.GetHostName() + "/");
+    libDir = URIUtils::AddFileToFolder("special:///system/library/", url.GetHostName() + "/");
 
   libDir = URIUtils::AddFileToFolder(libDir, url.GetFileName());
 

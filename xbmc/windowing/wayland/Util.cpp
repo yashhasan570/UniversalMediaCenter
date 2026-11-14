@@ -65,7 +65,7 @@ static std::map<std::string, std::string> CursorFallbackNameMap =
 
 }
 
-using namespace KODI::WINDOWING::WAYLAND;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::WAYLAND;
 
 wayland::cursor_t CCursorUtil::LoadFromTheme(wayland::cursor_theme_t const& theme, std::string const& name)
 {

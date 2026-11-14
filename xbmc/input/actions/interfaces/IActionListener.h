@@ -10,7 +10,7 @@
 
 class CAction;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace ACTION
 {
@@ -34,4 +34,4 @@ public:
   virtual bool OnAction(const CAction& action) = 0;
 };
 } // namespace ACTION
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

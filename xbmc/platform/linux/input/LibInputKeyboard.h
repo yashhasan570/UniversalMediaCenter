@@ -9,7 +9,7 @@
 #pragma once
 
 #include "threads/Timer.h"
-#include "windowing/XBMC_events.h"
+#include "windowing/_events.h"
 
 #include <map>
 #include <memory>
@@ -32,7 +32,7 @@ public:
   bool SetKeymap(const std::string& layout);
 
 private:
-  XBMCKey XBMCKeyForKeysym(xkb_keysym_t sym, uint32_t scancode);
+  Key KeyForKeysym(xkb_keysym_t sym, uint32_t scancode);
   void KeyRepeatTimeout();
   /**
    * Check if the system supports key composition
@@ -85,7 +85,7 @@ private:
 
   int m_leds;
 
-  XBMC_Event m_repeatEvent;
+  _Event m_repeatEvent;
   std::map<libinput_device*, std::vector<int>> m_repeatData;
   CTimer m_repeatTimer;
   int m_repeatRate;

@@ -53,9 +53,9 @@
 #include <utility>
 
 using namespace XFILE;
-using namespace KODI;
-using namespace KODI::MESSAGING;
-using namespace KODI::UTILS::GUILIB;
+using namespace UNIVERSAL MEDIA CENTER;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
+using namespace UNIVERSAL MEDIA CENTER::UTILS::GUILIB;
 using namespace PVR;
 
 class CDirectoryProvider::CSubscriber : public ANNOUNCEMENT::IAnnouncer
@@ -673,7 +673,7 @@ bool CDirectoryProvider::OnClick(const std::shared_ptr<CGUIListItem>& item)
     if (!targetWindow.empty())
       targetItem->SetProperty("targetwindow", targetWindow);
 
-    KODI::VIDEO::GUILIB::CVideoSelectActionProcessor proc{targetItem};
+    UNIVERSAL MEDIA CENTER::VIDEO::GUILIB::CVideoSelectActionProcessor proc{targetItem};
     if (proc.ProcessDefaultAction())
       return true;
   }
@@ -702,7 +702,7 @@ bool CDirectoryProvider::OnPlay(const std::shared_ptr<CGUIListItem>& item)
   if (targetItem->HasVideoInfoTag() ||
       (targetItem->IsFolder() && VIDEO::UTILS::IsItemPlayable(*targetItem)))
   {
-    KODI::VIDEO::GUILIB::CVideoPlayActionProcessor proc{targetItem};
+    UNIVERSAL MEDIA CENTER::VIDEO::GUILIB::CVideoPlayActionProcessor proc{targetItem};
     if (proc.ProcessDefaultAction())
       return true;
   }

@@ -13,7 +13,7 @@
 #include <memory>
 #include <stdint.h>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -68,4 +68,4 @@ private:
   size_t m_frameSize;
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

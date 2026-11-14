@@ -12,7 +12,7 @@
 #include "ShellSurface.h"
 #include "wayland-webos-protocols.hpp"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace WINDOWING
 {
@@ -68,4 +68,4 @@ private:
 
 } // namespace WAYLAND
 } // namespace WINDOWING
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

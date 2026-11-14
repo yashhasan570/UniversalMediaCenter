@@ -7,26 +7,26 @@
  */
 
 #include "EventLoop.h"
-#include "XBMCApp.h"
+#include "App.h"
 
 #include "platform/android/activity/JNIMainActivity.h"
-#include "platform/android/activity/JNIXBMCAudioManagerOnAudioFocusChangeListener.h"
-#include "platform/android/activity/JNIXBMCBroadcastReceiver.h"
-#include "platform/android/activity/JNIXBMCConnectivityManagerNetworkCallback.h"
-#include "platform/android/activity/JNIXBMCDisplayManagerDisplayListener.h"
-#include "platform/android/activity/JNIXBMCFile.h"
-#include "platform/android/activity/JNIXBMCJsonHandler.h"
-#include "platform/android/activity/JNIXBMCMainView.h"
-#include "platform/android/activity/JNIXBMCMediaSession.h"
-#include "platform/android/activity/JNIXBMCNativeKeyboard.h"
-#include "platform/android/activity/JNIXBMCNsdManagerDiscoveryListener.h"
-#include "platform/android/activity/JNIXBMCNsdManagerRegistrationListener.h"
-#include "platform/android/activity/JNIXBMCNsdManagerResolveListener.h"
-#include "platform/android/activity/JNIXBMCSpeechRecognitionListener.h"
-#include "platform/android/activity/JNIXBMCSurfaceTextureOnFrameAvailableListener.h"
-#include "platform/android/activity/JNIXBMCTextureCache.h"
-#include "platform/android/activity/JNIXBMCURIUtils.h"
-#include "platform/android/activity/JNIXBMCVideoView.h"
+#include "platform/android/activity/JNIAudioManagerOnAudioFocusChangeListener.h"
+#include "platform/android/activity/JNIBroadcastReceiver.h"
+#include "platform/android/activity/JNIConnectivityManagerNetworkCallback.h"
+#include "platform/android/activity/JNIDisplayManagerDisplayListener.h"
+#include "platform/android/activity/JNIFile.h"
+#include "platform/android/activity/JNIJsonHandler.h"
+#include "platform/android/activity/JNIMainView.h"
+#include "platform/android/activity/JNIMediaSession.h"
+#include "platform/android/activity/JNINativeKeyboard.h"
+#include "platform/android/activity/JNINsdManagerDiscoveryListener.h"
+#include "platform/android/activity/JNINsdManagerRegistrationListener.h"
+#include "platform/android/activity/JNINsdManagerResolveListener.h"
+#include "platform/android/activity/JNISpeechRecognitionListener.h"
+#include "platform/android/activity/JNISurfaceTextureOnFrameAvailableListener.h"
+#include "platform/android/activity/JNITextureCache.h"
+#include "platform/android/activity/JNIURIUtils.h"
+#include "platform/android/activity/JNIVideoView.h"
 
 #include <stdint.h>
 #include <stdio.h>
@@ -88,18 +88,18 @@ extern void android_main(struct android_app* state)
   {
     CEventLoop eventLoop(state);
     IInputHandler inputHandler;
-    CXBMCApp& theApp = CXBMCApp::Create(state->activity, inputHandler);
+    CApp& theApp = CApp::Create(state->activity, inputHandler);
     if (theApp.isValid())
     {
       eventLoop.run(theApp, inputHandler);
       theApp.Quit();
     }
     else
-      CXBMCApp::android_printf("android_main: setup failed");
+      CApp::android_printf("android_main: setup failed");
 
-    CXBMCApp::android_printf("android_main: Exiting");
+    CApp::android_printf("android_main: Exiting");
 
-    CXBMCApp::Destroy();
+    CApp::Destroy();
   }
   // We need to call exit() so that all loaded libraries are properly unloaded
   // otherwise on the next start of the Activity android will simply re-use
@@ -117,23 +117,23 @@ extern "C" JNIEXPORT jint JNI_OnLoad(JavaVM *vm, void *reserved)
     return -1;
 
   CJNIMainActivity::RegisterNatives(env);
-  CJNIXBMCAudioManagerOnAudioFocusChangeListener::RegisterNatives(env);
-  CJNIXBMCBroadcastReceiver::RegisterNatives(env);
-  CJNIXBMCConnectivityManagerNetworkCallback::RegisterNatives(env);
-  CJNIXBMCDisplayManagerDisplayListener::RegisterNatives(env);
-  CJNIXBMCFile::RegisterNatives(env);
-  CJNIXBMCJsonHandler::RegisterNatives(env);
-  CJNIXBMCMainView::RegisterNatives(env);
-  CJNIXBMCMediaSession::RegisterNatives(env);
-  CJNIXBMCNativeKeyboard::RegisterNatives(env);
-  CJNIXBMCNsdManagerDiscoveryListener::RegisterNatives(env);
-  CJNIXBMCNsdManagerRegistrationListener::RegisterNatives(env);
-  CJNIXBMCNsdManagerResolveListener::RegisterNatives(env);
-  CJNIXBMCSpeechRecognitionListener::RegisterNatives(env);
-  CJNIXBMCSurfaceTextureOnFrameAvailableListener::RegisterNatives(env);
-  CJNIXBMCTextureCache::RegisterNatives(env);
-  CJNIXBMCURIUtils::RegisterNatives(env);
-  CJNIXBMCVideoView::RegisterNatives(env);
+  CJNIAudioManagerOnAudioFocusChangeListener::RegisterNatives(env);
+  CJNIBroadcastReceiver::RegisterNatives(env);
+  CJNIConnectivityManagerNetworkCallback::RegisterNatives(env);
+  CJNIDisplayManagerDisplayListener::RegisterNatives(env);
+  CJNIFile::RegisterNatives(env);
+  CJNIJsonHandler::RegisterNatives(env);
+  CJNIMainView::RegisterNatives(env);
+  CJNIMediaSession::RegisterNatives(env);
+  CJNINativeKeyboard::RegisterNatives(env);
+  CJNINsdManagerDiscoveryListener::RegisterNatives(env);
+  CJNINsdManagerRegistrationListener::RegisterNatives(env);
+  CJNINsdManagerResolveListener::RegisterNatives(env);
+  CJNISpeechRecognitionListener::RegisterNatives(env);
+  CJNISurfaceTextureOnFrameAvailableListener::RegisterNatives(env);
+  CJNITextureCache::RegisterNatives(env);
+  CJNIURIUtils::RegisterNatives(env);
+  CJNIVideoView::RegisterNatives(env);
 
   return version;
 }

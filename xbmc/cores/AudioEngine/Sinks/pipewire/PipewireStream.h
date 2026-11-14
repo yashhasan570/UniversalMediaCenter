@@ -14,7 +14,7 @@
 #include <pipewire/core.h>
 #include <pipewire/stream.h>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace PIPEWIRE
 {
@@ -85,4 +85,4 @@ private:
 };
 
 } // namespace PIPEWIRE
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "addons/kodi-dev-kit/include/kodi/addon-instance/peripheral/PeripheralUtils.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/addon-instance/peripheral/PeripheralUtils.h"
 #include "threads/CriticalSection.h"
 
 #include <string>
@@ -18,13 +18,13 @@
 struct AInputEvent;
 class CJNIViewInputDevice;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace JOYSTICK
 {
 class IButtonMap;
 } // namespace JOYSTICK
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER
 
 namespace PERIPHERALS
 {
@@ -57,7 +57,7 @@ public:
    * If Android can't map the buttons, it will use generic button keycodes such
    * as AKEYCODE_BUTTON_1, in which case we can't initialize the buttonmap.
    */
-  bool InitializeButtonMap(KODI::JOYSTICK::IButtonMap& buttonMap) const;
+  bool InitializeButtonMap(UNIVERSAL MEDIA CENTER::JOYSTICK::IButtonMap& buttonMap) const;
 
   /*!
    * \brief Get the joystick appearance, if known
@@ -79,21 +79,21 @@ public:
   /*!
    * \brief Get events that have occurred since the last call to GetEvents()
    */
-  void GetEvents(std::vector<kodi::addon::PeripheralEvent>& events);
+  void GetEvents(std::vector<addon::PeripheralEvent>& events);
 
 private:
   bool SetButtonValue(int axisId, JOYSTICK_STATE_BUTTON buttonValue);
   bool SetAxisValue(const std::vector<int>& axisIds, JOYSTICK_STATE_AXIS axisValue);
 
-  void GetButtonEvents(std::vector<kodi::addon::PeripheralEvent>& events);
-  void GetAxisEvents(std::vector<kodi::addon::PeripheralEvent>& events) const;
+  void GetButtonEvents(std::vector<addon::PeripheralEvent>& events);
+  void GetAxisEvents(std::vector<addon::PeripheralEvent>& events) const;
 
-  bool MapButton(KODI::JOYSTICK::IButtonMap& buttonMap, int buttonKeycode) const;
-  bool MapTrigger(KODI::JOYSTICK::IButtonMap& buttonMap,
+  bool MapButton(UNIVERSAL MEDIA CENTER::JOYSTICK::IButtonMap& buttonMap, int buttonKeycode) const;
+  bool MapTrigger(UNIVERSAL MEDIA CENTER::JOYSTICK::IButtonMap& buttonMap,
                   int axisId,
                   const std::string& triggerName) const;
-  bool MapDpad(KODI::JOYSTICK::IButtonMap& buttonMap, int horizAxisId, int vertAxisId) const;
-  bool MapAnalogStick(KODI::JOYSTICK::IButtonMap& buttonMap,
+  bool MapDpad(UNIVERSAL MEDIA CENTER::JOYSTICK::IButtonMap& buttonMap, int horizAxisId, int vertAxisId) const;
+  bool MapAnalogStick(UNIVERSAL MEDIA CENTER::JOYSTICK::IButtonMap& buttonMap,
                       int horizAxisId,
                       int vertAxisId,
                       const std::string& analogStickName) const;
@@ -130,6 +130,6 @@ private:
   std::vector<JOYSTICK_STATE_AXIS> m_analogState;
 
   CCriticalSection m_eventMutex;
-  std::vector<kodi::addon::PeripheralEvent> m_digitalEvents;
+  std::vector<addon::PeripheralEvent> m_digitalEvents;
 };
 } // namespace PERIPHERALS

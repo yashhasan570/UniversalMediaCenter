@@ -27,7 +27,7 @@
 #include <utility>
 
 using namespace ADDON;
-using namespace KODI::MESSAGING;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
 
 
 #define CONTROL_OK              28

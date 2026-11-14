@@ -289,10 +289,10 @@ protected:
   static CSkinSettingPtr ParseSetting(const TiXmlElement* element);
 
   bool SettingsLoaded(AddonInstanceId id = ADDON_SETTINGS_ID) const override;
-  bool SettingsFromXML(const CXBMCTinyXML& doc,
+  bool SettingsFromXML(const CTinyXML& doc,
                        bool loadDefaults,
                        AddonInstanceId id = ADDON_SETTINGS_ID) override;
-  bool SettingsToXML(CXBMCTinyXML& doc, AddonInstanceId id = ADDON_SETTINGS_ID) const override;
+  bool SettingsToXML(CTinyXML& doc, AddonInstanceId id = ADDON_SETTINGS_ID) const override;
 
   RESOLUTION_INFO m_defaultRes;
   std::vector<RESOLUTION_INFO> m_resolutions;

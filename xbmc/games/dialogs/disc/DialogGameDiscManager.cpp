@@ -28,7 +28,7 @@
 #include "utils/URIUtils.h"
 #include "utils/log.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 CDialogGameDiscManager::CDialogGameDiscManager()

@@ -118,13 +118,13 @@ This page shows the window names, the window definition, the window ID and the s
 | GameOSD                 | WINDOW_DIALOG_GAME_OSD               | 10822     | GameOSD.xml                         | @skinning_v18 **New window**<p></p> |
 | GameVideoFilter         | WINDOW_DIALOG_GAME_VIDEO_FILTER      | 10823     | DialogSelect.xml                    | @skinning_v18 **New window**<p></p> |
 | GameStretchMode         | WINDOW_DIALOG_GAME_STRETCH_MODE      | 10824     | DialogSelect.xml                    | @skinning_v18 **New window**<p></p> |
-| GameVolume              | WINDOW_DIALOG_GAME_VOLUME            | 10825     | DialogSlider.xml                    | @skinning_v18 **New window** See https://github.com/xbmc/xbmc/pull/12765<p></p> |
+| GameVolume              | WINDOW_DIALOG_GAME_VOLUME            | 10825     | DialogSlider.xml                    | @skinning_v18 **New window** See https://github.com///pull/12765<p></p> |
 | GameAdvancedSettings    | WINDOW_DIALOG_GAME_ADVANCED_SETTINGS | 10826     | DialogAddonSettings.xml             | @skinning_v18 **New window**<p></p> |
 | GameVideoRotation       | WINDOW_DIALOG_GAME_VIDEO_ROTATION    | 10827     | DialogSelect.xml                    | @skinning_v18 **New window**<p></p> |
-| GamePorts               | WINDOW_DIALOG_GAME_PORTS             | 10828     | DialogGameControllers.xml           | @skinning_v20 **New window** See https://github.com/xbmc/xbmc/pull/20505<p></p> |
+| GamePorts               | WINDOW_DIALOG_GAME_PORTS             | 10828     | DialogGameControllers.xml           | @skinning_v20 **New window** See https://github.com///pull/20505<p></p> |
 | InGameSaves             | WINDOW_DIALOG_IN_GAME_SAVES          | 10829     | DialogSelect.xml                    | @skinning_v20 **New window** Part of the GSoC 2020 Saved Game Manager<p></p> |
 | GameSaves               | WINDOW_DIALOG_GAME_SAVES             | 10830     | DialogSelect.xml                    | @skinning_v20 **New window** Part of the GSoC 2020 Saved Game Manager<p></p> |
-| GameAgents              | WINDOW_DIALOG_GAME_AGENTS            | 10831     | DialogGameControllers.xml           | @skinning_v21 **New window** See https://github.com/xbmc/xbmc/pull/23548<p></p> |
+| GameAgents              | WINDOW_DIALOG_GAME_AGENTS            | 10831     | DialogGameControllers.xml           | @skinning_v21 **New window** See https://github.com///pull/23548<p></p> |
 | Custom Skin Windows     | -                                    | -         | custom*.xml                         |                                    |
 | SelectDialog            | WINDOW_DIALOG_SELECT                 | 12000     | DialogSelect.xml                    |                                    |
 | MusicInformation        | WINDOW_DIALOG_MUSIC_INFO             | 12001     | DialogMusicInfo.xml                 |                                    |

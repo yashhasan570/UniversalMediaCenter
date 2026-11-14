@@ -17,7 +17,7 @@
 
 class CFileItem;
 
-namespace KODI::PLAYLIST
+namespace UNIVERSAL MEDIA CENTER::PLAYLIST
 {
 /*!
  * \brief A feed that deals a pool of matches in random order and has its creator fetch the items
@@ -48,4 +48,4 @@ private:
   //! The next pool entry to hand over.
   size_t m_next{0};
 };
-} // namespace KODI::PLAYLIST
+} // namespace UNIVERSAL MEDIA CENTER::PLAYLIST

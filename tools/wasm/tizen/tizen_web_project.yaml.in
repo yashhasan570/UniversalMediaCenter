@@ -29,9 +29,9 @@ trust_anchor: []
 files:
   - index.html
   - media/splash.jpg
-  - kodi.js
-  - kodi.wasm
-  - kodi.data
+  - universalmediacenter.js
+  - universalmediacenter.wasm
+  - universalmediacenter.data
 
 # list of files to exclude based on the matched patterns
 excludes:

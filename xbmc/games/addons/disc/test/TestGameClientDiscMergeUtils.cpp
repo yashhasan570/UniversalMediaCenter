@@ -14,7 +14,7 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 namespace
@@ -176,11 +176,11 @@ TEST(TestGameClientDiscMergeUtils, InvalidCoreSelectionIndexCanUnexpectedlyForce
 
 TEST(TestGameClientDiscMergeUtils, EmptyCoreRetainsHistoricalFrontendMedia)
 {
-  const auto deleteFile = [](XFILE::CFile* file) { XBMC_DELETETEMPFILE(file); };
-  std::unique_ptr<XFILE::CFile, decltype(deleteFile)> file(XBMC_CREATETEMPFILE(".chd"), deleteFile);
+  const auto deleteFile = [](XFILE::CFile* file) { _DELETETEMPFILE(file); };
+  std::unique_ptr<XFILE::CFile, decltype(deleteFile)> file(_CREATETEMPFILE(".chd"), deleteFile);
   ASSERT_NE(file, nullptr);
   file->Close();
-  const std::string path = XBMC_TEMPFILEPATH(file.get());
+  const std::string path = _TEMPFILEPATH(file.get());
   CGameClientDiscModel frontend;
   frontend.AddDisc(path);
   const auto saved = frontend.GetState();
@@ -199,11 +199,11 @@ TEST(TestGameClientDiscMergeUtils, EmptyCoreRetainsHistoricalFrontendMedia)
 
 TEST(TestGameClientDiscMergeUtils, EmptyFrontendRetainsHistoricalCoreMedia)
 {
-  const auto deleteFile = [](XFILE::CFile* file) { XBMC_DELETETEMPFILE(file); };
-  std::unique_ptr<XFILE::CFile, decltype(deleteFile)> file(XBMC_CREATETEMPFILE(".chd"), deleteFile);
+  const auto deleteFile = [](XFILE::CFile* file) { _DELETETEMPFILE(file); };
+  std::unique_ptr<XFILE::CFile, decltype(deleteFile)> file(_CREATETEMPFILE(".chd"), deleteFile);
   ASSERT_NE(file, nullptr);
   file->Close();
-  const std::string path = XBMC_TEMPFILEPATH(file.get());
+  const std::string path = _TEMPFILEPATH(file.get());
   CGameClientDiscModel core;
   core.AddDisc(path);
   const auto saved = core.GetState();

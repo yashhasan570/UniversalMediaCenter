@@ -112,7 +112,7 @@ protected:
 #endif
 
   // OS screen saver inhibitor that is always active if user selected a Universal Media Center screen saver
-  KODI::WINDOWING::COSScreenSaverInhibitor m_globalScreensaverInhibitor;
+  UNIVERSAL MEDIA CENTER::WINDOWING::COSScreenSaverInhibitor m_globalScreensaverInhibitor;
   // Inhibitor that is active e.g. during video playback
-  KODI::WINDOWING::COSScreenSaverInhibitor m_screensaverInhibitor;
+  UNIVERSAL MEDIA CENTER::WINDOWING::COSScreenSaverInhibitor m_screensaverInhibitor;
 };

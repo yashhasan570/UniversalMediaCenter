@@ -14,7 +14,7 @@
 
 #include <memory>
 
-namespace KODI::LANGUAGE::I18N
+namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N
 {
 class CSubTagRegistryManager
 {
@@ -60,4 +60,4 @@ private:
 
   bool m_initialized{false};
 };
-} // namespace KODI::LANGUAGE::I18N
+} // namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N

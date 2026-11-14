@@ -13,7 +13,7 @@
 
 #include <emscripten/heap.h>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace MEMORY
 {
@@ -49,4 +49,4 @@ void GetMemoryStatus(MemoryStatus* buffer)
 }
 
 } // namespace MEMORY
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

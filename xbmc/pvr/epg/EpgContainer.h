@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "addons/kodi-dev-kit/include/kodi/c-api/addon-instance/pvr/pvr_epg.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api/addon-instance/pvr/pvr_epg.h"
 #include "powermanagement/PowerState.h"
 #include "threads/CriticalSection.h"
 #include "threads/Event.h"

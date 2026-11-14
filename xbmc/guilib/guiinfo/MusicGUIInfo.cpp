@@ -36,9 +36,9 @@
 #include "utils/URIUtils.h"
 #include "utils/log.h"
 
-using namespace KODI;
-using namespace KODI::GUILIB;
-using namespace KODI::GUILIB::GUIINFO;
+using namespace UNIVERSAL MEDIA CENTER;
+using namespace UNIVERSAL MEDIA CENTER::GUILIB;
+using namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO;
 using namespace MUSIC_INFO;
 
 bool CMusicGUIInfo::InitCurrentItem(CFileItem* item)

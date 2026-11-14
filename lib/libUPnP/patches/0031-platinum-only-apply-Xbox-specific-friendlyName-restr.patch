@@ -1,5 +1,5 @@
 From 9916c3e60b5924cd36bb4018e3723659cc077e23 Mon Sep 17 00:00:00 2001
-From: montellese <montellese@xbmc.org>
+From: montellese <montellese@.org>
 Date: Sat, 2 Aug 2014 20:57:46 +0200
 Subject: [PATCH] platinum: only apply Xbox specific "friendlyName"
  restrictions to Xbox clients

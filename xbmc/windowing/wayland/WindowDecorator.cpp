@@ -21,8 +21,8 @@
 
 #include <linux/input.h>
 
-using namespace KODI::UTILS::POSIX;
-using namespace KODI::WINDOWING::WAYLAND;
+using namespace UNIVERSAL MEDIA CENTER::UTILS::POSIX;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::WAYLAND;
 using namespace std::placeholders;
 
 namespace

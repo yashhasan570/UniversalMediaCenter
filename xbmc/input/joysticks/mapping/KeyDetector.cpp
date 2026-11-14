@@ -10,10 +10,10 @@
 
 #include "input/joysticks/DriverPrimitive.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace JOYSTICK;
 
-CKeyDetector::CKeyDetector(CButtonMapping* buttonMapping, XBMCKey keycode)
+CKeyDetector::CKeyDetector(CButtonMapping* buttonMapping, Key keycode)
   : CPrimitiveDetector(buttonMapping),
     m_keycode(keycode)
 {

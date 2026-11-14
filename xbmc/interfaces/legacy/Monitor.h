@@ -11,18 +11,18 @@
 #include "AddonCallback.h"
 #include "AddonString.h"
 
-namespace XBMCAddon
+namespace Addon
 {
-  namespace xbmc
+  namespace 
   {
 
     ///
-    /// \ingroup python_xbmc
+    /// \ingroup python_
     /// \defgroup python_monitor Monitor
     /// @{
     /// @brief **Universal Media Center's monitor class.**
     ///
-    /// \python_class{ xbmc.Monitor() }
+    /// \python_class{ .Monitor() }
     ///
     /// Creates a new monitor to notify addon about changes.
     ///
@@ -35,38 +35,38 @@ namespace XBMCAddon
       Monitor();
 
 #ifndef SWIG
-      inline void    OnSettingsChanged() { XBMC_TRACE; invokeCallback(new CallbackFunction<Monitor>(this,&Monitor::onSettingsChanged)); }
-      inline void    OnScreensaverActivated() { XBMC_TRACE; invokeCallback(new CallbackFunction<Monitor>(this,&Monitor::onScreensaverActivated)); }
-      inline void    OnScreensaverDeactivated() { XBMC_TRACE; invokeCallback(new CallbackFunction<Monitor>(this,&Monitor::onScreensaverDeactivated)); }
-      inline void    OnDPMSActivated() { XBMC_TRACE; invokeCallback(new CallbackFunction<Monitor>(this,&Monitor::onDPMSActivated)); }
-      inline void    OnDPMSDeactivated() { XBMC_TRACE; invokeCallback(new CallbackFunction<Monitor>(this,&Monitor::onDPMSDeactivated)); }
+      inline void    OnSettingsChanged() { _TRACE; invokeCallback(new CallbackFunction<Monitor>(this,&Monitor::onSettingsChanged)); }
+      inline void    OnScreensaverActivated() { _TRACE; invokeCallback(new CallbackFunction<Monitor>(this,&Monitor::onScreensaverActivated)); }
+      inline void    OnScreensaverDeactivated() { _TRACE; invokeCallback(new CallbackFunction<Monitor>(this,&Monitor::onScreensaverDeactivated)); }
+      inline void    OnDPMSActivated() { _TRACE; invokeCallback(new CallbackFunction<Monitor>(this,&Monitor::onDPMSActivated)); }
+      inline void    OnDPMSDeactivated() { _TRACE; invokeCallback(new CallbackFunction<Monitor>(this,&Monitor::onDPMSDeactivated)); }
       inline void    OnScanStarted(const String &library)
       {
-	XBMC_TRACE;
+	_TRACE;
         invokeCallback(
             new CallbackFunction<Monitor, const String>(this, &Monitor::onScanStarted, library));
       }
       inline void    OnScanFinished(const String &library)
       {
-	XBMC_TRACE;
+	_TRACE;
         invokeCallback(
             new CallbackFunction<Monitor, const String>(this, &Monitor::onScanFinished, library));
       }
       inline void OnCleanStarted(const String& library)
       {
-        XBMC_TRACE;
+        _TRACE;
         invokeCallback(
             new CallbackFunction<Monitor, const String>(this, &Monitor::onCleanStarted, library));
       }
       inline void OnCleanFinished(const String& library)
       {
-        XBMC_TRACE;
+        _TRACE;
         invokeCallback(
             new CallbackFunction<Monitor, const String>(this, &Monitor::onCleanFinished, library));
       }
       inline void OnNotification(const String& sender, const String& method, const String& data)
       {
-        XBMC_TRACE;
+        _TRACE;
         invokeCallback(new CallbackFunction<Monitor, const String, const String, const String>(
             this, &Monitor::onNotification, sender, method, data));
       }
@@ -90,7 +90,7 @@ namespace XBMCAddon
       ///
       onSettingsChanged();
 #else
-      virtual void onSettingsChanged() { XBMC_TRACE; }
+      virtual void onSettingsChanged() { _TRACE; }
 #endif
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
@@ -103,7 +103,7 @@ namespace XBMCAddon
       ///
       onScreensaverActivated();
 #else
-      virtual void onScreensaverActivated() { XBMC_TRACE; }
+      virtual void onScreensaverActivated() { _TRACE; }
 #endif
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
@@ -116,7 +116,7 @@ namespace XBMCAddon
       ///
       onScreensaverDeactivated();
 #else
-      virtual void onScreensaverDeactivated() { XBMC_TRACE; }
+      virtual void onScreensaverDeactivated() { _TRACE; }
 #endif
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
@@ -129,7 +129,7 @@ namespace XBMCAddon
       ///
       onDPMSActivated();
 #else
-      virtual void onDPMSActivated() { XBMC_TRACE; }
+      virtual void onDPMSActivated() { _TRACE; }
 #endif
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
@@ -142,7 +142,7 @@ namespace XBMCAddon
       ///
       onDPMSDeactivated();
 #else
-      virtual void onDPMSDeactivated() { XBMC_TRACE; }
+      virtual void onDPMSDeactivated() { _TRACE; }
 #endif
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
@@ -163,7 +163,7 @@ namespace XBMCAddon
       ///
       onScanStarted(...);
 #else
-      virtual void onScanStarted(const String library) { XBMC_TRACE; }
+      virtual void onScanStarted(const String library) { _TRACE; }
 #endif
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
@@ -184,7 +184,7 @@ namespace XBMCAddon
       ///
       onScanFinished(...);
 #else
-      virtual void onScanFinished(const String library) { XBMC_TRACE; }
+      virtual void onScanFinished(const String library) { _TRACE; }
 #endif
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
@@ -205,7 +205,7 @@ namespace XBMCAddon
       ///
       onCleanStarted(...);
 #else
-      virtual void onCleanStarted(const String library) { XBMC_TRACE; }
+      virtual void onCleanStarted(const String library) { _TRACE; }
 #endif
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
@@ -226,7 +226,7 @@ namespace XBMCAddon
       ///
       onCleanFinished(...);
 #else
-      virtual void onCleanFinished(const String library) { XBMC_TRACE; }
+      virtual void onCleanFinished(const String library) { _TRACE; }
 #endif
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
@@ -249,7 +249,7 @@ namespace XBMCAddon
 #else
       virtual void onNotification(const String sender, const String method, const String data)
       {
-        XBMC_TRACE;
+        _TRACE;
       }
 #endif
 
@@ -257,7 +257,7 @@ namespace XBMCAddon
       /// \ingroup python_monitor
       /// @brief \python_func{ waitForAbort([timeout]) }
       /// Wait for Abort
-      /// \anchor xbmc_Monitor_waitForAbort
+      /// \anchor _Monitor_waitForAbort
       ///
       /// Block until abort is requested, or until timeout occurs. If an
       /// abort requested have already been made, return immediately.
@@ -276,9 +276,9 @@ namespace XBMCAddon
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// monitor = xbmc.Monitor()
+      /// monitor = .Monitor()
       /// # do something
-      /// monitor.waitForAbort(10) # sleeps for 10 secs or returns early if kodi aborts
+      /// monitor.waitForAbort(10) # sleeps for 10 secs or returns early if universalmediacenter aborts
       /// if monitor.abortRequested():
       ///     # abort was requested to Universal Media Center (e.g. shutdown), do your cleanup logic
       /// ..

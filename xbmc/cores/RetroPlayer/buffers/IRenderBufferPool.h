@@ -18,7 +18,7 @@ extern "C"
 #include <memory>
 #include <stdint.h>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RENDERING::CAPTURE
 {
@@ -197,4 +197,4 @@ public:
   virtual void FlushRendered() {}
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

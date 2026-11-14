@@ -1,4 +1,4 @@
-From: Kodi depends
+From: Universal Media Center depends
 Subject: [PATCH] gmp: Fix lshift_com configure tests for C23
 
 GMP 6.3.0 uses K&R-style definitions in two compiler probes, which Clang

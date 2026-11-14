@@ -16,7 +16,7 @@
 
 class TestFilenameAttributes;
 
-namespace KODI::VIDEO
+namespace UNIVERSAL MEDIA CENTER::VIDEO
 {
 /*!
  * \brief Transparent string hasher for std::unordered_map heterogeneous lookup
@@ -32,7 +32,7 @@ using AttributeMap = std::unordered_map<std::string, std::string, StringHash, st
 class CFilenameAttributes
 {
 public:
-  CFilenameAttributes(const std::string& filename, KODI::REGEXP::RegExpCache* cache);
+  CFilenameAttributes(const std::string& filename, UNIVERSAL MEDIA CENTER::REGEXP::RegExpCache* cache);
 
   /*!
    * \brief Retrieve unique identifier information from the attributes.
@@ -60,7 +60,7 @@ public:
    * \param[in,out] fileName The filename to strip attributes from.
    * \param[in,out] cache Optional regular expression cache
    */
-  static void CleanFilenameAttributePairs(std::string& fileName, KODI::REGEXP::RegExpCache* cache);
+  static void CleanFilenameAttributePairs(std::string& fileName, UNIVERSAL MEDIA CENTER::REGEXP::RegExpCache* cache);
 
 private:
   friend class ::TestFilenameAttributes;
@@ -77,7 +77,7 @@ private:
    *         regular expression is invalid or no matches are found.
    */
   static AttributeMap GetFilenameAttributePairs(const std::string& fileName,
-                                                KODI::REGEXP::RegExpCache* cache);
+                                                UNIVERSAL MEDIA CENTER::REGEXP::RegExpCache* cache);
 
   /*!
    * \brief Retrieve and cache unique identifier information from the attributes.
@@ -94,4 +94,4 @@ private:
   mutable std::string m_identifier;
   mutable std::optional<bool> m_hasIdentifier;
 };
-} // namespace KODI::VIDEO
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO

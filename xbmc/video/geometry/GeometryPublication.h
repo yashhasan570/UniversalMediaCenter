@@ -14,7 +14,7 @@
 #include <optional>
 #include <string_view>
 
-namespace KODI::VIDEO::GEOMETRY
+namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY
 {
 
 //! \brief A ratio as the API states them, rounded to four places so a caller can compare it.
@@ -43,4 +43,4 @@ void SerializeGeometryOverrides(const GeometryOverrides& overrides, CVariant& va
 //! alone; zero for a ratio, or "setting" for the placement, gives one back to its setting.
 void ParseGeometryOverrides(const CVariant& geometry, GeometryOverrides& overrides);
 
-} // namespace KODI::VIDEO::GEOMETRY
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY

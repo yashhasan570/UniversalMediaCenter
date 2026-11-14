@@ -49,9 +49,9 @@ StreamUtils::AudioPreferences StreamUtils::AudioPreferences::Current()
 
   AudioPreferences preferences;
   preferences.mediaDefault =
-      StringUtils::EqualsNoCase(setting, KODI::LANGINFO::audioLanguageMediaDefault);
+      StringUtils::EqualsNoCase(setting, UNIVERSAL MEDIA CENTER::LANGINFO::audioLanguageMediaDefault);
   preferences.preferOriginal =
-      StringUtils::EqualsNoCase(setting, KODI::LANGINFO::audioLanguageOriginal);
+      StringUtils::EqualsNoCase(setting, UNIVERSAL MEDIA CENTER::LANGINFO::audioLanguageOriginal);
 
   // Only a preference naming a language has one to match on, and the two above do not, which is
   // why they are read separately. GetAudioLanguage() resolves "default" to the UI language.

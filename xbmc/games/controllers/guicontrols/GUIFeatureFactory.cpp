@@ -14,7 +14,7 @@
 #include "GUIThrottleButton.h"
 #include "GUIWheelButton.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 CGUIButtonControl* CGUIFeatureFactory::CreateButton(BUTTON_TYPE type,

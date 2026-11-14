@@ -10,7 +10,7 @@
 
 #include "RenderBufferDMAOpenGLES.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace RETRO;
 
 IRenderBuffer* CRenderBufferPoolDMAOpenGLES::CreateRenderBuffer(void* header /* = nullptr */)

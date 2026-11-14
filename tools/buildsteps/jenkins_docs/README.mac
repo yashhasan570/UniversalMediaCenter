@@ -1,4 +1,4 @@
-This are the steps to be done for configuring a mac for being a build slave to the Kodi jenkins CI system
+This are the steps to be done for configuring a mac for being a build slave to the Universal Media Center jenkins CI system
 --------------------------------------------------------------------------------------------------------
 
 1. setup user jenkins as follows:
@@ -29,9 +29,9 @@ sudo chown jenkins:wheel /var/log/jenkins
 
 4. sudo chown jenkins:wheel /Users/Shared/jenkins
 
-5. mkdir -p /Users/Shared/xbmc-depends/dSyms
+5. mkdir -p /Users/Shared/-depends/dSyms
 
-6. sudo chown -R jenkins:wheel /Users/Shared/xbmc-depends/
+6. sudo chown -R jenkins:wheel /Users/Shared/-depends/
 
 7. Change to user jenknis via sudo -u jenkins bash
 
@@ -43,7 +43,7 @@ sudo chown jenkins:wheel /var/log/jenkins
 
 rm error.log
 rm stdout.log
-java -Djava.awt.headless=true -jar slave.jar -jar-cache /Users/Shared/jenkins/cache -jnlpUrl http://jenkins.kodi.tv/computer/<node name from jenkins node page>/slave-agent.jnlp -secret <secret from jenkins node page>
+java -Djava.awt.headless=true -jar slave.jar -jar-cache /Users/Shared/jenkins/cache -jnlpUrl http://jenkins.Universal Media Center.tv/computer/<node name from jenkins node page>/slave-agent.jnlp -secret <secret from jenkins node page>
 
 10. chmod +x /Users/Shared/jenkins/slave/startslave.sh
 
@@ -82,7 +82,7 @@ java -Djava.awt.headless=true -jar slave.jar -jar-cache /Users/Shared/jenkins/ca
 
 14. sudo nano /etc/profile and add PATH=$PATH:/usr/local/bin
 
-15. curl http://jenkins.kodi.tv/jnlpJars/slave.jar -Lo /Users/Shared/jenkins/slave.jar
+15. curl http://jenkins.Universal Media Center.tv/jnlpJars/slave.jar -Lo /Users/Shared/jenkins/slave.jar
 
 16. install java JDK 8
 

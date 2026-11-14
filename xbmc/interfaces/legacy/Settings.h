@@ -21,16 +21,16 @@
 
 class CSettingsBase;
 
-namespace XBMCAddon
+namespace Addon
 {
-namespace xbmcaddon
+namespace addon
 {
 
-XBMCCOMMONS_STANDARD_EXCEPTION(SettingCallbacksNotSupportedException);
+COMMONS_STANDARD_EXCEPTION(SettingCallbacksNotSupportedException);
 
 //
 /// \defgroup python_settings Settings
-/// \ingroup python_xbmcaddon
+/// \ingroup python_addon
 /// @{
 /// @brief **Add-on settings**
 ///
@@ -45,7 +45,7 @@ XBMCCOMMONS_STANDARD_EXCEPTION(SettingCallbacksNotSupportedException);
 /// **Example:**
 /// ~~~~~~~~~~~~~{.py}
 /// ...
-/// settings = xbmcaddon.Addon('id').getSettings()
+/// settings = addon.Addon('id').getSettings()
 /// ...
 /// ~~~~~~~~~~~~~
 //
@@ -363,7 +363,7 @@ public:
   /// **Example:**
   /// ~~~~~~~~~~~~~{.py}
   /// ..
-  /// settings.setString(id='username', value='teamkodi')
+  /// settings.setString(id='username', value='teamuniversalmediacenter')
   /// ..
   /// ~~~~~~~~~~~~~
   ///
@@ -475,7 +475,7 @@ public:
   /// **Example:**
   /// ~~~~~~~~~~~~~{.py}
   /// ..
-  /// settings.setStringList(id='username', values=[ 'team', 'kodi' ])
+  /// settings.setStringList(id='username', values=[ 'team', 'universalmediacenter' ])
   /// ..
   /// ~~~~~~~~~~~~~
   ///
@@ -486,5 +486,5 @@ public:
 };
 //@}
 
-} // namespace xbmcaddon
-} // namespace XBMCAddon
+} // namespace addon
+} // namespace Addon

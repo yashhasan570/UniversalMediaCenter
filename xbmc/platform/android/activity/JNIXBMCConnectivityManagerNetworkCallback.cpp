@@ -6,7 +6,7 @@
  *  See LICENSES/README.md for more information.
  */
 
-#include "JNIXBMCConnectivityManagerNetworkCallback.h"
+#include "JNIConnectivityManagerNetworkCallback.h"
 
 #include "CompileInfo.h"
 
@@ -19,11 +19,11 @@ namespace
 {
 
 static std::string className =
-    std::string(CCompileInfo::GetClass()) + "/interfaces/XBMCConnectivityManagerNetworkCallback";
+    std::string(CCompileInfo::GetClass()) + "/interfaces/ConnectivityManagerNetworkCallback";
 
 } // namespace
 
-CJNIXBMCConnectivityManagerNetworkCallback::CJNIXBMCConnectivityManagerNetworkCallback()
+CJNIConnectivityManagerNetworkCallback::CJNIConnectivityManagerNetworkCallback()
   : CJNIBase(className)
 {
   m_object = new_object(CJNIContext::getClassLoader().loadClass(ToDotClassName(className)));
@@ -32,39 +32,39 @@ CJNIXBMCConnectivityManagerNetworkCallback::CJNIXBMCConnectivityManagerNetworkCa
   add_instance(m_object, this);
 }
 
-CJNIXBMCConnectivityManagerNetworkCallback::~CJNIXBMCConnectivityManagerNetworkCallback()
+CJNIConnectivityManagerNetworkCallback::~CJNIConnectivityManagerNetworkCallback()
 {
   remove_instance(this);
 }
 
-void CJNIXBMCConnectivityManagerNetworkCallback::RegisterNatives(JNIEnv* env)
+void CJNIConnectivityManagerNetworkCallback::RegisterNatives(JNIEnv* env)
 {
   jclass cClass = env->FindClass(className.c_str());
   if (cClass)
   {
     JNINativeMethod methods[] = {
         {"_onAvailable", "(Landroid/net/Network;)V",
-         reinterpret_cast<void*>(&CJNIXBMCConnectivityManagerNetworkCallback::_onAvailable)},
+         reinterpret_cast<void*>(&CJNIConnectivityManagerNetworkCallback::_onAvailable)},
         {"_onLost", "(Landroid/net/Network;)V",
-         reinterpret_cast<void*>(&CJNIXBMCConnectivityManagerNetworkCallback::_onLost)},
+         reinterpret_cast<void*>(&CJNIConnectivityManagerNetworkCallback::_onLost)},
     };
 
     env->RegisterNatives(cClass, methods, sizeof(methods) / sizeof(methods[0]));
   }
 }
 
-void CJNIXBMCConnectivityManagerNetworkCallback::_onAvailable(JNIEnv* env,
+void CJNIConnectivityManagerNetworkCallback::_onAvailable(JNIEnv* env,
                                                               jobject thiz,
                                                               jobject network)
 {
-  CJNIXBMCConnectivityManagerNetworkCallback* inst = find_instance(thiz);
+  CJNIConnectivityManagerNetworkCallback* inst = find_instance(thiz);
   if (inst)
     inst->onAvailable(CJNINetwork(jhobject::fromJNI(network)));
 }
 
-void CJNIXBMCConnectivityManagerNetworkCallback::_onLost(JNIEnv* env, jobject thiz, jobject network)
+void CJNIConnectivityManagerNetworkCallback::_onLost(JNIEnv* env, jobject thiz, jobject network)
 {
-  CJNIXBMCConnectivityManagerNetworkCallback* inst = find_instance(thiz);
+  CJNIConnectivityManagerNetworkCallback* inst = find_instance(thiz);
   if (inst)
     inst->onLost(CJNINetwork(jhobject::fromJNI(network)));
 }

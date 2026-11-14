@@ -409,7 +409,7 @@
           <level>0</level>
           <default></default>
           <constraints>
-            <addontype>xbmc.player.musicviz</addontype>
+            <addontype>.player.musicviz</addontype>
             <allowempty>true</allowempty>
           </constraints>
           <control type="button" format="addon">
@@ -564,9 +564,9 @@
         <setting id="audiocds.encoder" type="addon" label="621" help="36287">
           <requirement>HAS_CDDA_RIPPER</requirement>
           <level>3</level>
-          <default>audioencoder.kodi.builtin.aac</default>
+          <default>audioencoder.universalmediacenter.builtin.aac</default>
           <constraints>
-            <addontype>kodi.audioencoder</addontype>
+            <addontype>universalmediacenter.audioencoder</addontype>
           </constraints>
           <control type="button" format="addon">
             <show more="true" details="true">installed</show>
@@ -1008,7 +1008,7 @@
           <default></default>
           <constraints>
             <allowempty>true</allowempty>
-            <addontype>xbmc.subtitle.module</addontype>
+            <addontype>.subtitle.module</addontype>
           </constraints>
           <control type="button" format="addon">
             <show more="true" details="true">installed</show>
@@ -1019,7 +1019,7 @@
           <default></default>
           <constraints>
             <allowempty>true</allowempty>
-            <addontype>xbmc.subtitle.module</addontype>
+            <addontype>.subtitle.module</addontype>
           </constraints>
           <control type="button" format="addon">
             <show more="true" details="true">installed</show>
@@ -1609,7 +1609,7 @@
           <level>1</level>
           <default>metadata.generic.albums</default>
           <constraints>
-            <addontype>xbmc.metadata.scraper.albums</addontype>
+            <addontype>.metadata.scraper.albums</addontype>
           </constraints>
           <control type="button" format="addon">
             <show more="true" details="true">installed</show>
@@ -1619,7 +1619,7 @@
           <level>1</level>
           <default>metadata.generic.artists</default>
           <constraints>
-            <addontype>xbmc.metadata.scraper.artists</addontype>
+            <addontype>.metadata.scraper.artists</addontype>
           </constraints>
           <control type="button" format="addon">
             <show more="true" details="true">installed</show>
@@ -1843,21 +1843,21 @@
           <level>4</level>
           <default>metadata.themoviedb.org.python</default>
           <constraints>
-            <addontype>xbmc.metadata.scraper.movies</addontype>
+            <addontype>.metadata.scraper.movies</addontype>
           </constraints>
         </setting>
         <setting id="scrapers.tvshowsdefault" type="addon" label="21414" help="36199">
           <level>4</level>
           <default>metadata.tvshows.themoviedb.org.python</default>
           <constraints>
-            <addontype>xbmc.metadata.scraper.tvshows</addontype>
+            <addontype>.metadata.scraper.tvshows</addontype>
           </constraints>
         </setting>
         <setting id="scrapers.musicvideosdefault" type="addon" label="21415" help="36200">
           <level>4</level>
           <default>metadata.local</default>
           <constraints>
-            <addontype>xbmc.metadata.scraper.musicvideos</addontype>
+            <addontype>.metadata.scraper.musicvideos</addontype>
           </constraints>
           <updates>
             <update type="change" />
@@ -2431,7 +2431,7 @@
         </setting>
         <setting id="services.webserverusername" type="string" parent="services.webserver" label="1048" help="36330">
           <level>1</level>
-          <default>kodi</default>
+          <default>universalmediacenter</default>
           <updates>
             <update type="change" />
           </updates>
@@ -2460,7 +2460,7 @@
           <level>1</level>
           <default>webinterface.default</default>
           <constraints>
-            <addontype>xbmc.webinterface</addontype>
+            <addontype>.webinterface</addontype>
           </constraints>
           <control type="button" format="addon">
             <show more="true" details="true">installed</show>
@@ -2832,7 +2832,7 @@
           <level>0</level>
           <default></default>
           <constraints>
-            <addontype>xbmc.python.weather</addontype>
+            <addontype>.python.weather</addontype>
             <allowempty>true</allowempty>
           </constraints>
           <control type="button" format="addon">
@@ -3824,12 +3824,12 @@
         </setting>
         <setting id="lookandfeel.soundskin" type="addon" label="24006" help="36110">
           <level>0</level>
-          <default>resource.uisounds.kodi</default>
+          <default>resource.uisounds.universalmediacenter</default>
           <dependencies>
             <dependency type="enable" setting="audiooutput.guisoundmode" operator="!is">0</dependency>
           </dependencies>
           <constraints>
-            <addontype>kodi.resource.uisounds</addontype>
+            <addontype>universalmediacenter.resource.uisounds</addontype>
             <allowempty>true</allowempty>
           </constraints>
           <updates>
@@ -4505,7 +4505,7 @@
           <level>0</level>
           <default>skin.estuary</default>
           <constraints>
-            <addontype>xbmc.gui.skin</addontype>
+            <addontype>.gui.skin</addontype>
           </constraints>
           <control type="button" format="addon">
             <show more="true" details="true">installed</show>
@@ -4605,7 +4605,7 @@
           <level>0</level>
           <default>resource.language.en_gb</default>
           <constraints>
-            <addontype>kodi.resource.language</addontype>
+            <addontype>universalmediacenter.resource.language</addontype>
           </constraints>
           <control type="button" format="addon">
             <show more="false" details="false">all</show>
@@ -4727,7 +4727,7 @@
           <level>0</level>
           <default>default</default> <!-- will be properly set on startup -->
           <constraints>
-            <addontype>xbmc.ui.screensaver</addontype>
+            <addontype>.ui.screensaver</addontype>
             <allowempty>true</allowempty>
           </constraints>
           <updates>
@@ -4789,7 +4789,7 @@
             <dependencies>
               <dependency type="enable">
                 <and>
-                  <condition setting="screensaver.mode" operator="!is">screensaver.xbmc.builtin.dim</condition>
+                  <condition setting="screensaver.mode" operator="!is">screensaver..builtin.dim</condition>
                   <condition setting="screensaver.mode" operator="!is"></condition>
                 </and>
               </dependency>

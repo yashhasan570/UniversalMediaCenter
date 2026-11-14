@@ -13,7 +13,7 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI::VIDEO::SUBTITLES;
+using namespace UNIVERSAL MEDIA CENTER::VIDEO::SUBTITLES;
 
 namespace
 {

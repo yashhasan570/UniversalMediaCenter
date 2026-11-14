@@ -25,7 +25,7 @@
 #include <Windows.h>
 #endif
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace TIME
 {
@@ -76,4 +76,4 @@ int LocalFileTimeToFileTime(const FileTime* LocalFileTime, FileTime* fileTime);
 int FileTimeToTimeT(const FileTime* localFileTime, time_t* pTimeT);
 int TimeTToFileTime(time_t timeT, FileTime* localFileTime);
 } // namespace TIME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

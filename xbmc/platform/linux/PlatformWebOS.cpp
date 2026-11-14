@@ -65,9 +65,9 @@ bool CPlatformWebOS::InitStageOne()
 
   setenv("PYTHONPATH", pythonPath.c_str(), 1);
   setenv("PYTHONIOENCODING", "UTF-8", 1);
-  setenv("KODI_HOME", HOME.c_str(), 1);
+  setenv("UNIVERSALMEDIA_HOME", HOME.c_str(), 1);
   setenv("SSL_CERT_FILE",
-         CSpecialProtocol::TranslatePath("special://xbmc/system/certs/cacert.pem").c_str(), 1);
+         CSpecialProtocol::TranslatePath("special:///system/certs/cacert.pem").c_str(), 1);
 
   return CPlatformLinux::InitStageOne();
 }

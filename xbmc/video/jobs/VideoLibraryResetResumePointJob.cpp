@@ -68,7 +68,7 @@ bool CVideoLibraryResetResumePointJob::Work(CVideoDatabase &db)
     if (item->HasPVRRecordingInfoTag() &&
         CServiceBroker::GetPVRManager().Recordings()->ResetResumePoint(item->GetPVRRecordingInfoTag()))
     {
-      KODI::VIDEO::UTILS::AnnounceResumePointChanged(item->GetPath(), {});
+      UNIVERSAL MEDIA CENTER::VIDEO::UTILS::AnnounceResumePointChanged(item->GetPath(), {});
       continue;
     }
 
@@ -87,7 +87,7 @@ bool CVideoLibraryResetResumePointJob::Work(CVideoDatabase &db)
     std::string path{resetItem->GetPath()};
     if (resetItem->HasVideoInfoTag() && !resetItem->GetVideoInfoTag()->GetPath().empty())
       path = resetItem->GetVideoInfoTag()->GetPath();
-    KODI::VIDEO::UTILS::AnnounceResumePointChanged(path, {});
+    UNIVERSAL MEDIA CENTER::VIDEO::UTILS::AnnounceResumePointChanged(path, {});
   }
 
   db.CommitTransaction();

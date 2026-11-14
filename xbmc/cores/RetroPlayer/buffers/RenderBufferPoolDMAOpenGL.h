@@ -10,7 +10,7 @@
 
 #include "RenderBufferPoolDMA.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -25,4 +25,4 @@ protected:
   IRenderBuffer* CreateRenderBuffer(void* header = nullptr) override;
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

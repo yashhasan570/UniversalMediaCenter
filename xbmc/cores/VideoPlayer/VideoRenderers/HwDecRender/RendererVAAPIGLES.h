@@ -14,7 +14,7 @@
 #include <array>
 #include <memory>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace UTILS
 {
@@ -66,6 +66,6 @@ protected:
   std::int32_t m_vaapiFourcc{};
   VAAPI::CVaapiTexturePool m_texturePool;
   VAAPI::CVaapiTexture* m_vaapiTextures[NUM_BUFFERS]{};
-  std::array<std::unique_ptr<KODI::UTILS::EGL::CEGLFence>, NUM_BUFFERS> m_fences;
+  std::array<std::unique_ptr<UNIVERSAL MEDIA CENTER::UTILS::EGL::CEGLFence>, NUM_BUFFERS> m_fences;
   static VAAPI::IVaapiWinSystem *m_pWinSystem;
 };

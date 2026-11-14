@@ -11,7 +11,7 @@
 #include <string>
 #include <vector>
 
-namespace KODI::LANGUAGE::I18N
+namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N
 {
 struct Bcp47Extension
 {
@@ -33,4 +33,4 @@ enum class Bcp47TagType
   GRANDFATHERED, ///< The tag is a regular or irregular grandfathered tag.
   PRIVATE_USE, ///< The tag consists solely of private-use subtags.
 };
-} // namespace KODI::LANGUAGE::I18N
+} // namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N

@@ -12,7 +12,7 @@
 #include "DllLibCurl.h"
 #include "URL.h"
 #include "utils/RegExp.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 #include "utils/log.h"
 
 using namespace XFILE;
@@ -56,7 +56,7 @@ bool CDAVFile::Execute(const CURL& url)
     std::string strResponse;
     ReadData(strResponse);
 
-    CXBMCTinyXML2 davResponse;
+    CTinyXML2 davResponse;
     davResponse.Parse(strResponse);
 
     if (!davResponse.Parse(strResponse))

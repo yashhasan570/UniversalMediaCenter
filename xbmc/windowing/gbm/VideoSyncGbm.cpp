@@ -66,7 +66,7 @@ bool CVideoSyncGbm::Setup()
   m_winSystem->Register(this);
   CLog::Log(LOGDEBUG, "CVideoSyncGbm::{} setting up", __FUNCTION__);
 
-  auto winSystemGbm = dynamic_cast<KODI::WINDOWING::GBM::CWinSystemGbm*>(m_winSystem);
+  auto winSystemGbm = dynamic_cast<UNIVERSAL MEDIA CENTER::WINDOWING::GBM::CWinSystemGbm*>(m_winSystem);
   if (!winSystemGbm)
   {
     CLog::Log(LOGWARNING, "CVideoSyncGbm::{}: failed to get winSystem", __FUNCTION__);

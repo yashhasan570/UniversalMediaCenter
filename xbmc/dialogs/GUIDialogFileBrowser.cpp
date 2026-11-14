@@ -46,9 +46,9 @@
 #include "utils/Variant.h"
 #include "utils/log.h"
 
-using namespace KODI::MESSAGING;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
 using namespace XFILE;
-using KODI::MEDIA::MediaSection;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaSection;
 
 #define CONTROL_LIST          450
 #define CONTROL_THUMBS        451
@@ -514,7 +514,7 @@ void CGUIDialogFileBrowser::FrameMove()
       SET_CONTROL_LABEL(CONTROL_LABEL_PATH, safePath);
     }
     if ((!m_browsingForFolders && (*m_vecItems)[item]->IsFolder()) ||
-        ((*m_vecItems)[item]->GetPath() == KODI::ART::CHOICE::BROWSE))
+        ((*m_vecItems)[item]->GetPath() == UNIVERSAL MEDIA CENTER::ART::CHOICE::BROWSE))
     {
       CONTROL_DISABLE(CONTROL_OK);
     }
@@ -657,9 +657,9 @@ bool CGUIDialogFileBrowser::ShowAndGetImage(const CFileItemList& items,
   browser->m_vecItems->Append(items);
   if (true)
   {
-    auto item = std::make_shared<CFileItem>(KODI::ART::CHOICE::BROWSE, false);
+    auto item = std::make_shared<CFileItem>(UNIVERSAL MEDIA CENTER::ART::CHOICE::BROWSE, false);
     item->SetLabel(CServiceBroker::GetResourcesComponent().GetLocalizeStrings().Get(20153));
-    item->SetArt(KODI::ART::TYPE::ICON, KODI::ART::DEFAULT::FOLDER);
+    item->SetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::ICON, UNIVERSAL MEDIA CENTER::ART::DEFAULT::FOLDER);
     browser->m_vecItems->Add(item);
   }
   browser->SetHeading(heading);
@@ -669,7 +669,7 @@ bool CGUIDialogFileBrowser::ShowAndGetImage(const CFileItemList& items,
   if (confirmed)
   {
     result = browser->m_selectedPath;
-    if (result == KODI::ART::CHOICE::BROWSE)
+    if (result == UNIVERSAL MEDIA CENTER::ART::CHOICE::BROWSE)
     { // "Browse for thumb"
       CServiceBroker::GetGUI()->GetWindowManager().Delete(browser->GetID());
       return ShowAndGetImage(
@@ -785,7 +785,7 @@ bool CGUIDialogFileBrowser::ShowAndGetFile(const std::string &directory, const s
     CDirectory::GetDirectory(directory,*browser->m_vecItems, "", DIR_FLAG_DEFAULTS);
     auto item = std::make_shared<CFileItem>("file://Browse", false);
     item->SetLabel(CServiceBroker::GetResourcesComponent().GetLocalizeStrings().Get(20153));
-    item->SetArt(KODI::ART::TYPE::ICON, KODI::ART::DEFAULT::FOLDER);
+    item->SetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::ICON, UNIVERSAL MEDIA CENTER::ART::DEFAULT::FOLDER);
     browser->m_vecItems->Add(item);
     browser->m_singleList = true;
   }

@@ -27,7 +27,7 @@ namespace PVR
 class CPVRManager;
 }
 
-namespace KODI::PLAYLIST
+namespace UNIVERSAL MEDIA CENTER::PLAYLIST
 {
 class CPlayListPlayer;
 }
@@ -50,7 +50,7 @@ class CPowerManager;
 class CWeatherManager;
 class CSlideShowDelegator;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace ADDONS
 {
@@ -67,7 +67,7 @@ namespace RETRO
 {
 class CGUIGameRenderManager;
 }
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER
 
 namespace MEDIA_DETECT
 {
@@ -169,7 +169,7 @@ public:
   ADDON::CAddonMgr& GetAddonMgr();
   ADDON::CBinaryAddonManager& GetBinaryAddonManager();
   ADDON::CBinaryAddonCache& GetBinaryAddonCache();
-  KODI::ADDONS::CExtsMimeSupportList& GetExtsMimeSupportList();
+  UNIVERSAL MEDIA CENTER::ADDONS::CExtsMimeSupportList& GetExtsMimeSupportList();
   ADDON::CVFSAddonCache& GetVFSAddonCache();
   ADDON::CServiceAddonManager& GetServiceAddons();
   ADDON::CRepositoryUpdater& GetRepositoryUpdater();
@@ -189,12 +189,12 @@ public:
    * Safe to call after InitStageOne() completes.
    */
   CPlatform& GetPlatform();
-  KODI::GAME::CControllerManager& GetGameControllerManager();
-  KODI::GAME::CGameServices& GetGameServices();
-  KODI::RETRO::CGUIGameRenderManager& GetGameRenderManager();
+  UNIVERSAL MEDIA CENTER::GAME::CControllerManager& GetGameControllerManager();
+  UNIVERSAL MEDIA CENTER::GAME::CGameServices& GetGameServices();
+  UNIVERSAL MEDIA CENTER::RETRO::CGUIGameRenderManager& GetGameRenderManager();
   PERIPHERALS::CPeripherals& GetPeripherals();
 
-  KODI::PLAYLIST::CPlayListPlayer& GetPlaylistPlayer();
+  UNIVERSAL MEDIA CENTER::PLAYLIST::CPlayListPlayer& GetPlaylistPlayer();
   CSlideShowDelegator& GetSlideShowDelegator();
   int init_level = 0;
 
@@ -220,7 +220,7 @@ protected:
   std::unique_ptr<ADDON::CAddonMgr> m_addonMgr;
   std::unique_ptr<ADDON::CBinaryAddonManager> m_binaryAddonManager;
   std::unique_ptr<ADDON::CBinaryAddonCache> m_binaryAddonCache;
-  std::unique_ptr<KODI::ADDONS::CExtsMimeSupportList> m_extsMimeSupportList;
+  std::unique_ptr<UNIVERSAL MEDIA CENTER::ADDONS::CExtsMimeSupportList> m_extsMimeSupportList;
   std::unique_ptr<ADDON::CVFSAddonCache> m_vfsAddonCache;
   std::unique_ptr<ADDON::CServiceAddonManager> m_serviceAddons;
   std::unique_ptr<ADDON::CRepositoryUpdater> m_repositoryUpdater;
@@ -234,10 +234,10 @@ protected:
   std::unique_ptr<CContextMenuManager> m_contextMenuManager;
   std::unique_ptr<CDataCacheCore> m_dataCacheCore;
   std::unique_ptr<CPlatform> m_Platform;
-  std::unique_ptr<KODI::PLAYLIST::CPlayListPlayer> m_playlistPlayer;
-  std::unique_ptr<KODI::GAME::CControllerManager> m_gameControllerManager;
-  std::unique_ptr<KODI::GAME::CGameServices> m_gameServices;
-  std::unique_ptr<KODI::RETRO::CGUIGameRenderManager> m_gameRenderManager;
+  std::unique_ptr<UNIVERSAL MEDIA CENTER::PLAYLIST::CPlayListPlayer> m_playlistPlayer;
+  std::unique_ptr<UNIVERSAL MEDIA CENTER::GAME::CControllerManager> m_gameControllerManager;
+  std::unique_ptr<UNIVERSAL MEDIA CENTER::GAME::CGameServices> m_gameServices;
+  std::unique_ptr<UNIVERSAL MEDIA CENTER::RETRO::CGUIGameRenderManager> m_gameRenderManager;
   std::unique_ptr<PERIPHERALS::CPeripherals> m_peripherals;
   std::unique_ptr<CFavouritesService> m_favouritesService;
   std::unique_ptr<CInputManager> m_inputManager;

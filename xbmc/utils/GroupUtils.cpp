@@ -21,7 +21,7 @@
 #include <map>
 #include <set>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 using SetMap = std::map<int, std::set<CFileItemPtr> >;
 

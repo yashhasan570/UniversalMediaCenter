@@ -13,7 +13,7 @@
 #include <deque>
 #include <vector>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -79,4 +79,4 @@ protected:
   uint64_t m_nextFrameHistory{0};
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

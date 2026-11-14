@@ -29,7 +29,7 @@ bool CDirectoryNodeRecentlyAddedMovies::GetContent(CFileItemList& items) const
     return false;
 
   const int details =
-      items.GetProperty(KODI::ITEM::PROPERTY::SET_VIDEODB_DETAILS).asInteger32(VideoDbDetailsNone);
+      items.GetProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::SET_VIDEODB_DETAILS).asInteger32(VideoDbDetailsNone);
   bool bSuccess = videodatabase.GetRecentlyAddedMoviesNav(BuildPath(), items, 0, details);
 
   videodatabase.Close();

@@ -34,7 +34,7 @@
 #include <wrl/client.h>
 #endif
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RENDERING
 {
@@ -405,4 +405,4 @@ bool CCaptureBlit::Read(CaptureResult& result)
 
 } // namespace CAPTURE
 } // namespace RENDERING
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

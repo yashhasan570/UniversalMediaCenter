@@ -11,14 +11,14 @@
 #include <stdint.h>
 #include <string>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace KEYBOARD
 {
 /// \ingroup keyboard
 /// \{
 
-struct XBMCKEYTABLE
+struct KEYTABLE
 {
   // The sym is a value that identifies which key was pressed. Note
   // that it specifies the key not the character so it is unaffected by
@@ -43,13 +43,13 @@ struct XBMCKEYTABLE
 
 struct KeyTable
 {
-  static bool LookupName(std::string keyname, XBMCKEYTABLE* keytable);
-  static bool LookupSym(uint16_t sym, XBMCKEYTABLE* keytable);
-  static bool LookupUnicode(uint16_t unicode, XBMCKEYTABLE* keytable);
-  static bool LookupSymAndUnicode(uint16_t sym, uint16_t unicode, XBMCKEYTABLE* keytable);
-  static bool LookupVKeyName(uint32_t vkey, XBMCKEYTABLE* keytable);
+  static bool LookupName(std::string keyname, KEYTABLE* keytable);
+  static bool LookupSym(uint16_t sym, KEYTABLE* keytable);
+  static bool LookupUnicode(uint16_t unicode, KEYTABLE* keytable);
+  static bool LookupSymAndUnicode(uint16_t sym, uint16_t unicode, KEYTABLE* keytable);
+  static bool LookupVKeyName(uint32_t vkey, KEYTABLE* keytable);
 };
 
 /// \}
 } // namespace KEYBOARD
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

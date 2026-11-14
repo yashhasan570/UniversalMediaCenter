@@ -14,7 +14,7 @@
 
 #include <vector>
 
-namespace KODI::VIDEO::GEOMETRY
+namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY
 {
 
 //! \brief What sampling one file produced.
@@ -46,4 +46,4 @@ struct SampledGeometry
 ContentGeometryRecord MakeContentGeometryRecord(const SampledGeometry& scan,
                                                 const FileIdentity& identity);
 
-} // namespace KODI::VIDEO::GEOMETRY
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY

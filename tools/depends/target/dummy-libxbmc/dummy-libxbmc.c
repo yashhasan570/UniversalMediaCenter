@@ -1,4 +1,4 @@
-void xbmc_dummy_function()
+void _dummy_function()
 {
   return;
 }

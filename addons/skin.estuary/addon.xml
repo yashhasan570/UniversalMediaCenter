@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addon id="skin.estuary" version="4.1.0" name="Estuary" provider-name="phil65, Ichabod Fletchman">
 	<requires>
-		<import addon="xbmc.gui" version="5.18.0"/>
+		<import addon=".gui" version="5.18.0"/>
 	</requires>
-	<extension point="xbmc.gui.skin" debugging="false">
+	<extension point=".gui.skin" debugging="false">
 		<res width="1920" height="1440" aspect="4:3" default="false" folder="xml" />
 		<res width="1920" height="1280" aspect="3:2" default="false" folder="xml" />
 		<res width="1920" height="1200" aspect="16:10" default="false" folder="xml" />
@@ -13,11 +13,11 @@
 		<res width="2338" height="1080" aspect="19.5:9" default="false" folder="xml" />
 		<res width="2160" height="1080" aspect="18:9" default="false" folder="xml" />
 	</extension>
-	<extension point="xbmc.addon.metadata">
+	<extension point=".addon.metadata">
 		<platform>all</platform>
 		<license>CC BY-SA 4.0, GNU GENERAL PUBLIC LICENSE Version 2.0</license>
 		<forum>http://github.com/yashhasan570/UniversalMediaCenter/</forum>
-		<source>https://github.com/xbmc/skin.estuary/</source>
+		<source>https://github.com//skin.estuary/</source>
 		<assets>
 			<icon>resources/icon.png</icon>
 			<fanart>resources/fanart.jpg</fanart>
@@ -101,7 +101,7 @@
 		<description lang="es_ES">Estuary es el skin por defecto para Universal Media Center 17.0 o superior. Intenta ser fácil de entender y utilizar para los usuarios primerizos de Universal Media Center.</description>
 		<description lang="es_MX">Estuary es la máscara por defecto para Universal Media Center 17.0 y superior. Su objetivo es ser fácil de entender y usar para los usuarios nuevos a Universal Media Center.</description>
 		<description lang="et_EE">Estuary on Universal Media Center vaikerüü versioonist 17.0. Universal Media Center esmakasutajatel on rüüd kerge mõista ja kasutada.</description>
-		<description lang="eu_ES">Estuary azala kodi 17.0 eta berriagoen azal lehenetsia da. Universal Media Centerren erabiltzaile hasiberrientzako erabilerraza eta ulerterraza izaten saiatzen da.</description>
+		<description lang="eu_ES">Estuary azala universalmediacenter 17.0 eta berriagoen azal lehenetsia da. Universal Media Centerren erabiltzaile hasiberrientzako erabilerraza eta ulerterraza izaten saiatzen da.</description>
 		<description lang="fa_IR">اسچوری پوستهٔ پیش‌گزیدهٔ کودی ۱۷٫۰ و بالاتر است. این پوسته تلاش می‌کند درک و استفاده‌اش برای کاربرانی که نخستین بار با کودی کار می‌کنند، ساده باشد.</description>
 		<description lang="fi_FI">Estuary on Universal Media Centern oletusulkoasu alkaen versiosta 17.0. Sen on tarkoitus olla uusille Universal Media Center-käyttäjille selkeä ja helppokäyttöinen.</description>
 		<description lang="fr_CA">Estuary est l’habillage par défaut pour Universal Media Center 17.0 et ultérieure. Il s’efforce d’être facile à comprendre et à utiliser pour les utilisateurs débutants de Universal Media Center.</description>

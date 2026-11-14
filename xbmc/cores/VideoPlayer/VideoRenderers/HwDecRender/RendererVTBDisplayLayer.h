@@ -35,9 +35,9 @@ public:
   void RenderUpdate(
       int index, int index2, bool clear, unsigned int flags, unsigned int alpha) override;
   bool IsGuiLayer() override { return false; }
-  bool CaptureVideoFrame(const KODI::RENDERING::CAPTURE::CaptureSpec& spec,
-                         KODI::RENDERING::CAPTURE::CaptureResult& result) override;
-  bool CompositeVideoCapture(KODI::RENDERING::CAPTURE::CaptureResult& result) override;
+  bool CaptureVideoFrame(const UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CaptureSpec& spec,
+                         UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CaptureResult& result) override;
+  bool CompositeVideoCapture(UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CaptureResult& result) override;
   CRenderInfo GetRenderInfo() override;
   bool SupportsMultiPassRendering() override { return false; }
   bool Supports(ERENDERFEATURE feature) const override

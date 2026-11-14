@@ -981,7 +981,7 @@ bool CGUIControlButtonSetting::OnClick()
       std::shared_ptr<CSettingDate> settingDate =
           std::static_pointer_cast<CSettingDate>(m_pSetting);
 
-      KODI::TIME::SystemTime systemdate;
+      UNIVERSAL MEDIA CENTER::TIME::SystemTime systemdate;
       settingDate->GetDate().GetAsSystemTime(systemdate);
       if (CGUIDialogNumeric::ShowAndGetDate(systemdate, Localize(buttonControl->GetHeading())))
         SetValid(settingDate->SetDate(CDateTime(systemdate)));
@@ -991,7 +991,7 @@ bool CGUIControlButtonSetting::OnClick()
       std::shared_ptr<CSettingTime> settingTime =
           std::static_pointer_cast<CSettingTime>(m_pSetting);
 
-      KODI::TIME::SystemTime systemtime;
+      UNIVERSAL MEDIA CENTER::TIME::SystemTime systemtime;
       settingTime->GetTime().GetAsSystemTime(systemtime);
 
       if (CGUIDialogNumeric::ShowAndGetTime(systemtime, Localize(buttonControl->GetHeading())))
@@ -1181,8 +1181,8 @@ bool CGUIControlButtonSetting::GetPath(const std::shared_ptr<CSettingPath>& path
   {
     if (StringUtils::EqualsNoCase(source, "local"))
       localSharesOnly = true;
-    else if (const std::optional<KODI::MEDIA::MediaSection> section{
-                 KODI::MEDIA::MediaSectionFromName(source)})
+    else if (const std::optional<UNIVERSAL MEDIA CENTER::MEDIA::MediaSection> section{
+                 UNIVERSAL MEDIA CENTER::MEDIA::MediaSectionFromName(source)})
     {
       const std::vector<CMediaSource>& mediasources =
           CMediaSourceSettings::GetInstance().GetSources(*section);

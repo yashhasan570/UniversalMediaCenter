@@ -16,7 +16,7 @@ namespace tinyxml2
 class XMLElement;
 }
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace KEYMAP
 {
@@ -30,4 +30,4 @@ public:
   static uint32_t TranslateString(const std::string& szButton);
 };
 } // namespace KEYMAP
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

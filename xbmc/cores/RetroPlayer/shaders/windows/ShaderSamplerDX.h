@@ -12,7 +12,7 @@
 
 #include <d3d11.h>
 
-namespace KODI::SHADER
+namespace UNIVERSAL MEDIA CENTER::SHADER
 {
 
 class CShaderSamplerDX : public IShaderSampler
@@ -24,4 +24,4 @@ public:
 private:
   ID3D11SamplerState* const m_sampler;
 };
-} // namespace KODI::SHADER
+} // namespace UNIVERSAL MEDIA CENTER::SHADER

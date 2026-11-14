@@ -26,10 +26,10 @@ class CStreamDetails;
 class CAction;
 class IPlayerCallback;
 
-namespace KODI::RENDERING::CAPTURE
+namespace UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE
 {
 struct CaptureResult;
-} // namespace KODI::RENDERING::CAPTURE
+} // namespace UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE
 
 namespace tinyxml2
 {
@@ -261,7 +261,7 @@ public:
    \brief hook into render loop of render thread
    */
   virtual void Render(bool clear, uint32_t alpha = 255, bool gui = true) {}
-  virtual bool CompositeVideoCapture(KODI::RENDERING::CAPTURE::CaptureResult& result)
+  virtual bool CompositeVideoCapture(UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CaptureResult& result)
   {
     return true;
   }

@@ -36,7 +36,7 @@
 #include <gtest/gtest.h>
 
 using namespace XFILE;
-using KODI::MEDIA::MediaSection;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaSection;
 
 #define WEBSERVER_HOST          "127.0.0.1"
 
@@ -50,7 +50,7 @@ using KODI::MEDIA::MediaSection;
 class TestWebServer : public testing::Test
 {
 protected:
-  TestWebServer() : sourcePath(XBMC_REF_FILE_PATH("xbmc/network/test/data/webserver/")) {}
+  TestWebServer() : sourcePath(_REF_FILE_PATH("/network/test/data/webserver/")) {}
   ~TestWebServer() override = default;
 
 protected:
@@ -1067,7 +1067,7 @@ TEST_F(TestWebServer, CanGetCachedRangedFileWithNewerIfRange)
 class TestWebServerAuth : public TestWebServer
 {
 protected:
-  static constexpr std::string_view SERVER_USERNAME{"kodi"};
+  static constexpr std::string_view SERVER_USERNAME{"universalmediacenter"};
   static constexpr std::string_view SERVER_PASSWORD{"secret"};
 
   static void SetUpTestSuite() { StartSuiteServer(SERVER_USERNAME, SERVER_PASSWORD); }

@@ -19,7 +19,7 @@ class TestMp4ChplReader : public ::testing::Test
 // Valid chapter file
 TEST_F(TestMp4ChplReader, CanParseValidChplAtom)
 {
-  const CURL url(XBMC_REF_FILE_PATH("xbmc/utils/test/resources/sample_chpl.mp4"));
+  const CURL url(_REF_FILE_PATH("/utils/test/resources/sample_chpl.mp4"));
   std::vector<ChplChapter> chapters;
 
   ChplChapterResult result = CChplChapterReader::ScanNeroChapters(url, chapters);
@@ -32,7 +32,7 @@ TEST_F(TestMp4ChplReader, CanParseValidChplAtom)
 // MP4 with no chapters
 TEST_F(TestMp4ChplReader, ReturnsNoneWhenNoChplAtom)
 {
-  const CURL url(XBMC_REF_FILE_PATH("xbmc/utils/test/resources/no_chapters.mp4"));
+  const CURL url(_REF_FILE_PATH("/utils/test/resources/no_chapters.mp4"));
   std::vector<ChplChapter> chapters;
 
   ChplChapterResult result = CChplChapterReader::ScanNeroChapters(url, chapters);
@@ -44,7 +44,7 @@ TEST_F(TestMp4ChplReader, ReturnsNoneWhenNoChplAtom)
 // Corrupt or truncated chpl atom
 TEST_F(TestMp4ChplReader, FailsGracefullyOnCorruptChplAtom)
 {
-  const CURL url(XBMC_REF_FILE_PATH("xbmc/utils/test/resources/corrupt_chpl.mp4"));
+  const CURL url(_REF_FILE_PATH("/utils/test/resources/corrupt_chpl.mp4"));
   std::vector<ChplChapter> chapters;
 
   ChplChapterResult result = CChplChapterReader::ScanNeroChapters(url, chapters);

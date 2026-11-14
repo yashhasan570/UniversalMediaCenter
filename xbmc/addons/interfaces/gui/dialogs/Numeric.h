@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "addons/kodi-dev-kit/include/kodi/c-api/gui/dialogs/numeric.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api/gui/dialogs/numeric.h"
 
 extern "C"
 {
@@ -24,7 +24,7 @@ extern "C"
    * To hold functions not related to a instance type and usable for
    * every add-on type.
    *
-   * Related add-on header is "./xbmc/addons/kodi-dev-kit/include/kodi/gui/dialogs/Numeric.h"
+   * Related add-on header is ".//addons/universalmediacenter-dev-kit/include/universalmediacenter/gui/dialogs/Numeric.h"
    */
   struct Interface_GUIDialogNumeric
   {
@@ -32,38 +32,38 @@ extern "C"
     static void DeInit(AddonGlobalInterface* addonInterface);
 
     /*!
-     * @brief callback functions from add-on to kodi
+     * @brief callback functions from add-on to universalmediacenter
      *
      * @note To add a new function use the "_" style to directly identify an
      * add-on callback function. Everything with CamelCase is only to be used
      * in Universal Media Center.
      *
-     * The parameter `kodiBase` is used to become the pointer for a `CAddonDll`
+     * The parameter `universalmediacenterBase` is used to become the pointer for a `CAddonDll`
      * class.
      */
     //@{
-    static bool show_and_verify_new_password(KODI_HANDLE kodiBase, char** password);
-    static int show_and_verify_password(KODI_HANDLE kodiBase,
+    static bool show_and_verify_new_password(UNIVERSALMEDIA_HANDLE universalmediacenterBase, char** password);
+    static int show_and_verify_password(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
                                         const char* password,
                                         const char* heading,
                                         int retries);
-    static bool show_and_verify_input(KODI_HANDLE kodiBase,
+    static bool show_and_verify_input(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
                                       const char* verify_in,
                                       char** verify_out,
                                       const char* heading,
                                       bool verify_input);
-    static bool show_and_get_time(KODI_HANDLE kodiBase, tm* time, const char* heading);
-    static bool show_and_get_date(KODI_HANDLE kodiBase, tm* date, const char* heading);
-    static bool show_and_get_ip_address(KODI_HANDLE kodiBase,
+    static bool show_and_get_time(UNIVERSALMEDIA_HANDLE universalmediacenterBase, tm* time, const char* heading);
+    static bool show_and_get_date(UNIVERSALMEDIA_HANDLE universalmediacenterBase, tm* date, const char* heading);
+    static bool show_and_get_ip_address(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
                                         const char* ip_address_in,
                                         char** ip_address_out,
                                         const char* heading);
-    static bool show_and_get_number(KODI_HANDLE kodiBase,
+    static bool show_and_get_number(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
                                     const char* number_in,
                                     char** number_out,
                                     const char* heading,
                                     unsigned int auto_close_ms);
-    static bool show_and_get_seconds(KODI_HANDLE kodiBase,
+    static bool show_and_get_seconds(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
                                      const char* time_in,
                                      char** time_out,
                                      const char* heading);

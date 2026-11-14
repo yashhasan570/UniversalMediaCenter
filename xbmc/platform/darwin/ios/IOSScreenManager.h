@@ -11,7 +11,7 @@
 #import <UIKit/UIKit.h>
 
 @class IOSEAGLView;
-@class XBMCController;
+@class Controller;
 @class IOSExternalTouchController;
 
 @interface IOSScreenManager : NSObject {
@@ -31,7 +31,7 @@
 //- (id)      initWithView:(IOSEAGLView *)view;
 // change to screen with the given mode (might also change only the mode on the same screen)
 - (bool)    changeScreen: (unsigned int)screenIdx withMode:(UIScreenMode *)mode;
-// called when app detects disconnection of external screen - will move xbmc to the internal screen then
+// called when app detects disconnection of external screen - will move  to the internal screen then
 - (void)    screenDisconnect;
 // wrapper for g_Windowing.UpdateResolutions();
 + (void)    updateResolutions;

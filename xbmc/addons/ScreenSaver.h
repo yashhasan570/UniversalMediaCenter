@@ -9,9 +9,9 @@
 #pragma once
 
 #include "addons/binary-addons/AddonInstanceHandler.h"
-#include "addons/kodi-dev-kit/include/kodi/addon-instance/Screensaver.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/addon-instance/Screensaver.h"
 
-namespace KODI::ADDONS
+namespace UNIVERSAL MEDIA CENTER::ADDONS
 {
 
 class CScreenSaver : public ADDON::IAddonInstanceHandler
@@ -25,7 +25,7 @@ public:
   void Render();
 
   // Addon callback functions
-  void GetProperties(struct KODI_ADDON_SCREENSAVER_PROPS* props) const;
+  void GetProperties(struct UNIVERSALMEDIA_ADDON_SCREENSAVER_PROPS* props) const;
 };
 
-} // namespace KODI::ADDONS
+} // namespace UNIVERSAL MEDIA CENTER::ADDONS

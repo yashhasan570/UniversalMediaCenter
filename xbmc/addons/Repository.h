@@ -27,10 +27,10 @@ struct RepositoryDirInfo
   CAddonVersion maxversion{""};
   std::string info;
   std::string checksum;
-  KODI::UTILITY::CDigest::Type checksumType{KODI::UTILITY::CDigest::Type::INVALID};
+  UNIVERSAL MEDIA CENTER::UTILITY::CDigest::Type checksumType{UNIVERSAL MEDIA CENTER::UTILITY::CDigest::Type::INVALID};
   std::string datadir;
   std::string artdir;
-  KODI::UTILITY::CDigest::Type hashType{KODI::UTILITY::CDigest::Type::INVALID};
+  UNIVERSAL MEDIA CENTER::UTILITY::CDigest::Type hashType{UNIVERSAL MEDIA CENTER::UTILITY::CDigest::Type::INVALID};
 };
 
 using RepositoryDirList = std::vector<RepositoryDirInfo>;
@@ -55,7 +55,7 @@ public:
   struct ResolveResult
   {
     std::string location;
-    KODI::UTILITY::TypedDigest digest;
+    UNIVERSAL MEDIA CENTER::UTILITY::TypedDigest digest;
   };
   ResolveResult ResolvePathAndHash(AddonPtr const& addon) const;
 

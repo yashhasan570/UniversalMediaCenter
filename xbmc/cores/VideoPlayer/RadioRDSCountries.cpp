@@ -16,8 +16,8 @@ namespace
 // A cell IEC 62106 reserves, which names no place
 constexpr std::string_view RESERVED{};
 
-using Row = std::array<std::string_view, KODI::RDS::EXTENDED_COUNTRY_CODE_COUNT>;
-using Table = std::array<Row, KODI::RDS::COUNTRY_CODE_COUNT>;
+using Row = std::array<std::string_view, UNIVERSAL MEDIA CENTER::RDS::EXTENDED_COUNTRY_CODE_COUNT>;
+using Table = std::array<Row, UNIVERSAL MEDIA CENTER::RDS::COUNTRY_CODE_COUNT>;
 
 /* IEC 62106, Annex D, table D.1, and Annex N */
 // clang-format off
@@ -100,7 +100,7 @@ constexpr Table COUNTRY_CODES_F{{
 
 } // unnamed namespace
 
-namespace KODI::RDS
+namespace UNIVERSAL MEDIA CENTER::RDS
 {
 
 std::optional<std::string_view> CountryCode(unsigned int extendedCountryCode,
@@ -145,4 +145,4 @@ std::optional<LANGUAGE::CTerritory> Country(unsigned int extendedCountryCode,
   return LANGUAGE::CTerritory::FromCode(*code);
 }
 
-} // namespace KODI::RDS
+} // namespace UNIVERSAL MEDIA CENTER::RDS

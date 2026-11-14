@@ -11,7 +11,7 @@
 #include <gtest/gtest.h>
 #include <tinyxml.h>
 
-using namespace KODI::GUILIB;
+using namespace UNIVERSAL MEDIA CENTER::GUILIB;
 
 // ---------------------------------------------------------------------------
 // Fixture

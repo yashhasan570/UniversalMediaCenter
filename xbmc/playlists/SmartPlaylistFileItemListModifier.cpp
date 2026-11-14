@@ -20,7 +20,7 @@
 #define PROPERTY_SORT_ORDER         "sort.order"
 #define PROPERTY_SORT_ASCENDING     "sort.ascending"
 
-namespace KODI::PLAYLIST
+namespace UNIVERSAL MEDIA CENTER::PLAYLIST
 {
 
 bool CSmartPlaylistFileItemListModifier::CanModify(const CFileItemList &items) const
@@ -57,4 +57,4 @@ std::string CSmartPlaylistFileItemListModifier::GetUrlOption(const std::string &
   return url.GetOption(option);
 }
 
-} // namespace KODI::PLAYLIST
+} // namespace UNIVERSAL MEDIA CENTER::PLAYLIST

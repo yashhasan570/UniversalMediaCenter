@@ -10,7 +10,7 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI::GAME;
+using namespace UNIVERSAL MEDIA CENTER::GAME;
 
 TEST(TestCheatUtils, CheatFileNamePreservesTheExactGameBasename)
 {

@@ -17,7 +17,7 @@
 #include "platform/linux/DBusMessage.h"
 #include "platform/linux/DBusUtil.h"
 
-using namespace KODI::WINDOWING::LINUX;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::LINUX;
 
 namespace
 {

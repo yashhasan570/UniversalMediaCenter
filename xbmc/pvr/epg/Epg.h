@@ -9,7 +9,7 @@
 #pragma once
 
 #include "XBDateTime.h"
-#include "addons/kodi-dev-kit/include/kodi/c-api/addon-instance/pvr/pvr_epg.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api/addon-instance/pvr/pvr_epg.h"
 #include "pvr/epg/EpgTagsContainer.h"
 #include "threads/CriticalSection.h"
 #include "utils/EventStream.h"

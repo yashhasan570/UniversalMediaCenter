@@ -38,8 +38,8 @@ void CGUIWindowScreensaverDim::UpdateVisibility()
       return;
 
     std::string usedId = appPower->ScreensaverIdInUse();
-    if  (usedId == "screensaver.xbmc.builtin.dim" ||
-         usedId == "screensaver.xbmc.builtin.black")
+    if  (usedId == "screensaver..builtin.dim" ||
+         usedId == "screensaver..builtin.black")
     {
       m_visible = true;
       ADDON::AddonPtr info;
@@ -75,8 +75,8 @@ void CGUIWindowScreensaverDim::Render()
   else if (renderOrder == RENDER_ORDER_BACK_TO_FRONT)
     CServiceBroker::GetWinSystem()->GetGfxContext().SetRenderOrder(RENDER_ORDER_ALL_BACK_TO_FRONT);
   // draw a translucent black quad - fading is handled by the window animation
-  KODI::UTILS::COLOR::Color color =
-      (static_cast<KODI::UTILS::COLOR::Color>(m_dimLevel * 2.55f) & 0xff) << 24;
+  UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color color =
+      (static_cast<UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color>(m_dimLevel * 2.55f) & 0xff) << 24;
   color = CServiceBroker::GetWinSystem()->GetGfxContext().MergeAlpha(color);
   CRect rect(0, 0, (float)CServiceBroker::GetWinSystem()->GetGfxContext().GetWidth(), (float)CServiceBroker::GetWinSystem()->GetGfxContext().GetHeight());
   CGUITexture::DrawQuad(rect, color);

@@ -103,7 +103,7 @@ public:
   void DumpTextureUse() override;
 #endif
 protected:
-  EVENT_RESULT OnMouseEvent(const CPoint& point, const KODI::MOUSE::CMouseEvent& event) override;
+  EVENT_RESULT OnMouseEvent(const CPoint& point, const UNIVERSAL MEDIA CENTER::MOUSE::CMouseEvent& event) override;
   bool OnClick(int actionID);
 
   virtual void ProcessItem(float posX,

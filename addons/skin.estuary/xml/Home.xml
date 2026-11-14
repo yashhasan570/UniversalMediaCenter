@@ -458,7 +458,7 @@
 					<include content="ImageWidget" condition="!System.HasPVRAddon">
 						<param name="text_label" value="$LOCALIZE[31143]" />
 						<param name="button_label" value="$LOCALIZE[31144]" />
-						<param name="button_onclick" value="ActivateWindow(addonbrowser,addons://default_binary_addons_source/kodi.pvrclient,return)"/>
+						<param name="button_onclick" value="ActivateWindow(addonbrowser,addons://default_binary_addons_source/universalmediacenter.pvrclient,return)"/>
 						<param name="button_id" value="12400"/>
 						<param name="button2_onclick" value="Skin.SetBool(HomeMenuNoTVButton)"/>
 					</include>
@@ -541,7 +541,7 @@
 					<include content="ImageWidget" condition="!System.HasPVRAddon">
 						<param name="text_label" value="$LOCALIZE[31143]" />
 						<param name="button_label" value="$LOCALIZE[31144]" />
-						<param name="button_onclick" value="ActivateWindow(addonbrowser,addons://default_binary_addons_source/kodi.pvrclient,return)"/>
+						<param name="button_onclick" value="ActivateWindow(addonbrowser,addons://default_binary_addons_source/universalmediacenter.pvrclient,return)"/>
 						<param name="button_id" value="13400"/>
 						<param name="button2_onclick" value="Skin.SetBool(HomeMenuNoRadioButton)"/>
 					</include>
@@ -1176,7 +1176,7 @@
 					<aspectratio>keep</aspectratio>
 					<width>192</width>
 					<height>56</height>
-					<texture>special://xbmc/media/vendor_logo.png</texture>
+					<texture>special:///media/vendor_logo.png</texture>
 				</control>
 			</control>
 		</control>

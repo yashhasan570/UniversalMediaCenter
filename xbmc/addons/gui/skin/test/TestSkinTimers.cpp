@@ -19,7 +19,7 @@ protected:
 
 TEST_F(TestSkinTimers, TestSkinTimerParsing)
 {
-  auto timersFile = XBMC_REF_FILE_PATH("xbmc/addons/gui/skin/test/testdata/Timers.xml");
+  auto timersFile = _REF_FILE_PATH("/addons/gui/skin/test/testdata/Timers.xml");
   CGUIInfoManager infoMgr;
   CSkinTimerManager skinTimerManager{infoMgr};
   skinTimerManager.LoadTimers(timersFile);

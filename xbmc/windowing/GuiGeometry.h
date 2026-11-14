@@ -11,7 +11,7 @@
 #include "utils/Geometry.h"
 #include "windowing/Resolution.h"
 
-namespace KODI::WINDOWING
+namespace UNIVERSAL MEDIA CENTER::WINDOWING
 {
 
 //! \brief The largest rectangle of \p rasterAspect centred in the calibrated area, or the whole
@@ -42,4 +42,4 @@ float ComputeRasterAspectInForce(float stated, bool screenTool);
 //! \brief Whether the hold is in force: asked for, with no fullscreen video and no screen tool.
 bool ComputeGuiKeepShape(bool hold, bool fullScreenVideo, bool screenTool);
 
-} // namespace KODI::WINDOWING
+} // namespace UNIVERSAL MEDIA CENTER::WINDOWING

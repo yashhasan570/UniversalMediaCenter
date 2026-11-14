@@ -16,7 +16,7 @@ endif()
 
 if(MINGW)
   message(WARNING
-          "MSYS/MINGW generated add-ons are not supported for use in Kodi!\n"
+          "MSYS/MINGW generated add-ons are not supported for use in Universal Media Center!\n"
           "For compiler test purposes only!"
          )
 endif()
@@ -103,7 +103,7 @@ macro (build_addon target prefix libs)
   addon_version(${target} ${prefix})
 
   # Below comes the generation of a list with used sources where the includes to
-  # kodi's headers becomes checked.
+  # universalmediacenter's headers becomes checked.
   # This goes the following steps to identify them:
   # 1. Check headers are at own depended on addon
   #    - If so, it is checked whether the whole folder is already inserted, if
@@ -115,7 +115,7 @@ macro (build_addon target prefix libs)
   #      the whole addon folder is searched for headers.
   # 3. As a last step, the actual source files are checked.
   if(${prefix}_SOURCES)
-    # Read used headers from addon, needed to identitfy used kodi addon interface headers
+    # Read used headers from addon, needed to identitfy used universalmediacenter addon interface headers
     if(${prefix}_HEADERS)
       # Add the used header files defined with CMakeLists.txt from addon itself
       string(FIND "${${prefix}_HEADERS}" "${PROJECT_SOURCE_DIR}" position)
@@ -156,7 +156,7 @@ macro (build_addon target prefix libs)
     message(STATUS "Addon dependency check ...")
     # Set defines used in addon.xml.in and read from versions.h to set add-on
     # version parts automatically
-    file(STRINGS ${KODI_INCLUDE_DIR}/versions.h BIN_ADDON_PARTS)
+    file(STRINGS ${UNIVERSALMEDIA_INCLUDE_DIR}/versions.h BIN_ADDON_PARTS)
     foreach(loop_var ${BIN_ADDON_PARTS})
       # Only pass strings with "#define ADDON_" from versions.h
       if(loop_var MATCHES "#define ADDON_")
@@ -183,7 +183,7 @@ macro (build_addon target prefix libs)
             foreach(src_file ${USED_SOURCES})
               file(STRINGS ${src_file} BIN_ADDON_SRC_PARTS)
               foreach(loop_var ${BIN_ADDON_SRC_PARTS})
-                string(REGEX MATCH "^[ \t]*#[ \t]*(include|import)[ \t]*[<\"](kodi\/)?(.+)[\">]" include_name "${loop_var}")
+                string(REGEX MATCH "^[ \t]*#[ \t]*(include|import)[ \t]*[<\"](universalmediacenter\/)?(.+)[\">]" include_name "${loop_var}")
                 if(include_name AND CMAKE_MATCH_3 MATCHES ^${depend_header})
                   get_directory_property(CURRENT_DEFS COMPILE_DEFINITIONS)
                   if(NOT used_type_name IN_LIST CURRENT_DEFS)
@@ -308,7 +308,7 @@ macro (build_addon target prefix libs)
       if(NOT CPACK_PACKAGE_DIRECTORY)
         # determine the temporary path
         file(TO_CMAKE_PATH "$ENV{TEMP}" WIN32_TEMP_PATH)
-        # a folder of its own, as other add-ons, platforms and Kodi versions can be packaged at the same time
+        # a folder of its own, as other add-ons, platforms and Universal Media Center versions can be packaged at the same time
         set(WIN32_PACKAGE_PATH "${WIN32_TEMP_PATH}/${target}-${PLATFORM_TAG}-${APP_VERSION_MAJOR}")
         string(LENGTH "${WIN32_TEMP_PATH}" WIN32_TEMP_PATH_LENGTH)
         string(LENGTH "${WIN32_PACKAGE_PATH}" WIN32_PACKAGE_PATH_LENGTH)
@@ -474,7 +474,7 @@ macro (build_addon target prefix libs)
 endmacro()
 
 # finds a path to a given file (recursive)
-function (kodi_find_path var_name filename search_path strip_file)
+function (universalmediacenter_find_path var_name filename search_path strip_file)
   file(GLOB_RECURSE PATH_TO_FILE ${search_path} ${filename})
   if(strip_file)
     string(REPLACE ${filename} "" PATH_TO_FILE ${PATH_TO_FILE})

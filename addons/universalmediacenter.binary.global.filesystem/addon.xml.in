@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon id=".global.filesystem" version="@ADDON_GLOBAL_VERSION_FILESYSTEM@" provider-name="Team Universal Media Center">
+  <backwards-compatibility abi="@ADDON_GLOBAL_VERSION_FILESYSTEM_MIN@"/>
+  <requires>
+    <import addon=".core" version="0.1.0"/>
+  </requires>
+</addon>

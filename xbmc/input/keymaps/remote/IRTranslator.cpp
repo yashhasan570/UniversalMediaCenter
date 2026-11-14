@@ -15,7 +15,7 @@
 #include "utils/FileUtils.h"
 #include "utils/StringUtils.h"
 #include "utils/URIUtils.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 #include "utils/log.h"
 
 #include <cstring>
@@ -23,7 +23,7 @@
 #include <stdlib.h>
 #include <vector>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace KEYMAP;
 
 void CIRTranslator::Load(const std::string& irMapName)
@@ -35,7 +35,7 @@ void CIRTranslator::Load(const std::string& irMapName)
 
   bool success = false;
 
-  std::string irMapPath = URIUtils::AddFileToFolder("special://xbmc/system/", irMapName);
+  std::string irMapPath = URIUtils::AddFileToFolder("special:///system/", irMapName);
   if (CFileUtils::Exists(irMapPath))
     success |= LoadIRMap(irMapPath);
   else
@@ -61,7 +61,7 @@ bool CIRTranslator::LoadIRMap(const std::string& irMapPath)
   StringUtils::ToLower(remoteMapTag);
 
   // Load our xml file, and fill up our mapping tables
-  CXBMCTinyXML2 xmlDoc;
+  CTinyXML2 xmlDoc;
 
   // Load the config file
   CLog::Log(LOGINFO, "Loading {}", irMapPath);

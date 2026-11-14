@@ -15,7 +15,7 @@
 
 class CApplicationPlayer;
 
-namespace KODI::VIDEO
+namespace UNIVERSAL MEDIA CENTER::VIDEO
 {
 struct VideoStreamInfoExt : VideoStreamInfo
 {
@@ -77,4 +77,4 @@ public:
   static void OrderAudioStreams(std::vector<AudioStreamInfoExt>& streams, TrackOrder order);
   static void OrderSubtitleStreams(std::vector<SubtitleStreamInfoExt>& streams, TrackOrder order);
 };
-} // namespace KODI::VIDEO
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO

@@ -12,7 +12,7 @@
 #include "games/controllers/input/DefaultButtonMap.h"
 #include "input/mouse/interfaces/IMouseInputHandler.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace MOUSE;
 
 CDefaultMouseHandling::CDefaultMouseHandling(PERIPHERALS::CPeripheral* peripheral,

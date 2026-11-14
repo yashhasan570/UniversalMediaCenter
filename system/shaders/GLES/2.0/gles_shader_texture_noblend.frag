@@ -1,5 +1,5 @@
 /*
- *      Copyright (C) 2010-2013 Team XBMC
+ *      Copyright (C) 2010-2013 Team 
  *      http://github.com/yashhasan570/UniversalMediaCenter
  *
  *  This Program is free software; you can redistribute it and/or modify
@@ -13,7 +13,7 @@
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with XBMC; see the file COPYING.  If not, see
+ *  along with ; see the file COPYING.  If not, see
  *  <http://www.gnu.org/licenses/>.
  *
  */
@@ -32,12 +32,12 @@ void main ()
 
   rgb = texture2D(m_samp0, m_cord0.xy);
 
-#if defined(KODI_LIMITED_RANGE)
+#if defined(UNIVERSAL MEDIA CENTER_LIMITED_RANGE)
   rgb.rgb *= (235.0 - 16.0) / 255.0;
   rgb.rgb += mix(1.0, rgb.a, m_pma) * 16.0 / 255.0;
 #endif
 
-#if defined(KODI_TRANSFER_PQ)
+#if defined(UNIVERSAL MEDIA CENTER_TRANSFER_PQ)
   rgb.rgb *= m_sdrPeak;
 #endif
 

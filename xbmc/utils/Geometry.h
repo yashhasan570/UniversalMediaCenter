@@ -10,9 +10,9 @@
 
 #ifdef __GNUC__
 // under gcc, inline will only take place if optimizations are applied (-O). this will force inline even with optimizations.
-#define XBMC_FORCE_INLINE __attribute__((always_inline))
+#define _FORCE_INLINE __attribute__((always_inline))
 #else
-#define XBMC_FORCE_INLINE
+#define _FORCE_INLINE
 #endif
 
 #include <algorithm>
@@ -286,7 +286,7 @@ public:
     return (x1 < rect.x2 && x2 > rect.x1 && y1 < rect.y2 && y2 > rect.y1);
   };
 
-  this_type& operator-=(const point_type &point) XBMC_FORCE_INLINE
+  this_type& operator-=(const point_type &point) _FORCE_INLINE
   {
     x1 -= point.x;
     y1 -= point.y;
@@ -300,7 +300,7 @@ public:
     return {x1 - point.x, y1 - point.y, x2 - point.x, y2 - point.y};
   }
 
-  this_type& operator+=(const point_type &point) XBMC_FORCE_INLINE
+  this_type& operator+=(const point_type &point) _FORCE_INLINE
   {
     x1 += point.x;
     y1 += point.y;
@@ -363,32 +363,32 @@ public:
     return *this;
   };
 
-  constexpr bool IsEmpty() const XBMC_FORCE_INLINE
+  constexpr bool IsEmpty() const _FORCE_INLINE
   {
     return (x2 - x1) * (y2 - y1) == 0;
   };
 
-  constexpr point_type P1() const XBMC_FORCE_INLINE
+  constexpr point_type P1() const _FORCE_INLINE
   {
     return {x1, y1};
   }
 
-  constexpr point_type P2() const XBMC_FORCE_INLINE
+  constexpr point_type P2() const _FORCE_INLINE
   {
     return {x2, y2};
   }
 
-  constexpr T Width() const XBMC_FORCE_INLINE
+  constexpr T Width() const _FORCE_INLINE
   {
     return x2 - x1;
   };
 
-  constexpr T Height() const XBMC_FORCE_INLINE
+  constexpr T Height() const _FORCE_INLINE
   {
     return y2 - y1;
   };
 
-  constexpr T Area() const XBMC_FORCE_INLINE
+  constexpr T Area() const _FORCE_INLINE
   {
     return Width() * Height();
   };
@@ -467,7 +467,7 @@ public:
 
   T x1{}, y1{}, x2{}, y2{};
 private:
-  static constexpr T clamp_range(T x, T l, T h) XBMC_FORCE_INLINE
+  static constexpr T clamp_range(T x, T l, T h) _FORCE_INLINE
   {
     return (x > h) ? h : ((x < l) ? l : x);
   }

@@ -127,7 +127,7 @@ std::string CAddon::Icon() const
   return m_addonInfo->Icon();
 }
 
-KODI::ART::Artwork CAddon::Art() const
+UNIVERSAL MEDIA CENTER::ART::Artwork CAddon::Art() const
 {
   return m_addonInfo->Art();
 }
@@ -194,7 +194,7 @@ const std::vector<DependencyInfo>& CAddon::GetDependencies() const
 
 std::string CAddon::FanArt() const
 {
-  auto it = m_addonInfo->Art().find(KODI::ART::TYPE::FANART);
+  auto it = m_addonInfo->Art().find(UNIVERSAL MEDIA CENTER::ART::TYPE::FANART);
   return it != m_addonInfo->Art().end() ? it->second : "";
 }
 
@@ -298,7 +298,7 @@ bool CAddon::LoadSettings(bool bForce,
 
   // load the settings definition XML file
   const auto addonSettingsDefinitionFile = m_settings[id].m_addonSettingsPath;
-  CXBMCTinyXML addonSettingsDefinitionDoc;
+  CTinyXML addonSettingsDefinitionDoc;
   if (!addonSettingsDefinitionDoc.LoadFile(addonSettingsDefinitionFile))
   {
     if (CFile::Exists(addonSettingsDefinitionFile))
@@ -363,7 +363,7 @@ bool CAddon::LoadUserSettings(AddonInstanceId id /* = ADDON_SETTINGS_ID */)
     return true;
   }
 
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   if (!doc.LoadFile(data.m_userSettingsPath))
   {
     CLog::Log(LOGERROR, "CAddon[{}]: failed to load addon settings from {}", ID(),
@@ -398,7 +398,7 @@ bool CAddon::SaveSettings(AddonInstanceId id /* = ADDON_SETTINGS_ID */)
     success = CDirectory::Create(strAddon);
 
   // create the XML file
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   if (SettingsToXML(doc, id))
     success = doc.SaveFile(data.m_userSettingsPath);
 
@@ -550,7 +550,7 @@ bool CAddon::UpdateSettingString(const std::string& key,
   return UpdateSettingValue<CSettingString>(*this, id, key, value);
 }
 
-bool CAddon::SettingsFromXML(const CXBMCTinyXML& doc,
+bool CAddon::SettingsFromXML(const CTinyXML& doc,
                              bool loadDefaults,
                              AddonInstanceId id /* = ADDON_SETTINGS_ID */)
 {
@@ -580,7 +580,7 @@ bool CAddon::SettingsFromXML(const CXBMCTinyXML& doc,
   return true;
 }
 
-bool CAddon::SettingsToXML(CXBMCTinyXML& doc, AddonInstanceId id /* = ADDON_SETTINGS_ID */) const
+bool CAddon::SettingsToXML(CTinyXML& doc, AddonInstanceId id /* = ADDON_SETTINGS_ID */) const
 {
   if (!SettingsInitialized(id))
     return false;

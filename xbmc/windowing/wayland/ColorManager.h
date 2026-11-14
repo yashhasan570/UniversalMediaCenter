@@ -16,7 +16,7 @@
 
 struct VideoPicture;
 
-namespace KODI::WINDOWING::WAYLAND
+namespace UNIVERSAL MEDIA CENTER::WINDOWING::WAYLAND
 {
 
 class CColorManager
@@ -61,4 +61,4 @@ private:
 #endif
 };
 
-} // namespace KODI::WINDOWING::WAYLAND
+} // namespace UNIVERSAL MEDIA CENTER::WINDOWING::WAYLAND

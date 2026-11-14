@@ -174,18 +174,18 @@ using DatabaseResults = std::vector<DatabaseResult>;
 class DatabaseUtils
 {
 public:
-  static KODI::MEDIA::TYPE MediaTypeFromVideoContentType(VideoDbContentType videoContentType);
-  static VideoDbContentType VideoContentTypeFromMediaType(KODI::MEDIA::TYPE mediaType);
+  static UNIVERSAL MEDIA CENTER::MEDIA::TYPE MediaTypeFromVideoContentType(VideoDbContentType videoContentType);
+  static VideoDbContentType VideoContentTypeFromMediaType(UNIVERSAL MEDIA CENTER::MEDIA::TYPE mediaType);
 
   static std::string GetField(Field field,
-                              KODI::MEDIA::TYPE mediaType, DatabaseQueryPart queryPart);
-  static int GetField(Field field, KODI::MEDIA::TYPE mediaType);
-  static int GetFieldIndex(Field field, KODI::MEDIA::TYPE mediaType);
+                              UNIVERSAL MEDIA CENTER::MEDIA::TYPE mediaType, DatabaseQueryPart queryPart);
+  static int GetField(Field field, UNIVERSAL MEDIA CENTER::MEDIA::TYPE mediaType);
+  static int GetFieldIndex(Field field, UNIVERSAL MEDIA CENTER::MEDIA::TYPE mediaType);
   static bool GetSelectFields(const Fields &fields,
-                              KODI::MEDIA::TYPE mediaType, FieldList &selectFields);
+                              UNIVERSAL MEDIA CENTER::MEDIA::TYPE mediaType, FieldList &selectFields);
 
   static bool GetFieldValue(const dbiplus::field_value &fieldValue, CVariant &variantValue);
-  static bool GetDatabaseResults(KODI::MEDIA::TYPE mediaType,
+  static bool GetDatabaseResults(UNIVERSAL MEDIA CENTER::MEDIA::TYPE mediaType,
                                  const FieldList& fields,
                                  dbiplus::Dataset& dataset,
                                  DatabaseResults& results);
@@ -218,6 +218,6 @@ private:
   };
 
   //! The view of \p mediaType, nullptr for a type without one
-  static const View* ViewOf(KODI::MEDIA::TYPE mediaType);
-  static const Column* FindColumn(Field field, KODI::MEDIA::TYPE mediaType);
+  static const View* ViewOf(UNIVERSAL MEDIA CENTER::MEDIA::TYPE mediaType);
+  static const Column* FindColumn(Field field, UNIVERSAL MEDIA CENTER::MEDIA::TYPE mediaType);
 };

@@ -14,7 +14,7 @@
 
 #include <string>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace KEYMAP;
 
 uint32_t CGamepadTranslator::TranslateString(std::string strButton)

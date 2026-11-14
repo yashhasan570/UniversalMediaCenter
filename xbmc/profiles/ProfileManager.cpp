@@ -75,7 +75,7 @@
 #define XML_NEXTID        "nextIdProfile"
 #define XML_PROFILE       "profile"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace XFILE;
 
 static CProfile EmptyProfile;
@@ -142,7 +142,7 @@ bool CProfileManager::Load()
 
   if (CFile::Exists(file))
   {
-    CXBMCTinyXML profilesDoc;
+    CTinyXML profilesDoc;
     if (profilesDoc.LoadFile(file))
     {
       const TiXmlElement *rootElement = profilesDoc.RootElement();
@@ -155,7 +155,7 @@ bool CProfileManager::Load()
 
         std::string defaultDir("special://home/userdata");
         if (!CDirectory::Exists(defaultDir))
-          defaultDir = "special://xbmc/userdata";
+          defaultDir = "special:///userdata";
 
         const TiXmlElement* pProfile = rootElement->FirstChildElement(XML_PROFILE);
         while (pProfile)
@@ -223,7 +223,7 @@ bool CProfileManager::Save() const
 
   std::unique_lock lock(m_critical);
 
-  CXBMCTinyXML xmlDoc;
+  CTinyXML xmlDoc;
   TiXmlElement xmlRootElement(XML_PROFILES);
   TiXmlNode *pRoot = xmlDoc.InsertEndChild(xmlRootElement);
   if (pRoot == nullptr)
@@ -352,7 +352,7 @@ bool CProfileManager::LoadProfile(unsigned int index)
 
   if (m_currentProfile != MASTER_PROFILE_ID)
   {
-    CXBMCTinyXML doc;
+    CTinyXML doc;
     if (doc.LoadFile(URIUtils::AddFileToFolder(GetUserDataFolder(), "guisettings.xml")))
     {
       settings->LoadSetting(doc.RootElement(), CSettings::SETTING_MASTERLOCK_MAXRETRIES);

@@ -13,7 +13,7 @@
 
 #include <memory>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace JOYSTICK
 {
@@ -87,4 +87,4 @@ private:
   std::unique_ptr<CControllerActivity> m_controllerActivity;
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

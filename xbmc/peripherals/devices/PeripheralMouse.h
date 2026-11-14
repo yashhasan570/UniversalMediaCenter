@@ -20,7 +20,7 @@ namespace PERIPHERALS
 /*!
  * \ingroup peripherals
  */
-class CPeripheralMouse : public CPeripheral, public KODI::MOUSE::IMouseDriverHandler
+class CPeripheralMouse : public CPeripheral, public UNIVERSAL MEDIA CENTER::MOUSE::IMouseDriverHandler
 {
 public:
   CPeripheralMouse(CPeripherals& manager,
@@ -31,22 +31,22 @@ public:
 
   // implementation of CPeripheral
   bool InitialiseFeature(const PeripheralFeature feature) override;
-  void RegisterMouseDriverHandler(KODI::MOUSE::IMouseDriverHandler* handler,
+  void RegisterMouseDriverHandler(UNIVERSAL MEDIA CENTER::MOUSE::IMouseDriverHandler* handler,
                                   bool bPromiscuous) override;
-  void UnregisterMouseDriverHandler(KODI::MOUSE::IMouseDriverHandler* handler) override;
+  void UnregisterMouseDriverHandler(UNIVERSAL MEDIA CENTER::MOUSE::IMouseDriverHandler* handler) override;
   CDateTime LastActive() const override { return m_lastActive; }
   void SetLastActive(const CDateTime& lastActive) override;
-  KODI::GAME::ControllerPtr ControllerProfile() const override;
+  UNIVERSAL MEDIA CENTER::GAME::ControllerPtr ControllerProfile() const override;
 
   // implementation of IMouseDriverHandler
   bool OnPosition(int x, int y) override;
-  bool OnButtonPress(KODI::MOUSE::BUTTON_ID button) override;
-  void OnButtonRelease(KODI::MOUSE::BUTTON_ID button) override;
+  bool OnButtonPress(UNIVERSAL MEDIA CENTER::MOUSE::BUTTON_ID button) override;
+  void OnButtonRelease(UNIVERSAL MEDIA CENTER::MOUSE::BUTTON_ID button) override;
 
 private:
   struct MouseHandle
   {
-    KODI::MOUSE::IMouseDriverHandler* handler;
+    UNIVERSAL MEDIA CENTER::MOUSE::IMouseDriverHandler* handler;
     bool bPromiscuous;
   };
 

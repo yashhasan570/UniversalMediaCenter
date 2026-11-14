@@ -83,7 +83,7 @@ int CPVRCachedImages::Cleanup(const std::vector<PVRImagePattern>& urlPatterns,
       CServiceBroker::GetTextureCache()->ClearCachedImage(items[i]["textureid"].asInteger());
 
       if (clearTextureForPath)
-        db.ClearTextureForPath(textureURL, KODI::ART::TYPE::THUMB);
+        db.ClearTextureForPath(textureURL, UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB);
 
       iCleanedImages++;
     }

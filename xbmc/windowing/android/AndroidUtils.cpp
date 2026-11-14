@@ -16,7 +16,7 @@
 #include "utils/log.h"
 #include "windowing/GraphicContext.h"
 
-#include "platform/android/activity/XBMCApp.h"
+#include "platform/android/activity/App.h"
 
 #include <androidjni/MediaCodecInfo.h>
 #include <androidjni/MediaCodecList.h>
@@ -30,7 +30,7 @@ static void fetchDisplayModes()
 {
   s_res_displayModes.clear();
 
-  CJNIDisplay display = CXBMCApp::getWindow().getDecorView().getDisplay();
+  CJNIDisplay display = CApp::getWindow().getDecorView().getDisplay();
 
   if (display)
   {
@@ -153,7 +153,7 @@ CAndroidUtils::CAndroidUtils()
 
 bool CAndroidUtils::GetNativeResolution(RESOLUTION_INFO* res) const
 {
-  const std::shared_ptr<CNativeWindow> nativeWindow = CXBMCApp::Get().GetNativeWindow(30000);
+  const std::shared_ptr<CNativeWindow> nativeWindow = CApp::Get().GetNativeWindow(30000);
   if (!nativeWindow)
     return false;
 
@@ -187,10 +187,10 @@ bool CAndroidUtils::SetNativeResolution(const RESOLUTION_INFO& res)
       std::fabs(s_res_cur_displayMode.fRefreshRate - res.fRefreshRate) > FLT_EPSILON)
   {
     CLog::LogF(LOGDEBUG, "request mode: {}", res.strId);
-    CXBMCApp::Get().SetDisplayMode(std::atoi(res.strId.c_str()), res.fRefreshRate);
+    CApp::Get().SetDisplayMode(std::atoi(res.strId.c_str()), res.fRefreshRate);
   }
   s_res_cur_displayMode = res;
-  CXBMCApp::Get().SetBuffersGeometry(res.iWidth, res.iHeight, 0);
+  CApp::Get().SetBuffersGeometry(res.iWidth, res.iHeight, 0);
 
   return true;
 }
@@ -223,7 +223,7 @@ bool CAndroidUtils::UpdateDisplayModes()
 
 bool CAndroidUtils::IsHDRDisplay()
 {
-  CJNIWindow window = CXBMCApp::getWindow();
+  CJNIWindow window = CApp::getWindow();
   bool ret = false;
 
   if (window)
@@ -250,7 +250,7 @@ void CAndroidUtils::OnSettingChanged(const std::shared_ptr<const CSetting>& sett
 
 std::vector<int> CAndroidUtils::GetDisplaySupportedHdrTypes()
 {
-  CJNIWindow window = CXBMCApp::getWindow();
+  CJNIWindow window = CApp::getWindow();
 
   if (window)
   {

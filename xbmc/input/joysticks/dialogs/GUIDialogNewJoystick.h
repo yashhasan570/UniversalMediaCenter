@@ -10,7 +10,7 @@
 
 #include "threads/Thread.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace JOYSTICK
 {
@@ -30,4 +30,4 @@ protected:
   void Process() override;
 };
 } // namespace JOYSTICK
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

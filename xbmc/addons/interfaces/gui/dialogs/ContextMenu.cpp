@@ -10,7 +10,7 @@
 
 #include "ServiceBroker.h"
 #include "addons/binary-addons/AddonDll.h"
-#include "addons/kodi-dev-kit/include/kodi/gui/dialogs/ContextMenu.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/gui/dialogs/ContextMenu.h"
 #include "dialogs/GUIDialogContextMenu.h"
 #include "guilib/GUIComponent.h"
 #include "guilib/GUIWindowManager.h"
@@ -21,23 +21,23 @@ namespace ADDON
 
 void Interface_GUIDialogContextMenu::Init(AddonGlobalInterface* addonInterface)
 {
-  addonInterface->toUniversal Media Center->kodi_gui->dialogContextMenu =
-      new AddonToUniversal Media CenterFuncTable_kodi_gui_dialogContextMenu();
+  addonInterface->toUniversal Media Center->->dialogContextMenu =
+      new AddonToUniversal Media CenterFuncTable__dialogContextMenu();
 
-  addonInterface->toUniversal Media Center->kodi_gui->dialogContextMenu->open = open;
+  addonInterface->toUniversal Media Center->->dialogContextMenu->open = open;
 }
 
 void Interface_GUIDialogContextMenu::DeInit(AddonGlobalInterface* addonInterface)
 {
-  delete addonInterface->toUniversal Media Center->kodi_gui->dialogContextMenu;
+  delete addonInterface->toUniversal Media Center->->dialogContextMenu;
 }
 
-int Interface_GUIDialogContextMenu::open(KODI_HANDLE kodiBase,
+int Interface_GUIDialogContextMenu::open(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
                                          const char* heading,
                                          const char* entries[],
                                          unsigned int size)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon)
   {
     CLog::LogF(LOGERROR, "Invalid data");

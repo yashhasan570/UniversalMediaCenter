@@ -9,9 +9,9 @@
 
 #include "Encoder.h"
 #include "addons/binary-addons/AddonInstanceHandler.h"
-#include "addons/kodi-dev-kit/include/kodi/addon-instance/AudioEncoder.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/addon-instance/AudioEncoder.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace CDRIP
 {
@@ -34,10 +34,10 @@ public:
 private:
   // Currently needed addon interface parts
   //@{
-  static ssize_t cb_write(KODI_HANDLE kodiInstance, const uint8_t* data, size_t len);
-  static ssize_t cb_seek(KODI_HANDLE kodiInstance, ssize_t pos, int whence);
+  static ssize_t cb_write(UNIVERSALMEDIA_HANDLE universalmediacenterInstance, const uint8_t* data, size_t len);
+  static ssize_t cb_seek(UNIVERSALMEDIA_HANDLE universalmediacenterInstance, ssize_t pos, int whence);
   //@}
 };
 
 } /* namespace CDRIP */
-} /* namespace KODI */
+} /* namespace UNIVERSAL MEDIA CENTER */

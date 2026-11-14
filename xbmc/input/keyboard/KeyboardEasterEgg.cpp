@@ -11,12 +11,12 @@
 #include "input/joysticks/JoystickEasterEgg.h"
 #include "input/keyboard/Key.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace KEYBOARD;
 
-std::vector<XBMCVKey> CKeyboardEasterEgg::m_sequence = {
-    XBMCVK_UP,    XBMCVK_UP,   XBMCVK_DOWN,  XBMCVK_DOWN, XBMCVK_LEFT,
-    XBMCVK_RIGHT, XBMCVK_LEFT, XBMCVK_RIGHT, XBMCVK_B,    XBMCVK_A,
+std::vector<VKey> CKeyboardEasterEgg::m_sequence = {
+    VK_UP,    VK_UP,   VK_DOWN,  VK_DOWN, VK_LEFT,
+    VK_RIGHT, VK_LEFT, VK_RIGHT, VK_B,    VK_A,
 };
 
 bool CKeyboardEasterEgg::OnKeyPress(const CKey& key)

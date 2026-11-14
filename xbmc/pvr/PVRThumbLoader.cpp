@@ -51,16 +51,16 @@ void CPVRThumbLoader::OnLoaderFinish()
 
 void CPVRThumbLoader::ClearCachedImage(CFileItem& item)
 {
-  const std::string thumb = item.GetArt(KODI::ART::TYPE::THUMB);
+  const std::string thumb = item.GetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB);
   if (!thumb.empty())
   {
     CServiceBroker::GetTextureCache()->ClearCachedImage(thumb);
     if (m_textureDatabase->Open())
     {
-      m_textureDatabase->ClearTextureForPath(item.GetPath(), KODI::ART::TYPE::THUMB);
+      m_textureDatabase->ClearTextureForPath(item.GetPath(), UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB);
       m_textureDatabase->Close();
     }
-    item.SetArt(KODI::ART::TYPE::THUMB, "");
+    item.SetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB, "");
     m_bInvalidated = true;
   }
 }
@@ -80,23 +80,23 @@ bool CPVRThumbLoader::FillThumb(CFileItem& item)
   }
 
   const std::string thumb{GetChannelGroupThumbURL(item)};
-  const std::string cachedThumb{GetCachedImage(item, KODI::ART::TYPE::THUMB)};
+  const std::string cachedThumb{GetCachedImage(item, UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB)};
   if (thumb != cachedThumb)
   {
     if (!cachedThumb.empty())
       CServiceBroker::GetTextureCache()->ClearCachedImage(cachedThumb);
 
-    SetCachedImage(item, KODI::ART::TYPE::THUMB, thumb);
+    SetCachedImage(item, UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB, thumb);
     m_bInvalidated = true;
   }
 
-  item.SetArt(KODI::ART::TYPE::THUMB, thumb);
+  item.SetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB, thumb);
   return true;
 }
 
 std::string CPVRThumbLoader::GetChannelGroupThumbURL(const CFileItem& channelGroupItem) const
 {
-  KODI::UTILITY::CDigest digest{KODI::UTILITY::CDigest::Type::MD5};
+  UNIVERSAL MEDIA CENTER::UTILITY::CDigest digest{UNIVERSAL MEDIA CENTER::UTILITY::CDigest::Type::MD5};
   for (const auto& icon :
        CPVRChannelGroupImageFileLoader::GetChannelGroupIcons(channelGroupItem.GetPath()))
     digest.Update(icon);

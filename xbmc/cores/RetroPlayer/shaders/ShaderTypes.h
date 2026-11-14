@@ -15,7 +15,7 @@
 #include <type_traits>
 #include <vector>
 
-namespace KODI::SHADER
+namespace UNIVERSAL MEDIA CENTER::SHADER
 {
 using ShaderParameterMap = std::map<std::string, float, std::less<>>;
 
@@ -119,4 +119,4 @@ struct float2
   float x;
   float y;
 };
-} // namespace KODI::SHADER
+} // namespace UNIVERSAL MEDIA CENTER::SHADER

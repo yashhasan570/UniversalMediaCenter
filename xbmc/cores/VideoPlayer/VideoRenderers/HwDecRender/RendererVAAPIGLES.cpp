@@ -20,7 +20,7 @@
 #include <memory>
 
 using namespace VAAPI;
-using namespace KODI::UTILS::EGL;
+using namespace UNIVERSAL MEDIA CENTER::UTILS::EGL;
 
 IVaapiWinSystem* CRendererVAAPIGLES::m_pWinSystem = nullptr;
 

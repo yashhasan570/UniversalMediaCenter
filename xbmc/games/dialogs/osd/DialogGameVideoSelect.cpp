@@ -27,7 +27,7 @@
 #include "view/ViewState.h"
 #include "windowing/GraphicContext.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 CDialogGameVideoSelect::CDialogGameVideoSelect(int windowId)

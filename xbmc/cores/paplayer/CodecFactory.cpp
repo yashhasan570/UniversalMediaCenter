@@ -16,7 +16,7 @@
 #include "addons/addoninfo/AddonType.h"
 #include "utils/StringUtils.h"
 
-using namespace KODI::ADDONS;
+using namespace UNIVERSAL MEDIA CENTER::ADDONS;
 
 ICodec* CodecFactory::CreateCodec(const CURL& urlFile)
 {
@@ -75,7 +75,7 @@ ICodec* CodecFactory::CreateCodecDemux(const CFileItem& file, unsigned int filec
       content == "audio/ape"        ||
       content == "application/ogg"  ||
       content == "audio/ogg"        ||
-      content == "audio/x-xbmc-pcm" ||
+      content == "audio/x--pcm" ||
       content == "audio/flac"       ||
       content == "audio/x-flac"     ||
       content == "application/x-flac"

@@ -24,7 +24,7 @@
 #include <android/input.h>
 #include <androidjni/View.h>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace PERIPHERALS;
 
 namespace
@@ -422,22 +422,22 @@ bool CAndroidJoystickState::ProcessEvent(const AInputEvent* event)
   return false;
 }
 
-void CAndroidJoystickState::GetEvents(std::vector<kodi::addon::PeripheralEvent>& events)
+void CAndroidJoystickState::GetEvents(std::vector<addon::PeripheralEvent>& events)
 {
   GetButtonEvents(events);
   GetAxisEvents(events);
 }
 
-void CAndroidJoystickState::GetButtonEvents(std::vector<kodi::addon::PeripheralEvent>& events)
+void CAndroidJoystickState::GetButtonEvents(std::vector<addon::PeripheralEvent>& events)
 {
   std::unique_lock lock(m_eventMutex);
 
   // Only report a single event per button (avoids dropping rapid presses)
-  std::vector<kodi::addon::PeripheralEvent> repeatButtons;
+  std::vector<addon::PeripheralEvent> repeatButtons;
 
   for (const auto& digitalEvent : m_digitalEvents)
   {
-    auto HasButton = [&digitalEvent](const kodi::addon::PeripheralEvent& event)
+    auto HasButton = [&digitalEvent](const addon::PeripheralEvent& event)
     {
       if (event.Type() == PERIPHERAL_EVENT_TYPE_DRIVER_BUTTON)
         return event.DriverIndex() == digitalEvent.DriverIndex();
@@ -453,7 +453,7 @@ void CAndroidJoystickState::GetButtonEvents(std::vector<kodi::addon::PeripheralE
   m_digitalEvents.swap(repeatButtons);
 }
 
-void CAndroidJoystickState::GetAxisEvents(std::vector<kodi::addon::PeripheralEvent>& events) const
+void CAndroidJoystickState::GetAxisEvents(std::vector<addon::PeripheralEvent>& events) const
 {
   for (unsigned int i = 0; i < m_analogState.size(); i++)
     events.emplace_back(m_deviceId, i, m_analogState[i]);

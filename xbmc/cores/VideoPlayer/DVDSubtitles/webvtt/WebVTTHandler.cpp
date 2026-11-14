@@ -31,7 +31,7 @@
 // - Cue "line" setting as number value
 // - Vertical text (used for some specific asian languages only)
 
-using namespace KODI::SUBTITLES::STYLE;
+using namespace UNIVERSAL MEDIA CENTER::SUBTITLES::STYLE;
 
 namespace
 {
@@ -231,10 +231,10 @@ bool CWebVTTHandler::Initialize()
 
   auto overrideStyles{
       CServiceBroker::GetSettingsComponent()->GetSubtitlesSettings()->GetOverrideStyles()};
-  m_overridePositions = (overrideStyles == KODI::SUBTITLES::OverrideStyles::STYLES_POSITIONS ||
-                         overrideStyles == KODI::SUBTITLES::OverrideStyles::POSITIONS);
-  m_overrideStyle = (overrideStyles == KODI::SUBTITLES::OverrideStyles::STYLES_POSITIONS ||
-                     overrideStyles == KODI::SUBTITLES::OverrideStyles::STYLES);
+  m_overridePositions = (overrideStyles == UNIVERSAL MEDIA CENTER::SUBTITLES::OverrideStyles::STYLES_POSITIONS ||
+                         overrideStyles == UNIVERSAL MEDIA CENTER::SUBTITLES::OverrideStyles::POSITIONS);
+  m_overrideStyle = (overrideStyles == UNIVERSAL MEDIA CENTER::SUBTITLES::OverrideStyles::STYLES_POSITIONS ||
+                     overrideStyles == UNIVERSAL MEDIA CENTER::SUBTITLES::OverrideStyles::STYLES);
 
   return true;
 }
@@ -498,11 +498,11 @@ void CWebVTTHandler::DecodeLine(std::string line, std::vector<subtitleData>* sub
 
         auto colorInfo =
             std::find_if(m_CSSColors.begin(), m_CSSColors.end(),
-                         [&](const std::pair<std::string, KODI::UTILS::COLOR::ColorInfo>& item)
+                         [&](const std::pair<std::string, UNIVERSAL MEDIA CENTER::UTILS::COLOR::ColorInfo>& item)
                          { return StringUtils::CompareNoCase(item.first, colorName) == 0; });
         if (colorInfo != m_CSSColors.end())
         {
-          const uint32_t color = KODI::UTILS::COLOR::ConvertToBGR(colorInfo->second.colorARGB);
+          const uint32_t color = UNIVERSAL MEDIA CENTER::UTILS::COLOR::ConvertToBGR(colorInfo->second.colorARGB);
           m_feedCssStyle.m_color = StringUtils::Format("{:6x}", color);
         }
       }
@@ -510,7 +510,7 @@ void CWebVTTHandler::DecodeLine(std::string line, std::vector<subtitleData>* sub
       if (!colorRGB.empty()) // From CSS Color numeric R,G,B values
       {
         const auto intValues = StringUtils::Split(colorRGB, ",");
-        uint32_t color = KODI::UTILS::COLOR::ConvertIntToRGB(
+        uint32_t color = UNIVERSAL MEDIA CENTER::UTILS::COLOR::ConvertIntToRGB(
             std::stoi(intValues[2]), std::stoi(intValues[1]), std::stoi(intValues[0]));
         m_feedCssStyle.m_color = StringUtils::Format("{:6x}", color);
       }
@@ -1168,7 +1168,7 @@ void CWebVTTHandler::LoadColors()
 {
   CGUIColorManager colorManager;
   colorManager.LoadColorsListFromXML(
-      CSpecialProtocol::TranslatePathConvertCase("special://xbmc/system/colors.xml"), m_CSSColors,
+      CSpecialProtocol::TranslatePathConvertCase("special:///system/colors.xml"), m_CSSColors,
       false);
   m_CSSColorsLoaded = true;
 }

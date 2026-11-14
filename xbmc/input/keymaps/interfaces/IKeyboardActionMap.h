@@ -10,7 +10,7 @@
 
 class CKey;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace KEYMAP
 {
@@ -35,4 +35,4 @@ public:
   virtual unsigned int GetActionID(const CKey& key) = 0;
 };
 } // namespace KEYMAP
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

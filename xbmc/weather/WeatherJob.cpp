@@ -32,7 +32,7 @@
 #include "weather/WeatherPropertyHelper.h"
 
 using namespace ADDON;
-using namespace KODI::WEATHER;
+using namespace UNIVERSAL MEDIA CENTER::WEATHER;
 using namespace std::chrono_literals;
 
 CWeatherJob::CWeatherJob(int location) : m_location(location)
@@ -73,7 +73,7 @@ bool CWeatherJob::DoWork()
       if (!CScriptInvocationManager::GetInstance().IsRunning(scriptId))
         break;
 
-      KODI::TIME::Sleep(100ms);
+      UNIVERSAL MEDIA CENTER::TIME::Sleep(100ms);
     }
 
     CLog::Log(LOGINFO, "WEATHER: Successfully downloaded weather");

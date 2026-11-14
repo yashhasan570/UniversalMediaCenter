@@ -13,7 +13,7 @@
 
 #include "PlatformDefs.h" // for ssize_t
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace CDRIP
 {
@@ -43,4 +43,4 @@ public:
 };
 
 } /* namespace CDRIP */
-} /* namespace KODI */
+} /* namespace UNIVERSAL MEDIA CENTER */

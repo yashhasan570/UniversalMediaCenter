@@ -30,14 +30,14 @@ import androidx.tvprovider.media.tv.PreviewProgram;
 import androidx.tvprovider.media.tv.TvContractCompat;
 
 import @APP_PACKAGE@.Splash;
-import @APP_PACKAGE@.XBMCJsonRPC;
+import @APP_PACKAGE@.JsonRPC;
 import @APP_PACKAGE@.model.Movie;
 import @APP_PACKAGE@.model.TVShow;
 import @APP_PACKAGE@.model.TVEpisode;
 import @APP_PACKAGE@.model.File;
 import @APP_PACKAGE@.model.Media;
 import @APP_PACKAGE@.channels.model.Subscription;
-import @APP_PACKAGE@.channels.model.XBMCDatabase;
+import @APP_PACKAGE@.channels.model.Database;
 import @APP_PACKAGE@.channels.util.TvUtil;
 
 import java.util.ArrayList;
@@ -140,7 +140,7 @@ public class SyncProgramsJobService extends JobService
 
     protected Boolean doInBackground(Long... channelIds)
     {
-      XBMCJsonRPC json = new XBMCJsonRPC(mContext);
+      JsonRPC json = new JsonRPC(mContext);
       if (!json.Ping())
         return false;
       json = null;
@@ -151,10 +151,10 @@ public class SyncProgramsJobService extends JobService
         for (Long channelId : params)
         {
           Subscription subscription =
-                  XBMCDatabase.findSubscriptionByChannelId(mContext, channelId);
+                  Database.findSubscriptionByChannelId(mContext, channelId);
           if (subscription != null)
           {
-            List<Media> cachedMedias = XBMCDatabase.getMedias(mContext, channelId);
+            List<Media> cachedMedias = Database.getMedias(mContext, channelId);
             syncPrograms(channelId, subscription.getUri(), cachedMedias);
           }
         }
@@ -191,7 +191,7 @@ public class SyncProgramsJobService extends JobService
         {
           Channel channel = Channel.fromCursor(cursor);
           
-          XBMCJsonRPC jsonrpc = new XBMCJsonRPC(mContext);
+          JsonRPC jsonrpc = new JsonRPC(mContext);
           if (uri.isEmpty())
           {
             // Suggestion channel
@@ -204,15 +204,15 @@ public class SyncProgramsJobService extends JobService
           {
             Log.d(TAG, "SyncProgramsJobService: Channel is browsable: " + channelId);
 
-            String xbmcURL = Uri.parse(uri).getFragment();
-            List<File> files = jsonrpc.getFiles(xbmcURL);
+            String URL = Uri.parse(uri).getFragment();
+            List<File> files = jsonrpc.getFiles(URL);
 
             deletePrograms(channelId, medias);
             medias = createPrograms(channelId, jsonrpc.getMedias(files));
           }
           jsonrpc = null;
         }
-        XBMCDatabase.saveMedias(getApplicationContext(), channelId, medias);
+        Database.saveMedias(getApplicationContext(), channelId, medias);
       }
     }
 
@@ -261,7 +261,7 @@ public class SyncProgramsJobService extends JobService
       Log.d(TAG, "SyncProgramsJobService: Deleted " + count + " programs for  channel " + channelId);
 
       // Remove our local records to stay in sync with the TV Provider.
-      XBMCDatabase.removeMedias(getApplicationContext(), channelId);
+      Database.removeMedias(getApplicationContext(), channelId);
     }
 
     @NonNull

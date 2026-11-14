@@ -34,7 +34,7 @@ constexpr int64_t RANGE_WINDOW_BYTES = 2 * 1024 * 1024;
 // Synchronous XHR on a pthread serializes requests per thread, so one store
 // per module suffices between a request and the copies that follow it.
 // clang-format off
-EM_JS(int, kodi_xhr_request,
+EM_JS(int, universalmediacenter_xhr_request,
       (const char* methodPtr, const char* urlPtr, const char* bodyPtr, int bodyLen,
        const char* headersPtr, const char* userAgentPtr, const char* refererPtr,
        int timeoutSeconds, int includeBody), {
@@ -48,7 +48,7 @@ EM_JS(int, kodi_xhr_request,
   // Browsers quote the URL, credentials included, in their error messages.
   var redact = function(s) { return String(s).replace(new RegExp("//[^/@ ]*@", "g"), "//"); };
 
-  var store = Module.kodiXhrStore = Module.kodiXhrStore || {};
+  var store = Module.universalmediacenterXhrStore = Module.universalmediacenterXhrStore || {};
   store.status = 0;
   store.redirected = false;
   store.responseURL = "";
@@ -94,20 +94,20 @@ EM_JS(int, kodi_xhr_request,
     return store.status;
   } catch (e) {
     store.error = redact((e && e.name ? e.name + ": " : "") + (e && e.message ? e.message : String(e)));
-    console.warn("[kodi][xhr] request failed:", method, store.error);
+    console.warn("[universalmediacenter][xhr] request failed:", method, store.error);
     return 0;
   }
 });
 
-EM_JS(int, kodi_xhr_body_size, (), {
-  var s = Module.kodiXhrStore || {};
+EM_JS(int, universalmediacenter_xhr_body_size, (), {
+  var s = Module.universalmediacenterXhrStore || {};
   return s.body ? (s.body.length | 0) : 0;
 });
 
 // Hands the body over to the heap: the store keeps no copy, so a large response
 // is not held twice until the thread's next request.
-EM_JS(int, kodi_xhr_copy_body, (char* outPtr, int outSize), {
-  var s = Module.kodiXhrStore || {};
+EM_JS(int, universalmediacenter_xhr_copy_body, (char* outPtr, int outSize), {
+  var s = Module.universalmediacenterXhrStore || {};
   var body = s.body;
   s.body = null;
   if (!body || !outPtr || outSize <= 0) return 0;
@@ -116,28 +116,28 @@ EM_JS(int, kodi_xhr_copy_body, (char* outPtr, int outSize), {
   return n | 0;
 });
 
-EM_JS(int, kodi_xhr_redirected, (), {
-  var s = Module.kodiXhrStore || {};
+EM_JS(int, universalmediacenter_xhr_redirected, (), {
+  var s = Module.universalmediacenterXhrStore || {};
   return s.redirected ? 1 : 0;
 });
 
-EM_JS(double, kodi_xhr_content_length, (), {
-  var s = Module.kodiXhrStore || {};
+EM_JS(double, universalmediacenter_xhr_content_length, (), {
+  var s = Module.universalmediacenterXhrStore || {};
   return typeof s.contentLength === "number" ? s.contentLength : -1;
 });
 
 // fieldId: 0=rawHeaders 1=responseURL 2=error. The caller frees the result.
-EM_JS(char*, kodi_xhr_string, (int fieldId), {
-  var s = Module.kodiXhrStore || {};
+EM_JS(char*, universalmediacenter_xhr_string, (int fieldId), {
+  var s = Module.universalmediacenterXhrStore || {};
   var v = fieldId === 0 ? s.rawHeaders : fieldId === 1 ? s.responseURL : s.error;
   return stringToNewUTF8(v || "");
 });
 // clang-format on
-EM_JS_DEPS(kodi_xhr, "$stringToNewUTF8");
+EM_JS_DEPS(universalmediacenter_xhr, "$stringToNewUTF8");
 
 std::string FetchString(int fieldId)
 {
-  char* value = kodi_xhr_string(fieldId);
+  char* value = universalmediacenter_xhr_string(fieldId);
   std::string out(value ? value : "");
   std::free(value);
   return out;
@@ -304,7 +304,7 @@ CXhrFile::Response CXhrFile::Fetch(const Request& request,
     headers += StringUtils::Format("Range:bytes={}-{}\n", rangeStart, rangeStart + rangeLength - 1);
 
   out.status =
-      kodi_xhr_request(method.c_str(), request.url.c_str(), body.empty() ? nullptr : body.data(),
+      universalmediacenter_xhr_request(method.c_str(), request.url.c_str(), body.empty() ? nullptr : body.data(),
                        static_cast<int>(body.size()), headers.empty() ? nullptr : headers.c_str(),
                        request.userAgent.c_str(), request.referer.c_str(), request.timeout, 1);
   if (out.status <= 0)
@@ -315,11 +315,11 @@ CXhrFile::Response CXhrFile::Fetch(const Request& request,
 
   out.rawHeaders = FetchString(0);
   out.responseUrl = FetchString(1);
-  out.redirected = kodi_xhr_redirected() != 0;
-  const int bodySize = kodi_xhr_body_size();
+  out.redirected = universalmediacenter_xhr_redirected() != 0;
+  const int bodySize = universalmediacenter_xhr_body_size();
   if (bodySize > MAX_EAGER_RESPONSE_BYTES)
   {
-    kodi_xhr_copy_body(nullptr, 0); // drops the body
+    universalmediacenter_xhr_copy_body(nullptr, 0); // drops the body
     out.status = 0;
     out.error = StringUtils::Format("refusing to keep a {:.1f} MiB response in the WASM heap",
                                     static_cast<double>(bodySize) / (1024.0 * 1024.0));
@@ -329,7 +329,7 @@ CXhrFile::Response CXhrFile::Fetch(const Request& request,
   {
     out.body.reset(new char[bodySize]);
     out.bodySize = static_cast<size_t>(bodySize);
-    kodi_xhr_copy_body(out.body.get(), bodySize);
+    universalmediacenter_xhr_copy_body(out.body.get(), bodySize);
   }
   if (out.status == 206)
   {
@@ -381,7 +381,7 @@ bool CXhrFile::Open(const CURL& url)
   if (windowed && response.partial && response.total < 0)
   {
     const int status = Head(CURL(m_url));
-    const double length = kodi_xhr_content_length();
+    const double length = universalmediacenter_xhr_content_length();
     if (status > 0 && status < 400 && length >= static_cast<double>(response.bodySize))
       response.total = static_cast<int64_t>(length);
   }
@@ -435,7 +435,7 @@ int CXhrFile::Head(const CURL& url)
   const std::string target = ApplyProtocolOptions(url);
   const Request request = BuildRequest(CURL(target));
   const int status =
-      kodi_xhr_request("HEAD", request.url.c_str(), nullptr, 0,
+      universalmediacenter_xhr_request("HEAD", request.url.c_str(), nullptr, 0,
                        request.headers.empty() ? nullptr : request.headers.c_str(),
                        request.userAgent.c_str(), request.referer.c_str(), request.timeout, 0);
   if (status > 0 && status < 400)
@@ -465,7 +465,7 @@ int CXhrFile::Stat(const CURL& url, struct __stat64* buffer)
   const int status = Head(url);
   if (status > 0 && status < 400)
   {
-    const double contentLength = kodi_xhr_content_length();
+    const double contentLength = universalmediacenter_xhr_content_length();
     size = contentLength >= 0.0 ? static_cast<int64_t>(contentLength) : 0;
   }
   // Some servers reject HEAD; CCurlFile retries those with a GET too.

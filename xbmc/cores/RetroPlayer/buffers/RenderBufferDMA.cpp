@@ -21,7 +21,7 @@
 #include "windowing/WinSystem.h"
 #include "windowing/linux/WinSystemEGL.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace RETRO;
 
 CRenderBufferDMA::CRenderBufferDMA(int fourcc)
@@ -29,7 +29,7 @@ CRenderBufferDMA::CRenderBufferDMA(int fourcc)
     m_bo(CBufferObject::GetBufferObject(false))
 {
   auto winSystemEGL =
-      dynamic_cast<KODI::WINDOWING::LINUX::CWinSystemEGL*>(CServiceBroker::GetWinSystem());
+      dynamic_cast<UNIVERSAL MEDIA CENTER::WINDOWING::LINUX::CWinSystemEGL*>(CServiceBroker::GetWinSystem());
 
   if (winSystemEGL == nullptr)
     throw std::runtime_error("dynamic_cast failed to cast to CWinSystemEGL. This is likely due to "

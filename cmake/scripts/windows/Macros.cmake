@@ -3,7 +3,7 @@ function(core_link_library lib wraplib)
 endfunction()
 
 function(find_soname lib)
-  # Windows uses hardcoded dlls in xbmc/DllPaths_win32.h.
+  # Windows uses hardcoded dlls in /DllPaths_win32.h.
   # Therefore the output of this function is unused.
 endfunction()
 

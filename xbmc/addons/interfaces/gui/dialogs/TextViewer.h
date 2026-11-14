@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "addons/kodi-dev-kit/include/kodi/c-api/gui/dialogs/text_viewer.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api/gui/dialogs/text_viewer.h"
 
 extern "C"
 {
@@ -24,7 +24,7 @@ extern "C"
    * To hold functions not related to a instance type and usable for
    * every add-on type.
    *
-   * Related add-on header is "./xbmc/addons/kodi-dev-kit/include/kodi/gui/dialogs/TextViewer.h"
+   * Related add-on header is ".//addons/universalmediacenter-dev-kit/include/universalmediacenter/gui/dialogs/TextViewer.h"
    */
   struct Interface_GUIDialogTextViewer
   {
@@ -32,17 +32,17 @@ extern "C"
     static void DeInit(AddonGlobalInterface* addonInterface);
 
     /*!
-     * @brief callback functions from add-on to kodi
+     * @brief callback functions from add-on to universalmediacenter
      *
      * @note To add a new function use the "_" style to directly identify an
      * add-on callback function. Everything with CamelCase is only to be used
      * in Universal Media Center.
      *
-     * The parameter `kodiBase` is used to become the pointer for a `CAddonDll`
+     * The parameter `universalmediacenterBase` is used to become the pointer for a `CAddonDll`
      * class.
      */
     //@{
-    static void open(KODI_HANDLE kodiBase, const char* heading, const char* text);
+    static void open(UNIVERSALMEDIA_HANDLE universalmediacenterBase, const char* heading, const char* text);
     //@}
   };
 

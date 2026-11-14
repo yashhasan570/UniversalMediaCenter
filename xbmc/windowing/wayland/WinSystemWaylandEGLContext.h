@@ -17,7 +17,7 @@
 
 #include <wayland-egl.hpp>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace WINDOWING
 {
@@ -30,7 +30,7 @@ using CWinSystemWaylandImpl = CWinSystemWaylandWebOS;
 using CWinSystemWaylandImpl = CWinSystemWayland;
 #endif
 
-class CWinSystemWaylandEGLContext : public KODI::WINDOWING::LINUX::CWinSystemEGL,
+class CWinSystemWaylandEGLContext : public UNIVERSAL MEDIA CENTER::WINDOWING::LINUX::CWinSystemEGL,
                                     public CWinSystemWaylandImpl
 {
 public:

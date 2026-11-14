@@ -24,9 +24,9 @@ CDVDDemux* CDVDFactoryDemuxer::CreateDemuxer(const std::shared_ptr<CDVDInputStre
     return NULL;
 
   // Try to open the AirTunes demuxer
-  if (pInputStream->IsStreamType(DVDSTREAM_TYPE_FILE) && pInputStream->GetContent().compare("audio/x-xbmc-pcm") == 0 )
+  if (pInputStream->IsStreamType(DVDSTREAM_TYPE_FILE) && pInputStream->GetContent().compare("audio/x--pcm") == 0 )
   {
-    // audio/x-xbmc-pcm this is the used codec for AirTunes
+    // audio/x--pcm this is the used codec for AirTunes
     // (apples audio only streaming)
     std::unique_ptr<CDVDDemuxBXA> demuxer(new CDVDDemuxBXA());
     if(demuxer->Open(pInputStream))

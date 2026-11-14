@@ -31,7 +31,7 @@ class CRegExp;
 class CFileItem;
 class CFileItemList;
 
-namespace KODI::VIDEO
+namespace UNIVERSAL MEDIA CENTER::VIDEO
 {
   class IVideoInfoTagLoader;
   class ISetInfoTagLoader;
@@ -441,10 +441,10 @@ namespace KODI::VIDEO
      */
     std::string GetEditionFromFolderName(const std::string& folderName);
 
-    mutable KODI::REGEXP::RegExpCache m_regexpCache;
+    mutable UNIVERSAL MEDIA CENTER::REGEXP::RegExpCache m_regexpCache;
 
     //! Editions known to the library, cached for the duration of a scan
     std::vector<std::string> m_videoVersionTypes;
     bool m_videoVersionTypesCached{false};
   };
-  } // namespace KODI::VIDEO
+  } // namespace UNIVERSAL MEDIA CENTER::VIDEO

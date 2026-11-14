@@ -8,7 +8,7 @@
 
 #include "AndroidJoyStick.h"
 
-#include "platform/android/activity/XBMCApp.h"
+#include "platform/android/activity/App.h"
 
 #include <android/input.h>
 
@@ -18,9 +18,9 @@ bool CAndroidJoyStick::onJoyStickEvent(AInputEvent* event)
 
   // only handle input events from a gamepad or joystick
   if ((source & (AINPUT_SOURCE_GAMEPAD | AINPUT_SOURCE_JOYSTICK)) != 0)
-    return CXBMCApp::Get().onInputDeviceEvent(event);
+    return CApp::Get().onInputDeviceEvent(event);
 
-  CXBMCApp::android_printf("CAndroidJoyStick::onJoyStickEvent(type = %d, keycode = %d, source = %d): ignoring non-joystick input event",
+  CApp::android_printf("CAndroidJoyStick::onJoyStickEvent(type = %d, keycode = %d, source = %d): ignoring non-joystick input event",
                            AInputEvent_getType(event), AKeyEvent_getKeyCode(event), source);
   return false;
 }

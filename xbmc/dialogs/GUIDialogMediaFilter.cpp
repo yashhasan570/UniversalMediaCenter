@@ -37,7 +37,7 @@
 
 #include <algorithm>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 #define CONTROL_HEADING             2
 
@@ -53,7 +53,7 @@ using namespace KODI;
 #define CHECK_LABEL_YES           107
 
 using enum CDatabaseQueryRule::SearchOperator;
-using KODI::MEDIA::MediaTypeFromName;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaTypeFromName;
 
 namespace
 {

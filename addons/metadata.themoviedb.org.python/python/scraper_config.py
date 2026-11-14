@@ -98,7 +98,7 @@ except NameError: # py2 / py3
 
 #pylint: disable=redefined-builtin
 class PathSpecificSettings(object):
-    # read-only shim for typed `xbmcaddon.Addon().getSetting*` methods
+    # read-only shim for typed `addon.Addon().getSetting*` methods
     def __init__(self, settings_dict, log_fn):
         self.data = settings_dict
         self.log = log_fn

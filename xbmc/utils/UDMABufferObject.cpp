@@ -122,7 +122,7 @@ bool CUDMABufferObject::CreateBufferObject(uint64_t size)
   // Must be rounded to the system page size
   m_size = RoundUp(size, sysconf(_SC_PAGESIZE));
 
-  m_memfd = memfd_create("kodi", MFD_CLOEXEC | MFD_ALLOW_SEALING);
+  m_memfd = memfd_create("universalmediacenter", MFD_CLOEXEC | MFD_ALLOW_SEALING);
   if (m_memfd < 0)
   {
     CLog::Log(LOGERROR, "CUDMABufferObject::{} - memfd_create failed: {}", __FUNCTION__,

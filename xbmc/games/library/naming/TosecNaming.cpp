@@ -17,7 +17,7 @@
 #include <charconv>
 #include <utility>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 using namespace GAME::TOSEC;
 

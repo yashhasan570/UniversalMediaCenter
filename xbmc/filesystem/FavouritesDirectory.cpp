@@ -30,7 +30,7 @@ bool CFavouritesDirectory::Exists(const CURL& url)
 {
   if (url.IsProtocol("favourites"))
   {
-    if (CFileUtils::Exists("special://xbmc/system/favourites.xml"))
+    if (CFileUtils::Exists("special:///system/favourites.xml"))
       return true;
 
     const std::string favouritesXml = URIUtils::AddFileToFolder(m_profileManager->GetProfileUserDataFolder(), "favourites.xml");

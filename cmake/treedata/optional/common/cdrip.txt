@@ -1,1 +1,1 @@
-xbmc/cdrip cdrip # OPTICAL
+/cdrip cdrip # OPTICAL

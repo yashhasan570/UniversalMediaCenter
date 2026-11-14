@@ -2,8 +2,8 @@ plugins {
     id 'org.gradle.toolchains.foojay-resolver-convention' version '1.0.0'
 }
 
-include 'xbmc'
+include ''
 
-rootProject.name = "XBMC"
+rootProject.name = ""
 
-project(':xbmc').projectDir = new File('xbmc')
+project(':').projectDir = new File('')

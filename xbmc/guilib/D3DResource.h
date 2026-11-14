@@ -20,7 +20,7 @@
 #include <d3dx11effect.h>
 #include <wrl/client.h>
 
-#define KODI_COMMONSHADER_INPUT_RESOURCE_SLOT_COUNT 4
+#define UNIVERSALMEDIA_COMMONSHADER_INPUT_RESOURCE_SLOT_COUNT 4
 
 typedef enum SHADER_METHOD
 {
@@ -88,7 +88,7 @@ public:
   // helper function to properly "clear" shader resources
   static inline void PSClearShaderResources(ID3D11DeviceContext* pContext)
   {
-    ID3D11ShaderResourceView* shader_resource_views[KODI_COMMONSHADER_INPUT_RESOURCE_SLOT_COUNT] = {};
+    ID3D11ShaderResourceView* shader_resource_views[UNIVERSALMEDIA_COMMONSHADER_INPUT_RESOURCE_SLOT_COUNT] = {};
     pContext->PSSetShaderResources(0, ARRAYSIZE(shader_resource_views), shader_resource_views);
   }
 
@@ -121,14 +121,14 @@ public:
 
   // static methods
   static void DrawQuad(const CPoint points[4],
-                       KODI::UTILS::COLOR::Color color,
+                       UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color color,
                        CD3DTexture* texture,
                        const CRect* texCoords,
                        SHADER_METHOD options,
                        float depth);
 
   static void DrawQuad(const CPoint points[4],
-                       KODI::UTILS::COLOR::Color color,
+                       UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color color,
                        unsigned numViews,
                        ID3D11ShaderResourceView** view,
                        const CRect* texCoords,
@@ -136,14 +136,14 @@ public:
                        float depth);
 
   static void DrawQuad(const CRect& coords,
-                       KODI::UTILS::COLOR::Color color,
+                       UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color color,
                        CD3DTexture* texture,
                        const CRect* texCoords,
                        SHADER_METHOD options,
                        float depth);
 
   static void DrawQuad(const CRect& coords,
-                       KODI::UTILS::COLOR::Color color,
+                       UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color color,
                        unsigned numViews,
                        ID3D11ShaderResourceView** view,
                        const CRect* texCoords,

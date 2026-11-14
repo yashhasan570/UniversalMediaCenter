@@ -19,7 +19,7 @@
 #include <stdexcept>
 #include <utility>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 CServiceBroker::CServiceBroker()
 {
@@ -179,7 +179,7 @@ GAME::CGameServices& CServiceBroker::GetGameServices()
   return g_application.m_ServiceManager->GetGameServices();
 }
 
-KODI::RETRO::CGUIGameRenderManager& CServiceBroker::GetGameRenderManager()
+UNIVERSAL MEDIA CENTER::RETRO::CGUIGameRenderManager& CServiceBroker::GetGameRenderManager()
 {
   return g_application.m_ServiceManager->GetGameRenderManager();
 }
@@ -418,7 +418,7 @@ std::shared_ptr<CJobManager> CServiceBroker::GetJobManager()
 }
 
 void CServiceBroker::RegisterCaptureService(
-    const std::shared_ptr<KODI::RENDERING::CAPTURE::CCaptureService>& captureService)
+    const std::shared_ptr<UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CCaptureService>& captureService)
 {
   g_serviceBroker.m_captureService = captureService;
 }
@@ -428,13 +428,13 @@ void CServiceBroker::UnregisterCaptureService()
   g_serviceBroker.m_captureService.reset();
 }
 
-std::shared_ptr<KODI::RENDERING::CAPTURE::CCaptureService> CServiceBroker::GetCaptureService()
+std::shared_ptr<UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CCaptureService> CServiceBroker::GetCaptureService()
 {
   return g_serviceBroker.m_captureService;
 }
 
 void CServiceBroker::RegisterAppMessenger(
-    const std::shared_ptr<KODI::MESSAGING::CApplicationMessenger>& appMessenger)
+    const std::shared_ptr<UNIVERSAL MEDIA CENTER::MESSAGING::CApplicationMessenger>& appMessenger)
 {
   g_serviceBroker.m_appMessenger = appMessenger;
 }
@@ -444,7 +444,7 @@ void CServiceBroker::UnregisterAppMessenger()
   g_serviceBroker.m_appMessenger.reset();
 }
 
-std::shared_ptr<KODI::MESSAGING::CApplicationMessenger> CServiceBroker::GetAppMessenger()
+std::shared_ptr<UNIVERSAL MEDIA CENTER::MESSAGING::CApplicationMessenger> CServiceBroker::GetAppMessenger()
 {
   return g_serviceBroker.m_appMessenger;
 }

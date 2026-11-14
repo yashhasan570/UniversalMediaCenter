@@ -60,7 +60,7 @@ CDateTime FromStoredTime(const field_value& value)
 }
 } // unnamed namespace
 
-CPVREpgDatabase::CPVREpgDatabase() : CDatabase(KODI::DATABASE::TYPE_EPG)
+CPVREpgDatabase::CPVREpgDatabase() : CDatabase(UNIVERSAL MEDIA CENTER::DATABASE::TYPE_EPG)
 {
 }
 

@@ -14,10 +14,10 @@
 #include <string>
 #include <vector>
 
-class CHelper_libKODI_audioengine;
+class CHelper__audioengine;
 
 class CAEChannelInfo {
-  friend class CHelper_libKODI_audioengine;
+  friend class CHelper__audioengine;
 
 public:
   CAEChannelInfo();

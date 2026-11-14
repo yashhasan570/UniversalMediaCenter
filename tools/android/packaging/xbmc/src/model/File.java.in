@@ -16,7 +16,7 @@ package @APP_PACKAGE@.model;
 
 import android.database.Cursor;
 
-import @APP_PACKAGE@.content.XBMCFileContentProvider;
+import @APP_PACKAGE@.content.FileContentProvider;
 
 import java.io.Serializable;
 

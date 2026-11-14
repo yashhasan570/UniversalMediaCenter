@@ -16,7 +16,7 @@
 #include <iostream>
 #include <string>
 
-namespace KODI::PLAYLIST
+namespace UNIVERSAL MEDIA CENTER::PLAYLIST
 {
 
 bool CPlayListRAM::LoadData(std::istream& stream)
@@ -33,4 +33,4 @@ bool CPlayListRAM::LoadData(std::istream& stream)
   Add(newItem);
   return true;
 }
-} // namespace KODI::PLAYLIST
+} // namespace UNIVERSAL MEDIA CENTER::PLAYLIST

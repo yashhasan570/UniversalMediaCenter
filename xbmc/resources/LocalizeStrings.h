@@ -27,7 +27,7 @@
 
 struct LocStr
 {
-  std::string strTranslated; // string to be used in xbmc GUI
+  std::string strTranslated; // string to be used in  GUI
   std::string strOriginal; // the original English string the translation is based on
 };
 

@@ -15,7 +15,7 @@
 #include <string>
 #include <vector>
 
-namespace KODI::VIDEO::GEOMETRY
+namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY
 {
 
 //! \brief What a live reading has to clear before it is served, counted in frames.
@@ -113,4 +113,4 @@ private:
   unsigned int m_inset{0}; //!< frames composed inside the served shape
 };
 
-} // namespace KODI::VIDEO::GEOMETRY
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY

@@ -15,8 +15,8 @@ configure_file(${CMAKE_SOURCE_DIR}/tools/android/packaging/gradle/wrapper/gradle
                ${CMAKE_BINARY_DIR}/tools/android/packaging/gradle/wrapper/gradle-wrapper.jar COPYONLY)
 configure_file(${CMAKE_SOURCE_DIR}/tools/android/packaging/gradle/wrapper/gradle-wrapper.properties
                ${CMAKE_BINARY_DIR}/tools/android/packaging/gradle/wrapper/gradle-wrapper.properties COPYONLY)
-configure_file(${CMAKE_SOURCE_DIR}/tools/android/packaging/xbmc/jni/Android.mk
-               ${CMAKE_BINARY_DIR}/tools/android/packaging/xbmc/jni/Android.mk COPYONLY)
+configure_file(${CMAKE_SOURCE_DIR}/tools/android/packaging//jni/Android.mk
+               ${CMAKE_BINARY_DIR}/tools/android/packaging//jni/Android.mk COPYONLY)
 file(WRITE ${CMAKE_BINARY_DIR}/tools/depends/Makefile.include
      "$(PREFIX)/lib/${APP_NAME_LC}/lib${APP_NAME_LC}.so: ;\n")
 
@@ -37,38 +37,38 @@ set(package_files strings.xml
                   build.gradle
                   src/Splash.java
                   src/Main.java
-                  src/XBMCBroadcastReceiver.java
-                  src/XBMCInputDeviceListener.java
-                  src/XBMCJsonRPC.java
-                  src/XBMCMainView.java
-                  src/XBMCMediaSession.java
-                  src/XBMCNativeKeyboard.java
-                  src/XBMCRecommendationBuilder.java
-                  src/XBMCSearchableActivity.java
-                  src/XBMCSettingsContentObserver.java
-                  src/XBMCProperties.java
-                  src/XBMCVideoView.java
-                  src/XBMCFile.java
-                  src/XBMCTextureCache.java
-                  src/XBMCURIUtils.java
-                  src/KodiDeepLinkActivity.java
+                  src/BroadcastReceiver.java
+                  src/InputDeviceListener.java
+                  src/JsonRPC.java
+                  src/MainView.java
+                  src/MediaSession.java
+                  src/NativeKeyboard.java
+                  src/RecommendationBuilder.java
+                  src/SearchableActivity.java
+                  src/SettingsContentObserver.java
+                  src/Properties.java
+                  src/VideoView.java
+                  src/File.java
+                  src/TextureCache.java
+                  src/URIUtils.java
+                  src/UniversalMediaCenterDeepLinkActivity.java
                   src/RestartActivity.java
                   src/channels/SyncChannelJobService.java
                   src/channels/SyncProgramsJobService.java
-                  src/channels/model/XBMCDatabase.java
+                  src/channels/model/Database.java
                   src/channels/model/Subscription.java
                   src/channels/util/SharedPreferencesHelper.java
                   src/channels/util/TvUtil.java
-                  src/interfaces/XBMCAudioManagerOnAudioFocusChangeListener.java
-                  src/interfaces/XBMCSurfaceTextureOnFrameAvailableListener.java
-                  src/interfaces/XBMCNsdManagerResolveListener.java
-                  src/interfaces/XBMCNsdManagerRegistrationListener.java
-                  src/interfaces/XBMCNsdManagerDiscoveryListener.java
-                  src/interfaces/XBMCMediaDrmOnEventListener.java
-                  src/interfaces/XBMCMediaDrmOnKeyStatusChangeListener.java
-                  src/interfaces/XBMCDisplayManagerDisplayListener.java
-                  src/interfaces/XBMCSpeechRecognitionListener.java
-                  src/interfaces/XBMCConnectivityManagerNetworkCallback.java
+                  src/interfaces/AudioManagerOnAudioFocusChangeListener.java
+                  src/interfaces/SurfaceTextureOnFrameAvailableListener.java
+                  src/interfaces/NsdManagerResolveListener.java
+                  src/interfaces/NsdManagerRegistrationListener.java
+                  src/interfaces/NsdManagerDiscoveryListener.java
+                  src/interfaces/MediaDrmOnEventListener.java
+                  src/interfaces/MediaDrmOnKeyStatusChangeListener.java
+                  src/interfaces/DisplayManagerDisplayListener.java
+                  src/interfaces/SpeechRecognitionListener.java
+                  src/interfaces/ConnectivityManagerNetworkCallback.java
                   src/model/TVEpisode.java
                   src/model/Movie.java
                   src/model/TVShow.java
@@ -77,23 +77,23 @@ set(package_files strings.xml
                   src/model/Song.java
                   src/model/MusicVideo.java
                   src/model/Media.java
-                  src/content/XBMCFileContentProvider.java
-                  src/content/XBMCFileProvider.java
-                  src/content/XBMCMediaContentProvider.java
-                  src/content/XBMCContentProvider.java
+                  src/content/FileContentProvider.java
+                  src/content/FileProvider.java
+                  src/content/MediaContentProvider.java
+                  src/content/ContentProvider.java
                   src/util/Storage.java
                   )
 foreach(file IN LISTS package_files)
-  configure_file(${CMAKE_SOURCE_DIR}/tools/android/packaging/xbmc/${file}.in
-                 ${CMAKE_BINARY_DIR}/tools/android/packaging/xbmc/${file} @ONLY)
+  configure_file(${CMAKE_SOURCE_DIR}/tools/android/packaging//${file}.in
+                 ${CMAKE_BINARY_DIR}/tools/android/packaging//${file} @ONLY)
 endforeach()
 
 # Copy files to the location expected by the Android packaging scripts.
 add_custom_target(bundle
     COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/tools/android/packaging/media
                                                ${CMAKE_BINARY_DIR}/tools/android/packaging/media
-    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/tools/android/packaging/xbmc/res
-                                               ${CMAKE_BINARY_DIR}/tools/android/packaging/xbmc/res
+    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/tools/android/packaging//res
+                                               ${CMAKE_BINARY_DIR}/tools/android/packaging//res
     COMMAND ${CMAKE_COMMAND} -E copy_directory ${DEPENDS_PATH}/lib/python${PYTHON_VERSION} ${libdir}/python${PYTHON_VERSION}
     COMMAND ${CMAKE_COMMAND} -E copy_directory ${DEPENDS_PATH}/share/${APP_NAME_LC} ${datadir}/${APP_NAME_LC}
     COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${APP_NAME_LC}>

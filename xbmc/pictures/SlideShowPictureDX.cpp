@@ -52,7 +52,7 @@ bool CSlideShowPicDX::UpdateVertexBuffer(Vertex* vertices)
 void CSlideShowPicDX::Render(float* x,
                              float* y,
                              CTexture* pTexture,
-                             KODI::UTILS::COLOR::Color color)
+                             UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color color)
 {
   Vertex vertex[5];
   for (int i = 0; i < 4; i++)

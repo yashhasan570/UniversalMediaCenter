@@ -10,7 +10,7 @@
 
 #include <string_view>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -38,4 +38,4 @@ constexpr std::string_view ITEM_PROPERTY_DISC_INDEX = "GameDiscManager.DiscIndex
 constexpr std::string_view ITEM_PROPERTY_IS_NO_DISC = "GameDiscManager.IsNoDisc";
 
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

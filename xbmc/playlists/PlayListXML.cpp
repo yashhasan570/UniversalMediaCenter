@@ -15,7 +15,7 @@
 #include "utils/StringUtils.h"
 #include "utils/URIUtils.h"
 #include "utils/Variant.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 #include "utils/XMLUtils.h"
 #include "utils/log.h"
 
@@ -53,7 +53,7 @@ using namespace XFILE;
 </streams>
 */
 
-namespace KODI::PLAYLIST
+namespace UNIVERSAL MEDIA CENTER::PLAYLIST
 {
 
 CPlayListXML::CPlayListXML(void) = default;
@@ -71,7 +71,7 @@ static inline std::string GetString(const tinyxml2::XMLElement* pRootElement, co
 
 bool CPlayListXML::Load( const std::string& strFileName )
 {
-  CXBMCTinyXML2 xmlDoc;
+  CTinyXML2 xmlDoc;
 
   m_strPlayListName = URIUtils::GetFileName(strFileName);
   URIUtils::GetParentPath(strFileName, m_strBasePath);
@@ -197,4 +197,4 @@ void CPlayListXML::Save(const std::string& strFileName) const
   file.Close();
 }
 
-} // namespace KODI::PLAYLIST
+} // namespace UNIVERSAL MEDIA CENTER::PLAYLIST

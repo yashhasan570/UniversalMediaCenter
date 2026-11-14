@@ -103,12 +103,12 @@ private:
   std::chrono::time_point<std::chrono::system_clock> m_lastJobStartedAt;
   CTimer m_nextJobTimer;
 
-  KODI::GUILIB::GUIINFO::CGUIInfoLabel m_url;
-  KODI::GUILIB::GUIINFO::CGUIInfoLabel m_target;
-  KODI::GUILIB::GUIINFO::CGUIInfoLabel m_sortMethod;
-  KODI::GUILIB::GUIINFO::CGUIInfoLabel m_sortOrder;
-  KODI::GUILIB::GUIINFO::CGUIInfoLabel m_limit;
-  KODI::GUILIB::GUIINFO::CGUIInfoLabel m_browse;
+  UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoLabel m_url;
+  UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoLabel m_target;
+  UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoLabel m_sortMethod;
+  UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoLabel m_sortOrder;
+  UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoLabel m_limit;
+  UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoLabel m_browse;
   std::string m_currentUrl;
   std::string m_currentTarget; ///< \brief node.target property on the list as a whole
   SortDescription m_currentSort;

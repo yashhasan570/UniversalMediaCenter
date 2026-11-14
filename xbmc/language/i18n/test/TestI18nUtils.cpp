@@ -12,7 +12,7 @@
 #include "language/i18n/Bcp47Parser.h"
 #include "utils/StringUtils.h"
 
-namespace KODI::LANGUAGE::I18N
+namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N
 {
 std::ostream& operator<<(std::ostream& os, const Bcp47Extension& obj)
 {
@@ -35,4 +35,4 @@ std::ostream& operator<<(std::ostream& os, const ParsedBcp47Tag& obj)
 
   return os;
 }
-} // namespace KODI::LANGUAGE::I18N
+} // namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N

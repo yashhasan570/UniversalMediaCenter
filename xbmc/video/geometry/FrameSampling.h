@@ -12,7 +12,7 @@
 #include <utility>
 #include <vector>
 
-namespace KODI::VIDEO::GEOMETRY
+namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY
 {
 
 //! \brief How hard to look, for a measurement asked for by name.
@@ -62,4 +62,4 @@ std::vector<double> SampleOffsets(double durationSeconds, const SamplingParams& 
 //! \brief The first and last position that will be sampled, in seconds.
 std::pair<double, double> SampleWindow(double durationSeconds, const SamplingParams& params = {});
 
-} // namespace KODI::VIDEO::GEOMETRY
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY

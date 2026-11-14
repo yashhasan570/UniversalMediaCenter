@@ -16,7 +16,7 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI::LANGUAGE::I18N;
+using namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N;
 
 TEST(TestI18nRegistryManager, LanguageSubTag)
 {
@@ -298,7 +298,7 @@ TEST(TestI18nRegistryManager, DuplicateSubTag)
 TEST(TestI18nRegistryManager, LoadFile)
 {
   const std::string filePath =
-      XBMC_REF_FILE_PATH("xbmc/language/i18n/Bcp47Registry/test/test-language-subtag-registry.txt");
+      _REF_FILE_PATH("/language/i18n/Bcp47Registry/test/test-language-subtag-registry.txt");
   auto provider = std::make_unique<CRegistryFile>(filePath);
   CSubTagRegistryManager registry;
   EXPECT_TRUE(registry.Initialize(std::move(provider)));

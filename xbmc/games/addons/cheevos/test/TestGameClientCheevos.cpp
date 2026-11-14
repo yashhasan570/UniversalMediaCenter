@@ -7,7 +7,7 @@
  */
 
 #include "ServiceBroker.h"
-#include "addons/kodi-dev-kit/include/kodi/c-api/addon-instance/game.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api/addon-instance/game.h"
 #include "dialogs/GUIDialogKaiToast.h"
 #include "games/AchievementRuntime.h"
 #include "games/addons/cheevos/GameClientCheevos.h"
@@ -21,7 +21,7 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI::GAME;
+using namespace UNIVERSAL MEDIA CENTER::GAME;
 
 namespace
 {

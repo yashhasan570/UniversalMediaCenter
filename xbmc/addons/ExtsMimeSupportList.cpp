@@ -12,7 +12,7 @@
 #include "addons/AddonManager.h"
 #include "addons/addoninfo/AddonInfo.h"
 #include "addons/addoninfo/AddonType.h"
-#include "addons/kodi-dev-kit/include/kodi/addon-instance/AudioDecoder.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/addon-instance/AudioDecoder.h"
 #include "resources/LocalizeStrings.h"
 #include "resources/ResourcesComponent.h"
 #include "utils/URIUtils.h"
@@ -21,7 +21,7 @@
 #include <mutex>
 
 using namespace ADDON;
-using namespace KODI::ADDONS;
+using namespace UNIVERSAL MEDIA CENTER::ADDONS;
 
 CExtsMimeSupportList::CExtsMimeSupportList(CAddonMgr& addonMgr) : m_addonMgr(addonMgr)
 {
@@ -156,7 +156,7 @@ CExtsMimeSupportList::SupportValues CExtsMimeSupportList::ScanAddonProperties(
   // By them addon no more need to add itself on his addon.xml
   if (values.m_hasTracks)
     values.m_supportedExtensions.try_emplace(
-        "." + values.m_codecName + KODI_ADDON_AUDIODECODER_TRACK_EXT, -1, "");
+        "." + values.m_codecName + UNIVERSALMEDIA_ADDON_AUDIODECODER_TRACK_EXT, -1, "");
 
   return values;
 }

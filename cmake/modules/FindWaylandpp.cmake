@@ -27,7 +27,7 @@ if(NOT TARGET ${APP_NAME_LC}::${CMAKE_FIND_PACKAGE_NAME})
   find_library(WAYLANDPP_EGL_LIBRARY NAMES wayland-egl++
                                      HINTS ${PC_WAYLANDPP_LIBRARY_DIRS})
 
-  if(KODI_DEPENDSBUILD)
+  if(UNIVERSALMEDIA_DEPENDSBUILD)
     pkg_check_modules(PC_WAYLANDC wayland-client wayland-egl wayland-cursor ${SEARCH_QUIET})
 
     if(PREFER_TOOLCHAIN_PATH)
@@ -97,7 +97,7 @@ if(NOT TARGET ${APP_NAME_LC}::${CMAKE_FIND_PACKAGE_NAME})
     set(WAYLANDPP_LIBRARIES 
                             ${WAYLANDPP_STATIC_DEPS})
 
-    if(KODI_DEPENDSBUILD)
+    if(UNIVERSALMEDIA_DEPENDSBUILD)
       add_library(${APP_NAME_LC}::waylandc-egl UNKNOWN IMPORTED)
       set_target_properties(${APP_NAME_LC}::waylandc-egl PROPERTIES
                                                           IMPORTED_LOCATION "${WAYLANDC_EGL_LIBRARY}")

@@ -1,7 +1,7 @@
 @ECHO OFF
 rem Application for Windows install script
-rem Copyright (C) 2005-2015 Team XBMC
-rem http://kodi.tv
+rem Copyright (C) 2005-2015 Team 
+rem http://universalmediacenter.tv
 
 rem Script by chadoe
 rem This script generates NullSoft NSIS installer include files for application's add-ons

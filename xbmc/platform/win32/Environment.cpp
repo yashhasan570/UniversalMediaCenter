@@ -37,7 +37,7 @@
  */
 int CEnvironment::win_setenv(const std::string &name, const std::string &value /* = "" */, enum updateAction action /* = autoDetect */)
 {
-  std::wstring Wname = KODI::PLATFORM::WINDOWS::ToW(name);
+  std::wstring Wname = UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::ToW(name);
   if (Wname.empty() || name.find('=') != std::wstring::npos)
     return -1;
   if ( (action == addOnly || action == addOrUpdateOnly) && value.empty() )
@@ -45,7 +45,7 @@ int CEnvironment::win_setenv(const std::string &name, const std::string &value /
   if (action == addOnly && !getenv(name).empty() )
     return 0;
 
-  std::wstring Wvalue = KODI::PLATFORM::WINDOWS::ToW(value);
+  std::wstring Wvalue = UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::ToW(value);
   int retValue = 0;
 
   std::wstring EnvString;
@@ -93,13 +93,13 @@ int CEnvironment::win_setenv(const std::string &name, const std::string &value /
 
 std::string CEnvironment::win_getenv(const std::string &name)
 {
-  std::wstring Wname = KODI::PLATFORM::WINDOWS::ToW(name);
+  std::wstring Wname = UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::ToW(name);
   if (Wname.empty())
     return "";
 
   wchar_t * wStr = ::_wgetenv(Wname.c_str());
   if (wStr != nullptr)
-    return KODI::PLATFORM::WINDOWS::FromW(wStr);
+    return UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW(wStr);
 
   // Not found in Environment of runtime library
   // Try Environment of process as fallback
@@ -115,5 +115,5 @@ std::string CEnvironment::win_getenv(const std::string &name)
   std::wstring Wvalue (valBuf);
   delete[] valBuf;
 
-  return KODI::PLATFORM::WINDOWS::FromW(Wvalue);
+  return UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW(Wvalue);
 }

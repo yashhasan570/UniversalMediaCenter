@@ -18,7 +18,7 @@
 #include "utils/TimeUtils.h"
 #include "utils/log.h"
 
-#include "platform/android/activity/XBMCApp.h"
+#include "platform/android/activity/App.h"
 
 #include <algorithm>
 #include <numeric>

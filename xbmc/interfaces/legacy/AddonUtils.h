@@ -15,7 +15,7 @@
  *      Author: jim
  */
 
-//#define ENABLE_XBMC_TRACE_API
+//#define ENABLE__TRACE_API
 
 #include "threads/CriticalSection.h"
 
@@ -32,21 +32,21 @@
  * by those writing language bindings.
  */
 
-namespace XBMCAddon
+namespace Addon
 {
 class LanguageHook;
 }
 
-namespace XBMCAddonUtils
+namespace AddonUtils
 {
   class GuiLock
   {
   public:
-    GuiLock(XBMCAddon::LanguageHook* languageHook, bool offScreen);
+    GuiLock(Addon::LanguageHook* languageHook, bool offScreen);
     ~GuiLock();
 
   protected:
-    XBMCAddon::LanguageHook* m_languageHook = nullptr;
+    Addon::LanguageHook* m_languageHook = nullptr;
     bool m_offScreen = false;
   };
 
@@ -69,7 +69,7 @@ namespace XBMCAddonUtils
    */
   const char *getDefaultImage(const char* cControlType, const char* cTextureType);
 
-#ifdef ENABLE_XBMC_TRACE_API
+#ifdef ENABLE__TRACE_API
   class TraceGuard
   {
     const char* function;
@@ -86,10 +86,10 @@ namespace XBMCAddonUtils
 #endif
 }
 
-#ifdef ENABLE_XBMC_TRACE_API
-#define XBMC_TRACE XBMCAddonUtils::TraceGuard _tg(__PRETTY_FUNCTION__)
+#ifdef ENABLE__TRACE_API
+#define _TRACE AddonUtils::TraceGuard _tg(__PRETTY_FUNCTION__)
 #else
-#define XBMC_TRACE
+#define _TRACE
 #endif
 
 

@@ -20,7 +20,7 @@
 
 class CVideoReferenceClock;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -167,4 +167,4 @@ private:
   bool m_opening{false};
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

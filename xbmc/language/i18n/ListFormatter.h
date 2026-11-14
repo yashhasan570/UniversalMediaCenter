@@ -16,7 +16,7 @@
 
 class ILocalizer;
 
-namespace KODI::LANGUAGE::I18N
+namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N
 {
 /*! \brief List conjunction type, mirroring ICU UListFormatterType. */
 enum class ListFormatType
@@ -87,4 +87,4 @@ private:
   Patterns m_patterns;
   bool m_isolateItems{true};
 };
-} // namespace KODI::LANGUAGE::I18N
+} // namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N

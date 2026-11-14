@@ -95,7 +95,7 @@ int CWIN32Util::GetDriveStatus(const std::string &strPath, bool bStatusEx)
     CLog::LogF(LOGDEBUG, "Tray status is not implemented");
   return -1;
 #else
-  using KODI::PLATFORM::WINDOWS::ToW;
+  using UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::ToW;
 
   auto strPathW = ToW(strPath);
   HANDLE hDevice;               // handle to the drive to be examined
@@ -235,7 +235,7 @@ char CWIN32Util::FirstDriveFromMask (ULONG unitmask)
     return (i + 'A');
 }
 
-bool CWIN32Util::XBMCShellExecute(const std::string &strPath, bool bWaitForScriptExit)
+bool CWIN32Util::ShellExecute(const std::string &strPath, bool bWaitForScriptExit)
 {
 #ifdef TARGET_WINDOWS_STORE
   CLog::LogF(LOGDEBUG, "s not implemented");
@@ -298,7 +298,7 @@ bool CWIN32Util::XBMCShellExecute(const std::string &strPath, bool bWaitForScrip
   g_windowHelper.SetHANDLE(ShExecInfo.hProcess);
 
   // ShellExecute doesn't return the window of the started process
-  // we need to gather it from somewhere to allow switch back to XBMC
+  // we need to gather it from somewhere to allow switch back to 
   // when a program is minimized instead of stopped.
   //g_windowHelper.SetHWND(ShExecInfo.hwnd);
   g_windowHelper.Create();
@@ -359,7 +359,7 @@ std::string CWIN32Util::GetProfilePath(UserDirectoriesLocation loc)
   std::string strProfilePath;
 #ifdef TARGET_WINDOWS_STORE
   auto localFolder = ApplicationData::Current().LocalFolder();
-  strProfilePath = KODI::PLATFORM::WINDOWS::FromW(localFolder.Path().c_str());
+  strProfilePath = UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW(localFolder.Path().c_str());
 #else
   std::string strHomePath = CUtil::GetHomePath();
 
@@ -557,7 +557,7 @@ HRESULT CWIN32Util::ToggleTray(const char cDriveLetter)
   CLog::LogF(LOGDEBUG, "s not implemented");
   return false;
 #else
-  using namespace KODI::PLATFORM::WINDOWS;
+  using namespace UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS;
   BOOL bRet= FALSE;
   DWORD dwReq = 0;
   char cDL = cDriveLetter;
@@ -1035,7 +1035,7 @@ extern "C" {
 #ifdef TARGET_WINDOWS_DESKTOP
 LONG CWIN32Util::UtilRegGetValue( const HKEY hKey, const char *const pcKey, DWORD *const pdwType, char **const ppcBuffer, DWORD *const pdwSizeBuff, const DWORD dwSizeAdd )
 {
-  using KODI::PLATFORM::WINDOWS::ToW;
+  using UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::ToW;
 
   auto pcKeyW = ToW(pcKey);
 
@@ -1067,7 +1067,7 @@ LONG CWIN32Util::UtilRegGetValue( const HKEY hKey, const char *const pcKey, DWOR
 
 bool CWIN32Util::UtilRegOpenKeyEx( const HKEY hKeyParent, const char *const pcKey, const REGSAM rsAccessRights, HKEY *hKey, const bool bReadX64 )
 {
-  using KODI::PLATFORM::WINDOWS::ToW;
+  using UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::ToW;
 
   const REGSAM rsAccessRightsTmp = (
     CSysInfo::GetKernelBitness() == 64 ? rsAccessRights |
@@ -1078,11 +1078,11 @@ bool CWIN32Util::UtilRegOpenKeyEx( const HKEY hKeyParent, const char *const pcKe
 
 // Retrieve the filename of the process that currently has the focus.
 // Typically this will be some process using the system tray grabbing
-// the focus and causing XBMC to minimise. Logging the offending
+// the focus and causing  to minimise. Logging the offending
 // process name can help the user fix the problem.
 bool CWIN32Util::GetFocussedProcess(std::string &strProcessFile)
 {
-  using KODI::PLATFORM::WINDOWS::FromW;
+  using UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW;
   strProcessFile = "";
 
   // Get the window that has the focus
@@ -1494,7 +1494,7 @@ VideoDriverInfo CWIN32Util::GetVideoDriverInfo(const UINT vendorId, const std::w
   DWORD index = 0;
   DWORD len;
 
-  using KODI::PLATFORM::WINDOWS::FromW;
+  using UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW;
 
   do
   {
@@ -1556,7 +1556,7 @@ VideoDriverInfo CWIN32Util::GetVideoDriverInfoDX(const UINT vendorId, LUID adapt
   DWORD index = 0;
   DWORD len;
 
-  using KODI::PLATFORM::WINDOWS::FromW;
+  using UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW;
 
   do
   {
@@ -1691,7 +1691,7 @@ bool CWIN32Util::SetThreadName(const HANDLE handle, const std::string& name)
   }
 
   if (pSetThreadDescription != nullptr &&
-      SUCCEEDED(pSetThreadDescription(handle, KODI::PLATFORM::WINDOWS::ToW(name).c_str())))
+      SUCCEEDED(pSetThreadDescription(handle, UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::ToW(name).c_str())))
     return true;
   else
     return false;
@@ -1734,7 +1734,7 @@ bool CWIN32Util::IsDriverVersionAtLeast(const std::string& version1, const std::
 
 std::string CWIN32Util::FormatHRESULT(HRESULT hr)
 {
-  using namespace KODI::PLATFORM::WINDOWS;
+  using namespace UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS;
 
   const std::string code = FromW(DXGetErrorStringW(hr));
   WCHAR buff[2048];

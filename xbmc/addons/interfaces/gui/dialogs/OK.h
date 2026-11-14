@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "addons/kodi-dev-kit/include/kodi/c-api/gui/dialogs/ok.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api/gui/dialogs/ok.h"
 
 extern "C"
 {
@@ -24,7 +24,7 @@ extern "C"
    * To hold functions not related to a instance type and usable for
    * every add-on type.
    *
-   * Related add-on header is "./xbmc/addons/kodi-dev-kit/include/kodi/gui/dialogs/OK.h"
+   * Related add-on header is ".//addons/universalmediacenter-dev-kit/include/universalmediacenter/gui/dialogs/OK.h"
    */
   struct Interface_GUIDialogOK
   {
@@ -32,20 +32,20 @@ extern "C"
     static void DeInit(AddonGlobalInterface* addonInterface);
 
     /*!
-     * @brief callback functions from add-on to kodi
+     * @brief callback functions from add-on to universalmediacenter
      *
      * @note For add of new functions use the "_" style to identify direct a
      * add-on callback function. Everything with CamelCase is only for the
      * usage in Universal Media Center only.
      *
-     * The parameter `kodiBase` is used to become the pointer for a `CAddonDll`
+     * The parameter `universalmediacenterBase` is used to become the pointer for a `CAddonDll`
      * class.
      */
     //@{
-    static void show_and_get_input_single_text(KODI_HANDLE kodiBase,
+    static void show_and_get_input_single_text(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
                                                const char* heading,
                                                const char* text);
-    static void show_and_get_input_line_text(KODI_HANDLE kodiBase,
+    static void show_and_get_input_line_text(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
                                              const char* heading,
                                              const char* line0,
                                              const char* line1,

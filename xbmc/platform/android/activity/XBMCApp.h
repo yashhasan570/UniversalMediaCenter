@@ -11,12 +11,12 @@
 #include "IActivityHandler.h"
 #include "IInputHandler.h"
 #include "JNIMainActivity.h"
-#include "JNIXBMCAudioManagerOnAudioFocusChangeListener.h"
-#include "JNIXBMCDisplayManagerDisplayListener.h"
-#include "JNIXBMCMainView.h"
-#include "JNIXBMCMediaSession.h"
+#include "JNIAudioManagerOnAudioFocusChangeListener.h"
+#include "JNIDisplayManagerDisplayListener.h"
+#include "JNIMainView.h"
+#include "JNIMediaSession.h"
 #include "interfaces/IAnnouncer.h"
-#include "platform/xbmc.h"
+#include "platform/.h"
 #include "threads/Event.h"
 #include "utils/Geometry.h"
 
@@ -79,23 +79,23 @@ private:
   ANativeWindow* m_window{nullptr};
 };
 
-class CXBMCApp : public IActivityHandler,
+class CApp : public IActivityHandler,
                  public jni::CJNIMainActivity,
                  public CJNIBroadcastReceiver,
                  public ANNOUNCEMENT::IAnnouncer,
                  public CJNISurfaceHolderCallback
 {
 public:
-  static CXBMCApp& Create(ANativeActivity* nativeActivity, IInputHandler& inputhandler)
+  static CApp& Create(ANativeActivity* nativeActivity, IInputHandler& inputhandler)
   {
-    m_appinstance.reset(new CXBMCApp(nativeActivity, inputhandler));
+    m_appinstance.reset(new CApp(nativeActivity, inputhandler));
     return *m_appinstance;
   }
-  static CXBMCApp& Get() { return *m_appinstance; }
+  static CApp& Get() { return *m_appinstance; }
   static void Destroy() { m_appinstance.reset(); }
 
-  CXBMCApp() = delete;
-  ~CXBMCApp() override;
+  CApp() = delete;
+  ~CApp() override;
 
   // IAnnouncer IF
   void Announce(ANNOUNCEMENT::AnnouncementFlag flag,
@@ -215,14 +215,14 @@ protected:
   void RequestVisibleBehind(bool requested);
 
 private:
-  static std::unique_ptr<CXBMCApp> m_appinstance;
+  static std::unique_ptr<CApp> m_appinstance;
 
-  CXBMCApp(ANativeActivity* nativeActivity, IInputHandler& inputhandler);
+  CApp(ANativeActivity* nativeActivity, IInputHandler& inputhandler);
 
-  jni::CJNIXBMCAudioManagerOnAudioFocusChangeListener m_audioFocusListener;
-  jni::CJNIXBMCDisplayManagerDisplayListener m_displayListener;
-  std::unique_ptr<jni::CJNIXBMCMainView> m_mainView;
-  std::unique_ptr<jni::CJNIXBMCMediaSession> m_mediaSession;
+  jni::CJNIAudioManagerOnAudioFocusChangeListener m_audioFocusListener;
+  jni::CJNIDisplayManagerDisplayListener m_displayListener;
+  std::unique_ptr<jni::CJNIMainView> m_mainView;
+  std::unique_ptr<jni::CJNIMediaSession> m_mediaSession;
   std::string GetFilenameFromIntent(const CJNIIntent &intent);
 
   void run();
@@ -262,8 +262,8 @@ private:
   CEvent m_vsyncEvent;
   CEvent m_displayChangeEvent;
 
-  bool XBMC_DestroyDisplay();
-  bool XBMC_SetupDisplay();
+  bool _DestroyDisplay();
+  bool _SetupDisplay();
 
   void OnSleep();
   void OnWakeup();

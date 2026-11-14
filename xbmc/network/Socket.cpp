@@ -17,8 +17,8 @@
 #include <vector>
 
 using namespace SOCKETS;
-using KODI::NETWORK::SetIPv6Only;
-using KODI::NETWORK::SetReusePort;
+using UNIVERSAL MEDIA CENTER::NETWORK::SetIPv6Only;
+using UNIVERSAL MEDIA CENTER::NETWORK::SetReusePort;
 
 #ifdef WINSOCK_VERSION
 #define close closesocket
@@ -141,10 +141,10 @@ bool CPosixUDPSocket::CheckIPv6(int port, int range)
 #else
   CAddress testaddr("::");
 #if defined(TARGET_WINDOWS)
-  using CAutoPtrSocket = KODI::UTILS::CScopeGuard<SOCKET, INVALID_SOCKET, decltype(closesocket)>;
+  using CAutoPtrSocket = UNIVERSAL MEDIA CENTER::UTILS::CScopeGuard<SOCKET, INVALID_SOCKET, decltype(closesocket)>;
   CAutoPtrSocket testSocket(closesocket, socket(AF_INET6, SOCK_DGRAM, IPPROTO_UDP));
 #else
-  using CAutoPtrSocket = KODI::UTILS::CScopeGuard<int, -1, decltype(close)>;
+  using CAutoPtrSocket = UNIVERSAL MEDIA CENTER::UTILS::CScopeGuard<int, -1, decltype(close)>;
   CAutoPtrSocket testSocket(close, socket(AF_INET6, SOCK_DGRAM, IPPROTO_UDP));
 #endif
 

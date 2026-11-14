@@ -12,7 +12,7 @@
 
 #include "system_gl.h"
 
-namespace KODI::SHADER
+namespace UNIVERSAL MEDIA CENTER::SHADER
 {
 
 class CShaderTextureGL : public IShaderTexture
@@ -69,4 +69,4 @@ private:
   bool m_sRgbFramebuffer{false};
   bool m_mipmapping{false};
 };
-} // namespace KODI::SHADER
+} // namespace UNIVERSAL MEDIA CENTER::SHADER

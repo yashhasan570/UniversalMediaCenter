@@ -13,7 +13,7 @@
 #include "URL.h"
 #include "utils/StringUtils.h"
 #include "utils/URIUtils.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 #include "utils/log.h"
 
 namespace
@@ -39,7 +39,7 @@ std::string GetXMLText(const tinyxml2::XMLElement* pXmlElement)
 
 }
 
-namespace KODI::PLAYLIST
+namespace UNIVERSAL MEDIA CENTER::PLAYLIST
 {
 
 CPlayListXSPF::CPlayListXSPF(void) = default;
@@ -48,7 +48,7 @@ CPlayListXSPF::~CPlayListXSPF(void) = default;
 
 bool CPlayListXSPF::Load(const std::string& strFileName)
 {
-  CXBMCTinyXML2 xmlDoc;
+  CTinyXML2 xmlDoc;
 
   if (!xmlDoc.LoadFile(strFileName))
   {
@@ -132,4 +132,4 @@ bool CPlayListXSPF::Load(const std::string& strFileName)
   return true;
 }
 
-} // namespace KODI::PLAYLIST
+} // namespace UNIVERSAL MEDIA CENTER::PLAYLIST

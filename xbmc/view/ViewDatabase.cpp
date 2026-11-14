@@ -25,7 +25,7 @@
 #include "platform/posix/ConvUtils.h"
 #endif
 
-CViewDatabase::CViewDatabase() : CDatabase(KODI::DATABASE::TYPE_VIEWMODES)
+CViewDatabase::CViewDatabase() : CDatabase(UNIVERSAL MEDIA CENTER::DATABASE::TYPE_VIEWMODES)
 {
 }
 

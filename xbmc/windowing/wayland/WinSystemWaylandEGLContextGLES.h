@@ -15,7 +15,7 @@
 #include "rendering/gles/RenderSystemGLESWebOS.h"
 #endif
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace WINDOWING
 {

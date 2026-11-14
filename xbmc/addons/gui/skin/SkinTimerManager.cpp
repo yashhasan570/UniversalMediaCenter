@@ -15,7 +15,7 @@
 #include "guilib/GUIMessage.h"
 #include "guilib/GUIWindowManager.h"
 #include "utils/StringUtils.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 #include "utils/log.h"
 
 #include <chrono>
@@ -28,7 +28,7 @@ CSkinTimerManager::CSkinTimerManager(CGUIInfoManager& infoMgr) : m_infoMgr{infoM
 
 void CSkinTimerManager::LoadTimers(const std::string& path)
 {
-  CXBMCTinyXML2 doc;
+  CTinyXML2 doc;
   if (!doc.LoadFile(path))
   {
     CLog::LogF(LOGWARNING, "Could not load timers file {}: {} (Line: {})", path, doc.ErrorStr(),

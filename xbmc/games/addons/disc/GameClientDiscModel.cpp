@@ -14,7 +14,7 @@
 
 #include <algorithm>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 bool GameClientDiscEntry::operator==(const GameClientDiscEntry& rhs) const

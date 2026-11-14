@@ -76,7 +76,7 @@ void CWin32StorageProvider::GetLocalDrives(std::vector<CMediaSource>& localDrive
   wchar_t profilePath[MAX_PATH];
   if (SUCCEEDED(SHGetFolderPath(nullptr, CSIDL_PROFILE, nullptr, 0, profilePath)) ||
       GetEnvironmentVariable(L"USERPROFILE", profilePath, MAX_PATH) > 0)
-    share.strPath = KODI::PLATFORM::WINDOWS::FromW(profilePath);
+    share.strPath = UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW(profilePath);
   else
     share.strPath = CSpecialProtocol::TranslatePath("special://home");
   share.strName = CServiceBroker::GetResourcesComponent().GetLocalizeStrings().Get(21440);
@@ -106,7 +106,7 @@ std::string CWin32StorageProvider::GetFirstOpticalDeviceFileName()
 
 bool CWin32StorageProvider::Eject(const std::string& mountpath)
 {
-  using KODI::PLATFORM::WINDOWS::ToW;
+  using UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::ToW;
   if (mountpath.empty())
   {
     return false;
@@ -179,9 +179,9 @@ std::vector<std::string > CWin32StorageProvider::GetDiskUsage()
       if( DRIVE_FIXED == GetDriveType( strDrive.c_str()  ) &&
         GetDiskFreeSpaceEx( ( strDrive.c_str() ), nullptr, &ULTotal, &ULTotalFree ) )
       {
-        strRet = KODI::PLATFORM::WINDOWS::FromW(StringUtils::Format(
+        strRet = UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW(StringUtils::Format(
             L"{} {} MB {}", strDrive, int(ULTotalFree.QuadPart / (1024 * 1024)),
-            KODI::PLATFORM::WINDOWS::ToW(
+            UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::ToW(
                 CServiceBroker::GetResourcesComponent().GetLocalizeStrings().Get(160))));
         result.push_back(strRet);
       }
@@ -195,7 +195,7 @@ void CWin32StorageProvider::GetDrivesByType(std::vector<CMediaSource>& localDriv
                                             Drive_Types eDriveType,
                                             bool bonlywithmedia)
 {
-  using KODI::PLATFORM::WINDOWS::FromW;
+  using UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW;
 
   std::unique_ptr<wchar_t[]> pcBuffer;
   DWORD dwStrLength= GetLogicalDriveStringsW( 0, pcBuffer.get() );
@@ -399,8 +399,8 @@ DEVINST CWin32StorageProvider::GetDrivesDevInstByDiskNumber(long DiskNumber)
 MEDIA_DETECT::STORAGE::StorageDevice CWin32StorageProvider::GetStorageDevice(
     const std::string& drive)
 {
-  using KODI::PLATFORM::WINDOWS::FromW;
-  using KODI::PLATFORM::WINDOWS::ToW;
+  using UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW;
+  using UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::ToW;
 
   MEDIA_DETECT::STORAGE::StorageDevice device;
   device.path = drive; // e.g. "D:"

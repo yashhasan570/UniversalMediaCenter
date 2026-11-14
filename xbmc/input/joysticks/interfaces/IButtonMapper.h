@@ -13,7 +13,7 @@
 #include <map>
 #include <string>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace KEYMAP
 {
@@ -44,7 +44,7 @@ public:
   /*!
    * \brief The add-on ID of the game controller associated with this button mapper
    *
-   * \return The ID of the add-on extending kodi.game.controller
+   * \return The ID of the add-on extending universalmediacenter.game.controller
    */
   virtual std::string ControllerID(void) const = 0;
 
@@ -125,4 +125,4 @@ private:
   std::map<std::string, IButtonMapCallback*> m_callbacks; // Device location -> callback
 };
 } // namespace JOYSTICK
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

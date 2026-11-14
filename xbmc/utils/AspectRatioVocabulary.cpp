@@ -13,7 +13,7 @@
 #include "profiles/ProfileManager.h"
 #include "settings/SettingsComponent.h"
 #include "utils/StringUtils.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 #include "utils/log.h"
 
 #include <algorithm>
@@ -23,7 +23,7 @@
 #include <limits>
 #include <mutex>
 
-namespace KODI::UTILS
+namespace UNIVERSAL MEDIA CENTER::UTILS
 {
 
 namespace
@@ -417,7 +417,7 @@ std::string CAspectRatioVocabulary::ChoiceLabel(const AspectRatioEntry& entry)
 
 bool CAspectRatioVocabulary::Apply(std::string_view xml)
 {
-  CXBMCTinyXML2 document;
+  CTinyXML2 document;
   if (!document.Parse(xml) || document.Error())
   {
     CLog::LogF(LOGERROR, "aspect ratio definition is not valid XML: {}", document.ErrorStr());
@@ -500,7 +500,7 @@ void CAspectRatioVocabulary::Load()
       CLog::LogF(LOGERROR, "{} was rejected, keeping the ratios already in force", path);
   };
 
-  apply(std::string("special://xbmc/system/") + DEFINITION_FILE, true);
+  apply(std::string("special:///system/") + DEFINITION_FILE, true);
 
   // The viewer's own, over the shipped one.
   apply(
@@ -508,4 +508,4 @@ void CAspectRatioVocabulary::Load()
       false);
 }
 
-} // namespace KODI::UTILS
+} // namespace UNIVERSAL MEDIA CENTER::UTILS

@@ -54,7 +54,7 @@
 #include "Autorun.h"
 #endif
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 /*! \brief Clear current playlist
  *  \param params (ignored)

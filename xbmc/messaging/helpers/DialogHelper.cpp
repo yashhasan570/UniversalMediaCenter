@@ -14,7 +14,7 @@
 #include <cassert>
 #include <utility>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace MESSAGING
 {

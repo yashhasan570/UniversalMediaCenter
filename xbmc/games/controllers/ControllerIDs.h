@@ -8,7 +8,7 @@
 
 #pragma once
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -23,4 +23,4 @@ constexpr const char* DEFAULT_REMOTE_ID = "game.controller.remote";
 constexpr const char* CONTROLLER_ID_PLAYSTATION = "game.controller.ps.dualanalog";
 
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

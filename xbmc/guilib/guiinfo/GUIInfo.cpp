@@ -10,7 +10,7 @@
 
 #include <assert.h>
 
-using namespace KODI::GUILIB::GUIINFO;
+using namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO;
 
 void CGUIInfo::SetInfoFlag(uint32_t flag)
 {

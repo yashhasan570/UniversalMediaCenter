@@ -27,11 +27,11 @@
 #include <vector>
 
 
-namespace XBMCAddon
+namespace Addon
 {
-  namespace xbmcgui
+  namespace gui
   {
-    XBMCCOMMONS_STANDARD_EXCEPTION(ListItemException);
+    COMMONS_STANDARD_EXCEPTION(ListItemException);
 
     // This is a type that represents either a String or a String Tuple
     typedef Alternative<StringOrInt,Tuple<String, StringOrInt> > InfoLabelStringOrTuple;
@@ -45,8 +45,8 @@ namespace XBMCAddon
     typedef Dictionary<InfoLabelValue> InfoLabelDict;
 
     //
-    /// \defgroup python_xbmcgui_listitem ListItem
-    /// \ingroup python_xbmcgui
+    /// \defgroup python_gui_listitem ListItem
+    /// \ingroup python_gui
     /// @{
     /// @brief **Selectable window list item.**
     ///
@@ -60,7 +60,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_listitem
+      /// \ingroup python_gui_listitem
       /// @brief Selectable window list item.
       ///
       /// The list item control is used for creating item lists in Universal Media Center
@@ -93,7 +93,7 @@ namespace XBMCAddon
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ...
-      /// listitem = xbmcgui.ListItem('Casino Royale')
+      /// listitem = gui.ListItem('Casino Royale')
       /// ...
       /// ~~~~~~~~~~~~~
       ///
@@ -122,7 +122,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_listitem
+      /// \ingroup python_gui_listitem
       /// @brief \python_func{ getLabel() }
       /// Returns the listitem label.
       ///
@@ -146,7 +146,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_listitem
+      /// \ingroup python_gui_listitem
       /// @brief \python_func{ getLabel2() }
       /// Returns the second listitem label.
       ///
@@ -170,7 +170,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_listitem
+      /// \ingroup python_gui_listitem
       /// @brief \python_func{ setLabel(label) }
       /// Sets the listitem's label.
       ///
@@ -194,7 +194,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_listitem
+      /// \ingroup python_gui_listitem
       /// @brief \python_func{ setLabel2(label) }
       /// Sets the listitem's label2.
       ///
@@ -218,7 +218,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_listitem
+      /// \ingroup python_gui_listitem
       /// @brief \python_func{ getDateTime() }
       /// Returns the list item's datetime in W3C format (YYYY-MM-DDThh:mm:ssTZD).
       ///
@@ -243,7 +243,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_listitem
+      /// \ingroup python_gui_listitem
       /// @brief \python_func{ setDateTime(dateTime) }
       /// Sets the list item's datetime in W3C format.
       /// The following formats are supported:
@@ -278,7 +278,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_listitem
+      /// \ingroup python_gui_listitem
       /// @brief \python_func{ setArt(values) }
       /// Sets the listitem's art
       ///
@@ -316,7 +316,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_listitem
+      /// \ingroup python_gui_listitem
       /// @brief \python_func{ setIsFolder(isFolder) }
       /// Sets if this listitem is a folder.
       ///
@@ -342,7 +342,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_listitem
+      /// \ingroup python_gui_listitem
       /// @brief \python_func{ setUniqueIDs(values, defaultrating) }
       /// Sets the listitem's uniqueID
       ///
@@ -377,7 +377,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_listitem
+      /// \ingroup python_gui_listitem
       /// @brief \python_func{ setRating(type, rating, votes = 0, defaultt = False) }
       /// Sets a listitem's rating. It needs at least type and rating param
       ///
@@ -413,7 +413,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_listitem
+      /// \ingroup python_gui_listitem
       /// @brief \python_func{ addSeason(number, name = "") }
       /// Add a season with name to a listitem. It needs at least the season number
       ///
@@ -441,7 +441,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_listitem
+      /// \ingroup python_gui_listitem
       /// @brief \python_func{ getArt(key) }
       /// Returns a listitem art path as a string, similar to an infolabel.\n
       ///
@@ -476,7 +476,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_listitem
+      /// \ingroup python_gui_listitem
       /// @brief \python_func{ isFolder() }
       /// Returns whether the item is a folder or not.
       ///
@@ -497,7 +497,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_listitem
+      /// \ingroup python_gui_listitem
       /// @brief \python_func{ getUniqueID(key) }
       /// Returns a listitem uniqueID as a string, similar to an infolabel.\n
       ///
@@ -529,7 +529,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_listitem
+      /// \ingroup python_gui_listitem
       /// @brief \python_func{ getRating(key) }
       /// Returns a listitem rating as a float.\n
       ///
@@ -561,7 +561,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_listitem
+      /// \ingroup python_gui_listitem
       /// @brief \python_func{ getVotes(key) }
       /// Returns a listitem votes as a integer.\n
       ///
@@ -593,7 +593,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_listitem
+      /// \ingroup python_gui_listitem
       /// @brief \python_func{ select(selected) }
       /// Sets the listitem's selected status.
       ///
@@ -618,7 +618,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_listitem
+      /// \ingroup python_gui_listitem
       /// @brief \python_func{ isSelected() }
       /// Returns the listitem's selected status.
       ///
@@ -643,7 +643,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_listitem
+      /// \ingroup python_gui_listitem
       /// @brief \python_func{ setInfo(type, infoLabels) }
       /// Sets the listitem's infoLabels.
       ///
@@ -660,7 +660,7 @@ namespace XBMCAddon
       ///
       /// @note To set pictures exif info, prepend `exif:` to the label. Exif values must be passed
       ///       as strings, separate value pairs with a comma. <b>(eg. <c>{'exif:resolution': '720,480'}</c></b>
-      ///       See \ref kodi_pictures_infotag for valid strings.\n
+      ///       See \ref universalmediacenter_pictures_infotag for valid strings.\n
       ///       \n
       ///       You can use the above as keywords for arguments and skip certain optional arguments.
       ///       Once you use a keyword, all following arguments require the keyword.
@@ -691,7 +691,7 @@ namespace XBMCAddon
       /// | userrating    | integer (9) - range is 1..10 (0 to reset)
       /// | watched       | deprecated - use playcount instead
       /// | playcount     | integer (2) - number of times this item has been played
-      /// | overlay       | integer (2) - range is `0..7`.  See \ref kodi_guilib_listitem_iconoverlay "Overlay icon types" for values
+      /// | overlay       | integer (2) - range is `0..7`.  See \ref lib_listitem_iconoverlay "Overlay icon types" for values
       /// | cast          | list (["Michal C. Hall","Jennifer Carpenter"]) - if provided a list of tuples cast will be interpreted as castandrole
       /// | castandrole   | list of tuples ([("Michael C. Hall","Dexter"),("Jennifer Carpenter","Debra")])
       /// | director      | string (Dagur Kari) or list of strings (["Dagur Kari", "Quentin Tarantino", "Chrstopher Nolan"])
@@ -756,7 +756,7 @@ namespace XBMCAddon
       /// |--------------:|:---------------------------------------------------|
       /// | title         | string (In the last summer-1)
       /// | picturepath   | string (`/home/username/pictures/img001.jpg`)
-      /// | exif*         | string (See \ref kodi_pictures_infotag for valid strings)
+      /// | exif*         | string (See \ref universalmediacenter_pictures_infotag for valid strings)
       ///
       /// __Game Values__:
       /// | Info label    | Description                                        |
@@ -798,7 +798,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_listitem
+      /// \ingroup python_gui_listitem
       /// @brief \python_func{ setCast(actors) }
       /// Set cast including thumbnails
       ///
@@ -832,7 +832,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_listitem
+      /// \ingroup python_gui_listitem
       /// @brief \python_func{ setAvailableFanart(images) }
       /// Set available images (needed for video scrapers)
       ///
@@ -865,7 +865,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_listitem
+      /// \ingroup python_gui_listitem
       /// @brief \python_func{ addAvailableArtwork(images) }
       /// Add an image to available artworks (needed for video scrapers)
       ///
@@ -905,7 +905,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_listitem
+      /// \ingroup python_gui_listitem
       /// @brief \python_func{ addStreamInfo(type, values) }
       /// Add a stream with details.
       ///
@@ -952,7 +952,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_listitem
+      /// \ingroup python_gui_listitem
       /// @brief \python_func{ addContextMenuItems([(label, action),*]) }
       /// Adds item(s) to the context menu for media lists.
       ///
@@ -981,7 +981,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_listitem
+      /// \ingroup python_gui_listitem
       /// @brief \python_func{ setProperty(key, value) }
       /// Sets a listitem property, similar to an infolabel.
       ///
@@ -1035,7 +1035,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_listitem
+      /// \ingroup python_gui_listitem
       /// @brief \python_func{ setProperties(values) }
       /// Sets multiple properties for listitem's
       ///
@@ -1059,7 +1059,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_listitem
+      /// \ingroup python_gui_listitem
       /// @brief \python_func{ getProperty(key) }
       /// Returns a listitem property as a string, similar to an infolabel.
       ///
@@ -1087,7 +1087,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_listitem
+      /// \ingroup python_gui_listitem
       /// @brief \python_func{ setPath(path) }
       /// Sets the listitem's path.
       ///
@@ -1112,7 +1112,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_listitem
+      /// \ingroup python_gui_listitem
       /// @brief \python_func{ setMimeType(mimetype) }
       /// Sets the listitem's mimetype if known.
       ///
@@ -1128,7 +1128,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_listitem
+      /// \ingroup python_gui_listitem
       /// @brief \python_func{ setContentLookup(enable) }
       /// Enable or disable content lookup for item.
       ///
@@ -1147,7 +1147,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_listitem
+      /// \ingroup python_gui_listitem
       /// @brief \python_func{ setFileTitle(title) }
       /// Sets the title of this item's file.
       ///
@@ -1165,7 +1165,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_listitem
+      /// \ingroup python_gui_listitem
       /// @brief \python_func{ setCount(count) }
       /// Sets the item count badge shown for this item, e.g. the number of items
       /// inside a folder.
@@ -1183,7 +1183,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_listitem
+      /// \ingroup python_gui_listitem
       /// @brief \python_func{ setSize(size) }
       /// Sets the file size of this item, in bytes.
       ///
@@ -1200,9 +1200,9 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_listitem
+      /// \ingroup python_gui_listitem
       /// @brief \python_func{ setOverlay(overlay) }
-      /// Sets the overlay icon of this item, one of the xbmcgui ICON_OVERLAY
+      /// Sets the overlay icon of this item, one of the gui ICON_OVERLAY
       /// values (0 to 8).
       ///
       /// @param overlay  integer - overlay icon
@@ -1220,7 +1220,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_listitem
+      /// \ingroup python_gui_listitem
       /// @brief \python_func{ setSubtitles(subtitleFiles) }
       /// Sets subtitles for this listitem.
       ///
@@ -1246,7 +1246,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_listitem
+      /// \ingroup python_gui_listitem
       /// @brief \python_func{ getPath() }
       /// Returns the path of this listitem.
       ///
@@ -1264,7 +1264,7 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_listitem
+      /// \ingroup python_gui_listitem
       /// @brief \python_func{ getVideoInfoTag() }
       /// Returns the VideoInfoTag for this item.
       ///
@@ -1276,12 +1276,12 @@ namespace XBMCAddon
       ///
       getVideoInfoTag();
 #else
-      xbmc::InfoTagVideo* getVideoInfoTag();
+      ::InfoTagVideo* getVideoInfoTag();
 #endif
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_listitem
+      /// \ingroup python_gui_listitem
       /// @brief \python_func{ getMusicInfoTag() }
       /// Returns the MusicInfoTag for this item.
       ///
@@ -1293,12 +1293,12 @@ namespace XBMCAddon
       ///
       getMusicInfoTag();
 #else
-      xbmc::InfoTagMusic* getMusicInfoTag();
+      ::InfoTagMusic* getMusicInfoTag();
 #endif
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_listitem
+      /// \ingroup python_gui_listitem
       /// @brief \python_func{ getPictureInfoTag() }
       /// Returns the InfoTagPicture for this item.
       ///
@@ -1310,12 +1310,12 @@ namespace XBMCAddon
       ///
       getPictureInfoTag();
 #else
-      xbmc::InfoTagPicture* getPictureInfoTag();
+      ::InfoTagPicture* getPictureInfoTag();
 #endif
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_xbmcgui_listitem
+      /// \ingroup python_gui_listitem
       /// @brief \python_func{ getGameInfoTag() }
       /// Returns the InfoTagGame for this item.
       ///
@@ -1327,7 +1327,7 @@ namespace XBMCAddon
       ///
       getGameInfoTag();
 #else
-      xbmc::InfoTagGame* getGameInfoTag();
+      ::InfoTagGame* getGameInfoTag();
 #endif
 
 private:

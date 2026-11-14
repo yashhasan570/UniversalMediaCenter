@@ -8,7 +8,7 @@
 
 #include "MultiProvider.h"
 
-#include "utils/XBMCTinyXML.h"
+#include "utils/TinyXML.h"
 
 #include <mutex>
 

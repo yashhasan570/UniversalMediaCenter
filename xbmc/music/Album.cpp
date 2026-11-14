@@ -604,7 +604,7 @@ bool CAlbum::Save(TiXmlNode *node, const std::string &tag, const std::string& st
   XMLUtils::SetInt(album, "duration", iAlbumDuration);
   if (thumbURL.HasData())
   {
-    CXBMCTinyXML doc;
+    CTinyXML doc;
     doc.Parse(thumbURL.GetData());
     const TiXmlNode* thumb = doc.FirstChild("thumb");
     while (thumb)

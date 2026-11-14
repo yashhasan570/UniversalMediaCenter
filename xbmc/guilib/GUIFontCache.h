@@ -45,7 +45,7 @@ template<class Position>
 struct CGUIFontCacheKey
 {
   Position m_pos;
-  std::span<const KODI::UTILS::COLOR::Color> m_colors;
+  std::span<const UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color> m_colors;
   std::span<const character_t> m_text;
   uint32_t m_alignment;
   float m_maxPixelWidth;
@@ -56,7 +56,7 @@ struct CGUIFontCacheKey
   float m_scaleY;
 
   CGUIFontCacheKey(Position pos,
-                   std::span<const KODI::UTILS::COLOR::Color> colors,
+                   std::span<const UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color> colors,
                    std::span<const character_t> text,
                    uint32_t alignment,
                    float maxPixelWidth,
@@ -83,7 +83,7 @@ template<class Position, class Value>
 struct CGUIFontCacheEntry
 {
   const CGUIFontCache<Position, Value>& m_cache;
-  std::vector<KODI::UTILS::COLOR::Color> m_color;
+  std::vector<UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color> m_color;
   std::vector<character_t> m_text;
   TransformMatrix m_matrix;
   CGUIFontCacheKey<Position> m_key;
@@ -169,7 +169,7 @@ public:
 
   Value& Lookup(const CGraphicContext& context,
                 Position& pos,
-                std::span<const KODI::UTILS::COLOR::Color> colors,
+                std::span<const UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color> colors,
                 std::span<const character_t> text,
                 uint32_t alignment,
                 float maxPixelWidth,
@@ -243,7 +243,7 @@ struct CVertexBuffer
   size_t size = 0;
 #if defined(HAS_GLES)
   // Used instead of bufferHandle when the vertices share a buffer with other text
-  KODI::UTILS::GL::CGLBufferArena::Range range;
+  UNIVERSAL MEDIA CENTER::UTILS::GL::CGLBufferArena::Range range;
 #endif
   CVertexBuffer() : m_font(nullptr) {}
   CVertexBuffer(BufferHandleType bufferHandle, size_t size, const CGUIFontTTF* font)
@@ -251,7 +251,7 @@ struct CVertexBuffer
   {
   }
 #if defined(HAS_GLES)
-  CVertexBuffer(KODI::UTILS::GL::CGLBufferArena::Range range, size_t size, const CGUIFontTTF* font)
+  CVertexBuffer(UNIVERSAL MEDIA CENTER::UTILS::GL::CGLBufferArena::Range range, size_t size, const CGUIFontTTF* font)
     : size(size),
       range(range),
       m_font(font)

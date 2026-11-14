@@ -44,7 +44,7 @@
 #include "utils/FileUtils.h"
 #include "utils/StringUtils.h"
 #include "utils/URIUtils.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 #include "utils/XMLUtils.h"
 #include "utils/log.h"
 #include "video/VideoDatabase.h"
@@ -73,7 +73,7 @@
 using namespace MEDIA_DETECT;
 #endif
 
-using KODI::MEDIA::MediaSection;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaSection;
 
 namespace
 {
@@ -160,7 +160,7 @@ constexpr bool AUTORUN_FROM_STORAGE_EVENT{false};
 
 struct PostedWork
 {
-  KODI::MESSAGING::ThreadMessageCallback message;
+  UNIVERSAL MEDIA CENTER::MESSAGING::ThreadMessageCallback message;
   std::function<void()> work;
 };
 
@@ -280,7 +280,7 @@ void CMediaManager::LoadSources()
   }
 
   // load xml file...
-  CXBMCTinyXML2 xmlDoc;
+  CTinyXML2 xmlDoc;
   if (!xmlDoc.LoadFile(MEDIA_SOURCES_XML))
   {
     CLog::Log(LOGERROR, "Error loading {}, Line {} ({})", MEDIA_SOURCES_XML, xmlDoc.ErrorLineNum(),
@@ -316,7 +316,7 @@ void CMediaManager::LoadSources()
 
 bool CMediaManager::SaveSources()
 {
-  CXBMCTinyXML2 doc;
+  CTinyXML2 doc;
   auto* xmlRootElement = doc.NewElement("mediasources");
   auto* rootNode = doc.InsertFirstChild(xmlRootElement);
 
@@ -1474,7 +1474,7 @@ void CMediaManager::ProcessEvents()
     // darwins GetFirstOpticalDeviceFileName only gives us something
     // when a disc is inserted
     // so we have to refresh m_strFirstAvailDrive when this happens after Initialize
-    // was called (e.x. the disc was inserted after the start of xbmc)
+    // was called (e.x. the disc was inserted after the start of )
     // else TranslateDevicePath wouldn't give the correct device
     {
       const std::string firstDrive{m_platformStorage->GetFirstOpticalDeviceFileName()};
@@ -1796,7 +1796,7 @@ bool CMediaManager::playStubFile(const CFileItem& item)
   strLine1 = CServiceBroker::GetResourcesComponent().GetLocalizeStrings().Get(435).c_str();
   strLine2 = CServiceBroker::GetResourcesComponent().GetLocalizeStrings().Get(436).c_str();
 
-  CXBMCTinyXML2 discStubXML;
+  CTinyXML2 discStubXML;
   if (discStubXML.LoadFile(item.GetPath()))
   {
     auto* pRootElement = discStubXML.RootElement();
@@ -1822,7 +1822,7 @@ bool CMediaManager::playStubFile(const CFileItem& item)
   }
   else
   {
-    KODI::MESSAGING::HELPERS::ShowOKDialogText(strLine1, strLine2);
+    UNIVERSAL MEDIA CENTER::MESSAGING::HELPERS::ShowOKDialogText(strLine1, strLine2);
   }
   return true;
 }

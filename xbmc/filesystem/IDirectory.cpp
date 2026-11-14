@@ -15,7 +15,7 @@
 #include "utils/StringUtils.h"
 #include "utils/URIUtils.h"
 
-using namespace KODI::MESSAGING;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
 using namespace XFILE;
 
 const CProfileManager *IDirectory::m_profileManager = nullptr;

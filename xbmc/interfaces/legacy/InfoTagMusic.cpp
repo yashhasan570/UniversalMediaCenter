@@ -16,9 +16,9 @@
 #include "utils/StringUtils.h"
 #include "utils/log.h"
 
-namespace XBMCAddon
+namespace Addon
 {
-  namespace xbmc
+  namespace 
   {
     InfoTagMusic::InfoTagMusic(bool offscreen /* = false */)
       : infoTag(new MUSIC_INFO::CMusicInfoTag()), offscreen(offscreen), owned(true)
@@ -186,158 +186,158 @@ namespace XBMCAddon
 
     void InfoTagMusic::setDbId(int dbId, const String& type)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setDbIdRaw(infoTag, dbId, type);
     }
 
     void InfoTagMusic::setURL(const String& url)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setURLRaw(infoTag, url);
     }
 
     void InfoTagMusic::setMediaType(const String& mediaType)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setMediaTypeRaw(infoTag, mediaType);
     }
 
     void InfoTagMusic::setTrack(int track)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setTrackRaw(infoTag, track);
     }
 
     void InfoTagMusic::setDisc(int disc)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setDiscRaw(infoTag, disc);
     }
 
     void InfoTagMusic::setDuration(int duration)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setDurationRaw(infoTag, duration);
     }
 
     void InfoTagMusic::setYear(int year)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setYearRaw(infoTag, year);
     }
 
     void InfoTagMusic::setReleaseDate(const String& releaseDate)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setReleaseDateRaw(infoTag, releaseDate);
     }
 
     void InfoTagMusic::setListeners(int listeners)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setListenersRaw(infoTag, listeners);
     }
 
     void InfoTagMusic::setPlayCount(int playcount)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setPlayCountRaw(infoTag, playcount);
     }
 
     void InfoTagMusic::setGenres(const std::vector<String>& genres)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setGenresRaw(infoTag, genres);
     }
 
     void InfoTagMusic::setAlbum(const String& album)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setAlbumRaw(infoTag, album);
     }
 
     void InfoTagMusic::setArtist(const String& artist)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setArtistRaw(infoTag, artist);
     }
 
     void InfoTagMusic::setAlbumArtist(const String& albumArtist)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setAlbumArtistRaw(infoTag, albumArtist);
     }
 
     void InfoTagMusic::setTitle(const String& title)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setTitleRaw(infoTag, title);
     }
 
     void InfoTagMusic::setRating(float rating)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setRatingRaw(infoTag, rating);
     }
 
     void InfoTagMusic::setUserRating(int userrating)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setUserRatingRaw(infoTag, userrating);
     }
 
     void InfoTagMusic::setLyrics(const String& lyrics)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setLyricsRaw(infoTag, lyrics);
     }
 
     void InfoTagMusic::setLastPlayed(const String& lastPlayed)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setLastPlayedRaw(infoTag, lastPlayed);
     }
 
     void InfoTagMusic::setMusicBrainzTrackID(const String& musicBrainzTrackID)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setMusicBrainzTrackIDRaw(infoTag, musicBrainzTrackID);
     }
 
     void InfoTagMusic::setMusicBrainzArtistID(const std::vector<String>& musicBrainzArtistID)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setMusicBrainzArtistIDRaw(infoTag, musicBrainzArtistID);
     }
 
     void InfoTagMusic::setMusicBrainzAlbumID(const String& musicBrainzAlbumID)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setMusicBrainzAlbumIDRaw(infoTag, musicBrainzAlbumID);
     }
 
     void InfoTagMusic::setMusicBrainzReleaseGroupID(const String& musicBrainzReleaseGroupID)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setMusicBrainzReleaseGroupIDRaw(infoTag, musicBrainzReleaseGroupID);
     }
 
     void InfoTagMusic::setMusicBrainzAlbumArtistID(
         const std::vector<String>& musicBrainzAlbumArtistID)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setMusicBrainzAlbumArtistIDRaw(infoTag, musicBrainzAlbumArtistID);
     }
 
     void InfoTagMusic::setComment(const String& comment)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setCommentRaw(infoTag, comment);
     }
 
     void InfoTagMusic::setSongVideoURL(const String& songVideoURL)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setSongVideoURLRaw(infoTag, songVideoURL);
     }
 

@@ -8,7 +8,7 @@
 
 #include "CallbackFunction.h"
 
-namespace XBMCAddon
+namespace Addon
 {
-  Callback::~Callback() { XBMC_TRACE; deallocating(); }
+  Callback::~Callback() { _TRACE; deallocating(); }
 }

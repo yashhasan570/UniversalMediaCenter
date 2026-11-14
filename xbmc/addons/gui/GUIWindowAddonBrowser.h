@@ -103,7 +103,7 @@ protected:
   bool Update(const std::string& strDirectory, bool updateFilterPath = true) override;
   std::string GetStartFolder(const std::string& dir) override;
 
-  std::string GetRootPath() override { return KODI::ADDONS::ROOT; }
+  std::string GetRootPath() override { return UNIVERSAL MEDIA CENTER::ADDONS::ROOT; }
 
 private:
   void SetProperties();

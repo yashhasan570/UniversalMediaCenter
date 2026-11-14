@@ -15,7 +15,7 @@
 #include <utility>
 #include <vector>
 
-namespace KODI::UTILS::COLOR
+namespace UNIVERSAL MEDIA CENTER::UTILS::COLOR
 {
 
 using Color = uint32_t;
@@ -163,4 +163,4 @@ ColorFloats ConvertToFloats(const Color argb);
  */
 std::string ConvertToHexRGB(const Color argb);
 
-} // namespace KODI::UTILS::COLOR
+} // namespace UNIVERSAL MEDIA CENTER::UTILS::COLOR

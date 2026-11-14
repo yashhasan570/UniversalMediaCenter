@@ -204,7 +204,7 @@ int callback(void* res_ptr, int ncol, char** result, char** cols)
 
 int busy_callback(void*, int /*busyCount*/)
 {
-  KODI::TIME::Sleep(100ms);
+  UNIVERSAL MEDIA CENTER::TIME::Sleep(100ms);
   return 1;
 }
 } // unnamed namespace

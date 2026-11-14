@@ -16,20 +16,20 @@
 #include "input/actions/ActionIDs.h"
 #include "messaging/ApplicationMessenger.h"
 
-namespace XBMCAddon
+namespace Addon
 {
-  namespace xbmcgui
+  namespace gui
   {
     void WindowDialogMixin::show()
     {
-      XBMC_TRACE;
+      _TRACE;
       CServiceBroker::GetAppMessenger()->SendMsg(TMSG_GUI_PYTHON_DIALOG, HACK_CUSTOM_ACTION_OPENING,
                                                  0, static_cast<void*>(w->window->get()));
     }
 
     void WindowDialogMixin::close()
     {
-      XBMC_TRACE;
+      _TRACE;
       w->bModal = false;
       w->PulseActionEvent();
 
@@ -39,11 +39,11 @@ namespace XBMCAddon
       w->iOldWindowId = 0;
     }
 
-    bool WindowDialogMixin::IsDialogRunning() const { XBMC_TRACE; return w->window->isActive(); }
+    bool WindowDialogMixin::IsDialogRunning() const { _TRACE; return w->window->isActive(); }
 
     bool WindowDialogMixin::OnAction(const CAction &action)
     {
-      XBMC_TRACE;
+      _TRACE;
       switch (action.GetID())
       {
       case HACK_CUSTOM_ACTION_OPENING:

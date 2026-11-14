@@ -22,12 +22,12 @@
 #include "settings/SettingsComponent.h"
 #include "settings/lib/Setting.h"
 #include "utils/URIUtils.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 #include "utils/log.h"
 
 #include <mutex>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 CGUIAudioManager::CGUIAudioManager()
   : m_settings(CServiceBroker::GetSettingsComponent()->GetSettings())
@@ -237,7 +237,7 @@ bool CGUIAudioManager::Load()
   std::string strSoundsXml = URIUtils::AddFileToFolder(m_strMediaDir, "sounds.xml");
 
   //  Load our xml file
-  CXBMCTinyXML2 xmlDoc;
+  CTinyXML2 xmlDoc;
 
   CLog::Log(LOGINFO, "Loading {}", strSoundsXml);
 

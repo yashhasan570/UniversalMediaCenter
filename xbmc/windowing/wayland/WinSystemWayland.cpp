@@ -53,8 +53,8 @@
 #include <numeric>
 #include <string_view>
 
-using namespace KODI::WINDOWING;
-using namespace KODI::WINDOWING::WAYLAND;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::WAYLAND;
 using namespace std::placeholders;
 using namespace std::chrono_literals;
 
@@ -91,7 +91,7 @@ struct OutputCurrentRefreshRateComparer
 };
 
 /// Scope guard for Actor::Message
-class MessageHandle : public KODI::UTILS::CScopeGuard<Actor::Message*, nullptr, void(Actor::Message*)>
+class MessageHandle : public UNIVERSAL MEDIA CENTER::UTILS::CScopeGuard<Actor::Message*, nullptr, void(Actor::Message*)>
 {
 public:
   MessageHandle() : CScopeGuard{std::bind(&Actor::Message::Release, std::placeholders::_1), nullptr} {}
@@ -973,8 +973,8 @@ void CWinSystemWayland::SetResolutionInternal(CSizeInt size,
     {
       if (m_bFullScreen)
       {
-        XBMC_Event msg{};
-        msg.type = XBMC_MODECHANGE;
+        _Event msg{};
+        msg.type = _MODECHANGE;
         msg.mode.res = RES_WINDOW;
         SetWindowResolution(sizes.bufferSize.Width(), sizes.bufferSize.Height());
         // FIXME
@@ -985,8 +985,8 @@ void CWinSystemWayland::SetResolutionInternal(CSizeInt size,
       }
       else
       {
-        XBMC_Event msg{};
-        msg.type = XBMC_VIDEORESIZE;
+        _Event msg{};
+        msg.type = _VIDEORESIZE;
         msg.resize = {sizes.surfaceSize.Width(), sizes.surfaceSize.Height(), scale};
         // FIXME
         dynamic_cast<CWinEventsWayland&>(*m_winEvents).MessagePush(&msg);
@@ -1010,8 +1010,8 @@ void CWinSystemWayland::SetResolutionInternal(CSizeInt size,
         res = static_cast<RESOLUTION> (CDisplaySettings::GetInstance().ResolutionInfoSize() - 1);
       }
 
-      XBMC_Event msg{};
-      msg.type = XBMC_MODECHANGE;
+      _Event msg{};
+      msg.type = _MODECHANGE;
       msg.mode.res = res;
       // FIXME
       dynamic_cast<CWinEventsWayland&>(*m_winEvents).MessagePush(&msg);
@@ -1374,7 +1374,7 @@ void CWinSystemWayland::OnLeave(InputType type)
   }
 }
 
-void CWinSystemWayland::OnEvent(InputType type, XBMC_Event& event)
+void CWinSystemWayland::OnEvent(InputType type, _Event& event)
 {
   // FIXME
   dynamic_cast<CWinEventsWayland&>(*m_winEvents).MessagePush(&event);
@@ -1510,7 +1510,7 @@ void CWinSystemWayland::PrepareFramePresentation()
                                            std::uint32_t seqHi, std::uint32_t seqLo,
                                            const wayland::presentation_feedback_kind& flags) {
       timespec tv = { .tv_sec = static_cast<std::time_t> ((static_cast<std::uint64_t>(tvSecHi) << 32) + tvSecLo), .tv_nsec = static_cast<long>(tvNsec) };
-      std::int64_t latency{KODI::LINUX::TimespecDifference(iter->submissionTime, tv)};
+      std::int64_t latency{UNIVERSAL MEDIA CENTER::LINUX::TimespecDifference(iter->submissionTime, tv)};
       std::uint64_t msc{(static_cast<std::uint64_t>(seqHi) << 32) + seqLo};
       m_presentationRefreshRate = refresh != 0 ? 1.0e9f / refresh : m_syncOutputRefreshRate.load();
       m_presentationFeedbackHandlers.Invoke(tv, refresh, m_syncOutputID, m_presentationRefreshRate,
@@ -1550,7 +1550,7 @@ void CWinSystemWayland::PrepareFramePresentation()
   // our repaint and reliable timing rather than latency. With weston, latency
   // will usually be on the order of two frames plus a few milliseconds.
   // The frame timings become irregular though when nothing is rendered because
-  // kodi then sleeps for a fixed time without swapping buffers. This makes us
+  // universalmediacenter then sleeps for a fixed time without swapping buffers. This makes us
   // immediately attach the next buffer because the frame callback has already arrived when
   // this function is called and step 1. above is skipped. As we render with full
   // FPS during video playback anyway and the timing is otherwise not relevant,
@@ -1616,7 +1616,7 @@ float CWinSystemWayland::GetPresentationRefreshRate()
   return m_presentationRefreshRate;
 }
 
-KODI::CSignalRegistration CWinSystemWayland::RegisterOnPresentationFeedback(
+UNIVERSAL MEDIA CENTER::CSignalRegistration CWinSystemWayland::RegisterOnPresentationFeedback(
     const PresentationFeedbackHandler& handler)
 {
   return m_presentationFeedbackHandlers.Register(handler);
@@ -1650,10 +1650,10 @@ std::unique_ptr<IOSScreenSaver> CWinSystemWayland::GetOSScreenSaverImpl()
   }
 
 #if defined(HAS_DBUS)
-  if (KODI::WINDOWING::LINUX::COSScreenSaverFreedesktop::IsAvailable())
+  if (UNIVERSAL MEDIA CENTER::WINDOWING::LINUX::COSScreenSaverFreedesktop::IsAvailable())
   {
     CLog::LogF(LOGINFO, "Using freedesktop.org DBus interface for screen saver inhibition");
-    return std::unique_ptr<IOSScreenSaver>(new KODI::WINDOWING::LINUX::COSScreenSaverFreedesktop);
+    return std::unique_ptr<IOSScreenSaver>(new UNIVERSAL MEDIA CENTER::WINDOWING::LINUX::COSScreenSaverFreedesktop);
   }
 #endif
 

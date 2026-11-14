@@ -11,4 +11,4 @@ function(generate_versioned_file _SRC _DEST)
   file(WRITE ${CMAKE_BINARY_DIR}/${_DEST} "${file_content}")
 endfunction()
 
-generate_versioned_file(xbmc/CompileInfo.cpp.in ${CORE_BUILD_DIR}/xbmc/CompileInfo.cpp)
+generate_versioned_file(/CompileInfo.cpp.in ${CORE_BUILD_DIR}//CompileInfo.cpp)

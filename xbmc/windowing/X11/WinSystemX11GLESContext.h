@@ -16,7 +16,7 @@
 
 class CGLContextEGL;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace WINDOWING
 {
@@ -67,4 +67,4 @@ protected:
 
 } // namespace X11
 } // namespace WINDOWING
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

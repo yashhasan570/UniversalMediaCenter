@@ -632,7 +632,7 @@ bool CDVDVideoCodecFFmpeg::AddData(const DemuxPacket &packet)
   // FFmpeg doesn't export the AV1 RPU, so keep it for the frame with the same pts
   if (m_exportDoviRpu && m_hints.codec == AV_CODEC_ID_AV1 && avpkt->pts != AV_NOPTS_VALUE)
   {
-    std::vector<uint8_t> rpu = KODI::UTILS::DOLBYVISION::ExtractAv1Rpu(packet.pData, packet.iSize);
+    std::vector<uint8_t> rpu = UNIVERSAL MEDIA CENTER::UTILS::DOLBYVISION::ExtractAv1Rpu(packet.pData, packet.iSize);
     if (!rpu.empty())
     {
       m_av1DoviRpus[avpkt->pts] = std::move(rpu);
@@ -1216,7 +1216,7 @@ bool CDVDVideoCodecFFmpeg::GetPictureCommon(VideoPicture* pVideoPicture)
     {
       sd = av_frame_get_side_data(m_pFrame, AV_FRAME_DATA_DOVI_RPU_BUFFER);
       if (sd && sd->size > 0)
-        rpu = KODI::UTILS::DOLBYVISION::HevcRpuToNal(sd->data, sd->size);
+        rpu = UNIVERSAL MEDIA CENTER::UTILS::DOLBYVISION::HevcRpuToNal(sd->data, sd->size);
     }
 
     if (!rpu.empty())

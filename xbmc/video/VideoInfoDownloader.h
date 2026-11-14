@@ -61,7 +61,7 @@ public:
                   CGUIDialogProgress* pProgress = NULL);
   bool GetEpisodeDetails(const CScraperUrl& url, CVideoInfoTag &movieDetails, CGUIDialogProgress *pProgress = NULL);
   bool GetEpisodeList(const CScraperUrl& url,
-                      KODI::VIDEO::EPISODELIST& details,
+                      UNIVERSAL MEDIA CENTER::VIDEO::EPISODELIST& details,
                       CGUIDialogProgress* pProgress = NULL);
 
   static void ShowErrorDialog(const ADDON::CScraperError &sce);
@@ -80,7 +80,7 @@ protected:
   MOVIELIST           m_movieList;
   CVideoInfoTag       m_movieDetails;
   CScraperUrl         m_url;
-  KODI::VIDEO::EPISODELIST m_episode;
+  UNIVERSAL MEDIA CENTER::VIDEO::EPISODELIST m_episode;
   std::atomic<LOOKUP_STATE> m_state{DO_NOTHING};
   std::atomic<int> m_found{0};
   std::atomic<bool> m_result{false};

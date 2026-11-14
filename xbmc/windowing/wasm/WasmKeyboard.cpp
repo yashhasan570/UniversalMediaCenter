@@ -14,7 +14,7 @@
 #include <emscripten/em_asm.h>
 #include <emscripten/threading.h>
 
-namespace KODI::WINDOWING::WASM
+namespace UNIVERSAL MEDIA CENTER::WINDOWING::WASM
 {
 namespace
 {
@@ -45,8 +45,8 @@ void CWasmKeyboard::InstallJs()
     const SHOWN = 1, CONFIRMED = 2, CANCELLED = 3;
     // Samsung TV IME soft keys and remote Back key.
     const KEY_IME_DONE = 65376, KEY_IME_CANCEL = 65385, KEY_BACK = 10009;
-    const kodi = (Module.kodi = Module.kodi || {});
-    const kb = (kodi.keyboard = {});
+    const universalmediacenter = (Module.universalmediacenter = Module.universalmediacenter || {});
+    const kb = (universalmediacenter.keyboard = {});
     let root = null;
     let input = null;
     let ptr = 0;
@@ -152,7 +152,7 @@ bool CWasmKeyboard::ShowAndGetInput(char_callback_t pCallback,
   m_shown = true;
   g_activeKeyboards.fetch_add(1, std::memory_order_acq_rel);
 
-  MAIN_THREAD_EM_ASM(({ Module.kodi.keyboard.show($0, $1, $2, $3); }), &m_shared,
+  MAIN_THREAD_EM_ASM(({ Module.universalmediacenter.keyboard.show($0, $1, $2, $3); }), &m_shared,
                      initialString.c_str(), heading.c_str(), bHiddenInput ? 1 : 0);
 
   std::string lastReported = initialString;
@@ -195,7 +195,7 @@ bool CWasmKeyboard::SetTextToKeyboard(const std::string& text, bool closeKeyboar
 {
   if (!m_shown)
     return false;
-  MAIN_THREAD_EM_ASM(({ Module.kodi.keyboard.setText($0, $1); }), text.c_str(),
+  MAIN_THREAD_EM_ASM(({ Module.universalmediacenter.keyboard.setText($0, $1); }), text.c_str(),
                      closeKeyboard ? 1 : 0);
   return true;
 }
@@ -205,7 +205,7 @@ void CWasmKeyboard::Hide()
   if (!m_shown)
     return;
   m_shown = false;
-  MAIN_THREAD_EM_ASM(({ Module.kodi.keyboard.hide(); }));
+  MAIN_THREAD_EM_ASM(({ Module.universalmediacenter.keyboard.hide(); }));
   g_activeKeyboards.fetch_sub(1, std::memory_order_acq_rel);
 }
-} // namespace KODI::WINDOWING::WASM
+} // namespace UNIVERSAL MEDIA CENTER::WINDOWING::WASM

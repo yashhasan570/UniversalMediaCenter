@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 # This is a simple example showing how you can send mouse movement
-# events to XBMC.
+# events to .
 
 # NOTE: Read the comments in 'example_button1.py' for a more detailed
 # explanation.
@@ -14,14 +14,14 @@ if os.path.exists("../../lib/python"):
     # try loading modules from source directory
     sys.path.append("../../lib/python")
 
-    from xbmcclient import *
+    from client import *
 
     ICON_PATH = "../../icons/"
 else:
     # fallback to system wide modules
 
-    from kodi.xbmcclient import *
-    from kodi.defs import *
+    from universalmediacenter.client import *
+    from universalmediacenter.defs import *
 
 def main():
     import time
@@ -38,11 +38,11 @@ def main():
                         ICON_PATH + "/mouse.png")
     packet.send(sock, addr)
 
-    # wait for notification window to close (in XBMC)
+    # wait for notification window to close (in )
     time.sleep(2)
 
     # send mouse events to take cursor from top left to bottom right of the screen
-    # here 0 to 65535 will map to XBMC's screen width and height.
+    # here 0 to 65535 will map to 's screen width and height.
     # Specifying absolute mouse coordinates is unsupported currently.
     for i in range(0, 65535, 2):
         packet = PacketMOUSE(i,i)

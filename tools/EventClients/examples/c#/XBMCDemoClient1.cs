@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
-using XBMC;
+using ;
 
-namespace XBMCEventClientDemo
+namespace EventClientDemo
 {
     static class Program
     {
@@ -21,15 +21,15 @@ namespace XBMCEventClientDemo
             IconType iconType = IconType.ICON_PNG;
 
             if !File.Exists(iconFile) {
-                iconFile = @"/usr/share/xbmc/media/icon.png";
+                iconFile = @"/usr/share//media/icon.png";
                 if !File.Exists(iconFile) {
                     iconType = IconType.ICON_NONE;
                 }
             }
 
-            eventClient.SendHelo("XBMC Client Demo", iconType, iconFile);
+            eventClient.SendHelo(" Client Demo", iconType, iconFile);
             System.Threading.Thread.Sleep(1000);
-            eventClient.SendNotification("XBMC Client Demo", "Notification Message", iconType, iconFile);
+            eventClient.SendNotification(" Client Demo", "Notification Message", iconType, iconFile);
             System.Threading.Thread.Sleep(1000);
             eventClient.SendButton("dpadup", "XG", ButtonFlagsType.BTN_DOWN | ButtonFlagsType.BTN_NO_REPEAT, 0);
             System.Threading.Thread.Sleep(1000);
@@ -37,7 +37,7 @@ namespace XBMCEventClientDemo
             System.Threading.Thread.Sleep(1000);
             eventClient.SendMouse(32768, 32768);
             System.Threading.Thread.Sleep(1000);
-            eventClient.SendLog(LogTypeEnum.LOGERROR, "Example error log message from XBMC Client Demo");
+            eventClient.SendLog(LogTypeEnum.LOGERROR, "Example error log message from  Client Demo");
             System.Threading.Thread.Sleep(1000);
             eventClient.SendAction("Mute");
             System.Threading.Thread.Sleep(1000);

@@ -12,7 +12,7 @@
 #include "input/joysticks/interfaces/IButtonMap.h"
 #include "input/mouse/interfaces/IMouseInputHandler.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace MOUSE;
 
 CMouseInputHandling::CMouseInputHandling(IMouseInputHandler* handler,

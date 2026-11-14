@@ -6,7 +6,7 @@
  *  See LICENSES/README.md for more information.
  */
 
-#include "JNIXBMCFile.h"
+#include "JNIFile.h"
 
 #include "CompileInfo.h"
 #include "utils/FileUtils.h"
@@ -20,31 +20,31 @@
 
 using namespace jni;
 
-static std::string s_className = std::string(CCompileInfo::GetClass()) + "/XBMCFile";
+static std::string s_className = std::string(CCompileInfo::GetClass()) + "/File";
 
-CJNIXBMCFile::CJNIXBMCFile()
+CJNIFile::CJNIFile()
   : CJNIBase()
 {
 }
 
-void CJNIXBMCFile::RegisterNatives(JNIEnv *env)
+void CJNIFile::RegisterNatives(JNIEnv *env)
 {
   jclass cClass = env->FindClass(s_className.c_str());
   if(cClass)
   {
     JNINativeMethod methods[] =
     {
-      {"_open", "(Ljava/lang/String;)Z", (void*)&CJNIXBMCFile::_open},
-      {"_close", "()V", (void*)&CJNIXBMCFile::_close},
-      {"_read", "()[B", (void*)&CJNIXBMCFile::_read},
-      {"_eof", "()Z", (void*)&CJNIXBMCFile::_eof},
+      {"_open", "(Ljava/lang/String;)Z", (void*)&CJNIFile::_open},
+      {"_close", "()V", (void*)&CJNIFile::_close},
+      {"_read", "()[B", (void*)&CJNIFile::_read},
+      {"_eof", "()Z", (void*)&CJNIFile::_eof},
     };
 
     env->RegisterNatives(cClass, methods, sizeof(methods)/sizeof(methods[0]));
   }
 }
 
-jboolean CJNIXBMCFile::_open(JNIEnv *env, jobject thiz, jstring path)
+jboolean CJNIFile::_open(JNIEnv *env, jobject thiz, jstring path)
 {
   std::string strPath = jcast<std::string>(jhstring::fromJNI(path));
 
@@ -57,7 +57,7 @@ jboolean CJNIXBMCFile::_open(JNIEnv *env, jobject thiz, jstring path)
   if (!XFILE::CFile::Exists(strPath))
     return false;
 
-  CJNIXBMCFile* file = new CJNIXBMCFile();
+  CJNIFile* file = new CJNIFile();
   file->m_file = std::make_unique<XFILE::CFile>();
   bool ret = file->m_file->Open(strPath);
   if (!ret)
@@ -73,9 +73,9 @@ jboolean CJNIXBMCFile::_open(JNIEnv *env, jobject thiz, jstring path)
   return true;
 }
 
-void CJNIXBMCFile::_close(JNIEnv *env, jobject thiz)
+void CJNIFile::_close(JNIEnv *env, jobject thiz)
 {
-  CJNIXBMCFile *inst = find_instance(thiz);
+  CJNIFile *inst = find_instance(thiz);
   if (inst)
   {
     inst->m_file->Close();
@@ -84,12 +84,12 @@ void CJNIXBMCFile::_close(JNIEnv *env, jobject thiz)
   }
 }
 
-jbyteArray CJNIXBMCFile::_read(JNIEnv *env, jobject thiz)
+jbyteArray CJNIFile::_read(JNIEnv *env, jobject thiz)
 {
   ssize_t sz = 0;
   char buffer[BUFFSIZE];
 
-  CJNIXBMCFile *inst = find_instance(thiz);
+  CJNIFile *inst = find_instance(thiz);
   if (inst && inst->m_file)
   {
     sz = inst->m_file->Read((void*)buffer, BUFFSIZE);
@@ -112,9 +112,9 @@ jbyteArray CJNIXBMCFile::_read(JNIEnv *env, jobject thiz)
   return jba;
 }
 
-jboolean CJNIXBMCFile::_eof(JNIEnv *env, jobject thiz)
+jboolean CJNIFile::_eof(JNIEnv *env, jobject thiz)
 {
-  CJNIXBMCFile *inst = find_instance(thiz);
+  CJNIFile *inst = find_instance(thiz);
   if (inst)
     return inst->m_eof;
 

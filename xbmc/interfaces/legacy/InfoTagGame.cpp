@@ -11,12 +11,12 @@
 #include "AddonUtils.h"
 #include "games/tags/GameInfoTag.h"
 
-using namespace KODI::GAME;
-using namespace XBMCAddonUtils;
+using namespace UNIVERSAL MEDIA CENTER::GAME;
+using namespace AddonUtils;
 
-namespace XBMCAddon
+namespace Addon
 {
-namespace xbmc
+namespace 
 {
 
 InfoTagGame::InfoTagGame(bool offscreen /* = false */)
@@ -112,127 +112,127 @@ std::vector<String> InfoTagGame::getTags()
 
 void InfoTagGame::setTitle(const String& title)
 {
-  XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+  AddonUtils::GuiLock lock(languageHook, offscreen);
   setTitleRaw(infoTag, title);
 }
 
 void InfoTagGame::setPlatform(const String& platform)
 {
-  XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+  AddonUtils::GuiLock lock(languageHook, offscreen);
   setPlatformRaw(infoTag, platform);
 }
 
 void InfoTagGame::setGenres(const std::vector<String>& genres)
 {
-  XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+  AddonUtils::GuiLock lock(languageHook, offscreen);
   setGenresRaw(infoTag, genres);
 }
 
 void InfoTagGame::setPublisher(const String& publisher)
 {
-  XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+  AddonUtils::GuiLock lock(languageHook, offscreen);
   setPublisherRaw(infoTag, publisher);
 }
 
 void InfoTagGame::setDeveloper(const String& developer)
 {
-  XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+  AddonUtils::GuiLock lock(languageHook, offscreen);
   setDeveloperRaw(infoTag, developer);
 }
 
 void InfoTagGame::setOverview(const String& overview)
 {
-  XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+  AddonUtils::GuiLock lock(languageHook, offscreen);
   setOverviewRaw(infoTag, overview);
 }
 
 void InfoTagGame::setYear(unsigned int year)
 {
-  XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+  AddonUtils::GuiLock lock(languageHook, offscreen);
   setYearRaw(infoTag, year);
 }
 
 void InfoTagGame::setGameClient(const String& gameClient)
 {
-  XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+  AddonUtils::GuiLock lock(languageHook, offscreen);
   setGameClientRaw(infoTag, gameClient);
 }
 
 void InfoTagGame::setOriginalTitle(const String& originalTitle)
 {
-  XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+  AddonUtils::GuiLock lock(languageHook, offscreen);
   infoTag->SetOriginalTitle(originalTitle);
 }
 
 void InfoTagGame::setRating(float rating)
 {
-  XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+  AddonUtils::GuiLock lock(languageHook, offscreen);
   infoTag->SetRating(rating);
 }
 
 void InfoTagGame::setPlayers(unsigned int players)
 {
-  XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+  AddonUtils::GuiLock lock(languageHook, offscreen);
   infoTag->SetPlayers(players);
 }
 
 void InfoTagGame::setAgeRating(const String& ageRating)
 {
-  XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+  AddonUtils::GuiLock lock(languageHook, offscreen);
   infoTag->SetAgeRating(ageRating);
 }
 
 void InfoTagGame::setTrailer(const String& trailer)
 {
-  XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+  AddonUtils::GuiLock lock(languageHook, offscreen);
   infoTag->SetTrailer(trailer);
 }
 
 void InfoTagGame::setTags(const std::vector<String>& tags)
 {
-  XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+  AddonUtils::GuiLock lock(languageHook, offscreen);
   infoTag->SetTags(tags);
 }
 
-void InfoTagGame::setTitleRaw(KODI::GAME::CGameInfoTag* infoTag, const String& title)
+void InfoTagGame::setTitleRaw(UNIVERSAL MEDIA CENTER::GAME::CGameInfoTag* infoTag, const String& title)
 {
   infoTag->SetTitle(title);
 }
 
-void InfoTagGame::setPlatformRaw(KODI::GAME::CGameInfoTag* infoTag, const String& platform)
+void InfoTagGame::setPlatformRaw(UNIVERSAL MEDIA CENTER::GAME::CGameInfoTag* infoTag, const String& platform)
 {
   infoTag->SetPlatform(platform);
 }
 
-void InfoTagGame::setGenresRaw(KODI::GAME::CGameInfoTag* infoTag, const std::vector<String>& genres)
+void InfoTagGame::setGenresRaw(UNIVERSAL MEDIA CENTER::GAME::CGameInfoTag* infoTag, const std::vector<String>& genres)
 {
   infoTag->SetGenres(genres);
 }
 
-void InfoTagGame::setPublisherRaw(KODI::GAME::CGameInfoTag* infoTag, const String& publisher)
+void InfoTagGame::setPublisherRaw(UNIVERSAL MEDIA CENTER::GAME::CGameInfoTag* infoTag, const String& publisher)
 {
   infoTag->SetPublisher(publisher);
 }
 
-void InfoTagGame::setDeveloperRaw(KODI::GAME::CGameInfoTag* infoTag, const String& developer)
+void InfoTagGame::setDeveloperRaw(UNIVERSAL MEDIA CENTER::GAME::CGameInfoTag* infoTag, const String& developer)
 {
   infoTag->SetDeveloper(developer);
 }
 
-void InfoTagGame::setOverviewRaw(KODI::GAME::CGameInfoTag* infoTag, const String& overview)
+void InfoTagGame::setOverviewRaw(UNIVERSAL MEDIA CENTER::GAME::CGameInfoTag* infoTag, const String& overview)
 {
   infoTag->SetOverview(overview);
 }
 
-void InfoTagGame::setYearRaw(KODI::GAME::CGameInfoTag* infoTag, unsigned int year)
+void InfoTagGame::setYearRaw(UNIVERSAL MEDIA CENTER::GAME::CGameInfoTag* infoTag, unsigned int year)
 {
   infoTag->SetYear(year);
 }
 
-void InfoTagGame::setGameClientRaw(KODI::GAME::CGameInfoTag* infoTag, const String& gameClient)
+void InfoTagGame::setGameClientRaw(UNIVERSAL MEDIA CENTER::GAME::CGameInfoTag* infoTag, const String& gameClient)
 {
   infoTag->SetGameClient(gameClient);
 }
 
-} // namespace xbmc
-} // namespace XBMCAddon
+} // namespace 
+} // namespace Addon

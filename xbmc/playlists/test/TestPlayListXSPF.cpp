@@ -15,11 +15,11 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 TEST(TestPlayListXSPF, Load)
 {
-  std::string filename = XBMC_REF_FILE_PATH("/xbmc/playlists/test/test.xspf");
+  std::string filename = _REF_FILE_PATH("//playlists/test/test.xspf");
   PLAYLIST::CPlayListXSPF playlist;
   std::vector<std::string> pathparts;
   std::vector<std::string>::reverse_iterator it;
@@ -44,7 +44,7 @@ TEST(TestPlayListXSPF, Load)
   EXPECT_STREQ((*it++).c_str(), "relative");
   EXPECT_STREQ((*it++).c_str(), "test");
   EXPECT_STREQ((*it++).c_str(), "playlists");
-  EXPECT_STREQ((*it++).c_str(), "xbmc");
+  EXPECT_STREQ((*it++).c_str(), "");
 
 
   ASSERT_GT(playlist.size(), 2);

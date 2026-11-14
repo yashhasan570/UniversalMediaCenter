@@ -8,7 +8,7 @@
 
 #include "utils/SortUtils.h"
 #include "utils/StringUtils.h"
-#include "utils/XBMCTinyXML.h"
+#include "utils/TinyXML.h"
 #include "view/ViewState.h"
 #include "view/ViewStateNames.h"
 #include "view/ViewStateSettings.h"
@@ -34,10 +34,10 @@ protected:
 
   const CViewState* LoadGames(const std::string& viewStates)
   {
-    CXBMCTinyXML doc;
+    CTinyXML doc;
     doc.Parse("<settings><viewstates>" + viewStates + "</viewstates></settings>");
     EXPECT_TRUE(CViewStateSettings::GetInstance().Load(doc.RootElement()));
-    return CViewStateSettings::GetInstance().Get(KODI::VIEW::STATE::GAMES);
+    return CViewStateSettings::GetInstance().Get(UNIVERSAL MEDIA CENTER::VIEW::STATE::GAMES);
   }
 
   TiXmlElement m_saved{"settings"};
@@ -63,7 +63,7 @@ TEST_F(TestViewStateSettings, GamesKeepsNameOnceChosen)
 {
   const CViewState* games =
       LoadGames(Entry("games", DEFAULT_VIEW_ICONS, SortBy::SIZE) +
-                Entry(KODI::VIEW::STATE::GAMES, DEFAULT_VIEW_LIST, SortBy::LABEL));
+                Entry(UNIVERSAL MEDIA CENTER::VIEW::STATE::GAMES, DEFAULT_VIEW_LIST, SortBy::LABEL));
   ASSERT_NE(games, nullptr);
   EXPECT_EQ(games->m_viewMode, DEFAULT_VIEW_LIST);
   EXPECT_EQ(games->m_sortDescription.sortBy, SortBy::LABEL);

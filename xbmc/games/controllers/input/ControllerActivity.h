@@ -15,7 +15,7 @@
 #include <map>
 #include <set>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -65,4 +65,4 @@ private:
   bool m_bKeyPressed{false};
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

@@ -54,12 +54,12 @@
 
 using namespace XFILE;
 using namespace ADDON;
-using namespace KODI::MESSAGING;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
 
 using namespace std::chrono_literals;
 
-using KODI::MESSAGING::HELPERS::DialogResponse;
-using KODI::UTILITY::TypedDigest;
+using UNIVERSAL MEDIA CENTER::MESSAGING::HELPERS::DialogResponse;
+using UNIVERSAL MEDIA CENTER::UTILITY::TypedDigest;
 
 namespace
 {
@@ -526,7 +526,7 @@ bool CAddonInstaller::InstallFromZip(const std::string &path)
           24045,
           StringUtils::Format(
               CServiceBroker::GetResourcesComponent().GetLocalizeStrings().Get(24143), path),
-          "special://xbmc/media/icon256x256.png", EventLevel::Error));
+          "special:///media/icon256x256.png", EventLevel::Error));
 
     CLog::Log(LOGERROR, "CAddonInstaller: installing addon failed '{}' - item count: {}{}",
               CURL::GetRedacted(path), items.Size(),
@@ -546,7 +546,7 @@ bool CAddonInstaller::InstallFromZip(const std::string &path)
         24045,
         StringUtils::Format(CServiceBroker::GetResourcesComponent().GetLocalizeStrings().Get(24143),
                             path),
-        "special://xbmc/media/icon256x256.png", EventLevel::Error));
+        "special:///media/icon256x256.png", EventLevel::Error));
   return false;
 }
 
@@ -1108,7 +1108,7 @@ bool CAddonInstallJob::Install(const std::string &installFrom, const RepositoryP
   // The first thing we do is install dependencies
   for (auto it = deps.begin(); it != deps.end(); ++it)
   {
-    if (it->id != "xbmc.metadata")
+    if (it->id != ".metadata")
     {
       const std::string &addonID = it->id;
       const CAddonVersion& versionMin = it->versionMin;
@@ -1128,7 +1128,7 @@ bool CAddonInstallJob::Install(const std::string &installFrom, const RepositoryP
         if (CAddonInstaller::GetInstance().HasJob(addonID))
         {
           while (CAddonInstaller::GetInstance().HasJob(addonID))
-            KODI::TIME::Sleep(50ms);
+            UNIVERSAL MEDIA CENTER::TIME::Sleep(50ms);
 
           if (!CServiceBroker::GetAddonMgr().IsAddonInstalled(addonID))
           {

@@ -11,8 +11,8 @@
 #include "filesystem/File.h"
 #include "utils/Archive.h"
 #include "utils/StringUtils.h"
-#include "utils/XBMCTinyXML.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML.h"
+#include "utils/TinyXML2.h"
 
 #include <algorithm>
 #include <cmath>
@@ -21,7 +21,7 @@
 
 #include <sys/stat.h>
 
-namespace KODI::VIDEO::GEOMETRY
+namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY
 {
 
 namespace
@@ -247,4 +247,4 @@ std::optional<ContentGeometryRecord> LoadContentGeometryXML(const TiXmlElement& 
   return record;
 }
 
-} // namespace KODI::VIDEO::GEOMETRY
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY

@@ -31,7 +31,7 @@
 #include <mutex>
 #include <queue>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace EVENTCLIENT;
 using namespace EVENTPACKET;
 

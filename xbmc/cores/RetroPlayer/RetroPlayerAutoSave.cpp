@@ -11,7 +11,7 @@
 #include "games/GameSettings.h"
 #include "utils/log.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace RETRO;
 using namespace std::chrono_literals;
 

@@ -15,7 +15,7 @@
 #include "utils/StringUtils.h"
 #include "utils/log.h"
 
-#include "platform/android/activity/XBMCApp.h"
+#include "platform/android/activity/App.h"
 #include "platform/android/peripherals/AndroidJoystickState.h"
 
 #include <algorithm>
@@ -26,7 +26,7 @@
 #include <android/keycodes.h>
 #include <androidjni/View.h>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace PERIPHERALS;
 
 #define JOYSTICK_PROVIDER_ANDROID "android"
@@ -43,10 +43,10 @@ CPeripheralBusAndroid::CPeripheralBusAndroid(CPeripherals& manager)
   m_bNeedsPolling = false;
 
   // register for input device callbacks
-  CXBMCApp::Get().RegisterInputDeviceCallbacks(this);
+  CApp::Get().RegisterInputDeviceCallbacks(this);
 
   // register for input device events
-  CXBMCApp::Get().RegisterInputDeviceEventHandler(this);
+  CApp::Get().RegisterInputDeviceEventHandler(this);
 
   // get all currently connected input devices
   m_scanResults = GetInputDevices();
@@ -55,10 +55,10 @@ CPeripheralBusAndroid::CPeripheralBusAndroid(CPeripherals& manager)
 CPeripheralBusAndroid::~CPeripheralBusAndroid()
 {
   // unregister from input device events
-  CXBMCApp::Get().UnregisterInputDeviceEventHandler();
+  CApp::Get().UnregisterInputDeviceEventHandler();
 
   // unregister from input device callbacks
-  CXBMCApp::Get().UnregisterInputDeviceCallbacks();
+  CApp::Get().UnregisterInputDeviceCallbacks();
 }
 
 bool CPeripheralBusAndroid::InitializeProperties(CPeripheral& peripheral)
@@ -82,7 +82,7 @@ bool CPeripheralBusAndroid::InitializeProperties(CPeripheral& peripheral)
     return false;
   }
 
-  const CJNIViewInputDevice device = CXBMCApp::GetInputDevice(deviceId);
+  const CJNIViewInputDevice device = CApp::GetInputDevice(deviceId);
   if (!device)
   {
     CLog::Log(LOGWARNING, "CPeripheralBusAndroid: failed to get input device with ID {}", deviceId);
@@ -193,7 +193,7 @@ void CPeripheralBusAndroid::Initialise(void)
 
 void CPeripheralBusAndroid::ProcessEvents()
 {
-  std::vector<kodi::addon::PeripheralEvent> events;
+  std::vector<addon::PeripheralEvent> events;
   {
     std::unique_lock lock(m_critSectionStates);
     for (auto& joystickState : m_joystickStates)
@@ -257,7 +257,7 @@ void CPeripheralBusAndroid::OnInputDeviceAdded(int deviceId)
       return;
     }
 
-    const CJNIViewInputDevice device = CXBMCApp::GetInputDevice(deviceId);
+    const CJNIViewInputDevice device = CApp::GetInputDevice(deviceId);
     if (!device)
     {
       CLog::Log(LOGWARNING,
@@ -292,7 +292,7 @@ void CPeripheralBusAndroid::OnInputDeviceChanged(int deviceId)
     {
       if (result->m_strLocation == deviceLocation)
       {
-        const CJNIViewInputDevice device = CXBMCApp::GetInputDevice(deviceId);
+        const CJNIViewInputDevice device = CApp::GetInputDevice(deviceId);
         if (!device)
         {
           CLog::Log(LOGWARNING,
@@ -394,11 +394,11 @@ PeripheralScanResults CPeripheralBusAndroid::GetInputDevices()
   CLog::Log(LOGINFO, "CPeripheralBusAndroid: scanning for input devices...");
 
   PeripheralScanResults results;
-  std::vector<int> deviceIds = CXBMCApp::GetInputDeviceIds();
+  std::vector<int> deviceIds = CApp::GetInputDeviceIds();
 
   for (const auto& deviceId : deviceIds)
   {
-    const CJNIViewInputDevice device = CXBMCApp::GetInputDevice(deviceId);
+    const CJNIViewInputDevice device = CApp::GetInputDevice(deviceId);
     if (!device)
     {
       CLog::Log(LOGWARNING, "CPeripheralBusAndroid: no input device with ID {} found", deviceId);

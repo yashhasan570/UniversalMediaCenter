@@ -29,7 +29,7 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI::RETRO;
+using namespace UNIVERSAL MEDIA CENTER::RETRO;
 
 namespace
 {
@@ -260,7 +260,7 @@ protected:
         GTEST_SKIP() << "The GUI pbuffer is unavailable";
     }
     ASSERT_TRUE(eglMakeCurrent(m_display, m_guiSurface, m_guiSurface, m_sharedContext));
-    auto messenger = std::make_shared<KODI::MESSAGING::CApplicationMessenger>();
+    auto messenger = std::make_shared<UNIVERSAL MEDIA CENTER::MESSAGING::CApplicationMessenger>();
     messenger->SetProcessThread(std::this_thread::get_id());
     CServiceBroker::RegisterAppMessenger(messenger);
 
@@ -369,7 +369,7 @@ protected:
     EXPECT_TRUE(completed);
   }
 
-  std::shared_ptr<KODI::MESSAGING::CApplicationMessenger> m_previousMessenger{
+  std::shared_ptr<UNIVERSAL MEDIA CENTER::MESSAGING::CApplicationMessenger> m_previousMessenger{
       CServiceBroker::GetAppMessenger()};
   CPlaybackTestEnvironment m_environment;
   std::shared_ptr<CRenderBufferPoolFBO> m_pool;
@@ -391,7 +391,7 @@ TEST_P(TestRenderBufferPoolFBOWithContext, ReadCaptureRefusesAnotherPoolsBuffer)
   CTestCaptureBuffer software;
   ASSERT_TRUE(software.Allocate(AV_PIX_FMT_RGBA, 4, 4));
 
-  KODI::RENDERING::CAPTURE::ReadbackBuffer pixels;
+  UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::ReadbackBuffer pixels;
   EXPECT_FALSE(m_pool->ReadCapture(&software, pixels));
 }
 

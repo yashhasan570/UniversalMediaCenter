@@ -16,7 +16,7 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI::LANGUAGE::I18N;
+using namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N;
 
 template<class T>
 class CTestSubTagsCollection : public CSubTagsCollection<T>

@@ -10,7 +10,7 @@
 
 #include "RenderBufferDMAOpenGL.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace RETRO;
 
 IRenderBuffer* CRenderBufferPoolDMAOpenGL::CreateRenderBuffer(void* header /* = nullptr */)

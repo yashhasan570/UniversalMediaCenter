@@ -20,9 +20,9 @@ extern "C"
 }
 
 //! @todo RetroPlayer needs an abstraction for GAME_HW_CONTEXT_TYPE
-#include "addons/kodi-dev-kit/include/kodi/c-api/addon-instance/game.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api/addon-instance/game.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -149,4 +149,4 @@ private:
   unsigned int m_frameHeight{0};
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

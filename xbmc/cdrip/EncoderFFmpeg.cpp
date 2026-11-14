@@ -19,7 +19,7 @@
 #include "utils/URIUtils.h"
 #include "utils/log.h"
 
-using namespace KODI::CDRIP;
+using namespace UNIVERSAL MEDIA CENTER::CDRIP;
 using FFMPEG_HELP_TOOLS::FFMpegErrorToString;
 using FFMPEG_HELP_TOOLS::FFMpegException;
 
@@ -47,9 +47,9 @@ bool CEncoderFFmpeg::Init()
     // - AAC need to multiply with sample rate
     //   - Note: Within Universal Media Center it can still played without use of sample rate, only becomes by VLC the problem visible,
     // - WMA need only the multiply with 1000
-    if (addonId == "audioencoder.kodi.builtin.aac")
+    if (addonId == "audioencoder.universalmediacenter.builtin.aac")
       m_samplesCountMultiply = m_iInSampleRate;
-    else if (addonId == "audioencoder.kodi.builtin.wma")
+    else if (addonId == "audioencoder.universalmediacenter.builtin.wma")
       m_samplesCountMultiply = 1000;
     else
       throw FFMpegException("Internal add-on id \"{}\" not known as usable", addonId);

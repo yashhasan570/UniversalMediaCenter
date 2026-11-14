@@ -14,7 +14,7 @@
 
 #include <stdexcept>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace PIPEWIRE;
 
 CPipewireCore::CPipewireCore(CPipewireContext& context)

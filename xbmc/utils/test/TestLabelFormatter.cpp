@@ -37,8 +37,8 @@ TEST_F(TestLabelFormatter, FormatLabel)
   LABEL_MASKS labelMasks;
   CLabelFormatter formatter("", labelMasks.m_strLabel2File);
 
-  ASSERT_NE(nullptr, (tmpfile = XBMC_CREATETEMPFILE("")));
-  tmpfilepath = XBMC_TEMPFILEPATH(tmpfile);
+  ASSERT_NE(nullptr, (tmpfile = _CREATETEMPFILE("")));
+  tmpfilepath = _TEMPFILEPATH(tmpfile);
 
   CFileItemPtr item(new CFileItem(tmpfilepath));
   item->SetPath(tmpfilepath);
@@ -47,7 +47,7 @@ TEST_F(TestLabelFormatter, FormatLabel)
 
   formatter.FormatLabel(item.get());
 
-  EXPECT_TRUE(XBMC_DELETETEMPFILE(tmpfile));
+  EXPECT_TRUE(_DELETETEMPFILE(tmpfile));
 }
 
 TEST_F(TestLabelFormatter, FormatLabel2)
@@ -57,8 +57,8 @@ TEST_F(TestLabelFormatter, FormatLabel2)
   LABEL_MASKS labelMasks;
   CLabelFormatter formatter("", labelMasks.m_strLabel2File);
 
-  ASSERT_NE(nullptr, (tmpfile = XBMC_CREATETEMPFILE("")));
-  tmpfilepath = XBMC_TEMPFILEPATH(tmpfile);
+  ASSERT_NE(nullptr, (tmpfile = _CREATETEMPFILE("")));
+  tmpfilepath = _TEMPFILEPATH(tmpfile);
 
   CFileItemPtr item(new CFileItem(tmpfilepath));
   item->SetPath(tmpfilepath);
@@ -67,7 +67,7 @@ TEST_F(TestLabelFormatter, FormatLabel2)
 
   formatter.FormatLabel2(item.get());
 
-  EXPECT_TRUE(XBMC_DELETETEMPFILE(tmpfile));
+  EXPECT_TRUE(_DELETETEMPFILE(tmpfile));
 }
 
 TEST_F(TestLabelFormatter, AListIsLabelledByTheMasksOfEachKind)

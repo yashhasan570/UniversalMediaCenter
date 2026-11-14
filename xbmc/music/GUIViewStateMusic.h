@@ -19,9 +19,9 @@ public:
   explicit CGUIViewStateWindowMusic(const CFileItemList& items) : CGUIViewState(items) {}
 protected:
   std::vector<CMediaSource>& GetSources() override;
-  KODI::PLAYLIST::Id GetPlaylist() const override;
+  UNIVERSAL MEDIA CENTER::PLAYLIST::Id GetPlaylist() const override;
   bool AutoPlayNextItem() override;
-  std::optional<KODI::MEDIA::MediaSection> GetLockType() override;
+  std::optional<UNIVERSAL MEDIA CENTER::MEDIA::MediaSection> GetLockType() override;
   std::string GetExtensions() override;
 
   //! \brief Add the sort methods of a list of albums labelled with \p albumFormat.
@@ -83,7 +83,7 @@ public:
 
 protected:
   void SaveViewState() override;
-  KODI::PLAYLIST::Id GetPlaylist() const override;
+  UNIVERSAL MEDIA CENTER::PLAYLIST::Id GetPlaylist() const override;
   bool AutoPlayNextItem() override;
   bool HideParentDirItems() override;
   std::vector<CMediaSource>& GetSources() override;

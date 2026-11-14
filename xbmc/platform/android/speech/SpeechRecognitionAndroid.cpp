@@ -13,7 +13,7 @@
 #include "utils/log.h"
 
 #include "platform/android/activity/JNIMainActivity.h"
-#include "platform/android/activity/XBMCApp.h"
+#include "platform/android/activity/App.h"
 #include "platform/android/speech/SpeechRecognitionListenerAndroid.h"
 
 #include <mutex>
@@ -28,7 +28,7 @@
 
 std::shared_ptr<speech::ISpeechRecognition> speech::ISpeechRecognition::CreateInstance()
 {
-  return std::make_shared<CSpeechRecognitionAndroid>(CXBMCApp::Get());
+  return std::make_shared<CSpeechRecognitionAndroid>(CApp::Get());
 }
 
 CSpeechRecognitionAndroid::CSpeechRecognitionAndroid(const CJNIContext& context)
@@ -89,7 +89,7 @@ void CSpeechRecognitionAndroid::RegisterSpeechRecognitionListener(void* thiz)
 }
 
 void CSpeechRecognitionAndroid::SpeechRecognitionDone(
-    jni::CJNIXBMCSpeechRecognitionListener* listener)
+    jni::CJNISpeechRecognitionListener* listener)
 {
   std::unique_lock lock(m_speechRecognitionListenersMutex);
   for (auto it = m_speechRecognitionListeners.begin(); it != m_speechRecognitionListeners.end();

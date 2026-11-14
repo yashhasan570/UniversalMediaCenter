@@ -8,7 +8,7 @@
 
 #import "LibInputSettings.h"
 
-#import "platform/darwin/tvos/XBMCController.h"
+#import "platform/darwin/tvos/Controller.h"
 #import "platform/darwin/tvos/input/LibInputHandler.h"
 #import "platform/darwin/tvos/input/LibInputRemote.h"
 
@@ -27,14 +27,14 @@
   {
     m_siriRemoteIdleTimerEnabled = idle;
     if (m_siriRemoteIdleTimerEnabled)
-      [g_xbmcController.inputHandler.inputRemote startSiriRemoteIdleTimer];
+      [g_Controller.inputHandler.inputRemote startSiriRemoteIdleTimer];
   }
 }
 
 - (void)setSiriRemoteIdleTime:(int)time
 {
   m_siriRemoteIdleTime = time;
-  [g_xbmcController.inputHandler.inputRemote startSiriRemoteIdleTimer];
+  [g_Controller.inputHandler.inputRemote startSiriRemoteIdleTimer];
 }
 
 @end

@@ -19,7 +19,7 @@ include ../../download-files.include
 # in libsmbclient by defining off_t to off64_t and changing
 # libsmbclient.h to match. Defining _OFF_T_DEFINED_ allows
 # us to change the typedef of off_t in android's sys/type.h.
-# Then xbmc will correctly access smb shares with LFS enabled
+# Then  will correctly access smb shares with LFS enabled
 # using the altered libsmbclient.h.
 ifeq ($(OS),android)
 export CFLAGS+=-D_FILE_OFFSET_BITS=64 -D_OFF_T_DEFINED_ -Doff_t=off64_t -Dlseek=lseek64

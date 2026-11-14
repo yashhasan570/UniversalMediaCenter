@@ -11,7 +11,7 @@
 #include "ControllerDefinitions.h"
 #include "games/ports/PortDefinitions.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 using namespace JOYSTICK;
 

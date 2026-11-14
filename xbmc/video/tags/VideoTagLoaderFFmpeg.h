@@ -21,7 +21,7 @@ namespace XFILE
 }
 
 //! \brief Video tag loader using FFMPEG.
-class CVideoTagLoaderFFmpeg : public KODI::VIDEO::IVideoInfoTagLoader
+class CVideoTagLoaderFFmpeg : public UNIVERSAL MEDIA CENTER::VIDEO::IVideoInfoTagLoader
 {
 public:
   //! \brief Constructor.
@@ -48,7 +48,7 @@ protected:
   AVIOContext* m_ioctx = nullptr; //!< IO context for file
   AVFormatContext* m_fctx = nullptr; //!< Format context for file
   XFILE::CFile* m_file = nullptr; //!< VFS file handle for file
-  mutable int m_metadata_stream = -1; //!< Stream holding kodi metadata (mkv)
+  mutable int m_metadata_stream = -1; //!< Stream holding universalmediacenter metadata (mkv)
   mutable bool m_override_data = false; //!< Data is for overriding
 
   //! \brief Load tags from MKV file.

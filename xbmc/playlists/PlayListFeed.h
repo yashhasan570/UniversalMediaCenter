@@ -13,7 +13,7 @@
 
 class CFileItem;
 
-namespace KODI::PLAYLIST
+namespace UNIVERSAL MEDIA CENTER::PLAYLIST
 {
 
 /*!
@@ -45,4 +45,4 @@ public:
   virtual int GetLeft() const = 0;
 };
 
-} // namespace KODI::PLAYLIST
+} // namespace UNIVERSAL MEDIA CENTER::PLAYLIST

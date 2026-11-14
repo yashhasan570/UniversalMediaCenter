@@ -14,7 +14,7 @@
 #include <string>
 #include <string_view>
 
-namespace KODI::UTILS
+namespace UNIVERSAL MEDIA CENTER::UTILS
 {
 class CLockInfo
 {
@@ -69,4 +69,4 @@ private:
   MediaLockState m_state{LOCK_STATE_NO_LOCK};
   int m_badPasswordCount{0};
 };
-} // namespace KODI::UTILS
+} // namespace UNIVERSAL MEDIA CENTER::UTILS

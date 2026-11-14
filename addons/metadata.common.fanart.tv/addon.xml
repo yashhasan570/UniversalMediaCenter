@@ -4,11 +4,11 @@
        version="3.6.5"
        provider-name="Team Universal Media Center">
   <requires>
-    <import addon="xbmc.metadata" version="2.1.0"/>
+    <import addon=".metadata" version="2.1.0"/>
   </requires>
-  <extension point="xbmc.metadata.scraper.library"
+  <extension point=".metadata.scraper.library"
              library="fanarttv.xml"/>
-  <extension point="xbmc.addon.metadata">
+  <extension point=".addon.metadata">
     <platform>all</platform>
     <summary lang="bg">Библиотека за сваляне на инф. от fanart.tv</summary>
     <summary lang="en">fanart.tv Scraper Library</summary>

@@ -51,7 +51,7 @@
 #include <mutex>
 #include <utility>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 #define EXTENSION_SEPARATOR "|"
@@ -97,7 +97,7 @@ CGameClient::SavestateFeatures ParseSavestateFeatures(const std::string& feature
 class CClientFrameScope
 {
 public:
-  explicit CClientFrameScope(KODI::GAME::CGameClientStreams& streams) : m_streams(streams)
+  explicit CClientFrameScope(UNIVERSAL MEDIA CENTER::GAME::CGameClientStreams& streams) : m_streams(streams)
   {
     m_bBound = m_streams.BeginClientFrame();
   }
@@ -115,7 +115,7 @@ public:
   CClientFrameScope& operator=(const CClientFrameScope&) = delete;
 
 private:
-  KODI::GAME::CGameClientStreams& m_streams;
+  UNIVERSAL MEDIA CENTER::GAME::CGameClientStreams& m_streams;
   bool m_bBound{false};
 };
 
@@ -231,7 +231,7 @@ bool CGameClient::Initialize(void)
   if (!AddonProperties().InitializeProperties())
     return false;
 
-  m_ifc.game->toUniversal Media Center->kodiInstance = this;
+  m_ifc.game->toUniversal Media Center->universalmediacenterInstance = this;
   m_ifc.game->toUniversal Media Center->EnableHardwareRendering = cb_enable_hardware_rendering;
   m_ifc.game->toUniversal Media Center->CloseGame = cb_close_game;
   m_ifc.game->toUniversal Media Center->ReportMissingFile = cb_report_missing_file;
@@ -1163,28 +1163,28 @@ void CGameClient::HardwareContextDestroy()
   }
 }
 
-bool CGameClient::cb_enable_hardware_rendering(KODI_HANDLE kodiInstance,
+bool CGameClient::cb_enable_hardware_rendering(UNIVERSALMEDIA_HANDLE universalmediacenterInstance,
                                                const game_hw_rendering_properties* properties)
 {
   if (properties == nullptr)
     return false;
 
-  CGameClient* gameClient = static_cast<CGameClient*>(kodiInstance);
+  CGameClient* gameClient = static_cast<CGameClient*>(universalmediacenterInstance);
   if (gameClient == nullptr)
     return false;
 
   return gameClient->Streams().EnableHardwareRendering(*properties);
 }
 
-void CGameClient::cb_close_game(KODI_HANDLE kodiInstance)
+void CGameClient::cb_close_game(UNIVERSALMEDIA_HANDLE universalmediacenterInstance)
 {
   CServiceBroker::GetAppMessenger()->PostMsg(TMSG_GUI_ACTION, WINDOW_INVALID, -1,
                                              static_cast<void*>(new CAction(ACTION_STOP)));
 }
 
-void CGameClient::cb_report_missing_file(KODI_HANDLE kodiInstance, const char* path)
+void CGameClient::cb_report_missing_file(UNIVERSALMEDIA_HANDLE universalmediacenterInstance, const char* path)
 {
-  CGameClient* gameClient = static_cast<CGameClient*>(kodiInstance);
+  CGameClient* gameClient = static_cast<CGameClient*>(universalmediacenterInstance);
   if (gameClient == nullptr || path == nullptr)
     return;
 
@@ -1196,27 +1196,27 @@ void CGameClient::cb_report_missing_file(KODI_HANDLE kodiInstance, const char* p
     gameClient->m_missingFile = path;
 }
 
-double CGameClient::cb_get_playback_speed(KODI_HANDLE kodiInstance)
+double CGameClient::cb_get_playback_speed(UNIVERSALMEDIA_HANDLE universalmediacenterInstance)
 {
-  CGameClient* gameClient = static_cast<CGameClient*>(kodiInstance);
+  CGameClient* gameClient = static_cast<CGameClient*>(universalmediacenterInstance);
   if (!gameClient)
     return 0.0;
 
   return gameClient->m_fastForward->ClientSpeed(gameClient->m_playbackSpeed);
 }
 
-void CGameClient::cb_set_fast_forwarding(KODI_HANDLE kodiInstance, bool fastForward, double ratio)
+void CGameClient::cb_set_fast_forwarding(UNIVERSALMEDIA_HANDLE universalmediacenterInstance, bool fastForward, double ratio)
 {
-  CGameClient* gameClient = static_cast<CGameClient*>(kodiInstance);
+  CGameClient* gameClient = static_cast<CGameClient*>(universalmediacenterInstance);
   if (!gameClient)
     return;
 
   gameClient->m_fastForward->Request(fastForward, ratio, gameClient->m_playbackSpeed);
 }
 
-void CGameClient::cb_set_game_timing(KODI_HANDLE kodiInstance, const game_system_timing* timingInfo)
+void CGameClient::cb_set_game_timing(UNIVERSALMEDIA_HANDLE universalmediacenterInstance, const game_system_timing* timingInfo)
 {
-  CGameClient* gameClient = static_cast<CGameClient*>(kodiInstance);
+  CGameClient* gameClient = static_cast<CGameClient*>(universalmediacenterInstance);
   if (gameClient == nullptr || timingInfo == nullptr)
     return;
 
@@ -1233,28 +1233,28 @@ void CGameClient::cb_set_game_timing(KODI_HANDLE kodiInstance, const game_system
   gameClient->Streams().SetGameTiming(*timingInfo);
 }
 
-KODI_GAME_STREAM_HANDLE CGameClient::cb_open_stream(KODI_HANDLE kodiInstance,
+UNIVERSALMEDIA_GAME_STREAM_HANDLE CGameClient::cb_open_stream(UNIVERSALMEDIA_HANDLE universalmediacenterInstance,
                                                     const game_stream_properties* properties)
 {
   if (properties == nullptr)
     return nullptr;
 
-  CGameClient* gameClient = static_cast<CGameClient*>(kodiInstance);
+  CGameClient* gameClient = static_cast<CGameClient*>(universalmediacenterInstance);
   if (gameClient == nullptr)
     return nullptr;
 
   return gameClient->Streams().OpenStream(*properties);
 }
 
-bool CGameClient::cb_start_stream(KODI_HANDLE kodiInstance, KODI_GAME_STREAM_HANDLE stream)
+bool CGameClient::cb_start_stream(UNIVERSALMEDIA_HANDLE universalmediacenterInstance, UNIVERSALMEDIA_GAME_STREAM_HANDLE stream)
 {
-  auto* gameClient = static_cast<CGameClient*>(kodiInstance);
+  auto* gameClient = static_cast<CGameClient*>(universalmediacenterInstance);
   return gameClient != nullptr &&
          gameClient->Streams().StartStream(static_cast<IGameClientStream*>(stream));
 }
 
-bool CGameClient::cb_get_stream_buffer(KODI_HANDLE kodiInstance,
-                                       KODI_GAME_STREAM_HANDLE stream,
+bool CGameClient::cb_get_stream_buffer(UNIVERSALMEDIA_HANDLE universalmediacenterInstance,
+                                       UNIVERSALMEDIA_GAME_STREAM_HANDLE stream,
                                        unsigned int width,
                                        unsigned int height,
                                        game_stream_buffer* buffer)
@@ -1269,8 +1269,8 @@ bool CGameClient::cb_get_stream_buffer(KODI_HANDLE kodiInstance,
   return gameClientStream->GetBuffer(width, height, *buffer);
 }
 
-void CGameClient::cb_add_stream_data(KODI_HANDLE kodiInstance,
-                                     KODI_GAME_STREAM_HANDLE stream,
+void CGameClient::cb_add_stream_data(UNIVERSALMEDIA_HANDLE universalmediacenterInstance,
+                                     UNIVERSALMEDIA_GAME_STREAM_HANDLE stream,
                                      const game_stream_packet* packet)
 {
   if (packet == nullptr)
@@ -1283,8 +1283,8 @@ void CGameClient::cb_add_stream_data(KODI_HANDLE kodiInstance,
   gameClientStream->AddData(*packet);
 }
 
-void CGameClient::cb_release_stream_buffer(KODI_HANDLE kodiInstance,
-                                           KODI_GAME_STREAM_HANDLE stream,
+void CGameClient::cb_release_stream_buffer(UNIVERSALMEDIA_HANDLE universalmediacenterInstance,
+                                           UNIVERSALMEDIA_GAME_STREAM_HANDLE stream,
                                            game_stream_buffer* buffer)
 {
   if (buffer == nullptr)
@@ -1297,9 +1297,9 @@ void CGameClient::cb_release_stream_buffer(KODI_HANDLE kodiInstance,
   gameClientStream->ReleaseBuffer(*buffer);
 }
 
-void CGameClient::cb_close_stream(KODI_HANDLE kodiInstance, KODI_GAME_STREAM_HANDLE stream)
+void CGameClient::cb_close_stream(UNIVERSALMEDIA_HANDLE universalmediacenterInstance, UNIVERSALMEDIA_GAME_STREAM_HANDLE stream)
 {
-  CGameClient* gameClient = static_cast<CGameClient*>(kodiInstance);
+  CGameClient* gameClient = static_cast<CGameClient*>(universalmediacenterInstance);
   if (gameClient == nullptr)
     return;
 
@@ -1310,18 +1310,18 @@ void CGameClient::cb_close_stream(KODI_HANDLE kodiInstance, KODI_GAME_STREAM_HAN
   gameClient->Streams().CloseStream(gameClientStream);
 }
 
-game_proc_address_t CGameClient::cb_hw_get_proc_address(KODI_HANDLE kodiInstance, const char* sym)
+game_proc_address_t CGameClient::cb_hw_get_proc_address(UNIVERSALMEDIA_HANDLE universalmediacenterInstance, const char* sym)
 {
-  CGameClient* gameClient = static_cast<CGameClient*>(kodiInstance);
+  CGameClient* gameClient = static_cast<CGameClient*>(universalmediacenterInstance);
   if (!gameClient)
     return nullptr;
 
   return gameClient->Streams().GetHwProcedureAddress(sym);
 }
 
-bool CGameClient::cb_input_event(KODI_HANDLE kodiInstance, const game_input_event* event)
+bool CGameClient::cb_input_event(UNIVERSALMEDIA_HANDLE universalmediacenterInstance, const game_input_event* event)
 {
-  CGameClient* gameClient = static_cast<CGameClient*>(kodiInstance);
+  CGameClient* gameClient = static_cast<CGameClient*>(universalmediacenterInstance);
   if (!gameClient)
     return false;
 
@@ -1331,59 +1331,59 @@ bool CGameClient::cb_input_event(KODI_HANDLE kodiInstance, const game_input_even
   return gameClient->Input().ReceiveInputEvent(*event);
 }
 
-void CGameClient::cb_rc_on_game_loaded(KODI_HANDLE kodiInstance, const game_rc_game_loaded* data)
+void CGameClient::cb_rc_on_game_loaded(UNIVERSALMEDIA_HANDLE universalmediacenterInstance, const game_rc_game_loaded* data)
 {
-  CGameClient* gameClient = static_cast<CGameClient*>(kodiInstance);
+  CGameClient* gameClient = static_cast<CGameClient*>(universalmediacenterInstance);
   if (gameClient == nullptr || data == nullptr)
     return;
 
   gameClient->Cheevos().OnGameLoaded(*data);
 }
 
-void CGameClient::cb_rc_on_achievement_triggered(KODI_HANDLE kodiInstance,
+void CGameClient::cb_rc_on_achievement_triggered(UNIVERSALMEDIA_HANDLE universalmediacenterInstance,
                                                  const game_rc_achievement_triggered* data)
 {
-  CGameClient* gameClient = static_cast<CGameClient*>(kodiInstance);
+  CGameClient* gameClient = static_cast<CGameClient*>(universalmediacenterInstance);
   if (gameClient == nullptr || data == nullptr)
     return;
 
   gameClient->Cheevos().OnAchievementTriggered(*data);
 }
 
-void CGameClient::cb_rc_on_game_completed(KODI_HANDLE kodiInstance,
+void CGameClient::cb_rc_on_game_completed(UNIVERSALMEDIA_HANDLE universalmediacenterInstance,
                                           const char* title,
                                           bool hardcore)
 {
-  CGameClient* gameClient = static_cast<CGameClient*>(kodiInstance);
+  CGameClient* gameClient = static_cast<CGameClient*>(universalmediacenterInstance);
   if (gameClient == nullptr)
     return;
 
   gameClient->Cheevos().OnGameCompleted(title != nullptr ? title : "", hardcore);
 }
 
-void CGameClient::cb_rc_on_rich_presence_updated(KODI_HANDLE kodiInstance, const char* evaluation)
+void CGameClient::cb_rc_on_rich_presence_updated(UNIVERSALMEDIA_HANDLE universalmediacenterInstance, const char* evaluation)
 {
-  CGameClient* gameClient = static_cast<CGameClient*>(kodiInstance);
+  CGameClient* gameClient = static_cast<CGameClient*>(universalmediacenterInstance);
   if (gameClient == nullptr)
     return;
 
   gameClient->Cheevos().OnRichPresenceUpdated(evaluation != nullptr ? evaluation : "");
 }
 
-void CGameClient::cb_rc_on_login_result(KODI_HANDLE kodiInstance, const game_rc_login_result* data)
+void CGameClient::cb_rc_on_login_result(UNIVERSALMEDIA_HANDLE universalmediacenterInstance, const game_rc_login_result* data)
 {
-  CGameClient* gameClient = static_cast<CGameClient*>(kodiInstance);
+  CGameClient* gameClient = static_cast<CGameClient*>(universalmediacenterInstance);
   if (gameClient == nullptr || data == nullptr)
     return;
 
   gameClient->Cheevos().OnLoginResult(*data);
 }
 
-void CGameClient::cb_rc_on_achievement_progress(KODI_HANDLE kodiInstance,
+void CGameClient::cb_rc_on_achievement_progress(UNIVERSALMEDIA_HANDLE universalmediacenterInstance,
                                                 const game_rc_achievement_progress* progress,
                                                 unsigned int count)
 {
-  CGameClient* gameClient = static_cast<CGameClient*>(kodiInstance);
+  CGameClient* gameClient = static_cast<CGameClient*>(universalmediacenterInstance);
   if (gameClient == nullptr)
     return;
 
@@ -1394,31 +1394,31 @@ void CGameClient::cb_rc_on_achievement_progress(KODI_HANDLE kodiInstance,
   gameClient->Cheevos().OnAchievementProgress(progress, count);
 }
 
-void CGameClient::cb_rc_on_server_error(KODI_HANDLE kodiInstance,
+void CGameClient::cb_rc_on_server_error(UNIVERSALMEDIA_HANDLE universalmediacenterInstance,
                                         const char* message,
                                         const char* api)
 {
-  CGameClient* gameClient = static_cast<CGameClient*>(kodiInstance);
+  CGameClient* gameClient = static_cast<CGameClient*>(universalmediacenterInstance);
   if (gameClient == nullptr)
     return;
 
   gameClient->Cheevos().OnServerError(message != nullptr ? message : "", api != nullptr ? api : "");
 }
 
-void CGameClient::cb_rc_on_connection_changed(KODI_HANDLE kodiInstance, bool connected)
+void CGameClient::cb_rc_on_connection_changed(UNIVERSALMEDIA_HANDLE universalmediacenterInstance, bool connected)
 {
-  CGameClient* gameClient = static_cast<CGameClient*>(kodiInstance);
+  CGameClient* gameClient = static_cast<CGameClient*>(universalmediacenterInstance);
   if (gameClient == nullptr)
     return;
 
   gameClient->Cheevos().OnConnectionChanged(connected);
 }
 
-void CGameClient::cb_rc_on_challenge_indicator(KODI_HANDLE kodiInstance,
+void CGameClient::cb_rc_on_challenge_indicator(UNIVERSALMEDIA_HANDLE universalmediacenterInstance,
                                                const game_rc_achievement_challenge* data,
                                                bool show)
 {
-  CGameClient* gameClient = static_cast<CGameClient*>(kodiInstance);
+  CGameClient* gameClient = static_cast<CGameClient*>(universalmediacenterInstance);
   if (gameClient == nullptr || data == nullptr)
     return;
 
@@ -1426,9 +1426,9 @@ void CGameClient::cb_rc_on_challenge_indicator(KODI_HANDLE kodiInstance,
 }
 
 void CGameClient::cb_rc_on_achievement_progress_show(
-    KODI_HANDLE kodiInstance, const game_rc_achievement_progress_indicator* data)
+    UNIVERSALMEDIA_HANDLE universalmediacenterInstance, const game_rc_achievement_progress_indicator* data)
 {
-  CGameClient* gameClient = static_cast<CGameClient*>(kodiInstance);
+  CGameClient* gameClient = static_cast<CGameClient*>(universalmediacenterInstance);
   if (gameClient == nullptr || data == nullptr)
     return;
 
@@ -1436,9 +1436,9 @@ void CGameClient::cb_rc_on_achievement_progress_show(
 }
 
 void CGameClient::cb_rc_on_achievement_progress_update(
-    KODI_HANDLE kodiInstance, const game_rc_achievement_progress_indicator* data)
+    UNIVERSALMEDIA_HANDLE universalmediacenterInstance, const game_rc_achievement_progress_indicator* data)
 {
-  CGameClient* gameClient = static_cast<CGameClient*>(kodiInstance);
+  CGameClient* gameClient = static_cast<CGameClient*>(universalmediacenterInstance);
   if (gameClient == nullptr || data == nullptr)
     return;
 
@@ -1447,59 +1447,59 @@ void CGameClient::cb_rc_on_achievement_progress_update(
 }
 
 void CGameClient::cb_rc_on_achievement_progress_hide(
-    KODI_HANDLE kodiInstance, const game_rc_achievement_progress_indicator* data)
+    UNIVERSALMEDIA_HANDLE universalmediacenterInstance, const game_rc_achievement_progress_indicator* data)
 {
-  CGameClient* gameClient = static_cast<CGameClient*>(kodiInstance);
+  CGameClient* gameClient = static_cast<CGameClient*>(universalmediacenterInstance);
   if (gameClient == nullptr || data == nullptr)
     return;
 
   gameClient->Cheevos().OnAchievementProgressIndicator(*data, false);
 }
 
-void CGameClient::cb_rc_on_leaderboard_started(KODI_HANDLE kodiInstance,
+void CGameClient::cb_rc_on_leaderboard_started(UNIVERSALMEDIA_HANDLE universalmediacenterInstance,
                                                const game_rc_leaderboard* data)
 {
-  CGameClient* gameClient = static_cast<CGameClient*>(kodiInstance);
+  CGameClient* gameClient = static_cast<CGameClient*>(universalmediacenterInstance);
   if (gameClient == nullptr || data == nullptr)
     return;
 
   gameClient->Cheevos().OnLeaderboardStarted(*data);
 }
 
-void CGameClient::cb_rc_on_leaderboard_failed(KODI_HANDLE kodiInstance,
+void CGameClient::cb_rc_on_leaderboard_failed(UNIVERSALMEDIA_HANDLE universalmediacenterInstance,
                                               const game_rc_leaderboard* data)
 {
-  CGameClient* gameClient = static_cast<CGameClient*>(kodiInstance);
+  CGameClient* gameClient = static_cast<CGameClient*>(universalmediacenterInstance);
   if (gameClient == nullptr || data == nullptr)
     return;
 
   gameClient->Cheevos().OnLeaderboardFailed(*data);
 }
 
-void CGameClient::cb_rc_on_leaderboard_submitted(KODI_HANDLE kodiInstance,
+void CGameClient::cb_rc_on_leaderboard_submitted(UNIVERSALMEDIA_HANDLE universalmediacenterInstance,
                                                  const game_rc_leaderboard* data)
 {
-  CGameClient* gameClient = static_cast<CGameClient*>(kodiInstance);
+  CGameClient* gameClient = static_cast<CGameClient*>(universalmediacenterInstance);
   if (gameClient == nullptr || data == nullptr)
     return;
 
   gameClient->Cheevos().OnLeaderboardSubmitted(*data);
 }
 
-void CGameClient::cb_rc_on_leaderboard_tracker_show(KODI_HANDLE kodiInstance,
+void CGameClient::cb_rc_on_leaderboard_tracker_show(UNIVERSALMEDIA_HANDLE universalmediacenterInstance,
                                                     const game_rc_leaderboard_tracker* data)
 {
-  CGameClient* gameClient = static_cast<CGameClient*>(kodiInstance);
+  CGameClient* gameClient = static_cast<CGameClient*>(universalmediacenterInstance);
   if (gameClient == nullptr || data == nullptr)
     return;
 
   gameClient->Cheevos().OnLeaderboardTracker(*data, true);
 }
 
-void CGameClient::cb_rc_on_leaderboard_tracker_update(KODI_HANDLE kodiInstance,
+void CGameClient::cb_rc_on_leaderboard_tracker_update(UNIVERSALMEDIA_HANDLE universalmediacenterInstance,
                                                       const game_rc_leaderboard_tracker* data)
 {
-  CGameClient* gameClient = static_cast<CGameClient*>(kodiInstance);
+  CGameClient* gameClient = static_cast<CGameClient*>(universalmediacenterInstance);
   if (gameClient == nullptr || data == nullptr)
     return;
 
@@ -1507,48 +1507,48 @@ void CGameClient::cb_rc_on_leaderboard_tracker_update(KODI_HANDLE kodiInstance,
   gameClient->Cheevos().OnLeaderboardTracker(*data, true);
 }
 
-void CGameClient::cb_rc_on_leaderboard_tracker_hide(KODI_HANDLE kodiInstance,
+void CGameClient::cb_rc_on_leaderboard_tracker_hide(UNIVERSALMEDIA_HANDLE universalmediacenterInstance,
                                                     const game_rc_leaderboard_tracker* data)
 {
-  CGameClient* gameClient = static_cast<CGameClient*>(kodiInstance);
+  CGameClient* gameClient = static_cast<CGameClient*>(universalmediacenterInstance);
   if (gameClient == nullptr || data == nullptr)
     return;
 
   gameClient->Cheevos().OnLeaderboardTracker(*data, false);
 }
 
-void CGameClient::cb_rc_on_leaderboard_scoreboard(KODI_HANDLE kodiInstance,
+void CGameClient::cb_rc_on_leaderboard_scoreboard(UNIVERSALMEDIA_HANDLE universalmediacenterInstance,
                                                   const game_rc_leaderboard_scoreboard* data)
 {
-  CGameClient* gameClient = static_cast<CGameClient*>(kodiInstance);
+  CGameClient* gameClient = static_cast<CGameClient*>(universalmediacenterInstance);
   if (gameClient == nullptr || data == nullptr)
     return;
 
   gameClient->Cheevos().OnLeaderboardScoreboard(*data);
 }
 
-void CGameClient::cb_rc_on_reset(KODI_HANDLE kodiInstance)
+void CGameClient::cb_rc_on_reset(UNIVERSALMEDIA_HANDLE universalmediacenterInstance)
 {
-  CGameClient* gameClient = static_cast<CGameClient*>(kodiInstance);
+  CGameClient* gameClient = static_cast<CGameClient*>(universalmediacenterInstance);
   if (gameClient == nullptr)
     return;
 
   gameClient->Cheevos().OnReset();
 }
 
-void CGameClient::cb_rc_on_subset_completed(KODI_HANDLE kodiInstance, const char* title)
+void CGameClient::cb_rc_on_subset_completed(UNIVERSALMEDIA_HANDLE universalmediacenterInstance, const char* title)
 {
-  CGameClient* gameClient = static_cast<CGameClient*>(kodiInstance);
+  CGameClient* gameClient = static_cast<CGameClient*>(universalmediacenterInstance);
   if (gameClient == nullptr)
     return;
 
   gameClient->Cheevos().OnSubsetCompleted(title != nullptr ? title : "");
 }
 
-void CGameClient::cb_rc_on_achievement_sets(KODI_HANDLE kodiInstance,
+void CGameClient::cb_rc_on_achievement_sets(UNIVERSALMEDIA_HANDLE universalmediacenterInstance,
                                             const game_rc_achievement_sets* data)
 {
-  CGameClient* gameClient = static_cast<CGameClient*>(kodiInstance);
+  CGameClient* gameClient = static_cast<CGameClient*>(universalmediacenterInstance);
   if (gameClient == nullptr || data == nullptr)
     return;
 

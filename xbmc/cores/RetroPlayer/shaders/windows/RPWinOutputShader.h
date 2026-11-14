@@ -20,7 +20,7 @@
 #include <d3d11.h>
 #include <wrl/client.h>
 
-namespace KODI::SHADER
+namespace UNIVERSAL MEDIA CENTER::SHADER
 {
 
 class CRPWinShader
@@ -60,7 +60,7 @@ public:
   bool Create(RETRO::SCALINGMETHOD scalingMethod);
   void Render(CD3DTexture& sourceTexture,
               CRect sourceRect,
-              const KODI::RETRO::ViewportCoordinates& points,
+              const UNIVERSAL MEDIA CENTER::RETRO::ViewportCoordinates& points,
               CRect& viewPort,
               CD3DTexture& target,
               unsigned int range = 0,
@@ -70,7 +70,7 @@ private:
   bool PrepareParameters(unsigned int sourceWidth,
                          unsigned int sourceHeight,
                          CRect sourceRect,
-                         const KODI::RETRO::ViewportCoordinates& points);
+                         const UNIVERSAL MEDIA CENTER::RETRO::ViewportCoordinates& points);
   void SetShaderParameters(CD3DTexture& sourceTexture,
                            unsigned int range,
                            uint8_t alpha,
@@ -79,6 +79,6 @@ private:
   unsigned int m_sourceWidth{0};
   unsigned int m_sourceHeight{0};
   CRect m_sourceRect{};
-  KODI::RETRO::ViewportCoordinates m_destPoints{};
+  UNIVERSAL MEDIA CENTER::RETRO::ViewportCoordinates m_destPoints{};
 };
-} // namespace KODI::SHADER
+} // namespace UNIVERSAL MEDIA CENTER::SHADER

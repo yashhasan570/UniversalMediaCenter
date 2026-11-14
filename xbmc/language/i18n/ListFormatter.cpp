@@ -12,7 +12,7 @@
 
 #include <utility>
 
-using namespace KODI::LANGUAGE::I18N;
+using namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N;
 
 namespace
 {

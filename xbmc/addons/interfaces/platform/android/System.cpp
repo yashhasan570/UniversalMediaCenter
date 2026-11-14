@@ -11,9 +11,9 @@
 #include "CompileInfo.h"
 #include "addons/binary-addons/AddonDll.h"
 #include "addons/interfaces/AddonBase.h"
-#include "addons/kodi-dev-kit/include/kodi/platform/android/System.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/platform/android/System.h"
 
-#include "platform/android/activity/XBMCApp.h"
+#include "platform/android/activity/App.h"
 
 static AddonToUniversal Media CenterFuncTable_android_system function_table;
 
@@ -40,12 +40,12 @@ void* Interface_Android::Get(const std::string &name, const std::string &version
 
 void* Interface_Android::get_jni_env()
 {
-  return xbmc_jnienv();
+  return _jnienv();
 }
 
 int Interface_Android::get_sdk_version()
 {
-  return CXBMCApp::Get().GetSDKVersion();
+  return CApp::Get().GetSDKVersion();
 }
 
 const char *Interface_Android::get_class_name()

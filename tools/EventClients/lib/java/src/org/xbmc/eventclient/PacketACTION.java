@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2008-2013 Team XBMC
+ *  Copyright (C) 2008-2013 Team 
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -16,11 +16,11 @@
  *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package org.xbmc.eventclient;
+package org..eventclient;
 /**
- * XBMC Event Client Class
+ *  Event Client Class
  *
- * An ACTION packet tells XBMC to do the action specified, based on the type it knows were it needs to be sent.
+ * An ACTION packet tells  to do the action specified, based on the type it knows were it needs to be sent.
  * The idea is that this will be as in scripting/skining and keymapping, just triggered from afar.
  * @author Stefan Agner
  *
@@ -32,7 +32,7 @@ public class PacketACTION extends Packet {
 
 
 	/**
-	 * An ACTION packet tells XBMC to do the action specified, based on the type it knows were it needs to be sent.
+	 * An ACTION packet tells  to do the action specified, based on the type it knows were it needs to be sent.
 	 * @param actionmessage Actionmessage (as in scripting/skinning)
 	 */
 	public PacketACTION(String actionmessage)
@@ -43,7 +43,7 @@ public class PacketACTION extends Packet {
 	}
 
 	/**
-	 * An ACTION packet tells XBMC to do the action specified, based on the type it knows were it needs to be sent.
+	 * An ACTION packet tells  to do the action specified, based on the type it knows were it needs to be sent.
 	 * @param actionmessage Actionmessage (as in scripting/skinning)
 	 * @param actiontype Actiontype (ACTION_EXECBUILTIN or ACTION_BUTTON)
 	 */

@@ -36,7 +36,7 @@
 
 #include <cstring>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace ADDON;
 using namespace GAME;
 using namespace XFILE;

@@ -10,7 +10,7 @@
 
 #include "games/controllers/windows/GUIControllerDefines.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 CGUIFeatureGroupTitle::CGUIFeatureGroupTitle(const CGUILabelControl& groupTitleTemplate,

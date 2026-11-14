@@ -17,7 +17,7 @@
 #include "guilib/GUIWindowManager.h"
 #include "guilib/WindowIDs.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace RETRO;
 
 CGUIGameMessenger::CGUIGameMessenger(CRPProcessInfo& processInfo)

@@ -16,7 +16,7 @@
 
 #include <algorithm>
 
-using namespace KODI::LANGUAGE::I18N;
+using namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N;
 using namespace std::literals;
 
 bool CBcp47::operator==(const ParsedBcp47Tag& other) const

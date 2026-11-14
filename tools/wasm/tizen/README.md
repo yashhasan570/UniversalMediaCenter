@@ -12,7 +12,7 @@ This file only describes what is in this directory and how it is staged.
 
 - `icon.png`: application icon shown in the TV's Apps panel; 512x423 24-bit RGB PNG as Samsung requires, rendered from `tools/Linux/packaging/media/iconScalable.svg`.
 - `config.xml.in`: CMake-configured Tizen widget metadata. Holds the
-  application and package IDs (`kodiplayer.Universal Media Center` / `kodiplayer`), the
+  application and package IDs (`universalmediacenterplayer.Universal Media Center` / `universalmediacenterplayer`), the
   `tv-samsung` profile, the widget version (Universal Media Center's `VERSION_CODE` from
   `version.txt`) and the privileges Universal Media Center needs: `internet`, and the public-level
   Samsung `network.public` and `productinfo` privileges that let the System
@@ -24,7 +24,7 @@ This file only describes what is in this directory and how it is staged.
   security profile is active.
 
 The staged `index.html` is copied from the shared browser shell at
-`tools/wasm/kodi.html` so browser and Tizen builds use the same entry page.
+`tools/wasm/universalmediacenter.html` so browser and Tizen builds use the same entry page.
 
 ## Staging
 
@@ -36,7 +36,7 @@ web project in `<build-dir>/tizen_packaging/Universal Media Center`:
   templates
 - `index.html`, the shared web entry page
 - `media/splash.jpg`, the splash picture `index.html` shows while Universal Media Center loads
-- the build artifacts `kodi.js`, `kodi.wasm` and `kodi.data`
+- the build artifacts `universalmediacenter.js`, `universalmediacenter.wasm` and `universalmediacenter.data`
 
 `package_tizen_wgt` then packs and signs that directory into
 `<build-dir>/tizen_packaging/Universal Media Center/Release/Universal Media Center.wgt` (`Debug/` for a Debug

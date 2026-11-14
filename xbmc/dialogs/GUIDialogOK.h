@@ -14,7 +14,7 @@
 class CGUIMessage;
 class CVariant;
 
-using namespace KODI::MESSAGING;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
 
 class CGUIDialogOK :
       public CGUIDialogBoxBase
@@ -34,7 +34,7 @@ public:
   \param[in] options  a struct of type DialogOKMessage containing
   the options to set for this dialog.
 
-  \sa KODI::MESSAGING::HELPERS::DialogOKMessage
+  \sa UNIVERSAL MEDIA CENTER::MESSAGING::HELPERS::DialogOKMessage
   */
   bool ShowAndGetInput(const HELPERS::DialogOKMessage& options);
 protected:

@@ -19,7 +19,7 @@
 
 #include <tinyxml2.h>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace MOUSE;
 
 namespace
@@ -86,47 +86,47 @@ bool CMouseTranslator::TranslateEventID(unsigned int eventId, BUTTON_ID& buttonI
 {
   switch (eventId)
   {
-    case XBMC_BUTTON_LEFT:
+    case _BUTTON_LEFT:
     {
       buttonId = BUTTON_ID::LEFT;
       return true;
     }
-    case XBMC_BUTTON_MIDDLE:
+    case _BUTTON_MIDDLE:
     {
       buttonId = BUTTON_ID::MIDDLE;
       return true;
     }
-    case XBMC_BUTTON_RIGHT:
+    case _BUTTON_RIGHT:
     {
       buttonId = BUTTON_ID::RIGHT;
       return true;
     }
-    case XBMC_BUTTON_WHEELUP:
+    case _BUTTON_WHEELUP:
     {
       buttonId = BUTTON_ID::WHEEL_UP;
       return true;
     }
-    case XBMC_BUTTON_WHEELDOWN:
+    case _BUTTON_WHEELDOWN:
     {
       buttonId = BUTTON_ID::WHEEL_DOWN;
       return true;
     }
-    case XBMC_BUTTON_X1:
+    case _BUTTON_X1:
     {
       buttonId = BUTTON_ID::BUTTON4;
       return true;
     }
-    case XBMC_BUTTON_X2:
+    case _BUTTON_X2:
     {
       buttonId = BUTTON_ID::BUTTON5;
       return true;
     }
-    case XBMC_BUTTON_X3:
+    case _BUTTON_X3:
     {
       buttonId = BUTTON_ID::HORIZ_WHEEL_LEFT;
       return true;
     }
-    case XBMC_BUTTON_X4:
+    case _BUTTON_X4:
     {
       buttonId = BUTTON_ID::HORIZ_WHEEL_RIGHT;
       return true;

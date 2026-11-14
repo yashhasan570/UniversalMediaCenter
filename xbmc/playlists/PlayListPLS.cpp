@@ -43,7 +43,7 @@ bool Resize(std::vector<std::shared_ptr<CFileItem>>& items, size_t newSize)
 }
 } // unnamed namespace
 
-namespace KODI::PLAYLIST
+namespace UNIVERSAL MEDIA CENTER::PLAYLIST
 {
 
 /*----------------------------------------------------------------------
@@ -244,4 +244,4 @@ void CPlayListPLS::Save(const std::string& strFileName) const
   file.Close();
 }
 
-} // namespace KODI::PLAYLIST
+} // namespace UNIVERSAL MEDIA CENTER::PLAYLIST

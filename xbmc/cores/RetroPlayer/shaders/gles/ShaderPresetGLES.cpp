@@ -16,7 +16,7 @@
 #include "rendering/gl/RenderSystemGL.h"
 #include "utils/log.h"
 
-using namespace KODI::SHADER;
+using namespace UNIVERSAL MEDIA CENTER::SHADER;
 
 CShaderPresetGLES::CShaderPresetGLES(RETRO::CRenderContext& context,
                                      unsigned int videoWidth,

@@ -10,11 +10,11 @@
 
 #include "WasmWebApis.h"
 
-namespace KODI::PLATFORM::WASM
+namespace UNIVERSAL MEDIA CENTER::PLATFORM::WASM
 {
 class CTitanWebApis
 {
 public:
   static WasmDeviceInfo GetDeviceInfo();
 };
-} // namespace KODI::PLATFORM::WASM
+} // namespace UNIVERSAL MEDIA CENTER::PLATFORM::WASM

@@ -11,7 +11,7 @@
 #include <string>
 #include <string_view>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace PLATFORM
 {

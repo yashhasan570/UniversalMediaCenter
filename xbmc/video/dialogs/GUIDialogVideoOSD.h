@@ -21,5 +21,5 @@ public:
   bool OnMessage(CGUIMessage& message) override;
   bool OnAction(const CAction &action) override;
 protected:
-  EVENT_RESULT OnMouseEvent(const CPoint& point, const KODI::MOUSE::CMouseEvent& event) override;
+  EVENT_RESULT OnMouseEvent(const CPoint& point, const UNIVERSAL MEDIA CENTER::MOUSE::CMouseEvent& event) override;
 };

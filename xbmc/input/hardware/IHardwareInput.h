@@ -10,7 +10,7 @@
 
 #include <string>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace HARDWARE
 {
@@ -29,4 +29,4 @@ public:
   virtual void OnResetButton() = 0;
 };
 } // namespace HARDWARE
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

@@ -33,7 +33,7 @@
 #include <emscripten/html5.h>
 #include <emscripten/html5_webgl.h>
 
-using namespace KODI::WINDOWING::WASM;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::WASM;
 
 namespace
 {
@@ -91,7 +91,7 @@ void GetCanvasSize(int* width, int* height)
 
 void CWinSystemWasmGLESContext::Register()
 {
-  KODI::WINDOWING::CWindowSystemFactory::RegisterWindowSystem(CreateWinSystem);
+  UNIVERSAL MEDIA CENTER::WINDOWING::CWindowSystemFactory::RegisterWindowSystem(CreateWinSystem);
 }
 
 std::unique_ptr<CWinSystemBase> CWinSystemWasmGLESContext::CreateWinSystem()
@@ -293,7 +293,7 @@ std::string CWinSystemWasmGLESContext::GetClipboardText()
   return WASM_CLIPBOARD::ConsumePendingPasteText();
 }
 
-std::unique_ptr<KODI::WINDOWING::IOSScreenSaver> CWinSystemWasmGLESContext::GetOSScreenSaverImpl()
+std::unique_ptr<UNIVERSAL MEDIA CENTER::WINDOWING::IOSScreenSaver> CWinSystemWasmGLESContext::GetOSScreenSaverImpl()
 {
   return std::make_unique<COSScreenSaverWasm>();
 }

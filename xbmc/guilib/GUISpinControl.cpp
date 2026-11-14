@@ -21,7 +21,7 @@
 #define SPIN_BUTTON_DOWN 1
 #define SPIN_BUTTON_UP   2
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 namespace
 {

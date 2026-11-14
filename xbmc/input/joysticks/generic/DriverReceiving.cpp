@@ -12,7 +12,7 @@
 #include "input/joysticks/interfaces/IButtonMap.h"
 #include "input/joysticks/interfaces/IDriverReceiver.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace JOYSTICK;
 
 CDriverReceiving::CDriverReceiving(IDriverReceiver* receiver, IButtonMap* buttonMap)

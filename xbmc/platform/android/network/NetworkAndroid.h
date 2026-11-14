@@ -11,7 +11,7 @@
 #include "network/Network.h"
 #include "threads/CriticalSection.h"
 
-#include "platform/android/activity/JNIXBMCConnectivityManagerNetworkCallback.h"
+#include "platform/android/activity/JNIConnectivityManagerNetworkCallback.h"
 
 #include <androidjni/LinkProperties.h>
 #include <androidjni/Network.h>
@@ -45,7 +45,7 @@ protected:
   CJNINetworkInterface m_intf;
 };
 
-class CNetworkAndroid : public CNetworkBase, public jni::CJNIXBMCConnectivityManagerNetworkCallback
+class CNetworkAndroid : public CNetworkBase, public jni::CJNIConnectivityManagerNetworkCallback
 {
 
 public:

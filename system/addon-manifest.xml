@@ -1,30 +1,30 @@
 <addons>
-  <addon>audioencoder.kodi.builtin.aac</addon>
-  <addon>audioencoder.kodi.builtin.wma</addon>
+  <addon>audioencoder.universalmediacenter.builtin.aac</addon>
+  <addon>audioencoder.universalmediacenter.builtin.wma</addon>
   <addon>game.controller.default</addon>
   <addon>game.controller.keyboard</addon>
   <addon>game.controller.mouse</addon>
   <addon>game.controller.snes</addon>
-  <addon>kodi.binary.global.audioengine</addon>
-  <addon>kodi.binary.global.filesystem</addon>
-  <addon>kodi.binary.global.general</addon>
-  <addon>kodi.binary.global.gui</addon>
-  <addon>kodi.binary.global.main</addon>
-  <addon>kodi.binary.global.network</addon>
-  <addon>kodi.binary.global.tools</addon>
-  <addon>kodi.binary.instance.audiodecoder</addon>
-  <addon>kodi.binary.instance.audioencoder</addon>
-  <addon>kodi.binary.instance.game</addon>
-  <addon>kodi.binary.instance.imagedecoder</addon>
-  <addon>kodi.binary.instance.inputstream</addon>
-  <addon>kodi.binary.instance.peripheral</addon>
-  <addon>kodi.binary.instance.pvr</addon>
-  <addon>kodi.binary.instance.screensaver</addon>
-  <addon>kodi.binary.instance.shaderpreset</addon>
-  <addon>kodi.binary.instance.vfs</addon>
-  <addon>kodi.binary.instance.videocodec</addon>
-  <addon>kodi.binary.instance.visualization</addon>
-  <addon>kodi.resource</addon>
+  <addon>.global.audioengine</addon>
+  <addon>.global.filesystem</addon>
+  <addon>.global.general</addon>
+  <addon>.global.gui</addon>
+  <addon>.global.main</addon>
+  <addon>.global.network</addon>
+  <addon>.global.tools</addon>
+  <addon>.instance.audiodecoder</addon>
+  <addon>.instance.audioencoder</addon>
+  <addon>.instance.game</addon>
+  <addon>.instance.imagedecoder</addon>
+  <addon>.instance.inputstream</addon>
+  <addon>.instance.peripheral</addon>
+  <addon>.instance.pvr</addon>
+  <addon>.instance.screensaver</addon>
+  <addon>.instance.shaderpreset</addon>
+  <addon>.instance.vfs</addon>
+  <addon>.instance.videocodec</addon>
+  <addon>.instance.visualization</addon>
+  <addon>universalmediacenter.resource</addon>
   <addon>metadata.album.universal</addon>
   <addon>metadata.artists.universal</addon>
   <addon>metadata.common.allmusic.com</addon>
@@ -39,22 +39,22 @@
   <addon>repository.github.com/yashhasan570/UniversalMediaCenter</addon>
   <addon>resource.images.weathericons.default</addon>
   <addon>resource.language.en_gb</addon>
-  <addon>resource.uisounds.kodi</addon>
-  <addon>screensaver.xbmc.builtin.black</addon>
-  <addon>screensaver.xbmc.builtin.dim</addon>
+  <addon>resource.uisounds.universalmediacenter</addon>
+  <addon>screensaver..builtin.black</addon>
+  <addon>screensaver..builtin.dim</addon>
   <addon>script.module.pil</addon>
   <addon>script.module.pycryptodome</addon>
   <addon>skin.estuary</addon>
   <addon>webinterface.default</addon>
-  <addon>xbmc.addon</addon>
-  <addon>xbmc.core</addon>
-  <addon>xbmc.gui</addon>
-  <addon>xbmc.json</addon>
-  <addon>xbmc.metadata</addon>
-  <addon>xbmc.python</addon>
-  <addon>xbmc.webinterface</addon>
+  <addon>.addon</addon>
+  <addon>.core</addon>
+  <addon>.gui</addon>
+  <addon>.json</addon>
+  <addon>.metadata</addon>
+  <addon>.python</addon>
+  <addon>.webinterface</addon>
   <addon optional="true">game.shader.presets</addon>
   <addon optional="true">inputstream.adaptive</addon>
   <addon optional="true">peripheral.joystick</addon>
-  <addon optional="true">service.xbmc.versioncheck</addon>
+  <addon optional="true">service..versioncheck</addon>
 </addons>

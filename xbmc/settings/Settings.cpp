@@ -49,13 +49,13 @@
 #include "utils/StringUtils.h"
 #include "utils/SystemInfo.h"
 #include "utils/Variant.h"
-#include "utils/XBMCTinyXML.h"
+#include "utils/TinyXML.h"
 #include "utils/log.h"
 #include "view/ViewStateSettings.h"
 
-#define SETTINGS_XML_FOLDER "special://xbmc/system/settings/"
+#define SETTINGS_XML_FOLDER "special:///system/settings/"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace XFILE;
 
 bool CSettings::Initialize()
@@ -116,7 +116,7 @@ bool CSettings::Load()
 
 bool CSettings::Load(const std::string &file)
 {
-  CXBMCTinyXML xmlDoc;
+  CTinyXML xmlDoc;
   bool updated = false;
   if (!XFILE::CFile::Exists(file) || !xmlDoc.LoadFile(file) ||
       !Load(xmlDoc.RootElement(), updated))
@@ -151,7 +151,7 @@ bool CSettings::Save()
 
 bool CSettings::Save(const std::string& file) const
 {
-  CXBMCTinyXML xmlDoc;
+  CTinyXML xmlDoc;
   if (!SaveValuesToXml(xmlDoc))
     return false;
 
@@ -229,7 +229,7 @@ bool CSettings::Load(const TiXmlNode* settings)
 
 bool CSettings::Initialize(const std::string &file)
 {
-  CXBMCTinyXML xmlDoc;
+  CTinyXML xmlDoc;
   if (!xmlDoc.LoadFile(file.c_str()))
   {
     CLog::Log(LOGERROR, "CSettings: error loading settings definition from {}, Line {}\n{}", file,
@@ -332,7 +332,7 @@ void CSettings::InitializeDefaults()
 #if defined(TARGET_WINDOWS)
   // We prefer a fake fullscreen mode (window covering the screen rather than dedicated fullscreen)
   // as it works nicer with switching to other applications. However on some systems vsync is broken
-  // when we do this (eg non-Aero on ATI in particular) and on others (AppleTV) we can't get XBMC to
+  // when we do this (eg non-Aero on ATI in particular) and on others (AppleTV) we can't get  to
   // the front
   if (g_sysinfo.IsAeroDisabled())
   {

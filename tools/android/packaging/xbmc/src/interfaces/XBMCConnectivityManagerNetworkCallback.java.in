@@ -3,7 +3,7 @@ package @APP_PACKAGE@.interfaces;
 import android.net.ConnectivityManager;
 import android.net.Network;
 
-public class XBMCConnectivityManagerNetworkCallback extends ConnectivityManager.NetworkCallback
+public class ConnectivityManagerNetworkCallback extends ConnectivityManager.NetworkCallback
 {
   native void _onAvailable(Network network);
   native void _onLost(Network network);

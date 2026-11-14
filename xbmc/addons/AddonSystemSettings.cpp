@@ -60,17 +60,17 @@ void CAddonSystemSettings::OnSettingAction(const std::shared_ptr<const CSetting>
 {
   if (setting->GetId() == CSettings::SETTING_ADDONS_MANAGE_DEPENDENCIES)
   {
-    std::vector<std::string> params{KODI::ADDONS::DEPENDENCIES, "return"};
+    std::vector<std::string> params{UNIVERSAL MEDIA CENTER::ADDONS::DEPENDENCIES, "return"};
     CServiceBroker::GetGUI()->GetWindowManager().ActivateWindow(WINDOW_ADDON_BROWSER, params);
   }
   else if (setting->GetId() == CSettings::SETTING_ADDONS_SHOW_RUNNING)
   {
-    std::vector<std::string> params{KODI::ADDONS::RUNNING, "return"};
+    std::vector<std::string> params{UNIVERSAL MEDIA CENTER::ADDONS::RUNNING, "return"};
     CServiceBroker::GetGUI()->GetWindowManager().ActivateWindow(WINDOW_ADDON_BROWSER, params);
   }
   else if (setting->GetId() == CSettings::SETTING_ADDONS_REMOVE_ORPHANED_DEPENDENCIES)
   {
-    using namespace KODI::MESSAGING::HELPERS;
+    using namespace UNIVERSAL MEDIA CENTER::MESSAGING::HELPERS;
 
     const auto removedItems = CAddonInstaller::GetInstance().RemoveOrphanedDepsRecursively();
     if (!removedItems.empty())
@@ -90,7 +90,7 @@ void CAddonSystemSettings::OnSettingAction(const std::shared_ptr<const CSetting>
 
 void CAddonSystemSettings::OnSettingChanged(const std::shared_ptr<const CSetting>& setting)
 {
-  using namespace KODI::MESSAGING::HELPERS;
+  using namespace UNIVERSAL MEDIA CENTER::MESSAGING::HELPERS;
 
   if (setting->GetId() == CSettings::SETTING_ADDONS_ALLOW_UNKNOWN_SOURCES &&
       CServiceBroker::GetSettingsComponent()->GetSettings()->GetBool(

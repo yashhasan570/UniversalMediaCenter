@@ -4,12 +4,12 @@
        version="1.1.0"
        provider-name="spiff">
   <requires>
-    <import addon="xbmc.python" version="3.0.0"/>
-    <import addon="xbmc.metadata" version="2.1.0"/>
+    <import addon=".python" version="3.0.0"/>
+    <import addon=".metadata" version="2.1.0"/>
   </requires>
-  <extension point="xbmc.metadata.scraper.movies"
+  <extension point=".metadata.scraper.movies"
              library="demo.py"/>
-  <extension point="xbmc.addon.metadata">
+  <extension point=".addon.metadata">
     <summary lang="en_GB">Demo movies python scraper</summary>
     <description lang="en_GB">Demo movies python scraper.</description>
     <platform>all</platform>

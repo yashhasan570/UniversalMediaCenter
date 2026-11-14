@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "utils/XBMCTinyXML.h"
+#include "utils/TinyXML.h"
 
 #include <stdint.h>
 #include <string>

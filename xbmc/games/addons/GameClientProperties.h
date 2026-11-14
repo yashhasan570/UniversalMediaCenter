@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "addons/kodi-dev-kit/include/kodi/addon-instance/Game.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/addon-instance/Game.h"
 #include "games/GameTypes.h"
 
 #include <string>
@@ -23,7 +23,7 @@ using AddonPtr = std::shared_ptr<IAddon>;
 using VECADDONS = std::vector<AddonPtr>;
 } // namespace ADDON
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -94,4 +94,4 @@ private:
 };
 
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

@@ -10,7 +10,7 @@
 
 #include <string>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace KEYBOARD
 {
@@ -21,7 +21,7 @@ namespace KEYBOARD
  *
  * Symbol names are defined by the Controller Topology Project. See:
  *
- *   https://github.com/kodi-game/controller-topology-project/blob/master/Readme-Keyboard.md
+ *   https://github.com/universalmediacenter-game/controller-topology-project/blob/master/Readme-Keyboard.md
  *
  */
 using SymbolName = std::string;
@@ -168,4 +168,4 @@ constexpr auto KEY_SYMBOL_UNDO = "undo";
 constexpr auto KEY_SYMBOL_OEM102 = "oem102";
 
 } // namespace KEYBOARD
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

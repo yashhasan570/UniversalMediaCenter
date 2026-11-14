@@ -16,9 +16,9 @@
 #include <vector>
 
 #ifndef DOXYGEN_SHOULD_SKIP_THIS
-namespace XBMCAddon
+namespace Addon
 {
-  namespace xbmc
+  namespace 
   {
 #ifndef SWIG
     // This is a bit of a hack to get around a SWIG problem
@@ -27,7 +27,7 @@ namespace XBMCAddon
 #endif /* DOXYGEN_SHOULD_SKIP_THIS */
 
     //
-    /// \defgroup python_xbmc Library - xbmc
+    /// \defgroup python_ Library - 
     /// @{
     /// @brief **General functions on Universal Media Center.**
     ///
@@ -39,8 +39,8 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmc
-    /// @brief \python_func{ xbmc.log(msg[, level]) }
+    /// \ingroup python_
+    /// @brief \python_func{ .log(msg[, level]) }
     /// Write a string to Universal Media Center's log file and the debug window.
     ///
     /// @param msg                 string - text to output.
@@ -48,24 +48,24 @@ namespace XBMCAddon
     ///                            <em>(default=LOGDEBUG)</em>
     ///  |  Value:         | Description:                                      |
     ///  |----------------:|---------------------------------------------------|
-    ///  | xbmc.LOGDEBUG   | In depth information about the status of Universal Media Center. This information can pretty much only be deciphered by a developer or long time Universal Media Center power user.
-    ///  | xbmc.LOGINFO    | Something has happened. It's not a problem, we just thought you might want to know. Fairly excessive output that most people won't care about.
-    ///  | xbmc.LOGWARNING | Something potentially bad has happened. If Universal Media Center did something you didn't expect, this is probably why. Watch for errors to follow.
-    ///  | xbmc.LOGERROR   | This event is bad. Something has failed. You likely noticed problems with the application be it skin artifacts, failure of playback a crash, etc.
-    ///  | xbmc.LOGFATAL   | We're screwed. Universal Media Center is about to crash.
+    ///  | .LOGDEBUG   | In depth information about the status of Universal Media Center. This information can pretty much only be deciphered by a developer or long time Universal Media Center power user.
+    ///  | .LOGINFO    | Something has happened. It's not a problem, we just thought you might want to know. Fairly excessive output that most people won't care about.
+    ///  | .LOGWARNING | Something potentially bad has happened. If Universal Media Center did something you didn't expect, this is probably why. Watch for errors to follow.
+    ///  | .LOGERROR   | This event is bad. Something has failed. You likely noticed problems with the application be it skin artifacts, failure of playback a crash, etc.
+    ///  | .LOGFATAL   | We're screwed. Universal Media Center is about to crash.
     ///
     /// @note Addon developers are advised to keep `LOGDEBUG` as the default
     /// logging level and to use conservative logging (log only if needed).
-    /// Excessive logging makes it harder to debug kodi itself.
+    /// Excessive logging makes it harder to debug universalmediacenter itself.
     ///
-    /// Logging in kodi has a global configuration level that controls how text
+    /// Logging in universalmediacenter has a global configuration level that controls how text
     /// is written to the log. This global logging behaviour can be changed in
     /// the GUI (**Settings -> System -> Logging**) (debug toggle) or furthered
     /// configured in advancedsettings (loglevel setting).
     ///
     /// Text is written to the log for the following conditions:
     ///  - loglevel == -1 (NONE, nothing at all is logged to the log)
-    ///  - loglevel == 0 (NORMAL, shows `LOGINFO`, `LOGWARNING`, `LOGERROR` and `LOGFATAL`) - Default kodi behaviour
+    ///  - loglevel == 0 (NORMAL, shows `LOGINFO`, `LOGWARNING`, `LOGERROR` and `LOGFATAL`) - Default universalmediacenter behaviour
     ///  - loglevel == 1 (DEBUG, shows all) - Behaviour if you toggle debug log in the GUI
     ///
     ///
@@ -76,7 +76,7 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// xbmc.log(msg='This is a test string.', level=xbmc.LOGDEBUG);
+    /// .log(msg='This is a test string.', level=.LOGDEBUG);
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -87,8 +87,8 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmc
-    /// @brief \python_func{ xbmc.shutdown() }
+    /// \ingroup python_
+    /// @brief \python_func{ .shutdown() }
     /// Shutdown the htpc.
     ///
     ///
@@ -97,7 +97,7 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// xbmc.shutdown()
+    /// .shutdown()
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -108,8 +108,8 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmc
-    /// @brief \python_func{ xbmc.restart() }
+    /// \ingroup python_
+    /// @brief \python_func{ .restart() }
     /// Restart the htpc.
     ///
     ///
@@ -118,7 +118,7 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// xbmc.restart()
+    /// .restart()
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -129,8 +129,8 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmc
-    /// @brief \python_func{ xbmc.executescript(script) }
+    /// \ingroup python_
+    /// @brief \python_func{ .executescript(script) }
     /// Execute a python script.
     ///
     /// @param script                  string - script filename to execute.
@@ -141,7 +141,7 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// xbmc.executescript('special://home/scripts/update.py')
+    /// .executescript('special://home/scripts/update.py')
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -152,8 +152,8 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmc
-    /// @brief \python_func{ xbmc.executebuiltin(function) }
+    /// \ingroup python_
+    /// @brief \python_func{ .executebuiltin(function) }
     /// Execute a built in Universal Media Center function.
     ///
     /// @param function                string - builtin function to execute.
@@ -170,7 +170,7 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// xbmc.executebuiltin('Skin.SetString(abc,def)')
+    /// .executebuiltin('Skin.SetString(abc,def)')
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -181,8 +181,8 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmc
-    /// @brief \python_func{ xbmc.executeJSONRPC(jsonrpccommand) }
+    /// \ingroup python_
+    /// @brief \python_func{ .executeJSONRPC(jsonrpccommand) }
     /// Execute an JSONRPC command.
     ///
     /// @param jsonrpccommand       string - jsonrpc command to execute.
@@ -196,7 +196,7 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// response = xbmc.executeJSONRPC('{ "jsonrpc": "2.0", "method": "JSONRPC.Introspect", "id": 1 }')
+    /// response = .executeJSONRPC('{ "jsonrpc": "2.0", "method": "JSONRPC.Introspect", "id": 1 }')
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -207,10 +207,10 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmc
-    /// @brief \python_func{ xbmc.sleep(time) }
+    /// \ingroup python_
+    /// @brief \python_func{ .sleep(time) }
     /// Sleeps for 'time' (msec).
-    /// \anchor xbmc_Sleep
+    /// \anchor _Sleep
     ///
     /// @param time                 integer - number of msec to sleep.
     ///
@@ -220,10 +220,10 @@ namespace XBMCAddon
     /// (millisecond range) somewhere in your addon logic. Please note that Universal Media Center
     /// will attempt to stop any running scripts when signaled to exit and wait for a maximum
     /// of 5 seconds before trying to force stop your script. If your addon makes use
-    /// of \ref xbmc_Sleep "xbmc.sleep()" incorrectly (long periods of time, e.g. that exceed
+    /// of \ref _Sleep ".sleep()" incorrectly (long periods of time, e.g. that exceed
     /// the force stop waiting time) it may lead to Universal Media Center hanging on shutdown.
     /// In case your addon needs long sleep/idle periods use
-    /// \ref xbmc_Monitor_waitForAbort "xbmc.Monitor().waitForAbort(secs)"
+    /// \ref _Monitor_waitForAbort ".Monitor().waitForAbort(secs)"
     /// instead.
     ///
     ///
@@ -232,7 +232,7 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// xbmc.sleep(2000) # sleeps for 2 seconds
+    /// .sleep(2000) # sleeps for 2 seconds
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -243,8 +243,8 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmc
-    /// @brief \python_func{ xbmc.getLocalizedString(id) }
+    /// \ingroup python_
+    /// @brief \python_func{ .getLocalizedString(id) }
     /// Get a localized 'unicode string'.
     ///
     /// @param id                   integer - id# for string you want to
@@ -260,7 +260,7 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// locstr = xbmc.getLocalizedString(6)
+    /// locstr = .getLocalizedString(6)
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -271,8 +271,8 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmc
-    /// @brief \python_func{ xbmc.getSkinDir() }
+    /// \ingroup python_
+    /// @brief \python_func{ .getSkinDir() }
     /// Get the active skin directory.
     ///
     /// @return                         The active skin directory as a string
@@ -287,7 +287,7 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// skindir = xbmc.getSkinDir()
+    /// skindir = .getSkinDir()
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -298,18 +298,18 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmc
-    /// @brief \python_func{ xbmc.getLanguage([format], [region]) }
+    /// \ingroup python_
+    /// @brief \python_func{ .getLanguage([format], [region]) }
     /// Get the active language.
     ///
     /// @param format               [opt] format of the returned language
     ///                             string
     /// | Value             | Description
     /// |------------------:|:-------------------------------------------------|
-    /// | xbmc.ISO_639_1    | Two letter code as defined in ISO 639-1
-    /// | xbmc.ISO_639_2    | Three letter code as defined in ISO 639-2/T or ISO 639-2/B
-    /// | xbmc.ENGLISH_NAME | Full language name in English (default)
-    /// | xbmc.ISO_NAME     | Language name in English without qualifiers, "English" rather than "English (Australia)"
+    /// | .ISO_639_1    | Two letter code as defined in ISO 639-1
+    /// | .ISO_639_2    | Three letter code as defined in ISO 639-2/T or ISO 639-2/B
+    /// | .ENGLISH_NAME | Full language name in English (default)
+    /// | .ISO_NAME     | Language name in English without qualifiers, "English" rather than "English (Australia)"
     /// @param region               [opt] append the region delimited by "-"
     ///                             of the language (setting) to the
     ///                             returned language string. The ISO 639
@@ -321,18 +321,18 @@ namespace XBMCAddon
     ///                             a bare **-AU**.
     ///
     /// @note Not every language has an ISO 639-1 code - Filipino and Asturian are two that do
-    /// not - so **xbmc.ISO_639_2** answers for more languages than **xbmc.ISO_639_1**.
+    /// not - so **.ISO_639_2** answers for more languages than **.ISO_639_1**.
     ///
     ///
     /// ------------------------------------------------------------------------
     /// @python_v13 Added new options **format** and **region**.
-    /// @python_v22 Added the **xbmc.ISO_NAME** format. A language with no code in the requested
+    /// @python_v22 Added the **.ISO_NAME** format. A language with no code in the requested
     /// format returns an empty string; previously the region could be returned on its own.
     ///
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// language = xbmc.getLanguage(xbmc.ENGLISH_NAME)
+    /// language = .getLanguage(.ENGLISH_NAME)
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -343,8 +343,8 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmc
-    /// @brief \python_func{ xbmc.getIPAddress() }
+    /// \ingroup python_
+    /// @brief \python_func{ .getIPAddress() }
     /// Get the current ip address.
     ///
     /// @return The current ip address as a string
@@ -355,7 +355,7 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// ip = xbmc.getIPAddress()
+    /// ip = .getIPAddress()
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -366,17 +366,17 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmc
-    /// @brief \python_func{ xbmc.getDVDState() }
+    /// \ingroup python_
+    /// @brief \python_func{ .getDVDState() }
     /// Returns the dvd state as an integer.
     ///
     /// @return Values for state are:
     /// | Value | Name                           |
     /// |------:|:-------------------------------|
-    /// |   1   | xbmc.DRIVE_NOT_READY
-    /// |   16  | xbmc.TRAY_OPEN
-    /// |   64  | xbmc.TRAY_CLOSED_NO_MEDIA
-    /// |   96  | xbmc.TRAY_CLOSED_MEDIA_PRESENT
+    /// |   1   | .DRIVE_NOT_READY
+    /// |   16  | .TRAY_OPEN
+    /// |   64  | .TRAY_CLOSED_NO_MEDIA
+    /// |   96  | .TRAY_CLOSED_MEDIA_PRESENT
     ///
     ///
     ///
@@ -385,7 +385,7 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// dvdstate = xbmc.getDVDState()
+    /// dvdstate = .getDVDState()
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -396,8 +396,8 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmc
-    /// @brief \python_func{ xbmc.getFreeMem() }
+    /// \ingroup python_
+    /// @brief \python_func{ .getFreeMem() }
     /// Get amount of free memory in MB.
     ///
     /// @return The amount of free memory in MB as an integer
@@ -408,7 +408,7 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// freemem = xbmc.getFreeMem()
+    /// freemem = .getFreeMem()
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -419,8 +419,8 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmc
-    /// @brief \python_func{ xbmc.getInfoLabel(infotag) }
+    /// \ingroup python_
+    /// @brief \python_func{ .getInfoLabel(infotag) }
     /// Get a info label
     ///
     /// @param infotag               string - infoTag for value you want
@@ -435,7 +435,7 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// label = xbmc.getInfoLabel('Weather.Conditions')
+    /// label = .getInfoLabel('Weather.Conditions')
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -446,8 +446,8 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmc
-    /// @brief \python_func{ xbmc.getInfoImage(infotag) }
+    /// \ingroup python_
+    /// @brief \python_func{ .getInfoImage(infotag) }
     /// Get filename including path to the InfoImage's thumbnail.
     ///
     /// @param infotag               string - infotag for value you want
@@ -464,7 +464,7 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// filename = xbmc.getInfoImage('Weather.Conditions')
+    /// filename = .getInfoImage('Weather.Conditions')
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -475,8 +475,8 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmc
-    /// @brief \python_func{ xbmc.getDatabaseName(dbType) }
+    /// \ingroup python_
+    /// @brief \python_func{ .getDatabaseName(dbType) }
     /// Get the name of the database of the supplied type.
     ///
     /// @param dbType                string - database type of the database name to be returned.
@@ -490,7 +490,7 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// video_database = xbmc.getDatabaseName('videos')
+    /// video_database = .getDatabaseName('videos')
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -501,8 +501,8 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmc
-    /// @brief \python_func{ xbmc.playSFX(filename,[useCached]) }
+    /// \ingroup python_
+    /// @brief \python_func{ .playSFX(filename,[useCached]) }
     /// Plays a wav file by filename
     ///
     /// @param filename              string - filename of the wav file to
@@ -518,8 +518,8 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// xbmc.playSFX('special://xbmc/scripts/dingdong.wav')
-    /// xbmc.playSFX('special://xbmc/scripts/dingdong.wav',False)
+    /// .playSFX('special:///scripts/dingdong.wav')
+    /// .playSFX('special:///scripts/dingdong.wav',False)
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -530,8 +530,8 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmc
-    /// @brief \python_func{ xbmc.stopSFX() }
+    /// \ingroup python_
+    /// @brief \python_func{ .stopSFX() }
     /// Stops wav file
     ///
     ///
@@ -541,7 +541,7 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// xbmc.stopSFX()
+    /// .stopSFX()
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -552,8 +552,8 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmc
-    /// @brief \python_func{ xbmc.enableNavSounds(yesNo) }
+    /// \ingroup python_
+    /// @brief \python_func{ .enableNavSounds(yesNo) }
     /// Enables/Disables nav sounds
     ///
     /// @param yesNo                 bool - enable (True) or disable
@@ -565,7 +565,7 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// xbmc.enableNavSounds(True)
+    /// .enableNavSounds(True)
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -576,8 +576,8 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmc
-    /// @brief \python_func{ xbmc.getCondVisibility(condition) }
+    /// \ingroup python_
+    /// @brief \python_func{ .getCondVisibility(condition) }
     /// Get visibility conditions
     ///
     /// @param condition             string - condition to check
@@ -594,7 +594,7 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// visible = xbmc.getCondVisibility('[Control.IsVisible(41) + !Control.IsVisible(12)]')
+    /// visible = .getCondVisibility('[Control.IsVisible(41) + !Control.IsVisible(12)]')
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -605,8 +605,8 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmc
-    /// @brief \python_func{ xbmc.getGlobalIdleTime() }
+    /// \ingroup python_
+    /// @brief \python_func{ .getGlobalIdleTime() }
     /// Get the elapsed idle time in seconds.
     ///
     /// @return Elapsed idle time in seconds as an integer
@@ -617,7 +617,7 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// t = xbmc.getGlobalIdleTime()
+    /// t = .getGlobalIdleTime()
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -628,8 +628,8 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmc
-    /// @brief \python_func{ xbmc.getDevicePowerStatus([adapterName]) }
+    /// \ingroup python_
+    /// @brief \python_func{ .getDevicePowerStatus([adapterName]) }
     /// Get the power status of the device attached via HDMI-CEC.
     ///
     /// @param adapterName           [opt] string - the CEC adapter to query, either its name
@@ -639,12 +639,12 @@ namespace XBMCAddon
     /// @return int - one of the following constants:
     /// | Value                                   | Description                          |
     /// |----------------------------------------:|:-------------------------------------|
-    /// | xbmc.DEVICE_POWER_NO_ADAPTER            | No CEC adapter present               |
-    /// | xbmc.DEVICE_POWER_ON                    | Device is powered on                 |
-    /// | xbmc.DEVICE_POWER_STANDBY               | Device is in standby                 |
-    /// | xbmc.DEVICE_POWER_TRANSITION_TO_ON      | Device is powering on                |
-    /// | xbmc.DEVICE_POWER_TRANSITION_TO_STANDBY | Device is going to standby           |
-    /// | xbmc.DEVICE_POWER_UNKNOWN               | Power status could not be determined |
+    /// | .DEVICE_POWER_NO_ADAPTER            | No CEC adapter present               |
+    /// | .DEVICE_POWER_ON                    | Device is powered on                 |
+    /// | .DEVICE_POWER_STANDBY               | Device is in standby                 |
+    /// | .DEVICE_POWER_TRANSITION_TO_ON      | Device is powering on                |
+    /// | .DEVICE_POWER_TRANSITION_TO_STANDBY | Device is going to standby           |
+    /// | .DEVICE_POWER_UNKNOWN               | Power status could not be determined |
     ///
     /// @note This is the result of calling libCEC's GetDevicePowerStatus.
     /// `DEVICE_POWER_UNKNOWN` means the device could not be found or queried on the CEC
@@ -660,11 +660,11 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// if xbmc.getDevicePowerStatus() == xbmc.DEVICE_POWER_ON:
-    ///     xbmc.log('Device is on')
+    /// if .getDevicePowerStatus() == .DEVICE_POWER_ON:
+    ///     .log('Device is on')
     ///
-    /// if xbmc.getDevicePowerStatus('HDMI 2') == xbmc.DEVICE_POWER_STANDBY:
-    ///     xbmc.log('The device on HDMI 2 is in standby')
+    /// if .getDevicePowerStatus('HDMI 2') == .DEVICE_POWER_STANDBY:
+    ///     .log('The device on HDMI 2 is in standby')
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -675,8 +675,8 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmc
-    /// @brief \python_func{ xbmc.getCecAdapterNames() }
+    /// \ingroup python_
+    /// @brief \python_func{ .getCecAdapterNames() }
     /// Get the names of the HDMI-CEC adapters that are present.
     ///
     /// @return list - the name of each adapter, in the form that
@@ -689,8 +689,8 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// for adapter in xbmc.getCecAdapterNames():
-    ///     xbmc.log(f'{adapter}: {xbmc.getDevicePowerStatus(adapter)}')
+    /// for adapter in .getCecAdapterNames():
+    ///     .log(f'{adapter}: {.getDevicePowerStatus(adapter)}')
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -701,8 +701,8 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmc
-    /// @brief \python_func{ xbmc.getCacheThumbName(path) }
+    /// \ingroup python_
+    /// @brief \python_func{ .getCacheThumbName(path) }
     /// Get thumb cache filename.
     ///
     /// @param path                  string - path to file
@@ -714,7 +714,7 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// thumb = xbmc.getCacheThumbName('f:\\videos\\movie.avi')
+    /// thumb = .getCacheThumbName('f:\\videos\\movie.avi')
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -725,8 +725,8 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmc
-    /// @brief \python_func{ xbmc.getCleanMovieTitle(path[, usefoldername]) }
+    /// \ingroup python_
+    /// @brief \python_func{ .getCleanMovieTitle(path[, usefoldername]) }
     /// Get clean movie title and year string if available.
     ///
     /// @param path                  string - String to clean
@@ -741,7 +741,7 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// title, year = xbmc.getCleanMovieTitle('/path/to/moviefolder/test.avi', True)
+    /// title, year = .getCleanMovieTitle('/path/to/moviefolder/test.avi', True)
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -752,8 +752,8 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmc
-    /// @brief \python_func{ xbmc.getRegion(id) }
+    /// \ingroup python_
+    /// @brief \python_func{ .getRegion(id) }
     /// Returns your regions setting as a string for the specified id.
     ///
     /// @param id                    string - id of setting to return
@@ -770,7 +770,7 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// date_long_format = xbmc.getRegion('datelong')
+    /// date_long_format = .getRegion('datelong')
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -781,8 +781,8 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmc
-    /// @brief \python_func{ xbmc.getSupportedMedia(media) }
+    /// \ingroup python_
+    /// @brief \python_func{ .getSupportedMedia(media) }
     /// Get the supported file types for the specific media.
     ///
     /// @param media                 string - media type
@@ -801,7 +801,7 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// mTypes = xbmc.getSupportedMedia('video')
+    /// mTypes = .getSupportedMedia('video')
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -812,8 +812,8 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmc
-    /// @brief \python_func{ xbmc.skinHasImage(image) }
+    /// \ingroup python_
+    /// @brief \python_func{ .skinHasImage(image) }
     /// Check skin for presence of Image.
     ///
     /// @param image                 string - image filename
@@ -829,7 +829,7 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// exists = xbmc.skinHasImage('ButtonFocusedTexture.png')
+    /// exists = .skinHasImage('ButtonFocusedTexture.png')
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -839,22 +839,22 @@ namespace XBMCAddon
 #endif
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
-    /// \ingroup python_xbmc
+    /// \ingroup python_
     ///
-    /// @brief \python_func{ xbmc.startServer(typ, bStart, bWait) }
+    /// @brief \python_func{ .startServer(typ, bStart, bWait) }
     /// Start or stop a server.
     ///
     /// @param typ                  integer - use SERVER_* constants
     /// - Used format of the returned language string
     /// | Value                     | Description                                                |
     /// |--------------------------:|------------------------------------------------------------|
-    /// | xbmc.SERVER_WEBSERVER     | [To control Universal Media Center's builtin webserver](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Webserver)
-    /// | xbmc.SERVER_AIRPLAYSERVER | [AirPlay is a proprietary protocol stack/suite developed by Apple Inc.](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/AirPlay)
-    /// | xbmc.SERVER_JSONRPCSERVER | [Control JSON-RPC HTTP/TCP socket-based interface](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/JSON-RPC_API)
-    /// | xbmc.SERVER_UPNPRENDERER  | [UPnP client (aka UPnP renderer)](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/UPnP/Client)
-    /// | xbmc.SERVER_UPNPSERVER    | [Control built-in UPnP A/V media server (UPnP-server)](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/UPnP/Server)
-    /// | xbmc.SERVER_EVENTSERVER   | [Set eventServer part that accepts remote device input on all platforms](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/EventServer)
-    /// | xbmc.SERVER_ZEROCONF      | [Control Universal Media Center's Avahi Zeroconf](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Zeroconf)
+    /// | .SERVER_WEBSERVER     | [To control Universal Media Center's builtin webserver](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Webserver)
+    /// | .SERVER_AIRPLAYSERVER | [AirPlay is a proprietary protocol stack/suite developed by Apple Inc.](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/AirPlay)
+    /// | .SERVER_JSONRPCSERVER | [Control JSON-RPC HTTP/TCP socket-based interface](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/JSON-RPC_API)
+    /// | .SERVER_UPNPRENDERER  | [UPnP client (aka UPnP renderer)](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/UPnP/Client)
+    /// | .SERVER_UPNPSERVER    | [Control built-in UPnP A/V media server (UPnP-server)](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/UPnP/Server)
+    /// | .SERVER_EVENTSERVER   | [Set eventServer part that accepts remote device input on all platforms](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/EventServer)
+    /// | .SERVER_ZEROCONF      | [Control Universal Media Center's Avahi Zeroconf](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Zeroconf)
     /// @param bStart               bool - start (True) or stop (False) a server
     /// @return                     bool - True or False
     ///
@@ -865,7 +865,7 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// xbmc.startServer(xbmc.SERVER_AIRPLAYSERVER, False)
+    /// .startServer(.SERVER_AIRPLAYSERVER, False)
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -876,8 +876,8 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmc
-    /// @brief \python_func{ xbmc.audioSuspend() }
+    /// \ingroup python_
+    /// @brief \python_func{ .audioSuspend() }
     /// Suspend Audio engine.
     ///
     ///
@@ -886,7 +886,7 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// xbmc.audioSuspend()
+    /// .audioSuspend()
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -897,8 +897,8 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmc
-    /// @brief \python_func{ xbmc.audioResume() }
+    /// \ingroup python_
+    /// @brief \python_func{ .audioResume() }
     /// Resume Audio engine.
     ///
     ///
@@ -907,7 +907,7 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// xbmc.audioResume()
+    /// .audioResume()
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -918,8 +918,8 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmc
-    /// @brief \python_func{ xbmc.getUserAgent() }
+    /// \ingroup python_
+    /// @brief \python_func{ .getUserAgent() }
     /// @brief Returns Universal Media Center's HTTP UserAgent string
     ///
     /// @return                           HTTP user agent
@@ -930,7 +930,7 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// xbmc.getUserAgent()
+    /// .getUserAgent()
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -944,8 +944,8 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmc
-    /// @brief \python_func{ xbmc.convertLanguage(language, format) }
+    /// \ingroup python_
+    /// @brief \python_func{ .convertLanguage(language, format) }
     /// @brief Returns the given language converted to the given format as a
     /// string.
     ///
@@ -955,28 +955,28 @@ namespace XBMCAddon
     /// @param format                format of the returned language string
     /// | Value             | Description
     /// |------------------:|:-------------------------------------------------|
-    /// | xbmc.ISO_639_1    | Two letter code as defined in ISO 639-1
-    /// | xbmc.ISO_639_2    | Three letter code as defined in ISO 639-2/T or ISO 639-2/B
-    /// | xbmc.ENGLISH_NAME | Full language name in English (default)
-    /// | xbmc.ISO_NAME     | Language name in English without qualifiers, "English" rather than "English (Australia)"
+    /// | .ISO_639_1    | Two letter code as defined in ISO 639-1
+    /// | .ISO_639_2    | Three letter code as defined in ISO 639-2/T or ISO 639-2/B
+    /// | .ENGLISH_NAME | Full language name in English (default)
+    /// | .ISO_NAME     | Language name in English without qualifiers, "English" rather than "English (Australia)"
     /// @return                          Converted Language string, or an empty string where the
     ///                                  language is not recognized or has no code in the
     ///                                  requested format
     ///
-    /// @note Not every language has an ISO 639-1 code, so **xbmc.ISO_639_2** answers for more
-    /// languages than **xbmc.ISO_639_1**.
+    /// @note Not every language has an ISO 639-1 code, so **.ISO_639_2** answers for more
+    /// languages than **.ISO_639_1**.
     ///
     ///
     /// ------------------------------------------------------------------------
     /// @python_v13 New function added.
     /// @python_v22 A BCP 47 tag is accepted as input, for example **en-AU**, which the stream
-    /// language functions of \ref python_Player "Player" return. Added the **xbmc.ISO_NAME**
+    /// language functions of \ref python_Player "Player" return. Added the **.ISO_NAME**
     /// format.
     ///
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// language = xbmc.convertLanguage(English, xbmc.ISO_639_2)
+    /// language = .convertLanguage(English, .ISO_639_2)
     /// ..
     /// ~~~~~~~~~~~~~
     ///

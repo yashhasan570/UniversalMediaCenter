@@ -12,7 +12,7 @@
 
 #include "system_gl.h"
 
-namespace KODI::SHADER
+namespace UNIVERSAL MEDIA CENTER::SHADER
 {
 
 /*!
@@ -39,4 +39,4 @@ private:
   const uint32_t m_textureHeight;
   GLuint m_texture{0};
 };
-} // namespace KODI::SHADER
+} // namespace UNIVERSAL MEDIA CENTER::SHADER

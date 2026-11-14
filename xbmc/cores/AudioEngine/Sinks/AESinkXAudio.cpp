@@ -413,7 +413,7 @@ void CAESinkXAudio::EnumerateDevicesEx(AEDeviceInfoList &deviceInfoList, bool fo
         deviceChannels += AEChannelNames[c];
     }
 
-    const std::wstring deviceId = KODI::PLATFORM::WINDOWS::ToW(details.strDeviceId);
+    const std::wstring deviceId = UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::ToW(details.strDeviceId);
 
     // Some runtimes reject WinRT IDs even for the default endpoint.
     const wchar_t* pDevice = details.bDefault ? nullptr : deviceId.c_str();
@@ -546,7 +546,7 @@ void CAESinkXAudio::EnumerateDevicesEx(AEDeviceInfoList &deviceInfoList, bool fo
 
 bool CAESinkXAudio::InitializeInternal(std::string deviceId, AEAudioFormat &format)
 {
-  const std::wstring device = KODI::PLATFORM::WINDOWS::ToW(deviceId);
+  const std::wstring device = UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::ToW(deviceId);
   WAVEFORMATEXTENSIBLE wfxex = {};
 
   if ( format.m_dataFormat <= AE_FMT_FLOAT
@@ -663,7 +663,7 @@ bool CAESinkXAudio::InitializeInternal(std::string deviceId, AEAudioFormat &form
       CLog::LogF(LOGINFO,
                  "could not locate the device named \"{}\" in the list of Xaudio endpoint devices. "
                  "Trying the default device...",
-                 KODI::PLATFORM::WINDOWS::FromW(device));
+                 UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW(device));
     }
     // smartphone issue: providing device ID (even default ID) causes E_NOINTERFACE result
     // workaround: device = nullptr will initialize default audio endpoint
@@ -861,7 +861,7 @@ initialize:
   m_sourceVoice->Stop();
 
   CLog::LogF(LOGDEBUG, "Initializing XAudio with the following parameters:");
-  CLog::Log(LOGDEBUG, "  Audio Device    : {}", KODI::PLATFORM::WINDOWS::FromW(device));
+  CLog::Log(LOGDEBUG, "  Audio Device    : {}", UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW(device));
   CLog::Log(LOGDEBUG, "  Sample Rate     : {}", wfxex.Format.nSamplesPerSec);
   CLog::Log(LOGDEBUG, "  Sample Format   : {}", CAEUtil::DataFormatToStr(format.m_dataFormat));
   CLog::Log(LOGDEBUG, "  Bits Per Sample : {}", wfxex.Format.wBitsPerSample);

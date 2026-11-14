@@ -10,21 +10,21 @@
 
 #include "AddonClass.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
 class CGameInfoTag;
 }
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER
 
-namespace XBMCAddon
+namespace Addon
 {
-namespace xbmc
+namespace 
 {
 ///
 /// \defgroup python_InfoTagGame InfoTagGame
-/// \ingroup python_xbmc
+/// \ingroup python_
 /// @{
 /// @brief **Universal Media Center's game info tag class.**
 ///
@@ -48,20 +48,20 @@ namespace xbmc
 class InfoTagGame : public AddonClass
 {
 private:
-  KODI::GAME::CGameInfoTag* infoTag;
+  UNIVERSAL MEDIA CENTER::GAME::CGameInfoTag* infoTag;
   bool offscreen;
   bool owned;
 
 public:
 #ifndef SWIG
-  explicit InfoTagGame(const KODI::GAME::CGameInfoTag* tag);
-  explicit InfoTagGame(KODI::GAME::CGameInfoTag* tag, bool offscreen = false);
+  explicit InfoTagGame(const UNIVERSAL MEDIA CENTER::GAME::CGameInfoTag* tag);
+  explicit InfoTagGame(UNIVERSAL MEDIA CENTER::GAME::CGameInfoTag* tag, bool offscreen = false);
 #endif
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
   ///
   /// \ingroup python_InfoTagGame
-  /// @brief \python_func{ xbmc.InfoTagGame([offscreen]) }
+  /// @brief \python_func{ .InfoTagGame([offscreen]) }
   /// Create a game info tag.
   ///
   /// @param offscreen            [opt] bool (default `False`) - if GUI based locks should be
@@ -85,7 +85,7 @@ public:
   /// **Example:**
   /// ~~~~~~~~~~~~~{.py}
   /// ...
-  /// gameinfo = xbmc.InfoTagGame(offscreen=False)
+  /// gameinfo = .InfoTagGame(offscreen=False)
   /// ...
   /// ~~~~~~~~~~~~~
   ///
@@ -580,16 +580,16 @@ public:
 #endif
 
 #ifndef SWIG
-  static void setTitleRaw(KODI::GAME::CGameInfoTag* infoTag, const String& title);
-  static void setPlatformRaw(KODI::GAME::CGameInfoTag* infoTag, const String& platform);
-  static void setGenresRaw(KODI::GAME::CGameInfoTag* infoTag, const std::vector<String>& genres);
-  static void setPublisherRaw(KODI::GAME::CGameInfoTag* infoTag, const String& publisher);
-  static void setDeveloperRaw(KODI::GAME::CGameInfoTag* infoTag, const String& developer);
-  static void setOverviewRaw(KODI::GAME::CGameInfoTag* infoTag, const String& overview);
-  static void setYearRaw(KODI::GAME::CGameInfoTag* infoTag, unsigned int year);
-  static void setGameClientRaw(KODI::GAME::CGameInfoTag* infoTag, const String& gameClient);
+  static void setTitleRaw(UNIVERSAL MEDIA CENTER::GAME::CGameInfoTag* infoTag, const String& title);
+  static void setPlatformRaw(UNIVERSAL MEDIA CENTER::GAME::CGameInfoTag* infoTag, const String& platform);
+  static void setGenresRaw(UNIVERSAL MEDIA CENTER::GAME::CGameInfoTag* infoTag, const std::vector<String>& genres);
+  static void setPublisherRaw(UNIVERSAL MEDIA CENTER::GAME::CGameInfoTag* infoTag, const String& publisher);
+  static void setDeveloperRaw(UNIVERSAL MEDIA CENTER::GAME::CGameInfoTag* infoTag, const String& developer);
+  static void setOverviewRaw(UNIVERSAL MEDIA CENTER::GAME::CGameInfoTag* infoTag, const String& overview);
+  static void setYearRaw(UNIVERSAL MEDIA CENTER::GAME::CGameInfoTag* infoTag, unsigned int year);
+  static void setGameClientRaw(UNIVERSAL MEDIA CENTER::GAME::CGameInfoTag* infoTag, const String& gameClient);
 #endif
 };
 
-} // namespace xbmc
-} // namespace XBMCAddon
+} // namespace 
+} // namespace Addon

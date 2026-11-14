@@ -17,7 +17,7 @@
 
 #include "system_gl.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace SHADER
 {
@@ -110,4 +110,4 @@ protected:
 };
 #endif
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

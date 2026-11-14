@@ -13,7 +13,7 @@
 #include <atomic>
 #include <memory>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -40,4 +40,4 @@ protected:
   std::shared_ptr<IRenderBufferPool> m_pool;
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

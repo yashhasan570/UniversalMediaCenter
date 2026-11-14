@@ -50,7 +50,7 @@ protected:
   bool Work(CVideoDatabase &db) override;
 
 private:
-  KODI::VIDEO::CVideoInfoScanner m_scanner;
+  UNIVERSAL MEDIA CENTER::VIDEO::CVideoInfoScanner m_scanner;
   std::atomic<bool> m_cancelled{false};
   std::atomic<bool> m_started{false};
   std::string m_directory;

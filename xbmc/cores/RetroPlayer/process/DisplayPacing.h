@@ -14,7 +14,7 @@
 #include <functional>
 #include <utility>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -148,4 +148,4 @@ private:
   std::atomic<double> m_soundHeldSecs{0.0};
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

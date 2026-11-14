@@ -13,7 +13,7 @@
 #include <cassert>
 #include <stdexcept>
 
-using namespace KODI::WINDOWING::WAYLAND;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::WAYLAND;
 
 CConnection::CConnection()
 {

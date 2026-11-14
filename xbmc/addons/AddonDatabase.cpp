@@ -128,7 +128,7 @@ void CAddonDatabaseSerializer::DeserializeMetadata(const std::string& document,
   builder.SetPath(variant["path"].asString());
   builder.SetIcon(variant["icon"].asString());
 
-  KODI::ART::Artwork art;
+  UNIVERSAL MEDIA CENTER::ART::Artwork art;
   for (auto it = variant["art"].begin_map(); it != variant["art"].end_map(); ++it)
     art.try_emplace(it->first, it->second.asString());
   builder.SetArt(std::move(art));
@@ -190,7 +190,7 @@ void CAddonDatabaseSerializer::DeserializeExtensions(const CVariant& variant,
   return;
 }
 
-CAddonDatabase::CAddonDatabase() : CDatabase(KODI::DATABASE::TYPE_ADDONS)
+CAddonDatabase::CAddonDatabase() : CDatabase(UNIVERSAL MEDIA CENTER::DATABASE::TYPE_ADDONS)
 {
 }
 

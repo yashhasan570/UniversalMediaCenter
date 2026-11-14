@@ -23,7 +23,7 @@ class XMLElement;
 class XMLNode;
 } // namespace tinyxml2
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace KEYMAP
 {
@@ -48,7 +48,7 @@ private:
   void DeserializeJoystickNode(const tinyxml2::XMLNode* pDevice, std::string& controllerId);
   bool DeserializeButton(const tinyxml2::XMLElement* pButton,
                          std::string& feature,
-                         KODI::JOYSTICK::ANALOG_STICK_DIRECTION& dir,
+                         UNIVERSAL MEDIA CENTER::JOYSTICK::ANALOG_STICK_DIRECTION& dir,
                          unsigned int& holdtimeMs,
                          std::set<std::string>& hotkeys,
                          std::string& actionStr);
@@ -59,4 +59,4 @@ private:
   std::vector<std::string> m_controllerIds;
 };
 } // namespace KEYMAP
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

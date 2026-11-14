@@ -13,7 +13,7 @@
 #include <memory>
 #include <utility>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RENDERING
 {
@@ -70,4 +70,4 @@ inline const uint8_t* CaptureSrcRow0(const uint8_t* base, int stride, unsigned i
 
 } // namespace CAPTURE
 } // namespace RENDERING
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

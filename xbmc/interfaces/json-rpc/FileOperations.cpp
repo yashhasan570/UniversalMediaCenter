@@ -35,20 +35,20 @@
 #include <memory>
 #include <set>
 
-using namespace KODI;
-using namespace KODI::REGEXP;
+using namespace UNIVERSAL MEDIA CENTER;
+using namespace UNIVERSAL MEDIA CENTER::REGEXP;
 using namespace JSONRPC;
 using namespace XFILE;
-using KODI::MEDIA::MediaSection;
-using KODI::MEDIA::MediaSectionFromName;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaSection;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaSectionFromName;
 
 JSONRPC_STATUS CFileOperations::GetRootDirectory(const std::string &method, ITransportLayer *transport, IClient *client, const CVariant &parameterObject, CVariant &result)
 {
   std::string media = parameterObject["media"].asString();
   StringUtils::ToLower(media);
 
-  if (const std::optional<KODI::MEDIA::MediaSection> section{
-          KODI::MEDIA::MediaSectionFromName(media)})
+  if (const std::optional<UNIVERSAL MEDIA CENTER::MEDIA::MediaSection> section{
+          UNIVERSAL MEDIA CENTER::MEDIA::MediaSectionFromName(media)})
   {
     CFileItemList items;
     for (const auto& source : CMediaSourceSettings::GetInstance().GetSources(*section))
@@ -274,7 +274,7 @@ JSONRPC_STATUS CFileOperations::SetFileDetails(const std::string &method, ITrans
   CVideoLibrary::UpdateResumePoint(parameterObject, infos, videodatabase);
 
   videodatabase.GetFileInfo("", infos, fileId);
-  CJSONRPCUtils::NotifyItemUpdated(infos, KODI::ART::Artwork{});
+  CJSONRPCUtils::NotifyItemUpdated(infos, UNIVERSAL MEDIA CENTER::ART::Artwork{});
   return ACK;
 }
 

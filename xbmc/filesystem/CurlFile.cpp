@@ -930,7 +930,7 @@ void CCurlFile::ParseAndCorrectUrl(CURL &url2)
     url2.GetProtocolOptions(options);
     if (!options.empty())
     {
-      // set xbmc headers
+      // set  headers
       for (const auto& it : options)
       {
         std::string name = it.first;
@@ -1107,7 +1107,7 @@ void CCurlFile::Cancel()
 {
   m_state->m_cancelled = true;
   while (m_opened)
-    KODI::TIME::Sleep(1ms);
+    UNIVERSAL MEDIA CENTER::TIME::Sleep(1ms);
 }
 
 void CCurlFile::Reset()
@@ -1908,7 +1908,7 @@ int8_t CCurlFile::CReadState::FillBuffer(unsigned int want)
              * socket. Instead use Windows' Sleep() and sleep for 100ms which is the
              * minimum suggested value in the curl_multi_fdset() doc.
              */
-            KODI::TIME::Sleep(100ms);
+            UNIVERSAL MEDIA CENTER::TIME::Sleep(100ms);
             rc = 0;
 #else
             /* Portable sleep for platforms other than Windows. */
@@ -2006,7 +2006,7 @@ std::string CCurlFile::GetInfoString(int infoType)
 bool CCurlFile::GetHttpHeader(const CURL &url, CHttpHeader &headers)
 {
 #if defined(TARGET_WASM)
-  if (!kodi_wasm_has_sockets())
+  if (!universalmediacenter_wasm_has_sockets())
     return CXhrFile::GetHttpHeader(url, headers);
 #endif
   try
@@ -2035,7 +2035,7 @@ bool CCurlFile::GetHttpHeader(const CURL &url, CHttpHeader &headers)
 bool CCurlFile::GetMimeType(const CURL &url, std::string &content, const std::string &useragent)
 {
 #if defined(TARGET_WASM)
-  if (!kodi_wasm_has_sockets())
+  if (!universalmediacenter_wasm_has_sockets())
     return CXhrFile::GetMimeType(url, content, useragent);
 #endif
   CCurlFile file;
@@ -2066,7 +2066,7 @@ bool CCurlFile::GetMimeType(const CURL &url, std::string &content, const std::st
 bool CCurlFile::GetContentType(const CURL &url, std::string &content, const std::string &useragent)
 {
 #if defined(TARGET_WASM)
-  if (!kodi_wasm_has_sockets())
+  if (!universalmediacenter_wasm_has_sockets())
     return CXhrFile::GetContentType(url, content, useragent);
 #endif
   CCurlFile file;
@@ -2238,7 +2238,7 @@ void CCurlFile::PreloadCaCertsBlob()
 {
   XFILE::CFile file;
 
-  if (file.LoadFile(CSpecialProtocol::TranslatePath("special://xbmc/system/certs/cacert.pem"),
+  if (file.LoadFile(CSpecialProtocol::TranslatePath("special:///system/certs/cacert.pem"),
                     cachedCaCertsBlob) <= 0)
   {
     CLog::LogF(LOGERROR, "failed to load 'system/certs/cacert.pem'");

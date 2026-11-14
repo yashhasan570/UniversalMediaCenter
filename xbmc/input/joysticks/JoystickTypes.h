@@ -16,7 +16,7 @@
 /// \ingroup joystick
 /// \{
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace JOYSTICK
 {
@@ -157,6 +157,6 @@ enum class PRIMITIVE_TYPE
   RELATIVE_POINTER, // a relative pointer, such as on a mouse
 };
 } // namespace JOYSTICK
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER
 
 /// \}

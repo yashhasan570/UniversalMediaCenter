@@ -17,7 +17,7 @@
 #include "utils/SortUtils.h"
 #include "utils/StreamDetails.h"
 #include "utils/Variant.h"
-#include "utils/XBMCTinyXML.h"
+#include "utils/TinyXML.h"
 #include "utils/XMLUtils.h"
 #include "video/VideoInfoTag.h"
 #include "video/geometry/EffectiveGeometry.h"
@@ -31,7 +31,7 @@
 
 #include <gtest/gtest.h>
 
-using KODI::LANGUAGE::CLanguageTag;
+using UNIVERSAL MEDIA CENTER::LANGUAGE::CLanguageTag;
 
 TEST(TestVideoInfoTag, SaveNfoVersion)
 {
@@ -39,7 +39,7 @@ TEST(TestVideoInfoTag, SaveNfoVersion)
   {
     SCOPED_TRACE(root);
     CVideoInfoTag details;
-    CXBMCTinyXML doc;
+    CTinyXML doc;
     ASSERT_TRUE(details.Save(&doc, root));
     ASSERT_NE(nullptr, doc.RootElement());
     EXPECT_STREQ(root, doc.RootElement()->Value());
@@ -59,7 +59,7 @@ TEST(TestVideoInfoTag, SaveNfoVersion)
 TEST(TestVideoInfoTag, SaveUnrelatedRootWithoutNfoVersion)
 {
   CVideoInfoTag details;
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   ASSERT_TRUE(details.Save(&doc, "details"));
   ASSERT_NE(nullptr, doc.RootElement());
   EXPECT_EQ(nullptr, doc.RootElement()->Attribute("version"));
@@ -74,7 +74,7 @@ TEST(TestVideoInfoTag, NfoVersionZeroPreservesLoadAndRoundTrip)
     for (const std::string version : {"", " version=\"0\""})
     {
       SCOPED_TRACE(version);
-      CXBMCTinyXML doc;
+      CTinyXML doc;
       doc.Parse("<" + root + version +
                 "><title>Test title</title><plot>Test plot</plot>"
                 "<id>tt1234567</id><year>2001</year><rating>7.5</rating><votes>123</votes></" +
@@ -89,7 +89,7 @@ TEST(TestVideoInfoTag, NfoVersionZeroPreservesLoadAndRoundTrip)
       EXPECT_FLOAT_EQ(7.5f, details.GetRating().rating);
       EXPECT_EQ(123, details.GetRating().votes);
 
-      CXBMCTinyXML saved;
+      CTinyXML saved;
       ASSERT_TRUE(details.Save(&saved, root));
       const std::string exported = XMLUtils::NodeStringSerialization(
           saved.RootElement(), XMLUtils::SerializationFormat::COMPACT);
@@ -100,7 +100,7 @@ TEST(TestVideoInfoTag, NfoVersionZeroPreservesLoadAndRoundTrip)
 
       CVideoInfoTag reloaded;
       ASSERT_TRUE(reloaded.Load(saved.RootElement(), true, false));
-      CXBMCTinyXML resaved;
+      CTinyXML resaved;
       ASSERT_TRUE(reloaded.Save(&resaved, root));
       EXPECT_EQ(exported, XMLUtils::NodeStringSerialization(
                               resaved.RootElement(), XMLUtils::SerializationFormat::COMPACT));
@@ -122,7 +122,7 @@ TEST(TestVideoInfoTag, ReadTVShowSeasons)
          <seasonplot number="5"></seasonplot>
          </tvshow>)";
 
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   doc.Parse(document, TIXML_ENCODING_UNKNOWN);
 
   CVideoInfoTag details;
@@ -153,7 +153,7 @@ TEST(TestVideoInfoTag, ReadStreamDetailFlags)
          </fileinfo>
          </movie>)";
 
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   doc.Parse(document, TIXML_ENCODING_UNKNOWN);
 
   CVideoInfoTag details;
@@ -199,7 +199,7 @@ TEST(TestVideoInfoTag, WriteStreamDetailFlags)
   details.m_streamDetails.AddStream(new CStreamDetailSubtitle(subtitleInfo, CStreamDetail::MEDIA));
   details.m_streamDetails.DetermineBestStreams();
 
-  CXBMCTinyXML xmlDoc;
+  CTinyXML xmlDoc;
   ASSERT_TRUE(details.Save(&xmlDoc, "movie"));
 
   CVideoInfoTag reloaded;
@@ -219,7 +219,7 @@ TEST(TestVideoInfoTag, SaveRuntime)
   details.m_streamDetails.AddStream(video);
   details.m_streamDetails.DetermineBestStreams();
 
-  CXBMCTinyXML xmlDoc;
+  CTinyXML xmlDoc;
   ASSERT_TRUE(details.Save(&xmlDoc, "episodedetails"));
   int runtime{0};
   EXPECT_TRUE(XMLUtils::GetInt(xmlDoc.RootElement(), "runtime", runtime));
@@ -230,7 +230,7 @@ TEST(TestVideoInfoTag, SaveRuntime)
   EXPECT_EQ(1320u, reloaded.GetStaticDuration());
 
   CVideoInfoTag noRuntime;
-  CXBMCTinyXML noRuntimeDoc;
+  CTinyXML noRuntimeDoc;
   ASSERT_TRUE(noRuntime.Save(&noRuntimeDoc, "episodedetails"));
   EXPECT_EQ(nullptr, noRuntimeDoc.RootElement()->FirstChildElement("runtime"));
 }
@@ -248,7 +248,7 @@ TEST(TestVideoInfoTag, WriteVideoStreamDetails)
   details.m_streamDetails.AddStream(video);
   details.m_streamDetails.DetermineBestStreams();
 
-  CXBMCTinyXML xmlDoc;
+  CTinyXML xmlDoc;
   ASSERT_TRUE(details.Save(&xmlDoc, "movie"));
 
   CVideoInfoTag reloaded;
@@ -264,7 +264,7 @@ TEST(TestVideoInfoTag, EpisodeBookmarkRoundTrip)
   details.m_EpBookmark.timeInSeconds = 5479.0;
   details.m_EpBookmark.totalTimeInSeconds = 16066.5;
 
-  CXBMCTinyXML xmlDoc;
+  CTinyXML xmlDoc;
   ASSERT_TRUE(details.Save(&xmlDoc, "episodedetails"));
 
   CVideoInfoTag reloaded;
@@ -279,8 +279,8 @@ namespace
 class TestVideoInfoTagArchive : public testing::Test
 {
 protected:
-  TestVideoInfoTagArchive() : m_file(XBMC_CREATETEMPFILE(".ar")) {}
-  ~TestVideoInfoTagArchive() override { EXPECT_TRUE(XBMC_DELETETEMPFILE(m_file)); }
+  TestVideoInfoTagArchive() : m_file(_CREATETEMPFILE(".ar")) {}
+  ~TestVideoInfoTagArchive() override { EXPECT_TRUE(_DELETETEMPFILE(m_file)); }
 
   CVideoInfoTag StoredAndLoaded(CVideoInfoTag details)
   {
@@ -318,7 +318,7 @@ TEST_F(TestVideoInfoTagArchive, APlayCountOfZeroStaysSet)
 
 TEST(TestVideoInfoTag, ReadTextEpisodeGuide)
 {
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   doc.Parse(std::string{
       "<tvshow><episodeguide>{&quot;tmdb&quot;: &quot;1234&quot;}</episodeguide></tvshow>"});
 
@@ -326,7 +326,7 @@ TEST(TestVideoInfoTag, ReadTextEpisodeGuide)
   ASSERT_TRUE(details.Load(doc.RootElement(), true, false));
   EXPECT_EQ(R"(<episodeguide>{"tmdb": "1234"}</episodeguide>)", details.m_strEpisodeGuide);
 
-  CXBMCTinyXML saved;
+  CTinyXML saved;
   ASSERT_TRUE(details.Save(&saved, "tvshow"));
   CVideoInfoTag reloaded;
   ASSERT_TRUE(reloaded.Load(saved.RootElement(), true, false));
@@ -354,7 +354,7 @@ TEST(TestVideoInfoTag, SaveTVShowSeasons)
   CVideoInfoTagTest details;
   details.SetSeasons(reference);
 
-  CXBMCTinyXML xmlDoc;
+  CTinyXML xmlDoc;
   details.ForwardSaveTvShowSeasons(&xmlDoc);
 
   EXPECT_EQ(referenceXml, XMLUtils::NodeStringSerialization(xmlDoc.RootElement(),
@@ -621,14 +621,14 @@ TEST_F(AudioSortKeyTester, SortKeyFollowsTheLanguageDetailsSetting)
 //! Content geometry survives the export and import round trip, as the ratios alone.
 TEST(TestVideoInfoTag, ContentGeometryRoundTripsThroughNfo)
 {
-  using namespace KODI::VIDEO::GEOMETRY;
+  using namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY;
 
   CVideoInfoTag written;
   written.m_contentGeometry.Set(
       {.aspects = {2.35f, 1.78f}, .identity = FileIdentity{68'719'476'736, 1'700'000'000}});
   ASSERT_TRUE(written.HasContentGeometry());
 
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   doc.InsertEndChild(TiXmlElement("root"));
   ASSERT_TRUE(written.Save(doc.RootElement(), "movie", true));
 
@@ -665,7 +665,7 @@ TEST(TestVideoInfoTag, NoReadingWritesNoContentGeometry)
   CVideoInfoTag written;
   written.m_contentGeometry.Set({.aspects = {}, .identity = {8'000'000'000, 1'700'000'000}});
 
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   doc.InsertEndChild(TiXmlElement("root"));
   ASSERT_TRUE(written.Save(doc.RootElement(), "movie", true));
 
@@ -678,7 +678,7 @@ TEST(TestVideoInfoTag, AnNfoWithoutContentGeometryHasNone)
 {
   const std::string document{R"(<movie><title>No geometry here</title></movie>)"};
 
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   doc.Parse(document, TIXML_ENCODING_UNKNOWN);
 
   CVideoInfoTag details;
@@ -693,7 +693,7 @@ TEST(TestVideoInfoTag, AnNfoWithoutContentGeometryHasNone)
  */
 TEST(TestVideoInfoTag, ContentGeometryRoundTripsThroughTheArchive)
 {
-  using namespace KODI::VIDEO::GEOMETRY;
+  using namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY;
 
   CVideoInfoTag written;
   written.m_strTitle = "archived";
@@ -708,7 +708,7 @@ TEST(TestVideoInfoTag, ContentGeometryRoundTripsThroughTheArchive)
   // A field written after the geometry, which is what a mismatched pair damages first.
   written.m_showLink = {"a show", "another"};
 
-  XFILE::CFile* const file{XBMC_CREATETEMPFILE(".ar")};
+  XFILE::CFile* const file{_CREATETEMPFILE(".ar")};
   ASSERT_NE(nullptr, file);
 
   CArchive out(file, CArchive::store);
@@ -729,7 +729,7 @@ TEST(TestVideoInfoTag, ContentGeometryRoundTripsThroughTheArchive)
   EXPECT_EQ(record.identity.time, loaded.identity.time);
   EXPECT_EQ(written.m_showLink, read.m_showLink) << "the operators are out of step";
 
-  EXPECT_TRUE(XBMC_DELETETEMPFILE(file));
+  EXPECT_TRUE(_DELETETEMPFILE(file));
 }
 
 /*!
@@ -742,12 +742,12 @@ TEST(TestVideoInfoTag, AnUnmeasuredTagResolvesToNothingRatherThanItsFrame)
   CVideoInfoTag tag;
   ASSERT_FALSE(tag.HasContentGeometry());
 
-  const KODI::VIDEO::GEOMETRY::EffectiveGeometry resolved{tag.ResolveContentGeometry()};
+  const UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::EffectiveGeometry resolved{tag.ResolveContentGeometry()};
 
   // Not the coded frame: the library has no stream to ask, and publishing the frame's own
   // ratio would say the content had been established when nothing was measured.
-  EXPECT_EQ(KODI::VIDEO::GEOMETRY::GeometrySource::Container, resolved.source);
-  EXPECT_TRUE(KODI::VIDEO::GEOMETRY::ContentAspectsOf(resolved).aspects.empty());
+  EXPECT_EQ(UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::GeometrySource::Container, resolved.source);
+  EXPECT_TRUE(UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::ContentAspectsOf(resolved).aspects.empty());
 }
 
 namespace
@@ -770,7 +770,7 @@ CVideoInfoTag MeasuredTag(std::vector<float> aspects = {2.40f})
 
 TEST(TestVideoInfoTag, AMeasuredTagResolvesToTheRatioItWasMeasuredAt)
 {
-  using namespace KODI::VIDEO::GEOMETRY;
+  using namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY;
 
   const EffectiveGeometry resolved{MeasuredTag().ResolveContentGeometry()};
 
@@ -784,7 +784,7 @@ TEST(TestVideoInfoTag, AMeasuredTagResolvesToTheRatioItWasMeasuredAt)
 //! withholding a rectangle a mask is already sitting at.
 TEST(TestVideoInfoTag, AStaleRecordIsStillResolvedAndSaysSo)
 {
-  using namespace KODI::VIDEO::GEOMETRY;
+  using namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY;
 
   CVideoInfoTag tag{MeasuredTag()};
   ContentGeometryRecord record{tag.m_contentGeometry.Get()};
@@ -804,7 +804,7 @@ TEST(TestVideoInfoTag, AStaleRecordIsStillResolvedAndSaysSo)
  */
 TEST(TestVideoInfoTag, TheStoredRatiosReachTheResolvedSections)
 {
-  using namespace KODI::VIDEO::GEOMETRY;
+  using namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY;
 
   const EffectiveGeometry resolved{MeasuredTag({2.40f, 1.78f}).ResolveContentGeometry()};
 
@@ -824,7 +824,7 @@ TEST(TestVideoInfoTag, ATagWithoutAVideoStreamResolvesToNothing)
   CVideoInfoTag tag;
   tag.m_contentGeometry.Set({.aspects = {2.40f}, .identity = {}});
 
-  EXPECT_EQ(KODI::VIDEO::GEOMETRY::GeometrySource::Container, tag.ResolveContentGeometry().source);
+  EXPECT_EQ(UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::GeometrySource::Container, tag.ResolveContentGeometry().source);
 }
 
 /*!
@@ -835,7 +835,7 @@ TEST(TestVideoInfoTag, ATagWithoutAVideoStreamResolvesToNothing)
  */
 TEST(TestVideoInfoTag, TheLibraryAndThePlayerNameTheSameRatio)
 {
-  using namespace KODI::VIDEO::GEOMETRY;
+  using namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY;
 
   const CVideoInfoTag tag{MeasuredTag()};
   const EffectiveGeometry library{tag.ResolveContentGeometry()};
@@ -863,7 +863,7 @@ std::vector<std::string> CastAfterLoading(const std::string& clear)
                                     <actor clear=")" +
                                clear + R"("><name>Second</name></actor>
                                   </movie>)";
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   doc.Parse(document, TIXML_ENCODING_UNKNOWN);
 
   CVideoInfoTag details;

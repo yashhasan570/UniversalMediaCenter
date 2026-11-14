@@ -12,7 +12,7 @@
 
 class CGUIDialog;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -57,4 +57,4 @@ private:
   std::shared_ptr<CGUIRenderHandle> m_renderHandle;
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

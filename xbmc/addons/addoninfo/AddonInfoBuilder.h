@@ -91,7 +91,7 @@ public:
   void SetAuthor(std::string author);
   void SetIcon(std::string icon);
   void SetArt(const std::string& type, std::string value);
-  void SetArt(KODI::ART::Artwork art);
+  void SetArt(UNIVERSAL MEDIA CENTER::ART::Artwork art);
   void SetScreenshots(std::vector<std::string> screenshots);
   void SetChangelog(std::string changelog);
   void SetLifecycleState(AddonLifecycleState state, std::string description);

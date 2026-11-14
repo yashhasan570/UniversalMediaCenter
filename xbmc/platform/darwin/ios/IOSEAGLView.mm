@@ -12,7 +12,7 @@
 #import "IOSScreenManager.h"
 #include "ServiceBroker.h"
 #include "Util.h"
-#import "XBMCController.h"
+#import "Controller.h"
 #include "application/AppEnvironment.h"
 #include "application/AppInboundProtocol.h"
 #include "application/AppParams.h"
@@ -45,7 +45,7 @@
 
 @implementation IOSEAGLView
 @synthesize animating;
-@synthesize xbmcAlive;
+@synthesize Alive;
 @synthesize readyToRun;
 @synthesize pause;
 @synthesize currentScreen;
@@ -142,7 +142,7 @@
     self.context = aContext;
 
     animating = FALSE;
-    xbmcAlive = FALSE;
+    Alive = FALSE;
     pause = FALSE;
     [self setContext:context];
     [self createFramebuffer];
@@ -324,7 +324,7 @@
 	if (animating && context)
 	{
 		animating = FALSE;
-    xbmcAlive = FALSE;
+    Alive = FALSE;
     if (!g_application.m_bStop)
     {
       CServiceBroker::GetAppMessenger()->PostMsg(TMSG_QUIT);
@@ -342,9 +342,9 @@
 {
   @autoreleasepool
   {
-    [[NSThread currentThread] setName:@"XBMC_Run"];
+    [[NSThread currentThread] setName:@"_Run"];
 
-    // set up some xbmc specific relationships
+    // set up some  specific relationships
     readyToRun = true;
 
     // signal we are alive
@@ -396,8 +396,8 @@
     {
       CServiceBroker::GetSettingsComponent()->GetAdvancedSettings()->m_startFullScreen = true;
       CServiceBroker::GetSettingsComponent()->GetAdvancedSettings()->m_canWindowed = false;
-      xbmcAlive = TRUE;
-      [g_xbmcController onXbmcAlive];
+      Alive = TRUE;
+      [g_Controller onXbmcAlive];
       try
       {
         @autoreleasepool
@@ -416,11 +416,11 @@
     // signal we are dead
     [myLock unlockWithCondition:TRUE];
 
-    // grrr, xbmc does not shutdown properly and leaves
+    // grrr,  does not shutdown properly and leaves
     // several classes in an indeterminate state, we must exit and
     // reload Lowtide/AppleTV, boo.
-    [g_xbmcController enableScreenSaver];
-    [g_xbmcController enableSystemSleep];
+    [g_Controller enableScreenSaver];
+    [g_Controller enableSystemSleep];
     exit(0);
   }
 }

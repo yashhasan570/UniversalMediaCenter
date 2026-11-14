@@ -58,7 +58,7 @@
 #ifdef TARGET_ANDROID
 #include "CompileInfo.h"
 
-#include "platform/android/activity/XBMCApp.h"
+#include "platform/android/activity/App.h"
 #endif
 
 // Remaining headers
@@ -127,8 +127,8 @@ using namespace MEDIA_DETECT;
 #endif
 
 using namespace XFILE;
-using KODI::UTILITY::CDigest;
-using namespace KODI;
+using UNIVERSAL MEDIA CENTER::UTILITY::CDigest;
+using namespace UNIVERSAL MEDIA CENTER;
 
 #if !defined(TARGET_WINDOWS)
 unsigned int CUtil::s_randomSeed = time(NULL);
@@ -310,7 +310,7 @@ std::string GetHomePath(const std::string& strTarget, std::string strPath)
     else
       strPath = strHomePath;
   }
-  /* Change strPath accordingly when target is KODI_HOME and when INSTALL_PATH
+  /* Change strPath accordingly when target is UNIVERSALMEDIA_HOME and when INSTALL_PATH
    * and BIN_INSTALL_PATH differ
    */
   std::string installPath = INSTALL_PATH;
@@ -473,7 +473,7 @@ void CUtil::CleanString(const std::string& strFileName,
   if (strFileName == "..")
    return;
 
-  KODI::VIDEO::CFilenameAttributes::CleanFilenameAttributePairs(strTitleAndYear, nullptr);
+  UNIVERSAL MEDIA CENTER::VIDEO::CFilenameAttributes::CleanFilenameAttributePairs(strTitleAndYear, nullptr);
 
   const std::shared_ptr<CAdvancedSettings> advancedSettings = CServiceBroker::GetSettingsComponent()->GetAdvancedSettings();
   const std::vector<std::string> &regexps = advancedSettings->m_videoCleanStringRegExps;
@@ -603,7 +603,7 @@ bool CUtil::IsPicture(const std::string& strFile)
 
 std::string CUtil::GetSplashPath()
 {
-  std::array<std::string, 4> candidates {{ "special://home/media/splash.jpg", "special://home/media/splash.png", "special://xbmc/media/splash.jpg", "special://xbmc/media/splash.png" }};
+  std::array<std::string, 4> candidates {{ "special://home/media/splash.jpg", "special://home/media/splash.png", "special:///media/splash.jpg", "special:///media/splash.png" }};
   auto it = std::find_if(candidates.begin(), candidates.end(), [](std::string const& file) { return XFILE::CFile::Exists(file); });
   if (it == candidates.end())
     throw std::runtime_error("No splash image found");
@@ -612,7 +612,7 @@ std::string CUtil::GetSplashPath()
 
 bool CUtil::ExcludeFileOrFolder(const std::string& strFileOrFolder,
                                 const std::vector<std::string>& regexps,
-                                KODI::REGEXP::RegExpCache* cache)
+                                UNIVERSAL MEDIA CENTER::REGEXP::RegExpCache* cache)
 {
   if (strFileOrFolder.empty())
     return false;
@@ -621,7 +621,7 @@ bool CUtil::ExcludeFileOrFolder(const std::string& strFileOrFolder,
 
   for (const auto &regexp : regexps)
   {
-    if (regExExcludes = KODI::REGEXP::GetRegExp(regexp, cache, true, CRegExp::autoUtf8);
+    if (regExExcludes = UNIVERSAL MEDIA CENTER::REGEXP::GetRegExp(regexp, cache, true, CRegExp::autoUtf8);
         regExExcludes == nullptr)
     { // invalid regexp - complain in logs
       CLog::Log(LOGERROR, "{}: Invalid exclude RegExp:'{}'", __FUNCTION__, regexp);
@@ -654,7 +654,7 @@ int CUtil::GetDVDIfoTitle(const std::string& strFile)
   return atoi(strFilename.substr(4, 2).c_str());
 }
 
-std::string CUtil::GetFileDigest(const std::string& strPath, KODI::UTILITY::CDigest::Type type)
+std::string CUtil::GetFileDigest(const std::string& strPath, UNIVERSAL MEDIA CENTER::UTILITY::CDigest::Type type)
 {
   CFile file;
   std::string result;
@@ -1043,7 +1043,7 @@ std::string CUtil::ValidatePath(std::string path, bool bFixDoubleSlashes /* = fa
 
   // Don't do any stuff on URLs containing %-characters or protocols that embed
   // filenames. NOTE: Don't use IsInZip or IsInRar here since it will infinitely
-  // recurse and crash XBMC
+  // recurse and crash 
   if (URIUtils::IsURL(path) &&
       (path.find('%') != std::string::npos ||
       StringUtils::StartsWithNoCase(path, "apk:") ||
@@ -1365,10 +1365,10 @@ std::string CUtil::TranslateSpecialSource(const std::string &strSpecial)
     else if (StringUtils::StartsWithNoCase(strSpecial, "$screenshots"))
       return URIUtils::AddFileToFolder("special://screenshots/", strSpecial.substr(12));
     else if (StringUtils::StartsWithNoCase(strSpecial, "$musicplaylists"))
-      return URIUtils::AddFileToFolder(PlaylistsPathOf(KODI::MEDIA::MediaSection::MUSIC),
+      return URIUtils::AddFileToFolder(PlaylistsPathOf(UNIVERSAL MEDIA CENTER::MEDIA::MediaSection::MUSIC),
                                        strSpecial.substr(15));
     else if (StringUtils::StartsWithNoCase(strSpecial, "$videoplaylists"))
-      return URIUtils::AddFileToFolder(PlaylistsPathOf(KODI::MEDIA::MediaSection::VIDEO),
+      return URIUtils::AddFileToFolder(PlaylistsPathOf(UNIVERSAL MEDIA CENTER::MEDIA::MediaSection::VIDEO),
                                        strSpecial.substr(15));
     else if (StringUtils::StartsWithNoCase(strSpecial, "$cdrips"))
       return URIUtils::AddFileToFolder("special://cdrips/", strSpecial.substr(7));
@@ -1382,10 +1382,10 @@ std::string CUtil::TranslateSpecialSource(const std::string &strSpecial)
 namespace
 {
 //! The folders holding the playlists of \p section: its own, and the mixed one
-std::vector<std::string> PlaylistsFoldersOf(KODI::MEDIA::MediaSection section)
+std::vector<std::string> PlaylistsFoldersOf(UNIVERSAL MEDIA CENTER::MEDIA::MediaSection section)
 {
   const std::string path = CServiceBroker::GetSettingsComponent()->GetSettings()->GetString(CSettings::SETTING_SYSTEM_PLAYLISTSPATH);
-  return {URIUtils::AddFileToFolder(path, section == KODI::MEDIA::MediaSection::MUSIC ? "music"
+  return {URIUtils::AddFileToFolder(path, section == UNIVERSAL MEDIA CENTER::MEDIA::MediaSection::MUSIC ? "music"
                                                                                       : "video"),
           URIUtils::AddFileToFolder(path, "mixed")};
 }
@@ -1394,29 +1394,29 @@ std::vector<std::string> PlaylistsFoldersOf(KODI::MEDIA::MediaSection section)
 std::string CUtil::MusicPlaylistsLocation()
 {
   return XFILE::CMultiPathDirectory::ConstructMultiPath(
-      PlaylistsFoldersOf(KODI::MEDIA::MediaSection::MUSIC));
+      PlaylistsFoldersOf(UNIVERSAL MEDIA CENTER::MEDIA::MediaSection::MUSIC));
 }
 
 std::string CUtil::VideoPlaylistsLocation()
 {
   return XFILE::CMultiPathDirectory::ConstructMultiPath(
-      PlaylistsFoldersOf(KODI::MEDIA::MediaSection::VIDEO));
+      PlaylistsFoldersOf(UNIVERSAL MEDIA CENTER::MEDIA::MediaSection::VIDEO));
 }
 
-std::string CUtil::PlaylistsPathOf(KODI::MEDIA::MediaSection section)
+std::string CUtil::PlaylistsPathOf(UNIVERSAL MEDIA CENTER::MEDIA::MediaSection section)
 {
   switch (section)
   {
-    case KODI::MEDIA::MediaSection::MUSIC:
+    case UNIVERSAL MEDIA CENTER::MEDIA::MediaSection::MUSIC:
       return "special://musicplaylists/";
-    case KODI::MEDIA::MediaSection::VIDEO:
+    case UNIVERSAL MEDIA CENTER::MEDIA::MediaSection::VIDEO:
       return "special://videoplaylists/";
     default:
       return {};
   }
 }
 
-bool CUtil::IsInPlaylistsFolder(const std::string& path, KODI::MEDIA::MediaSection section)
+bool CUtil::IsInPlaylistsFolder(const std::string& path, UNIVERSAL MEDIA CENTER::MEDIA::MediaSection section)
 {
   const std::string playlists{PlaylistsPathOf(section)};
   if (playlists.empty())
@@ -1889,7 +1889,7 @@ std::string CUtil::ResolveExecutablePath()
   else
     strExecutablePath = buf;
 #elif defined(TARGET_ANDROID)
-  strExecutablePath = CXBMCApp::getApplicationInfo().nativeLibraryDir;
+  strExecutablePath = CApp::getApplicationInfo().nativeLibraryDir;
 
   std::string appName = CCompileInfo::GetAppName();
   std::string libName = "lib" + appName + ".so";
@@ -2429,14 +2429,14 @@ std::optional<StreamFlags> ExternalStreamFlagFromToken(std::string_view token)
  * \param[in] token One token of the filename.
  * \return The language, or nullopt where the token states none.
  */
-std::optional<KODI::LANGUAGE::CLanguageTag> ExternalStreamLanguageFromToken(
+std::optional<UNIVERSAL MEDIA CENTER::LANGUAGE::CLanguageTag> ExternalStreamLanguageFromToken(
     const std::string& token)
 {
   // _ stands in for the BCP 47 subtag separator, since - separates the filename's own tokens
   std::string langCode{token};
   std::ranges::replace(langCode, '_', '-');
 
-  return KODI::LANGUAGE::CLanguageTag::TryParse(langCode);
+  return UNIVERSAL MEDIA CENTER::LANGUAGE::CLanguageTag::TryParse(langCode);
 }
 } // namespace
 
@@ -2771,7 +2771,7 @@ void CUtil::CopyUserDataIfNeeded(const std::string& strPath,
   if (!CFile::Exists(destPath))
   {
     // need to copy it across
-    std::string srcPath = URIUtils::AddFileToFolder("special://xbmc/userdata/", file);
+    std::string srcPath = URIUtils::AddFileToFolder("special:///userdata/", file);
     CFile::Copy(srcPath, destPath);
   }
 }

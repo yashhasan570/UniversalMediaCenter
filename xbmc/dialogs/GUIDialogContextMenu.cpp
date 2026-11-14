@@ -44,8 +44,8 @@
 #include "utils/URIUtils.h"
 #include "utils/Variant.h"
 
-using namespace KODI;
-using KODI::MEDIA::MediaSection;
+using namespace UNIVERSAL MEDIA CENTER;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaSection;
 
 #define BACKGROUND_IMAGE       999
 #define GROUP_LIST             996
@@ -232,7 +232,7 @@ namespace
 {
 bool ShowAndGetLock(CMediaSource& share, MediaSection section, MediaLockState state)
 {
-  KODI::UTILS::CLockInfo& lockInfo{share.GetLockInfo()};
+  UNIVERSAL MEDIA CENTER::UTILS::CLockInfo& lockInfo{share.GetLockInfo()};
 
   LockMode newLockMode{lockInfo.GetMode()};
   std::string newPassword;
@@ -296,7 +296,7 @@ void CGUIDialogContextMenu::GetContextButtons(MediaSection section,
 
   if (share)
   {
-    const KODI::UTILS::CLockInfo& lockInfo{share->GetLockInfo()};
+    const UNIVERSAL MEDIA CENTER::UTILS::CLockInfo& lockInfo{share->GetLockInfo()};
     const std::shared_ptr<const CSettingsComponent> settings{
         CServiceBroker::GetSettingsComponent()};
     const std::shared_ptr<const CProfileManager> profileMgr{settings->GetProfileManager()};
@@ -526,7 +526,7 @@ bool CGUIDialogContextMenu::OnContextButton(MediaSection section,
       if (!CGUIDialogYesNo::ShowAndGetInput(CVariant{12335}, CVariant{750}))
         return false;
 
-      KODI::UTILS::CLockInfo& lockInfo{share->GetLockInfo()};
+      UNIVERSAL MEDIA CENTER::UTILS::CLockInfo& lockInfo{share->GetLockInfo()};
       lockInfo.SetState(LOCK_STATE_NO_LOCK);
       mediaSources.UpdateSource(section, share->strName, "lockmode", "0");
       mediaSources.UpdateSource(section, share->strName, "lockcode", "0");

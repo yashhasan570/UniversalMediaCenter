@@ -47,8 +47,8 @@
 #include "windowing/WinSystem.h"
 #include "windows/GUIMediaWindow.h"
 
-using namespace KODI::GUILIB;
-using namespace KODI::GUILIB::GUIINFO;
+using namespace UNIVERSAL MEDIA CENTER::GUILIB;
+using namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO;
 
 CSystemGUIInfo::CSystemGUIInfo()
   : m_gpuInfo(CGPUInfo::GetGPUInfo()),
@@ -216,8 +216,8 @@ bool CSystemGUIInfo::GetLabel(std::string& value,
     case SYSTEM_USED_MEMORY_PERCENT:
     case SYSTEM_TOTAL_MEMORY:
     {
-      KODI::MEMORY::MemoryStatus stat;
-      KODI::MEMORY::GetMemoryStatus(&stat);
+      UNIVERSAL MEDIA CENTER::MEMORY::MemoryStatus stat;
+      UNIVERSAL MEDIA CENTER::MEMORY::GetMemoryStatus(&stat);
       int iMemPercentFree =
           100 -
           static_cast<int>(100.0f * (stat.totalPhys - stat.availPhys) / stat.totalPhys + 0.5f);
@@ -298,7 +298,7 @@ bool CSystemGUIInfo::GetLabel(std::string& value,
                                      ->GetProfileManager()
                                      ->GetCurrentProfile()
                                      .getThumb();
-      value = thumb.empty() ? KODI::ART::DEFAULT::USER : thumb;
+      value = thumb.empty() ? UNIVERSAL MEDIA CENTER::ART::DEFAULT::USER : thumb;
       return true;
     }
     case SYSTEM_LANGUAGE:
@@ -393,8 +393,8 @@ bool CSystemGUIInfo::GetInt(int& value,
     case SYSTEM_FREE_MEMORY:
     case SYSTEM_USED_MEMORY:
     {
-      KODI::MEMORY::MemoryStatus stat;
-      KODI::MEMORY::GetMemoryStatus(&stat);
+      UNIVERSAL MEDIA CENTER::MEMORY::MemoryStatus stat;
+      UNIVERSAL MEDIA CENTER::MEMORY::GetMemoryStatus(&stat);
       const auto memPercentUsed{
           static_cast<int>(100.0f * (stat.totalPhys - stat.availPhys) / stat.totalPhys + 0.5f)};
       if (info.GetInfo() == SYSTEM_FREE_MEMORY)

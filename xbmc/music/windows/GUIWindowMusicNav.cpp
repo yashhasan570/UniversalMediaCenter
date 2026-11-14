@@ -70,9 +70,9 @@
 
 using namespace XFILE;
 using namespace MUSICDATABASEDIRECTORY;
-using namespace KODI;
-using namespace KODI::MESSAGING;
-using KODI::MEDIA::MediaSection;
+using namespace UNIVERSAL MEDIA CENTER;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaSection;
 
 #define CONTROL_BTNVIEWASICONS     2
 #define CONTROL_BTNSORTBY          3

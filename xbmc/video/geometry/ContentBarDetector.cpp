@@ -16,7 +16,7 @@
 #include <cstdlib>
 #include <optional>
 
-namespace KODI::VIDEO::GEOMETRY
+namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY
 {
 
 namespace
@@ -584,4 +584,4 @@ DetectionResult DetectContentRect(const FrameRef& frame, const DetectorParams& p
   return CDetector<uint16_t>(frame, params).Run();
 }
 
-} // namespace KODI::VIDEO::GEOMETRY
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY

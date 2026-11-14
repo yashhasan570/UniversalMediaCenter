@@ -6,7 +6,7 @@
  *  See LICENSES/README.md for more information.
  */
 
-#include "addons/kodi-dev-kit/include/kodi/gui/Window.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/gui/Window.h"
 
 #include "FileItem.h"
 #include "FileItemList.h"
@@ -41,84 +41,84 @@ namespace ADDON
 
 void Interface_GUIWindow::Init(AddonGlobalInterface* addonInterface)
 {
-  addonInterface->toUniversal Media Center->kodi_gui->window = new AddonToUniversal Media CenterFuncTable_kodi_gui_window();
+  addonInterface->toUniversal Media Center->->window = new AddonToUniversal Media CenterFuncTable__window();
 
   /* Window creation functions */
-  addonInterface->toUniversal Media Center->kodi_gui->window->create = create;
-  addonInterface->toUniversal Media Center->kodi_gui->window->destroy = destroy;
-  addonInterface->toUniversal Media Center->kodi_gui->window->set_callbacks = set_callbacks;
-  addonInterface->toUniversal Media Center->kodi_gui->window->show = show;
-  addonInterface->toUniversal Media Center->kodi_gui->window->close = close;
-  addonInterface->toUniversal Media Center->kodi_gui->window->do_modal = do_modal;
+  addonInterface->toUniversal Media Center->->window->create = create;
+  addonInterface->toUniversal Media Center->->window->destroy = destroy;
+  addonInterface->toUniversal Media Center->->window->set_callbacks = set_callbacks;
+  addonInterface->toUniversal Media Center->->window->show = show;
+  addonInterface->toUniversal Media Center->->window->close = close;
+  addonInterface->toUniversal Media Center->->window->do_modal = do_modal;
 
   /* Window control functions */
-  addonInterface->toUniversal Media Center->kodi_gui->window->set_focus_id = set_focus_id;
-  addonInterface->toUniversal Media Center->kodi_gui->window->get_focus_id = get_focus_id;
-  addonInterface->toUniversal Media Center->kodi_gui->window->set_control_label = set_control_label;
-  addonInterface->toUniversal Media Center->kodi_gui->window->set_control_visible = set_control_visible;
-  addonInterface->toUniversal Media Center->kodi_gui->window->set_control_selected = set_control_selected;
+  addonInterface->toUniversal Media Center->->window->set_focus_id = set_focus_id;
+  addonInterface->toUniversal Media Center->->window->get_focus_id = get_focus_id;
+  addonInterface->toUniversal Media Center->->window->set_control_label = set_control_label;
+  addonInterface->toUniversal Media Center->->window->set_control_visible = set_control_visible;
+  addonInterface->toUniversal Media Center->->window->set_control_selected = set_control_selected;
 
   /* Window property functions */
-  addonInterface->toUniversal Media Center->kodi_gui->window->set_property = set_property;
-  addonInterface->toUniversal Media Center->kodi_gui->window->set_property_int = set_property_int;
-  addonInterface->toUniversal Media Center->kodi_gui->window->set_property_bool = set_property_bool;
-  addonInterface->toUniversal Media Center->kodi_gui->window->set_property_double = set_property_double;
-  addonInterface->toUniversal Media Center->kodi_gui->window->get_property = get_property;
-  addonInterface->toUniversal Media Center->kodi_gui->window->get_property_int = get_property_int;
-  addonInterface->toUniversal Media Center->kodi_gui->window->get_property_bool = get_property_bool;
-  addonInterface->toUniversal Media Center->kodi_gui->window->get_property_double = get_property_double;
-  addonInterface->toUniversal Media Center->kodi_gui->window->clear_properties = clear_properties;
-  addonInterface->toUniversal Media Center->kodi_gui->window->clear_property = clear_property;
+  addonInterface->toUniversal Media Center->->window->set_property = set_property;
+  addonInterface->toUniversal Media Center->->window->set_property_int = set_property_int;
+  addonInterface->toUniversal Media Center->->window->set_property_bool = set_property_bool;
+  addonInterface->toUniversal Media Center->->window->set_property_double = set_property_double;
+  addonInterface->toUniversal Media Center->->window->get_property = get_property;
+  addonInterface->toUniversal Media Center->->window->get_property_int = get_property_int;
+  addonInterface->toUniversal Media Center->->window->get_property_bool = get_property_bool;
+  addonInterface->toUniversal Media Center->->window->get_property_double = get_property_double;
+  addonInterface->toUniversal Media Center->->window->clear_properties = clear_properties;
+  addonInterface->toUniversal Media Center->->window->clear_property = clear_property;
 
   /* List item functions */
-  addonInterface->toUniversal Media Center->kodi_gui->window->clear_item_list = clear_item_list;
-  addonInterface->toUniversal Media Center->kodi_gui->window->add_list_item = add_list_item;
-  addonInterface->toUniversal Media Center->kodi_gui->window->remove_list_item_from_position =
+  addonInterface->toUniversal Media Center->->window->clear_item_list = clear_item_list;
+  addonInterface->toUniversal Media Center->->window->add_list_item = add_list_item;
+  addonInterface->toUniversal Media Center->->window->remove_list_item_from_position =
       remove_list_item_from_position;
-  addonInterface->toUniversal Media Center->kodi_gui->window->remove_list_item = remove_list_item;
-  addonInterface->toUniversal Media Center->kodi_gui->window->get_list_item = get_list_item;
-  addonInterface->toUniversal Media Center->kodi_gui->window->set_current_list_position = set_current_list_position;
-  addonInterface->toUniversal Media Center->kodi_gui->window->get_current_list_position = get_current_list_position;
-  addonInterface->toUniversal Media Center->kodi_gui->window->get_list_size = get_list_size;
-  addonInterface->toUniversal Media Center->kodi_gui->window->set_container_property = set_container_property;
-  addonInterface->toUniversal Media Center->kodi_gui->window->set_container_content = set_container_content;
-  addonInterface->toUniversal Media Center->kodi_gui->window->get_current_container_id = get_current_container_id;
+  addonInterface->toUniversal Media Center->->window->remove_list_item = remove_list_item;
+  addonInterface->toUniversal Media Center->->window->get_list_item = get_list_item;
+  addonInterface->toUniversal Media Center->->window->set_current_list_position = set_current_list_position;
+  addonInterface->toUniversal Media Center->->window->get_current_list_position = get_current_list_position;
+  addonInterface->toUniversal Media Center->->window->get_list_size = get_list_size;
+  addonInterface->toUniversal Media Center->->window->set_container_property = set_container_property;
+  addonInterface->toUniversal Media Center->->window->set_container_content = set_container_content;
+  addonInterface->toUniversal Media Center->->window->get_current_container_id = get_current_container_id;
 
   /* Various functions */
-  addonInterface->toUniversal Media Center->kodi_gui->window->mark_dirty_region = mark_dirty_region;
+  addonInterface->toUniversal Media Center->->window->mark_dirty_region = mark_dirty_region;
 
   /* GUI control access functions */
-  addonInterface->toUniversal Media Center->kodi_gui->window->get_control_button = get_control_button;
-  addonInterface->toUniversal Media Center->kodi_gui->window->get_control_edit = get_control_edit;
-  addonInterface->toUniversal Media Center->kodi_gui->window->get_control_fade_label = get_control_fade_label;
-  addonInterface->toUniversal Media Center->kodi_gui->window->get_control_image = get_control_image;
-  addonInterface->toUniversal Media Center->kodi_gui->window->get_control_label = get_control_label;
-  addonInterface->toUniversal Media Center->kodi_gui->window->get_control_progress = get_control_progress;
-  addonInterface->toUniversal Media Center->kodi_gui->window->get_control_radio_button = get_control_radio_button;
-  addonInterface->toUniversal Media Center->kodi_gui->window->get_control_render_addon = get_control_render_addon;
-  addonInterface->toUniversal Media Center->kodi_gui->window->get_control_settings_slider =
+  addonInterface->toUniversal Media Center->->window->get_control_button = get_control_button;
+  addonInterface->toUniversal Media Center->->window->get_control_edit = get_control_edit;
+  addonInterface->toUniversal Media Center->->window->get_control_fade_label = get_control_fade_label;
+  addonInterface->toUniversal Media Center->->window->get_control_image = get_control_image;
+  addonInterface->toUniversal Media Center->->window->get_control_label = get_control_label;
+  addonInterface->toUniversal Media Center->->window->get_control_progress = get_control_progress;
+  addonInterface->toUniversal Media Center->->window->get_control_radio_button = get_control_radio_button;
+  addonInterface->toUniversal Media Center->->window->get_control_render_addon = get_control_render_addon;
+  addonInterface->toUniversal Media Center->->window->get_control_settings_slider =
       get_control_settings_slider;
-  addonInterface->toUniversal Media Center->kodi_gui->window->get_control_slider = get_control_slider;
-  addonInterface->toUniversal Media Center->kodi_gui->window->get_control_spin = get_control_spin;
-  addonInterface->toUniversal Media Center->kodi_gui->window->get_control_text_box = get_control_text_box;
+  addonInterface->toUniversal Media Center->->window->get_control_slider = get_control_slider;
+  addonInterface->toUniversal Media Center->->window->get_control_spin = get_control_spin;
+  addonInterface->toUniversal Media Center->->window->get_control_text_box = get_control_text_box;
 }
 
 void Interface_GUIWindow::DeInit(AddonGlobalInterface* addonInterface)
 {
-  delete addonInterface->toUniversal Media Center->kodi_gui->window;
+  delete addonInterface->toUniversal Media Center->->window;
 }
 
 /*!
  * Window creation functions
  */
 //@{
-KODI_GUI_WINDOW_HANDLE Interface_GUIWindow::create(KODI_HANDLE kodiBase,
+UNIVERSALMEDIA_GUI_WINDOW_HANDLE Interface_GUIWindow::create(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
                                                    const char* xml_filename,
                                                    const char* default_skin,
                                                    bool as_dialog,
                                                    bool is_media)
 {
-  auto* addon = static_cast<CAddonDll*>(kodiBase);
+  auto* addon = static_cast<CAddonDll*>(universalmediacenterBase);
   if (!addon || !xml_filename || !default_skin)
   {
     CLog::LogF(LOGERROR,
@@ -207,9 +207,9 @@ KODI_GUI_WINDOW_HANDLE Interface_GUIWindow::create(KODI_HANDLE kodiBase,
   return window.release();
 }
 
-void Interface_GUIWindow::destroy(KODI_HANDLE kodiBase, KODI_GUI_WINDOW_HANDLE handle)
+void Interface_GUIWindow::destroy(UNIVERSALMEDIA_HANDLE universalmediacenterBase, UNIVERSALMEDIA_GUI_WINDOW_HANDLE handle)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   auto* pAddonWindow = static_cast<CGUIAddonWindow*>(handle);
   if (!addon || !pAddonWindow)
   {
@@ -241,17 +241,17 @@ void Interface_GUIWindow::destroy(KODI_HANDLE kodiBase, KODI_GUI_WINDOW_HANDLE h
 }
 
 void Interface_GUIWindow::set_callbacks(
-    KODI_HANDLE kodiBase,
-    KODI_GUI_WINDOW_HANDLE handle,
-    KODI_GUI_CLIENT_HANDLE clienthandle,
-    bool (*CBOnInit)(KODI_GUI_CLIENT_HANDLE),
-    bool (*CBOnFocus)(KODI_GUI_CLIENT_HANDLE, int),
-    bool (*CBOnClick)(KODI_GUI_CLIENT_HANDLE, int),
-    bool (*CBOnAction)(KODI_GUI_CLIENT_HANDLE, ADDON_ACTION),
-    void (*CBGetContextButtons)(KODI_GUI_CLIENT_HANDLE, int, gui_context_menu_pair*, unsigned int*),
-    bool (*CBOnContextButton)(KODI_GUI_CLIENT_HANDLE, int, unsigned int))
+    UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+    UNIVERSALMEDIA_GUI_WINDOW_HANDLE handle,
+    UNIVERSALMEDIA_GUI_CLIENT_HANDLE clienthandle,
+    bool (*CBOnInit)(UNIVERSALMEDIA_GUI_CLIENT_HANDLE),
+    bool (*CBOnFocus)(UNIVERSALMEDIA_GUI_CLIENT_HANDLE, int),
+    bool (*CBOnClick)(UNIVERSALMEDIA_GUI_CLIENT_HANDLE, int),
+    bool (*CBOnAction)(UNIVERSALMEDIA_GUI_CLIENT_HANDLE, ADDON_ACTION),
+    void (*CBGetContextButtons)(UNIVERSALMEDIA_GUI_CLIENT_HANDLE, int, gui_context_menu_pair*, unsigned int*),
+    bool (*CBOnContextButton)(UNIVERSALMEDIA_GUI_CLIENT_HANDLE, int, unsigned int))
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   auto* pAddonWindow = static_cast<CGUIAddonWindow*>(handle);
   if (!addon || !pAddonWindow || !clienthandle)
   {
@@ -273,9 +273,9 @@ void Interface_GUIWindow::set_callbacks(
   Interface_GUIGeneral::unlock();
 }
 
-bool Interface_GUIWindow::show(KODI_HANDLE kodiBase, KODI_GUI_WINDOW_HANDLE handle)
+bool Interface_GUIWindow::show(UNIVERSALMEDIA_HANDLE universalmediacenterBase, UNIVERSALMEDIA_GUI_WINDOW_HANDLE handle)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   auto* pAddonWindow = static_cast<CGUIAddonWindow*>(handle);
   if (!addon || !pAddonWindow)
   {
@@ -298,9 +298,9 @@ bool Interface_GUIWindow::show(KODI_HANDLE kodiBase, KODI_GUI_WINDOW_HANDLE hand
   return true;
 }
 
-bool Interface_GUIWindow::close(KODI_HANDLE kodiBase, KODI_GUI_WINDOW_HANDLE handle)
+bool Interface_GUIWindow::close(UNIVERSALMEDIA_HANDLE universalmediacenterBase, UNIVERSALMEDIA_GUI_WINDOW_HANDLE handle)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   auto* pAddonWindow = static_cast<CGUIAddonWindow*>(handle);
   if (!addon || !pAddonWindow)
   {
@@ -325,9 +325,9 @@ bool Interface_GUIWindow::close(KODI_HANDLE kodiBase, KODI_GUI_WINDOW_HANDLE han
   return true;
 }
 
-bool Interface_GUIWindow::do_modal(KODI_HANDLE kodiBase, KODI_GUI_WINDOW_HANDLE handle)
+bool Interface_GUIWindow::do_modal(UNIVERSALMEDIA_HANDLE universalmediacenterBase, UNIVERSALMEDIA_GUI_WINDOW_HANDLE handle)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   auto* pAddonWindow = static_cast<CGUIAddonWindow*>(handle);
   if (!addon || !pAddonWindow)
   {
@@ -358,18 +358,18 @@ bool Interface_GUIWindow::do_modal(KODI_HANDLE kodiBase, KODI_GUI_WINDOW_HANDLE 
  * Window control functions
  */
 //@{
-bool Interface_GUIWindow::set_focus_id(KODI_HANDLE kodiBase,
-                                       KODI_GUI_WINDOW_HANDLE handle,
+bool Interface_GUIWindow::set_focus_id(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                       UNIVERSALMEDIA_GUI_WINDOW_HANDLE handle,
                                        int control_id)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   auto* pAddonWindow = static_cast<CGUIAddonWindow*>(handle);
   if (!addon || !pAddonWindow)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}') on "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}') on "
                "addon '{}'",
-               kodiBase, handle, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, addon ? addon->ID() : "unknown");
     return false;
   }
 
@@ -387,16 +387,16 @@ bool Interface_GUIWindow::set_focus_id(KODI_HANDLE kodiBase,
   return true;
 }
 
-int Interface_GUIWindow::get_focus_id(KODI_HANDLE kodiBase, KODI_GUI_WINDOW_HANDLE handle)
+int Interface_GUIWindow::get_focus_id(UNIVERSALMEDIA_HANDLE universalmediacenterBase, UNIVERSALMEDIA_GUI_WINDOW_HANDLE handle)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   const auto* pAddonWindow = static_cast<const CGUIAddonWindow*>(handle);
   if (!addon || !pAddonWindow)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}') on "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}') on "
                "addon '{}'",
-               kodiBase, handle, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, addon ? addon->ID() : "unknown");
     return -1;
   }
 
@@ -410,19 +410,19 @@ int Interface_GUIWindow::get_focus_id(KODI_HANDLE kodiBase, KODI_GUI_WINDOW_HAND
   return control_id;
 }
 
-void Interface_GUIWindow::set_control_label(KODI_HANDLE kodiBase,
-                                            KODI_GUI_WINDOW_HANDLE handle,
+void Interface_GUIWindow::set_control_label(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                            UNIVERSALMEDIA_GUI_WINDOW_HANDLE handle,
                                             int control_id,
                                             const char* label)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   auto* pAddonWindow = static_cast<CGUIAddonWindow*>(handle);
   if (!addon || !pAddonWindow || !label)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}', "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}', "
                "label='{}') on addon '{}'",
-               kodiBase, handle, static_cast<const void*>(label), addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, static_cast<const void*>(label), addon ? addon->ID() : "unknown");
     return;
   }
 
@@ -433,19 +433,19 @@ void Interface_GUIWindow::set_control_label(KODI_HANDLE kodiBase,
   Interface_GUIGeneral::unlock();
 }
 
-void Interface_GUIWindow::set_control_visible(KODI_HANDLE kodiBase,
-                                              KODI_GUI_WINDOW_HANDLE handle,
+void Interface_GUIWindow::set_control_visible(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                              UNIVERSALMEDIA_GUI_WINDOW_HANDLE handle,
                                               int control_id,
                                               bool visible)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   auto* pAddonWindow = static_cast<CGUIAddonWindow*>(handle);
   if (!addon || !pAddonWindow)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}') on "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}') on "
                "addon '{}'",
-               kodiBase, handle, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, addon ? addon->ID() : "unknown");
     return;
   }
 
@@ -455,19 +455,19 @@ void Interface_GUIWindow::set_control_visible(KODI_HANDLE kodiBase,
   Interface_GUIGeneral::unlock();
 }
 
-void Interface_GUIWindow::set_control_selected(KODI_HANDLE kodiBase,
-                                               KODI_GUI_WINDOW_HANDLE handle,
+void Interface_GUIWindow::set_control_selected(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                               UNIVERSALMEDIA_GUI_WINDOW_HANDLE handle,
                                                int control_id,
                                                bool selected)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   auto* pAddonWindow = static_cast<CGUIAddonWindow*>(handle);
   if (!addon || !pAddonWindow)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}') on "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}') on "
                "addon '{}'",
-               kodiBase, handle, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, addon ? addon->ID() : "unknown");
     return;
   }
 
@@ -483,19 +483,19 @@ void Interface_GUIWindow::set_control_selected(KODI_HANDLE kodiBase,
  * Window property functions
  */
 //@{
-void Interface_GUIWindow::set_property(KODI_HANDLE kodiBase,
-                                       KODI_GUI_WINDOW_HANDLE handle,
+void Interface_GUIWindow::set_property(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                       UNIVERSALMEDIA_GUI_WINDOW_HANDLE handle,
                                        const char* key,
                                        const char* value)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   auto* pAddonWindow = static_cast<CGUIAddonWindow*>(handle);
   if (!addon || !pAddonWindow || !key || !value)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}', "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}', "
                "key='{}', value='{}') on addon '{}'",
-               kodiBase, handle, static_cast<const void*>(key), static_cast<const void*>(value),
+               universalmediacenterBase, handle, static_cast<const void*>(key), static_cast<const void*>(value),
                addon ? addon->ID() : "unknown");
     return;
   }
@@ -508,19 +508,19 @@ void Interface_GUIWindow::set_property(KODI_HANDLE kodiBase,
   Interface_GUIGeneral::unlock();
 }
 
-void Interface_GUIWindow::set_property_int(KODI_HANDLE kodiBase,
-                                           KODI_GUI_WINDOW_HANDLE handle,
+void Interface_GUIWindow::set_property_int(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                           UNIVERSALMEDIA_GUI_WINDOW_HANDLE handle,
                                            const char* key,
                                            int value)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   auto* pAddonWindow = static_cast<CGUIAddonWindow*>(handle);
   if (!addon || !pAddonWindow || !key)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}', "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}', "
                "key='{}') on addon '{}'",
-               kodiBase, handle, static_cast<const void*>(key), addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, static_cast<const void*>(key), addon ? addon->ID() : "unknown");
     return;
   }
 
@@ -532,19 +532,19 @@ void Interface_GUIWindow::set_property_int(KODI_HANDLE kodiBase,
   Interface_GUIGeneral::unlock();
 }
 
-void Interface_GUIWindow::set_property_bool(KODI_HANDLE kodiBase,
-                                            KODI_GUI_WINDOW_HANDLE handle,
+void Interface_GUIWindow::set_property_bool(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                            UNIVERSALMEDIA_GUI_WINDOW_HANDLE handle,
                                             const char* key,
                                             bool value)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   auto* pAddonWindow = static_cast<CGUIAddonWindow*>(handle);
   if (!addon || !pAddonWindow || !key)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}', "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}', "
                "key='{}') on addon '{}'",
-               kodiBase, handle, static_cast<const void*>(key), addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, static_cast<const void*>(key), addon ? addon->ID() : "unknown");
     return;
   }
 
@@ -556,19 +556,19 @@ void Interface_GUIWindow::set_property_bool(KODI_HANDLE kodiBase,
   Interface_GUIGeneral::unlock();
 }
 
-void Interface_GUIWindow::set_property_double(KODI_HANDLE kodiBase,
-                                              KODI_GUI_WINDOW_HANDLE handle,
+void Interface_GUIWindow::set_property_double(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                              UNIVERSALMEDIA_GUI_WINDOW_HANDLE handle,
                                               const char* key,
                                               double value)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   auto* pAddonWindow = static_cast<CGUIAddonWindow*>(handle);
   if (!addon || !pAddonWindow || !key)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}', "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}', "
                "key='{}') on addon '{}'",
-               kodiBase, handle, static_cast<const void*>(key), addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, static_cast<const void*>(key), addon ? addon->ID() : "unknown");
     return;
   }
 
@@ -580,18 +580,18 @@ void Interface_GUIWindow::set_property_double(KODI_HANDLE kodiBase,
   Interface_GUIGeneral::unlock();
 }
 
-char* Interface_GUIWindow::get_property(KODI_HANDLE kodiBase,
-                                        KODI_GUI_WINDOW_HANDLE handle,
+char* Interface_GUIWindow::get_property(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                        UNIVERSALMEDIA_GUI_WINDOW_HANDLE handle,
                                         const char* key)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   const auto* pAddonWindow = static_cast<const CGUIAddonWindow*>(handle);
   if (!addon || !pAddonWindow || !key)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}', "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}', "
                "key='{}') on addon '{}'",
-               kodiBase, handle, static_cast<const void*>(key), addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, static_cast<const void*>(key), addon ? addon->ID() : "unknown");
     return nullptr;
   }
 
@@ -605,18 +605,18 @@ char* Interface_GUIWindow::get_property(KODI_HANDLE kodiBase,
   return strdup(value.c_str());
 }
 
-int Interface_GUIWindow::get_property_int(KODI_HANDLE kodiBase,
-                                          KODI_GUI_WINDOW_HANDLE handle,
+int Interface_GUIWindow::get_property_int(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                          UNIVERSALMEDIA_GUI_WINDOW_HANDLE handle,
                                           const char* key)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   const auto* pAddonWindow = static_cast<const CGUIAddonWindow*>(handle);
   if (!addon || !pAddonWindow || !key)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}', "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}', "
                "key='{}') on addon '{}'",
-               kodiBase, handle, static_cast<const void*>(key), addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, static_cast<const void*>(key), addon ? addon->ID() : "unknown");
     return -1;
   }
 
@@ -630,18 +630,18 @@ int Interface_GUIWindow::get_property_int(KODI_HANDLE kodiBase,
   return value;
 }
 
-bool Interface_GUIWindow::get_property_bool(KODI_HANDLE kodiBase,
-                                            KODI_GUI_WINDOW_HANDLE handle,
+bool Interface_GUIWindow::get_property_bool(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                            UNIVERSALMEDIA_GUI_WINDOW_HANDLE handle,
                                             const char* key)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   const auto* pAddonWindow = static_cast<const CGUIAddonWindow*>(handle);
   if (!addon || !pAddonWindow || !key)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}', "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}', "
                "key='{}') on addon '{}'",
-               kodiBase, handle, static_cast<const void*>(key), addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, static_cast<const void*>(key), addon ? addon->ID() : "unknown");
     return false;
   }
 
@@ -655,18 +655,18 @@ bool Interface_GUIWindow::get_property_bool(KODI_HANDLE kodiBase,
   return value;
 }
 
-double Interface_GUIWindow::get_property_double(KODI_HANDLE kodiBase,
-                                                KODI_GUI_WINDOW_HANDLE handle,
+double Interface_GUIWindow::get_property_double(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                                UNIVERSALMEDIA_GUI_WINDOW_HANDLE handle,
                                                 const char* key)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   const auto* pAddonWindow = static_cast<const CGUIAddonWindow*>(handle);
   if (!addon || !pAddonWindow || !key)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}', "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}', "
                "key='{}') on addon '{}'",
-               kodiBase, handle, static_cast<const void*>(key), addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, static_cast<const void*>(key), addon ? addon->ID() : "unknown");
     return 0.0;
   }
 
@@ -680,16 +680,16 @@ double Interface_GUIWindow::get_property_double(KODI_HANDLE kodiBase,
   return value;
 }
 
-void Interface_GUIWindow::clear_properties(KODI_HANDLE kodiBase, KODI_GUI_WINDOW_HANDLE handle)
+void Interface_GUIWindow::clear_properties(UNIVERSALMEDIA_HANDLE universalmediacenterBase, UNIVERSALMEDIA_GUI_WINDOW_HANDLE handle)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   auto* pAddonWindow = static_cast<CGUIAddonWindow*>(handle);
   if (!addon || !pAddonWindow)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}') on "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}') on "
                "addon '{}'",
-               kodiBase, handle, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, addon ? addon->ID() : "unknown");
     return;
   }
 
@@ -698,18 +698,18 @@ void Interface_GUIWindow::clear_properties(KODI_HANDLE kodiBase, KODI_GUI_WINDOW
   Interface_GUIGeneral::unlock();
 }
 
-void Interface_GUIWindow::clear_property(KODI_HANDLE kodiBase,
-                                         KODI_GUI_WINDOW_HANDLE handle,
+void Interface_GUIWindow::clear_property(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                         UNIVERSALMEDIA_GUI_WINDOW_HANDLE handle,
                                          const char* key)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   auto* pAddonWindow = static_cast<CGUIAddonWindow*>(handle);
   if (!addon || !pAddonWindow || !key)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}', "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}', "
                "key='{}') on addon '{}'",
-               kodiBase, handle, static_cast<const void*>(key), addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, static_cast<const void*>(key), addon ? addon->ID() : "unknown");
     return;
   }
 
@@ -726,16 +726,16 @@ void Interface_GUIWindow::clear_property(KODI_HANDLE kodiBase,
  * List item functions
  */
 //@{
-void Interface_GUIWindow::clear_item_list(KODI_HANDLE kodiBase, KODI_GUI_WINDOW_HANDLE handle)
+void Interface_GUIWindow::clear_item_list(UNIVERSALMEDIA_HANDLE universalmediacenterBase, UNIVERSALMEDIA_GUI_WINDOW_HANDLE handle)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   auto* pAddonWindow = static_cast<CGUIAddonWindow*>(handle);
   if (!addon || !pAddonWindow)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}') on "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}') on "
                "addon '{}'",
-               kodiBase, handle, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, addon ? addon->ID() : "unknown");
     return;
   }
 
@@ -744,19 +744,19 @@ void Interface_GUIWindow::clear_item_list(KODI_HANDLE kodiBase, KODI_GUI_WINDOW_
   Interface_GUIGeneral::unlock();
 }
 
-void Interface_GUIWindow::add_list_item(KODI_HANDLE kodiBase,
-                                        KODI_GUI_WINDOW_HANDLE handle,
-                                        KODI_GUI_LISTITEM_HANDLE item,
+void Interface_GUIWindow::add_list_item(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                        UNIVERSALMEDIA_GUI_WINDOW_HANDLE handle,
+                                        UNIVERSALMEDIA_GUI_LISTITEM_HANDLE item,
                                         int list_position)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   auto* pAddonWindow = static_cast<CGUIAddonWindow*>(handle);
   if (!addon || !pAddonWindow || !item)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}', "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}', "
                "item='{}') on addon '{}'",
-               kodiBase, handle, item, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, item, addon ? addon->ID() : "unknown");
     return;
   }
 
@@ -772,18 +772,18 @@ void Interface_GUIWindow::add_list_item(KODI_HANDLE kodiBase,
   Interface_GUIGeneral::unlock();
 }
 
-void Interface_GUIWindow::remove_list_item_from_position(KODI_HANDLE kodiBase,
-                                                         KODI_GUI_WINDOW_HANDLE handle,
+void Interface_GUIWindow::remove_list_item_from_position(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                                         UNIVERSALMEDIA_GUI_WINDOW_HANDLE handle,
                                                          int list_position)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   auto* pAddonWindow = static_cast<CGUIAddonWindow*>(handle);
   if (!addon || !pAddonWindow)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}') on "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}') on "
                "addon '{}'",
-               kodiBase, handle, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, addon ? addon->ID() : "unknown");
     return;
   }
 
@@ -792,18 +792,18 @@ void Interface_GUIWindow::remove_list_item_from_position(KODI_HANDLE kodiBase,
   Interface_GUIGeneral::unlock();
 }
 
-void Interface_GUIWindow::remove_list_item(KODI_HANDLE kodiBase,
-                                           KODI_GUI_WINDOW_HANDLE handle,
-                                           KODI_GUI_LISTITEM_HANDLE item)
+void Interface_GUIWindow::remove_list_item(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                           UNIVERSALMEDIA_GUI_WINDOW_HANDLE handle,
+                                           UNIVERSALMEDIA_GUI_LISTITEM_HANDLE item)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   auto* pAddonWindow = static_cast<CGUIAddonWindow*>(handle);
   if (!addon || !pAddonWindow || !item)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}', "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}', "
                "item='{}') on addon '{}'",
-               kodiBase, handle, item, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, item, addon ? addon->ID() : "unknown");
     return;
   }
 
@@ -819,18 +819,18 @@ void Interface_GUIWindow::remove_list_item(KODI_HANDLE kodiBase,
   Interface_GUIGeneral::unlock();
 }
 
-KODI_GUI_LISTITEM_HANDLE Interface_GUIWindow::get_list_item(KODI_HANDLE kodiBase,
-                                                            KODI_GUI_WINDOW_HANDLE handle,
+UNIVERSALMEDIA_GUI_LISTITEM_HANDLE Interface_GUIWindow::get_list_item(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                                            UNIVERSALMEDIA_GUI_WINDOW_HANDLE handle,
                                                             int list_position)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   auto* pAddonWindow = static_cast<CGUIAddonWindow*>(handle);
   if (!addon || !pAddonWindow)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}') on "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}') on "
                "addon '{}'",
-               kodiBase, handle, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, addon ? addon->ID() : "unknown");
     return nullptr;
   }
 
@@ -851,18 +851,18 @@ KODI_GUI_LISTITEM_HANDLE Interface_GUIWindow::get_list_item(KODI_HANDLE kodiBase
   return pItem;
 }
 
-void Interface_GUIWindow::set_current_list_position(KODI_HANDLE kodiBase,
-                                                    KODI_GUI_WINDOW_HANDLE handle,
+void Interface_GUIWindow::set_current_list_position(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                                    UNIVERSALMEDIA_GUI_WINDOW_HANDLE handle,
                                                     int list_position)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   auto* pAddonWindow = static_cast<CGUIAddonWindow*>(handle);
   if (!addon || !pAddonWindow)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}') on "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}') on "
                "addon '{}'",
-               kodiBase, handle, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, addon ? addon->ID() : "unknown");
     return;
   }
 
@@ -871,17 +871,17 @@ void Interface_GUIWindow::set_current_list_position(KODI_HANDLE kodiBase,
   Interface_GUIGeneral::unlock();
 }
 
-int Interface_GUIWindow::get_current_list_position(KODI_HANDLE kodiBase,
-                                                   KODI_GUI_WINDOW_HANDLE handle)
+int Interface_GUIWindow::get_current_list_position(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                                   UNIVERSALMEDIA_GUI_WINDOW_HANDLE handle)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   const auto* pAddonWindow = static_cast<const CGUIAddonWindow*>(handle);
   if (!addon || !pAddonWindow)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}') on "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}') on "
                "addon '{}'",
-               kodiBase, handle, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, addon ? addon->ID() : "unknown");
     return -1;
   }
 
@@ -892,16 +892,16 @@ int Interface_GUIWindow::get_current_list_position(KODI_HANDLE kodiBase,
   return listPos;
 }
 
-int Interface_GUIWindow::get_list_size(KODI_HANDLE kodiBase, KODI_GUI_WINDOW_HANDLE handle)
+int Interface_GUIWindow::get_list_size(UNIVERSALMEDIA_HANDLE universalmediacenterBase, UNIVERSALMEDIA_GUI_WINDOW_HANDLE handle)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   const auto* pAddonWindow = static_cast<const CGUIAddonWindow*>(handle);
   if (!addon || !pAddonWindow)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}') on "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}') on "
                "addon '{}'",
-               kodiBase, handle, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, addon ? addon->ID() : "unknown");
     return -1;
   }
 
@@ -912,19 +912,19 @@ int Interface_GUIWindow::get_list_size(KODI_HANDLE kodiBase, KODI_GUI_WINDOW_HAN
   return listSize;
 }
 
-void Interface_GUIWindow::set_container_property(KODI_HANDLE kodiBase,
-                                                 KODI_GUI_WINDOW_HANDLE handle,
+void Interface_GUIWindow::set_container_property(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                                 UNIVERSALMEDIA_GUI_WINDOW_HANDLE handle,
                                                  const char* key,
                                                  const char* value)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   auto* pAddonWindow = static_cast<CGUIAddonWindow*>(handle);
   if (!addon || !pAddonWindow || !key || !value)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}', "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}', "
                "key='{}', value='{}') on addon '{}'",
-               kodiBase, handle, static_cast<const void*>(key), static_cast<const void*>(value),
+               universalmediacenterBase, handle, static_cast<const void*>(key), static_cast<const void*>(value),
                addon ? addon->ID() : "unknown");
     return;
   }
@@ -934,18 +934,18 @@ void Interface_GUIWindow::set_container_property(KODI_HANDLE kodiBase,
   Interface_GUIGeneral::unlock();
 }
 
-void Interface_GUIWindow::set_container_content(KODI_HANDLE kodiBase,
-                                                KODI_GUI_WINDOW_HANDLE handle,
+void Interface_GUIWindow::set_container_content(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                                UNIVERSALMEDIA_GUI_WINDOW_HANDLE handle,
                                                 const char* value)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   auto* pAddonWindow = static_cast<CGUIAddonWindow*>(handle);
   if (!addon || !pAddonWindow || !value)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}', "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}', "
                "value='{}') on addon '{}'",
-               kodiBase, handle, static_cast<const void*>(value), addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, static_cast<const void*>(value), addon ? addon->ID() : "unknown");
     return;
   }
 
@@ -954,17 +954,17 @@ void Interface_GUIWindow::set_container_content(KODI_HANDLE kodiBase,
   Interface_GUIGeneral::unlock();
 }
 
-int Interface_GUIWindow::get_current_container_id(KODI_HANDLE kodiBase,
-                                                  KODI_GUI_WINDOW_HANDLE handle)
+int Interface_GUIWindow::get_current_container_id(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                                  UNIVERSALMEDIA_GUI_WINDOW_HANDLE handle)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   auto* pAddonWindow = static_cast<CGUIAddonWindow*>(handle);
   if (!addon || !pAddonWindow)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}') on "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}') on "
                "addon '{}'",
-               kodiBase, handle, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, addon ? addon->ID() : "unknown");
     return -1;
   }
 
@@ -980,16 +980,16 @@ int Interface_GUIWindow::get_current_container_id(KODI_HANDLE kodiBase,
  * Various functions
  */
 //@{
-void Interface_GUIWindow::mark_dirty_region(KODI_HANDLE kodiBase, KODI_GUI_WINDOW_HANDLE handle)
+void Interface_GUIWindow::mark_dirty_region(UNIVERSALMEDIA_HANDLE universalmediacenterBase, UNIVERSALMEDIA_GUI_WINDOW_HANDLE handle)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   auto* pAddonWindow = static_cast<CGUIAddonWindow*>(handle);
   if (!addon || !pAddonWindow)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}') on "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}') on "
                "addon '{}'",
-               kodiBase, handle, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, addon ? addon->ID() : "unknown");
     return;
   }
 
@@ -1003,67 +1003,67 @@ void Interface_GUIWindow::mark_dirty_region(KODI_HANDLE kodiBase, KODI_GUI_WINDO
  * GUI control access functions
  */
 //@{
-KODI_GUI_CONTROL_HANDLE Interface_GUIWindow::get_control_button(KODI_HANDLE kodiBase,
-                                                                KODI_GUI_WINDOW_HANDLE handle,
+UNIVERSALMEDIA_GUI_CONTROL_HANDLE Interface_GUIWindow::get_control_button(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                                                UNIVERSALMEDIA_GUI_WINDOW_HANDLE handle,
                                                                 int control_id)
 {
-  return GetControl(kodiBase, handle, control_id, std::source_location::current().function_name(),
+  return GetControl(universalmediacenterBase, handle, control_id, std::source_location::current().function_name(),
                     CGUIControl::GUICONTROL_BUTTON, "button");
 }
 
-KODI_GUI_CONTROL_HANDLE Interface_GUIWindow::get_control_edit(KODI_HANDLE kodiBase,
-                                                              KODI_GUI_WINDOW_HANDLE handle,
+UNIVERSALMEDIA_GUI_CONTROL_HANDLE Interface_GUIWindow::get_control_edit(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                                              UNIVERSALMEDIA_GUI_WINDOW_HANDLE handle,
                                                               int control_id)
 {
-  return GetControl(kodiBase, handle, control_id, std::source_location::current().function_name(),
+  return GetControl(universalmediacenterBase, handle, control_id, std::source_location::current().function_name(),
                     CGUIControl::GUICONTROL_EDIT, "edit");
 }
 
-KODI_GUI_CONTROL_HANDLE Interface_GUIWindow::get_control_fade_label(KODI_HANDLE kodiBase,
-                                                                    KODI_GUI_WINDOW_HANDLE handle,
+UNIVERSALMEDIA_GUI_CONTROL_HANDLE Interface_GUIWindow::get_control_fade_label(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                                                    UNIVERSALMEDIA_GUI_WINDOW_HANDLE handle,
                                                                     int control_id)
 {
-  return GetControl(kodiBase, handle, control_id, std::source_location::current().function_name(),
+  return GetControl(universalmediacenterBase, handle, control_id, std::source_location::current().function_name(),
                     CGUIControl::GUICONTROL_FADELABEL, "fade label");
 }
 
-KODI_GUI_CONTROL_HANDLE Interface_GUIWindow::get_control_image(KODI_HANDLE kodiBase,
-                                                               KODI_GUI_WINDOW_HANDLE handle,
+UNIVERSALMEDIA_GUI_CONTROL_HANDLE Interface_GUIWindow::get_control_image(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                                               UNIVERSALMEDIA_GUI_WINDOW_HANDLE handle,
                                                                int control_id)
 {
-  return GetControl(kodiBase, handle, control_id, std::source_location::current().function_name(),
+  return GetControl(universalmediacenterBase, handle, control_id, std::source_location::current().function_name(),
                     CGUIControl::GUICONTROL_IMAGE, "image");
 }
 
-KODI_GUI_CONTROL_HANDLE Interface_GUIWindow::get_control_label(KODI_HANDLE kodiBase,
-                                                               KODI_GUI_WINDOW_HANDLE handle,
+UNIVERSALMEDIA_GUI_CONTROL_HANDLE Interface_GUIWindow::get_control_label(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                                               UNIVERSALMEDIA_GUI_WINDOW_HANDLE handle,
                                                                int control_id)
 {
-  return GetControl(kodiBase, handle, control_id, std::source_location::current().function_name(),
+  return GetControl(universalmediacenterBase, handle, control_id, std::source_location::current().function_name(),
                     CGUIControl::GUICONTROL_LABEL, "label");
 }
-KODI_GUI_CONTROL_HANDLE Interface_GUIWindow::get_control_progress(KODI_HANDLE kodiBase,
-                                                                  KODI_GUI_WINDOW_HANDLE handle,
+UNIVERSALMEDIA_GUI_CONTROL_HANDLE Interface_GUIWindow::get_control_progress(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                                                  UNIVERSALMEDIA_GUI_WINDOW_HANDLE handle,
                                                                   int control_id)
 {
-  return GetControl(kodiBase, handle, control_id, std::source_location::current().function_name(),
+  return GetControl(universalmediacenterBase, handle, control_id, std::source_location::current().function_name(),
                     CGUIControl::GUICONTROL_PROGRESS, "progress");
 }
 
-KODI_GUI_CONTROL_HANDLE Interface_GUIWindow::get_control_radio_button(KODI_HANDLE kodiBase,
-                                                                      KODI_GUI_WINDOW_HANDLE handle,
+UNIVERSALMEDIA_GUI_CONTROL_HANDLE Interface_GUIWindow::get_control_radio_button(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                                                      UNIVERSALMEDIA_GUI_WINDOW_HANDLE handle,
                                                                       int control_id)
 {
-  return GetControl(kodiBase, handle, control_id, std::source_location::current().function_name(),
+  return GetControl(universalmediacenterBase, handle, control_id, std::source_location::current().function_name(),
                     CGUIControl::GUICONTROL_RADIO, "radio button");
 }
 
-KODI_GUI_CONTROL_HANDLE Interface_GUIWindow::get_control_render_addon(KODI_HANDLE kodiBase,
-                                                                      KODI_GUI_WINDOW_HANDLE handle,
+UNIVERSALMEDIA_GUI_CONTROL_HANDLE Interface_GUIWindow::get_control_render_addon(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                                                      UNIVERSALMEDIA_GUI_WINDOW_HANDLE handle,
                                                                       int control_id)
 {
   auto* pGUIControl = static_cast<CGUIControl*>(
-      GetControl(kodiBase, handle, control_id, std::source_location::current().function_name(),
+      GetControl(universalmediacenterBase, handle, control_id, std::source_location::current().function_name(),
                  CGUIControl::GUICONTROL_RENDERADDON, "renderaddon"));
   if (!pGUIControl)
     return nullptr;
@@ -1073,53 +1073,53 @@ KODI_GUI_CONTROL_HANDLE Interface_GUIWindow::get_control_render_addon(KODI_HANDL
   return pRenderControl;
 }
 
-KODI_GUI_CONTROL_HANDLE Interface_GUIWindow::get_control_settings_slider(
-    KODI_HANDLE kodiBase, KODI_GUI_WINDOW_HANDLE handle, int control_id)
+UNIVERSALMEDIA_GUI_CONTROL_HANDLE Interface_GUIWindow::get_control_settings_slider(
+    UNIVERSALMEDIA_HANDLE universalmediacenterBase, UNIVERSALMEDIA_GUI_WINDOW_HANDLE handle, int control_id)
 {
-  return GetControl(kodiBase, handle, control_id, std::source_location::current().function_name(),
+  return GetControl(universalmediacenterBase, handle, control_id, std::source_location::current().function_name(),
                     CGUIControl::GUICONTROL_SETTINGS_SLIDER, "settings slider");
 }
 
-KODI_GUI_CONTROL_HANDLE Interface_GUIWindow::get_control_slider(KODI_HANDLE kodiBase,
-                                                                KODI_GUI_WINDOW_HANDLE handle,
+UNIVERSALMEDIA_GUI_CONTROL_HANDLE Interface_GUIWindow::get_control_slider(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                                                UNIVERSALMEDIA_GUI_WINDOW_HANDLE handle,
                                                                 int control_id)
 {
-  return GetControl(kodiBase, handle, control_id, std::source_location::current().function_name(),
+  return GetControl(universalmediacenterBase, handle, control_id, std::source_location::current().function_name(),
                     CGUIControl::GUICONTROL_SLIDER, "slider");
 }
 
-KODI_GUI_CONTROL_HANDLE Interface_GUIWindow::get_control_spin(KODI_HANDLE kodiBase,
-                                                              KODI_GUI_WINDOW_HANDLE handle,
+UNIVERSALMEDIA_GUI_CONTROL_HANDLE Interface_GUIWindow::get_control_spin(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                                              UNIVERSALMEDIA_GUI_WINDOW_HANDLE handle,
                                                               int control_id)
 {
-  return GetControl(kodiBase, handle, control_id, std::source_location::current().function_name(),
+  return GetControl(universalmediacenterBase, handle, control_id, std::source_location::current().function_name(),
                     CGUIControl::GUICONTROL_SPINEX, "spin");
 }
 
-KODI_GUI_CONTROL_HANDLE Interface_GUIWindow::get_control_text_box(KODI_HANDLE kodiBase,
-                                                                  KODI_GUI_WINDOW_HANDLE handle,
+UNIVERSALMEDIA_GUI_CONTROL_HANDLE Interface_GUIWindow::get_control_text_box(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                                                  UNIVERSALMEDIA_GUI_WINDOW_HANDLE handle,
                                                                   int control_id)
 {
-  return GetControl(kodiBase, handle, control_id, std::source_location::current().function_name(),
+  return GetControl(universalmediacenterBase, handle, control_id, std::source_location::current().function_name(),
                     CGUIControl::GUICONTROL_TEXTBOX, "textbox");
 }
 //@}
 
-KODI_GUI_CONTROL_HANDLE Interface_GUIWindow::GetControl(KODI_HANDLE kodiBase,
-                                                        KODI_GUI_WINDOW_HANDLE handle,
+UNIVERSALMEDIA_GUI_CONTROL_HANDLE Interface_GUIWindow::GetControl(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                                        UNIVERSALMEDIA_GUI_WINDOW_HANDLE handle,
                                                         int control_id,
                                                         const char* function,
                                                         CGUIControl::GUICONTROLTYPES type,
                                                         const std::string& typeName)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   auto* pAddonWindow = static_cast<CGUIAddonWindow*>(handle);
   if (!addon || !pAddonWindow)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', handle='{}') on "
+               "Invalid handler data (universalmediacenterBase='{}', handle='{}') on "
                "addon '{}'",
-               kodiBase, handle, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, addon ? addon->ID() : "unknown");
     return nullptr;
   }
 

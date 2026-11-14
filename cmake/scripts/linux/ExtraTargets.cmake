@@ -2,7 +2,7 @@
 if(TARGET ${APP_NAME_LC}::X AND TARGET ${APP_NAME_LC}::XRandR)
   find_package(X ${SEARCH_QUIET})
   find_package(XRandR ${SEARCH_QUIET})
-  add_executable(${APP_NAME_LC}-xrandr ${CMAKE_SOURCE_DIR}/xbmc-xrandr.c)
+  add_executable(${APP_NAME_LC}-xrandr ${CMAKE_SOURCE_DIR}/-xrandr.c)
   target_link_libraries(${APP_NAME_LC}-xrandr ${SYSTEM_LDFLAGS} ${APP_NAME_LC}::X m ${APP_NAME_LC}::XRandR)
 endif()
 

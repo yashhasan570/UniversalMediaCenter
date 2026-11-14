@@ -12,7 +12,7 @@
 
 #include "system_gl.h"
 
-namespace KODI::SHADER
+namespace UNIVERSAL MEDIA CENTER::SHADER
 {
 
 class CShaderUtilsGL
@@ -21,4 +21,4 @@ public:
   static GLint TranslateWrapType(WrapType wrapType);
   static std::string GetGLSLVersion(std::string& source);
 };
-} // namespace KODI::SHADER
+} // namespace UNIVERSAL MEDIA CENTER::SHADER

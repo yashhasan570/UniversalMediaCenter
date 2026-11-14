@@ -35,16 +35,16 @@ public:
 /*!
  * Skipped unless pointed at a server:
  *
- *   KODI_TEST_MYSQL_HOST=127.0.0.1 KODI_TEST_MYSQL_USER=kodi KODI_TEST_MYSQL_PASS=kodi
+ *   UNIVERSALMEDIA_TEST_MYSQL_HOST=127.0.0.1 UNIVERSALMEDIA_TEST_MYSQL_USER=universalmediacenter UNIVERSALMEDIA_TEST_MYSQL_PASS=universalmediacenter
  */
 TEST(TestMysqlDataset, MarksANullFieldAsNull)
 {
-  const char* const host{std::getenv("KODI_TEST_MYSQL_HOST")};
-  const char* const user{std::getenv("KODI_TEST_MYSQL_USER")};
-  const char* const pass{std::getenv("KODI_TEST_MYSQL_PASS")};
+  const char* const host{std::getenv("UNIVERSALMEDIA_TEST_MYSQL_HOST")};
+  const char* const user{std::getenv("UNIVERSALMEDIA_TEST_MYSQL_USER")};
+  const char* const pass{std::getenv("UNIVERSALMEDIA_TEST_MYSQL_PASS")};
   if (!host || !user || !pass)
   {
-    GTEST_SKIP() << "set KODI_TEST_MYSQL_HOST, KODI_TEST_MYSQL_USER and KODI_TEST_MYSQL_PASS "
+    GTEST_SKIP() << "set UNIVERSALMEDIA_TEST_MYSQL_HOST, UNIVERSALMEDIA_TEST_MYSQL_USER and UNIVERSALMEDIA_TEST_MYSQL_PASS "
                     "to run this test";
   }
 
@@ -53,12 +53,12 @@ TEST(TestMysqlDataset, MarksANullFieldAsNull)
   settings.host = host;
   settings.user = user;
   settings.pass = pass;
-  if (const char* const port{std::getenv("KODI_TEST_MYSQL_PORT")})
+  if (const char* const port{std::getenv("UNIVERSALMEDIA_TEST_MYSQL_PORT")})
     settings.port = port;
 
   CQueryableDatabase db;
   ASSERT_EQ(CDatabase::ConnectionState::STATE_CONNECTED,
-            db.Connect("kodi_test_mysqldataset", settings, true))
+            db.Connect("universalmediacenter_test_mysqldataset", settings, true))
       << "could not create the test database on " << host;
 
   // A text and an integer column, each NULL in one row and set in the other

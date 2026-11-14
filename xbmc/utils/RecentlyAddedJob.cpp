@@ -31,7 +31,7 @@
 #include "video/VideoInfoTag.h"
 #include "video/VideoThumbLoader.h"
 
-using KODI::MEDIA::NameOf;
+using UNIVERSAL MEDIA CENTER::MEDIA::NameOf;
 
 #if defined(TARGET_DARWIN_TVOS)
 #include "platform/darwin/tvos/TVOSTopShelf.h"
@@ -61,7 +61,7 @@ bool CRecentlyAddedJob::UpdateVideo()
 
   videodatabase.Open();
 
-  if (videodatabase.GetRecentlyAddedMoviesNav(KODI::VIDEO::DB_PATH::RECENTLY_ADDED_MOVIES, items, NUM_ITEMS))
+  if (videodatabase.GetRecentlyAddedMoviesNav(UNIVERSAL MEDIA CENTER::VIDEO::DB_PATH::RECENTLY_ADDED_MOVIES, items, NUM_ITEMS))
   {
     for (; i < items.Size(); ++i)
     {
@@ -78,12 +78,12 @@ bool CRecentlyAddedJob::UpdateVideo()
       home->SetProperty("LatestMovie." + value + ".Path"        , item->GetVideoInfoTag()->m_strFileNameAndPath);
       home->SetProperty("LatestMovie." + value + ".Trailer"     , item->GetVideoInfoTag()->m_strTrailer);
 
-      if (!item->HasArt(KODI::ART::TYPE::THUMB))
+      if (!item->HasArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB))
         loader.LoadItem(item.get());
 
-      home->SetProperty("LatestMovie." + value + ".Thumb", item->GetArt(KODI::ART::TYPE::THUMB));
-      home->SetProperty("LatestMovie." + value + ".Fanart", item->GetArt(KODI::ART::TYPE::FANART));
-      home->SetProperty("LatestMovie." + value + ".Poster", item->GetArt(KODI::ART::TYPE::POSTER));
+      home->SetProperty("LatestMovie." + value + ".Thumb", item->GetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB));
+      home->SetProperty("LatestMovie." + value + ".Fanart", item->GetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::FANART));
+      home->SetProperty("LatestMovie." + value + ".Poster", item->GetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::POSTER));
     }
   }
   for (; i < NUM_ITEMS; ++i)
@@ -104,7 +104,7 @@ bool CRecentlyAddedJob::UpdateVideo()
   i = 0;
   CFileItemList  TVShowItems;
 
-  if (videodatabase.GetRecentlyAddedEpisodesNav(KODI::VIDEO::DB_PATH::RECENTLY_ADDED_EPISODES, TVShowItems, NUM_ITEMS))
+  if (videodatabase.GetRecentlyAddedEpisodesNav(UNIVERSAL MEDIA CENTER::VIDEO::DB_PATH::RECENTLY_ADDED_EPISODES, TVShowItems, NUM_ITEMS))
   {
     for (; i < TVShowItems.Size(); ++i)
     {
@@ -125,20 +125,20 @@ bool CRecentlyAddedJob::UpdateVideo()
       home->SetProperty("LatestEpisode." + value + ".EpisodeNumber" , EpisodeNumber);
       home->SetProperty("LatestEpisode." + value + ".Path"          , item->GetVideoInfoTag()->m_strFileNameAndPath);
 
-      if (!item->HasArt(KODI::ART::TYPE::THUMB))
+      if (!item->HasArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB))
         loader.LoadItem(item.get());
 
       std::string seasonThumb;
       if (item->GetVideoInfoTag()->m_iIdSeason > 0)
         seasonThumb = videodatabase.GetArtForItem(item->GetVideoInfoTag()->m_iIdSeason,
-                                                  KODI::MEDIA::TYPE::SEASON,
-                                                  KODI::ART::TYPE::THUMB);
+                                                  UNIVERSAL MEDIA CENTER::MEDIA::TYPE::SEASON,
+                                                  UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB);
 
-      home->SetProperty("LatestEpisode." + value + ".Thumb", item->GetArt(KODI::ART::TYPE::THUMB));
+      home->SetProperty("LatestEpisode." + value + ".Thumb", item->GetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB));
       home->SetProperty("LatestEpisode." + value + ".ShowThumb"     , item->GetArt("tvshow.thumb"));
       home->SetProperty("LatestEpisode." + value + ".SeasonThumb"   , seasonThumb);
       home->SetProperty("LatestEpisode." + value + ".Fanart",
-                        item->GetArt(KODI::ART::TYPE::FANART));
+                        item->GetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::FANART));
     }
   }
   for (; i < NUM_ITEMS; ++i)
@@ -167,7 +167,7 @@ bool CRecentlyAddedJob::UpdateVideo()
   i = 0;
   CFileItemList MusicVideoItems;
 
-  if (videodatabase.GetRecentlyAddedMusicVideosNav(KODI::VIDEO::DB_PATH::RECENTLY_ADDED_MUSICVIDEOS, MusicVideoItems, NUM_ITEMS))
+  if (videodatabase.GetRecentlyAddedMusicVideosNav(UNIVERSAL MEDIA CENTER::VIDEO::DB_PATH::RECENTLY_ADDED_MUSICVIDEOS, MusicVideoItems, NUM_ITEMS))
   {
     for (; i < MusicVideoItems.Size(); ++i)
     {
@@ -181,13 +181,13 @@ bool CRecentlyAddedJob::UpdateVideo()
       home->SetProperty("LatestMusicVideo." + value + ".Path"        , item->GetVideoInfoTag()->m_strFileNameAndPath);
       home->SetProperty("LatestMusicVideo." + value + ".Artist"      , StringUtils::Join(item->GetVideoInfoTag()->m_artist, CServiceBroker::GetSettingsComponent()->GetAdvancedSettings()->m_videoItemSeparator));
 
-      if (!item->HasArt(KODI::ART::TYPE::THUMB))
+      if (!item->HasArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB))
         loader.LoadItem(item.get());
 
       home->SetProperty("LatestMusicVideo." + value + ".Thumb",
-                        item->GetArt(KODI::ART::TYPE::THUMB));
+                        item->GetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB));
       home->SetProperty("LatestMusicVideo." + value + ".Fanart",
-                        item->GetArt(KODI::ART::TYPE::FANART));
+                        item->GetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::FANART));
     }
   }
   for (; i < NUM_ITEMS; ++i)
@@ -224,7 +224,7 @@ bool CRecentlyAddedJob::UpdateMusic()
 
   musicdatabase.Open();
 
-  if (musicdatabase.GetRecentlyAddedAlbumSongs(KODI::MUSIC::DB_PATH::SONGS, musicItems, NUM_ITEMS))
+  if (musicdatabase.GetRecentlyAddedAlbumSongs(UNIVERSAL MEDIA CENTER::MUSIC::DB_PATH::SONGS, musicItems, NUM_ITEMS))
   {
     int idAlbum = -1;
     std::string strAlbumThumb;
@@ -246,8 +246,8 @@ bool CRecentlyAddedJob::UpdateMusic()
 
         if (loader.LoadItem(item.get()))
         {
-          strAlbumThumb = item->GetArt(KODI::ART::TYPE::THUMB);
-          strAlbumFanart = item->GetArt(KODI::ART::TYPE::FANART);
+          strAlbumThumb = item->GetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB);
+          strAlbumFanart = item->GetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::FANART);
         }
       }
 
@@ -296,17 +296,17 @@ bool CRecentlyAddedJob::UpdateMusic()
       {
         for (const auto& artitem : art)
         {
-          if (artitem.mediaType == NameOf(KODI::MEDIA::TYPE::ALBUM) &&
-              artitem.artType == KODI::ART::TYPE::THUMB)
+          if (artitem.mediaType == NameOf(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::ALBUM) &&
+              artitem.artType == UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB)
             strThumb = artitem.url;
-          else if (artitem.mediaType == NameOf(KODI::MEDIA::TYPE::ARTIST) &&
-                   artitem.artType == KODI::ART::TYPE::FANART)
+          else if (artitem.mediaType == NameOf(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::ARTIST) &&
+                   artitem.artType == UNIVERSAL MEDIA CENTER::ART::TYPE::FANART)
             strFanart = artitem.url;
         }
       }
 
       std::string strDBpath =
-          StringUtils::Format("{}{}/", KODI::MUSIC::DB_PATH::ALBUMS, album.idAlbum);
+          StringUtils::Format("{}{}/", UNIVERSAL MEDIA CENTER::MUSIC::DB_PATH::ALBUMS, album.idAlbum);
 
       home->SetProperty("LatestAlbum." + value + ".Title"   , album.strAlbum);
       home->SetProperty("LatestAlbum." + value + ".Year"    , album.strReleaseDate);
@@ -349,7 +349,7 @@ bool CRecentlyAddedJob::UpdateTotal()
   musicdatabase.Open();
 
   CMusicDbUrl musicUrl;
-  musicUrl.FromString(KODI::MUSIC::DB_PATH::ARTISTS);
+  musicUrl.FromString(UNIVERSAL MEDIA CENTER::MUSIC::DB_PATH::ARTISTS);
   musicUrl.AddOption("albumartistsonly", !CServiceBroker::GetSettingsComponent()->GetSettings()->GetBool(CSettings::SETTING_MUSICLIBRARY_SHOWCOMPILATIONARTISTS));
 
   CFileItemList items;

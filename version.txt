@@ -13,6 +13,6 @@ VERSION_CODE 22.90.701
 ADDON_API 22.90.701
 ADDON_REPOS repository.github.com/yashhasan570/UniversalMediaCenter|https://mirrors.github.com/yashhasan570/UniversalMediaCenter
 APP_PACKAGE com.universalmediacenter.app
-PACKAGE_IDENTITY XBMCFoundation.Universal Media Center
+PACKAGE_IDENTITY Foundation.Universal Media Center
 PACKAGE_PUBLISHER C62BD90A-CDD8-477F-96C3-B25992247B97
 PACKAGE_DESCRIPTION Universal Media Center is an open source (GPL) software media center for playing videos, music, pictures, games, and more.

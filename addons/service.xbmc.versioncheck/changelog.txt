@@ -59,7 +59,7 @@ v0.5.9
 
 v0.5.7 - 0.5.8
 - add Universal Media Center 19.0 alpha2 release
-- use xbmcvfs for translatePath for matrix
+- use vfs for translatePath for matrix
 - fix platforms where subprocess is not available
 - fix dialogs on Universal Media Center 19
 
@@ -234,7 +234,7 @@ v0.1.5
 - Update with 13.0 Gotham alpha3
 
 v0.1.4
-- We can now upgrade xbmc on Linux. This works either via polkit or shell wrapper as fallback
+- We can now upgrade  on Linux. This works either via polkit or shell wrapper as fallback
 
 v0.1.3
 - Update with 13.0 Gotham alpha2

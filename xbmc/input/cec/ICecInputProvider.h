@@ -12,7 +12,7 @@
 
 class CKey;
 
-namespace KODI::CEC
+namespace UNIVERSAL MEDIA CENTER::CEC
 {
 class ICecInputProvider
 {
@@ -24,4 +24,4 @@ public:
    */
   virtual std::optional<CKey> GetCecKey() = 0;
 };
-} // namespace KODI::CEC
+} // namespace UNIVERSAL MEDIA CENTER::CEC

@@ -42,7 +42,7 @@
  * do this for you can put the following code in the header file where the global's
  * class is declared:
  *
- * static std::shared_ptr<GlobalVariableClass> g_globalVariableRef(xbmcutil::GlobalsSingleton<GlobalVariableClass>::getInstance());
+ * static std::shared_ptr<GlobalVariableClass> g_globalVariableRef(util::GlobalsSingleton<GlobalVariableClass>::getInstance());
  * #define g_globalVariable (*(g_globalVariableRef.get()))
  *
  * Note what this does. In every file that includes this header there will be a *static*
@@ -70,7 +70,7 @@
  * problem, you can restrict all access to the variable to the singleton by changing
  * the #define to:
  *
- * #define g_globalVariable (*(xbmcutil::Singleton<GlobalVariableClass>::getInstance()))
+ * #define g_globalVariable (*(util::Singleton<GlobalVariableClass>::getInstance()))
  *
  * A few things to note about this. First, this separates the reference counting aspect
  * from the access aspect of this solution. The smart pointers are no longer used for
@@ -83,7 +83,7 @@
  * code exercised during the initialization of the BSS segment.
  */
 
-namespace xbmcutil
+namespace util
 {
   /**
    * This class is an implementation detail of the macros defined below and
@@ -186,17 +186,17 @@ namespace xbmcutil
  * Also, you must also use a #define to replace the actual global variable since
  * there's no way to use a macro to add a #define. An example would be:
  *
- * XBMC_GLOBAL_REF(CWinSystemWin32DX, g_Windowing);
- * #define g_Windowing XBMC_GLOBAL_USE(CWinSystemWin32DX)
+ * _GLOBAL_REF(CWinSystemWin32DX, g_Windowing);
+ * #define g_Windowing _GLOBAL_USE(CWinSystemWin32DX)
  *
  */
-#define XBMC_GLOBAL_REF(classname,g_variable) \
-  static std::shared_ptr<classname> g_variable##Ref(xbmcutil::GlobalsSingleton<classname>::getInstance())
+#define _GLOBAL_REF(classname,g_variable) \
+  static std::shared_ptr<classname> g_variable##Ref(util::GlobalsSingleton<classname>::getInstance())
 
 /**
  * This declares the actual use of the variable. It needs to be used in another #define
  * of the form:
  *
- * #define g_variable XBMC_GLOBAL_USE(classname)
+ * #define g_variable _GLOBAL_USE(classname)
  */
-#define XBMC_GLOBAL_USE(classname) (*(xbmcutil::GlobalsSingleton<classname>::getQuick()))
+#define _GLOBAL_USE(classname) (*(util::GlobalsSingleton<classname>::getQuick()))

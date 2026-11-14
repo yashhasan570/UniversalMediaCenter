@@ -18,10 +18,10 @@
 class CViewState; // forward
 class CFileItemList;
 
-namespace KODI::PLAYLIST
+namespace UNIVERSAL MEDIA CENTER::PLAYLIST
 {
 enum class Id;
-} // namespace KODI::PLAYLIST
+} // namespace UNIVERSAL MEDIA CENTER::PLAYLIST
 
 class CGUIViewState
 {
@@ -51,14 +51,14 @@ public:
   virtual bool HideParentDirItems();
   virtual bool DisableAddSourceButtons();
 
-  virtual KODI::PLAYLIST::Id GetPlaylist() const;
+  virtual UNIVERSAL MEDIA CENTER::PLAYLIST::Id GetPlaylist() const;
   const std::string& GetPlaylistDirectory();
   void SetPlaylistDirectory(const std::string& strDirectory);
   bool IsCurrentPlaylistDirectory(const std::string& strDirectory);
   virtual bool AutoPlayNextItem();
 
   //! The section whose source locks apply in this view, if any
-  virtual std::optional<KODI::MEDIA::MediaSection> GetLockType();
+  virtual std::optional<UNIVERSAL MEDIA CENTER::MEDIA::MediaSection> GetLockType();
   virtual std::string GetExtensions();
   virtual std::vector<CMediaSource>& GetSources();
 
@@ -100,7 +100,7 @@ protected:
   const CFileItemList& m_items;
 
   int m_currentViewAsControl;
-  KODI::PLAYLIST::Id m_playlist;
+  UNIVERSAL MEDIA CENTER::PLAYLIST::Id m_playlist;
 
   std::vector<GUIViewSortDetails> m_sortMethods;
   int m_currentSortMethod;

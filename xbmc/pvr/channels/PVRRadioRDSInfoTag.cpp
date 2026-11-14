@@ -109,7 +109,7 @@ void CPVRRadioRDSInfoTag::Archive(CArchive& ar)
     ar >> m_strLanguage;
     std::string territory;
     ar >> territory;
-    m_territory = KODI::LANGUAGE::CTerritory::FromCode(territory);
+    m_territory = UNIVERSAL MEDIA CENTER::LANGUAGE::CTerritory::FromCode(territory);
     ar >> m_strTitle;
     ar >> m_strBand;
     ar >> m_strArtist;
@@ -234,13 +234,13 @@ const std::string& CPVRRadioRDSInfoTag::GetLanguage() const
   return m_strLanguage;
 }
 
-void CPVRRadioRDSInfoTag::SetCountry(const KODI::LANGUAGE::CTerritory& territory)
+void CPVRRadioRDSInfoTag::SetCountry(const UNIVERSAL MEDIA CENTER::LANGUAGE::CTerritory& territory)
 {
   std::unique_lock lock(m_critSection);
   m_territory = territory;
 }
 
-KODI::LANGUAGE::CTerritory CPVRRadioRDSInfoTag::GetCountry() const
+UNIVERSAL MEDIA CENTER::LANGUAGE::CTerritory CPVRRadioRDSInfoTag::GetCountry() const
 {
   // By value: a reference would outlive the lock that guards the member it names
   std::unique_lock lock(m_critSection);

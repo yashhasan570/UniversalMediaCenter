@@ -9,7 +9,7 @@
 #include "FileItem.h"
 #include "cores/playercorefactory/PlayerCoreConfig.h"
 #include "cores/playercorefactory/PlayerSelectionRule.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 #include "utils/XMLUtils.h"
 
 #include <memory>
@@ -22,7 +22,7 @@ TEST(TestPlayerCoreConfig, CopiesConfig)
 {
   std::unique_ptr<CPlayerCoreConfig> config;
   {
-    CXBMCTinyXML2 doc;
+    CTinyXML2 doc;
     ASSERT_TRUE(
         doc.Parse(std::string{R"(<player name="Ext" type="ExternalPlayer" audio="true" )"
                               R"(video="TRUE"><filename>/usr/bin/true</filename></player>)"}));
@@ -40,7 +40,7 @@ TEST(TestPlayerCoreConfig, CopiesConfig)
 
 TEST(TestPlayerCoreConfig, NoAudioOrVideo)
 {
-  CXBMCTinyXML2 doc;
+  CTinyXML2 doc;
   ASSERT_TRUE(doc.Parse(std::string{R"(<player name="Ext" audio="no"/>)"}));
   const CPlayerCoreConfig config("Ext", "external", doc.RootElement());
   EXPECT_FALSE(config.PlaysAudio());
@@ -57,7 +57,7 @@ TEST(TestPlayerCoreConfig, NoConfig)
 
 TEST(TestPlayerSelectionRule, GetPlayers)
 {
-  CXBMCTinyXML2 doc;
+  CTinyXML2 doc;
   ASSERT_TRUE(doc.Parse(std::string{R"(<rules name="rules">
       <rule name="mkv" filetypes="mkv" player="VideoPlayer"/>
       <rule name="http" protocols="http|https">

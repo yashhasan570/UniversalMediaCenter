@@ -56,7 +56,7 @@ private:
   void FromLargeInt(const LARGE_INTEGER& time);
 
 private:
-  KODI::TIME::FileTime m_timeSpan;
+  UNIVERSAL MEDIA CENTER::TIME::FileTime m_timeSpan;
 
   friend class CDateTime;
 };
@@ -68,8 +68,8 @@ public:
   CDateTime();
   CDateTime(const CDateTime& time);
   CDateTime& operator=(const CDateTime&) = default;
-  explicit CDateTime(const KODI::TIME::SystemTime& time);
-  explicit CDateTime(const KODI::TIME::FileTime& time);
+  explicit CDateTime(const UNIVERSAL MEDIA CENTER::TIME::SystemTime& time);
+  explicit CDateTime(const UNIVERSAL MEDIA CENTER::TIME::FileTime& time);
   explicit CDateTime(const time_t& time);
   explicit CDateTime(const tm& time);
   CDateTime(int year, int month, int day, int hour, int minute, int second);
@@ -100,8 +100,8 @@ public:
    */
   static CDateTime FromSecondsSinceEpoch(int64_t seconds);
 
-  const CDateTime& operator=(const KODI::TIME::SystemTime& right);
-  const CDateTime& operator=(const KODI::TIME::FileTime& right);
+  const CDateTime& operator=(const UNIVERSAL MEDIA CENTER::TIME::SystemTime& right);
+  const CDateTime& operator=(const UNIVERSAL MEDIA CENTER::TIME::FileTime& right);
   const CDateTime& operator =(const time_t& right);
   const CDateTime& operator =(const tm& right);
 
@@ -112,19 +112,19 @@ public:
   bool operator ==(const CDateTime& right) const;
   bool operator !=(const CDateTime& right) const;
 
-  bool operator>(const KODI::TIME::FileTime& right) const;
-  bool operator>=(const KODI::TIME::FileTime& right) const;
-  bool operator<(const KODI::TIME::FileTime& right) const;
-  bool operator<=(const KODI::TIME::FileTime& right) const;
-  bool operator==(const KODI::TIME::FileTime& right) const;
-  bool operator!=(const KODI::TIME::FileTime& right) const;
+  bool operator>(const UNIVERSAL MEDIA CENTER::TIME::FileTime& right) const;
+  bool operator>=(const UNIVERSAL MEDIA CENTER::TIME::FileTime& right) const;
+  bool operator<(const UNIVERSAL MEDIA CENTER::TIME::FileTime& right) const;
+  bool operator<=(const UNIVERSAL MEDIA CENTER::TIME::FileTime& right) const;
+  bool operator==(const UNIVERSAL MEDIA CENTER::TIME::FileTime& right) const;
+  bool operator!=(const UNIVERSAL MEDIA CENTER::TIME::FileTime& right) const;
 
-  bool operator>(const KODI::TIME::SystemTime& right) const;
-  bool operator>=(const KODI::TIME::SystemTime& right) const;
-  bool operator<(const KODI::TIME::SystemTime& right) const;
-  bool operator<=(const KODI::TIME::SystemTime& right) const;
-  bool operator==(const KODI::TIME::SystemTime& right) const;
-  bool operator!=(const KODI::TIME::SystemTime& right) const;
+  bool operator>(const UNIVERSAL MEDIA CENTER::TIME::SystemTime& right) const;
+  bool operator>=(const UNIVERSAL MEDIA CENTER::TIME::SystemTime& right) const;
+  bool operator<(const UNIVERSAL MEDIA CENTER::TIME::SystemTime& right) const;
+  bool operator<=(const UNIVERSAL MEDIA CENTER::TIME::SystemTime& right) const;
+  bool operator==(const UNIVERSAL MEDIA CENTER::TIME::SystemTime& right) const;
+  bool operator!=(const UNIVERSAL MEDIA CENTER::TIME::SystemTime& right) const;
 
   bool operator >(const time_t& right) const;
   bool operator >=(const time_t& right) const;
@@ -148,7 +148,7 @@ public:
 
   CDateTimeSpan operator -(const CDateTime& right) const;
 
-  operator KODI::TIME::FileTime() const;
+  operator UNIVERSAL MEDIA CENTER::TIME::FileTime() const;
 
   void Archive(CArchive& ar) override;
 
@@ -188,10 +188,10 @@ public:
    */
   bool SetFromDBDateTime(const std::string &dateTime);
 
-  void GetAsSystemTime(KODI::TIME::SystemTime& time) const;
+  void GetAsSystemTime(UNIVERSAL MEDIA CENTER::TIME::SystemTime& time) const;
   void GetAsTime(time_t& time) const;
   void GetAsTm(tm& time) const;
-  void GetAsTimeStamp(KODI::TIME::FileTime& time) const;
+  void GetAsTimeStamp(UNIVERSAL MEDIA CENTER::TIME::FileTime& time) const;
 
   /*!
    * \brief The count of seconds since the UNIX epoch.
@@ -240,15 +240,15 @@ public:
   void SetTimeZoneBias(const CDateTimeSpan& bias) { m_timeZoneBias = bias; }
 
 private:
-  bool ToFileTime(const KODI::TIME::SystemTime& time, KODI::TIME::FileTime& fileTime) const;
-  bool ToFileTime(const time_t& time, KODI::TIME::FileTime& fileTime) const;
-  bool ToFileTime(const tm& time, KODI::TIME::FileTime& fileTime) const;
+  bool ToFileTime(const UNIVERSAL MEDIA CENTER::TIME::SystemTime& time, UNIVERSAL MEDIA CENTER::TIME::FileTime& fileTime) const;
+  bool ToFileTime(const time_t& time, UNIVERSAL MEDIA CENTER::TIME::FileTime& fileTime) const;
+  bool ToFileTime(const tm& time, UNIVERSAL MEDIA CENTER::TIME::FileTime& fileTime) const;
 
   void ToLargeInt(LARGE_INTEGER& time) const;
   void FromLargeInt(const LARGE_INTEGER& time);
 
 private:
-  KODI::TIME::FileTime m_time;
+  UNIVERSAL MEDIA CENTER::TIME::FileTime m_time;
 
   enum class State
   {

@@ -13,7 +13,7 @@
 #include <string>
 #include <vector>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace JOYSTICK
 {
@@ -58,4 +58,4 @@ private:
   RUMBLE_TYPE m_type = RUMBLE_UNKNOWN;
 };
 } // namespace JOYSTICK
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

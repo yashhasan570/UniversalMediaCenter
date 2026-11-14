@@ -15,7 +15,7 @@
 class CFileItemList;
 class CGUIViewControl;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -84,4 +84,4 @@ private:
   std::unique_ptr<CFileItemList> m_vecItems;
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

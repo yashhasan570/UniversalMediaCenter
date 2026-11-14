@@ -10,7 +10,7 @@
 
 #include "games/GameTypes.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -90,4 +90,4 @@ public:
   virtual void OnSelect() = 0;
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

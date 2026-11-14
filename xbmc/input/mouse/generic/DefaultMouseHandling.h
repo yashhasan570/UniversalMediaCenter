@@ -17,7 +17,7 @@ namespace PERIPHERALS
 class CPeripheral;
 } // namespace PERIPHERALS
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace JOYSTICK
 {
@@ -52,4 +52,4 @@ private:
   std::unique_ptr<JOYSTICK::IButtonMap> m_buttonMap;
 };
 } // namespace MOUSE
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

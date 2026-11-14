@@ -23,11 +23,11 @@
 
 class CDbUrl;
 class CSetting;
-namespace KODI::PLAYLIST
+namespace UNIVERSAL MEDIA CENTER::PLAYLIST
 {
 class CSmartPlaylist;
 class CSmartPlaylistRule;
-} // namespace KODI::PLAYLIST
+} // namespace UNIVERSAL MEDIA CENTER::PLAYLIST
 struct StringSettingOption;
 
 class CGUIDialogMediaFilter : public CGUIDialogSettingsManualBase
@@ -40,11 +40,11 @@ public:
   bool OnMessage(CGUIMessage &message) override;
 
   static void ShowAndEditMediaFilter(const std::string& path,
-                                     KODI::PLAYLIST::CSmartPlaylist& filter);
+                                     UNIVERSAL MEDIA CENTER::PLAYLIST::CSmartPlaylist& filter);
 
   struct Filter
   {
-    KODI::MEDIA::TYPE mediaType;
+    UNIVERSAL MEDIA CENTER::MEDIA::TYPE mediaType;
     Field field;
     uint32_t label;
     SettingType settingType;
@@ -52,7 +52,7 @@ public:
     std::string controlFormat;
     CDatabaseQueryRule::SearchOperator ruleOperator;
     std::shared_ptr<CSetting> setting = nullptr;
-    KODI::PLAYLIST::CSmartPlaylistRule* rule = nullptr;
+    UNIVERSAL MEDIA CENTER::PLAYLIST::CSmartPlaylistRule* rule = nullptr;
     void* data = nullptr;
   };
 
@@ -83,7 +83,7 @@ protected:
   void GetRange(const Filter &filter, float &min, float &interval, float &max);
   bool GetMinMax(const std::string &table, const std::string &field, int &min, int &max, const CDatabase::Filter &filter = CDatabase::Filter());
 
-  KODI::PLAYLIST::CSmartPlaylistRule* AddRule(
+  UNIVERSAL MEDIA CENTER::PLAYLIST::CSmartPlaylistRule* AddRule(
       Field field,
       CDatabaseQueryRule::SearchOperator ruleOperator =
           CDatabaseQueryRule::SearchOperator::OPERATOR_CONTAINS);
@@ -95,7 +95,7 @@ protected:
 
   std::unique_ptr<CDbUrl> m_dbUrl;
   std::string m_mediaType;
-  KODI::MEDIA::TYPE m_type{KODI::MEDIA::TYPE::NONE};
-  KODI::PLAYLIST::CSmartPlaylist* m_filter{nullptr};
+  UNIVERSAL MEDIA CENTER::MEDIA::TYPE m_type{UNIVERSAL MEDIA CENTER::MEDIA::TYPE::NONE};
+  UNIVERSAL MEDIA CENTER::PLAYLIST::CSmartPlaylist* m_filter{nullptr};
   std::map<std::string, Filter> m_filters;
 };

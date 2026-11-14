@@ -17,14 +17,14 @@
 #include <vector>
 
 #ifndef DOXYGEN_SHOULD_SKIP_THIS
-namespace XBMCAddon
+namespace Addon
 {
-  namespace xbmcplugin
+  namespace plugin
   {
 #endif /* DOXYGEN_SHOULD_SKIP_THIS */
 
     //
-    /// \defgroup python_xbmcplugin Library - xbmcplugin
+    /// \defgroup python_plugin Library - plugin
     /// @{
     /// @brief <b>Plugin functions on Universal Media Center.</b>
     ///
@@ -36,8 +36,8 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmcplugin
-    /// @brief \python_func{ xbmcplugin.addDirectoryItem(handle, url, listitem [,isFolder, totalItems]) }
+    /// \ingroup python_plugin
+    /// @brief \python_func{ plugin.addDirectoryItem(handle, url, listitem [,isFolder, totalItems]) }
     /// Callback function to pass directory contents back to Universal Media Center.
     ///
     /// @param handle               integer - handle the plugin was started
@@ -61,20 +61,20 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// if not xbmcplugin.addDirectoryItem(int(sys.argv[1]), 'F:\\Trailers\\300.mov', listitem, totalItems=50): break
+    /// if not plugin.addDirectoryItem(int(sys.argv[1]), 'F:\\Trailers\\300.mov', listitem, totalItems=50): break
     /// ..
     /// ~~~~~~~~~~~~~
     ///
     addDirectoryItem(...);
 #else
-    bool addDirectoryItem(int handle, const String& url, const XBMCAddon::xbmcgui::ListItem* listitem,
+    bool addDirectoryItem(int handle, const String& url, const Addon::gui::ListItem* listitem,
                           bool isFolder = false, int totalItems = 0);
 #endif
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmcplugin
-    /// @brief \python_func{ xbmcplugin.addDirectoryItems(handle, items[, totalItems]) }
+    /// \ingroup python_plugin
+    /// @brief \python_func{ plugin.addDirectoryItems(handle, items[, totalItems]) }
     /// Callback function to pass directory contents back to Universal Media Center as a list.
     ///
     /// @param handle               integer - handle the plugin was started
@@ -94,21 +94,21 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// if not xbmcplugin.addDirectoryItems(int(sys.argv[1]), [(url, listitem, False,)]: raise
+    /// if not plugin.addDirectoryItems(int(sys.argv[1]), [(url, listitem, False,)]: raise
     /// ..
     /// ~~~~~~~~~~~~~
     ///
      addDirectoryItems(...);
 #else
     bool addDirectoryItems(int handle,
-                           const std::vector<Tuple<String,const XBMCAddon::xbmcgui::ListItem*,bool> >& items,
+                           const std::vector<Tuple<String,const Addon::gui::ListItem*,bool> >& items,
                            int totalItems = 0);
 #endif
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmcplugin
-    /// @brief \python_func{ xbmcplugin.endOfDirectory(handle[, succeeded, updateListing, cacheToDisc]) }
+    /// \ingroup python_plugin
+    /// @brief \python_func{ plugin.endOfDirectory(handle[, succeeded, updateListing, cacheToDisc]) }
     /// Callback function to tell Universal Media Center that the end of the directory listing in
     /// a virtualPythonFolder module is reached.
     ///
@@ -129,7 +129,7 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// xbmcplugin.endOfDirectory(int(sys.argv[1]), cacheToDisc=False)
+    /// plugin.endOfDirectory(int(sys.argv[1]), cacheToDisc=False)
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -141,8 +141,8 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmcplugin
-    /// @brief \python_func{ xbmcplugin.setResolvedUrl(handle, succeeded, listitem) }
+    /// \ingroup python_plugin
+    /// @brief \python_func{ plugin.setResolvedUrl(handle, succeeded, listitem) }
     /// Callback function to tell Universal Media Center that the file plugin has been resolved to
     /// a url
     ///
@@ -159,19 +159,19 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// xbmcplugin.setResolvedUrl(int(sys.argv[1]), True, listitem)
+    /// plugin.setResolvedUrl(int(sys.argv[1]), True, listitem)
     /// ..
     /// ~~~~~~~~~~~~~
     ///
     setResolvedUrl(...);
 #else
-    void setResolvedUrl(int handle, bool succeeded, const XBMCAddon::xbmcgui::ListItem* listitem);
+    void setResolvedUrl(int handle, bool succeeded, const Addon::gui::ListItem* listitem);
 #endif
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmcplugin
-    /// @brief \python_func{ xbmcplugin.addSortMethod(handle, sortMethod [,labelMask, label2Mask]) }
+    /// \ingroup python_plugin
+    /// @brief \python_func{ plugin.addSortMethod(handle, sortMethod [,labelMask, label2Mask]) }
     ///-------------------------------------------------------------------------
     /// Adds a sorting method for the media list.
     ///
@@ -181,49 +181,49 @@ namespace XBMCAddon
     ///                             the bottom (or see \ref List_of_sort_methods "SortUtils").
     /// | Value                                        | Description           |
     /// |----------------------------------------------|-----------------------|
-    /// | xbmcplugin.SORT_METHOD_NONE                  | Do not sort
-    /// | xbmcplugin.SORT_METHOD_LABEL                 | Sort by label
-    /// | xbmcplugin.SORT_METHOD_LABEL_IGNORE_THE      | Sort by the label and ignore "The" before
-    /// | xbmcplugin.SORT_METHOD_DATE                  | Sort by the date
-    /// | xbmcplugin.SORT_METHOD_SIZE                  | Sort by the size
-    /// | xbmcplugin.SORT_METHOD_FILE                  | Sort by the file
-    /// | xbmcplugin.SORT_METHOD_DRIVE_TYPE            | Sort by the drive type
-    /// | xbmcplugin.SORT_METHOD_TRACKNUM              | Sort by the track number
-    /// | xbmcplugin.SORT_METHOD_DURATION              | Sort by the duration
-    /// | xbmcplugin.SORT_METHOD_TITLE                 | Sort by the title
-    /// | xbmcplugin.SORT_METHOD_TITLE_IGNORE_THE      | Sort by the title and ignore "The" before
-    /// | xbmcplugin.SORT_METHOD_ARTIST                | Sort by the artist
-    /// | xbmcplugin.SORT_METHOD_ARTIST_IGNORE_THE     | Sort by the artist and ignore "The" before
-    /// | xbmcplugin.SORT_METHOD_ALBUM                 | Sort by the album
-    /// | xbmcplugin.SORT_METHOD_ALBUM_IGNORE_THE      | Sort by the album and ignore "The" before
-    /// | xbmcplugin.SORT_METHOD_GENRE                 | Sort by the genre
-    /// | xbmcplugin.SORT_SORT_METHOD_VIDEO_YEAR, xbmcplugin.SORT_METHOD_YEAR | Sort by the year
-    /// | xbmcplugin.SORT_METHOD_VIDEO_RATING          | Sort by the video rating
-    /// | xbmcplugin.SORT_METHOD_PROGRAM_COUNT         | Sort by the program count
-    /// | xbmcplugin.SORT_METHOD_PLAYLIST_ORDER        | Sort by the playlist order
-    /// | xbmcplugin.SORT_METHOD_EPISODE               | Sort by the episode
-    /// | xbmcplugin.SORT_METHOD_VIDEO_TITLE           | Sort by the video title
-    /// | xbmcplugin.SORT_METHOD_VIDEO_SORT_TITLE      | Sort by the video sort title
-    /// | xbmcplugin.SORT_METHOD_VIDEO_SORT_TITLE_IGNORE_THE |  Sort by the video sort title and ignore "The" before
-    /// | xbmcplugin.SORT_METHOD_PRODUCTIONCODE        | Sort by the production code
-    /// | xbmcplugin.SORT_METHOD_SONG_RATING           | Sort by the song rating
-    /// | xbmcplugin.SORT_METHOD_MPAA_RATING           | Sort by the mpaa rating
-    /// | xbmcplugin.SORT_METHOD_VIDEO_RUNTIME         | Sort by video runtime
-    /// | xbmcplugin.SORT_METHOD_STUDIO                | Sort by the studio
-    /// | xbmcplugin.SORT_METHOD_STUDIO_IGNORE_THE     | Sort by the studio and ignore "The" before
-    /// | xbmcplugin.SORT_METHOD_UNSORTED              | Use list not sorted
-    /// | xbmcplugin.SORT_METHOD_BITRATE               | Sort by the bitrate
-    /// | xbmcplugin.SORT_METHOD_LISTENERS             | Sort by the listeners
-    /// | xbmcplugin.SORT_METHOD_COUNTRY               | Sort by the country
-    /// | xbmcplugin.SORT_METHOD_DATEADDED             | Sort by the added date
-    /// | xbmcplugin.SORT_METHOD_FULLPATH              | Sort by the full path name
-    /// | xbmcplugin.SORT_METHOD_LABEL_IGNORE_FOLDERS  | Sort by the label names and ignore related folder names
-    /// | xbmcplugin.SORT_METHOD_LASTPLAYED            | Sort by last played date
-    /// | xbmcplugin.SORT_METHOD_PLAYCOUNT             | Sort by the play count
-    /// | xbmcplugin.SORT_METHOD_CHANNEL               | Sort by the channel
-    /// | xbmcplugin.SORT_METHOD_DATE_TAKEN            | Sort by the taken date
-    /// | xbmcplugin.SORT_METHOD_VIDEO_USER_RATING     | Sort by the rating of the user of video
-    /// | xbmcplugin.SORT_METHOD_SONG_USER_RATING      | Sort by the rating of the user of song
+    /// | plugin.SORT_METHOD_NONE                  | Do not sort
+    /// | plugin.SORT_METHOD_LABEL                 | Sort by label
+    /// | plugin.SORT_METHOD_LABEL_IGNORE_THE      | Sort by the label and ignore "The" before
+    /// | plugin.SORT_METHOD_DATE                  | Sort by the date
+    /// | plugin.SORT_METHOD_SIZE                  | Sort by the size
+    /// | plugin.SORT_METHOD_FILE                  | Sort by the file
+    /// | plugin.SORT_METHOD_DRIVE_TYPE            | Sort by the drive type
+    /// | plugin.SORT_METHOD_TRACKNUM              | Sort by the track number
+    /// | plugin.SORT_METHOD_DURATION              | Sort by the duration
+    /// | plugin.SORT_METHOD_TITLE                 | Sort by the title
+    /// | plugin.SORT_METHOD_TITLE_IGNORE_THE      | Sort by the title and ignore "The" before
+    /// | plugin.SORT_METHOD_ARTIST                | Sort by the artist
+    /// | plugin.SORT_METHOD_ARTIST_IGNORE_THE     | Sort by the artist and ignore "The" before
+    /// | plugin.SORT_METHOD_ALBUM                 | Sort by the album
+    /// | plugin.SORT_METHOD_ALBUM_IGNORE_THE      | Sort by the album and ignore "The" before
+    /// | plugin.SORT_METHOD_GENRE                 | Sort by the genre
+    /// | plugin.SORT_SORT_METHOD_VIDEO_YEAR, plugin.SORT_METHOD_YEAR | Sort by the year
+    /// | plugin.SORT_METHOD_VIDEO_RATING          | Sort by the video rating
+    /// | plugin.SORT_METHOD_PROGRAM_COUNT         | Sort by the program count
+    /// | plugin.SORT_METHOD_PLAYLIST_ORDER        | Sort by the playlist order
+    /// | plugin.SORT_METHOD_EPISODE               | Sort by the episode
+    /// | plugin.SORT_METHOD_VIDEO_TITLE           | Sort by the video title
+    /// | plugin.SORT_METHOD_VIDEO_SORT_TITLE      | Sort by the video sort title
+    /// | plugin.SORT_METHOD_VIDEO_SORT_TITLE_IGNORE_THE |  Sort by the video sort title and ignore "The" before
+    /// | plugin.SORT_METHOD_PRODUCTIONCODE        | Sort by the production code
+    /// | plugin.SORT_METHOD_SONG_RATING           | Sort by the song rating
+    /// | plugin.SORT_METHOD_MPAA_RATING           | Sort by the mpaa rating
+    /// | plugin.SORT_METHOD_VIDEO_RUNTIME         | Sort by video runtime
+    /// | plugin.SORT_METHOD_STUDIO                | Sort by the studio
+    /// | plugin.SORT_METHOD_STUDIO_IGNORE_THE     | Sort by the studio and ignore "The" before
+    /// | plugin.SORT_METHOD_UNSORTED              | Use list not sorted
+    /// | plugin.SORT_METHOD_BITRATE               | Sort by the bitrate
+    /// | plugin.SORT_METHOD_LISTENERS             | Sort by the listeners
+    /// | plugin.SORT_METHOD_COUNTRY               | Sort by the country
+    /// | plugin.SORT_METHOD_DATEADDED             | Sort by the added date
+    /// | plugin.SORT_METHOD_FULLPATH              | Sort by the full path name
+    /// | plugin.SORT_METHOD_LABEL_IGNORE_FOLDERS  | Sort by the label names and ignore related folder names
+    /// | plugin.SORT_METHOD_LASTPLAYED            | Sort by last played date
+    /// | plugin.SORT_METHOD_PLAYCOUNT             | Sort by the play count
+    /// | plugin.SORT_METHOD_CHANNEL               | Sort by the channel
+    /// | plugin.SORT_METHOD_DATE_TAKEN            | Sort by the taken date
+    /// | plugin.SORT_METHOD_VIDEO_USER_RATING     | Sort by the rating of the user of video
+    /// | plugin.SORT_METHOD_SONG_USER_RATING      | Sort by the rating of the user of song
     /// @param labelMask            [opt] string - the label mask to use for
     ///                             the first label.
     /// - applies to:
@@ -259,7 +259,7 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// xbmcplugin.addSortMethod(int(sys.argv[1]), xbmcplugin.SORTMETHOD_DATEADDED)
+    /// plugin.addSortMethod(int(sys.argv[1]), plugin.SORTMETHOD_DATEADDED)
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -270,8 +270,8 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmcplugin
-    /// @brief \python_func{ xbmcplugin.getSetting(handle, id) }
+    /// \ingroup python_plugin
+    /// @brief \python_func{ plugin.getSetting(handle, id) }
     /// Returns the value of a setting as a string.
     ///
     /// @param handle               integer - handle the plugin was started
@@ -288,7 +288,7 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// apikey = xbmcplugin.getSetting(int(sys.argv[1]), 'apikey')
+    /// apikey = plugin.getSetting(int(sys.argv[1]), 'apikey')
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -299,8 +299,8 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmcplugin
-    /// @brief \python_func{ xbmcplugin.setSetting(handle, id, value) }
+    /// \ingroup python_plugin
+    /// @brief \python_func{ plugin.setSetting(handle, id, value) }
     /// Sets a plugin setting for the current running plugin.
     ///
     /// @param handle    integer - handle the plugin was started with.
@@ -313,7 +313,7 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// xbmcplugin.setSetting(int(sys.argv[1]), id='username', value='teamxbmc')
+    /// plugin.setSetting(int(sys.argv[1]), id='username', value='team')
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -324,8 +324,8 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmcplugin
-    /// @brief \python_func{ xbmcplugin.setContent(handle, content) }
+    /// \ingroup python_plugin
+    /// @brief \python_func{ plugin.setContent(handle, content) }
     /// Sets the plugins content.
     ///
     /// @param handle      integer - handle the plugin was started with.
@@ -349,7 +349,7 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// xbmcplugin.setContent(int(sys.argv[1]), 'movies')
+    /// plugin.setContent(int(sys.argv[1]), 'movies')
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -360,8 +360,8 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmcplugin
-    /// @brief \python_func{ xbmcplugin.setPluginCategory(handle, category) }
+    /// \ingroup python_plugin
+    /// @brief \python_func{ plugin.setPluginCategory(handle, category) }
     /// Sets the plugins name for skins to display.
     ///
     /// @param handle      integer - handle the plugin was started with.
@@ -373,7 +373,7 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// xbmcplugin.setPluginCategory(int(sys.argv[1]), 'Comedy')
+    /// plugin.setPluginCategory(int(sys.argv[1]), 'Comedy')
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -384,8 +384,8 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmcplugin
-    /// @brief \python_func{ xbmcplugin.setPluginFanart(handle, image, color1, color2, color3) }
+    /// \ingroup python_plugin
+    /// @brief \python_func{ plugin.setPluginFanart(handle, image, color1, color2, color3) }
     /// Sets the plugins fanart and color for skins to display.
     ///
     /// @param handle      integer - handle the plugin was started with.
@@ -400,7 +400,7 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// xbmcplugin.setPluginFanart(int(sys.argv[1]), 'special://home/addons/plugins/video/Apple movie trailers II/fanart.png', color2='0xFFFF3300')
+    /// plugin.setPluginFanart(int(sys.argv[1]), 'special://home/addons/plugins/video/Apple movie trailers II/fanart.png', color2='0xFFFF3300')
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -414,8 +414,8 @@ namespace XBMCAddon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_xbmcplugin
-    /// @brief \python_func{ xbmcplugin.setProperty(handle, key, value) }
+    /// \ingroup python_plugin
+    /// @brief \python_func{ plugin.setProperty(handle, key, value) }
     /// Sets a container property for this plugin.
     ///
     /// @param handle      integer - handle the plugin was started with.
@@ -430,7 +430,7 @@ namespace XBMCAddon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// xbmcplugin.setProperty(int(sys.argv[1]), 'Emulator', 'M.A.M.E.')
+    /// plugin.setProperty(int(sys.argv[1]), 'Emulator', 'M.A.M.E.')
     /// ..
     /// ~~~~~~~~~~~~~
     ///

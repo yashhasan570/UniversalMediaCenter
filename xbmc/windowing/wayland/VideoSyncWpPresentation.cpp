@@ -21,7 +21,7 @@
 #include <cmath>
 #include <functional>
 
-using namespace KODI::WINDOWING::WAYLAND;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::WAYLAND;
 using namespace std::placeholders;
 
 namespace
@@ -78,7 +78,7 @@ void CVideoSyncWpPresentation::HandlePresentation(timespec tv, std::uint32_t ref
   else if (syncOutputRefreshRate > 0.0f && m_lastPresentationTime)
   {
     // Without MSC, derive the number of vblanks from the presentation timestamps
-    const auto elapsed = KODI::LINUX::TimespecDifference(*m_lastPresentationTime, tv);
+    const auto elapsed = UNIVERSAL MEDIA CENTER::LINUX::TimespecDifference(*m_lastPresentationTime, tv);
     vblanks = std::max<std::int64_t>(
         1, std::llround(elapsed * 1.0e-9 * static_cast<double>(syncOutputRefreshRate)));
   }

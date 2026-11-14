@@ -14,7 +14,7 @@
 #include "utils/StringUtils.h"
 #include "windowing/WinSystem.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GUILIB;
 
 CGUIColorButtonControl::CGUIColorButtonControl(int parentID,
@@ -38,7 +38,7 @@ CGUIColorButtonControl::CGUIColorButtonControl(int parentID,
   m_colorPosY = 0;
   m_imgColorMask->SetAspectRatio(CAspectRatio::KEEP);
   m_imgColorDisabledMask->SetAspectRatio(CAspectRatio::KEEP);
-  m_imgBoxColor = GUIINFO::CGUIInfoColor(KODI::UTILS::COLOR::NONE);
+  m_imgBoxColor = GUIINFO::CGUIInfoColor(UNIVERSAL MEDIA CENTER::UTILS::COLOR::NONE);
   ControlType = GUICONTROL_COLORBUTTON;
   // offsetX is like a left/right padding, "hex" label does not require high values
   m_labelInfo.GetLabelInfo().offsetX = 2;
@@ -164,9 +164,9 @@ void CGUIColorButtonControl::SetImageBoxColor(GUIINFO::CGUIInfoColor color)
 void CGUIColorButtonControl::SetImageBoxColor(const std::string& hexColor)
 {
   if (hexColor.empty())
-    m_imgBoxColor = GUIINFO::CGUIInfoColor(KODI::UTILS::COLOR::NONE);
+    m_imgBoxColor = GUIINFO::CGUIInfoColor(UNIVERSAL MEDIA CENTER::UTILS::COLOR::NONE);
   else
-    m_imgBoxColor = GUIINFO::CGUIInfoColor(KODI::UTILS::COLOR::ConvertHexToColor(hexColor));
+    m_imgBoxColor = GUIINFO::CGUIInfoColor(UNIVERSAL MEDIA CENTER::UTILS::COLOR::ConvertHexToColor(hexColor));
 }
 
 bool CGUIColorButtonControl::UpdateColors(const CGUIListItem* item)
@@ -192,7 +192,7 @@ void CGUIColorButtonControl::ProcessInfoText(unsigned int currentTime)
 {
   CRect labelRenderRect = m_labelInfo.GetRenderRect();
   bool changed = m_labelInfo.SetText(
-      StringUtils::Format("#{:08X}", static_cast<KODI::UTILS::COLOR::Color>(m_imgBoxColor)));
+      StringUtils::Format("#{:08X}", static_cast<UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color>(m_imgBoxColor)));
   // Set Label X position based on image mask control position
   float textWidth = m_labelInfo.GetTextWidth() + 2 * m_labelInfo.GetLabelInfo().offsetX;
   float textPosX = m_imgColorMask->GetXPosition() - textWidth;

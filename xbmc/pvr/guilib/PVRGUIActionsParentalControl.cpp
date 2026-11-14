@@ -24,7 +24,7 @@
 #include <string>
 
 using namespace PVR;
-using namespace KODI::MESSAGING;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
 
 CPVRGUIActionsParentalControl::CPVRGUIActionsParentalControl()
   : m_settings(std::make_unique<CPVRSettings>(SettingsContainer(

@@ -505,7 +505,7 @@ void RestoreEmojiSequences(const char32_t* logical,
     size_t end = start + 1;
     bool rtl = isStrongRtl(logical[start]);
     while (end < length &&
-           (KODI::UTILS::ContinuesEmoji(logical[end]) || logical[end - 1] == 0x200D))
+           (UNIVERSAL MEDIA CENTER::UTILS::ContinuesEmoji(logical[end]) || logical[end - 1] == 0x200D))
       rtl |= isStrongRtl(logical[end++]);
 
     const auto [first, last] =

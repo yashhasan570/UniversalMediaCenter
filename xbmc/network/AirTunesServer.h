@@ -31,7 +31,7 @@ class CDACP;
 class CVariant;
 
 class CAirTunesServer : public ANNOUNCEMENT::IAnnouncer,
-                        public KODI::ACTION::IActionListener,
+                        public UNIVERSAL MEDIA CENTER::ACTION::IActionListener,
                         public CThread
 {
 public:

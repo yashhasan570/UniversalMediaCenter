@@ -17,7 +17,7 @@
 #include "guilib/GUIListItemLayout.h"
 #include "guilib/GUIListLabel.h"
 #include "guilib/GUIWindowManager.h"
-#include "utils/XBMCTinyXML.h"
+#include "utils/TinyXML.h"
 #include "windowing/WinSystem.h"
 
 #include <memory>
@@ -118,7 +118,7 @@ class TestGUIListItemLayout : public testing::Test
 protected:
   void LoadLayouts(CTestContainer& container)
   {
-    CXBMCTinyXML xml;
+    CTinyXML xml;
     ASSERT_TRUE(xml.Parse(R"(<control type="list">
       <itemlayout width="100" height="20">
         <control type="group" id="10">
@@ -202,7 +202,7 @@ TEST_F(TestGUIListItemLayout, LiveFreeMemoryUnregistersDescendantsFromLookupPare
     CTestGroup ancestor;
     auto* parent = new CTestGroup;
     ancestor.AddControl(parent);
-    CXBMCTinyXML xml;
+    CTinyXML xml;
     ASSERT_TRUE(xml.Parse(R"(<itemlayout width="100" height="20">
       <control type="group" id="10"/>
     </itemlayout>)"s));
@@ -276,7 +276,7 @@ TEST_F(TestGUIListItemLayout, LabelsReceiveSelectionAndFocusThroughGroups)
   {
     SCOPED_TRACE(groups.first);
     SCOPED_TRACE(groups.second);
-    CXBMCTinyXML xml;
+    CTinyXML xml;
     ASSERT_TRUE(xml.Parse("<itemlayout width=\"100\" height=\"20\">"
                           "<control type=\""s +
                           groups.first +

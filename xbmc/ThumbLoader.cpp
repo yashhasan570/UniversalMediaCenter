@@ -15,7 +15,7 @@
 #include "utils/ArtUtils.h"
 #include "utils/FileUtils.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 CThumbLoader::CThumbLoader() : m_textureDatabase(std::make_unique<CTextureDatabase>())
 {

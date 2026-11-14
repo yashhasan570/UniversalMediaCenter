@@ -23,7 +23,7 @@
 #include "addons/AddonManager.h"
 #include "addons/AddonSystemSettings.h"
 #include "addons/Scraper.h"
-#include "addons/kodi-dev-kit/include/kodi/c-api/addon-instance/audiodecoder.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api/addon-instance/audiodecoder.h"
 #include "dbwrappers/dataset.h"
 #include "dialogs/GUIDialogKaiToast.h"
 #include "dialogs/GUIDialogProgress.h"
@@ -80,15 +80,15 @@
 #include <string>
 #include <vector>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace XFILE;
 using namespace MUSICDATABASEDIRECTORY;
-using namespace KODI::MESSAGING;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
 using namespace MUSIC_INFO;
 
 using ADDON::AddonPtr;
-using KODI::MEDIA::MediaSection;
-using KODI::MESSAGING::HELPERS::DialogResponse;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaSection;
+using UNIVERSAL MEDIA CENTER::MESSAGING::HELPERS::DialogResponse;
 
 #ifdef HAS_OPTICAL_DRIVE
 using namespace CDDB;
@@ -160,7 +160,7 @@ private:
 };
 } // unnamed namespace
 
-CMusicDatabase::CMusicDatabase() : CDatabase(KODI::DATABASE::TYPE_MUSIC)
+CMusicDatabase::CMusicDatabase() : CDatabase(UNIVERSAL MEDIA CENTER::DATABASE::TYPE_MUSIC)
 {
 }
 
@@ -4352,7 +4352,7 @@ bool CMusicDatabase::CleanupSongsByIds(const std::string& strSongIds)
       //  The last dir in the path is the audio file that
       //  contains the stream, so test if its there
       if (StringUtils::EndsWith(URIUtils::GetExtension(strFileName),
-                                KODI_ADDON_AUDIODECODER_TRACK_EXT))
+                                UNIVERSALMEDIA_ADDON_AUDIODECODER_TRACK_EXT))
       {
         strFileName = URIUtils::GetDirectory(strFileName);
         // we are dropping back to a file, so remove the slash at end
@@ -7274,7 +7274,7 @@ bool CMusicDatabase::GetArtistsByWhereJSON(const std::set<std::string, std::less
 
     // Ensure random order of output when results set is sorted to process multi-value joins
     if (sortDescription.sortBy == SortBy::RANDOM && joinLayout.HasFilterFields())
-      KODI::UTILS::RandomShuffle(result["artists"].begin_array(), result["artists"].end_array());
+      UNIVERSAL MEDIA CENTER::UTILS::RandomShuffle(result["artists"].begin_array(), result["artists"].end_array());
 
     return true;
   }
@@ -7675,7 +7675,7 @@ bool CMusicDatabase::GetAlbumsByWhereJSON(const std::set<std::string, std::less<
 
     // Ensure random order of output when results set is sorted to process multi-value joins
     if (sortDescription.sortBy == SortBy::RANDOM && joinLayout.HasFilterFields())
-      KODI::UTILS::RandomShuffle(result["albums"].begin_array(), result["albums"].end_array());
+      UNIVERSAL MEDIA CENTER::UTILS::RandomShuffle(result["albums"].begin_array(), result["albums"].end_array());
 
     return true;
   }
@@ -8350,7 +8350,7 @@ bool CMusicDatabase::GetSongsByWhereJSON(
 
     // Ensure random order of output when results set is sorted to process multi-value joins
     if (sortDescription.sortBy == SortBy::RANDOM && joinLayout.HasFilterFields())
-      KODI::UTILS::RandomShuffle(result["songs"].begin_array(), result["songs"].end_array());
+      UNIVERSAL MEDIA CENTER::UTILS::RandomShuffle(result["songs"].begin_array(), result["songs"].end_array());
 
     return true;
   }
@@ -11940,7 +11940,7 @@ void CMusicDatabase::ExportToXML(const CLibExportSettings& settings,
       return;
 
     // Create our xml document
-    CXBMCTinyXML xmlDoc;
+    CTinyXML xmlDoc;
     TiXmlDeclaration decl("1.0", "UTF-8", "yes");
     xmlDoc.InsertEndChild(decl);
     TiXmlNode* pMain = nullptr;
@@ -12066,7 +12066,7 @@ void CMusicDatabase::ExportToXML(const CLibExportSettings& settings,
             {
               // Save art in album folder
               // Note thumb resolution may be lower than original when overwriting
-              KODI::ART::Artwork artwork;
+              UNIVERSAL MEDIA CENTER::ART::Artwork artwork;
               std::string savedArtfile;
               if (GetArtForItem(album.idAlbum, MEDIA::TYPE::ALBUM, artwork))
               {
@@ -12156,7 +12156,7 @@ void CMusicDatabase::ExportToXML(const CLibExportSettings& settings,
         // Include discography when not folders only
         GetArtist(artistId, artist, !artistfoldersonly);
         std::string strPath;
-        KODI::ART::Artwork artwork;
+        UNIVERSAL MEDIA CENTER::ART::Artwork artwork;
         if (settings.IsSingleFile())
         {
           // Save artist to xml, and old path (common to music files) if it has one
@@ -12241,10 +12241,10 @@ void CMusicDatabase::ExportToXML(const CLibExportSettings& settings,
     if (settings.IsSingleFile())
     {
       std::string xmlFile = URIUtils::AddFileToFolder(
-          strFolder, "kodi_musicdb" + CDateTime::GetCurrentDateTime().GetAsDBDate() + ".xml");
+          strFolder, "universalmediacenter_musicdb" + CDateTime::GetCurrentDateTime().GetAsDBDate() + ".xml");
       if (CFile::Exists(xmlFile))
         xmlFile = URIUtils::AddFileToFolder(
-            strFolder, "kodi_musicdb" + CDateTime::GetCurrentDateTime().GetAsSaveString() + ".xml");
+            strFolder, "universalmediacenter_musicdb" + CDateTime::GetCurrentDateTime().GetAsSaveString() + ".xml");
       xmlDoc.SaveFile(xmlFile);
 
       CVariant data;
@@ -12350,7 +12350,7 @@ void CMusicDatabase::ImportFromXML(const std::string& xmlFile, CGUIDialogProgres
     if (nullptr == m_pDS)
       return;
 
-    CXBMCTinyXML xmlDoc;
+    CTinyXML xmlDoc;
     if (!xmlDoc.LoadFile(xmlFile) && progressDialog)
     {
       HELPERS::ShowOKDialogLines(CVariant{20197}, CVariant{38354}); //"Unable to read xml file"
@@ -12465,7 +12465,7 @@ bool CMusicDatabase::ImportSongHistory(const std::string& xmlFile,
   bool bHistSongExists = false;
   try
   {
-    CXBMCTinyXML xmlDoc;
+    CTinyXML xmlDoc;
     if (!xmlDoc.LoadFile(xmlFile))
       return false;
 
@@ -12922,7 +12922,7 @@ void CMusicDatabase::SetItemUpdated(int mediaId, MEDIA::TYPE mediaType)
 
 bool CMusicDatabase::SetArtForItem(int mediaId,
                                    const std::string& mediaType,
-                                   const KODI::ART::Artwork& art)
+                                   const UNIVERSAL MEDIA CENTER::ART::Artwork& art)
 {
   bool result = true;
   for (const auto& [type, url] : art)
@@ -13050,7 +13050,7 @@ bool CMusicDatabase::GetArtForItem(
 
 bool CMusicDatabase::GetArtForItem(int mediaId,
                                    const std::string& mediaType,
-                                   KODI::ART::Artwork& art)
+                                   UNIVERSAL MEDIA CENTER::ART::Artwork& art)
 {
   return CDatabase::GetArtForItem(mediaId, mediaType, art) && !art.empty();
 }

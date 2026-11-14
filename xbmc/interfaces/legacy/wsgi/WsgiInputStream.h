@@ -14,9 +14,9 @@
 
 struct HTTPPythonRequest;
 
-namespace XBMCAddon
+namespace Addon
 {
-  namespace xbmcwsgi
+  namespace wsgi
   {
 
     // Iterator for the wsgi.input stream.
@@ -27,7 +27,7 @@ namespace XBMCAddon
       ~WsgiInputStreamIterator() override;
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_xbmcwsgi_WsgiInputStream
+      /// \ingroup python_wsgi_WsgiInputStream
       /// \python_func{ read([size]) }
       ///
       /// Read a maximum of `<size>` bytes from the wsgi.input stream.
@@ -41,7 +41,7 @@ namespace XBMCAddon
 #endif
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_xbmcwsgi_WsgiInputStream
+      /// \ingroup python_wsgi_WsgiInputStream
       /// \python_func{ readline([size]) }
       ///
       /// Read a full line up to a maximum of `<size>` bytes from the wsgi.input
@@ -56,7 +56,7 @@ namespace XBMCAddon
 #endif
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_xbmcwsgi_WsgiInputStream
+      /// \ingroup python_wsgi_WsgiInputStream
       /// \python_func{ readlines([sizehint]) }
       ///
       /// Read multiple full lines up to at least `<sizehint>` bytes from the
@@ -89,8 +89,8 @@ namespace XBMCAddon
 #endif
     };
 
-    /// \defgroup python_xbmcwsgi_WsgiInputStream WsgiInputStream
-    /// \ingroup python_xbmcwsgi
+    /// \defgroup python_wsgi_WsgiInputStream WsgiInputStream
+    /// \ingroup python_wsgi
     /// @{
     /// @brief **Represents the wsgi.input stream to access data from a HTTP request.**
     ///

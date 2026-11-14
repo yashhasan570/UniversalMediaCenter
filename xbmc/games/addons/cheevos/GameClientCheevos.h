@@ -29,7 +29,7 @@ struct game_rc_achievement_triggered;
 struct game_rc_game_loaded;
 struct game_rc_login_result;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 
 namespace GAME
@@ -253,4 +253,4 @@ private:
   bool m_observingSettings{false};
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

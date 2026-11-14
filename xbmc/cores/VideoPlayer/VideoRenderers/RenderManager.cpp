@@ -509,7 +509,7 @@ void CRenderManager::DeleteRenderer()
   }
 }
 
-bool CRenderManager::CompositeVideoCapture(KODI::RENDERING::CAPTURE::CaptureResult& result)
+bool CRenderManager::CompositeVideoCapture(UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CaptureResult& result)
 {
   std::unique_lock lock(m_statelock);
   if (m_renderState != STATE_CONFIGURED || !m_pRenderer)
@@ -520,7 +520,7 @@ bool CRenderManager::CompositeVideoCapture(KODI::RENDERING::CAPTURE::CaptureResu
 
 void CRenderManager::ServiceVideoCaptures()
 {
-  using namespace KODI::RENDERING::CAPTURE;
+  using namespace UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE;
 
   const auto captureService = CServiceBroker::GetCaptureService();
   if (!captureService)

@@ -98,7 +98,7 @@ public:
   ~CTestFont() override { OnDestroyDevice(false); }
   void Paint(CGraphicContext& context, float y = 48)
   {
-    const std::array<KODI::UTILS::COLOR::Color, 1> colors{0xffffffff};
+    const std::array<UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color, 1> colors{0xffffffff};
     const vecText text{'M', 'A', 'S', 'K', 'M', 'A', 'S', 'K'};
     DrawTextInternal(context, 0, y, colors, text, 0, 0, false, false);
   }
@@ -115,7 +115,7 @@ public:
     // Fill beyond the logical bounds so the mask determines the visible pixels.
     CGUITexture::DrawQuad(SCREEN, color);
   }
-  KODI::UTILS::COLOR::Color color{0xffffffff};
+  UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color color{0xffffffff};
   std::vector<STENCIL_LAYER> layers;
 };
 
@@ -251,7 +251,7 @@ protected:
                                         : RENDER_ORDER_ALL_BACK_TO_FRONT);
     ASSERT_TRUE(m_window->ClearBuffers(0));
     RecordProperty("adapter",
-                   KODI::PLATFORM::WINDOWS::FromW(m_device->GetAdapterDesc().Description));
+                   UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW(m_device->GetAdapterDesc().Description));
     RecordProperty("feature_level", m_device->GetDeviceFeatureLevel());
   }
 
@@ -350,7 +350,7 @@ protected:
     settings->m_guiAlgorithmDirtyRegions = DIRTYREGION_SOLVER_COST_REDUCTION;
     settings->m_guiVisualizeDirtyRegions = false;
     m_previousMessenger = CServiceBroker::GetAppMessenger();
-    auto messenger = std::make_shared<KODI::MESSAGING::CApplicationMessenger>();
+    auto messenger = std::make_shared<UNIVERSAL MEDIA CENTER::MESSAGING::CApplicationMessenger>();
     messenger->SetProcessThread(std::this_thread::get_id());
     CServiceBroker::RegisterAppMessenger(messenger);
     TestGUIControlGroupMaskD3D::SetUp();
@@ -373,7 +373,7 @@ private:
   bool m_previousFrontToBack{false};
   int m_previousDirtyRegions{0};
   bool m_previousVisualize{false};
-  std::shared_ptr<KODI::MESSAGING::CApplicationMessenger> m_previousMessenger;
+  std::shared_ptr<UNIVERSAL MEDIA CENTER::MESSAGING::CApplicationMessenger> m_previousMessenger;
 };
 } // namespace
 
@@ -633,7 +633,7 @@ TEST_P(TestGUIControlGroupMaskD3D, NestedMasksPreserveOtherBits)
 TEST_P(TestGUIControlGroupMaskD3D, TextUsesTheSameStencilMask)
 {
   CTestFont font;
-  ASSERT_TRUE(font.Load(XBMC_REF_FILE_PATH("media/Fonts/arial.ttf"), 32));
+  ASSERT_TRUE(font.Load(_REF_FILE_PATH("media/Fonts/arial.ttf"), 32));
   font.Paint(Context());
   const auto unmasked = ReadPixels();
   ASSERT_TRUE(m_window->ClearBuffers(0));
@@ -663,7 +663,7 @@ TEST_P(TestGUIControlGroupMaskD3D, RotatedTextPreservesUnrotatedMask)
 {
   m_window->SetCameraPosition(CPoint(64, 64), TARGET_SIZE, TARGET_SIZE, 0);
   CTestFont font;
-  ASSERT_TRUE(font.Load(XBMC_REF_FILE_PATH("media/Fonts/arial.ttf"), 32));
+  ASSERT_TRUE(font.Load(_REF_FILE_PATH("media/Fonts/arial.ttf"), 32));
   auto* text = new CRotatedTextControl(font);
   CGUIControlGroupMask group(0, 0, 0, 0, 64, 96);
   group.AddControl(text);
@@ -708,7 +708,7 @@ TEST_P(TestGUIControlGroupMaskD3D, TextClipRegionWithAndWithoutRotation)
 {
   m_window->SetCameraPosition(CPoint(64, 64), TARGET_SIZE, TARGET_SIZE, 0);
   CTestFont font;
-  ASSERT_TRUE(font.Load(XBMC_REF_FILE_PATH("media/Fonts/arial.ttf"), 32));
+  ASSERT_TRUE(font.Load(_REF_FILE_PATH("media/Fonts/arial.ttf"), 32));
   const CRect clip{32, 0, 96, TARGET_SIZE};
   for (float angle : {0.0f, ANGLE})
   {

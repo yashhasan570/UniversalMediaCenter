@@ -24,9 +24,9 @@
 //#include <math.h>
 #include <unistd.h>
 #ifdef DEB_PACK
-#include <xbmc/xbmcclient.h>
+#include </client.h>
 #else
-#include "../../lib/c++/xbmcclient.h"
+#include "../../lib/c++/client.h"
 #endif
 //#ifndef WIN32
 //	#include <unistd.h>
@@ -123,5 +123,5 @@ void DisableMotionSensing(wiimote* wm) {if (WIIUSE_USING_ACC(wm)) wiiuse_motion_
 unsigned short convert_code(unsigned short);
 float smoothDeg(float, float);
 
-CXBMCClient EventClient;
+CClient EventClient;
 

@@ -51,7 +51,7 @@
 
 #include <memory>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 CServiceManager::CServiceManager()
   : m_fileExtensionProvider(std::make_unique<CFileExtensionProvider>())
@@ -129,7 +129,7 @@ bool CServiceManager::InitStageOne()
 bool CServiceManager::InitStageTwo(const std::string& profilesUserDataFolder)
 {
 #ifdef HAS_PYTHON
-  // checked here rather than at construction so the failure reaches kodi.log
+  // checked here rather than at construction so the failure reaches universalmediacenter.log
   if (!m_XBPython->BindingModulesLoaded())
   {
     CLog::Log(LOGFATAL, "CServiceManager::{}: Unable to initialize the python binding modules",
@@ -419,7 +419,7 @@ GAME::CGameServices& CServiceManager::GetGameServices()
   return *m_gameServices;
 }
 
-KODI::RETRO::CGUIGameRenderManager& CServiceManager::GetGameRenderManager()
+UNIVERSAL MEDIA CENTER::RETRO::CGUIGameRenderManager& CServiceManager::GetGameRenderManager()
 {
   return *m_gameRenderManager;
 }

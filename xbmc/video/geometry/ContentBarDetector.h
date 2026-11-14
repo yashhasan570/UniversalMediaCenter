@@ -12,7 +12,7 @@
 
 #include <cstdint>
 
-namespace KODI::VIDEO::GEOMETRY
+namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY
 {
 
 //! \brief Chroma plane subsampling of the frame handed to the detector.
@@ -100,4 +100,4 @@ struct DetectionResult
  */
 DetectionResult DetectContentRect(const FrameRef& frame, const DetectorParams& params = {});
 
-} // namespace KODI::VIDEO::GEOMETRY
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY

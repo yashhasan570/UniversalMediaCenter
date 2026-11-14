@@ -177,7 +177,7 @@ public:
    *         Lifetime of the returned object will usually end with \ref DestroyWindowSystem, so
    *         do not use any more after calling that.
    */
-  KODI::WINDOWING::COSScreenSaverManager* GetOSScreenSaver();
+  UNIVERSAL MEDIA CENTER::WINDOWING::COSScreenSaverManager* GetOSScreenSaver();
 
   // resolution interfaces
   unsigned int GetWidth() { return m_nWidth; }
@@ -259,10 +259,10 @@ public:
   virtual HDR_STATUS ToggleHDR() { return HDR_STATUS::HDR_UNSUPPORTED; }
   virtual HDR_STATUS GetOSHDRStatus() { return HDR_STATUS::HDR_UNSUPPORTED; }
   virtual CHDRCapabilities GetDisplayHDRCapabilities() const { return {}; }
-  virtual KODI::UTILS::Eotf GetEotf() const { return KODI::UTILS::Eotf::TRADITIONAL_SDR; }
-  virtual KODI::UTILS::Colorimetry GetColorimetry() const
+  virtual UNIVERSAL MEDIA CENTER::UTILS::Eotf GetEotf() const { return UNIVERSAL MEDIA CENTER::UTILS::Eotf::TRADITIONAL_SDR; }
+  virtual UNIVERSAL MEDIA CENTER::UTILS::Colorimetry GetColorimetry() const
   {
-    return KODI::UTILS::Colorimetry::DEFAULT;
+    return UNIVERSAL MEDIA CENTER::UTILS::Colorimetry::DEFAULT;
   }
   static const char* SETTING_WINSYSTEM_IS_HDR_DISPLAY;
   virtual float GetGuiSdrPeakLuminance() const { return .0f; }
@@ -370,7 +370,7 @@ protected:
                                int screenHeight,
                                float refreshRate,
                                uint32_t dwFlags);
-  virtual std::unique_ptr<KODI::WINDOWING::IOSScreenSaver> GetOSScreenSaverImpl() { return nullptr; }
+  virtual std::unique_ptr<UNIVERSAL MEDIA CENTER::WINDOWING::IOSScreenSaver> GetOSScreenSaverImpl() { return nullptr; }
 
   int m_nWidth = 0;
   int m_nHeight = 0;
@@ -380,7 +380,7 @@ protected:
   bool m_bFullScreen = false;
   bool m_bBlankOtherDisplay = false;
   float m_fRefreshRate = 0.0f;
-  std::unique_ptr<KODI::WINDOWING::COSScreenSaverManager> m_screenSaverManager;
+  std::unique_ptr<UNIVERSAL MEDIA CENTER::WINDOWING::COSScreenSaverManager> m_screenSaverManager;
   CCriticalSection m_renderLoopSection;
   std::vector<IRenderLoop*> m_renderLoopClients;
 

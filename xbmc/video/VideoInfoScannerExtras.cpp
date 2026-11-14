@@ -52,7 +52,7 @@
 
 using namespace XFILE;
 
-namespace KODI::VIDEO
+namespace UNIVERSAL MEDIA CENTER::VIDEO
 {
 namespace
 {
@@ -724,4 +724,4 @@ bool CVideoInfoScannerExtras::AddDiscExtras(const std::string& disc, int dbId)
   }
   return true;
 }
-} // namespace KODI::VIDEO
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO

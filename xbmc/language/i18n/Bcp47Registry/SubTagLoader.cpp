@@ -11,7 +11,7 @@
 #include "language/i18n/Bcp47Registry/SubTagRegistryFile.h"
 #include "language/i18n/Bcp47Registry/SubTagRegistryTypes.h"
 
-namespace KODI::LANGUAGE::I18N
+namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N
 {
 bool LoadBaseSubTag(BaseSubTag& subTag, const RegistryFileRecord& record)
 {
@@ -64,4 +64,4 @@ bool LoadVariantSubTag(VariantSubTag& subTag, const RegistryFileRecord& record)
 
   return true;
 }
-} // namespace KODI::LANGUAGE::I18N
+} // namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N

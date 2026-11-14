@@ -15,7 +15,7 @@ varying vec4 m_colour;
 // SM_FONTS and SM_FONTS_RGBA shader
 void main()
 {
-#if defined(KODI_FONTS_RGBA)
+#if defined(UNIVERSAL MEDIA CENTER_FONTS_RGBA)
   gl_FragColor = m_colour * texture2D(m_samp0, m_cord0);
 #else
   gl_FragColor = m_colour;

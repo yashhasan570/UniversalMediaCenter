@@ -40,9 +40,9 @@
 using namespace std::chrono_literals;
 
 #if defined(TARGET_WINDOWS) || defined(HAVE_LIBBLUETOOTH)
-static const char     bt_service_name[] = "XBMC JSON-RPC";
-static const char     bt_service_desc[] = "Interface for XBMC remote control over bluetooth";
-static const char     bt_service_prov[] = "XBMC JSON-RPC Provider";
+static const char     bt_service_name[] = " JSON-RPC";
+static const char     bt_service_desc[] = "Interface for  remote control over bluetooth";
+static const char     bt_service_prov[] = " JSON-RPC Provider";
 static const uint32_t bt_service_guid[] = {0x65AE4CC0, 0x775D11E0, 0xBE16CE28, 0x4824019B};
 #endif
 
@@ -462,7 +462,7 @@ bool CTCPServer::InitializeBlue()
   addrinfo.RemoteAddr.lpSockaddr      = (SOCKADDR*)&sa;
   addrinfo.RemoteAddr.iSockaddrLength = sizeof(sa);
 
-  using KODI::PLATFORM::WINDOWS::ToW;
+  using UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::ToW;
 
   WSAQUERYSET service = {};
   service.dwSize = sizeof(service);

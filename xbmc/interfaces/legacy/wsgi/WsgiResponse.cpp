@@ -14,9 +14,9 @@
 #include <inttypes.h>
 #include <utility>
 
-namespace XBMCAddon
+namespace Addon
 {
-  namespace xbmcwsgi
+  namespace wsgi
   {
     WsgiResponse::WsgiResponse()
       : m_responseHeaders(),

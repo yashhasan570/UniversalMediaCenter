@@ -11,7 +11,7 @@
 #include <string>
 #include <vector>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace ACTION
 {
@@ -26,4 +26,4 @@ public:
   static bool TranslateString(std::string strAction, unsigned int& actionId);
 };
 } // namespace ACTION
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

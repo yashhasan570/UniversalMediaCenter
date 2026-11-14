@@ -41,7 +41,7 @@ CContextMenuAddon::CContextMenuAddon(const AddonInfoPtr& addonInfo)
       if (visCondition.empty())
         visCondition = "false";
 
-      std::string parent = elem->GetValue("parent").asString() == "kodi.core.manage"
+      std::string parent = elem->GetValue("parent").asString() == "universalmediacenter.core.manage"
           ? CContextMenuManager::MANAGE.m_groupId : CContextMenuManager::MAIN.m_groupId;
 
       std::string label = elem->GetValue("label").asString();

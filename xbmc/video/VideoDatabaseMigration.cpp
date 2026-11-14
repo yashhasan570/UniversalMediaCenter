@@ -42,7 +42,7 @@
 using namespace dbiplus;
 using namespace XFILE;
 
-namespace KODI::DATABASE::MIGRATION
+namespace UNIVERSAL MEDIA CENTER::DATABASE::MIGRATION
 {
 void InitializeVideoVersionTypeTableV123(CDatabase& db)
 {
@@ -239,7 +239,7 @@ void RepairVideoAssetTypesV154(CDatabase& db, Dataset& ds, Dataset& ds2, int iVe
                           VideoAssetType_VERSION, VideoAssetType_EXTRA));
   }
 }
-} // namespace KODI::DATABASE::MIGRATION
+} // namespace UNIVERSAL MEDIA CENTER::DATABASE::MIGRATION
 
 void CVideoDatabase::UpdateTables(int iVersion)
 {
@@ -930,7 +930,7 @@ void CVideoDatabase::UpdateTables(int iVersion)
 
   if (iVersion < 121)
   {
-    // https://github.com/xbmc/xbmc/issues/21253 - Universal Media Center picks up wrong "year" for PVR recording.
+    // https://github.com///issues/21253 - Universal Media Center picks up wrong "year" for PVR recording.
 
     m_pDS->query("SELECT idFile, strFilename FROM files WHERE strFilename LIKE '% (1969)%.pvr' OR "
                  "strFilename LIKE '% (1601)%.pvr'");
@@ -960,7 +960,7 @@ void CVideoDatabase::UpdateTables(int iVersion)
 
     // create videoversiontype table
     m_pDS->exec("CREATE TABLE videoversiontype (id INTEGER PRIMARY KEY, name TEXT, owner INTEGER)");
-    KODI::DATABASE::MIGRATION::InitializeVideoVersionTypeTableV123(*this);
+    UNIVERSAL MEDIA CENTER::DATABASE::MIGRATION::InitializeVideoVersionTypeTableV123(*this);
 
     // create videoversion table
     m_pDS->exec("CREATE TABLE videoversion (idFile INTEGER PRIMARY KEY, idMedia INTEGER, mediaType "
@@ -1212,7 +1212,7 @@ void CVideoDatabase::UpdateTables(int iVersion)
         // ISO 639-2/B that do not have an ISO 639-1 equivalent are left alone, as they are either
         // identical to the desired ISO 639-2/T code or unrecognized values that must have come
         // from AS.xml or a language addon. There is no easy way to tell which situation applies.
-        if (const auto alpha2 = KODI::LANGUAGE::I18N::Alpha2OfAlpha3B(iso6392Lower))
+        if (const auto alpha2 = UNIVERSAL MEDIA CENTER::LANGUAGE::I18N::Alpha2OfAlpha3B(iso6392Lower))
         {
           const auto to = std::string{*alpha2};
           m_pDS->exec(PrepareSQL("UPDATE movie SET originalLanguage='" + to +
@@ -1246,7 +1246,7 @@ void CVideoDatabase::UpdateTables(int iVersion)
         const std::size_t lastSep{oldFile.rfind('/')};
         // Convert the case of the encoded part of the url only, append the rest unchanged.
         const std::string newPath{
-            KODI::DATABASE::MIGRATION::LowerCaseEncodingV143(oldFile.substr(0, firstSep)) +
+            UNIVERSAL MEDIA CENTER::DATABASE::MIGRATION::LowerCaseEncodingV143(oldFile.substr(0, firstSep)) +
             oldFile.substr(firstSep, lastSep + 1 - firstSep)};
         const std::string newFile{oldFile.substr(lastSep + 1)};
 
@@ -1418,7 +1418,7 @@ void CVideoDatabase::UpdateTables(int iVersion)
       const int idParentPath{m_pDS->fv(4).get_asInt()};
       const std::string parentPath{m_pDS->fv(5).get_asString()};
 
-      std::string newPath{KODI::DATABASE::MIGRATION::SanitiseUrlEncodingV147(path)};
+      std::string newPath{UNIVERSAL MEDIA CENTER::DATABASE::MIGRATION::SanitiseUrlEncodingV147(path)};
       if (newPath != path && !idPathSet.contains(idPath))
       {
         // Update rar:// path (in path)
@@ -1468,7 +1468,7 @@ void CVideoDatabase::UpdateTables(int iVersion)
       const int idParentPath{m_pDS->fv(4).get_asInt()};
       const std::string parentPath{m_pDS->fv(5).get_asString()};
 
-      std::string newPath{KODI::DATABASE::MIGRATION::SanitiseUrlEncodingV147(path)};
+      std::string newPath{UNIVERSAL MEDIA CENTER::DATABASE::MIGRATION::SanitiseUrlEncodingV147(path)};
       if (newPath != path && !idPathSet.contains(idPath))
       {
         // Update rar:// path (in path)
@@ -1478,7 +1478,7 @@ void CVideoDatabase::UpdateTables(int iVersion)
         idPathSet.insert(idPath);
       }
 
-      newPath = KODI::DATABASE::MIGRATION::SanitiseUrlEncodingV147(basePath);
+      newPath = UNIVERSAL MEDIA CENTER::DATABASE::MIGRATION::SanitiseUrlEncodingV147(basePath);
       if (newPath != basePath)
       {
         // Update rar:// base path (in episode)
@@ -1556,12 +1556,12 @@ void CVideoDatabase::UpdateTables(int iVersion)
     if (!hasSortSet)
       m_pDS->exec("ALTER TABLE `sets` ADD strSortSet TEXT");
 
-    KODI::DATABASE::MIGRATION::RepairVideoAssetTypesV154(*this, *m_pDS, *m_pDS2, iVersion);
+    UNIVERSAL MEDIA CENTER::DATABASE::MIGRATION::RepairVideoAssetTypesV154(*this, *m_pDS, *m_pDS2, iVersion);
   }
 
   if (iVersion < 155)
   {
-    KODI::DATABASE::CVideoDatabaseDDL::CreateContentGeometryTable(*this);
+    UNIVERSAL MEDIA CENTER::DATABASE::CVideoDatabaseDDL::CreateContentGeometryTable(*this);
 
     m_pDS->exec("ALTER TABLE settings ADD COLUMN DeclaredAspect float");
     m_pDS->exec("ALTER TABLE settings ADD COLUMN DeclaredOn text");

@@ -6,7 +6,7 @@
  *  See LICENSES/README.md for more information.
  */
 
-#include "JNIXBMCTextureCache.h"
+#include "JNITextureCache.h"
 
 #include "CompileInfo.h"
 #include "imagefiles/ImageFileURL.h"
@@ -16,23 +16,23 @@
 
 using namespace jni;
 
-static std::string s_className = std::string(CCompileInfo::GetClass()) + "/XBMCTextureCache";
+static std::string s_className = std::string(CCompileInfo::GetClass()) + "/TextureCache";
 
-void CJNIXBMCTextureCache::RegisterNatives(JNIEnv* env)
+void CJNITextureCache::RegisterNatives(JNIEnv* env)
 {
   jclass cClass = env->FindClass(s_className.c_str());
   if (cClass)
   {
     JNINativeMethod methods[] = {
         {"_unwrapImageURL", "(Ljava/lang/String;)Ljava/lang/String;",
-         (void*)&CJNIXBMCTextureCache::_unwrapImageURL},
+         (void*)&CJNITextureCache::_unwrapImageURL},
     };
 
     env->RegisterNatives(cClass, methods, sizeof(methods) / sizeof(methods[0]));
   }
 }
 
-jstring CJNIXBMCTextureCache::_unwrapImageURL(JNIEnv* env, jobject thiz, jstring image)
+jstring CJNITextureCache::_unwrapImageURL(JNIEnv* env, jobject thiz, jstring image)
 {
   std::string strImage = jcast<std::string>(jhstring::fromJNI(image));
   std::string responseData = IMAGE_FILES::ToCacheKey(strImage);

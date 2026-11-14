@@ -9,11 +9,11 @@
 #pragma once
 
 #include "input/keyboard/Key.h"
-#include "input/keyboard/XBMC_keysym.h"
+#include "input/keyboard/_keysym.h"
 
 #include <string>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace KEYBOARD
 {
@@ -23,7 +23,7 @@ namespace KEYBOARD
 /*!
  * \brief Symbol of a hardware-independent key
  */
-using XBMCKey = XBMCKey;
+using Key = Key;
 
 /*!
  * \brief Name of a hardware-indendent symbol representing a key
@@ -47,4 +47,4 @@ const unsigned int KEY_HOLD_TRESHOLD = 250;
 
 /// \}
 } // namespace KEYBOARD
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

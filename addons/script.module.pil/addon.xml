@@ -4,11 +4,11 @@
        version="5.1.0"
        provider-name="PythonWare">
   <requires>
-    <import addon="xbmc.python" version="3.0.0"/>
+    <import addon=".python" version="3.0.0"/>
   </requires>
-  <extension point="xbmc.python.module"
+  <extension point=".python.module"
              library="lib" />
-  <extension point="xbmc.addon.metadata">
+  <extension point=".addon.metadata">
     <platform>all</platform>
     <assets>
       <icon>icon.png</icon>

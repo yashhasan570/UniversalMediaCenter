@@ -27,7 +27,7 @@
 #include <memory>
 #include <stdint.h>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace KEYMAP
 {
@@ -115,7 +115,7 @@ private:
   CAxisDetector& GetAxis(unsigned int axisIndex,
                          float position,
                          const AxisConfiguration& initialConfig = AxisConfiguration());
-  CKeyDetector& GetKey(XBMCKey keycode);
+  CKeyDetector& GetKey(Key keycode);
   CMouseButtonDetector& GetMouseButton(MOUSE::BUTTON_ID buttonIndex);
   CPointerDetector& GetPointer();
 
@@ -127,11 +127,11 @@ private:
   std::map<unsigned int, CButtonDetector> m_buttons;
   std::map<unsigned int, CHatDetector> m_hats;
   std::map<unsigned int, CAxisDetector> m_axes;
-  std::map<XBMCKey, CKeyDetector> m_keys;
+  std::map<Key, CKeyDetector> m_keys;
   std::map<MOUSE::BUTTON_ID, CMouseButtonDetector> m_mouseButtons;
   std::unique_ptr<CPointerDetector> m_pointer;
   std::chrono::time_point<std::chrono::steady_clock> m_lastAction;
   uint64_t m_frameCount = 0;
 };
 } // namespace JOYSTICK
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

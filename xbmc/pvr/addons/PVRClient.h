@@ -10,7 +10,7 @@
 
 #include "XBDateTime.h"
 #include "addons/binary-addons/AddonInstanceHandler.h"
-#include "addons/kodi-dev-kit/include/kodi/c-api/addon-instance/pvr.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api/addon-instance/pvr.h"
 #include "pvr/addons/PVRClientCapabilities.h"
 #include "threads/Event.h"
 
@@ -954,189 +954,189 @@ private:
   /*!
    * @brief Wraps an addon callback function call in order to do common pre and post function invocation actions.
    * @param strFunctionName The function name, for logging purposes.
-   * @param kodiInstance The addon instance pointer.
+   * @param universalmediacenterInstance The addon instance pointer.
    * @param function The function to wrap. It must take one parameter of type CPVRClient*.
    * @param bForceCall If true, make the call, ignoring client's state.
    */
   template<typename F, typename Universal Media CenterInstance>
   static void HandleAddonCallback(const char* strFunctionName,
-                                  Universal Media CenterInstance* kodiInstance,
+                                  Universal Media CenterInstance* universalmediacenterInstance,
                                   F function,
                                   bool bForceCall = false);
 
   /*!
-   * @brief Callback functions from addon to kodi
+   * @brief Callback functions from addon to universalmediacenter
    */
   //@{
 
   /*!
    * @brief Transfer a channel group from the add-on to Universal Media Center. The group will be created if it doesn't exist.
-   * @param kodiInstance Pointer to Universal Media Center's CPVRClient class
+   * @param universalmediacenterInstance Pointer to Universal Media Center's CPVRClient class
    * @param handle The handle parameter that Universal Media Center used when requesting the channel groups list
    * @param entry The entry to transfer to Universal Media Center
    */
-  static void cb_transfer_channel_group(void* kodiInstance,
+  static void cb_transfer_channel_group(void* universalmediacenterInstance,
                                         const PVR_HANDLE handle,
                                         const PVR_CHANNEL_GROUP* entry);
 
   /*!
    * @brief Transfer a channel group member entry from the add-on to Universal Media Center. The channel will be added to the group if the group can be found.
-   * @param kodiInstance Pointer to Universal Media Center's CPVRClient class
+   * @param universalmediacenterInstance Pointer to Universal Media Center's CPVRClient class
    * @param handle The handle parameter that Universal Media Center used when requesting the channel group members list
    * @param entry The entry to transfer to Universal Media Center
    */
-  static void cb_transfer_channel_group_member(void* kodiInstance,
+  static void cb_transfer_channel_group_member(void* universalmediacenterInstance,
                                                const PVR_HANDLE handle,
                                                const PVR_CHANNEL_GROUP_MEMBER* entry);
 
   /*!
    * @brief Transfer an EPG tag from the add-on to Universal Media Center
-   * @param kodiInstance Pointer to Universal Media Center's CPVRClient class
+   * @param universalmediacenterInstance Pointer to Universal Media Center's CPVRClient class
    * @param handle The handle parameter that Universal Media Center used when requesting the EPG data
    * @param entry The entry to transfer to Universal Media Center
    */
-  static void cb_transfer_epg_entry(void* kodiInstance,
+  static void cb_transfer_epg_entry(void* universalmediacenterInstance,
                                     const PVR_HANDLE handle,
                                     const EPG_TAG* entry);
 
   /*!
    * @brief Transfer a channel entry from the add-on to Universal Media Center
-   * @param kodiInstance Pointer to Universal Media Center's CPVRClient class
+   * @param universalmediacenterInstance Pointer to Universal Media Center's CPVRClient class
    * @param handle The handle parameter that Universal Media Center used when requesting the channel list
    * @param entry The entry to transfer to Universal Media Center
    */
-  static void cb_transfer_channel_entry(void* kodiInstance,
+  static void cb_transfer_channel_entry(void* universalmediacenterInstance,
                                         const PVR_HANDLE handle,
                                         const PVR_CHANNEL* entry);
 
   /*!
    * @brief Transfer a provider entry from the add-on to Universal Media Center
-   * @param kodiInstance Pointer to Universal Media Center's CPVRClient class
+   * @param universalmediacenterInstance Pointer to Universal Media Center's CPVRClient class
    * @param handle The handle parameter that Universal Media Center used when requesting the channel list
    * @param entry The entry to transfer to Universal Media Center
    */
-  static void cb_transfer_provider_entry(void* kodiInstance,
+  static void cb_transfer_provider_entry(void* universalmediacenterInstance,
                                          const PVR_HANDLE handle,
                                          const PVR_PROVIDER* entry);
 
   /*!
    * @brief Transfer a timer entry from the add-on to Universal Media Center
-   * @param kodiInstance Pointer to Universal Media Center's CPVRClient class
+   * @param universalmediacenterInstance Pointer to Universal Media Center's CPVRClient class
    * @param handle The handle parameter that Universal Media Center used when requesting the timers list
    * @param entry The entry to transfer to Universal Media Center
    */
-  static void cb_transfer_timer_entry(void* kodiInstance,
+  static void cb_transfer_timer_entry(void* universalmediacenterInstance,
                                       const PVR_HANDLE handle,
                                       const PVR_TIMER* entry);
 
   /*!
    * @brief Transfer a recording entry from the add-on to Universal Media Center
-   * @param kodiInstance Pointer to Universal Media Center's CPVRClient class
+   * @param universalmediacenterInstance Pointer to Universal Media Center's CPVRClient class
    * @param handle The handle parameter that Universal Media Center used when requesting the recordings list
    * @param entry The entry to transfer to Universal Media Center
    */
-  static void cb_transfer_recording_entry(void* kodiInstance,
+  static void cb_transfer_recording_entry(void* universalmediacenterInstance,
                                           const PVR_HANDLE handle,
                                           const PVR_RECORDING* entry);
 
   /*!
    * @brief Add or replace a menu hook for the context menu for this add-on
-   * @param kodiInstance Pointer to Universal Media Center's CPVRClient class
+   * @param universalmediacenterInstance Pointer to Universal Media Center's CPVRClient class
    * @param hook The hook to add.
    */
-  static void cb_add_menu_hook(void* kodiInstance, const PVR_MENUHOOK* hook);
+  static void cb_add_menu_hook(void* universalmediacenterInstance, const PVR_MENUHOOK* hook);
 
   /*!
    * @brief Display a notification in Universal Media Center that a recording started or stopped on the server
-   * @param kodiInstance Pointer to Universal Media Center's CPVRClient class
+   * @param universalmediacenterInstance Pointer to Universal Media Center's CPVRClient class
    * @param strName The name of the recording to display
    * @param strFileName The filename of the recording
    * @param bOnOff True when recording started, false when it stopped
    */
-  static void cb_recording_notification(void* kodiInstance,
+  static void cb_recording_notification(void* universalmediacenterInstance,
                                         const char* strName,
                                         const char* strFileName,
                                         bool bOnOff);
 
   /*!
    * @brief Request Universal Media Center to update it's list of channels
-   * @param kodiInstance Pointer to Universal Media Center's CPVRClient class
+   * @param universalmediacenterInstance Pointer to Universal Media Center's CPVRClient class
    */
-  static void cb_trigger_channel_update(void* kodiInstance);
+  static void cb_trigger_channel_update(void* universalmediacenterInstance);
 
   /*!
    * @brief Request Universal Media Center to update it's list of providers
-   * @param kodiInstance Pointer to Universal Media Center's CPVRClient class
+   * @param universalmediacenterInstance Pointer to Universal Media Center's CPVRClient class
    */
-  static void cb_trigger_provider_update(void* kodiInstance);
+  static void cb_trigger_provider_update(void* universalmediacenterInstance);
 
   /*!
    * @brief Request Universal Media Center to update it's list of timers
-   * @param kodiInstance Pointer to Universal Media Center's CPVRClient class
+   * @param universalmediacenterInstance Pointer to Universal Media Center's CPVRClient class
    */
-  static void cb_trigger_timer_update(void* kodiInstance);
+  static void cb_trigger_timer_update(void* universalmediacenterInstance);
 
   /*!
    * @brief Request Universal Media Center to update it's list of recordings
-   * @param kodiInstance Pointer to Universal Media Center's CPVRClient class
+   * @param universalmediacenterInstance Pointer to Universal Media Center's CPVRClient class
    */
-  static void cb_trigger_recording_update(void* kodiInstance);
+  static void cb_trigger_recording_update(void* universalmediacenterInstance);
 
   /*!
    * @brief Request Universal Media Center to update it's list of channel groups
-   * @param kodiInstance Pointer to Universal Media Center's CPVRClient class
+   * @param universalmediacenterInstance Pointer to Universal Media Center's CPVRClient class
    */
-  static void cb_trigger_channel_groups_update(void* kodiInstance);
+  static void cb_trigger_channel_groups_update(void* universalmediacenterInstance);
 
   /*!
    * @brief Schedule an EPG update for the given channel channel
-   * @param kodiInstance A pointer to the add-on
+   * @param universalmediacenterInstance A pointer to the add-on
    * @param iChannelUid The unique id of the channel for this add-on
    */
-  static void cb_trigger_epg_update(void* kodiInstance, unsigned int iChannelUid);
+  static void cb_trigger_epg_update(void* universalmediacenterInstance, unsigned int iChannelUid);
 
   /*!
    * @brief Free a packet that was allocated with AllocateDemuxPacket
-   * @param kodiInstance Pointer to Universal Media Center's CPVRClient class
+   * @param universalmediacenterInstance Pointer to Universal Media Center's CPVRClient class
    * @param pPacket The packet to free.
    */
-  static void cb_free_demux_packet(void* kodiInstance, DEMUX_PACKET* pPacket);
+  static void cb_free_demux_packet(void* universalmediacenterInstance, DEMUX_PACKET* pPacket);
 
   /*!
    * @brief Allocate a demux packet. Free with FreeDemuxPacket
-   * @param kodiInstance Pointer to Universal Media Center's CPVRClient class.
+   * @param universalmediacenterInstance Pointer to Universal Media Center's CPVRClient class.
    * @param iDataSize The size of the data that will go into the packet
    * @return The allocated packet.
    */
-  static DEMUX_PACKET* cb_allocate_demux_packet(void* kodiInstance, int iDataSize = 0);
+  static DEMUX_PACKET* cb_allocate_demux_packet(void* universalmediacenterInstance, int iDataSize = 0);
 
   /*!
    * @brief Notify a state change for a PVR backend connection
-   * @param kodiInstance Pointer to Universal Media Center's CPVRClient class
+   * @param universalmediacenterInstance Pointer to Universal Media Center's CPVRClient class
    * @param strConnectionString The connection string reported by the backend that can be displayed in the UI.
    * @param newState The new state.
    * @param strMessage A localized addon-defined string representing the new state, that can be displayed
    *        in the UI or NULL if the Universal Media Center-defined default string for the new state shall be displayed.
    */
-  static void cb_connection_state_change(void* kodiInstance,
+  static void cb_connection_state_change(void* universalmediacenterInstance,
                                          const char* strConnectionString,
                                          PVR_CONNECTION_STATE newState,
                                          const char* strMessage);
 
   /*!
    * @brief Notify a state change for an EPG event
-   * @param kodiInstance Pointer to Universal Media Center's CPVRClient class
+   * @param universalmediacenterInstance Pointer to Universal Media Center's CPVRClient class
    * @param tag The EPG event.
    * @param newState The new state.
    * @param newState The new state. For EPG_EVENT_CREATED and EPG_EVENT_UPDATED, tag must be filled with all available
    *        event data, not just a delta. For EPG_EVENT_DELETED, it is sufficient to fill EPG_TAG.iUniqueBroadcastId
    */
-  static void cb_epg_event_state_change(void* kodiInstance, EPG_TAG* tag, EPG_EVENT_STATE newState);
+  static void cb_epg_event_state_change(void* universalmediacenterInstance, EPG_TAG* tag, EPG_EVENT_STATE newState);
 
   /*! @todo remove the use complete from them, or add as general function?!
    * Returns the ffmpeg codec id from given ffmpeg codec string name
    */
-  static PVR_CODEC cb_get_codec_by_name(const void* kodiInstance, const char* strCodecName);
+  static PVR_CODEC cb_get_codec_by_name(const void* universalmediacenterInstance, const char* strCodecName);
   //@}
 
   const int m_iClientId; /*!< unique ID of the client */

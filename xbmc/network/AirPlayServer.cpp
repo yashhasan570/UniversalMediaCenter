@@ -46,8 +46,8 @@
 
 #include <plist/plist.h>
 
-using namespace KODI;
-using KODI::UTILITY::CDigest;
+using namespace UNIVERSAL MEDIA CENTER;
+using UNIVERSAL MEDIA CENTER::UTILITY::CDigest;
 using namespace std::chrono_literals;
 
 #ifdef TARGET_WINDOWS
@@ -429,7 +429,7 @@ void CAirPlayServer::Process()
     }
 
     // by reannouncing the zeroconf service
-    // we fix issues where xbmc is detected
+    // we fix issues where  is detected
     // as audio-only target on devices with
     // ios7 and later
     handleZeroconfAnnouncement();

@@ -29,7 +29,7 @@ endif()
 set(PLATFORM_DIR platform/win32)
 set(APP_RENDER_SYSTEM dx11)
 
-set(CORE_MAIN_SOURCE ${CMAKE_SOURCE_DIR}/xbmc/platform/win32/WinMain.cpp)
+set(CORE_MAIN_SOURCE ${CMAKE_SOURCE_DIR}//platform/win32/WinMain.cpp)
 
 # Precompiled headers fail with per target output directory. (needs CMake 3.1)
 set(PRECOMPILEDHEADER_DIR ${PROJECT_BINARY_DIR}/${CORE_BUILD_CONFIG}/objs)
@@ -66,8 +66,8 @@ endif()
 
 set(SYSTEM_DEFINES -DWIN32_LEAN_AND_MEAN -DNOMINMAX -DHAS_DX -D__STDC_CONSTANT_MACROS
                    -DNPT_CONFIG_ENABLE_LOGGING
-                   -DPLT_HTTP_DEFAULT_USER_AGENT="UPnP/1.0 DLNADOC/1.50 Kodi"
-                   -DPLT_HTTP_DEFAULT_SERVER="UPnP/1.0 DLNADOC/1.50 Kodi"
+                   -DPLT_HTTP_DEFAULT_USER_AGENT="UPnP/1.0 DLNADOC/1.50 Universal Media Center"
+                   -DPLT_HTTP_DEFAULT_SERVER="UPnP/1.0 DLNADOC/1.50 Universal Media Center"
                    -DUNICODE -D_UNICODE
                    -DFRIBIDI_STATIC
                    $<$<CONFIG:Debug>:-DD3D_DEBUG_INFO>)

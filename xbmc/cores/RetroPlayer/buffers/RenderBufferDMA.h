@@ -18,7 +18,7 @@
 class CEGLImage;
 class IBufferObject;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -70,4 +70,4 @@ private:
   uint8_t* m_memory{nullptr};
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

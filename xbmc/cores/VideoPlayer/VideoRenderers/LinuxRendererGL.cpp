@@ -432,7 +432,7 @@ void CLinuxRendererGL::LoadPlane(CYuvPlane& plane, int type,
   if (plane.pbo)
     glBindBuffer(GL_PIXEL_UNPACK_BUFFER, plane.pbo);
 
-  int bps = bpp * KODI::UTILS::GL::glFormatElementByteCount(type);
+  int bps = bpp * UNIVERSAL MEDIA CENTER::UTILS::GL::glFormatElementByteCount(type);
 
   unsigned datatype;
   if (bpp == 2)

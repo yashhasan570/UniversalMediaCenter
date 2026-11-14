@@ -76,7 +76,7 @@ public:
   bool BeginRender() override { return true; }
   bool EndRender() override { return true; }
   void PresentRender(bool rendered, bool videoLayer) override {}
-  bool ClearBuffers(KODI::UTILS::COLOR::Color color) override { return true; }
+  bool ClearBuffers(UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color color) override { return true; }
   bool IsExtSupported(const char* extension) const override { return false; }
   void SetViewPort(const CRect& viewPort) override {}
   void GetViewPort(CRect& viewPort) override {}
@@ -142,7 +142,7 @@ protected:
     // For sources and destinations. Not under special://temp, which the cache takes as already
     // cached
     std::error_code ec;
-    m_tempPath = KODI::PLATFORM::FILESYSTEM::create_temp_directory(ec);
+    m_tempPath = UNIVERSAL MEDIA CENTER::PLATFORM::FILESYSTEM::create_temp_directory(ec);
     ASSERT_FALSE(ec);
 
     CServiceBroker::RegisterWinSystem(&m_winSystem);

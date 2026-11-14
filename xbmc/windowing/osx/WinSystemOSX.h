@@ -112,7 +112,7 @@ public:
   void SendInputEvent(NSEvent* nsEvent);
 
 protected:
-  std::unique_ptr<KODI::WINDOWING::IOSScreenSaver> GetOSScreenSaverImpl() override;
+  std::unique_ptr<UNIVERSAL MEDIA CENTER::WINDOWING::IOSScreenSaver> GetOSScreenSaverImpl() override;
 
   void SynchronizeCurrentMonitor();
   ScreenResolution GetScreenResolution(unsigned long screenIdx);

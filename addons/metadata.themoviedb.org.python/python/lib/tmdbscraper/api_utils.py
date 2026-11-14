@@ -22,10 +22,10 @@ from __future__ import absolute_import, unicode_literals
 import json
 
 try:
-    import xbmc
+    import 
 except ModuleNotFoundError:
     # only used for logging HTTP calls, not available nor needed for testing
-    xbmc = None
+     = None
 
 # from pprint import pformat
 try: #PY2 / PY3
@@ -64,10 +64,10 @@ def load_info(url, params=None, default=None, resp_type = 'json'):
     theerror = ''
     if params:
         url = url + '?' + urlencode(params)
-    if xbmc:
-        xbmc.log('Calling URL "{}"'.format(url), xbmc.LOGDEBUG)
+    if :
+        .log('Calling URL "{}"'.format(url), .LOGDEBUG)
         if HEADERS:
-            xbmc.log(str(HEADERS), xbmc.LOGDEBUG)
+            .log(str(HEADERS), .LOGDEBUG)
     req = Request(url, headers=HEADERS)
     try:
         response = urlopen(req)
@@ -84,5 +84,5 @@ def load_info(url, params=None, default=None, resp_type = 'json'):
         resp = json.loads(response.read().decode('utf-8'))
     else:
         resp = response.read().decode('utf-8')
-    # xbmc.log('the api response:\n{}'.format(pformat(resp)), xbmc.LOGDEBUG)
+    # .log('the api response:\n{}'.format(pformat(resp)), .LOGDEBUG)
     return resp

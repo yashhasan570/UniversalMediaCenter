@@ -15,7 +15,7 @@
 #include <random>
 #include <vector>
 
-namespace KODI::VIDEO::GEOMETRY::TEST
+namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::TEST
 {
 
 /*!
@@ -253,4 +253,4 @@ private:
   std::vector<uint8_t> m_v;
 };
 
-} // namespace KODI::VIDEO::GEOMETRY::TEST
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::TEST

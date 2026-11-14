@@ -14,7 +14,7 @@
 
 class CGUIDialogSelect;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -61,4 +61,4 @@ private:
                              const GameClientVector& installable);
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

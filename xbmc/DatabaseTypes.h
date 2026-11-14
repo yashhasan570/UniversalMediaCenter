@@ -8,7 +8,7 @@
 
 #pragma once
 
-namespace KODI::DATABASE
+namespace UNIVERSAL MEDIA CENTER::DATABASE
 {
 
 static constexpr const char* TYPE_ADDONS = "addons";
@@ -20,4 +20,4 @@ static constexpr const char* TYPE_TV = "tv";
 static constexpr const char* TYPE_VIDEOS = "videos";
 static constexpr const char* TYPE_VIEWMODES = "viewmodes";
 
-} // namespace KODI::DATABASE
+} // namespace UNIVERSAL MEDIA CENTER::DATABASE

@@ -29,8 +29,8 @@
 #include <wrl/client.h>
 #include <ws2tcpip.h>
 
-using KODI::PLATFORM::WINDOWS::FromW;
-using KODI::PLATFORM::WINDOWS::ToW;
+using UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW;
+using UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::ToW;
 using namespace WSDiscovery;
 
 namespace

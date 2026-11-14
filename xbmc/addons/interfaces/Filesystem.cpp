@@ -52,7 +52,7 @@
 #endif
 #endif
 
-using namespace kodi; // addon-dev-kit namespace
+using namespace universalmediacenter; // addon-dev-kit namespace
 using namespace XFILE;
 
 namespace ADDON
@@ -60,109 +60,109 @@ namespace ADDON
 
 void Interface_Filesystem::Init(AddonGlobalInterface* addonInterface)
 {
-  addonInterface->toUniversal Media Center->kodi_filesystem = new AddonToUniversal Media CenterFuncTable_kodi_filesystem();
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem = new AddonToUniversal Media CenterFuncTable_universalmediacenter_filesystem();
 
-  addonInterface->toUniversal Media Center->kodi_filesystem->can_open_directory = can_open_directory;
-  addonInterface->toUniversal Media Center->kodi_filesystem->create_directory = create_directory;
-  addonInterface->toUniversal Media Center->kodi_filesystem->directory_exists = directory_exists;
-  addonInterface->toUniversal Media Center->kodi_filesystem->remove_directory = remove_directory;
-  addonInterface->toUniversal Media Center->kodi_filesystem->remove_directory_recursive = remove_directory_recursive;
-  addonInterface->toUniversal Media Center->kodi_filesystem->get_directory = get_directory;
-  addonInterface->toUniversal Media Center->kodi_filesystem->free_directory = free_directory;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->can_open_directory = can_open_directory;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->create_directory = create_directory;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->directory_exists = directory_exists;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->remove_directory = remove_directory;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->remove_directory_recursive = remove_directory_recursive;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->get_directory = get_directory;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->free_directory = free_directory;
 
-  addonInterface->toUniversal Media Center->kodi_filesystem->file_exists = file_exists;
-  addonInterface->toUniversal Media Center->kodi_filesystem->stat_file = stat_file;
-  addonInterface->toUniversal Media Center->kodi_filesystem->delete_file = delete_file;
-  addonInterface->toUniversal Media Center->kodi_filesystem->rename_file = rename_file;
-  addonInterface->toUniversal Media Center->kodi_filesystem->copy_file = copy_file;
-  addonInterface->toUniversal Media Center->kodi_filesystem->get_file_md5 = get_file_md5;
-  addonInterface->toUniversal Media Center->kodi_filesystem->get_cache_thumb_name = get_cache_thumb_name;
-  addonInterface->toUniversal Media Center->kodi_filesystem->make_legal_filename = make_legal_filename;
-  addonInterface->toUniversal Media Center->kodi_filesystem->make_legal_path = make_legal_path;
-  addonInterface->toUniversal Media Center->kodi_filesystem->translate_special_protocol = translate_special_protocol;
-  addonInterface->toUniversal Media Center->kodi_filesystem->get_disk_space = get_disk_space;
-  addonInterface->toUniversal Media Center->kodi_filesystem->is_internet_stream = is_internet_stream;
-  addonInterface->toUniversal Media Center->kodi_filesystem->is_on_lan = is_on_lan;
-  addonInterface->toUniversal Media Center->kodi_filesystem->is_remote = is_remote;
-  addonInterface->toUniversal Media Center->kodi_filesystem->is_local = is_local;
-  addonInterface->toUniversal Media Center->kodi_filesystem->is_url = is_url;
-  addonInterface->toUniversal Media Center->kodi_filesystem->get_http_header = get_http_header;
-  addonInterface->toUniversal Media Center->kodi_filesystem->get_mime_type = get_mime_type;
-  addonInterface->toUniversal Media Center->kodi_filesystem->get_content_type = get_content_type;
-  addonInterface->toUniversal Media Center->kodi_filesystem->get_cookies = get_cookies;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->file_exists = file_exists;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->stat_file = stat_file;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->delete_file = delete_file;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->rename_file = rename_file;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->copy_file = copy_file;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->get_file_md5 = get_file_md5;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->get_cache_thumb_name = get_cache_thumb_name;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->make_legal_filename = make_legal_filename;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->make_legal_path = make_legal_path;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->translate_special_protocol = translate_special_protocol;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->get_disk_space = get_disk_space;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->is_internet_stream = is_internet_stream;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->is_on_lan = is_on_lan;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->is_remote = is_remote;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->is_local = is_local;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->is_url = is_url;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->get_http_header = get_http_header;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->get_mime_type = get_mime_type;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->get_content_type = get_content_type;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->get_cookies = get_cookies;
 
-  addonInterface->toUniversal Media Center->kodi_filesystem->http_header_create = http_header_create;
-  addonInterface->toUniversal Media Center->kodi_filesystem->http_header_free = http_header_free;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->http_header_create = http_header_create;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->http_header_free = http_header_free;
 
-  addonInterface->toUniversal Media Center->kodi_filesystem->open_file = open_file;
-  addonInterface->toUniversal Media Center->kodi_filesystem->open_file_for_write = open_file_for_write;
-  addonInterface->toUniversal Media Center->kodi_filesystem->read_file = read_file;
-  addonInterface->toUniversal Media Center->kodi_filesystem->read_file_string = read_file_string;
-  addonInterface->toUniversal Media Center->kodi_filesystem->write_file = write_file;
-  addonInterface->toUniversal Media Center->kodi_filesystem->flush_file = flush_file;
-  addonInterface->toUniversal Media Center->kodi_filesystem->seek_file = seek_file;
-  addonInterface->toUniversal Media Center->kodi_filesystem->truncate_file = truncate_file;
-  addonInterface->toUniversal Media Center->kodi_filesystem->get_file_position = get_file_position;
-  addonInterface->toUniversal Media Center->kodi_filesystem->get_file_length = get_file_length;
-  addonInterface->toUniversal Media Center->kodi_filesystem->get_file_download_speed = get_file_download_speed;
-  addonInterface->toUniversal Media Center->kodi_filesystem->close_file = close_file;
-  addonInterface->toUniversal Media Center->kodi_filesystem->get_file_chunk_size = get_file_chunk_size;
-  addonInterface->toUniversal Media Center->kodi_filesystem->io_control_get_seek_possible =
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->open_file = open_file;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->open_file_for_write = open_file_for_write;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->read_file = read_file;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->read_file_string = read_file_string;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->write_file = write_file;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->flush_file = flush_file;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->seek_file = seek_file;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->truncate_file = truncate_file;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->get_file_position = get_file_position;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->get_file_length = get_file_length;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->get_file_download_speed = get_file_download_speed;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->close_file = close_file;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->get_file_chunk_size = get_file_chunk_size;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->io_control_get_seek_possible =
       io_control_get_seek_possible;
-  addonInterface->toUniversal Media Center->kodi_filesystem->io_control_get_cache_status =
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->io_control_get_cache_status =
       io_control_get_cache_status;
-  addonInterface->toUniversal Media Center->kodi_filesystem->io_control_set_cache_rate = io_control_set_cache_rate;
-  addonInterface->toUniversal Media Center->kodi_filesystem->io_control_set_retry = io_control_set_retry;
-  addonInterface->toUniversal Media Center->kodi_filesystem->get_property_values = get_property_values;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->io_control_set_cache_rate = io_control_set_cache_rate;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->io_control_set_retry = io_control_set_retry;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->get_property_values = get_property_values;
 
-  addonInterface->toUniversal Media Center->kodi_filesystem->curl_create = curl_create;
-  addonInterface->toUniversal Media Center->kodi_filesystem->curl_add_option = curl_add_option;
-  addonInterface->toUniversal Media Center->kodi_filesystem->curl_open = curl_open;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->curl_create = curl_create;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->curl_add_option = curl_add_option;
+  addonInterface->toUniversal Media Center->universalmediacenter_filesystem->curl_open = curl_open;
 }
 
 void Interface_Filesystem::DeInit(AddonGlobalInterface* addonInterface)
 {
   if (addonInterface->toUniversal Media Center) /* <-- Safe check, needed so long old addon way is present */
   {
-    delete addonInterface->toUniversal Media Center->kodi_filesystem;
-    addonInterface->toUniversal Media Center->kodi_filesystem = nullptr;
+    delete addonInterface->toUniversal Media Center->universalmediacenter_filesystem;
+    addonInterface->toUniversal Media Center->universalmediacenter_filesystem = nullptr;
   }
 }
 
 unsigned int Interface_Filesystem::TranslateFileReadBitsToUniversal Media Center(unsigned int addonFlags)
 {
-  unsigned int kodiFlags = 0;
+  unsigned int universalmediacenterFlags = 0;
 
   if (addonFlags & ADDON_READ_TRUNCATED)
-    kodiFlags |= READ_TRUNCATED;
+    universalmediacenterFlags |= READ_TRUNCATED;
   if (addonFlags & ADDON_READ_CHUNKED)
     CLog::LogF(LOGWARNING, "Detected use of deprecated 'ADDON_READ_CHUNKED' flag");
   if (addonFlags & ADDON_READ_CACHED)
-    kodiFlags |= READ_CACHED;
+    universalmediacenterFlags |= READ_CACHED;
   if (addonFlags & ADDON_READ_NO_CACHE)
-    kodiFlags |= READ_NO_CACHE;
+    universalmediacenterFlags |= READ_NO_CACHE;
   if (addonFlags & ADDON_READ_BITRATE)
-    kodiFlags |= READ_BITRATE;
+    universalmediacenterFlags |= READ_BITRATE;
   if (addonFlags & ADDON_READ_MULTI_STREAM)
-    kodiFlags |= READ_MULTI_STREAM;
+    universalmediacenterFlags |= READ_MULTI_STREAM;
   if (addonFlags & ADDON_READ_AUDIO_VIDEO)
-    kodiFlags |= READ_AUDIO_VIDEO;
+    universalmediacenterFlags |= READ_AUDIO_VIDEO;
   if (addonFlags & ADDON_READ_AFTER_WRITE)
-    kodiFlags |= READ_AFTER_WRITE;
+    universalmediacenterFlags |= READ_AFTER_WRITE;
   if (addonFlags & ADDON_READ_REOPEN)
-    kodiFlags |= READ_REOPEN;
+    universalmediacenterFlags |= READ_REOPEN;
   if (addonFlags & ADDON_READ_NO_BUFFER)
-    kodiFlags |= READ_NO_BUFFER;
+    universalmediacenterFlags |= READ_NO_BUFFER;
 
-  return kodiFlags;
+  return universalmediacenterFlags;
 }
 
-bool Interface_Filesystem::can_open_directory(void* kodiBase, const char* url)
+bool Interface_Filesystem::can_open_directory(void* universalmediacenterBase, const char* url)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !url)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', url='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', url='{}')", universalmediacenterBase,
                static_cast<const void*>(url));
     return false;
   }
@@ -171,12 +171,12 @@ bool Interface_Filesystem::can_open_directory(void* kodiBase, const char* url)
   return CDirectory::GetDirectory(url, items, "", DIR_FLAG_DEFAULTS | DIR_FLAG_BYPASS_CACHE);
 }
 
-bool Interface_Filesystem::create_directory(void* kodiBase, const char* path)
+bool Interface_Filesystem::create_directory(void* universalmediacenterBase, const char* path)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !path)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', path='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', path='{}')", universalmediacenterBase,
                static_cast<const void*>(path));
     return false;
   }
@@ -184,12 +184,12 @@ bool Interface_Filesystem::create_directory(void* kodiBase, const char* path)
   return CDirectory::Create(path);
 }
 
-bool Interface_Filesystem::directory_exists(void* kodiBase, const char* path)
+bool Interface_Filesystem::directory_exists(void* universalmediacenterBase, const char* path)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !path)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', path='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', path='{}')", universalmediacenterBase,
                static_cast<const void*>(path));
     return false;
   }
@@ -197,12 +197,12 @@ bool Interface_Filesystem::directory_exists(void* kodiBase, const char* path)
   return CDirectory::Exists(path, false);
 }
 
-bool Interface_Filesystem::remove_directory(void* kodiBase, const char* path)
+bool Interface_Filesystem::remove_directory(void* universalmediacenterBase, const char* path)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !path)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', path='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', path='{}')", universalmediacenterBase,
                static_cast<const void*>(path));
     return false;
   }
@@ -216,12 +216,12 @@ bool Interface_Filesystem::remove_directory(void* kodiBase, const char* path)
   return CDirectory::Remove(path);
 }
 
-bool Interface_Filesystem::remove_directory_recursive(void* kodiBase, const char* path)
+bool Interface_Filesystem::remove_directory_recursive(void* universalmediacenterBase, const char* path)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !path)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', path='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', path='{}')", universalmediacenterBase,
                static_cast<const void*>(path));
     return false;
   }
@@ -246,19 +246,19 @@ void CFileItemListToVFSDirEntries(VFSDirEntry* entries, const CFileItemList& ite
 }
 } // unnamed namespace
 
-bool Interface_Filesystem::get_directory(void* kodiBase,
+bool Interface_Filesystem::get_directory(void* universalmediacenterBase,
                                          const char* path,
                                          const char* mask,
                                          struct VFSDirEntry** items,
                                          unsigned int* num_items)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !path || !mask || !items || !num_items)
   {
     CLog::LogF(LOGERROR,
                "Invalid data (addon='{}', path='{}', mask='{}', "
                "items='{}', num_items='{}'",
-               kodiBase, static_cast<const void*>(path), static_cast<const void*>(mask),
+               universalmediacenterBase, static_cast<const void*>(path), static_cast<const void*>(mask),
                static_cast<void*>(items), static_cast<void*>(num_items));
     return false;
   }
@@ -283,14 +283,14 @@ bool Interface_Filesystem::get_directory(void* kodiBase,
   return true;
 }
 
-void Interface_Filesystem::free_directory(void* kodiBase,
+void Interface_Filesystem::free_directory(void* universalmediacenterBase,
                                           struct VFSDirEntry* items,
                                           unsigned int num_items)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !items)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', items='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', items='{}')", universalmediacenterBase,
                static_cast<void*>(items));
     return;
   }
@@ -305,12 +305,12 @@ void Interface_Filesystem::free_directory(void* kodiBase,
 
 //------------------------------------------------------------------------------
 
-bool Interface_Filesystem::file_exists(void* kodiBase, const char* filename, bool useCache)
+bool Interface_Filesystem::file_exists(void* universalmediacenterBase, const char* filename, bool useCache)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !filename)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', filename='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', filename='{}')", universalmediacenterBase,
                static_cast<const void*>(filename));
     return false;
   }
@@ -318,14 +318,14 @@ bool Interface_Filesystem::file_exists(void* kodiBase, const char* filename, boo
   return CFile::Exists(filename, useCache);
 }
 
-bool Interface_Filesystem::stat_file(void* kodiBase,
+bool Interface_Filesystem::stat_file(void* universalmediacenterBase,
                                      const char* filename,
                                      struct STAT_STRUCTURE* buffer)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !filename || !buffer)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', filename='{}', buffer='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', filename='{}', buffer='{}')", universalmediacenterBase,
                static_cast<const void*>(filename), static_cast<void*>(buffer));
     return false;
   }
@@ -351,12 +351,12 @@ bool Interface_Filesystem::stat_file(void* kodiBase,
   return true;
 }
 
-bool Interface_Filesystem::delete_file(void* kodiBase, const char* filename)
+bool Interface_Filesystem::delete_file(void* universalmediacenterBase, const char* filename)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !filename)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', filename='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', filename='{}')", universalmediacenterBase,
                static_cast<const void*>(filename));
     return false;
   }
@@ -364,14 +364,14 @@ bool Interface_Filesystem::delete_file(void* kodiBase, const char* filename)
   return CFile::Delete(filename);
 }
 
-bool Interface_Filesystem::rename_file(void* kodiBase,
+bool Interface_Filesystem::rename_file(void* universalmediacenterBase,
                                        const char* filename,
                                        const char* newFileName)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !filename || !newFileName)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', filename='{}', newFileName='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', filename='{}', newFileName='{}')", universalmediacenterBase,
                static_cast<const void*>(filename), static_cast<const void*>(newFileName));
     return false;
   }
@@ -379,12 +379,12 @@ bool Interface_Filesystem::rename_file(void* kodiBase,
   return CFile::Rename(filename, newFileName);
 }
 
-bool Interface_Filesystem::copy_file(void* kodiBase, const char* filename, const char* dest)
+bool Interface_Filesystem::copy_file(void* universalmediacenterBase, const char* filename, const char* dest)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !filename || !dest)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', filename='{}', dest='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', filename='{}', dest='{}')", universalmediacenterBase,
                static_cast<const void*>(filename), static_cast<const void*>(dest));
     return false;
   }
@@ -392,26 +392,26 @@ bool Interface_Filesystem::copy_file(void* kodiBase, const char* filename, const
   return CFile::Copy(filename, dest);
 }
 
-char* Interface_Filesystem::get_file_md5(void* kodiBase, const char* filename)
+char* Interface_Filesystem::get_file_md5(void* universalmediacenterBase, const char* filename)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !filename)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', filename='{})", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', filename='{})", universalmediacenterBase,
                static_cast<const void*>(filename));
     return nullptr;
   }
 
-  const std::string string{CUtil::GetFileDigest(filename, KODI::UTILITY::CDigest::Type::MD5)};
+  const std::string string{CUtil::GetFileDigest(filename, UNIVERSAL MEDIA CENTER::UTILITY::CDigest::Type::MD5)};
   return strdup(string.c_str());
 }
 
-char* Interface_Filesystem::get_cache_thumb_name(void* kodiBase, const char* filename)
+char* Interface_Filesystem::get_cache_thumb_name(void* universalmediacenterBase, const char* filename)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !filename)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', filename='{})", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', filename='{})", universalmediacenterBase,
                static_cast<const void*>(filename));
     return nullptr;
   }
@@ -421,12 +421,12 @@ char* Interface_Filesystem::get_cache_thumb_name(void* kodiBase, const char* fil
   return strdup(hex.c_str());
 }
 
-char* Interface_Filesystem::make_legal_filename(void* kodiBase, const char* filename)
+char* Interface_Filesystem::make_legal_filename(void* universalmediacenterBase, const char* filename)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !filename)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', filename='{})", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', filename='{})", universalmediacenterBase,
                static_cast<const void*>(filename));
     return nullptr;
   }
@@ -435,12 +435,12 @@ char* Interface_Filesystem::make_legal_filename(void* kodiBase, const char* file
   return strdup(string.c_str());
 }
 
-char* Interface_Filesystem::make_legal_path(void* kodiBase, const char* path)
+char* Interface_Filesystem::make_legal_path(void* universalmediacenterBase, const char* path)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !path)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', path='{})", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', path='{})", universalmediacenterBase,
                static_cast<const void*>(path));
     return nullptr;
   }
@@ -449,12 +449,12 @@ char* Interface_Filesystem::make_legal_path(void* kodiBase, const char* path)
   return strdup(string.c_str());
 }
 
-char* Interface_Filesystem::translate_special_protocol(void* kodiBase, const char* strSource)
+char* Interface_Filesystem::translate_special_protocol(void* universalmediacenterBase, const char* strSource)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !strSource)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', strSource='{})", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', strSource='{})", universalmediacenterBase,
                static_cast<const void*>(strSource));
     return nullptr;
   }
@@ -463,20 +463,20 @@ char* Interface_Filesystem::translate_special_protocol(void* kodiBase, const cha
 }
 
 bool Interface_Filesystem::get_disk_space(
-    void* kodiBase, const char* path, uint64_t* capacity, uint64_t* free, uint64_t* available)
+    void* universalmediacenterBase, const char* path, uint64_t* capacity, uint64_t* free, uint64_t* available)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !path || !capacity || !free || !available)
   {
     CLog::LogF(LOGERROR,
                "Invalid data (addon='{}', path='{}, capacity='{}, free='{}, "
                "available='{})",
-               kodiBase, static_cast<const void*>(path), static_cast<void*>(capacity),
+               universalmediacenterBase, static_cast<const void*>(path), static_cast<void*>(capacity),
                static_cast<void*>(free), static_cast<void*>(available));
     return false;
   }
 
-  using namespace KODI::PLATFORM::FILESYSTEM;
+  using namespace UNIVERSAL MEDIA CENTER::PLATFORM::FILESYSTEM;
 
   std::error_code ec;
   const space_info freeSpace{space(CSpecialProtocol::TranslatePath(path), ec)};
@@ -489,12 +489,12 @@ bool Interface_Filesystem::get_disk_space(
   return true;
 }
 
-bool Interface_Filesystem::is_internet_stream(void* kodiBase, const char* path, bool strictCheck)
+bool Interface_Filesystem::is_internet_stream(void* universalmediacenterBase, const char* path, bool strictCheck)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !path)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', path='{})", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', path='{})", universalmediacenterBase,
                static_cast<const void*>(path));
     return false;
   }
@@ -502,12 +502,12 @@ bool Interface_Filesystem::is_internet_stream(void* kodiBase, const char* path, 
   return URIUtils::IsInternetStream(path, strictCheck);
 }
 
-bool Interface_Filesystem::is_on_lan(void* kodiBase, const char* path)
+bool Interface_Filesystem::is_on_lan(void* universalmediacenterBase, const char* path)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !path)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', path='{})", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', path='{})", universalmediacenterBase,
                static_cast<const void*>(path));
     return false;
   }
@@ -515,12 +515,12 @@ bool Interface_Filesystem::is_on_lan(void* kodiBase, const char* path)
   return URIUtils::IsOnLAN(path);
 }
 
-bool Interface_Filesystem::is_remote(void* kodiBase, const char* path)
+bool Interface_Filesystem::is_remote(void* universalmediacenterBase, const char* path)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !path)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', path='{})", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', path='{})", universalmediacenterBase,
                static_cast<const void*>(path));
     return false;
   }
@@ -528,12 +528,12 @@ bool Interface_Filesystem::is_remote(void* kodiBase, const char* path)
   return URIUtils::IsRemote(path);
 }
 
-bool Interface_Filesystem::is_local(void* kodiBase, const char* path)
+bool Interface_Filesystem::is_local(void* universalmediacenterBase, const char* path)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !path)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', path='{})", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', path='{})", universalmediacenterBase,
                static_cast<const void*>(path));
     return false;
   }
@@ -541,12 +541,12 @@ bool Interface_Filesystem::is_local(void* kodiBase, const char* path)
   return CURL(path).IsLocal();
 }
 
-bool Interface_Filesystem::is_url(void* kodiBase, const char* path)
+bool Interface_Filesystem::is_url(void* universalmediacenterBase, const char* path)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !path)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', path='{})", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', path='{})", universalmediacenterBase,
                static_cast<const void*>(path));
     return false;
   }
@@ -554,80 +554,80 @@ bool Interface_Filesystem::is_url(void* kodiBase, const char* path)
   return URIUtils::IsURL(path);
 }
 
-bool Interface_Filesystem::get_mime_type(void* kodiBase,
+bool Interface_Filesystem::get_mime_type(void* universalmediacenterBase,
                                          const char* url,
                                          char** content,
                                          const char* useragent)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !url || !content || !useragent)
   {
     CLog::LogF(LOGERROR,
                "Invalid data (addon='{}', url='{}', content='{}', "
                "useragent='{}')",
-               kodiBase, static_cast<const void*>(url), static_cast<const void*>(content),
+               universalmediacenterBase, static_cast<const void*>(url), static_cast<const void*>(content),
                static_cast<const void*>(useragent));
     return false;
   }
 
-  std::string kodiContent;
-  const bool ret{XFILE::CCurlFile::GetMimeType(CURL(url), kodiContent, useragent)};
-  if (ret && !kodiContent.empty())
+  std::string universalmediacenterContent;
+  const bool ret{XFILE::CCurlFile::GetMimeType(CURL(url), universalmediacenterContent, useragent)};
+  if (ret && !universalmediacenterContent.empty())
   {
-    *content = strdup(kodiContent.c_str());
+    *content = strdup(universalmediacenterContent.c_str());
   }
   return ret;
 }
 
-bool Interface_Filesystem::get_content_type(void* kodiBase,
+bool Interface_Filesystem::get_content_type(void* universalmediacenterBase,
                                             const char* url,
                                             char** content,
                                             const char* useragent)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !url || !content || !useragent)
   {
     CLog::LogF(LOGERROR,
                "Invalid data (addon='{}', url='{}', content='{}', "
                "useragent='{}')",
-               kodiBase, static_cast<const void*>(url), static_cast<const void*>(content),
+               universalmediacenterBase, static_cast<const void*>(url), static_cast<const void*>(content),
                static_cast<const void*>(useragent));
     return false;
   }
 
-  std::string kodiContent;
-  const bool ret{XFILE::CCurlFile::GetContentType(CURL(url), kodiContent, useragent)};
-  if (ret && !kodiContent.empty())
+  std::string universalmediacenterContent;
+  const bool ret{XFILE::CCurlFile::GetContentType(CURL(url), universalmediacenterContent, useragent)};
+  if (ret && !universalmediacenterContent.empty())
   {
-    *content = strdup(kodiContent.c_str());
+    *content = strdup(universalmediacenterContent.c_str());
   }
   return ret;
 }
 
-bool Interface_Filesystem::get_cookies(void* kodiBase, const char* url, char** cookies)
+bool Interface_Filesystem::get_cookies(void* universalmediacenterBase, const char* url, char** cookies)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !url || !cookies)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', url='{}', cookies='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', url='{}', cookies='{}')", universalmediacenterBase,
                static_cast<const void*>(url), static_cast<const void*>(cookies));
     return false;
   }
 
-  std::string kodiCookies;
-  const bool ret{XFILE::CCurlFile::GetCookies(CURL(url), kodiCookies)};
-  if (ret && !kodiCookies.empty())
+  std::string universalmediacenterCookies;
+  const bool ret{XFILE::CCurlFile::GetCookies(CURL(url), universalmediacenterCookies)};
+  if (ret && !universalmediacenterCookies.empty())
   {
-    *cookies = strdup(kodiCookies.c_str());
+    *cookies = strdup(universalmediacenterCookies.c_str());
   }
   return ret;
 }
 
-bool Interface_Filesystem::get_http_header(void* kodiBase,
+bool Interface_Filesystem::get_http_header(void* universalmediacenterBase,
                                            const char* url,
-                                           struct KODI_HTTP_HEADER* headers)
+                                           struct UNIVERSALMEDIA_HTTP_HEADER* headers)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !url || !headers || !headers->handle)
   {
     CLog::LogF(LOGERROR, "Invalid data pointer given");
@@ -640,12 +640,12 @@ bool Interface_Filesystem::get_http_header(void* kodiBase,
 
 //------------------------------------------------------------------------------
 
-bool Interface_Filesystem::http_header_create(void* kodiBase, struct KODI_HTTP_HEADER* headers)
+bool Interface_Filesystem::http_header_create(void* universalmediacenterBase, struct UNIVERSALMEDIA_HTTP_HEADER* headers)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !headers)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', headers='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', headers='{}')", universalmediacenterBase,
                static_cast<const void*>(headers));
     return false;
   }
@@ -661,12 +661,12 @@ bool Interface_Filesystem::http_header_create(void* kodiBase, struct KODI_HTTP_H
   return true;
 }
 
-void Interface_Filesystem::http_header_free(void* kodiBase, struct KODI_HTTP_HEADER* headers)
+void Interface_Filesystem::http_header_free(void* universalmediacenterBase, struct UNIVERSALMEDIA_HTTP_HEADER* headers)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !headers)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', headers='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', headers='{}')", universalmediacenterBase,
                static_cast<const void*>(headers));
     return;
   }
@@ -675,12 +675,12 @@ void Interface_Filesystem::http_header_free(void* kodiBase, struct KODI_HTTP_HEA
   headers->handle = nullptr;
 }
 
-char* Interface_Filesystem::http_header_get_value(void* kodiBase, void* handle, const char* param)
+char* Interface_Filesystem::http_header_get_value(void* universalmediacenterBase, void* handle, const char* param)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !handle || !param)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', handle='{}', param='{}')", kodiBase, handle,
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', handle='{}', param='{}')", universalmediacenterBase, handle,
                static_cast<const void*>(param));
     return nullptr;
   }
@@ -693,18 +693,18 @@ char* Interface_Filesystem::http_header_get_value(void* kodiBase, void* handle, 
   return strdup(string.c_str());
 }
 
-char** Interface_Filesystem::http_header_get_values(void* kodiBase,
+char** Interface_Filesystem::http_header_get_values(void* universalmediacenterBase,
                                                     void* handle,
                                                     const char* param,
                                                     int* length)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !handle || !param || !length)
   {
     CLog::LogF(LOGERROR,
                "Invalid data (addon='{}', handle='{}', param='{}', "
                "length='{}')",
-               kodiBase, handle, static_cast<const void*>(param), static_cast<const void*>(length));
+               universalmediacenterBase, handle, static_cast<const void*>(param), static_cast<const void*>(length));
     return nullptr;
   }
 
@@ -718,12 +718,12 @@ char** Interface_Filesystem::http_header_get_values(void* kodiBase,
   return ret;
 }
 
-char* Interface_Filesystem::http_header_get_header(void* kodiBase, void* handle)
+char* Interface_Filesystem::http_header_get_header(void* universalmediacenterBase, void* handle)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !handle)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', handle='{}')", kodiBase, handle);
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', handle='{}')", universalmediacenterBase, handle);
     return nullptr;
   }
 
@@ -735,12 +735,12 @@ char* Interface_Filesystem::http_header_get_header(void* kodiBase, void* handle)
   return strdup(string.c_str());
 }
 
-char* Interface_Filesystem::http_header_get_mime_type(void* kodiBase, void* handle)
+char* Interface_Filesystem::http_header_get_mime_type(void* universalmediacenterBase, void* handle)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !handle)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', handle='{}')", kodiBase, handle);
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', handle='{}')", universalmediacenterBase, handle);
     return nullptr;
   }
 
@@ -752,12 +752,12 @@ char* Interface_Filesystem::http_header_get_mime_type(void* kodiBase, void* hand
   return strdup(string.c_str());
 }
 
-char* Interface_Filesystem::http_header_get_charset(void* kodiBase, void* handle)
+char* Interface_Filesystem::http_header_get_charset(void* universalmediacenterBase, void* handle)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !handle)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', handle='{}')", kodiBase, handle);
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', handle='{}')", universalmediacenterBase, handle);
     return nullptr;
   }
 
@@ -769,12 +769,12 @@ char* Interface_Filesystem::http_header_get_charset(void* kodiBase, void* handle
   return strdup(string.c_str());
 }
 
-char* Interface_Filesystem::http_header_get_proto_line(void* kodiBase, void* handle)
+char* Interface_Filesystem::http_header_get_proto_line(void* universalmediacenterBase, void* handle)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !handle)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', handle='{}')", kodiBase, handle);
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', handle='{}')", universalmediacenterBase, handle);
     return nullptr;
   }
 
@@ -788,12 +788,12 @@ char* Interface_Filesystem::http_header_get_proto_line(void* kodiBase, void* han
 
 //------------------------------------------------------------------------------
 
-void* Interface_Filesystem::open_file(void* kodiBase, const char* filename, unsigned int flags)
+void* Interface_Filesystem::open_file(void* universalmediacenterBase, const char* filename, unsigned int flags)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !filename)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', filename='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', filename='{}')", universalmediacenterBase,
                static_cast<const void*>(filename));
     return nullptr;
   }
@@ -805,14 +805,14 @@ void* Interface_Filesystem::open_file(void* kodiBase, const char* filename, unsi
   return static_cast<void*>(file.release());
 }
 
-void* Interface_Filesystem::open_file_for_write(void* kodiBase,
+void* Interface_Filesystem::open_file_for_write(void* universalmediacenterBase,
                                                 const char* filename,
                                                 bool overwrite)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !filename)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', filename='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', filename='{}')", universalmediacenterBase,
                static_cast<const void*>(filename));
     return nullptr;
   }
@@ -824,27 +824,27 @@ void* Interface_Filesystem::open_file_for_write(void* kodiBase,
   return static_cast<void*>(file.release());
 }
 
-ssize_t Interface_Filesystem::read_file(void* kodiBase, void* file, void* ptr, size_t size)
+ssize_t Interface_Filesystem::read_file(void* universalmediacenterBase, void* file, void* ptr, size_t size)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !file || !ptr)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', file='{}', ptr='{}')", kodiBase, file, ptr);
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', file='{}', ptr='{}')", universalmediacenterBase, file, ptr);
     return -1;
   }
 
   return static_cast<CFile*>(file)->Read(ptr, size);
 }
 
-bool Interface_Filesystem::read_file_string(void* kodiBase,
+bool Interface_Filesystem::read_file_string(void* universalmediacenterBase,
                                             void* file,
                                             char* szLine,
                                             int lineLength)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !file || !szLine)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', file='{}', szLine=='{}')", kodiBase, file,
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', file='{}', szLine=='{}')", universalmediacenterBase, file,
                static_cast<void*>(szLine));
     return false;
   }
@@ -853,96 +853,96 @@ bool Interface_Filesystem::read_file_string(void* kodiBase,
          CFile::ReadLineResult::FAILURE;
 }
 
-ssize_t Interface_Filesystem::write_file(void* kodiBase, void* file, const void* ptr, size_t size)
+ssize_t Interface_Filesystem::write_file(void* universalmediacenterBase, void* file, const void* ptr, size_t size)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !file || !ptr)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', file='{}', ptr='{}')", kodiBase, file, ptr);
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', file='{}', ptr='{}')", universalmediacenterBase, file, ptr);
     return -1;
   }
 
   return static_cast<CFile*>(file)->Write(ptr, size);
 }
 
-void Interface_Filesystem::flush_file(void* kodiBase, void* file)
+void Interface_Filesystem::flush_file(void* universalmediacenterBase, void* file)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !file)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', file='{}')", kodiBase, file);
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', file='{}')", universalmediacenterBase, file);
     return;
   }
 
   static_cast<CFile*>(file)->Flush();
 }
 
-int64_t Interface_Filesystem::seek_file(void* kodiBase, void* file, int64_t position, int whence)
+int64_t Interface_Filesystem::seek_file(void* universalmediacenterBase, void* file, int64_t position, int whence)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !file)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', file='{}')", kodiBase, file);
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', file='{}')", universalmediacenterBase, file);
     return -1;
   }
 
   return static_cast<CFile*>(file)->Seek(position, whence);
 }
 
-int Interface_Filesystem::truncate_file(void* kodiBase, void* file, int64_t size)
+int Interface_Filesystem::truncate_file(void* universalmediacenterBase, void* file, int64_t size)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !file)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', file='{}')", kodiBase, file);
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', file='{}')", universalmediacenterBase, file);
     return -1;
   }
 
   return static_cast<CFile*>(file)->Truncate(size);
 }
 
-int64_t Interface_Filesystem::get_file_position(void* kodiBase, void* file)
+int64_t Interface_Filesystem::get_file_position(void* universalmediacenterBase, void* file)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !file)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', file='{}')", kodiBase, file);
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', file='{}')", universalmediacenterBase, file);
     return -1;
   }
 
   return static_cast<CFile*>(file)->GetPosition();
 }
 
-int64_t Interface_Filesystem::get_file_length(void* kodiBase, void* file)
+int64_t Interface_Filesystem::get_file_length(void* universalmediacenterBase, void* file)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !file)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', file='{}')", kodiBase, file);
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', file='{}')", universalmediacenterBase, file);
     return -1;
   }
 
   return static_cast<CFile*>(file)->GetLength();
 }
 
-double Interface_Filesystem::get_file_download_speed(void* kodiBase, void* file)
+double Interface_Filesystem::get_file_download_speed(void* universalmediacenterBase, void* file)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !file)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', file='{}')", kodiBase, file);
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', file='{}')", universalmediacenterBase, file);
     return 0.0;
   }
 
   return static_cast<CFile*>(file)->GetDownloadSpeed();
 }
 
-void Interface_Filesystem::close_file(void* kodiBase, void* file)
+void Interface_Filesystem::close_file(void* universalmediacenterBase, void* file)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !file)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', file='{}')", kodiBase, file);
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', file='{}')", universalmediacenterBase, file);
     return;
   }
 
@@ -951,38 +951,38 @@ void Interface_Filesystem::close_file(void* kodiBase, void* file)
   delete f;
 }
 
-int Interface_Filesystem::get_file_chunk_size(void* kodiBase, void* file)
+int Interface_Filesystem::get_file_chunk_size(void* universalmediacenterBase, void* file)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !file)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', file='{}')", kodiBase, file);
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', file='{}')", universalmediacenterBase, file);
     return -1;
   }
 
   return static_cast<CFile*>(file)->GetChunkSize();
 }
 
-bool Interface_Filesystem::io_control_get_seek_possible(void* kodiBase, void* file)
+bool Interface_Filesystem::io_control_get_seek_possible(void* universalmediacenterBase, void* file)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !file)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', file='{}')", kodiBase, file);
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', file='{}')", universalmediacenterBase, file);
     return false;
   }
 
   return static_cast<CFile*>(file)->IoControl(IOControl::SEEK_POSSIBLE, nullptr) != 0;
 }
 
-bool Interface_Filesystem::io_control_get_cache_status(void* kodiBase,
+bool Interface_Filesystem::io_control_get_cache_status(void* universalmediacenterBase,
                                                        void* file,
                                                        struct VFS_CACHE_STATUS_DATA* status)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !file || !status)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', file='{}, status='{}')", kodiBase, file,
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', file='{}, status='{}')", universalmediacenterBase, file,
                static_cast<const void*>(status));
     return false;
   }
@@ -1000,24 +1000,24 @@ bool Interface_Filesystem::io_control_get_cache_status(void* kodiBase,
   return false;
 }
 
-bool Interface_Filesystem::io_control_set_cache_rate(void* kodiBase, void* file, uint32_t rate)
+bool Interface_Filesystem::io_control_set_cache_rate(void* universalmediacenterBase, void* file, uint32_t rate)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !file)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', file='{}')", kodiBase, file);
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', file='{}')", universalmediacenterBase, file);
     return false;
   }
 
   return static_cast<CFile*>(file)->IoControl(IOControl::CACHE_SETRATE, &rate) >= 0;
 }
 
-bool Interface_Filesystem::io_control_set_retry(void* kodiBase, void* file, bool retry)
+bool Interface_Filesystem::io_control_set_retry(void* universalmediacenterBase, void* file, bool retry)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !file)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', file='{}')", kodiBase, file);
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', file='{}')", universalmediacenterBase, file);
     return false;
   }
 
@@ -1025,15 +1025,15 @@ bool Interface_Filesystem::io_control_set_retry(void* kodiBase, void* file, bool
 }
 
 char** Interface_Filesystem::get_property_values(
-    void* kodiBase, void* file, int type, const char* name, int* numValues)
+    void* universalmediacenterBase, void* file, int type, const char* name, int* numValues)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !file || !name || !numValues)
   {
     CLog::LogF(LOGERROR,
                "Invalid data (addon='{}', file='{}', name='{}', "
                "numValues='{}')",
-               kodiBase, file, static_cast<const void*>(name), static_cast<void*>(numValues));
+               universalmediacenterBase, file, static_cast<const void*>(name), static_cast<void*>(numValues));
     return nullptr;
   }
 
@@ -1059,7 +1059,7 @@ char** Interface_Filesystem::get_property_values(
       internalType = XFILE::FileProperty::EFFECTIVE_URL;
       break;
     default:
-      CLog::LogF(LOGERROR, "Invalid data (addon='{}', file='{}')", kodiBase, file);
+      CLog::LogF(LOGERROR, "Invalid data (addon='{}', file='{}')", universalmediacenterBase, file);
       return nullptr;
   };
 
@@ -1074,12 +1074,12 @@ char** Interface_Filesystem::get_property_values(
   return ret;
 }
 
-void* Interface_Filesystem::curl_create(void* kodiBase, const char* url)
+void* Interface_Filesystem::curl_create(void* universalmediacenterBase, const char* url)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !url)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', url='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', url='{}')", universalmediacenterBase,
                static_cast<const void*>(url));
     return nullptr;
   }
@@ -1092,12 +1092,12 @@ void* Interface_Filesystem::curl_create(void* kodiBase, const char* url)
 }
 
 bool Interface_Filesystem::curl_add_option(
-    void* kodiBase, void* file, int type, const char* name, const char* value)
+    void* universalmediacenterBase, void* file, int type, const char* name, const char* value)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !file || !name || !value)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', file='{}', name='{}', value='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', file='{}', name='{}', value='{}')", universalmediacenterBase,
                file, static_cast<const void*>(name), static_cast<const void*>(value));
     return false;
   }
@@ -1125,12 +1125,12 @@ bool Interface_Filesystem::curl_add_option(
   return static_cast<CFile*>(file)->CURLAddOption(internalType, name, value);
 }
 
-bool Interface_Filesystem::curl_open(void* kodiBase, void* file, unsigned int flags)
+bool Interface_Filesystem::curl_open(void* universalmediacenterBase, void* file, unsigned int flags)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   if (!addon || !file)
   {
-    CLog::LogF(LOGERROR, "Invalid data (addon='{}', file='{}')", kodiBase, file);
+    CLog::LogF(LOGERROR, "Invalid data (addon='{}', file='{}')", universalmediacenterBase, file);
     return false;
   }
 

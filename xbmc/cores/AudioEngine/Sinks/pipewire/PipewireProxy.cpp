@@ -15,7 +15,7 @@
 
 #include <stdexcept>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace PIPEWIRE;
 
 CPipewireProxy::CPipewireProxy(CPipewireRegistry& registry,

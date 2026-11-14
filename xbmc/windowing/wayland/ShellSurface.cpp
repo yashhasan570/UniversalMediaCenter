@@ -10,7 +10,7 @@
 
 #include "utils/StringUtils.h"
 
-using namespace KODI::WINDOWING::WAYLAND;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::WAYLAND;
 
 std::string IShellSurface::StateToString(StateBitset state)
 {

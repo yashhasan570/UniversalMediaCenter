@@ -273,7 +273,7 @@ void CGLTexture::LoadToGPU()
 
   if (!m_bCacheMemory)
   {
-    KODI::MEMORY::AlignedFree(m_pixels);
+    UNIVERSAL MEDIA CENTER::MEMORY::AlignedFree(m_pixels);
     m_pixels = NULL;
   }
 

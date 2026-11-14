@@ -136,7 +136,7 @@ do_download() {
     tar -xf /downloads/$ARCHIVE --strip 1
   fi
   # applying patches
-  local patches=(/xbmc/tools/depends/target/$LIBNAME/*-$LIBNAME-windows-*.patch /xbmc/tools/depends/target/$LIBNAME/*-$LIBNAME-all-*.patch)
+  local patches=(//tools/depends/target/$LIBNAME/*-$LIBNAME-windows-*.patch //tools/depends/target/$LIBNAME/*-$LIBNAME-all-*.patch)
   for patch in ${patches[@]}; do
     echo "Applying patch ${patch}"
     if [[ -f $patch ]]; then

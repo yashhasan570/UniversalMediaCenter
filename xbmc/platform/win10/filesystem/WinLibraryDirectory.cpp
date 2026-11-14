@@ -24,7 +24,7 @@
 #include <winrt/Windows.Storage.FileProperties.h>
 
 using namespace XFILE;
-using namespace KODI::PLATFORM::WINDOWS;
+using namespace UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS;
 using namespace winrt::Windows::Storage;
 using namespace winrt::Windows::Storage::FileProperties;
 using namespace winrt::Windows::Storage::Search;
@@ -70,7 +70,7 @@ StorageFolder CWinLibraryDirectory::GetRootFolder(const CURL& url)
   }
   catch (const winrt::hresult_error& ex)
   {
-    std::string strError = KODI::PLATFORM::WINDOWS::FromW(ex.message().c_str());
+    std::string strError = UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW(ex.message().c_str());
     CLog::LogF(LOGERROR, "unexpected error occurs during WinRT API call: {}", strError);
   }
 
@@ -131,7 +131,7 @@ bool CWinLibraryDirectory::GetDirectory(const CURL& url, CFileItemList& items)
     auto props = Wait(item.GetBasicPropertiesAsync());
 
     FILETIME fileTime1 = winrt::clock::to_FILETIME(props.DateModified());
-    KODI::TIME::FileTime fileTime2;
+    UNIVERSAL MEDIA CENTER::TIME::FileTime fileTime2;
     fileTime2.highDateTime = fileTime1.dwHighDateTime;
     fileTime2.lowDateTime = fileTime1.dwLowDateTime;
     pItem->SetDateTime(fileTime2);

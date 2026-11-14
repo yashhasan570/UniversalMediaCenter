@@ -10,7 +10,7 @@ It is streamlined to Universal Media Center's **[fork and pull](https://help.git
 1. **[Introduction](#1-introduction)**
 2. **[Document conventions](#2-document-conventions)**
 3. **[Prerequisites](#3-prerequisites)**
-4. **[Clone Universal Media Center's repo into your machine](#4-clone-kodis-repo-into-your-machine)**
+4. **[Clone Universal Media Center's repo into your machine](#4-clone-universalmediacenters-repo-into-your-machine)**
 5. **[Working with branches](#5-working-with-branches)**  
   5.1. **[Create feature branch](#51-create-feature-branch)**  
   5.2. **[Push feature branch to origin](#52-push-feature-branch-to-origin)**  
@@ -46,7 +46,7 @@ It is streamlined to Universal Media Center's **[fork and pull](https://help.git
 **[git](https://en.wikipedia.org/wiki/Git)** is a distributed version control system, originally written by a brilliant, self-described **[bastard](https://lkml.org/lkml/2000/9/6/65)**. It is not the most easy version control system (VCS for short) to work with but it is very intuitive **once** you understand some concepts. Some of the most important ones are outlined below.
 
 * **repository**: a place where files and their versioned history live. Also known as **repo**.
-* **upstream**: Universal Media Center's **[main repository](https://github.com/xbmc/xbmc)**. It's where everything you code will end up after review and a pull request (PR for short) is merged.
+* **upstream**: Universal Media Center's **[main repository](https://github.com//)**. It's where everything you code will end up after review and a pull request (PR for short) is merged.
 * **master**: the repository's main branch. It is where all the code integration happens.
 * **remote**: the remote location of a repository, usually on some central server. Both Universal Media Center's **main repository** and your **personal repository** are remotes.
 * **origin**: your **personal repository**. Everything you code will end up in your personal repository after you `push`. You're master and commander.
@@ -71,17 +71,17 @@ and yet another one     // to the terminal
 
 **Example:** Clone Universal Media Center's current master branch:
 ```
-git clone https://github.com/xbmc/xbmc kodi
+git clone https://github.com// universalmediacenter
 ```
 
 Commands that contain strings enclosed in angle brackets denote something you need to change to suit your needs.
 ```
-git clone -b <branch-name> https://github.com/xbmc/xbmc kodi
+git clone -b <branch-name> https://github.com// universalmediacenter
 ```
 
 **Example:** Clone Universal Media Center's current Krypton branch:
 ```
-git clone -b Krypton https://github.com/xbmc/xbmc kodi
+git clone -b Krypton https://github.com// universalmediacenter
 ```
 
 Several different strategies are used to draw your attention to certain pieces of information. In order of how critical the information is, these items are marked as a note, tip, or warning. For example:
@@ -98,7 +98,7 @@ Several different strategies are used to draw your attention to certain pieces o
 **[back to top](#table-of-contents)** | **[back to section top](#2-document-conventions)**
 
 ## 3. Prerequisites
-This guide assumes you have a **[GitHub account](https://github.com/join)** and that you already **[forked Universal Media Center's repository](https://github.com/xbmc/xbmc/fork/)** into it.
+This guide assumes you have a **[GitHub account](https://github.com/join)** and that you already **[forked Universal Media Center's repository](https://github.com///fork/)** into it.
 
 It also assumes `git` is installed and an SSH key is **[properly configured](https://help.github.com/articles/connecting-to-github-with-ssh/)**. How to install `git` can be found on our specific OS/distribution **[build guides](README.md)**.
 
@@ -121,17 +121,17 @@ Your forked Universal Media Center's repository will hold everything you do when
 Clone your personal repository into your machine:
 ```
 cd $HOME                                                 // change to your `home` directory
-git clone git@github.com:<github-username>/xbmc.git kodi // clone your fork of Universal Media Center's repo
-cd kodi                                                  // change to the newly cloned repo directory
-git remote add upstream https://github.com/xbmc/xbmc.git // assign Universal Media Center's main repo to a remote
+git clone git@github.com:<github-username>/.git universalmediacenter // clone your fork of Universal Media Center's repo
+cd universalmediacenter                                                  // change to the newly cloned repo directory
+git remote add upstream https://github.com//.git // assign Universal Media Center's main repo to a remote
 ```
 
 > [!TIP]
 > Windows users should use `cd %userprofile%` instead.
 
-From this point forward, every command shown assumes you're inside `$HOME/kodi` or `%userprofile%\kodi` if you're a Windows user. To get there, issue:
+From this point forward, every command shown assumes you're inside `$HOME/universalmediacenter` or `%userprofile%\universalmediacenter` if you're a Windows user. To get there, issue:
 ```
-cd $HOME/kodi // or cd %userprofile%\kodi
+cd $HOME/universalmediacenter // or cd %userprofile%\universalmediacenter
 ```
 
 **[back to top](#table-of-contents)**
@@ -374,7 +374,7 @@ git fetch origin pull/<pull-request-ID>/head:<branch-name-or-pull-request-ID-or-
 git checkout <branch-name-or-pull-request-ID-or-whatever>
 ```
 
-**TIP**: Every pull request has an unique ID. For instance, the original pull request for this guide is **[PR14072](https://github.com/xbmc/xbmc/pull/14072)**. Its ID is **14072**.
+**TIP**: Every pull request has an unique ID. For instance, the original pull request for this guide is **[PR14072](https://github.com///pull/14072)**. Its ID is **14072**.
 
 If you want to try it, issue:
 ```
@@ -387,19 +387,19 @@ and see the original version of this documentation in all its glorious might.
 ### 9.3. Fetch a pull request or commit and apply them to another branch
 Also very useful is the ability to fetch a complete pull request or a single commit and apply it to your **current** branch, instead of creating a new branch like the method outlined above.
 
-Similarly to the method above, find the PR you want to fetch, **[PR14072](https://github.com/xbmc/xbmc/pull/14072)** for instance, and append `.patch` to the URL. GitHub will generate a formatted patch and show you the output. Copy that URL and choose your next move below.
+Similarly to the method above, find the PR you want to fetch, **[PR14072](https://github.com///pull/14072)** for instance, and append `.patch` to the URL. GitHub will generate a formatted patch and show you the output. Copy that URL and choose your next move below.
 
 Apply the changes to your branch but do not commit them (changes will be kept unstaged):
 ```
-curl -L https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/14072.patch | git apply -
+curl -L https://patch-diff.githubusercontent.com/raw///pull/14072.patch | git apply -
 ```
 
 Apply the changes to your branch with the original commit(s) message(s):
 ```
-curl -L https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/14072.patch | git am -
+curl -L https://patch-diff.githubusercontent.com/raw///pull/14072.patch | git am -
 ```
 
-The same tricks work for a single commit. Just find a commit you'd like to fetch, **[[README] Universal Media Center's codebase new face](https://github.com/xbmc/xbmc/pull/14072/commits/bb62d22f0d62b20ebc2325f7820a37759839efe0)** for instance, append `.patch` to the URL and follow the instructions above.
+The same tricks work for a single commit. Just find a commit you'd like to fetch, **[[README] Universal Media Center's codebase new face](https://github.com///pull/14072/commits/bb62d22f0d62b20ebc2325f7820a37759839efe0)** for instance, append `.patch` to the URL and follow the instructions above.
 
 **[back to top](#table-of-contents)** | **[back to section top](#9-going-pro)**
 

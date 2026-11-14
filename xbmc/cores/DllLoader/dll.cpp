@@ -15,7 +15,7 @@
 
 #include <climits>
 
-#define DEFAULT_DLLPATH "special://xbmc/system/players/mplayer/codecs/"
+#define DEFAULT_DLLPATH "special:///system/players/mplayer/codecs/"
 #define HIGH_WORD(a) ((uintptr_t)(a) >> 16)
 #define LOW_WORD(a) ((unsigned short)(((uintptr_t)(a)) & MAXWORD))
 

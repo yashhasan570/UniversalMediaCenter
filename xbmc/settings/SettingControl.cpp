@@ -10,7 +10,7 @@
 
 #include "settings/lib/SettingDefinitions.h"
 #include "utils/StringUtils.h"
-#include "utils/XBMCTinyXML.h"
+#include "utils/TinyXML.h"
 #include "utils/XMLUtils.h"
 #include "utils/log.h"
 

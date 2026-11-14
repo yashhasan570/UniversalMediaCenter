@@ -30,8 +30,8 @@
 #endif
 #endif
 
-using namespace KODI::MESSAGING;
-using KODI::UTILITY::CDigest;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
+using UNIVERSAL MEDIA CENTER::UTILITY::CDigest;
 
 CGUIKeyboard *CGUIKeyboardFactory::g_activeKeyboard = NULL;
 FILTERING CGUIKeyboardFactory::m_filtering = FILTERING_NONE;

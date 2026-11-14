@@ -1,4 +1,4 @@
-#if (defined(KODI_TONE_MAPPING_ACES) || defined(KODI_TONE_MAPPING_HABLE))
+#if (defined(UNIVERSAL MEDIA CENTER_TONE_MAPPING_ACES) || defined(UNIVERSAL MEDIA CENTER_TONE_MAPPING_HABLE))
 const float ST2084_m1 = 2610.0 / (4096.0 * 4.0);
 const float ST2084_m2 = (2523.0 / 4096.0) * 128.0;
 const float ST2084_c1 = 3424.0 / 4096.0;
@@ -6,14 +6,14 @@ const float ST2084_c2 = (2413.0 / 4096.0) * 32.0;
 const float ST2084_c3 = (2392.0 / 4096.0) * 32.0;
 #endif
 
-#if defined(KODI_TONE_MAPPING_REINHARD)
+#if defined(UNIVERSAL MEDIA CENTER_TONE_MAPPING_REINHARD)
 float reinhard(float x)
 {
   return x * (1.0 + x / (m_toneP1 * m_toneP1)) / (1.0 + x);
 }
 #endif
 
-#if defined(KODI_TONE_MAPPING_ACES)
+#if defined(UNIVERSAL MEDIA CENTER_TONE_MAPPING_ACES)
 vec3 aces(vec3 x)
 {
   float A = 2.51;
@@ -25,7 +25,7 @@ vec3 aces(vec3 x)
 }
 #endif
 
-#if defined(KODI_TONE_MAPPING_HABLE)
+#if defined(UNIVERSAL MEDIA CENTER_TONE_MAPPING_HABLE)
 vec3 hable(vec3 x)
 {
   float A = 0.15;
@@ -38,7 +38,7 @@ vec3 hable(vec3 x)
 }
 #endif
 
-#if (defined(KODI_TONE_MAPPING_ACES) || defined(KODI_TONE_MAPPING_HABLE))
+#if (defined(UNIVERSAL MEDIA CENTER_TONE_MAPPING_ACES) || defined(UNIVERSAL MEDIA CENTER_TONE_MAPPING_HABLE))
 vec3 inversePQ(vec3 x)
 {
   x = pow(max(x, 0.0), vec3(1.0 / ST2084_m2));

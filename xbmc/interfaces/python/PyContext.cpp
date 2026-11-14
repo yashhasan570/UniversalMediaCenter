@@ -12,7 +12,7 @@
 
 #include <Python.h>
 
-namespace XBMCAddon
+namespace Addon
 {
   namespace Python
   {

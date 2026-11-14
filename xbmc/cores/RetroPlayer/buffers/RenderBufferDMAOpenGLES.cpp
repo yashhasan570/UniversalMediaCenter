@@ -54,7 +54,7 @@ void ConvertArgb1555ToRgb565(const uint8_t* source, uint8_t* destination, unsign
 }
 } // namespace
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace RETRO;
 
 CRenderBufferDMAOpenGLES::CRenderBufferDMAOpenGLES(int fourcc) : CRenderBufferDMA(fourcc)

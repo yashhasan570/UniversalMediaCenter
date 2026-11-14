@@ -10,7 +10,7 @@
 
 #include "input/keyboard/interfaces/IKeyboardDriverHandler.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace JOYSTICK
 {
@@ -44,4 +44,4 @@ private:
   JOYSTICK::IButtonMap* const m_buttonMap;
 };
 } // namespace KEYBOARD
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

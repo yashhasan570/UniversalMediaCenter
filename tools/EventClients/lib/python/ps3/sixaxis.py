@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-#   Copyright (C) 2008-2013 Team XBMC
+#   Copyright (C) 2008-2013 Team 
 #
 #   This program is free software; you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
@@ -169,9 +169,9 @@ def set_l2cap_mtu2(sock, mtu):
 
 class sixaxis():
 
-  def __init__(self, xbmc, control_sock, interrupt_sock):
+  def __init__(self, , control_sock, interrupt_sock):
 
-    self.xbmc = xbmc
+    self. = 
     self.num_samples = 16
     self.sumx = [0] * self.num_samples
     self.sumy = [0] * self.num_samples
@@ -229,7 +229,7 @@ class sixaxis():
 
     for key in (self.held | self.pressed):
         (mapname, action, amount, axis) = keymap_sixaxis[key]
-        self.xbmc.send_button_state(map=mapname, button=action, amount=0, down=0, axis=axis)
+        self..send_button_state(map=mapname, button=action, amount=0, down=0, axis=axis)
     self.held    = set()
     self.pressed = set()
 
@@ -299,9 +299,9 @@ class sixaxis():
         if self.axis_amount[i] != 0:
             analog = True
 
-    # send the mouse position to xbmc
+    # send the mouse position to 
     if self.mouse_enabled == 1:
-        self.xbmc.send_mouse_position(xval, yval)
+        self..send_mouse_position(xval, yval)
 
     if (bflags & SX_POWER) == SX_POWER:
         if self.psdown:
@@ -309,7 +309,7 @@ class sixaxis():
 
                 for key in (self.held | self.pressed):
                     (mapname, action, amount, axis) = keymap_sixaxis[key]
-                    self.xbmc.send_button_state(map=mapname, button=action, amount=0, down=0, axis=axis)
+                    self..send_button_state(map=mapname, button=action, amount=0, down=0, axis=axis)
 
                 raise Exception("PS3 Sixaxis powering off, user request")
         else:
@@ -327,19 +327,19 @@ class sixaxis():
 
     for key in self.released:
         (mapname, action, amount, axis) = keymap_sixaxis[key]
-        self.xbmc.send_button_state(map=mapname, button=action, amount=0, down=0, axis=axis)
+        self..send_button_state(map=mapname, button=action, amount=0, down=0, axis=axis)
 
     for key in self.held:
         (mapname, action, amount, axis) = keymap_sixaxis[key]
         if amount > 0:
             amount = pressure[amount-1] * 256
-            self.xbmc.send_button_state(map=mapname, button=action, amount=amount, down=1, axis=axis)
+            self..send_button_state(map=mapname, button=action, amount=amount, down=1, axis=axis)
 
     for key in self.pressed:
         (mapname, action, amount, axis) = keymap_sixaxis[key]
         if amount > 0:
             amount = pressure[amount-1] * 256
-        self.xbmc.send_button_state(map=mapname, button=action, amount=amount, down=1, axis=axis)
+        self..send_button_state(map=mapname, button=action, amount=amount, down=1, axis=axis)
 
     if analog or keys or self.mouse_enabled:
       return True
@@ -364,9 +364,9 @@ class sixaxis():
         new_action = None
 
     if last_action and new_action != last_action:
-        self.xbmc.send_button_state(map=mapname, button=last_action, amount=0, axis=1)
+        self..send_button_state(map=mapname, button=last_action, amount=0, axis=1)
 
     if new_action and amount != last_amount:
-        self.xbmc.send_button_state(map=mapname, button=new_action, amount=abs(amount), axis=1)
+        self..send_button_state(map=mapname, button=new_action, amount=abs(amount), axis=1)
 
     return amount

@@ -14,7 +14,7 @@
 #include <memory>
 #include <vector>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -52,4 +52,4 @@ enum class DataAlignment
  */
 using HwProcedureAddress = void (*)();
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

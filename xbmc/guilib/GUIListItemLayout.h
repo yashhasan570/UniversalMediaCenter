@@ -70,7 +70,7 @@ protected:
   CGUIControl* m_sizeChangeOwner{nullptr};
 
   INFO::InfoPtr m_condition;
-  KODI::GUILIB::GUIINFO::CGUIInfoBool m_isPlaying;
+  UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoBool m_isPlaying;
   std::chrono::milliseconds m_infoUpdateMillis =
       XbmcThreads::EndTime<decltype(m_infoUpdateMillis)>::Max();
   XbmcThreads::EndTime<> m_infoUpdateTimeout;

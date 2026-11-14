@@ -19,7 +19,7 @@ TEST(TestWin32Filesystem, TempFilePathsAreReserved)
   {
     SCOPED_TRACE(suffix);
     std::error_code ec;
-    const auto path = KODI::PLATFORM::FILESYSTEM::temp_file_path(suffix, ec);
+    const auto path = UNIVERSAL MEDIA CENTER::PLATFORM::FILESYSTEM::temp_file_path(suffix, ec);
     ASSERT_FALSE(ec) << ec.message();
     ASSERT_FALSE(path.empty());
     EXPECT_TRUE(StringUtils::EndsWith(path, suffix));
@@ -33,10 +33,10 @@ TEST(TestWin32Filesystem, TempFilesPreserveSuffix)
   for (const auto* suffix : {"", ".chd", ".m3u", ".sav"})
   {
     SCOPED_TRACE(suffix);
-    auto* file = XBMC_CREATETEMPFILE(suffix);
+    auto* file = _CREATETEMPFILE(suffix);
     ASSERT_NE(file, nullptr);
-    EXPECT_TRUE(StringUtils::EndsWith(XBMC_TEMPFILEPATH(file), suffix));
+    EXPECT_TRUE(StringUtils::EndsWith(_TEMPFILEPATH(file), suffix));
     EXPECT_EQ(file->Write("test", 4), 4);
-    EXPECT_TRUE(XBMC_DELETETEMPFILE(file));
+    EXPECT_TRUE(_DELETETEMPFILE(file));
   }
 }

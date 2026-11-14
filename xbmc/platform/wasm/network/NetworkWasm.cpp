@@ -18,7 +18,7 @@
 
 #include <emscripten.h>
 
-using namespace KODI::PLATFORM::WASM;
+using namespace UNIVERSAL MEDIA CENTER::PLATFORM::WASM;
 using namespace std::chrono_literals;
 
 namespace

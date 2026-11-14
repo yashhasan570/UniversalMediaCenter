@@ -20,7 +20,7 @@ namespace PERIPHERALS
 /*!
  * \ingroup peripherals
  */
-class CPeripheralKeyboard : public CPeripheral, public KODI::KEYBOARD::IKeyboardDriverHandler
+class CPeripheralKeyboard : public CPeripheral, public UNIVERSAL MEDIA CENTER::KEYBOARD::IKeyboardDriverHandler
 {
 public:
   CPeripheralKeyboard(CPeripherals& manager,
@@ -31,12 +31,12 @@ public:
 
   // implementation of CPeripheral
   bool InitialiseFeature(const PeripheralFeature feature) override;
-  void RegisterKeyboardDriverHandler(KODI::KEYBOARD::IKeyboardDriverHandler* handler,
+  void RegisterKeyboardDriverHandler(UNIVERSAL MEDIA CENTER::KEYBOARD::IKeyboardDriverHandler* handler,
                                      bool bPromiscuous) override;
-  void UnregisterKeyboardDriverHandler(KODI::KEYBOARD::IKeyboardDriverHandler* handler) override;
+  void UnregisterKeyboardDriverHandler(UNIVERSAL MEDIA CENTER::KEYBOARD::IKeyboardDriverHandler* handler) override;
   CDateTime LastActive() const override { return m_lastActive; }
   void SetLastActive(const CDateTime& lastActive) override;
-  KODI::GAME::ControllerPtr ControllerProfile() const override;
+  UNIVERSAL MEDIA CENTER::GAME::ControllerPtr ControllerProfile() const override;
 
   // implementation of IKeyboardDriverHandler
   bool OnKeyPress(const CKey& key) override;
@@ -45,7 +45,7 @@ public:
 private:
   struct KeyboardHandle
   {
-    KODI::KEYBOARD::IKeyboardDriverHandler* handler;
+    UNIVERSAL MEDIA CENTER::KEYBOARD::IKeyboardDriverHandler* handler;
     bool bPromiscuous;
   };
 

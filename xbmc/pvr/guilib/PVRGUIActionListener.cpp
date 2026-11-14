@@ -414,7 +414,7 @@ void CPVRGUIActionListener::OnSettingAction(const std::shared_ptr<const CSetting
   else if (settingId == CSettings::SETTING_PVRMANAGER_ADDONS)
   {
     const std::vector<std::string> params{
-        std::string{KODI::ADDONS::DEFAULT_BINARY_ADDONS_SOURCE} + "kodi.pvrclient", "return"};
+        std::string{UNIVERSAL MEDIA CENTER::ADDONS::DEFAULT_BINARY_ADDONS_SOURCE} + "universalmediacenter.pvrclient", "return"};
     windowManager.ActivateWindow(WINDOW_ADDON_BROWSER, params);
   }
   else if (settingId == CSettings::SETTING_PVRPOWERMANAGEMENT_DAILYWAKEUPTIME)

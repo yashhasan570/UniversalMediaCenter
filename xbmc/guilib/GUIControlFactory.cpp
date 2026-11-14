@@ -63,8 +63,8 @@
 
 #include <array>
 
-using namespace KODI;
-using namespace KODI::GUILIB;
+using namespace UNIVERSAL MEDIA CENTER;
+using namespace UNIVERSAL MEDIA CENTER::GUILIB;
 using namespace PVR;
 
 typedef struct
@@ -642,7 +642,7 @@ bool CGUIControlFactory::GetScroller(const TiXmlNode* control,
 
 bool CGUIControlFactory::GetColor(const TiXmlNode* control,
                                   const char* strTag,
-                                  KODI::UTILS::COLOR::Color& value)
+                                  UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color& value)
 {
   const TiXmlElement* node = control->FirstChildElement(strTag);
   if (node && node->FirstChild())
@@ -778,7 +778,7 @@ std::string CGUIControlFactory::GetType(const TiXmlElement* pControlNode)
 bool CGUIControlFactory::GetMovingSpeedConfig(
     const TiXmlNode* pRootNode,
     const char* strTag,
-    KODI::UTILS::MOVING_SPEED::MapEventConfig& movingSpeedCfg)
+    UNIVERSAL MEDIA CENTER::UTILS::MOVING_SPEED::MapEventConfig& movingSpeedCfg)
 {
   const TiXmlElement* msNode = pRootNode->FirstChildElement(strTag);
   if (!msNode)
@@ -813,8 +813,8 @@ bool CGUIControlFactory::GetMovingSpeedConfig(
     const char* deltaStr{configElement->Attribute("delta")};
     float delta = deltaStr ? StringUtils::ToFloat(deltaStr) : globalDelta;
 
-    KODI::UTILS::MOVING_SPEED::EventCfg eventCfg{acceleration, maxVelocity, resetTimeout, delta};
-    movingSpeedCfg.emplace(KODI::UTILS::MOVING_SPEED::ParseEventType(eventType), eventCfg);
+    UNIVERSAL MEDIA CENTER::UTILS::MOVING_SPEED::EventCfg eventCfg{acceleration, maxVelocity, resetTimeout, delta};
+    movingSpeedCfg.emplace(UNIVERSAL MEDIA CENTER::UTILS::MOVING_SPEED::ParseEventType(eventType), eventCfg);
   }
   return true;
 }
@@ -950,7 +950,7 @@ CGUIControl* CGUIControlFactory::Create(int parentID,
   bool bPassword = false;
   std::string visibleCondition;
 
-  KODI::UTILS::MOVING_SPEED::MapEventConfig movingSpeedCfg;
+  UNIVERSAL MEDIA CENTER::UTILS::MOVING_SPEED::MapEventConfig movingSpeedCfg;
 
   /////////////////////////////////////////////////////////////////////////////
   // Read control properties from XML

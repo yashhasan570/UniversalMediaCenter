@@ -9,7 +9,7 @@
 #include "DVDStateSerializer.h"
 
 #include "utils/StringUtils.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 #include "utils/log.h"
 
 #include <charconv>
@@ -24,7 +24,7 @@ constexpr int DVDSTATESERIALIZER_VERSION = 2;
 
 bool CDVDStateSerializer::DVDStateToXML(std::string& xmlstate, const DVDState& state)
 {
-  CXBMCTinyXML2 xmlDoc;
+  CTinyXML2 xmlDoc;
 
   auto* eRoot = xmlDoc.NewElement("navstate");
   if (eRoot == nullptr)
@@ -49,7 +49,7 @@ bool CDVDStateSerializer::DVDStateToXML(std::string& xmlstate, const DVDState& s
 
 bool CDVDStateSerializer::XMLToDVDState(DVDState& state, const std::string& xmlstate)
 {
-  CXBMCTinyXML2 xmlDoc;
+  CTinyXML2 xmlDoc;
 
   xmlDoc.Parse(xmlstate);
   if (xmlDoc.Error())

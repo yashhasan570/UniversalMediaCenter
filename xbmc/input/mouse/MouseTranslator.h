@@ -36,5 +36,5 @@ public:
    *
    * \return True if successful, false otherwise
    */
-  static bool TranslateEventID(unsigned int eventId, KODI::MOUSE::BUTTON_ID& buttonId);
+  static bool TranslateEventID(unsigned int eventId, UNIVERSAL MEDIA CENTER::MOUSE::BUTTON_ID& buttonId);
 };

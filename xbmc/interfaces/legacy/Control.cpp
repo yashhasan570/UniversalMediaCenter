@@ -31,13 +31,13 @@
 #include "guilib/GUIWindowManager.h"
 #include "guilib/listproviders/StaticProvider.h"
 #include "utils/StringUtils.h"
-#include "utils/XBMCTinyXML.h"
+#include "utils/TinyXML.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
-namespace XBMCAddon
+namespace Addon
 {
-  namespace xbmcgui
+  namespace gui
   {
 
     // ============================================================
@@ -152,7 +152,7 @@ namespace XBMCAddon
       if (pGUIControl == nullptr)
         return m_label;
 
-      XBMCAddonUtils::GuiLock lock(languageHook, false);
+      AddonUtils::GuiLock lock(languageHook, false);
       return static_cast<CGUITextBox*>(pGUIControl)->GetDescription();
     }
 
@@ -236,9 +236,9 @@ namespace XBMCAddon
 
       // if texture is supplied use it, else get default ones
       strTextureFocus = focusTexture ? focusTexture :
-        XBMCAddonUtils::getDefaultImage("button", "texturefocus");
+        AddonUtils::getDefaultImage("button", "texturefocus");
       strTextureNoFocus = noFocusTexture ? noFocusTexture :
-        XBMCAddonUtils::getDefaultImage("button", "texturenofocus");
+        AddonUtils::getDefaultImage("button", "texturenofocus");
 
       if (font) strFont = font;
       if (_textColor) sscanf( _textColor, "%x", &textColor );
@@ -265,7 +265,7 @@ namespace XBMCAddon
 
       if (pGUIControl)
       {
-        XBMCAddonUtils::GuiLock lock(languageHook, false);
+        AddonUtils::GuiLock lock(languageHook, false);
         static_cast<CGUIButtonControl*>(pGUIControl)->PythonSetLabel(strFont, strText, textColor, shadowColor, focusedColor);
         static_cast<CGUIButtonControl*>(pGUIControl)->SetLabel2(strText2);
         static_cast<CGUIButtonControl*>(pGUIControl)->PythonSetDisabledColor(disabledColor);
@@ -278,7 +278,7 @@ namespace XBMCAddon
 
       if (pGUIControl)
       {
-        XBMCAddonUtils::GuiLock lock(languageHook, false);
+        AddonUtils::GuiLock lock(languageHook, false);
         static_cast<CGUIButtonControl*>(pGUIControl)->PythonSetDisabledColor(disabledColor);
       }
     }
@@ -288,7 +288,7 @@ namespace XBMCAddon
       if (pGUIControl == nullptr)
         return strText;
 
-      XBMCAddonUtils::GuiLock lock(languageHook, false);
+      AddonUtils::GuiLock lock(languageHook, false);
       return static_cast<CGUIButtonControl*>(pGUIControl)->GetLabel();
     }
 
@@ -297,7 +297,7 @@ namespace XBMCAddon
       if (pGUIControl == nullptr)
         return strText2;
 
-      XBMCAddonUtils::GuiLock lock(languageHook, false);
+      AddonUtils::GuiLock lock(languageHook, false);
       return static_cast<CGUIButtonControl*>(pGUIControl)->GetLabel2();
     }
 
@@ -358,7 +358,7 @@ namespace XBMCAddon
     {
       strFileName = imageFilename;
 
-      XBMCAddonUtils::GuiLock lock(languageHook, false);
+      AddonUtils::GuiLock lock(languageHook, false);
       if (pGUIControl)
         static_cast<CGUIImage*>(pGUIControl)->SetFileName(strFileName, false, useCache);
     }
@@ -368,7 +368,7 @@ namespace XBMCAddon
       if (cColorDiffuse) sscanf(cColorDiffuse, "%x", &colorDiffuse);
       else colorDiffuse = 0;
 
-      XBMCAddonUtils::GuiLock lock(languageHook, false);
+      AddonUtils::GuiLock lock(languageHook, false);
       if (pGUIControl)
         static_cast<CGUIImage*>(pGUIControl)->SetColorDiffuse(GUILIB::GUIINFO::CGUIInfoColor(colorDiffuse));
     }
@@ -408,15 +408,15 @@ namespace XBMCAddon
 
       // if texture is supplied use it, else get default ones
       strTextureBg = texturebg ? texturebg :
-        XBMCAddonUtils::getDefaultImage("progress", "texturebg");
+        AddonUtils::getDefaultImage("progress", "texturebg");
       strTextureLeft = textureleft ? textureleft :
-        XBMCAddonUtils::getDefaultImage("progress", "lefttexture");
+        AddonUtils::getDefaultImage("progress", "lefttexture");
       strTextureMid = texturemid ? texturemid :
-        XBMCAddonUtils::getDefaultImage("progress", "midtexture");
+        AddonUtils::getDefaultImage("progress", "midtexture");
       strTextureRight = textureright ? textureright :
-        XBMCAddonUtils::getDefaultImage("progress", "righttexture");
+        AddonUtils::getDefaultImage("progress", "righttexture");
       strTextureOverlay = textureoverlay ? textureoverlay :
-        XBMCAddonUtils::getDefaultImage("progress", "overlaytexture");
+        AddonUtils::getDefaultImage("progress", "overlaytexture");
     }
 
     void ControlProgress::setPercent(float pct)
@@ -469,12 +469,12 @@ namespace XBMCAddon
 
       // if texture is supplied use it, else get default ones
       strTextureBack = textureback ? textureback :
-        XBMCAddonUtils::getDefaultImage("slider", "texturesliderbar");
+        AddonUtils::getDefaultImage("slider", "texturesliderbar");
       strTextureBackDisabled = texturebackdisabled ? texturebackdisabled : strTextureBack;
       strTexture = texture ? texture :
-        XBMCAddonUtils::getDefaultImage("slider", "textureslidernib");
+        AddonUtils::getDefaultImage("slider", "textureslidernib");
       strTextureFoc = texturefocus ? texturefocus :
-        XBMCAddonUtils::getDefaultImage("slider", "textureslidernibfocus");
+        AddonUtils::getDefaultImage("slider", "textureslidernibfocus");
       strTextureDisabled = texturedisabled ? texturedisabled : strTexture;
     }
 
@@ -606,9 +606,9 @@ namespace XBMCAddon
 
       // if texture is supplied use it, else get default ones
       strTextureFocus = focusTexture ? focusTexture :
-        XBMCAddonUtils::getDefaultImage("button", "texturefocus");
+        AddonUtils::getDefaultImage("button", "texturefocus");
       strTextureNoFocus = noFocusTexture ? noFocusTexture :
-        XBMCAddonUtils::getDefaultImage("button", "texturenofocus");
+        AddonUtils::getDefaultImage("button", "texturenofocus");
 
       if (focusOnTexture && noFocusOnTexture)
       {
@@ -618,9 +618,9 @@ namespace XBMCAddon
       else
       {
         strTextureRadioOnFocus =
-          XBMCAddonUtils::getDefaultImage("radiobutton", "textureradioonfocus");
+          AddonUtils::getDefaultImage("radiobutton", "textureradioonfocus");
         strTextureRadioOnNoFocus =
-          XBMCAddonUtils::getDefaultImage("radiobutton", "textureradioonnofocus");
+          AddonUtils::getDefaultImage("radiobutton", "textureradioonnofocus");
       }
 
       if (focusOffTexture && noFocusOffTexture)
@@ -631,9 +631,9 @@ namespace XBMCAddon
       else
       {
         strTextureRadioOffFocus =
-          XBMCAddonUtils::getDefaultImage("radiobutton", "textureradioofffocus");
+          AddonUtils::getDefaultImage("radiobutton", "textureradioofffocus");
         strTextureRadioOffNoFocus =
-          XBMCAddonUtils::getDefaultImage("radiobutton", "textureradiooffnofocus");
+          AddonUtils::getDefaultImage("radiobutton", "textureradiooffnofocus");
       }
 
       if (font) strFont = font;
@@ -647,7 +647,7 @@ namespace XBMCAddon
     {
       if (pGUIControl)
       {
-        XBMCAddonUtils::GuiLock lock(languageHook, false);
+        AddonUtils::GuiLock lock(languageHook, false);
         static_cast<CGUIRadioButtonControl*>(pGUIControl)->SetSelected(selected);
       }
     }
@@ -658,7 +658,7 @@ namespace XBMCAddon
 
       if (pGUIControl)
       {
-        XBMCAddonUtils::GuiLock lock(languageHook, false);
+        AddonUtils::GuiLock lock(languageHook, false);
         isSelected = static_cast<CGUIRadioButtonControl*>(pGUIControl)->IsSelected();
       }
       return isSelected;
@@ -681,7 +681,7 @@ namespace XBMCAddon
 
       if (pGUIControl)
       {
-        XBMCAddonUtils::GuiLock lock(languageHook, false);
+        AddonUtils::GuiLock lock(languageHook, false);
         static_cast<CGUIRadioButtonControl*>(pGUIControl)->PythonSetLabel(strFont, strText, textColor, shadowColor, focusedColor);
         static_cast<CGUIRadioButtonControl*>(pGUIControl)->PythonSetDisabledColor(disabledColor);
       }
@@ -695,7 +695,7 @@ namespace XBMCAddon
       dwHeight = height;
       if (pGUIControl)
       {
-        XBMCAddonUtils::GuiLock lock(languageHook, false);
+        AddonUtils::GuiLock lock(languageHook, false);
         static_cast<CGUIRadioButtonControl*>(pGUIControl)->SetRadioDimensions((float)dwPosX, (float)dwPosY, (float)dwWidth, (float)dwHeight);
       }
     }
@@ -760,7 +760,7 @@ namespace XBMCAddon
     void Control::setEnabled(bool enabled)
     {
       DelayedCallGuard dcguard(languageHook);
-      XBMCAddonUtils::GuiLock lock(languageHook, false);
+      AddonUtils::GuiLock lock(languageHook, false);
       if (pGUIControl)
         pGUIControl->SetEnabled(enabled);
     }
@@ -768,7 +768,7 @@ namespace XBMCAddon
     void Control::setVisible(bool visible)
     {
       DelayedCallGuard dcguard(languageHook);
-      XBMCAddonUtils::GuiLock lock(languageHook, false);
+      AddonUtils::GuiLock lock(languageHook, false);
       if (pGUIControl != nullptr)
       {
         pGUIControl->SetVisible(visible);
@@ -782,7 +782,7 @@ namespace XBMCAddon
     bool Control::isVisible()
     {
       DelayedCallGuard dcguard(languageHook);
-      XBMCAddonUtils::GuiLock(languageHook, false);
+      AddonUtils::GuiLock(languageHook, false);
       if (pGUIControl)
         return pGUIControl->IsVisible();
       else
@@ -792,7 +792,7 @@ namespace XBMCAddon
     void Control::setVisibleCondition(const char* visible, bool allowHiddenFocus)
     {
       DelayedCallGuard dcguard(languageHook);
-      XBMCAddonUtils::GuiLock lock(languageHook, false);
+      AddonUtils::GuiLock lock(languageHook, false);
 
       if (pGUIControl)
         pGUIControl->SetVisibleCondition(visible, allowHiddenFocus ? "true" : "false");
@@ -801,7 +801,7 @@ namespace XBMCAddon
     void Control::setEnableCondition(const char* enable)
     {
       DelayedCallGuard dcguard(languageHook);
-      XBMCAddonUtils::GuiLock lock(languageHook, false);
+      AddonUtils::GuiLock lock(languageHook, false);
 
       if (pGUIControl)
         pGUIControl->SetEnableCondition(enable);
@@ -809,7 +809,7 @@ namespace XBMCAddon
 
     void Control::setAnimations(const std::vector< Tuple<String,String> >& eventAttr)
     {
-      CXBMCTinyXML xmlDoc;
+      CTinyXML xmlDoc;
       TiXmlElement xmlRootElement("control");
       TiXmlNode *pRoot = xmlDoc.InsertEndChild(xmlRootElement);
       if (!pRoot)
@@ -841,7 +841,7 @@ namespace XBMCAddon
       }
 
       const CRect animRect((float)dwPosX, (float)dwPosY, (float)dwPosX + dwWidth, (float)dwPosY + dwHeight);
-      XBMCAddonUtils::GuiLock lock(languageHook, false);
+      AddonUtils::GuiLock lock(languageHook, false);
       if (pGUIControl)
       {
         CGUIControlFactory::GetAnimations(pRoot, animRect, iParentId, animations);
@@ -852,7 +852,7 @@ namespace XBMCAddon
     void Control::setPosition(long x, long y)
     {
       DelayedCallGuard dcguard(languageHook);
-      XBMCAddonUtils::GuiLock lock(languageHook, false);
+      AddonUtils::GuiLock lock(languageHook, false);
       dwPosX = x;
       dwPosY = y;
       if (pGUIControl)
@@ -862,7 +862,7 @@ namespace XBMCAddon
     void Control::setWidth(long width)
     {
       DelayedCallGuard dcguard(languageHook);
-      XBMCAddonUtils::GuiLock lock(languageHook, false);
+      AddonUtils::GuiLock lock(languageHook, false);
       dwWidth = width;
       if (pGUIControl)
         pGUIControl->SetWidth((float)dwWidth);
@@ -871,7 +871,7 @@ namespace XBMCAddon
     void Control::setHeight(long height)
     {
       DelayedCallGuard dcguard(languageHook);
-      XBMCAddonUtils::GuiLock lock(languageHook, false);
+      AddonUtils::GuiLock lock(languageHook, false);
       dwHeight = height;
       if (pGUIControl)
         pGUIControl->SetHeight((float)dwHeight);
@@ -884,7 +884,7 @@ namespace XBMCAddon
         throw WindowException("Control has to be added to a window first");
 
       {
-        XBMCAddonUtils::GuiLock lock(languageHook, false);
+        AddonUtils::GuiLock lock(languageHook, false);
         if (pGUIControl)
         {
           pGUIControl->SetAction(ACTION_MOVE_UP,    CGUIAction(up->iControlId));
@@ -901,7 +901,7 @@ namespace XBMCAddon
         throw WindowException("Control has to be added to a window first");
 
       {
-        XBMCAddonUtils::GuiLock lock(languageHook, false);
+        AddonUtils::GuiLock lock(languageHook, false);
         if (pGUIControl)
           pGUIControl->SetAction(ACTION_MOVE_UP, CGUIAction(control->iControlId));
       }
@@ -913,7 +913,7 @@ namespace XBMCAddon
         throw WindowException("Control has to be added to a window first");
 
       {
-        XBMCAddonUtils::GuiLock lock(languageHook, false);
+        AddonUtils::GuiLock lock(languageHook, false);
         if (pGUIControl)
           pGUIControl->SetAction(ACTION_MOVE_DOWN, CGUIAction(control->iControlId));
       }
@@ -925,7 +925,7 @@ namespace XBMCAddon
         throw WindowException("Control has to be added to a window first");
 
       {
-        XBMCAddonUtils::GuiLock lock(languageHook, false);
+        AddonUtils::GuiLock lock(languageHook, false);
         if (pGUIControl)
           pGUIControl->SetAction(ACTION_MOVE_LEFT, CGUIAction(control->iControlId));
       }
@@ -937,7 +937,7 @@ namespace XBMCAddon
         throw WindowException("Control has to be added to a window first");
 
       {
-        XBMCAddonUtils::GuiLock lock(languageHook, false);
+        AddonUtils::GuiLock lock(languageHook, false);
         if (pGUIControl)
           pGUIControl->SetAction(ACTION_MOVE_RIGHT, CGUIAction(control->iControlId));
       }
@@ -956,12 +956,12 @@ namespace XBMCAddon
       dwHeight = 16;
 
       // get default images
-      strTextureUp = XBMCAddonUtils::getDefaultImage("listcontrol", "textureup");
-      strTextureDown = XBMCAddonUtils::getDefaultImage("listcontrol", "texturedown");
-      strTextureUpFocus = XBMCAddonUtils::getDefaultImage("listcontrol", "textureupfocus");
-      strTextureDownFocus = XBMCAddonUtils::getDefaultImage("listcontrol", "texturedownfocus");
-      strTextureUpDisabled = XBMCAddonUtils::getDefaultImage("listcontrol", "textureupdisabled");
-      strTextureDownDisabled = XBMCAddonUtils::getDefaultImage("listcontrol", "texturedowndisabled");
+      strTextureUp = AddonUtils::getDefaultImage("listcontrol", "textureup");
+      strTextureDown = AddonUtils::getDefaultImage("listcontrol", "texturedown");
+      strTextureUpFocus = AddonUtils::getDefaultImage("listcontrol", "textureupfocus");
+      strTextureDownFocus = AddonUtils::getDefaultImage("listcontrol", "texturedownfocus");
+      strTextureUpDisabled = AddonUtils::getDefaultImage("listcontrol", "textureupdisabled");
+      strTextureDownDisabled = AddonUtils::getDefaultImage("listcontrol", "texturedowndisabled");
     }
 
     void ControlSpin::setTextures(const char* up, const char* down,
@@ -977,12 +977,12 @@ namespace XBMCAddon
       strTextureUpDisabled = upDisabled;
       strTextureDownDisabled = downDisabled;
       /*
-        PyXBMCGUILock();
+        PyGUILock();
         if (self->pGUIControl)
         {
         CGUISpinControl* pControl = (CGUISpinControl*)self->pGUIControl;
         pControl->se
-        PyXBMCGUIUnlock();
+        PyGUIUnlock();
       */
     }
 
@@ -1084,10 +1084,10 @@ namespace XBMCAddon
                              const char* noFocusTexture)
       : strFont("font13"),
         strTextureFocus(focusTexture ? focusTexture
-                                     : XBMCAddonUtils::getDefaultImage("edit", "texturefocus")),
+                                     : AddonUtils::getDefaultImage("edit", "texturefocus")),
         strTextureNoFocus(noFocusTexture
                               ? noFocusTexture
-                              : XBMCAddonUtils::getDefaultImage("edit", "texturenofocus")),
+                              : AddonUtils::getDefaultImage("edit", "texturenofocus")),
         textColor(0xffffffff),
         disabledColor(0x60ffffff),
         align(_alignment)
@@ -1172,7 +1172,7 @@ namespace XBMCAddon
     {
       if (pGUIControl)
       {
-        XBMCAddonUtils::GuiLock(languageHook, false);
+        AddonUtils::GuiLock(languageHook, false);
         static_cast<CGUIEditControl*>(pGUIControl)->SetInputType(static_cast<CGUIEditControl::INPUT_TYPE>(type), CVariant{heading});
       }
     }
@@ -1226,10 +1226,10 @@ namespace XBMCAddon
         sscanf( cselectedColor, "%x", &selectedColor );
 
       strTextureButton = cbuttonTexture ? cbuttonTexture :
-        XBMCAddonUtils::getDefaultImage("listcontrol", "texturenofocus");
+        AddonUtils::getDefaultImage("listcontrol", "texturenofocus");
 
       strTextureButtonFocus = cbuttonFocusTexture ? cbuttonFocusTexture :
-        XBMCAddonUtils::getDefaultImage("listcontrol", "texturefocus");
+        AddonUtils::getDefaultImage("listcontrol", "texturefocus");
 
       // default values for spin control
       pControlSpin->dwPosX = dwWidth - 35;
@@ -1271,9 +1271,9 @@ namespace XBMCAddon
       return pGUIControl;
     }
 
-    void ControlList::addItem(const Alternative<String, const XBMCAddon::xbmcgui::ListItem* > & item, bool sendMessage)
+    void ControlList::addItem(const Alternative<String, const Addon::gui::ListItem* > & item, bool sendMessage)
     {
-      XBMC_TRACE;
+      _TRACE;
 
       if (item.which() == first)
         internAddListItem(ListItem::fromString(item.former()),sendMessage);
@@ -1281,9 +1281,9 @@ namespace XBMCAddon
         internAddListItem(item.later(),sendMessage);
     }
 
-    void ControlList::addItems(const std::vector<Alternative<String, const XBMCAddon::xbmcgui::ListItem* > > & items)
+    void ControlList::addItems(const std::vector<Alternative<String, const Addon::gui::ListItem* > > & items)
     {
-      XBMC_TRACE;
+      _TRACE;
 
       for (const auto& iter : items)
         addItem(iter, false);
@@ -1354,7 +1354,7 @@ namespace XBMCAddon
     long ControlList::getSelectedPosition()
     {
       DelayedCallGuard dcguard(languageHook);
-      XBMCAddonUtils::GuiLock lock(languageHook, false);
+      AddonUtils::GuiLock lock(languageHook, false);
 
       // create message
       CGUIMessage msg(GUI_MSG_ITEM_SELECTED, iParentId, iControlId);
@@ -1370,10 +1370,10 @@ namespace XBMCAddon
       return pos;
     }
 
-    XBMCAddon::xbmcgui::ListItem* ControlList::getSelectedItem()
+    Addon::gui::ListItem* ControlList::getSelectedItem()
     {
       DelayedCallGuard dcguard(languageHook);
-      XBMCAddonUtils::GuiLock lock(languageHook, false);
+      AddonUtils::GuiLock lock(languageHook, false);
 
       // create message
       CGUIMessage msg(GUI_MSG_ITEM_SELECTED, iParentId, iControlId);
@@ -1394,13 +1394,13 @@ namespace XBMCAddon
     {
       CLog::Log(LOGWARNING,"ControlList::setImageDimensions was called but ... it currently isn't defined to do anything.");
       /*
-        PyXBMCGUILock();
+        PyGUILock();
         if (self->pGUIControl)
         {
         CGUIListControl* pListControl = (CGUIListControl*) self->pGUIControl;
         pListControl->SetImageDimensions((float)self->dwImageWidth, (float)self->dwImageHeight );
         }
-        PyXBMCGUIUnlock();
+        PyGUIUnlock();
       */
     }
 
@@ -1408,13 +1408,13 @@ namespace XBMCAddon
     {
       CLog::Log(LOGWARNING,"ControlList::setItemHeight was called but ... it currently isn't defined to do anything.");
       /*
-        PyXBMCGUILock();
+        PyGUILock();
         if (self->pGUIControl)
         {
         CGUIListControl* pListControl = (CGUIListControl*) self->pGUIControl;
         pListControl->SetItemHeight((float)self->dwItemHeight);
         }
-        PyXBMCGUIUnlock();
+        PyGUIUnlock();
       */
     }
 
@@ -1422,13 +1422,13 @@ namespace XBMCAddon
     {
       CLog::Log(LOGWARNING,"ControlList::setSpace was called but ... it currently isn't defined to do anything.");
       /*
-        PyXBMCGUILock();
+        PyGUILock();
         if (self->pGUIControl)
         {
         CGUIListControl* pListControl = (CGUIListControl*) self->pGUIControl;
         pListControl->SetSpaceBetweenItems((float)self->dwSpace);
         }
-        PyXBMCGUIUnlock();
+        PyGUIUnlock();
       */
     }
 
@@ -1439,12 +1439,12 @@ namespace XBMCAddon
       //      char isOn = true;
 
       /*
-        PyXBMCGUILock();
+        PyGUILock();
         if (self->pGUIControl)
         {
         ((CGUIListControl*)self->pGUIControl)->SetPageControlVisible((bool)isOn );
         }
-        PyXBMCGUIUnlock();
+        PyGUIUnlock();
       */
     }
 
@@ -1463,7 +1463,7 @@ namespace XBMCAddon
       return (long)space;
     }
 
-    XBMCAddon::xbmcgui::ListItem* ControlList::getListItem(int index)
+    Addon::gui::ListItem* ControlList::getListItem(int index)
     {
       if (index < 0 || index >= (int)vecItems.size())
         throw WindowException("Index out of range");

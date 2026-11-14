@@ -11,7 +11,7 @@
 #include "GUIDialogBoxBase.h"
 #include "utils/Variant.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
   namespace MESSAGING
   {
@@ -148,9 +148,9 @@ public:
                         the options to set for this dialog.
 
     \returns action that closed the dialog
-    \sa KODI::MESSAGING::HELPERS::DialogYesNoMessage
+    \sa UNIVERSAL MEDIA CENTER::MESSAGING::HELPERS::DialogYesNoMessage
   */
-  DialogResult ShowAndGetInput(const KODI::MESSAGING::HELPERS::DialogYesNoMessage& options);
+  DialogResult ShowAndGetInput(const UNIVERSAL MEDIA CENTER::MESSAGING::HELPERS::DialogYesNoMessage& options);
 
 protected:
   void OnInitWindow() override;

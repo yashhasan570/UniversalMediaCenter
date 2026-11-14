@@ -10,7 +10,7 @@
 
 #include "GameClient.h"
 #include "GameClientProperties.h"
-#include "addons/kodi-dev-kit/include/kodi/addon-instance/Game.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/addon-instance/Game.h"
 #include "games/addons/cheats/GameClientCheats.h"
 #include "games/addons/cheevos/GameClientCheevos.h"
 #include "games/addons/disc/GameClientDiscs.h"
@@ -19,7 +19,7 @@
 
 #include <memory>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 CGameClientSubsystem::CGameClientSubsystem(CGameClient& gameClient,

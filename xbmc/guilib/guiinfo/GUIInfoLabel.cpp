@@ -26,7 +26,7 @@
 #include <stdexcept>
 #include <string>
 
-using namespace KODI::GUILIB::GUIINFO;
+using namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO;
 
 CGUIInfoLabel::CGUIInfoLabel(const std::string& label,
                              const std::string& fallback /*= ""*/,

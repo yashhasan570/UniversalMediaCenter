@@ -13,7 +13,7 @@
 
 #include <Windows.h>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace PLATFORM
 {

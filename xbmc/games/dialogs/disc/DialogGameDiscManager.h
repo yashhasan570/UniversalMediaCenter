@@ -19,7 +19,7 @@
 
 class CGUIBaseContainer;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -92,4 +92,4 @@ private:
   std::function<void(size_t)> m_deleteCallback;
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

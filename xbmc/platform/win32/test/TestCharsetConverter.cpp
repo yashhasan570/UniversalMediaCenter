@@ -13,7 +13,7 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI::PLATFORM::WINDOWS;
+using namespace UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS;
 
 TEST(TestWin32CharsetConverter, FromW)
 {

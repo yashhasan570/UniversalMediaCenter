@@ -28,13 +28,13 @@ class CAction;
 class CGUIMessage;
 class CGUIAction;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace MOUSE
 {
 class CMouseEvent;
 } // namespace MOUSE
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER
 
 enum ORIENTATION { HORIZONTAL = 0, VERTICAL };
 
@@ -131,7 +131,7 @@ public:
    \return EVENT_RESULT corresponding to whether the control handles this event
    \sa HitTest, CanFocusFromPoint, CMouseEvent, EVENT_RESULT
    */
-  virtual EVENT_RESULT SendMouseEvent(const CPoint& point, const KODI::MOUSE::CMouseEvent& event);
+  virtual EVENT_RESULT SendMouseEvent(const CPoint& point, const UNIVERSAL MEDIA CENTER::MOUSE::CMouseEvent& event);
 
   /*! \brief Perform a mouse action
 
@@ -143,7 +143,7 @@ public:
    \return EVENT_RESULT corresponding to whether the control handles this event
    \sa SendMouseEvent, HitTest, CanFocusFromPoint, CMouseEvent
    */
-  virtual EVENT_RESULT OnMouseEvent(const CPoint& point, const KODI::MOUSE::CMouseEvent& event)
+  virtual EVENT_RESULT OnMouseEvent(const CPoint& point, const UNIVERSAL MEDIA CENTER::MOUSE::CMouseEvent& event)
   {
     return EVENT_RESULT_UNHANDLED;
   }
@@ -175,10 +175,10 @@ public:
   bool IsVisibleFromSkin() const { return m_visibleFromSkinCondition; }
   virtual bool IsDisabled() const;
   virtual void SetPosition(float posX, float posY);
-  virtual void SetHitRect(const CRect& rect, const KODI::UTILS::COLOR::Color& color);
+  virtual void SetHitRect(const CRect& rect, const UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color& color);
   virtual void SetCamera(const CPoint &camera);
   virtual void SetStereoFactor(const float &factor);
-  bool SetColorDiffuse(const KODI::GUILIB::GUIINFO::CGUIInfoColor &color);
+  bool SetColorDiffuse(const UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoColor &color);
   CPoint GetRenderPosition() const;
   virtual float GetXPosition() const;
   virtual float GetYPosition() const;
@@ -357,8 +357,8 @@ protected:
   float m_height;
   float m_width;
   CRect m_hitRect;
-  KODI::UTILS::COLOR::Color m_hitColor = 0xffffffff;
-  KODI::GUILIB::GUIINFO::CGUIInfoColor m_diffuseColor;
+  UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color m_hitColor = 0xffffffff;
+  UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoColor m_diffuseColor;
   int m_controlID;
   int m_parentID;
   bool m_bHasFocus;
@@ -375,7 +375,7 @@ protected:
   GUIVISIBLE m_visible;
   bool m_visibleFromSkinCondition;
   bool m_forceHidden;       // set from the code when a hidden operation is given - overrides m_visible
-  KODI::GUILIB::GUIINFO::CGUIInfoBool m_allowHiddenFocus;
+  UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoBool m_allowHiddenFocus;
   bool m_hasProcessed;
   // enable/disable state
   INFO::InfoPtr m_enableCondition;

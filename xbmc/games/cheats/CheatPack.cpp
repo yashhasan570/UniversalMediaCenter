@@ -20,7 +20,7 @@
 #include <map>
 #include <vector>
 
-using namespace KODI::GAME;
+using namespace UNIVERSAL MEDIA CENTER::GAME;
 
 namespace
 {

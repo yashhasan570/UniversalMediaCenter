@@ -37,7 +37,7 @@ TEST(TestFile, OpenExplicitNativeColonFilename)
       }
     }
   } directory;
-  std::string path = (std::filesystem::temp_directory_path() / "kodi-native-XXXXXX").string();
+  std::string path = (std::filesystem::temp_directory_path() / "universalmediacenter-native-XXXXXX").string();
   ASSERT_NE(nullptr, mkdtemp(path.data()));
   directory.temporary = path;
   std::filesystem::current_path(directory.temporary);
@@ -59,16 +59,16 @@ TEST(TestFile, OpenExplicitNativeColonFilename)
 
 TEST(TestFile, Read)
 {
-  const std::string newLine = CXBMCTestUtils::Instance().getNewLineCharacters();
+  const std::string newLine = CTestUtils::Instance().getNewLineCharacters();
   const size_t size = 1616;
   const size_t lines = 25;
   size_t addPerLine = newLine.length() - 1;
   size_t realSize = size + lines * addPerLine;
 
-  const std::string firstBuf  = "About" + newLine + "-----" + newLine + "XBMC is ";
+  const std::string firstBuf  = "About" + newLine + "-----" + newLine + " is ";
   const std::string secondBuf = "an award-winning fre";
   const std::string thirdBuf  = "ent hub for digital ";
-  const std::string fourthBuf  = "rs, XBMC is a non-pr";
+  const std::string fourthBuf  = "rs,  is a non-pr";
   const std::string fifthBuf = "multimedia jukebox." + newLine;
 
   XFILE::CFile file;
@@ -76,7 +76,7 @@ TEST(TestFile, Read)
 
   size_t currentPos;
   ASSERT_TRUE(file.Open(
-    XBMC_REF_FILE_PATH("/xbmc/filesystem/test/reffile.txt")));
+    _REF_FILE_PATH("//filesystem/test/reffile.txt")));
   EXPECT_EQ(0, file.GetPosition());
   EXPECT_EQ(realSize, file.GetLength());
   EXPECT_EQ(firstBuf.length(), static_cast<size_t>(file.Read(buf, firstBuf.length())));
@@ -133,14 +133,14 @@ TEST(TestFile, Write)
   const char str[] = "TestFile.Write test string\n";
   char buf[30] = {};
 
-  ASSERT_NE(nullptr, file = XBMC_CREATETEMPFILE(""));
+  ASSERT_NE(nullptr, file = _CREATETEMPFILE(""));
   file->Close();
-  ASSERT_TRUE(file->OpenForWrite(XBMC_TEMPFILEPATH(file), true));
+  ASSERT_TRUE(file->OpenForWrite(_TEMPFILEPATH(file), true));
   EXPECT_EQ((int)sizeof(str), file->Write(str, sizeof(str)));
   file->Flush();
   EXPECT_EQ((int64_t)sizeof(str), file->GetPosition());
   file->Close();
-  ASSERT_TRUE(file->Open(XBMC_TEMPFILEPATH(file)));
+  ASSERT_TRUE(file->Open(_TEMPFILEPATH(file)));
   EXPECT_EQ(0, file->GetPosition());
   EXPECT_EQ((int64_t)sizeof(str), file->Seek(0, SEEK_END));
   EXPECT_EQ(0, file->Seek(0, SEEK_SET));
@@ -150,18 +150,18 @@ TEST(TestFile, Write)
   EXPECT_EQ((int64_t)sizeof(str), file->GetPosition());
   EXPECT_EQ(0, memcmp(str, buf, sizeof(str)));
   file->Close();
-  EXPECT_TRUE(XBMC_DELETETEMPFILE(file));
+  EXPECT_TRUE(_DELETETEMPFILE(file));
 }
 
 TEST(TestFile, Exists)
 {
   XFILE::CFile *file;
 
-  ASSERT_NE(nullptr, file = XBMC_CREATETEMPFILE(""));
+  ASSERT_NE(nullptr, file = _CREATETEMPFILE(""));
   file->Close();
-  EXPECT_TRUE(XFILE::CFile::Exists(XBMC_TEMPFILEPATH(file)));
+  EXPECT_TRUE(XFILE::CFile::Exists(_TEMPFILEPATH(file)));
   EXPECT_FALSE(XFILE::CFile::Exists(""));
-  EXPECT_TRUE(XBMC_DELETETEMPFILE(file));
+  EXPECT_TRUE(_DELETETEMPFILE(file));
 }
 
 TEST(TestFile, Stat)
@@ -169,13 +169,13 @@ TEST(TestFile, Stat)
   XFILE::CFile *file;
   struct __stat64 buffer;
 
-  ASSERT_NE(nullptr, file = XBMC_CREATETEMPFILE(""));
+  ASSERT_NE(nullptr, file = _CREATETEMPFILE(""));
   EXPECT_EQ(0, file->Stat(&buffer));
   file->Close();
   EXPECT_NE(0U, buffer.st_mode | _S_IFREG);
   EXPECT_EQ(-1, XFILE::CFile::Stat("", &buffer));
   EXPECT_EQ(ENOENT, errno);
-  EXPECT_TRUE(XBMC_DELETETEMPFILE(file));
+  EXPECT_TRUE(_DELETETEMPFILE(file));
 }
 
 TEST(TestFile, Delete)
@@ -183,13 +183,13 @@ TEST(TestFile, Delete)
   XFILE::CFile *file;
   std::string path;
 
-  ASSERT_NE(nullptr, file = XBMC_CREATETEMPFILE(""));
+  ASSERT_NE(nullptr, file = _CREATETEMPFILE(""));
   file->Close();
-  path = XBMC_TEMPFILEPATH(file);
+  path = _TEMPFILEPATH(file);
   EXPECT_TRUE(XFILE::CFile::Exists(path));
   EXPECT_TRUE(XFILE::CFile::Delete(path));
   EXPECT_FALSE(XFILE::CFile::Exists(path));
-  EXPECT_FALSE(XBMC_DELETETEMPFILE(file));
+  EXPECT_FALSE(_DELETETEMPFILE(file));
 }
 
 TEST(TestFile, Rename)
@@ -197,12 +197,12 @@ TEST(TestFile, Rename)
   XFILE::CFile *file1, *file2;
   std::string path1, path2;
 
-  ASSERT_NE(nullptr, file1 = XBMC_CREATETEMPFILE(""));
+  ASSERT_NE(nullptr, file1 = _CREATETEMPFILE(""));
   file1->Close();
-  path1 = XBMC_TEMPFILEPATH(file1);
-  ASSERT_NE(nullptr, file2 = XBMC_CREATETEMPFILE(""));
+  path1 = _TEMPFILEPATH(file1);
+  ASSERT_NE(nullptr, file2 = _CREATETEMPFILE(""));
   file2->Close();
-  path2 = XBMC_TEMPFILEPATH(file2);
+  path2 = _TEMPFILEPATH(file2);
   EXPECT_TRUE(XFILE::CFile::Delete(path1));
   EXPECT_FALSE(XFILE::CFile::Exists(path1));
   EXPECT_TRUE(XFILE::CFile::Exists(path2));
@@ -210,8 +210,8 @@ TEST(TestFile, Rename)
   EXPECT_TRUE(XFILE::CFile::Exists(path1));
   EXPECT_FALSE(XFILE::CFile::Exists(path2));
   EXPECT_TRUE(XFILE::CFile::Delete(path1));
-  EXPECT_FALSE(XBMC_DELETETEMPFILE(file1));
-  EXPECT_FALSE(XBMC_DELETETEMPFILE(file2));
+  EXPECT_FALSE(_DELETETEMPFILE(file1));
+  EXPECT_FALSE(_DELETETEMPFILE(file2));
 }
 
 TEST(TestFile, Copy)
@@ -219,12 +219,12 @@ TEST(TestFile, Copy)
   XFILE::CFile *file1, *file2;
   std::string path1, path2;
 
-  ASSERT_NE(nullptr, file1 = XBMC_CREATETEMPFILE(""));
+  ASSERT_NE(nullptr, file1 = _CREATETEMPFILE(""));
   file1->Close();
-  path1 = XBMC_TEMPFILEPATH(file1);
-  ASSERT_NE(nullptr, file2 = XBMC_CREATETEMPFILE(""));
+  path1 = _TEMPFILEPATH(file1);
+  ASSERT_NE(nullptr, file2 = _CREATETEMPFILE(""));
   file2->Close();
-  path2 = XBMC_TEMPFILEPATH(file2);
+  path2 = _TEMPFILEPATH(file2);
   EXPECT_TRUE(XFILE::CFile::Delete(path1));
   EXPECT_FALSE(XFILE::CFile::Exists(path1));
   EXPECT_TRUE(XFILE::CFile::Exists(path2));
@@ -233,25 +233,25 @@ TEST(TestFile, Copy)
   EXPECT_TRUE(XFILE::CFile::Exists(path2));
   EXPECT_TRUE(XFILE::CFile::Delete(path1));
   EXPECT_TRUE(XFILE::CFile::Delete(path2));
-  EXPECT_FALSE(XBMC_DELETETEMPFILE(file1));
-  EXPECT_FALSE(XBMC_DELETETEMPFILE(file2));
+  EXPECT_FALSE(_DELETETEMPFILE(file1));
+  EXPECT_FALSE(_DELETETEMPFILE(file2));
 }
 
 TEST(TestFile, SetHidden)
 {
   XFILE::CFile *file;
 
-  ASSERT_NE(nullptr, file = XBMC_CREATETEMPFILE(""));
+  ASSERT_NE(nullptr, file = _CREATETEMPFILE(""));
   file->Close();
-  EXPECT_TRUE(XFILE::CFile::Exists(XBMC_TEMPFILEPATH(file)));
-  bool result = XFILE::CFile::SetHidden(XBMC_TEMPFILEPATH(file), true);
+  EXPECT_TRUE(XFILE::CFile::Exists(_TEMPFILEPATH(file)));
+  bool result = XFILE::CFile::SetHidden(_TEMPFILEPATH(file), true);
 #ifdef TARGET_WINDOWS
   EXPECT_TRUE(result);
 #else
   EXPECT_FALSE(result);
 #endif
-  EXPECT_TRUE(XFILE::CFile::Exists(XBMC_TEMPFILEPATH(file)));
-  EXPECT_TRUE(XBMC_DELETETEMPFILE(file));
+  EXPECT_TRUE(XFILE::CFile::Exists(_TEMPFILEPATH(file)));
+  EXPECT_TRUE(_DELETETEMPFILE(file));
 }
 
 TEST(TestFile, ReadLineRaw)
@@ -259,10 +259,10 @@ TEST(TestFile, ReadLineRaw)
   // Note: The newline char on Windows is "\r", not "\r\n"!
   // For Platform compatibility we therefor only match the prefix.
 
-  const auto newLineLen = CXBMCTestUtils::Instance().getNewLineCharacters().length();
+  const auto newLineLen = CTestUtils::Instance().getNewLineCharacters().length();
 
   XFILE::CFile file;
-  ASSERT_TRUE(file.Open(XBMC_REF_FILE_PATH("/xbmc/filesystem/test/reffile.txt")));
+  ASSERT_TRUE(file.Open(_REF_FILE_PATH("//filesystem/test/reffile.txt")));
   char buffer[1024];
   // Read first line full
   XFILE::CFile::ReadLineResult result = file.ReadLine(buffer, sizeof(buffer));
@@ -308,7 +308,7 @@ TEST(TestFile, ReadLine)
   // For Platform compatibility we therefor only match the prefix.
 
   XFILE::CFile file;
-  ASSERT_TRUE(file.Open(XBMC_REF_FILE_PATH("/xbmc/filesystem/test/reffile.txt")));
+  ASSERT_TRUE(file.Open(_REF_FILE_PATH("//filesystem/test/reffile.txt")));
   std::string line;
   ASSERT_TRUE(file.ReadLine(line));
   ASSERT_TRUE(line.starts_with("About"));

@@ -16,7 +16,7 @@
 #include <string>
 #include <vector>
 
-namespace KODI::LANGUAGE::I18N
+namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N
 {
 class CRegistryFile : public IRegistryRecordProvider
 {
@@ -69,4 +69,4 @@ private:
   std::string m_filePath;
   std::vector<RegistryFileRecord> m_records;
 };
-} // namespace KODI::LANGUAGE::I18N
+} // namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N

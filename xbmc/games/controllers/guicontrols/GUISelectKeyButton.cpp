@@ -14,7 +14,7 @@
 
 #include <string>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 CGUISelectKeyButton::CGUISelectKeyButton(const CGUIButtonControl& buttonTemplate,

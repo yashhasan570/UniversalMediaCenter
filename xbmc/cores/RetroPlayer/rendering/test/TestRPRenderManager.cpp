@@ -28,7 +28,7 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI::RETRO;
+using namespace UNIVERSAL MEDIA CENTER::RETRO;
 
 namespace
 {
@@ -183,7 +183,7 @@ protected:
   }
 };
 
-class CTestHardwareCallback : public KODI::GAME::IHwFramebufferCallback
+class CTestHardwareCallback : public UNIVERSAL MEDIA CENTER::GAME::IHwFramebufferCallback
 {
 public:
   bool HardwareContextReset() override { return true; }
@@ -544,7 +544,7 @@ TEST_F(TestRPRenderManager, HardwareStreamPreservesNominalAndCurrentDisplayAspec
   CTestHardwareCallback callback;
   game_hw_rendering_properties context{};
   context.context_type = GAME_HW_CONTEXT_OPENGL;
-  KODI::GAME::CGameClientStreamHwFramebuffer stream(callback, context);
+  UNIVERSAL MEDIA CENTER::GAME::CGameClientStreamHwFramebuffer stream(callback, context);
   game_stream_properties properties{};
   properties.type = GAME_STREAM_HW_FRAMEBUFFER;
   properties.hw_framebuffer.max_width = 320;
@@ -588,7 +588,7 @@ TEST_F(TestRPRenderManager, HardwarePacketsPreserveRotationAcrossFrameSizes)
   game_hw_rendering_properties context{};
   context.context_type = GAME_HW_CONTEXT_OPENGL;
   context.bottom_left_origin = true;
-  KODI::GAME::CGameClientStreamHwFramebuffer stream(callback, context);
+  UNIVERSAL MEDIA CENTER::GAME::CGameClientStreamHwFramebuffer stream(callback, context);
   game_stream_properties properties{};
   properties.type = GAME_STREAM_HW_FRAMEBUFFER;
   properties.hw_framebuffer.max_width = 640;

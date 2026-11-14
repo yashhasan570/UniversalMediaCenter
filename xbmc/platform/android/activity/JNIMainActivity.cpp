@@ -34,8 +34,8 @@ void CJNIMainActivity::RegisterNatives(JNIEnv* env)
   std::string pkgRoot = CCompileInfo::GetClass();
 
   const std::string mainClass = pkgRoot + "/Main";
-  const std::string settingsObserver = pkgRoot + "/XBMCSettingsContentObserver";
-  const std::string inputDeviceListener = pkgRoot + "/XBMCInputDeviceListener";
+  const std::string settingsObserver = pkgRoot + "/SettingsContentObserver";
+  const std::string inputDeviceListener = pkgRoot + "/InputDeviceListener";
 
   jclass cMain = env->FindClass(mainClass.c_str());
   if (cMain)

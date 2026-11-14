@@ -1,9 +1,9 @@
 # This script holds the main functions used to construct the build system
 
 # Include system specific macros but only if this file is included from
-# kodi main project. It's not needed for kodi-addons project
-# If CORE_SOURCE_DIR is set, it was called from kodi-addons project
-# TODO: drop check if we ever integrate kodi-addons into kodi project
+# universalmediacenter main project. It's not needed for universalmediacenter-addons project
+# If CORE_SOURCE_DIR is set, it was called from universalmediacenter-addons project
+# TODO: drop check if we ever integrate universalmediacenter-addons into universalmediacenter project
 if(NOT CORE_SOURCE_DIR)
   include(${CMAKE_SOURCE_DIR}/cmake/scripts/${CORE_SYSTEM_NAME}/Macros.cmake)
 endif()
@@ -87,9 +87,9 @@ function(core_add_library name)
       target_compile_options(${name} PUBLIC ${CORE_COMPILE_OPTIONS})
     endif()
 
-    # Add precompiled headers to Kodi main libraries
+    # Add precompiled headers to Universal Media Center main libraries
     if(CORE_SYSTEM_NAME MATCHES windows)
-      add_precompiled_header(${name} pch.h ${CMAKE_SOURCE_DIR}/xbmc/platform/win32/pch.cpp PCH_TARGET kodi)
+      add_precompiled_header(${name} pch.h ${CMAKE_SOURCE_DIR}//platform/win32/pch.cpp PCH_TARGET universalmediacenter)
     endif()
   else()
     foreach(src IN LISTS SOURCES HEADERS OTHERS)
@@ -127,7 +127,7 @@ endfunction()
 #   name name of the header part to add
 function(core_add_devkit_header name)
   if(NOT ENABLE_STATIC_LIBS)
-    core_add_library(addons_kodi-dev-kit_include_${name})
+    core_add_library(addons_universalmediacenter-dev-kit_include_${name})
   endif()
 endfunction()
 
@@ -765,25 +765,25 @@ endfunction()
 #   APP_VERSION - the app version (${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}-${APP_VERSION_TAG})
 #   APP_ADDON_API - the addon API version in the form of 16.9.702
 #   ADDON_REPOS - official addon repositories and their origin path delimited by pipe
-#                 - e.g. repository.xbmc.org|https://mirrors.kodi.tv -
+#                 - e.g. repository..org|https://mirrors.universalmediacenter.tv -
 #                 (multiple repo/path-sets are delimited by comma)
 #   FILE_VERSION - file version in the form of 16,9,702,0 - Windows only
 #   JSONRPC_VERSION - the json api version in the form of 8.3.0
 #
 # Set various variables defined in "versions.h"
 macro(core_find_versions)
-  # kodi-addons project also calls this macro and uses CORE_SOURCE_DIR
+  # universalmediacenter-addons project also calls this macro and uses CORE_SOURCE_DIR
   # to point to core base dir
-  # Set CORE_SOURCE_DIR here, otherwise kodi main project fails
+  # Set CORE_SOURCE_DIR here, otherwise universalmediacenter main project fails
   # TODO: drop this code block and refactor the rest to use CMAKE_SOURCE_DIR
-  # if we ever integrate kodi-addons into kodi project
+  # if we ever integrate universalmediacenter-addons into universalmediacenter project
   if(NOT CORE_SOURCE_DIR)
     set(CORE_SOURCE_DIR ${CMAKE_SOURCE_DIR})
   endif()
 
   include(CMakeParseArguments)
   core_file_read_filtered(version_list ${CORE_SOURCE_DIR}/version.txt)
-  core_file_read_filtered(json_version ${CORE_SOURCE_DIR}/xbmc/interfaces/json-rpc/schema/version.txt)
+  core_file_read_filtered(json_version ${CORE_SOURCE_DIR}//interfaces/json-rpc/schema/version.txt)
   string(REGEX REPLACE "([^ ;]*) ([^;]*)" "\\1;\\2" version_list "${version_list};${json_version}")
   set(version_props
     ADDON_API
@@ -838,7 +838,7 @@ macro(core_find_versions)
   # Set defines used in addon.xml.in and read from versions.h to set add-on
   # version parts automatically
   # This part is nearly identical to "AddonHelpers.cmake", except location of versions.h
-  file(STRINGS ${CORE_SOURCE_DIR}/xbmc/addons/kodi-dev-kit/include/kodi/versions.h BIN_ADDON_PARTS)
+  file(STRINGS ${CORE_SOURCE_DIR}//addons/universalmediacenter-dev-kit/include/universalmediacenter/versions.h BIN_ADDON_PARTS)
   foreach(loop_var ${BIN_ADDON_PARTS})
     string(FIND "${loop_var}" "#define ADDON_" matchres)
     if("${matchres}" EQUAL 0)
@@ -862,7 +862,7 @@ macro(core_find_versions)
     message(FATAL_ERROR "Could not determine app version! Make sure that ${CORE_SOURCE_DIR}/version.txt exists")
   endif()
   if(NOT DEFINED JSONRPC_VERSION)
-    message(FATAL_ERROR "Could not determine json-rpc version! Make sure that ${CORE_SOURCE_DIR}/xbmc/interfaces/json-rpc/schema/version.txt exists")
+    message(FATAL_ERROR "Could not determine json-rpc version! Make sure that ${CORE_SOURCE_DIR}//interfaces/json-rpc/schema/version.txt exists")
   endif()
 endmacro()
 
@@ -905,7 +905,7 @@ macro(find_addon_xml_in_files)
   endforeach()
 
   # Append also versions.h to depends
-  list(APPEND ADDON_XML_DEPENDS "${CORE_SOURCE_DIR}/xbmc/addons/kodi-dev-kit/include/kodi/versions.h")
+  list(APPEND ADDON_XML_DEPENDS "${CORE_SOURCE_DIR}//addons/universalmediacenter-dev-kit/include/universalmediacenter/versions.h")
 endmacro()
 
 # Iterate over optional/required dep lists and link any created targets

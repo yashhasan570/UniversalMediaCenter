@@ -18,7 +18,7 @@
 #include "interfaces/info/SkinVariable.h"
 #include "utils/Set.h"
 #include "utils/StringUtils.h"
-#include "utils/XBMCTinyXML.h"
+#include "utils/TinyXML.h"
 #include "utils/XMLUtils.h"
 #include "utils/log.h"
 
@@ -67,7 +67,7 @@ constexpr auto EXPRESSION_NODES = make_set<std::string_view>({
 
 } // namespace
 
-using namespace KODI::GUILIB;
+using namespace UNIVERSAL MEDIA CENTER::GUILIB;
 
 CGUIIncludes::CGUIIncludes() = default;
 
@@ -98,7 +98,7 @@ bool CGUIIncludes::Load_Internal(const std::string &file)
   if (HasLoaded(file))
     return true;
 
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   if (!doc.LoadFile(file))
   {
     CLog::Log(LOGINFO, "Error loading include file {}: {} (row: {}, col: {})", file,

@@ -9,7 +9,7 @@
 #include "GameClientPort.h"
 
 #include "GameClientDevice.h"
-#include "addons/kodi-dev-kit/include/kodi/addon-instance/Game.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/addon-instance/Game.h"
 #include "games/addons/GameClientTranslator.h"
 #include "games/controllers/Controller.h"
 #include "games/controllers/input/PhysicalTopology.h"
@@ -17,7 +17,7 @@
 
 #include <algorithm>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 CGameClientPort::CGameClientPort(const game_input_port& port)

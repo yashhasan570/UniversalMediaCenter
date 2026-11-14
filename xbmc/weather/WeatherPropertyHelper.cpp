@@ -23,7 +23,7 @@
 #include <map>
 #include <string_view>
 
-using namespace KODI::WEATHER;
+using namespace UNIVERSAL MEDIA CENTER::WEATHER;
 
 namespace
 {

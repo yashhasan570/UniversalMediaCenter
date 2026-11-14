@@ -10,7 +10,7 @@
 
 #include <string>
 
-namespace KODI::GAME
+namespace UNIVERSAL MEDIA CENTER::GAME
 {
 /*!
  * \ingroup games
@@ -30,4 +30,4 @@ public:
    */
   static std::string GetCheatFileName(const std::string& gamePath);
 };
-} // namespace KODI::GAME
+} // namespace UNIVERSAL MEDIA CENTER::GAME

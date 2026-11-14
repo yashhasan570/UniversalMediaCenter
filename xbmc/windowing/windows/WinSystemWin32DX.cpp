@@ -34,7 +34,7 @@
 #pragma warning(default: 4091)
 #include <detours.h>
 
-using KODI::PLATFORM::WINDOWS::FromW;
+using UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW;
 
 using namespace std::chrono_literals;
 
@@ -48,7 +48,7 @@ static PFND3D10DDI_CREATERESOURCE s_fnCreateResourceOrig{ nullptr };
 
 void CWinSystemWin32DX::Register()
 {
-  KODI::WINDOWING::CWindowSystemFactory::RegisterWindowSystem(CreateWinSystem);
+  UNIVERSAL MEDIA CENTER::WINDOWING::CWindowSystemFactory::RegisterWindowSystem(CreateWinSystem);
 }
 
 std::unique_ptr<CWinSystemBase> CWinSystemWin32DX::CreateWinSystem()
@@ -77,7 +77,7 @@ void CWinSystemWin32DX::PresentRenderImpl(bool rendered)
   }
 
   if (!rendered)
-    KODI::TIME::Sleep(40ms);
+    UNIVERSAL MEDIA CENTER::TIME::Sleep(40ms);
 }
 
 bool CWinSystemWin32DX::CreateNewWindow(const std::string& name, bool fullScreen, RESOLUTION_INFO& res)
@@ -145,7 +145,7 @@ void CWinSystemWin32DX::OnMove(int x, int y)
     if (!details)
       return;
 
-    CDisplaySettings::GetInstance().SetMonitor(KODI::PLATFORM::WINDOWS::FromW(details->MonitorNameW));
+    CDisplaySettings::GetInstance().SetMonitor(UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW(details->MonitorNameW));
     m_deviceResources->SetMonitor(newMonitor);
     m_hMonitor = newMonitor;
   }
@@ -427,14 +427,14 @@ bool CWinSystemWin32DX::IsHDROutput() const
   return m_deviceResources->IsHDROutput();
 }
 
-KODI::UTILS::Eotf CWinSystemWin32DX::GetEotf() const
+UNIVERSAL MEDIA CENTER::UTILS::Eotf CWinSystemWin32DX::GetEotf() const
 {
-  return IsTransferPQ() ? KODI::UTILS::Eotf::PQ : KODI::UTILS::Eotf::TRADITIONAL_SDR;
+  return IsTransferPQ() ? UNIVERSAL MEDIA CENTER::UTILS::Eotf::PQ : UNIVERSAL MEDIA CENTER::UTILS::Eotf::TRADITIONAL_SDR;
 }
 
-KODI::UTILS::Colorimetry CWinSystemWin32DX::GetColorimetry() const
+UNIVERSAL MEDIA CENTER::UTILS::Colorimetry CWinSystemWin32DX::GetColorimetry() const
 {
-  return IsTransferPQ() ? KODI::UTILS::Colorimetry::BT2020_RGB : KODI::UTILS::Colorimetry::DEFAULT;
+  return IsTransferPQ() ? UNIVERSAL MEDIA CENTER::UTILS::Colorimetry::BT2020_RGB : UNIVERSAL MEDIA CENTER::UTILS::Colorimetry::DEFAULT;
 }
 
 int CWinSystemWin32DX::GetOutputBitDepth() const

@@ -11,7 +11,7 @@
 #include <cstdint>
 #include <time.h>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace LINUX
 {

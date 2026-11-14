@@ -13,7 +13,7 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI::LANGUAGE::I18N;
+using namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N;
 
 TEST(TestI18nSubTagLoader, BaseSubTag)
 {

@@ -11,7 +11,7 @@
 #include <algorithm>
 #include <cstddef>
 
-namespace KODI::VIDEO::SUBTITLES
+namespace UNIVERSAL MEDIA CENTER::VIDEO::SUBTITLES
 {
 namespace
 {
@@ -197,4 +197,4 @@ BitmapStereoCrop GetStereoCrop(const BitmapSubtitle& bitmap,
           regionWidth,
           regionHeight};
 }
-} // namespace KODI::VIDEO::SUBTITLES
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO::SUBTITLES

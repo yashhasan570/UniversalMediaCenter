@@ -12,7 +12,7 @@
 
 //! \brief The addons:// paths of the add-on browser's nodes, as XFILE::CAddonsDirectory parses
 //! them, and of the entries it offers that stand for an action.
-namespace KODI::ADDONS
+namespace UNIVERSAL MEDIA CENTER::ADDONS
 {
 
 inline constexpr char ROOT[] = "addons://";
@@ -43,4 +43,4 @@ constexpr std::string_view EndpointOf(std::string_view path)
   return path;
 }
 
-} // namespace KODI::ADDONS
+} // namespace UNIVERSAL MEDIA CENTER::ADDONS

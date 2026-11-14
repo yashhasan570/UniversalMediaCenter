@@ -22,9 +22,9 @@ std::mutex g_mutex;
 std::string g_pending;
 } // namespace
 
-// Browser paste listener is registered in kodi_pre.js (main thread only). Pthreads have no document.
+// Browser paste listener is registered in universalmediacenter_pre.js (main thread only). Pthreads have no document.
 
-extern "C" EMSCRIPTEN_KEEPALIVE void kodi_wasm_dispatch_paste(const char* utf8)
+extern "C" EMSCRIPTEN_KEEPALIVE void universalmediacenter_wasm_dispatch_paste(const char* utf8)
 {
   // The browser delivers pastes before the messenger is registered and after it is gone.
   auto messenger = CServiceBroker::GetAppMessenger();

@@ -10,12 +10,12 @@
 
 #include "interfaces/legacy/AddonClass.h"
 
-namespace XBMCAddon
+namespace Addon
 {
-  namespace xbmcwsgi
+  namespace wsgi
   {
-    /// \defgroup python_xbmcwsgi_WsgiResponseBody WsgiResponseBody
-    /// \ingroup python_xbmcwsgi
+    /// \defgroup python_wsgi_WsgiResponseBody WsgiResponseBody
+    /// \ingroup python_wsgi
     /// @{
     /// @brief **Represents the write callable returned by the start_response callable passed to a WSGI handler.**
     ///
@@ -30,7 +30,7 @@ namespace XBMCAddon
       ~WsgiResponseBody() override;
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_xbmcwsgi_WsgiInputStreamIterator
+      /// \ingroup python_wsgi_WsgiInputStreamIterator
       /// \python_func{ operator(status, response_headers[, exc_info]) }
       ///
       /// Callable implementation to write data to the response.

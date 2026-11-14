@@ -25,7 +25,7 @@ class XMLElement;
 class XMLNode;
 } // namespace tinyxml2
 
-namespace KODI::VIDEO::GEOMETRY
+namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY
 {
 
 //! \brief Bumped when the detector changes its results. Older records read as STALE and stay
@@ -138,4 +138,4 @@ float WidestAspect(const ContentGeometryRecord& record);
 bool NeedsContentGeometry(const std::optional<ContentGeometryRecord>& stored,
                           const FileIdentity& identity);
 
-} // namespace KODI::VIDEO::GEOMETRY
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY

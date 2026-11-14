@@ -17,7 +17,7 @@
 
 struct addrinfo;
 
-namespace KODI::NETWORK
+namespace UNIVERSAL MEDIA CENTER::NETWORK
 {
 std::string SelectDNSAddress(const addrinfo* results);
 }

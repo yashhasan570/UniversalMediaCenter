@@ -24,7 +24,7 @@
 
 #include <EGL/egl.h>
 
-using namespace KODI::RETRO;
+using namespace UNIVERSAL MEDIA CENTER::RETRO;
 
 namespace
 {

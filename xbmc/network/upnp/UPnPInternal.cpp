@@ -52,7 +52,7 @@
 
 #include <Platinum/Source/Platinum/Platinum.h>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace MUSIC_INFO;
 using namespace XFILE;
 
@@ -165,10 +165,10 @@ namespace UPNP
 // "The <contentFormat> part for HTTP GET is described by a MIME type RFC https://www.ietf.org/rfc/rfc1341.txt"
 // all the pre-defined "text/*" MIME by IANA is here https://www.iana.org/assignments/media-types/media-types.xhtml#text
 // there is not any subtitle MIME for now (year 2022), we used to use text/srt|ssa|sub|idx, but,
-// kodi support SUP subtitle now, and SUP subtitle is not really a text(see below), to keep it
+// universalmediacenter support SUP subtitle now, and SUP subtitle is not really a text(see below), to keep it
 // compatible, we suggest only to match the extension
 //
-// main purpose of this array is to share supported real subtitle formats when kodi act as a UPNP
+// main purpose of this array is to share supported real subtitle formats when universalmediacenter act as a UPNP
 // server or UPNP/DLNA media render
 constexpr auto SupportedSubFormats = make_set<std::string_view>({
     "txt",
@@ -188,7 +188,7 @@ constexpr auto SupportedSubFormats = make_set<std::string_view>({
 // Map defining extensions for mimetypes not available in Platinum mimetype map
 // or that the application wants to override. These definitions take precedence
 // over all other possible mime type definitions.
-constexpr NPT_HttpFileRequestHandler_DefaultFileTypeMapEntry kodiPlatinumMimeTypeExtensions[] = {
+constexpr NPT_HttpFileRequestHandler_DefaultFileTypeMapEntry universalmediacenterPlatinumMimeTypeExtensions[] = {
     {"m2ts", "video/vnd.dlna.mpeg-tts"}};
 
 EClientQuirks GetClientQuirks(const PLT_HttpRequestContext* context)
@@ -261,12 +261,12 @@ NPT_String GetMimeType(const CFileItem& item, const PLT_HttpRequestContext* cont
     /* We look first to our extensions/overrides of libplatinum mimetypes. If not found, fallback to
          Platinum definitions.
       */
-    const auto kodiOverrideMimeType = std::find_if(
-        std::begin(kodiPlatinumMimeTypeExtensions), std::end(kodiPlatinumMimeTypeExtensions),
+    const auto universalmediacenterOverrideMimeType = std::find_if(
+        std::begin(universalmediacenterPlatinumMimeTypeExtensions), std::end(universalmediacenterPlatinumMimeTypeExtensions),
         [&](const auto& mimeTypeEntry) { return mimeTypeEntry.extension == ext; });
-    if (kodiOverrideMimeType != std::end(kodiPlatinumMimeTypeExtensions))
+    if (universalmediacenterOverrideMimeType != std::end(universalmediacenterPlatinumMimeTypeExtensions))
     {
-      mime = kodiOverrideMimeType->mime_type;
+      mime = universalmediacenterOverrideMimeType->mime_type;
     }
     else
     {
@@ -313,9 +313,9 @@ const NPT_String GetProtocolInfo(const CFileItem& item,
 {
   const std::string source{protocol && *protocol ? protocol : item.GetURL().GetProtocol()};
 
-  // UPnP clients get http; other protocols are offered as xbmc-get for other Universal Media Center clients
+  // UPnP clients get http; other protocols are offered as -get for other Universal Media Center clients
   //! @todo add rtsp ?
-  NPT_String proto{source == "http" ? "http-get" : "xbmc-get"};
+  NPT_String proto{source == "http" ? "http-get" : "-get"};
 
   const NPT_String mime{GetMimeType(item, context)};
   proto += ":*:" + mime + ":" + PLT_ProtocolInfo::GetDlnaExtension(mime, context);
@@ -412,7 +412,7 @@ NPT_Result PopulateObjectFromTag(CVideoInfoTag& tag,
 
   if (tag.m_iDbId != -1)
   {
-    if (tag.GetMediaType() == KODI::MEDIA::TYPE::MUSIC_VIDEO)
+    if (tag.GetMediaType() == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MUSIC_VIDEO)
     {
       object.m_ObjectClass.type = "object.item.videoItem.musicVideoClip";
       object.m_Creator =
@@ -427,7 +427,7 @@ NPT_Result PopulateObjectFromTag(CVideoInfoTag& tag,
       object.m_ReferenceID =
           EncodeObjectId(StringUtils::Format("{}{}", VIDEO::DB_PATH::MUSICVIDEO_TITLES, tag.m_iDbId));
     }
-    else if (tag.GetMediaType() == KODI::MEDIA::TYPE::MOVIE)
+    else if (tag.GetMediaType() == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MOVIE)
     {
       object.m_ObjectClass.type = "object.item.videoItem.movie";
       object.m_Title = tag.m_strTitle.c_str();
@@ -439,7 +439,7 @@ NPT_Result PopulateObjectFromTag(CVideoInfoTag& tag,
     {
       object.m_Recorded.series_title = tag.m_strShowTitle.c_str();
 
-      if (tag.GetMediaType() == KODI::MEDIA::TYPE::TV_SHOW)
+      if (tag.GetMediaType() == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::TV_SHOW)
       {
         object.m_ObjectClass.type = "object.container.album.videoAlbum.videoBroadcastShow";
         object.m_Title = tag.m_strTitle.c_str();
@@ -449,7 +449,7 @@ NPT_Result PopulateObjectFromTag(CVideoInfoTag& tag,
         object.m_ReferenceID =
             EncodeObjectId(StringUtils::Format("{}{}", VIDEO::DB_PATH::TVSHOW_TITLES, tag.m_iDbId));
       }
-      else if (tag.GetMediaType() == KODI::MEDIA::TYPE::SEASON)
+      else if (tag.GetMediaType() == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::SEASON)
       {
         object.m_ObjectClass.type = "object.container.album.videoAlbum.videoBroadcastSeason";
         object.m_Title = tag.m_strTitle.c_str();
@@ -634,8 +634,8 @@ PLT_MediaObject* BuildObject(CFileItem& item,
       resource.m_Uri = file_path;
 
       // if the direct link can be served directly using http, then push it in front
-      // otherwise keep the xbmc-get resource last and let a compatible client look for it
-      if (resource.m_ProtocolInfo.ToString().StartsWith("xbmc", true))
+      // otherwise keep the -get resource last and let a compatible client look for it
+      if (resource.m_ProtocolInfo.ToString().StartsWith("", true))
       {
         object->m_Resources.Add(resource);
       }
@@ -863,8 +863,8 @@ PLT_MediaObject* BuildObject(CFileItem& item,
       else
         preferredLanguage = setting->ToString();
 
-      const KODI::LANGUAGE::CLanguageTag preferredTag{
-          KODI::LANGUAGE::CLanguageTag::Parse(preferredLanguage)};
+      const UNIVERSAL MEDIA CENTER::LANGUAGE::CLanguageTag preferredTag{
+          UNIVERSAL MEDIA CENTER::LANGUAGE::CLanguageTag::Parse(preferredLanguage)};
 
       for (const std::string& subtitle : subtitles)
       {
@@ -992,7 +992,7 @@ int PopulateTagFromObject(CVideoInfoTag& tag,
   if (!object.m_Recorded.program_title.IsEmpty() ||
       object.m_ObjectClass.type == "object.item.videoItem.videoBroadcast")
   {
-    tag.SetMediaType(KODI::MEDIA::TYPE::EPISODE);
+    tag.SetMediaType(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::EPISODE);
     tag.m_strShowTitle = object.m_Recorded.series_title;
     if (date.IsValid())
       tag.m_firstAired = date;
@@ -1032,13 +1032,13 @@ int PopulateTagFromObject(CVideoInfoTag& tag,
     {
       if (object.m_ObjectClass.type == "object.container.album.videoAlbum.videoBroadcastSeason")
       {
-        tag.SetMediaType(KODI::MEDIA::TYPE::SEASON);
+        tag.SetMediaType(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::SEASON);
         tag.m_iSeason = object.m_Recorded.episode_season;
         tag.m_strShowTitle = object.m_Recorded.series_title;
       }
       else
       {
-        tag.SetMediaType(KODI::MEDIA::TYPE::TV_SHOW);
+        tag.SetMediaType(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::TV_SHOW);
         tag.m_strShowTitle = object.m_Title;
       }
 
@@ -1049,7 +1049,7 @@ int PopulateTagFromObject(CVideoInfoTag& tag,
     }
     else if (object.m_ObjectClass.type == "object.item.videoItem.musicVideoClip")
     {
-      tag.SetMediaType(KODI::MEDIA::TYPE::MUSIC_VIDEO);
+      tag.SetMediaType(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MUSIC_VIDEO);
 
       if (object.m_People.artists.GetItemCount() > 0)
         tag.m_artist = NamesOf(object.m_People.artists);
@@ -1060,7 +1060,7 @@ int PopulateTagFromObject(CVideoInfoTag& tag,
       tag.m_strAlbum = object.m_Affiliation.album;
     }
     else
-      tag.SetMediaType(KODI::MEDIA::TYPE::MOVIE);
+      tag.SetMediaType(UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MOVIE);
 
     tag.m_strTitle = object.m_Title;
     if (date.IsValid())
@@ -1221,15 +1221,15 @@ std::shared_ptr<CFileItem> BuildObject(PLT_MediaObject* entry,
   {
     int episodes = pItem->GetVideoInfoTag()->m_iEpisode;
     int played = pItem->GetVideoInfoTag()->GetPlayCount();
-    const KODI::MEDIA::TYPE type = pItem->GetVideoInfoTag()->GetMediaType();
+    const UNIVERSAL MEDIA CENTER::MEDIA::TYPE type = pItem->GetVideoInfoTag()->GetMediaType();
     bool watched(false);
-    if (type == KODI::MEDIA::TYPE::TV_SHOW || type == KODI::MEDIA::TYPE::SEASON)
+    if (type == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::TV_SHOW || type == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::SEASON)
     {
       VIDEO::UTILS::SetEpisodeCounts(*pItem, episodes, played);
       watched = (episodes && played >= episodes);
       pItem->GetVideoInfoTag()->SetPlayCount(watched ? 1 : 0);
     }
-    else if (type == KODI::MEDIA::TYPE::EPISODE || type == KODI::MEDIA::TYPE::MOVIE)
+    else if (type == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::EPISODE || type == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MOVIE)
       watched = (played > 0);
     pItem->SetOverlayImage(watched ? CGUIListItem::ICON_OVERLAY_WATCHED
                                    : CGUIListItem::ICON_OVERLAY_UNWATCHED);
@@ -1256,7 +1256,7 @@ struct ResourcePrioritySort
     if (URIUtils::IsHostOnLAN(url.GetHost().GetChars(), LanCheckMode::ONLY_LOCAL_SUBNET))
       prio += 300;
 
-    if (res.m_ProtocolInfo.GetProtocol() == "xbmc-get")
+    if (res.m_ProtocolInfo.GetProtocol() == "-get")
       prio += 200;
     else if (res.m_ProtocolInfo.GetProtocol() == "http-get")
       prio += 100;

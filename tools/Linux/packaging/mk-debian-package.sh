@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Copyright (C) 2013 Team XBMC
+# Copyright (C) 2013 Team 
 # http://github.com/yashhasan570/UniversalMediaCenter
 #
 # This Program is free software; you can redistribute it and/or modify
@@ -14,7 +14,7 @@
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with XBMC; see the file COPYING. If not, see
+# along with ; see the file COPYING. If not, see
 # <http://www.gnu.org/licenses/>.
 #
 
@@ -31,7 +31,7 @@ DEBUILD_OPTS=${DEBUILD_OPTS:-""}
 PDEBUILD_OPTS=${PDEBUILD_OPTS:-""}
 PBUILDER_BASE=${PBUILDER_BASE:-"/var/cache/pbuilder"}
 DPUT_TARGET=${DPUT_TARGET:-"local"}
-DEBIAN=${DEBIAN:-"https://github.com/xbmc/xbmc-packaging/archive/master.tar.gz"}
+DEBIAN=${DEBIAN:-"https://github.com//-packaging/archive/master.tar.gz"}
 BUILD_DATE=$(date '+%Y%m%d.%H%M')
 
 function usage {
@@ -103,7 +103,7 @@ function archiveRepo {
     git clean -xfd
     echo $REV > VERSION
     tools/depends/target/ffmpeg/autobuild.sh -d
-    DEST="kodi-${RELEASEV}~git${BUILD_DATE}-${TAG}"
+    DEST="universalmediacenter-${RELEASEV}~git${BUILD_DATE}-${TAG}"
     [[ -d debian ]] && rm -rf debian
     cd ..
     tar -czf ${DEST}.tar.gz --exclude .git $(basename $REPO_DIR)
@@ -122,7 +122,7 @@ function getDebian {
         mkdir tmp && cd tmp
         curl -L -s $DEBIAN -o debian.tar.gz
         tar xzf debian.tar.gz
-        cd xbmc-packaging-*
+        cd -packaging-*
         for FILE in *.unified; do mv $FILE debian/${FILE%.unified}; done
         mv debian $REPO_DIR
         cd $REPO_DIR ; rm -rf tmp
@@ -133,7 +133,7 @@ function buildDebianPackages {
     archiveRepo
     cd $REPO_DIR || exit 1
     sed -e "s/#PACKAGEVERSION#/${PACKAGEVERSION}/g" -e "s/#TAGREV#/${TAGREV}/g" debian/changelog.in > debian/changelog.tmp
-    [ "$Configuration" == "Debug" ] && sed -i "s/XBMC_RELEASE = yes/XBMC_RELEASE = no/" debian/rules
+    [ "$Configuration" == "Debug" ] && sed -i "s/_RELEASE = yes/_RELEASE = no/" debian/rules
 
     for dist in $DISTS
     do

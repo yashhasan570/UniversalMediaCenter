@@ -19,7 +19,7 @@
 #include "utils/URIUtils.h"
 #include "utils/log.h"
 
-using namespace KODI::SHADER;
+using namespace UNIVERSAL MEDIA CENTER::SHADER;
 
 CShaderGL::CShaderGL() = default;
 

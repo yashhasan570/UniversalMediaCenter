@@ -21,9 +21,9 @@
 #define NOTIFICATION_WARNING  "warning"
 #define NOTIFICATION_ERROR    "error"
 
-namespace XBMCAddon
+namespace Addon
 {
-  namespace xbmcgui
+  namespace gui
   {
     long getCurrentWindowId()
     {
@@ -41,13 +41,13 @@ namespace XBMCAddon
 
     long getScreenHeight()
     {
-      XBMC_TRACE;
+      _TRACE;
       return CServiceBroker::GetWinSystem()->GetGfxContext().GetHeight();
     }
 
     long getScreenWidth()
     {
-      XBMC_TRACE;
+      _TRACE;
       return CServiceBroker::GetWinSystem()->GetGfxContext().GetWidth();
     }
 

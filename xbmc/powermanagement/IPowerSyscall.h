@@ -50,10 +50,10 @@ public:
   virtual int  BatteryLevel() = 0;
 
   /*!
-   \brief Pump power related events back to xbmc.
+   \brief Pump power related events back to .
 
    PumpPowerEvents is called from Application Thread and the platform implementation may signal
-   power related events back to xbmc through the callback.
+   power related events back to  through the callback.
 
    return true if an event occurred and false if not.
 

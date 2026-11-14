@@ -32,7 +32,7 @@
 #include <string>
 #include <vector>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 namespace
 {
 void RetypeAsVersion(CFileItem& item)
@@ -208,7 +208,7 @@ bool ReassignPlaylist(const CFileItem& item,
   }
 
   // Cached library listings still hold the old paths, and widgets reload on the announcement
-  // Notify the rest of kodi
+  // Notify the rest of universalmediacenter
   CUtil::DeleteVideoDatabaseDirectoryCache();
   for (const auto& d : displaced)
     CVideoDatabase::AnnounceUpdate(d.mediaType, d.idMedia);

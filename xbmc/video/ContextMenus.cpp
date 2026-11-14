@@ -39,7 +39,7 @@
 
 #include <utility>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 namespace CONTEXTMENU
 {
@@ -259,7 +259,7 @@ void SetPathAndPlay(const std::shared_ptr<CFileItem>& item, PlayMode mode)
       }
     }
 
-    KODI::VIDEO::GUILIB::CVideoPlayActionProcessor proc{itemCopy};
+    UNIVERSAL MEDIA CENTER::VIDEO::GUILIB::CVideoPlayActionProcessor proc{itemCopy};
     if (mode == PlayMode::PLAY_USING)
       proc.SetChoosePlayer();
     else if (mode == PlayMode::PLAY_STACK_PART)

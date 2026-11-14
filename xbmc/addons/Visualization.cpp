@@ -15,24 +15,24 @@
 #include "windowing/WinSystem.h"
 
 using namespace ADDON;
-using namespace KODI::ADDONS;
+using namespace UNIVERSAL MEDIA CENTER::ADDONS;
 
 namespace
 {
 
-void get_properties(const KODI_HANDLE hdl, struct KODI_ADDON_VISUALIZATION_PROPS* props)
+void get_properties(const UNIVERSALMEDIA_HANDLE hdl, struct UNIVERSALMEDIA_ADDON_VISUALIZATION_PROPS* props)
 {
   if (hdl)
     static_cast<CVisualization*>(hdl)->GetProperties(props);
 }
 
-void transfer_preset(const KODI_HANDLE hdl, const char* preset)
+void transfer_preset(const UNIVERSALMEDIA_HANDLE hdl, const char* preset)
 {
   if (hdl && preset)
     static_cast<CVisualization*>(hdl)->TransferPreset(preset);
 }
 
-void clear_presets(const KODI_HANDLE hdl)
+void clear_presets(const UNIVERSALMEDIA_HANDLE hdl)
 {
   if (hdl)
     static_cast<CVisualization*>(hdl)->ClearPresets();
@@ -55,7 +55,7 @@ CVisualization::CVisualization(const AddonInfoPtr& addonInfo, float x, float y, 
   m_ifc.visualization->toUniversal Media Center->transfer_preset = transfer_preset;
   m_ifc.visualization->toUniversal Media Center->clear_presets = clear_presets;
 
-  /* Open the class "kodi::addon::CInstanceVisualization" on add-on side */
+  /* Open the class "addon::CInstanceVisualization" on add-on side */
   if (CreateInstance() != ADDON_STATUS_OK)
   {
     CLog::Log(LOGFATAL, "Visualization: failed to create instance for '{}' and not usable!", ID());
@@ -65,7 +65,7 @@ CVisualization::CVisualization(const AddonInfoPtr& addonInfo, float x, float y, 
 
 CVisualization::~CVisualization()
 {
-  /* Destroy the class "kodi::addon::CInstanceVisualization" on add-on side */
+  /* Destroy the class "addon::CInstanceVisualization" on add-on side */
   DestroyInstance();
 
   delete m_ifc.visualization->toAddon;
@@ -188,7 +188,7 @@ bool CVisualization::UpdateAlbumart(const char* albumart)
   return false;
 }
 
-bool CVisualization::UpdateTrack(const KODI_ADDON_VISUALIZATION_TRACK* track)
+bool CVisualization::UpdateTrack(const UNIVERSALMEDIA_ADDON_VISUALIZATION_TRACK* track)
 {
   if (m_ifc.visualization->toAddon->update_track)
     return m_ifc.visualization->toAddon->update_track(m_ifc.hdl, track);
@@ -237,7 +237,7 @@ void CVisualization::ClearPresets()
   m_presets.clear();
 }
 
-void CVisualization::GetProperties(struct KODI_ADDON_VISUALIZATION_PROPS* props) const
+void CVisualization::GetProperties(struct UNIVERSALMEDIA_ADDON_VISUALIZATION_PROPS* props) const
 {
   if (!props)
     return;

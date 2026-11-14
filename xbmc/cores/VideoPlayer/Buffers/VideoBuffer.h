@@ -35,7 +35,7 @@ struct YuvImage
   unsigned int bpp; // bytes per pixel
 };
 
-namespace KODI::VIDEO::GEOMETRY
+namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY
 {
 struct ReducedFrame;
 }
@@ -156,7 +156,7 @@ public:
    * \p reduction is written only on Produced, and its plane vectors are reused across calls.
    * The height follows the source shape, and a source already smaller is copied at its size.
    */
-  virtual ReductionResult ReduceForAnalysis(KODI::VIDEO::GEOMETRY::ReducedFrame& reduction,
+  virtual ReductionResult ReduceForAnalysis(UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::ReducedFrame& reduction,
                                             unsigned int sourceWidth,
                                             unsigned int sourceHeight,
                                             unsigned int targetWidth)

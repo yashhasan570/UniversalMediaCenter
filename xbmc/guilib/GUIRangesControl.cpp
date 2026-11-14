@@ -70,7 +70,7 @@ void CGUIRangesControl::CGUIRange::SetInvalid()
   m_guiLowerTexture->SetInvalid();
 }
 
-bool CGUIRangesControl::CGUIRange::SetDiffuseColor(const KODI::GUILIB::GUIINFO::CGUIInfoColor& color)
+bool CGUIRangesControl::CGUIRange::SetDiffuseColor(const UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoColor& color)
 {
   bool bChanged = false;
   bChanged |= m_guiFillTexture->SetDiffuseColor(color);

@@ -36,13 +36,13 @@ struct PyElem
 
 class LibraryLoader;
 
-namespace XBMCAddon
+namespace Addon
 {
-namespace xbmc
+namespace 
 {
 class Monitor;
 }
-} // namespace XBMCAddon
+} // namespace Addon
 
 template<class T>
 struct LockableType : public T, public CCriticalSection
@@ -51,7 +51,7 @@ struct LockableType : public T, public CCriticalSection
 };
 
 typedef LockableType<std::vector<void*>> PlayerCallbackList;
-typedef LockableType<std::vector<XBMCAddon::xbmc::Monitor*>> MonitorCallbackList;
+typedef LockableType<std::vector<Addon::::Monitor*>> MonitorCallbackList;
 typedef LockableType<std::vector<PyElem>> PyList;
 typedef std::vector<LibraryLoader*> PythonExtensionLibraries;
 
@@ -81,8 +81,8 @@ public:
                 const CVariant& data) override;
   void RegisterPythonPlayerCallBack(IPlayerCallback* pCallback);
   void UnregisterPythonPlayerCallBack(IPlayerCallback* pCallback);
-  void RegisterPythonMonitorCallBack(XBMCAddon::xbmc::Monitor* pCallback);
-  void UnregisterPythonMonitorCallBack(XBMCAddon::xbmc::Monitor* pCallback);
+  void RegisterPythonMonitorCallBack(Addon::::Monitor* pCallback);
+  void UnregisterPythonMonitorCallBack(Addon::::Monitor* pCallback);
   void OnSettingsChanged(const std::string& strings);
   void OnScreensaverActivated();
   void OnScreensaverDeactivated();

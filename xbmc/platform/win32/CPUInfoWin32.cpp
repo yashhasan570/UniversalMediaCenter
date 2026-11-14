@@ -32,7 +32,7 @@ const unsigned int CPUINFO_ECX{2};
 const unsigned int CPUINFO_EDX{3};
 } // namespace
 
-using KODI::PLATFORM::WINDOWS::FromW;
+using UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW;
 
 std::shared_ptr<CCPUInfo> CCPUInfo::GetCPUInfo()
 {

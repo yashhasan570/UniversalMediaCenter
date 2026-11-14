@@ -40,7 +40,7 @@
 #include <memory>
 #include <utility>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace XFILE;
 
 bool CApplicationPlay::ResolvePath()
@@ -284,9 +284,9 @@ bool CApplicationPlay::GetPlaylistIfDisc()
       // Only a choice the user made is saved, and now rather than when playback finishes
       if (menuDecision == SHOW_SIMPLE_MENU && m_item.GetDynPath() != oldPath)
       {
-        if (KODI::VIDEO::UTILS::CanSaveDiscPlaylist(m_item))
+        if (UNIVERSAL MEDIA CENTER::VIDEO::UTILS::CanSaveDiscPlaylist(m_item))
         {
-          if (!KODI::VIDEO::UTILS::SaveDiscPlaylist(m_item))
+          if (!UNIVERSAL MEDIA CENTER::VIDEO::UTILS::SaveDiscPlaylist(m_item))
             m_item.SetProperty(ITEM::PROPERTY::NEW_PLAYLIST_PATH, true); // Retried at playback end
           // Lets a listing entry still holding the old file id match the update at playback end
           else if (m_item.GetVideoInfoTag()->m_iFileId != oldFileId)

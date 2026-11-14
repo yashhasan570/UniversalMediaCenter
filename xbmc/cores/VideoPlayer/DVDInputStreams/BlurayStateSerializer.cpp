@@ -9,7 +9,7 @@
 #include "BlurayStateSerializer.h"
 
 #include "utils/StringUtils.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 #include "utils/log.h"
 
 #include <charconv>
@@ -24,7 +24,7 @@ constexpr int BLURAYSTATESERIALIZER_VERSION = 1;
 
 bool CBlurayStateSerializer::BlurayStateToXML(std::string& xmlstate, const BlurayState& state)
 {
-  CXBMCTinyXML2 xmlDoc;
+  CTinyXML2 xmlDoc;
 
   auto* eRoot = xmlDoc.NewElement("libbluraystate");
   if (eRoot == nullptr)
@@ -51,7 +51,7 @@ bool CBlurayStateSerializer::BlurayStateToXML(std::string& xmlstate, const Blura
 
 bool CBlurayStateSerializer::XMLToBlurayState(BlurayState& state, const std::string& xmlstate)
 {
-  CXBMCTinyXML2 xmlDoc;
+  CTinyXML2 xmlDoc;
 
   if (!xmlDoc.Parse(xmlstate))
     return false;

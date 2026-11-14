@@ -49,7 +49,7 @@
 
 using namespace XFILE;
 using namespace PVR;
-using namespace KODI::MESSAGING;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
 
 using namespace std::chrono_literals;
 
@@ -1404,7 +1404,7 @@ unsigned int CDVDRadioRDSData::DecodeEPPTransmitterInfo(const uint8_t* msgElemen
     int codeHigh = msgElement[2]&0xF0;
     int codeLow  = msgElement[2]&0x0F;
 
-    const auto territory{KODI::RDS::Country(codeHigh, m_PI_CountryCode, codeLow)};
+    const auto territory{UNIVERSAL MEDIA CENTER::RDS::Country(codeHigh, m_PI_CountryCode, codeLow)};
     if (!territory)
     {
       CLog::LogF(LOGERROR, "Radio RDS - invalid extended country region code:{:02X}{:02X}",
@@ -1449,7 +1449,7 @@ unsigned int CDVDRadioRDSData::DecodeSlowLabelingCodes(const uint8_t* msgElement
         int codeHigh    = slowLabellingCode&0xF0;
         int codeLow     = slowLabellingCode&0x0F;
 
-        const auto territory{KODI::RDS::Country(codeHigh, m_PI_CountryCode, codeLow)};
+        const auto territory{UNIVERSAL MEDIA CENTER::RDS::Country(codeHigh, m_PI_CountryCode, codeLow)};
         if (!territory)
         {
           CLog::LogF(LOGERROR, "Radio RDS - invalid extended country region code:{:02X}{:02X}",

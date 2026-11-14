@@ -10,12 +10,12 @@
 
 namespace jni
 {
-class CJNIXBMCSpeechRecognitionListener;
+class CJNISpeechRecognitionListener;
 }
 
 class ISpeechRecognitionCallback
 {
 public:
   virtual ~ISpeechRecognitionCallback() = default;
-  virtual void SpeechRecognitionDone(jni::CJNIXBMCSpeechRecognitionListener* listener) = 0;
+  virtual void SpeechRecognitionDone(jni::CJNISpeechRecognitionListener* listener) = 0;
 };

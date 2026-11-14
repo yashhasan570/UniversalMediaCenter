@@ -20,7 +20,7 @@
 
 #include <memory>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 CDVDOverlayCodecSSA::CDVDOverlayCodecSSA()
   : CDVDOverlayCodec("SSA Subtitle Decoder"),

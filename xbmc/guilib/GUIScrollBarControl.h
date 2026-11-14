@@ -49,7 +49,7 @@ public:
   std::string GetDescription() const override;
   bool IsVisible() const override;
 protected:
-  EVENT_RESULT OnMouseEvent(const CPoint& point, const KODI::MOUSE::CMouseEvent& event) override;
+  EVENT_RESULT OnMouseEvent(const CPoint& point, const UNIVERSAL MEDIA CENTER::MOUSE::CMouseEvent& event) override;
   bool UpdateColors(const CGUIListItem* item) override;
   bool UpdateBarSize();
   bool Move(int iNumSteps);

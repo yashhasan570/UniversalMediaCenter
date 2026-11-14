@@ -11,7 +11,7 @@
 #include <functional>
 #include <utility>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace UTILS
 {

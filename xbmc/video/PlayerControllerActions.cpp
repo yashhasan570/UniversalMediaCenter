@@ -8,7 +8,7 @@
 
 #include "PlayerControllerActions.h"
 
-namespace KODI::VIDEO
+namespace UNIVERSAL MEDIA CENTER::VIDEO
 {
 SubtitleTrackResult CPlayerControllerActions::ExecSubtitleTrackAction(int streamCount,
                                                                       int currentIndex,
@@ -51,4 +51,4 @@ SubtitleTrackResult CPlayerControllerActions::ExecSubtitleTrackAction(int stream
 
   return {newIndex, newVisible};
 }
-} // namespace KODI::VIDEO
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO

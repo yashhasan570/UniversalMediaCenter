@@ -48,10 +48,10 @@
 #define PROPERTY_SORT_ORDER         "sort.order"
 #define PROPERTY_SORT_ASCENDING     "sort.ascending"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace ADDON;
 using namespace PVR;
-using KODI::MEDIA::MediaSection;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaSection;
 
 std::string CGUIViewState::m_strPlaylistDirectory;
 std::vector<CMediaSource> CGUIViewState::m_sources;
@@ -466,7 +466,7 @@ bool CGUIViewState::AutoPlayNextItem()
   return false;
 }
 
-std::optional<KODI::MEDIA::MediaSection> CGUIViewState::GetLockType()
+std::optional<UNIVERSAL MEDIA CENTER::MEDIA::MediaSection> CGUIViewState::GetLockType()
 {
   return std::nullopt;
 }

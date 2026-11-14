@@ -8,7 +8,7 @@
 
 #include "ShaderUtilsDX.h"
 
-using namespace KODI::SHADER;
+using namespace UNIVERSAL MEDIA CENTER::SHADER;
 
 D3D11_TEXTURE_ADDRESS_MODE CShaderUtilsDX::TranslateWrapType(WrapType wrapType)
 {
@@ -37,7 +37,7 @@ DirectX::XMFLOAT2 CShaderUtilsDX::ToDXVector(const float2& vec)
   return DirectX::XMFLOAT2(static_cast<float>(vec.x), static_cast<float>(vec.y));
 }
 
-bool KODI::SHADER::GetShaderPassDescription(ID3DX11Effect* effect,
+bool UNIVERSAL MEDIA CENTER::SHADER::GetShaderPassDescription(ID3DX11Effect* effect,
                                             const char* techniqueName,
                                             unsigned int passIndex,
                                             D3DX11_PASS_DESC& passDesc)

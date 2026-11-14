@@ -11,7 +11,7 @@
 #include <stdint.h>
 #include <string>
 
-namespace KODI::GUILIB::GUIINFO
+namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO
 {
 
 // class to hold multiple integer and string data
@@ -92,4 +92,4 @@ private:
   std::string m_data5;
 };
 
-} // namespace KODI::GUILIB::GUIINFO
+} // namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO

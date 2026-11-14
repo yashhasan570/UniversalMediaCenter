@@ -6,7 +6,7 @@ import android.util.Log;
  * Created by koyin on 07/01/2018.
  */
 
-public class XBMCFile
+public class File
 {
   native boolean _open(String path);
   native void _close();
@@ -15,7 +15,7 @@ public class XBMCFile
 
   private static String TAG = "@APP_NAME@";
 
-  public XBMCFile()
+  public File()
   {
 
   }
@@ -29,12 +29,12 @@ public class XBMCFile
     catch (Exception e)
     {
       e.printStackTrace();
-      Log.e(TAG, "XBMCFile.Open: Exception");
+      Log.e(TAG, "File.Open: Exception");
       return false;
     }
     catch (UnsatisfiedLinkError e)
     {
-      Log.e(TAG, "XBMCFile.Open: Not available");
+      Log.e(TAG, "File.Open: Not available");
       return false;
     }
   }
@@ -48,12 +48,12 @@ public class XBMCFile
     catch (Exception e)
     {
       e.printStackTrace();
-      Log.e(TAG, "XBMCFile.Close: Exception");
+      Log.e(TAG, "File.Close: Exception");
       return;
     }
     catch (UnsatisfiedLinkError e)
     {
-      Log.e(TAG, "XBMCFile.Close: Not available");
+      Log.e(TAG, "File.Close: Not available");
       return;
     }
   }
@@ -67,12 +67,12 @@ public class XBMCFile
     catch (Exception e)
     {
       e.printStackTrace();
-      Log.e(TAG, "XBMCFile.Read: Exception");
+      Log.e(TAG, "File.Read: Exception");
       return new byte[0];
     }
     catch (UnsatisfiedLinkError e)
     {
-      Log.e(TAG, "XBMCFile.Read: Not available");
+      Log.e(TAG, "File.Read: Not available");
       return new byte[0];
     }
   }
@@ -86,12 +86,12 @@ public class XBMCFile
     catch (Exception e)
     {
       e.printStackTrace();
-      Log.e(TAG, "XBMCFile.Eof: Exception");
+      Log.e(TAG, "File.Eof: Exception");
       return false;
     }
     catch (UnsatisfiedLinkError e)
     {
-      Log.e(TAG, "XBMCFile.Eof: Not available");
+      Log.e(TAG, "File.Eof: Not available");
       return false;
     }
   }

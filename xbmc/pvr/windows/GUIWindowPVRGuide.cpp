@@ -55,7 +55,7 @@
 #include <utility>
 #include <vector>
 
-using namespace KODI::MESSAGING;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
 using namespace PVR;
 using namespace std::chrono_literals;
 
@@ -306,7 +306,7 @@ CFileItemPtr CGUIWindowPVRGuideBase::GetCurrentListItem(int offset /*= 0*/)
 int CGUIWindowPVRGuideBase::GetCurrentListItemIndex(
     const std::shared_ptr<const CFileItem>& item) const
 {
-  return item ? item->GetProperty(KODI::ITEM::PROPERTY::TIMELINE_INDEX).asInteger32() : -1;
+  return item ? item->GetProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::TIMELINE_INDEX).asInteger32() : -1;
 }
 
 bool CGUIWindowPVRGuideBase::ShouldNavigateToGridContainer(int iAction)
@@ -479,7 +479,7 @@ bool CGUIWindowPVRGuideBase::OnMessage(CGUIMessage& message)
                   const std::shared_ptr<CPVRRecording> recording{CPVRItem(pItem).GetRecording()};
                   if (recording)
                   {
-                    KODI::VIDEO::GUILIB::CVideoPlayActionProcessor proc{
+                    UNIVERSAL MEDIA CENTER::VIDEO::GUILIB::CVideoPlayActionProcessor proc{
                         std::make_shared<CFileItem>(recording)};
                     proc.ProcessDefaultAction();
                     bReturn = true;
@@ -558,7 +558,7 @@ bool CGUIWindowPVRGuideBase::OnMessage(CGUIMessage& message)
                             CPVRItem(pItem).GetRecording()};
                         if (recording)
                         {
-                          KODI::VIDEO::GUILIB::CVideoPlayActionProcessor proc{
+                          UNIVERSAL MEDIA CENTER::VIDEO::GUILIB::CVideoPlayActionProcessor proc{
                               std::make_shared<CFileItem>(recording)};
                           proc.ProcessDefaultAction();
                         }
@@ -864,7 +864,7 @@ bool CGUIWindowPVRGuideBase::OpenDateSelectionDialog()
 {
   bool bReturn = false;
 
-  KODI::TIME::SystemTime date;
+  UNIVERSAL MEDIA CENTER::TIME::SystemTime date;
   CGUIEPGGridContainer* epgGridContainer = GetGridControl();
   epgGridContainer->GetSelectedDate().GetAsSystemTime(date);
 

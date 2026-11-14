@@ -6,7 +6,7 @@
  *  See LICENSES/README.md for more information.
  */
 
-#import "platform/darwin/tvos/XBMCController.h"
+#import "platform/darwin/tvos/Controller.h"
 
 #include "CompileInfo.h"
 #include "FileItem.h"
@@ -23,7 +23,7 @@
 #include "messaging/ApplicationMessenger.h"
 #include "network/Network.h"
 #include "network/NetworkServices.h"
-#include "platform/xbmc.h"
+#include "platform/.h"
 #include "powermanagement/PowerManager.h"
 #include "settings/AdvancedSettings.h"
 #include "settings/SettingsComponent.h"
@@ -36,7 +36,7 @@
 #import "platform/darwin/tvos/TVOSDisplayManager.h"
 #import "platform/darwin/tvos/TVOSEAGLView.h"
 #import "platform/darwin/tvos/TVOSTopShelf.h"
-#import "platform/darwin/tvos/XBMCApplication.h"
+#import "platform/darwin/tvos/Application.h"
 #import "platform/darwin/tvos/input/LibInputHandler.h"
 #import "platform/darwin/tvos/input/LibInputRemote.h"
 #import "platform/darwin/tvos/input/LibInputTouch.h"
@@ -52,10 +52,10 @@
 #import <AVKit/UIWindow.h>
 #include <unistd.h>
 
-XBMCController* g_xbmcController;
+Controller* g_Controller;
 
-#pragma mark - XBMCController implementation
-@implementation XBMCController
+#pragma mark - Controller implementation
+@implementation Controller
 
 @synthesize appAlive = m_appAlive;
 @synthesize MPNPInfoManager;
@@ -273,7 +273,7 @@ XBMCController* g_xbmcController;
       {
         if (renderer.status == AVQueuedSampleBufferRenderingStatusFailed)
         {
-          CLog::Log(LOGWARNING, "XBMCController: video renderer failed (code {}), flushing",
+          CLog::Log(LOGWARNING, "Controller: video renderer failed (code {}), flushing",
                     renderer.error.code);
           [renderer flush];
         }
@@ -483,7 +483,7 @@ XBMCController* g_xbmcController;
 {
   @autoreleasepool
   {
-    [NSThread currentThread].name = @"XBMC_Run";
+    [NSThread currentThread].name = @"_Run";
 
     // signal the thread is alive
     NSConditionLock* myLock = arg;
@@ -503,10 +503,10 @@ XBMCController* g_xbmcController;
     try
     {
       // set up some Universal Media Center specific relationships
-      //    XBMC::Context run_context; //! @todo
+      //    ::Context run_context; //! @todo
       m_appAlive = YES;
       // start up with gui enabled
-      status = KODI_Run(true);
+      status = UNIVERSALMEDIA_Run(true);
       // we exited or died.
       auto& components = CServiceBroker::GetAppComponents();
       const auto appPower = components.GetComponent<CApplicationPowerHandling>();
@@ -527,9 +527,9 @@ XBMCController* g_xbmcController;
   }
 }
 
-#pragma mark - KODI_Run
+#pragma mark - UNIVERSALMEDIA_Run
 
-int KODI_Run(bool renderGUI)
+int UNIVERSALMEDIA_Run(bool renderGUI)
 {
   int status = -1;
 
@@ -647,7 +647,7 @@ int KODI_Run(bool renderGUI)
 
   [self enableScreenSaver];
 
-  g_xbmcController = self;
+  g_Controller = self;
   MPNPInfoManager = [DarwinEmbedNowPlayingInfoManager new];
   displayManager = [TVOSDisplayManager new];
   inputHandler = [TVOSLibInputHandler new];

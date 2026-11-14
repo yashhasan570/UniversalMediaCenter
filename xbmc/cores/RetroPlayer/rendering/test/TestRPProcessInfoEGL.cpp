@@ -19,7 +19,7 @@
 
 #include <EGL/egl.h>
 
-using namespace KODI::RETRO;
+using namespace UNIVERSAL MEDIA CENTER::RETRO;
 
 namespace
 {
@@ -44,7 +44,7 @@ TEST(TestRPProcessInfoEGL, UnsupportedSymbolIsUnavailable)
 {
   CPlaybackTestEnvironment environment;
   const auto processInfo = CreateProcessInfo();
-  EXPECT_EQ(processInfo->GetHwProcedureAddress("kodiUnsupportedProcedure"), nullptr);
+  EXPECT_EQ(processInfo->GetHwProcedureAddress("universalmediacenterUnsupportedProcedure"), nullptr);
 }
 
 TEST(TestRPProcessInfoEGL, UsesEGLProcedureLookup)

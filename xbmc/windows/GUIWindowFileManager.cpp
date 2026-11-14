@@ -65,9 +65,9 @@
 #include "video/VideoFileItemClassify.h"
 
 using namespace XFILE;
-using namespace KODI;
-using namespace KODI::MESSAGING;
-using KODI::MEDIA::MediaSection;
+using namespace UNIVERSAL MEDIA CENTER;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaSection;
 
 #define CONTROL_BTNSELECTALL            1
 #define CONTROL_BTNFAVOURITES           2
@@ -324,7 +324,7 @@ bool CGUIWindowFileManager::OnMessage(CGUIMessage& message)
 
 void CGUIWindowFileManager::OnSort(int iList)
 {
-  using namespace KODI::PLATFORM::FILESYSTEM;
+  using namespace UNIVERSAL MEDIA CENTER::PLATFORM::FILESYSTEM;
   // always sort the list by label in ascending order
   for (int i = 0; i < m_vecItems[iList]->Size(); i++)
   {

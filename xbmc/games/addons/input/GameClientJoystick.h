@@ -17,7 +17,7 @@
 #include <set>
 #include <string>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace JOYSTICK
 {
@@ -117,4 +117,4 @@ private:
   std::mutex m_rumbleMutex;
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

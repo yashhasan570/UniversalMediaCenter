@@ -27,7 +27,7 @@ class CAddonInfo;
 struct AddonEvent;
 } // namespace ADDON
 
-namespace KODI::GAME
+namespace UNIVERSAL MEDIA CENTER::GAME
 {
 /*!
  * \ingroup games
@@ -248,4 +248,4 @@ private:
   mutable std::optional<bool> m_canInstall;
   unsigned int m_installabilityRevision{0};
 };
-} // namespace KODI::GAME
+} // namespace UNIVERSAL MEDIA CENTER::GAME

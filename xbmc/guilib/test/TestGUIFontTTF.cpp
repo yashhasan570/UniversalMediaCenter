@@ -82,7 +82,7 @@ protected:
     m_previousWinSystem = CServiceBroker::GetWinSystem();
     CServiceBroker::RegisterWinSystem(&m_winSystem);
     m_font = std::make_unique<CTestFont>();
-    ASSERT_TRUE(m_font->Load(XBMC_REF_FILE_PATH(PRIMARY_FONT)));
+    ASSERT_TRUE(m_font->Load(_REF_FILE_PATH(PRIMARY_FONT)));
   }
 
   void TearDown() override
@@ -94,7 +94,7 @@ protected:
       CServiceBroker::UnregisterWinSystem();
   }
 
-  KODI::GUILIB::TEST::CTestWinSystem m_winSystem;
+  UNIVERSAL MEDIA CENTER::GUILIB::TEST::CTestWinSystem m_winSystem;
   CWinSystemBase* m_previousWinSystem{nullptr};
   std::unique_ptr<CTestFont> m_font;
 };
@@ -127,7 +127,7 @@ TEST_F(TestGUIFontTTF, SymbolInCaptionKeepsTextClusters)
 TEST_F(TestGUIFontTTF, PrimarySymbolTakesPrecedence)
 {
   CTestFont font;
-  ASSERT_TRUE(font.Load(XBMC_REF_FILE_PATH("media/Fonts/arial.ttf")));
+  ASSERT_TRUE(font.Load(_REF_FILE_PATH("media/Fonts/arial.ttf")));
   const auto glyphs = font.GetHarfBuzzShapedGlyphs(vecText{SYMBOL});
   ASSERT_EQ(glyphs.size(), 1u);
   EXPECT_NE(glyphs[0].m_glyphInfo.codepoint, 0u);
@@ -222,7 +222,7 @@ TEST_F(TestGUIFontTTF, SymbolKeepsTextStylesAndColor)
   }
   EXPECT_TRUE(visible);
 
-  constexpr KODI::UTILS::COLOR::Color color = 0x7F129B30;
+  constexpr UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color color = 0x7F129B30;
   std::vector<SVertex> vertices;
   m_font->RenderCharacter(m_winSystem.GetGfxContext(), 0, 0, normal, color, true, vertices);
   EXPECT_FALSE(vertices.empty());
@@ -251,7 +251,7 @@ TEST_F(TestGUIFontTTF, SymbolReceivesTextBorder)
   ASSERT_NE(normal, nullptr);
 
   CTestFont borderFont;
-  ASSERT_TRUE(borderFont.Load(XBMC_REF_FILE_PATH(PRIMARY_FONT), 20.0f, 1.0f, 1.0f, true));
+  ASSERT_TRUE(borderFont.Load(_REF_FILE_PATH(PRIMARY_FONT), 20.0f, 1.0f, 1.0f, true));
   const auto* border = borderFont.GetCharacter(SYMBOL, glyphIndex, FontFace::Symbols, true);
   ASSERT_NE(border, nullptr);
   EXPECT_GT(border->m_right - border->m_left, normal->m_right - normal->m_left);

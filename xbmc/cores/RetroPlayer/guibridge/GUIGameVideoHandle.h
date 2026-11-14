@@ -10,7 +10,7 @@
 
 #include "cores/GameSettings.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -31,4 +31,4 @@ private:
   CGUIGameRenderManager& m_renderManager;
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

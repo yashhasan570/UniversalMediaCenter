@@ -44,7 +44,7 @@
 #include <vector>
 
 using namespace PVR;
-using namespace KODI::MESSAGING;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
 
 void CPVRChannelSwitchingInputHandler::AppendChannelNumberCharacter(char cCharacter)
 {

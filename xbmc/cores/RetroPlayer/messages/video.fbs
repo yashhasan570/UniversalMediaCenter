@@ -1,12 +1,12 @@
 //
-//  Copyright (C) 2023 Team Kodi
-//  This file is part of Kodi - https://kodi.tv
+//  Copyright (C) 2023 Team Universal Media Center
+//  This file is part of Universal Media Center - https://Universal Media Center.tv
 //
 //  SPDX-License-Identifier: MIT
 //  See LICENSES/README.md for more information.
 //
 
-namespace KODI.RETRO.SAVESTATE;
+namespace UNIVERSAL MEDIA CENTER.RETRO.SAVESTATE;
 
 enum PixelFormat : uint8 {
   /// @brief Value for unknown pixel formats

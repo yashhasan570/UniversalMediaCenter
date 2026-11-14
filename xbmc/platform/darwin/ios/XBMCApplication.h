@@ -8,5 +8,5 @@
 
 #import <UIKit/UIKit.h>
 
-@interface XBMCApplicationDelegate : UIResponder <UIApplicationDelegate>
+@interface ApplicationDelegate : UIResponder <UIApplicationDelegate>
 @end

@@ -965,14 +965,14 @@ bool CDatabase::SetArtForItem(int mediaId,
 
 bool CDatabase::SetArtForItem(int mediaId,
                               const std::string& mediaType,
-                              const KODI::ART::Artwork& art)
+                              const UNIVERSAL MEDIA CENTER::ART::Artwork& art)
 {
   return std::ranges::all_of(
       art, [this, mediaId, &mediaType](const auto& artwork)
       { return SetArtForItem(mediaId, mediaType, artwork.first, artwork.second); });
 }
 
-bool CDatabase::GetArtForItem(int mediaId, const std::string& mediaType, KODI::ART::Artwork& art)
+bool CDatabase::GetArtForItem(int mediaId, const std::string& mediaType, UNIVERSAL MEDIA CENTER::ART::Artwork& art)
 {
   try
   {

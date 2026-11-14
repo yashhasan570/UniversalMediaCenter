@@ -181,49 +181,49 @@ else()
 endif()
 
 # Generate man pages
-configure_file(${CMAKE_SOURCE_DIR}/docs/manpages/kodi.bin.1
-               ${CPACK_PACKAGE_DIRECTORY}/deb/kodi.1 COPYONLY)
-configure_file(${CMAKE_SOURCE_DIR}/docs/manpages/kodi.bin.1
-               ${CPACK_PACKAGE_DIRECTORY}/deb/kodi.bin.1 COPYONLY)
-configure_file(${CMAKE_SOURCE_DIR}/docs/manpages/kodi-standalone.1
-               ${CPACK_PACKAGE_DIRECTORY}/deb/kodi-standalone.1 COPYONLY)
+configure_file(${CMAKE_SOURCE_DIR}/docs/manpages/universalmediacenter.bin.1
+               ${CPACK_PACKAGE_DIRECTORY}/deb/universalmediacenter.1 COPYONLY)
+configure_file(${CMAKE_SOURCE_DIR}/docs/manpages/universalmediacenter.bin.1
+               ${CPACK_PACKAGE_DIRECTORY}/deb/universalmediacenter.bin.1 COPYONLY)
+configure_file(${CMAKE_SOURCE_DIR}/docs/manpages/universalmediacenter-standalone.1
+               ${CPACK_PACKAGE_DIRECTORY}/deb/universalmediacenter-standalone.1 COPYONLY)
 if(ENABLE_EVENTCLIENTS)
-  configure_file(${CMAKE_SOURCE_DIR}/docs/manpages/kodi-ps3remote.1
-                 ${CPACK_PACKAGE_DIRECTORY}/deb/kodi-ps3remote.1 COPYONLY)
-  configure_file(${CMAKE_SOURCE_DIR}/docs/manpages/kodi-send.1
-                 ${CPACK_PACKAGE_DIRECTORY}/deb/kodi-send.1 COPYONLY)
-  configure_file(${CMAKE_SOURCE_DIR}/docs/manpages/kodi-wiiremote.1
-                 ${CPACK_PACKAGE_DIRECTORY}/deb/kodi-wiiremote.1 COPYONLY)
+  configure_file(${CMAKE_SOURCE_DIR}/docs/manpages/universalmediacenter-ps3remote.1
+                 ${CPACK_PACKAGE_DIRECTORY}/deb/universalmediacenter-ps3remote.1 COPYONLY)
+  configure_file(${CMAKE_SOURCE_DIR}/docs/manpages/universalmediacenter-send.1
+                 ${CPACK_PACKAGE_DIRECTORY}/deb/universalmediacenter-send.1 COPYONLY)
+  configure_file(${CMAKE_SOURCE_DIR}/docs/manpages/universalmediacenter-wiiremote.1
+                 ${CPACK_PACKAGE_DIRECTORY}/deb/universalmediacenter-wiiremote.1 COPYONLY)
 endif()
 
 if(GZIP_CMD)
-  execute_process(COMMAND ${GZIP_CMD} -f -9 -n ${CPACK_PACKAGE_DIRECTORY}/deb/kodi.1)
-  execute_process(COMMAND ${GZIP_CMD} -f -9 -n ${CPACK_PACKAGE_DIRECTORY}/deb/kodi.bin.1)
-  execute_process(COMMAND ${GZIP_CMD} -f -9 -n ${CPACK_PACKAGE_DIRECTORY}/deb/kodi-standalone.1)
+  execute_process(COMMAND ${GZIP_CMD} -f -9 -n ${CPACK_PACKAGE_DIRECTORY}/deb/universalmediacenter.1)
+  execute_process(COMMAND ${GZIP_CMD} -f -9 -n ${CPACK_PACKAGE_DIRECTORY}/deb/universalmediacenter.bin.1)
+  execute_process(COMMAND ${GZIP_CMD} -f -9 -n ${CPACK_PACKAGE_DIRECTORY}/deb/universalmediacenter-standalone.1)
   if(ENABLE_EVENTCLIENTS)
-    execute_process(COMMAND ${GZIP_CMD} -f -9 -n ${CPACK_PACKAGE_DIRECTORY}/deb/kodi-ps3remote.1)
-    execute_process(COMMAND ${GZIP_CMD} -f -9 -n ${CPACK_PACKAGE_DIRECTORY}/deb/kodi-send.1)
-    execute_process(COMMAND ${GZIP_CMD} -f -9 -n ${CPACK_PACKAGE_DIRECTORY}/deb/kodi-wiiremote.1)
+    execute_process(COMMAND ${GZIP_CMD} -f -9 -n ${CPACK_PACKAGE_DIRECTORY}/deb/universalmediacenter-ps3remote.1)
+    execute_process(COMMAND ${GZIP_CMD} -f -9 -n ${CPACK_PACKAGE_DIRECTORY}/deb/universalmediacenter-send.1)
+    execute_process(COMMAND ${GZIP_CMD} -f -9 -n ${CPACK_PACKAGE_DIRECTORY}/deb/universalmediacenter-wiiremote.1)
   endif()
 else()
   message(WARNING "DEB Generator: Can't find gzip in your path. Several DEB packages will be missing man pages.")
 endif()
 
-install(FILES ${CPACK_PACKAGE_DIRECTORY}/deb/kodi.1.gz
-              ${CPACK_PACKAGE_DIRECTORY}/deb/kodi.bin.1.gz
-              ${CPACK_PACKAGE_DIRECTORY}/deb/kodi-standalone.1.gz
+install(FILES ${CPACK_PACKAGE_DIRECTORY}/deb/universalmediacenter.1.gz
+              ${CPACK_PACKAGE_DIRECTORY}/deb/universalmediacenter.bin.1.gz
+              ${CPACK_PACKAGE_DIRECTORY}/deb/universalmediacenter-standalone.1.gz
         DESTINATION share/man/man1
-        COMPONENT kodi)
+        COMPONENT universalmediacenter)
 if(ENABLE_EVENTCLIENTS)
-install(FILES ${CPACK_PACKAGE_DIRECTORY}/deb/kodi-ps3remote.1.gz
+install(FILES ${CPACK_PACKAGE_DIRECTORY}/deb/universalmediacenter-ps3remote.1.gz
         DESTINATION share/man/man1
-        COMPONENT kodi-eventclients-ps3)
-install(FILES ${CPACK_PACKAGE_DIRECTORY}/deb/kodi-send.1.gz
+        COMPONENT universalmediacenter-eventclients-ps3)
+install(FILES ${CPACK_PACKAGE_DIRECTORY}/deb/universalmediacenter-send.1.gz
         DESTINATION share/man/man1
-        COMPONENT kodi-eventclients-kodi-send)
-install(FILES ${CPACK_PACKAGE_DIRECTORY}/deb/kodi-wiiremote.1.gz
+        COMPONENT universalmediacenter-eventclients-universalmediacenter-send)
+install(FILES ${CPACK_PACKAGE_DIRECTORY}/deb/universalmediacenter-wiiremote.1.gz
         DESTINATION share/man/man1
-        COMPONENT kodi-eventclients-wiiremote)
+        COMPONENT universalmediacenter-eventclients-wiiremote)
 endif()
 
 # configure package metadata files
@@ -233,7 +233,7 @@ foreach(file ${DEBIAN_PACKAGE_FILES})
   # filter eventclients so we don't have to support two more deps
   # (libbluetooth-dev and libcwiid-dev) just because of wii-remote
   string(SUBSTRING ${package} 0 17 PACKAGE_FILTER)
-  if(NOT ENABLE_EVENTCLIENTS AND PACKAGE_FILTER STREQUAL kodi-eventclients)
+  if(NOT ENABLE_EVENTCLIENTS AND PACKAGE_FILTER STREQUAL universalmediacenter-eventclients)
     message(STATUS "DEB Generator: ${package} matches ${PACKAGE_FILTER}, skipping.")
     # do nothing
   else()
@@ -345,16 +345,16 @@ ${DEB_PACKAGE_DESCRIPTION_FOOTER}")
           DESTINATION share/doc/${file}
           COMPONENT ${file})
 
-  # kodi package exclusive files
-  if(CPACK_DEBIAN_KODI_PACKAGE_NAME)
-    set(CPACK_DEBIAN_KODI_PACKAGE_CONTROL_EXTRA
+  # universalmediacenter package exclusive files
+  if(CPACK_DEBIAN_UNIVERSALMEDIA_PACKAGE_NAME)
+    set(CPACK_DEBIAN_UNIVERSALMEDIA_PACKAGE_CONTROL_EXTRA
         "${CMAKE_SOURCE_DIR}/cmake/cpack/deb/postinst;${CMAKE_SOURCE_DIR}/cmake/cpack/deb/postrm")
-    install(FILES ${CMAKE_SOURCE_DIR}/cmake/cpack/deb/lintian/overrides/kodi
+    install(FILES ${CMAKE_SOURCE_DIR}/cmake/cpack/deb/lintian/overrides/universalmediacenter
         DESTINATION share/lintian/overrides
-        COMPONENT kodi)
-    install(FILES ${CMAKE_SOURCE_DIR}/cmake/cpack/deb/menu/kodi
+        COMPONENT universalmediacenter)
+    install(FILES ${CMAKE_SOURCE_DIR}/cmake/cpack/deb/menu/universalmediacenter
         DESTINATION share/menu
-        COMPONENT kodi)
+        COMPONENT universalmediacenter)
   endif()
 endforeach()
 unset(DEBIAN_PACKAGES)

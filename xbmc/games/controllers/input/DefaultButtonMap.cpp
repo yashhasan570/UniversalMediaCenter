@@ -16,7 +16,7 @@
 #include "peripherals/devices/Peripheral.h"
 #include "utils/log.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 CDefaultButtonMap::CDefaultButtonMap(PERIPHERALS::CPeripheral* device, std::string strControllerId)

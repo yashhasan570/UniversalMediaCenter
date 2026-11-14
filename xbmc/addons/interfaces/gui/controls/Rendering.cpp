@@ -10,7 +10,7 @@
 
 #include "addons/binary-addons/AddonDll.h"
 #include "addons/interfaces/gui/General.h"
-#include "addons/kodi-dev-kit/include/kodi/gui/controls/Rendering.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/gui/controls/Rendering.h"
 #include "guilib/GUIRenderingControl.h"
 #include "utils/log.h"
 
@@ -19,35 +19,35 @@ namespace ADDON
 
 void Interface_GUIControlAddonRendering::Init(AddonGlobalInterface* addonInterface)
 {
-  addonInterface->toUniversal Media Center->kodi_gui->control_rendering =
-      new AddonToUniversal Media CenterFuncTable_kodi_gui_control_rendering();
+  addonInterface->toUniversal Media Center->->control_rendering =
+      new AddonToUniversal Media CenterFuncTable__control_rendering();
 
-  addonInterface->toUniversal Media Center->kodi_gui->control_rendering->set_callbacks = set_callbacks;
-  addonInterface->toUniversal Media Center->kodi_gui->control_rendering->destroy = destroy;
+  addonInterface->toUniversal Media Center->->control_rendering->set_callbacks = set_callbacks;
+  addonInterface->toUniversal Media Center->->control_rendering->destroy = destroy;
 }
 
 void Interface_GUIControlAddonRendering::DeInit(AddonGlobalInterface* addonInterface)
 {
-  delete addonInterface->toUniversal Media Center->kodi_gui->control_rendering;
+  delete addonInterface->toUniversal Media Center->->control_rendering;
 }
 
 void Interface_GUIControlAddonRendering::set_callbacks(
-    KODI_HANDLE kodiBase,
-    KODI_GUI_CONTROL_HANDLE handle,
-    KODI_GUI_CLIENT_HANDLE clienthandle,
-    bool (*createCB)(KODI_GUI_CLIENT_HANDLE, int, int, int, int, ADDON_HARDWARE_CONTEXT),
-    void (*renderCB)(KODI_GUI_CLIENT_HANDLE),
-    void (*stopCB)(KODI_GUI_CLIENT_HANDLE),
-    bool (*dirtyCB)(KODI_GUI_CLIENT_HANDLE))
+    UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+    UNIVERSALMEDIA_GUI_CONTROL_HANDLE handle,
+    UNIVERSALMEDIA_GUI_CLIENT_HANDLE clienthandle,
+    bool (*createCB)(UNIVERSALMEDIA_GUI_CLIENT_HANDLE, int, int, int, int, ADDON_HARDWARE_CONTEXT),
+    void (*renderCB)(UNIVERSALMEDIA_GUI_CLIENT_HANDLE),
+    void (*stopCB)(UNIVERSALMEDIA_GUI_CLIENT_HANDLE),
+    bool (*dirtyCB)(UNIVERSALMEDIA_GUI_CLIENT_HANDLE))
 {
-  auto* addon = static_cast<CAddonDll*>(kodiBase);
+  auto* addon = static_cast<CAddonDll*>(universalmediacenterBase);
   auto* control = static_cast<CGUIAddonRenderingControl*>(handle);
   if (!addon || !control)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', "
+               "Invalid handler data (universalmediacenterBase='{}', "
                "handle='{}') on addon '{}'",
-               kodiBase, handle, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, addon ? addon->ID() : "unknown");
     return;
   }
 
@@ -63,17 +63,17 @@ void Interface_GUIControlAddonRendering::set_callbacks(
   control->m_control->InitCallback(control);
 }
 
-void Interface_GUIControlAddonRendering::destroy(KODI_HANDLE kodiBase,
-                                                 KODI_GUI_CONTROL_HANDLE handle)
+void Interface_GUIControlAddonRendering::destroy(UNIVERSALMEDIA_HANDLE universalmediacenterBase,
+                                                 UNIVERSALMEDIA_GUI_CONTROL_HANDLE handle)
 {
-  const auto* addon = static_cast<const CAddonDll*>(kodiBase);
+  const auto* addon = static_cast<const CAddonDll*>(universalmediacenterBase);
   auto* control = static_cast<CGUIAddonRenderingControl*>(handle);
   if (!addon || !control)
   {
     CLog::LogF(LOGERROR,
-               "Invalid handler data (kodiBase='{}', "
+               "Invalid handler data (universalmediacenterBase='{}', "
                "handle='{}') on addon '{}'",
-               kodiBase, handle, addon ? addon->ID() : "unknown");
+               universalmediacenterBase, handle, addon ? addon->ID() : "unknown");
     return;
   }
 

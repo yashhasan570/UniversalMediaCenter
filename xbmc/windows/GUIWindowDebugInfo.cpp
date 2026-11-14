@@ -97,8 +97,8 @@ void CGUIWindowDebugInfo::Process(unsigned int currentTime, CDirtyRegionList &di
   std::string info;
   if (LOG_LEVEL_DEBUG_FREEMEM <= CServiceBroker::GetSettingsComponent()->GetAdvancedSettings()->m_logLevel)
   {
-    KODI::MEMORY::MemoryStatus stat;
-    KODI::MEMORY::GetMemoryStatus(&stat);
+    UNIVERSAL MEDIA CENTER::MEMORY::MemoryStatus stat;
+    UNIVERSAL MEDIA CENTER::MEMORY::GetMemoryStatus(&stat);
     std::string profiling = CGUIControlProfiler::IsRunning() ? " (profiling)" : "";
     std::string strCores;
     if (CServiceBroker::GetCPUInfo()->SupportsCPUUsage())

@@ -33,7 +33,7 @@
 using namespace XFILE;
 using namespace VIDEODATABASEDIRECTORY;
 
-namespace CONTENT = KODI::MEDIA::CONTENT;
+namespace CONTENT = UNIVERSAL MEDIA CENTER::MEDIA::CONTENT;
 
 CVideoDatabaseDirectory::CVideoDatabaseDirectory(void) = default;
 
@@ -114,20 +114,20 @@ bool CVideoDatabaseDirectory::GetDirectory(const CURL& url, CFileItemList &items
   for (int i=0;i<items.Size();++i)
   {
     CFileItemPtr item = items[i];
-    if (item->IsFolder() && !item->HasArt(KODI::ART::TYPE::ICON) &&
-        !item->HasArt(KODI::ART::TYPE::THUMB))
+    if (item->IsFolder() && !item->HasArt(UNIVERSAL MEDIA CENTER::ART::TYPE::ICON) &&
+        !item->HasArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB))
     {
       std::string strImage = GetIcon(item->GetPath());
       if (!strImage.empty() && CServiceBroker::GetGUI()->GetTextureManager().HasTexture(strImage))
-        item->SetArt(KODI::ART::TYPE::ICON, strImage);
+        item->SetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::ICON, strImage);
     }
     if (item->HasVideoInfoTag())
     {
       item->SetDynPath(item->GetVideoInfoTag()->GetPath());
     }
   }
-  if (items.HasProperty(KODI::ITEM::PROPERTY::CUSTOM_TITLE))
-    items.SetLabel(items.GetProperty(KODI::ITEM::PROPERTY::CUSTOM_TITLE).asString());
+  if (items.HasProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::CUSTOM_TITLE))
+    items.SetLabel(items.GetProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::CUSTOM_TITLE).asString());
   else
     items.SetLabel(pNode->GetLocalizedName());
 
@@ -337,66 +337,66 @@ std::string CVideoDatabaseDirectory::GetIcon(const std::string &strDirectory)
   switch (GetDirectoryChildType(path))
   {
     case NodeType::TITLE_MOVIES:
-      if (URIUtils::PathEquals(path, KODI::VIDEO::DB_PATH::MOVIE_TITLES))
+      if (URIUtils::PathEquals(path, UNIVERSAL MEDIA CENTER::VIDEO::DB_PATH::MOVIE_TITLES))
       {
         if (CServiceBroker::GetSettingsComponent()->GetSettings()->GetBool(
                 CSettings::SETTING_MYVIDEOS_FLATTEN))
-          return KODI::ART::DEFAULT::MOVIES;
-        return KODI::ART::DEFAULT::MOVIE_TITLE;
+          return UNIVERSAL MEDIA CENTER::ART::DEFAULT::MOVIES;
+        return UNIVERSAL MEDIA CENTER::ART::DEFAULT::MOVIE_TITLE;
       }
       return "";
     case NodeType::TITLE_TVSHOWS:
-      if (URIUtils::PathEquals(path, KODI::VIDEO::DB_PATH::TVSHOW_TITLES))
+      if (URIUtils::PathEquals(path, UNIVERSAL MEDIA CENTER::VIDEO::DB_PATH::TVSHOW_TITLES))
       {
         if (CServiceBroker::GetSettingsComponent()->GetSettings()->GetBool(
                 CSettings::SETTING_MYVIDEOS_FLATTEN))
-          return KODI::ART::DEFAULT::TV_SHOWS;
-        return KODI::ART::DEFAULT::TV_SHOW_TITLE;
+          return UNIVERSAL MEDIA CENTER::ART::DEFAULT::TV_SHOWS;
+        return UNIVERSAL MEDIA CENTER::ART::DEFAULT::TV_SHOW_TITLE;
       }
       return "";
     case NodeType::TITLE_MUSICVIDEOS:
-      if (URIUtils::PathEquals(path, KODI::VIDEO::DB_PATH::MUSICVIDEO_TITLES))
+      if (URIUtils::PathEquals(path, UNIVERSAL MEDIA CENTER::VIDEO::DB_PATH::MUSICVIDEO_TITLES))
       {
         if (CServiceBroker::GetSettingsComponent()->GetSettings()->GetBool(
                 CSettings::SETTING_MYVIDEOS_FLATTEN))
-          return KODI::ART::DEFAULT::MUSIC_VIDEOS;
-        return KODI::ART::DEFAULT::MUSIC_VIDEO_TITLE;
+          return UNIVERSAL MEDIA CENTER::ART::DEFAULT::MUSIC_VIDEOS;
+        return UNIVERSAL MEDIA CENTER::ART::DEFAULT::MUSIC_VIDEO_TITLE;
       }
       return "";
     case NodeType::ACTOR: // Actor
-      return KODI::ART::DEFAULT::ACTOR;
+      return UNIVERSAL MEDIA CENTER::ART::DEFAULT::ACTOR;
     case NodeType::GENRE: // Genres
-      return KODI::ART::DEFAULT::GENRE;
+      return UNIVERSAL MEDIA CENTER::ART::DEFAULT::GENRE;
     case NodeType::COUNTRY: // Countries
-      return KODI::ART::DEFAULT::COUNTRY;
+      return UNIVERSAL MEDIA CENTER::ART::DEFAULT::COUNTRY;
     case NodeType::SETS: // Sets
-      return KODI::ART::DEFAULT::SETS;
+      return UNIVERSAL MEDIA CENTER::ART::DEFAULT::SETS;
     case NodeType::TAGS: // Tags
-      return KODI::ART::DEFAULT::TAGS;
+      return UNIVERSAL MEDIA CENTER::ART::DEFAULT::TAGS;
     case NodeType::VIDEOVERSIONS: // Video versions
-      return KODI::ART::DEFAULT::VIDEO_VERSIONS;
+      return UNIVERSAL MEDIA CENTER::ART::DEFAULT::VIDEO_VERSIONS;
     case NodeType::YEAR: // Year
-      return KODI::ART::DEFAULT::YEAR;
+      return UNIVERSAL MEDIA CENTER::ART::DEFAULT::YEAR;
     case NodeType::DIRECTOR: // Director
-      return KODI::ART::DEFAULT::DIRECTOR;
+      return UNIVERSAL MEDIA CENTER::ART::DEFAULT::DIRECTOR;
     case NodeType::MOVIES_OVERVIEW: // Movies
-      return KODI::ART::DEFAULT::MOVIES;
+      return UNIVERSAL MEDIA CENTER::ART::DEFAULT::MOVIES;
     case NodeType::TVSHOWS_OVERVIEW: // TV Shows
-      return KODI::ART::DEFAULT::TV_SHOWS;
+      return UNIVERSAL MEDIA CENTER::ART::DEFAULT::TV_SHOWS;
     case NodeType::RECENTLY_ADDED_MOVIES: // Recently Added Movies
-      return KODI::ART::DEFAULT::RECENTLY_ADDED_MOVIES;
+      return UNIVERSAL MEDIA CENTER::ART::DEFAULT::RECENTLY_ADDED_MOVIES;
     case NodeType::RECENTLY_ADDED_EPISODES: // Recently Added Episodes
-      return KODI::ART::DEFAULT::RECENTLY_ADDED_EPISODES;
+      return UNIVERSAL MEDIA CENTER::ART::DEFAULT::RECENTLY_ADDED_EPISODES;
     case NodeType::RECENTLY_ADDED_MUSICVIDEOS: // Recently Added Episodes
-      return KODI::ART::DEFAULT::RECENTLY_ADDED_MUSIC_VIDEOS;
+      return UNIVERSAL MEDIA CENTER::ART::DEFAULT::RECENTLY_ADDED_MUSIC_VIDEOS;
     case NodeType::INPROGRESS_TVSHOWS: // InProgress TvShows
-      return KODI::ART::DEFAULT::IN_PROGRESS_SHOWS;
+      return UNIVERSAL MEDIA CENTER::ART::DEFAULT::IN_PROGRESS_SHOWS;
     case NodeType::STUDIO: // Studios
-      return KODI::ART::DEFAULT::STUDIOS;
+      return UNIVERSAL MEDIA CENTER::ART::DEFAULT::STUDIOS;
     case NodeType::MUSICVIDEOS_OVERVIEW: // Music Videos
-      return KODI::ART::DEFAULT::MUSIC_VIDEOS;
+      return UNIVERSAL MEDIA CENTER::ART::DEFAULT::MUSIC_VIDEOS;
     case NodeType::MUSICVIDEOS_ALBUM: // Music Videos - Albums
-      return KODI::ART::DEFAULT::MUSIC_ALBUMS;
+      return UNIVERSAL MEDIA CENTER::ART::DEFAULT::MUSIC_ALBUMS;
     default:
       break;
   }

@@ -14,7 +14,7 @@
 #include <cmath>
 #include <cstdio>
 
-namespace KODI::UTILS::COLOR
+namespace UNIVERSAL MEDIA CENTER::UTILS::COLOR
 {
 
 namespace
@@ -159,4 +159,4 @@ std::string ConvertToHexRGB(const Color argb)
   return StringUtils::Format("{:06X}", argb & ~0xFF000000);
 }
 
-} // namespace KODI::UTILS::COLOR
+} // namespace UNIVERSAL MEDIA CENTER::UTILS::COLOR

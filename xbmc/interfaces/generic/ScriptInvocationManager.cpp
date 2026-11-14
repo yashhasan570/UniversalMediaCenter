@@ -341,7 +341,7 @@ int CScriptInvocationManager::ExecuteSync(
     if (timeout && timeoutMs < sleepMs)
       sleepMs = timeoutMs;
 
-    KODI::TIME::Sleep(std::chrono::milliseconds(sleepMs));
+    UNIVERSAL MEDIA CENTER::TIME::Sleep(std::chrono::milliseconds(sleepMs));
 
     if (timeout)
       timeoutMs -= sleepMs;

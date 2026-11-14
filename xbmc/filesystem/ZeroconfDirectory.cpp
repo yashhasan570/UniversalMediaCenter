@@ -20,7 +20,7 @@
 #include <cassert>
 #include <stdexcept>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace XFILE;
 
 CZeroconfDirectory::CZeroconfDirectory()
@@ -47,7 +47,7 @@ namespace
     //fallback, just return the received type
     return fcr_service_type;
   }
-  bool GetXBMCProtocol(std::string const& fcr_service_type, std::string& fr_protocol)
+  bool GetProtocol(std::string const& fcr_service_type, std::string& fr_protocol)
   {
     if(fcr_service_type == "_smb._tcp.")
       fr_protocol = "smb";
@@ -161,7 +161,7 @@ bool CZeroconfDirectory::GetDirectory(const CURL& url, CFileItemList &items)
     {
       //only use discovered services we can connect to through directory
       std::string tmp;
-      if (GetXBMCProtocol(it.GetType(), tmp))
+      if (GetProtocol(it.GetType(), tmp))
       {
         CFileItemPtr item(new CFileItem("", true));
         CURL url;
@@ -205,7 +205,7 @@ bool CZeroconfDirectory::GetDirectory(const CURL& url, CFileItemList &items)
         //do protocol conversion (_smb._tcp -> smb)
         //! @todo try automatic conversion -> remove leading '_' and '._tcp'?
         std::string protocol;
-        if(!GetXBMCProtocol(zeroconf_service.GetType(), protocol))
+        if(!GetProtocol(zeroconf_service.GetType(), protocol))
         {
           CLog::Log(LOGERROR,
                     "CZeroconfDirectory::GetDirectory Unknown service type ({}), skipping; ",

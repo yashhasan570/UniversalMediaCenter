@@ -18,7 +18,7 @@
 #include "utils/FontUtils.h"
 #include "utils/URIUtils.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace SUBTITLES;
 
 CSubtitlesSettings::CSubtitlesSettings(const std::shared_ptr<CSettings>& settings)
@@ -192,7 +192,7 @@ void CSubtitlesSettings::SettingOptionsSubtitleFontsFiller(const SettingConstPtr
 {
   // From application system fonts folder we add the default font only
   std::string defaultFontPath =
-      URIUtils::AddFileToFolder("special://xbmc/media/Fonts/", UTILS::FONT::FONT_DEFAULT_FILENAME);
+      URIUtils::AddFileToFolder("special:///media/Fonts/", UTILS::FONT::FONT_DEFAULT_FILENAME);
   if (CFileUtils::Exists(defaultFontPath))
   {
     std::string familyName = UTILS::FONT::GetFontFamily(defaultFontPath);

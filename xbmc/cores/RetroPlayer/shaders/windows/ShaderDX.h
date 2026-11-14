@@ -18,7 +18,7 @@
 
 #include <DirectXMath.h>
 
-namespace KODI::SHADER
+namespace UNIVERSAL MEDIA CENTER::SHADER
 {
 class IShaderLut;
 class IShaderSampler;
@@ -134,4 +134,4 @@ private:
   // Sampler state
   //ID3D11SamplerState* m_pSampler{nullptr};
 };
-} // namespace KODI::SHADER
+} // namespace UNIVERSAL MEDIA CENTER::SHADER

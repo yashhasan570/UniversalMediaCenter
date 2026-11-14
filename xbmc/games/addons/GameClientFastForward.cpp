@@ -17,7 +17,7 @@
 #include <mutex>
 #include <utility>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 namespace
@@ -163,8 +163,8 @@ double CGameClientFastForward::Target(double requested, double speed, double own
     return owned != 0.0 && speed == owned ? 1.0 : speed;
 
   // From normal speed, or from the speed Universal Media Center set for an earlier ratio
-  const bool kodiSpeed = owned != 0.0 ? speed == owned : speed == 1.0;
-  return kodiSpeed ? requested : speed;
+  const bool universalmediacenterSpeed = owned != 0.0 ? speed == owned : speed == 1.0;
+  return universalmediacenterSpeed ? requested : speed;
 }
 
 void CGameClientFastForward::Apply(State& state, IPlayerSpeed& player, unsigned int session)

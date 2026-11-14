@@ -16,7 +16,7 @@
 #include "URL.h"
 #include "utils/StringUtils.h"
 #include "utils/URIUtils.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 #include "utils/log.h"
 
 using namespace XFILE;
@@ -127,7 +127,7 @@ bool CDAVDirectory::GetDirectory(const CURL& url, CFileItemList &items)
   dav.ReadData(strResponse);
 
   std::string fileCharset(dav.GetProperty(XFILE::FileProperty::CONTENT_CHARSET));
-  CXBMCTinyXML2 davResponse;
+  CTinyXML2 davResponse;
   davResponse.Parse(strResponse);
 
   if (!davResponse.Parse(strResponse))

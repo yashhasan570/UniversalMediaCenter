@@ -16,7 +16,7 @@
 #include "messaging/ApplicationMessenger.h"
 #import "windowing/tvos/WinSystemTVOS.h"
 
-#import "platform/darwin/tvos/XBMCController.h"
+#import "platform/darwin/tvos/Controller.h"
 #import "platform/darwin/tvos/input/LibInputHandler.h"
 #import "platform/darwin/tvos/input/LibInputSettings.h"
 
@@ -39,9 +39,9 @@ NSTimeInterval REPEATED_KEYPRESS_PAUSE_S = 0.05;
 
   if (m_siriRemoteIdleTimer != nil)
     [self stopSiriRemoteIdleTimer];
-  if (g_xbmcController.inputHandler.inputSettings.siriRemoteIdleTimerEnabled)
+  if (g_Controller.inputHandler.inputSettings.siriRemoteIdleTimerEnabled)
   {
-    auto fireDate = [NSDate dateWithTimeIntervalSinceNow:g_xbmcController.inputHandler.inputSettings
+    auto fireDate = [NSDate dateWithTimeIntervalSinceNow:g_Controller.inputHandler.inputSettings
                                                              .siriRemoteIdleTime];
     auto timer = [[NSTimer alloc] initWithFireDate:fireDate
                                           interval:0.0
@@ -79,7 +79,7 @@ NSTimeInterval REPEATED_KEYPRESS_PAUSE_S = 0.05;
   if (m_pressAutoRepeatTimer != nil)
     [self stopKeyPressTimer];
 
-  [g_xbmcController.inputHandler sendButtonPressed:keyId];
+  [g_Controller.inputHandler sendButtonPressed:keyId];
 
   NSNumber* number = @(keyId);
   auto fireDate = [NSDate dateWithTimeIntervalSinceNow:REPEATED_KEYPRESS_DELAY_S];
@@ -109,7 +109,7 @@ NSTimeInterval REPEATED_KEYPRESS_PAUSE_S = 0.05;
   // if queue is empty - skip this timer event before letting it process
   CWinSystemTVOS* winSystem(dynamic_cast<CWinSystemTVOS*>(CServiceBroker::GetWinSystem()));
   if (!winSystem->GetQueueSize())
-    [g_xbmcController.inputHandler sendButtonPressed:[theTimer.userInfo intValue]];
+    [g_Controller.inputHandler sendButtonPressed:[theTimer.userInfo intValue]];
 }
 
 #pragma mark - remoteControlEventwith
@@ -124,25 +124,25 @@ NSTimeInterval REPEATED_KEYPRESS_PAUSE_S = 0.05;
           static_cast<void*>(new CAction(ACTION_PLAYER_PLAYPAUSE)));
       break;
     case UIEventSubtypeRemoteControlPlay:
-      [g_xbmcController.inputHandler sendButtonPressed:13];
+      [g_Controller.inputHandler sendButtonPressed:13];
       break;
     case UIEventSubtypeRemoteControlPause:
-      [g_xbmcController.inputHandler sendButtonPressed:14];
+      [g_Controller.inputHandler sendButtonPressed:14];
       break;
     case UIEventSubtypeRemoteControlStop:
-      [g_xbmcController.inputHandler sendButtonPressed:15];
+      [g_Controller.inputHandler sendButtonPressed:15];
       break;
     case UIEventSubtypeRemoteControlNextTrack:
-      [g_xbmcController.inputHandler sendButtonPressed:16];
+      [g_Controller.inputHandler sendButtonPressed:16];
       break;
     case UIEventSubtypeRemoteControlPreviousTrack:
-      [g_xbmcController.inputHandler sendButtonPressed:17];
+      [g_Controller.inputHandler sendButtonPressed:17];
       break;
     case UIEventSubtypeRemoteControlBeginSeekingForward:
-      [g_xbmcController.inputHandler sendButtonPressed:18];
+      [g_Controller.inputHandler sendButtonPressed:18];
       break;
     case UIEventSubtypeRemoteControlBeginSeekingBackward:
-      [g_xbmcController.inputHandler sendButtonPressed:19];
+      [g_Controller.inputHandler sendButtonPressed:19];
       break;
     case UIEventSubtypeRemoteControlEndSeekingForward:
     case UIEventSubtypeRemoteControlEndSeekingBackward:

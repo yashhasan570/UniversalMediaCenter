@@ -4,12 +4,12 @@
        version="3.2.2"
        provider-name="Team Universal Media Center">
   <requires>
-    <import addon="xbmc.metadata" version="2.1.0"/>
-    <import addon="xbmc.python" version="3.0.0"/>
+    <import addon=".metadata" version="2.1.0"/>
+    <import addon=".python" version="3.0.0"/>
   </requires>
-  <extension point="xbmc.metadata.scraper.movies"
+  <extension point=".metadata.scraper.movies"
              library="python/scraper.py"/>
-  <extension point="xbmc.addon.metadata">
+  <extension point=".addon.metadata">
     <reuselanguageinvoker>true</reuselanguageinvoker>
     <news>v3.2.2 (2026-08-19)
 - Updated Czech and Chinese translations
@@ -28,7 +28,7 @@ v3.0.0 (2024-04-17)
     <license>GPL-2.0-or-later</license>
     <forum>https://github.com/yashhasan570/UniversalMediaCenter/showthread.php?tid=344580</forum>
     <website>https://www.themoviedb.org</website>
-    <source>https://github.com/xbmc/metadata.themoviedb.org.python</source>
+    <source>https://github.com//metadata.themoviedb.org.python</source>
     <assets>
       <icon>resources/icon.png</icon>
     </assets>

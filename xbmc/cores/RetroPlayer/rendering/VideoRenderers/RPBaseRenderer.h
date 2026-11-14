@@ -21,7 +21,7 @@ extern "C"
 #include <memory>
 #include <stdint.h>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace SHADER
 {
@@ -152,4 +152,4 @@ private:
   bool m_texturesReleased = false;
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

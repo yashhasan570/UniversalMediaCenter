@@ -10,7 +10,7 @@
 
 #include "utils/log.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace RETRO;
 
 #define VIDEO_FILTER_NEAREST "nearest"

@@ -10,7 +10,7 @@
 
 #include "RenderBufferDMA.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -26,4 +26,4 @@ protected:
   void ConfigureTexture() override;
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

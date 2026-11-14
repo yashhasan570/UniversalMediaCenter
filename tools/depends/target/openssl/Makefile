@@ -1,6 +1,6 @@
 include ../../Makefile.include OPENSSL-VERSION ../../download-files.include
 DEPS = ../../Makefile.include Makefile OPENSSL-VERSION ../../download-files.include \
-                        001-android-getauxvalrevert.patch 16-kodi.conf
+                        001-android-getauxvalrevert.patch 16-universalmediacenter.conf
 
 # configuration settings
 ifeq ($(OS), linux)
@@ -40,16 +40,16 @@ else
     # LLVM 15 has raised this to error by default. drop back to warning
     CFLAGS+= -Wno-error=implicit-int
     export SDKROOT CFLAGS
-    OPENSSLPLATFORM=kodi-iphoneos-arm64
+    OPENSSLPLATFORM=universalmediacenter-iphoneos-arm64
 
     ifeq ($(findstring appletv,$(TARGET_PLATFORM)),appletv)
-      OPENSSLPLATFORM=kodi-appletvos-arm64
+      OPENSSLPLATFORM=universalmediacenter-appletvos-arm64
       # Need to add "no-async" to avoid "'setcontext' is unavailable: not available on tvOS" error
       TARGETOPT+= no-async
     endif
   endif
   ifeq ($(OS), osx)
-    OPENSSLPLATFORM=kodi-darwin64-$(CPU)
+    OPENSSLPLATFORM=universalmediacenter-darwin64-$(CPU)
   endif
 
   # Openssl 3.2.0 allows no-apps no-docs as options. Use when we update further
@@ -71,7 +71,7 @@ all: .installed-$(PLATFORM)
 ifeq ($(OS),android)
 	cd $(PLATFORM); patch -p1 -i ../001-android-getauxvalrevert.patch
 endif
-	cd $(PLATFORM); cp ../16-kodi.conf ./Configurations/
+	cd $(PLATFORM); cp ../16-universalmediacenter.conf ./Configurations/
 	cd $(PLATFORM); $(CONFIGURE)
 	sed -ie "s|PROGRAMS=|PROGRAMS=#|" "$(PLATFORM)/Makefile";
 	touch $@

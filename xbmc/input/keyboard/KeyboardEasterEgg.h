@@ -8,12 +8,12 @@
 
 #pragma once
 
-#include "input/keyboard/XBMC_vkeys.h"
+#include "input/keyboard/_vkeys.h"
 #include "input/keyboard/interfaces/IKeyboardDriverHandler.h"
 
 #include <vector>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace KEYBOARD
 {
@@ -32,9 +32,9 @@ public:
   void OnKeyRelease(const CKey& key) override {}
 
 private:
-  static std::vector<XBMCVKey> m_sequence;
+  static std::vector<VKey> m_sequence;
 
   unsigned int m_state = 0;
 };
 } // namespace KEYBOARD
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

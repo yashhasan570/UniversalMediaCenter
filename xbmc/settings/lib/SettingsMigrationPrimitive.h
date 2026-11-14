@@ -11,7 +11,7 @@
 #include "Setting.h"
 #include "settings/SettingsValueXmlSerializer.h"
 #include "settings/lib/SettingsManager.h"
-#include "utils/XBMCTinyXML.h"
+#include "utils/TinyXML.h"
 #include "utils/XMLUtils.h"
 #include "utils/log.h"
 
@@ -22,7 +22,7 @@
 #include <string_view>
 #include <utility>
 
-namespace KODI::SETTINGS
+namespace UNIVERSAL MEDIA CENTER::SETTINGS
 {
 /*!
  * \brief Outcome of a setting migration operation.
@@ -148,4 +148,4 @@ SettingConversionResult ConvertSettingBoolToInt(TiXmlElement* root,
                                                 std::string_view newSettingId,
                                                 const SettingBoolToIntMapping& mapping);
 
-} // namespace KODI::SETTINGS
+} // namespace UNIVERSAL MEDIA CENTER::SETTINGS

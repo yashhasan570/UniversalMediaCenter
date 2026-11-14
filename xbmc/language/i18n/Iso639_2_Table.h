@@ -16,7 +16,7 @@
 #include <cstdint>
 #include <string_view>
 
-namespace KODI::LANGUAGE::I18N
+namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N
 {
 struct ISO639_2_TB
 {
@@ -729,4 +729,4 @@ static_assert(std::ranges::all_of(
     { return std::ranges::binary_search(TableISO639_2ByCode, tCode, {}, &LCENTRY::code); },
     &LCENTRY::code));
 
-} // namespace KODI::LANGUAGE::I18N
+} // namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N

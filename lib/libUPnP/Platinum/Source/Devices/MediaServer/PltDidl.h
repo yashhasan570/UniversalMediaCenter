@@ -95,14 +95,14 @@
 #define PLT_FILTER_MASK_EPISODE_COUNT               NPT_UINT64_C(0x0000001000000000)
 #define PLT_FILTER_MASK_EPISODE_SEASON              NPT_UINT64_C(0x0000002000000000)
 
-#define PLT_FILTER_MASK_XBMC_DATEADDED              NPT_UINT64_C(0x0000100000000000)
-#define PLT_FILTER_MASK_XBMC_RATING                 NPT_UINT64_C(0x0000200000000000)
-#define PLT_FILTER_MASK_XBMC_VOTES                  NPT_UINT64_C(0x0000400000000000)
-#define PLT_FILTER_MASK_XBMC_ARTWORK                NPT_UINT64_C(0x0000800000000000)
-#define PLT_FILTER_MASK_XBMC_UNIQUE_IDENTIFIER      NPT_UINT64_C(0x0001000000000000)
-#define PLT_FILTER_MASK_XBMC_COUNTRY                NPT_UINT64_C(0x0002000000000000)
-#define PLT_FILTER_MASK_XBMC_USERRATING             NPT_UINT64_C(0x0004000000000000)
-#define PLT_FILTER_MASK_XBMC_LASTPLAYERSTATE        NPT_UINT64_C(0x0008000000000000)
+#define PLT_FILTER_MASK__DATEADDED              NPT_UINT64_C(0x0000100000000000)
+#define PLT_FILTER_MASK__RATING                 NPT_UINT64_C(0x0000200000000000)
+#define PLT_FILTER_MASK__VOTES                  NPT_UINT64_C(0x0000400000000000)
+#define PLT_FILTER_MASK__ARTWORK                NPT_UINT64_C(0x0000800000000000)
+#define PLT_FILTER_MASK__UNIQUE_IDENTIFIER      NPT_UINT64_C(0x0001000000000000)
+#define PLT_FILTER_MASK__COUNTRY                NPT_UINT64_C(0x0002000000000000)
+#define PLT_FILTER_MASK__USERRATING             NPT_UINT64_C(0x0004000000000000)
+#define PLT_FILTER_MASK__LASTPLAYERSTATE        NPT_UINT64_C(0x0008000000000000)
 
 #define PLT_FILTER_FIELD_TITLE                      "dc:title"
 #define PLT_FILTER_FIELD_CREATOR                    "dc:creator"
@@ -148,21 +148,21 @@
 #define PLT_FILTER_FIELD_EPISODE_COUNT              "upnp:episodeCount"
 #define PLT_FILTER_FIELD_EPISODE_SEASON             "upnp:episodeSeason"
 
-#define PLT_FILTER_FIELD_XBMC_LASTPLAYERSTATE       "xbmc:lastPlayerState"
-#define PLT_FILTER_FIELD_XBMC_DATEADDED             "xbmc:dateadded"
-#define PLT_FILTER_FIELD_XBMC_RATING                "xbmc:rating"
-#define PLT_FILTER_FIELD_XBMC_VOTES                 "xbmc:votes"
-#define PLT_FILTER_FIELD_XBMC_ARTWORK               "xbmc:artwork"
-#define PLT_FILTER_FIELD_XBMC_UNIQUE_IDENTIFIER     "xbmc:uniqueidentifier"
-#define PLT_FILTER_FIELD_XBMC_COUNTRY               "xbmc:country"
-#define PLT_FILTER_FIELD_XBMC_USERRATING            "xbmc:userrating"
+#define PLT_FILTER_FIELD__LASTPLAYERSTATE       ":lastPlayerState"
+#define PLT_FILTER_FIELD__DATEADDED             ":dateadded"
+#define PLT_FILTER_FIELD__RATING                ":rating"
+#define PLT_FILTER_FIELD__VOTES                 ":votes"
+#define PLT_FILTER_FIELD__ARTWORK               ":artwork"
+#define PLT_FILTER_FIELD__UNIQUE_IDENTIFIER     ":uniqueidentifier"
+#define PLT_FILTER_FIELD__COUNTRY               ":country"
+#define PLT_FILTER_FIELD__USERRATING            ":userrating"
 
 extern const char* didl_header;
 extern const char* didl_footer;
 extern const char* didl_namespace_dc;
 extern const char* didl_namespace_upnp;
 extern const char* didl_namespace_dlna;
-extern const char* didl_namespace_xbmc;
+extern const char* didl_namespace_;
 
 /*----------------------------------------------------------------------
 |   PLT_Didl

@@ -15,7 +15,7 @@
 
 #include <set>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 
 namespace GAME
@@ -80,4 +80,4 @@ private:
   float m_oldVolumePercent = 100.0f;
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

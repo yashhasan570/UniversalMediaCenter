@@ -3,7 +3,7 @@ package @APP_PACKAGE@.interfaces;
 import android.media.MediaDrm;
 import android.media.MediaDrm.OnEventListener;
 
-public class XBMCMediaDrmOnEventListener implements OnEventListener
+public class MediaDrmOnEventListener implements OnEventListener
 {
   native void _onEvent(MediaDrm md, byte[] sessionId, int event, int extra, byte[] data);
 

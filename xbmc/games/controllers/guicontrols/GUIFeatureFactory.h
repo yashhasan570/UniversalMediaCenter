@@ -12,7 +12,7 @@
 
 class CGUIButtonControl;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -37,4 +37,4 @@ public:
                                          unsigned int index);
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

@@ -1,4 +1,4 @@
-# Fix UWP addons security issue caused by empty __init__.py Python Lib files packaged with Kodi
+# Fix UWP addons security issue caused by empty __init__.py Python Lib files packaged with Universal Media Center
 # Encapsulate fix script to allow post generation execution in the event the python lib is
 # built after project generation.
 

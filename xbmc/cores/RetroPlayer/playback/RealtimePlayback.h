@@ -10,7 +10,7 @@
 
 #include "IPlayback.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -41,4 +41,4 @@ public:
   bool LoadSavestate(const std::string& savestatePath) override { return false; }
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

@@ -23,11 +23,11 @@ class TestArchive : public testing::Test
 protected:
   TestArchive()
   {
-    file = XBMC_CREATETEMPFILE(".ar");
+    file = _CREATETEMPFILE(".ar");
   }
   ~TestArchive() override
   {
-    EXPECT_TRUE(XBMC_DELETETEMPFILE(file));
+    EXPECT_TRUE(_DELETETEMPFILE(file));
   }
   XFILE::CFile *file;
 };
@@ -213,8 +213,8 @@ TEST_F(TestArchive, StringArchive)
 TEST_F(TestArchive, SystemTimeArchive)
 {
   ASSERT_NE(nullptr, file);
-  KODI::TIME::SystemTime SystemTime_ref = {1, 2, 3, 4, 5, 6, 7, 8};
-  KODI::TIME::SystemTime SystemTime_var = {0, 0, 0, 0, 0, 0, 0, 0};
+  UNIVERSAL MEDIA CENTER::TIME::SystemTime SystemTime_ref = {1, 2, 3, 4, 5, 6, 7, 8};
+  UNIVERSAL MEDIA CENTER::TIME::SystemTime SystemTime_var = {0, 0, 0, 0, 0, 0, 0, 0};
 
   CArchive arstore(file, CArchive::store);
   arstore << SystemTime_ref;
@@ -225,7 +225,7 @@ TEST_F(TestArchive, SystemTimeArchive)
   arload >> SystemTime_var;
   arload.Close();
 
-  EXPECT_TRUE(!memcmp(&SystemTime_ref, &SystemTime_var, sizeof(KODI::TIME::SystemTime)));
+  EXPECT_TRUE(!memcmp(&SystemTime_ref, &SystemTime_var, sizeof(UNIVERSAL MEDIA CENTER::TIME::SystemTime)));
 }
 
 TEST_F(TestArchive, CVariantArchive)
@@ -325,8 +325,8 @@ TEST_F(TestArchive, MultiTypeArchive)
   char char_ref = 'A', char_var = '\0';
   std::string string_ref = "test string", string_var;
   std::wstring wstring_ref = L"test wstring", wstring_var;
-  KODI::TIME::SystemTime SystemTime_ref = {1, 2, 3, 4, 5, 6, 7, 8};
-  KODI::TIME::SystemTime SystemTime_var = {0, 0, 0, 0, 0, 0, 0, 0};
+  UNIVERSAL MEDIA CENTER::TIME::SystemTime SystemTime_ref = {1, 2, 3, 4, 5, 6, 7, 8};
+  UNIVERSAL MEDIA CENTER::TIME::SystemTime SystemTime_var = {0, 0, 0, 0, 0, 0, 0, 0};
   CVariant CVariant_ref((int)1), CVariant_var;
   std::vector<std::string> strArray_ref, strArray_var;
   strArray_ref.emplace_back("test strArray_ref 0");
@@ -386,7 +386,7 @@ TEST_F(TestArchive, MultiTypeArchive)
   EXPECT_EQ(char_ref, char_var);
   EXPECT_STREQ(string_ref.c_str(), string_var.c_str());
   EXPECT_STREQ(wstring_ref.c_str(), wstring_var.c_str());
-  EXPECT_TRUE(!memcmp(&SystemTime_ref, &SystemTime_var, sizeof(KODI::TIME::SystemTime)));
+  EXPECT_TRUE(!memcmp(&SystemTime_ref, &SystemTime_var, sizeof(UNIVERSAL MEDIA CENTER::TIME::SystemTime)));
   EXPECT_TRUE(CVariant_var.isInteger());
   EXPECT_STREQ("test strArray_ref 0", strArray_var.at(0).c_str());
   EXPECT_STREQ("test strArray_ref 1", strArray_var.at(1).c_str());

@@ -10,7 +10,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface XBMCWindowControllerMacOS : NSWindowController <NSWindowDelegate>
+@interface WindowControllerMacOS : NSWindowController <NSWindowDelegate>
 
 - (nullable instancetype)initWithTitle:(nonnull NSString*)title
                            defaultSize:(NSSize)size NS_DESIGNATED_INITIALIZER;

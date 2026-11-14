@@ -934,7 +934,7 @@ bool CAESinkPULSE::Initialize(AEAudioFormat &format, std::string &device)
   m_BytesPerSecond = pa_bytes_per_second(&spec);
   unsigned int frameSize = pa_frame_size(&spec);
 
-  m_Stream = pa_stream_new_extended(m_Context, "kodi audio stream", info, 1, NULL);
+  m_Stream = pa_stream_new_extended(m_Context, "universalmediacenter audio stream", info, 1, NULL);
   pa_format_info_free(info[0]);
 
   if (m_Stream == NULL)

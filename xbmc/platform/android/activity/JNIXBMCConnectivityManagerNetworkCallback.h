@@ -14,13 +14,13 @@
 namespace jni
 {
 
-class CJNIXBMCConnectivityManagerNetworkCallback
+class CJNIConnectivityManagerNetworkCallback
   : public CJNIBase,
-    public CJNIInterfaceImplem<CJNIXBMCConnectivityManagerNetworkCallback>
+    public CJNIInterfaceImplem<CJNIConnectivityManagerNetworkCallback>
 {
 public:
-  CJNIXBMCConnectivityManagerNetworkCallback();
-  ~CJNIXBMCConnectivityManagerNetworkCallback() override;
+  CJNIConnectivityManagerNetworkCallback();
+  ~CJNIConnectivityManagerNetworkCallback() override;
 
   static void RegisterNatives(JNIEnv* env);
 

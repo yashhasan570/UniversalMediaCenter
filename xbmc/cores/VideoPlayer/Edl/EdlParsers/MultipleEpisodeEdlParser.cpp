@@ -27,7 +27,7 @@ bool CMultipleEpisodeEdlParser::CanParse(const CFileItem& item) const
     return false;
 
   const CVideoInfoTag* tag{item.GetVideoInfoTag()};
-  if (tag->GetMediaType() != KODI::MEDIA::TYPE::EPISODE)
+  if (tag->GetMediaType() != UNIVERSAL MEDIA CENTER::MEDIA::TYPE::EPISODE)
     return false;
   if (tag->m_iIdShow <= 0 || tag->m_iFileId <= 0)
     return false;

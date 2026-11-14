@@ -43,9 +43,9 @@
 #include <functional>
 #include <set>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace ADDON;
-using namespace KODI::MESSAGING;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
 
 namespace XFILE
 {
@@ -727,9 +727,9 @@ bool CAddonsDirectory::GetDirectory(const CURL& url, CFileItemList &items)
     VECADDONS addons;
     AddonType type;
 
-    if (path.GetFileName() == "kodi.pvrclient")
+    if (path.GetFileName() == "universalmediacenter.pvrclient")
       type = AddonType::PVRDLL;
-    else if (path.GetFileName() == "kodi.vfs")
+    else if (path.GetFileName() == "universalmediacenter.vfs")
       type = AddonType::VFS;
     else
       type = AddonType::UNKNOWN;
@@ -788,7 +788,7 @@ bool CAddonsDirectory::GetDirectory(const CURL& url, CFileItemList &items)
   {
     const std::string& type = path.GetFileName();
     if (type == "video" || type == "audio" || type == "image" || type == "executable")
-      return Browse(CURL("addons://all/xbmc.addon." + type), items);
+      return Browse(CURL("addons://all/.addon." + type), items);
     else if (type == "game")
       return Browse(CURL("addons://all/category.gameaddons"), items);
     return false;

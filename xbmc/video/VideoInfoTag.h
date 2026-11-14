@@ -112,8 +112,8 @@ public:
   bool HasStreamDetails() const;
 
   //! \brief The media type m_type names, NONE where it names a node such as a genre, or is spelled otherwise.
-  KODI::MEDIA::TYPE GetMediaType() const;
-  void SetMediaType(KODI::MEDIA::TYPE type);
+  UNIVERSAL MEDIA CENTER::MEDIA::TYPE GetMediaType() const;
+  void SetMediaType(UNIVERSAL MEDIA CENTER::MEDIA::TYPE type);
   bool HasNFOStreamDetails() const;
 
   //! \brief Whether a measured content rectangle is attached. Independent of HasStreamDetails():
@@ -122,7 +122,7 @@ public:
 
   //! \brief The content rectangle in force for this item, resolved as the player resolves it.
   //! A default geometry when nothing was measured.
-  KODI::VIDEO::GEOMETRY::EffectiveGeometry ResolveContentGeometry() const;
+  UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::EffectiveGeometry ResolveContentGeometry() const;
   bool IsEmpty() const;
 
   const std::string& GetPath() const
@@ -456,7 +456,7 @@ public:
 
   //! \brief The measured picture rectangle, when one is known. Round-trips through NFO export
   //! and import.
-  KODI::VIDEO::GEOMETRY::SharedContentGeometry m_contentGeometry;
+  UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::SharedContentGeometry m_contentGeometry;
   CDateTime m_dateAdded;
   std::string m_type; //!< the table m_iDbId is in: a media type, or a node such as genre
   int m_relevance; // Used for actors' number of appearances

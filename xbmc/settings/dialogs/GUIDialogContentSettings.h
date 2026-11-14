@@ -14,7 +14,7 @@
 #include <map>
 #include <utility>
 
-namespace KODI::VIDEO
+namespace UNIVERSAL MEDIA CENTER::VIDEO
 {
   struct SScanSettings;
 }
@@ -35,7 +35,7 @@ public:
   const ADDON::ScraperPtr& GetScraper() const { return m_scraper; }
   void SetScraper(ADDON::ScraperPtr scraper) { m_scraper = std::move(scraper); }
 
-  void SetScanSettings(const KODI::VIDEO::SScanSettings& scanSettings);
+  void SetScanSettings(const UNIVERSAL MEDIA CENTER::VIDEO::SScanSettings& scanSettings);
   bool GetScanRecursive() const { return m_scanRecursive; }
   bool GetUseDirectoryNames() const { return m_useDirectoryNames; }
   bool GetContainsSingleItem() const { return m_containsSingleItem; }
@@ -46,7 +46,7 @@ public:
   static bool Show(ADDON::ScraperPtr& scraper,
                    ADDON::ContentType content = ADDON::ContentType::NONE);
   static bool Show(ADDON::ScraperPtr& scraper,
-                   KODI::VIDEO::SScanSettings& settings,
+                   UNIVERSAL MEDIA CENTER::VIDEO::SScanSettings& settings,
                    ADDON::ContentType content = ADDON::ContentType::NONE);
 
 protected:

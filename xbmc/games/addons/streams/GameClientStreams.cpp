@@ -21,7 +21,7 @@
 
 #include <memory>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 CGameClientStreams::CGameClientStreams(CGameClient& gameClient) : m_gameClient(gameClient)

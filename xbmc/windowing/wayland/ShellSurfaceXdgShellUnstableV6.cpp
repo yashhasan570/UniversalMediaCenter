@@ -11,7 +11,7 @@
 #include "Registry.h"
 #include "messaging/ApplicationMessenger.h"
 
-using namespace KODI::WINDOWING::WAYLAND;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::WAYLAND;
 
 namespace
 {

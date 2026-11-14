@@ -26,7 +26,7 @@
 #include <string.h>
 
 using namespace JSONRPC;
-using KODI::MESSAGING::TransferToMessenger;
+using UNIVERSAL MEDIA CENTER::MESSAGING::TransferToMessenger;
 
 JSONRPC_STATUS CApplicationOperations::GetProperties(const std::string &method, ITransportLayer *transport, IClient *client, const CVariant &parameterObject, CVariant &result)
 {

@@ -16,8 +16,8 @@
 
 #include <EGL/eglext.h>
 
-using namespace KODI::WINDOWING::WAYLAND;
-using namespace KODI::WINDOWING::LINUX;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::WAYLAND;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::LINUX;
 
 CWinSystemWaylandEGLContext::CWinSystemWaylandEGLContext()
   : CWinSystemEGL{EGL_PLATFORM_WAYLAND_EXT, "EGL_EXT_platform_wayland"}

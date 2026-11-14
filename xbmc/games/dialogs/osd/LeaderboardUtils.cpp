@@ -16,14 +16,14 @@
 #include "resources/ResourcesComponent.h"
 #include "settings/SettingsComponent.h"
 #include "utils/StringUtils.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 #include "utils/log.h"
 
 #include <algorithm>
 #include <cctype>
 #include <cstdint>
 
-using namespace KODI::GAME;
+using namespace UNIVERSAL MEDIA CENTER::GAME;
 
 namespace
 {
@@ -111,13 +111,13 @@ constexpr std::time_t DAYS_PER_MONTH = 30;
 constexpr std::time_t DAYS_PER_YEAR = 365;
 } // namespace
 
-bool KODI::GAME::IsTimeFormat(const std::string& format)
+bool UNIVERSAL MEDIA CENTER::GAME::IsTimeFormat(const std::string& format)
 {
   return format == "TIME" || format == "FRAMES" || format == "MILLISECS" || format == "TIMESECS" ||
          format == "SECS" || format == "SECS_AS_MINS" || format == "MINUTES";
 }
 
-std::string KODI::GAME::FormatLeaderboardScore(int score, const std::string& format)
+std::string UNIVERSAL MEDIA CENTER::GAME::FormatLeaderboardScore(int score, const std::string& format)
 {
   const auto unsignedScore = static_cast<uint32_t>(score);
 
@@ -161,7 +161,7 @@ std::string KODI::GAME::FormatLeaderboardScore(int score, const std::string& for
   return InsertCommas(formatted);
 }
 
-std::string KODI::GAME::FormatRelativeDate(std::time_t submitted, std::time_t now)
+std::string UNIVERSAL MEDIA CENTER::GAME::FormatRelativeDate(std::time_t submitted, std::time_t now)
 {
   if (submitted <= 0)
     return {};
@@ -194,7 +194,7 @@ std::string KODI::GAME::FormatRelativeDate(std::time_t submitted, std::time_t no
   return StringUtils::Format(strings.Get(35349), years);
 }
 
-std::string KODI::GAME::RankMedal(unsigned int rank)
+std::string UNIVERSAL MEDIA CENTER::GAME::RankMedal(unsigned int rank)
 {
   switch (rank)
   {
@@ -243,7 +243,7 @@ std::string CachePath()
 }
 } // namespace
 
-void KODI::GAME::SaveLeaderboardEntries(unsigned int leaderboardId,
+void UNIVERSAL MEDIA CENTER::GAME::SaveLeaderboardEntries(unsigned int leaderboardId,
                                         const std::string& account,
                                         const std::vector<LeaderboardEntry>& entries)
 {
@@ -251,7 +251,7 @@ void KODI::GAME::SaveLeaderboardEntries(unsigned int leaderboardId,
   if (path.empty())
     return;
 
-  CXBMCTinyXML2 doc;
+  CTinyXML2 doc;
 
   tinyxml2::XMLElement* root = nullptr;
   if (XFILE::CFile::Exists(path) && doc.LoadFile(path) && doc.RootElement() != nullptr &&
@@ -318,13 +318,13 @@ void KODI::GAME::SaveLeaderboardEntries(unsigned int leaderboardId,
     CLog::Log(LOGERROR, "Leaderboards: unable to save {}", path);
 }
 
-void KODI::GAME::ForgetLeaderboardEntries(unsigned int leaderboardId)
+void UNIVERSAL MEDIA CENTER::GAME::ForgetLeaderboardEntries(unsigned int leaderboardId)
 {
   const std::string path = CachePath();
   if (path.empty() || !XFILE::CFile::Exists(path))
     return;
 
-  CXBMCTinyXML2 doc;
+  CTinyXML2 doc;
   if (!doc.LoadFile(path))
     return;
 
@@ -348,7 +348,7 @@ void KODI::GAME::ForgetLeaderboardEntries(unsigned int leaderboardId)
     CLog::Log(LOGERROR, "Leaderboards: unable to save {}", path);
 }
 
-void KODI::GAME::ClearLeaderboardEntries()
+void UNIVERSAL MEDIA CENTER::GAME::ClearLeaderboardEntries()
 {
   const std::string path = CachePath();
   if (path.empty() || !XFILE::CFile::Exists(path))
@@ -360,7 +360,7 @@ void KODI::GAME::ClearLeaderboardEntries()
     CLog::Log(LOGINFO, "Leaderboards: kept standings cleared");
 }
 
-bool KODI::GAME::LoadLeaderboardEntries(unsigned int leaderboardId,
+bool UNIVERSAL MEDIA CENTER::GAME::LoadLeaderboardEntries(unsigned int leaderboardId,
                                         const std::string& account,
                                         std::vector<LeaderboardEntry>& entries)
 {
@@ -368,7 +368,7 @@ bool KODI::GAME::LoadLeaderboardEntries(unsigned int leaderboardId,
   if (path.empty() || !XFILE::CFile::Exists(path))
     return false;
 
-  CXBMCTinyXML2 doc;
+  CTinyXML2 doc;
   if (!doc.LoadFile(path))
     return false;
 

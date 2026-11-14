@@ -119,7 +119,7 @@ void CRendererStarfish::ManageRenderArea()
   {
     const auto origRect =
         CRect{0, 0, static_cast<float>(m_sourceWidth), static_cast<float>(m_sourceHeight)};
-    using namespace KODI::WINDOWING::WAYLAND;
+    using namespace UNIVERSAL MEDIA CENTER::WINDOWING::WAYLAND;
     auto winSystem = static_cast<CWinSystemWaylandWebOS*>(CServiceBroker::GetWinSystem());
     if (winSystem->SupportsExportedWindow())
     {

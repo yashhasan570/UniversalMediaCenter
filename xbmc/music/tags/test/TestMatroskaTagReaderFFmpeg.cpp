@@ -39,7 +39,7 @@ class Fixture
 public:
   explicit Fixture(const std::string& name)
   {
-    m_path = XBMC_REF_FILE_PATH("xbmc/filesystem/test/data/audiobook/" + name);
+    m_path = _REF_FILE_PATH("/filesystem/test/data/audiobook/" + name);
     if (m_demux.Open(m_path))
       m_album = ReadMatroskaTagsWithFFmpeg(CURL(m_path), m_demux.FormatContext());
   }

@@ -15,7 +15,7 @@
 #include "HwRenderingContextEGL.h"
 #endif
 
-std::unique_ptr<KODI::RETRO::IHwRenderingContext> KODI::RETRO::CreateHwRenderingContext(
+std::unique_ptr<UNIVERSAL MEDIA CENTER::RETRO::IHwRenderingContext> UNIVERSAL MEDIA CENTER::RETRO::CreateHwRenderingContext(
     CRenderContext& context)
 {
 #if defined(TARGET_DARWIN_OSX)

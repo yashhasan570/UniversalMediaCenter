@@ -15,7 +15,7 @@ namespace dbiplus
 class Dataset;
 }
 
-namespace KODI::DATABASE::MIGRATION
+namespace UNIVERSAL MEDIA CENTER::DATABASE::MIGRATION
 {
 /*!
  * \brief Repair the video versions and version types that migration steps 123 to 131 turned
@@ -29,4 +29,4 @@ void RepairVideoAssetTypesV154(CDatabase& db,
                                dbiplus::Dataset& ds,
                                dbiplus::Dataset& ds2,
                                int iVersion);
-} // namespace KODI::DATABASE::MIGRATION
+} // namespace UNIVERSAL MEDIA CENTER::DATABASE::MIGRATION

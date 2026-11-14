@@ -48,14 +48,14 @@
 #include "settings/lib/Setting.h"
 #include "utils/StringUtils.h"
 #include "utils/URIUtils.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 #include "utils/log.h"
 #include "video/dialogs/GUIDialogFullScreenInfo.h"
 #include "windowing/WinSystem.h"
 
 #include <set>
 
-using namespace KODI::MESSAGING;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
 
 CApplicationSkinHandling::CApplicationSkinHandling(IMsgTargetCallback* msgCb,
                                                    IWindowManagerCallback* wCb,
@@ -318,7 +318,7 @@ bool CApplicationSkinHandling::LoadCustomWindows()
           std::string skinFileLower = skinFile;
           StringUtils::ToLower(skinFileLower);
 
-          CXBMCTinyXML2 xmlDoc;
+          CTinyXML2 xmlDoc;
           if (!xmlDoc.LoadFile(item->GetPath()))
           {
             CLog::Log(LOGERROR, "Unable to load custom window XML {}. Line {}\n{}", item->GetPath(),

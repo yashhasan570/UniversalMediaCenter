@@ -14,7 +14,7 @@
 #include "input/joysticks/interfaces/IInputProvider.h"
 #include "peripherals/devices/Peripheral.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 CAgentJoystick::CAgentJoystick(PERIPHERALS::PeripheralPtr peripheral)

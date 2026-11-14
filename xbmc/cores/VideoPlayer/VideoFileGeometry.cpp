@@ -35,7 +35,7 @@ extern "C"
 #include <libavutil/pixdesc.h>
 }
 
-using namespace KODI::VIDEO::GEOMETRY;
+using namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY;
 
 static ColorRange GeometryColorRange(const VideoPicture& picture, const CDVDStreamInfo& hint)
 {
@@ -208,7 +208,7 @@ bool CVideoFileGeometry::CanMeasure(const CFileItem& fileItem)
   // opens without one, so it is measured like any other file.
   const std::string& path = fileItem.GetDynPath();
   const bool title = URIUtils::IsBlurayPath(path);
-  if (!title && !KODI::VIDEO::IsBDFile(fileItem))
+  if (!title && !UNIVERSAL MEDIA CENTER::VIDEO::IsBDFile(fileItem))
     return false;
 
   return CDVDFileInfo::IsExtractableLocation(title ? CURL(path).GetHostName() : path);

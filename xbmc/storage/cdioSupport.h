@@ -82,7 +82,7 @@ typedef struct signature
 }
 signature_t;
 
-typedef std::map<cdtext_field_t, std::string> xbmc_cdtext_t;
+typedef std::map<cdtext_field_t, std::string> _cdtext_t;
 
 typedef struct TRACKINFO
 {
@@ -93,7 +93,7 @@ typedef struct TRACKINFO
   int nFrames;          // Can be used for cddb query
   int nMins;            // minutes playtime part of Track
   int nSecs;            // seconds playtime part of Track
-  xbmc_cdtext_t cdtext; // CD-Text for this track
+  _cdtext_t cdtext; // CD-Text for this track
 }
 trackinfo;
 
@@ -121,7 +121,7 @@ public:
   }
 
   trackinfo GetTrackInformation( int nTrack ) { return m_ti[nTrack -1]; }
-  const xbmc_cdtext_t& GetDiscCDTextInformation() const { return m_cdtext; }
+  const _cdtext_t& GetDiscCDTextInformation() const { return m_cdtext; }
 
   bool HasDataTracks() { return (m_nNumData > 0); }
   bool HasAudioTracks() { return (m_nNumAudio > 0); }
@@ -225,7 +225,7 @@ public:
     if (nTrack > 0 && nTrack <= 99)
       m_ti[nTrack - 1] = std::move(nInfo);
   }
-  void SetDiscCDTextInformation(xbmc_cdtext_t cdtext) { m_cdtext = std::move(cdtext); }
+  void SetDiscCDTextInformation(_cdtext_t cdtext) { m_cdtext = std::move(cdtext); }
 
   void SetCddbDiscId( uint32_t ulCddbDiscId ) { m_ulCddbDiscId = ulCddbDiscId; }
   void SetDiscLength( int nLength ) { m_nLength = nLength; }
@@ -246,7 +246,7 @@ private:
   int m_nLength;           // Disclength can be used for cddb query, also see trackinfo.nFrames
   bool m_bHasCDDBInfo;
   std::string m_strDiscLabel;
-  xbmc_cdtext_t m_cdtext;  //  CD-Text for this disc
+  _cdtext_t m_cdtext;  //  CD-Text for this disc
 };
 
 class CLibcdio : public CCriticalSection
@@ -300,7 +300,7 @@ public:
   void PrintAnalysis(int fs, int num_audio);
 
   CCdInfo* GetCdInfo(char* cDeviceFileName=NULL);
-  void GetCdTextInfo(xbmc_cdtext_t &xcdt, int trackNum);
+  void GetCdTextInfo(_cdtext_t &xcdt, int trackNum);
 
 protected:
   int ReadBlock(int superblock, uint32_t offset, uint8_t bufnum, track_t track_num);

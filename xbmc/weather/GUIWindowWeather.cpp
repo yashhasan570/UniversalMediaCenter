@@ -19,7 +19,7 @@
 
 #include <utility>
 
-using namespace KODI::WEATHER;
+using namespace UNIVERSAL MEDIA CENTER::WEATHER;
 
 namespace
 {

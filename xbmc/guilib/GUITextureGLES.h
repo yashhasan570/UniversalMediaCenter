@@ -36,7 +36,7 @@ public:
 
 protected:
   void Free() override;
-  void Begin(KODI::UTILS::COLOR::Color color) override;
+  void Begin(UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color color) override;
   void Draw(float* x, float* y, float* z, const CRect& texture, const CRect& diffuse, int orientation) override;
   void End() override;
   bool DrawQuads(const std::vector<Quad>& quads, unsigned int version, const CRect& rect) override;
@@ -55,7 +55,7 @@ private:
 
   std::array<GLubyte, 4> m_col;
 
-  KODI::UTILS::GL::CGLBufferObject m_quadBuffer{GL_ARRAY_BUFFER};
+  UNIVERSAL MEDIA CENTER::UTILS::GL::CGLBufferObject m_quadBuffer{GL_ARRAY_BUFFER};
   unsigned int m_quadBufferVersion{0};
   std::size_t m_quadCount{0};
 

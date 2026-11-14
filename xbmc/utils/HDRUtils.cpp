@@ -13,7 +13,7 @@ extern "C"
 #include <libavcodec/avcodec.h>
 }
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace UTILS
 {
@@ -110,4 +110,4 @@ const AVContentLightMetadata* GetContentLightMetadata(const VideoPicture& pictur
 }
 
 } // namespace UTILS
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

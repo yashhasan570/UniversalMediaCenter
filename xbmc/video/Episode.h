@@ -18,7 +18,7 @@
 class CFileItem;
 
 // single episode information
-namespace KODI::VIDEO
+namespace UNIVERSAL MEDIA CENTER::VIDEO
 {
 struct EPISODE
 {
@@ -46,4 +46,4 @@ struct EPISODE
 };
 
   typedef std::vector<EPISODE> EPISODELIST;
-  } // namespace KODI::VIDEO
+  } // namespace UNIVERSAL MEDIA CENTER::VIDEO

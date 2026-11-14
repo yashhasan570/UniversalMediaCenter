@@ -10,7 +10,7 @@
 
 #include "input/joysticks/interfaces/IInputHandler.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -53,4 +53,4 @@ private:
   JOYSTICK::IInputHandler* m_gameInput;
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

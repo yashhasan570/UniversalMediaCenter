@@ -11,7 +11,7 @@
 #include <cassert>
 #include <cstring>
 
-using namespace KODI::UTILS::GL;
+using namespace UNIVERSAL MEDIA CENTER::UTILS::GL;
 
 CGLBufferArena::CGLBufferArena(std::vector<std::size_t> slotSizes, std::size_t bufferSize)
 {

@@ -22,7 +22,7 @@ extern "C"
 
 #include <gtest/gtest.h>
 
-using namespace KODI::RENDERING::CAPTURE;
+using namespace UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE;
 
 namespace
 {

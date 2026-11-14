@@ -39,7 +39,7 @@ namespace
 {
 constexpr int NFS_MAX_PATH = 4096;
 
-KODI::TIME::FileTime GetDirEntryTime(const struct nfsdirent* dirent)
+UNIVERSAL MEDIA CENTER::TIME::FileTime GetDirEntryTime(const struct nfsdirent* dirent)
 {
   // if modification date is missing, use create date
   const int64_t timeDate =
@@ -49,12 +49,12 @@ KODI::TIME::FileTime GetDirEntryTime(const struct nfsdirent* dirent)
   ll *= 10000000ll;
   ll += 116444736000000000ll;
 
-  KODI::TIME::FileTime fileTime{};
+  UNIVERSAL MEDIA CENTER::TIME::FileTime fileTime{};
   fileTime.lowDateTime = static_cast<DWORD>(ll & 0xffffffff);
   fileTime.highDateTime = static_cast<DWORD>(ll >> 32);
 
-  KODI::TIME::FileTime localTime{};
-  KODI::TIME::FileTimeToLocalFileTime(&fileTime, &localTime);
+  UNIVERSAL MEDIA CENTER::TIME::FileTime localTime{};
+  UNIVERSAL MEDIA CENTER::TIME::FileTimeToLocalFileTime(&fileTime, &localTime);
 
   return localTime;
 }

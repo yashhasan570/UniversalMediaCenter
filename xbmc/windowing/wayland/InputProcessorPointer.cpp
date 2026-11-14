@@ -14,7 +14,7 @@
 
 #include <linux/input.h>
 
-using namespace KODI::WINDOWING::WAYLAND;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::WAYLAND;
 
 namespace
 {
@@ -25,11 +25,11 @@ int WaylandToXbmcButton(std::uint32_t button)
   switch (button)
   {
     case BTN_LEFT:
-      return XBMC_BUTTON_LEFT;
+      return _BUTTON_LEFT;
     case BTN_MIDDLE:
-      return XBMC_BUTTON_MIDDLE;
+      return _BUTTON_MIDDLE;
     case BTN_RIGHT:
-      return XBMC_BUTTON_RIGHT;
+      return _BUTTON_RIGHT;
     default:
       return -1;
   }
@@ -81,15 +81,15 @@ void CInputProcessorPointer::OnPointerButton(CSeat* seat, std::uint32_t serial, 
 {
   if (m_pointerOnSurface)
   {
-    int xbmcButton = WaylandToXbmcButton(button);
-    if (xbmcButton < 0)
+    int Button = WaylandToXbmcButton(button);
+    if (Button < 0)
     {
       // Button is unmapped
       return;
     }
 
     bool pressed = (state == wayland::pointer_button_state::pressed);
-    SendMouseButton(xbmcButton, pressed);
+    SendMouseButton(Button, pressed);
   }
 }
 
@@ -99,13 +99,13 @@ void CInputProcessorPointer::OnPointerAxis(CSeat* seat, std::uint32_t time, wayl
   {
     // For axis events we only care about the vector direction
     // and not the scalar magnitude. Every axis event callback
-    // generates one scroll button event for XBMC
+    // generates one scroll button event for 
 
     // Negative is up
-    auto xbmcButton = static_cast<unsigned char> ((value < 0.0) ? XBMC_BUTTON_WHEELUP : XBMC_BUTTON_WHEELDOWN);
+    auto Button = static_cast<unsigned char> ((value < 0.0) ? _BUTTON_WHEELUP : _BUTTON_WHEELDOWN);
     // Simulate a single click of the wheel-equivalent "button"
-    SendMouseButton(xbmcButton, true);
-    SendMouseButton(xbmcButton, false);
+    SendMouseButton(Button, true);
+    SendMouseButton(Button, false);
   }
 }
 
@@ -121,16 +121,16 @@ void CInputProcessorPointer::SetMousePosFromSurface(CPointGen<double> position)
 
 void CInputProcessorPointer::SendMouseMotion()
 {
-  XBMC_Event event{};
-  event.type = XBMC_MOUSEMOTION;
+  _Event event{};
+  event.type = _MOUSEMOTION;
   event.motion = {m_pointerPosition.x, m_pointerPosition.y};
   m_handler.OnPointerEvent(event);
 }
 
 void CInputProcessorPointer::SendMouseButton(unsigned char button, bool pressed)
 {
-  XBMC_Event event{};
-  event.type = pressed ? XBMC_MOUSEBUTTONDOWN : XBMC_MOUSEBUTTONUP;
+  _Event event{};
+  event.type = pressed ? _MOUSEBUTTONDOWN : _MOUSEBUTTONUP;
   event.button = {button, m_pointerPosition.x, m_pointerPosition.y};
   m_handler.OnPointerEvent(event);
 }

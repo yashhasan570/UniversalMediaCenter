@@ -27,7 +27,7 @@
 
 #include "PlatformDefs.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RENDERING
 {
@@ -36,7 +36,7 @@ namespace CAPTURE
 class CCaptureBlit;
 }
 } // namespace RENDERING
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER
 
 struct VideoPicture;
 
@@ -77,7 +77,7 @@ public:
   void FrameMove();
   void FrameWait(std::chrono::milliseconds duration);
   void Render(bool clear, DWORD flags = 0, DWORD alpha = 255, bool gui = true);
-  bool CompositeVideoCapture(KODI::RENDERING::CAPTURE::CaptureResult& result);
+  bool CompositeVideoCapture(UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CaptureResult& result);
 
   RESOLUTION GetResolution();
   void UpdateResolution();
@@ -171,7 +171,7 @@ protected:
 
   CBaseRenderer *m_pRenderer = nullptr;
   //! Owns the video tap's private FBO; render-thread only, reset in UnInit
-  std::unique_ptr<KODI::RENDERING::CAPTURE::CCaptureBlit> m_captureBlit;
+  std::unique_ptr<UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CCaptureBlit> m_captureBlit;
   OVERLAY::CRenderer m_overlays;
   CDebugRenderer m_debugRenderer;
   mutable CCriticalSection m_statelock;

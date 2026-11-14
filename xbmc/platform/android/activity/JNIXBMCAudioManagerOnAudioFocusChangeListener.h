@@ -14,13 +14,13 @@
 namespace jni
 {
 
-class CJNIXBMCAudioManagerOnAudioFocusChangeListener : public CJNIAudioManagerAudioFocusChangeListener, public CJNIInterfaceImplem<CJNIXBMCAudioManagerOnAudioFocusChangeListener>
+class CJNIAudioManagerOnAudioFocusChangeListener : public CJNIAudioManagerAudioFocusChangeListener, public CJNIInterfaceImplem<CJNIAudioManagerOnAudioFocusChangeListener>
 {
 public:
-  CJNIXBMCAudioManagerOnAudioFocusChangeListener();
-  CJNIXBMCAudioManagerOnAudioFocusChangeListener(const CJNIXBMCAudioManagerOnAudioFocusChangeListener& other);
-  explicit CJNIXBMCAudioManagerOnAudioFocusChangeListener(const jni::jhobject &object) : CJNIBase(object) {}
-  ~CJNIXBMCAudioManagerOnAudioFocusChangeListener() override;
+  CJNIAudioManagerOnAudioFocusChangeListener();
+  CJNIAudioManagerOnAudioFocusChangeListener(const CJNIAudioManagerOnAudioFocusChangeListener& other);
+  explicit CJNIAudioManagerOnAudioFocusChangeListener(const jni::jhobject &object) : CJNIBase(object) {}
+  ~CJNIAudioManagerOnAudioFocusChangeListener() override;
 
   static void RegisterNatives(JNIEnv* env);
 

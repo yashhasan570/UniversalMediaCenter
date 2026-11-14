@@ -16,7 +16,7 @@
 class CFileItem;
 class CFileItemList;
 
-namespace KODI::VIDEO::UTILS
+namespace UNIVERSAL MEDIA CENTER::VIDEO::UTILS
 {
 /*! \brief Start playback of the given item. If the item is a folder, build a playlist with
   all items contained in the folder and start playback of the playlist. If item is a single video
@@ -100,4 +100,4 @@ bool ChooseDiscPlaylist(CFileItem& item);
  */
 void NotifyItemPathChanged(const CFileItem& item, const std::string& oldPath, int oldFileId = -1);
 
-} // namespace KODI::VIDEO::UTILS
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO::UTILS

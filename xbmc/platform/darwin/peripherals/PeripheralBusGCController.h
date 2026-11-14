@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "addons/kodi-dev-kit/include/kodi/addon-instance/peripheral/PeripheralUtils.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/addon-instance/peripheral/PeripheralUtils.h"
 #include "peripherals/PeripheralTypes.h"
 #include "peripherals/bus/PeripheralBus.h"
 #include "threads/CriticalSection.h"
@@ -50,7 +50,7 @@ public:
 
 
 private:
-  void GetEvents(std::vector<kodi::addon::PeripheralEvent>& events);
+  void GetEvents(std::vector<addon::PeripheralEvent>& events);
   std::unique_ptr<PeripheralBusGCControllerWrapper> m_peripheralGCController;
   std::string GetDeviceLocation(int deviceId);
   bool GetDeviceId(const std::string& deviceLocation, int& deviceId);

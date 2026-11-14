@@ -15,13 +15,13 @@
 
 using namespace std::chrono_literals;
 
-namespace XBMCAddon
+namespace Addon
 {
-  namespace xbmc
+  namespace 
   {
     Monitor::Monitor(): abortEvent(true)
     {
-      XBMC_TRACE;
+      _TRACE;
       if (languageHook)
       {
         Id = languageHook->GetAddonId();
@@ -32,13 +32,13 @@ namespace XBMCAddon
 
     void Monitor::AbortNotify()
     {
-      XBMC_TRACE;
+      _TRACE;
       abortEvent.Set();
     }
 
     bool Monitor::waitForAbort(double timeout)
     {
-      XBMC_TRACE;
+      _TRACE;
       int timeoutMS = ceil(timeout * 1000);
       XbmcThreads::EndTime<> endTime{std::chrono::milliseconds(timeoutMS)};
 
@@ -61,13 +61,13 @@ namespace XBMCAddon
 
     bool Monitor::abortRequested()
     {
-      XBMC_TRACE;
+      _TRACE;
       return abortEvent.Signaled();
     }
 
     Monitor::~Monitor()
     {
-      XBMC_TRACE;
+      _TRACE;
       deallocating();
       DelayedCallGuard dg(languageHook);
       // we're shutting down so unregister me.

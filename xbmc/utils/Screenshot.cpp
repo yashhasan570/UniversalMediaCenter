@@ -64,10 +64,10 @@ unsigned int CaptureXbFormat(AVPixelFormat format)
 
 // Encode a delivered capture to the destination file; runs on the capture
 // service's callback worker.
-void WriteCapture(const KODI::RENDERING::CAPTURE::CaptureResult& result,
+void WriteCapture(const UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CaptureResult& result,
                   const std::string& filename)
 {
-  using namespace KODI::RENDERING::CAPTURE;
+  using namespace UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE;
   if (!result.pixels)
   {
     CLog::Log(LOGERROR, "Unable to write screenshot {}: no pixels", CURL::GetRedacted(filename));
@@ -94,9 +94,9 @@ void WriteCapture(const KODI::RENDERING::CAPTURE::CaptureResult& result,
 } // namespace
 
 void CScreenShot::TakeScreenshot(const std::string& filename,
-                                 KODI::RENDERING::CAPTURE::CaptureContent content)
+                                 UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CaptureContent content)
 {
-  using namespace KODI::RENDERING::CAPTURE;
+  using namespace UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE;
 
   const auto captureService = CServiceBroker::GetCaptureService();
   if (!captureService)
@@ -147,12 +147,12 @@ std::string ResolveScreenshotDir()
 
 void CScreenShot::TakeScreenshot()
 {
-  TakeScreenshot(KODI::RENDERING::CAPTURE::CaptureContent::COMPOSITE);
+  TakeScreenshot(UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CaptureContent::COMPOSITE);
 }
 
-void CScreenShot::TakeScreenshot(KODI::RENDERING::CAPTURE::CaptureContent content)
+void CScreenShot::TakeScreenshot(UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CaptureContent content)
 {
-  using namespace KODI::RENDERING::CAPTURE;
+  using namespace UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE;
 
   const auto captureService = CServiceBroker::GetCaptureService();
   if (!captureService)
@@ -192,7 +192,7 @@ void CScreenShot::TakeScreenshot(KODI::RENDERING::CAPTURE::CaptureContent conten
 
 void CScreenShot::TakeScreenshotBoth()
 {
-  using namespace KODI::RENDERING::CAPTURE;
+  using namespace UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE;
 
   const auto captureService = CServiceBroker::GetCaptureService();
   if (!captureService)

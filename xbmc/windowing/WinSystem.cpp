@@ -267,7 +267,7 @@ int CWinSystemBase::NoOfBuffers(void)
   return buffers;
 }
 
-KODI::WINDOWING::COSScreenSaverManager* CWinSystemBase::GetOSScreenSaver()
+UNIVERSAL MEDIA CENTER::WINDOWING::COSScreenSaverManager* CWinSystemBase::GetOSScreenSaver()
 {
   if (!m_screenSaverManager)
   {
@@ -275,7 +275,7 @@ KODI::WINDOWING::COSScreenSaverManager* CWinSystemBase::GetOSScreenSaver()
     if (impl)
     {
       m_screenSaverManager =
-          std::make_unique<KODI::WINDOWING::COSScreenSaverManager>(std::move(impl));
+          std::make_unique<UNIVERSAL MEDIA CENTER::WINDOWING::COSScreenSaverManager>(std::move(impl));
     }
   }
 

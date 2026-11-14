@@ -13,7 +13,7 @@
 #include <FileAPI.h>
 #include <Windows.h>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace TIME
 {
@@ -98,4 +98,4 @@ int LocalFileTimeToFileTime(const FileTime* localFileTime, FileTime* fileTime)
 }
 
 } // namespace TIME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

@@ -15,7 +15,7 @@
 #include <atomic>
 #include <chrono>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -129,4 +129,4 @@ private:
   CEvent m_quiescedEvent{true};
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

@@ -6,20 +6,20 @@
  *  See LICENSES/README.md for more information.
  */
 
-#import "platform/darwin/tvos/XBMCApplication.h"
+#import "platform/darwin/tvos/Application.h"
 
 #import "platform/darwin/NSLogDebugHelpers.h"
 #import "platform/darwin/tvos/PreflightHandler.h"
 #import "platform/darwin/tvos/TVOSTopShelf.h"
-#import "platform/darwin/tvos/XBMCController.h"
+#import "platform/darwin/tvos/Controller.h"
 
 #import <AVFoundation/AVFoundation.h>
 
-@implementation XBMCApplicationDelegate
+@implementation ApplicationDelegate
 
-- (XBMCController*)xbmcController
+- (Controller*)Controller
 {
-  return static_cast<XBMCController*>(self.window.rootViewController);
+  return static_cast<Controller*>(self.window.rootViewController);
 }
 
 #pragma mark - Shutdown Procedures
@@ -38,14 +38,14 @@
   if (application.applicationState == UIApplicationStateBackground)
   {
     // the app is turn into background, not in by screen lock which has app state inactive.
-    [self.xbmcController pauseAnimation];
-    [self.xbmcController enterBackground];
+    [self.Controller pauseAnimation];
+    [self.Controller enterBackground];
   }
 }
 
 - (void)applicationWillTerminate:(UIApplication*)application
 {
-  [self.xbmcController stopAnimation];
+  [self.Controller stopAnimation];
 }
 
 #pragma mark - Startup Procedures
@@ -61,8 +61,8 @@
 - (void)applicationWillEnterForeground:(UIApplication*)application
 {
   // Occurs only after an applicationDidEnterBackground()
-  [self.xbmcController resumeAnimation];
-  [self.xbmcController enterForeground];
+  [self.Controller resumeAnimation];
+  [self.Controller enterForeground];
 }
 
 - (BOOL)application:(UIApplication*)application
@@ -79,9 +79,9 @@
 
   // UI setup
   self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
-  self.window.rootViewController = [XBMCController new];
+  self.window.rootViewController = [Controller new];
   [self.window makeKeyAndVisible];
-  [self.xbmcController startAnimation];
+  [self.Controller startAnimation];
 
   // audio session setup
   auto audioSession = AVAudioSession.sharedInstance;
@@ -127,7 +127,7 @@ int main(int argc, char* argv[])
     @try
     {
       retVal =
-          UIApplicationMain(argc, argv, nil, NSStringFromClass([XBMCApplicationDelegate class]));
+          UIApplicationMain(argc, argv, nil, NSStringFromClass([ApplicationDelegate class]));
     }
     @catch (id theException)
     {

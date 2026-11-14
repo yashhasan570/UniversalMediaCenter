@@ -26,12 +26,12 @@ bool CPlatformWin32::InitStageOne()
     return false;
 
   CEnvironment::setenv("PYTHONHOME",
-                       CSpecialProtocol::TranslatePath("special://xbmc/system/python"));
+                       CSpecialProtocol::TranslatePath("special:///system/python"));
 
   const std::string pyPath = fmt::format(
-      "{};{};{}", CSpecialProtocol::TranslatePath("special://xbmc/system/python/DLLs"),
-      CSpecialProtocol::TranslatePath("special://xbmc/system/python/Lib"),
-      CSpecialProtocol::TranslatePath("special://xbmc/system/python/Lib/site-packages"));
+      "{};{};{}", CSpecialProtocol::TranslatePath("special:///system/python/DLLs"),
+      CSpecialProtocol::TranslatePath("special:///system/python/Lib"),
+      CSpecialProtocol::TranslatePath("special:///system/python/Lib/site-packages"));
 
   CEnvironment::setenv("PYTHONPATH", pyPath);
   CEnvironment::setenv("OS", "win32"); // for python scripts that check the OS

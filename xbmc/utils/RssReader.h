@@ -11,13 +11,13 @@
 #include "threads/CriticalSection.h"
 #include "threads/Thread.h"
 #include "utils/IRssObserver.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 
 #include <list>
 #include <string>
 #include <vector>
 
-namespace KODI::TIME
+namespace UNIVERSAL MEDIA CENTER::TIME
 {
 struct SystemTime;
 }
@@ -52,10 +52,10 @@ private:
 
   std::vector<std::wstring> m_strFeed;
   std::vector<std::wstring> m_strColors;
-  std::vector<KODI::TIME::SystemTime*> m_vecTimeStamps;
+  std::vector<UNIVERSAL MEDIA CENTER::TIME::SystemTime*> m_vecTimeStamps;
   std::vector<int> m_vecUpdateTimes;
   int m_spacesBetweenFeeds;
-  CXBMCTinyXML2 m_xml;
+  CTinyXML2 m_xml;
   std::list<std::string> m_tagSet;
   std::vector<std::string> m_vecUrls;
   std::vector<int> m_vecQueue;

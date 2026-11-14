@@ -28,8 +28,8 @@
 #include "windowing/GraphicContext.h" //! @todo Remove me
 #include "windowing/WinSystem.h"
 
-using namespace KODI;
-using namespace KODI::GUILIB;
+using namespace UNIVERSAL MEDIA CENTER;
+using namespace UNIVERSAL MEDIA CENTER::GUILIB;
 using namespace RETRO;
 
 CGameWindowFullScreen::CGameWindowFullScreen(void)

@@ -19,11 +19,11 @@
 
 #include <utility>
 
-using KODI::MEDIA::MediaTypeFromName;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaTypeFromName;
 
-namespace XBMCAddon
+namespace Addon
 {
-  namespace xbmc
+  namespace 
   {
     Actor::Actor(const String& name /* = emptyString */,
                  const String& role /* = emptyString */,
@@ -116,12 +116,12 @@ namespace XBMCAddon
     }
 
     ContentGeometrySection::ContentGeometrySection(
-        const KODI::VIDEO::GEOMETRY::GeometrySection& section)
+        const UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::GeometrySection& section)
       : m_section(section)
     {
     }
 
-    ContentGeometry::ContentGeometry(const KODI::VIDEO::GEOMETRY::EffectiveGeometry& geometry)
+    ContentGeometry::ContentGeometry(const UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::EffectiveGeometry& geometry)
       : m_geometry(geometry)
     {
     }
@@ -131,7 +131,7 @@ namespace XBMCAddon
       std::vector<ContentGeometrySection*> sections;
       sections.reserve(m_geometry.sections.size());
 
-      for (const KODI::VIDEO::GEOMETRY::GeometrySection& section : m_geometry.sections)
+      for (const UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::GeometrySection& section : m_geometry.sections)
         sections.push_back(new ContentGeometrySection(section));
 
       return sections;
@@ -210,7 +210,7 @@ namespace XBMCAddon
 
     String InfoTagVideo::getPictureURL()
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       infoTag->m_strPictureURL.Parse();
       return infoTag->m_strPictureURL.GetFirstThumbUrl();
     }
@@ -409,74 +409,74 @@ namespace XBMCAddon
                                    const String& type /* = "" */,
                                    bool isDefault /* = false */)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setUniqueIDRaw(infoTag, uniqueID, type, isDefault);
     }
 
     void InfoTagVideo::setUniqueIDs(const std::map<String, String, std::less<>>& uniqueIDs,
                                     const String& defaultUniqueID /* = "" */)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setUniqueIDsRaw(infoTag, uniqueIDs, defaultUniqueID);
     }
 
     void InfoTagVideo::setDbId(int dbId)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setDbIdRaw(infoTag, dbId);
     }
 
     void InfoTagVideo::setYear(int year)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setYearRaw(infoTag, year);
     }
 
     void InfoTagVideo::setEpisode(int episode)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setEpisodeRaw(infoTag, episode);
     }
 
     void InfoTagVideo::setSeason(int season)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setSeasonRaw(infoTag, season);
     }
 
     void InfoTagVideo::setSortEpisode(int sortEpisode)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setSortEpisodeRaw(infoTag, sortEpisode);
     }
 
     void InfoTagVideo::setSortSeason(int sortSeason)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setSortSeasonRaw(infoTag, sortSeason);
     }
 
     void InfoTagVideo::setEpisodeGuide(const String& episodeGuide)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setEpisodeGuideRaw(infoTag, episodeGuide);
     }
 
     void InfoTagVideo::setTop250(int top250)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setTop250Raw(infoTag, top250);
     }
 
     void InfoTagVideo::setSetId(int setId)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setSetIdRaw(infoTag, setId);
     }
 
     void InfoTagVideo::setTrackNumber(int trackNumber)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setTrackNumberRaw(infoTag, trackNumber);
     }
 
@@ -485,146 +485,146 @@ namespace XBMCAddon
                                  const String& type /* = "" */,
                                  bool isDefault /* = false */)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setRatingRaw(infoTag, rating, votes, type, isDefault);
     }
 
     void InfoTagVideo::setRatings(const std::map<String, Tuple<float, int>>& ratings,
                                   const String& defaultRating /* = "" */)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setRatingsRaw(infoTag, ratings, defaultRating);
     }
 
     void InfoTagVideo::setUserRating(int userRating)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setUserRatingRaw(infoTag, userRating);
     }
 
     void InfoTagVideo::setPlaycount(int playcount)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setPlaycountRaw(infoTag, playcount);
     }
 
     void InfoTagVideo::setMpaa(const String& mpaa)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setMpaaRaw(infoTag, mpaa);
     }
 
     void InfoTagVideo::setPlot(const String& plot)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setPlotRaw(infoTag, plot);
     }
 
     void InfoTagVideo::setPlotOutline(const String& plotOutline)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setPlotOutlineRaw(infoTag, plotOutline);
     }
 
     void InfoTagVideo::setTitle(const String& title)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setTitleRaw(infoTag, title);
     }
 
     void InfoTagVideo::setOriginalTitle(const String& originalTitle)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setOriginalTitleRaw(infoTag, originalTitle);
     }
 
     bool InfoTagVideo::setOriginalLanguage(const String& language)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       return setOriginalLanguageRaw(infoTag, language);
     }
 
     void InfoTagVideo::setSortTitle(const String& sortTitle)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setSortTitleRaw(infoTag, sortTitle);
     }
 
     void InfoTagVideo::setTagLine(const String& tagLine)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setTagLineRaw(infoTag, tagLine);
     }
 
     void InfoTagVideo::setTvShowTitle(const String& tvshowTitle)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setTvShowTitleRaw(infoTag, tvshowTitle);
     }
 
     void InfoTagVideo::setTvShowStatus(const String& tvshowStatus)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setTvShowStatusRaw(infoTag, tvshowStatus);
     }
 
     void InfoTagVideo::setGenres(std::vector<String> genre)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setGenresRaw(infoTag, std::move(genre));
     }
 
     void InfoTagVideo::setCountries(std::vector<String> countries)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setCountriesRaw(infoTag, std::move(countries));
     }
 
     void InfoTagVideo::setDirectors(std::vector<String> directors)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setDirectorsRaw(infoTag, std::move(directors));
     }
 
     void InfoTagVideo::setStudios(std::vector<String> studios)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setStudiosRaw(infoTag, std::move(studios));
     }
 
     void InfoTagVideo::setWriters(std::vector<String> writers)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setWritersRaw(infoTag, std::move(writers));
     }
 
     void InfoTagVideo::setDuration(int duration)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setDurationRaw(infoTag, duration);
     }
 
     void InfoTagVideo::setPremiered(const String& premiered)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setPremieredRaw(infoTag, premiered);
     }
 
     void InfoTagVideo::setSet(const String& set)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setSetRaw(infoTag, set);
     }
 
     void InfoTagVideo::setSetOverview(const String& setOverview)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setSetOverviewRaw(infoTag, setOverview);
     }
 
     void InfoTagVideo::setTags(std::vector<String> tags)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setTagsRaw(infoTag, std::move(tags));
     }
 
@@ -635,61 +635,61 @@ namespace XBMCAddon
 
     void InfoTagVideo::setProductionCode(const String& productionCode)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setProductionCodeRaw(infoTag, productionCode);
     }
 
     void InfoTagVideo::setFirstAired(const String& firstAired)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setFirstAiredRaw(infoTag, firstAired);
     }
 
     void InfoTagVideo::setLastPlayed(const String& lastPlayed)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setLastPlayedRaw(infoTag, lastPlayed);
     }
 
     void InfoTagVideo::setAlbum(const String& album)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setAlbumRaw(infoTag, album);
     }
 
     void InfoTagVideo::setVotes(int votes)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setVotesRaw(infoTag, votes);
     }
 
     void InfoTagVideo::setTrailer(const String& trailer)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setTrailerRaw(infoTag, trailer);
     }
 
     void InfoTagVideo::setPath(const String& path)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setPathRaw(infoTag, path);
     }
 
     void InfoTagVideo::setFilenameAndPath(const String& filenameAndPath)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setFilenameAndPathRaw(infoTag, filenameAndPath);
     }
 
     void InfoTagVideo::setIMDBNumber(const String& imdbNumber)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setIMDBNumberRaw(infoTag, imdbNumber);
     }
 
     void InfoTagVideo::setDateAdded(const String& dateAdded)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setDateAddedRaw(infoTag, dateAdded);
     }
 
@@ -700,13 +700,13 @@ namespace XBMCAddon
 
     void InfoTagVideo::setShowLinks(std::vector<String> showLinks)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setShowLinksRaw(infoTag, std::move(showLinks));
     }
 
     void InfoTagVideo::setArtists(std::vector<String> artists)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setArtistsRaw(infoTag, std::move(artists));
     }
 
@@ -718,14 +718,14 @@ namespace XBMCAddon
         cast.push_back(actor->ToActorInfo());
 
       {
-        XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+        AddonUtils::GuiLock lock(languageHook, offscreen);
         setCastRaw(infoTag, std::move(cast));
       }
     }
 
     void InfoTagVideo::setResumePoint(double time, double totalTime /* = 0.0 */)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setResumePointRaw(infoTag, time, totalTime);
     }
 
@@ -733,13 +733,13 @@ namespace XBMCAddon
                                  std::string name /* = "" */,
                                  std::string plot /* = "" */)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       addSeasonRaw(infoTag, number, std::move(name), std::move(plot));
     }
 
     void InfoTagVideo::addSeasons(const std::vector<Tuple<int, std::string, std::string>>& seasons)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       addSeasonsRaw(infoTag, seasons);
     }
 
@@ -750,7 +750,7 @@ namespace XBMCAddon
 
       auto streamDetail = stream->ToStreamDetailVideo();
       {
-        XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+        AddonUtils::GuiLock lock(languageHook, offscreen);
         addStreamRaw(infoTag, streamDetail);
         finalizeStreamsRaw(infoTag);
       }
@@ -763,7 +763,7 @@ namespace XBMCAddon
 
       auto streamDetail = stream->ToStreamDetailAudio();
       {
-        XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+        AddonUtils::GuiLock lock(languageHook, offscreen);
         addStreamRaw(infoTag, streamDetail);
         finalizeStreamsRaw(infoTag);
       }
@@ -776,7 +776,7 @@ namespace XBMCAddon
 
       auto streamDetail = stream->ToStreamDetailSubtitle();
       {
-        XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+        AddonUtils::GuiLock lock(languageHook, offscreen);
         addStreamRaw(infoTag, streamDetail);
         finalizeStreamsRaw(infoTag);
       }
@@ -791,13 +791,13 @@ namespace XBMCAddon
                                            bool isgz,
                                            int season)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       addAvailableArtworkRaw(infoTag, url, art_type, preview, referrer, cache, post, isgz, season);
     }
 
     void InfoTagVideo::setAvailableFanart(const std::vector<Properties>& images)
     {
-      XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
+      AddonUtils::GuiLock lock(languageHook, offscreen);
       setAvailableFanartRaw(infoTag, images);
     }
 
@@ -1070,7 +1070,7 @@ namespace XBMCAddon
 
     void InfoTagVideo::setMediaTypeRaw(CVideoInfoTag* infoTag, const String& mediaType)
     {
-      if (MediaTypeFromName(mediaType) != KODI::MEDIA::TYPE::NONE)
+      if (MediaTypeFromName(mediaType) != UNIVERSAL MEDIA CENTER::MEDIA::TYPE::NONE)
         infoTag->m_type = mediaType;
     }
 

@@ -13,7 +13,7 @@
 
 #include <mutex>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RENDERING
 {
@@ -287,4 +287,4 @@ void CCaptureService::RemoveActive(const std::shared_ptr<CaptureRequest>& reques
 
 } // namespace CAPTURE
 } // namespace RENDERING
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

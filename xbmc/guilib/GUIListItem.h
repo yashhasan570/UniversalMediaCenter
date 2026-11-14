@@ -35,8 +35,8 @@ class CGUIListItem
 {
 public:
   ///
-  /// @ingroup controls python_xbmcgui_listitem
-  /// @defgroup kodi_guilib_listitem_iconoverlay Overlay icon types
+  /// @ingroup controls python_gui_listitem
+  /// @defgroup lib_listitem_iconoverlay Overlay icon types
   /// @brief Overlay icon types used on list item.
   /// @{
   enum GUIIconOverlay { ICON_OVERLAY_NONE = 0,   //!< Value **0** - No overlay icon
@@ -79,14 +79,14 @@ public:
    \param art a type:url map for artwork
    \sa GetArt
    */
-  void SetArt(const KODI::ART::Artwork& art);
+  void SetArt(const UNIVERSAL MEDIA CENTER::ART::Artwork& art);
 
   /*! \brief append artwork to an item
    \param art a type:url map for artwork
    \param prefix a prefix for the art, if applicable.
    \sa GetArt
    */
-  void AppendArt(const KODI::ART::Artwork& art, const std::string& prefix = "");
+  void AppendArt(const UNIVERSAL MEDIA CENTER::ART::Artwork& art, const std::string& prefix = "");
 
   /*! \brief set a fallback image for art
    \param from the type to fallback from
@@ -111,7 +111,7 @@ public:
    \return a type:url map for artwork
    \sa SetArt
    */
-  const KODI::ART::Artwork& GetArt() const;
+  const UNIVERSAL MEDIA CENTER::ART::Artwork& GetArt() const;
 
   /*! \brief Check whether an item has a particular piece of art
    Equivalent to !GetArt(type).empty()
@@ -203,6 +203,6 @@ private:
 
   PropertyMap m_mapProperties;
 
-  KODI::ART::Artwork m_art;
-  KODI::ART::Artwork m_artFallbacks;
+  UNIVERSAL MEDIA CENTER::ART::Artwork m_art;
+  UNIVERSAL MEDIA CENTER::ART::Artwork m_artFallbacks;
 };

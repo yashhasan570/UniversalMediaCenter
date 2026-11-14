@@ -15,7 +15,7 @@
 
 class CGUIListItem;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -57,4 +57,4 @@ private:
   bool m_ejected{false};
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

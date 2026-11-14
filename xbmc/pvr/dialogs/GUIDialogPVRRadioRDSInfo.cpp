@@ -120,7 +120,7 @@ bool CGUIDialogPVRRadioRDSInfo::OnMessage(CGUIMessage& message)
       }
 
       if (!text.empty())
-        textbox->SetInfo(KODI::GUILIB::GUIINFO::CGUIInfoLabel{text});
+        textbox->SetInfo(UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoLabel{text});
 
       SET_CONTROL_VISIBLE(CONTROL_INFO_LIST);
     }
@@ -222,7 +222,7 @@ bool CGUIDialogPVRRadioRDSInfo::InfoControl::Update(const std::string& textboxVa
     {
       m_spinControl->SetValue(m_iSpinControlId);
       m_textboxValue = textboxValue;
-      m_textbox->SetInfo(KODI::GUILIB::GUIINFO::CGUIInfoLabel{textboxValue});
+      m_textbox->SetInfo(UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoLabel{textboxValue});
       return true;
     }
   }

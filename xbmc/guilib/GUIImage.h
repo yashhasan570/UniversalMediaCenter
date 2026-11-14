@@ -69,7 +69,7 @@ public:
   bool CanFocus() const override;
   void UpdateInfo(const CGUIListItem *item = NULL) override;
 
-  virtual void SetInfo(const KODI::GUILIB::GUIINFO::CGUIInfoLabel &info);
+  virtual void SetInfo(const UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoLabel &info);
   virtual void SetFileName(const std::string& strFileName, bool setConstant = false, const bool useCache = true);
   virtual void SetAspectRatio(const CAspectRatio &aspect);
   virtual void SetScalingMethod(TEXTURE_SCALING scalingMethod);
@@ -79,8 +79,8 @@ public:
   void SetPosition(float posX, float posY) override;
   std::string GetDescription() const override;
   void SetCrossFade(unsigned int time);
-  void SetImageFilter(const KODI::GUILIB::GUIINFO::CGUIInfoLabel& imageFilter);
-  void SetDiffuseFilter(const KODI::GUILIB::GUIINFO::CGUIInfoLabel& diffuseFilter);
+  void SetImageFilter(const UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoLabel& imageFilter);
+  void SetDiffuseFilter(const UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoLabel& diffuseFilter);
 
   const std::string& GetFileName() const;
   float GetTextureWidth() const;
@@ -110,14 +110,14 @@ protected:
   */
   void UpdateDiffuseColor(const CGUIListItem* item);
 
-  void UpdateImageFilter(KODI::GUILIB::IMAGE_FILTER imageFilter);
-  void UpdateDiffuseFilter(KODI::GUILIB::IMAGE_FILTER diffuseFilter);
+  void UpdateImageFilter(UNIVERSAL MEDIA CENTER::GUILIB::IMAGE_FILTER imageFilter);
+  void UpdateDiffuseFilter(UNIVERSAL MEDIA CENTER::GUILIB::IMAGE_FILTER diffuseFilter);
 
   bool m_bDynamicResourceAlloc;
 
   // border + conditional info
   CTextureInfo m_image;
-  KODI::GUILIB::GUIINFO::CGUIInfoLabel m_info;
+  UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoLabel m_info;
 
   bool m_isTransitioning{false};
   bool m_hasNewStagingTexture{false};
@@ -140,9 +140,9 @@ protected:
   unsigned int m_currentFadeTime;
   unsigned int m_lastRenderTime;
 
-  KODI::GUILIB::GUIINFO::CGUIInfoLabel m_imageFilterInfo;
-  KODI::GUILIB::IMAGE_FILTER m_imageFilter{KODI::GUILIB::IMAGE_FILTER::UNKNOWN};
+  UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoLabel m_imageFilterInfo;
+  UNIVERSAL MEDIA CENTER::GUILIB::IMAGE_FILTER m_imageFilter{UNIVERSAL MEDIA CENTER::GUILIB::IMAGE_FILTER::UNKNOWN};
 
-  KODI::GUILIB::GUIINFO::CGUIInfoLabel m_diffuseFilterInfo;
-  KODI::GUILIB::IMAGE_FILTER m_diffuseFilter{KODI::GUILIB::IMAGE_FILTER::UNKNOWN};
+  UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoLabel m_diffuseFilterInfo;
+  UNIVERSAL MEDIA CENTER::GUILIB::IMAGE_FILTER m_diffuseFilter{UNIVERSAL MEDIA CENTER::GUILIB::IMAGE_FILTER::UNKNOWN};
 };

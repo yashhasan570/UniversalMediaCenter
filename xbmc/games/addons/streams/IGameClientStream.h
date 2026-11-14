@@ -12,7 +12,7 @@ struct game_stream_buffer;
 struct game_stream_packet;
 struct game_stream_properties;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -77,4 +77,4 @@ public:
 };
 
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

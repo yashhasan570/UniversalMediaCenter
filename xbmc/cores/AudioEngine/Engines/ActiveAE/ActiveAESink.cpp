@@ -1241,7 +1241,7 @@ void CActiveAESink::GenerateNoise()
   nb_floats *= m_sampleOfSilence.pkt->config.channels;
   size_t size = nb_floats*sizeof(float);
 
-  float *noise = static_cast<float*>(KODI::MEMORY::AlignedMalloc(size, 32));
+  float *noise = static_cast<float*>(UNIVERSAL MEDIA CENTER::MEMORY::AlignedMalloc(size, 32));
   if (!noise)
     throw std::bad_alloc();
 
@@ -1288,7 +1288,7 @@ void CActiveAESink::GenerateNoise()
   resampler->Resample(m_sampleOfSilence.pkt->data, m_sampleOfSilence.pkt->max_nb_samples,
                      (uint8_t**)&noise, m_sampleOfSilence.pkt->max_nb_samples, 1.0);
 
-  KODI::MEMORY::AlignedFree(noise);
+  UNIVERSAL MEDIA CENTER::MEMORY::AlignedFree(noise);
 }
 
 void CActiveAESink::SetSilenceTimer()

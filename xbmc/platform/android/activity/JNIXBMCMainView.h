@@ -19,11 +19,11 @@
 namespace jni
 {
 
-class CJNIXBMCMainView : virtual public CJNIBase, public CJNISurfaceHolderCallback, public CJNIInterfaceImplem<CJNIXBMCMainView>
+class CJNIMainView : virtual public CJNIBase, public CJNISurfaceHolderCallback, public CJNIInterfaceImplem<CJNIMainView>
 {
 public:
-  CJNIXBMCMainView(CJNISurfaceHolderCallback* callback);
-  ~CJNIXBMCMainView() override = default;
+  CJNIMainView(CJNISurfaceHolderCallback* callback);
+  ~CJNIMainView() override = default;
 
   static void RegisterNatives(JNIEnv* env);
 
@@ -39,7 +39,7 @@ public:
   bool isCreated() const;
 
 protected:
-  static CJNIXBMCMainView* m_instance;
+  static CJNIMainView* m_instance;
   CJNISurfaceHolderCallback* m_callback;
   static CEvent m_surfaceCreated;
 

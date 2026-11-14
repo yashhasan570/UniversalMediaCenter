@@ -36,13 +36,13 @@
 
 #include <memory>
 
- using namespace KODI::MESSAGING;
+ using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
 
 #define ACTIVE_WINDOW CServiceBroker::GetGUI()->GetWindowManager().GetActiveWindow()
 
-namespace XBMCAddon
+namespace Addon
 {
-  namespace xbmcgui
+  namespace gui
   {
     Dialog::~Dialog() = default;
 
@@ -92,7 +92,7 @@ namespace XBMCAddon
     bool Dialog::info(const ListItem* item)
     {
       DelayedCallGuard dcguard(languageHook);
-      const AddonClass::Ref<xbmcgui::ListItem> listitem(item);
+      const AddonClass::Ref<gui::ListItem> listitem(item);
       if (listitem->item->HasVideoInfoTag())
       {
         CGUIDialogVideoInfo::ShowFor(*listitem->item);
@@ -134,7 +134,7 @@ namespace XBMCAddon
         pDialog->SetHeading(CVariant{heading});
       for (const auto& item : list)
       {
-        AddonClass::Ref<ListItem> ritem = item.which() == XBMCAddon::first ? ListItem::fromString(item.former()) : AddonClass::Ref<ListItem>(item.later());
+        AddonClass::Ref<ListItem> ritem = item.which() == Addon::first ? ListItem::fromString(item.former()) : AddonClass::Ref<ListItem>(item.later());
         CFileItemPtr& fileItem = ritem->item;
         pDialog->Add(*fileItem);
       }
@@ -163,7 +163,7 @@ namespace XBMCAddon
 
       for (const auto& item : options)
       {
-        AddonClass::Ref<ListItem> ritem = item.which() == XBMCAddon::first ? ListItem::fromString(item.former()) : AddonClass::Ref<ListItem>(item.later());
+        AddonClass::Ref<ListItem> ritem = item.which() == Addon::first ? ListItem::fromString(item.former()) : AddonClass::Ref<ListItem>(item.later());
         CFileItemPtr& fileItem = ritem->item;
         pDialog->Add(*fileItem);
       }
@@ -222,8 +222,8 @@ namespace XBMCAddon
       DelayedCallGuard dcguard(languageHook);
       std::string value;
       std::string mask = maskparam;
-      const std::optional<KODI::MEDIA::MediaSection> section{
-          KODI::MEDIA::MediaSectionFromName(s_shares)};
+      const std::optional<UNIVERSAL MEDIA CENTER::MEDIA::MediaSection> section{
+          UNIVERSAL MEDIA CENTER::MEDIA::MediaSectionFromName(s_shares)};
 
       std::vector<CMediaSource> localShares;
       if (!section)
@@ -256,8 +256,8 @@ namespace XBMCAddon
                           bool useFileDirectories, const String& defaultt )
     {
       DelayedCallGuard dcguard(languageHook);
-      const std::optional<KODI::MEDIA::MediaSection> section{
-          KODI::MEDIA::MediaSectionFromName(s_shares)};
+      const std::optional<UNIVERSAL MEDIA CENTER::MEDIA::MediaSection> section{
+          UNIVERSAL MEDIA CENTER::MEDIA::MediaSectionFromName(s_shares)};
       std::vector<String> valuelist;
       String lmask = mask;
 
@@ -291,8 +291,8 @@ namespace XBMCAddon
     {
       DelayedCallGuard dcguard(languageHook);
       std::string value;
-      KODI::TIME::SystemTime timedate;
-      KODI::TIME::GetLocalTime(&timedate);
+      UNIVERSAL MEDIA CENTER::TIME::SystemTime timedate;
+      UNIVERSAL MEDIA CENTER::TIME::GetLocalTime(&timedate);
 
       if (!heading.empty())
       {
@@ -372,8 +372,8 @@ namespace XBMCAddon
     {
       DelayedCallGuard dcguard(languageHook);
       std::string value(defaultt);
-      KODI::TIME::SystemTime timedate;
-      KODI::TIME::GetLocalTime(&timedate);
+      UNIVERSAL MEDIA CENTER::TIME::SystemTime timedate;
+      UNIVERSAL MEDIA CENTER::TIME::GetLocalTime(&timedate);
 
       switch (type)
       {
@@ -488,11 +488,11 @@ namespace XBMCAddon
       return value;
     }
 
-    DialogProgress::~DialogProgress() { XBMC_TRACE; deallocating(); }
+    DialogProgress::~DialogProgress() { _TRACE; deallocating(); }
 
     void DialogProgress::deallocating()
     {
-      XBMC_TRACE;
+      _TRACE;
 
       if (dlg && open)
       {
@@ -558,11 +558,11 @@ namespace XBMCAddon
       return dlg->IsCanceled();
     }
 
-    DialogProgressBG::~DialogProgressBG() { XBMC_TRACE; deallocating(); }
+    DialogProgressBG::~DialogProgressBG() { _TRACE; deallocating(); }
 
     void DialogProgressBG::deallocating()
     {
-      XBMC_TRACE;
+      _TRACE;
 
       if (dlg && open)
       {

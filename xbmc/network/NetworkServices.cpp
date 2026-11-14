@@ -75,14 +75,14 @@
 #endif
 #endif
 
-using namespace KODI::MESSAGING;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
 using namespace JSONRPC;
 using namespace EVENTSERVER;
 #ifdef HAS_UPNP
 using namespace UPNP;
 #endif // HAS_UPNP
 
-using KODI::MESSAGING::HELPERS::DialogResponse;
+using UNIVERSAL MEDIA CENTER::MESSAGING::HELPERS::DialogResponse;
 
 CNetworkServices::CNetworkServices()
 #ifdef HAS_WEB_SERVER
@@ -517,9 +517,9 @@ bool CNetworkServices::OnSettingUpdate(const std::shared_ptr<CSetting>& setting,
   const std::string &settingId = setting->GetId();
   if (settingId == CSettings::SETTING_SERVICES_WEBSERVERUSERNAME)
   {
-    // if webserverusername is xbmc and pw is not empty we treat it as altered
-    // and don't change the username to kodi - part of rebrand
-    if (m_settings->GetString(CSettings::SETTING_SERVICES_WEBSERVERUSERNAME) == "xbmc" &&
+    // if webserverusername is  and pw is not empty we treat it as altered
+    // and don't change the username to universalmediacenter - part of rebrand
+    if (m_settings->GetString(CSettings::SETTING_SERVICES_WEBSERVERUSERNAME) == "" &&
         !m_settings->GetString(CSettings::SETTING_SERVICES_WEBSERVERPASSWORD).empty())
       return true;
   }
@@ -712,7 +712,7 @@ bool CNetworkServices::StartWebserver()
   CZeroconf::GetInstance()->PublishService("servers.webserver", "_http._tcp",
                                            CSysInfo::GetDeviceName() + " webserver", webPort, txt);
 #endif // HAS_WEB_INTERFACE
-  CZeroconf::GetInstance()->PublishService("servers.jsonrpc-http", "_xbmc-jsonrpc-h._tcp",
+  CZeroconf::GetInstance()->PublishService("servers.jsonrpc-http", "_-jsonrpc-h._tcp",
                                            CSysInfo::GetDeviceName() + " jsonrpc-http", webPort,
                                            txt);
 #endif // HAS_ZEROCONF
@@ -881,7 +881,7 @@ bool CNetworkServices::StartJSONRPCServer()
                              CSettings::SETTING_SERVICES_DEVICEUUID));
 
   CZeroconf::GetInstance()->PublishService(
-      "servers.jsonrpc-tcp", "_xbmc-jsonrpc._tcp", CSysInfo::GetDeviceName() + " jsonrpc-tcp",
+      "servers.jsonrpc-tcp", "_-jsonrpc._tcp", CSysInfo::GetDeviceName() + " jsonrpc-tcp",
       CServiceBroker::GetSettingsComponent()->GetAdvancedSettings()->m_jsonTcpPort, txt);
 #endif // HAS_ZEROCONF
 

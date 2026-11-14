@@ -8,7 +8,7 @@
 
 #include "EventLoop.h"
 
-#include "XBMCApp.h"
+#include "App.h"
 
 #define IS_FROM_SOURCE(v, s) ((v & s) == s)
 
@@ -28,7 +28,7 @@ void CEventLoop::run(IActivityHandler& activityHandler, IInputHandler& inputHand
   m_activityHandler = &activityHandler;
   m_inputHandler = &inputHandler;
 
-  CXBMCApp::android_printf("CEventLoop: starting event loop");
+  CApp::android_printf("CEventLoop: starting event loop");
 
   while (!m_application->destroyRequested)
   {
@@ -37,7 +37,7 @@ void CEventLoop::run(IActivityHandler& activityHandler, IInputHandler& inputHand
 
     if (result == ALOOPER_POLL_ERROR)
     {
-      CXBMCApp::android_printf("CEventLoop: ALooper_pollOnce returned an error");
+      CApp::android_printf("CEventLoop: ALooper_pollOnce returned an error");
       break;
     }
 
@@ -46,7 +46,7 @@ void CEventLoop::run(IActivityHandler& activityHandler, IInputHandler& inputHand
       source->process(m_application, source);
   }
 
-  CXBMCApp::android_printf("CEventLoop: we are being destroyed");
+  CApp::android_printf("CEventLoop: we are being destroyed");
 }
 
 void CEventLoop::processActivity(int32_t command)
@@ -62,7 +62,7 @@ void CEventLoop::processActivity(int32_t command)
       m_activityHandler->onCreateWindow(m_application->window);
 
       // set the proper DPI value
-      m_inputHandler->setDPI(CXBMCApp::Get().GetDPI());
+      m_inputHandler->setDPI(CApp::Get().GetDPI());
       break;
 
     case APP_CMD_WINDOW_RESIZED:

@@ -37,12 +37,12 @@ namespace PVR
 class CPVRManager;
 }
 
-namespace KODI::PLAYLIST
+namespace UNIVERSAL MEDIA CENTER::PLAYLIST
 {
 class CPlayListPlayer;
 }
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace MESSAGING
 {
@@ -56,7 +56,7 @@ namespace CAPTURE
 class CCaptureService;
 }
 } // namespace RENDERING
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER
 
 class CAppParams;
 template<class T>
@@ -96,7 +96,7 @@ namespace WSDiscovery
 class IWSDiscovery;
 }
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace ADDONS
 {
@@ -118,7 +118,7 @@ namespace RETRO
 {
 class CGUIGameRenderManager;
 }
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER
 
 namespace PERIPHERALS
 {
@@ -158,7 +158,7 @@ public:
   static ADDON::CAddonMgr& GetAddonMgr();
   static ADDON::CBinaryAddonManager& GetBinaryAddonManager();
   static ADDON::CBinaryAddonCache& GetBinaryAddonCache();
-  static KODI::ADDONS::CExtsMimeSupportList& GetExtsMimeSupportList();
+  static UNIVERSAL MEDIA CENTER::ADDONS::CExtsMimeSupportList& GetExtsMimeSupportList();
   static ADDON::CVFSAddonCache& GetVFSAddonCache();
   static XBPython& GetXBPython();
   static WSDiscovery::IWSDiscovery& GetWSDiscovery();
@@ -167,11 +167,11 @@ public:
   static CContextMenuManager& GetContextMenuManager();
   static CDataCacheCore& GetDataCacheCore();
   static CPlatform& GetPlatform();
-  static KODI::PLAYLIST::CPlayListPlayer& GetPlaylistPlayer();
+  static UNIVERSAL MEDIA CENTER::PLAYLIST::CPlayListPlayer& GetPlaylistPlayer();
   static CSlideShowDelegator& GetSlideShowDelegator();
-  static KODI::GAME::CControllerManager& GetGameControllerManager();
-  static KODI::GAME::CGameServices& GetGameServices();
-  static KODI::RETRO::CGUIGameRenderManager& GetGameRenderManager();
+  static UNIVERSAL MEDIA CENTER::GAME::CControllerManager& GetGameControllerManager();
+  static UNIVERSAL MEDIA CENTER::GAME::CGameServices& GetGameServices();
+  static UNIVERSAL MEDIA CENTER::RETRO::CGUIGameRenderManager& GetGameRenderManager();
   static PERIPHERALS::CPeripherals& GetPeripherals();
   static CFavouritesService& GetFavouritesService();
   static ADDON::CServiceAddonManager& GetServiceAddons();
@@ -231,19 +231,19 @@ public:
   static std::shared_ptr<CJobManager> GetJobManager();
 
   static void RegisterCaptureService(
-      const std::shared_ptr<KODI::RENDERING::CAPTURE::CCaptureService>& captureService);
+      const std::shared_ptr<UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CCaptureService>& captureService);
   static void UnregisterCaptureService();
-  static std::shared_ptr<KODI::RENDERING::CAPTURE::CCaptureService> GetCaptureService();
+  static std::shared_ptr<UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CCaptureService> GetCaptureService();
 
   static void RegisterAppMessenger(
-      const std::shared_ptr<KODI::MESSAGING::CApplicationMessenger>& appMessenger);
+      const std::shared_ptr<UNIVERSAL MEDIA CENTER::MESSAGING::CApplicationMessenger>& appMessenger);
   static void UnregisterAppMessenger();
-  static std::shared_ptr<KODI::MESSAGING::CApplicationMessenger> GetAppMessenger();
+  static std::shared_ptr<UNIVERSAL MEDIA CENTER::MESSAGING::CApplicationMessenger> GetAppMessenger();
 
   static void RegisterKeyboardLayoutManager(
-      const std::shared_ptr<KODI::KEYBOARD::CKeyboardLayoutManager>& keyboardLayoutManager);
+      const std::shared_ptr<UNIVERSAL MEDIA CENTER::KEYBOARD::CKeyboardLayoutManager>& keyboardLayoutManager);
   static void UnregisterKeyboardLayoutManager();
-  static std::shared_ptr<KODI::KEYBOARD::CKeyboardLayoutManager> GetKeyboardLayoutManager();
+  static std::shared_ptr<UNIVERSAL MEDIA CENTER::KEYBOARD::CKeyboardLayoutManager> GetKeyboardLayoutManager();
 
   static void RegisterSpeechRecognition(
       const std::shared_ptr<speech::ISpeechRecognition>& speechRecognition);
@@ -272,14 +272,14 @@ private:
   std::shared_ptr<CCPUInfo> m_cpuInfo;
   std::shared_ptr<CTextureCache> m_textureCache;
   std::shared_ptr<CJobManager> m_jobManager;
-  std::shared_ptr<KODI::RENDERING::CAPTURE::CCaptureService> m_captureService;
-  std::shared_ptr<KODI::MESSAGING::CApplicationMessenger> m_appMessenger;
-  std::shared_ptr<KODI::KEYBOARD::CKeyboardLayoutManager> m_keyboardLayoutManager;
+  std::shared_ptr<UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CCaptureService> m_captureService;
+  std::shared_ptr<UNIVERSAL MEDIA CENTER::MESSAGING::CApplicationMessenger> m_appMessenger;
+  std::shared_ptr<UNIVERSAL MEDIA CENTER::KEYBOARD::CKeyboardLayoutManager> m_keyboardLayoutManager;
   std::shared_ptr<speech::ISpeechRecognition> m_speechRecognition;
   std::shared_ptr<CSlideShowDelegator> m_slideshowDelegator;
   std::shared_ptr<CDNSNameCache> m_dnsNameCache;
   std::shared_ptr<XFILE::CBlurayDiscCache> m_blurayDiscCache;
 };
 
-XBMC_GLOBAL_REF(CServiceBroker, g_serviceBroker);
-#define g_serviceBroker XBMC_GLOBAL_USE(CServiceBroker)
+_GLOBAL_REF(CServiceBroker, g_serviceBroker);
+#define g_serviceBroker _GLOBAL_USE(CServiceBroker)

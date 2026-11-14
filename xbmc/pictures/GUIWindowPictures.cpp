@@ -52,11 +52,11 @@
 #define CONTROL_LABELFILES         12
 
 using namespace XFILE;
-using namespace KODI::MESSAGING;
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
+using namespace UNIVERSAL MEDIA CENTER;
 
 using namespace std::chrono_literals;
-using KODI::MEDIA::MediaSection;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaSection;
 
 #define CONTROL_BTNSLIDESHOW   6
 #define CONTROL_BTNSLIDESHOW_RECURSIVE   7
@@ -201,7 +201,7 @@ void CGUIWindowPictures::OnPrepareFileItems(CFileItemList& items)
     if (StringUtils::EqualsNoCase(items[i]->GetLabel(), "folder.jpg"))
       items.Remove(i);
 
-  KODI::PICTURE::GroupLivePhotos(items);
+  UNIVERSAL MEDIA CENTER::PICTURE::GroupLivePhotos(items);
 
   if (items.GetFolderCount() == items.Size() || !CServiceBroker::GetSettingsComponent()->GetSettings()->GetBool(CSettings::SETTING_PICTURES_USETAGS))
     return;
@@ -241,7 +241,7 @@ void CGUIWindowPictures::OnPrepareFileItems(CFileItemList& items)
         m_dlgProgress->Progress();
       }
     } // if (bShowProgress)
-    KODI::TIME::Sleep(1ms);
+    UNIVERSAL MEDIA CENTER::TIME::Sleep(1ms);
   } // while (loader.IsLoading())
 
   if (bProgressVisible && m_dlgProgress)

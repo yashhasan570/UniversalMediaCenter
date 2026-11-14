@@ -9,7 +9,7 @@
 #include "BooleanLogic.h"
 
 #include "utils/StringUtils.h"
-#include "utils/XBMCTinyXML.h"
+#include "utils/TinyXML.h"
 #include "utils/log.h"
 
 #include <memory>

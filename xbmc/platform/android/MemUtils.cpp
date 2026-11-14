@@ -14,7 +14,7 @@
 #include <androidjni/Context.h>
 #include <androidjni/jutils-details.hpp>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace MEMORY
 {
@@ -44,9 +44,9 @@ void GetMemoryStatus(MemoryStatus* buffer)
   {
     CJNIActivityManager::MemoryInfo info;
     activityManager->getMemoryInfo(info);
-    if (xbmc_jnienv()->ExceptionCheck())
+    if (_jnienv()->ExceptionCheck())
     {
-      xbmc_jnienv()->ExceptionClear();
+      _jnienv()->ExceptionClear();
       return;
     }
 
@@ -58,4 +58,4 @@ void GetMemoryStatus(MemoryStatus* buffer)
 }
 
 } // namespace MEMORY
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

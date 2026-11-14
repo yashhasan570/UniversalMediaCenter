@@ -15,7 +15,7 @@
 #include <string_view>
 #include <vector>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -122,4 +122,4 @@ struct GameFile
   std::vector<ArchiveMember> members; // a zip's files, when it holds more than one
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

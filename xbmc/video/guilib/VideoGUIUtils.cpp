@@ -49,9 +49,9 @@
 #include "video/VideoUtils.h"
 #include "view/GUIViewState.h"
 
-using KODI::MEDIA::MediaSection;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaSection;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 
 namespace
@@ -381,9 +381,9 @@ void AddItemToPlayListAndPlay(const std::shared_ptr<CFileItem>& itemToQueue,
 
 } // unnamed namespace
 
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER
 
-namespace KODI::VIDEO::UTILS
+namespace UNIVERSAL MEDIA CENTER::VIDEO::UTILS
 {
 void PlayItem(
     const std::shared_ptr<CFileItem>& itemIn,
@@ -551,7 +551,7 @@ bool IsItemPlayable(const CFileItem& item)
     return false;
 
   // Exclude special items
-  if (KODI::ITEM::PLACEHOLDER::IsNewItem(item.GetPath()))
+  if (UNIVERSAL MEDIA CENTER::ITEM::PLACEHOLDER::IsNewItem(item.GetPath()))
     return false;
 
   // Include playlists located at one of the possible video/mixed playlist locations
@@ -605,7 +605,7 @@ bool IsItemPlayable(const CFileItem& item)
   {
     // Not a video-specific folder (like file:// or nfs://). Allow play if context is Video window.
     if (CServiceBroker::GetGUI()->GetWindowManager().GetActiveWindow() == WINDOW_VIDEO_NAV &&
-        item.GetPath() != KODI::ITEM::PLACEHOLDER::ADD_SOURCE) // Exclude "Add video source" item
+        item.GetPath() != UNIVERSAL MEDIA CENTER::ITEM::PLACEHOLDER::ADD_SOURCE) // Exclude "Add video source" item
       return true;
   }
 
@@ -702,4 +702,4 @@ void NotifyItemPathChanged(const CFileItem& item, const std::string& oldPath, in
   CServiceBroker::GetGUI()->GetWindowManager().SendMessage(msg);
 }
 
-} // namespace KODI::VIDEO::UTILS
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO::UTILS

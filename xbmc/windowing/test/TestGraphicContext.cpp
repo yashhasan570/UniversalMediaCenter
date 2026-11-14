@@ -14,7 +14,7 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI::WINDOWING;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING;
 
 namespace
 {

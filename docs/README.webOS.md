@@ -15,8 +15,8 @@ This guide has been tested with an adapted buildroot configuration where the Lin
   7.1. **[Generate Project Files](#71-Generate-Project-Files)**  
   7.2. **[Add Binary Addons to Project](#72-Add-Binary-Addons-to-Project)**
 8. **[Build](#8-build)**  
-  8.1. **[Build kodi binary](#81-Build-kodi-binary)**
-9. **[Packaging kodi to distribute as an IPK](#9-Packaging-kodi-to-distribute-as-an-IPK)**  
+  8.1. **[Build universalmediacenter binary](#81-Build-universalmediacenter-binary)**
+9. **[Packaging universalmediacenter to distribute as an IPK](#9-Packaging-universalmediacenter-to-distribute-as-an-IPK)**  
   9.1. **[Create the IPK](#91-Create-the-IPK)**  
 10. **[Install](#10-Install)**  
   10.1. **[Using make install](#101-Using-make-install)**  
@@ -38,17 +38,17 @@ and yet another one
 
 **Example:** Clone Universal Media Center's current master branch:
 ```
-git clone https://github.com/xbmc/xbmc kodi
+git clone https://github.com// universalmediacenter
 ```
 
 Commands that contain strings enclosed in angle brackets denote something you need to change to suit your needs.
 ```
-git clone -b <branch-name> https://github.com/xbmc/xbmc kodi
+git clone -b <branch-name> https://github.com// universalmediacenter
 ```
 
 **Example:** Clone Universal Media Center's current Krypton branch:
 ```
-git clone -b Krypton https://github.com/xbmc/xbmc kodi
+git clone -b Krypton https://github.com// universalmediacenter
 ```
 
 Several different strategies are used to draw your attention to certain pieces of information. In order of how critical the information is, these items are marked as a note, tip, or warning. For example:
@@ -67,8 +67,8 @@ Several different strategies are used to draw your attention to certain pieces o
 ## 2. Prerequisites
 * **[LG developer account](https://webostv.developer.lge.com/develop/getting-started/preparing-lg-account)**. This is required to access developer mode on the webOS device.
 * **[Activate developer mode on your webOS device]**. Follow the instructions as per **[Installing Developer Mode app page](https://webostv.developer.lge.com/develop/getting-started/developer-mode-app#installing-developer-mode-app)**.
-* **[Download ares CLI tools](https://webostv.developer.lge.com/develop/tools/cli-installation)**. These are required to package the kodi binary into a IPK format that webOS understands.
-* **[Download and setup a compatible toolchain to compile kodi]**. The toolchain which was used in this guide is **[buildroot-nc4](https://github.com/openlgtv/buildroot-nc4)**, it is an up to date buildroot configuration and comes with newer tools such as GCC 12.2.0. Other toolchains exist, such as those found on the LG OpenSource website: **https://opensource.lge.com/**. You will need to enter the model number of your TV to find the applicable toolchain.
+* **[Download ares CLI tools](https://webostv.developer.lge.com/develop/tools/cli-installation)**. These are required to package the universalmediacenter binary into a IPK format that webOS understands.
+* **[Download and setup a compatible toolchain to compile universalmediacenter]**. The toolchain which was used in this guide is **[buildroot-nc4](https://github.com/openlgtv/buildroot-nc4)**, it is an up to date buildroot configuration and comes with newer tools such as GCC 12.2.0. Other toolchains exist, such as those found on the LG OpenSource website: **https://opensource.lge.com/**. You will need to enter the model number of your TV to find the applicable toolchain.
 
 * Device with **webOS 5.0 or newer**.
 
@@ -79,8 +79,8 @@ Team Universal Media Center CI infrastructure is limited, and therefore we only 
 ## 3. Configure the tool chain
 
 ```
-mkdir $HOME/kodi-dev
-tar xzvf arm-webos-linux-gnueabi_sdk-buildroot.tar.gz -C $HOME/kodi-dev
+mkdir $HOME/universalmediacenter-dev
+tar xzvf arm-webos-linux-gnueabi_sdk-buildroot.tar.gz -C $HOME/universalmediacenter-dev
 ```
 
 ## 4. Configure ares-cli tools
@@ -103,23 +103,23 @@ cd $HOME
 
 Clone Universal Media Center's current master branch:
 ```
-git clone https://github.com/xbmc/xbmc kodi
+git clone https://github.com// universalmediacenter
 ```
 
 **[back to top](#table-of-contents)**
 
 ## 6. Configure and build tools and dependencies
-Universal Media Center should be built as a 32bit program for webOS. The dependencies are built in `$HOME/kodi/tools/depends` and installed into `/media/developer/apps/usr/palm/applications/com.universalmediacenter.app/xbmc-deps`.
+Universal Media Center should be built as a 32bit program for webOS. The dependencies are built in `$HOME/universalmediacenter/tools/depends` and installed into `/media/developer/apps/usr/palm/applications/com.universalmediacenter.app/-deps`.
 
---prefix should be set to where xbmc-deps are going to be built  
+--prefix should be set to where -deps are going to be built  
 --with-toolchain=/path/to/buildroot, --host=arm-linux or whatever your compiler is  
 
 Configure build:
 ```
-cd $HOME/kodi/tools/depends
+cd $HOME/universalmediacenter/tools/depends
 ./bootstrap
-./configure   --prefix=$HOME/kodi-deps --host=arm-webos-linux-gnueabi \
-              --with-toolchain=$HOME/kodi-dev/arm-webos-linux-gnueabi_sdk-buildroot \
+./configure   --prefix=$HOME/universalmediacenter-deps --host=arm-webos-linux-gnueabi \
+              --with-toolchain=$HOME/universalmediacenter-dev/arm-webos-linux-gnueabi_sdk-buildroot \
               --enable-debug=no
 ```
 
@@ -149,7 +149,7 @@ make -j$(getconf _NPROCESSORS_ONLN)
 ```
 --prefix=<path>
 ```
-  specify path on target device. By default we will likely be packaging as com.universalmediacenter.app and it will installed to $HOME/kodi/build/{com.universalmediacenter.app}. All developer apps will get installed to this base path plus {your-app-name}
+  specify path on target device. By default we will likely be packaging as com.universalmediacenter.app and it will installed to $HOME/universalmediacenter/build/{com.universalmediacenter.app}. All developer apps will get installed to this base path plus {your-app-name}
 
 ```
 --enable-debug=<yes:no>
@@ -164,7 +164,7 @@ make -j$(getconf _NPROCESSORS_ONLN)
 ```
 --with-tarballs=<path>
 ```
-  path where tarballs will be saved [prefix/xbmc-tarballs]
+  path where tarballs will be saved [prefix/-tarballs]
 
 ```
 --with-cpu=<cpu>
@@ -222,7 +222,7 @@ make -C tools/depends/target/cmakebuildsys
 ```
 
 > [!TIP]
-> BUILD_DIR can be omitted, and project will be created in $HOME/kodi/build
+> BUILD_DIR can be omitted, and project will be created in $HOME/universalmediacenter/build
 Change all relevant paths onwards if omitted.
 
 Additional cmake arguments can be supplied via the CMAKE_EXTRA_ARGUMENTS command line variable
@@ -235,23 +235,23 @@ make -C tools/depends/target/cmakebuildsys BUILD_DIR=/media/developer/apps/usr/p
 
 ## 7.2. Add Binary Addons to Project
 
-You can find a complete list of available binary add-ons **[here](https://github.com/xbmc/repo-binary-addons)**.
+You can find a complete list of available binary add-ons **[here](https://github.com//repo-binary-addons)**.
 
 Binary addons are optional.
 
 To build all add-ons:
 ```
-make -j$(getconf _NPROCESSORS_ONLN) -C tools/depends/target/binary-addons PREFIX=$HOME/kodi/build/tools/webOS/packaging
+make -j$(getconf _NPROCESSORS_ONLN) -C tools/depends/target/binary-addons PREFIX=$HOME/universalmediacenter/build/tools/webOS/packaging
 ```
 
 Build specific add-ons:
 ```
-make -j$(getconf _NPROCESSORS_ONLN) -C tools/depends/target/binary-addons PREFIX=$HOME/kodi/build/tools/webOS/packaging ADDONS="audioencoder.flac pvr.vdr.vnsi audiodecoder.snesapu"
+make -j$(getconf _NPROCESSORS_ONLN) -C tools/depends/target/binary-addons PREFIX=$HOME/universalmediacenter/build/tools/webOS/packaging ADDONS="audioencoder.flac pvr.vdr.vnsi audiodecoder.snesapu"
 ```
 
 Build a specific group of add-ons:
 ```
-make -j$(getconf _NPROCESSORS_ONLN) -C tools/depends/target/binary-addons PREFIX=$HOME/kodi/build/tools/webOS/packaging ADDONS="pvr.*"
+make -j$(getconf _NPROCESSORS_ONLN) -C tools/depends/target/binary-addons PREFIX=$HOME/universalmediacenter/build/tools/webOS/packaging ADDONS="pvr.*"
 ```
 
 To build specific addons or help with regular expression usage for ADDONS_TO_BUILD, view ADDONS_TO_BUILD section located at [Universal Media Center add-ons CMake based buildsystem](../cmake/addons/README.md)
@@ -263,9 +263,9 @@ To build specific addons or help with regular expression usage for ADDONS_TO_BUI
 
 ## 8. Build
 
-### 8.1. Build kodi binary
+### 8.1. Build universalmediacenter binary
 
-In '$HOME/kodi/build`
+In '$HOME/universalmediacenter/build`
 
 ```
 make -j$(getconf _NPROCESSORS_ONLN)
@@ -276,7 +276,7 @@ make -j$(getconf _NPROCESSORS_ONLN)
 
 **[back to top](#table-of-contents)** | **[back to section top](#6-Build)**
 
-## 9 Packaging kodi to distribute as an IPK
+## 9 Packaging universalmediacenter to distribute as an IPK
 
 ## 9.1 Create the IPK
 
@@ -307,12 +307,12 @@ ssh -oHostKeyAlgorithms=+ssh-rsa -oPubkeyAcceptedAlgorithms=+ssh-rsa -i ~/.ssh/\
 ```
 
 You will be put into /media/developer by default.
-cd `/media/developer/apps/usr/palm/applications/com.universalmediacenter.app/.kodi/temp` to find kodi.log
+cd `/media/developer/apps/usr/palm/applications/com.universalmediacenter.app/.universalmediacenter/temp` to find universalmediacenter.log
 
-You can also edit `kodi.sh` and place strace just before launching kodi to debug any missing libraries:
+You can also edit `universalmediacenter.sh` and place strace just before launching universalmediacenter to debug any missing libraries:
 
 ```
-strace -t -o /media/developer/apps/usr/palm/applications/com.universalmediacenter.app/trace.temp ./kodi-webos --debug
+strace -t -o /media/developer/apps/usr/palm/applications/com.universalmediacenter.app/trace.temp ./universalmediacenter-webos --debug
 ```
 
 ## 12. Uninstall
@@ -322,7 +322,7 @@ We use the same make command or ares-cli tools to uninstall.
 ## 12.1. Using make to uninstall
 
 ```
-cd $HOME/kodi/tools/webOS/packaging
+cd $HOME/universalmediacenter/tools/webOS/packaging
 make uninstall
 ```
 

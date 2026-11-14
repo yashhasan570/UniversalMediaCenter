@@ -12,7 +12,7 @@
 
 #include <emscripten/em_asm.h>
 
-namespace KODI::PLATFORM::WASM
+namespace UNIVERSAL MEDIA CENTER::PLATFORM::WASM
 {
 WasmDeviceInfo CTitanWebApis::GetDeviceInfo()
 {
@@ -20,7 +20,7 @@ WasmDeviceInfo CTitanWebApis::GetDeviceInfo()
 
   // clang-format off
   void* json = MAIN_THREAD_EM_ASM_PTR(({
-    const info = Module.kodi && Module.kodi.titanDeviceInfo;
+    const info = Module.universalmediacenter && Module.universalmediacenter.titanDeviceInfo;
     return info ? stringToNewUTF8(JSON.stringify(info)) : 0;
   }));
   // clang-format on
@@ -37,4 +37,4 @@ WasmDeviceInfo CTitanWebApis::GetDeviceInfo()
   info.macAddress = data["macAddress"].asString();
   return info;
 }
-} // namespace KODI::PLATFORM::WASM
+} // namespace UNIVERSAL MEDIA CENTER::PLATFORM::WASM

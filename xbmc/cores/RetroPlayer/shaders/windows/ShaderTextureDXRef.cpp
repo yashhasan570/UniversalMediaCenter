@@ -10,7 +10,7 @@
 
 #include "guilib/D3DResource.h"
 
-using namespace KODI::SHADER;
+using namespace UNIVERSAL MEDIA CENTER::SHADER;
 
 CShaderTextureDXRef::CShaderTextureDXRef(CD3DTexture& texture) : m_texture(texture)
 {

@@ -14,7 +14,7 @@
 #include "resources/ResourcesComponent.h"
 #include "utils/StringUtils.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace JOYSTICK;
 
 const char* CJoystickTranslator::HatStateToString(HAT_STATE state)

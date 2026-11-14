@@ -12,9 +12,9 @@
 #include "utils/StringUtils.h"
 #include "utils/log.h"
 
-namespace XBMCAddon
+namespace Addon
 {
-  namespace xbmcwsgi
+  namespace wsgi
   {
     WsgiErrorStream::WsgiErrorStream()
       : m_request(NULL)

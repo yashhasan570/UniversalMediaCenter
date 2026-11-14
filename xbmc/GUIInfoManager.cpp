@@ -45,9 +45,9 @@
 #include <mutex>
 #include <optional>
 
-using namespace KODI;
-using namespace KODI::GUILIB;
-using namespace KODI::GUILIB::GUIINFO;
+using namespace UNIVERSAL MEDIA CENTER;
+using namespace UNIVERSAL MEDIA CENTER::GUILIB;
+using namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO;
 using namespace INFO;
 
 namespace
@@ -64,10 +64,10 @@ struct InfoMap
 /// \section modules__infolabels_boolean_conditions_Description Description
 /// Skins can use boolean conditions with the <b>\<visible\></b> tag or with condition
 /// attributes. Scripts can read boolean conditions with
-/// <b>xbmc.getCondVisibility(condition)</b>.
+/// <b>.getCondVisibility(condition)</b>.
 ///
 /// Skins can use infolabels with <b>$INFO[infolabel]</b> or the <b>\<info\></b> tag. Scripts
-/// can read infolabels with <b>xbmc.getInfoLabel('infolabel')</b>.
+/// can read infolabels with <b>.getInfoLabel('infolabel')</b>.
 ///
 /// @todo [docs] Improve the description and create links for functions
 /// @todo [docs] Separate boolean conditions from infolabels
@@ -11209,7 +11209,7 @@ constexpr std::array<InfoMap, 63> slideshow = {{
 ///    - `VideoPlayer.SubChannelNumber`
 ///
 /// <hr>
-/// \subsection modules_rm_infolabels_booleans_v13 XBMC v13 (Gotham)
+/// \subsection modules_rm_infolabels_booleans_v13  v13 (Gotham)
 ///   @skinning_v13 **[Removed Infolabels]** The following infolabels were removed:
 ///    - `Network.SubnetAddress`
 ///
@@ -12982,7 +12982,7 @@ const CVideoInfoTag* CGUIInfoManager::GetCurrentMovieTag() const
   return nullptr;
 }
 
-const KODI::GAME::CGameInfoTag* CGUIInfoManager::GetCurrentGameTag() const
+const UNIVERSAL MEDIA CENTER::GAME::CGameInfoTag* CGUIInfoManager::GetCurrentGameTag() const
 {
   if (m_currentFile->HasGameInfoTag())
     return m_currentFile->GetGameInfoTag();
@@ -13050,7 +13050,7 @@ int CGUIInfoManager::GetMessageMask()
   return TMSG_MASK_GUIINFOMANAGER;
 }
 
-void CGUIInfoManager::OnApplicationMessage(KODI::MESSAGING::ThreadMessage* pMsg)
+void CGUIInfoManager::OnApplicationMessage(UNIVERSAL MEDIA CENTER::MESSAGING::ThreadMessage* pMsg)
 {
   switch (pMsg->dwMessage)
   {

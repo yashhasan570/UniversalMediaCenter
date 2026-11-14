@@ -13,7 +13,7 @@ namespace tinyxml2
 class XMLNode;
 }
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace KEYMAP
 {
@@ -32,4 +32,4 @@ public:
   virtual void Clear() = 0;
 };
 } // namespace KEYMAP
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

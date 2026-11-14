@@ -67,7 +67,7 @@ class BaseYUV2RGBGLSLShader : public CGLSLShaderProgram
     void SetMatrices(const GLfloat *p, const GLfloat *m) { m_proj = p; m_model = m; }
     void SetAlpha(GLfloat alpha) { m_alpha = alpha; }
 
-    // Maps the vertex positions, for instance a unit quad (see KODI::UTILS::GL::QuadTransform()).
+    // Maps the vertex positions, for instance a unit quad (see UNIVERSAL MEDIA CENTER::UTILS::GL::QuadTransform()).
     void SetQuadTransform(const std::array<GLfloat, 16>& transform) { m_quad = transform; }
     // The texture coordinates of plane 0 (Y), 1 (U) or 2 (V) span rect.
     void SetTextureRect(int plane, const CRect& rect) { m_texRects[plane] = rect; }

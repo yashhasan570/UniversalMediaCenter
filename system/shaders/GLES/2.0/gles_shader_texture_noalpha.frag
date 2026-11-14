@@ -17,12 +17,12 @@ void main ()
 {
   vec3 rgb = texture2D(m_samp0, m_cord0.xy).rgb;
 
-#if defined(KODI_LIMITED_RANGE)
+#if defined(UNIVERSAL MEDIA CENTER_LIMITED_RANGE)
   rgb *= (235.0 - 16.0) / 255.0;
   rgb += 16.0 / 255.0;
 #endif
 
-#if defined(KODI_TRANSFER_PQ)
+#if defined(UNIVERSAL MEDIA CENTER_TRANSFER_PQ)
   rgb.rgb *= m_sdrPeak;
 #endif
 

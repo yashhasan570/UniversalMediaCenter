@@ -16,7 +16,7 @@ extern "C"
 #include <libavutil/mastering_display_metadata.h>
 }
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace UTILS
 {
@@ -34,4 +34,4 @@ const AVMasteringDisplayMetadata* GetMasteringDisplayMetadata(const VideoPicture
 const AVContentLightMetadata* GetContentLightMetadata(const VideoPicture& picture);
 
 } // namespace UTILS
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

@@ -14,7 +14,7 @@
 #include "input/mouse/MouseEvent.h"
 #include "windowing/WinSystem.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 CGUISettingsSliderControl::CGUISettingsSliderControl(int parentID,
                                                      int controlID,

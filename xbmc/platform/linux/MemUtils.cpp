@@ -11,7 +11,7 @@
 #include <cstdlib>
 #include <fstream>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace MEMORY
 {

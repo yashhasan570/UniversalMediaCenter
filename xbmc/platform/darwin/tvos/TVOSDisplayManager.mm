@@ -17,7 +17,7 @@
 #import "windowing/tvos/WinSystemTVOS.h"
 
 #import "platform/darwin/tvos/TVOSEAGLView.h"
-#import "platform/darwin/tvos/XBMCController.h"
+#import "platform/darwin/tvos/Controller.h"
 
 #import <AVFoundation/AVDisplayCriteria.h>
 #import <AVFoundation/AVPlayer.h>
@@ -63,7 +63,7 @@
   if (@available(tvOS 11.2, *))
   {
     dispatch_async(dispatch_get_main_queue(), ^{
-      auto avDisplayManager = [g_xbmcController avDisplayManager];
+      auto avDisplayManager = [g_Controller avDisplayManager];
       if (refreshRate > 0.0f)
       {
         // videoDynamicRange values are based on watching
@@ -120,7 +120,7 @@
               [self stringFromDynamicRange:criteria.videoDynamicRange]);
 
     dispatch_async(dispatch_get_main_queue(), ^{
-      auto manager = [g_xbmcController avDisplayManager];
+      auto manager = [g_Controller avDisplayManager];
       [self setDisplayCriteria:manager displayCriteria:criteria];
     });
     return YES;
@@ -132,7 +132,7 @@
 - (void)displayDynamicRangeReset
 {
   dispatch_async(dispatch_get_main_queue(), ^{
-    auto manager = [g_xbmcController avDisplayManager];
+    auto manager = [g_Controller avDisplayManager];
     [self setDisplayCriteria:manager displayCriteria:nil];
   });
 }
@@ -147,7 +147,7 @@
     dispatch_async(dispatch_get_main_queue(), ^{
       // setting preferredDisplayCriteria to nil will
       // switch back to tvOS defined user settings
-      auto avDisplayManager = [g_xbmcController avDisplayManager];
+      auto avDisplayManager = [g_Controller avDisplayManager];
       [self setDisplayCriteria:avDisplayManager displayCriteria:nil];
     });
   }
@@ -172,7 +172,7 @@
 {
   if (@available(tvOS 11.2, *))
   {
-    auto avDisplayManager = [g_xbmcController avDisplayManager];
+    auto avDisplayManager = [g_Controller avDisplayManager];
     [avDisplayManager removeObserver:self forKeyPath:DISPLAY_MODE_SWITCH_IN_PROGRESS];
   }
 }
@@ -181,7 +181,7 @@
 {
   if (@available(tvOS 11.2, *))
   {
-    auto avDisplayManager = [g_xbmcController avDisplayManager];
+    auto avDisplayManager = [g_Controller avDisplayManager];
     [avDisplayManager addObserver:self
                        forKeyPath:DISPLAY_MODE_SWITCH_IN_PROGRESS
                           options:NSKeyValueObservingOptionNew
@@ -204,7 +204,7 @@
     std::string switchState = "NO";
     int dynamicRange = 0;
     float refreshRate;
-    auto avDisplayManager = [g_xbmcController avDisplayManager];
+    auto avDisplayManager = [g_Controller avDisplayManager];
     auto displayCriteria = avDisplayManager.preferredDisplayCriteria;
     // preferredDisplayCriteria can be nil, this is NOT an error
     // and just indicates tvOS defined user settings which we cannot see.
@@ -269,14 +269,14 @@
 
 - (BOOL)canMatchVideoDynamicRange
 {
-  return [g_xbmcController avDisplayManager].displayCriteriaMatchingEnabled;
+  return [g_Controller avDisplayManager].displayCriteriaMatchingEnabled;
 }
 
 - (CGSize)getScreenSize
 {
   dispatch_sync(dispatch_get_main_queue(), ^{
-    m_screensize.width = g_xbmcController.glView.bounds.size.width * self.screenScale;
-    m_screensize.height = g_xbmcController.glView.bounds.size.height * self.screenScale;
+    m_screensize.width = g_Controller.glView.bounds.size.width * self.screenScale;
+    m_screensize.height = g_Controller.glView.bounds.size.height * self.screenScale;
   });
   return m_screensize;
 }

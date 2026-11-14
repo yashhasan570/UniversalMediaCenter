@@ -11,7 +11,7 @@
 #include "input/mouse/MouseTypes.h"
 #include "input/mouse/interfaces/IMouseDriverHandler.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace JOYSTICK
 {
@@ -64,4 +64,4 @@ private:
   int m_y = 0;
 };
 } // namespace MOUSE
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

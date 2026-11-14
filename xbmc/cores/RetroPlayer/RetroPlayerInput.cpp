@@ -16,7 +16,7 @@
 #include "peripherals/events/EventPollHandle.h"
 #include "utils/log.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace RETRO;
 
 CRetroPlayerInput::CRetroPlayerInput(PERIPHERALS::CPeripherals& peripheralManager,

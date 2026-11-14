@@ -10,11 +10,11 @@
 
 #include "Exception.h"
 
-namespace XBMCAddon
+namespace Addon
 {
-  namespace xbmcgui
+  namespace gui
   {
-    XBMCCOMMONS_STANDARD_EXCEPTION(WindowException);
+    COMMONS_STANDARD_EXCEPTION(WindowException);
   }
 }
 

@@ -11,7 +11,7 @@
 #include "GUIFeatureButton.h"
 #include "games/controllers/input/PhysicalFeature.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -51,4 +51,4 @@ private:
   CPhysicalFeature m_selectedKey;
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

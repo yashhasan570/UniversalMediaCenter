@@ -102,7 +102,7 @@ CStereoscopicsManager::~CStereoscopicsManager(void)
 
 void CStereoscopicsManager::Initialize()
 {
-  // turn off stereo mode on XBMC startup
+  // turn off stereo mode on  startup
   SetStereoMode(RenderStereoMode::OFF);
 }
 

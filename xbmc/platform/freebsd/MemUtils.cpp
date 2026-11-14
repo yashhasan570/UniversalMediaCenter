@@ -17,7 +17,7 @@
 #include <sys/sysctl.h> /* FreeBSD can't write standalone headers */
 #include <sys/types.h>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace MEMORY
 {

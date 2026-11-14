@@ -24,8 +24,8 @@
 #include "windowing/GraphicContext.h"
 #include "windowing/WinSystem.h"
 
-using namespace KODI::UTILS;
-using namespace KODI::VIDEO::GEOMETRY;
+using namespace UNIVERSAL MEDIA CENTER::UTILS;
+using namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY;
 
 namespace
 {

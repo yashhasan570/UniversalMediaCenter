@@ -32,7 +32,7 @@
 #include <algorithm>
 #include <mutex>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace JOYSTICK;
 using namespace PERIPHERALS;
 
@@ -265,7 +265,7 @@ GAME::ControllerPtr CPeripheralJoystick::ControllerProfile() const
   return m_manager.GetControllerProfiles().GetDefaultController();
 }
 
-void CPeripheralJoystick::SetControllerProfile(const KODI::GAME::ControllerPtr& controller)
+void CPeripheralJoystick::SetControllerProfile(const UNIVERSAL MEDIA CENTER::GAME::ControllerPtr& controller)
 {
   CPeripheral::SetControllerProfile(controller);
 

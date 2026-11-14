@@ -23,7 +23,7 @@ extern "C"
 
 class CDateTime;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -265,4 +265,4 @@ public:
   virtual bool Deserialize(std::vector<uint8_t> data) = 0;
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

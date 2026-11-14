@@ -15,7 +15,7 @@
 #include <string_view>
 #include <vector>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -132,4 +132,4 @@ public:
   static std::string RegionName(const GameRegion& region);
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

@@ -22,7 +22,7 @@
 
 class CGUIListItem;
 
-namespace KODI::GUILIB::GUIINFO
+namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO
 {
 
 class CGUIInfoLabel
@@ -214,4 +214,4 @@ private:
   std::vector<CInfoPortion> m_infoFallback;
 };
 
-} // namespace KODI::GUILIB::GUIINFO
+} // namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO

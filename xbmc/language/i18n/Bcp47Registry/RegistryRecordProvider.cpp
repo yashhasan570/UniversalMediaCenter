@@ -16,7 +16,7 @@
 
 #include <fmt/format.h>
 
-using namespace KODI::LANGUAGE::I18N;
+using namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N;
 
 RegistryFileRecord::RegistryFileRecord(std::vector<RegistryFileField>&& fields)
 {
@@ -79,7 +79,7 @@ bool RegistryFileRecord::IsValidSubTag()
   return true;
 }
 
-std::string KODI::LANGUAGE::I18N::format_as(const RegistryFileRecord& record)
+std::string UNIVERSAL MEDIA CENTER::LANGUAGE::I18N::format_as(const RegistryFileRecord& record)
 {
   const std::string descriptions = StringUtils::Join(record.m_descriptions, ", ");
   const std::string prefixes = StringUtils::Join(record.m_prefixes, ", ");

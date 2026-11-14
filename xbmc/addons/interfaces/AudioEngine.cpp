@@ -9,51 +9,51 @@
 #include "AudioEngine.h"
 
 #include "ServiceBroker.h"
-#include "addons/kodi-dev-kit/include/kodi/AddonBase.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/AddonBase.h"
 #include "cores/AudioEngine/Interfaces/AE.h"
 #include "cores/AudioEngine/Interfaces/AEStream.h"
 #include "cores/AudioEngine/Utils/AEStreamData.h"
 #include "utils/log.h"
 
-using namespace kodi; // addon-dev-kit namespace
-using namespace kodi::audioengine; // addon-dev-kit namespace
+using namespace universalmediacenter; // addon-dev-kit namespace
+using namespace audioengine; // addon-dev-kit namespace
 
 namespace ADDON
 {
 
 void Interface_AudioEngine::Init(AddonGlobalInterface* addonInterface)
 {
-  addonInterface->toUniversal Media Center->kodi_audioengine = new AddonToUniversal Media CenterFuncTable_kodi_audioengine();
+  addonInterface->toUniversal Media Center->universalmediacenter_audioengine = new AddonToUniversal Media CenterFuncTable_universalmediacenter_audioengine();
 
-  // write KODI audio DSP specific add-on function addresses to callback table
-  addonInterface->toUniversal Media Center->kodi_audioengine->make_stream = audioengine_make_stream;
-  addonInterface->toUniversal Media Center->kodi_audioengine->free_stream = audioengine_free_stream;
-  addonInterface->toUniversal Media Center->kodi_audioengine->get_current_sink_format = get_current_sink_format;
+  // write UNIVERSAL MEDIA CENTER audio DSP specific add-on function addresses to callback table
+  addonInterface->toUniversal Media Center->universalmediacenter_audioengine->make_stream = audioengine_make_stream;
+  addonInterface->toUniversal Media Center->universalmediacenter_audioengine->free_stream = audioengine_free_stream;
+  addonInterface->toUniversal Media Center->universalmediacenter_audioengine->get_current_sink_format = get_current_sink_format;
 
   // AEStream add-on function callback table
-  addonInterface->toUniversal Media Center->kodi_audioengine->aestream_get_space = aestream_get_space;
-  addonInterface->toUniversal Media Center->kodi_audioengine->aestream_add_data = aestream_add_data;
-  addonInterface->toUniversal Media Center->kodi_audioengine->aestream_get_delay = aestream_get_delay;
-  addonInterface->toUniversal Media Center->kodi_audioengine->aestream_is_buffering = aestream_is_buffering;
-  addonInterface->toUniversal Media Center->kodi_audioengine->aestream_get_cache_time = aestream_get_cache_time;
-  addonInterface->toUniversal Media Center->kodi_audioengine->aestream_get_cache_total = aestream_get_cache_total;
-  addonInterface->toUniversal Media Center->kodi_audioengine->aestream_pause = aestream_pause;
-  addonInterface->toUniversal Media Center->kodi_audioengine->aestream_resume = aestream_resume;
-  addonInterface->toUniversal Media Center->kodi_audioengine->aestream_drain = aestream_drain;
-  addonInterface->toUniversal Media Center->kodi_audioengine->aestream_is_draining = aestream_is_draining;
-  addonInterface->toUniversal Media Center->kodi_audioengine->aestream_is_drained = aestream_is_drained;
-  addonInterface->toUniversal Media Center->kodi_audioengine->aestream_flush = aestream_flush;
-  addonInterface->toUniversal Media Center->kodi_audioengine->aestream_get_volume = aestream_get_volume;
-  addonInterface->toUniversal Media Center->kodi_audioengine->aestream_set_volume = aestream_set_volume;
-  addonInterface->toUniversal Media Center->kodi_audioengine->aestream_get_amplification = aestream_get_amplification;
-  addonInterface->toUniversal Media Center->kodi_audioengine->aestream_set_amplification = aestream_set_amplification;
-  addonInterface->toUniversal Media Center->kodi_audioengine->aestream_get_frame_size = aestream_get_frame_size;
-  addonInterface->toUniversal Media Center->kodi_audioengine->aestream_get_channel_count = aestream_get_channel_count;
-  addonInterface->toUniversal Media Center->kodi_audioengine->aestream_get_sample_rate = aestream_get_sample_rate;
-  addonInterface->toUniversal Media Center->kodi_audioengine->aestream_get_data_format = aestream_get_data_format;
-  addonInterface->toUniversal Media Center->kodi_audioengine->aestream_get_resample_ratio =
+  addonInterface->toUniversal Media Center->universalmediacenter_audioengine->aestream_get_space = aestream_get_space;
+  addonInterface->toUniversal Media Center->universalmediacenter_audioengine->aestream_add_data = aestream_add_data;
+  addonInterface->toUniversal Media Center->universalmediacenter_audioengine->aestream_get_delay = aestream_get_delay;
+  addonInterface->toUniversal Media Center->universalmediacenter_audioengine->aestream_is_buffering = aestream_is_buffering;
+  addonInterface->toUniversal Media Center->universalmediacenter_audioengine->aestream_get_cache_time = aestream_get_cache_time;
+  addonInterface->toUniversal Media Center->universalmediacenter_audioengine->aestream_get_cache_total = aestream_get_cache_total;
+  addonInterface->toUniversal Media Center->universalmediacenter_audioengine->aestream_pause = aestream_pause;
+  addonInterface->toUniversal Media Center->universalmediacenter_audioengine->aestream_resume = aestream_resume;
+  addonInterface->toUniversal Media Center->universalmediacenter_audioengine->aestream_drain = aestream_drain;
+  addonInterface->toUniversal Media Center->universalmediacenter_audioengine->aestream_is_draining = aestream_is_draining;
+  addonInterface->toUniversal Media Center->universalmediacenter_audioengine->aestream_is_drained = aestream_is_drained;
+  addonInterface->toUniversal Media Center->universalmediacenter_audioengine->aestream_flush = aestream_flush;
+  addonInterface->toUniversal Media Center->universalmediacenter_audioengine->aestream_get_volume = aestream_get_volume;
+  addonInterface->toUniversal Media Center->universalmediacenter_audioengine->aestream_set_volume = aestream_set_volume;
+  addonInterface->toUniversal Media Center->universalmediacenter_audioengine->aestream_get_amplification = aestream_get_amplification;
+  addonInterface->toUniversal Media Center->universalmediacenter_audioengine->aestream_set_amplification = aestream_set_amplification;
+  addonInterface->toUniversal Media Center->universalmediacenter_audioengine->aestream_get_frame_size = aestream_get_frame_size;
+  addonInterface->toUniversal Media Center->universalmediacenter_audioengine->aestream_get_channel_count = aestream_get_channel_count;
+  addonInterface->toUniversal Media Center->universalmediacenter_audioengine->aestream_get_sample_rate = aestream_get_sample_rate;
+  addonInterface->toUniversal Media Center->universalmediacenter_audioengine->aestream_get_data_format = aestream_get_data_format;
+  addonInterface->toUniversal Media Center->universalmediacenter_audioengine->aestream_get_resample_ratio =
       aestream_get_resample_ratio;
-  addonInterface->toUniversal Media Center->kodi_audioengine->aestream_set_resample_ratio =
+  addonInterface->toUniversal Media Center->universalmediacenter_audioengine->aestream_set_resample_ratio =
       aestream_set_resample_ratio;
 }
 
@@ -61,8 +61,8 @@ void Interface_AudioEngine::DeInit(AddonGlobalInterface* addonInterface)
 {
   if (addonInterface->toUniversal Media Center) /* <-- Safe check, needed so long old addon way is present */
   {
-    delete addonInterface->toUniversal Media Center->kodi_audioengine;
-    addonInterface->toUniversal Media Center->kodi_audioengine = nullptr;
+    delete addonInterface->toUniversal Media Center->universalmediacenter_audioengine;
+    addonInterface->toUniversal Media Center->universalmediacenter_audioengine = nullptr;
   }
 }
 
@@ -298,13 +298,13 @@ AudioEngineDataFormat Interface_AudioEngine::TranslateAEFormatToAddon(AEDataForm
   }
 }
 
-AEStreamHandle* Interface_AudioEngine::audioengine_make_stream(void* kodiBase,
+AEStreamHandle* Interface_AudioEngine::audioengine_make_stream(void* universalmediacenterBase,
                                                                AUDIO_ENGINE_FORMAT* streamFormat,
                                                                unsigned int options)
 {
-  if (!kodiBase || !streamFormat)
+  if (!universalmediacenterBase || !streamFormat)
   {
-    CLog::LogF(LOGERROR, "Invalid stream data (kodiBase='{}', streamFormat='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid stream data (universalmediacenterBase='{}', streamFormat='{}')", universalmediacenterBase,
                static_cast<void*>(streamFormat));
     return nullptr;
   }
@@ -326,23 +326,23 @@ AEStreamHandle* Interface_AudioEngine::audioengine_make_stream(void* kodiBase,
   format.m_dataFormat = TranslateAEFormatToUniversal Media Center(streamFormat->m_dataFormat);
   format.m_sampleRate = streamFormat->m_sampleRate;
 
-  /* Translate addon options to kodi's options */
-  int kodiOption = 0;
+  /* Translate addon options to universalmediacenter's options */
+  int universalmediacenterOption = 0;
   if (options & AUDIO_STREAM_FORCE_RESAMPLE)
-    kodiOption |= AESTREAM_FORCE_RESAMPLE;
+    universalmediacenterOption |= AESTREAM_FORCE_RESAMPLE;
   if (options & AUDIO_STREAM_PAUSED)
-    kodiOption |= AESTREAM_PAUSED;
+    universalmediacenterOption |= AESTREAM_PAUSED;
   if (options & AUDIO_STREAM_AUTOSTART)
-    kodiOption |= AESTREAM_AUTOSTART;
+    universalmediacenterOption |= AESTREAM_AUTOSTART;
 
-  return engine->MakeStream(format, kodiOption).release();
+  return engine->MakeStream(format, universalmediacenterOption).release();
 }
 
-void Interface_AudioEngine::audioengine_free_stream(void* kodiBase, AEStreamHandle* streamHandle)
+void Interface_AudioEngine::audioengine_free_stream(void* universalmediacenterBase, AEStreamHandle* streamHandle)
 {
-  if (!kodiBase || !streamHandle)
+  if (!universalmediacenterBase || !streamHandle)
   {
-    CLog::LogF(LOGERROR, "Invalid stream data (kodiBase='{}', streamHandle='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid stream data (universalmediacenterBase='{}', streamHandle='{}')", universalmediacenterBase,
                streamHandle);
     return;
   }
@@ -352,11 +352,11 @@ void Interface_AudioEngine::audioengine_free_stream(void* kodiBase, AEStreamHand
     engine->FreeStream(static_cast<IAEStream*>(streamHandle), true);
 }
 
-bool Interface_AudioEngine::get_current_sink_format(void* kodiBase, AUDIO_ENGINE_FORMAT* format)
+bool Interface_AudioEngine::get_current_sink_format(void* universalmediacenterBase, AUDIO_ENGINE_FORMAT* format)
 {
-  if (!kodiBase || !format)
+  if (!universalmediacenterBase || !format)
   {
-    CLog::LogF(LOGERROR, "Invalid stream data (kodiBase='{}', format='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid stream data (universalmediacenterBase='{}', format='{}')", universalmediacenterBase,
                static_cast<void*>(format));
     return false;
   }
@@ -385,11 +385,11 @@ bool Interface_AudioEngine::get_current_sink_format(void* kodiBase, AUDIO_ENGINE
   return true;
 }
 
-unsigned int Interface_AudioEngine::aestream_get_space(void* kodiBase, AEStreamHandle* streamHandle)
+unsigned int Interface_AudioEngine::aestream_get_space(void* universalmediacenterBase, AEStreamHandle* streamHandle)
 {
-  if (!kodiBase || !streamHandle)
+  if (!universalmediacenterBase || !streamHandle)
   {
-    CLog::LogF(LOGERROR, "Invalid stream data (kodiBase='{}', streamHandle='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid stream data (universalmediacenterBase='{}', streamHandle='{}')", universalmediacenterBase,
                streamHandle);
     return 0;
   }
@@ -397,7 +397,7 @@ unsigned int Interface_AudioEngine::aestream_get_space(void* kodiBase, AEStreamH
   return static_cast<IAEStream*>(streamHandle)->GetSpace();
 }
 
-unsigned int Interface_AudioEngine::aestream_add_data(void* kodiBase,
+unsigned int Interface_AudioEngine::aestream_add_data(void* universalmediacenterBase,
                                                       AEStreamHandle* streamHandle,
                                                       uint8_t* const* data,
                                                       unsigned int offset,
@@ -406,9 +406,9 @@ unsigned int Interface_AudioEngine::aestream_add_data(void* kodiBase,
                                                       bool hasDownmix,
                                                       double centerMixLevel)
 {
-  if (!kodiBase || !streamHandle)
+  if (!universalmediacenterBase || !streamHandle)
   {
-    CLog::LogF(LOGERROR, "Invalid stream data (kodiBase='{}', streamHandle='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid stream data (universalmediacenterBase='{}', streamHandle='{}')", universalmediacenterBase,
                streamHandle);
     return 0;
   }
@@ -423,11 +423,11 @@ unsigned int Interface_AudioEngine::aestream_add_data(void* kodiBase,
   return static_cast<IAEStream*>(streamHandle)->AddData(data, offset, frames, &extData);
 }
 
-double Interface_AudioEngine::aestream_get_delay(void* kodiBase, AEStreamHandle* streamHandle)
+double Interface_AudioEngine::aestream_get_delay(void* universalmediacenterBase, AEStreamHandle* streamHandle)
 {
-  if (!kodiBase || !streamHandle)
+  if (!universalmediacenterBase || !streamHandle)
   {
-    CLog::LogF(LOGERROR, "Invalid stream data (kodiBase='{}', streamHandle='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid stream data (universalmediacenterBase='{}', streamHandle='{}')", universalmediacenterBase,
                streamHandle);
     return -1.0;
   }
@@ -438,11 +438,11 @@ double Interface_AudioEngine::aestream_get_delay(void* kodiBase, AEStreamHandle*
   return static_cast<IAEStream*>(streamHandle)->GetDelay();
 }
 
-bool Interface_AudioEngine::aestream_is_buffering(void* kodiBase, AEStreamHandle* streamHandle)
+bool Interface_AudioEngine::aestream_is_buffering(void* universalmediacenterBase, AEStreamHandle* streamHandle)
 {
-  if (!kodiBase || !streamHandle)
+  if (!universalmediacenterBase || !streamHandle)
   {
-    CLog::LogF(LOGERROR, "Invalid stream data (kodiBase='{}', streamHandle='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid stream data (universalmediacenterBase='{}', streamHandle='{}')", universalmediacenterBase,
                streamHandle);
     return false;
   }
@@ -453,11 +453,11 @@ bool Interface_AudioEngine::aestream_is_buffering(void* kodiBase, AEStreamHandle
   return static_cast<IAEStream*>(streamHandle)->IsBuffering();
 }
 
-double Interface_AudioEngine::aestream_get_cache_time(void* kodiBase, AEStreamHandle* streamHandle)
+double Interface_AudioEngine::aestream_get_cache_time(void* universalmediacenterBase, AEStreamHandle* streamHandle)
 {
-  if (!kodiBase || !streamHandle)
+  if (!universalmediacenterBase || !streamHandle)
   {
-    CLog::LogF(LOGERROR, "Invalid stream data (kodiBase='{}', streamHandle='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid stream data (universalmediacenterBase='{}', streamHandle='{}')", universalmediacenterBase,
                streamHandle);
     return -1.0;
   }
@@ -468,11 +468,11 @@ double Interface_AudioEngine::aestream_get_cache_time(void* kodiBase, AEStreamHa
   return static_cast<IAEStream*>(streamHandle)->GetCacheTime();
 }
 
-double Interface_AudioEngine::aestream_get_cache_total(void* kodiBase, AEStreamHandle* streamHandle)
+double Interface_AudioEngine::aestream_get_cache_total(void* universalmediacenterBase, AEStreamHandle* streamHandle)
 {
-  if (!kodiBase || !streamHandle)
+  if (!universalmediacenterBase || !streamHandle)
   {
-    CLog::LogF(LOGERROR, "Invalid stream data (kodiBase='{}', streamHandle='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid stream data (universalmediacenterBase='{}', streamHandle='{}')", universalmediacenterBase,
                streamHandle);
     return -1.0;
   }
@@ -483,11 +483,11 @@ double Interface_AudioEngine::aestream_get_cache_total(void* kodiBase, AEStreamH
   return static_cast<IAEStream*>(streamHandle)->GetCacheTotal();
 }
 
-void Interface_AudioEngine::aestream_pause(void* kodiBase, AEStreamHandle* streamHandle)
+void Interface_AudioEngine::aestream_pause(void* universalmediacenterBase, AEStreamHandle* streamHandle)
 {
-  if (!kodiBase || !streamHandle)
+  if (!universalmediacenterBase || !streamHandle)
   {
-    CLog::LogF(LOGERROR, "Invalid stream data (kodiBase='{}', streamHandle='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid stream data (universalmediacenterBase='{}', streamHandle='{}')", universalmediacenterBase,
                streamHandle);
     return;
   }
@@ -498,11 +498,11 @@ void Interface_AudioEngine::aestream_pause(void* kodiBase, AEStreamHandle* strea
   static_cast<IAEStream*>(streamHandle)->Pause();
 }
 
-void Interface_AudioEngine::aestream_resume(void* kodiBase, AEStreamHandle* streamHandle)
+void Interface_AudioEngine::aestream_resume(void* universalmediacenterBase, AEStreamHandle* streamHandle)
 {
-  if (!kodiBase || !streamHandle)
+  if (!universalmediacenterBase || !streamHandle)
   {
-    CLog::LogF(LOGERROR, "Invalid stream data (kodiBase='{}', streamHandle='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid stream data (universalmediacenterBase='{}', streamHandle='{}')", universalmediacenterBase,
                streamHandle);
     return;
   }
@@ -510,11 +510,11 @@ void Interface_AudioEngine::aestream_resume(void* kodiBase, AEStreamHandle* stre
   static_cast<IAEStream*>(streamHandle)->Resume();
 }
 
-void Interface_AudioEngine::aestream_drain(void* kodiBase, AEStreamHandle* streamHandle, bool wait)
+void Interface_AudioEngine::aestream_drain(void* universalmediacenterBase, AEStreamHandle* streamHandle, bool wait)
 {
-  if (!kodiBase || !streamHandle)
+  if (!universalmediacenterBase || !streamHandle)
   {
-    CLog::LogF(LOGERROR, "Invalid stream data (kodiBase='{}', streamHandle='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid stream data (universalmediacenterBase='{}', streamHandle='{}')", universalmediacenterBase,
                streamHandle);
     return;
   }
@@ -525,11 +525,11 @@ void Interface_AudioEngine::aestream_drain(void* kodiBase, AEStreamHandle* strea
   static_cast<IAEStream*>(streamHandle)->Drain(wait);
 }
 
-bool Interface_AudioEngine::aestream_is_draining(void* kodiBase, AEStreamHandle* streamHandle)
+bool Interface_AudioEngine::aestream_is_draining(void* universalmediacenterBase, AEStreamHandle* streamHandle)
 {
-  if (!kodiBase || !streamHandle)
+  if (!universalmediacenterBase || !streamHandle)
   {
-    CLog::LogF(LOGERROR, "Invalid stream data (kodiBase='{}', streamHandle='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid stream data (universalmediacenterBase='{}', streamHandle='{}')", universalmediacenterBase,
                streamHandle);
     return false;
   }
@@ -540,11 +540,11 @@ bool Interface_AudioEngine::aestream_is_draining(void* kodiBase, AEStreamHandle*
   return static_cast<IAEStream*>(streamHandle)->IsDraining();
 }
 
-bool Interface_AudioEngine::aestream_is_drained(void* kodiBase, AEStreamHandle* streamHandle)
+bool Interface_AudioEngine::aestream_is_drained(void* universalmediacenterBase, AEStreamHandle* streamHandle)
 {
-  if (!kodiBase || !streamHandle)
+  if (!universalmediacenterBase || !streamHandle)
   {
-    CLog::LogF(LOGERROR, "Invalid stream data (kodiBase='{}', streamHandle='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid stream data (universalmediacenterBase='{}', streamHandle='{}')", universalmediacenterBase,
                streamHandle);
     return false;
   }
@@ -555,11 +555,11 @@ bool Interface_AudioEngine::aestream_is_drained(void* kodiBase, AEStreamHandle* 
   return static_cast<IAEStream*>(streamHandle)->IsDrained();
 }
 
-void Interface_AudioEngine::aestream_flush(void* kodiBase, AEStreamHandle* streamHandle)
+void Interface_AudioEngine::aestream_flush(void* universalmediacenterBase, AEStreamHandle* streamHandle)
 {
-  if (!kodiBase || !streamHandle)
+  if (!universalmediacenterBase || !streamHandle)
   {
-    CLog::LogF(LOGERROR, "Invalid stream data (kodiBase='{}', streamHandle='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid stream data (universalmediacenterBase='{}', streamHandle='{}')", universalmediacenterBase,
                streamHandle);
     return;
   }
@@ -570,11 +570,11 @@ void Interface_AudioEngine::aestream_flush(void* kodiBase, AEStreamHandle* strea
   static_cast<IAEStream*>(streamHandle)->Flush();
 }
 
-float Interface_AudioEngine::aestream_get_volume(void* kodiBase, AEStreamHandle* streamHandle)
+float Interface_AudioEngine::aestream_get_volume(void* universalmediacenterBase, AEStreamHandle* streamHandle)
 {
-  if (!kodiBase || !streamHandle)
+  if (!universalmediacenterBase || !streamHandle)
   {
-    CLog::LogF(LOGERROR, "Invalid stream data (kodiBase='{}', streamHandle='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid stream data (universalmediacenterBase='{}', streamHandle='{}')", universalmediacenterBase,
                streamHandle);
     return -1.0f;
   }
@@ -585,13 +585,13 @@ float Interface_AudioEngine::aestream_get_volume(void* kodiBase, AEStreamHandle*
   return static_cast<IAEStream*>(streamHandle)->GetVolume();
 }
 
-void Interface_AudioEngine::aestream_set_volume(void* kodiBase,
+void Interface_AudioEngine::aestream_set_volume(void* universalmediacenterBase,
                                                 AEStreamHandle* streamHandle,
                                                 float volume)
 {
-  if (!kodiBase || !streamHandle)
+  if (!universalmediacenterBase || !streamHandle)
   {
-    CLog::LogF(LOGERROR, "Invalid stream data (kodiBase='{}', streamHandle='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid stream data (universalmediacenterBase='{}', streamHandle='{}')", universalmediacenterBase,
                streamHandle);
     return;
   }
@@ -602,12 +602,12 @@ void Interface_AudioEngine::aestream_set_volume(void* kodiBase,
   static_cast<IAEStream*>(streamHandle)->SetVolume(volume);
 }
 
-float Interface_AudioEngine::aestream_get_amplification(void* kodiBase,
+float Interface_AudioEngine::aestream_get_amplification(void* universalmediacenterBase,
                                                         AEStreamHandle* streamHandle)
 {
-  if (!kodiBase || !streamHandle)
+  if (!universalmediacenterBase || !streamHandle)
   {
-    CLog::LogF(LOGERROR, "Invalid stream data (kodiBase='{}', streamHandle='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid stream data (universalmediacenterBase='{}', streamHandle='{}')", universalmediacenterBase,
                streamHandle);
     return -1.0f;
   }
@@ -618,13 +618,13 @@ float Interface_AudioEngine::aestream_get_amplification(void* kodiBase,
   return static_cast<IAEStream*>(streamHandle)->GetAmplification();
 }
 
-void Interface_AudioEngine::aestream_set_amplification(void* kodiBase,
+void Interface_AudioEngine::aestream_set_amplification(void* universalmediacenterBase,
                                                        AEStreamHandle* streamHandle,
                                                        float amplify)
 {
-  if (!kodiBase || !streamHandle)
+  if (!universalmediacenterBase || !streamHandle)
   {
-    CLog::LogF(LOGERROR, "Invalid stream data (kodiBase='{}', streamHandle='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid stream data (universalmediacenterBase='{}', streamHandle='{}')", universalmediacenterBase,
                streamHandle);
     return;
   }
@@ -635,12 +635,12 @@ void Interface_AudioEngine::aestream_set_amplification(void* kodiBase,
   static_cast<IAEStream*>(streamHandle)->SetAmplification(amplify);
 }
 
-unsigned int Interface_AudioEngine::aestream_get_frame_size(void* kodiBase,
+unsigned int Interface_AudioEngine::aestream_get_frame_size(void* universalmediacenterBase,
                                                             AEStreamHandle* streamHandle)
 {
-  if (!kodiBase || !streamHandle)
+  if (!universalmediacenterBase || !streamHandle)
   {
-    CLog::LogF(LOGERROR, "Invalid stream data (kodiBase='{}', streamHandle='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid stream data (universalmediacenterBase='{}', streamHandle='{}')", universalmediacenterBase,
                streamHandle);
     return 0;
   }
@@ -651,12 +651,12 @@ unsigned int Interface_AudioEngine::aestream_get_frame_size(void* kodiBase,
   return static_cast<IAEStream*>(streamHandle)->GetFrameSize();
 }
 
-unsigned int Interface_AudioEngine::aestream_get_channel_count(void* kodiBase,
+unsigned int Interface_AudioEngine::aestream_get_channel_count(void* universalmediacenterBase,
                                                                AEStreamHandle* streamHandle)
 {
-  if (!kodiBase || !streamHandle)
+  if (!universalmediacenterBase || !streamHandle)
   {
-    CLog::LogF(LOGERROR, "Invalid stream data (kodiBase='{}', streamHandle='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid stream data (universalmediacenterBase='{}', streamHandle='{}')", universalmediacenterBase,
                streamHandle);
     return 0;
   }
@@ -667,12 +667,12 @@ unsigned int Interface_AudioEngine::aestream_get_channel_count(void* kodiBase,
   return static_cast<IAEStream*>(streamHandle)->GetChannelCount();
 }
 
-unsigned int Interface_AudioEngine::aestream_get_sample_rate(void* kodiBase,
+unsigned int Interface_AudioEngine::aestream_get_sample_rate(void* universalmediacenterBase,
                                                              AEStreamHandle* streamHandle)
 {
-  if (!kodiBase || !streamHandle)
+  if (!universalmediacenterBase || !streamHandle)
   {
-    CLog::LogF(LOGERROR, "Invalid stream data (kodiBase='{}', streamHandle='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid stream data (universalmediacenterBase='{}', streamHandle='{}')", universalmediacenterBase,
                streamHandle);
     return 0;
   }
@@ -683,12 +683,12 @@ unsigned int Interface_AudioEngine::aestream_get_sample_rate(void* kodiBase,
   return static_cast<IAEStream*>(streamHandle)->GetSampleRate();
 }
 
-AudioEngineDataFormat Interface_AudioEngine::aestream_get_data_format(void* kodiBase,
+AudioEngineDataFormat Interface_AudioEngine::aestream_get_data_format(void* universalmediacenterBase,
                                                                       AEStreamHandle* streamHandle)
 {
-  if (!kodiBase || !streamHandle)
+  if (!universalmediacenterBase || !streamHandle)
   {
-    CLog::LogF(LOGERROR, "Invalid stream data (kodiBase='{}', streamHandle='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid stream data (universalmediacenterBase='{}', streamHandle='{}')", universalmediacenterBase,
                streamHandle);
     return AUDIOENGINE_FMT_INVALID;
   }
@@ -699,12 +699,12 @@ AudioEngineDataFormat Interface_AudioEngine::aestream_get_data_format(void* kodi
   return TranslateAEFormatToAddon(static_cast<IAEStream*>(streamHandle)->GetDataFormat());
 }
 
-double Interface_AudioEngine::aestream_get_resample_ratio(void* kodiBase,
+double Interface_AudioEngine::aestream_get_resample_ratio(void* universalmediacenterBase,
                                                           AEStreamHandle* streamHandle)
 {
-  if (!kodiBase || !streamHandle)
+  if (!universalmediacenterBase || !streamHandle)
   {
-    CLog::LogF(LOGERROR, "Invalid stream data (kodiBase='{}', streamHandle='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid stream data (universalmediacenterBase='{}', streamHandle='{}')", universalmediacenterBase,
                streamHandle);
     return -1.0;
   }
@@ -715,13 +715,13 @@ double Interface_AudioEngine::aestream_get_resample_ratio(void* kodiBase,
   return static_cast<IAEStream*>(streamHandle)->GetResampleRatio();
 }
 
-void Interface_AudioEngine::aestream_set_resample_ratio(void* kodiBase,
+void Interface_AudioEngine::aestream_set_resample_ratio(void* universalmediacenterBase,
                                                         AEStreamHandle* streamHandle,
                                                         double ratio)
 {
-  if (!kodiBase || !streamHandle)
+  if (!universalmediacenterBase || !streamHandle)
   {
-    CLog::LogF(LOGERROR, "Invalid stream data (kodiBase='{}', streamHandle='{}')", kodiBase,
+    CLog::LogF(LOGERROR, "Invalid stream data (universalmediacenterBase='{}', streamHandle='{}')", universalmediacenterBase,
                streamHandle);
     return;
   }

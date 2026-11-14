@@ -10,7 +10,7 @@
 
 #include "utils/log.h"
 
-#include "platform/android/activity/XBMCApp.h"
+#include "platform/android/activity/App.h"
 
 IPowerSyscall* CAndroidPowerSyscall::CreateInstance()
 {
@@ -24,7 +24,7 @@ void CAndroidPowerSyscall::Register()
 
 int CAndroidPowerSyscall::BatteryLevel()
 {
-  return CXBMCApp::Get().GetBatteryLevel();
+  return CApp::Get().GetBatteryLevel();
 }
 
 bool CAndroidPowerSyscall::PumpPowerEvents(IPowerEventsCallback *callback)

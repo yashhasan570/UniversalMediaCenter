@@ -106,8 +106,8 @@ std::vector<RendererDetail> CAESinkFactoryWin::GetRendererDetailsWinRT()
 
       details.nChannels = nChannels;
 
-      details.strDescription = KODI::PLATFORM::WINDOWS::FromW(devInfo.Name().c_str());
-      details.strDeviceId = KODI::PLATFORM::WINDOWS::FromW(devInfo.Id().c_str());
+      details.strDescription = UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW(devInfo.Name().c_str());
+      details.strDeviceId = UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW(devInfo.Id().c_str());
 
       details.bDefault = (devInfo.Id() == defaultId);
 

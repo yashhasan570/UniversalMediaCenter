@@ -6,7 +6,7 @@
  *  See LICENSES/README.md for more information.
  */
 
-#include "XBMCOperations.h"
+#include "Operations.h"
 
 #include "ServiceBroker.h"
 #include "messaging/ApplicationMessenger.h"
@@ -15,7 +15,7 @@
 
 using namespace JSONRPC;
 
-JSONRPC_STATUS CXBMCOperations::GetInfoLabels(const std::string &method, ITransportLayer *transport, IClient *client, const CVariant &parameterObject, CVariant &result)
+JSONRPC_STATUS COperations::GetInfoLabels(const std::string &method, ITransportLayer *transport, IClient *client, const CVariant &parameterObject, CVariant &result)
 {
   std::vector<std::string> info;
 
@@ -44,7 +44,7 @@ JSONRPC_STATUS CXBMCOperations::GetInfoLabels(const std::string &method, ITransp
   return OK;
 }
 
-JSONRPC_STATUS CXBMCOperations::GetInfoBooleans(const std::string &method, ITransportLayer *transport, IClient *client, const CVariant &parameterObject, CVariant &result)
+JSONRPC_STATUS COperations::GetInfoBooleans(const std::string &method, ITransportLayer *transport, IClient *client, const CVariant &parameterObject, CVariant &result)
 {
   std::vector<std::string> info;
 

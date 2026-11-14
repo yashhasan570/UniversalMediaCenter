@@ -16,7 +16,7 @@
 
 #include <algorithm>
 
-namespace KODI::VIDEO::GEOMETRY
+namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY
 {
 
 namespace
@@ -55,7 +55,7 @@ VariableGeometryPolicy ContentGeometryPolicyFromSettings()
 
 float RasterAspectFromSettings()
 {
-  return KODI::UTILS::CAspectRatioVocabulary::RatioForKey(
+  return UNIVERSAL MEDIA CENTER::UTILS::CAspectRatioVocabulary::RatioForKey(
       Settings()->GetInt(CSettings::SETTING_VIDEOSCREEN_RASTERASPECT));
 }
 
@@ -117,4 +117,4 @@ LiveGeometrySettings LiveGeometryFromSettings()
   return live;
 }
 
-} // namespace KODI::VIDEO::GEOMETRY
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY

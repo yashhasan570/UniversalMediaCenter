@@ -8,7 +8,7 @@
 
 #include "RPProcessInfoX11.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace RETRO;
 
 CRPProcessInfoX11::CRPProcessInfoX11() : CRPProcessInfo("X11")

@@ -29,7 +29,7 @@
 #include <optional>
 #include <vector>
 
-using namespace KODI::VIDEO::GEOMETRY;
+using namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY;
 using namespace std::chrono_literals;
 
 namespace
@@ -61,7 +61,7 @@ bool StopRequested()
 bool WaitUntilIdle()
 {
   while (!StopRequested() && IsBusy())
-    KODI::TIME::Sleep(IDLE_POLL_INTERVAL);
+    UNIVERSAL MEDIA CENTER::TIME::Sleep(IDLE_POLL_INTERVAL);
 
   return !StopRequested();
 }

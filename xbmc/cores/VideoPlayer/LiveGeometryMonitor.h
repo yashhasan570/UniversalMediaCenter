@@ -26,10 +26,10 @@ class CDVDStreamInfo;
 class CProcessInfo;
 struct VideoPicture;
 
-namespace KODI::VIDEO::GEOMETRY
+namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY
 {
 struct FrameRef;
-} // namespace KODI::VIDEO::GEOMETRY
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY
 
 //! \brief Payload of CDVDMsg::PLAYER_CONTENT_GEOMETRY, in coded space as a stored measurement
 //! is.
@@ -83,16 +83,16 @@ private:
   //! produced. \p reduced says which, and a reduced reading is in the reduction's coordinates.
   bool AcquireFrame(const VideoPicture& picture,
                     const CDVDStreamInfo& hints,
-                    KODI::VIDEO::GEOMETRY::FrameRef& frame,
+                    UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::FrameRef& frame,
                     bool& reduced);
 
   CDVDMessageQueue& m_messageParent;
   CProcessInfo& m_processInfo;
 
-  KODI::VIDEO::GEOMETRY::CLiveGeometrySelector m_selector;
+  UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::CLiveGeometrySelector m_selector;
 
   //! \brief The rules in force, and when they were last re-read.
-  KODI::VIDEO::GEOMETRY::LiveGeometrySettings m_settings;
+  UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::LiveGeometrySettings m_settings;
   float m_declaredAspect{0.0f};
   int64_t m_settingsReadMs{0};
 
@@ -107,7 +107,7 @@ private:
 
   //! \brief The reduced copy a hardware-decoded picture is read through; its plane storage is
   //! allocated once for the stream.
-  KODI::VIDEO::GEOMETRY::ReducedFrame m_reduction;
+  UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::ReducedFrame m_reduction;
 
   mutable CCriticalSection m_section; //!< guards m_state, read by the render thread
   std::string m_state;

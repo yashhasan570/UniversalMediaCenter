@@ -13,7 +13,7 @@
 
 #include <map>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace JOYSTICK
 {
@@ -44,4 +44,4 @@ private:
   IButtonMap* const m_buttonMap;
 };
 } // namespace JOYSTICK
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

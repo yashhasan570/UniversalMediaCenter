@@ -26,13 +26,13 @@
 #include "input/keymaps/remote/IRTranslator.h"
 #include "input/mouse/MouseTranslator.h"
 #include "utils/StringUtils.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 #include "utils/log.h"
 
 #include <algorithm>
 #include <utility>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace KEYMAP;
 
 // Add the supplied device name to the list of connected devices
@@ -73,7 +73,7 @@ bool CButtonTranslator::Load()
 
   // Directories to search for keymaps. They're applied in this order,
   // so keymaps in profile/keymaps/ override e.g. system/keymaps
-  static std::vector<std::string> DIRS_TO_CHECK = {"special://xbmc/system/keymaps/",
+  static std::vector<std::string> DIRS_TO_CHECK = {"special:///system/keymaps/",
                                                    "special://masterprofile/keymaps/",
                                                    "special://profile/keymaps/"};
 
@@ -129,7 +129,7 @@ bool CButtonTranslator::Load()
 
 bool CButtonTranslator::LoadKeymap(const std::string& keymapPath)
 {
-  CXBMCTinyXML2 xmlDoc;
+  CTinyXML2 xmlDoc;
 
   CLog::Log(LOGINFO, "Loading {}", keymapPath);
   if (!xmlDoc.LoadFile(keymapPath))

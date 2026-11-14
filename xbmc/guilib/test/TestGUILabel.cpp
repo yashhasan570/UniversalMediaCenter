@@ -11,7 +11,7 @@
 #include <gtest/gtest.h>
 
 // Regression test for the bug reported where CGUIButtonControl::PythonSetLabel (and thus
-// xbmcgui.ControlButton.setLabel()/ControlRadioButton.setLabel()) changed the font stored in the
+// gui.ControlButton.setLabel()/ControlRadioButton.setLabel()) changed the font stored in the
 // label's CLabelInfo but never reached the CGUITextLayout that actually performs the rendering.
 // Because CGUITextLayout::Update() short-circuits when the text string itself hasn't changed, the
 // font change was silently dropped whenever the label text stayed the same. CGUILabel::SetLabelFont

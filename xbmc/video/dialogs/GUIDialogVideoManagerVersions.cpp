@@ -47,7 +47,7 @@
 #include <utility>
 #include <vector>
 
-using KODI::MEDIA::MediaSection;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaSection;
 
 static constexpr unsigned int CONTROL_BUTTON_ADD_VERSION = 22;
 static constexpr unsigned int CONTROL_BUTTON_RENAME_VERSION = 24;
@@ -223,7 +223,7 @@ bool CGUIDialogVideoManagerVersions::UngroupImpl()
 
   const CVideoInfoTag* versionDetails = m_selectedVideoAsset->GetVideoInfoTag();
 
-  KODI::ART::Artwork artwork;
+  UNIVERSAL MEDIA CENTER::ART::Artwork artwork;
   if (m_videoAsset->HasVideoInfoTag() &&
       m_database.GetArtForAsset(versionDetails->m_iDbId, ArtFallbackOptions::PARENT, artwork) &&
       m_database.DeleteVideoAsset(versionDetails->m_iDbId))
@@ -626,7 +626,7 @@ bool CGUIDialogVideoManagerVersions::GetAllOtherMovies(const std::shared_ptr<CFi
   list.Clear();
 
   if (item->GetVideoContentType() == VideoDbContentType::MOVIES)
-    videoDb.GetMoviesNav(KODI::VIDEO::DB_PATH::MOVIE_TITLES, list);
+    videoDb.GetMoviesNav(UNIVERSAL MEDIA CENTER::VIDEO::DB_PATH::MOVIE_TITLES, list);
   else
     return false;
 
@@ -856,7 +856,7 @@ bool CGUIDialogVideoManagerVersions::AddVideoVersionFilePicker()
 {
   // @todo: combine with extras add file logic, structured similarly and sharing most logic.
 
-  const KODI::MEDIA::TYPE mediaType{m_videoAsset->GetVideoInfoTag()->GetMediaType()};
+  const UNIVERSAL MEDIA CENTER::MEDIA::TYPE mediaType{m_videoAsset->GetVideoInfoTag()->GetMediaType()};
 
   // prompt to choose a video file
   std::vector<CMediaSource> sources{
@@ -913,7 +913,7 @@ bool CGUIDialogVideoManagerVersions::AddVideoVersionFilePicker()
       }
 
       std::string videoTitle;
-      if (newAsset.m_mediaType == KODI::MEDIA::TYPE::MOVIE)
+      if (newAsset.m_mediaType == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MOVIE)
       {
         videoTitle = m_database.GetMovieTitle(newAsset.m_idMedia);
       }
@@ -992,7 +992,7 @@ bool CGUIDialogVideoManagerVersions::AddVideoVersionFilePicker()
 
     m_database.AddVideoAsset(itemType, dbId, idNewVideoVersion, VideoAssetType::VERSION, item);
 
-    KODI::VIDEO::GEOMETRY::CContentGeometryScanner::GetInstance().Sweep();
+    UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::CContentGeometryScanner::GetInstance().Sweep();
 
     return true;
   }

@@ -57,7 +57,7 @@ bool CVaapi2Texture::Import(CVaapiRenderPicture* pic)
   }
 
   // EGL takes its own dma-buf reference at import; the fds need not outlive this function
-  std::array<KODI::UTILS::POSIX::CFileHandle, 4> drmFDs;
+  std::array<UNIVERSAL MEDIA CENTER::UTILS::POSIX::CFileHandle, 4> drmFDs;
   for (uint32_t object = 0; object < surface.num_objects && object < drmFDs.size(); object++)
     drmFDs[object].attach(surface.objects[object].fd);
 
@@ -101,7 +101,7 @@ bool CVaapi2Texture::Import(CVaapiRenderPicture* pic)
       case 1:
         // Single-plane packed formats (YUY2, Y210/Y212/Y216). The DMA-BUF
         // carries Y/Cb/Y/Cr (or wider) interleaved; bind to m_y and leave
-        // m_vu unused. The shader (XBMC_Y210 in gles_yuv2rgb_basic.frag)
+        // m_vu unused. The shader (_Y210 in gles_yuv2rgb_basic.frag)
         // decodes the packed layout.
         texture = &m_y;
         break;

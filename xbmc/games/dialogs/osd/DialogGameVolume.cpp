@@ -25,7 +25,7 @@
 
 #include <cmath>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 #define CONTROL_LABEL 12 //! @todo Remove me

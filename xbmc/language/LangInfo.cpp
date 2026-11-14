@@ -30,7 +30,7 @@
 #include "utils/LangCodeExpander.h"
 #include "utils/StringUtils.h"
 #include "utils/URIUtils.h"
-#include "utils/XBMCTinyXML2.h"
+#include "utils/TinyXML2.h"
 #include "utils/XMLUtils.h"
 #include "utils/log.h"
 #include "weather/WeatherManager.h"
@@ -49,9 +49,9 @@ std::string GetDateStringWithFormat(const CDateTime& date, const std::string& fo
 }
 } // namespace
 
-using namespace KODI::LANGINFO;
-using namespace KODI::LANGUAGE;
-using namespace KODI::LANGUAGE::I18N;
+using namespace UNIVERSAL MEDIA CENTER::LANGINFO;
+using namespace UNIVERSAL MEDIA CENTER::LANGUAGE;
+using namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N;
 
 static std::string shortDateFormats[] = {
     // clang-format off
@@ -518,7 +518,7 @@ bool CLangInfo::Load(const std::string& strLanguage)
 
   std::string strFileName = GetLanguageInfoPath(strLanguage);
 
-  CXBMCTinyXML2 xmlDoc;
+  CTinyXML2 xmlDoc;
   if (!xmlDoc.LoadFile(strFileName))
   {
     CLog::Log(LOGERROR, "unable to load {}: {} at line {}", strFileName, xmlDoc.ErrorStr(),

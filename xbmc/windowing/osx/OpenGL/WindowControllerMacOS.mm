@@ -30,7 +30,7 @@ void EnableRenderGUI(bool enable)
 }
 } // unnamed namespace
 
-@implementation XBMCWindowControllerMacOS
+@implementation WindowControllerMacOS
 
 - (nullable instancetype)initWithTitle:(NSString*)title defaultSize:(NSSize)size
 {
@@ -69,8 +69,8 @@ void EnableRenderGUI(bool enable)
     NSRect rect = [self.window.contentView
         convertRectToBacking:[self.window contentRectForFrameRect:self.window.frame]];
 
-    XBMC_Event newEvent = {};
-    newEvent.type = XBMC_VIDEORESIZE;
+    _Event newEvent = {};
+    newEvent.type = _VIDEORESIZE;
     newEvent.resize.width = static_cast<int>(rect.size.width);
     newEvent.resize.height = static_cast<int>(rect.size.height);
     newEvent.resize.scale = 1.0;
@@ -162,8 +162,8 @@ void EnableRenderGUI(bool enable)
   if (self.window.contentView)
   {
     NSPoint window_origin = [self.window.contentView frame].origin;
-    XBMC_Event newEvent = {};
-    newEvent.type = XBMC_VIDEOMOVE;
+    _Event newEvent = {};
+    newEvent.type = _VIDEOMOVE;
     newEvent.move.x = window_origin.x;
     newEvent.move.y = window_origin.y;
     std::shared_ptr<CAppInboundProtocol> appPort = CServiceBroker::GetAppPort();
@@ -179,8 +179,8 @@ void EnableRenderGUI(bool enable)
   // window has moved to a different screen
   if (self.window)
   {
-    XBMC_Event newEvent = {};
-    newEvent.type = XBMC_SCREENCHANGE;
+    _Event newEvent = {};
+    newEvent.type = _SCREENCHANGE;
     newEvent.screen.screenIdx =
         static_cast<unsigned int>([NSScreen.screens indexOfObject:self.window.screen]);
     std::shared_ptr<CAppInboundProtocol> appPort = CServiceBroker::GetAppPort();

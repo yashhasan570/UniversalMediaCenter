@@ -38,8 +38,8 @@
 #include "view/GUIViewState.h"
 #include "windows/GUIMediaWindow.h"
 
-using namespace KODI::GUILIB;
-using namespace KODI::GUILIB::GUIINFO;
+using namespace UNIVERSAL MEDIA CENTER::GUILIB;
+using namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO;
 
 void CGUIControlsGUIInfo::SetContainerMoving(int id, bool next, bool scrolling)
 {
@@ -399,7 +399,7 @@ bool CGUIControlsGUIInfo::GetLabel(std::string& value,
       const CGUIMediaWindow* window{GUIINFO::GetMediaWindow(contextWindow)};
       if (window)
       {
-        value = window->CurrentDirectory().GetArt(KODI::ART::TYPE::FANART);
+        value = window->CurrentDirectory().GetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::FANART);
         return true;
       }
       break;
@@ -473,7 +473,7 @@ bool CGUIControlsGUIInfo::GetBool(bool& value,
       if (window)
       {
         value =
-            window->CurrentDirectory().GetProperty(KODI::ITEM::PROPERTY::IS_STACKED).asBoolean();
+            window->CurrentDirectory().GetProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::IS_STACKED).asBoolean();
         return true;
       }
       break;
@@ -483,7 +483,7 @@ bool CGUIControlsGUIInfo::GetBool(bool& value,
       const CGUIMediaWindow* window{GUIINFO::GetMediaWindow(contextWindow)};
       if (window)
       {
-        value = window->CurrentDirectory().HasArt(KODI::ART::TYPE::THUMB);
+        value = window->CurrentDirectory().HasArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB);
         return true;
       }
       break;

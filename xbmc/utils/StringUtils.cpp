@@ -56,7 +56,7 @@
 
 #define FORMAT_BLOCK_SIZE 512 // # of bytes for initial allocation for printf
 
-namespace KODI::UTILS
+namespace UNIVERSAL MEDIA CENTER::UTILS
 {
 
 namespace
@@ -1718,7 +1718,7 @@ std::string StringUtils::CreateUUID()
 {
 #ifdef HAVE_NEW_CROSSGUID
 #ifdef TARGET_ANDROID
-  JNIEnv* env = xbmc_jnienv();
+  JNIEnv* env = _jnienv();
   return xg::newGuid(env).str();
 #else
   return xg::newGuid().str();
@@ -1941,4 +1941,4 @@ std::string StringUtils::CreateFromCString(const char* cstr)
   return cstr != nullptr ? std::string(cstr) : std::string();
 }
 
-} // namespace KODI::UTILS
+} // namespace UNIVERSAL MEDIA CENTER::UTILS

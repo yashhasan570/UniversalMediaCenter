@@ -12,7 +12,7 @@
 
 #include <algorithm>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace RETRO;
 
 uint32_t CDiscStateHistory::Intern(const GAME::CGameClientDiscModel& model)

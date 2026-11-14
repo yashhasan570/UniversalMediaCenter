@@ -66,7 +66,7 @@ void CPlayerSettings::SettingOptionsRasterAspectRatios(const SettingConstPtr& /*
                                                        std::vector<IntegerSettingOption>& list,
                                                        int& /*current*/)
 {
-  using namespace KODI::UTILS;
+  using namespace UNIVERSAL MEDIA CENTER::UTILS;
 
   list.emplace_back(CServiceBroker::GetResourcesComponent().GetLocalizeStrings().Get(40835), 0);
 

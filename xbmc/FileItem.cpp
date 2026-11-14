@@ -82,13 +82,13 @@
 #include <string>
 #include <vector>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace XFILE;
 using namespace PLAYLIST;
 using namespace MUSIC_INFO;
 using namespace PVR;
 using namespace GAME;
-using KODI::MEDIA::IsContainer;
+using UNIVERSAL MEDIA CENTER::MEDIA::IsContainer;
 
 namespace
 {

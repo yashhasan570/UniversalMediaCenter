@@ -34,12 +34,12 @@
  * TagLib 2.3.2 also fixes the AudioProperties::Fast Segment lookup, which otherwise reads no tags
  * from Matroska files over 512 KiB.
  *
- * Defining KODI_NO_TAGLIB_MATROSKA builds the FFmpeg reader whatever TagLib is linked, so that the
+ * Defining UNIVERSALMEDIA_NO_TAGLIB_MATROSKA builds the FFmpeg reader whatever TagLib is linked, so that the
  * configuration a distribution below the floor gets can be built and tested without an old TagLib
  * to hand. It is not a user facing option:
  *
- *     cmake -DCMAKE_CXX_FLAGS=-DKODI_NO_TAGLIB_MATROSKA ...
+ *     cmake -DCMAKE_CXX_FLAGS=-DUNIVERSALMEDIA_NO_TAGLIB_MATROSKA ...
  */
-#if TAGLIB_VERSION_INT >= 20302 && !defined(KODI_NO_TAGLIB_MATROSKA)
+#if TAGLIB_VERSION_INT >= 20302 && !defined(UNIVERSALMEDIA_NO_TAGLIB_MATROSKA)
 #define HAS_TAGLIB_MATROSKA 1
 #endif

@@ -16,7 +16,7 @@
  * Both functions return the RPU as an HEVC unspecified-62 NAL unit: NAL header, RPU prefix and
  * the RPU with emulation prevention bytes removed.
  */
-namespace KODI::UTILS::DOLBYVISION
+namespace UNIVERSAL MEDIA CENTER::UTILS::DOLBYVISION
 {
 /*!
  * \brief Converts the RPU exported by FFmpeg (AV_FRAME_DATA_DOVI_RPU_BUFFER), which lacks the NAL
@@ -29,4 +29,4 @@ std::vector<uint8_t> HevcRpuToNal(const uint8_t* data, size_t size);
  * \return empty if there is none, or without libdovi
  */
 std::vector<uint8_t> ExtractAv1Rpu(const uint8_t* data, size_t size);
-} // namespace KODI::UTILS::DOLBYVISION
+} // namespace UNIVERSAL MEDIA CENTER::UTILS::DOLBYVISION

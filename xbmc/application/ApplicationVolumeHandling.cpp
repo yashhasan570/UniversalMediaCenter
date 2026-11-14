@@ -29,7 +29,7 @@
 #include "utils/XMLUtils.h"
 
 #if defined(TARGET_ANDROID)
-#include "platform/android/activity/XBMCApp.h"
+#include "platform/android/activity/App.h"
 #endif
 
 #include <cmath>
@@ -280,7 +280,7 @@ void CApplicationVolumeHandling::ChangeVolume(const CAction& action)
 
 // Android has steps based on the max available volume level
 #if defined(TARGET_ANDROID)
-  const float step = (VOLUME_MAXIMUM - VOLUME_MINIMUM) / CXBMCApp::GetMaxSystemVolume();
+  const float step = (VOLUME_MAXIMUM - VOLUME_MINIMUM) / CApp::GetMaxSystemVolume();
 #else
   int volumesteps = settings->GetInt(CSettings::SETTING_AUDIOOUTPUT_VOLUMESTEPS);
   // sanity check

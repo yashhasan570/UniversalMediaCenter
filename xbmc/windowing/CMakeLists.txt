@@ -12,7 +12,7 @@ set(HEADERS GraphicContext.h
             WinEvents.h
             WindowSystemFactory.h
             WinSystem.h
-            XBMC_events.h
+            _events.h
             VideoSync.h)
 
 core_add_library(windowing)

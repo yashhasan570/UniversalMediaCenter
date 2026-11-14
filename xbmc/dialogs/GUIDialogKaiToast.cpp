@@ -131,11 +131,11 @@ bool CGUIDialogKaiToast::DoWork()
       if (icon.empty())
       {
         if (toast.eType == Warning)
-          icon = KODI::ART::DEFAULT::ICON_WARNING;
+          icon = UNIVERSAL MEDIA CENTER::ART::DEFAULT::ICON_WARNING;
         else if (toast.eType == Error)
-          icon = KODI::ART::DEFAULT::ICON_ERROR;
+          icon = UNIVERSAL MEDIA CENTER::ART::DEFAULT::ICON_ERROR;
         else
-          icon = KODI::ART::DEFAULT::ICON_INFO;
+          icon = UNIVERSAL MEDIA CENTER::ART::DEFAULT::ICON_INFO;
       }
       SET_CONTROL_FILENAME(POPUP_ICON, icon);
     }

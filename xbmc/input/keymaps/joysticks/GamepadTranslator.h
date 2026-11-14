@@ -11,7 +11,7 @@
 #include <stdint.h>
 #include <string>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace KEYMAP
 {
@@ -29,4 +29,4 @@ public:
   static uint32_t TranslateString(std::string strButton);
 };
 } // namespace KEYMAP
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

@@ -19,12 +19,12 @@
 ///
 /// CFanart stores all data related to all available fanarts for a given TV show and provides
 /// functions required to manipulate and access that data.
-/// In order to provide an interface between the fanart data and the XBMC database, all data
+/// In order to provide an interface between the fanart data and the  database, all data
 /// is stored internally it its own form, as well as packed into an XML formatted string
 /// stored in the member variable m_xml.
-/// Information on multiple fanarts for a given show is stored, but XBMC only cares about the
+/// Information on multiple fanarts for a given show is stored, but  only cares about the
 /// very first fanart stored.  These interfaces provide a means to access the data in that first
-/// fanart record, as well as to set which fanart is the first record.  Externally, all XBMC needs
+/// fanart record, as well as to set which fanart is the first record.  Externally, all  needs
 /// to care about is getting and setting that first record.  Everything else is maintained internally
 /// by CFanart.  This point is key to using the interface properly.
 class CFanart
@@ -57,7 +57,7 @@ public:
   /// \param index: 0 based index of the color to retrieve.  A fanart theme contains 3 colors, indices 0-2, arranged from darkest to lightest.
   const std::string GetColor(unsigned int index) const;
   ///
-  /// Sets a particular fanart to be the "primary" fanart, or in other words, sets which fanart is actually used by XBMC
+  /// Sets a particular fanart to be the "primary" fanart, or in other words, sets which fanart is actually used by 
   ///
   /// This is the one of the only instances in the public interface where there is any hint that more than one fanart exists, but its by necessity.
   /// \param index: 0 based index of which fanart to set as the primary fanart
@@ -74,7 +74,7 @@ public:
   ///
   /// m_xml contains an XML formatted string which is all fanart packed into one string.
   ///
-  /// This string is the "interface" as it were to the XBMC database, and MUST be kept in sync with the rest of the class.  Therefore
+  /// This string is the "interface" as it were to the  database, and MUST be kept in sync with the rest of the class.  Therefore
   /// anytime this string is changed, the change should be followed up by a call to CFanart::UnPack().  This XML formatted string is
   /// also the interface used to pass the fanart data from the scraper to CFanart.
   std::string m_xml;
@@ -86,10 +86,10 @@ private:
   /// Supported Formats:
   ///
   /// * The TVDB RGB Int Triplets, pipe separate with leading/trailing pipes "|68,69,59|69,70,58|78,78,68|"
-  /// * XBMC ARGB Hexadecimal string comma separated "FFFFFFFF,DDDDDDDD,AAAAAAAA"
+  /// *  ARGB Hexadecimal string comma separated "FFFFFFFF,DDDDDDDD,AAAAAAAA"
   ///
   /// \param colorsIn: string containing colors in some format to be converted
-  /// \param colorsOut: XBMC ARGB Hexadecimal string comma separated "FFFFFFFF,DDDDDDDD,AAAAAAAA"
+  /// \param colorsOut:  ARGB Hexadecimal string comma separated "FFFFFFFF,DDDDDDDD,AAAAAAAA"
   /// \return boolean indicating success or failure.
   static bool ParseColors(const std::string&colorsIn, std::string&colorsOut);
 

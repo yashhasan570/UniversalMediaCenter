@@ -16,12 +16,12 @@
 #include "language/i18n/Iso639_2_Table.h"
 #include "language/i18n/LanguageTable.h"
 #include "utils/StringUtils.h"
-#include "utils/XBMCTinyXML.h"
+#include "utils/TinyXML.h"
 #include "utils/log.h"
 
 #include <algorithm>
 
-using namespace KODI::LANGUAGE::I18N;
+using namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N;
 
 constexpr std::size_t MAX_BCP47_ENGLISH_NAME_LENGTH = 30;
 

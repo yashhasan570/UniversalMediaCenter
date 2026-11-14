@@ -23,7 +23,7 @@
 #include "utils/URIUtils.h"
 #include "utils/Variant.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 namespace CONTEXTMENU
 {

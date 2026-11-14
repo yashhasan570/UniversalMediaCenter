@@ -172,7 +172,7 @@ externalproject_add(ffmpeg
                     ${sourceplugin_patch}
                     CONFIGURE_COMMAND ${env_vars} <SOURCE_DIR>/configure
                       --prefix=${CMAKE_INSTALL_PREFIX}
-                      --extra-version="kodi-${FFMPEG_VER}"
+                      --extra-version="universalmediacenter-${FFMPEG_VER}"
                       ${ffmpeg_conf}
                     BUILD_COMMAND ${MAKE_COMMAND})
 
@@ -180,5 +180,5 @@ install(CODE "Message(Done)")
 
 # Quell warnings
 set(BUILD_SHARED_LIBS)
-set(XBMC_BUILD_DIR)
-set(KODI_BUILD_DIR)
+set(_BUILD_DIR)
+set(UNIVERSALMEDIA_BUILD_DIR)

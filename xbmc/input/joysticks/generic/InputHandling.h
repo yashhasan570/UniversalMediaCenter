@@ -14,7 +14,7 @@
 
 #include <map>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace JOYSTICK
 {
@@ -67,4 +67,4 @@ private:
   static CGUIDialogNewJoystick* const m_dialog;
 };
 } // namespace JOYSTICK
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

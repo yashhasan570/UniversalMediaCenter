@@ -10,7 +10,7 @@
 
 #include "RetroPlayerStreamTypes.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -64,4 +64,4 @@ public:
 };
 
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

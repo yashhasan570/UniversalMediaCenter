@@ -13,7 +13,7 @@
 
 #include <string>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 void CGameInfoTag::Reset()

@@ -8,7 +8,7 @@
 
 #include "PVRTimerSettingDefinition.h"
 
-#include "addons/kodi-dev-kit/include/kodi/c-api/addon-instance/pvr/pvr_general.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api/addon-instance/pvr/pvr_general.h"
 #include "utils/Variant.h"
 #include "utils/log.h"
 

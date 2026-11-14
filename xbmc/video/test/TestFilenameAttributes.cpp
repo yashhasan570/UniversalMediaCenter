@@ -18,7 +18,7 @@ using ::testing::Test;
 using ::testing::ValuesIn;
 using ::testing::WithParamInterface;
 
-using namespace KODI::VIDEO;
+using namespace UNIVERSAL MEDIA CENTER::VIDEO;
 
 class TestFilenameAttributes : public Test
 {
@@ -33,7 +33,7 @@ public:
   }
 
   static AttributeMap CallGetFilenameAttributePairs(const std::string& fileName,
-                                                    KODI::REGEXP::RegExpCache* cache)
+                                                    UNIVERSAL MEDIA CENTER::REGEXP::RegExpCache* cache)
   {
     return CFilenameAttributes::GetFilenameAttributePairs(fileName, cache);
   }

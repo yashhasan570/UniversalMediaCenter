@@ -1,5 +1,5 @@
 /*
- *  XBMCApplication.h
+ *  Application.h
  *  Initial Version: Darrell Walisser <dwaliss1@purdue.edu>
  *  Non-NIB-Code & other changes: Max Horn <max@quendi.de>
  *
@@ -9,5 +9,5 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface XBMCDelegate : NSObject<NSApplicationDelegate>
+@interface Delegate : NSObject<NSApplicationDelegate>
 @end

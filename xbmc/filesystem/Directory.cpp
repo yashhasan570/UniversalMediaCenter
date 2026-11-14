@@ -30,7 +30,7 @@
 #include "utils/log.h"
 #include "video/VideoFileItemClassify.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace XFILE;
 using namespace std::chrono_literals;
 
@@ -302,7 +302,7 @@ bool CDirectory::GetDirectory(const CURL& url,
 
     return true;
   }
-  XBMCCOMMONS_HANDLE_UNCHECKED
+  COMMONS_HANDLE_UNCHECKED
   catch (...) { CLog::Log(LOGERROR, "{} - Unhandled exception", __FUNCTION__); }
   CLog::Log(LOGERROR, "{} - Error getting {}", __FUNCTION__, url.GetRedacted());
   return false;
@@ -361,7 +361,7 @@ bool CDirectory::Create(const CURL& url)
     if (pDirectory && pDirectory->Create(authURL))
       return true;
   }
-  XBMCCOMMONS_HANDLE_UNCHECKED
+  COMMONS_HANDLE_UNCHECKED
   catch (...) { CLog::Log(LOGERROR, "{} - Unhandled exception", __FUNCTION__); }
   CLog::Log(LOGERROR, "{} - Error creating {}", __FUNCTION__, url.GetRedacted());
   return false;
@@ -395,7 +395,7 @@ bool CDirectory::Exists(const CURL& url, bool bUseCache /* = true */)
     if (pDirectory)
       return pDirectory->Exists(authURL);
   }
-  XBMCCOMMONS_HANDLE_UNCHECKED
+  COMMONS_HANDLE_UNCHECKED
   catch (...) { CLog::Log(LOGERROR, "{} - Unhandled exception", __FUNCTION__); }
   CLog::Log(LOGERROR, "{} - Error checking for {}", __FUNCTION__, url.GetRedacted());
   return false;
@@ -428,7 +428,7 @@ bool CDirectory::Remove(const CURL& url)
         return true;
       }
   }
-  XBMCCOMMONS_HANDLE_UNCHECKED
+  COMMONS_HANDLE_UNCHECKED
   catch (...) { CLog::Log(LOGERROR, "{} - Unhandled exception", __FUNCTION__); }
   CLog::Log(LOGERROR, "{} - Error removing {}", __FUNCTION__, url.GetRedacted());
   return false;
@@ -450,7 +450,7 @@ bool CDirectory::RemoveRecursive(const CURL& url)
         return true;
       }
   }
-  XBMCCOMMONS_HANDLE_UNCHECKED
+  COMMONS_HANDLE_UNCHECKED
   catch (...) { CLog::Log(LOGERROR, "{} - Unhandled exception", __FUNCTION__); }
   CLog::Log(LOGERROR, "{} - Error removing {}", __FUNCTION__, url.GetRedacted());
   return false;

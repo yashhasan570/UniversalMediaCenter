@@ -46,8 +46,8 @@ public:
   * \return The images to draw, or nullptr when nothing is on screen
   */
   ASS_Image* RenderImage(double pts,
-                         KODI::SUBTITLES::STYLE::renderOpts opts,
-                         const std::shared_ptr<struct KODI::SUBTITLES::STYLE::style>& subStyle,
+                         UNIVERSAL MEDIA CENTER::SUBTITLES::STYLE::renderOpts opts,
+                         const std::shared_ptr<struct UNIVERSAL MEDIA CENTER::SUBTITLES::STYLE::style>& subStyle,
                          int* changes = NULL);
 
   ASS_Event* GetEvents();
@@ -128,7 +128,7 @@ protected:
   int AddEvent(const char* text,
                double startTime,
                double stopTime,
-               KODI::SUBTITLES::STYLE::subtitleOpts* opts);
+               UNIVERSAL MEDIA CENTER::SUBTITLES::STYLE::subtitleOpts* opts);
 
   /*!
   * \brief Append text to the specified event
@@ -154,10 +154,10 @@ protected:
 
 
 private:
-  void ConfigureAssOverride(const std::shared_ptr<struct KODI::SUBTITLES::STYLE::style>& subStyle,
+  void ConfigureAssOverride(const std::shared_ptr<struct UNIVERSAL MEDIA CENTER::SUBTITLES::STYLE::style>& subStyle,
                             ASS_Style* style);
-  void ApplyStyle(const std::shared_ptr<struct KODI::SUBTITLES::STYLE::style>& subStyle,
-                  const KODI::SUBTITLES::STYLE::renderOpts& opts);
+  void ApplyStyle(const std::shared_ptr<struct UNIVERSAL MEDIA CENTER::SUBTITLES::STYLE::style>& subStyle,
+                  const UNIVERSAL MEDIA CENTER::SUBTITLES::STYLE::renderOpts& opts);
 
   ASS_Library* m_library = nullptr;
   ASS_Track* m_track = nullptr;
@@ -165,12 +165,12 @@ private:
   mutable CCriticalSection m_section;
   ASSSubType m_subtitleType{NATIVE};
 
-  std::shared_ptr<const struct KODI::SUBTITLES::STYLE::style> m_appliedStyle;
+  std::shared_ptr<const struct UNIVERSAL MEDIA CENTER::SUBTITLES::STYLE::style> m_appliedStyle;
 
   // current default style ID of the ASS track
   int m_currentDefaultStyleId{ASS_NO_ID};
 
-  // default allocated style ID for the kodi user configured subtitle style
+  // default allocated style ID for the universalmediacenter user configured subtitle style
   int m_defaultUniversal Media CenterStyleId{ASS_NO_ID};
   std::string m_defaultFontFamilyName;
 };

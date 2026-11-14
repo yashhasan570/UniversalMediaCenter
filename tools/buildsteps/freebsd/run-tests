@@ -1,10 +1,10 @@
 WORKSPACE=${WORKSPACE:-$( cd $(dirname $0)/../../.. ; pwd -P )}
-XBMC_PLATFORM_DIR=freebsd
+_PLATFORM_DIR=freebsd
 . $WORKSPACE/tools/buildsteps/defaultenv
 
-cd $WORKSPACE/build;gmake -j$BUILDTHREADS kodi-test
+cd $WORKSPACE/build;gmake -j$BUILDTHREADS universalmediacenter-test
 if [ "$Configuration" != "Coverage" ]; then
-  cd $WORKSPACE;build/kodi-test --gtest_output=xml:gtestresults.xml
+  cd $WORKSPACE;build/universalmediacenter-test --gtest_output=xml:gtestresults.xml
 else
   cd $WORKSPACE/build;GTEST_OUTPUT="xml:$WORKSPACE/gtestresults.xml" gmake coverage
 fi

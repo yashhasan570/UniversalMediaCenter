@@ -31,7 +31,7 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
-using namespace KODI::UTILS::POSIX;
+using namespace UNIVERSAL MEDIA CENTER::UTILS::POSIX;
 
 namespace
 {

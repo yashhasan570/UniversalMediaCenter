@@ -12,7 +12,7 @@
 
 #include <ostream>
 
-namespace KODI::LANGUAGE::I18N
+namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N
 {
 struct Bcp47Extension;
 struct ParsedBcp47Tag;
@@ -34,4 +34,4 @@ public:
 private:
   std::vector<RegistryFileRecord> m_records;
 };
-} // namespace KODI::LANGUAGE::I18N
+} // namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N

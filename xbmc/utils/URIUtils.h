@@ -21,7 +21,7 @@ class CFileItem;
 */
 enum class LanCheckMode
 {
-  /*! \brief Only match if the host is on the same subnet as the kodi host */
+  /*! \brief Only match if the host is on the same subnet as the universalmediacenter host */
   ONLY_LOCAL_SUBNET,
   /*! \brief Match the host if it belongs to any private subnet */
   ANY_PRIVATE_SUBNET

@@ -1,7 +1,7 @@
 ![Universal Media Center Logo](resources/banner_slim.png)
 
 # HOW-TO: Clean Up Logic
-Guide originally published at **[PR13717](https://github.com/xbmc/xbmc/pull/13717)**. To better understand this document, you should read the original *Pull Request*.
+Guide originally published at **[PR13717](https://github.com///pull/13717)**. To better understand this document, you should read the original *Pull Request*.
 
 ## Table of Contents
 1. **[Why clean logic is important](#1-why-clean-logic-is-important)**
@@ -20,7 +20,7 @@ It's all about readability. We should strive to write code for people, not compu
 
 ## 2. What bad if and ternary statements look like
 
-Take the **[first commit](https://github.com/xbmc/xbmc/commit/2d85c66~6)**. The previous logic roughly translates to:
+Take the **[first commit](https://github.com///commit/2d85c66~6)**. The previous logic roughly translates to:
 
 ```c++
 if (A || B || (C &&D) || ((E || (F && G)) && (H && I && J && K)) || L)
@@ -64,7 +64,7 @@ if (flag)
   something();
 ```
 
-This is demonstrated in the commit **[Improve logic for GUI_MSG_QUEUE_NEXT_ITEM in CApplication::OnMessage()](https://github.com/xbmc/xbmc/commit/2d85c66~2)**.
+This is demonstrated in the commit **[Improve logic for GUI_MSG_QUEUE_NEXT_ITEM in CApplication::OnMessage()](https://github.com///commit/2d85c66~2)**.
 
 **[back to top](#table-of-contents)**
 
@@ -89,7 +89,7 @@ if (A)
 }
 ```
 
-This is demonstrated in the commit **[Improve logic in CAutorun::ExecuteAutorun()](https://github.com/xbmc/xbmc/commit/2d85c66~1)**.
+This is demonstrated in the commit **[Improve logic in CAutorun::ExecuteAutorun()](https://github.com///commit/2d85c66~1)**.
 
 **[back to top](#table-of-contents)**
 
@@ -109,7 +109,7 @@ if (!A || B)
   X = Z;
 ```
 
-This is demonstrated in the commit **[Improve sleep time logic in CApplication::FrameMove()](https://github.com/xbmc/xbmc/commit/2d85c66~5)**.
+This is demonstrated in the commit **[Improve sleep time logic in CApplication::FrameMove()](https://github.com///commit/2d85c66~5)**.
 
 **[back to top](#table-of-contents)**
 
@@ -146,7 +146,7 @@ if (flag)
   something();
 ```
 
-This is demonstrated in the commit **[Clean up player notification logic in CApplication::OnAction()](https://github.com/xbmc/xbmc/commit/2d85c66~6)**.
+This is demonstrated in the commit **[Clean up player notification logic in CApplication::OnAction()](https://github.com///commit/2d85c66~6)**.
 
 Switch statements use *jump tables*, which can be faster than `if`s in some cases because branching slows down speculative execution.
 
@@ -158,7 +158,7 @@ In general, I prefer the flag approach (OR) over the embedding indented blocks a
 
 However, when a bunch of ANDs and ORs are combined, sometimes it makes things more complicated to use a single OR operator. It's really a process of trying different algebraic combinations to get the simplest-to-read control flow.
 
-The last commit shows how I was given a convoluted condition and played around with boolean algebra until I eventually settled on what I considered most readable, **[Improve logic in CGraphicContext::SetFullScreenVideo()](https://github.com/xbmc/xbmc/commit/2d85c66)**.
+The last commit shows how I was given a convoluted condition and played around with boolean algebra until I eventually settled on what I considered most readable, **[Improve logic in CGraphicContext::SetFullScreenVideo()](https://github.com///commit/2d85c66)**.
 
 **[back to top](#table-of-contents)**
 

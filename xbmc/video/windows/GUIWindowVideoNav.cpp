@@ -64,11 +64,11 @@
 
 using namespace XFILE;
 using namespace VIDEODATABASEDIRECTORY;
-using namespace KODI;
-using namespace KODI::MESSAGING;
-using KODI::MEDIA::MediaSection;
+using namespace UNIVERSAL MEDIA CENTER;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaSection;
 
-using KODI::MEDIA::MediaTypeFromName;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaTypeFromName;
 
 #define CONTROL_BTNVIEWASICONS     2
 #define CONTROL_BTNSORTBY          3
@@ -497,7 +497,7 @@ bool CGUIWindowVideoNav::GetDirectory(const std::string &strDirectory, CFileItem
         // grab the show thumb
         CVideoInfoTag details;
         m_database.GetTvShowInfo("", details, params.GetTvShowId());
-        KODI::ART::Artwork art;
+        UNIVERSAL MEDIA CENTER::ART::Artwork art;
         if (m_database.GetArtForItem(details.m_iDbId, details.m_type, art) && !art.empty())
         {
           items.AppendArt(art, details.m_type);
@@ -535,7 +535,7 @@ bool CGUIWindowVideoNav::GetDirectory(const std::string &strDirectory, CFileItem
           else
             seasonID = items[firstIndex]->GetVideoInfoTag()->m_iIdSeason;
 
-          KODI::ART::Artwork seasonArt;
+          UNIVERSAL MEDIA CENTER::ART::Artwork seasonArt;
           if (seasonID > -1 && m_database.GetArtForItem(seasonID, MEDIA::TYPE::SEASON, seasonArt) &&
               !seasonArt.empty())
           {
@@ -552,7 +552,7 @@ bool CGUIWindowVideoNav::GetDirectory(const std::string &strDirectory, CFileItem
       {
         if (params.GetSetId() > 0)
         {
-          KODI::ART::Artwork setArt;
+          UNIVERSAL MEDIA CENTER::ART::Artwork setArt;
           if (m_database.GetArtForItem(params.GetSetId(), MEDIA::TYPE::VIDEO_COLLECTION, setArt) &&
               !setArt.empty())
           {

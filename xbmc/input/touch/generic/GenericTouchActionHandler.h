@@ -13,7 +13,7 @@
 /*!
  * \ingroup touch_generic
  * \brief Generic implementation of ITouchActionHandler to translate
- *        touch actions into XBMC specific and mappable actions.
+ *        touch actions into  specific and mappable actions.
  *
  * \sa ITouchActionHandler
  */

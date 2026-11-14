@@ -9,7 +9,7 @@
 #include "ISetting.h"
 
 #include "SettingDefinitions.h"
-#include "utils/XBMCTinyXML.h"
+#include "utils/TinyXML.h"
 #include "utils/XMLUtils.h"
 
 #include <string>

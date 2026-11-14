@@ -16,7 +16,7 @@ namespace tinyxml2
 class XMLElement;
 }
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -67,4 +67,4 @@ private:
   std::vector<std::string> m_accepts;
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

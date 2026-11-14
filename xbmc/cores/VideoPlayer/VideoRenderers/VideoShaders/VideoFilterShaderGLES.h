@@ -47,7 +47,7 @@ public:
   }
   virtual void SetAlpha(GLfloat alpha) { m_alpha = alpha; }
 
-  // Maps the vertex positions, for instance a unit quad (see KODI::UTILS::GL::QuadTransform()).
+  // Maps the vertex positions, for instance a unit quad (see UNIVERSAL MEDIA CENTER::UTILS::GL::QuadTransform()).
   void SetQuadTransform(const std::array<GLfloat, 16>& transform) { m_quad = transform; }
   // The texture coordinates span rect.
   void SetTextureRect(const CRect& rect) { m_texRect = rect; }

@@ -11,7 +11,7 @@
 #include "input/mouse/interfaces/IMouseInputHandler.h"
 #include "peripherals/PeripheralTypes.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace MOUSE
 {
@@ -84,4 +84,4 @@ private:
   std::unique_ptr<CControllerActivity> m_mouseActivity;
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

@@ -14,7 +14,7 @@
 #include <d3d11.h>
 #include <d3dx11effect.h>
 
-namespace KODI::SHADER
+namespace UNIVERSAL MEDIA CENTER::SHADER
 {
 class CShaderUtilsDX
 {
@@ -27,4 +27,4 @@ bool GetShaderPassDescription(ID3DX11Effect* effect,
                               const char* techniqueName,
                               unsigned int passIndex,
                               D3DX11_PASS_DESC& passDesc);
-} // namespace KODI::SHADER
+} // namespace UNIVERSAL MEDIA CENTER::SHADER

@@ -13,7 +13,7 @@
 
 #include <memory>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -29,9 +29,9 @@ public:
   ~CGUIGameControl() override;
 
   // GUI functions
-  void SetVideoFilter(const KODI::GUILIB::GUIINFO::CGUIInfoLabel& videoFilter);
-  void SetStretchMode(const KODI::GUILIB::GUIINFO::CGUIInfoLabel& stretchMode);
-  void SetRotation(const KODI::GUILIB::GUIINFO::CGUIInfoLabel& rotation);
+  void SetVideoFilter(const UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoLabel& videoFilter);
+  void SetStretchMode(const UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoLabel& stretchMode);
+  void SetRotation(const UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoLabel& rotation);
 
   // Rendering functions
   bool HasVideoFilter() const { return m_bHasVideoFilter; }
@@ -57,9 +57,9 @@ private:
   void UnregisterControl();
 
   // GUI properties
-  KODI::GUILIB::GUIINFO::CGUIInfoLabel m_videoFilterInfo;
-  KODI::GUILIB::GUIINFO::CGUIInfoLabel m_stretchModeInfo;
-  KODI::GUILIB::GUIINFO::CGUIInfoLabel m_rotationInfo;
+  UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoLabel m_videoFilterInfo;
+  UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoLabel m_stretchModeInfo;
+  UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoLabel m_rotationInfo;
 
   // Rendering properties
   bool m_bHasVideoFilter = false;
@@ -70,4 +70,4 @@ private:
 };
 
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

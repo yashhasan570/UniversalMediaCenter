@@ -120,7 +120,7 @@
                 android:value="@APP_NAME_LC@" />
         </activity>
 
-        <receiver android:name=".XBMCBroadcastReceiver"
+        <receiver android:name=".BroadcastReceiver"
                   android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.DREAMING_STOPPED" />
@@ -130,15 +130,15 @@
         </receiver>
 
         <provider
-            android:name=".content.XBMCMediaContentProvider"
+            android:name=".content.MediaContentProvider"
             android:authorities="@APP_PACKAGE@.media"
             android:exported="true" />
         <provider
-            android:name=".content.XBMCFileContentProvider"
+            android:name=".content.FileContentProvider"
             android:authorities="@APP_PACKAGE@.file"
             android:exported="true" />
         <provider
-            android:name=".content.XBMCFileProvider"
+            android:name=".content.FileProvider"
             android:authorities="@APP_PACKAGE@.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
@@ -147,7 +147,7 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".XBMCSearchableActivity" 
+        <activity android:name=".SearchableActivity" 
                   android:exported="true">
              <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
@@ -175,7 +175,7 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="kodi" />
+                <data android:scheme="universalmediacenter" />
             </intent-filter>
         </activity>
 

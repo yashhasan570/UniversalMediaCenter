@@ -12,7 +12,7 @@
 #include "games/addons/GameClientTranslator.h"
 #include "utils/log.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 bool CGameClientStreamVideo::OpenStream(RETRO::IRetroPlayerStream* stream,

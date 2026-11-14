@@ -16,7 +16,7 @@
 
 #include <flatbuffers/flatbuffers.h>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -186,4 +186,4 @@ public:
   static bool IsSupportedMemorySize(size_t expectedSize);
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

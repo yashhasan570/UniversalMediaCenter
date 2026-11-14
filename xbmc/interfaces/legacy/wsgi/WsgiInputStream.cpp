@@ -11,9 +11,9 @@
 #include "network/httprequesthandler/python/HTTPPythonRequest.h"
 #include "utils/StringUtils.h"
 
-namespace XBMCAddon
+namespace Addon
 {
-  namespace xbmcwsgi
+  namespace wsgi
   {
     WsgiInputStreamIterator::WsgiInputStreamIterator()
       : m_data(),

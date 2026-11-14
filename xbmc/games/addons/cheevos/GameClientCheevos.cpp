@@ -11,7 +11,7 @@
 #include "ServiceBroker.h"
 #include "TextureCache.h"
 #include "XBDateTime.h"
-#include "addons/kodi-dev-kit/include/kodi/c-api/addon-instance/game.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/c-api/addon-instance/game.h"
 #include "dialogs/GUIDialogKaiToast.h"
 #include "games/AchievementRuntime.h"
 #include "games/GameServices.h"
@@ -98,7 +98,7 @@ std::string GameIcon()
 }
 } // namespace
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 
 CGameClientCheevos::CGameClientCheevos(CGameClient& gameClient,

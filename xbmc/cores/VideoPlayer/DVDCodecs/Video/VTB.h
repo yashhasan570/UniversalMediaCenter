@@ -36,7 +36,7 @@ public:
   void Unref();
   CVPixelBufferRef GetPB();
 
-  ReductionResult ReduceForAnalysis(KODI::VIDEO::GEOMETRY::ReducedFrame& reduction,
+  ReductionResult ReduceForAnalysis(UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY::ReducedFrame& reduction,
                                     unsigned int sourceWidth,
                                     unsigned int sourceHeight,
                                     unsigned int targetWidth) override;

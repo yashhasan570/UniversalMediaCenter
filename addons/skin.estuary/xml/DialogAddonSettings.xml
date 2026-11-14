@@ -24,10 +24,10 @@
 				<orientation>vertical</orientation>
 				<onleft>9000</onleft>
 				<onright>5</onright>
-				<onup condition="String.IsEqual(Window(addonsettings).Property(Addon.Type),kodi.gameclient)">Action(LastPage)</onup>
-				<onup condition="!String.IsEqual(Window(addonsettings).Property(Addon.Type),kodi.gameclient)">20</onup>
-				<ondown condition="String.IsEqual(Window(addonsettings).Property(Addon.Type),kodi.gameclient)">Action(FirstPage)</ondown>
-				<ondown condition="!String.IsEqual(Window(addonsettings).Property(Addon.Type),kodi.gameclient)">20</ondown>
+				<onup condition="String.IsEqual(Window(addonsettings).Property(Addon.Type),universalmediacenter.gameclient)">Action(LastPage)</onup>
+				<onup condition="!String.IsEqual(Window(addonsettings).Property(Addon.Type),universalmediacenter.gameclient)">20</onup>
+				<ondown condition="String.IsEqual(Window(addonsettings).Property(Addon.Type),universalmediacenter.gameclient)">Action(FirstPage)</ondown>
+				<ondown condition="!String.IsEqual(Window(addonsettings).Property(Addon.Type),universalmediacenter.gameclient)">20</ondown>
 			</control>
 			<control type="button" id="3588">
 				<left>199</left>
@@ -90,7 +90,7 @@
 				<ondown>5</ondown>
 			</control>
 			<control type="image">
-				<visible>!String.IsEqual(Window(addonsettings).Property(Addon.Type),kodi.gameclient)</visible>
+				<visible>!String.IsEqual(Window(addonsettings).Property(Addon.Type),universalmediacenter.gameclient)</visible>
 				<left>429</left>
 				<top>740</top>
 				<width>1072</width>
@@ -98,7 +98,7 @@
 				<texture colordiffuse="button_focus" border="2">dialogs/separator-grey.png</texture>
 			</control>
 			<control type="image">
-				<visible>String.IsEqual(Window(addonsettings).Property(Addon.Type),kodi.gameclient)</visible>
+				<visible>String.IsEqual(Window(addonsettings).Property(Addon.Type),universalmediacenter.gameclient)</visible>
 				<left>50</left>
 				<top>740</top>
 				<width>1451</width>
@@ -107,7 +107,7 @@
 			</control>
 			<control type="textbox" id="6">
 				<description>description area</description>
-				<visible>!String.IsEqual(Window(addonsettings).Property(Addon.Type),kodi.gameclient)</visible>
+				<visible>!String.IsEqual(Window(addonsettings).Property(Addon.Type),universalmediacenter.gameclient)</visible>
 				<left>450</left>
 				<top>750</top>
 				<right>330</right>
@@ -119,7 +119,7 @@
 			</control>
 			<control type="textbox">
 				<description>Game client description area</description>
-				<visible>Window.IsActive(addonsettings) + String.IsEqual(Window(addonsettings).Property(Addon.Type),kodi.gameclient)</visible>
+				<visible>Window.IsActive(addonsettings) + String.IsEqual(Window(addonsettings).Property(Addon.Type),universalmediacenter.gameclient)</visible>
 				<left>50</left>
 				<top>750</top>
 				<right>330</right>
@@ -188,7 +188,7 @@
 			</control>
 			<control type="group">
 				<description>Currently-playing emulator name and icon</description>
-				<visible>Player.HasGame + String.IsEqual(Window(addonsettings).Property(Addon.Type),kodi.gameclient)</visible>
+				<visible>Player.HasGame + String.IsEqual(Window(addonsettings).Property(Addon.Type),universalmediacenter.gameclient)</visible>
 				<left>1510</left>
 				<width>300</width>
 				<top>528</top>
@@ -225,7 +225,7 @@
 				</control>
 			</control>
 			<control type="radiobutton" id="20">
-				<visible>!String.IsEqual(Window(addonsettings).Property(Addon.Type),kodi.gameclient)</visible>
+				<visible>!String.IsEqual(Window(addonsettings).Property(Addon.Type),universalmediacenter.gameclient)</visible>
 				<left>10</left>
 				<top>740</top>
 				<width>410</width>

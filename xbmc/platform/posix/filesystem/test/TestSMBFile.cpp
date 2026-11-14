@@ -699,7 +699,7 @@ TEST_F(TestSMBFileRecovery, ReconnectUsesRememberedCredentials)
   TestSMBFile file{operations};
   std::array<std::byte, 16> buffer{};
   CURL url{"smb://127.0.0.1/share/movie.mkv"};
-  url.SetUserName("kodi");
+  url.SetUserName("universalmediacenter");
   url.SetPassword("secret");
 
   ASSERT_TRUE(file.Open(url));
@@ -708,7 +708,7 @@ TEST_F(TestSMBFileRecovery, ReconnectUsesRememberedCredentials)
 
   ASSERT_EQ(2u, operations.OpenPaths().size());
   for (const std::string& path : operations.OpenPaths())
-    EXPECT_EQ("smb://kodi:secret@127.0.0.1/share/movie.mkv", path);
+    EXPECT_EQ("smb://universalmediacenter:secret@127.0.0.1/share/movie.mkv", path);
 }
 
 TEST_F(TestSMBFileRecovery, ReconnectableReadErrors)
@@ -742,8 +742,8 @@ TEST_F(TestSMBFileRecovery, ZeroBytesAtOrBeyondKnownFileEndIsValidEof)
 
 TEST(TestSMBUrlEncode, HostNameIsEncoded)
 {
-  const CURL url("smb://kodi:secret@MEDIABOX/MEDIA/TEST");
-  EXPECT_EQ(smb.URLEncode(url), "smb://kodi:secret@MEDIABOX/MEDIA/TEST");
+  const CURL url("smb://universalmediacenter:secret@MEDIABOX/MEDIA/TEST");
+  EXPECT_EQ(smb.URLEncode(url), "smb://universalmediacenter:secret@MEDIABOX/MEDIA/TEST");
 }
 
 TEST(TestSMBUrlEncode, FileNameIsEncoded)
@@ -754,8 +754,8 @@ TEST(TestSMBUrlEncode, FileNameIsEncoded)
 
 TEST(TestSMBUrlEncode, IPv6HostNameIsEncoded)
 {
-  const CURL url("smb://kodi:secret@[fd00::1]/MEDIA/TEST");
-  EXPECT_EQ(smb.URLEncode(url), "smb://kodi:secret@fd00%3a%3a1/MEDIA/TEST");
+  const CURL url("smb://universalmediacenter:secret@[fd00::1]/MEDIA/TEST");
+  EXPECT_EQ(smb.URLEncode(url), "smb://universalmediacenter:secret@fd00%3a%3a1/MEDIA/TEST");
 }
 
 TEST(TestSMBUrlEncode, IPv6HostNameWithPortIsEncoded)
@@ -766,7 +766,7 @@ TEST(TestSMBUrlEncode, IPv6HostNameWithPortIsEncoded)
 
 TEST(TestSMBUrlEncode, IPv6HostNameSubstitutedForAResolvedNameIsEncoded)
 {
-  CURL url("smb://kodi:secret@MEDIABOX/MEDIA/TEST");
+  CURL url("smb://universalmediacenter:secret@MEDIABOX/MEDIA/TEST");
   url.SetHostName("fd00::1");
-  EXPECT_EQ(smb.URLEncode(url), "smb://kodi:secret@fd00%3a%3a1/MEDIA/TEST");
+  EXPECT_EQ(smb.URLEncode(url), "smb://universalmediacenter:secret@fd00%3a%3a1/MEDIA/TEST");
 }

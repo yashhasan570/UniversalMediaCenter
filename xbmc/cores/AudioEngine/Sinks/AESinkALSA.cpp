@@ -967,7 +967,7 @@ void CAESinkALSA::HandleError(const char* name, int err)
 
       /* try to resume the stream */
       while((err = snd_pcm_resume(m_pcm)) == -EAGAIN)
-        KODI::TIME::Sleep(1ms);
+        UNIVERSAL MEDIA CENTER::TIME::Sleep(1ms);
 
       /* if the hardware doesn't support resume, prepare the stream */
       if (err == -ENOSYS)

@@ -13,7 +13,7 @@
 #include "utils/URIUtils.h"
 #include "utils/log.h"
 
-#include "platform/android/activity/XBMCApp.h"
+#include "platform/android/activity/App.h"
 
 #include <android/bitmap.h>
 #include <androidjni/Bitmap.h>
@@ -46,7 +46,7 @@ bool CFileAndroidApp::Open(const CURL& url)
   m_packageName =  URIUtils::GetFileName(url.Get());
   m_packageName = m_packageName.substr(0, m_packageName.size() - 4);
 
-  const std::vector<androidPackage> applications = CXBMCApp::Get().GetApplications();
+  const std::vector<androidPackage> applications = CApp::Get().GetApplications();
   for (const auto& i : applications)
   {
     if (i.packageName == m_packageName)
@@ -65,7 +65,7 @@ bool CFileAndroidApp::Exists(const CURL& url)
   std::string appname =  URIUtils::GetFileName(url.Get());
   appname = appname.substr(0, appname.size() - 4);
 
-  const std::vector<androidPackage> applications = CXBMCApp::Get().GetApplications();
+  const std::vector<androidPackage> applications = CApp::Get().GetApplications();
   for (const auto& i : applications)
   {
     if (i.packageName == appname)
@@ -98,7 +98,7 @@ CJNIBitmap GetBitmapFromDrawable(CJNIDrawable& drawable)
 
 CJNIBitmap GetBitmap(CJNIDrawable& drawable)
 {
-  JNIEnv* env = xbmc_jnienv();
+  JNIEnv* env = _jnienv();
   CJNIBitmap bmp;
   jclass cBmpDrw = env->FindClass("android/graphics/drawable/BitmapDrawable");
   jclass cAidDrw = CJNIBase::GetSDKVersion() >= 26
@@ -125,7 +125,7 @@ CJNIBitmap GetBitmap(CJNIDrawable& drawable)
 
 unsigned int CFileAndroidApp::ReadIcon(unsigned char** lpBuf, unsigned int* width, unsigned int* height)
 {
-  JNIEnv* env = xbmc_jnienv();
+  JNIEnv* env = _jnienv();
   void *bitmapBuf = NULL;
   int densities[] = { CJNIDisplayMetrics::DENSITY_XXXHIGH, CJNIDisplayMetrics::DENSITY_XXHIGH, CJNIDisplayMetrics::DENSITY_XHIGH, -1 };
 

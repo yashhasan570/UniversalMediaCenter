@@ -10,7 +10,7 @@
 
 #include "games/addons/disc/GameClientDiscModel.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -42,4 +42,4 @@ public:
 };
 
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

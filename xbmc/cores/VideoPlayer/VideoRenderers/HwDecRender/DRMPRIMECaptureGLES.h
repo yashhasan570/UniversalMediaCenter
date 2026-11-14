@@ -10,7 +10,7 @@
 
 class CVideoBufferDRMPRIME;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RENDERING
 {
@@ -20,7 +20,7 @@ struct CaptureSpec;
 struct CaptureResult;
 } // namespace CAPTURE
 } // namespace RENDERING
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER
 
 //! \brief Screencap a direct-to-plane DRMPRIME video buffer.
 //!
@@ -31,5 +31,5 @@ struct CaptureResult;
 //! colorimetry. Render thread only, GL context current. GLES only; returns
 //! false on any failure.
 bool CaptureDRMPRIMEVideo(CVideoBufferDRMPRIME* buffer,
-                          const KODI::RENDERING::CAPTURE::CaptureSpec& spec,
-                          KODI::RENDERING::CAPTURE::CaptureResult& result);
+                          const UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CaptureSpec& spec,
+                          UNIVERSAL MEDIA CENTER::RENDERING::CAPTURE::CaptureResult& result);

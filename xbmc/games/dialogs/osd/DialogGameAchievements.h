@@ -17,7 +17,7 @@ class CFileItemList;
 class CGUIMessage;
 class CGUIViewControl;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -87,4 +87,4 @@ private:
   unsigned int m_setId{0};
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

@@ -17,9 +17,9 @@
 
 #include <mutex>
 
-namespace XBMCAddon
+namespace Addon
 {
-  namespace xbmcgui
+  namespace gui
   {
     WindowDialog::WindowDialog() :
       Window(true), WindowDialogMixin(this)
@@ -35,8 +35,8 @@ namespace XBMCAddon
 
     bool WindowDialog::OnMessage(CGUIMessage& message)
     {
-#ifdef ENABLE_XBMC_TRACE_API
-      XBMC_TRACE;
+#ifdef ENABLE__TRACE_API
+      _TRACE;
       CLog::Log(LOGDEBUG, "{}NEWADDON WindowDialog::OnMessage Message {}", _tg.getSpaces(),
                 message.GetMessage());
 #endif
@@ -63,7 +63,7 @@ namespace XBMCAddon
 
     bool WindowDialog::OnAction(const CAction &action)
     {
-      XBMC_TRACE;
+      _TRACE;
       return WindowDialogMixin::OnAction(action) ? true : Window::OnAction(action);
     }
 

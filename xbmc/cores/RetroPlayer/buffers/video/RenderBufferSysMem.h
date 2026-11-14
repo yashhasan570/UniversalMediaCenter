@@ -18,7 +18,7 @@ extern "C"
 #include <libavutil/pixfmt.h>
 }
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -41,4 +41,4 @@ protected:
 };
 
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

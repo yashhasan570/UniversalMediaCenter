@@ -27,7 +27,7 @@
 #include <optional>
 #include <thread>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -112,4 +112,4 @@ private:
   unsigned int m_captureHeight{0};
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

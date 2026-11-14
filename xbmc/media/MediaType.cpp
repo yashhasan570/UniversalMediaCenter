@@ -17,7 +17,7 @@
 #include <algorithm>
 #include <array>
 
-namespace KODI::MEDIA
+namespace UNIVERSAL MEDIA CENTER::MEDIA
 {
 
 namespace
@@ -112,4 +112,4 @@ std::string GetCapitalLocalization(TYPE type)
       info->localizationSingularCapital);
 }
 
-} // namespace KODI::MEDIA
+} // namespace UNIVERSAL MEDIA CENTER::MEDIA

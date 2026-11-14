@@ -30,7 +30,7 @@ class CGUIListItem;
 struct AudioStreamInfo;
 struct VideoStreamInfo;
 
-namespace KODI::GUILIB::GUIINFO
+namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO
 {
 
 class CGUIInfo;
@@ -159,4 +159,4 @@ private:
   CWeatherGUIInfo m_weatherGUIInfo;
 };
 
-} // namespace KODI::GUILIB::GUIINFO
+} // namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO

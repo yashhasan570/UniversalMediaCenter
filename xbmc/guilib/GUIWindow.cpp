@@ -35,7 +35,7 @@
 #include <mutex>
 #include <ranges>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 bool CGUIWindow::icompare::operator()(const std::string &s1, const std::string &s2) const
 {
@@ -129,7 +129,7 @@ bool CGUIWindow::LoadXML(const std::string &strPath, const std::string &strLower
   // load window xml if we don't have it stored yet
   if (!m_windowXMLRootElement)
   {
-    CXBMCTinyXML xmlDoc;
+    CTinyXML xmlDoc;
     std::string strPathLower = strPath;
     StringUtils::ToLower(strPathLower);
     if (!xmlDoc.LoadFile(strPath) && !xmlDoc.LoadFile(strPathLower) && !xmlDoc.LoadFile(strLowerPath))
@@ -1120,7 +1120,7 @@ void CGUIWindow::RunUnloadActions() const
 void CGUIWindow::ClearBackground()
 {
   m_clearBackground.Update();
-  KODI::UTILS::COLOR::Color color = m_clearBackground;
+  UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color color = m_clearBackground;
   if (color)
     CServiceBroker::GetWinSystem()->GetGfxContext().Clear(color);
   else if (!CServiceBroker::GetSettingsComponent()->GetAdvancedSettings()->m_guiGeometryClear)

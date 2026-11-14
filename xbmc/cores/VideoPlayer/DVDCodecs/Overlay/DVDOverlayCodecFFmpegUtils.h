@@ -12,7 +12,7 @@
 #include <cstdint>
 #include <string_view>
 
-namespace KODI::VIDEO::SUBTITLES
+namespace UNIVERSAL MEDIA CENTER::VIDEO::SUBTITLES
 {
 enum class BitmapStereoLayout
 {
@@ -73,4 +73,4 @@ bool IsStereoBitmap(const BitmapSubtitle& bitmap, BitmapStereoLayout layout);
 BitmapStereoCrop GetStereoCrop(const BitmapSubtitle& bitmap,
                                BitmapStereoLayout layout,
                                bool secondView);
-} // namespace KODI::VIDEO::SUBTITLES
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO::SUBTITLES

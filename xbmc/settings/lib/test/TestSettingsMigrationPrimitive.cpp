@@ -14,7 +14,7 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI::SETTINGS;
+using namespace UNIVERSAL MEDIA CENTER::SETTINGS;
 
 namespace
 {
@@ -98,7 +98,7 @@ public:
 };
 
 // A few helpers
-static std::string Serialize(const CXBMCTinyXML& doc)
+static std::string Serialize(const CTinyXML& doc)
 {
   return XMLUtils::NodeStringSerialization(doc.RootElement(),
                                            XMLUtils::SerializationFormat::COMPACT);
@@ -152,7 +152,7 @@ ConvertTest NotPresentTests[] = {
 TEST_P(TestConvertSingleSettingNotPresent, ReturnsNotPresentAndDocumentIsUnchanged)
 {
   const auto& p = GetParam();
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   ASSERT_TRUE(doc.Parse(p.m_xml));
 
   const auto result =
@@ -192,7 +192,7 @@ FailureCtorThrowTest FailureCtorThrowTests[] = {
 TEST_P(TestConvertSingleSettingFailureCtorThrow, ReturnsFailureWhenFromTCtorThrows)
 {
   const auto& p = GetParam();
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   ASSERT_TRUE(doc.Parse(p.m_xml));
 
   const auto result = impl::ConvertSingleSetting<MockSettingThrowOnCtor, MockSettingAlwaysSuccess>(
@@ -204,7 +204,7 @@ TEST_P(TestConvertSingleSettingFailureCtorThrow, ReturnsFailureWhenFromTCtorThro
 TEST_P(TestConvertSingleSettingFailureCtorThrow, ReturnsFailureWhenToTCtorThrows)
 {
   const auto& p = GetParam();
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   ASSERT_TRUE(doc.Parse(p.m_xml));
 
   const auto result = impl::ConvertSingleSetting<MockSettingAlwaysSuccess, MockSettingThrowOnCtor>(
@@ -245,7 +245,7 @@ ConvertTest InvalidTests[] = {
 TEST_P(TestConvertSingleSettingInvalid, ReturnsInvalidAndDocumentIsUnchanged)
 {
   const auto& p = GetParam();
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   ASSERT_TRUE(doc.Parse(p.m_xml));
 
   const auto result = impl::ConvertSingleSetting<MockSettingAlwaysFail, MockSettingAlwaysSuccess>(
@@ -288,7 +288,7 @@ ConvertTest ConvertedStructuralTests[] = {
 TEST_P(TestConvertSingleSettingConvertedStructural, ReturnsConvertedAndDocumentIsCorrect)
 {
   const auto& p = GetParam();
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   ASSERT_TRUE(doc.Parse(p.m_xml));
 
   bool converterCalled = false;
@@ -318,7 +318,7 @@ TEST(TestSettingsMigrationHelper, ConvertSingleSettingConverterInput)
 {
   const std::string xml =
       R"(<settings version="2"><setting id="a.b">anything</setting></settings>)";
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   ASSERT_TRUE(doc.Parse(xml));
 
   // value 42 hardcoded in MockSettingAlwaysSuccess
@@ -365,7 +365,7 @@ ConverterForwardingTest ConverterForwardingTests[] = {
 TEST_P(TestConvertSingleSettingConverterForwarding, ConverterOutputIsForwardedToSerializer)
 {
   const auto& p = GetParam();
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   ASSERT_TRUE(doc.Parse(m_originalXml));
 
   const auto result =
@@ -453,7 +453,7 @@ TEST_P(TestConvertSettingBoolToInt, Convert)
 {
   const auto& params = GetParam();
 
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   ASSERT_TRUE(doc.Parse(params.m_originalSettings));
 
   auto conversionResult =
@@ -516,7 +516,7 @@ TEST_P(TestConvertSettingBoolToIntMapping, Convert)
 {
   const auto& params = GetParam();
 
-  CXBMCTinyXML doc;
+  CTinyXML doc;
   ASSERT_TRUE(doc.Parse(params.m_originalSettings));
 
   auto conversionResult =

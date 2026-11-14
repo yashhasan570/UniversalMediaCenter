@@ -17,11 +17,11 @@
 
 #include <gtest/gtest.h>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 
 TEST(TestPlayListASX, LoadData)
 {
-  const std::string filename = XBMC_REF_FILE_PATH("/xbmc/playlists/test/test.asx");
+  const std::string filename = _REF_FILE_PATH("//playlists/test/test.asx");
   PLAYLIST::CPlayListASX playlist;
 
   std::filebuf fb;

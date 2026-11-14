@@ -110,7 +110,7 @@ bool CRenderSystemGL::InitRenderSystem()
           CEGLUtils::GetRequiredProcAddress<PFNGLDEBUGMESSAGECONTROLPROC>("glDebugMessageControl");
 
       glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
-      glDebugMessageCallback(KODI::UTILS::GL::GlErrorCallback, nullptr);
+      glDebugMessageCallback(UNIVERSAL MEDIA CENTER::UTILS::GL::GlErrorCallback, nullptr);
 
       // ignore shader compilation information
       glDebugMessageControl(GL_DEBUG_SOURCE_SHADER_COMPILER, GL_DEBUG_TYPE_OTHER, GL_DONT_CARE, 0,
@@ -314,7 +314,7 @@ void CRenderSystemGL::InvalidateColorBuffer()
   glClear(flags);
 }
 
-bool CRenderSystemGL::ClearBuffers(KODI::UTILS::COLOR::Color color)
+bool CRenderSystemGL::ClearBuffers(UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color color)
 {
   if (!m_bRenderCreated)
     return false;
@@ -323,10 +323,10 @@ bool CRenderSystemGL::ClearBuffers(KODI::UTILS::COLOR::Color color)
   if (m_stereoMode == RenderStereoMode::INTERLACED && m_stereoView == RenderStereoView::RIGHT)
     return true;
 
-  float r = KODI::UTILS::GL::GetChannelFromARGB(KODI::UTILS::GL::ColorChannel::R, color) / 255.0f;
-  float g = KODI::UTILS::GL::GetChannelFromARGB(KODI::UTILS::GL::ColorChannel::G, color) / 255.0f;
-  float b = KODI::UTILS::GL::GetChannelFromARGB(KODI::UTILS::GL::ColorChannel::B, color) / 255.0f;
-  float a = KODI::UTILS::GL::GetChannelFromARGB(KODI::UTILS::GL::ColorChannel::A, color) / 255.0f;
+  float r = UNIVERSAL MEDIA CENTER::UTILS::GL::GetChannelFromARGB(UNIVERSAL MEDIA CENTER::UTILS::GL::ColorChannel::R, color) / 255.0f;
+  float g = UNIVERSAL MEDIA CENTER::UTILS::GL::GetChannelFromARGB(UNIVERSAL MEDIA CENTER::UTILS::GL::ColorChannel::G, color) / 255.0f;
+  float b = UNIVERSAL MEDIA CENTER::UTILS::GL::GetChannelFromARGB(UNIVERSAL MEDIA CENTER::UTILS::GL::ColorChannel::B, color) / 255.0f;
+  float a = UNIVERSAL MEDIA CENTER::UTILS::GL::GetChannelFromARGB(UNIVERSAL MEDIA CENTER::UTILS::GL::ColorChannel::A, color) / 255.0f;
 
   glClearColor(r, g, b, a);
 
@@ -383,7 +383,7 @@ void CRenderSystemGL::PresentRender(bool rendered, bool videoLayer)
   PresentRenderImpl(rendered);
 
   if (!rendered)
-    KODI::TIME::Sleep(40ms);
+    UNIVERSAL MEDIA CENTER::TIME::Sleep(40ms);
 }
 
 void CRenderSystemGL::SetVSync(bool enable)
@@ -723,7 +723,7 @@ void CRenderSystemGL::InitialiseShaders()
                         !CServiceBroker::GetWinSystem()->IsHdrComposite();
   if (m_limitedColorRange)
   {
-    defines += "#define KODI_LIMITED_RANGE 1\n";
+    defines += "#define UNIVERSALMEDIA_LIMITED_RANGE 1\n";
   }
 
   m_pShader[ShaderMethodGL::SM_DEFAULT] = std::make_unique<CGLShader>(
@@ -800,7 +800,7 @@ void CRenderSystemGL::InitialiseShaders()
     CLog::Log(LOGERROR, "GUI Shader gl_shader_frag_multi_blendcolor.glsl - compile and link failed");
   }
 
-  const std::string definesFontsRGBA = defines + "#define KODI_FONTS_RGBA 1\n";
+  const std::string definesFontsRGBA = defines + "#define UNIVERSALMEDIA_FONTS_RGBA 1\n";
 
   m_pShader[ShaderMethodGL::SM_FONTS_RGBA] = std::make_unique<CGLShader>(
       "gl_shader_vert_simple.glsl", "gl_shader_frag_fonts.glsl", definesFontsRGBA);
@@ -988,7 +988,7 @@ std::string CRenderSystemGL::GetShaderPath(const std::string &filename)
 
   if (m_glslMajor >= 4)
   {
-    std::string file = "special://xbmc/system/shaders/GL/4.0/" + filename;
+    std::string file = "special:///system/shaders/GL/4.0/" + filename;
     const CURL pathToUrl(file);
     if (CFileUtils::Exists(pathToUrl.Get()))
       return "GL/4.0/";

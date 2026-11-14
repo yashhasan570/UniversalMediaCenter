@@ -35,7 +35,7 @@ enum RenderOrder {
 
 // forward
 class TiXmlElement;
-class CXBMCTinyXML;
+class CTinyXML;
 class CVariant;
 
 class COrigin
@@ -196,7 +196,7 @@ public:
 
   virtual void OnDeinitWindow(int nextWindowID);
 protected:
-  EVENT_RESULT OnMouseEvent(const CPoint& point, const KODI::MOUSE::CMouseEvent& event) override;
+  EVENT_RESULT OnMouseEvent(const CPoint& point, const UNIVERSAL MEDIA CENTER::MOUSE::CMouseEvent& event) override;
 
   /*!
    \brief Load the window XML from the given path
@@ -254,7 +254,7 @@ protected:
   bool m_dynamicResourceAlloc;
   bool m_closing;
   bool m_active;        // true if window is active or dialog is running
-  KODI::GUILIB::GUIINFO::CGUIInfoColor m_clearBackground; // colour to clear the window
+  UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoColor m_clearBackground; // colour to clear the window
 
   int m_renderOrder;      // for render order of dialogs
 

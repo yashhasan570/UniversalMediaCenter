@@ -45,7 +45,7 @@ public:
   void SetPageControl(int pageControl);
 
   bool CanFocus() const override;
-  void SetInfo(const KODI::GUILIB::GUIINFO::CGUIInfoLabel &info);
+  void SetInfo(const UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoLabel &info);
   void SetAutoScrolling(const TiXmlNode *node);
   void SetAutoScrolling(int delay, int time, int repeatTime, const std::string &condition = "");
   void ResetAutoScrolling();
@@ -93,6 +93,6 @@ protected:
 
   int m_pageControl;
 
-  KODI::GUILIB::GUIINFO::CGUIInfoLabel m_info;
+  UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoLabel m_info;
 };
 

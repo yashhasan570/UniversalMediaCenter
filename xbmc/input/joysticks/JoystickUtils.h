@@ -16,7 +16,7 @@
 /// \ingroup joystick
 /// \{
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace JOYSTICK
 {
@@ -105,6 +105,6 @@ public:
 };
 
 } // namespace JOYSTICK
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER
 
 /// \}

@@ -15,7 +15,7 @@ class CGUIWindow;
 class CSpeed;
 class CWeatherTokenLocalizer;
 
-namespace KODI::WEATHER
+namespace UNIVERSAL MEDIA CENTER::WEATHER
 {
 class CWeatherPropertyHelper
 {
@@ -48,4 +48,4 @@ private:
   const CGUIWindow& m_window;
   CWeatherTokenLocalizer& m_localizer;
 };
-} // namespace KODI::WEATHER
+} // namespace UNIVERSAL MEDIA CENTER::WEATHER

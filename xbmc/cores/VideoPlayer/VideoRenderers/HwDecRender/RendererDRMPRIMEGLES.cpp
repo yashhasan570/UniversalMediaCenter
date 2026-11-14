@@ -28,7 +28,7 @@
 
 #include <memory>
 
-using namespace KODI::UTILS::EGL;
+using namespace UNIVERSAL MEDIA CENTER::UTILS::EGL;
 
 CRendererDRMPRIMEGLES::~CRendererDRMPRIMEGLES()
 {
@@ -68,7 +68,7 @@ CBaseRenderer* CRendererDRMPRIMEGLES::Create(CVideoBuffer* buffer)
   buf->ReleaseDescriptor();
 
   auto winSystemEGL =
-      dynamic_cast<KODI::WINDOWING::LINUX::CWinSystemEGL*>(CServiceBroker::GetWinSystem());
+      dynamic_cast<UNIVERSAL MEDIA CENTER::WINDOWING::LINUX::CWinSystemEGL*>(CServiceBroker::GetWinSystem());
   if (!winSystemEGL)
     return nullptr;
 
@@ -116,7 +116,7 @@ bool CRendererDRMPRIMEGLES::Configure(const VideoPicture& picture,
   if (!winSystem->SetVideoOutput(&picture))
     CLog::Log(LOGWARNING, "RendererDRMPRIMEGLES::Configure: SetVideoOutput failed");
 
-  auto winSystemEGL = dynamic_cast<KODI::WINDOWING::LINUX::CWinSystemEGL*>(winSystem);
+  auto winSystemEGL = dynamic_cast<UNIVERSAL MEDIA CENTER::WINDOWING::LINUX::CWinSystemEGL*>(winSystem);
 
   if (!winSystemEGL)
     return false;
@@ -160,12 +160,12 @@ bool CRendererDRMPRIMEGLES::Configure(const VideoPicture& picture,
     //! The EShaderFormat enum conflates two things: the shader sampling
     //! pattern (.r/.g/.a legacy CPU-upload vs .r/.r/.r per-plane R8/R16) and
     //! the source bit depth. Per-plane EGL import always wants the
-    //! single-channel sampling pattern (XBMC_YV12_HI define) regardless of
+    //! single-channel sampling pattern (_YV12_HI define) regardless of
     //! bit depth, but the only way to get that today is to pick one of
     //! SHADER_YV12_9 / _10 / _12 / _14 / _16. Picking _10 here just routes
     //! through the right shader define; the actual bit depth is handled by
     //! SetColParams below. Clean up by either (a) adding a
-    //! SHADER_YV12_PLANAR enum value that activates XBMC_YV12_HI without
+    //! SHADER_YV12_PLANAR enum value that activates _YV12_HI without
     //! implying a bit depth, or (b) dropping 3-plane YUV420 from this path
     //! entirely (NV12/P010/P012/P016 via SHADER_NV12_RRG cover the realistic
     //! DRMPRIME cases).
@@ -173,12 +173,12 @@ bool CRendererDRMPRIMEGLES::Configure(const VideoPicture& picture,
     //! The EShaderFormat enum conflates two things: the shader sampling
     //! pattern (.r/.g/.a legacy CPU-upload vs .r/.r/.r per-plane R8/R16) and
     //! the source bit depth. Per-plane EGL import always wants the
-    //! single-channel sampling pattern (XBMC_YV12_HI define) regardless of
+    //! single-channel sampling pattern (_YV12_HI define) regardless of
     //! bit depth, but the only way to get that today is to pick one of
     //! SHADER_YV12_9 / _10 / _12 / _14 / _16. Picking _10 here just routes
     //! through the right shader define; the actual bit depth is handled by
     //! SetColParams below. Clean up by either (a) adding a
-    //! SHADER_YV12_PLANAR enum value that activates XBMC_YV12_HI without
+    //! SHADER_YV12_PLANAR enum value that activates _YV12_HI without
     //! implying a bit depth, or (b) dropping 3-plane YUV420 from this path
     //! entirely (NV12/P010/P012/P016 via SHADER_NV12_RRG cover the realistic
     //! DRMPRIME cases).
@@ -458,7 +458,7 @@ void CRendererDRMPRIMEGLES::Render(unsigned int flags, int index)
     m_yuvShader->SetMatrices(glMatrixProject.Get(), glMatrixModview.Get());
     // Per-plane texcoords stay at their 0..1 default; each EGL-imported texture covers the
     // whole plane regardless of chroma subsampling.
-    m_yuvShader->SetQuadTransform(KODI::UTILS::GL::QuadTransform(
+    m_yuvShader->SetQuadTransform(UNIVERSAL MEDIA CENTER::UTILS::GL::QuadTransform(
         m_rotatedDestCoords[0], m_rotatedDestCoords[1], m_rotatedDestCoords[3]));
     // SetConvertFullColorRange(false) was set at Configure time -> matrix
     // produces limited-range RGB. No per-frame setter needed.

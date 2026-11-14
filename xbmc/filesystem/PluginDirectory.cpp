@@ -32,7 +32,7 @@
 
 using namespace XFILE;
 using namespace ADDON;
-using namespace KODI::MESSAGING;
+using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
 
 namespace
 {
@@ -149,8 +149,8 @@ bool CPluginDirectory::GetPluginResult(const std::string& strPath, CFileItem &re
 
   if (success)
   { // update the play path and metadata, saving the old one as needed
-    if (!resultItem.HasProperty(KODI::ITEM::PROPERTY::ORIGINAL_LISTITEM_URL))
-      resultItem.SetProperty(KODI::ITEM::PROPERTY::ORIGINAL_LISTITEM_URL, resultItem.GetPath());
+    if (!resultItem.HasProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::ORIGINAL_LISTITEM_URL))
+      resultItem.SetProperty(UNIVERSAL MEDIA CENTER::ITEM::PROPERTY::ORIGINAL_LISTITEM_URL, resultItem.GetPath());
     resultItem.SetDynPath(newDir.m_fileResult->GetPath());
     resultItem.SetMimeType(newDir.m_fileResult->GetMimeType());
     resultItem.SetContentLookup(newDir.m_fileResult->ContentLookup());
@@ -546,7 +546,7 @@ void CPluginDirectory::SetProperty(int handle, const std::string &strProperty, c
   if (!dir)
     return;
   if (strProperty == "fanart_image")
-    dir->m_listItems->SetArt(KODI::ART::TYPE::FANART, strValue);
+    dir->m_listItems->SetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::FANART, strValue);
   else
     dir->m_listItems->SetProperty(strProperty, strValue);
 }
@@ -599,10 +599,10 @@ bool CPluginDirectory::CheckExists(const std::string& content, const std::string
 {
   if (!IsMediaLibraryScanningAllowed(content, strPath))
     return false;
-  // call the plugin at specified path with option "kodi_action=check_exists"
+  // call the plugin at specified path with option "universalmediacenter_action=check_exists"
   // url exists if the plugin returns any fileitem with setResolvedUrl
   CURL url(strPath);
-  url.SetOption("kodi_action", "check_exists");
+  url.SetOption("universalmediacenter_action", "check_exists");
   CFileItem item;
   return CPluginDirectory::GetPluginResult(url.Get(), item, false);
 }

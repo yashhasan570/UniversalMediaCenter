@@ -20,56 +20,56 @@
 #include <array>
 #include <sstream>
 
-using KODI::MEDIA::NameOf;
+using UNIVERSAL MEDIA CENTER::MEDIA::NameOf;
 
-KODI::MEDIA::TYPE DatabaseUtils::MediaTypeFromVideoContentType(VideoDbContentType videoContentType)
+UNIVERSAL MEDIA CENTER::MEDIA::TYPE DatabaseUtils::MediaTypeFromVideoContentType(VideoDbContentType videoContentType)
 {
   switch (videoContentType)
   {
     using enum VideoDbContentType;
     case MOVIES:
-      return KODI::MEDIA::TYPE::MOVIE;
+      return UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MOVIE;
 
     case MOVIE_SETS:
-      return KODI::MEDIA::TYPE::VIDEO_COLLECTION;
+      return UNIVERSAL MEDIA CENTER::MEDIA::TYPE::VIDEO_COLLECTION;
 
     case TVSHOWS:
-      return KODI::MEDIA::TYPE::TV_SHOW;
+      return UNIVERSAL MEDIA CENTER::MEDIA::TYPE::TV_SHOW;
 
     case EPISODES:
-      return KODI::MEDIA::TYPE::EPISODE;
+      return UNIVERSAL MEDIA CENTER::MEDIA::TYPE::EPISODE;
 
     case MUSICVIDEOS:
-      return KODI::MEDIA::TYPE::MUSIC_VIDEO;
+      return UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MUSIC_VIDEO;
 
     default:
       break;
   }
 
-  return KODI::MEDIA::TYPE::NONE;
+  return UNIVERSAL MEDIA CENTER::MEDIA::TYPE::NONE;
 }
 
-VideoDbContentType DatabaseUtils::VideoContentTypeFromMediaType(KODI::MEDIA::TYPE mediaType)
+VideoDbContentType DatabaseUtils::VideoContentTypeFromMediaType(UNIVERSAL MEDIA CENTER::MEDIA::TYPE mediaType)
 {
   switch (mediaType)
   {
     using enum VideoDbContentType;
-    case KODI::MEDIA::TYPE::MOVIE:
+    case UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MOVIE:
       return MOVIES;
-    case KODI::MEDIA::TYPE::VIDEO_COLLECTION:
+    case UNIVERSAL MEDIA CENTER::MEDIA::TYPE::VIDEO_COLLECTION:
       return MOVIE_SETS;
-    case KODI::MEDIA::TYPE::TV_SHOW:
+    case UNIVERSAL MEDIA CENTER::MEDIA::TYPE::TV_SHOW:
       return TVSHOWS;
-    case KODI::MEDIA::TYPE::EPISODE:
+    case UNIVERSAL MEDIA CENTER::MEDIA::TYPE::EPISODE:
       return EPISODES;
-    case KODI::MEDIA::TYPE::MUSIC_VIDEO:
+    case UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MUSIC_VIDEO:
       return MUSICVIDEOS;
     default:
       return UNKNOWN;
   }
 }
 
-const DatabaseUtils::View* DatabaseUtils::ViewOf(KODI::MEDIA::TYPE mediaType)
+const DatabaseUtils::View* DatabaseUtils::ViewOf(UNIVERSAL MEDIA CENTER::MEDIA::TYPE mediaType)
 {
   static constexpr auto named = [](Field field, std::string_view name, int index = -1)
   { return Column{field, name, index, index}; };
@@ -273,19 +273,19 @@ const DatabaseUtils::View* DatabaseUtils::ViewOf(KODI::MEDIA::TYPE mediaType)
 
   switch (mediaType)
   {
-    case KODI::MEDIA::TYPE::ALBUM:
+    case UNIVERSAL MEDIA CENTER::MEDIA::TYPE::ALBUM:
       return &ALBUM_VIEW;
-    case KODI::MEDIA::TYPE::SONG:
+    case UNIVERSAL MEDIA CENTER::MEDIA::TYPE::SONG:
       return &SONG_VIEW;
-    case KODI::MEDIA::TYPE::ARTIST:
+    case UNIVERSAL MEDIA CENTER::MEDIA::TYPE::ARTIST:
       return &ARTIST_VIEW;
-    case KODI::MEDIA::TYPE::MUSIC_VIDEO:
+    case UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MUSIC_VIDEO:
       return &MUSIC_VIDEO_VIEW;
-    case KODI::MEDIA::TYPE::MOVIE:
+    case UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MOVIE:
       return &MOVIE_VIEW;
-    case KODI::MEDIA::TYPE::TV_SHOW:
+    case UNIVERSAL MEDIA CENTER::MEDIA::TYPE::TV_SHOW:
       return &TV_SHOW_VIEW;
-    case KODI::MEDIA::TYPE::EPISODE:
+    case UNIVERSAL MEDIA CENTER::MEDIA::TYPE::EPISODE:
       return &EPISODE_VIEW;
     default:
       return nullptr;
@@ -305,15 +305,15 @@ std::string DatabaseUtils::View::NameOf(const Column& column) const
   return std::string{column.name};
 }
 
-const DatabaseUtils::Column* DatabaseUtils::FindColumn(Field field, KODI::MEDIA::TYPE mediaType)
+const DatabaseUtils::Column* DatabaseUtils::FindColumn(Field field, UNIVERSAL MEDIA CENTER::MEDIA::TYPE mediaType)
 {
   const View* view = ViewOf(mediaType);
   return view ? view->Find(field) : nullptr;
 }
 
-std::string DatabaseUtils::GetField(Field field, KODI::MEDIA::TYPE mediaType, DatabaseQueryPart queryPart)
+std::string DatabaseUtils::GetField(Field field, UNIVERSAL MEDIA CENTER::MEDIA::TYPE mediaType, DatabaseQueryPart queryPart)
 {
-  if (field == Field::NONE || mediaType == KODI::MEDIA::TYPE::NONE)
+  if (field == Field::NONE || mediaType == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::NONE)
     return "";
 
   if (const View* view = ViewOf(mediaType))
@@ -335,22 +335,22 @@ std::string DatabaseUtils::GetField(Field field, KODI::MEDIA::TYPE mediaType, Da
   return "";
 }
 
-int DatabaseUtils::GetField(Field field, KODI::MEDIA::TYPE mediaType)
+int DatabaseUtils::GetField(Field field, UNIVERSAL MEDIA CENTER::MEDIA::TYPE mediaType)
 {
   const Column* column = FindColumn(field, mediaType);
   return column ? column->number : -1;
 }
 
-int DatabaseUtils::GetFieldIndex(Field field, KODI::MEDIA::TYPE mediaType)
+int DatabaseUtils::GetFieldIndex(Field field, UNIVERSAL MEDIA CENTER::MEDIA::TYPE mediaType)
 {
   const Column* column = FindColumn(field, mediaType);
   return column ? column->index : -1;
 }
 
 bool DatabaseUtils::GetSelectFields(const Fields &fields,
-                                    KODI::MEDIA::TYPE mediaType, FieldList &selectFields)
+                                    UNIVERSAL MEDIA CENTER::MEDIA::TYPE mediaType, FieldList &selectFields)
 {
-  if (mediaType == KODI::MEDIA::TYPE::NONE || fields.empty())
+  if (mediaType == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::NONE || fields.empty())
     return false;
 
   Fields sortFields = fields;
@@ -358,26 +358,26 @@ bool DatabaseUtils::GetSelectFields(const Fields &fields,
   // add necessary fields to create the label
   switch (mediaType)
   {
-    case KODI::MEDIA::TYPE::EPISODE:
+    case UNIVERSAL MEDIA CENTER::MEDIA::TYPE::EPISODE:
       sortFields.insert(Field::TITLE);
       sortFields.insert(Field::SEASON);
     sortFields.insert(Field::EPISODE_NUMBER);
       break;
-    case KODI::MEDIA::TYPE::SONG:
+    case UNIVERSAL MEDIA CENTER::MEDIA::TYPE::SONG:
       sortFields.insert(Field::TITLE);
       sortFields.insert(Field::TRACK_NUMBER);
       break;
-    case KODI::MEDIA::TYPE::VIDEO:
-    case KODI::MEDIA::TYPE::VIDEO_COLLECTION:
-    case KODI::MEDIA::TYPE::MUSIC_VIDEO:
-    case KODI::MEDIA::TYPE::MOVIE:
-    case KODI::MEDIA::TYPE::TV_SHOW:
+    case UNIVERSAL MEDIA CENTER::MEDIA::TYPE::VIDEO:
+    case UNIVERSAL MEDIA CENTER::MEDIA::TYPE::VIDEO_COLLECTION:
+    case UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MUSIC_VIDEO:
+    case UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MOVIE:
+    case UNIVERSAL MEDIA CENTER::MEDIA::TYPE::TV_SHOW:
       sortFields.insert(Field::TITLE);
       break;
-    case KODI::MEDIA::TYPE::ALBUM:
+    case UNIVERSAL MEDIA CENTER::MEDIA::TYPE::ALBUM:
       sortFields.insert(Field::ALBUM);
       break;
-    case KODI::MEDIA::TYPE::ARTIST:
+    case UNIVERSAL MEDIA CENTER::MEDIA::TYPE::ARTIST:
       sortFields.insert(Field::ARTIST);
       break;
     default:
@@ -453,7 +453,7 @@ bool DatabaseUtils::GetFieldValue(const dbiplus::field_value &fieldValue, CVaria
   return false;
 }
 
-bool DatabaseUtils::GetDatabaseResults(KODI::MEDIA::TYPE mediaType,
+bool DatabaseUtils::GetDatabaseResults(UNIVERSAL MEDIA CENTER::MEDIA::TYPE mediaType,
                                        const FieldList& fields,
                                        dbiplus::Dataset& dataset,
                                        DatabaseResults& results)
@@ -506,8 +506,8 @@ bool DatabaseUtils::GetDatabaseResults(KODI::MEDIA::TYPE mediaType,
                   resultSet.record_header[fieldIndex].name);
 
       if (value.first == Field::YEAR &&
-          (mediaType == KODI::MEDIA::TYPE::TV_SHOW || mediaType == KODI::MEDIA::TYPE::EPISODE ||
-           mediaType == KODI::MEDIA::TYPE::MOVIE))
+          (mediaType == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::TV_SHOW || mediaType == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::EPISODE ||
+           mediaType == UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MOVIE))
       {
         CDateTime dateTime;
         dateTime.SetFromDBDate(value.second.asString());
@@ -524,13 +524,13 @@ bool DatabaseUtils::GetDatabaseResults(KODI::MEDIA::TYPE mediaType,
     result[Field::MEDIA_TYPE] = NameOf(mediaType);
     switch (mediaType)
     {
-      case KODI::MEDIA::TYPE::MOVIE:
-      case KODI::MEDIA::TYPE::VIDEO_COLLECTION:
-      case KODI::MEDIA::TYPE::TV_SHOW:
-      case KODI::MEDIA::TYPE::MUSIC_VIDEO:
+      case UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MOVIE:
+      case UNIVERSAL MEDIA CENTER::MEDIA::TYPE::VIDEO_COLLECTION:
+      case UNIVERSAL MEDIA CENTER::MEDIA::TYPE::TV_SHOW:
+      case UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MUSIC_VIDEO:
         result[Field::LABEL] = result.at(Field::TITLE).asString();
         break;
-      case KODI::MEDIA::TYPE::EPISODE:
+      case UNIVERSAL MEDIA CENTER::MEDIA::TYPE::EPISODE:
       {
         std::ostringstream label;
         label << (result.at(Field::SEASON).asInteger() * 100 +
@@ -540,10 +540,10 @@ bool DatabaseUtils::GetDatabaseResults(KODI::MEDIA::TYPE mediaType,
         result[Field::LABEL] = label.str();
         break;
       }
-      case KODI::MEDIA::TYPE::ALBUM:
+      case UNIVERSAL MEDIA CENTER::MEDIA::TYPE::ALBUM:
         result[Field::LABEL] = result.at(Field::ALBUM).asString();
         break;
-      case KODI::MEDIA::TYPE::SONG:
+      case UNIVERSAL MEDIA CENTER::MEDIA::TYPE::SONG:
       {
         std::ostringstream label;
         label << result.at(Field::TRACK_NUMBER).asInteger();
@@ -552,7 +552,7 @@ bool DatabaseUtils::GetDatabaseResults(KODI::MEDIA::TYPE mediaType,
         result[Field::LABEL] = label.str();
         break;
       }
-      case KODI::MEDIA::TYPE::ARTIST:
+      case UNIVERSAL MEDIA CENTER::MEDIA::TYPE::ARTIST:
         result[Field::LABEL] = result.at(Field::ARTIST).asString();
         break;
       default:

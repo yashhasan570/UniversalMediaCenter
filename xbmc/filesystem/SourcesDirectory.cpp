@@ -28,19 +28,19 @@
 #include "utils/URIUtils.h"
 #include "video/VideoFileItemClassify.h"
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace XFILE;
 
 CSourcesDirectory::CSourcesDirectory(void) = default;
 
 CSourcesDirectory::~CSourcesDirectory(void) = default;
 
-std::string CSourcesDirectory::PathOf(KODI::MEDIA::MediaSection section)
+std::string CSourcesDirectory::PathOf(UNIVERSAL MEDIA CENTER::MEDIA::MediaSection section)
 {
-  return StringUtils::Format("sources://{}/", KODI::MEDIA::NameOf(section));
+  return StringUtils::Format("sources://{}/", UNIVERSAL MEDIA CENTER::MEDIA::NameOf(section));
 }
 
-std::optional<KODI::MEDIA::MediaSection> CSourcesDirectory::SectionOf(const std::string& path)
+std::optional<UNIVERSAL MEDIA CENTER::MEDIA::MediaSection> CSourcesDirectory::SectionOf(const std::string& path)
 {
   const CURL url{path};
   if (!url.IsProtocol("sources"))
@@ -48,12 +48,12 @@ std::optional<KODI::MEDIA::MediaSection> CSourcesDirectory::SectionOf(const std:
 
   std::string name{url.GetFileName()};
   URIUtils::RemoveSlashAtEnd(name);
-  return KODI::MEDIA::MediaSectionFromName(name);
+  return UNIVERSAL MEDIA CENTER::MEDIA::MediaSectionFromName(name);
 }
 
 bool CSourcesDirectory::GetDirectory(const CURL& url, CFileItemList& items)
 {
-  const std::optional<KODI::MEDIA::MediaSection> section{SectionOf(url.Get())};
+  const std::optional<UNIVERSAL MEDIA CENTER::MEDIA::MediaSection> section{SectionOf(url.Get())};
   if (!section)
     return false;
 

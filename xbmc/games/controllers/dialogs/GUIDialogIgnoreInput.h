@@ -14,7 +14,7 @@
 #include <string>
 #include <vector>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -47,4 +47,4 @@ private:
   std::vector<JOYSTICK::CDriverPrimitive> m_capturedPrimitives;
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

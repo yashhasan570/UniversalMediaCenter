@@ -54,7 +54,7 @@ void CTextureBase::Allocate(uint32_t width, uint32_t height, XB_FMT format)
   m_imageWidth = std::min(m_imageWidth, m_textureWidth);
   m_imageHeight = std::min(m_imageHeight, m_textureHeight);
 
-  KODI::MEMORY::AlignedFree(m_pixels);
+  UNIVERSAL MEDIA CENTER::MEMORY::AlignedFree(m_pixels);
   m_pixels = NULL;
 
   size_t size = static_cast<size_t>(GetPitch()) * GetRows();
@@ -67,7 +67,7 @@ void CTextureBase::Allocate(uint32_t width, uint32_t height, XB_FMT format)
   // end of the output buffer. Without padding this corrupts adjacent heap metadata.
   // See also CPicture::CacheTexture which adds equivalent padding for sws_scale.
   constexpr size_t simdPadding{32};
-  m_pixels = static_cast<unsigned char*>(KODI::MEMORY::AlignedMalloc(size + simdPadding, 32));
+  m_pixels = static_cast<unsigned char*>(UNIVERSAL MEDIA CENTER::MEMORY::AlignedMalloc(size + simdPadding, 32));
 
   if (m_pixels == nullptr)
     CLog::Log(LOGERROR, "{} - Could not allocate {} bytes. Out of memory.", __FUNCTION__,

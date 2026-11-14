@@ -191,7 +191,7 @@ protected:
   void StartServer()
   {
     CTCPServer::StopServer(true);
-    KODI::UTILS::CScopeGuard<SOCKET, INVALID_SOCKET, void(SOCKET)> listener(
+    UNIVERSAL MEDIA CENTER::UTILS::CScopeGuard<SOCKET, INVALID_SOCKET, void(SOCKET)> listener(
         [](SOCKET socket) { closesocket(socket); }, socket(AF_INET, SOCK_STREAM, 0));
     ASSERT_NE(INVALID_SOCKET, static_cast<SOCKET>(listener)) << SocketError();
 #if defined(TARGET_WINDOWS)

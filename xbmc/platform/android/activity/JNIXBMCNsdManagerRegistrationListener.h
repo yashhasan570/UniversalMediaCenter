@@ -14,13 +14,13 @@
 namespace jni
 {
 
-class CJNIXBMCNsdManagerRegistrationListener : public CJNINsdManagerRegistrationListener, public CJNIInterfaceImplem<CJNIXBMCNsdManagerRegistrationListener>
+class CJNINsdManagerRegistrationListener : public CJNINsdManagerRegistrationListener, public CJNIInterfaceImplem<CJNINsdManagerRegistrationListener>
 {
 public:
-  CJNIXBMCNsdManagerRegistrationListener();
-  CJNIXBMCNsdManagerRegistrationListener(const CJNIXBMCNsdManagerRegistrationListener& other);
-  explicit CJNIXBMCNsdManagerRegistrationListener(const jni::jhobject &object) : CJNIBase(object) {}
-  ~CJNIXBMCNsdManagerRegistrationListener() override;
+  CJNINsdManagerRegistrationListener();
+  CJNINsdManagerRegistrationListener(const CJNINsdManagerRegistrationListener& other);
+  explicit CJNINsdManagerRegistrationListener(const jni::jhobject &object) : CJNIBase(object) {}
+  ~CJNINsdManagerRegistrationListener() override;
 
   static void RegisterNatives(JNIEnv* env);
 

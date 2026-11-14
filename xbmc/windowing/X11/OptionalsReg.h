@@ -14,7 +14,7 @@
 // VAAPI
 //-----------------------------------------------------------------------------
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace WINDOWING
 {
@@ -45,7 +45,7 @@ class CVideoSync;
 class CGLContext;
 class CVideoReferenceClock;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace WINDOWING
 {
@@ -66,7 +66,7 @@ CVideoSync* GLXVideoSyncCreate(CVideoReferenceClock* clock, CWinSystemX11GLConte
 // VDPAU
 //-----------------------------------------------------------------------------
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace WINDOWING
 {

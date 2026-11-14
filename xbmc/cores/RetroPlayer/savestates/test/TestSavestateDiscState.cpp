@@ -20,7 +20,7 @@
 #include <flatbuffers/flatbuffers.h>
 #include <gtest/gtest.h>
 
-using namespace KODI;
+using namespace UNIVERSAL MEDIA CENTER;
 using namespace GAME;
 using namespace RETRO;
 
@@ -140,9 +140,9 @@ TEST(TestSavestateDiscState, PortableStoragePreservesDisplayLabelsContainingSlas
 
 TEST(TestSavestateDiscState, RenamePreservesDiscState)
 {
-  std::unique_ptr<XFILE::CFile> tempFile(XBMC_CREATETEMPFILE(".sav"));
+  std::unique_ptr<XFILE::CFile> tempFile(_CREATETEMPFILE(".sav"));
   ASSERT_NE(tempFile, nullptr);
-  const std::string path = XBMC_TEMPFILEPATH(tempFile.get());
+  const std::string path = _TEMPFILEPATH(tempFile.get());
   tempFile->Close();
 
   CSavestateFlatBuffer writer;
@@ -164,5 +164,5 @@ TEST(TestSavestateDiscState, RenamePreservesDiscState)
   expected.slots[3].fileName = "Disc 2.chd";
   EXPECT_EQ(*renamed->GetDiscState(), expected);
 
-  EXPECT_TRUE(XBMC_DELETETEMPFILE(tempFile.release()));
+  EXPECT_TRUE(_DELETETEMPFILE(tempFile.release()));
 }

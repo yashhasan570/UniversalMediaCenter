@@ -13,7 +13,7 @@
 #include <string>
 
 //! \brief Set tag loader using nfo files.
-class CSetTagLoaderNFO : public KODI::VIDEO::ISetInfoTagLoader
+class CSetTagLoaderNFO : public UNIVERSAL MEDIA CENTER::VIDEO::ISetInfoTagLoader
 {
 public:
   explicit CSetTagLoaderNFO(const std::string& title);

@@ -98,7 +98,7 @@ bool CWin32Directory::GetDirectory(const CURL& url, CFileItemList &items)
     item->SetFolder(isDir);
     item->SetPath(itemPath);
 
-    using KODI::TIME::FileTime;
+    using UNIVERSAL MEDIA CENTER::TIME::FileTime;
     FileTime localTime{};
 
     if (FileTimeToLocalFileTime(reinterpret_cast<const FileTime*>(&findData.ftLastWriteTime),

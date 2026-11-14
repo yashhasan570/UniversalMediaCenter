@@ -110,16 +110,16 @@ public:
   bool OnAction(const CAction& action) override;
   void SetPosition(float posX, float posY) override;
 
-  static bool SourcesMenu(KODI::MEDIA::MediaSection section,
+  static bool SourcesMenu(UNIVERSAL MEDIA CENTER::MEDIA::MediaSection section,
                           const CFileItemPtr& item,
                           float posX,
                           float posY);
-  static void SwitchMedia(KODI::MEDIA::MediaSection section, const std::string& strPath);
+  static void SwitchMedia(UNIVERSAL MEDIA CENTER::MEDIA::MediaSection section, const std::string& strPath);
 
-  static void GetContextButtons(KODI::MEDIA::MediaSection section,
+  static void GetContextButtons(UNIVERSAL MEDIA CENTER::MEDIA::MediaSection section,
                                 const CFileItemPtr& item,
                                 CContextButtons& buttons);
-  static bool OnContextButton(KODI::MEDIA::MediaSection section,
+  static bool OnContextButton(UNIVERSAL MEDIA CENTER::MEDIA::MediaSection section,
                               const CFileItemPtr& item,
                               CONTEXT_BUTTON button);
 
@@ -144,10 +144,10 @@ protected:
   void OnInitWindow() override;
   void OnWindowLoaded() override;
   void OnDeinitWindow(int nextWindowID) override;
-  static std::string GetDefaultShareNameByType(KODI::MEDIA::MediaSection section);
-  static void SetDefault(KODI::MEDIA::MediaSection section, const std::string &strDefault);
-  static void ClearDefault(KODI::MEDIA::MediaSection section);
-  static CMediaSource *GetShare(KODI::MEDIA::MediaSection section, const CFileItem *item);
+  static std::string GetDefaultShareNameByType(UNIVERSAL MEDIA CENTER::MEDIA::MediaSection section);
+  static void SetDefault(UNIVERSAL MEDIA CENTER::MEDIA::MediaSection section, const std::string &strDefault);
+  static void ClearDefault(UNIVERSAL MEDIA CENTER::MEDIA::MediaSection section);
+  static CMediaSource *GetShare(UNIVERSAL MEDIA CENTER::MEDIA::MediaSection section, const CFileItem *item);
 
 private:
   float m_coordX, m_coordY;

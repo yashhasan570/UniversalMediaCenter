@@ -96,7 +96,7 @@ struct AEWASAPIDeviceWin10 : public IAEWASAPIDevice
       return E_POINTER;
 
     HRESULT hr;
-    std::wstring deviceIdW = KODI::PLATFORM::WINDOWS::ToW(deviceId);
+    std::wstring deviceIdW = UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::ToW(deviceId);
     IAudioClient* pClient = CAudioInterfaceActivator::ActivateAsync(deviceIdW.c_str())
       .then([&hr](Concurrency::task<IAudioClient*> task) -> IAudioClient*
     {
@@ -130,7 +130,7 @@ std::string CAESinkFactoryWin::GetDefaultDeviceId()
 {
   // Get the string identifier of the audio renderer
   auto defaultId = MediaDevice::GetDefaultAudioRenderId(AudioDeviceRole::Default);
-  return KODI::PLATFORM::WINDOWS::FromW(defaultId.c_str());
+  return UNIVERSAL MEDIA CENTER::PLATFORM::WINDOWS::FromW(defaultId.c_str());
 }
 
 HRESULT CAESinkFactoryWin::ActivateWASAPIDevice(std::string &device, IAEWASAPIDevice** ppDevice)

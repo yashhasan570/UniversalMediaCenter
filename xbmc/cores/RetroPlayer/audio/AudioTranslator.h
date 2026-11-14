@@ -11,7 +11,7 @@
 #include "cores/AudioEngine/Utils/AEChannelData.h"
 #include "cores/RetroPlayer/streams/RetroPlayerStreamTypes.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -33,4 +33,4 @@ public:
   static AEChannel TranslateAudioChannel(AudioChannel channel);
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

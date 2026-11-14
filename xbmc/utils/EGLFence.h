@@ -12,7 +12,7 @@
 
 #include <EGL/eglext.h>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace UTILS
 {

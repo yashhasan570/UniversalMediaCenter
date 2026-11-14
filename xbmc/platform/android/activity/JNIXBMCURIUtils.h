@@ -13,16 +13,16 @@
 namespace jni
 {
 
-  class CJNIXBMCURIUtils : public CJNIBase
+  class CJNIURIUtils : public CJNIBase
   {
   public:
-	CJNIXBMCURIUtils(const jni::jhobject &object) : CJNIBase(object) {}
+	CJNIURIUtils(const jni::jhobject &object) : CJNIBase(object) {}
 
     static void RegisterNatives(JNIEnv* env);
 
 
   protected:
-    ~CJNIXBMCURIUtils() override = default;
+    ~CJNIURIUtils() override = default;
 
     static jstring _substitutePath(JNIEnv* env, jobject thiz, jstring path);
 

@@ -16,7 +16,7 @@ class CGUIListItem;
 struct AudioStreamInfo;
 struct VideoStreamInfo;
 
-namespace KODI::GUILIB::GUIINFO
+namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO
 {
 
 class CGUIInfo;
@@ -100,4 +100,4 @@ public:
                             const SubtitleStreamInfo& subtitleInfo) = 0;
 };
 
-} // namespace KODI::GUILIB::GUIINFO
+} // namespace UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO

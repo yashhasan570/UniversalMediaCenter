@@ -14,7 +14,7 @@ class CVariant;
 
 namespace JSONRPC
 {
-  class CXBMCOperations
+  class COperations
   {
   public:
     static JSONRPC_STATUS GetInfoLabels(const std::string &method, ITransportLayer *transport, IClient *client, const CVariant &parameterObject, CVariant &result);

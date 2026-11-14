@@ -29,118 +29,118 @@
 #include <X11/extensions/Xrandr.h>
 #include <X11/keysymdef.h>
 
-using namespace KODI::WINDOWING::X11;
+using namespace UNIVERSAL MEDIA CENTER::WINDOWING::X11;
 
 // clang-format off
 static uint32_t SymMappingsX11[][2] =
 {
-  {XK_BackSpace, XBMCK_BACKSPACE}
-, {XK_Tab, XBMCK_TAB}
-, {XK_Clear, XBMCK_CLEAR}
-, {XK_Return, XBMCK_RETURN}
-, {XK_Pause, XBMCK_PAUSE}
-, {XK_Escape, XBMCK_ESCAPE}
-, {XK_Delete, XBMCK_DELETE}
+  {XK_BackSpace, K_BACKSPACE}
+, {XK_Tab, K_TAB}
+, {XK_Clear, K_CLEAR}
+, {XK_Return, K_RETURN}
+, {XK_Pause, K_PAUSE}
+, {XK_Escape, K_ESCAPE}
+, {XK_Delete, K_DELETE}
 // multi-media keys
-, {XF86XK_Back, XBMCK_BROWSER_BACK}
-, {XF86XK_Forward, XBMCK_BROWSER_FORWARD}
-, {XF86XK_Refresh, XBMCK_BROWSER_REFRESH}
-, {XF86XK_Stop, XBMCK_BROWSER_STOP}
-, {XF86XK_Search, XBMCK_BROWSER_SEARCH}
-, {XF86XK_Favorites, XBMCK_BROWSER_FAVORITES}
-, {XF86XK_HomePage, XBMCK_BROWSER_HOME}
-, {XF86XK_AudioMute, XBMCK_VOLUME_MUTE}
-, {XF86XK_AudioLowerVolume, XBMCK_VOLUME_DOWN}
-, {XF86XK_AudioRaiseVolume, XBMCK_VOLUME_UP}
-, {XF86XK_AudioNext, XBMCK_MEDIA_NEXT_TRACK}
-, {XF86XK_AudioPrev, XBMCK_MEDIA_PREV_TRACK}
-, {XF86XK_AudioStop, XBMCK_MEDIA_STOP}
-, {XF86XK_AudioPause, XBMCK_MEDIA_PLAY_PAUSE}
-, {XF86XK_Mail, XBMCK_LAUNCH_MAIL}
-, {XF86XK_Select, XBMCK_SELECT}
-, {XF86XK_Launch0, XBMCK_LAUNCH_APP1}
-, {XF86XK_Launch1, XBMCK_LAUNCH_APP2}
-, {XF86XK_WWW, XBMCK_LAUNCH_FILE_BROWSER}
-, {XF86XK_AudioMedia, XBMCK_LAUNCH_MEDIA_CENTER }
+, {XF86XK_Back, K_BROWSER_BACK}
+, {XF86XK_Forward, K_BROWSER_FORWARD}
+, {XF86XK_Refresh, K_BROWSER_REFRESH}
+, {XF86XK_Stop, K_BROWSER_STOP}
+, {XF86XK_Search, K_BROWSER_SEARCH}
+, {XF86XK_Favorites, K_BROWSER_FAVORITES}
+, {XF86XK_HomePage, K_BROWSER_HOME}
+, {XF86XK_AudioMute, K_VOLUME_MUTE}
+, {XF86XK_AudioLowerVolume, K_VOLUME_DOWN}
+, {XF86XK_AudioRaiseVolume, K_VOLUME_UP}
+, {XF86XK_AudioNext, K_MEDIA_NEXT_TRACK}
+, {XF86XK_AudioPrev, K_MEDIA_PREV_TRACK}
+, {XF86XK_AudioStop, K_MEDIA_STOP}
+, {XF86XK_AudioPause, K_MEDIA_PLAY_PAUSE}
+, {XF86XK_Mail, K_LAUNCH_MAIL}
+, {XF86XK_Select, K_SELECT}
+, {XF86XK_Launch0, K_LAUNCH_APP1}
+, {XF86XK_Launch1, K_LAUNCH_APP2}
+, {XF86XK_WWW, K_LAUNCH_FILE_BROWSER}
+, {XF86XK_AudioMedia, K_LAUNCH_MEDIA_CENTER }
   // Numeric keypad
-, {XK_KP_0, XBMCK_KP0}
-, {XK_KP_1, XBMCK_KP1}
-, {XK_KP_2, XBMCK_KP2}
-, {XK_KP_3, XBMCK_KP3}
-, {XK_KP_4, XBMCK_KP4}
-, {XK_KP_5, XBMCK_KP5}
-, {XK_KP_6, XBMCK_KP6}
-, {XK_KP_7, XBMCK_KP7}
-, {XK_KP_8, XBMCK_KP8}
-, {XK_KP_9, XBMCK_KP9}
-, {XK_KP_Separator, XBMCK_KP_PERIOD}
-, {XK_KP_Divide, XBMCK_KP_DIVIDE}
-, {XK_KP_Multiply, XBMCK_KP_MULTIPLY}
-, {XK_KP_Subtract, XBMCK_KP_MINUS}
-, {XK_KP_Add, XBMCK_KP_PLUS}
-, {XK_KP_Enter, XBMCK_KP_ENTER}
-, {XK_KP_Equal, XBMCK_KP_EQUALS}
+, {XK_KP_0, K_KP0}
+, {XK_KP_1, K_KP1}
+, {XK_KP_2, K_KP2}
+, {XK_KP_3, K_KP3}
+, {XK_KP_4, K_KP4}
+, {XK_KP_5, K_KP5}
+, {XK_KP_6, K_KP6}
+, {XK_KP_7, K_KP7}
+, {XK_KP_8, K_KP8}
+, {XK_KP_9, K_KP9}
+, {XK_KP_Separator, K_KP_PERIOD}
+, {XK_KP_Divide, K_KP_DIVIDE}
+, {XK_KP_Multiply, K_KP_MULTIPLY}
+, {XK_KP_Subtract, K_KP_MINUS}
+, {XK_KP_Add, K_KP_PLUS}
+, {XK_KP_Enter, K_KP_ENTER}
+, {XK_KP_Equal, K_KP_EQUALS}
   // Arrows + Home/End pad
-, {XK_Up, XBMCK_UP}
-, {XK_Down, XBMCK_DOWN}
-, {XK_Right, XBMCK_RIGHT}
-, {XK_Left, XBMCK_LEFT}
-, {XK_Insert, XBMCK_INSERT}
-, {XK_Home, XBMCK_HOME}
-, {XK_End, XBMCK_END}
-, {XK_Page_Up, XBMCK_PAGEUP}
-, {XK_Page_Down, XBMCK_PAGEDOWN}
+, {XK_Up, K_UP}
+, {XK_Down, K_DOWN}
+, {XK_Right, K_RIGHT}
+, {XK_Left, K_LEFT}
+, {XK_Insert, K_INSERT}
+, {XK_Home, K_HOME}
+, {XK_End, K_END}
+, {XK_Page_Up, K_PAGEUP}
+, {XK_Page_Down, K_PAGEDOWN}
   // Function keys
-, {XK_F1, XBMCK_F1}
-, {XK_F2, XBMCK_F2}
-, {XK_F3, XBMCK_F3}
-, {XK_F4, XBMCK_F4}
-, {XK_F5, XBMCK_F5}
-, {XK_F6, XBMCK_F6}
-, {XK_F7, XBMCK_F7}
-, {XK_F8, XBMCK_F8}
-, {XK_F9, XBMCK_F9}
-, {XK_F10, XBMCK_F10}
-, {XK_F11, XBMCK_F11}
-, {XK_F12, XBMCK_F12}
-, {XK_F13, XBMCK_F13}
-, {XK_F14, XBMCK_F14}
-, {XK_F15, XBMCK_F15}
+, {XK_F1, K_F1}
+, {XK_F2, K_F2}
+, {XK_F3, K_F3}
+, {XK_F4, K_F4}
+, {XK_F5, K_F5}
+, {XK_F6, K_F6}
+, {XK_F7, K_F7}
+, {XK_F8, K_F8}
+, {XK_F9, K_F9}
+, {XK_F10, K_F10}
+, {XK_F11, K_F11}
+, {XK_F12, K_F12}
+, {XK_F13, K_F13}
+, {XK_F14, K_F14}
+, {XK_F15, K_F15}
   // Key state modifier keys
-, {XK_Num_Lock, XBMCK_NUMLOCK}
-, {XK_Caps_Lock, XBMCK_CAPSLOCK}
-, {XK_Scroll_Lock, XBMCK_SCROLLOCK}
-, {XK_Shift_R, XBMCK_RSHIFT}
-, {XK_Shift_L, XBMCK_LSHIFT}
-, {XK_Control_R, XBMCK_RCTRL}
-, {XK_Control_L, XBMCK_LCTRL}
-, {XK_Alt_R, XBMCK_RALT}
-, {XK_Alt_L, XBMCK_LALT}
-, {XK_Meta_R, XBMCK_RMETA}
-, {XK_Meta_L, XBMCK_LMETA}
-, {XK_Super_L, XBMCK_LSUPER}
-, {XK_Super_R, XBMCK_RSUPER}
-, {XK_Mode_switch, XBMCK_MODE}
-, {XK_Multi_key, XBMCK_COMPOSE}
+, {XK_Num_Lock, K_NUMLOCK}
+, {XK_Caps_Lock, K_CAPSLOCK}
+, {XK_Scroll_Lock, K_SCROLLOCK}
+, {XK_Shift_R, K_RSHIFT}
+, {XK_Shift_L, K_LSHIFT}
+, {XK_Control_R, K_RCTRL}
+, {XK_Control_L, K_LCTRL}
+, {XK_Alt_R, K_RALT}
+, {XK_Alt_L, K_LALT}
+, {XK_Meta_R, K_RMETA}
+, {XK_Meta_L, K_LMETA}
+, {XK_Super_L, K_LSUPER}
+, {XK_Super_R, K_RSUPER}
+, {XK_Mode_switch, K_MODE}
+, {XK_Multi_key, K_COMPOSE}
   // Miscellaneous function keys
-, {XK_Help, XBMCK_HELP}
-, {XK_Print, XBMCK_PRINT}
-//, {0, XBMCK_SYSREQ}
-, {XK_Break, XBMCK_BREAK}
-, {XK_Menu, XBMCK_MENU}
-, {XF86XK_PowerOff, XBMCK_POWER}
-, {XF86XK_Sleep, XBMCK_SLEEP}
-, {XK_EcuSign, XBMCK_EURO}
-, {XK_Undo, XBMCK_UNDO}
+, {XK_Help, K_HELP}
+, {XK_Print, K_PRINT}
+//, {0, K_SYSREQ}
+, {XK_Break, K_BREAK}
+, {XK_Menu, K_MENU}
+, {XF86XK_PowerOff, K_POWER}
+, {XF86XK_Sleep, K_SLEEP}
+, {XK_EcuSign, K_EURO}
+, {XK_Undo, K_UNDO}
   /* Media keys */
-, {XF86XK_Eject, XBMCK_EJECT}
-, {XF86XK_Stop, XBMCK_STOP}
-, {XF86XK_AudioRecord, XBMCK_RECORD}
-, {XF86XK_AudioRewind, XBMCK_REWIND}
-, {XF86XK_Phone, XBMCK_PHONE}
-, {XF86XK_AudioPlay, XBMCK_PLAY}
-, {XF86XK_AudioRandomPlay, XBMCK_SHUFFLE}
-, {XF86XK_AudioForward, XBMCK_FASTFORWARD}
+, {XF86XK_Eject, K_EJECT}
+, {XF86XK_Stop, K_STOP}
+, {XF86XK_AudioRecord, K_RECORD}
+, {XF86XK_AudioRewind, K_REWIND}
+, {XF86XK_Phone, K_PHONE}
+, {XF86XK_AudioPlay, K_PLAY}
+, {XF86XK_AudioRandomPlay, K_SHUFFLE}
+, {XF86XK_AudioForward, K_FASTFORWARD}
 };
 // clang-format on
 
@@ -172,8 +172,8 @@ bool CWinEventsX11::Init(Display *dpy, Window win)
   char res_name[8];
   const char *p;
 
-  // set resource name to xbmc, not used
-  strcpy(res_name, "xbmc");
+  // set resource name to , not used
+  strcpy(res_name, "");
 
   // save current locale, this should be "C"
   p = setlocale(LC_ALL, NULL);
@@ -384,8 +384,8 @@ bool CWinEventsX11::MessagePump()
           break;
 
         m_structureChanged = true;
-        XBMC_Event newEvent = {};
-        newEvent.type = XBMC_VIDEORESIZE;
+        _Event newEvent = {};
+        newEvent.type = _VIDEORESIZE;
         newEvent.resize.width = xevent.xconfigure.width;
         newEvent.resize.height = xevent.xconfigure.height;
         newEvent.resize.scale = 1.0;
@@ -405,8 +405,8 @@ bool CWinEventsX11::MessagePump()
 
       case KeyPress:
       {
-        XBMC_Event newEvent = {};
-        newEvent.type = XBMC_KEYDOWN;
+        _Event newEvent = {};
+        newEvent.type = _KEYDOWN;
         KeySym xkeysym;
 
         // fallback if we have no IM
@@ -458,7 +458,7 @@ bool CWinEventsX11::MessagePump()
 
             for (unsigned int i = 0; i < keys.length() - 1; i++)
             {
-              newEvent.key.keysym.sym = XBMCK_UNKNOWN;
+              newEvent.key.keysym.sym = K_UNKNOWN;
               newEvent.key.keysym.unicode = keys[i];
               ret |= ProcessKey(newEvent);
             }
@@ -500,9 +500,9 @@ bool CWinEventsX11::MessagePump()
             continue;
         }
 
-        XBMC_Event newEvent = {};
+        _Event newEvent = {};
         KeySym xkeysym;
-        newEvent.type = XBMC_KEYUP;
+        newEvent.type = _KEYUP;
         xkeysym = XLookupKeysym(&xevent.xkey, 0);
         newEvent.key.keysym.scancode = xevent.xkey.keycode;
         newEvent.key.keysym.sym = LookupXbmcKeySym(xkeysym);
@@ -526,8 +526,8 @@ bool CWinEventsX11::MessagePump()
       {
         if (xevent.xmotion.window != m_window)
           break;
-        XBMC_Event newEvent = {};
-        newEvent.type = XBMC_MOUSEMOTION;
+        _Event newEvent = {};
+        newEvent.type = _MOUSEMOTION;
         newEvent.motion.x = (int16_t)xevent.xmotion.x;
         newEvent.motion.y = (int16_t)xevent.xmotion.y;
         if (appPort)
@@ -537,8 +537,8 @@ bool CWinEventsX11::MessagePump()
 
       case ButtonPress:
       {
-        XBMC_Event newEvent = {};
-        newEvent.type = XBMC_MOUSEBUTTONDOWN;
+        _Event newEvent = {};
+        newEvent.type = _MOUSEBUTTONDOWN;
         newEvent.button.button = (unsigned char)xevent.xbutton.button;
         newEvent.button.x = (int16_t)xevent.xbutton.x;
         newEvent.button.y = (int16_t)xevent.xbutton.y;
@@ -549,8 +549,8 @@ bool CWinEventsX11::MessagePump()
 
       case ButtonRelease:
       {
-        XBMC_Event newEvent = {};
-        newEvent.type = XBMC_MOUSEBUTTONUP;
+        _Event newEvent = {};
+        newEvent.type = _MOUSEBUTTONUP;
         newEvent.button.button = (unsigned char)xevent.xbutton.button;
         newEvent.button.x = (int16_t)xevent.xbutton.x;
         newEvent.button.y = (int16_t)xevent.xbutton.y;
@@ -576,80 +576,80 @@ bool CWinEventsX11::MessagePump()
   return ret;
 }
 
-bool CWinEventsX11::ProcessKey(XBMC_Event &event)
+bool CWinEventsX11::ProcessKey(_Event &event)
 {
-  if (event.type == XBMC_KEYDOWN)
+  if (event.type == _KEYDOWN)
   {
     // check key modifiers
     switch(event.key.keysym.sym)
     {
-      case XBMCK_LSHIFT:
-        m_keymodState |= XBMCKMOD_LSHIFT;
+      case K_LSHIFT:
+        m_keymodState |= KMOD_LSHIFT;
         break;
-      case XBMCK_RSHIFT:
-        m_keymodState |= XBMCKMOD_RSHIFT;
+      case K_RSHIFT:
+        m_keymodState |= KMOD_RSHIFT;
         break;
-      case XBMCK_LCTRL:
-        m_keymodState |= XBMCKMOD_LCTRL;
+      case K_LCTRL:
+        m_keymodState |= KMOD_LCTRL;
         break;
-      case XBMCK_RCTRL:
-        m_keymodState |= XBMCKMOD_RCTRL;
+      case K_RCTRL:
+        m_keymodState |= KMOD_RCTRL;
         break;
-      case XBMCK_LALT:
-        m_keymodState |= XBMCKMOD_LALT;
+      case K_LALT:
+        m_keymodState |= KMOD_LALT;
         break;
-      case XBMCK_RALT:
-        m_keymodState |= XBMCKMOD_RCTRL;
+      case K_RALT:
+        m_keymodState |= KMOD_RCTRL;
         break;
-      case XBMCK_LMETA:
-        m_keymodState |= XBMCKMOD_LMETA;
+      case K_LMETA:
+        m_keymodState |= KMOD_LMETA;
         break;
-      case XBMCK_RMETA:
-        m_keymodState |= XBMCKMOD_RMETA;
+      case K_RMETA:
+        m_keymodState |= KMOD_RMETA;
         break;
-      case XBMCK_MODE:
-        m_keymodState |= XBMCKMOD_MODE;
+      case K_MODE:
+        m_keymodState |= KMOD_MODE;
         break;
       default:
         break;
     }
-    event.key.keysym.mod = (XBMCMod)m_keymodState;
+    event.key.keysym.mod = (Mod)m_keymodState;
   }
-  else if (event.type == XBMC_KEYUP)
+  else if (event.type == _KEYUP)
   {
     switch(event.key.keysym.sym)
     {
-      case XBMCK_LSHIFT:
-        m_keymodState &= ~XBMCKMOD_LSHIFT;
+      case K_LSHIFT:
+        m_keymodState &= ~KMOD_LSHIFT;
         break;
-      case XBMCK_RSHIFT:
-        m_keymodState &= ~XBMCKMOD_RSHIFT;
+      case K_RSHIFT:
+        m_keymodState &= ~KMOD_RSHIFT;
         break;
-      case XBMCK_LCTRL:
-        m_keymodState &= ~XBMCKMOD_LCTRL;
+      case K_LCTRL:
+        m_keymodState &= ~KMOD_LCTRL;
         break;
-      case XBMCK_RCTRL:
-        m_keymodState &= ~XBMCKMOD_RCTRL;
+      case K_RCTRL:
+        m_keymodState &= ~KMOD_RCTRL;
         break;
-      case XBMCK_LALT:
-        m_keymodState &= ~XBMCKMOD_LALT;
+      case K_LALT:
+        m_keymodState &= ~KMOD_LALT;
         break;
-      case XBMCK_RALT:
-        m_keymodState &= ~XBMCKMOD_RCTRL;
+      case K_RALT:
+        m_keymodState &= ~KMOD_RCTRL;
         break;
-      case XBMCK_LMETA:
-        m_keymodState &= ~XBMCKMOD_LMETA;
+      case K_LMETA:
+        m_keymodState &= ~KMOD_LMETA;
         break;
-      case XBMCK_RMETA:
-        m_keymodState &= ~XBMCKMOD_RMETA;
+      case K_RMETA:
+        m_keymodState &= ~KMOD_RMETA;
         break;
-      case XBMCK_MODE:
-        m_keymodState &= ~XBMCKMOD_MODE;
+      case K_MODE:
+        m_keymodState &= ~KMOD_MODE;
         break;
       default:
         break;
     }
-    event.key.keysym.mod = (XBMCMod)m_keymodState;
+    event.key.keysym.mod = (Mod)m_keymodState;
   }
 
   std::shared_ptr<CAppInboundProtocol> appPort = CServiceBroker::GetAppPort();
@@ -658,19 +658,19 @@ bool CWinEventsX11::ProcessKey(XBMC_Event &event)
   return true;
 }
 
-XBMCKey CWinEventsX11::LookupXbmcKeySym(KeySym keysym)
+Key CWinEventsX11::LookupXbmcKeySym(KeySym keysym)
 {
   // try direct mapping first
   std::map<uint32_t, uint32_t>::iterator it;
   it = m_symLookupTable.find(keysym);
   if (it != m_symLookupTable.end())
   {
-    return (XBMCKey)(it->second);
+    return (Key)(it->second);
   }
 
   // try ascii mappings
   if (keysym>>8 == 0x00)
-    return (XBMCKey)tolower(keysym & 0xFF);
+    return (Key)tolower(keysym & 0xFF);
 
-  return (XBMCKey)keysym;
+  return (Key)keysym;
 }

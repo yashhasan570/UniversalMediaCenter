@@ -18,7 +18,7 @@
 #include <utility>
 #include <vector>
 
-namespace KODI::LANGUAGE::I18N
+namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N
 {
 class CSubTagRegistryManager;
 
@@ -220,4 +220,4 @@ void CSubTagsCollection<T>::Reset()
   m_descToSubTags.clear();
 }
 
-} // namespace KODI::LANGUAGE::I18N
+} // namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N

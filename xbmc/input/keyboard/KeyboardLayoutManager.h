@@ -18,7 +18,7 @@
 class CSetting;
 struct StringSettingOption;
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace KEYBOARD
 {
@@ -53,4 +53,4 @@ private:
   KeyboardLayouts m_layouts;
 };
 } // namespace KEYBOARD
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

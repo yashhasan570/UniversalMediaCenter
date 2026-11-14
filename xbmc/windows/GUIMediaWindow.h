@@ -208,13 +208,13 @@ protected:
   int m_iLastControl;
   std::string m_startDirectory;
 
-  KODI::PLAYLIST::CSmartPlaylist m_filter;
+  UNIVERSAL MEDIA CENTER::PLAYLIST::CSmartPlaylist m_filter;
   bool m_canFilterAdvanced;
   /*! \brief Contains the path used for filtering (including any active filter)
 
    When Update() is called with a path to e.g. a smartplaylist or
    a library node filter, that "original" path will be stored in
-   m_vecItems->m_strPath. But the path used by XBMC to retrieve
+   m_vecItems->m_strPath. But the path used by  to retrieve
    those items from the database (Videodb:// or musicdb://)
    is stored in this member variable to still have access to it
    because it is used for filtering by appending the currently active

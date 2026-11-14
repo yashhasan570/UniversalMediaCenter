@@ -191,7 +191,7 @@ std::string GetLivePhotoKey(const std::string& path)
 }
 } // namespace
 
-namespace KODI::PICTURE
+namespace UNIVERSAL MEDIA CENTER::PICTURE
 {
 void GroupLivePhotos(CFileItemList& items)
 {
@@ -322,4 +322,4 @@ void ClearMotionPhotoClips()
   if (CDirectory::Exists(folder, false))
     CDirectory::RemoveRecursive(folder);
 }
-} // namespace KODI::PICTURE
+} // namespace UNIVERSAL MEDIA CENTER::PICTURE

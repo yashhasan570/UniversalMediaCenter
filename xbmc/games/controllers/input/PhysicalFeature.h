@@ -19,7 +19,7 @@ namespace tinyxml2
 class XMLElement;
 }
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -49,7 +49,7 @@ public:
 
   // Input properties
   JOYSTICK::INPUT_TYPE InputType(void) const { return m_inputType; }
-  KEYBOARD::XBMCKey Keycode() const { return m_keycode; }
+  KEYBOARD::Key Keycode() const { return m_keycode; }
 
   bool Deserialize(const tinyxml2::XMLElement* pElement,
                    const CController* controller,
@@ -64,8 +64,8 @@ private:
   std::string m_strName;
   int m_labelId = -1;
   JOYSTICK::INPUT_TYPE m_inputType = JOYSTICK::INPUT_TYPE::UNKNOWN;
-  KEYBOARD::XBMCKey m_keycode = KEYBOARD::XBMCKey::XBMCK_UNKNOWN;
+  KEYBOARD::Key m_keycode = KEYBOARD::Key::K_UNKNOWN;
 };
 
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

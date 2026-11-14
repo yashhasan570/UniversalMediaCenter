@@ -13,7 +13,7 @@
 #include <optional>
 #include <string>
 
-namespace KODI::LANGUAGE::I18N
+namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N
 {
 class CBcp47;
 
@@ -58,4 +58,4 @@ private:
 
   Bcp47FormattingStyle m_style{Bcp47FormattingStyle::FORMAT_BCP47};
 };
-} // namespace KODI::LANGUAGE::I18N
+} // namespace UNIVERSAL MEDIA CENTER::LANGUAGE::I18N

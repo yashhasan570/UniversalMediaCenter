@@ -1695,7 +1695,7 @@
         "width": 1040,
         "grid": 0,
         "tags": [
-          "kodi-symbol"
+          "universalmediacenter-symbol"
         ]
       },
       "attrs": [
@@ -1717,7 +1717,7 @@
         "id": 4,
         "prevSize": 32,
         "code": 58882,
-        "name": "kodi-symbol"
+        "name": "universalmediacenter-symbol"
       },
       "setIdx": 2,
       "setId": 1,
@@ -1748,7 +1748,7 @@
         "width": 3091,
         "grid": 0,
         "tags": [
-          "kodi-text"
+          "universalmediacenter-text"
         ]
       },
       "attrs": [
@@ -1770,7 +1770,7 @@
         "id": 3,
         "prevSize": 32,
         "code": 58883,
-        "name": "kodi-text"
+        "name": "universalmediacenter-text"
       },
       "setIdx": 2,
       "setId": 1,

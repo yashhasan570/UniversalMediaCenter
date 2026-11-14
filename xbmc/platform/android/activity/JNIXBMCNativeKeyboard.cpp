@@ -6,7 +6,7 @@
  *  See LICENSES/README.md for more information.
  */
 
-#include "JNIXBMCNativeKeyboard.h"
+#include "JNINativeKeyboard.h"
 
 #include "CompileInfo.h"
 #include "utils/log.h"
@@ -16,9 +16,9 @@
 
 using namespace jni;
 
-static std::string s_className = std::string(CCompileInfo::GetClass()) + "/XBMCNativeKeyboard";
+static std::string s_className = std::string(CCompileInfo::GetClass()) + "/NativeKeyboard";
 
-CJNIXBMCNativeKeyboard::CJNIXBMCNativeKeyboard(IKeyboardInputHandler* handler)
+CJNINativeKeyboard::CJNINativeKeyboard(IKeyboardInputHandler* handler)
   : CJNIBase(s_className),
     m_handler(handler)
 {
@@ -28,34 +28,34 @@ CJNIXBMCNativeKeyboard::CJNIXBMCNativeKeyboard(IKeyboardInputHandler* handler)
   add_instance(m_object, this);
 }
 
-CJNIXBMCNativeKeyboard::~CJNIXBMCNativeKeyboard()
+CJNINativeKeyboard::~CJNINativeKeyboard()
 {
   remove_instance(this);
 }
 
-void CJNIXBMCNativeKeyboard::RegisterNatives(JNIEnv* env)
+void CJNINativeKeyboard::RegisterNatives(JNIEnv* env)
 {
   jclass cClass = env->FindClass(s_className.c_str());
   if (cClass)
   {
     JNINativeMethod methods[] = {
         {"_onTextChanged", "(Ljava/lang/String;)V",
-         reinterpret_cast<void*>(&CJNIXBMCNativeKeyboard::_onTextChanged)},
+         reinterpret_cast<void*>(&CJNINativeKeyboard::_onTextChanged)},
         {"_onInputFinished", "(Ljava/lang/String;)V",
-         reinterpret_cast<void*>(&CJNIXBMCNativeKeyboard::_onInputFinished)},
+         reinterpret_cast<void*>(&CJNINativeKeyboard::_onInputFinished)},
         {"_onInputCanceled", "()V",
-         reinterpret_cast<void*>(&CJNIXBMCNativeKeyboard::_onInputCanceled)},
+         reinterpret_cast<void*>(&CJNINativeKeyboard::_onInputCanceled)},
     };
 
     env->RegisterNatives(cClass, methods, sizeof(methods) / sizeof(methods[0]));
   }
 }
 
-void CJNIXBMCNativeKeyboard::show(const std::string& heading,
+void CJNINativeKeyboard::show(const std::string& heading,
                                   const std::string& initialText,
                                   bool hiddenInput)
 {
-  JNIEnv* env = xbmc_jnienv();
+  JNIEnv* env = _jnienv();
   jstring jHeading = env->NewStringUTF(heading.c_str());
   jstring jInitialText = env->NewStringUTF(initialText.c_str());
 
@@ -66,9 +66,9 @@ void CJNIXBMCNativeKeyboard::show(const std::string& heading,
   env->DeleteLocalRef(jInitialText);
 }
 
-void CJNIXBMCNativeKeyboard::setText(const std::string& text)
+void CJNINativeKeyboard::setText(const std::string& text)
 {
-  JNIEnv* env = xbmc_jnienv();
+  JNIEnv* env = _jnienv();
   jstring jText = env->NewStringUTF(text.c_str());
 
   call_method<void>(m_object, "setText", "(Ljava/lang/String;)V", jText);
@@ -76,32 +76,32 @@ void CJNIXBMCNativeKeyboard::setText(const std::string& text)
   env->DeleteLocalRef(jText);
 }
 
-void CJNIXBMCNativeKeyboard::hide()
+void CJNINativeKeyboard::hide()
 {
   call_method<void>(m_object, "hide", "()V");
 }
 
-void CJNIXBMCNativeKeyboard::_onTextChanged(JNIEnv* env, jobject thiz, jstring text)
+void CJNINativeKeyboard::_onTextChanged(JNIEnv* env, jobject thiz, jstring text)
 {
-  CJNIXBMCNativeKeyboard* inst = find_instance(thiz);
+  CJNINativeKeyboard* inst = find_instance(thiz);
   if (inst && inst->m_handler)
     inst->m_handler->OnTextChanged(jcast<std::string>(jhstring::fromJNI(text)));
   else
     CLog::LogF(LOGERROR, "Cannot find native keyboard instance");
 }
 
-void CJNIXBMCNativeKeyboard::_onInputFinished(JNIEnv* env, jobject thiz, jstring text)
+void CJNINativeKeyboard::_onInputFinished(JNIEnv* env, jobject thiz, jstring text)
 {
-  CJNIXBMCNativeKeyboard* inst = find_instance(thiz);
+  CJNINativeKeyboard* inst = find_instance(thiz);
   if (inst && inst->m_handler)
     inst->m_handler->OnInputFinished(jcast<std::string>(jhstring::fromJNI(text)));
   else
     CLog::LogF(LOGERROR, "Cannot find native keyboard instance");
 }
 
-void CJNIXBMCNativeKeyboard::_onInputCanceled(JNIEnv* env, jobject thiz)
+void CJNINativeKeyboard::_onInputCanceled(JNIEnv* env, jobject thiz)
 {
-  CJNIXBMCNativeKeyboard* inst = find_instance(thiz);
+  CJNINativeKeyboard* inst = find_instance(thiz);
   if (inst && inst->m_handler)
     inst->m_handler->OnInputCanceled();
   else

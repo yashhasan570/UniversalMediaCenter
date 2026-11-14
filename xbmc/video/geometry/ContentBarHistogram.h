@@ -14,7 +14,7 @@
 #include <cstddef>
 #include <cstdint>
 
-namespace KODI::VIDEO::GEOMETRY
+namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY
 {
 
 inline constexpr unsigned int BUCKET_COUNT = 256;
@@ -107,4 +107,4 @@ private:
   unsigned int m_highest{0};
 };
 
-} // namespace KODI::VIDEO::GEOMETRY
+} // namespace UNIVERSAL MEDIA CENTER::VIDEO::GEOMETRY

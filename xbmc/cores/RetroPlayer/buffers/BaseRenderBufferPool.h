@@ -15,7 +15,7 @@
 #include <memory>
 #include <vector>
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -64,4 +64,4 @@ private:
   mutable CCriticalSection m_bufferMutex;
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

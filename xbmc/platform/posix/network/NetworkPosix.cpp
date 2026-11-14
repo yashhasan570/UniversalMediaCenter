@@ -131,7 +131,7 @@ std::vector<CNetworkInterface*>& CNetworkPosix::GetInterfaceList()
 //! @bug
 //! Overwrite the GetFirstConnectedInterface and requery
 //! the interface list if no connected device is found
-//! this fixes a bug when no network is available after first start of xbmc
+//! this fixes a bug when no network is available after first start of 
 //! and the interface comes up during runtime
 CNetworkInterface* CNetworkPosix::GetFirstConnectedInterface()
 {

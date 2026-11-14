@@ -10,7 +10,7 @@
 
 #include <string>
 
-namespace KODI::ADDONS
+namespace UNIVERSAL MEDIA CENTER::ADDONS
 {
 
 /*!
@@ -40,4 +40,4 @@ public:
   virtual bool SupportsFile(const std::string& filename) { return true; }
 };
 
-} // namespace KODI::ADDONS
+} // namespace UNIVERSAL MEDIA CENTER::ADDONS

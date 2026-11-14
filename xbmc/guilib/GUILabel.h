@@ -46,12 +46,12 @@ public:
     return changed;
   };
 
-  KODI::GUILIB::GUIINFO::CGUIInfoColor textColor;
-  KODI::GUILIB::GUIINFO::CGUIInfoColor shadowColor;
-  KODI::GUILIB::GUIINFO::CGUIInfoColor selectedColor;
-  KODI::GUILIB::GUIINFO::CGUIInfoColor disabledColor;
-  KODI::GUILIB::GUIINFO::CGUIInfoColor focusedColor;
-  KODI::GUILIB::GUIINFO::CGUIInfoColor invalidColor;
+  UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoColor textColor;
+  UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoColor shadowColor;
+  UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoColor selectedColor;
+  UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoColor disabledColor;
+  UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoColor focusedColor;
+  UNIVERSAL MEDIA CENTER::GUILIB::GUIINFO::CGUIInfoColor invalidColor;
   uint32_t align;
   float offsetX;
   float offsetY;
@@ -130,7 +130,7 @@ public:
    \param colors colors referenced in the styled text.
    \sa SetText, SetTextW
    */
-  bool SetStyledText(const vecText& text, const std::vector<KODI::UTILS::COLOR::Color>& colors);
+  bool SetStyledText(const vecText& text, const std::vector<UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color>& colors);
 
   /*! \brief Set the color to use for the label
    Sets the color to be used for this label.  Takes effect at the next render
@@ -227,7 +227,7 @@ public:
   static bool CheckAndCorrectOverlap(CGUILabel &label1, CGUILabel &label2);
 
 protected:
-  KODI::UTILS::COLOR::Color GetColor() const;
+  UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color GetColor() const;
 
   /*! \brief Computes the final layout of the text
    Uses the maximal position and width of the text, as well as the text length

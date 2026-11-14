@@ -1,9 +1,9 @@
 # Emscripten reads these at link time; without this a change to them does not relink.
 set_property(TARGET ${APP_NAME_LC} APPEND PROPERTY LINK_DEPENDS
-  ${CMAKE_SOURCE_DIR}/xbmc/platform/wasm/kodi_pre.js
-  ${CMAKE_SOURCE_DIR}/xbmc/windowing/wasm/webgl_commit.js
-  ${CMAKE_SOURCE_DIR}/xbmc/platform/wasm/network/tizen_sockets.js
-  ${CMAKE_SOURCE_DIR}/xbmc/cores/VideoPlayer/DVDCodecs/Video/webcodecs_bridge.js)
+  ${CMAKE_SOURCE_DIR}//platform/wasm/universalmediacenter_pre.js
+  ${CMAKE_SOURCE_DIR}//windowing/wasm/webgl_commit.js
+  ${CMAKE_SOURCE_DIR}//platform/wasm/network/tizen_sockets.js
+  ${CMAKE_SOURCE_DIR}//cores/VideoPlayer/DVDCodecs/Video/webcodecs_bridge.js)
 if(ENABLE_WASM_DEV_PROXY)
   set_property(TARGET ${APP_NAME_LC} APPEND PROPERTY LINK_DEPENDS
     ${CMAKE_SOURCE_DIR}/tools/wasm/dev_proxy_pre.js)
@@ -12,7 +12,7 @@ endif()
 # CPython is linked statically, so it has no install prefix to find on a real
 # filesystem. Ship its standard library inside the Emscripten VFS as the zip
 # landmark getpath() looks for at <PYTHONHOME>/lib/pythonXY.zip; XBPython points
-# PYTHONHOME at special://xbmc, which is WASM_VFS_PREFIX here.
+# PYTHONHOME at special://, which is WASM_VFS_PREFIX here.
 if(TARGET ${APP_NAME_LC}::Python)
   string(REPLACE "." "" PYTHON_ZIP_VERSION "${PYTHON_VERSION}")
   set(PYTHON_STDLIB_DIR "${DEPENDS_PATH}/lib/python${PYTHON_VERSION}")

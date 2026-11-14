@@ -21,7 +21,7 @@ using namespace std::chrono_literals;
 
 void CWinSystemWin10DX::Register()
 {
-  KODI::WINDOWING::CWindowSystemFactory::RegisterWindowSystem(CreateWinSystem);
+  UNIVERSAL MEDIA CENTER::WINDOWING::CWindowSystemFactory::RegisterWindowSystem(CreateWinSystem);
 }
 
 std::unique_ptr<CWinSystemBase> CWinSystemWin10DX::CreateWinSystem()
@@ -49,7 +49,7 @@ void CWinSystemWin10DX::PresentRenderImpl(bool rendered)
   }
 
   if (!rendered)
-    KODI::TIME::Sleep(40ms);
+    UNIVERSAL MEDIA CENTER::TIME::Sleep(40ms);
 }
 
 bool CWinSystemWin10DX::CreateNewWindow(const std::string& name, bool fullScreen, RESOLUTION_INFO& res)
@@ -199,14 +199,14 @@ bool CWinSystemWin10DX::IsHDROutput() const
   return m_deviceResources->IsHDROutput();
 }
 
-KODI::UTILS::Eotf CWinSystemWin10DX::GetEotf() const
+UNIVERSAL MEDIA CENTER::UTILS::Eotf CWinSystemWin10DX::GetEotf() const
 {
-  return IsTransferPQ() ? KODI::UTILS::Eotf::PQ : KODI::UTILS::Eotf::TRADITIONAL_SDR;
+  return IsTransferPQ() ? UNIVERSAL MEDIA CENTER::UTILS::Eotf::PQ : UNIVERSAL MEDIA CENTER::UTILS::Eotf::TRADITIONAL_SDR;
 }
 
-KODI::UTILS::Colorimetry CWinSystemWin10DX::GetColorimetry() const
+UNIVERSAL MEDIA CENTER::UTILS::Colorimetry CWinSystemWin10DX::GetColorimetry() const
 {
-  return IsTransferPQ() ? KODI::UTILS::Colorimetry::BT2020_RGB : KODI::UTILS::Colorimetry::DEFAULT;
+  return IsTransferPQ() ? UNIVERSAL MEDIA CENTER::UTILS::Colorimetry::BT2020_RGB : UNIVERSAL MEDIA CENTER::UTILS::Colorimetry::DEFAULT;
 }
 
 int CWinSystemWin10DX::GetOutputBitDepth() const

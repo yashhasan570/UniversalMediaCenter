@@ -9,7 +9,7 @@
 
 #include "cores/RetroPlayer/process/RPProcessInfo.h"
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace RETRO
 {
@@ -23,4 +23,4 @@ public:
   HwProcedureAddress GetHwProcedureAddress(const char* symbol) override;
 };
 } // namespace RETRO
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER

@@ -17,7 +17,7 @@ This guide targets **Emscripten SDK 6.0.13**. The host setup instructions have b
 3. **[Get the source code](#3-get-the-source-code)**
 4. **[Build tools and dependencies](#4-build-tools-and-dependencies)**
   4.1. **[Advanced Configure Options](#41-advanced-configure-options)**
-5. **[Build Universal Media Center](#5-build-kodi)**
+5. **[Build Universal Media Center](#5-build-universalmediacenter)**
 6. **[Run in a browser](#6-run-in-a-browser)**
 7. **[Package and install on a Samsung TV](#7-package-and-install-on-a-samsung-tv)**
   7.1. **[Stage the Tizen web app](#71-stage-the-tizen-web-app)**
@@ -37,17 +37,17 @@ and yet another one
 
 **Example:** Clone Universal Media Center's current master branch:
 ```
-git clone https://github.com/xbmc/xbmc kodi
+git clone https://github.com// universalmediacenter
 ```
 
 Commands that contain strings enclosed in angle brackets denote something you need to change to suit your needs.
 ```
-git clone -b <branch-name> https://github.com/xbmc/xbmc kodi
+git clone -b <branch-name> https://github.com// universalmediacenter
 ```
 
 **Example:** Clone Universal Media Center's current Krypton branch:
 ```
-git clone -b Krypton https://github.com/xbmc/xbmc kodi
+git clone -b Krypton https://github.com// universalmediacenter
 ```
 
 Several different strategies are used to draw your attention to certain pieces of information. In order of how critical the information is, these items are marked as a note, tip, or warning. For example:
@@ -119,20 +119,20 @@ cd $HOME
 
 Clone Universal Media Center's current master branch:
 ```
-git clone https://github.com/xbmc/xbmc kodi
+git clone https://github.com// universalmediacenter
 ```
 
 **[back to top](#table-of-contents)**
 
 ## 4. Build tools and dependencies
-The WASM depends are built in `$HOME/kodi/tools/depends` and installed under the prefix you pass to `configure`. This guide uses `$HOME/kodi-wasm-depends`.
+The WASM depends are built in `$HOME/universalmediacenter/tools/depends` and installed under the prefix you pass to `configure`. This guide uses `$HOME/universalmediacenter-wasm-depends`.
 
 > [!NOTE]
 > `--host=wasm32-unknown-emscripten` and `--with-platform=wasm` are both required. The Emscripten SDK must be activated first (see **[2.2. Activate the Emscripten environment](#22-activate-the-emscripten-environment)**).
 
 Prepare to configure build:
 ```
-cd $HOME/kodi/tools/depends
+cd $HOME/universalmediacenter/tools/depends
 ./bootstrap
 ```
 
@@ -141,7 +141,7 @@ Configure build:
 ./configure \
   --host=wasm32-unknown-emscripten \
   --with-platform=wasm \
-  --prefix=$HOME/kodi-wasm-depends \
+  --prefix=$HOME/universalmediacenter-wasm-depends \
   --disable-debug
 ```
 
@@ -158,7 +158,7 @@ make -j$(getconf _NPROCESSORS_ONLN)
 
 Once the build finishes, the per-library install trees and the generated toolchain files (`Toolchain.cmake`, `config.site`, and the Meson cross file) are available under the WASM depends prefix:
 ```
-$HOME/kodi-wasm-depends/wasm32-unknown-emscripten-release/
+$HOME/universalmediacenter-wasm-depends/wasm32-unknown-emscripten-release/
 ```
 
 ### 4.1. Advanced Configure Options
@@ -189,7 +189,7 @@ $HOME/kodi-wasm-depends/wasm32-unknown-emscripten-release/
 ```
 --with-tarballs=<path>
 ```
-  path where tarballs will be saved [prefix/xbmc-tarballs]
+  path where tarballs will be saved [prefix/-tarballs]
 
 ```
 --with-cpu=<cpu>
@@ -240,39 +240,39 @@ For WASM, the toolchain (`emcc`/`em++`) is picked up from the active Emscripten 
 ## 5. Build Universal Media Center
 Generate the build files. CMake and the toolchain file both come from the depends build, so nothing extra has to be installed:
 ```
-make -C $HOME/kodi/tools/depends/target/cmakebuildsys BUILD_DIR=$HOME/kodi/build-wasm
+make -C $HOME/universalmediacenter/tools/depends/target/cmakebuildsys BUILD_DIR=$HOME/universalmediacenter/build-wasm
 ```
 
 > [!TIP]
-> `BUILD_DIR` can be omitted, in which case the project is generated in `$HOME/kodi/build`. Adjust the paths below accordingly. Extra CMake arguments can be passed with `CMAKE_EXTRA_ARGUMENTS`.
+> `BUILD_DIR` can be omitted, in which case the project is generated in `$HOME/universalmediacenter/build`. Adjust the paths below accordingly. Extra CMake arguments can be passed with `CMAKE_EXTRA_ARGUMENTS`.
 
 > [!WARNING]
 > If you intend to package for a TV, export `TIZEN_SDK` **before** this step. The Tizen packaging targets are only created when CMake finds the `tz` CLI while configuring — see **[7. Package and install on a Samsung TV](#7-package-and-install-on-a-samsung-tv)**.
 
 Build:
 ```
-make -C $HOME/kodi/build-wasm -j$(getconf _NPROCESSORS_ONLN)
+make -C $HOME/universalmediacenter/build-wasm -j$(getconf _NPROCESSORS_ONLN)
 ```
 
 The build produces three files in the build directory:
 
 | File | Contents |
 |---|---|
-| `kodi.js` | Emscripten loader and JS glue |
-| `kodi.wasm` | Compiled Universal Media Center |
-| `kodi.data` | Virtual filesystem image: `addons`, `media`, `system` and `userdata` mounted at `/kodi`, plus the Python standard library |
+| `universalmediacenter.js` | Emscripten loader and JS glue |
+| `universalmediacenter.wasm` | Compiled Universal Media Center |
+| `universalmediacenter.data` | Virtual filesystem image: `addons`, `media`, `system` and `userdata` mounted at `/universalmediacenter`, plus the Python standard library |
 
 **[back to top](#table-of-contents)**
 
 ## 6. Run in a browser
 Universal Media Center's WASM build uses threads, so it needs `SharedArrayBuffer`, which browsers only expose to cross-origin isolated pages. `tools/wasm/serve.py` is a small static server that sends the required COOP/COEP headers, and proxies http(s) sources that do not send CORS headers of their own at `/proxy?u=<url-encoded>`. Universal Media Center only routes its cross-origin requests through the proxy when configured with `-DENABLE_WASM_DEV_PROXY=ON`:
 ```
-cd $HOME/kodi/build-wasm
-cp ../tools/wasm/kodi.html .
+cd $HOME/universalmediacenter/build-wasm
+cp ../tools/wasm/universalmediacenter.html .
 python3 ../tools/wasm/serve.py
 ```
 
-Open the address the server prints, `http://127.0.0.1:8080/kodi.html`. Pass a port to use another one, or a `host:port` to also serve this directory as a media source to another Universal Media Center on the LAN:
+Open the address the server prints, `http://127.0.0.1:8080/universalmediacenter.html`. Pass a port to use another one, or a `host:port` to also serve this directory as a media source to another Universal Media Center on the LAN:
 ```
 python3 ../tools/wasm/serve.py 0.0.0.0:8080
 ```
@@ -311,25 +311,25 @@ This section assumes **[README.Tizen.md](README.Tizen.md)** has been followed: t
 - `TIZEN_SDK_ROOT`
 
 > [!WARNING]
-> The lookup happens at configure time. If CMake was configured without `tz` in reach it prints `WASM: tz CLI not found` and the `package_tizen_wgt`, `install_tizen_wgt` and `inspect_tizen` targets do not exist (`inspect_tizen` also needs `sdb`). Export the variable and re-run the generation step from **[5. Build Universal Media Center](#5-build-kodi)**.
+> The lookup happens at configure time. If CMake was configured without `tz` in reach it prints `WASM: tz CLI not found` and the `package_tizen_wgt`, `install_tizen_wgt` and `inspect_tizen` targets do not exist (`inspect_tizen` also needs `sdb`). Export the variable and re-run the generation step from **[5. Build Universal Media Center](#5-build-universalmediacenter)**.
 
 ### 7.1. Stage the Tizen web app
 ```
-make -C $HOME/kodi/build-wasm package_tizen
+make -C $HOME/universalmediacenter/build-wasm package_tizen
 ```
 
-This assembles a complete Tizen web project in `$HOME/kodi/build-wasm/tizen_packaging/Universal Media Center/`: the template files, `index.html` (a copy of the shared browser shell `tools/wasm/kodi.html`), `media/splash.jpg`, and the three build artifacts. The directory can also be opened directly in Tizen Studio.
+This assembles a complete Tizen web project in `$HOME/universalmediacenter/build-wasm/tizen_packaging/Universal Media Center/`: the template files, `index.html` (a copy of the shared browser shell `tools/wasm/universalmediacenter.html`), `media/splash.jpg`, and the three build artifacts. The directory can also be opened directly in Tizen Studio.
 
 Staging needs no SDK — only the two steps below do.
 
 ### 7.2. Build the WGT package
 ```
-make -C $HOME/kodi/build-wasm package_tizen_wgt
+make -C $HOME/universalmediacenter/build-wasm package_tizen_wgt
 ```
 
 The signed package is written to:
 ```text
-$HOME/kodi/build-wasm/tizen_packaging/Universal Media Center/Release/Universal Media Center.wgt
+$HOME/universalmediacenter/build-wasm/tizen_packaging/Universal Media Center/Release/Universal Media Center.wgt
 ```
 
 A Debug CMake build writes it to `Debug/Universal Media Center.wgt` instead.
@@ -338,7 +338,7 @@ Signing uses whichever `tz` profile is currently active — `tizen_web_project.y
 
 ### 7.3. Install on the TV
 ```
-make -C $HOME/kodi/build-wasm install_tizen_wgt
+make -C $HOME/universalmediacenter/build-wasm install_tizen_wgt
 ```
 
 With more than one device connected, name the target at configure time with either:
@@ -353,8 +353,8 @@ The serial wins when both are set. The environment is only read on the first con
 ### 7.4. Launch, debug and remove
 Launching and removing go through `tz` directly, and the two take the package ID in different forms:
 ```
-tz run -p kodiplayer              # package ID alone
-tz uninstall -p kodiplayer.Universal Media Center   # package ID and the yaml output_name
+tz run -p universalmediacenterplayer              # package ID alone
+tz uninstall -p universalmediacenterplayer.Universal Media Center   # package ID and the yaml output_name
 ```
 
 Neither accepts the `<tizen:application>` ID from `config.xml`. The IDs come from `tools/wasm/tizen/config.xml.in` (`<tizen:application package="...">`) and the `output_name` in `tizen_web_project.yaml`.
@@ -363,12 +363,12 @@ With more than one device connected, add `--serial <serial>` or `--target <name>
 
 Retail TVs expose no application log over `sdb`. To get console output from the WASM runtime, launch in debug mode, which runs the app under the Web Inspector:
 ```
-tz run -d -p kodiplayer
+tz run -d -p universalmediacenterplayer
 ```
 
 Debug mode makes the TV open a DevTools port for the app; it changes on every launch and has to be forwarded over `sdb` before Chrome can reach it. `tools/wasm/tizen/inspect.sh` does the whole sequence — launch, parse the port, forward it to `localhost:7011` — and is also available as a build target, which selects the TV by `WASM_TIZEN_INSTALL_SERIAL` only:
 ```
-cmake --build $HOME/kodi/build-wasm --target inspect_tizen
+cmake --build $HOME/universalmediacenter/build-wasm --target inspect_tizen
 # or directly, with an optional device serial from `sdb devices`:
 TIZEN_TARGET_SERIAL=192.168.1.51:26101 tools/wasm/tizen/inspect.sh
 ```
@@ -382,7 +382,7 @@ What the inspector gives you on a retail TV:
 
 Configure the build with `-DENABLE_WASM_PROFILING=ON` to preserve wasm function names for profiling in DevTools.
 
-Under the hood the script runs `sdb shell 0 debug kodiplayer.Universal Media Center`, which prints `port: <n>`, followed by `sdb forward tcp:7011 tcp:<n>`. Override the app ID with `KODI_TIZEN_APP_ID` and the local port with `KODI_TIZEN_INSPECT_PORT`.
+Under the hood the script runs `sdb shell 0 debug universalmediacenterplayer.Universal Media Center`, which prints `port: <n>`, followed by `sdb forward tcp:7011 tcp:<n>`. Override the app ID with `UNIVERSALMEDIA_TIZEN_APP_ID` and the local port with `UNIVERSALMEDIA_TIZEN_INSPECT_PORT`.
 
 If the launch reports `with debug 0` (`tz`) or answers `closed` (`sdb`), the TV declined to open a debug port even though the app is installed and signed with a Samsung developer certificate. Check on the TV that Developer mode is on and its Host PC IP is this machine's address, then reboot the TV; a 2025 Tizen 9.0 set still refused after both, and the cause there is not yet understood.
 
@@ -401,7 +401,7 @@ For manual validation use at least one H.264 MP4 and one VP9 WebM sample and che
 
 ## Samsung TV information
 
-On a Samsung TV the wasm build reads the Samsung product APIs (`webapis.network`, `webapis.productinfo`), which `tools/wasm/kodi.html` loads from `$WEBAPIS/webapis/webapis.js` only when it detects the Tizen runtime. Their privileges, `network.public` and `productinfo`, are declared in `tools/wasm/tizen/config.xml.in`; both are public-level, so the Public distributor certificate from **[README.Tizen.md](README.Tizen.md)** is sufficient.
+On a Samsung TV the wasm build reads the Samsung product APIs (`webapis.network`, `webapis.productinfo`), which `tools/wasm/universalmediacenter.html` loads from `$WEBAPIS/webapis/webapis.js` only when it detects the Tizen runtime. Their privileges, `network.public` and `productinfo`, are declared in `tools/wasm/tizen/config.xml.in`; both are public-level, so the Public distributor certificate from **[README.Tizen.md](README.Tizen.md)** is sufficient.
 
 With them, **Settings > System information** shows:
 
@@ -409,7 +409,7 @@ With them, **Settings > System information** shows:
 - **Summary**: the operating system as `Tizen <platform version>`.
 - **Hardware**: the TV model and firmware version.
 
-The connection type (Ethernet or Wi-Fi with signal level and band), the IP mode (DHCP or static) and whether the gateway is reachable are written to `kodi.log` whenever they change. The Samsung API does not report the link speed or the supported audio and video codecs.
+The connection type (Ethernet or Wi-Fi with signal level and band), the IP mode (DHCP or static) and whether the gateway is reachable are written to `universalmediacenter.log` whenever they change. The Samsung API does not report the link speed or the supported audio and video codecs.
 
 In an ordinary browser none of these APIs exist; the network page then shows loopback placeholders and the connection state follows `navigator.onLine`.
 

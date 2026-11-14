@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "addons/kodi-dev-kit/include/kodi/addon-instance/Game.h"
+#include "addons/universalmediacenter-dev-kit/include/universalmediacenter/addon-instance/Game.h"
 #include "cores/RetroPlayer/streams/RetroPlayerStreamTypes.h"
 #include "games/controllers/ControllerTypes.h"
 #include "input/keyboard/KeyboardTypes.h"
@@ -18,7 +18,7 @@ extern "C"
 #include <libavutil/pixfmt.h>
 }
 
-namespace KODI
+namespace UNIVERSAL MEDIA CENTER
 {
 namespace GAME
 {
@@ -113,4 +113,4 @@ public:
   static PORT_TYPE TranslatePortType(GAME_PORT_TYPE portType);
 };
 } // namespace GAME
-} // namespace KODI
+} // namespace UNIVERSAL MEDIA CENTER
