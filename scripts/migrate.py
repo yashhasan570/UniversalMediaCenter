@@ -12,7 +12,9 @@ ROOT = Path(__file__).resolve().parent.parent
 #  - * / * / .* / * /  = C++ binary add-on
 #    ABI symbols and extension points (compiled add-ons link against them).
 #  - org..universalmediacenter = official app package, referenced for interop.
-ANCHORS = ['org.xbmc.kodi']CODE = [
+ANCHORS = ['org.xbmc.kodi']
+
+CODE = [
     ('kodi.weblate.cloud', 'universalmediacenter.weblate.cloud'),
     ('KODI_', 'UNIVERSALMEDIA_'),
     ('KodiSwig', 'UniversalMediaCenterSwig'),
@@ -43,7 +45,7 @@ def main():
     for dirpath, dirnames, filenames in os.walk(ROOT):
         rel = os.path.relpath(dirpath, ROOT).replace(os.sep, '/')
         if rel == '.':
-            dirnames[:] = [d for d in dirnames if d not in ('.git', 'scripts')]
+            dirnames[:] = [d for d in dirnames if d not in ('.git', '.github', 'scripts')]
         elif rel.split('/')[0] in ('.git', 'scripts'):
             dirnames[:] = []
         for fn in filenames:
