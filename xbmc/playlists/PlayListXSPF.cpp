@@ -1,7 +1,7 @@
 /*
  *  Copyright (C) 2018 Tyler Szabo
  *  Copyright (C) 2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -13,7 +13,7 @@
 #include "URL.h"
 #include "utils/StringUtils.h"
 #include "utils/URIUtils.h"
-#include "utils/TinyXML2.h"
+#include "utils/XBMCTinyXML2.h"
 #include "utils/log.h"
 
 namespace
@@ -48,7 +48,7 @@ CPlayListXSPF::~CPlayListXSPF(void) = default;
 
 bool CPlayListXSPF::Load(const std::string& strFileName)
 {
-  CTinyXML2 xmlDoc;
+  CXBMCTinyXML2 xmlDoc;
 
   if (!xmlDoc.LoadFile(strFileName))
   {

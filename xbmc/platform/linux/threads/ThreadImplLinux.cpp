@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -85,8 +85,9 @@ CThreadImplLinux::CThreadImplLinux(std::thread::native_handle_type handle)
 
 void CThreadImplLinux::SetThreadInfo(const std::string& name)
 {
-#if defined(__GLIBC__)
-  pthread_setname_np(m_handle, name.c_str());
+#if defined(__GLIBC__) || defined(TARGET_ANDROID)
+  // Names longer than 15 characters are rejected, not truncated
+  pthread_setname_np(m_handle, name.substr(0, 15).c_str());
 #endif
 
   m_name = name;

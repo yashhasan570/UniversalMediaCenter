@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -21,7 +21,7 @@
 #include "messaging/ApplicationMessenger.h"
 #include "messaging/MessengerPayload.h"
 #include "utils/Variant.h"
-#include "windowing/_events.h"
+#include "windowing/XBMC_events.h"
 
 using namespace UNIVERSAL MEDIA CENTER;
 using namespace JSONRPC;
@@ -115,8 +115,8 @@ JSONRPC_STATUS CInputOperations::ButtonEvent(const std::string& method,
     return InvalidParams;
   }
 
-  auto newEvent = std::make_unique<_Event>();
-  newEvent->type = _BUTTON;
+  auto newEvent = std::make_unique<XBMC_Event>();
+  newEvent->type = XBMC_BUTTON;
   newEvent->keybutton.button = keycode;
   newEvent->keybutton.holdtime = holdtime;
 

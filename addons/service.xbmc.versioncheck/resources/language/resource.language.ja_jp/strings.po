@@ -1,15 +1,15 @@
-# Universal Media Center Media Center language file
+# Kodi Media Center language file
 # Addon Name: Version Check
-# Addon id: service..versioncheck
-# Addon Provider: Team Universal Media Center
+# Addon id: service.xbmc.versioncheck
+# Addon Provider: Team Kodi
 msgid ""
 msgstr ""
-"Project-Id-Version:  Addons\n"
-"Report-Msgid-Bugs-To: translations@github.com/yashhasan570/UniversalMediaCenter\n"
+"Project-Id-Version: XBMC Addons\n"
+"Report-Msgid-Bugs-To: translations@kodi.tv\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: 2021-10-25 10:08+0000\n"
-"Last-Translator: Christian Gade <gade@github.com/yashhasan570/UniversalMediaCenter>\n"
-"Language-Team: Japanese <https://universalmediacenter.weblate.cloud/projects/Universal Media Center-core/service--versioncheck/ja_jp/>\n"
+"Last-Translator: Christian Gade <gade@kodi.tv>\n"
+"Language-Team: Japanese <https://kodi.weblate.cloud/projects/kodi-core/service-xbmc-versioncheck/ja_jp/>\n"
 "Language: ja_jp\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,24 +18,24 @@ msgstr ""
 "X-Generator: Weblate 4.8\n"
 
 msgctxt "Addon Summary"
-msgid "Universal Media Center Version Check checks if you are running latest released version."
+msgid "Kodi Version Check checks if you are running latest released version."
 msgstr ""
 
 msgctxt "Addon Description"
-msgid "Universal Media Center Version Check only supports a number of platforms/distros as releases may differ between them. For more information visit the github.com/yashhasan570/UniversalMediaCenter website."
+msgid "Kodi Version Check only supports a number of platforms/distros as releases may differ between them. For more information visit the kodi.tv website."
 msgstr ""
 
 msgctxt "Addon Disclaimer"
-msgid "Feel free to use this script. For information visit github.com/yashhasan570/UniversalMediaCenter"
-msgstr "このスクリプトをお使いください。詳しくは github.com/yashhasan570/UniversalMediaCenter を参照してください"
+msgid "Feel free to use this script. For information visit kodi.tv"
+msgstr "このスクリプトをお使いください。詳しくは kodi.tv を参照してください"
 
 msgctxt "#32001"
 msgid "We would like to recommend you to upgrade."
 msgstr "アプリのバージョンアップをお勧めします。"
 
 msgctxt "#32002"
-msgid "Visit Universal Media Center.tv for more information."
-msgstr "詳しくは Universal Media Center.tv を参照してください。"
+msgid "Visit Kodi.tv for more information."
+msgstr "詳しくは Kodi.tv を参照してください。"
 
 # empty strings from id 32003 to 32008
 msgctxt "#32009"
@@ -59,24 +59,24 @@ msgid "Upgrade successful"
 msgstr ""
 
 msgctxt "#32014"
-msgid "Do you want to restart Universal Media Center to finish the upgrade?"
-msgstr "バージョンアップを完了するには Universal Media Center の再起動が必要です。よろしいですか？"
+msgid "Do you want to restart Kodi to finish the upgrade?"
+msgstr "バージョンアップを完了するには Kodi の再起動が必要です。よろしいですか？"
 
 msgctxt "#32015"
 msgid "Do you want to check the repository for a new version?"
 msgstr "新しいバージョンがあるかリポジトリをチェックしますか？"
 
 msgctxt "#32016"
-msgid "There is a newer stable Universal Media Center version available."
-msgstr "Universal Media Center の新しい安定バージョンがあります。"
+msgid "There is a newer stable Kodi version available."
+msgstr "Kodi の新しい安定バージョンがあります。"
 
 msgctxt "#32020"
 msgid "General"
 msgstr "一般"
 
 msgctxt "#32021"
-msgid "Enable Universal Media Center version check?"
-msgstr "Universal Media Center のバージョンチェックを有効にしますか？"
+msgid "Enable Kodi version check?"
+msgstr "Kodi のバージョンチェックを有効にしますか？"
 
 msgctxt "#32022"
 msgid "Please enter your password"
@@ -93,23 +93,23 @@ msgstr ""
 # empty strings from id 32025 to 32029
 #. Used in OK dialog
 msgctxt "#32030"
-msgid "A new stable version of Universal Media Center is available."
-msgstr "Universal Media Center の新しい安定バージョンがあります。"
+msgid "A new stable version of Kodi is available."
+msgstr "Kodi の新しい安定バージョンがあります。"
 
 #. Direct people to the website. Used in OK dialog
 msgctxt "#32031"
-msgid "Visit http://github.com/yashhasan570/UniversalMediaCenter for more information."
-msgstr "詳しくは http://github.com/yashhasan570/UniversalMediaCenter を参照してください。"
+msgid "Visit http://kodi.tv for more information."
+msgstr "詳しくは http://kodi.tv を参照してください。"
 
 #. Used in OK dialog
 msgctxt "#32032"
-msgid "A new stable version of Universal Media Center is available."
-msgstr "Universal Media Center の新しい安定バージョンがあります。"
+msgid "A new stable version of Kodi is available."
+msgstr "Kodi の新しい安定バージョンがあります。"
 
 #. Direct people to the website. Used in OK dialog
 msgctxt "#32033"
-msgid "Visit http://github.com/yashhasan570/UniversalMediaCenter for more information."
-msgstr "詳しくは http://github.com/yashhasan570/UniversalMediaCenter を参照してください。"
+msgid "Visit http://kodi.tv for more information."
+msgstr "詳しくは http://kodi.tv を参照してください。"
 
 #. For example: "You are using 13.1 prealpha while 13.2 stable is available"
 msgctxt "#32034"
@@ -131,8 +131,8 @@ msgid "Please upgrade your operating system."
 msgstr "お使いの OS をアップグレードしてください。"
 
 msgctxt "#32042"
-msgid "For more information, see https://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Linux"
-msgstr "詳しくは https://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Linux を参照してください"
+msgid "For more information, see https://kodi.wiki/view/Linux"
+msgstr "詳しくは https://kodi.wiki/view/Linux を参照してください"
 
 #~ msgctxt "#32035"
 #~ msgid "It is recommended that you to upgrade to a newer version."

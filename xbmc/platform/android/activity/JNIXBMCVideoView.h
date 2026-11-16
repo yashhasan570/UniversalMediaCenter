@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2016 Christian Browet
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -20,15 +20,15 @@
 namespace jni
 {
 
-class CJNIVideoView : virtual public CJNIBase, public CJNISurfaceHolderCallback, public CJNIInterfaceImplem<CJNIVideoView>
+class CJNIXBMCVideoView : virtual public CJNIBase, public CJNISurfaceHolderCallback, public CJNIInterfaceImplem<CJNIXBMCVideoView>
 {
 public:
-  CJNIVideoView(const jni::jhobject &object);
-  ~CJNIVideoView() override = default;
+  CJNIXBMCVideoView(const jni::jhobject &object);
+  ~CJNIXBMCVideoView() override = default;
 
   static void RegisterNatives(JNIEnv* env);
 
-  static CJNIVideoView* createVideoView(CJNISurfaceHolderCallback* callback);
+  static CJNIXBMCVideoView* createVideoView(CJNISurfaceHolderCallback* callback);
 
   // CJNISurfaceHolderCallback interface
   void surfaceChanged(CJNISurfaceHolder holder, int format, int width, int height) override;
@@ -55,7 +55,7 @@ protected:
   CRect m_surfaceRect;
 
 private:
-  CJNIVideoView() = default;
+  CJNIXBMCVideoView() = default;
 };
 
 } // namespace jni

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -298,7 +298,7 @@ bool CAddon::LoadSettings(bool bForce,
 
   // load the settings definition XML file
   const auto addonSettingsDefinitionFile = m_settings[id].m_addonSettingsPath;
-  CTinyXML addonSettingsDefinitionDoc;
+  CXBMCTinyXML addonSettingsDefinitionDoc;
   if (!addonSettingsDefinitionDoc.LoadFile(addonSettingsDefinitionFile))
   {
     if (CFile::Exists(addonSettingsDefinitionFile))
@@ -363,7 +363,7 @@ bool CAddon::LoadUserSettings(AddonInstanceId id /* = ADDON_SETTINGS_ID */)
     return true;
   }
 
-  CTinyXML doc;
+  CXBMCTinyXML doc;
   if (!doc.LoadFile(data.m_userSettingsPath))
   {
     CLog::Log(LOGERROR, "CAddon[{}]: failed to load addon settings from {}", ID(),
@@ -398,7 +398,7 @@ bool CAddon::SaveSettings(AddonInstanceId id /* = ADDON_SETTINGS_ID */)
     success = CDirectory::Create(strAddon);
 
   // create the XML file
-  CTinyXML doc;
+  CXBMCTinyXML doc;
   if (SettingsToXML(doc, id))
     success = doc.SaveFile(data.m_userSettingsPath);
 
@@ -550,7 +550,7 @@ bool CAddon::UpdateSettingString(const std::string& key,
   return UpdateSettingValue<CSettingString>(*this, id, key, value);
 }
 
-bool CAddon::SettingsFromXML(const CTinyXML& doc,
+bool CAddon::SettingsFromXML(const CXBMCTinyXML& doc,
                              bool loadDefaults,
                              AddonInstanceId id /* = ADDON_SETTINGS_ID */)
 {
@@ -580,7 +580,7 @@ bool CAddon::SettingsFromXML(const CTinyXML& doc,
   return true;
 }
 
-bool CAddon::SettingsToXML(CTinyXML& doc, AddonInstanceId id /* = ADDON_SETTINGS_ID */) const
+bool CAddon::SettingsToXML(CXBMCTinyXML& doc, AddonInstanceId id /* = ADDON_SETTINGS_ID */) const
 {
   if (!SettingsInitialized(id))
     return false;

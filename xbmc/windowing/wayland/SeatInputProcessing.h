@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -42,9 +42,9 @@ public:
   /**
    * Handle input event
    * \param type input device type that caused the event
-   * \param event  event data
+   * \param event XBMC event data
    */
-  virtual void OnEvent(InputType type, _Event& event) {}
+  virtual void OnEvent(InputType type, XBMC_Event& event) {}
   /**
    * Handle focus enter
    * \param type input device type for which the surface has gained the focus
@@ -110,11 +110,11 @@ private:
 
   void OnPointerEnter(std::uint32_t seatGlobalName, std::uint32_t serial) override;
   void OnPointerLeave() override;
-  void OnPointerEvent(_Event& event) override;
+  void OnPointerEvent(XBMC_Event& event) override;
 
   void OnKeyboardEnter() override;
   void OnKeyboardLeave() override;
-  void OnKeyboardEvent(_Event& event) override;
+  void OnKeyboardEvent(XBMC_Event& event) override;
 
   struct SeatState
   {

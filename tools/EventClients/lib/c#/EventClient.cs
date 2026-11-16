@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2008-2013 Team 
+ *  Copyright (C) 2008-2013 Team XBMC
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@ using System.IO;
 using System.Net;
 using System.Net.Sockets;
 
-namespace 
+namespace XBMC
 {
 
     public enum IconType
@@ -72,7 +72,7 @@ namespace
 
         /************************************************************************/
         /* Written by Peter Tribe aka EqUiNox (TeamBlackbolt)                   */
-        /* Based upon 's client.cpp class                               */
+        /* Based upon XBMC's xbmcclient.cpp class                               */
         /************************************************************************/
 
         private enum PacketType

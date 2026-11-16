@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2014-2024 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -43,7 +43,7 @@ CDriverPrimitive::CDriverPrimitive(unsigned int axisIndex,
 {
 }
 
-CDriverPrimitive::CDriverPrimitive(Key keycode)
+CDriverPrimitive::CDriverPrimitive(XBMCKey keycode)
   : m_type(PRIMITIVE_TYPE::KEY),
     m_keycode(keycode)
 {
@@ -196,7 +196,7 @@ bool CDriverPrimitive::IsValid(void) const
   }
 
   if (m_type == PRIMITIVE_TYPE::KEY)
-    return m_keycode != K_UNKNOWN;
+    return m_keycode != XBMCK_UNKNOWN;
 
   if (m_type == PRIMITIVE_TYPE::RELATIVE_POINTER)
   {

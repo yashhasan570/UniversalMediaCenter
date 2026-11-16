@@ -1,4 +1,4 @@
-#if defined(_DITHER)
+#if defined(XBMC_DITHER)
   if (m_ditherEnabled > 0.0)
   {
     vec2 ditherpos = gl_FragCoord.xy / m_dithersize;

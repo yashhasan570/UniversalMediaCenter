@@ -1,15 +1,15 @@
-# Universal Media Center Media Center language file
+# Kodi Media Center language file
 # Addon Name: Estuary
 # Addon id: skin.estuary
-# Addon Provider: Team Universal Media Center
+# Addon Provider: Team Kodi
 msgid ""
 msgstr ""
-"Project-Id-Version: UNIVERSAL MEDIA CENTER Main\n"
-"Report-Msgid-Bugs-To: translations@github.com/yashhasan570/UniversalMediaCenter\n"
+"Project-Id-Version: KODI Main\n"
+"Report-Msgid-Bugs-To: translations@kodi.tv\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: 2026-11-13 19:48+0000\n"
 "Last-Translator: Marek Adamski <fevbew@wp.pl>\n"
-"Language-Team: Polish <https://universalmediacenter.weblate.cloud/projects/Universal Media Center-add-ons-skins/skin-estuary/pl_pl/>\n"
+"Language-Team: Polish <https://kodi.weblate.cloud/projects/kodi-add-ons-skins/skin-estuary/pl_pl/>\n"
 "Language: pl_pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,16 +18,16 @@ msgstr ""
 "X-Generator: Weblate 2026.11.2\n"
 
 msgctxt "Addon Summary"
-msgid "Estuary skin by phil65. (Universal Media Center's default skin)"
-msgstr "Skóra Eustary autorstwa phil65. (domyślna skóra Universal Media Center)"
+msgid "Estuary skin by phil65. (Kodi's default skin)"
+msgstr "Skóra Eustary autorstwa phil65. (domyślna skóra Kodi)"
 
 msgctxt "Addon Description"
-msgid "Estuary is the default skin for Universal Media Center 17.0 and above. It attempts to be easy for first time Universal Media Center users to understand and use."
-msgstr "Eustary jest domyślną skórą Universal Media Center dla wersji 17.0 i późniejszych. Jest próbą łatwego wprowadzenia początkujących użytkowników w funkcje Universal Media Center."
+msgid "Estuary is the default skin for Kodi 17.0 and above. It attempts to be easy for first time Kodi users to understand and use."
+msgstr "Eustary jest domyślną skórą Kodi dla wersji 17.0 i późniejszych. Jest próbą łatwego wprowadzenia początkujących użytkowników w funkcje Kodi."
 
 msgctxt "Addon Disclaimer"
-msgid "Estuary is the default skin for Universal Media Center, removing it may cause issues"
-msgstr "Eustary jest domyślną skórą Universal Media Center, usunięciejej może powodować problemy"
+msgid "Estuary is the default skin for Kodi, removing it may cause issues"
+msgstr "Eustary jest domyślną skórą Kodi, usunięciejej może powodować problemy"
 
 msgctxt "#31000"
 msgid "Now playing"
@@ -371,7 +371,7 @@ msgid "Channel options"
 msgstr "Opcje kanału"
 
 msgctxt "#31098"
-msgid "Select your Universal Media Center user profile[CR]to login and continue"
+msgid "Select your Kodi user profile[CR]to login and continue"
 msgstr "Wybierz profil użytkownika[CR]do zalogowania, aby kontynuować"
 
 #. viewtype name
@@ -462,8 +462,8 @@ msgid "Enter add-on browser"
 msgstr "Przejdź do przeglądarki dodatków"
 
 msgctxt "#31119"
-msgid "You do not have any add-ons installed yet. Visit our add-on browser to browse through our collection and improve your Universal Media Center experience."
-msgstr "Jeszcze nie zainstalowałeś żadnego dodatku. Odwiedź przeglądarkę dodatków, aby przejrzeć naszą kolekcję i rozszerzyć Universal Media Center o dodatkowe funkcje."
+msgid "You do not have any add-ons installed yet. Visit our add-on browser to browse through our collection and improve your Kodi experience."
+msgstr "Jeszcze nie zainstalowałeś żadnego dodatku. Odwiedź przeglądarkę dodatków, aby przejrzeć naszą kolekcję i rozszerzyć Kodi o dodatkowe funkcje."
 
 msgctxt "#31120"
 msgid "You did not set up a weather provider yet. In order to view weather information, choose a weather provider and set up your location."
@@ -562,8 +562,8 @@ msgid "Play speed"
 msgstr "Szybkość odtwarzania"
 
 msgctxt "#31143"
-msgid "You did not set up PVR yet. In order to use PVR, choose a PVR client addon and configure it. Please visit http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/PVR to learn more."
-msgstr "Korzystanie z funkcji telewizyjnych wymaga wybrania i skonfigurowania odpowiedniego klienta telewizji. Odwiedź stronę Wiki na http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/PVR, aby dowiedzieć się więcej."
+msgid "You did not set up PVR yet. In order to use PVR, choose a PVR client addon and configure it. Please visit http://kodi.wiki/view/PVR to learn more."
+msgstr "Korzystanie z funkcji telewizyjnych wymaga wybrania i skonfigurowania odpowiedniego klienta telewizji. Odwiedź stronę Wiki na http://kodi.wiki/view/PVR, aby dowiedzieć się więcej."
 
 msgctxt "#31144"
 msgid "Enter add-on browser"

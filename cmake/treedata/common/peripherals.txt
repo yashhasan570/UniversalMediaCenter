@@ -1,8 +1,8 @@
-/peripherals                peripherals
-/peripherals/addons         peripherals/addons
-/peripherals/bus            peripherals/bus
-/peripherals/bus/virtual    peripherals/bus/virtual
-/peripherals/devices        peripherals/devices
-/peripherals/dialogs        peripherals/dialogs
-/peripherals/events         peripherals/events
-/peripherals/events/interfaces peripherals/events/interfaces
+xbmc/peripherals                peripherals
+xbmc/peripherals/addons         peripherals/addons
+xbmc/peripherals/bus            peripherals/bus
+xbmc/peripherals/bus/virtual    peripherals/bus/virtual
+xbmc/peripherals/devices        peripherals/devices
+xbmc/peripherals/dialogs        peripherals/dialogs
+xbmc/peripherals/events         peripherals/events
+xbmc/peripherals/events/interfaces peripherals/events/interfaces

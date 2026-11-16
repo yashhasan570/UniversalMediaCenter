@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -39,7 +39,7 @@ class Fixture
 public:
   explicit Fixture(const std::string& name)
   {
-    m_path = _REF_FILE_PATH("/filesystem/test/data/audiobook/" + name);
+    m_path = XBMC_REF_FILE_PATH("xbmc/filesystem/test/data/audiobook/" + name);
     if (m_demux.Open(m_path))
       m_album = ReadMatroskaTagsWithFFmpeg(CURL(m_path), m_demux.FormatContext());
   }

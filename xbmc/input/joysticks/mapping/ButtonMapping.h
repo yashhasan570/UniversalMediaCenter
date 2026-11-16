@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2014-2024 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -115,7 +115,7 @@ private:
   CAxisDetector& GetAxis(unsigned int axisIndex,
                          float position,
                          const AxisConfiguration& initialConfig = AxisConfiguration());
-  CKeyDetector& GetKey(Key keycode);
+  CKeyDetector& GetKey(XBMCKey keycode);
   CMouseButtonDetector& GetMouseButton(MOUSE::BUTTON_ID buttonIndex);
   CPointerDetector& GetPointer();
 
@@ -127,7 +127,7 @@ private:
   std::map<unsigned int, CButtonDetector> m_buttons;
   std::map<unsigned int, CHatDetector> m_hats;
   std::map<unsigned int, CAxisDetector> m_axes;
-  std::map<Key, CKeyDetector> m_keys;
+  std::map<XBMCKey, CKeyDetector> m_keys;
   std::map<MOUSE::BUTTON_ID, CMouseButtonDetector> m_mouseButtons;
   std::unique_ptr<CPointerDetector> m_pointer;
   std::chrono::time_point<std::chrono::steady_clock> m_lastAction;

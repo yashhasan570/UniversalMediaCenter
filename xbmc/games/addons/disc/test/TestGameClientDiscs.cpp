@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -20,7 +20,7 @@
 #include "games/addons/disc/GameClientDiscModel.h"
 #include "games/addons/disc/GameClientDiscs.h"
 #include "test/TestUtils.h"
-#include "utils/TinyXML2.h"
+#include "utils/XBMCTinyXML2.h"
 
 #include <algorithm>
 #include <cstring>
@@ -223,7 +223,7 @@ class TestGameClientDiscs : public testing::Test
 protected:
   void SetUp() override
   {
-    CTinyXML2 xml;
+    CXBMCTinyXML2 xml;
     const std::string addonXml = R"(<addon id="game.test.discs" name="Disc test" version="1.0.0">
       <extension point="universalmediacenter.gameclient" library="test.so">
         <supports_disc_control>true</supports_disc_control>
@@ -319,12 +319,12 @@ protected:
     if (m_client)
       TestMember<ClientPlaying>(*m_client) = false;
     for (auto* file : m_files)
-      EXPECT_TRUE(_DELETETEMPFILE(file));
+      EXPECT_TRUE(XBMC_DELETETEMPFILE(file));
   }
 
   std::string CreateFile(const std::string& extension, const std::string& contents = {})
   {
-    auto* file = _CREATETEMPFILE(extension);
+    auto* file = XBMC_CREATETEMPFILE(extension);
     EXPECT_NE(file, nullptr);
     if (!file)
       return {};
@@ -335,7 +335,7 @@ protected:
                 static_cast<ssize_t>(contents.size()));
     }
     file->Close();
-    return _TEMPFILEPATH(file);
+    return XBMC_TEMPFILEPATH(file);
   }
 
   bool InitializeGameplay(const std::string& gamePath, bool validTiming = true)

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -67,6 +67,9 @@ CWinRenderer::CWinRenderer()
 
 CWinRenderer::~CWinRenderer()
 {
+  // without a render method for the last picture, no renderer is left to restore the HDR state
+  if (!m_renderer && !m_replaced)
+    CRendererBase::RestoreHdrStateBeforePlayback();
   CWinRenderer::UnInit();
 }
 
@@ -231,6 +234,13 @@ void CWinRenderer::PreInit()
   std::unique_lock lock(CServiceBroker::GetWinSystem()->GetGfxContext());
   m_bConfigured = false;
   UnInit();
+}
+
+void CWinRenderer::PrepareForReconfigure()
+{
+  m_replaced = true;
+  if (m_renderer)
+    m_renderer->KeepHdrStateOnDestroy();
 }
 
 void CWinRenderer::UnInit()

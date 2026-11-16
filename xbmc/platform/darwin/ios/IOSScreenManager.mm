@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2012-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -11,7 +11,7 @@
 #import "IOSEAGLView.h"
 #import "IOSExternalTouchController.h"
 #include "ServiceBroker.h"
-#import "Controller.h"
+#import "XBMCController.h"
 #include "application/Application.h"
 #include "cores/AudioEngine/Interfaces/AE.h"
 #include "settings/DisplaySettings.h"
@@ -89,7 +89,7 @@ static CEvent screenChangeEvent;
 
     [_glView setScreen:newScreen withFrameBufferResize:TRUE];//will also resize the framebuffer
 
-    [g_Controller activateScreen:newScreen withOrientation:UIInterfaceOrientationPortrait];// will attach the screen to  mainwindow
+    [g_xbmcController activateScreen:newScreen withOrientation:UIInterfaceOrientationPortrait];// will attach the screen to xbmc mainwindow
 
     if(toExternal)//changing the external screen might need some time ...
     {
@@ -107,7 +107,7 @@ static CEvent screenChangeEvent;
     {
       [[IOSScreenManager sharedInstance] fadeFromBlack:timeSwitchingToInternalSecs];
     }
-    [g_Controller setGUIInsetsFromMainThread:YES];
+    [g_xbmcController setGUIInsetsFromMainThread:YES];
 
     int w = [[newScreen currentMode] size].width;
     int h = [[newScreen currentMode] size].height;

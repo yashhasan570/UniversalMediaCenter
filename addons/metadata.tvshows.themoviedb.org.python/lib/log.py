@@ -2,7 +2,7 @@
 
 """Logging gated by the verbose_log setting."""
 
-import 
+import xbmc
 
 from lib.config import ADDON
 
@@ -16,13 +16,13 @@ def init(verbose):
 
 
 def info(msg):
-    .log('[{}] {}'.format(_PREFIX, msg), .LOGINFO)
+    xbmc.log('[{}] {}'.format(_PREFIX, msg), xbmc.LOGINFO)
 
 
 def debug(msg):
     if _verbose:
-        .log('[{}] {}'.format(_PREFIX, msg), .LOGDEBUG)
+        xbmc.log('[{}] {}'.format(_PREFIX, msg), xbmc.LOGDEBUG)
 
 
 def error(msg):
-    .log('[{}] {}'.format(_PREFIX, msg), .LOGERROR)
+    xbmc.log('[{}] {}'.format(_PREFIX, msg), xbmc.LOGERROR)

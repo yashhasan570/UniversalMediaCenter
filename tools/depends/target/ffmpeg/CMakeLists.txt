@@ -180,5 +180,5 @@ install(CODE "Message(Done)")
 
 # Quell warnings
 set(BUILD_SHARED_LIBS)
-set(_BUILD_DIR)
+set(XBMC_BUILD_DIR)
 set(UNIVERSALMEDIA_BUILD_DIR)

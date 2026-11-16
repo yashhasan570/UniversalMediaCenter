@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2016-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -26,12 +26,12 @@ bool CPlatformWin32::InitStageOne()
     return false;
 
   CEnvironment::setenv("PYTHONHOME",
-                       CSpecialProtocol::TranslatePath("special:///system/python"));
+                       CSpecialProtocol::TranslatePath("special://xbmc/system/python"));
 
   const std::string pyPath = fmt::format(
-      "{};{};{}", CSpecialProtocol::TranslatePath("special:///system/python/DLLs"),
-      CSpecialProtocol::TranslatePath("special:///system/python/Lib"),
-      CSpecialProtocol::TranslatePath("special:///system/python/Lib/site-packages"));
+      "{};{};{}", CSpecialProtocol::TranslatePath("special://xbmc/system/python/DLLs"),
+      CSpecialProtocol::TranslatePath("special://xbmc/system/python/Lib"),
+      CSpecialProtocol::TranslatePath("special://xbmc/system/python/Lib/site-packages"));
 
   CEnvironment::setenv("PYTHONPATH", pyPath);
   CEnvironment::setenv("OS", "win32"); // for python scripts that check the OS

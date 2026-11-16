@@ -38,17 +38,17 @@ and yet another one
 
 **Example:** Clone Universal Media Center's current master branch:
 ```
-git clone https://github.com// universalmediacenter
+git clone https://github.com/xbmc/xbmc universalmediacenter
 ```
 
 Commands that contain strings enclosed in angle brackets denote something you need to change to suit your needs.
 ```
-git clone -b <branch-name> https://github.com// universalmediacenter
+git clone -b <branch-name> https://github.com/xbmc/xbmc universalmediacenter
 ```
 
 **Example:** Clone Universal Media Center's current Krypton branch:
 ```
-git clone -b Krypton https://github.com// universalmediacenter
+git clone -b Krypton https://github.com/xbmc/xbmc universalmediacenter
 ```
 
 Several different strategies are used to draw your attention to certain pieces of information. In order of how critical the information is, these items are marked as a note, tip, or warning. For example:
@@ -103,15 +103,15 @@ cd $HOME
 
 Clone Universal Media Center's current master branch:
 ```
-git clone https://github.com// universalmediacenter
+git clone https://github.com/xbmc/xbmc universalmediacenter
 ```
 
 **[back to top](#table-of-contents)**
 
 ## 6. Configure and build tools and dependencies
-Universal Media Center should be built as a 32bit program for webOS. The dependencies are built in `$HOME/universalmediacenter/tools/depends` and installed into `/media/developer/apps/usr/palm/applications/com.universalmediacenter.app/-deps`.
+Universal Media Center should be built as a 32bit program for webOS. The dependencies are built in `$HOME/universalmediacenter/tools/depends` and installed into `/media/developer/apps/usr/palm/applications//xbmc-deps`.
 
---prefix should be set to where -deps are going to be built  
+--prefix should be set to where xbmc-deps are going to be built  
 --with-toolchain=/path/to/buildroot, --host=arm-linux or whatever your compiler is  
 
 Configure build:
@@ -149,7 +149,7 @@ make -j$(getconf _NPROCESSORS_ONLN)
 ```
 --prefix=<path>
 ```
-  specify path on target device. By default we will likely be packaging as com.universalmediacenter.app and it will installed to $HOME/universalmediacenter/build/{com.universalmediacenter.app}. All developer apps will get installed to this base path plus {your-app-name}
+  specify path on target device. By default we will likely be packaging as  and it will installed to $HOME/universalmediacenter/build/{}. All developer apps will get installed to this base path plus {your-app-name}
 
 ```
 --enable-debug=<yes:no>
@@ -164,7 +164,7 @@ make -j$(getconf _NPROCESSORS_ONLN)
 ```
 --with-tarballs=<path>
 ```
-  path where tarballs will be saved [prefix/-tarballs]
+  path where tarballs will be saved [prefix/xbmc-tarballs]
 
 ```
 --with-cpu=<cpu>
@@ -229,13 +229,13 @@ Additional cmake arguments can be supplied via the CMAKE_EXTRA_ARGUMENTS command
 
 An example of extra arguments to remove dependencies dbus, CEC and pipewire from the build:
 ````
-make -C tools/depends/target/cmakebuildsys BUILD_DIR=/media/developer/apps/usr/palm/applications/com.universalmediacenter.app \
+make -C tools/depends/target/cmakebuildsys BUILD_DIR=/media/developer/apps/usr/palm/applications/ \
 	CMAKE_EXTRA_ARGUMENTS="-DCORE_PLATFORM_NAME=webos -DENABLE_DBUS=OFF -DENABLE_CEC=OFF -DENABLE_PIPEWIRE=OFF -DHAVE_LINUX_UDMABUF=OFF"
 ````
 
 ## 7.2. Add Binary Addons to Project
 
-You can find a complete list of available binary add-ons **[here](https://github.com//repo-binary-addons)**.
+You can find a complete list of available binary add-ons **[here](https://github.com/xbmc/repo-binary-addons)**.
 
 Binary addons are optional.
 
@@ -287,14 +287,14 @@ Create package:
 make ipk
 ```
 
-Generated `ipk` file will be inside the build dir. The filename may differ from this guide which is due to the version of Universal Media Center which at time of writing will create a `ipk` called com.universalmediacenter.app_20.90.101_all.ipk.
+Generated `ipk` file will be inside the build dir. The filename may differ from this guide which is due to the version of Universal Media Center which at time of writing will create a `ipk` called _20.90.101_all.ipk.
 
 ## 10 Using ares-cli to install
 
 Alternatively, you can use ares-cli to give you more control of which device to install to.
 
 ```
-ares-install ./com.universalmediacenter.app_20.90.101_arm.ipk --d <your tv>
+ares-install ./_20.90.101_arm.ipk --d <your tv>
 e.g. [LG]_webOS_TV_OLED65C24LA
 ```
 
@@ -307,12 +307,12 @@ ssh -oHostKeyAlgorithms=+ssh-rsa -oPubkeyAcceptedAlgorithms=+ssh-rsa -i ~/.ssh/\
 ```
 
 You will be put into /media/developer by default.
-cd `/media/developer/apps/usr/palm/applications/com.universalmediacenter.app/.universalmediacenter/temp` to find universalmediacenter.log
+cd `/media/developer/apps/usr/palm/applications//.universalmediacenter/temp` to find universalmediacenter.log
 
 You can also edit `universalmediacenter.sh` and place strace just before launching universalmediacenter to debug any missing libraries:
 
 ```
-strace -t -o /media/developer/apps/usr/palm/applications/com.universalmediacenter.app/trace.temp ./universalmediacenter-webos --debug
+strace -t -o /media/developer/apps/usr/palm/applications//trace.temp ./universalmediacenter-webos --debug
 ```
 
 ## 12. Uninstall
@@ -329,7 +329,7 @@ make uninstall
 ## 12.2. Using ares-cli to uninstall
 
 ```
-ares-install --remove com.universalmediacenter.app --d <your tv>
+ares-install --remove  --d <your tv>
 e.g. [LG]_webOS_TV_OLED65C24LA
 ```
 

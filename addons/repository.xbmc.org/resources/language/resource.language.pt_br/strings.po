@@ -1,15 +1,15 @@
-# Universal Media Center Media Center language file
-# Addon Name: Universal Media Center Add-on repository
-# Addon id: repository.github.com/yashhasan570/UniversalMediaCenter
-# Addon Provider: Team Universal Media Center
+# Kodi Media Center language file
+# Addon Name: Kodi Add-on repository
+# Addon id: repository.xbmc.org
+# Addon Provider: Team Kodi
 msgid ""
 msgstr ""
-"Project-Id-Version: UNIVERSAL MEDIA CENTER Main\n"
-"Report-Msgid-Bugs-To: translations@github.com/yashhasan570/UniversalMediaCenter\n"
+"Project-Id-Version: KODI Main\n"
+"Report-Msgid-Bugs-To: translations@kodi.tv\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: 2023-03-27 15:08+0000\n"
-"Last-Translator: Christian Gade <gade@github.com/yashhasan570/UniversalMediaCenter>\n"
-"Language-Team: Portuguese (Brazil) <https://universalmediacenter.weblate.cloud/projects/Universal Media Center-core/repository--org/pt_br/>\n"
+"Last-Translator: Christian Gade <gade@kodi.tv>\n"
+"Language-Team: Portuguese (Brazil) <https://kodi.weblate.cloud/projects/kodi-core/repository-xbmc-org/pt_br/>\n"
 "Language: pt_br\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,13 +18,13 @@ msgstr ""
 "X-Generator: Weblate 4.15.2\n"
 
 msgctxt "Addon Summary"
-msgid "Install Add-ons from Universal Media Center.tv"
-msgstr "Instale Add-ons do Universal Media Center.tv"
+msgid "Install Add-ons from Kodi.tv"
+msgstr "Instale Add-ons do Kodi.tv"
 
 msgctxt "Addon Description"
-msgid "Download and install add-ons from the Official Universal Media Center.tv add-on repository.[CR]  By using the official Repository you will be able to take advantage of our extensive file mirror service to help get you faster downloads from a region close to you.[CR]  All add-ons on this repository have under gone basic testing, if you find a broken or not working add-on please report it to Team Universal Media Center so we can take any action needed."
-msgstr "Transfira e instale add-ons a partir do repositório oficial do Universal Media Center.tv.[CR]|Ao utilizar o repositório oficial, você será capaz de tirar proveito do nosso serviço de espelhamento de arquivos, auxiliando em downloads mais rápidos a partir de uma região perto de você.[CR]|Todos os add-ons neste repositório passam por testes básicos, se você encontrar algum quebrado ou que não esteja funcionando, por favor reporte para a equipe do Universal Media Center, para que possamos tomar as ações necessárias."
+msgid "Download and install add-ons from the Official Kodi.tv add-on repository.[CR]  By using the official Repository you will be able to take advantage of our extensive file mirror service to help get you faster downloads from a region close to you.[CR]  All add-ons on this repository have under gone basic testing, if you find a broken or not working add-on please report it to Team Kodi so we can take any action needed."
+msgstr "Transfira e instale add-ons a partir do repositório oficial do Kodi.tv.[CR]|Ao utilizar o repositório oficial, você será capaz de tirar proveito do nosso serviço de espelhamento de arquivos, auxiliando em downloads mais rápidos a partir de uma região perto de você.[CR]|Todos os add-ons neste repositório passam por testes básicos, se você encontrar algum quebrado ou que não esteja funcionando, por favor reporte para a equipe do Kodi, para que possamos tomar as ações necessárias."
 
 msgctxt "Addon Disclaimer"
-msgid "Team Universal Media Center did not make all the add-ons on this repository and are not responsible for their content"
-msgstr "O Time do Universal Media Center não produziu todos os add-ons deste repositório, e portanto não é responsável por seu conteúdo"
+msgid "Team Kodi did not make all the add-ons on this repository and are not responsible for their content"
+msgstr "O Time do Kodi não produziu todos os add-ons deste repositório, e portanto não é responsável por seu conteúdo"

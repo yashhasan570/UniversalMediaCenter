@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2022 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -9,7 +9,7 @@
 #include "BlurayStateSerializer.h"
 
 #include "utils/StringUtils.h"
-#include "utils/TinyXML2.h"
+#include "utils/XBMCTinyXML2.h"
 #include "utils/log.h"
 
 #include <charconv>
@@ -24,7 +24,7 @@ constexpr int BLURAYSTATESERIALIZER_VERSION = 1;
 
 bool CBlurayStateSerializer::BlurayStateToXML(std::string& xmlstate, const BlurayState& state)
 {
-  CTinyXML2 xmlDoc;
+  CXBMCTinyXML2 xmlDoc;
 
   auto* eRoot = xmlDoc.NewElement("libbluraystate");
   if (eRoot == nullptr)
@@ -51,7 +51,7 @@ bool CBlurayStateSerializer::BlurayStateToXML(std::string& xmlstate, const Blura
 
 bool CBlurayStateSerializer::XMLToBlurayState(BlurayState& state, const std::string& xmlstate)
 {
-  CTinyXML2 xmlDoc;
+  CXBMCTinyXML2 xmlDoc;
 
   if (!xmlDoc.Parse(xmlstate))
     return false;

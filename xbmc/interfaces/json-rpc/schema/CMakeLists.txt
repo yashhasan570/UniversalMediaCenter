@@ -28,7 +28,7 @@ add_custom_command(TARGET generate_json_header
                            -DCORE_SYSTEM_NAME=${CORE_SYSTEM_NAME}
                            -P ${CMAKE_CURRENT_SOURCE_DIR}/GenerateAddonXml.cmake
                    WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
-                   COMMENT "Generating .json/addon.xml")
+                   COMMENT "Generating xbmc.json/addon.xml")
 
 set_target_properties(generate_json_header PROPERTIES FOLDER "Build Utilities")
 

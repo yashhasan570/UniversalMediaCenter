@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- This file contains the mapping of keys (gamepad,remote and keyboard) to actions within  -->
+<!-- This file contains the mapping of keys (gamepad,remote and keyboard) to actions within XBMC -->
 <!-- The <global> section is a fall through - they will only be used if the button is not        -->
 <!-- used in the current window's section.  Note that there is only handling                     -->
 <!-- for a single action per button at this stage.                                               -->
@@ -8,7 +8,7 @@
 
 <!-- The format is:                                                                              -->
 <!--    <device>                                                                                 -->
-<!--      <button id=""#> action</button>                                                    -->
+<!--      <button id=""#>xbmc action</button>                                                    -->
 <!--    </device>                                                                                -->
 
 <!-- To map keys from other remotes using the RCA protocol, you may add <customcontroller name="SiriRemote"> blocks -->

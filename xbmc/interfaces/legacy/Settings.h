@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2017-2021 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -21,16 +21,16 @@
 
 class CSettingsBase;
 
-namespace Addon
+namespace XBMCAddon
 {
-namespace addon
+namespace xbmcaddon
 {
 
-COMMONS_STANDARD_EXCEPTION(SettingCallbacksNotSupportedException);
+XBMCCOMMONS_STANDARD_EXCEPTION(SettingCallbacksNotSupportedException);
 
 //
 /// \defgroup python_settings Settings
-/// \ingroup python_addon
+/// \ingroup python_xbmcaddon
 /// @{
 /// @brief **Add-on settings**
 ///
@@ -45,7 +45,7 @@ COMMONS_STANDARD_EXCEPTION(SettingCallbacksNotSupportedException);
 /// **Example:**
 /// ~~~~~~~~~~~~~{.py}
 /// ...
-/// settings = addon.Addon('id').getSettings()
+/// settings = xbmcaddon.Addon('id').getSettings()
 /// ...
 /// ~~~~~~~~~~~~~
 //
@@ -486,5 +486,5 @@ public:
 };
 //@}
 
-} // namespace addon
-} // namespace Addon
+} // namespace xbmcaddon
+} // namespace XBMCAddon

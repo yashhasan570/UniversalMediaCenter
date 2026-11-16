@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2012-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -11,12 +11,12 @@
 #include "IActivityHandler.h"
 #include "IInputHandler.h"
 #include "JNIMainActivity.h"
-#include "JNIAudioManagerOnAudioFocusChangeListener.h"
-#include "JNIDisplayManagerDisplayListener.h"
-#include "JNIMainView.h"
-#include "JNIMediaSession.h"
+#include "JNIXBMCAudioManagerOnAudioFocusChangeListener.h"
+#include "JNIXBMCDisplayManagerDisplayListener.h"
+#include "JNIXBMCMainView.h"
+#include "JNIXBMCMediaSession.h"
 #include "interfaces/IAnnouncer.h"
-#include "platform/.h"
+#include "platform/xbmc.h"
 #include "threads/Event.h"
 #include "utils/Geometry.h"
 
@@ -79,23 +79,23 @@ private:
   ANativeWindow* m_window{nullptr};
 };
 
-class CApp : public IActivityHandler,
+class CXBMCApp : public IActivityHandler,
                  public jni::CJNIMainActivity,
                  public CJNIBroadcastReceiver,
                  public ANNOUNCEMENT::IAnnouncer,
                  public CJNISurfaceHolderCallback
 {
 public:
-  static CApp& Create(ANativeActivity* nativeActivity, IInputHandler& inputhandler)
+  static CXBMCApp& Create(ANativeActivity* nativeActivity, IInputHandler& inputhandler)
   {
-    m_appinstance.reset(new CApp(nativeActivity, inputhandler));
+    m_appinstance.reset(new CXBMCApp(nativeActivity, inputhandler));
     return *m_appinstance;
   }
-  static CApp& Get() { return *m_appinstance; }
+  static CXBMCApp& Get() { return *m_appinstance; }
   static void Destroy() { m_appinstance.reset(); }
 
-  CApp() = delete;
-  ~CApp() override;
+  CXBMCApp() = delete;
+  ~CXBMCApp() override;
 
   // IAnnouncer IF
   void Announce(ANNOUNCEMENT::AnnouncementFlag flag,
@@ -215,14 +215,14 @@ protected:
   void RequestVisibleBehind(bool requested);
 
 private:
-  static std::unique_ptr<CApp> m_appinstance;
+  static std::unique_ptr<CXBMCApp> m_appinstance;
 
-  CApp(ANativeActivity* nativeActivity, IInputHandler& inputhandler);
+  CXBMCApp(ANativeActivity* nativeActivity, IInputHandler& inputhandler);
 
-  jni::CJNIAudioManagerOnAudioFocusChangeListener m_audioFocusListener;
-  jni::CJNIDisplayManagerDisplayListener m_displayListener;
-  std::unique_ptr<jni::CJNIMainView> m_mainView;
-  std::unique_ptr<jni::CJNIMediaSession> m_mediaSession;
+  jni::CJNIXBMCAudioManagerOnAudioFocusChangeListener m_audioFocusListener;
+  jni::CJNIXBMCDisplayManagerDisplayListener m_displayListener;
+  std::unique_ptr<jni::CJNIXBMCMainView> m_mainView;
+  std::unique_ptr<jni::CJNIXBMCMediaSession> m_mediaSession;
   std::string GetFilenameFromIntent(const CJNIIntent &intent);
 
   void run();
@@ -262,8 +262,8 @@ private:
   CEvent m_vsyncEvent;
   CEvent m_displayChangeEvent;
 
-  bool _DestroyDisplay();
-  bool _SetupDisplay();
+  bool XBMC_DestroyDisplay();
+  bool XBMC_SetupDisplay();
 
   void OnSleep();
   void OnWakeup();

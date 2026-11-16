@@ -1,7 +1,7 @@
 /*
  *  Copyright (c) 2007 d4rk
  *  Copyright (C) 2007-2024 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -48,26 +48,26 @@ BaseYUV2RGBGLSLShader::BaseYUV2RGBGLSLShader(EShaderFormat format,
   m_convertFullRange = false;
 
   if (m_format == SHADER_YV12)
-    m_defines += "#define _YV12\n";
+    m_defines += "#define XBMC_YV12\n";
   else if (m_format == SHADER_YV12_9 || m_format == SHADER_YV12_10 || m_format == SHADER_YV12_12 ||
            m_format == SHADER_YV12_14 || m_format == SHADER_YV12_16)
-    m_defines += "#define _YV12_HI\n";
+    m_defines += "#define XBMC_YV12_HI\n";
   else if (m_format == SHADER_NV12)
-    m_defines += "#define _NV12\n";
+    m_defines += "#define XBMC_NV12\n";
   else if (m_format == SHADER_NV12_RRG)
-    m_defines += "#define _NV12_RRG\n";
+    m_defines += "#define XBMC_NV12_RRG\n";
   else if (m_format == SHADER_YUY2)
-    m_defines += "#define _YUY2\n";
+    m_defines += "#define XBMC_YUY2\n";
   else if (m_format == SHADER_UYVY)
-    m_defines += "#define _UYVY\n";
+    m_defines += "#define XBMC_UYVY\n";
   else if (m_format == SHADER_Y210)
-    m_defines += "#define _Y210\n";
+    m_defines += "#define XBMC_Y210\n";
   else if (m_format == SHADER_AYUV)
-    m_defines += "#define _AYUV\n";
+    m_defines += "#define XBMC_AYUV\n";
   else if (m_format == SHADER_Y410)
-    m_defines += "#define _Y410\n";
+    m_defines += "#define XBMC_Y410\n";
   else if (m_format == SHADER_Y412)
-    m_defines += "#define _Y412\n";
+    m_defines += "#define XBMC_Y412\n";
   else
     CLog::Log(LOGERROR, "GLES: BaseYUV2RGBGLSLShader - unsupported format {}",
               fmt::formatter<EShaderFormat>::ToString(m_format));
@@ -75,7 +75,7 @@ BaseYUV2RGBGLSLShader::BaseYUV2RGBGLSLShader(EShaderFormat format,
   if (dstPrimaries != srcPrimaries)
   {
     m_colorConversion = true;
-    m_defines += "#define _COL_CONVERSION\n";
+    m_defines += "#define XBMC_COL_CONVERSION\n";
   }
 
   if (toneMap)
@@ -105,7 +105,7 @@ BaseYUV2RGBGLSLShader::BaseYUV2RGBGLSLShader(EShaderFormat format,
     m_defines += "#define UNIVERSALMEDIA_GAMMA\n";
 
   if (m_dither)
-    m_defines += "#define _DITHER\n";
+    m_defines += "#define XBMC_DITHER\n";
 
   VertexShader()->LoadSource("gles_yuv2rgb.vert", m_defines);
 

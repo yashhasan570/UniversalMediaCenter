@@ -6,7 +6,7 @@ set(SOURCES PreflightHandler.mm
             TVOSSettingsHandler.mm
             tvosShared.mm
             TVOSTopShelf.mm
-            Controller.mm)
+            XBMCController.mm)
 
 set(HEADERS PreflightHandler.h
             TVOSDisplayManager.h
@@ -16,7 +16,7 @@ set(HEADERS PreflightHandler.h
             TVOSSettingsHandler.h
             tvosShared.h
             TVOSTopShelf.h
-            Application.h
-            Controller.h)
+            XBMCApplication.h
+            XBMCController.h)
 
 core_add_library(platform_tvos)

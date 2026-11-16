@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2019 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -17,7 +17,7 @@
 #import "windowing/tvos/WinSystemTVOS.h"
 
 #import "platform/darwin/tvos/TVOSEAGLView.h"
-#import "platform/darwin/tvos/Controller.h"
+#import "platform/darwin/tvos/XBMCController.h"
 
 #import <AVFoundation/AVDisplayCriteria.h>
 #import <AVFoundation/AVPlayer.h>
@@ -63,7 +63,7 @@
   if (@available(tvOS 11.2, *))
   {
     dispatch_async(dispatch_get_main_queue(), ^{
-      auto avDisplayManager = [g_Controller avDisplayManager];
+      auto avDisplayManager = [g_xbmcController avDisplayManager];
       if (refreshRate > 0.0f)
       {
         // videoDynamicRange values are based on watching
@@ -120,7 +120,7 @@
               [self stringFromDynamicRange:criteria.videoDynamicRange]);
 
     dispatch_async(dispatch_get_main_queue(), ^{
-      auto manager = [g_Controller avDisplayManager];
+      auto manager = [g_xbmcController avDisplayManager];
       [self setDisplayCriteria:manager displayCriteria:criteria];
     });
     return YES;
@@ -132,7 +132,7 @@
 - (void)displayDynamicRangeReset
 {
   dispatch_async(dispatch_get_main_queue(), ^{
-    auto manager = [g_Controller avDisplayManager];
+    auto manager = [g_xbmcController avDisplayManager];
     [self setDisplayCriteria:manager displayCriteria:nil];
   });
 }
@@ -147,7 +147,7 @@
     dispatch_async(dispatch_get_main_queue(), ^{
       // setting preferredDisplayCriteria to nil will
       // switch back to tvOS defined user settings
-      auto avDisplayManager = [g_Controller avDisplayManager];
+      auto avDisplayManager = [g_xbmcController avDisplayManager];
       [self setDisplayCriteria:avDisplayManager displayCriteria:nil];
     });
   }
@@ -172,7 +172,7 @@
 {
   if (@available(tvOS 11.2, *))
   {
-    auto avDisplayManager = [g_Controller avDisplayManager];
+    auto avDisplayManager = [g_xbmcController avDisplayManager];
     [avDisplayManager removeObserver:self forKeyPath:DISPLAY_MODE_SWITCH_IN_PROGRESS];
   }
 }
@@ -181,7 +181,7 @@
 {
   if (@available(tvOS 11.2, *))
   {
-    auto avDisplayManager = [g_Controller avDisplayManager];
+    auto avDisplayManager = [g_xbmcController avDisplayManager];
     [avDisplayManager addObserver:self
                        forKeyPath:DISPLAY_MODE_SWITCH_IN_PROGRESS
                           options:NSKeyValueObservingOptionNew
@@ -204,7 +204,7 @@
     std::string switchState = "NO";
     int dynamicRange = 0;
     float refreshRate;
-    auto avDisplayManager = [g_Controller avDisplayManager];
+    auto avDisplayManager = [g_xbmcController avDisplayManager];
     auto displayCriteria = avDisplayManager.preferredDisplayCriteria;
     // preferredDisplayCriteria can be nil, this is NOT an error
     // and just indicates tvOS defined user settings which we cannot see.
@@ -269,14 +269,14 @@
 
 - (BOOL)canMatchVideoDynamicRange
 {
-  return [g_Controller avDisplayManager].displayCriteriaMatchingEnabled;
+  return [g_xbmcController avDisplayManager].displayCriteriaMatchingEnabled;
 }
 
 - (CGSize)getScreenSize
 {
   dispatch_sync(dispatch_get_main_queue(), ^{
-    m_screensize.width = g_Controller.glView.bounds.size.width * self.screenScale;
-    m_screensize.height = g_Controller.glView.bounds.size.height * self.screenScale;
+    m_screensize.width = g_xbmcController.glView.bounds.size.width * self.screenScale;
+    m_screensize.height = g_xbmcController.glView.bounds.size.height * self.screenScale;
   });
   return m_screensize;
 }

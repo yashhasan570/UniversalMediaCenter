@@ -409,7 +409,7 @@
           <level>0</level>
           <default></default>
           <constraints>
-            <addontype>.player.musicviz</addontype>
+            <addontype>xbmc.player.musicviz</addontype>
             <allowempty>true</allowempty>
           </constraints>
           <control type="button" format="addon">
@@ -1008,7 +1008,7 @@
           <default></default>
           <constraints>
             <allowempty>true</allowempty>
-            <addontype>.subtitle.module</addontype>
+            <addontype>xbmc.subtitle.module</addontype>
           </constraints>
           <control type="button" format="addon">
             <show more="true" details="true">installed</show>
@@ -1019,7 +1019,7 @@
           <default></default>
           <constraints>
             <allowempty>true</allowempty>
-            <addontype>.subtitle.module</addontype>
+            <addontype>xbmc.subtitle.module</addontype>
           </constraints>
           <control type="button" format="addon">
             <show more="true" details="true">installed</show>
@@ -1609,7 +1609,7 @@
           <level>1</level>
           <default>metadata.generic.albums</default>
           <constraints>
-            <addontype>.metadata.scraper.albums</addontype>
+            <addontype>xbmc.metadata.scraper.albums</addontype>
           </constraints>
           <control type="button" format="addon">
             <show more="true" details="true">installed</show>
@@ -1619,7 +1619,7 @@
           <level>1</level>
           <default>metadata.generic.artists</default>
           <constraints>
-            <addontype>.metadata.scraper.artists</addontype>
+            <addontype>xbmc.metadata.scraper.artists</addontype>
           </constraints>
           <control type="button" format="addon">
             <show more="true" details="true">installed</show>
@@ -1843,21 +1843,21 @@
           <level>4</level>
           <default>metadata.themoviedb.org.python</default>
           <constraints>
-            <addontype>.metadata.scraper.movies</addontype>
+            <addontype>xbmc.metadata.scraper.movies</addontype>
           </constraints>
         </setting>
         <setting id="scrapers.tvshowsdefault" type="addon" label="21414" help="36199">
           <level>4</level>
           <default>metadata.tvshows.themoviedb.org.python</default>
           <constraints>
-            <addontype>.metadata.scraper.tvshows</addontype>
+            <addontype>xbmc.metadata.scraper.tvshows</addontype>
           </constraints>
         </setting>
         <setting id="scrapers.musicvideosdefault" type="addon" label="21415" help="36200">
           <level>4</level>
           <default>metadata.local</default>
           <constraints>
-            <addontype>.metadata.scraper.musicvideos</addontype>
+            <addontype>xbmc.metadata.scraper.musicvideos</addontype>
           </constraints>
           <updates>
             <update type="change" />
@@ -2460,7 +2460,7 @@
           <level>1</level>
           <default>webinterface.default</default>
           <constraints>
-            <addontype>.webinterface</addontype>
+            <addontype>xbmc.webinterface</addontype>
           </constraints>
           <control type="button" format="addon">
             <show more="true" details="true">installed</show>
@@ -2832,7 +2832,7 @@
           <level>0</level>
           <default></default>
           <constraints>
-            <addontype>.python.weather</addontype>
+            <addontype>xbmc.python.weather</addontype>
             <allowempty>true</allowempty>
           </constraints>
           <control type="button" format="addon">
@@ -4505,7 +4505,7 @@
           <level>0</level>
           <default>skin.estuary</default>
           <constraints>
-            <addontype>.gui.skin</addontype>
+            <addontype>xbmc.gui.skin</addontype>
           </constraints>
           <control type="button" format="addon">
             <show more="true" details="true">installed</show>
@@ -4727,7 +4727,7 @@
           <level>0</level>
           <default>default</default> <!-- will be properly set on startup -->
           <constraints>
-            <addontype>.ui.screensaver</addontype>
+            <addontype>xbmc.ui.screensaver</addontype>
             <allowempty>true</allowempty>
           </constraints>
           <updates>
@@ -4789,7 +4789,7 @@
             <dependencies>
               <dependency type="enable">
                 <and>
-                  <condition setting="screensaver.mode" operator="!is">screensaver..builtin.dim</condition>
+                  <condition setting="screensaver.mode" operator="!is">screensaver.xbmc.builtin.dim</condition>
                   <condition setting="screensaver.mode" operator="!is"></condition>
                 </and>
               </dependency>

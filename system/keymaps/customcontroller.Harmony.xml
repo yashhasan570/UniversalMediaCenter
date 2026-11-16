@@ -19,7 +19,7 @@
 <!-- An empty action removes the corresponding mapping from default and parent keymaps.   -->
 <!-- This is different from a "noop" action, which disables a button.                     -->
 <!--                                                                                      -->
-<!-- More documentation on keymaps can be found on http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/keymaps          -->
+<!-- More documentation on keymaps can be found on http://universalmediacenter.wiki/view/keymaps          -->
 <!--                                                                                      -->
 <!-- To map keys from other remotes using the RCA protocol, you may add                   -->
 <!--   <customcontroller name="Harmony"> blocks.                                          -->

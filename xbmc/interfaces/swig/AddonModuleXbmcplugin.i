@@ -1,12 +1,12 @@
 /*
- *  Copyright (C) 2005-2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://Universal Media Center.tv
+ *  Copyright (C) 2005-2026 Team Kodi
+ *  This file is part of Kodi - https://kodi.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
  */
 
-%module plugin
+%module xbmcplugin
 
 %{
 #if defined(TARGET_WINDOWS)
@@ -15,8 +15,8 @@
 
 #include "interfaces/legacy/ModuleXbmcplugin.h"
 
-using namespace Addon;
-using namespace plugin;
+using namespace XBMCAddon;
+using namespace xbmcplugin;
 
 #if defined(__GNUG__)
 #pragma GCC diagnostic ignored "-Wstrict-aliasing"
@@ -24,15 +24,15 @@ using namespace plugin;
 
 %}
 
-%include "Universal Media Center_common.i"
+%include "kodi_common.i"
 
-namespace Addon { namespace gui { class ListItem; } }
-%traits_swigtype(Addon::gui::ListItem);
-%fragment(SWIG_Traits_frag(Addon::gui::ListItem));
+namespace XBMCAddon { namespace xbmcgui { class ListItem; } }
+%traits_swigtype(XBMCAddon::xbmcgui::ListItem);
+%fragment(SWIG_Traits_frag(XBMCAddon::xbmcgui::ListItem));
 
 /* one line per shape crossing the boundary in this module */
-%template() Addon::Tuple<std::string, Addon::gui::ListItem const*, bool>;
-%template() std::vector<Addon::Tuple<std::string, Addon::gui::ListItem const*, bool> >;
+%template() XBMCAddon::Tuple<std::string, XBMCAddon::xbmcgui::ListItem const*, bool>;
+%template() std::vector<XBMCAddon::Tuple<std::string, XBMCAddon::xbmcgui::ListItem const*, bool> >;
 
 %include "interfaces/legacy/swighelper.h"
 %include "interfaces/legacy/AddonString.h"

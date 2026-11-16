@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2015-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -22,27 +22,27 @@ namespace ADDON
 
 void Interface_GUIDialogProgress::Init(AddonGlobalInterface* addonInterface)
 {
-  addonInterface->toUniversal Media Center->->dialogProgress =
-      new AddonToUniversal Media CenterFuncTable__dialogProgress();
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogProgress =
+      new AddonToUniversal Media CenterFuncTable_universalmediacenter_gui_dialogProgress();
 
-  addonInterface->toUniversal Media Center->->dialogProgress->new_dialog = new_dialog;
-  addonInterface->toUniversal Media Center->->dialogProgress->delete_dialog = delete_dialog;
-  addonInterface->toUniversal Media Center->->dialogProgress->open = open;
-  addonInterface->toUniversal Media Center->->dialogProgress->set_heading = set_heading;
-  addonInterface->toUniversal Media Center->->dialogProgress->set_line = set_line;
-  addonInterface->toUniversal Media Center->->dialogProgress->set_can_cancel = set_can_cancel;
-  addonInterface->toUniversal Media Center->->dialogProgress->is_canceled = is_canceled;
-  addonInterface->toUniversal Media Center->->dialogProgress->set_percentage = set_percentage;
-  addonInterface->toUniversal Media Center->->dialogProgress->get_percentage = get_percentage;
-  addonInterface->toUniversal Media Center->->dialogProgress->show_progress_bar = show_progress_bar;
-  addonInterface->toUniversal Media Center->->dialogProgress->set_progress_max = set_progress_max;
-  addonInterface->toUniversal Media Center->->dialogProgress->set_progress_advance = set_progress_advance;
-  addonInterface->toUniversal Media Center->->dialogProgress->abort = abort;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogProgress->new_dialog = new_dialog;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogProgress->delete_dialog = delete_dialog;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogProgress->open = open;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogProgress->set_heading = set_heading;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogProgress->set_line = set_line;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogProgress->set_can_cancel = set_can_cancel;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogProgress->is_canceled = is_canceled;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogProgress->set_percentage = set_percentage;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogProgress->get_percentage = get_percentage;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogProgress->show_progress_bar = show_progress_bar;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogProgress->set_progress_max = set_progress_max;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogProgress->set_progress_advance = set_progress_advance;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogProgress->abort = abort;
 }
 
 void Interface_GUIDialogProgress::DeInit(AddonGlobalInterface* addonInterface)
 {
-  delete addonInterface->toUniversal Media Center->->dialogProgress;
+  delete addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogProgress;
 }
 
 UNIVERSALMEDIA_GUI_HANDLE Interface_GUIDialogProgress::new_dialog(UNIVERSALMEDIA_HANDLE universalmediacenterBase)

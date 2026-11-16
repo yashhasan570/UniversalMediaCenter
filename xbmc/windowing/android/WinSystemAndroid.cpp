@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -30,10 +30,11 @@
 #include "windowing/GraphicContext.h"
 #include "windowing/Resolution.h"
 
-#include "platform/android/activity/App.h"
+#include "platform/android/activity/XBMCApp.h"
 #include "platform/android/media/decoderfilter/MediaCodecDecoderFilterManager.h"
 #include "platform/android/media/drm/MediaDrmCryptoSession.h"
 
+#include <cmath>
 #include <float.h>
 #include <memory>
 #include <mutex>
@@ -122,7 +123,7 @@ bool CWinSystemAndroid::CreateNewWindow(const std::string& name,
   m_stereo_mode = CServiceBroker::GetWinSystem()->GetGfxContext().GetStereoMode();
   m_bFullScreen = fullScreen;
 
-  m_nativeWindow = CApp::Get().GetNativeWindow(2000);
+  m_nativeWindow = CXBMCApp::Get().GetNativeWindow(2000);
   if (!m_nativeWindow)
   {
     CLog::Log(LOGERROR, "CWinSystemAndroid::CreateNewWindow: failed");
@@ -171,11 +172,19 @@ void CWinSystemAndroid::UpdateResolutions(bool bUpdateDesktopRes)
   RESOLUTION_INFO resDesktop;
   if (bUpdateDesktopRes)
   {
-    // ProbeResolutions includes already all resolutions.
-    // Only get desktop resolution so we can replace Universal Media Center's desktop res.
     RESOLUTION_INFO curDisplay;
     if (m_android->GetNativeResolution(&curDisplay))
+    {
       resDesktop = curDisplay;
+      if (resDesktop.iWidth > 0 && resDesktop.iHeight > 0 && resDesktop.iScreenWidth > 0 &&
+          resDesktop.iScreenHeight > 0 && std::isfinite(resDesktop.fRefreshRate) &&
+          resDesktop.fRefreshRate > 0.0f)
+      {
+        // The current mode may be absent from Android's supported modes.
+        CServiceBroker::GetWinSystem()->GetGfxContext().ResetOverscan(resDesktop);
+        CDisplaySettings::GetInstance().GetResolutionInfo(RES_DESKTOP) = resDesktop;
+      }
+    }
   }
   else
   {
@@ -284,7 +293,7 @@ void CWinSystemAndroid::UpdateDisplayModes()
 
 bool CWinSystemAndroid::Minimize()
 {
-  return CApp::Get().moveTaskToBack(true);
+  return CXBMCApp::Get().moveTaskToBack(true);
 }
 
 bool CWinSystemAndroid::Hide()
@@ -311,7 +320,7 @@ void CWinSystemAndroid::Unregister(IDispResource *resource)
     m_resources.erase(i);
 }
 
-void CWinSystemAndroid::MessagePush(_Event *newEvent)
+void CWinSystemAndroid::MessagePush(XBMC_Event *newEvent)
 {
   dynamic_cast<CWinEventsAndroid&>(*m_winEvents).MessagePush(newEvent);
 }

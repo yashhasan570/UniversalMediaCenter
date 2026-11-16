@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -35,7 +35,7 @@
 #include "utils/FileUtils.h"
 #include "utils/StringUtils.h"
 #include "utils/URIUtils.h"
-#include "utils/TinyXML2.h"
+#include "utils/XBMCTinyXML2.h"
 #include "utils/XMLUtils.h"
 #include "utils/log.h"
 
@@ -63,8 +63,8 @@ namespace
 bool LoadManifest(std::set<std::string, std::less<>>& system,
                   std::set<std::string, std::less<>>& optional)
 {
-  CTinyXML2 doc;
-  if (!doc.LoadFile("special:///system/addon-manifest.xml"))
+  CXBMCTinyXML2 doc;
+  if (!doc.LoadFile("special://xbmc/system/addon-manifest.xml"))
   {
     CLog::Log(LOGERROR, "ADDONS: manifest missing");
     return false;
@@ -485,7 +485,7 @@ bool CAddonMgr::GetAddonsInternal(AddonType type,
             IsAddonDisabledExcept(addonInfo->ID(), AddonDisabledReason::INCOMPATIBLE))))
         continue;
 
-      //FIXME: hack for skipping special dependency addons (.python etc.).
+      //FIXME: hack for skipping special dependency addons (xbmc.python etc.).
       //Will break if any extension point is added to them
       if (addonInfo->MainType() == AddonType::UNKNOWN)
         continue;
@@ -678,10 +678,10 @@ bool CAddonMgr::FindAddon(const std::string& addonId,
                           const CAddonVersion& addonVersion)
 {
   AddonInfoMap installedAddons;
-  FindAddons(installedAddons, "special://bin/addons");
-  // Confirm special://bin/addons and special:///addons are not the same
-  if (!CSpecialProtocol::ComparePath("special://bin/addons", "special:///addons"))
-    FindAddons(installedAddons, "special:///addons");
+  FindAddons(installedAddons, "special://xbmcbin/addons");
+  // Confirm special://xbmcbin/addons and special://xbmc/addons are not the same
+  if (!CSpecialProtocol::ComparePath("special://xbmcbin/addons", "special://xbmc/addons"))
+    FindAddons(installedAddons, "special://xbmc/addons");
   FindAddons(installedAddons, "special://home/addons");
 
   const auto it = installedAddons.find(addonId);
@@ -709,10 +709,10 @@ bool CAddonMgr::FindAddons()
 {
   AddonInfoMap installedAddons;
 
-  FindAddons(installedAddons, "special://bin/addons");
-  // Confirm special://bin/addons and special:///addons are not the same
-  if (!CSpecialProtocol::ComparePath("special://bin/addons", "special:///addons"))
-    FindAddons(installedAddons, "special:///addons");
+  FindAddons(installedAddons, "special://xbmcbin/addons");
+  // Confirm special://xbmcbin/addons and special://xbmc/addons are not the same
+  if (!CSpecialProtocol::ComparePath("special://xbmcbin/addons", "special://xbmc/addons"))
+    FindAddons(installedAddons, "special://xbmc/addons");
   FindAddons(installedAddons, "special://home/addons");
 
   std::set<std::string, std::less<>> installed;
@@ -1049,9 +1049,9 @@ bool CAddonMgr::CanUninstall(const AddonPtr& addon)
 bool CAddonMgr::IsBundledAddon(const std::string& id) const
 {
   return XFILE::CDirectory::Exists(
-             CSpecialProtocol::TranslatePath("special:///addons/" + id + "/")) ||
+             CSpecialProtocol::TranslatePath("special://xbmc/addons/" + id + "/")) ||
          XFILE::CDirectory::Exists(
-             CSpecialProtocol::TranslatePath("special://bin/addons/" + id + "/"));
+             CSpecialProtocol::TranslatePath("special://xbmcbin/addons/" + id + "/"));
 }
 
 bool CAddonMgr::IsSystemAddon(const std::string& id)
@@ -1121,9 +1121,9 @@ bool CAddonMgr::IsCompatible(const std::shared_ptr<const IAddon>& addon) const
   {
     if (!dependency.optional)
     {
-      // Intentionally only check the .* and universalmediacenter.* magic dependencies. Everything else will
+      // Intentionally only check the xbmc.* and universalmediacenter.* magic dependencies. Everything else will
       // not be missing anyway, unless addon was installed in an unsupported way.
-      if (StringUtils::StartsWith(dependency.id, ".") ||
+      if (StringUtils::StartsWith(dependency.id, "xbmc.") ||
           StringUtils::StartsWith(dependency.id, "universalmediacenter."))
       {
         std::shared_ptr<IAddon> dep;
@@ -1143,9 +1143,9 @@ bool CAddonMgr::IsCompatible(const AddonInfoPtr& addonInfo) const
   {
     if (!dependency.optional)
     {
-      // Intentionally only check the .* and universalmediacenter.* magic dependencies. Everything else will
+      // Intentionally only check the xbmc.* and universalmediacenter.* magic dependencies. Everything else will
       // not be missing anyway, unless addon was installed in an unsupported way.
-      if (StringUtils::StartsWith(dependency.id, ".") ||
+      if (StringUtils::StartsWith(dependency.id, "xbmc.") ||
           StringUtils::StartsWith(dependency.id, "universalmediacenter."))
       {
         const AddonInfoPtr info = GetAddonInfo(dependency.id, AddonType::UNKNOWN);
@@ -1176,7 +1176,7 @@ std::vector<DependencyInfo> CAddonMgr::GetDepsRecursive(const std::string& id,
   {
     auto current_dep = *toProcess.begin();
     toProcess.erase(toProcess.begin());
-    if (StringUtils::StartsWith(current_dep.id, ".") ||
+    if (StringUtils::StartsWith(current_dep.id, "xbmc.") ||
         StringUtils::StartsWith(current_dep.id, "universalmediacenter."))
       continue;
 
@@ -1369,7 +1369,7 @@ bool CAddonMgr::AddonsFromRepoXML(const RepositoryDirInfo& repo,
                                   const std::string& xml,
                                   std::vector<AddonInfoPtr>& addons) const
 {
-  CTinyXML2 doc;
+  CXBMCTinyXML2 doc;
   if (!doc.Parse(xml))
   {
     CLog::LogF(LOGERROR, "Failed to parse addons.xml");

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -15,7 +15,7 @@
 #include <unordered_map>
 #include <vector>
 
-class CTinyXML;
+class CXBMCTinyXML;
 
 namespace ADDON
 {
@@ -460,7 +460,7 @@ protected:
    *
    * \sa SettingsToXML
    */
-  virtual bool SettingsFromXML(const CTinyXML& doc,
+  virtual bool SettingsFromXML(const CXBMCTinyXML& doc,
                                bool loadDefaults,
                                AddonInstanceId id = ADDON_SETTINGS_ID);
 
@@ -474,7 +474,7 @@ protected:
    *
    * \sa SettingsFromXML
    */
-  virtual bool SettingsToXML(CTinyXML& doc, AddonInstanceId id = ADDON_SETTINGS_ID) const;
+  virtual bool SettingsToXML(CXBMCTinyXML& doc, AddonInstanceId id = ADDON_SETTINGS_ID) const;
 
   const AddonInfoPtr m_addonInfo;
 

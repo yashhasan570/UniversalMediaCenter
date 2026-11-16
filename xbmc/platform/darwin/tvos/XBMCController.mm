@@ -1,12 +1,12 @@
 /*
  *  Copyright (C) 2010-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
  */
 
-#import "platform/darwin/tvos/Controller.h"
+#import "platform/darwin/tvos/XBMCController.h"
 
 #include "CompileInfo.h"
 #include "FileItem.h"
@@ -23,7 +23,7 @@
 #include "messaging/ApplicationMessenger.h"
 #include "network/Network.h"
 #include "network/NetworkServices.h"
-#include "platform/.h"
+#include "platform/xbmc.h"
 #include "powermanagement/PowerManager.h"
 #include "settings/AdvancedSettings.h"
 #include "settings/SettingsComponent.h"
@@ -36,7 +36,7 @@
 #import "platform/darwin/tvos/TVOSDisplayManager.h"
 #import "platform/darwin/tvos/TVOSEAGLView.h"
 #import "platform/darwin/tvos/TVOSTopShelf.h"
-#import "platform/darwin/tvos/Application.h"
+#import "platform/darwin/tvos/XBMCApplication.h"
 #import "platform/darwin/tvos/input/LibInputHandler.h"
 #import "platform/darwin/tvos/input/LibInputRemote.h"
 #import "platform/darwin/tvos/input/LibInputTouch.h"
@@ -52,10 +52,10 @@
 #import <AVKit/UIWindow.h>
 #include <unistd.h>
 
-Controller* g_Controller;
+XBMCController* g_xbmcController;
 
-#pragma mark - Controller implementation
-@implementation Controller
+#pragma mark - XBMCController implementation
+@implementation XBMCController
 
 @synthesize appAlive = m_appAlive;
 @synthesize MPNPInfoManager;
@@ -273,7 +273,7 @@ Controller* g_Controller;
       {
         if (renderer.status == AVQueuedSampleBufferRenderingStatusFailed)
         {
-          CLog::Log(LOGWARNING, "Controller: video renderer failed (code {}), flushing",
+          CLog::Log(LOGWARNING, "XBMCController: video renderer failed (code {}), flushing",
                     renderer.error.code);
           [renderer flush];
         }
@@ -483,7 +483,7 @@ Controller* g_Controller;
 {
   @autoreleasepool
   {
-    [NSThread currentThread].name = @"_Run";
+    [NSThread currentThread].name = @"XBMC_Run";
 
     // signal the thread is alive
     NSConditionLock* myLock = arg;
@@ -503,7 +503,7 @@ Controller* g_Controller;
     try
     {
       // set up some Universal Media Center specific relationships
-      //    ::Context run_context; //! @todo
+      //    XBMC::Context run_context; //! @todo
       m_appAlive = YES;
       // start up with gui enabled
       status = UNIVERSALMEDIA_Run(true);
@@ -647,7 +647,7 @@ int UNIVERSALMEDIA_Run(bool renderGUI)
 
   [self enableScreenSaver];
 
-  g_Controller = self;
+  g_xbmcController = self;
   MPNPInfoManager = [DarwinEmbedNowPlayingInfoManager new];
   displayManager = [TVOSDisplayManager new];
   inputHandler = [TVOSLibInputHandler new];

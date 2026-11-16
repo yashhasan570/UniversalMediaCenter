@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2016-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -422,22 +422,22 @@ bool CAndroidJoystickState::ProcessEvent(const AInputEvent* event)
   return false;
 }
 
-void CAndroidJoystickState::GetEvents(std::vector<addon::PeripheralEvent>& events)
+void CAndroidJoystickState::GetEvents(std::vector<universalmediacenter::addon::PeripheralEvent>& events)
 {
   GetButtonEvents(events);
   GetAxisEvents(events);
 }
 
-void CAndroidJoystickState::GetButtonEvents(std::vector<addon::PeripheralEvent>& events)
+void CAndroidJoystickState::GetButtonEvents(std::vector<universalmediacenter::addon::PeripheralEvent>& events)
 {
   std::unique_lock lock(m_eventMutex);
 
   // Only report a single event per button (avoids dropping rapid presses)
-  std::vector<addon::PeripheralEvent> repeatButtons;
+  std::vector<universalmediacenter::addon::PeripheralEvent> repeatButtons;
 
   for (const auto& digitalEvent : m_digitalEvents)
   {
-    auto HasButton = [&digitalEvent](const addon::PeripheralEvent& event)
+    auto HasButton = [&digitalEvent](const universalmediacenter::addon::PeripheralEvent& event)
     {
       if (event.Type() == PERIPHERAL_EVENT_TYPE_DRIVER_BUTTON)
         return event.DriverIndex() == digitalEvent.DriverIndex();
@@ -453,7 +453,7 @@ void CAndroidJoystickState::GetButtonEvents(std::vector<addon::PeripheralEvent>&
   m_digitalEvents.swap(repeatButtons);
 }
 
-void CAndroidJoystickState::GetAxisEvents(std::vector<addon::PeripheralEvent>& events) const
+void CAndroidJoystickState::GetAxisEvents(std::vector<universalmediacenter::addon::PeripheralEvent>& events) const
 {
   for (unsigned int i = 0; i < m_analogState.size(); i++)
     events.emplace_back(m_deviceId, i, m_analogState[i]);

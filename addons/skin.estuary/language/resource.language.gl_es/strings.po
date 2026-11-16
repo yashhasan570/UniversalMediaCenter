@@ -1,15 +1,15 @@
-# Universal Media Center Media Center language file
+# Kodi Media Center language file
 # Addon Name: Estuary
 # Addon id: skin.estuary
-# Addon Provider: Team Universal Media Center
+# Addon Provider: Team Kodi
 msgid ""
 msgstr ""
-"Project-Id-Version: UNIVERSAL MEDIA CENTER Main\n"
-"Report-Msgid-Bugs-To: https://github.com///issues/\n"
+"Project-Id-Version: KODI Main\n"
+"Report-Msgid-Bugs-To: https://github.com/xbmc/xbmc/issues/\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: 2023-12-04 09:42+0000\n"
-"Last-Translator: Christian Gade <gade@github.com/yashhasan570/UniversalMediaCenter>\n"
-"Language-Team: Galician (Spain) <https://universalmediacenter.weblate.cloud/projects/Universal Media Center-add-ons-skins/skin-estuary/gl_es/>\n"
+"Last-Translator: Christian Gade <gade@kodi.tv>\n"
+"Language-Team: Galician (Spain) <https://kodi.weblate.cloud/projects/kodi-add-ons-skins/skin-estuary/gl_es/>\n"
 "Language: gl_es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,16 +18,16 @@ msgstr ""
 "X-Generator: Weblate 5.2.1\n"
 
 msgctxt "Addon Summary"
-msgid "Estuary skin by phil65. (Universal Media Center's default skin)"
-msgstr "Pel Estuary por phil65 and Piers. (Pel predefinida do Universal Media Center)"
+msgid "Estuary skin by phil65. (Kodi's default skin)"
+msgstr "Pel Estuary por phil65 and Piers. (Pel predefinida do Kodi)"
 
 msgctxt "Addon Description"
-msgid "Estuary is the default skin for Universal Media Center 17.0 and above. It attempts to be easy for first time Universal Media Center users to understand and use."
-msgstr "Estuary é a pel predefinida para Universal Media Center 17.0 e superior. Esta tenta ser doada de entender e usar polos usuarios recen chegados a Universal Media Center."
+msgid "Estuary is the default skin for Kodi 17.0 and above. It attempts to be easy for first time Kodi users to understand and use."
+msgstr "Estuary é a pel predefinida para Kodi 17.0 e superior. Esta tenta ser doada de entender e usar polos usuarios recen chegados a Kodi."
 
 msgctxt "Addon Disclaimer"
-msgid "Estuary is the default skin for Universal Media Center, removing it may cause issues"
-msgstr "Estuary é a pel predefinida para Universal Media Center e eliminala pode causar problemas."
+msgid "Estuary is the default skin for Kodi, removing it may cause issues"
+msgstr "Estuary é a pel predefinida para Kodi e eliminala pode causar problemas."
 
 msgctxt "#31000"
 msgid "Now playing"
@@ -371,8 +371,8 @@ msgid "Channel options"
 msgstr "Opcións da canle"
 
 msgctxt "#31098"
-msgid "Select your Universal Media Center user profile[CR]to login and continue"
-msgstr "Selecciona o teu perfil de usuario do Universal Media Center[CR]para iniciar sesión e continuar"
+msgid "Select your Kodi user profile[CR]to login and continue"
+msgstr "Selecciona o teu perfil de usuario do Kodi[CR]para iniciar sesión e continuar"
 
 #. viewtype name
 msgctxt "#31099"
@@ -462,8 +462,8 @@ msgid "Enter add-on browser"
 msgstr "Introducir buscador de engadidos"
 
 msgctxt "#31119"
-msgid "You do not have any add-ons installed yet. Visit our add-on browser to browse through our collection and improve your Universal Media Center experience."
-msgstr "Non tes aínda ningún complemento instalado. Visita o noso repositorio e busca a través da nosa colección e mellora a túa experiencia en Universal Media Center."
+msgid "You do not have any add-ons installed yet. Visit our add-on browser to browse through our collection and improve your Kodi experience."
+msgstr "Non tes aínda ningún complemento instalado. Visita o noso repositorio e busca a través da nosa colección e mellora a túa experiencia en Kodi."
 
 msgctxt "#31120"
 msgid "You did not set up a weather provider yet. In order to view weather information, choose a weather provider and set up your location."
@@ -562,8 +562,8 @@ msgid "Play speed"
 msgstr "Velocidade de reprodución"
 
 msgctxt "#31143"
-msgid "You did not set up PVR yet. In order to use PVR, choose a PVR client addon and configure it. Please visit http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/PVR to learn more."
-msgstr "Aínda non configuraches un PVR. Para usalo, selecciona un complemento cliente de PVR e configúrao. Por favor, visita http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/PVR para saber máis."
+msgid "You did not set up PVR yet. In order to use PVR, choose a PVR client addon and configure it. Please visit http://kodi.wiki/view/PVR to learn more."
+msgstr "Aínda non configuraches un PVR. Para usalo, selecciona un complemento cliente de PVR e configúrao. Por favor, visita http://kodi.wiki/view/PVR para saber máis."
 
 msgctxt "#31144"
 msgid "Enter add-on browser"

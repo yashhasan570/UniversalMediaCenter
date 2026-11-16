@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2017-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -15,7 +15,7 @@ void COSScreenSaverOSX::Inhibit()
   // see Technical Q&A QA1340
   if (m_assertionID == 0)
   {
-    CFStringRef reasonForActivity= CFSTR(" requested disable system screen saver");
+    CFStringRef reasonForActivity= CFSTR("XBMC requested disable system screen saver");
     IOPMAssertionCreateWithName(kIOPMAssertionTypeNoDisplaySleep,
       kIOPMAssertionLevelOn, reasonForActivity, &m_assertionID);
   }

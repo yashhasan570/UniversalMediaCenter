@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -22,13 +22,13 @@ class TestGameClientDiscModel : public testing::Test
 protected:
   std::string CreateDisc()
   {
-    XFILE::CFile* file = _CREATETEMPFILE(".chd");
+    XFILE::CFile* file = XBMC_CREATETEMPFILE(".chd");
     EXPECT_NE(file, nullptr);
     if (!file)
       return {};
     file->Close();
     m_files.push_back(file);
-    return _TEMPFILEPATH(file);
+    return XBMC_TEMPFILEPATH(file);
   }
 
   std::string CreateDiscWithSameName(const std::string& path)
@@ -54,7 +54,7 @@ protected:
       EXPECT_TRUE(XFILE::CDirectory::Remove(directory));
     }
     for (XFILE::CFile* file : m_files)
-      _DELETETEMPFILE(file);
+      XBMC_DELETETEMPFILE(file);
   }
 
 private:

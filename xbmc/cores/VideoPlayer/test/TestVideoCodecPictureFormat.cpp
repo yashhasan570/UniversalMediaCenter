@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -125,7 +125,7 @@ DecodedPicture DecodeFirstPicture(const std::string& path)
 TEST(TestVideoCodecPictureFormat, SquarePixelsAreDisplayedAtThePicturesOwnSize)
 {
   const DecodedPicture picture{DecodeFirstPicture(
-      _REF_FILE_PATH("/cores/VideoPlayer/test/testdata/h264_8bit_322x240.mkv"))};
+      XBMC_REF_FILE_PATH("xbmc/cores/VideoPlayer/test/testdata/h264_8bit_322x240.mkv"))};
 
   ASSERT_TRUE(picture.decoded) << "the 322x240 clip did not decode at all";
   EXPECT_EQ(322u, picture.displayWidth);
@@ -136,7 +136,7 @@ TEST(TestVideoCodecPictureFormat, SquarePixelsAreDisplayedAtThePicturesOwnSize)
 TEST(TestVideoCodecPictureFormat, WidePixelsKeepTheWidthAndReduceTheHeight)
 {
   const DecodedPicture picture{DecodeFirstPicture(
-      _REF_FILE_PATH("/cores/VideoPlayer/test/testdata/h264_8bit_322x244_sar_2_1.mkv"))};
+      XBMC_REF_FILE_PATH("xbmc/cores/VideoPlayer/test/testdata/h264_8bit_322x244_sar_2_1.mkv"))};
 
   ASSERT_TRUE(picture.decoded) << "the 322x244 clip did not decode at all";
   EXPECT_EQ(322u, picture.displayWidth);
@@ -147,7 +147,7 @@ TEST(TestVideoCodecPictureFormat, WidePixelsKeepTheWidthAndReduceTheHeight)
 TEST(TestVideoCodecPictureFormat, AV1ReportsItsPixelFormatAndBitDepth)
 {
   const DecodedPicture picture{DecodeFirstPicture(
-      _REF_FILE_PATH("/cores/VideoPlayer/test/testdata/av1_10bit_320x240.mkv"))};
+      XBMC_REF_FILE_PATH("xbmc/cores/VideoPlayer/test/testdata/av1_10bit_320x240.mkv"))};
 
   ASSERT_TRUE(picture.decoded) << "the AV1 clip did not decode at all";
   EXPECT_NE(AV_PIX_FMT_NONE, picture.pixelFormat);
@@ -159,7 +159,7 @@ TEST(TestVideoCodecPictureFormat, AV1ReportsItsPixelFormatAndBitDepth)
 TEST(TestVideoCodecPictureFormat, H264ReportsItsPixelFormatAndBitDepth)
 {
   const DecodedPicture picture{DecodeFirstPicture(
-      _REF_FILE_PATH("/cores/VideoPlayer/test/testdata/h264_8bit_320x240.mkv"))};
+      XBMC_REF_FILE_PATH("xbmc/cores/VideoPlayer/test/testdata/h264_8bit_320x240.mkv"))};
 
   ASSERT_TRUE(picture.decoded) << "the H.264 clip did not decode at all";
   EXPECT_NE(AV_PIX_FMT_NONE, picture.pixelFormat);

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -21,33 +21,33 @@ namespace ADDON
 
 void Interface_GUIControlSpin::Init(AddonGlobalInterface* addonInterface)
 {
-  addonInterface->toUniversal Media Center->->control_spin = new AddonToUniversal Media CenterFuncTable__control_spin();
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_spin = new AddonToUniversal Media CenterFuncTable_universalmediacenter_gui_control_spin();
 
-  addonInterface->toUniversal Media Center->->control_spin->set_visible = set_visible;
-  addonInterface->toUniversal Media Center->->control_spin->set_enabled = set_enabled;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_spin->set_visible = set_visible;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_spin->set_enabled = set_enabled;
 
-  addonInterface->toUniversal Media Center->->control_spin->set_text = set_text;
-  addonInterface->toUniversal Media Center->->control_spin->reset = reset;
-  addonInterface->toUniversal Media Center->->control_spin->set_type = set_type;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_spin->set_text = set_text;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_spin->reset = reset;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_spin->set_type = set_type;
 
-  addonInterface->toUniversal Media Center->->control_spin->add_string_label = add_string_label;
-  addonInterface->toUniversal Media Center->->control_spin->set_string_value = set_string_value;
-  addonInterface->toUniversal Media Center->->control_spin->get_string_value = get_string_value;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_spin->add_string_label = add_string_label;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_spin->set_string_value = set_string_value;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_spin->get_string_value = get_string_value;
 
-  addonInterface->toUniversal Media Center->->control_spin->add_int_label = add_int_label;
-  addonInterface->toUniversal Media Center->->control_spin->set_int_range = set_int_range;
-  addonInterface->toUniversal Media Center->->control_spin->set_int_value = set_int_value;
-  addonInterface->toUniversal Media Center->->control_spin->get_int_value = get_int_value;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_spin->add_int_label = add_int_label;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_spin->set_int_range = set_int_range;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_spin->set_int_value = set_int_value;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_spin->get_int_value = get_int_value;
 
-  addonInterface->toUniversal Media Center->->control_spin->set_float_range = set_float_range;
-  addonInterface->toUniversal Media Center->->control_spin->set_float_value = set_float_value;
-  addonInterface->toUniversal Media Center->->control_spin->get_float_value = get_float_value;
-  addonInterface->toUniversal Media Center->->control_spin->set_float_interval = set_float_interval;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_spin->set_float_range = set_float_range;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_spin->set_float_value = set_float_value;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_spin->get_float_value = get_float_value;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_spin->set_float_interval = set_float_interval;
 }
 
 void Interface_GUIControlSpin::DeInit(AddonGlobalInterface* addonInterface)
 {
-  delete addonInterface->toUniversal Media Center->->control_spin;
+  delete addonInterface->toUniversal Media Center->universalmediacenter_gui->control_spin;
 }
 
 void Interface_GUIControlSpin::set_visible(UNIVERSALMEDIA_HANDLE universalmediacenterBase,

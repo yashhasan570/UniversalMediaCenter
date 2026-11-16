@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2011-2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -526,7 +526,7 @@ bool CAddonInstaller::InstallFromZip(const std::string &path)
           24045,
           StringUtils::Format(
               CServiceBroker::GetResourcesComponent().GetLocalizeStrings().Get(24143), path),
-          "special:///media/icon256x256.png", EventLevel::Error));
+          "special://xbmc/media/icon256x256.png", EventLevel::Error));
 
     CLog::Log(LOGERROR, "CAddonInstaller: installing addon failed '{}' - item count: {}{}",
               CURL::GetRedacted(path), items.Size(),
@@ -546,7 +546,7 @@ bool CAddonInstaller::InstallFromZip(const std::string &path)
         24045,
         StringUtils::Format(CServiceBroker::GetResourcesComponent().GetLocalizeStrings().Get(24143),
                             path),
-        "special:///media/icon256x256.png", EventLevel::Error));
+        "special://xbmc/media/icon256x256.png", EventLevel::Error));
   return false;
 }
 
@@ -1108,7 +1108,7 @@ bool CAddonInstallJob::Install(const std::string &installFrom, const RepositoryP
   // The first thing we do is install dependencies
   for (auto it = deps.begin(); it != deps.end(); ++it)
   {
-    if (it->id != ".metadata")
+    if (it->id != "xbmc.metadata")
     {
       const std::string &addonID = it->id;
       const CAddonVersion& versionMin = it->versionMin;

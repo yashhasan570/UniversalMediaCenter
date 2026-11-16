@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -13,7 +13,7 @@
 #include "addons/interfaces/AddonBase.h"
 #include "addons/universalmediacenter-dev-kit/include/universalmediacenter/platform/android/System.h"
 
-#include "platform/android/activity/App.h"
+#include "platform/android/activity/XBMCApp.h"
 
 static AddonToUniversal Media CenterFuncTable_android_system function_table;
 
@@ -40,12 +40,12 @@ void* Interface_Android::Get(const std::string &name, const std::string &version
 
 void* Interface_Android::get_jni_env()
 {
-  return _jnienv();
+  return xbmc_jnienv();
 }
 
 int Interface_Android::get_sdk_version()
 {
-  return CApp::Get().GetSDKVersion();
+  return CXBMCApp::Get().GetSDKVersion();
 }
 
 const char *Interface_Android::get_class_name()

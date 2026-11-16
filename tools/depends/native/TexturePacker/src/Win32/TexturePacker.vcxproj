@@ -58,7 +58,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>.;..;..\decoder;..\..\..\..\..\..\;..\..\..\..\..\..\project\BuildDependencies\win32\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;..;..\decoder;..\..\..\..\..\..\xbmc;..\..\..\..\..\..\project\BuildDependencies\win32\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;TARGET_WINDOWS;_ITERATOR_DEBUG_LEVEL=0;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -83,7 +83,7 @@
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>.;..;..\decoder;..\..\..\..\..\..\;..\..\..\..\..\..\project\BuildDependencies\win32\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;..;..\decoder;..\..\..\..\..\..\xbmc;..\..\..\..\..\..\project\BuildDependencies\win32\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;TARGET_WINDOWS;_ITERATOR_DEBUG_LEVEL=0;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -114,7 +114,7 @@
     <ClCompile Include="..\md5.cpp" />
     <ClCompile Include="..\TexturePacker.cpp" />
     <ClCompile Include="dirent.c" />
-    <ClCompile Include="..\..\..\..\..\..\\guilib\XBTF.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\xbmc\guilib\XBTF.cpp" />
     <ClCompile Include="..\XBTFWriter.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -128,7 +128,7 @@
     <ClInclude Include="..\rgbaimage.h" />
     <ClInclude Include="dirent.h" />
     <ClInclude Include="..\md5.h" />
-    <ClInclude Include="..\..\..\..\..\..\\guilib\XBTF.h" />
+    <ClInclude Include="..\..\..\..\..\..\xbmc\guilib\XBTF.h" />
     <ClInclude Include="..\XBTFWriter.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -96,20 +96,20 @@ private:
 
 TEST_F(TestWindowGetControl, ButtonWrapsAsControlButton)
 {
-  Addon::gui::Window window(WINDOW_ID);
+  XBMCAddon::xbmcgui::Window window(WINDOW_ID);
 
-  Addon::gui::Control* control = nullptr;
+  XBMCAddon::xbmcgui::Control* control = nullptr;
   ASSERT_NO_THROW(control = window.getControl(BUTTON_ID));
   ASSERT_NE(control, nullptr);
-  EXPECT_NE(dynamic_cast<Addon::gui::ControlButton*>(control), nullptr);
+  EXPECT_NE(dynamic_cast<XBMCAddon::xbmcgui::ControlButton*>(control), nullptr);
 }
 
 TEST_F(TestWindowGetControl, ToggleButtonWrapsAsControlButton)
 {
-  Addon::gui::Window window(WINDOW_ID);
+  XBMCAddon::xbmcgui::Window window(WINDOW_ID);
 
-  Addon::gui::Control* control = nullptr;
+  XBMCAddon::xbmcgui::Control* control = nullptr;
   ASSERT_NO_THROW(control = window.getControl(TOGGLE_ID));
   ASSERT_NE(control, nullptr);
-  EXPECT_NE(dynamic_cast<Addon::gui::ControlButton*>(control), nullptr);
+  EXPECT_NE(dynamic_cast<XBMCAddon::xbmcgui::ControlButton*>(control), nullptr);
 }

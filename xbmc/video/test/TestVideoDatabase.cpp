@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -32,7 +32,7 @@
 #include "utils/StreamDetails.h"
 #include "utils/URIUtils.h"
 #include "utils/Variant.h"
-#include "utils/TinyXML.h"
+#include "utils/XBMCTinyXML.h"
 #include "utils/XMLUtils.h"
 #include "video/Bookmark.h"
 #include "video/VideoDatabase.h"
@@ -775,7 +775,7 @@ TEST_F(TestVideoDatabase, ExportToXMLWritesStoredRuntime)
       exportPath, "universalmediacenter_videodb_" + CDateTime::GetCurrentDateTime().GetAsDBDate())};
   m_db.ExportToXML(exportPath, true);
 
-  CTinyXML doc;
+  CXBMCTinyXML doc;
   const bool loaded{doc.LoadFile(URIUtils::AddFileToFolder(exportRoot, "videodb.xml"))};
   XFILE::CDirectory::RemoveRecursive(exportRoot);
   ASSERT_TRUE(loaded);
@@ -832,7 +832,7 @@ TEST_F(TestVideoDatabase, ExportToSeparateFilesKeepsADiscsEntriesTogether)
 
   m_db.ExportToXML(root, false);
 
-  CTinyXML doc;
+  CXBMCTinyXML doc;
   const bool loaded{doc.LoadFile(URIUtils::AddFileToFolder(bdmv, "index.nfo"))};
   std::vector<int> playlists;
   for (const TiXmlElement* movie{loaded ? doc.RootElement()->FirstChildElement("movie") : nullptr};
@@ -2378,7 +2378,7 @@ TEST_F(TestVideoDatabase, ExportToXMLWritesABlurayExtra)
       exportPath, "universalmediacenter_videodb_" + CDateTime::GetCurrentDateTime().GetAsDBDate())};
   m_db.ExportToXML(exportPath, true);
 
-  CTinyXML doc;
+  CXBMCTinyXML doc;
   const bool loaded{doc.LoadFile(URIUtils::AddFileToFolder(exportRoot, "videodb.xml"))};
   XFILE::CDirectory::RemoveRecursive(exportRoot);
   ASSERT_TRUE(loaded);

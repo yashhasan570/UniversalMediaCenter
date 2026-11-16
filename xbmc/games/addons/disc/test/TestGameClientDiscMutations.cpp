@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -13,7 +13,7 @@
 #include "games/addons/disc/GameClientDiscModel.h"
 #include "games/addons/disc/GameClientDiscs.h"
 #include "test/TestUtils.h"
-#include "utils/TinyXML2.h"
+#include "utils/XBMCTinyXML2.h"
 
 #include <cstdlib>
 #include <cstring>
@@ -46,14 +46,14 @@ class TestGameClientDiscMutations : public testing::Test
 protected:
   void SetUp() override
   {
-    CTinyXML2 xml;
+    CXBMCTinyXML2 xml;
     const std::string addonXml =
         R"(<addon id="game.test.discmutations" name="Disc mutation test" version="1.0.0">
       <extension point="universalmediacenter.gameclient" library="test.so">
         <supports_disc_control>true</supports_disc_control>
         <extensions>chd|m3u</extensions>
       </extension>
-      <extension point=".addon.metadata"><platform>all</platform></extension>
+      <extension point="xbmc.addon.metadata"><platform>all</platform></extension>
     </addon>)";
     ASSERT_TRUE(xml.Parse(addonXml));
     const auto info =
@@ -105,17 +105,17 @@ protected:
     { return nullptr; };
     callbacks->FreeString = [](const AddonInstance_Game*, char* value) { free(value); };
 
-    m_playlist.reset(_CREATETEMPFILE(".m3u"));
+    m_playlist.reset(XBMC_CREATETEMPFILE(".m3u"));
     ASSERT_NE(m_playlist, nullptr);
     constexpr char PLAYLIST[] = "/roms/disc1.chd\n/roms/disc2.chd\n";
     ASSERT_EQ(m_playlist->Write(PLAYLIST, sizeof(PLAYLIST) - 1),
               static_cast<ssize_t>(sizeof(PLAYLIST) - 1));
     m_playlist->Close();
-    m_client->Discs().Initialize(_TEMPFILEPATH(m_playlist.get()));
+    m_client->Discs().Initialize(XBMC_TEMPFILEPATH(m_playlist.get()));
     m_client->Discs().RefreshDiscState();
   }
 
-  void TearDown() override { EXPECT_TRUE(_DELETETEMPFILE(m_playlist.release())); }
+  void TearDown() override { EXPECT_TRUE(XBMC_DELETETEMPFILE(m_playlist.release())); }
 
   MutationCore m_core;
   std::unique_ptr<CGameClient> m_client;

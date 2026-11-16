@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2012-2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -22,7 +22,7 @@ class DatabaseSettings;
  \ingroup database
  \brief Database manager class for handling database updating
 
- Ensures that databases used in  are up to date, and if a database can't be
+ Ensures that databases used in XBMC are up to date, and if a database can't be
  opened, ensures we don't continuously try it.
 
  */

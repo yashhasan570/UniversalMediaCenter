@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2015-2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -24,12 +24,12 @@
 
 #include <Python.h>
 
-#define MODULE      ""
+#define MODULE      "xbmc"
 
 #define RUNSCRIPT_PREAMBLE \
   "" \
   "import " MODULE "\n" \
-  "class out:\n" \
+  "class xbmcout:\n" \
   "  def __init__(self, loglevel=" MODULE ".LOGINFO):\n" \
   "    self.ll=loglevel\n" \
   "  def write(self, data):\n" \
@@ -39,8 +39,8 @@
   "  def flush(self):\n" \
   "    " MODULE ".log('.')\n" \
   "import sys\n" \
-  "sys.stdout = out()\n" \
-  "sys.stderr = out(" MODULE ".LOGERROR)\n" \
+  "sys.stdout = xbmcout()\n" \
+  "sys.stderr = xbmcout(" MODULE ".LOGERROR)\n" \
   ""
 
 #define RUNSCRIPT_SETUPTOOLS_HACK \
@@ -70,17 +70,17 @@
 
 extern "C"
 {
-  PyObject* PyInit_(void);
-  PyObject* PyInit_addon(void);
-  PyObject* PyInit_wsgi(void);
+  PyObject* PyInit_xbmc(void);
+  PyObject* PyInit_xbmcaddon(void);
+  PyObject* PyInit_xbmcwsgi(void);
 }
 
-// Host-side wrap helpers compiled into the wsgi module
+// Host-side wrap helpers compiled into the xbmcwsgi module
 extern "C"
 {
-  PyObject* Universal Media CenterSwig_wrapWsgiResponse(Addon::wsgi::WsgiResponse* obj, int owned);
-  PyObject* Universal Media CenterSwig_wrapWsgiInputStream(Addon::wsgi::WsgiInputStream* obj, int owned);
-  PyObject* Universal Media CenterSwig_wrapWsgiErrorStream(Addon::wsgi::WsgiErrorStream* obj, int owned);
+  PyObject* UniversalMediaCenterSwig_wrapWsgiResponse(XBMCAddon::xbmcwsgi::WsgiResponse* obj, int owned);
+  PyObject* UniversalMediaCenterSwig_wrapWsgiInputStream(XBMCAddon::xbmcwsgi::WsgiInputStream* obj, int owned);
+  PyObject* UniversalMediaCenterSwig_wrapWsgiErrorStream(XBMCAddon::xbmcwsgi::WsgiErrorStream* obj, int owned);
 }
 
 namespace
@@ -88,9 +88,9 @@ namespace
 // clang-format off
 const _inittab PythonModules[] =
 {
-  { "",           PyInit_ },
-  { "addon",      PyInit_addon },
-  { "wsgi",       PyInit_wsgi },
+  { "xbmc",           PyInit_xbmc },
+  { "xbmcaddon",      PyInit_xbmcaddon },
+  { "xbmcwsgi",       PyInit_xbmcwsgi },
   { nullptr,          nullptr }
 };
 // clang-format on
@@ -124,7 +124,7 @@ void getPythonString(std::string& buf,
       return;
     }
   }
-  throw Addon::WrongTypeException("argument \"%s\" for \"%s\" must be a string", argumentName,
+  throw XBMCAddon::WrongTypeException("argument \"%s\" for \"%s\" must be a string", argumentName,
                                       methodname);
 }
 } // namespace
@@ -224,7 +224,7 @@ void CHTTPPythonWsgiInvoker::executeScript(FILE* fp, const std::string& script, 
   }
 
   // prepare the WsgiResponse object
-  m_wsgiResponse = new Addon::wsgi::WsgiResponse();
+  m_wsgiResponse = new XBMCAddon::xbmcwsgi::WsgiResponse();
   if (m_wsgiResponse == NULL)
   {
     logger->error("failed to create WsgiResponse object");
@@ -234,7 +234,7 @@ void CHTTPPythonWsgiInvoker::executeScript(FILE* fp, const std::string& script, 
   try
   {
     // prepare the start_response callable; the invoker owns m_wsgiResponse
-    pyStart_response = Universal Media CenterSwig_wrapWsgiResponse(m_wsgiResponse, 0);
+    pyStart_response = UniversalMediaCenterSwig_wrapWsgiResponse(m_wsgiResponse, 0);
 
     // create the (CGI) environment dictionary
     cgiEnvironment = createCgiEnvironment(m_request, m_addon);
@@ -250,7 +250,7 @@ void CHTTPPythonWsgiInvoker::executeScript(FILE* fp, const std::string& script, 
     // add the WSGI-specific environment variables
     addWsgiEnvironment(m_request, pyEnviron);
   }
-  catch (const Addon::WrongTypeException& e)
+  catch (const XBMCAddon::WrongTypeException& e)
   {
     logger->error("failed to prepare WsgiResponse object with wrong type exception: {}",
                   e.GetExMessage());
@@ -297,7 +297,7 @@ void CHTTPPythonWsgiInvoker::executeScript(FILE* fp, const std::string& script, 
     {
       getPythonString(result, pyIterResult, "result", "handle_request");
     }
-    catch (const Addon::WrongTypeException& e)
+    catch (const XBMCAddon::WrongTypeException& e)
     {
       logger->error("failed to parse result iterable object with wrong type exception: {}",
                     e.GetExMessage());
@@ -452,25 +452,25 @@ void CHTTPPythonWsgiInvoker::addWsgiEnvironment(HTTPPythonRequest* request, void
   }
   {
     // wsgi.input
-    Addon::wsgi::WsgiInputStream* wsgiInputStream = new Addon::wsgi::WsgiInputStream();
+    XBMCAddon::xbmcwsgi::WsgiInputStream* wsgiInputStream = new XBMCAddon::xbmcwsgi::WsgiInputStream();
     if (request != NULL)
       wsgiInputStream->SetRequest(request);
 
     // the python wrapper holds the only reference and Releases on dealloc
     wsgiInputStream->Acquire();
-    PyObject* pyWsgiInputStream = Universal Media CenterSwig_wrapWsgiInputStream(wsgiInputStream, 1);
+    PyObject* pyWsgiInputStream = UniversalMediaCenterSwig_wrapWsgiInputStream(wsgiInputStream, 1);
     PyDict_SetItemString(pyEnviron, "wsgi.input", pyWsgiInputStream);
     Py_DECREF(pyWsgiInputStream);
   }
   {
     // wsgi.errors
-    Addon::wsgi::WsgiErrorStream* wsgiErrorStream = new Addon::wsgi::WsgiErrorStream();
+    XBMCAddon::xbmcwsgi::WsgiErrorStream* wsgiErrorStream = new XBMCAddon::xbmcwsgi::WsgiErrorStream();
     if (request != NULL)
       wsgiErrorStream->SetRequest(request);
 
     // the python wrapper holds the only reference and Releases on dealloc
     wsgiErrorStream->Acquire();
-    PyObject* pyWsgiErrorStream = Universal Media CenterSwig_wrapWsgiErrorStream(wsgiErrorStream, 1);
+    PyObject* pyWsgiErrorStream = UniversalMediaCenterSwig_wrapWsgiErrorStream(wsgiErrorStream, 1);
     PyDict_SetItemString(pyEnviron, "wsgi.errors", pyWsgiErrorStream);
     Py_DECREF(pyWsgiErrorStream);
   }

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -12,9 +12,9 @@
 #include "utils/log.h"
 
 #ifndef SWIG
-namespace Addon
+namespace XBMCAddon
 {
-  COMMONS_STANDARD_EXCEPTION(WrongTypeException);
+  XBMCCOMMONS_STANDARD_EXCEPTION(WrongTypeException);
 
   /**
    * UnimplementedException Can be used in places like the
@@ -40,7 +40,7 @@ namespace Addon
   {
   public:
     inline UnhandledException(const UnhandledException& other) = default;
-    inline UnhandledException(const char* _message,...) : Exception("UnhandledException") { COMMONS_COPYVARARGS(_message); }
+    inline UnhandledException(const char* _message,...) : Exception("UnhandledException") { XBMCCOMMONS_COPYVARARGS(_message); }
   };
 }
 #endif

@@ -18,7 +18,7 @@ else
     CXXFLAGS += -std=c++17
     PLATFORM = native
     TARBALLS_LOCATION = $(ROOT_DIR)
-    BASE_URL ?= https://mirrors.github.com/yashhasan570/UniversalMediaCenter/build-deps/sources
+    BASE_URL ?= https://mirrors.Universal Media Center.tv/build-deps/sources
     RETRIEVE_TOOL := curl
     RETRIEVE_TOOL_FLAGS := -LsS --create-dirs --retry 10 --retry-connrefused -o
     ARCHIVE_TOOL := tar
@@ -41,7 +41,7 @@ all: .installed-$(PLATFORM)
 .configured-$(PLATFORM): $(DEPS) | $(TARBALLS_LOCATION)/$(ARCHIVE).$(HASH_TYPE)
 ifeq ($(PREFIX),)
 	@echo
-	@echo "ERROR: please set PREFIX to the universalmediacenter install path e.g. make PREFIX=/usr/local"
+	@echo "ERROR: please set PREFIX to the Universal Media Center install path e.g. make PREFIX=/usr/local"
 	@exit 1
 endif
 	rm -rf $(PLATFORM); mkdir -p $(PLATFORM)/build

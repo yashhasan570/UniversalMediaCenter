@@ -1,6 +1,6 @@
 //
-//  Copyright (C) 2018-2026 Team Universal Media Center
-//  This file is part of Universal Media Center - https://Universal Media Center.tv
+//  Copyright (C) 2018-2026 Team Kodi
+//  This file is part of Kodi - https://kodi.tv
 //
 //  SPDX-License-Identifier: MIT
 //  See LICENSES/README.md for more information.
@@ -8,7 +8,7 @@
 
 include "video.fbs";
 
-namespace UNIVERSAL MEDIA CENTER.RETRO.SAVESTATE;
+namespace KODI.RETRO.SAVESTATE;
 
 // Savestate schema
 // Version 6

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2020 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -129,13 +129,13 @@ void PERIPHERALS::CPeripheralBusGCController::SetScanResults(
 }
 
 void PERIPHERALS::CPeripheralBusGCController::GetEvents(
-    std::vector<addon::PeripheralEvent>& events)
+    std::vector<universalmediacenter::addon::PeripheralEvent>& events)
 {
   std::unique_lock lock(m_critSectionStates);
-  std::vector<addon::PeripheralEvent> digitalEvents;
+  std::vector<universalmediacenter::addon::PeripheralEvent> digitalEvents;
   digitalEvents = [m_peripheralGCController->callbackClass GetButtonEvents];
 
-  std::vector<addon::PeripheralEvent> axisEvents;
+  std::vector<universalmediacenter::addon::PeripheralEvent> axisEvents;
   axisEvents = [m_peripheralGCController->callbackClass GetAxisEvents];
 
   events.reserve(digitalEvents.size() + axisEvents.size()); // preallocate memory
@@ -161,7 +161,7 @@ bool PERIPHERALS::CPeripheralBusGCController::GetDeviceId(const std::string& dev
 
 void PERIPHERALS::CPeripheralBusGCController::ProcessEvents()
 {
-  std::vector<addon::PeripheralEvent> events;
+  std::vector<universalmediacenter::addon::PeripheralEvent> events;
   {
     std::unique_lock lock(m_critSectionStates);
 

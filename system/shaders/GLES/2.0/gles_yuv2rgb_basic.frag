@@ -1,6 +1,6 @@
 /*
- *      Copyright (C) 2010-2013 Team 
- *      http://github.com/yashhasan570/UniversalMediaCenter
+ *      Copyright (C) 2010-2013 Team XBMC
+ *      http://xbmc.org
  *
  *  This Program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -13,7 +13,7 @@
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with ; see the file COPYING.  If not, see
+ *  along with XBMC; see the file COPYING.  If not, see
  *  <http://www.gnu.org/licenses/>.
  *
  */
@@ -43,28 +43,28 @@ void main()
   vec4 rgb;
   vec4 yuv;
 
-#if defined(_YV12) || defined(_NV12)
+#if defined(XBMC_YV12) || defined(XBMC_NV12)
 
   yuv = vec4(texture2D(m_sampY, m_cordY).r,
              texture2D(m_sampU, m_cordU).g,
              texture2D(m_sampV, m_cordV).a,
              1.0);
 
-#elif defined(_YV12_HI)
+#elif defined(XBMC_YV12_HI)
 
   yuv = vec4(texture2D(m_sampY, m_cordY).r,
              texture2D(m_sampU, m_cordU).r,
              texture2D(m_sampV, m_cordV).r,
              1.0);
 
-#elif defined(_NV12_RRG)
+#elif defined(XBMC_NV12_RRG)
 
   yuv = vec4(texture2D(m_sampY, m_cordY).r,
              texture2D(m_sampU, m_cordU).r,
              texture2D(m_sampV, m_cordV).g,
              1.0);
 
-#elif defined(_YUY2) || defined(_UYVY)
+#elif defined(XBMC_YUY2) || defined(XBMC_UYVY)
 
   vec2 stepxy = m_step;
   vec2 pos    = m_cordY;
@@ -79,7 +79,7 @@ void main()
   /* each pixel has two Y subpixels and one UV subpixel
      YUV  Y  YUV
      check if we're left or right of the middle Y subpixel and interpolate accordingly*/
-#ifdef _YUY2 //BGRA = YUYV
+#ifdef XBMC_YUY2 //BGRA = YUYV
   float leftY   = mix(c1.b, c1.r, f.x * 2.0);
   float rightY  = mix(c1.r, c2.b, f.x * 2.0 - 1.0);
   vec2  outUV   = mix(c1.ga, c2.ga, f.x);
@@ -87,13 +87,13 @@ void main()
   float leftY   = mix(c1.g, c1.a, f.x * 2.0);
   float rightY  = mix(c1.a, c2.g, f.x * 2.0 - 1.0);
   vec2  outUV   = mix(c1.br, c2.br, f.x);
-#endif //_YUY2
+#endif //XBMC_YUY2
 
   float outY = mix(leftY, rightY, step(0.5, f.x));
 
   yuv = vec4(outY, outUV, 1.0);
 
-#elif defined(_Y210)
+#elif defined(XBMC_Y210)
 
   // Packed 4:2:2 in 16-bit channels (covers Y210 10-bit, Y212 12-bit, Y216
   // 16-bit). Mesa imports DRM_FORMAT_Y210/Y212/Y216 as GL_RGBA16; channels
@@ -114,7 +114,7 @@ void main()
 
   yuv = vec4(outY, outUV, 1.0);
 
-#elif defined(_AYUV)
+#elif defined(XBMC_AYUV)
 
   // Packed 4:4:4 in 8-bit channels (AYUV, XYUV). DRM_FORMAT_AYUV stores
   // bytes V, U, Y, A in memory; EGL imports as GL_RGBA8 so RGBA = V, U, Y,
@@ -122,7 +122,7 @@ void main()
   vec4 t = texture2D(m_sampY, m_cordY);
   yuv = vec4(t.b, t.g, t.r, 1.0);
 
-#elif defined(_Y410)
+#elif defined(XBMC_Y410)
 
   // Packed 4:4:4 10-bit in a 32-bit word (DRM_FORMAT_Y410). EGL imports as
   // GL_RGB10_A2; the format's standard bit layout puts A2 V10 U10 Y10
@@ -130,7 +130,7 @@ void main()
   vec4 t = texture2D(m_sampY, m_cordY);
   yuv = vec4(t.g, t.r, t.b, 1.0);
 
-#elif defined(_Y412)
+#elif defined(XBMC_Y412)
 
   // Packed 4:4:4 in 16-bit channels (Y412 12-bit, Y416 16-bit). EGL imports
   // as GL_RGBA16 with channel order RGBA = U, Y, V, A.
@@ -140,28 +140,28 @@ void main()
 #endif
 
   rgb = m_yuvmat * yuv;
-#if defined(UNIVERSAL MEDIA CENTER_HUESAT_PQ) || defined(UNIVERSAL MEDIA CENTER_HUESAT_HLG)
+#if defined(KODI_HUESAT_PQ) || defined(KODI_HUESAT_HLG)
   rgb.rgb = hueSaturation(rgb.rgb);
 #endif
   rgb.a = m_alpha;
 
-#if defined(_COL_CONVERSION)
+#if defined(XBMC_COL_CONVERSION)
   rgb.rgb = pow(max(vec3(0), rgb.rgb), vec3(m_gammaSrc));
   rgb.rgb = max(vec3(0), m_primMat * rgb.rgb);
   rgb.rgb = pow(rgb.rgb, vec3(m_gammaDstInv));
 
-#if defined(UNIVERSAL MEDIA CENTER_TONE_MAPPING_REINHARD)
+#if defined(KODI_TONE_MAPPING_REINHARD)
   float luma = dot(rgb.rgb, m_coefsDst);
   rgb.rgb *= reinhard(luma) / luma;
 
-#elif defined(UNIVERSAL MEDIA CENTER_TONE_MAPPING_ACES)
+#elif defined(KODI_TONE_MAPPING_ACES)
   rgb.rgb = inversePQ(rgb.rgb);
   rgb.rgb *= (10000.0 / m_luminance) * (2.0 / m_toneP1);
   rgb.rgb = aces(rgb.rgb);
   rgb.rgb *= (1.24 / m_toneP1);
   rgb.rgb = pow(rgb.rgb, vec3(0.27));
 
-#elif defined(UNIVERSAL MEDIA CENTER_TONE_MAPPING_HABLE)
+#elif defined(KODI_TONE_MAPPING_HABLE)
   rgb.rgb = inversePQ(rgb.rgb);
   rgb.rgb *= m_toneP1;
   float wp = m_luminance / 100.0;
@@ -171,7 +171,7 @@ void main()
 
 #endif
 
-#if defined(UNIVERSAL MEDIA CENTER_GAMMA)
+#if defined(KODI_GAMMA)
   rgb.rgb = pow(clamp((rgb.rgb - m_gammaRange.y) / m_gammaRange.x, 0.0, 1.0), vec3(m_gammaInv)) * m_gammaRange.x + m_gammaRange.y;
 #endif
 

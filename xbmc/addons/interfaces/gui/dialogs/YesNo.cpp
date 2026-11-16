@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -22,19 +22,19 @@ namespace ADDON
 
 void Interface_GUIDialogYesNo::Init(AddonGlobalInterface* addonInterface)
 {
-  addonInterface->toUniversal Media Center->->dialogYesNo = new AddonToUniversal Media CenterFuncTable__dialogYesNo();
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogYesNo = new AddonToUniversal Media CenterFuncTable_universalmediacenter_gui_dialogYesNo();
 
-  addonInterface->toUniversal Media Center->->dialogYesNo->show_and_get_input_single_text =
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogYesNo->show_and_get_input_single_text =
       show_and_get_input_single_text;
-  addonInterface->toUniversal Media Center->->dialogYesNo->show_and_get_input_line_text =
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogYesNo->show_and_get_input_line_text =
       show_and_get_input_line_text;
-  addonInterface->toUniversal Media Center->->dialogYesNo->show_and_get_input_line_button_text =
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogYesNo->show_and_get_input_line_button_text =
       show_and_get_input_line_button_text;
 }
 
 void Interface_GUIDialogYesNo::DeInit(AddonGlobalInterface* addonInterface)
 {
-  delete addonInterface->toUniversal Media Center->->dialogYesNo;
+  delete addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogYesNo;
 }
 
 bool Interface_GUIDialogYesNo::show_and_get_input_single_text(UNIVERSALMEDIA_HANDLE universalmediacenterBase,

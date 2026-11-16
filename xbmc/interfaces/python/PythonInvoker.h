@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2013-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -67,7 +67,7 @@ private:
   std::atomic<int> m_raisingExit{0}; // stop() thread states in this interpreter
   CEvent m_stoppedEvent;
 
-  Addon::AddonClass::Ref<Addon::Python::PythonLanguageHook> m_languageHook;
+  XBMCAddon::AddonClass::Ref<XBMCAddon::Python::PythonLanguageHook> m_languageHook;
 
   static CCriticalSection s_critical;
 

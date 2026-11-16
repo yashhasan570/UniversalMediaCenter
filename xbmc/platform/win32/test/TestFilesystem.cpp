@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -33,10 +33,10 @@ TEST(TestWin32Filesystem, TempFilesPreserveSuffix)
   for (const auto* suffix : {"", ".chd", ".m3u", ".sav"})
   {
     SCOPED_TRACE(suffix);
-    auto* file = _CREATETEMPFILE(suffix);
+    auto* file = XBMC_CREATETEMPFILE(suffix);
     ASSERT_NE(file, nullptr);
-    EXPECT_TRUE(StringUtils::EndsWith(_TEMPFILEPATH(file), suffix));
+    EXPECT_TRUE(StringUtils::EndsWith(XBMC_TEMPFILEPATH(file), suffix));
     EXPECT_EQ(file->Write("test", 4), 4);
-    EXPECT_TRUE(_DELETETEMPFILE(file));
+    EXPECT_TRUE(XBMC_DELETETEMPFILE(file));
   }
 }

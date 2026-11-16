@@ -1,6 +1,6 @@
 ;Application for Windows install script
-;Copyright (C) 2005-2013 Team 
-;http://github.com/yashhasan570/UniversalMediaCenter
+;Copyright (C) 2005-2013 Team XBMC
+;http://xbmc.org
 
 ;--------------------------------
 ;Include Modern UI

@@ -21,7 +21,7 @@
     <ClCompile Include="dirent.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\..\\guilib\XBTF.cpp">
+    <ClCompile Include="..\..\..\..\..\..\xbmc\guilib\XBTF.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\XBTFWriter.cpp">
@@ -59,7 +59,7 @@
     <ClInclude Include="..\md5.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\\guilib\XBTF.h">
+    <ClInclude Include="..\..\..\..\..\..\xbmc\guilib\XBTF.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\XBTFWriter.h">

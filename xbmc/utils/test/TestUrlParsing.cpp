@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2025 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -23,7 +23,7 @@
  *
  * ## Test Data
  * The input and expected output for these tests are stored as JSON files
- * under `/utils/test/testdata/`. As there are many such test files, it
+ * under `xbmc/utils/test/testdata/`. As there are many such test files, it
  * is often easier to regenerate them rather than edit each file manually.
  *
  * To regenerate all test case JSON files, define the following symbol before
@@ -39,7 +39,7 @@
  * directory**.
  *
  * After generation, the new JSON files should be reviewed and copied or moved
- * into the `/utils/test/testdata/` directory before committing them with
+ * into the `xbmc/utils/test/testdata/` directory before committing them with
  * your branch.
  *
  * ## Running the Tests
@@ -61,7 +61,7 @@
  *   no regressions were introduced.
  *
  * @see CURL
- * @see /utils/test/testdata/
+ * @see xbmc/utils/test/testdata/
  */
 
 #include "URL.h"
@@ -722,10 +722,10 @@ class TestURLParseDetails : public testing::Test, public testing::WithParamInter
 
 TEST_P(TestURLParseDetails, DISABLED_RunTest)
 {
-  std::string filename = "/utils/test/testdata/";
+  std::string filename = "xbmc/utils/test/testdata/";
   filename.append(std::to_string(GetParam()));
   filename.append(".json");
-  filename = _REF_FILE_PATH(filename);
+  filename = XBMC_REF_FILE_PATH(filename);
 
   RunParseTest(filename, CreateParamFromJson(filename));
 }

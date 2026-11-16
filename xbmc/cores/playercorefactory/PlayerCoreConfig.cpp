@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2022 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -19,8 +19,11 @@
 #ifdef TARGET_WEBOS
 #include "VideoPlayerWebOS.h"
 #endif
+#ifdef TARGET_WASM
+#include "VideoPlayerWasm.h"
+#endif
 #include "utils/StringUtils.h"
-#include "utils/TinyXML2.h"
+#include "utils/XBMCTinyXML2.h"
 #include "utils/log.h"
 
 #include <utility>
@@ -35,7 +38,7 @@ CPlayerCoreConfig::CPlayerCoreConfig(std::string name,
 {
   if (pConfig)
   {
-    m_config = std::make_unique<CTinyXML2>();
+    m_config = std::make_unique<CXBMCTinyXML2>();
     m_config->InsertEndChild(pConfig->DeepClone(m_config.get()));
     const char* sAudio = pConfig->Attribute("audio");
     const char* sVideo = pConfig->Attribute("video");
@@ -56,6 +59,8 @@ std::shared_ptr<IPlayer> CPlayerCoreConfig::CreatePlayer(IPlayerCallback& callba
   {
 #ifdef TARGET_WEBOS
     player = std::make_shared<CVideoPlayerWebOS>(callback);
+#elif defined(TARGET_WASM)
+    player = std::make_shared<CVideoPlayerWasm>(callback);
 #else
     player = std::make_shared<CVideoPlayer>(callback);
 #endif

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -84,7 +84,7 @@ private:
   std::string m_filename;
   std::string m_args;
   bool m_hideconsole;
-  bool m_hide;
+  bool m_hidexbmc;
   bool m_islauncher;
   bool m_playOneStackItem;
   WARP_CURSOR m_warpcursor;

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2010-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -12,7 +12,7 @@
 #import "IOSScreenManager.h"
 #include "ServiceBroker.h"
 #include "Util.h"
-#import "Controller.h"
+#import "XBMCController.h"
 #include "application/AppEnvironment.h"
 #include "application/AppInboundProtocol.h"
 #include "application/AppParams.h"
@@ -45,7 +45,7 @@
 
 @implementation IOSEAGLView
 @synthesize animating;
-@synthesize Alive;
+@synthesize xbmcAlive;
 @synthesize readyToRun;
 @synthesize pause;
 @synthesize currentScreen;
@@ -142,7 +142,7 @@
     self.context = aContext;
 
     animating = FALSE;
-    Alive = FALSE;
+    xbmcAlive = FALSE;
     pause = FALSE;
     [self setContext:context];
     [self createFramebuffer];
@@ -324,7 +324,7 @@
 	if (animating && context)
 	{
 		animating = FALSE;
-    Alive = FALSE;
+    xbmcAlive = FALSE;
     if (!g_application.m_bStop)
     {
       CServiceBroker::GetAppMessenger()->PostMsg(TMSG_QUIT);
@@ -342,9 +342,9 @@
 {
   @autoreleasepool
   {
-    [[NSThread currentThread] setName:@"_Run"];
+    [[NSThread currentThread] setName:@"XBMC_Run"];
 
-    // set up some  specific relationships
+    // set up some xbmc specific relationships
     readyToRun = true;
 
     // signal we are alive
@@ -396,8 +396,8 @@
     {
       CServiceBroker::GetSettingsComponent()->GetAdvancedSettings()->m_startFullScreen = true;
       CServiceBroker::GetSettingsComponent()->GetAdvancedSettings()->m_canWindowed = false;
-      Alive = TRUE;
-      [g_Controller onXbmcAlive];
+      xbmcAlive = TRUE;
+      [g_xbmcController onXbmcAlive];
       try
       {
         @autoreleasepool
@@ -416,11 +416,11 @@
     // signal we are dead
     [myLock unlockWithCondition:TRUE];
 
-    // grrr,  does not shutdown properly and leaves
+    // grrr, xbmc does not shutdown properly and leaves
     // several classes in an indeterminate state, we must exit and
     // reload Lowtide/AppleTV, boo.
-    [g_Controller enableScreenSaver];
-    [g_Controller enableSystemSleep];
+    [g_xbmcController enableScreenSaver];
+    [g_xbmcController enableSystemSleep];
     exit(0);
   }
 }

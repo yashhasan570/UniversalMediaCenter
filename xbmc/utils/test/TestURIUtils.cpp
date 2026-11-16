@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -1414,7 +1414,7 @@ TEST_F(TestURIUtils, AddFileToFolderMatchingEncodingEncodedFolder)
 {
   // Base folders that report an encoded filename (e.g. WebDAV) must have any raw, human
   // readable segment percent-encoded before being appended, otherwise the resulting URL
-  // ends up with mixed encoding (see /video/VideoInfoScanner.cpp GetMovieSetInfoFolder).
+  // ends up with mixed encoding (see xbmc/video/VideoInfoScanner.cpp GetMovieSetInfoFolder).
   std::string ref = "davs://user:pass@host/Movie%20Set%20Information%20Folder/"
                     "Star%20Wars%20Collection";
   std::string var = URIUtils::AddFileToFolderMatchingEncoding(
@@ -2663,59 +2663,59 @@ std::ostream& operator<<(std::ostream& os, const CURLArchiveConstructionTestData
 const auto ArchiveFileParsingTests = std::array{
     // Zip file tests
     CURLArchiveConstructionTestData{
-        "/utils/test/resources/does_not_exist.zip/universalmediacenter-dev.png",
+        "xbmc/utils/test/resources/does_not_exist.zip/universalmediacenter-dev.png",
         "",
-        "/utils/test/resources/does_not_exist.zip/universalmediacenter-dev.png",
+        "xbmc/utils/test/resources/does_not_exist.zip/universalmediacenter-dev.png",
         "",
         true,
     },
     CURLArchiveConstructionTestData{
-        "/utils/test/resources/zipfile.zip/universalmediacenter-dev.png",
+        "xbmc/utils/test/resources/zipfile.zip/universalmediacenter-dev.png",
         "zip",
         "universalmediacenter-dev.png",
-        "/utils/test/resources/zipfile.zip",
+        "xbmc/utils/test/resources/zipfile.zip",
     },
     CURLArchiveConstructionTestData{
-        "/utils/test/resources/archives_in_zip.zip/does_not_exist.png",
+        "xbmc/utils/test/resources/archives_in_zip.zip/does_not_exist.png",
         "zip",
         "does_not_exist.png",
-        "/utils/test/resources/archives_in_zip.zip",
+        "xbmc/utils/test/resources/archives_in_zip.zip",
     },
     CURLArchiveConstructionTestData{
-        "/utils/test/resources/archives_in_zip.zip/zipfile.zip",
+        "xbmc/utils/test/resources/archives_in_zip.zip/zipfile.zip",
         "zip",
         "zipfile.zip",
-        "/utils/test/resources/archives_in_zip.zip",
+        "xbmc/utils/test/resources/archives_in_zip.zip",
     },
     CURLArchiveConstructionTestData{
-        "/utils/test/resources/archives_in_zip.zip/rarfile.rar",
+        "xbmc/utils/test/resources/archives_in_zip.zip/rarfile.rar",
         "zip",
         "rarfile.rar",
-        "/utils/test/resources/archives_in_zip.zip",
+        "xbmc/utils/test/resources/archives_in_zip.zip",
     },
     CURLArchiveConstructionTestData{
-        "/utils/test/resources/archives_in_zip.zip/zipfile.zip/does_not_exist.png",
+        "xbmc/utils/test/resources/archives_in_zip.zip/zipfile.zip/does_not_exist.png",
         "zip",
         "zipfile.zip/does_not_exist.png",
-        "/utils/test/resources/archives_in_zip.zip",
+        "xbmc/utils/test/resources/archives_in_zip.zip",
     },
     CURLArchiveConstructionTestData{
-        "/utils/test/resources/archives_in_zip.zip/zipfile.zip/universalmediacenter-dev.png",
+        "xbmc/utils/test/resources/archives_in_zip.zip/zipfile.zip/universalmediacenter-dev.png",
         "zip",
         "zipfile.zip/universalmediacenter-dev.png",
-        "/utils/test/resources/archives_in_zip.zip",
+        "xbmc/utils/test/resources/archives_in_zip.zip",
     },
     CURLArchiveConstructionTestData{
-        "/utils/test/resources/archives_in_zip.zip/directory/does_not_exist.png",
+        "xbmc/utils/test/resources/archives_in_zip.zip/directory/does_not_exist.png",
         "zip",
         "directory/does_not_exist.png",
-        "/utils/test/resources/archives_in_zip.zip",
+        "xbmc/utils/test/resources/archives_in_zip.zip",
     },
     CURLArchiveConstructionTestData{
-        "/utils/test/resources/archives_in_zip.zip/directory/universalmediacenter-dev.png",
+        "xbmc/utils/test/resources/archives_in_zip.zip/directory/universalmediacenter-dev.png",
         "zip",
         "directory/universalmediacenter-dev.png",
-        "/utils/test/resources/archives_in_zip.zip",
+        "xbmc/utils/test/resources/archives_in_zip.zip",
     },
 };
 
@@ -2727,19 +2727,19 @@ class ArchiveFileParsingTester : public testing::Test,
 TEST_P(ArchiveFileParsingTester, TestArchiveFileParsingNativeSlashes)
 {
   const auto& param = GetParam();
-  const std::string path = _REF_FILE_PATH(param.input);
+  const std::string path = XBMC_REF_FILE_PATH(param.input);
   const CURL url(path);
 
   EXPECT_EQ(param.protocol, url.GetProtocol());
   if (param.translateFilename)
   {
-    EXPECT_EQ(_REF_FILE_PATH(param.filename), url.GetFileName());
+    EXPECT_EQ(XBMC_REF_FILE_PATH(param.filename), url.GetFileName());
     EXPECT_EQ(param.hostname, CURL::Decode(url.GetHostName()));
   }
   else
   {
     EXPECT_EQ(param.filename, url.GetFileName());
-    EXPECT_EQ(_REF_FILE_PATH(param.hostname), CURL::Decode(url.GetHostName()));
+    EXPECT_EQ(XBMC_REF_FILE_PATH(param.hostname), CURL::Decode(url.GetHostName()));
   }
 }
 

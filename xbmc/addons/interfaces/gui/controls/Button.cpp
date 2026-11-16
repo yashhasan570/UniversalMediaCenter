@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -19,22 +19,22 @@ namespace ADDON
 
 void Interface_GUIControlButton::Init(AddonGlobalInterface* addonInterface)
 {
-  addonInterface->toUniversal Media Center->->control_button =
-      new AddonToUniversal Media CenterFuncTable__control_button();
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_button =
+      new AddonToUniversal Media CenterFuncTable_universalmediacenter_gui_control_button();
 
-  addonInterface->toUniversal Media Center->->control_button->set_visible = set_visible;
-  addonInterface->toUniversal Media Center->->control_button->set_enabled = set_enabled;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_button->set_visible = set_visible;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_button->set_enabled = set_enabled;
 
-  addonInterface->toUniversal Media Center->->control_button->set_label = set_label;
-  addonInterface->toUniversal Media Center->->control_button->get_label = get_label;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_button->set_label = set_label;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_button->get_label = get_label;
 
-  addonInterface->toUniversal Media Center->->control_button->set_label2 = set_label2;
-  addonInterface->toUniversal Media Center->->control_button->get_label2 = get_label2;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_button->set_label2 = set_label2;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_button->get_label2 = get_label2;
 }
 
 void Interface_GUIControlButton::DeInit(AddonGlobalInterface* addonInterface)
 {
-  delete addonInterface->toUniversal Media Center->->control_button;
+  delete addonInterface->toUniversal Media Center->universalmediacenter_gui->control_button;
 }
 
 void Interface_GUIControlButton::set_visible(UNIVERSALMEDIA_HANDLE universalmediacenterBase,

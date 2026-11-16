@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -64,10 +64,10 @@ struct InfoMap
 /// \section modules__infolabels_boolean_conditions_Description Description
 /// Skins can use boolean conditions with the <b>\<visible\></b> tag or with condition
 /// attributes. Scripts can read boolean conditions with
-/// <b>.getCondVisibility(condition)</b>.
+/// <b>xbmc.getCondVisibility(condition)</b>.
 ///
 /// Skins can use infolabels with <b>$INFO[infolabel]</b> or the <b>\<info\></b> tag. Scripts
-/// can read infolabels with <b>.getInfoLabel('infolabel')</b>.
+/// can read infolabels with <b>xbmc.getInfoLabel('infolabel')</b>.
 ///
 /// @todo [docs] Improve the description and create links for functions
 /// @todo [docs] Separate boolean conditions from infolabels
@@ -1914,7 +1914,7 @@ constexpr std::array<InfoMap, 10> weather = {{
 ///     @return Locale-specific information depending on the requested type.
 ///     @param type - Can be one of the following:
 ///       - <b>region</b> The currently selected region name within the selected language ( \link System_Language `System.Language` \endlink).
-///       - <b>iso</b> The country code of the currently selected region as specified in <a href="https://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Language_support#What_is_langinfo.xml">langinfo.xml</a>.
+///       - <b>iso</b> The country code of the currently selected region as specified in <a href="https://universalmediacenter.wiki/view/Language_support#What_is_langinfo.xml">langinfo.xml</a>.
 ///     <p><hr>
 ///     @skinning_v21 **[New Infolabel]** \link System_Locale
 ///     `System.Locale(type)`\endlink
@@ -11209,7 +11209,7 @@ constexpr std::array<InfoMap, 63> slideshow = {{
 ///    - `VideoPlayer.SubChannelNumber`
 ///
 /// <hr>
-/// \subsection modules_rm_infolabels_booleans_v13  v13 (Gotham)
+/// \subsection modules_rm_infolabels_booleans_v13 XBMC v13 (Gotham)
 ///   @skinning_v13 **[Removed Infolabels]** The following infolabels were removed:
 ///    - `Network.SubnetAddress`
 ///

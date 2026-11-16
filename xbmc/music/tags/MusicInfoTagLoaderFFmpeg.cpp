@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -73,7 +73,7 @@ bool CMusicInfoTagLoaderFFmpeg::Load(const std::string& strFileName, CMusicInfoT
   /* ffmpeg supports the return of ID3v2 metadata but has its own naming system
      for some, but not all, of the keys. In particular the key for the conductor
      tag TPE3 is called "performer".
-     See https://github.com//FFmpeg/blob/master/libavformat/id3v2.c#L43
+     See https://github.com/xbmc/FFmpeg/blob/master/libavformat/id3v2.c#L43
      Other keys are retuened using their 4 char name.
      Only single frame values are returned even for v2.4 fomart tags e.g. while
      tagged with multiple TPE1 frames "artist1", "artist2", "artist3" only

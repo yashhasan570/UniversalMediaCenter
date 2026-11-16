@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -40,7 +40,7 @@ std::chrono::milliseconds Elapsed(const std::chrono::steady_clock::time_point st
 }
 
 // Enough of a windowing system for CGUIWindowManager::GetWindow, which takes the graphics context
-// lock. Duplicated from /guilib/test/TestGUIWindowOnAction.cpp rather than shared, to keep this
+// lock. Duplicated from xbmc/guilib/test/TestGUIWindowOnAction.cpp rather than shared, to keep this
 // change to the files it already touches.
 class CTestRenderSystem : public CRenderSystemBase
 {

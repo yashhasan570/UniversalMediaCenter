@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -129,7 +129,7 @@ TEST_F(TestContentGeometryScanner, MeasuringAwayFromPlaybackStartsAndStopsTheSwe
 TEST(TestContentGeometryMeasurement, AnOpenThatFailsAfterACancelStoresNothing)
 {
   const CFileItem unopenable(
-      _REF_FILE_PATH("/cores/VideoPlayer/test/testdata/nonexistent.mp4"), false);
+      XBMC_REF_FILE_PATH("xbmc/cores/VideoPlayer/test/testdata/nonexistent.mp4"), false);
 
   EXPECT_FALSE(
       MeasureContentGeometry(unopenable, {1, 1}, SamplingDepth::Normal, [] { return true; })
@@ -139,7 +139,7 @@ TEST(TestContentGeometryMeasurement, AnOpenThatFailsAfterACancelStoresNothing)
 TEST(TestContentGeometryMeasurement, AFileThatCouldNotBeReadStillStoresARecord)
 {
   const CFileItem unopenable(
-      _REF_FILE_PATH("/cores/VideoPlayer/test/testdata/nonexistent.mp4"), false);
+      XBMC_REF_FILE_PATH("xbmc/cores/VideoPlayer/test/testdata/nonexistent.mp4"), false);
 
   const std::optional<ContentGeometryRecord> record = MeasureContentGeometry(unopenable, {1, 1});
 

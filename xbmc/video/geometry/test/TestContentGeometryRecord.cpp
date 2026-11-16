@@ -1,14 +1,14 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
  */
 
 #include "test/TestUtils.h"
-#include "utils/TinyXML.h"
-#include "utils/TinyXML2.h"
+#include "utils/XBMCTinyXML.h"
+#include "utils/XBMCTinyXML2.h"
 #include "utils/XMLUtils.h"
 #include "video/geometry/ContentGeometryRecord.h"
 #include "video/geometry/test/GeometryTestHelpers.h"
@@ -74,9 +74,9 @@ TEST(TestFileIdentity, AMissingFileHasNoIdentity)
 
 TEST(TestFileIdentity, ARealFileHasOneAndItIsStable)
 {
-  XFILE::CFile* file{_CREATETEMPFILE(".mkv")};
+  XFILE::CFile* file{XBMC_CREATETEMPFILE(".mkv")};
   ASSERT_NE(nullptr, file);
-  const std::string path{_TEMPFILEPATH(file)};
+  const std::string path{XBMC_TEMPFILEPATH(file)};
 
   const FileIdentity identity{GetFileIdentity(path)};
   EXPECT_TRUE(identity.IsKnown());
@@ -84,7 +84,7 @@ TEST(TestFileIdentity, ARealFileHasOneAndItIsStable)
   // Reading it twice must give the same answer.
   EXPECT_TRUE(identity.Matches(GetFileIdentity(path)));
 
-  EXPECT_TRUE(_DELETETEMPFILE(file));
+  EXPECT_TRUE(XBMC_DELETETEMPFILE(file));
 }
 
 TEST(TestContentAspects, RoundTripThroughTheStoredForm)
@@ -137,7 +137,7 @@ TEST(TestContentGeometryRecord, AReadingIsARatioAndVaryingIsMoreThanOne)
 
 TEST(TestContentGeometryRecord, XmlRoundTrip)
 {
-  CTinyXML2 doc;
+  CXBMCTinyXML2 doc;
   ASSERT_TRUE(doc.Parse(std::string{"<movie/>"}));
   SaveContentGeometryXML(*doc.RootElement(), ScopeRecord({2.40f, 1.78f}));
 
@@ -155,7 +155,7 @@ TEST(TestContentGeometryRecord, XmlRoundTrip)
 
 TEST(TestContentGeometryRecord, XmlWithoutReading)
 {
-  CTinyXML2 doc;
+  CXBMCTinyXML2 doc;
   ASSERT_TRUE(doc.Parse(std::string{"<movie/>"}));
   SaveContentGeometryXML(*doc.RootElement(), ContentGeometryRecord{});
   EXPECT_EQ(nullptr, doc.RootElement()->FirstChild());
@@ -164,7 +164,7 @@ TEST(TestContentGeometryRecord, XmlWithoutReading)
 
 TEST(TestContentGeometryRecord, XmlSkipsInvalidAspects)
 {
-  CTinyXML2 doc;
+  CXBMCTinyXML2 doc;
   ASSERT_TRUE(doc.Parse(std::string{"<movie><contentgeometry><aspect/><aspect>abc</aspect>"
                                     "<aspect>1.85</aspect></contentgeometry></movie>"}));
 
@@ -177,7 +177,7 @@ TEST(TestContentGeometryRecord, XmlSkipsInvalidAspects)
 //! The TinyXML form, which CVideoInfoTag loads and saves with.
 TEST(TestContentGeometryRecord, TinyXmlRoundTrip)
 {
-  CTinyXML doc;
+  CXBMCTinyXML doc;
   ASSERT_TRUE(doc.Parse(std::string{"<movie/>"}));
   SaveContentGeometryXML(*doc.RootElement(), ScopeRecord({2.40f, 1.78f}));
 

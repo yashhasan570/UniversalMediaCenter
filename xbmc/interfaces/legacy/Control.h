@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -25,13 +25,13 @@
 #define CONTROL_TEXT_OFFSET_X 10
 #define CONTROL_TEXT_OFFSET_Y 2
 
-namespace Addon
+namespace XBMCAddon
 {
-  namespace gui
+  namespace xbmcgui
   {
 
-    /// \defgroup python_gui_control Control
-    /// \ingroup python_gui
+    /// \defgroup python_xbmcgui_control Control
+    /// \ingroup python_xbmcgui
     /// @{
     /// @brief **Code based skin access.**
     ///
@@ -74,7 +74,7 @@ namespace Addon
       virtual bool canAcceptMessages(int actionId) { return false; }
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_gui_control
+      /// \ingroup python_xbmcgui_control
       /// @brief \python_func{ getId() }
       /// Returns the control's current id as an integer.
       ///
@@ -101,7 +101,7 @@ namespace Addon
 
       // hack this because it returns a tuple
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_gui_control
+      /// \ingroup python_xbmcgui_control
       /// @brief \python_func{ getPosition() }
       /// Returns the control's current position as a x,y integer tuple.
       ///
@@ -123,7 +123,7 @@ namespace Addon
 #endif
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_gui_control
+      /// \ingroup python_xbmcgui_control
       /// @brief \python_func{ getX() }
       /// Returns the control's current X position.
       ///
@@ -145,7 +145,7 @@ namespace Addon
 #endif
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_gui_control
+      /// \ingroup python_xbmcgui_control
       /// @brief \python_func{ getY() }
       /// Returns the control's current Y position.
       ///
@@ -167,7 +167,7 @@ namespace Addon
 #endif
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_gui_control
+      /// \ingroup python_xbmcgui_control
       /// @brief \python_func{ getHeight() }
       /// Returns the control's current height as an integer.
       ///
@@ -190,7 +190,7 @@ namespace Addon
 
       // getWidth() Method
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_gui_control
+      /// \ingroup python_xbmcgui_control
       /// @brief \python_func{ getWidth() }
       /// Returns the control's current width as an integer.
       ///
@@ -213,7 +213,7 @@ namespace Addon
 
       // setEnabled() Method
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_gui_control
+      /// \ingroup python_xbmcgui_control
       /// @brief \python_func{ setEnabled(enabled) }
       /// Sets the control's enabled/disabled state.
       ///
@@ -236,10 +236,10 @@ namespace Addon
 
       // setVisible() Method
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_gui_control
+      /// \ingroup python_xbmcgui_control
       /// @brief \python_func{ setVisible(visible) }
       /// Sets the control's visible/hidden state.
-      /// \anchor python_gui_control_setVisible
+      /// \anchor python_xbmcgui_control_setVisible
       ///
       /// @param visible            bool - True=visible / False=hidden.
       ///
@@ -263,11 +263,11 @@ namespace Addon
 
       // isVisible() Method
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_gui_control
+      /// \ingroup python_xbmcgui_control
       /// @brief \python_func{ isVisible() }
       /// Get the control's visible/hidden state with respect to the container/window
       ///
-      /// @note If a given control is set visible (c.f. \ref python_gui_control_setVisible "setVisible()"
+      /// @note If a given control is set visible (c.f. \ref python_xbmcgui_control_setVisible "setVisible()"
       /// but was not yet added to a window, this method will return `False` (the control is not visible yet since
       /// it was not added to the window).
       ///
@@ -288,13 +288,13 @@ namespace Addon
 
       // setVisibleCondition() Method
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_gui_control
+      /// \ingroup python_xbmcgui_control
       /// @brief \python_func{ setVisibleCondition(visible[,allowHiddenFocus]) }
       /// Sets the control's visible condition.
       ///
       /// Allows Universal Media Center to control the visible status of the control.
       ///
-      /// [List of Conditions](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/List_of_Boolean_Conditions)
+      /// [List of Conditions](http://universalmediacenter.wiki/view/List_of_Boolean_Conditions)
       ///
       /// @param visible            string - Visible condition
       /// @param allowHiddenFocus   [opt] bool - True=gains focus even if
@@ -318,13 +318,13 @@ namespace Addon
 
       // setEnableCondition() Method
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_gui_control
+      /// \ingroup python_xbmcgui_control
       /// @brief \python_func{ setEnableCondition(enable) }
       /// Sets the control's enabled condition.
       ///
       /// Allows Universal Media Center to control the enabled status of the control.
       ///
-      /// [List of Conditions](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/List_of_Boolean_Conditions)
+      /// [List of Conditions](http://universalmediacenter.wiki/view/List_of_Boolean_Conditions)
       ///
       /// @param enable             string - Enable condition.
       ///
@@ -346,14 +346,14 @@ namespace Addon
 
       // setAnimations() Method
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_gui_control
+      /// \ingroup python_xbmcgui_control
       /// @brief \python_func{ setAnimations([(event, attr,)*]) }
       /// Sets the control's animations.
       ///
       /// <b>[(event,attr,)*]</b>: list - A list of tuples consisting of event
       /// and attributes pairs.
       ///
-      /// [Animating your skin](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Animating_Your_Skin)
+      /// [Animating your skin](http://universalmediacenter.wiki/view/Animating_Your_Skin)
       ///
       /// @param event              string - The event to animate.
       /// @param attr               string - The whole attribute string
@@ -377,7 +377,7 @@ namespace Addon
 
       // setPosition() Method
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_gui_control
+      /// \ingroup python_xbmcgui_control
       /// @brief \python_func{ setPosition(x, y) }
       /// Sets the controls position.
       ///
@@ -403,7 +403,7 @@ namespace Addon
 
       // setWidth() Method
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_gui_control
+      /// \ingroup python_xbmcgui_control
       /// @brief \python_func{ setWidth(width) }
       /// Sets the controls width.
       ///
@@ -426,7 +426,7 @@ namespace Addon
 
       // setHeight() Method
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_gui_control
+      /// \ingroup python_xbmcgui_control
       /// @brief \python_func{ setHeight(height) }
       /// Sets the controls height.
       ///
@@ -449,7 +449,7 @@ namespace Addon
 
       // setNavigation() Method
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_gui_control
+      /// \ingroup python_xbmcgui_control
       /// @brief \python_func{ setNavigation(up, down, left, right) }
       /// Sets the controls navigation.
       ///
@@ -483,7 +483,7 @@ namespace Addon
 
       // controlUp() Method
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_gui_control
+      /// \ingroup python_xbmcgui_control
       /// @brief \python_func{ controlUp(control) }
       /// Sets the controls up navigation.
       ///
@@ -513,7 +513,7 @@ namespace Addon
 
       // controlDown() Method
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_gui_control
+      /// \ingroup python_xbmcgui_control
       /// @brief \python_func{ controlDown(control) }
       /// Sets the controls down navigation.
       ///
@@ -543,7 +543,7 @@ namespace Addon
 
       // controlLeft() Method
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_gui_control
+      /// \ingroup python_xbmcgui_control
       /// @brief \python_func{ controlLeft(control) }
       /// Sets the controls left navigation.
       ///
@@ -573,7 +573,7 @@ namespace Addon
 
       // controlRight() Method
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_gui_control
+      /// \ingroup python_xbmcgui_control
       /// @brief \python_func{ controlRight(control) }
       /// Sets the controls right navigation.
       ///
@@ -620,8 +620,8 @@ namespace Addon
     };
     /// @}
 
-    /// \defgroup python_gui_control_spin Subclass - ControlSpin
-    /// \ingroup python_gui_control
+    /// \defgroup python_xbmcgui_control_spin Subclass - ControlSpin
+    /// \ingroup python_xbmcgui_control
     /// @{
     /// @brief **Used for cycling up/down controls.**
     ///
@@ -637,7 +637,7 @@ namespace Addon
     /// as a page up/down control). You can choose the position, size, and look
     /// of the spin control.
     ///
-    /// @note This class include also all calls from \ref python_gui_control "Control"
+    /// @note This class include also all calls from \ref python_xbmcgui_control "Control"
     ///
     /// @warning **Not working yet**.
     /// You can't create this object, it is returned by objects like ControlTextBox and ControlList.
@@ -652,7 +652,7 @@ namespace Addon
       ~ControlSpin() override;
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_gui_control_spin
+      /// \ingroup python_xbmcgui_control_spin
       /// @brief \python_func{ setTextures(up, down, upFocus, downFocus) }
       /// Sets textures for this control.
       ///
@@ -711,8 +711,8 @@ namespace Addon
     };
     /// @}
 
-    /// \defgroup python_gui_control_label Subclass - ControlLabel
-    /// \ingroup python_gui_control
+    /// \defgroup python_xbmcgui_control_label Subclass - ControlLabel
+    /// \ingroup python_xbmcgui_control
     /// @{
     /// @brief **Used to show some lines of text.**
     ///
@@ -723,7 +723,7 @@ namespace Addon
     /// the font, size, colour, location and contents of the text to be
     /// displayed.
     ///
-    /// @note This class include also all calls from \ref python_gui_control "Control"
+    /// @note This class include also all calls from \ref python_xbmcgui_control "Control"
     ///
     /// @param x                    integer - x coordinate of control.
     /// @param y                    integer - y coordinate of control.
@@ -737,7 +737,7 @@ namespace Addon
     /// @param disabledColor        [opt] hexstring - color of disabled
     ///                                 label's label. (e.g. '0xFFFF3300')
     /// @param alignment            [opt] integer - alignment of label
-    /// - \ref _font_alignment "Flags for alignment" used as bits to have several together:
+    /// - \ref universalmediacenter_gui_font_alignment "Flags for alignment" used as bits to have several together:
     /// | Definition name   |   Bitflag  | Description                         |
     /// |-------------------|:----------:|:------------------------------------|
     /// | XBFONT_LEFT       | 0x00000000 | Align X left
@@ -760,7 +760,7 @@ namespace Addon
     /// ...
     /// # ControlLabel(x, y, width, height, label[, font, textColor,
     /// #              disabledColor, alignment, hasPath, angle])
-    /// self.label = gui.ControlLabel(100, 250, 125, 75, 'Status', angle=45)
+    /// self.label = xbmcgui.ControlLabel(100, 250, 125, 75, 'Status', angle=45)
     /// ...
     /// ~~~~~~~~~~~~~
     ///
@@ -776,7 +776,7 @@ namespace Addon
       ~ControlLabel() override;
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_gui_control_label
+      /// \ingroup python_xbmcgui_control_label
       /// @brief \python_func{ getLabel() }
       /// Returns the text value for this label.
       ///
@@ -798,7 +798,7 @@ namespace Addon
 #endif
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_gui_control_label
+      /// \ingroup python_xbmcgui_control_label
       /// @brief \python_func{ setLabel(label[, font, textColor, disabledColor, shadowColor, focusedColor, label2]) }
       /// Sets text for this label.
       ///
@@ -854,8 +854,8 @@ namespace Addon
     /// @}
 
     // ControlEdit class
-    /// \defgroup python_gui_control_edit Subclass - ControlEdit
-    /// \ingroup python_gui_control
+    /// \defgroup python_xbmcgui_control_edit Subclass - ControlEdit
+    /// \ingroup python_xbmcgui_control
     /// @{
     /// **Used as an input control for the osd keyboard and other input fields.**
     ///
@@ -865,7 +865,7 @@ namespace Addon
     /// The edit control allows a user to input text in Universal Media Center. You can choose the
     /// font, size, colour, location and header of the text to be displayed.
     ///
-    /// @note This class include also all calls from \ref python_gui_control "Control"
+    /// @note This class include also all calls from \ref python_xbmcgui_control "Control"
     ///
     /// @param x                    integer - x coordinate of control.
     /// @param y                    integer - y coordinate of control.
@@ -879,7 +879,7 @@ namespace Addon
     /// @param disabledColor        [opt] hexstring - color of disabled
     ///                                 label's label. (e.g. '0xFFFF3300')
     /// @param alignment            [opt] integer - alignment of label
-    /// - \ref _font_alignment "Flags for alignment" used as bits to have several together:
+    /// - \ref universalmediacenter_gui_font_alignment "Flags for alignment" used as bits to have several together:
     /// | Definition name   |   Bitflag  | Description                         |
     /// |-------------------|:----------:|:------------------------------------|
     /// | XBFONT_LEFT       | 0x00000000 | Align X left
@@ -907,7 +907,7 @@ namespace Addon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ...
-    /// self.edit = gui.ControlEdit(100, 250, 125, 75, 'Status')
+    /// self.edit = xbmcgui.ControlEdit(100, 250, 125, 75, 'Status')
     /// ...
     /// ~~~~~~~~~~~~~
     ///
@@ -923,7 +923,7 @@ namespace Addon
 
       // setLabel() Method
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_gui_control_edit
+      /// \ingroup python_xbmcgui_control_edit
       /// @brief \python_func{ setLabel(label[, font, textColor, disabledColor, shadowColor, focusedColor, label2]) }
       /// Sets text heading for this edit control.
       ///
@@ -963,7 +963,7 @@ namespace Addon
 
       // getLabel() Method
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_gui_control_edit
+      /// \ingroup python_xbmcgui_control_edit
       /// @brief \python_func{ getLabel() }
       /// Returns the text heading for this edit control.
       ///
@@ -986,7 +986,7 @@ namespace Addon
 
       // setText() Method
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_gui_control_edit
+      /// \ingroup python_xbmcgui_control_edit
       /// @brief \python_func{ setText(value) }
       /// Sets text value for this edit control.
       ///
@@ -1009,7 +1009,7 @@ namespace Addon
 
       // getText() Method
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_gui_control_edit
+      /// \ingroup python_xbmcgui_control_edit
       /// @brief \python_func{ getText() }
       /// Returns the text value for this edit control.
       ///
@@ -1047,22 +1047,22 @@ namespace Addon
 
       // setType() Method
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_gui_control_edit
+      /// \ingroup python_xbmcgui_control_edit
       /// @brief \python_func{ setType(type, heading) }
       /// Sets the type of this edit control.
       ///
       /// @param type              integer - type of the edit control.
       /// | Param                                         | Definition                                  |
       /// |-----------------------------------------------|:--------------------------------------------|
-      /// | gui.INPUT_TYPE_TEXT                       | (standard keyboard)
-      /// | gui.INPUT_TYPE_NUMBER                     | (format: #)
-      /// | gui.INPUT_TYPE_DATE                       | (format: DD/MM/YYYY)
-      /// | gui.INPUT_TYPE_TIME                       | (format: HH:MM)
-      /// | gui.INPUT_TYPE_IPADDRESS                  | (format: #.#.#.#)
-      /// | gui.INPUT_TYPE_PASSWORD                   | (input is masked)
-      /// | gui.INPUT_TYPE_PASSWORD_MD5               | (input is masked, return md5 hash of input)
-      /// | gui.INPUT_TYPE_SECONDS                    | (format: SS or MM:SS or HH:MM:SS or MM min)
-      /// | gui.INPUT_TYPE_PASSWORD_NUMBER_VERIFY_NEW | (numeric input is masked)
+      /// | xbmcgui.INPUT_TYPE_TEXT                       | (standard keyboard)
+      /// | xbmcgui.INPUT_TYPE_NUMBER                     | (format: #)
+      /// | xbmcgui.INPUT_TYPE_DATE                       | (format: DD/MM/YYYY)
+      /// | xbmcgui.INPUT_TYPE_TIME                       | (format: HH:MM)
+      /// | xbmcgui.INPUT_TYPE_IPADDRESS                  | (format: #.#.#.#)
+      /// | xbmcgui.INPUT_TYPE_PASSWORD                   | (input is masked)
+      /// | xbmcgui.INPUT_TYPE_PASSWORD_MD5               | (input is masked, return md5 hash of input)
+      /// | xbmcgui.INPUT_TYPE_SECONDS                    | (format: SS or MM:SS or HH:MM:SS or MM min)
+      /// | xbmcgui.INPUT_TYPE_PASSWORD_NUMBER_VERIFY_NEW | (numeric input is masked)
       /// @param heading           string or unicode - heading that will be used for to numeric or
       ///                                              keyboard dialog when the edit control is clicked.
       ///
@@ -1074,7 +1074,7 @@ namespace Addon
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ...
-      /// self.edit.setType(gui.INPUT_TYPE_TIME, 'Please enter the time')
+      /// self.edit.setType(xbmcgui.INPUT_TYPE_TIME, 'Please enter the time')
       /// ...
       /// ~~~~~~~~~~~~~
       ///
@@ -1086,8 +1086,8 @@ namespace Addon
     /// @}
 
     // ControlList class
-    /// \defgroup python_gui_control_list Subclass - ControlList
-    /// \ingroup python_gui_control
+    /// \defgroup python_xbmcgui_control_list Subclass - ControlList
+    /// \ingroup python_xbmcgui_control
     /// @{
     /// @brief **Used for a scrolling lists of items. Replaces the list control.**
     ///
@@ -1101,7 +1101,7 @@ namespace Addon
     /// column or row of items. The layout of the items is very flexible and
     /// is up to the skinner.
     ///
-    /// @note This class include also all calls from \ref python_gui_control "Control"
+    /// @note This class include also all calls from \ref python_xbmcgui_control "Control"
     ///
     /// @param x                        integer - x coordinate of control.
     /// @param y                        integer - y coordinate of control.
@@ -1119,7 +1119,7 @@ namespace Addon
     /// @param itemHeight               [opt] integer - height of items.
     /// @param space                    [opt] integer - space between items.
     /// @param alignmentY               [opt] integer - Y-axis alignment of items label
-    /// - \ref _font_alignment "Flags for alignment" used as bits to have several together:
+    /// - \ref universalmediacenter_gui_font_alignment "Flags for alignment" used as bits to have several together:
     /// | Definition name   |   Bitflag  | Description                         |
     /// |-------------------|:----------:|:------------------------------------|
     /// | XBFONT_LEFT       | 0x00000000 | Align X left
@@ -1145,7 +1145,7 @@ namespace Addon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ...
-    /// self.cList = gui.ControlList(100, 250, 200, 250, 'font14', space=5)
+    /// self.cList = xbmcgui.ControlList(100, 250, 200, 250, 'font14', space=5)
     /// ...
     /// ~~~~~~~~~~~~~
     ///
@@ -1165,7 +1165,7 @@ namespace Addon
       ~ControlList() override;
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_gui_control_list
+      /// \ingroup python_xbmcgui_control_list
       /// @brief \python_func{ addItem(item) }
       /// Add a new item to this list control.
       ///
@@ -1183,11 +1183,11 @@ namespace Addon
       ///
       addItem(...);
 #else
-      virtual void addItem(const Alternative<String, const Addon::gui::ListItem* > & item, bool sendMessage = true);
+      virtual void addItem(const Alternative<String, const XBMCAddon::xbmcgui::ListItem* > & item, bool sendMessage = true);
 #endif
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_gui_control_list
+      /// \ingroup python_xbmcgui_control_list
       /// @brief \python_func{ addItems(items) }
       /// Adds a list of listitems or strings to this list control.
       ///
@@ -1209,11 +1209,11 @@ namespace Addon
       ///
       addItems(...);
 #else
-      virtual void addItems(const std::vector<Alternative<String, const Addon::gui::ListItem* > > & items);
+      virtual void addItems(const std::vector<Alternative<String, const XBMCAddon::xbmcgui::ListItem* > > & items);
 #endif
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_gui_control_list
+      /// \ingroup python_xbmcgui_control_list
       /// @brief \python_func{ selectItem(item) }
       /// Select an item by index number.
       ///
@@ -1235,7 +1235,7 @@ namespace Addon
 #endif
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_gui_control_list
+      /// \ingroup python_xbmcgui_control_list
       /// @brief \python_func{ removeItem(index) }
       /// Remove an item by index number.
       ///
@@ -1258,7 +1258,7 @@ namespace Addon
 #endif
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_gui_control_list
+      /// \ingroup python_xbmcgui_control_list
       /// @brief \python_func{ reset() }
       /// Clear all ListItems in this control list.
       ///
@@ -1304,7 +1304,7 @@ namespace Addon
 #endif
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_gui_control_list
+      /// \ingroup python_xbmcgui_control_list
       /// @brief \python_func{ getSpinControl() }
       /// Returns the associated ControlSpin object.
       ///
@@ -1328,7 +1328,7 @@ namespace Addon
 #endif
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_gui_control_list
+      /// \ingroup python_xbmcgui_control_list
       /// @brief \python_func{ getSelectedPosition() }
       /// Returns the position of the selected item as an integer.
       ///
@@ -1350,7 +1350,7 @@ namespace Addon
 #endif
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_gui_control_list
+      /// \ingroup python_xbmcgui_control_list
       /// @brief \python_func{ getSelectedItem() }
       /// Returns the selected item as a ListItem object.
       ///
@@ -1373,12 +1373,12 @@ namespace Addon
       ///
       getSelectedItem();
 #else
-      virtual Addon::gui::ListItem* getSelectedItem();
+      virtual XBMCAddon::xbmcgui::ListItem* getSelectedItem();
 #endif
 
       // setImageDimensions() method
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_gui_control_list
+      /// \ingroup python_xbmcgui_control_list
       /// @brief \python_func{ setImageDimensions(imageWidth, imageHeight) }
       /// Sets the width/height of items icon or thumbnail.
       ///
@@ -1426,7 +1426,7 @@ namespace Addon
       // setSpace() method
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_gui_control_list
+      /// \ingroup python_xbmcgui_control_list
       /// @brief \python_func{ setSpace(space) }
       /// Sets the space between items.
       ///
@@ -1450,7 +1450,7 @@ namespace Addon
       // setPageControlVisible() method
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_gui_control_list
+      /// \ingroup python_xbmcgui_control_list
       /// @brief \python_func{ setPageControlVisible(visible) }
       /// Sets the spin control's visible/hidden state.
       ///
@@ -1474,7 +1474,7 @@ namespace Addon
       // size() method
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_gui_control_list
+      /// \ingroup python_xbmcgui_control_list
       /// @brief \python_func{ size() }
       /// Returns the total number of items in this list control as an integer.
       ///
@@ -1498,7 +1498,7 @@ namespace Addon
       // getItemHeight() Method
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_gui_control_list
+      /// \ingroup python_xbmcgui_control_list
       /// @brief \python_func{ getItemHeight() }
       /// Returns the control's current item height as an integer.
       ///
@@ -1522,7 +1522,7 @@ namespace Addon
       // getSpace() Method
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_gui_control_list
+      /// \ingroup python_xbmcgui_control_list
       /// @brief \python_func{ getSpace() }
       /// Returns the control's space between items as an integer.
       ///
@@ -1546,7 +1546,7 @@ namespace Addon
       // getListItem() method
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_gui_control_list
+      /// \ingroup python_xbmcgui_control_list
       /// @brief \python_func{ getListItem(index) }
       /// Returns a given ListItem in this List.
       ///
@@ -1566,12 +1566,12 @@ namespace Addon
       ///
       getListItem(...);
 #else
-      virtual Addon::gui::ListItem* getListItem(int index);
+      virtual XBMCAddon::xbmcgui::ListItem* getListItem(int index);
 #endif
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_gui_control_list
+      /// \ingroup python_xbmcgui_control_list
       /// @brief \python_func{ setStaticContent(items) }
       /// Fills a static list with a list of listitems.
       ///
@@ -1629,8 +1629,8 @@ namespace Addon
 
     // ControlFadeLabel class
     ///
-    /// \defgroup python_gui_control_fadelabel Subclass - ControlFadeLabel
-    /// \ingroup python_gui_control
+    /// \defgroup python_xbmcgui_control_fadelabel Subclass - ControlFadeLabel
+    /// \ingroup python_xbmcgui_control
     /// @{
     /// @brief **Used to show multiple pieces of text in the same position, by
     /// fading from one to the other.**
@@ -1645,7 +1645,7 @@ namespace Addon
     /// of information fades in and the process repeats. A fade label control
     /// is not supported in a list container.
     ///
-    /// @note This class include also all calls from \ref python_gui_control "Control"
+    /// @note This class include also all calls from \ref python_xbmcgui_control "Control"
     ///
     /// @param x                    integer - x coordinate of control.
     /// @param y                    integer - y coordinate of control.
@@ -1654,7 +1654,7 @@ namespace Addon
     /// @param font                 [opt] string - font used for label text. (e.g. 'font13')
     /// @param textColor            [opt] hexstring - color of fadelabel's labels. (e.g. '0xFFFFFFFF')
     /// @param alignment            [opt] integer - alignment of label
-    /// - \ref _font_alignment "Flags for alignment" used as bits to have several together:
+    /// - \ref universalmediacenter_gui_font_alignment "Flags for alignment" used as bits to have several together:
     /// | Definition name   |   Bitflag  | Description                         |
     /// |-------------------|:----------:|:------------------------------------|
     /// | XBFONT_LEFT       | 0x00000000 | Align X left
@@ -1678,7 +1678,7 @@ namespace Addon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ...
-    /// self.fadelabel = gui.ControlFadeLabel(100, 250, 200, 50, textColor='0xFFFFFFFF')
+    /// self.fadelabel = xbmcgui.ControlFadeLabel(100, 250, 200, 50, textColor='0xFFFFFFFF')
     /// ...
     /// ~~~~~~~~~~~~~
     ///
@@ -1692,7 +1692,7 @@ namespace Addon
 
       // addLabel() Method
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_gui_control_fadelabel
+      /// \ingroup python_xbmcgui_control_fadelabel
       /// @brief \python_func{ addLabel(label) }
       /// Add a label to this control for scrolling.
       ///
@@ -1717,7 +1717,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_gui_control_fadelabel
+      /// \ingroup python_xbmcgui_control_fadelabel
       /// @brief \python_func{ setScrolling(scroll) }
       /// Set scrolling. If set to false, the labels won't scroll.
       /// Defaults to true.
@@ -1741,7 +1741,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_gui_control_label
+      /// \ingroup python_xbmcgui_control_label
       /// @brief \python_func{ reset() }
       /// Clear this fade label.
       ///
@@ -1774,8 +1774,8 @@ namespace Addon
 
     // ControlTextBox class
     ///
-    /// \defgroup python_gui_control_textbox Subclass - ControlTextBox
-    /// \ingroup python_gui_control
+    /// \defgroup python_xbmcgui_control_textbox Subclass - ControlTextBox
+    /// \ingroup python_xbmcgui_control
     /// @{
     /// @brief **Used to show a multi-page piece of text.**
     ///
@@ -1784,7 +1784,7 @@ namespace Addon
     /// The text box is used for showing a large multipage piece of text in Universal Media Center.
     /// You can choose the position, size, and look of the text.
     ///
-    /// @note This class include also all calls from \ref python_gui_control "Control"
+    /// @note This class include also all calls from \ref python_xbmcgui_control "Control"
     ///
     /// @param x                    integer - x coordinate of control.
     /// @param y                    integer - y coordinate of control.
@@ -1804,7 +1804,7 @@ namespace Addon
     /// ~~~~~~~~~~~~~{.py}
     /// ...
     /// # ControlTextBox(x, y, width, height[, font, textColor])
-    /// self.textbox = gui.ControlTextBox(100, 250, 300, 300, textColor='0xFFFFFFFF')
+    /// self.textbox = xbmcgui.ControlTextBox(100, 250, 300, 300, textColor='0xFFFFFFFF')
     /// ...
     /// ~~~~~~~~~~~~~
     ///
@@ -1815,8 +1815,8 @@ namespace Addon
     /// **Extended example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ...
-    /// textbox = gui.ControlTextBox(100, 250, 300, 300, textColor='0xFFFFFFFF')
-    /// window = gui.Window(gui.getCurrentWindowId())
+    /// textbox = xbmcgui.ControlTextBox(100, 250, 300, 300, textColor='0xFFFFFFFF')
+    /// window = xbmcgui.Window(xbmcgui.getCurrentWindowId())
     /// window.addControl(textbox)
     /// textbox.setText("My Text Box")
     /// textbox.scroll()
@@ -1833,10 +1833,10 @@ namespace Addon
       // SetText() Method
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_gui_control_textbox
+      /// \ingroup python_xbmcgui_control_textbox
       /// @brief \python_func{ setText(text) }
       /// Sets the text for this textbox.
-      /// \anchor python_gui_control_textbox_settext
+      /// \anchor python_xbmcgui_control_textbox_settext
       ///
       /// @param text                 string  - text string.
       ///
@@ -1861,7 +1861,7 @@ namespace Addon
       // getText() Method
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_gui_control_textbox
+      /// \ingroup python_xbmcgui_control_textbox
       /// @brief \python_func{ getText() }
       /// Returns the text value for this textbox.
       ///
@@ -1887,7 +1887,7 @@ namespace Addon
       // reset() Method
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_gui_control_textbox
+      /// \ingroup python_xbmcgui_control_textbox
       /// @brief \python_func{ reset() }
       /// Clear's this textbox.
       ///
@@ -1910,7 +1910,7 @@ namespace Addon
       // scroll() Method
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_gui_control_textbox
+      /// \ingroup python_xbmcgui_control_textbox
       /// @brief \python_func{ scroll(id) }
       /// Scrolls to the given position.
       ///
@@ -1937,7 +1937,7 @@ namespace Addon
       // autoScroll() Method
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_gui_control_textbox
+      /// \ingroup python_xbmcgui_control_textbox
       /// @brief \python_func{ autoScroll(delay, time, repeat) }
       /// Set autoscrolling times.
       ///
@@ -1976,8 +1976,8 @@ namespace Addon
 
     // ControlImage class
     ///
-    /// \defgroup python_gui_control_image Subclass - ControlImage
-    /// \ingroup python_gui_control
+    /// \defgroup python_xbmcgui_control_image Subclass - ControlImage
+    /// \ingroup python_xbmcgui_control
     /// @{
     /// @brief **Used to show an image.**
     ///
@@ -1987,7 +1987,7 @@ namespace Addon
     /// the position, size, transparency and contents of the image to be
     /// displayed.
     ///
-    /// @note This class include also all calls from \ref python_gui_control "Control"
+    /// @note This class include also all calls from \ref python_xbmcgui_control "Control"
     ///
     /// @param x                    integer - x coordinate of control.
     /// @param y                    integer - y coordinate of control.
@@ -2013,7 +2013,7 @@ namespace Addon
     /// ~~~~~~~~~~~~~{.py}
     /// ...
     /// # ControlImage(x, y, width, height, filename[, aspectRatio, colorDiffuse])
-    /// self.image = gui.ControlImage(100, 250, 125, 75, aspectRatio=2)
+    /// self.image = xbmcgui.ControlImage(100, 250, 125, 75, aspectRatio=2)
     /// ...
     /// ~~~~~~~~~~~~~
     ///
@@ -2026,7 +2026,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_gui_control_image
+      /// \ingroup python_xbmcgui_control_image
       /// @brief \python_func{ setImage(filename[, useCache]) }
       /// Changes the image.
       ///
@@ -2054,7 +2054,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_gui_control_image
+      /// \ingroup python_xbmcgui_control_image
       /// @brief \python_func{ setColorDiffuse(colorDiffuse) }
       /// Changes the images color.
       ///
@@ -2091,8 +2091,8 @@ namespace Addon
 
     // ControlImage class
     ///
-    /// \defgroup python_gui_control_progress Subclass - ControlProgress
-    /// \ingroup python_gui_control
+    /// \defgroup python_xbmcgui_control_progress Subclass - ControlProgress
+    /// \ingroup python_xbmcgui_control
     /// @{
     /// @brief **Used to show the progress of a particular operation.**
     ///
@@ -2102,7 +2102,7 @@ namespace Addon
     /// take a long time, or to show how far through a movie you are. You can
     /// choose the position, size, and look of the progress control.
     ///
-    /// @note This class include also all calls from \ref python_gui_control "Control"
+    /// @note This class include also all calls from \ref python_xbmcgui_control "Control"
     ///
     /// @param x                    integer - x coordinate of control.
     /// @param y                    integer - y coordinate of control.
@@ -2151,7 +2151,7 @@ namespace Addon
     /// ~~~~~~~~~~~~~{.py}
     /// ...
     /// # ControlProgress(x, y, width, height, filename[, texturebg, textureleft, texturemid, textureright, textureoverlay])
-    /// self.image = gui.ControlProgress(100, 250, 250, 30, 'special://home/scripts/test.png')
+    /// self.image = xbmcgui.ControlProgress(100, 250, 250, 30, 'special://home/scripts/test.png')
     /// ...
     /// ~~~~~~~~~~~~~
     ///
@@ -2167,7 +2167,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_gui_control_progress
+      /// \ingroup python_xbmcgui_control_progress
       /// @brief \python_func{ setPercent(percent) }
       /// Sets the percentage of the progressbar to show.
       ///
@@ -2194,7 +2194,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_gui_control_progress
+      /// \ingroup python_xbmcgui_control_progress
       /// @brief \python_func{ getPercent() }
       /// Returns a float of the percent of the progress.
       ///
@@ -2233,8 +2233,8 @@ namespace Addon
 
     // ControlButton class
     ///
-    /// \defgroup python_gui_control_button Subclass - ControlButton
-    /// \ingroup python_gui_control
+    /// \defgroup python_xbmcgui_control_button Subclass - ControlButton
+    /// \ingroup python_xbmcgui_control
     /// @{
     /// @brief <b>A standard push button control.</b>
     ///
@@ -2245,7 +2245,7 @@ namespace Addon
     /// choose the position, size, and look of the button, as well as choosing
     /// what action(s) should be performed when pushed.
     ///
-    /// @note This class include also all calls from \ref python_gui_control "Control"
+    /// @note This class include also all calls from \ref python_xbmcgui_control "Control"
     ///
     /// @param x                    integer - x coordinate of control.
     /// @param y                    integer - y coordinate of control.
@@ -2259,7 +2259,7 @@ namespace Addon
     /// @param textOffsetX          [opt] integer - x offset of label.
     /// @param textOffsetY          [opt] integer - y offset of label.
     /// @param alignment            [opt] integer - alignment of label
-    /// - \ref _font_alignment "Flags for alignment" used as bits to have several together:
+    /// - \ref universalmediacenter_gui_font_alignment "Flags for alignment" used as bits to have several together:
     /// | Definition name   |   Bitflag  | Description                         |
     /// |-------------------|:----------:|:------------------------------------|
     /// | XBFONT_LEFT       | 0x00000000 | Align X left
@@ -2297,7 +2297,7 @@ namespace Addon
     /// ...
     /// # ControlButton(x, y, width, height, label[, focusTexture, noFocusTexture, textOffsetX, textOffsetY,
     /// #               alignment, font, textColor, disabledColor, angle, shadowColor, focusedColor])
-    /// self.button = gui.ControlButton(100, 250, 200, 50, 'Status', font='font14')
+    /// self.button = xbmcgui.ControlButton(100, 250, 200, 50, 'Status', font='font14')
     /// ...
     /// ~~~~~~~~~~~~~
     ///
@@ -2316,7 +2316,7 @@ namespace Addon
       // setLabel() Method
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_gui_control_button
+      /// \ingroup python_xbmcgui_control_button
       /// @brief \python_func{ setLabel([label, font, textColor, disabledColor, shadowColor, focusedColor, label2]) }
       /// Sets this buttons text attributes.
       ///
@@ -2357,7 +2357,7 @@ namespace Addon
       // setDisabledColor() Method
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_gui_control_button
+      /// \ingroup python_xbmcgui_control_button
       /// @brief \python_func{ setDisabledColor(disabledColor) }
       /// Sets this buttons disabled color.
       ///
@@ -2382,7 +2382,7 @@ namespace Addon
       // getLabel() Method
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_gui_control_button
+      /// \ingroup python_xbmcgui_control_button
       /// @brief \python_func{ getLabel() }
       /// Returns the buttons label as a unicode string.
       ///
@@ -2407,7 +2407,7 @@ namespace Addon
       // getLabel2() Method
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_gui_control_button
+      /// \ingroup python_xbmcgui_control_button
       /// @brief \python_func{ getLabel2() }
       /// Returns the buttons label2 as a string.
       ///
@@ -2455,8 +2455,8 @@ namespace Addon
 
     // ControlGroup class
     ///
-    /// \defgroup python_gui_control_group Subclass - ControlGroup
-    /// \ingroup python_gui_control
+    /// \defgroup python_xbmcgui_control_group Subclass - ControlGroup
+    /// \ingroup python_xbmcgui_control
     /// @{
     /// @brief **Used to group controls together..**
     ///
@@ -2473,7 +2473,7 @@ namespace Addon
     /// groups as you like within the skin, and groups within groups are handled
     /// with no issues.
     ///
-    /// @note This class include also all calls from \ref python_gui_control "Control"
+    /// @note This class include also all calls from \ref python_xbmcgui_control "Control"
     ///
     /// @param x                    integer - x coordinate of control.
     /// @param y                    integer - y coordinate of control.
@@ -2486,7 +2486,7 @@ namespace Addon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ...
-    /// self.group = gui.ControlGroup(100, 250, 125, 75)
+    /// self.group = xbmcgui.ControlGroup(100, 250, 125, 75)
     /// ...
     /// ~~~~~~~~~~~~~
     ///
@@ -2505,8 +2505,8 @@ namespace Addon
 
     // ControlVideoWindow class
     ///
-    /// \defgroup python_gui_control_videowindow Subclass - ControlVideoWindow
-    /// \ingroup python_gui_control
+    /// \defgroup python_xbmcgui_control_videowindow Subclass - ControlVideoWindow
+    /// \ingroup python_xbmcgui_control
     /// @{
     /// @brief **Used to embed the video window inside a group of other controls.**
     ///
@@ -2516,7 +2516,7 @@ namespace Addon
     /// the current playing video within an area of the skin, positioned and
     /// sized like any other control.
     ///
-    /// @note This class include also all calls from \ref python_gui_control "Control"
+    /// @note This class include also all calls from \ref python_xbmcgui_control "Control"
     ///
     /// @param x                    integer - x coordinate of control.
     /// @param y                    integer - y coordinate of control.
@@ -2529,7 +2529,7 @@ namespace Addon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ...
-    /// self.videowindow = gui.ControlVideoWindow(100, 250, 125, 75)
+    /// self.videowindow = xbmcgui.ControlVideoWindow(100, 250, 125, 75)
     /// ...
     /// ~~~~~~~~~~~~~
     ///
@@ -2548,8 +2548,8 @@ namespace Addon
 
     // ControlRadioButton class
     ///
-    /// \defgroup python_gui_control_radiobutton Subclass - ControlRadioButton
-    /// \ingroup python_gui_control
+    /// \defgroup python_xbmcgui_control_radiobutton Subclass - ControlRadioButton
+    /// \ingroup python_xbmcgui_control
     /// @{
     /// @brief **A radio button control (as used for on/off settings).**
     ///
@@ -2562,7 +2562,7 @@ namespace Addon
     /// button, as well as the focused and unfocused radio textures. Used
     /// for settings controls.
     ///
-    /// @note This class include also all calls from \ref python_gui_control "Control"
+    /// @note This class include also all calls from \ref python_xbmcgui_control "Control"
     ///
     /// @param x                    integer - x coordinate of control.
     /// @param y                    integer - y coordinate of control.
@@ -2584,7 +2584,7 @@ namespace Addon
     /// @param textOffsetX          [opt] integer - horizontal text offset
     /// @param textOffsetY          [opt] integer - vertical text offset
     /// @param alignment            [opt] integer - alignment of label
-    /// - \ref _font_alignment "Flags for alignment" used as bits to have several together:
+    /// - \ref universalmediacenter_gui_font_alignment "Flags for alignment" used as bits to have several together:
     /// | Definition name   |   Bitflag  | Description                         |
     /// |-------------------|:----------:|:------------------------------------|
     /// | XBFONT_LEFT       | 0x00000000 | Align X left
@@ -2616,7 +2616,7 @@ namespace Addon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ...
-    /// self.radiobutton = gui.ControlRadioButton(100, 250, 200, 50, 'Enable', font='font14')
+    /// self.radiobutton = xbmcgui.ControlRadioButton(100, 250, 200, 50, 'Enable', font='font14')
     /// ...
     /// ~~~~~~~~~~~~~
     ///
@@ -2638,7 +2638,7 @@ namespace Addon
       // setSelected() Method
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_gui_control_radiobutton
+      /// \ingroup python_xbmcgui_control_radiobutton
       /// @brief \python_func{ setSelected(selected) }
       /// **Sets the radio buttons's selected status.**
       ///
@@ -2667,7 +2667,7 @@ namespace Addon
       // isSelected() Method
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_gui_control_radiobutton
+      /// \ingroup python_xbmcgui_control_radiobutton
       /// @brief \python_func{ isSelected() }
       /// Returns the radio buttons's selected status.
       ///
@@ -2691,7 +2691,7 @@ namespace Addon
       // setLabel() Method
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_gui_control_radiobutton
+      /// \ingroup python_xbmcgui_control_radiobutton
       /// @brief \python_func{ setLabel(label[, font, textColor, disabledColor, shadowColor, focusedColor]) }
       /// Sets the radio buttons text attributes.
       ///
@@ -2739,7 +2739,7 @@ namespace Addon
       // setRadioDimension() Method
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_gui_control_radiobutton
+      /// \ingroup python_xbmcgui_control_radiobutton
       /// @brief \python_func{ setRadioDimension(x, y, width, height) }
       /// Sets the radio buttons's radio texture's position and size.
       ///
@@ -2797,8 +2797,8 @@ namespace Addon
     };
     /// @}
 
-    /// \defgroup python_gui_control_slider Subclass - ControlSlider
-    /// \ingroup python_gui_control
+    /// \defgroup python_xbmcgui_control_slider Subclass - ControlSlider
+    /// \ingroup python_xbmcgui_control
     /// @{
     /// @brief **Used for a volume slider.**
     ///
@@ -2808,7 +2808,7 @@ namespace Addon
     /// the operation at hand (such as a volume control or seek control). You can
     /// choose the position, size, and look of the slider control.
     ///
-    /// @note This class include also all calls from \ref python_gui_control "Control"
+    /// @note This class include also all calls from \ref python_xbmcgui_control "Control"
     ///
     /// @param x                    integer - x coordinate of control
     /// @param y                    integer - y coordinate of control
@@ -2817,7 +2817,7 @@ namespace Addon
     /// @param textureback          [opt] string - image filename
     /// @param texture              [opt] string - image filename
     /// @param texturefocus         [opt] string - image filename
-    /// @param orientation          [opt] integer - orientation of slider (gui.HORIZONTAL / gui.VERTICAL (default))
+    /// @param orientation          [opt] integer - orientation of slider (xbmcgui.HORIZONTAL / xbmcgui.VERTICAL (default))
     /// @param texturebackdisabled  [opt] string - image filename
     /// @param texturedisabled      [opt] string - image filename
     ///
@@ -2836,7 +2836,7 @@ namespace Addon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ...
-    /// self.slider = gui.ControlSlider(100, 250, 350, 40)
+    /// self.slider = xbmcgui.ControlSlider(100, 250, 350, 40)
     /// ...
     /// ~~~~~~~~~~~~~
     class ControlSlider : public Control
@@ -2855,7 +2855,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_gui_control_slider
+      /// \ingroup python_xbmcgui_control_slider
       /// @brief \python_func{ getPercent() }
       /// Returns a float of the percent of the slider.
       ///
@@ -2878,7 +2878,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_gui_control_slider
+      /// \ingroup python_xbmcgui_control_slider
       /// @brief \python_func{ setPercent(pct) }
       /// Sets the percent of the slider.
       ///
@@ -2901,7 +2901,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_gui_control_slider
+      /// \ingroup python_xbmcgui_control_slider
       /// @brief \python_func{ getInt() }
       /// Returns the value of the slider.
       ///
@@ -2925,7 +2925,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_gui_control_slider
+      /// \ingroup python_xbmcgui_control_slider
       /// @brief \python_func{ setInt(value, min, delta, max) }
       /// Sets the range, value and step size of the slider.
       ///
@@ -2952,7 +2952,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_gui_control_slider
+      /// \ingroup python_xbmcgui_control_slider
       /// @brief \python_func{ getFloat() }
       /// Returns the value of the slider.
       ///
@@ -2976,7 +2976,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_gui_control_slider
+      /// \ingroup python_xbmcgui_control_slider
       /// @brief \python_func{ setFloat(value, min, delta, max) }
       /// Sets the range, value and step size of the slider.
       ///

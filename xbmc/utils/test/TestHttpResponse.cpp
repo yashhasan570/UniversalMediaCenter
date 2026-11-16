@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -19,7 +19,7 @@ TEST(TestHttpResponse, General)
   a.AddHeader("content-type", "text/html");
   content = "<html>\r\n"
              "  <body>\r\n"
-             "    <h1> TestHttpResponse Page</h1>\r\n"
+             "    <h1>XBMC TestHttpResponse Page</h1>\r\n"
              "    <p>blah blah blah</p>\r\n"
              "  </body>\r\n"
              "</html>\r\n";
@@ -35,7 +35,7 @@ TEST(TestHttpResponse, General)
            "\r\n"
            "<html>\r\n"
            "  <body>\r\n"
-           "    <h1> TestHttpResponse Page</h1>\r\n"
+           "    <h1>XBMC TestHttpResponse Page</h1>\r\n"
            "    <p>blah blah blah</p>\r\n"
            "  </body>\r\n"
            "</html>\r\n";

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -16,7 +16,7 @@
 #include "resources/ResourcesComponent.h"
 #include "settings/SettingsComponent.h"
 #include "utils/StringUtils.h"
-#include "utils/TinyXML2.h"
+#include "utils/XBMCTinyXML2.h"
 #include "utils/log.h"
 
 #include <algorithm>
@@ -251,7 +251,7 @@ void UNIVERSAL MEDIA CENTER::GAME::SaveLeaderboardEntries(unsigned int leaderboa
   if (path.empty())
     return;
 
-  CTinyXML2 doc;
+  CXBMCTinyXML2 doc;
 
   tinyxml2::XMLElement* root = nullptr;
   if (XFILE::CFile::Exists(path) && doc.LoadFile(path) && doc.RootElement() != nullptr &&
@@ -324,7 +324,7 @@ void UNIVERSAL MEDIA CENTER::GAME::ForgetLeaderboardEntries(unsigned int leaderb
   if (path.empty() || !XFILE::CFile::Exists(path))
     return;
 
-  CTinyXML2 doc;
+  CXBMCTinyXML2 doc;
   if (!doc.LoadFile(path))
     return;
 
@@ -368,7 +368,7 @@ bool UNIVERSAL MEDIA CENTER::GAME::LoadLeaderboardEntries(unsigned int leaderboa
   if (path.empty() || !XFILE::CFile::Exists(path))
     return false;
 
-  CTinyXML2 doc;
+  CXBMCTinyXML2 doc;
   if (!doc.LoadFile(path))
     return false;
 

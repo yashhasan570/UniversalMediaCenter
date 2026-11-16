@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -19,19 +19,19 @@ namespace ADDON
 
 void Interface_GUIControlFadeLabel::Init(AddonGlobalInterface* addonInterface)
 {
-  addonInterface->toUniversal Media Center->->control_fade_label =
-      new AddonToUniversal Media CenterFuncTable__control_fade_label();
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_fade_label =
+      new AddonToUniversal Media CenterFuncTable_universalmediacenter_gui_control_fade_label();
 
-  addonInterface->toUniversal Media Center->->control_fade_label->set_visible = set_visible;
-  addonInterface->toUniversal Media Center->->control_fade_label->add_label = add_label;
-  addonInterface->toUniversal Media Center->->control_fade_label->get_label = get_label;
-  addonInterface->toUniversal Media Center->->control_fade_label->set_scrolling = set_scrolling;
-  addonInterface->toUniversal Media Center->->control_fade_label->reset = reset;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_fade_label->set_visible = set_visible;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_fade_label->add_label = add_label;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_fade_label->get_label = get_label;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_fade_label->set_scrolling = set_scrolling;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_fade_label->reset = reset;
 }
 
 void Interface_GUIControlFadeLabel::DeInit(AddonGlobalInterface* addonInterface)
 {
-  delete addonInterface->toUniversal Media Center->->control_fade_label;
+  delete addonInterface->toUniversal Media Center->universalmediacenter_gui->control_fade_label;
 }
 
 void Interface_GUIControlFadeLabel::set_visible(UNIVERSALMEDIA_HANDLE universalmediacenterBase,

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2012-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -11,7 +11,7 @@
 #include "input/touch/generic/GenericTouchActionHandler.h"
 #include "input/touch/generic/GenericTouchInputHandler.h"
 
-#include "platform/android/activity/App.h"
+#include "platform/android/activity/XBMCApp.h"
 
 CAndroidTouch::CAndroidTouch()
 {
@@ -31,7 +31,7 @@ bool CAndroidTouch::onTouchEvent(AInputEvent* event)
   size_t numPointers = AMotionEvent_getPointerCount(event);
   if (numPointers <= 0)
   {
-    CApp::android_printf(" => aborting touch event because there are no active pointers");
+    CXBMCApp::android_printf(" => aborting touch event because there are no active pointers");
     return false;
   }
 

@@ -5,7 +5,7 @@
 
 \tableofcontents
 
-The epggrid control is used for creating an epg timeline in Universal Media Center. You can choose
+The epggrid control is used for creating an epg timeline in Kodi. You can choose
 the position, size, and look of the grid and it's contents.
 
 
@@ -217,7 +217,7 @@ the position, size, and look of the grid and it's contents.
 --------------------------------------------------------------------------------
 \section EPGGrid_control_sect2 Available tags
 
-In addition to the [Default Control Tags](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Default_Control_Tags)
+In addition to the [Default Control Tags](http://kodi.wiki/view/Default_Control_Tags)
 the following tags are available. Note that each tag is **lower case** only. This is
 important, as `xml` tags are case-sensitive.
 
@@ -240,7 +240,7 @@ important, as `xml` tags are case-sensitive.
 
 #### Development:
 
-- [Add-on development](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Add-on_development)
-- [Skinning](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Skinning)
+- [Add-on development](http://kodi.wiki/view/Add-on_development)
+- [Skinning](http://kodi.wiki/view/Skinning)
 
 */

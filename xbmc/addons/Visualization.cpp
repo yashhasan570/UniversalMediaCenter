@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -55,7 +55,7 @@ CVisualization::CVisualization(const AddonInfoPtr& addonInfo, float x, float y, 
   m_ifc.visualization->toUniversal Media Center->transfer_preset = transfer_preset;
   m_ifc.visualization->toUniversal Media Center->clear_presets = clear_presets;
 
-  /* Open the class "addon::CInstanceVisualization" on add-on side */
+  /* Open the class "universalmediacenter::addon::CInstanceVisualization" on add-on side */
   if (CreateInstance() != ADDON_STATUS_OK)
   {
     CLog::Log(LOGFATAL, "Visualization: failed to create instance for '{}' and not usable!", ID());
@@ -65,7 +65,7 @@ CVisualization::CVisualization(const AddonInfoPtr& addonInfo, float x, float y, 
 
 CVisualization::~CVisualization()
 {
-  /* Destroy the class "addon::CInstanceVisualization" on add-on side */
+  /* Destroy the class "universalmediacenter::addon::CInstanceVisualization" on add-on side */
   DestroyInstance();
 
   delete m_ifc.visualization->toAddon;

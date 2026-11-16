@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2013-2020 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -18,7 +18,7 @@
 #include "utils/FileUtils.h"
 #include "utils/StringUtils.h"
 #include "utils/URIUtils.h"
-#include "utils/TinyXML2.h"
+#include "utils/XBMCTinyXML2.h"
 #include "utils/XMLUtils.h"
 #include "utils/log.h"
 
@@ -92,7 +92,7 @@ bool CMediaSourceSettings::Load(const std::string& file)
   CLog::Log(LOGINFO, "CMediaSourceSettings: loading media sources from {}", file);
 
   // load xml file
-  CTinyXML2 xmlDoc;
+  CXBMCTinyXML2 xmlDoc;
   if (!xmlDoc.LoadFile(file))
   {
     CLog::Log(LOGERROR, "CMediaSourceSettings: error loading {}: Line {}, {}", file,
@@ -117,7 +117,7 @@ bool CMediaSourceSettings::Save() const
 
 bool CMediaSourceSettings::Save(const std::string& file) const
 {
-  CTinyXML2 doc;
+  CXBMCTinyXML2 doc;
   tinyxml2::XMLElement* element = doc.NewElement(XML_SOURCES);
   tinyxml2::XMLNode* rootNode = doc.InsertFirstChild(element);
 

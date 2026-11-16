@@ -1,14 +1,14 @@
 WORKSPACE=${WORKSPACE:-$( cd $(dirname $0)/../../.. ; pwd -P )}
-_PLATFORM_DIR=tvos
+XBMC_PLATFORM_DIR=tvos
 . $WORKSPACE/tools/buildsteps/defaultenv
 
 cd $WORKSPACE/build/tools/darwin/packaging/darwin_embedded/
 
 #rename for upload
-#e.x. universalmediacenter-${JENKINS_BUILD_STRING}-tvos.deb
-#e.x. universalmediacenter-${JENKINS_BUILD_STRING}-tvos.ipa
+#e.x. Universal Media Center-${JENKINS_BUILD_STRING}-tvos.deb
+#e.x. Universal Media Center-${JENKINS_BUILD_STRING}-tvos.ipa
 UPLOAD_DIR="$WORKSPACE/tools/darwin/packaging/tvos"
-UPLOAD_FILENAME="universalmediacenter-$(getBuildRevDateStr)-tvos"
+UPLOAD_FILENAME="Universal Media Center-$(getBuildRevDateStr)-tvos"
 mkdir -p $UPLOAD_DIR
 mv *.deb $UPLOAD_DIR/$UPLOAD_FILENAME.deb
 mv *.ipa $UPLOAD_DIR/$UPLOAD_FILENAME.ipa

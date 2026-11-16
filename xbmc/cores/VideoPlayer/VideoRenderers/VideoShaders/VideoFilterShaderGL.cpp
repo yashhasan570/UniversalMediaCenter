@@ -1,7 +1,7 @@
 /*
  *  Copyright (c) 2007 d4rk
  *  Copyright (C) 2007-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -93,9 +93,9 @@ ConvolutionFilterShader::ConvolutionFilterShader(ESCALINGMETHOD method,
 
   //don't compile in stretch support when it's not needed
   if (stretch)
-    defines += "#define _STRETCH 1\n";
+    defines += "#define XBMC_STRETCH 1\n";
   else
-    defines += "#define _STRETCH 0\n";
+    defines += "#define XBMC_STRETCH 0\n";
 
   if (gammaCorrection)
     defines += "#define UNIVERSALMEDIA_GAMMA_LINEARIZATION_FAST\n";

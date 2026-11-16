@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -62,8 +62,8 @@ constexpr int CHAR_CHUNK = 64; // 64 chars allocated at a time (2048 bytes)
 constexpr int GLYPH_STRENGTH_BOLD = 24;
 constexpr int GLYPH_STRENGTH_LIGHT = -48;
 constexpr int TAB_SPACE_LENGTH = 4;
-constexpr const char* EMOJI_FONT = "special:///media/Fonts/TwemojiMozilla.ttf";
-constexpr const char* SYMBOLS_FONT = "special:///media/Fonts/UnicodeSymbols.ttf";
+constexpr const char* EMOJI_FONT = "special://xbmc/media/Fonts/TwemojiMozilla.ttf";
+constexpr const char* SYMBOLS_FONT = "special://xbmc/media/Fonts/UnicodeSymbols.ttf";
 // face identity in Character::m_glyphAndStyle
 constexpr character_t FONT_FACE_MASK = 3 << 24;
 // set in Character::m_glyphAndStyle for glyphs cached in their own colors
@@ -351,8 +351,8 @@ private:
   FallbackFont m_symbolsFontFile{SYMBOLS_FONT};
 };
 
-_GLOBAL_REF(CFreeTypeLibrary, g_freeTypeLibrary); // our freetype library
-#define g_freeTypeLibrary _GLOBAL_USE(CFreeTypeLibrary)
+XBMC_GLOBAL_REF(CFreeTypeLibrary, g_freeTypeLibrary); // our freetype library
+#define g_freeTypeLibrary XBMC_GLOBAL_USE(CFreeTypeLibrary)
 
 CGUIFontTTF::CGUIFontTTF(const std::string& fontIdent)
   : m_fontIdent(fontIdent),
@@ -460,7 +460,7 @@ bool CGUIFontTTF::Load(
   /*
    the values used are described below
 
-       coords                                     Freetype coords
+      XBMC coords                                     Freetype coords
 
                 0  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _  bbox.yMax, ascender
                         A                 \

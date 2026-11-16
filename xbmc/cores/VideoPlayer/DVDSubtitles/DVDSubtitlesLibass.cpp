@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -21,7 +21,7 @@
 #include "utils/FontUtils.h"
 #include "utils/StringUtils.h"
 #include "utils/URIUtils.h"
-#include "utils/TinyXML2.h"
+#include "utils/XBMCTinyXML2.h"
 #include "utils/log.h"
 
 #include <algorithm>
@@ -117,7 +117,7 @@ void CDVDSubtitlesLibass::Configure()
       XFILE::CDirectory::Create(fontconfigCacheDir);
 
     // Create fontconfig configuration using XML library
-    CTinyXML2 xmlDoc;
+    CXBMCTinyXML2 xmlDoc;
     xmlDoc.InsertEndChild(xmlDoc.NewDeclaration("xml version=\"1.0\""));
     xmlDoc.InsertEndChild(xmlDoc.NewUnknown("DOCTYPE fontconfig SYSTEM \"fonts.dtd\""));
 

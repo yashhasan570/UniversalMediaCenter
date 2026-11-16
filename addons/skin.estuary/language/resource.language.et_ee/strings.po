@@ -1,15 +1,15 @@
-# Universal Media Center Media Center language file
+# Kodi Media Center language file
 # Addon Name: Estuary
 # Addon id: skin.estuary
-# Addon Provider: Team Universal Media Center
+# Addon Provider: Team Kodi
 msgid ""
 msgstr ""
-"Project-Id-Version: UNIVERSAL MEDIA CENTER Main\n"
-"Report-Msgid-Bugs-To: https://github.com///issues/\n"
+"Project-Id-Version: KODI Main\n"
+"Report-Msgid-Bugs-To: https://github.com/xbmc/xbmc/issues/\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: 2025-03-09 10:59+0000\n"
 "Last-Translator: rimasx <riks_12@hot.ee>\n"
-"Language-Team: Estonian <https://universalmediacenter.weblate.cloud/projects/Universal Media Center-add-ons-skins/skin-estuary/et_ee/>\n"
+"Language-Team: Estonian <https://kodi.weblate.cloud/projects/kodi-add-ons-skins/skin-estuary/et_ee/>\n"
 "Language: et_ee\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,16 +18,16 @@ msgstr ""
 "X-Generator: Weblate 5.10.2\n"
 
 msgctxt "Addon Summary"
-msgid "Estuary skin by phil65. (Universal Media Center's default skin)"
-msgstr "Estuary rüü autor on phil65. (Universal Media Center vaikerüü)"
+msgid "Estuary skin by phil65. (Kodi's default skin)"
+msgstr "Estuary rüü autor on phil65. (Kodi vaikerüü)"
 
 msgctxt "Addon Description"
-msgid "Estuary is the default skin for Universal Media Center 17.0 and above. It attempts to be easy for first time Universal Media Center users to understand and use."
-msgstr "Estuary on Universal Media Center vaikerüü versioonist 17.0. Universal Media Center esmakasutajatel on rüüd kerge mõista ja kasutada."
+msgid "Estuary is the default skin for Kodi 17.0 and above. It attempts to be easy for first time Kodi users to understand and use."
+msgstr "Estuary on Kodi vaikerüü versioonist 17.0. Kodi esmakasutajatel on rüüd kerge mõista ja kasutada."
 
 msgctxt "Addon Disclaimer"
-msgid "Estuary is the default skin for Universal Media Center, removing it may cause issues"
-msgstr "Estuary on Universal Media Center vaikerüü, selle eemaldamine võib põhjustada probleeme"
+msgid "Estuary is the default skin for Kodi, removing it may cause issues"
+msgstr "Estuary on Kodi vaikerüü, selle eemaldamine võib põhjustada probleeme"
 
 msgctxt "#31000"
 msgid "Now playing"
@@ -371,8 +371,8 @@ msgid "Channel options"
 msgstr "Kanali suvandid"
 
 msgctxt "#31098"
-msgid "Select your Universal Media Center user profile[CR]to login and continue"
-msgstr "Sisselogimiseks ja jätkamiseks[CR]vali oma Universal Media Center kasutajaprofiil"
+msgid "Select your Kodi user profile[CR]to login and continue"
+msgstr "Sisselogimiseks ja jätkamiseks[CR]vali oma Kodi kasutajaprofiil"
 
 #. viewtype name
 msgctxt "#31099"
@@ -462,8 +462,8 @@ msgid "Enter add-on browser"
 msgstr "Mine lisamoodulite brauserisse"
 
 msgctxt "#31119"
-msgid "You do not have any add-ons installed yet. Visit our add-on browser to browse through our collection and improve your Universal Media Center experience."
-msgstr "Ühtegi lisamoodulit pole paigaldatud. Külasta meie lisamoodulite brauserit, sirvi lisamooduleid ning paranda Universal Media Center kasutuskogemust."
+msgid "You do not have any add-ons installed yet. Visit our add-on browser to browse through our collection and improve your Kodi experience."
+msgstr "Ühtegi lisamoodulit pole paigaldatud. Külasta meie lisamoodulite brauserit, sirvi lisamooduleid ning paranda Kodi kasutuskogemust."
 
 msgctxt "#31120"
 msgid "You did not set up a weather provider yet. In order to view weather information, choose a weather provider and set up your location."
@@ -562,8 +562,8 @@ msgid "Play speed"
 msgstr "Esitamise kiirus"
 
 msgctxt "#31143"
-msgid "You did not set up PVR yet. In order to use PVR, choose a PVR client addon and configure it. Please visit http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/PVR to learn more."
-msgstr "PVR on seadistamata. PVR-i kasutamiseks vali ja seadista PVR-i klientprogramm. Rohkem infot: http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/PVR."
+msgid "You did not set up PVR yet. In order to use PVR, choose a PVR client addon and configure it. Please visit http://kodi.wiki/view/PVR to learn more."
+msgstr "PVR on seadistamata. PVR-i kasutamiseks vali ja seadista PVR-i klientprogramm. Rohkem infot: http://kodi.wiki/view/PVR."
 
 msgctxt "#31144"
 msgid "Enter add-on browser"

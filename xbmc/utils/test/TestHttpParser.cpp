@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -14,8 +14,8 @@ TEST(TestHttpParser, General)
 {
   HttpParser a;
   std::string str = "POST /path/script.cgi HTTP/1.0\r\n"
-                   "From: amejia@github.com/yashhasan570/UniversalMediaCenter\r\n"
-                   "User-Agent: /snapshot (compatible; MSIE 5.5; Windows NT"
+                   "From: amejia@xbmc.org\r\n"
+                   "User-Agent: XBMC/snapshot (compatible; MSIE 5.5; Windows NT"
                      " 4.0)\r\n"
                    "Content-Type: application/x-www-form-urlencoded\r\n"
                    "Content-Length: 35\r\n"

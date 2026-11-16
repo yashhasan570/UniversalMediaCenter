@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2022 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -60,7 +60,7 @@ protected:
 TEST_F(TestStacks, TestMovieFilesStackFilesAB)
 {
   const std::string movieFolder =
-      _REF_FILE_PATH("/video/test/testdata/moviestack_ab/Movie-(2001)");
+      XBMC_REF_FILE_PATH("xbmc/video/test/testdata/moviestack_ab/Movie-(2001)");
   CFileItemList items;
   CDirectory::GetDirectory(movieFolder, items, VIDEO_EXTENSIONS, DIR_FLAG_DEFAULTS);
   // make sure items has 2 items (the two movie parts)
@@ -78,7 +78,7 @@ TEST_F(TestStacks, TestMovieFilesStackFilesAB)
 TEST_F(TestStacks, TestMovieFilesStackFilesPart)
 {
   const std::string movieFolder =
-      _REF_FILE_PATH("/video/test/testdata/moviestack_part/Movie_(2001)");
+      XBMC_REF_FILE_PATH("xbmc/video/test/testdata/moviestack_part/Movie_(2001)");
   CFileItemList items;
   CDirectory::GetDirectory(movieFolder, items, VIDEO_EXTENSIONS, DIR_FLAG_DEFAULTS);
   // make sure items has 3 items (the three movie parts)
@@ -96,7 +96,7 @@ TEST_F(TestStacks, TestMovieFilesStackFilesPart)
 TEST_F(TestStacks, TestMovieFilesStackDvdIso)
 {
   const std::string movieFolder =
-      _REF_FILE_PATH("/video/test/testdata/moviestack_dvdiso/Movie_(2001)");
+      XBMC_REF_FILE_PATH("xbmc/video/test/testdata/moviestack_dvdiso/Movie_(2001)");
   CFileItemList items;
   CDirectory::GetDirectory(movieFolder, items, VIDEO_EXTENSIONS, DIR_FLAG_DEFAULTS);
   // make sure items has 2 items (the two dvd isos)
@@ -116,7 +116,7 @@ TEST_F(TestStacks, TestStackPartToPlayIsVideo)
   // A part without a video tag would be classified by its extension, which a
   // game client may claim (eg. .iso), and then played by RetroPlayer.
   const std::string movieFolder =
-      _REF_FILE_PATH("/video/test/testdata/moviestack_dvdiso/Movie_(2001)");
+      XBMC_REF_FILE_PATH("xbmc/video/test/testdata/moviestack_dvdiso/Movie_(2001)");
   CFileItemList items;
   CDirectory::GetDirectory(movieFolder, items, VIDEO_EXTENSIONS, DIR_FLAG_DEFAULTS);
   items.Stack();
@@ -137,7 +137,7 @@ TEST_F(TestStacks, TestChosenDiscStackPartWithoutTimes)
 {
   // Disc image stack parts have no times until played, so the part number selects the part
   const std::string movieFolder =
-      _REF_FILE_PATH("/video/test/testdata/moviestack_dvdiso/Movie_(2001)");
+      XBMC_REF_FILE_PATH("xbmc/video/test/testdata/moviestack_dvdiso/Movie_(2001)");
   CFileItemList items;
   CDirectory::GetDirectory(movieFolder, items, VIDEO_EXTENSIONS, DIR_FLAG_DEFAULTS);
   items.Stack();
@@ -165,7 +165,7 @@ TEST_F(TestStacks, TestChosenDiscStackPartWithoutTimes)
 TEST_F(TestStacks, TestMovieFilesStackBlurayIso)
 {
   const std::string movieFolder =
-      _REF_FILE_PATH("/video/test/testdata/moviestack_blurayiso/Movie_(2001)");
+      XBMC_REF_FILE_PATH("xbmc/video/test/testdata/moviestack_blurayiso/Movie_(2001)");
   CFileItemList items;
   CDirectory::GetDirectory(movieFolder, items, VIDEO_EXTENSIONS, DIR_FLAG_DEFAULTS);
   // make sure items has 2 items (the two bluray isos)
@@ -183,7 +183,7 @@ TEST_F(TestStacks, TestMovieFilesStackBlurayIso)
 TEST_F(TestStacks, TestMovieFilesStackFolderFilesPart)
 {
   const std::string movieFolder =
-      _REF_FILE_PATH("/video/test/testdata/moviestack_subfolder_parts/Movie_(2001)");
+      XBMC_REF_FILE_PATH("xbmc/video/test/testdata/moviestack_subfolder_parts/Movie_(2001)");
   CFileItemList items;
   CDirectory::GetDirectory(movieFolder, items, "", DIR_FLAG_DEFAULTS);
   // make sure items has 3 items (the three movie parts)
@@ -241,7 +241,7 @@ TEST_F(TestStacks, TestFolderStacksIgnoreAnyFurtherCapturesOfTheirExpression)
   advancedSettings->m_folderStackRegExps = {regExp};
 
   const std::string movieFolder =
-      _REF_FILE_PATH("/video/test/testdata/moviestack_subfolder_parts/Movie_(2001)");
+      XBMC_REF_FILE_PATH("xbmc/video/test/testdata/moviestack_subfolder_parts/Movie_(2001)");
   CFileItemList items;
   CDirectory::GetDirectory(movieFolder, items, "", DIR_FLAG_DEFAULTS);
   EXPECT_EQ(items.Size(), 3);
@@ -257,7 +257,7 @@ TEST_F(TestStacks, TestLoneFolderStackPartStaysAFolder)
   // A folder that looks like a part of a folder stack but has no other part to stack with must
   // stay a folder, so that it is still listed and scanned as a movie folder of its own
   const std::string movieFolder{
-      _REF_FILE_PATH("/video/test/testdata/moviestack_subfolder_parts/Movie_(2001)")};
+      XBMC_REF_FILE_PATH("xbmc/video/test/testdata/moviestack_subfolder_parts/Movie_(2001)")};
   CFileItemList items{movieFolder};
 
   const auto part{
@@ -267,7 +267,7 @@ TEST_F(TestStacks, TestLoneFolderStackPartStaysAFolder)
 
   // an unrelated movie, so that the list is not a single item
   items.Add(std::make_shared<CFileItem>(
-      _REF_FILE_PATH("/video/test/testdata/moviestack_ab/Movie-(2001)/Movie-(2001)A.mp4"),
+      XBMC_REF_FILE_PATH("xbmc/video/test/testdata/moviestack_ab/Movie-(2001)/Movie-(2001)A.mp4"),
       false));
 
   items.Stack();
@@ -280,7 +280,7 @@ TEST_F(TestStacks, TestLoneFolderStackPartStaysAFolder)
 TEST_F(TestStacks, TestMovieFilesStackFolderFilesPart2)
 {
   const std::string movieFolder =
-      _REF_FILE_PATH("/video/test/testdata/moviestack_subfolder_movie");
+      XBMC_REF_FILE_PATH("xbmc/video/test/testdata/moviestack_subfolder_movie");
   CFileItemList items;
   CDirectory::GetDirectory(movieFolder, items, "", DIR_FLAG_DEFAULTS);
   // make sure items has 2 items (the two movie parts)
@@ -301,7 +301,7 @@ TEST_F(TestStacks, TestMovieFilesStackFolderFilesPart2)
 TEST_F(TestStacks, TestMovieFilesStackFolderFilesDiscPart)
 {
   const std::string movieFolder =
-      _REF_FILE_PATH("/video/test/testdata/moviestack_subfolder_disc_parts/Movie_(2001)");
+      XBMC_REF_FILE_PATH("xbmc/video/test/testdata/moviestack_subfolder_disc_parts/Movie_(2001)");
   CFileItemList items;
   CDirectory::GetDirectory(movieFolder, items, "", DIR_FLAG_DEFAULTS);
   // make sure items has 2 items (the two movie parts)
@@ -639,7 +639,7 @@ TEST_F(TestStacks, TestStackHasNoBlurayPath)
 TEST_F(TestStacks, TestMovieFilesStackFolderFilesDiscNPart)
 {
   const std::string movieFolder =
-      _REF_FILE_PATH("/video/test/testdata/moviestack_discn_parts/Movie_(2001)");
+      XBMC_REF_FILE_PATH("xbmc/video/test/testdata/moviestack_discn_parts/Movie_(2001)");
   CFileItemList items;
   CDirectory::GetDirectory(movieFolder, items, "", DIR_FLAG_DEFAULTS);
   // make sure items has 2 items (the two movie parts)

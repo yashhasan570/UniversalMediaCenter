@@ -3,7 +3,7 @@
  * from Shairport, by James Laird.
  *
  *  Copyright (C) 2011-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -162,7 +162,7 @@ void CAirTunesServer::RefreshCoverArt(const char *outputFilename/* = NULL*/)
     // UpdateInfo overwrites the mime type, and an empty url clears the previous thumbnail.
     CFileItem* item = new CFileItem();
     item->SetPath(pipeName);
-    item->SetMimeType("audio/x--pcm");
+    item->SetMimeType("audio/x-xbmc-pcm");
     item->SetArt(UNIVERSAL MEDIA CENTER::ART::TYPE::THUMB, CFile::Exists(coverArtFile) ? coverArtFile : "");
 
     CServiceBroker::GetAppMessenger()->PostMsg(TMSG_UPDATE_PLAYER_ITEM, -1, -1,
@@ -406,7 +406,7 @@ void* CAirTunesServer::AudioOutputFunctions::audio_init(void *cls, int bits, int
 
   CFileItem *item = new CFileItem();
   item->SetPath(pipe->GetName());
-  item->SetMimeType("audio/x--pcm");
+  item->SetMimeType("audio/x-xbmc-pcm");
   m_streamStarted = true;
   m_sampleRate = samplerate;
 
@@ -570,7 +570,7 @@ void  CAirTunesServer::AudioOutputFunctions::audio_destroy(void *cls, void *sess
 
 void shairplay_log(void *cls, int level, const char *msg)
 {
-  int Level = LOGINFO;
+  int xbmcLevel = LOGINFO;
   if (!CServiceBroker::GetLogging().CanLogComponent(LOGAIRTUNES))
     return;
 
@@ -579,25 +579,25 @@ void shairplay_log(void *cls, int level, const char *msg)
     case RAOP_LOG_EMERG:    // system is unusable
     case RAOP_LOG_ALERT:    // action must be taken immediately
     case RAOP_LOG_CRIT:     // critical conditions
-      Level = LOGFATAL;
+      xbmcLevel = LOGFATAL;
       break;
     case RAOP_LOG_ERR:      // error conditions
-      Level = LOGERROR;
+      xbmcLevel = LOGERROR;
       break;
     case RAOP_LOG_WARNING:  // warning conditions
-      Level = LOGWARNING;
+      xbmcLevel = LOGWARNING;
       break;
     case RAOP_LOG_NOTICE:   // normal but significant condition
     case RAOP_LOG_INFO:     // informational
-      Level = LOGINFO;
+      xbmcLevel = LOGINFO;
       break;
     case RAOP_LOG_DEBUG:    // debug-level messages
-      Level = LOGDEBUG;
+      xbmcLevel = LOGDEBUG;
       break;
     default:
       break;
   }
-  CLog::Log(Level, "AIRTUNES: {}", msg);
+  CLog::Log(xbmcLevel, "AIRTUNES: {}", msg);
 }
 
 bool CAirTunesServer::StartServer(int port, bool nonlocal, bool usePassword, const std::string &password/*=""*/)

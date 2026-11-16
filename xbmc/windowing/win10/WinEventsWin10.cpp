@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -63,16 +63,16 @@ void CWinEventsWin10::InitOSKeymap(void)
   UNIVERSAL MEDIA CENTER::WINDOWING::WINDOWS::DIB_InitOSKeymap();
 }
 
-void CWinEventsWin10::MessagePush(_Event *newEvent)
+void CWinEventsWin10::MessagePush(XBMC_Event *newEvent)
 {
   // push input events in the queue they may init modal dialog which init
   // deeper message loop and call the deeper MessagePump from there.
-  if ( newEvent->type == _KEYDOWN
-    || newEvent->type == _KEYUP
-    || newEvent->type == _MOUSEMOTION
-    || newEvent->type == _MOUSEBUTTONDOWN
-    || newEvent->type == _MOUSEBUTTONUP
-    || newEvent->type == _TOUCH)
+  if ( newEvent->type == XBMC_KEYDOWN
+    || newEvent->type == XBMC_KEYUP
+    || newEvent->type == XBMC_MOUSEMOTION
+    || newEvent->type == XBMC_MOUSEBUTTONDOWN
+    || newEvent->type == XBMC_MOUSEBUTTONUP
+    || newEvent->type == XBMC_TOUCH)
   {
     m_events.push(*newEvent);
   }
@@ -94,13 +94,13 @@ bool CWinEventsWin10::MessagePump()
 
   TriggerGamepadScan();
 
-  _Event pumpEvent;
+  XBMC_Event pumpEvent;
   while (m_events.try_pop(pumpEvent))
   {
     if (appPort)
       ret |= appPort->OnEvent(pumpEvent);
 
-    if (pumpEvent.type == _MOUSEBUTTONUP)
+    if (pumpEvent.type == XBMC_MOUSEBUTTONUP)
       CServiceBroker::GetGUI()->GetWindowManager().SendMessage(GUI_MSG_UNFOCUS_ALL, 0, 0, 0, 0);
   }
   return ret;
@@ -196,8 +196,8 @@ void CWinEventsWin10::UpdateWindowSize()
   if (CServiceBroker::GetSettingsComponent()->GetAdvancedSettings()->m_fullScreen && !appView.IsFullScreenMode())
     CServiceBroker::GetSettingsComponent()->GetAdvancedSettings()->m_fullScreen = false;
 
-  _Event newEvent = {};
-  newEvent.type = _VIDEORESIZE;
+  XBMC_Event newEvent = {};
+  newEvent.type = XBMC_VIDEORESIZE;
   newEvent.resize.width = size.Width;
   newEvent.resize.height = size.Height;
   newEvent.resize.scale = 1.0;
@@ -316,15 +316,15 @@ void CWinEventsWin10::OnWindowClosed(const CoreWindow& sender, const CoreWindowE
   // send quit command to the application if it's still running
   if (!g_application.m_bStop)
   {
-    _Event newEvent = {};
-    newEvent.type = _QUIT;
+    XBMC_Event newEvent = {};
+    newEvent.type = XBMC_QUIT;
     MessagePush(&newEvent);
   }
 }
 
 void CWinEventsWin10::OnPointerPressed(const CoreWindow&, const PointerEventArgs& args)
 {
-  _Event newEvent = {};
+  XBMC_Event newEvent = {};
 
   PointerPoint point = args.CurrentPoint();
   auto position = GetScreenPoint(point.Position());
@@ -336,17 +336,17 @@ void CWinEventsWin10::OnPointerPressed(const CoreWindow&, const PointerEventArgs
   }
   else
   {
-    newEvent.type = _MOUSEBUTTONDOWN;
+    newEvent.type = XBMC_MOUSEBUTTONDOWN;
     newEvent.button.x = position.X;
     newEvent.button.y = position.Y;
     if (point.PointerDevice().PointerDeviceType() == PointerDeviceType::Mouse)
     {
       if (point.Properties().IsLeftButtonPressed())
-        newEvent.button.button = _BUTTON_LEFT;
+        newEvent.button.button = XBMC_BUTTON_LEFT;
       else if (point.Properties().IsMiddleButtonPressed())
-        newEvent.button.button = _BUTTON_MIDDLE;
+        newEvent.button.button = XBMC_BUTTON_MIDDLE;
       else if (point.Properties().IsRightButtonPressed())
-        newEvent.button.button = _BUTTON_RIGHT;
+        newEvent.button.button = XBMC_BUTTON_RIGHT;
     }
     else if (point.PointerDevice().PointerDeviceType() == PointerDeviceType::Pen)
     {
@@ -372,8 +372,8 @@ void CWinEventsWin10::OnPointerMoved(const CoreWindow&, const PointerEventArgs& 
     return;
   }
 
-  _Event newEvent = {};
-  newEvent.type = _MOUSEMOTION;
+  XBMC_Event newEvent = {};
+  newEvent.type = XBMC_MOUSEMOTION;
   newEvent.motion.x = position.X;
   newEvent.motion.y = position.Y;
   MessagePush(&newEvent);
@@ -390,17 +390,17 @@ void CWinEventsWin10::OnPointerReleased(const CoreWindow&, const PointerEventArg
     return;
   }
 
-  _Event newEvent = {};
-  newEvent.type = _MOUSEBUTTONUP;
+  XBMC_Event newEvent = {};
+  newEvent.type = XBMC_MOUSEBUTTONUP;
   newEvent.button.x = position.X;
   newEvent.button.y = position.Y;
 
   if (point.Properties().PointerUpdateKind() == PointerUpdateKind::LeftButtonReleased)
-    newEvent.button.button = _BUTTON_LEFT;
+    newEvent.button.button = XBMC_BUTTON_LEFT;
   else if (point.Properties().PointerUpdateKind() == PointerUpdateKind::MiddleButtonReleased)
-    newEvent.button.button = _BUTTON_MIDDLE;
+    newEvent.button.button = XBMC_BUTTON_MIDDLE;
   else if (point.Properties().PointerUpdateKind() == PointerUpdateKind::RightButtonReleased)
-    newEvent.button.button = _BUTTON_RIGHT;
+    newEvent.button.button = XBMC_BUTTON_RIGHT;
 
   MessagePush(&newEvent);
 }
@@ -418,13 +418,13 @@ void CWinEventsWin10::OnPointerExited(const CoreWindow&, const PointerEventArgs&
 
 void CWinEventsWin10::OnPointerWheelChanged(const CoreWindow&, const PointerEventArgs& args)
 {
-  _Event newEvent = {};
-  newEvent.type = _MOUSEBUTTONDOWN;
+  XBMC_Event newEvent = {};
+  newEvent.type = XBMC_MOUSEBUTTONDOWN;
   newEvent.button.x = args.CurrentPoint().Position().X;
   newEvent.button.y = args.CurrentPoint().Position().Y;
-  newEvent.button.button = args.CurrentPoint().Properties().MouseWheelDelta() > 0 ? _BUTTON_WHEELUP : _BUTTON_WHEELDOWN;
+  newEvent.button.button = args.CurrentPoint().Properties().MouseWheelDelta() > 0 ? XBMC_BUTTON_WHEELUP : XBMC_BUTTON_WHEELDOWN;
   MessagePush(&newEvent);
-  newEvent.type = _MOUSEBUTTONUP;
+  newEvent.type = XBMC_MOUSEBUTTONUP;
   MessagePush(&newEvent);
 }
 
@@ -435,47 +435,47 @@ void CWinEventsWin10::Universal Media Center_KeyEvent(unsigned int vkey,
 {
   using State = CoreVirtualKeyStates;
 
-  _keysym keysym = {};
+  XBMC_keysym keysym = {};
   keysym.scancode = scancode;
   keysym.sym = UNIVERSAL MEDIA CENTER::WINDOWING::WINDOWS::VK_keymap[vkey];
   keysym.unicode = keycode;
 
   auto window = CoreWindow::GetForCurrentThread();
 
-  uint16_t mod = (uint16_t)KMOD_NONE;
+  uint16_t mod = (uint16_t)XBMCKMOD_NONE;
   // If left control and right alt are down this usually means that AltGr is down
   if ((window.GetKeyState(VirtualKey::LeftControl) & State::Down) == State::Down
     && (window.GetKeyState(VirtualKey::RightMenu) & State::Down) == State::Down)
   {
-    mod |= KMOD_MODE;
-    mod |= KMOD_MODE;
+    mod |= XBMCKMOD_MODE;
+    mod |= XBMCKMOD_MODE;
   }
   else
   {
     if ((window.GetKeyState(VirtualKey::LeftControl) & State::Down) == State::Down)
-      mod |= KMOD_LCTRL;
+      mod |= XBMCKMOD_LCTRL;
     if ((window.GetKeyState(VirtualKey::RightMenu) & State::Down) == State::Down)
-      mod |= KMOD_RALT;
+      mod |= XBMCKMOD_RALT;
   }
 
   // Check the remaining modifiers
   if ((window.GetKeyState(VirtualKey::LeftShift) & State::Down) == State::Down)
-    mod |= KMOD_LSHIFT;
+    mod |= XBMCKMOD_LSHIFT;
   if ((window.GetKeyState(VirtualKey::RightShift) & State::Down) == State::Down)
-    mod |= KMOD_RSHIFT;
+    mod |= XBMCKMOD_RSHIFT;
   if ((window.GetKeyState(VirtualKey::RightControl) & State::Down) == State::Down)
-    mod |= KMOD_RCTRL;
+    mod |= XBMCKMOD_RCTRL;
   if ((window.GetKeyState(VirtualKey::LeftMenu) & State::Down) == State::Down)
-    mod |= KMOD_LALT;
+    mod |= XBMCKMOD_LALT;
   if ((window.GetKeyState(VirtualKey::LeftWindows) & State::Down) == State::Down)
-    mod |= KMOD_LSUPER;
+    mod |= XBMCKMOD_LSUPER;
   if ((window.GetKeyState(VirtualKey::RightWindows) & State::Down) == State::Down)
-    mod |= KMOD_LSUPER;
+    mod |= XBMCKMOD_LSUPER;
 
-  keysym.mod = static_cast<Mod>(mod);
+  keysym.mod = static_cast<XBMCMod>(mod);
 
-  _Event newEvent = {};
-  newEvent.type = isDown ? _KEYDOWN : _KEYUP;
+  XBMC_Event newEvent = {};
+  newEvent.type = isDown ? XBMC_KEYDOWN : XBMC_KEYUP;
   newEvent.key.keysym = keysym;
   MessagePush(&newEvent);
 }

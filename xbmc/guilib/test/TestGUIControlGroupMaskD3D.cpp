@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -633,7 +633,7 @@ TEST_P(TestGUIControlGroupMaskD3D, NestedMasksPreserveOtherBits)
 TEST_P(TestGUIControlGroupMaskD3D, TextUsesTheSameStencilMask)
 {
   CTestFont font;
-  ASSERT_TRUE(font.Load(_REF_FILE_PATH("media/Fonts/arial.ttf"), 32));
+  ASSERT_TRUE(font.Load(XBMC_REF_FILE_PATH("media/Fonts/arial.ttf"), 32));
   font.Paint(Context());
   const auto unmasked = ReadPixels();
   ASSERT_TRUE(m_window->ClearBuffers(0));
@@ -663,7 +663,7 @@ TEST_P(TestGUIControlGroupMaskD3D, RotatedTextPreservesUnrotatedMask)
 {
   m_window->SetCameraPosition(CPoint(64, 64), TARGET_SIZE, TARGET_SIZE, 0);
   CTestFont font;
-  ASSERT_TRUE(font.Load(_REF_FILE_PATH("media/Fonts/arial.ttf"), 32));
+  ASSERT_TRUE(font.Load(XBMC_REF_FILE_PATH("media/Fonts/arial.ttf"), 32));
   auto* text = new CRotatedTextControl(font);
   CGUIControlGroupMask group(0, 0, 0, 0, 64, 96);
   group.AddControl(text);
@@ -708,7 +708,7 @@ TEST_P(TestGUIControlGroupMaskD3D, TextClipRegionWithAndWithoutRotation)
 {
   m_window->SetCameraPosition(CPoint(64, 64), TARGET_SIZE, TARGET_SIZE, 0);
   CTestFont font;
-  ASSERT_TRUE(font.Load(_REF_FILE_PATH("media/Fonts/arial.ttf"), 32));
+  ASSERT_TRUE(font.Load(XBMC_REF_FILE_PATH("media/Fonts/arial.ttf"), 32));
   const CRect clip{32, 0, 96, TARGET_SIZE};
   for (float angle : {0.0f, ANGLE})
   {

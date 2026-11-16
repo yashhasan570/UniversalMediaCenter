@@ -1,6 +1,6 @@
 @ECHO OFF
 rem Application for Windows install script
-rem Copyright (C) 2005-2015 Team 
+rem Copyright (C) 2005-2015 Team XBMC
 rem http://universalmediacenter.tv
 
 rem Script by chadoe

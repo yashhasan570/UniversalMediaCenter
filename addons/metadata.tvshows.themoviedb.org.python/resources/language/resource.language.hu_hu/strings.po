@@ -1,4 +1,4 @@
-# Universal Media Center Media Center language file
+# Kodi Media Center language file
 # Addon Name: TMDb TV Shows python3
 # Addon id: metadata.tvshows.tmdb.python3
 # Addon Provider: MikeSiLVO

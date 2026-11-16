@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2020 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -187,7 +187,7 @@ bool CGUIPassword::CheckStartUpLock()
   if (iVerifyPasswordResult == 0)
   {
     g_passwordManager.iMasterLockRetriesLeft = CServiceBroker::GetSettingsComponent()->GetSettings()->GetInt(CSettings::SETTING_MASTERLOCK_MAXRETRIES);
-    return true;  // OK The MasterCode Accepted!  Can Run!
+    return true;  // OK The MasterCode Accepted! XBMC Can Run!
   }
   else
   {

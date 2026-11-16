@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2017-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "input/keyboard/_keysym.h"
+#include "input/keyboard/XBMC_keysym.h"
 
 #include <cstdint>
 #include <memory>
@@ -109,13 +109,13 @@ public:
    */
   xkb_mod_mask_t CurrentModifiers() const;
   /**
-   * Get Key for provided keycode
+   * Get XBMCKey for provided keycode
    */
-  Key KeyForKeycode(xkb_keycode_t code) const;
+  XBMCKey XBMCKeyForKeycode(xkb_keycode_t code) const;
   /**
-   * \ref CurrentModifiers with  flags
+   * \ref CurrentModifiers with XBMC flags
    */
-  Mod ActiveModifiers() const;
+  XBMCMod ActiveXBMCModifiers() const;
   /**
    * Get Unicode codepoint/UTF32 code for provided keycode
    */
@@ -140,7 +140,7 @@ public:
    */
   void KeyComposerFlush();
 
-  static Key KeyForKeysym(xkb_keysym_t sym);
+  static XBMCKey XBMCKeyForKeysym(xkb_keysym_t sym);
 
 private:
   struct XkbStateDeleter
@@ -162,9 +162,9 @@ private:
   struct ModifierMapping
   {
     xkb_mod_index_t xkb;
-    Mod ;
-    ModifierMapping(xkb_mod_index_t xkb, Mod )
-    : xkb{xkb}, {}
+    XBMCMod xbmc;
+    ModifierMapping(xkb_mod_index_t xkb, XBMCMod xbmc)
+    : xkb{xkb}, xbmc{xbmc}
     {}
   };
   std::vector<ModifierMapping> m_modifierMappings;

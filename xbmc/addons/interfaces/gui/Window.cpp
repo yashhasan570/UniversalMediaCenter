@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -41,71 +41,71 @@ namespace ADDON
 
 void Interface_GUIWindow::Init(AddonGlobalInterface* addonInterface)
 {
-  addonInterface->toUniversal Media Center->->window = new AddonToUniversal Media CenterFuncTable__window();
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->window = new AddonToUniversal Media CenterFuncTable_universalmediacenter_gui_window();
 
   /* Window creation functions */
-  addonInterface->toUniversal Media Center->->window->create = create;
-  addonInterface->toUniversal Media Center->->window->destroy = destroy;
-  addonInterface->toUniversal Media Center->->window->set_callbacks = set_callbacks;
-  addonInterface->toUniversal Media Center->->window->show = show;
-  addonInterface->toUniversal Media Center->->window->close = close;
-  addonInterface->toUniversal Media Center->->window->do_modal = do_modal;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->window->create = create;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->window->destroy = destroy;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->window->set_callbacks = set_callbacks;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->window->show = show;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->window->close = close;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->window->do_modal = do_modal;
 
   /* Window control functions */
-  addonInterface->toUniversal Media Center->->window->set_focus_id = set_focus_id;
-  addonInterface->toUniversal Media Center->->window->get_focus_id = get_focus_id;
-  addonInterface->toUniversal Media Center->->window->set_control_label = set_control_label;
-  addonInterface->toUniversal Media Center->->window->set_control_visible = set_control_visible;
-  addonInterface->toUniversal Media Center->->window->set_control_selected = set_control_selected;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->window->set_focus_id = set_focus_id;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->window->get_focus_id = get_focus_id;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->window->set_control_label = set_control_label;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->window->set_control_visible = set_control_visible;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->window->set_control_selected = set_control_selected;
 
   /* Window property functions */
-  addonInterface->toUniversal Media Center->->window->set_property = set_property;
-  addonInterface->toUniversal Media Center->->window->set_property_int = set_property_int;
-  addonInterface->toUniversal Media Center->->window->set_property_bool = set_property_bool;
-  addonInterface->toUniversal Media Center->->window->set_property_double = set_property_double;
-  addonInterface->toUniversal Media Center->->window->get_property = get_property;
-  addonInterface->toUniversal Media Center->->window->get_property_int = get_property_int;
-  addonInterface->toUniversal Media Center->->window->get_property_bool = get_property_bool;
-  addonInterface->toUniversal Media Center->->window->get_property_double = get_property_double;
-  addonInterface->toUniversal Media Center->->window->clear_properties = clear_properties;
-  addonInterface->toUniversal Media Center->->window->clear_property = clear_property;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->window->set_property = set_property;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->window->set_property_int = set_property_int;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->window->set_property_bool = set_property_bool;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->window->set_property_double = set_property_double;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->window->get_property = get_property;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->window->get_property_int = get_property_int;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->window->get_property_bool = get_property_bool;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->window->get_property_double = get_property_double;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->window->clear_properties = clear_properties;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->window->clear_property = clear_property;
 
   /* List item functions */
-  addonInterface->toUniversal Media Center->->window->clear_item_list = clear_item_list;
-  addonInterface->toUniversal Media Center->->window->add_list_item = add_list_item;
-  addonInterface->toUniversal Media Center->->window->remove_list_item_from_position =
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->window->clear_item_list = clear_item_list;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->window->add_list_item = add_list_item;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->window->remove_list_item_from_position =
       remove_list_item_from_position;
-  addonInterface->toUniversal Media Center->->window->remove_list_item = remove_list_item;
-  addonInterface->toUniversal Media Center->->window->get_list_item = get_list_item;
-  addonInterface->toUniversal Media Center->->window->set_current_list_position = set_current_list_position;
-  addonInterface->toUniversal Media Center->->window->get_current_list_position = get_current_list_position;
-  addonInterface->toUniversal Media Center->->window->get_list_size = get_list_size;
-  addonInterface->toUniversal Media Center->->window->set_container_property = set_container_property;
-  addonInterface->toUniversal Media Center->->window->set_container_content = set_container_content;
-  addonInterface->toUniversal Media Center->->window->get_current_container_id = get_current_container_id;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->window->remove_list_item = remove_list_item;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->window->get_list_item = get_list_item;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->window->set_current_list_position = set_current_list_position;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->window->get_current_list_position = get_current_list_position;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->window->get_list_size = get_list_size;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->window->set_container_property = set_container_property;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->window->set_container_content = set_container_content;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->window->get_current_container_id = get_current_container_id;
 
   /* Various functions */
-  addonInterface->toUniversal Media Center->->window->mark_dirty_region = mark_dirty_region;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->window->mark_dirty_region = mark_dirty_region;
 
   /* GUI control access functions */
-  addonInterface->toUniversal Media Center->->window->get_control_button = get_control_button;
-  addonInterface->toUniversal Media Center->->window->get_control_edit = get_control_edit;
-  addonInterface->toUniversal Media Center->->window->get_control_fade_label = get_control_fade_label;
-  addonInterface->toUniversal Media Center->->window->get_control_image = get_control_image;
-  addonInterface->toUniversal Media Center->->window->get_control_label = get_control_label;
-  addonInterface->toUniversal Media Center->->window->get_control_progress = get_control_progress;
-  addonInterface->toUniversal Media Center->->window->get_control_radio_button = get_control_radio_button;
-  addonInterface->toUniversal Media Center->->window->get_control_render_addon = get_control_render_addon;
-  addonInterface->toUniversal Media Center->->window->get_control_settings_slider =
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->window->get_control_button = get_control_button;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->window->get_control_edit = get_control_edit;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->window->get_control_fade_label = get_control_fade_label;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->window->get_control_image = get_control_image;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->window->get_control_label = get_control_label;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->window->get_control_progress = get_control_progress;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->window->get_control_radio_button = get_control_radio_button;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->window->get_control_render_addon = get_control_render_addon;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->window->get_control_settings_slider =
       get_control_settings_slider;
-  addonInterface->toUniversal Media Center->->window->get_control_slider = get_control_slider;
-  addonInterface->toUniversal Media Center->->window->get_control_spin = get_control_spin;
-  addonInterface->toUniversal Media Center->->window->get_control_text_box = get_control_text_box;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->window->get_control_slider = get_control_slider;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->window->get_control_spin = get_control_spin;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->window->get_control_text_box = get_control_text_box;
 }
 
 void Interface_GUIWindow::DeInit(AddonGlobalInterface* addonInterface)
 {
-  delete addonInterface->toUniversal Media Center->->window;
+  delete addonInterface->toUniversal Media Center->universalmediacenter_gui->window;
 }
 
 /*!

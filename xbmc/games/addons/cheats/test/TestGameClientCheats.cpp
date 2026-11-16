@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -24,7 +24,7 @@
 #include "jobs/JobManager.h"
 #include "test/TestUtils.h"
 #include "utils/URIUtils.h"
-#include "utils/TinyXML2.h"
+#include "utils/XBMCTinyXML2.h"
 
 #include <algorithm>
 #include <deque>
@@ -238,7 +238,7 @@ protected:
     CServiceBroker::RegisterJobManager(std::make_shared<CJobManager>());
     g_application.m_ServiceManager.get()->*GetMember(RepositoryUpdater{}) =
         std::make_unique<ADDON::CRepositoryUpdater>(CServiceBroker::GetAddonMgr());
-    CTinyXML2 xml;
+    CXBMCTinyXML2 xml;
     ASSERT_TRUE(
         xml.Parse(std::string(R"(<addon id="game.test.cheats" name="Cheats test" version="1.0.0">
       <extension point="universalmediacenter.gameclient" library="test.so"><extensions>rom</extensions></extension>
@@ -267,15 +267,15 @@ protected:
     subsystems.Cheats =
         std::make_unique<TestCheats>(*client, *client->GetInstanceInterface(), ClientAccess());
     cheats = static_cast<TestCheats*>(subsystems.Cheats.get());
-    file = _CREATETEMPFILE(".cht");
+    file = XBMC_CREATETEMPFILE(".cht");
     ASSERT_NE(file, nullptr);
     file->Close();
-    directory = _TEMPFILEPATH(file) + "_packs";
+    directory = XBMC_TEMPFILEPATH(file) + "_packs";
     std::filesystem::create_directories(directory);
     cheats->selectionDirectory = directory + "/choices";
     WritePack("cheats = 2\ncheat0_desc = Lives\ncheat0_code = AAA\n"
               "cheat1_desc = Health\ncheat1_code = BBB\n");
-    cheats->sources = {{DATABASE, _TEMPFILEPATH(file), info}};
+    cheats->sources = {{DATABASE, XBMC_TEMPFILEPATH(file), info}};
   }
 
   void TearDown() override
@@ -287,7 +287,7 @@ protected:
       client.reset();
     }
     if (file)
-      _DELETETEMPFILE(file);
+      XBMC_DELETETEMPFILE(file);
     std::filesystem::remove_all(directory);
     (g_application.m_ServiceManager.get()->*GetMember(RepositoryUpdater{})).reset();
     CServiceBroker::GetJobManager()->CancelJobs();
@@ -312,7 +312,7 @@ protected:
   void WritePack(const std::string& contents)
   {
     XFILE::CFile output;
-    ASSERT_TRUE(output.OpenForWrite(_TEMPFILEPATH(file), true));
+    ASSERT_TRUE(output.OpenForWrite(XBMC_TEMPFILEPATH(file), true));
     ASSERT_EQ(output.Write(contents.data(), contents.size()), contents.size());
   }
 
@@ -322,7 +322,7 @@ protected:
   {
     const auto folder = std::filesystem::path(directory) / source / system;
     std::filesystem::create_directories(folder);
-    ASSERT_TRUE(XFILE::CFile::Copy(_TEMPFILEPATH(file), (folder / filename).string()));
+    ASSERT_TRUE(XFILE::CFile::Copy(XBMC_TEMPFILEPATH(file), (folder / filename).string()));
   }
 
   void Discover(std::vector<TestCheats::Source> sources)
@@ -1021,7 +1021,7 @@ TEST_F(TestGameClientCheats, SystemLabelsKeepRawDirectoryAndArchiveIdentities)
             std::string(DATABASE) + "/Nintendo%20-%20Game%20Boy%2f/game.cht");
 
   std::filesystem::remove_all(directory + "/addon/" + system);
-  const auto archive = _REF_FILE_PATH("/games/addons/cheats/test/game.cht.zip");
+  const auto archive = XBMC_REF_FILE_PATH("xbmc/games/addons/cheats/test/game.cht.zip");
   ASSERT_TRUE(XFILE::CFile::Copy(archive, directory + "/addon/" + system + ".zip"));
   Discover({{DATABASE, directory + "/addon", info}});
   const auto archives = cheats->GetPacks();
@@ -1056,7 +1056,7 @@ TEST_F(TestGameClientCheats, MissingAddonNameFallsBackToRedactedIdentifier)
 TEST_F(TestGameClientCheats, CustomSystemLabelsUseConfiguredRoot)
 {
   AddPack("custom", "Nintendo - Game Boy");
-  const auto archive = _REF_FILE_PATH("/games/addons/cheats/test/game.cht.zip");
+  const auto archive = XBMC_REF_FILE_PATH("xbmc/games/addons/cheats/test/game.cht.zip");
   ASSERT_TRUE(XFILE::CFile::Copy(archive, directory + "/custom/Nintendo - Game Boy Advance.zip"));
   const std::string root = directory + "/custom";
   Discover({{"", root, client->AddonInfo()}});
@@ -1074,7 +1074,7 @@ TEST_F(TestGameClientCheats, CustomSystemLabelsUseConfiguredRoot)
 TEST_F(TestGameClientCheats, CustomVfsRootRedactsCredentials)
 {
   CURL root = URIUtils::CreateArchivePath(
-      "zip", CURL(_REF_FILE_PATH("/games/addons/cheats/test/game.cht.zip")));
+      "zip", CURL(XBMC_REF_FILE_PATH("xbmc/games/addons/cheats/test/game.cht.zip")));
   root.SetUserName("user");
   root.SetPassword("secret");
   Discover({{"", root.Get(), {}}});
@@ -1119,7 +1119,7 @@ TEST_F(TestGameClientCheats, DuplicateVisibleRowsDisambiguateOnlyCollisionsAndKe
 TEST_F(TestGameClientCheats, SameSourceDirectoryAndArchiveRowsRemainDistinct)
 {
   AddPack("custom", "System");
-  const auto archive = _REF_FILE_PATH("/games/addons/cheats/test/game.cht.zip");
+  const auto archive = XBMC_REF_FILE_PATH("xbmc/games/addons/cheats/test/game.cht.zip");
   ASSERT_TRUE(XFILE::CFile::Copy(archive, directory + "/custom/System.zip"));
   const std::string root = directory + "/custom";
   Discover({{"", root, {}}});
@@ -1232,7 +1232,7 @@ TEST_F(TestGameClientCheats, ChoiceSurvivesReopeningAndANewEmulatorInstance)
   EXPECT_EQ(cheats->GetPacks().selected, selected);
 
   cheats->Clear();
-  CTinyXML2 xml;
+  CXBMCTinyXML2 xml;
   ASSERT_TRUE(xml.Parse(
       std::string(R"(<addon id="game.test.another" name="Another emulator" version="1.0.0">
     <extension point="universalmediacenter.gameclient" library="test.so"><extensions>rom</extensions></extension>
@@ -1395,7 +1395,7 @@ TEST_F(TestGameClientCheats, AddonChangeDuringSelectionDiscardsTheStaleResult)
 TEST_F(TestGameClientCheats, TwoSystemArchivesInOneAddonAreDistinctPacks)
 {
   const std::filesystem::path archive =
-      _REF_FILE_PATH("/games/addons/cheats/test/game.cht.zip");
+      XBMC_REF_FILE_PATH("xbmc/games/addons/cheats/test/game.cht.zip");
   std::error_code ec;
   ASSERT_TRUE(std::filesystem::exists(archive, ec)) << archive << ": " << ec.message();
   const auto addon = std::filesystem::path(directory) / "addon";

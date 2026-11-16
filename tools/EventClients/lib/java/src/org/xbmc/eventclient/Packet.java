@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2008-2013 Team 
+ *  Copyright (C) 2008-2013 Team XBMC
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -16,19 +16,19 @@
  *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package org..eventclient;
+package org.xbmc.eventclient;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
 /**
- *  Event Client Class
+ * XBMC Event Client Class
  * <p>
- * Implementation of 's UDP based input system.
+ * Implementation of XBMC's UDP based input system.
  * A set of classes that abstract the various packets that the event server
- * currently supports. In addition, there's also a class, Client, that
- * provides functions that sends the various packets. Use Client if you
+ * currently supports. In addition, there's also a class, XBMCClient, that
+ * provides functions that sends the various packets. Use XBMCClient if you
  * don't need complete control over packet structure.
  * </p>
  * <p>
@@ -41,9 +41,9 @@ import java.net.InetAddress;
  * </p>
  * <p>
  * IMPORTANT NOTE ABOUT TIMEOUTS:
- * A client is considered to be timed out if  doesn't received a packet
- * at least once every 60 seconds. To "ping"  with an empty packet use
- * PacketPING or Client.ping(). See the documentation for details.
+ * A client is considered to be timed out if XBMC doesn't received a packet
+ * at least once every 60 seconds. To "ping" XBMC with an empty packet use
+ * PacketPING or XBMCClient.ping(). See the documentation for details.
  * </p>
  * <p>
  * Base class that implements a single event packet.
@@ -57,7 +57,7 @@ import java.net.InetAddress;
  * </p>
  * <pre>
  *   -----------------------------
- *   | -H1 Signature ("")    | - 4  x CHAR                4B
+ *   | -H1 Signature ("XBMC")    | - 4  x CHAR                4B
  *   | -H2 Version (eg. 2.0)     | - 2  x UNSIGNED CHAR       2B
  *   | -H3 PacketType            | - 1  x UNSIGNED SHORT      2B
  *   | -H4 Sequence number       | - 1  x UNSIGNED LONG       4B
@@ -109,7 +109,7 @@ public abstract class Packet {
 	 * This is an Abstract class and cannot be instanced. Please use one of the Packet implementation Classes
 	 * (PacketXXX).
 	 *
-	 * Implements an  Event Client Packet. Type is to be specified at creation time, Payload can be added
+	 * Implements an XBMC Event Client Packet. Type is to be specified at creation time, Payload can be added
 	 * with the various appendPayload methods. Packet can be sent through UDP-Socket with method "send".
      * @param packettype Type of Packet (PT_XXX)
 	 */

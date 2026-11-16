@@ -35,17 +35,17 @@ and yet another one
 
 **Example:** Clone Universal Media Center's current master branch:
 ```
-git clone https://github.com// universalmediacenter
+git clone https://github.com/xbmc/xbmc universalmediacenter
 ```
 
 Commands that contain strings enclosed in angle brackets denote something you need to change to suit your needs.
 ```
-git clone -b <branch-name> https://github.com// universalmediacenter
+git clone -b <branch-name> https://github.com/xbmc/xbmc universalmediacenter
 ```
 
 **Example:** Clone Universal Media Center's current Krypton branch:
 ```
-git clone -b Krypton https://github.com// universalmediacenter
+git clone -b Krypton https://github.com/xbmc/xbmc universalmediacenter
 ```
 
 Several different strategies are used to draw your attention to certain pieces of information. In order of how critical the information is, these items are marked as a note, tip, or warning. For example:
@@ -71,7 +71,7 @@ cd $HOME
 
 Clone Universal Media Center's current master branch:
 ```
-git clone https://github.com// universalmediacenter
+git clone https://github.com/xbmc/xbmc universalmediacenter
 ```
 
 **[back to top](#table-of-contents)**
@@ -126,7 +126,7 @@ sudo make -C tools/depends/target/waylandpp PREFIX=/usr/local
 > Building `waylandpp` has some dependencies of its own, namely `libpugixml-dev and libwayland-dev (>= 1.11.0)`
 
 > [!TIP]
-> Complete list of dependencies is available **[here](https://github.com///tree/master/tools/depends/target)**.
+> Complete list of dependencies is available **[here](https://github.com/xbmc/xbmc/tree/master/tools/depends/target)**.
 
 ### 3.2. Enable internal dependencies
 Some dependencies can be configured to build before Universal Media Center. That's the case with `flatbuffers`, `crossguid`, `fmt`, `spdlog`, `fstrcmp`, `nlohmann-json`, `dav1d` and `swig`. To enable the internal build of a dependency, append `-DENABLE_INTERNAL_<DEPENDENCY_NAME>=ON` to the configure command below. For example, configuring an X11 build with internal `fmt` would become `cmake ../universalmediacenter -DCMAKE_INSTALL_PREFIX=/usr/local -DENABLE_INTERNAL_FMT=ON` instead of `cmake ../universalmediacenter -DCMAKE_INSTALL_PREFIX=/usr/local`.
@@ -252,7 +252,7 @@ sudo make install DESTDIR=$HOME/universalmediacenter
 **[back to top](#table-of-contents)** | **[back to section top](#4-build-universalmediacenter)**
 
 ## 5. Build binary add-ons
-You can find a complete list of available binary add-ons **[here](https://github.com//repo-binary-addons)**.
+You can find a complete list of available binary add-ons **[here](https://github.com/xbmc/repo-binary-addons)**.
 
 In the following, two approaches to building binary add-ons are described.
 While the workflow of in-tree building is more automated,
@@ -296,9 +296,9 @@ For additional information on regular expression usage for ADDONS_TO_BUILD, view
 
 ### 5.2. Out-of-tree building of binary add-ons
 
-You can find a complete list of available binary add-ons **[here](https://github.com//repo-binary-addons)**.
+You can find a complete list of available binary add-ons **[here](https://github.com/xbmc/repo-binary-addons)**.
 Exemplary, to install `pvr.demo`, follow below steps.
-For other addons, simply adapt the repository based on the information found in the `.txt` associated with the respective addon **[here](https://github.com//repo-binary-addons)**
+For other addons, simply adapt the repository based on the information found in the `.txt` associated with the respective addon **[here](https://github.com/xbmc/repo-binary-addons)**
 
 Some addons have dependencies.
 You must install all required dependencies of an addon before installing the addon.
@@ -313,7 +313,7 @@ First, the platform addon:
 
 ```
 cd ~/src/
-git clone https://github.com//platform.git
+git clone https://github.com/xbmc/platform.git
 cd ~/src/platform/
 cmake -DCMAKE_INSTALL_PREFIX=/usr/local
 make && make install
@@ -323,7 +323,7 @@ Then the universalmediacenter-platform add-on:
 
 ```
 cd ~/src/
-git clone https://github.com//universalmediacenter-platform.git
+git clone https://github.com/xbmc/universalmediacenter-platform.git
 cd ~/src/universalmediacenter-platform/
 cmake -DCMAKE_INSTALL_PREFIX=/usr/local
 make && make install

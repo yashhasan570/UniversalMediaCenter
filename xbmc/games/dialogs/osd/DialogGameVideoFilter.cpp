@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2017-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -38,7 +38,7 @@
 #include "utils/StringUtils.h"
 #include "utils/URIUtils.h"
 #include "utils/Variant.h"
-#include "utils/TinyXML2.h"
+#include "utils/XBMCTinyXML2.h"
 #include "utils/log.h"
 
 #include <algorithm>
@@ -311,7 +311,7 @@ void CDialogGameVideoFilter::InitVideoFilters()
   std::vector<VideoFilterProperties> videoFilters;
 
   std::string xmlPath;
-  std::unique_ptr<CTinyXML2> xml;
+  std::unique_ptr<CXBMCTinyXML2> xml;
 
   //! @todo Have the add-on give us the xml as a string (or parse it)
   std::string xmlFilename;
@@ -326,9 +326,9 @@ void CDialogGameVideoFilter::InitVideoFilters()
   const std::string homeAddonPath = CSpecialProtocol::TranslatePath(
       URIUtils::AddFileToFolder("special://home", "addons", PRESETS_ADDON_NAME));
   const std::string systemAddonPath = CSpecialProtocol::TranslatePath(
-      URIUtils::AddFileToFolder("special://", "addons", PRESETS_ADDON_NAME));
+      URIUtils::AddFileToFolder("special://xbmc", "addons", PRESETS_ADDON_NAME));
   const std::string binAddonPath = CSpecialProtocol::TranslatePath(
-      URIUtils::AddFileToFolder("special://binaddons", PRESETS_ADDON_NAME));
+      URIUtils::AddFileToFolder("special://xbmcbinaddons", PRESETS_ADDON_NAME));
 
   for (const auto& basePath : {homeAddonPath, systemAddonPath, binAddonPath})
   {
@@ -338,7 +338,7 @@ void CDialogGameVideoFilter::InitVideoFilters()
 
     if (XFILE::CFile::Exists(xmlPath))
     {
-      xml = std::make_unique<CTinyXML2>();
+      xml = std::make_unique<CXBMCTinyXML2>();
       if (xml->LoadFile(xmlPath))
         break;
 

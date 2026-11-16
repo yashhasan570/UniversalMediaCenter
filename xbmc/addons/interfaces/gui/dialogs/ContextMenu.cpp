@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -21,15 +21,15 @@ namespace ADDON
 
 void Interface_GUIDialogContextMenu::Init(AddonGlobalInterface* addonInterface)
 {
-  addonInterface->toUniversal Media Center->->dialogContextMenu =
-      new AddonToUniversal Media CenterFuncTable__dialogContextMenu();
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogContextMenu =
+      new AddonToUniversal Media CenterFuncTable_universalmediacenter_gui_dialogContextMenu();
 
-  addonInterface->toUniversal Media Center->->dialogContextMenu->open = open;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogContextMenu->open = open;
 }
 
 void Interface_GUIDialogContextMenu::DeInit(AddonGlobalInterface* addonInterface)
 {
-  delete addonInterface->toUniversal Media Center->->dialogContextMenu;
+  delete addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogContextMenu;
 }
 
 int Interface_GUIDialogContextMenu::open(UNIVERSALMEDIA_HANDLE universalmediacenterBase,

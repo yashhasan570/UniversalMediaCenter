@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2008-2013 Team 
+ *  Copyright (C) 2008-2013 Team XBMC
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -16,11 +16,11 @@
  *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package org..eventclient;
+package org.xbmc.eventclient;
 /**
- *  Event Client Class
+ * XBMC Event Client Class
  *
- * A MOUSE packets sets the mouse position in 
+ * A MOUSE packets sets the mouse position in XBMC
  * @author Stefan Agner
  *
  */
@@ -29,7 +29,7 @@ public class PacketMOUSE extends Packet {
 	protected final static byte MS_ABSOLUTE = 0x01;
 
 	/**
-	 * A MOUSE packets sets the mouse position in 
+	 * A MOUSE packets sets the mouse position in XBMC
 	 * @param x horizontal position ranging from 0 to 65535
 	 * @param y vertical position ranging from 0 to 65535
 	 */

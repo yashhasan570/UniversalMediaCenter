@@ -19,7 +19,7 @@ vec3 weight(float pos)
 
 vec2 stretch(vec2 pos)
 {
-#if (_STRETCH)
+#if (XBMC_STRETCH)
   // our transform should map [0..1] to itself, with f(0) = 0, f(1) = 1, f(0.5) = 0.5, and f'(0.5) = b.
   // a simple curve to do this is g(x) = b(x-0.5) + (1-b)2^(n-1)(x-0.5)^n + 0.5
   // where the power preserves sign. n = 2 is the simplest non-linear case (required when b != 1)
@@ -79,7 +79,7 @@ vec4 process()
 
   rgb.a = m_alpha;
 
-#if defined(UNIVERSAL MEDIA CENTER_GAMMA_LINEARIZATION_FAST)
+#if defined(KODI_GAMMA_LINEARIZATION_FAST)
   rgb.rgb *= rgb.rgb;
 #endif
 

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -26,7 +26,7 @@
 #include "settings/lib/SettingsManager.h"
 #include "utils/FileUtils.h"
 #include "utils/StringUtils.h"
-#include "utils/TinyXML2.h"
+#include "utils/XBMCTinyXML2.h"
 #include "utils/XMLUtils.h"
 #include "utils/log.h"
 #include "video/VideoFileItemClassify.h"
@@ -56,7 +56,7 @@ CPlayerCoreFactory::~CPlayerCoreFactory()
 
 void CPlayerCoreFactory::OnSettingsLoaded()
 {
-  LoadConfiguration("special:///system/" PLAYERCOREFACTORY_XML, true);
+  LoadConfiguration("special://xbmc/system/" PLAYERCOREFACTORY_XML, true);
   LoadConfiguration(m_profileManager.GetUserDataItem(PLAYERCOREFACTORY_XML), false);
 }
 
@@ -349,7 +349,7 @@ bool CPlayerCoreFactory::LoadConfiguration(const std::string &file, bool clear)
     return false;
   }
 
-  CTinyXML2 playerCoreFactoryXML;
+  CXBMCTinyXML2 playerCoreFactoryXML;
   if (!playerCoreFactoryXML.LoadFile(file))
   {
     CLog::Log(LOGERROR, "Error loading {}, Line {} ({})", file, playerCoreFactoryXML.ErrorLineNum(),

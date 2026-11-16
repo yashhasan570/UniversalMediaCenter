@@ -1,15 +1,15 @@
-# Universal Media Center Media Center language file
+# Kodi Media Center language file
 # Addon Name: Version Check
-# Addon id: service..versioncheck
-# Addon Provider: Team Universal Media Center
+# Addon id: service.xbmc.versioncheck
+# Addon Provider: Team Kodi
 msgid ""
 msgstr ""
-"Project-Id-Version:  Addons\n"
-"Report-Msgid-Bugs-To: translations@github.com/yashhasan570/UniversalMediaCenter\n"
+"Project-Id-Version: XBMC Addons\n"
+"Report-Msgid-Bugs-To: translations@kodi.tv\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: 2021-10-25 09:12+0000\n"
 "Last-Translator: Marek Adamski <fevbew@wp.pl>\n"
-"Language-Team: Polish <https://universalmediacenter.weblate.cloud/projects/Universal Media Center-core/service--versioncheck/pl_pl/>\n"
+"Language-Team: Polish <https://kodi.weblate.cloud/projects/kodi-core/service-xbmc-versioncheck/pl_pl/>\n"
 "Language: pl_pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,24 +18,24 @@ msgstr ""
 "X-Generator: Weblate 4.8\n"
 
 msgctxt "Addon Summary"
-msgid "Universal Media Center Version Check checks if you are running latest released version."
-msgstr "Dodatek Version Check sprawdza, czy używasz najnowszej wersji Universal Media Center."
+msgid "Kodi Version Check checks if you are running latest released version."
+msgstr "Dodatek Version Check sprawdza, czy używasz najnowszej wersji Kodi."
 
 msgctxt "Addon Description"
-msgid "Universal Media Center Version Check only supports a number of platforms/distros as releases may differ between them. For more information visit the github.com/yashhasan570/UniversalMediaCenter website."
-msgstr "Dodatek Version Check wspiera tylko część platform i dystrybucji. Więcej informacji na stronie github.com/yashhasan570/UniversalMediaCenter."
+msgid "Kodi Version Check only supports a number of platforms/distros as releases may differ between them. For more information visit the kodi.tv website."
+msgstr "Dodatek Version Check wspiera tylko część platform i dystrybucji. Więcej informacji na stronie kodi.tv."
 
 msgctxt "Addon Disclaimer"
-msgid "Feel free to use this script. For information visit github.com/yashhasan570/UniversalMediaCenter"
-msgstr "Zapraszamy do używania tego dodatku. Więcej informacji na stronie github.com/yashhasan570/UniversalMediaCenter"
+msgid "Feel free to use this script. For information visit kodi.tv"
+msgstr "Zapraszamy do używania tego dodatku. Więcej informacji na stronie kodi.tv"
 
 msgctxt "#32001"
 msgid "We would like to recommend you to upgrade."
 msgstr "Zaleca się uaktualnienie do nowszej wersji."
 
 msgctxt "#32002"
-msgid "Visit Universal Media Center.tv for more information."
-msgstr "Odwiedź stronę Universal Media Center.tv po więcej informacji."
+msgid "Visit Kodi.tv for more information."
+msgstr "Odwiedź stronę Kodi.tv po więcej informacji."
 
 msgctxt "#32009"
 msgid "Would you like to remove this reminder?"
@@ -58,24 +58,24 @@ msgid "Upgrade successful"
 msgstr "Aktualizacja powiodła się"
 
 msgctxt "#32014"
-msgid "Do you want to restart Universal Media Center to finish the upgrade?"
-msgstr "Chcesz zrestartować Universal Media Center, aby dokończyć aktualizację?"
+msgid "Do you want to restart Kodi to finish the upgrade?"
+msgstr "Chcesz zrestartować Kodi, aby dokończyć aktualizację?"
 
 msgctxt "#32015"
 msgid "Do you want to check the repository for a new version?"
 msgstr "Czy chcesz sprawdzić repozytorium pod kątem nowej wersji?"
 
 msgctxt "#32016"
-msgid "There is a newer stable Universal Media Center version available."
-msgstr "Dostępna jest nowa stabilna wersja Universal Media Center."
+msgid "There is a newer stable Kodi version available."
+msgstr "Dostępna jest nowa stabilna wersja Kodi."
 
 msgctxt "#32020"
 msgid "General"
 msgstr "Ogólne"
 
 msgctxt "#32021"
-msgid "Enable Universal Media Center version check?"
-msgstr "Sprawdzać wersję Universal Media Center?"
+msgid "Enable Kodi version check?"
+msgstr "Sprawdzać wersję Kodi?"
 
 msgctxt "#32022"
 msgid "Please enter your password"
@@ -91,23 +91,23 @@ msgstr "Linux: aktualizuj za pomocą menedżera pakietów (apt)"
 
 #. Used in OK dialog
 msgctxt "#32030"
-msgid "A new stable version of Universal Media Center is available."
-msgstr "Dostępna jest nowa stabilna wersja Universal Media Center."
+msgid "A new stable version of Kodi is available."
+msgstr "Dostępna jest nowa stabilna wersja Kodi."
 
 #. Direct people to the website. Used in OK dialog
 msgctxt "#32031"
-msgid "Visit http://github.com/yashhasan570/UniversalMediaCenter for more information."
-msgstr "Odwiedź stronę http://github.com/yashhasan570/UniversalMediaCenter po więcej informacji."
+msgid "Visit http://kodi.tv for more information."
+msgstr "Odwiedź stronę http://kodi.tv po więcej informacji."
 
 #. Used in OK dialog
 msgctxt "#32032"
-msgid "A new stable version of Universal Media Center is available."
-msgstr "Dostępna jest nowa stabilna wersja Universal Media Center."
+msgid "A new stable version of Kodi is available."
+msgstr "Dostępna jest nowa stabilna wersja Kodi."
 
 #. Direct people to the website. Used in OK dialog
 msgctxt "#32033"
-msgid "Visit http://github.com/yashhasan570/UniversalMediaCenter for more information."
-msgstr "Odwiedź stronę http://github.com/yashhasan570/UniversalMediaCenter po więcej informacji."
+msgid "Visit http://kodi.tv for more information."
+msgstr "Odwiedź stronę http://kodi.tv po więcej informacji."
 
 #. For example: "You are using 13.1 prealpha while 13.2 stable is available"
 msgctxt "#32034"
@@ -129,8 +129,8 @@ msgid "Please upgrade your operating system."
 msgstr "Dokonaj uaktualnienia systemu operacyjnego."
 
 msgctxt "#32042"
-msgid "For more information, see https://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Linux"
-msgstr "Aby znaleźć więcej informacji, odwiedź https://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Linux"
+msgid "For more information, see https://kodi.wiki/view/Linux"
+msgstr "Aby znaleźć więcej informacji, odwiedź https://kodi.wiki/view/Linux"
 
 #~ msgctxt "#32035"
 #~ msgid "It is recommended that you to upgrade to a newer version."

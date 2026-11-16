@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2007-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -156,8 +156,8 @@ void CLirc::ProcessCode(char *buf)
               &deviceName[0], buttonName);
     m_firstClickTime = std::chrono::steady_clock::now();
 
-    _Event newEvent = {};
-    newEvent.type = _BUTTON;
+    XBMC_Event newEvent = {};
+    newEvent.type = XBMC_BUTTON;
     newEvent.keybutton.button = button;
     newEvent.keybutton.holdtime = 0;
     std::shared_ptr<CAppInboundProtocol> appPort = CServiceBroker::GetAppPort();
@@ -167,8 +167,8 @@ void CLirc::ProcessCode(char *buf)
   }
   else if (repeat > CServiceBroker::GetSettingsComponent()->GetAdvancedSettings()->m_remoteDelay)
   {
-    _Event newEvent = {};
-    newEvent.type = _BUTTON;
+    XBMC_Event newEvent = {};
+    newEvent.type = XBMC_BUTTON;
     newEvent.keybutton.button = button;
 
     auto now = std::chrono::steady_clock::now();

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -17,9 +17,9 @@
 
 using namespace UNIVERSAL MEDIA CENTER;
 
-namespace Addon
+namespace XBMCAddon
 {
-  namespace 
+  namespace xbmc
   {
     //! @todo need a means to check for a valid construction
     //!  either by throwing an exception or by an "isValid" check
@@ -37,7 +37,7 @@ namespace Addon
 
     PlayList::~PlayList() = default;
 
-    void PlayList::add(const String& url, Addon::gui::ListItem* listitem, int index)
+    void PlayList::add(const String& url, XBMCAddon::xbmcgui::ListItem* listitem, int index)
     {
       CFileItemList items;
 
@@ -130,7 +130,7 @@ namespace Addon
       return CServiceBroker::GetPlaylistPlayer().GetCurrentItemIdx();
     }
 
-    Addon::gui::ListItem* PlayList::operator [](long i)
+    XBMCAddon::xbmcgui::ListItem* PlayList::operator [](long i)
     {
       int iPlayListSize = size();
 
@@ -142,7 +142,7 @@ namespace Addon
 
       CFileItemPtr ptr((*pPlayList)[pos]);
 
-      return new Addon::gui::ListItem(ptr);
+      return new XBMCAddon::xbmcgui::ListItem(ptr);
     }
   }
 }

@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2026 Team Universal Media Center
+ *  Copyright (C) 2026 Team Kodi
  *  SPDX-License-Identifier: GPL-2.0-or-later
  */
 
@@ -103,7 +103,7 @@ mergeInto(LibraryManager.library, {
     },
 
     // Pull the canonical enum numeric values out of the Embind bindings
-    // registered by EMSCRIPTEN_BINDINGS(Universal Media Center_webcodecs_bridge) in
+    // registered by EMSCRIPTEN_BINDINGS(kodi_webcodecs_bridge) in
     // DVDVideoCodecWebCodecs.cpp. Embind exposes each C++ enum value as an
     // object with a .value property holding the underlying integer.
     syncEnumsFromEmbind : function() {
@@ -641,7 +641,7 @@ mergeInto(LibraryManager.library, {
   },
 
   // ---------------------------------------------------------------------------
-  // Frames the codec has taken belong to Universal Media Center buffers and are closed by their
+  // Frames the codec has taken belong to Kodi buffers and are closed by their
   // release; only the untaken ones are closed here. The codec sets
   // framesTaken = framesProduced when this returns.
   webcodecs_reset_decoder__deps : [ '$WebCodecsBridge' ],

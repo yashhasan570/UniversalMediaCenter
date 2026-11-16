@@ -1,5 +1,5 @@
 From bf8934a1f074c14b21359978821957520ed66eb4 Mon Sep 17 00:00:00 2001
-From: montellese <montellese@.org>
+From: montellese <montellese@xbmc.org>
 Date: Thu, 7 Aug 2014 21:28:38 +0200
 Subject: [PATCH] platinum: improve logging on bad HTTP requests
 

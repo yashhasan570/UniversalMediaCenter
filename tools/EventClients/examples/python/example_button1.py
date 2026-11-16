@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 
 # This is a simple example showing how you can send 2 button events
-# to  in a queued fashion to shut it down.
+# to XBMC in a queued fashion to shut it down.
 
 # Queued button events are not repeatable.
 
-# The basic idea is to create single packets and shoot them to 
+# The basic idea is to create single packets and shoot them to XBMC
 # The provided library implements some of the support commands and
 # takes care of creating the actual packet. Using it is as simple
 # as creating an object with the required constructor arguments and
@@ -17,7 +17,7 @@
 # In effect, anything that can be done with the keyboard can be done
 # using the event client.
 
-# import the  client library
+# import the XBMC client library
 # NOTE: The library is not complete yet but is usable at this stage.
 
 import os
@@ -28,13 +28,13 @@ if os.path.exists("../../lib/python"):
     # try loading modules from source directory
     sys.path.append("../../lib/python")
 
-    from client import *
+    from xbmcclient import *
 
     ICON_PATH = "../../icons/"
 else:
     # fallback to system wide modules
 
-    from universalmediacenter.client import *
+    from universalmediacenter.xbmcclient import *
     from universalmediacenter.defs import *
 
 def main():
@@ -43,7 +43,7 @@ def main():
 
     # connect to localhost, port 9777 using a UDP socket
     # this only needs to be done once.
-    # by default this is where  will be listening for incoming
+    # by default this is where XBMC will be listening for incoming
     # connections.
     host = "localhost"
     port = 9777
@@ -57,9 +57,9 @@ def main():
                         icon_file=ICON_PATH + "/bluetooth.png")
     packet.send(sock, addr)
 
-    # IMPORTANT: After a HELO packet is sent, the client needs to "ping" 
+    # IMPORTANT: After a HELO packet is sent, the client needs to "ping" XBMC
     # at least once every 60 seconds or else the client will time out.
-    # Every valid packet sent to  acts as a ping, however if no valid
+    # Every valid packet sent to XBMC acts as a ping, however if no valid
     # packets NEED to be sent (eg. the user hasn't pressed a key in 50 seconds)
     # then you can use the PacketPING class to send a ping packet (which is
     # basically just an empty packet). See below.
@@ -68,7 +68,7 @@ def main():
     # Currently, since this is a unidirectional protocol, there is no way
     # for the client to know if it has timed out.
 
-    # wait for notification window to close (in )
+    # wait for notification window to close (in XBMC)
     time.sleep(5)
 
     # press 'S'
@@ -82,7 +82,7 @@ def main():
     packet = PacketBUTTON(code=13, queue=1)
     packet.send(sock, addr)
 
-    # BYE is not required since  would have shut down
+    # BYE is not required since XBMC would have shut down
     packet = PacketBYE()    # PacketPING if you want to ping
     packet.send(sock, addr)
 

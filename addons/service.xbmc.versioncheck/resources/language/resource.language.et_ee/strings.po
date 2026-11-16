@@ -1,15 +1,15 @@
-# Universal Media Center Media Center language file
+# Kodi Media Center language file
 # Addon Name: Version Check
-# Addon id: service..versioncheck
-# Addon Provider: Team Universal Media Center
+# Addon id: service.xbmc.versioncheck
+# Addon Provider: Team Kodi
 msgid ""
 msgstr ""
-"Project-Id-Version:  Addons\n"
-"Report-Msgid-Bugs-To: translations@github.com/yashhasan570/UniversalMediaCenter\n"
+"Project-Id-Version: XBMC Addons\n"
+"Report-Msgid-Bugs-To: translations@kodi.tv\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: 2021-10-25 10:08+0000\n"
-"Last-Translator: Christian Gade <gade@github.com/yashhasan570/UniversalMediaCenter>\n"
-"Language-Team: Estonian <https://universalmediacenter.weblate.cloud/projects/Universal Media Center-core/service--versioncheck/et_ee/>\n"
+"Last-Translator: Christian Gade <gade@kodi.tv>\n"
+"Language-Team: Estonian <https://kodi.weblate.cloud/projects/kodi-core/service-xbmc-versioncheck/et_ee/>\n"
 "Language: et_ee\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,24 +18,24 @@ msgstr ""
 "X-Generator: Weblate 4.8\n"
 
 msgctxt "Addon Summary"
-msgid "Universal Media Center Version Check checks if you are running latest released version."
-msgstr "Kontrollitakse, kas kasutuses on uusim Universal Media Center väljalase."
+msgid "Kodi Version Check checks if you are running latest released version."
+msgstr "Kontrollitakse, kas kasutuses on uusim Kodi väljalase."
 
 msgctxt "Addon Description"
-msgid "Universal Media Center Version Check only supports a number of platforms/distros as releases may differ between them. For more information visit the github.com/yashhasan570/UniversalMediaCenter website."
-msgstr "Toetatud on ainult osad platvormid/distrod, kuna väljalasked võivad nende vahel erineda. Lisateavet leiab aadressilt github.com/yashhasan570/UniversalMediaCenter."
+msgid "Kodi Version Check only supports a number of platforms/distros as releases may differ between them. For more information visit the kodi.tv website."
+msgstr "Toetatud on ainult osad platvormid/distrod, kuna väljalasked võivad nende vahel erineda. Lisateavet leiab aadressilt kodi.tv."
 
 msgctxt "Addon Disclaimer"
-msgid "Feel free to use this script. For information visit github.com/yashhasan570/UniversalMediaCenter"
-msgstr "Kasuta seda skripti julgelt. Lisateavet leiab aadressilt github.com/yashhasan570/UniversalMediaCenter"
+msgid "Feel free to use this script. For information visit kodi.tv"
+msgstr "Kasuta seda skripti julgelt. Lisateavet leiab aadressilt kodi.tv"
 
 msgctxt "#32001"
 msgid "We would like to recommend you to upgrade."
 msgstr "Soovitame üle minna uuemale versioonile."
 
 msgctxt "#32002"
-msgid "Visit Universal Media Center.tv for more information."
-msgstr "Lisateavet leiab aadressilt github.com/yashhasan570/UniversalMediaCenter."
+msgid "Visit Kodi.tv for more information."
+msgstr "Lisateavet leiab aadressilt kodi.tv."
 
 # empty strings from id 32003 to 32008
 msgctxt "#32009"
@@ -59,24 +59,24 @@ msgid "Upgrade successful"
 msgstr "Uuendamine õnnestus"
 
 msgctxt "#32014"
-msgid "Do you want to restart Universal Media Center to finish the upgrade?"
-msgstr "Kas soovid uuenduse lõpuleviimiseks Universal Media Center taaskäivitada?"
+msgid "Do you want to restart Kodi to finish the upgrade?"
+msgstr "Kas soovid uuenduse lõpuleviimiseks Kodi taaskäivitada?"
 
 msgctxt "#32015"
 msgid "Do you want to check the repository for a new version?"
 msgstr "Kas soovid otsida hoidlast uut versiooni?"
 
 msgctxt "#32016"
-msgid "There is a newer stable Universal Media Center version available."
-msgstr "Saadaval on uus stabiilne Universal Media Center versioon."
+msgid "There is a newer stable Kodi version available."
+msgstr "Saadaval on uus stabiilne Kodi versioon."
 
 msgctxt "#32020"
 msgid "General"
 msgstr "Üldine"
 
 msgctxt "#32021"
-msgid "Enable Universal Media Center version check?"
-msgstr "Kas lubada Universal Media Center versioonikontroll?"
+msgid "Enable Kodi version check?"
+msgstr "Kas lubada Kodi versioonikontroll?"
 
 msgctxt "#32022"
 msgid "Please enter your password"
@@ -93,23 +93,23 @@ msgstr "Linux: uuenda paketihalduri abil"
 # empty strings from id 32025 to 32029
 #. Used in OK dialog
 msgctxt "#32030"
-msgid "A new stable version of Universal Media Center is available."
-msgstr "Saadaval on uus stabiilne Universal Media Center versioon."
+msgid "A new stable version of Kodi is available."
+msgstr "Saadaval on uus stabiilne Kodi versioon."
 
 #. Direct people to the website. Used in OK dialog
 msgctxt "#32031"
-msgid "Visit http://github.com/yashhasan570/UniversalMediaCenter for more information."
-msgstr "Lisateavet leiab aadressilt github.com/yashhasan570/UniversalMediaCenter."
+msgid "Visit http://kodi.tv for more information."
+msgstr "Lisateavet leiab aadressilt kodi.tv."
 
 #. Used in OK dialog
 msgctxt "#32032"
-msgid "A new stable version of Universal Media Center is available."
-msgstr "Saadaval on uus stabiilne Universal Media Center versioon."
+msgid "A new stable version of Kodi is available."
+msgstr "Saadaval on uus stabiilne Kodi versioon."
 
 #. Direct people to the website. Used in OK dialog
 msgctxt "#32033"
-msgid "Visit http://github.com/yashhasan570/UniversalMediaCenter for more information."
-msgstr "Lisateavet leiab aadressilt github.com/yashhasan570/UniversalMediaCenter."
+msgid "Visit http://kodi.tv for more information."
+msgstr "Lisateavet leiab aadressilt kodi.tv."
 
 #. For example: "You are using 13.1 prealpha while 13.2 stable is available"
 msgctxt "#32034"
@@ -131,8 +131,8 @@ msgid "Please upgrade your operating system."
 msgstr "Uuenda oma operatsioonisüsteemi."
 
 msgctxt "#32042"
-msgid "For more information, see https://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Linux"
-msgstr "Lisateavet leiab aadressilt https://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Linux"
+msgid "For more information, see https://kodi.wiki/view/Linux"
+msgstr "Lisateavet leiab aadressilt https://kodi.wiki/view/Linux"
 
 #~ msgctxt "#32035"
 #~ msgid "It is recommended that you to upgrade to a newer version."

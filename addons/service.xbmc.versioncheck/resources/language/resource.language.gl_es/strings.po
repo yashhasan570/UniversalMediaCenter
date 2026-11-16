@@ -1,15 +1,15 @@
-# Universal Media Center Media Center language file
+# Kodi Media Center language file
 # Addon Name: Version Check
-# Addon id: service..versioncheck
-# Addon Provider: Team Universal Media Center
+# Addon id: service.xbmc.versioncheck
+# Addon Provider: Team Kodi
 msgid ""
 msgstr ""
-"Project-Id-Version:  Addons\n"
-"Report-Msgid-Bugs-To: translations@github.com/yashhasan570/UniversalMediaCenter\n"
+"Project-Id-Version: XBMC Addons\n"
+"Report-Msgid-Bugs-To: translations@kodi.tv\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: 2021-10-25 10:08+0000\n"
-"Last-Translator: Christian Gade <gade@github.com/yashhasan570/UniversalMediaCenter>\n"
-"Language-Team: Galician (Spain) <https://universalmediacenter.weblate.cloud/projects/Universal Media Center-core/service--versioncheck/gl_es/>\n"
+"Last-Translator: Christian Gade <gade@kodi.tv>\n"
+"Language-Team: Galician (Spain) <https://kodi.weblate.cloud/projects/kodi-core/service-xbmc-versioncheck/gl_es/>\n"
 "Language: gl_es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,24 +18,24 @@ msgstr ""
 "X-Generator: Weblate 4.8\n"
 
 msgctxt "Addon Summary"
-msgid "Universal Media Center Version Check checks if you are running latest released version."
-msgstr "Universal Media Center Version Check verifica se está a executar a última versión."
+msgid "Kodi Version Check checks if you are running latest released version."
+msgstr "Kodi Version Check verifica se está a executar a última versión."
 
 msgctxt "Addon Description"
-msgid "Universal Media Center Version Check only supports a number of platforms/distros as releases may differ between them. For more information visit the github.com/yashhasan570/UniversalMediaCenter website."
-msgstr "Universal Media Center Version Check só soporta un número limitado de plataformas/distribucións, xa que os lanzamentos poden diferir entre eles. Para máis información visitar o sitio web de github.com/yashhasan570/UniversalMediaCenter."
+msgid "Kodi Version Check only supports a number of platforms/distros as releases may differ between them. For more information visit the kodi.tv website."
+msgstr "Kodi Version Check só soporta un número limitado de plataformas/distribucións, xa que os lanzamentos poden diferir entre eles. Para máis información visitar o sitio web de kodi.tv."
 
 msgctxt "Addon Disclaimer"
-msgid "Feel free to use this script. For information visit github.com/yashhasan570/UniversalMediaCenter"
-msgstr "Síntase libre de usar este script, para máis información visitar github.com/yashhasan570/UniversalMediaCenter."
+msgid "Feel free to use this script. For information visit kodi.tv"
+msgstr "Síntase libre de usar este script, para máis información visitar kodi.tv."
 
 msgctxt "#32001"
 msgid "We would like to recommend you to upgrade."
 msgstr "Gustaríanos recomendarlle actualizar."
 
 msgctxt "#32002"
-msgid "Visit Universal Media Center.tv for more information."
-msgstr "Visitar Universal Media Center.tv para máis información."
+msgid "Visit Kodi.tv for more information."
+msgstr "Visitar Kodi.tv para máis información."
 
 msgctxt "#32009"
 msgid "Would you like to remove this reminder?"
@@ -58,24 +58,24 @@ msgid "Upgrade successful"
 msgstr "Actualización correcta"
 
 msgctxt "#32014"
-msgid "Do you want to restart Universal Media Center to finish the upgrade?"
-msgstr "Quere reiniciar agora o Universal Media Center para rematar a actualización?"
+msgid "Do you want to restart Kodi to finish the upgrade?"
+msgstr "Quere reiniciar agora o Kodi para rematar a actualización?"
 
 msgctxt "#32015"
 msgid "Do you want to check the repository for a new version?"
 msgstr "Quere buscar no repositorio unha nova versión?"
 
 msgctxt "#32016"
-msgid "There is a newer stable Universal Media Center version available."
-msgstr "Hai dispoñíbel unha nova versión estábel do Universal Media Center."
+msgid "There is a newer stable Kodi version available."
+msgstr "Hai dispoñíbel unha nova versión estábel do Kodi."
 
 msgctxt "#32020"
 msgid "General"
 msgstr "Xeral"
 
 msgctxt "#32021"
-msgid "Enable Universal Media Center version check?"
-msgstr "Activar a verificación de versión do Universal Media Center?"
+msgid "Enable Kodi version check?"
+msgstr "Activar a verificación de versión do Kodi?"
 
 msgctxt "#32022"
 msgid "Please enter your password"
@@ -91,23 +91,23 @@ msgstr "Linux: Actualizar empregando apt"
 
 #. Used in OK dialog
 msgctxt "#32030"
-msgid "A new stable version of Universal Media Center is available."
-msgstr "Está dispoñible unha versión estable nova de Universal Media Center."
+msgid "A new stable version of Kodi is available."
+msgstr "Está dispoñible unha versión estable nova de Kodi."
 
 #. Direct people to the website. Used in OK dialog
 msgctxt "#32031"
-msgid "Visit http://github.com/yashhasan570/UniversalMediaCenter for more information."
-msgstr "Ir a http://github.com/yashhasan570/UniversalMediaCenter para máis información."
+msgid "Visit http://kodi.tv for more information."
+msgstr "Ir a http://kodi.tv para máis información."
 
 #. Used in OK dialog
 msgctxt "#32032"
-msgid "A new stable version of Universal Media Center is available."
-msgstr "Está dispoñíbel unha nova versión estábel de Universal Media Center."
+msgid "A new stable version of Kodi is available."
+msgstr "Está dispoñíbel unha nova versión estábel de Kodi."
 
 #. Direct people to the website. Used in OK dialog
 msgctxt "#32033"
-msgid "Visit http://github.com/yashhasan570/UniversalMediaCenter for more information."
-msgstr "Ir a http://github.com/yashhasan570/UniversalMediaCenter para máis información."
+msgid "Visit http://kodi.tv for more information."
+msgstr "Ir a http://kodi.tv para máis información."
 
 #. For example: "You are using 13.1 prealpha while 13.2 stable is available"
 msgctxt "#32034"
@@ -129,7 +129,7 @@ msgid "Please upgrade your operating system."
 msgstr ""
 
 msgctxt "#32042"
-msgid "For more information, see https://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Linux"
+msgid "For more information, see https://kodi.wiki/view/Linux"
 msgstr ""
 
 #~ msgctxt "#32035"

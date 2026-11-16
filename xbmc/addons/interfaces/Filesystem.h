@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -76,7 +76,7 @@ struct Interface_Filesystem
   static bool get_cookies(void* universalmediacenterBase, const char* url, char** cookies);
 
   /*!
-   * @brief Callback functions addon class vfs::CFile
+   * @brief Callback functions addon class universalmediacenter::vfs::CFile
    */
   ///@{
   static bool http_header_create(void* universalmediacenterBase, struct UNIVERSALMEDIA_HTTP_HEADER* headers);
@@ -94,7 +94,7 @@ struct Interface_Filesystem
   ///@}
 
   /*!
-   * @brief Callback functions addon class vfs::CFile
+   * @brief Callback functions addon class universalmediacenter::vfs::CFile
    */
   ///@{
   static void* open_file(void* universalmediacenterBase, const char* filename, unsigned int flags);

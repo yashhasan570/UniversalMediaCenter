@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2013-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -15,7 +15,7 @@
 #include "threads/Thread.h"
 #include "utils/Geometry.h"
 
-#include "platform/android/activity/JNIVideoView.h"
+#include "platform/android/activity/JNIXBMCVideoView.h"
 
 #include <atomic>
 #include <deque>
@@ -51,7 +51,7 @@ public:
            int textureId,
            std::shared_ptr<CJNISurfaceTexture> surfaceTexture,
            std::shared_ptr<CDVDMediaCodecOnFrameAvailable> frameAvailable,
-           std::shared_ptr<jni::CJNIVideoView> videoView);
+           std::shared_ptr<jni::CJNIXBMCVideoView> videoView);
 
   // meat and potatoes
   bool WaitForFrame(int millis);
@@ -76,7 +76,7 @@ private:
   // CDVDVideoCodecAndroidMediaCodec and LinuxRenderGLES.
   std::shared_ptr<CJNISurfaceTexture> m_surfacetexture;
   std::shared_ptr<CDVDMediaCodecOnFrameAvailable> m_frameready;
-  std::shared_ptr<jni::CJNIVideoView> m_videoview;
+  std::shared_ptr<jni::CJNIXBMCVideoView> m_videoview;
 };
 
 class CMediaCodecVideoBufferPool : public IVideoBufferPool
@@ -152,7 +152,7 @@ protected:
   int m_codecControlFlags;
   int m_state;
 
-  std::shared_ptr<jni::CJNIVideoView> m_jnivideoview;
+  std::shared_ptr<jni::CJNIXBMCVideoView> m_jnivideoview;
   CJNISurface m_jnivideosurface;
   unsigned int m_textureId = 0;
   std::shared_ptr<CJNIMediaCodec> m_codec;

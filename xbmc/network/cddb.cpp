@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -183,7 +183,7 @@ std::string Xcddb::Recv(bool wait4point)
 
 
   //##########################################################
-  // Write captured data information to the  log file
+  // Write captured data information to the xbmc log file
   CLog::Log(LOGDEBUG,
             "Xcddb::Recv Captured {0} bytes // Buffer= {1} bytes. Captured data follows on next "
             "line\n{2}",
@@ -870,7 +870,7 @@ bool Xcddb::queryCDinfo(CCdInfo* pInfo)
   StringUtils::ToLower(lcAppName);
   if (version.find(' ') != std::string::npos)
     version.resize(version.find(' '));
-  std::string strGreeting = "cddb hello " + lcAppName + " github.com/yashhasan570/UniversalMediaCenter " + CCompileInfo::GetAppName() + " " + version;
+  std::string strGreeting = "cddb hello " + lcAppName + " universalmediacenter.tv " + CCompileInfo::GetAppName() + " " + version;
   if ( ! Send(strGreeting.c_str()) )
   {
     CLog::Log(LOGERROR, "Xcddb::queryCDinfo Error sending \"{}\"", strGreeting);

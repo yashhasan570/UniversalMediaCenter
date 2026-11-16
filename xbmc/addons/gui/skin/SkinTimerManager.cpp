@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2022 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -15,7 +15,7 @@
 #include "guilib/GUIMessage.h"
 #include "guilib/GUIWindowManager.h"
 #include "utils/StringUtils.h"
-#include "utils/TinyXML2.h"
+#include "utils/XBMCTinyXML2.h"
 #include "utils/log.h"
 
 #include <chrono>
@@ -28,7 +28,7 @@ CSkinTimerManager::CSkinTimerManager(CGUIInfoManager& infoMgr) : m_infoMgr{infoM
 
 void CSkinTimerManager::LoadTimers(const std::string& path)
 {
-  CTinyXML2 doc;
+  CXBMCTinyXML2 doc;
   if (!doc.LoadFile(path))
   {
     CLog::LogF(LOGWARNING, "Could not load timers file {}: {} (Line: {})", path, doc.ErrorStr(),

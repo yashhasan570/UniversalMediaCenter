@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2016 Christian Browet
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -14,13 +14,13 @@
 namespace jni
 {
 
-class CJNISurfaceTextureOnFrameAvailableListener : public CJNISurfaceTextureOnFrameAvailableListener, public CJNIInterfaceImplem<CJNISurfaceTextureOnFrameAvailableListener>
+class CJNIXBMCSurfaceTextureOnFrameAvailableListener : public CJNISurfaceTextureOnFrameAvailableListener, public CJNIInterfaceImplem<CJNIXBMCSurfaceTextureOnFrameAvailableListener>
 {
 public:
-  CJNISurfaceTextureOnFrameAvailableListener();
-  CJNISurfaceTextureOnFrameAvailableListener(const CJNISurfaceTextureOnFrameAvailableListener& other);
-  CJNISurfaceTextureOnFrameAvailableListener(const jni::jhobject &object) : CJNIBase(object) {}
-  ~CJNISurfaceTextureOnFrameAvailableListener() override;
+  CJNIXBMCSurfaceTextureOnFrameAvailableListener();
+  CJNIXBMCSurfaceTextureOnFrameAvailableListener(const CJNIXBMCSurfaceTextureOnFrameAvailableListener& other);
+  CJNIXBMCSurfaceTextureOnFrameAvailableListener(const jni::jhobject &object) : CJNIBase(object) {}
+  ~CJNIXBMCSurfaceTextureOnFrameAvailableListener() override;
 
   static void RegisterNatives(JNIEnv* env);
 

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -17,17 +17,17 @@ namespace MUSIC_INFO
 class CMusicInfoTag;
 }
 
-namespace Addon
+namespace XBMCAddon
 {
-  namespace 
+  namespace xbmc
   {
     //
     /// \defgroup python_InfoTagMusic InfoTagMusic
-    /// \ingroup python_
+    /// \ingroup python_xbmc
     /// @{
     /// @brief **Universal Media Center's music info tag class.**
     ///
-    /// \python_class{ .InfoTagMusic([offscreen]) }
+    /// \python_class{ xbmc.InfoTagMusic([offscreen]) }
     ///
     /// Access and / or modify the music metadata of a ListItem.
     ///
@@ -37,7 +37,7 @@ namespace Addon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ...
-    /// tag = .Player().getMusicInfoTag()
+    /// tag = xbmc.Player().getMusicInfoTag()
     ///
     /// title = tag.getTitle()
     /// url   = tag.getURL()
@@ -60,7 +60,7 @@ namespace Addon
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
       /// \ingroup python_InfoTagMusic
-      /// @brief \python_func{ .InfoTagMusic([offscreen]) }
+      /// @brief \python_func{ xbmc.InfoTagMusic([offscreen]) }
       /// Create a music info tag.
       ///
       /// @param offscreen            [opt] bool (default `False`) - if GUI based locks should be
@@ -84,7 +84,7 @@ namespace Addon
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ...
-      /// musicinfo = .InfoTagMusic(offscreen=False)
+      /// musicinfo = xbmc.InfoTagMusic(offscreen=False)
       /// ...
       /// ~~~~~~~~~~~~~
       ///

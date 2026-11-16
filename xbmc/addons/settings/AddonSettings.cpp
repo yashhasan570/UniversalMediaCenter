@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2017-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -35,7 +35,7 @@
 #include "utils/FileExtensionProvider.h"
 #include "utils/StringUtils.h"
 #include "utils/URIUtils.h"
-#include "utils/TinyXML.h"
+#include "utils/XBMCTinyXML.h"
 #include "utils/XMLUtils.h"
 #include "utils/log.h"
 
@@ -97,7 +97,7 @@ SettingPtr AddSettingWithoutDefinition(ADDON::CAddonSettings& settings,
     return nullptr;
 
   // if necessary try to initialize the settings manager on-the-fly without any definitions
-  if (!settings.IsInitialized() && !settings.Initialize(CTinyXML(), true))
+  if (!settings.IsInitialized() && !settings.Initialize(CXBMCTinyXML(), true))
   {
     logger->warn("failed to initialize settings on-the-fly");
     return nullptr;
@@ -277,7 +277,7 @@ bool CAddonSettings::AddInstanceSettings() const
   return true;
 }
 
-bool CAddonSettings::Initialize(const CTinyXML& doc, bool allowEmpty /* = false */)
+bool CAddonSettings::Initialize(const CXBMCTinyXML& doc, bool allowEmpty /* = false */)
 {
   std::unique_lock lock(m_critical);
   if (m_initialized)
@@ -306,7 +306,7 @@ bool CAddonSettings::Initialize(const CTinyXML& doc, bool allowEmpty /* = false 
   return true;
 }
 
-bool CAddonSettings::Load(const CTinyXML& doc)
+bool CAddonSettings::Load(const CXBMCTinyXML& doc)
 {
   std::unique_lock lock(m_critical);
   if (!m_initialized)
@@ -355,7 +355,7 @@ bool CAddonSettings::Load(const CTinyXML& doc)
     while (category)
     {
       // check if this really is a category with setting elements
-      if (category->FirstChild() && category->FirstChild()->Type() == CTinyXML::TINYXML_ELEMENT)
+      if (category->FirstChild() && category->FirstChild()->Type() == CXBMCTinyXML::TINYXML_ELEMENT)
       {
         const std::string& categoryId{category->ValueStr()};
         auto setting = category->FirstChild();
@@ -412,7 +412,7 @@ bool CAddonSettings::Load(const CTinyXML& doc)
   return true;
 }
 
-bool CAddonSettings::Save(CTinyXML& doc) const
+bool CAddonSettings::Save(CXBMCTinyXML& doc) const
 {
   std::unique_lock lock(m_critical);
   if (!m_initialized)
@@ -510,7 +510,7 @@ void CAddonSettings::InitializeConditions()
   GetSettingsManager()->AddDynamicCondition("InfoBool", InfoBool);
 }
 
-bool CAddonSettings::InitializeDefinitions(const CTinyXML& doc)
+bool CAddonSettings::InitializeDefinitions(const CXBMCTinyXML& doc)
 {
   // figure out the version of the setting definitions
   uint32_t version = 0;
@@ -528,7 +528,7 @@ bool CAddonSettings::InitializeDefinitions(const CTinyXML& doc)
   return InitializeFromOldSettingDefinitions(doc);
 }
 
-bool CAddonSettings::ParseSettingVersion(const CTinyXML& doc, uint32_t& version) const
+bool CAddonSettings::ParseSettingVersion(const CXBMCTinyXML& doc, uint32_t& version) const
 {
   const TiXmlElement* root = doc.RootElement();
   if (!root)
@@ -809,7 +809,7 @@ std::shared_ptr<CSettingCategory> CAddonSettings::ParseOldCategoryElement(
   return category;
 }
 
-bool CAddonSettings::InitializeFromOldSettingDefinitions(const CTinyXML& doc)
+bool CAddonSettings::InitializeFromOldSettingDefinitions(const CXBMCTinyXML& doc)
 {
   m_logger->debug("trying to load setting definitions from old format...");
 
@@ -1491,7 +1491,7 @@ SettingPtr CAddonSettings::InitializeFromOldSettingFileWithSource(
 }
 
 bool CAddonSettings::LoadOldSettingValues(
-    const CTinyXML& doc, std::map<std::string, std::string, std::less<>>& settings) const
+    const CXBMCTinyXML& doc, std::map<std::string, std::string, std::less<>>& settings) const
 {
   if (!doc.RootElement())
     return false;

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2013-2024 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -181,8 +181,8 @@ void CGenericTouchActionHandler::sendEvent(int actionId,
                                            float y3,
                                            int pointers /* = 1 */)
 {
-  _Event newEvent{};
-  newEvent.type = _TOUCH;
+  XBMC_Event newEvent{};
+  newEvent.type = XBMC_TOUCH;
 
   newEvent.touch.action = actionId;
   newEvent.touch.x = x;
@@ -200,8 +200,8 @@ void CGenericTouchActionHandler::sendEvent(int actionId,
 
 void CGenericTouchActionHandler::focusControl(float x, float y)
 {
-  _Event newEvent{};
-  newEvent.type = _SETFOCUS;
+  XBMC_Event newEvent{};
+  newEvent.type = XBMC_SETFOCUS;
 
   newEvent.focus.x = static_cast<int>(std::round(x));
   newEvent.focus.y = static_cast<int>(std::round(y));

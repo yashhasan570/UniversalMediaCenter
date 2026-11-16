@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2014-2024 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -25,7 +25,7 @@ class CButtonMapping;
 class CKeyDetector : public CPrimitiveDetector
 {
 public:
-  CKeyDetector(CButtonMapping* buttonMapping, Key keycode);
+  CKeyDetector(CButtonMapping* buttonMapping, XBMCKey keycode);
 
   /*!
    * \brief Key state has been updated
@@ -39,7 +39,7 @@ public:
 
 private:
   // Construction parameters
-  const Key m_keycode;
+  const XBMCKey m_keycode;
 };
 } // namespace JOYSTICK
 } // namespace UNIVERSAL MEDIA CENTER

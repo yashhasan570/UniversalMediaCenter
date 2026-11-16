@@ -1,10 +1,10 @@
 WORKSPACE=${WORKSPACE:-$( cd $(dirname $0)/../../.. ; pwd -P )}
-_PLATFORM_DIR=ios
+XBMC_PLATFORM_DIR=ios
 . $WORKSPACE/tools/buildsteps/defaultenv
 
 cd $WORKSPACE/build;xcodebuild -configuration $Configuration -jobs $BUILDTHREADS \
   -parallelizeTargets \
   -target deb \
   -target ipa \
-  SDKROOT=iphoneos$SDK_VERSION _DEPENDS_ROOT=$_DEPENDS_ROOT \
+  SDKROOT=iphoneos$SDK_VERSION XBMC_DEPENDS_ROOT=$XBMC_DEPENDS_ROOT \
   CODE_SIGNING_ALLOWED="NO"

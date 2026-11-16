@@ -1,7 +1,7 @@
 /*
  *  Copyright (C) 2012 Denis Yantarev
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -293,7 +293,7 @@ int CLogindUPowerSyscall::InhibitDelayLock(const char *what)
 #ifdef DBUS_TYPE_UNIX_FD
   CDBusMessage message("org.freedesktop.login1", "/org/freedesktop/login1", "org.freedesktop.login1.Manager", "Inhibit");
   message.AppendArgument(what); // what to inhibit
-  message.AppendArgument(""); // who
+  message.AppendArgument("XBMC"); // who
   message.AppendArgument(""); // reason
   message.AppendArgument("delay"); // mode
 

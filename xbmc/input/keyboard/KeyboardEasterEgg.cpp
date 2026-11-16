@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2017-2024 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -14,9 +14,9 @@
 using namespace UNIVERSAL MEDIA CENTER;
 using namespace KEYBOARD;
 
-std::vector<VKey> CKeyboardEasterEgg::m_sequence = {
-    VK_UP,    VK_UP,   VK_DOWN,  VK_DOWN, VK_LEFT,
-    VK_RIGHT, VK_LEFT, VK_RIGHT, VK_B,    VK_A,
+std::vector<XBMCVKey> CKeyboardEasterEgg::m_sequence = {
+    XBMCVK_UP,    XBMCVK_UP,   XBMCVK_DOWN,  XBMCVK_DOWN, XBMCVK_LEFT,
+    XBMCVK_RIGHT, XBMCVK_LEFT, XBMCVK_RIGHT, XBMCVK_B,    XBMCVK_A,
 };
 
 bool CKeyboardEasterEgg::OnKeyPress(const CKey& key)

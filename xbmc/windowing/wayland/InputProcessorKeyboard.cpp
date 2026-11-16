@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2017-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -119,14 +119,14 @@ void CInputProcessorKeyboard::ConvertAndSendKey(std::uint32_t scancode, bool pre
     if (feedResult.state == KeyComposerState::COMPOSING)
     {
       // let the outside world (e.g. GUI controls) know we're composing a key
-      NotifyKeyComposingEvent(_KEYCOMPOSING_COMPOSING, feedResult.keysym);
+      NotifyKeyComposingEvent(XBMC_KEYCOMPOSING_COMPOSING, feedResult.keysym);
       return;
     }
     else if (feedResult.state == KeyComposerState::FINISHED)
     {
       flushComposer = true;
       // let the outside world (e.g. GUI Controls) know we're back to normal input
-      NotifyKeyComposingEvent(_KEYCOMPOSING_FINISHED, K_UNKNOWN);
+      NotifyKeyComposingEvent(XBMC_KEYCOMPOSING_FINISHED, XBMCK_UNKNOWN);
     }
     else if (feedResult.state == KeyComposerState::CANCELLED)
     {
@@ -134,11 +134,11 @@ void CInputProcessorKeyboard::ConvertAndSendKey(std::uint32_t scancode, bool pre
       // let the outside world know what key lead to the cancellation (replay sequence)
       const std::uint32_t unicodeCodePointCancellationKey{
           m_keymap->UnicodeCodepointForKeycode(xkbCode)};
-      NotifyKeyComposingEvent(_KEYCOMPOSING_CANCELLED, unicodeCodePointCancellationKey);
+      NotifyKeyComposingEvent(XBMC_KEYCOMPOSING_CANCELLED, unicodeCodePointCancellationKey);
       m_keymap->KeyComposerFlush();
       // do not allow key fallthrough if we are simply cancelling with a backspace (we are cancelling the
       // composition behavior not really removing any character)
-      if (unicodeCodePointCancellationKey == K_BACKSPACE)
+      if (unicodeCodePointCancellationKey == XBMCK_BACKSPACE)
       {
         return;
       }
@@ -159,8 +159,8 @@ void CInputProcessorKeyboard::ConvertAndSendKey(std::uint32_t scancode, bool pre
     m_keymap->KeyComposerFlush();
   }
 
-  Key Key{m_keymap->KeyForKeycode(xkbCode)};
-  if (Key == Key::K_LAST)
+  XBMCKey xbmcKey{m_keymap->XBMCKeyForKeycode(xkbCode)};
+  if (xbmcKey == XBMCKey::XBMCK_LAST)
   {
     // Such an event would carry no useful information in it and thus can be safely dropped here
     // This prevents starting an unnecessary timer for key presses
@@ -168,17 +168,17 @@ void CInputProcessorKeyboard::ConvertAndSendKey(std::uint32_t scancode, bool pre
     return;
   }
 
-  if (Key == K_UNKNOWN && utf32 == 0)
+  if (xbmcKey == XBMCK_UNKNOWN && utf32 == 0)
   {
-    auto evdevKey = CEvdevKeyMapping::KeyForEvdevCode(scancode);
+    auto evdevKey = CEvdevKeyMapping::XBMCKeyForEvdevCode(scancode);
     if (evdevKey)
     {
-      Key = evdevKey.value();
+      xbmcKey = evdevKey.value();
       CLog::LogF(LOGDEBUG, "mapped evdev code {:#02x} to key {:#02x}", scancode, evdevKey.value());
     }
   }
 
-  _Event event{SendKey(scancode, Key, static_cast<std::uint16_t>(utf32), pressed)};
+  XBMC_Event event{SendKey(scancode, xbmcKey, static_cast<std::uint16_t>(utf32), pressed)};
 
   // In the past this checked `CXkbcommonKeymap::ShouldKeycodeRepeat()`, but this prevents
   // handling of long-presses, see #23273. So instead we repeat always and Universal Media Center handles
@@ -198,20 +198,20 @@ void CInputProcessorKeyboard::ConvertAndSendKey(std::uint32_t scancode, bool pre
   }
 }
 
-_Event CInputProcessorKeyboard::SendKey(uint32_t scancode,
-                                            Key key,
+XBMC_Event CInputProcessorKeyboard::SendKey(uint32_t scancode,
+                                            XBMCKey key,
                                             std::uint16_t unicodeCodepoint,
                                             bool pressed)
 {
   assert(m_keymap);
 
-  _Event event{};
-  event.type = pressed ? _KEYDOWN : _KEYUP;
+  XBMC_Event event{};
+  event.type = pressed ? XBMC_KEYDOWN : XBMC_KEYUP;
   event.key.keysym =
   {
     .scancode = scancode,
     .sym = key,
-    .mod = m_keymap->ActiveModifiers(),
+    .mod = m_keymap->ActiveXBMCModifiers(),
     .unicode = unicodeCodepoint
   };
   m_handler.OnKeyboardEvent(event);
@@ -223,17 +223,17 @@ void CInputProcessorKeyboard::KeyRepeatTimeout()
 {
   // Reset ourselves
   m_keyRepeatTimer.RestartAsync(std::chrono::milliseconds(m_keyRepeatInterval));
-  // Send `_KEYDOWN` again without `_KEYUP` in between, we'll figure out
+  // Send `XBMC_KEYDOWN` again without `XBMC_KEYUP` in between, we'll figure out
   // further up the chain if we want to handle this as a repeat or long-press.
-  _Event event = m_keyToRepeat;
-  event.type = _KEYDOWN;
+  XBMC_Event event = m_keyToRepeat;
+  event.type = XBMC_KEYDOWN;
   m_handler.OnKeyboardEvent(event);
 }
 
 void CInputProcessorKeyboard::NotifyKeyComposingEvent(uint8_t eventType,
                                                       std::uint16_t unicodeCodepoint)
 {
-  _Event event{};
+  XBMC_Event event{};
   event.type = eventType;
   event.key.keysym.unicode = unicodeCodepoint;
   m_handler.OnKeyboardEvent(event);

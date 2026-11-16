@@ -25,17 +25,17 @@ and yet another one
 
 **Example:** Clone Universal Media Center's current master branch:
 ```
-git clone https://github.com// universalmediacenter
+git clone https://github.com/xbmc/xbmc universalmediacenter
 ```
 
 Commands that contain strings enclosed in angle brackets denote something you need to change to suit your needs.
 ```
-git clone -b <branch-name> https://github.com// universalmediacenter
+git clone -b <branch-name> https://github.com/xbmc/xbmc universalmediacenter
 ```
 
 **Example:** Clone Universal Media Center's current Matrix branch:
 ```
-git clone -b Matrix https://github.com// universalmediacenter
+git clone -b Matrix https://github.com/xbmc/xbmc universalmediacenter
 ```
 
 Several different strategies are used to draw your attention to certain pieces of information. In order of how critical the information is, these items are marked as a note, tip, or warning. For example:
@@ -110,7 +110,7 @@ cd %userprofile%
 
 Clone Universal Media Center's current master branch:
 ```
-git clone https://github.com// universalmediacenter
+git clone https://github.com/xbmc/xbmc universalmediacenter
 ```
 
 **[back to top](#table-of-contents)**
@@ -171,7 +171,7 @@ BuildSetup.bat
 
 *Normal* 32bit, 64bit and ARM 64bit builds generate an `exe` file ready to run, located at `%userprofile%\universalmediacenter\universalmediacenter-build\Debug` or `%userprofile%\universalmediacenter\universalmediacenter-build\Release`, depending on the build config. An installer `exe` file, located at `%userprofile%\universalmediacenter\project\Win32BuildSetup`, is also generated.
 
-UWP builds generate `msix`, `appxsym` and `cer` files, located at `%userprofile%\universalmediacenter\project\UWPBuildSetup`. You can install them following this **[guide](https://github.com/yashhasan570/UniversalMediaCenter/wiki/view/HOW-TO:Install_Universal Media Center_for_Universal_Windows_Platform)**.
+UWP builds generate `msix`, `appxsym` and `cer` files, located at `%userprofile%\universalmediacenter\project\UWPBuildSetup`. You can install them following this **[guide](https://universalmediacenter.wiki/view/HOW-TO:Install_Universal Media Center_for_Universal_Windows_Platform)**.
 
 > [!NOTE]  
 > To generate an exact replica of the official Universal Media Center Windows installer, some additional steps are required:
@@ -240,7 +240,7 @@ cmake --build . --config "Release"
 ```
 
 *Normal* 32bit, 64bit and ARM 64bit builds generate an `exe` file ready to run, located at `%userprofile%\universalmediacenter-build\Debug` or `%userprofile%\universalmediacenter-build\Release`, depending on the build config.
-UWP builds generate `msix`, `appxsym` and `cer` files, located inside directories at `%userprofile%\universalmediacenter-build\AppPackages\universalmediacenter\`. You can install them following this **[guide](https://github.com/yashhasan570/UniversalMediaCenter/wiki/view/HOW-TO:Install_Universal Media Center_for_Universal_Windows_Platform)**.
+UWP builds generate `msix`, `appxsym` and `cer` files, located inside directories at `%userprofile%\universalmediacenter-build\AppPackages\universalmediacenter\`. You can install them following this **[guide](https://universalmediacenter.wiki/view/HOW-TO:Install_Universal Media Center_for_Universal_Windows_Platform)**.
 
 ### Compiler caching
 
@@ -282,9 +282,9 @@ measuring a rebuild. Restart the agent service after changing its environment.
 **[back to top](#table-of-contents)** | **[back to section top](#6-build-universalmediacenter-manually)**
 
 ## 7. Build binary add-ons manually
-You can find a complete list of available binary add-ons **[here](https://github.com//repo-binary-addons)**.
+You can find a complete list of available binary add-ons **[here](https://github.com/xbmc/repo-binary-addons)**.
 
-There are two approaches to build binary add-ons: _In-tree_ building that is automated, but doesn't support building from sources (forks, PRs, branches) other than the [Universal Media Center binary addon repo](https://github.com//repo-binary-addons), and _out-of-tree_ building that allows building from any source. Please refer to each add-on repository for out-of-tree build instructions.
+There are two approaches to build binary add-ons: _In-tree_ building that is automated, but doesn't support building from sources (forks, PRs, branches) other than the [Universal Media Center binary addon repo](https://github.com/xbmc/repo-binary-addons), and _out-of-tree_ building that allows building from any source. Please refer to each add-on repository for out-of-tree build instructions.
 
 ### 7.1. In-tree building of binary add-ons
 Change to the architecture platform you wish to build for (examples use x64):

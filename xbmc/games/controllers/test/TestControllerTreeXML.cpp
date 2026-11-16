@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2025 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -16,7 +16,7 @@
 #include "games/controllers/types/ControllerNode.h"
 #include "games/ports/types/PortNode.h"
 #include "test/TestUtils.h"
-#include "utils/TinyXML2.h"
+#include "utils/XBMCTinyXML2.h"
 
 #include <gtest/gtest.h>
 
@@ -72,7 +72,7 @@ TEST(TestControllerTreeXML, SerializeSimpleTree)
   hub.SetPorts({port});
 
   // Serialize to XML
-  CTinyXML2 doc;
+  CXBMCTinyXML2 doc;
   auto* root = doc.NewElement("controller");
   ASSERT_TRUE(hub.Serialize(*root));
   doc.InsertFirstChild(root);
@@ -118,7 +118,7 @@ TEST(TestControllerTreeXML, SerializePortAutoConnectFalse)
   hub.SetPorts({port});
 
   // Serialize to XML
-  CTinyXML2 doc;
+  CXBMCTinyXML2 doc;
   auto* root = doc.NewElement("controller");
   ASSERT_TRUE(hub.Serialize(*root));
   doc.InsertFirstChild(root);
@@ -145,7 +145,7 @@ TEST(TestControllerTreeXML, DeserializeSimpleTree)
                          </port>
                        </controller>)";
   std::string xmlStr{xml};
-  CTinyXML2 doc;
+  CXBMCTinyXML2 doc;
   ASSERT_TRUE(doc.Parse(xmlStr));
   const tinyxml2::XMLElement* root = doc.RootElement();
   ASSERT_NE(root, nullptr);
@@ -178,7 +178,7 @@ TEST(TestControllerTreeXML, DeserializePortAutoConnectFalse)
                          </port>
                        </controller>)";
   std::string xmlStr{xml};
-  CTinyXML2 doc;
+  CXBMCTinyXML2 doc;
   ASSERT_TRUE(doc.Parse(xmlStr));
   const tinyxml2::XMLElement* root = doc.RootElement();
   ASSERT_NE(root, nullptr);
@@ -215,7 +215,7 @@ TEST(TestControllerTreeXML, SerializeDeserializeRoundTrip)
   hub.SetPorts({port});
 
   // Serialize the hub
-  CTinyXML2 doc1;
+  CXBMCTinyXML2 doc1;
   auto* root1 = doc1.NewElement("controller");
   ASSERT_TRUE(hub.Serialize(*root1));
   doc1.InsertFirstChild(root1);
@@ -224,7 +224,7 @@ TEST(TestControllerTreeXML, SerializeDeserializeRoundTrip)
   std::string xml = printer1.CStr();
 
   // Deserialize into a new hub
-  CTinyXML2 doc2;
+  CXBMCTinyXML2 doc2;
   ASSERT_TRUE(doc2.Parse(xml));
   const tinyxml2::XMLElement* root2 = doc2.RootElement();
   ASSERT_NE(root2, nullptr);
@@ -263,7 +263,7 @@ TEST(TestControllerTreeXML, SerializePortInvalidType)
   port.SetCompatibleControllers({node});
 
   // Attempt serialization
-  CTinyXML2 doc;
+  CXBMCTinyXML2 doc;
   auto* root = doc.NewElement("port");
   EXPECT_FALSE(port.Serialize(*root));
 }
@@ -289,7 +289,7 @@ TEST(TestControllerTreeXML, SerializePortMissingID)
   port.SetCompatibleControllers({node});
 
   // Attempt serialization
-  CTinyXML2 doc;
+  CXBMCTinyXML2 doc;
   auto* root = doc.NewElement("port");
   EXPECT_FALSE(port.Serialize(*root));
 }
@@ -305,7 +305,7 @@ TEST(TestControllerTreeXML, SerializePortNoControllers)
   port.SetPortID("1");
 
   // Attempt serialization
-  CTinyXML2 doc;
+  CXBMCTinyXML2 doc;
   auto* root = doc.NewElement("port");
   EXPECT_FALSE(port.Serialize(*root));
 }
@@ -317,7 +317,7 @@ TEST(TestControllerTreeXML, SerializeControllerNodeMissingController)
 {
   CControllerNode node;
 
-  CTinyXML2 doc;
+  CXBMCTinyXML2 doc;
   auto* root = doc.NewElement("accepts");
   EXPECT_FALSE(node.Serialize(*root));
 }
@@ -332,7 +332,7 @@ TEST(TestControllerTreeXML, DeserializePortMissingID)
                          <accepts controller="game.controller.default"/>
                        </port>)";
   std::string xmlStr{xml};
-  CTinyXML2 doc;
+  CXBMCTinyXML2 doc;
   ASSERT_TRUE(doc.Parse(xmlStr));
   const tinyxml2::XMLElement* root = doc.RootElement();
   ASSERT_NE(root, nullptr);
@@ -349,7 +349,7 @@ TEST(TestControllerTreeXML, DeserializeControllerNodeMissingController)
   // XML node missing the controller attribute
   const char* xml = "<accepts/>";
   std::string xmlStr{xml};
-  CTinyXML2 doc;
+  CXBMCTinyXML2 doc;
   ASSERT_TRUE(doc.Parse(xmlStr));
   const tinyxml2::XMLElement* root = doc.RootElement();
   ASSERT_NE(root, nullptr);
@@ -366,7 +366,7 @@ TEST(TestControllerTreeXML, DeserializeControllerNodeUnknownController)
   // XML node referencing a non-existent controller id
   const char* xml = "<accepts controller=\"game.controller.fake\"/>";
   std::string xmlStr{xml};
-  CTinyXML2 doc;
+  CXBMCTinyXML2 doc;
   ASSERT_TRUE(doc.Parse(xmlStr));
   const tinyxml2::XMLElement* root = doc.RootElement();
   ASSERT_NE(root, nullptr);
@@ -385,7 +385,7 @@ TEST(TestControllerTreeXML, DeserializeHubInvalidPort)
                     "<port type=\"controller\"/>"
                     "</controller>";
   std::string xmlStr{xml};
-  CTinyXML2 doc;
+  CXBMCTinyXML2 doc;
   ASSERT_TRUE(doc.Parse(xmlStr));
   const tinyxml2::XMLElement* root = doc.RootElement();
   ASSERT_NE(root, nullptr);

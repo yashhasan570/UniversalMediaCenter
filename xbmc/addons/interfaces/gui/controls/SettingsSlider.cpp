@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -21,33 +21,33 @@ namespace ADDON
 
 void Interface_GUIControlSettingsSlider::Init(AddonGlobalInterface* addonInterface)
 {
-  addonInterface->toUniversal Media Center->->control_settings_slider =
-      new AddonToUniversal Media CenterFuncTable__control_settings_slider();
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_settings_slider =
+      new AddonToUniversal Media CenterFuncTable_universalmediacenter_gui_control_settings_slider();
 
-  addonInterface->toUniversal Media Center->->control_settings_slider->set_visible = set_visible;
-  addonInterface->toUniversal Media Center->->control_settings_slider->set_enabled = set_enabled;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_settings_slider->set_visible = set_visible;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_settings_slider->set_enabled = set_enabled;
 
-  addonInterface->toUniversal Media Center->->control_settings_slider->set_text = set_text;
-  addonInterface->toUniversal Media Center->->control_settings_slider->reset = reset;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_settings_slider->set_text = set_text;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_settings_slider->reset = reset;
 
-  addonInterface->toUniversal Media Center->->control_settings_slider->set_int_range = set_int_range;
-  addonInterface->toUniversal Media Center->->control_settings_slider->set_int_value = set_int_value;
-  addonInterface->toUniversal Media Center->->control_settings_slider->get_int_value = get_int_value;
-  addonInterface->toUniversal Media Center->->control_settings_slider->set_int_interval = set_int_interval;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_settings_slider->set_int_range = set_int_range;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_settings_slider->set_int_value = set_int_value;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_settings_slider->get_int_value = get_int_value;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_settings_slider->set_int_interval = set_int_interval;
 
-  addonInterface->toUniversal Media Center->->control_settings_slider->set_percentage = set_percentage;
-  addonInterface->toUniversal Media Center->->control_settings_slider->get_percentage = get_percentage;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_settings_slider->set_percentage = set_percentage;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_settings_slider->get_percentage = get_percentage;
 
-  addonInterface->toUniversal Media Center->->control_settings_slider->set_float_range = set_float_range;
-  addonInterface->toUniversal Media Center->->control_settings_slider->set_float_value = set_float_value;
-  addonInterface->toUniversal Media Center->->control_settings_slider->get_float_value = get_float_value;
-  addonInterface->toUniversal Media Center->->control_settings_slider->set_float_interval =
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_settings_slider->set_float_range = set_float_range;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_settings_slider->set_float_value = set_float_value;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_settings_slider->get_float_value = get_float_value;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_settings_slider->set_float_interval =
       set_float_interval;
 }
 
 void Interface_GUIControlSettingsSlider::DeInit(AddonGlobalInterface* addonInterface)
 {
-  delete addonInterface->toUniversal Media Center->->control_settings_slider;
+  delete addonInterface->toUniversal Media Center->universalmediacenter_gui->control_settings_slider;
 }
 
 void Interface_GUIControlSettingsSlider::set_visible(UNIVERSALMEDIA_HANDLE universalmediacenterBase,

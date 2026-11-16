@@ -1,21 +1,21 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
  */
 
 #include "AddonClass.h"
-#ifdef _ADDON_DEBUG_MEMORY
+#ifdef XBMC_ADDON_DEBUG_MEMORY
 #include "utils/log.h"
 #endif
 #include "LanguageHook.h"
 #include "AddonUtils.h"
 
-using namespace AddonUtils;
+using namespace XBMCAddonUtils;
 
-namespace Addon
+namespace XBMCAddon
 {
   // need a place to put the vtab
   AddonClass::~AddonClass()
@@ -25,7 +25,7 @@ namespace Addon
     if (languageHook != NULL)
       languageHook->Release();
 
-#ifdef _ADDON_DEBUG_MEMORY
+#ifdef XBMC_ADDON_DEBUG_MEMORY
     isDeleted = false;
 #endif
   }
@@ -33,7 +33,7 @@ namespace Addon
   AddonClass::AddonClass() : refs(0L),
                              languageHook(NULL)
   {
-#ifdef _ADDON_DEBUG_MEMORY
+#ifdef XBMC_ADDON_DEBUG_MEMORY
     isDeleted = false;
 #endif
 
@@ -51,7 +51,7 @@ namespace Addon
     }
   }
 
-#ifdef _ADDON_DEBUG_MEMORY
+#ifdef XBMC_ADDON_DEBUG_MEMORY
   void AddonClass::Release() const
   {
     if (isDeleted)

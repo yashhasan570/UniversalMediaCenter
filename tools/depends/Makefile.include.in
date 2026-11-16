@@ -40,7 +40,7 @@ NEED_LIBICONV=@need_libiconv@
 LINK_ICONV=@link_iconv@
 ENABLE_GPLV3=@use_gplv3@
 
-BASE_URL=https://mirrors.github.com/yashhasan570/UniversalMediaCenter/build-deps/sources
+BASE_URL=https://mirrors.universalmediacenter.tv/build-deps/sources
 ifneq ($(UNIVERSALMEDIA_MIRROR),)
 BASE_URL=$(UNIVERSALMEDIA_MIRROR)/build-deps/sources
 endif

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -239,7 +239,7 @@ bool CTagLoaderTagLib::ParseTag(ASF::Tag* asf,
   return true;
 }
 
-int CTagLoaderTagLib::POPMto(int popm)
+int CTagLoaderTagLib::POPMtoXBMC(int popm)
 {
   // Ratings:
   // FROM: http://www.mediamonkey.com/forum/viewtopic.php?f=7&t=40532&start=30#p391067
@@ -457,8 +457,8 @@ bool CTagLoaderTagLib::ParseTag(ID3v2::Tag* id3v2,
         auto popFrame = dynamic_cast<ID3v2::PopularimeterFrame *> (*ct);
         if (!popFrame) continue;
 
-        // @github.com/yashhasan570/UniversalMediaCenter ratings trump others (of course)
-        if      (popFrame->email() == "ratings@github.com/yashhasan570/UniversalMediaCenter")
+        // @xbmc.org ratings trump others (of course)
+        if      (popFrame->email() == "ratings@xbmc.org")
           tag.SetUserrating(popFrame->rating() / 51); //! @todo wtf? Why 51 find some explanation, somewhere...
         else if (tag.GetUserrating() == 0)
         {
@@ -469,7 +469,7 @@ bool CTagLoaderTagLib::ParseTag(ID3v2::Tag* id3v2,
               popFrame->email() != "rating@winamp.com")
             CLog::Log(LOGDEBUG, "unrecognized ratings schema detected: {}",
                       popFrame->email().toCString(true));
-          tag.SetUserrating(POPMto(popFrame->rating()));
+          tag.SetUserrating(POPMtoXBMC(popFrame->rating()));
         }
       }
     else if (it->first == "CHAP")

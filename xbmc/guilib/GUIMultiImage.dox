@@ -6,7 +6,7 @@
 \tableofcontents
 
 The MultiImage control is used for displaying a slideshow of images from a folder
-in Universal Media Center. You can choose the position and size of the slideshow, as well as
+in Kodi. You can choose the position and size of the slideshow, as well as
 timing information.
 
 
@@ -53,26 +53,26 @@ and they should work fine.
 
 \section MultiImage_Control_sect3 Available tags and attributes
 
-In addition to the [Default Control Tags](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Default_Control_Tags)
+In addition to the [Default Control Tags](http://kodi.wiki/view/Default_Control_Tags)
 the following tags are available. Note that each tag is **lower case** only. This is
 important, as `xml` tags are case-sensitive.
 
 | Tag           | Description                                                   |
 |--------------:|:--------------------------------------------------------------|
-| imagepath     | Specifies the path containing the images to use for the slideshow. Universal Media Center will first look inside the compressed Textures.xbt file for images, and then will look in the actual folder. The path is relative to the media/ folder if it is not specified completely.
-| info          | Specifies the information that this image control is presenting. Universal Media Center will select the texture to use based on this tag. [See here for more information](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/InfoLabels).
+| imagepath     | Specifies the path containing the images to use for the slideshow. Kodi will first look inside the compressed Textures.xbt file for images, and then will look in the actual folder. The path is relative to the media/ folder if it is not specified completely.
+| info          | Specifies the information that this image control is presenting. Kodi will select the texture to use based on this tag. [See here for more information](http://kodi.wiki/view/InfoLabels).
 | timeperimage  | Time in milliseconds that an image is shown for.
 | fadetime      | Time in milliseconds to fade between images.
 | pauseatend    | Time in milliseconds to pause (in addition to <b>`<timeperimage>`</b>) on the last image at the end of a complete cycle through the images. Only useful if <b>`<loop>`</b> is set to yes.
 | loop          | If set to no, the last image will display indefinitely. Setting it to yes will loop around once they reach the last image. Defaults to yes.
-| aspectratio   | This specifies how the image will be drawn inside the box defined by <b>`<width>`</b> and <b>`<height>`</b>. [See here for more info](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Aspect_Ratio).
+| aspectratio   | This specifies how the image will be drawn inside the box defined by <b>`<width>`</b> and <b>`<height>`</b>. [See here for more info](http://kodi.wiki/view/Aspect_Ratio).
 
 --------------------------------------------------------------------------------
 \section MultiImage_Control_sect4 See also
 
 #### Development:
 
-- [Add-on development](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Add-on_development)
-- [Skinning](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Skinning)
+- [Add-on development](http://kodi.wiki/view/Add-on_development)
+- [Skinning](http://kodi.wiki/view/Skinning)
 
 */

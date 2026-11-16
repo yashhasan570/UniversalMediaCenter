@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2012-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -18,7 +18,7 @@
 #include "utils/URIUtils.h"
 #include "utils/log.h"
 
-#include "platform/android/activity/App.h"
+#include "platform/android/activity/XBMCApp.h"
 
 #include <vector>
 
@@ -35,7 +35,7 @@ bool CAndroidAppDirectory::GetDirectory(const CURL& url, CFileItemList &items)
 
   if (dirname == "apps")
   {
-    const std::vector<androidPackage> applications = CApp::Get().GetApplications();
+    const std::vector<androidPackage> applications = CXBMCApp::Get().GetApplications();
     if (applications.empty())
     {
       CLog::Log(LOGERROR, "CAndroidAppDirectory::GetDirectory Application lookup listing failed");

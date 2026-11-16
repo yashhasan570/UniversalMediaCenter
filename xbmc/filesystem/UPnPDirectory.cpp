@@ -1,11 +1,11 @@
 /*
- * UPnP Support for 
+ * UPnP Support for XBMC
  *  Copyright (c) 2006 c0diq (Sylvain Rebaud)
  *      Portions Copyright (c) by the authors of libPlatinum
  *      http://www.plutinosoft.com/blog/category/platinum/
  *
  *  Copyright (C) 2010-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -274,8 +274,8 @@ CUPnPDirectory::GetDirectory(const CURL& url, CFileItemList &items)
         }
 
 #ifdef DISABLE_SPECIALCASE
-        // same thing but special case for 
-        if (object_id == "0" && ((device->m_ModelName.Find("", 0, true) >= 0) ||
+        // same thing but special case for XBMC
+        if (object_id == "0" && ((device->m_ModelName.Find("XBMC", 0, true) >= 0) ||
                                  (device->m_ModelName.Find("Xbox Media Center", 0, true) >= 0))) {
             // look for a specific type to differentiate which folder we want
             if (audio && !video && !image) {

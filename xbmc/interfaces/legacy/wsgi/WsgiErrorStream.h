@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2015-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -14,13 +14,13 @@
 
 struct HTTPPythonRequest;
 
-namespace Addon
+namespace XBMCAddon
 {
-  namespace wsgi
+  namespace xbmcwsgi
   {
 
-    /// \defgroup python_wsgi_WsgiErrorStream WsgiErrorStream
-    /// \ingroup python_wsgi
+    /// \defgroup python_xbmcwsgi_WsgiErrorStream WsgiErrorStream
+    /// \ingroup python_xbmcwsgi
     /// @{
     /// @brief **Represents the wsgi.errors stream to write error messages.**
     ///
@@ -39,7 +39,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_wsgi_WsgiErrorStream
+      /// \ingroup python_xbmcwsgi_WsgiErrorStream
       /// \python_func{ flush() }
       /// Since nothing is buffered this is a no-op.
       ///
@@ -51,7 +51,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_wsgi_WsgiErrorStream
+      /// \ingroup python_xbmcwsgi_WsgiErrorStream
       /// \python_func{ write(str) }
       /// Writes the given error message to the application's log file.
       ///
@@ -66,7 +66,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_wsgi_WsgiErrorStream
+      /// \ingroup python_xbmcwsgi_WsgiErrorStream
       /// \python_func{ writelines(seq) }
       /// Joins the given list of error messages (without any separator) into
       /// a single error message which is written to the application's log file.

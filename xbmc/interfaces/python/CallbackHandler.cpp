@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -10,7 +10,7 @@
 
 #include "LanguageHook.h"
 
-namespace Addon
+namespace XBMCAddon
 {
   namespace Python
   {
@@ -22,7 +22,7 @@ namespace Addon
      */
     PythonCallbackHandler::PythonCallbackHandler()
     {
-      _TRACE;
+      XBMC_TRACE;
       objectThreadState = PyThreadState_Get();
     }
 
@@ -32,12 +32,12 @@ namespace Addon
      */
     bool PythonCallbackHandler::isStateOk(AddonClass* obj)
     {
-      _TRACE;
+      XBMC_TRACE;
       PyThreadState* state = PyThreadState_Get();
       if (objectThreadState == state)
       {
         // make sure the interpreter is still active.
-        AddonClass::Ref<Addon::Python::PythonLanguageHook> lh(Addon::Python::PythonLanguageHook::GetIfExists(state->interp));
+        AddonClass::Ref<XBMCAddon::Python::PythonLanguageHook> lh(XBMCAddon::Python::PythonLanguageHook::GetIfExists(state->interp));
         if (lh.isNotNull() && lh->HasRegisteredAddonClassInstance(obj) && lh.get() == obj->GetLanguageHook())
           return true;
       }
@@ -53,13 +53,13 @@ namespace Addon
      */
     bool PythonCallbackHandler::shouldRemoveCallback(AddonClass* obj, void* threadState)
     {
-      _TRACE;
+      XBMC_TRACE;
       if (threadState == objectThreadState)
         return true;
 
       // we also want to remove the callback if the language hook no longer exists.
       //   this is a belt-and-suspenders cleanup mechanism
-      return ! Addon::Python::PythonLanguageHook::IsAddonClassInstanceRegistered(obj);
+      return ! XBMCAddon::Python::PythonLanguageHook::IsAddonClassInstanceRegistered(obj);
     }
   }
 }

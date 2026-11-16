@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -393,5 +393,5 @@ protected:
   UNIVERSAL MEDIA CENTER::LANGUAGE::CLanguageTag m_uiLanguage;
 };
 
-_GLOBAL_REF(CLangInfo, g_langInfo);
-#define g_langInfo _GLOBAL_USE(CLangInfo)
+XBMC_GLOBAL_REF(CLangInfo, g_langInfo);
+#define g_langInfo XBMC_GLOBAL_USE(CLangInfo)

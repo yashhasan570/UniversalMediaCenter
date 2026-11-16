@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2019- Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -8,7 +8,7 @@
 
 #import "LibInputSettings.h"
 
-#import "platform/darwin/tvos/Controller.h"
+#import "platform/darwin/tvos/XBMCController.h"
 #import "platform/darwin/tvos/input/LibInputHandler.h"
 #import "platform/darwin/tvos/input/LibInputRemote.h"
 
@@ -27,14 +27,14 @@
   {
     m_siriRemoteIdleTimerEnabled = idle;
     if (m_siriRemoteIdleTimerEnabled)
-      [g_Controller.inputHandler.inputRemote startSiriRemoteIdleTimer];
+      [g_xbmcController.inputHandler.inputRemote startSiriRemoteIdleTimer];
   }
 }
 
 - (void)setSiriRemoteIdleTime:(int)time
 {
   m_siriRemoteIdleTime = time;
-  [g_Controller.inputHandler.inputRemote startSiriRemoteIdleTimer];
+  [g_xbmcController.inputHandler.inputRemote startSiriRemoteIdleTimer];
 }
 
 @end

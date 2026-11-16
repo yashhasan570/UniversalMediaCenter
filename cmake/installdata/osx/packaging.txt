@@ -2,4 +2,4 @@ LICENSE.md
 privacy-policy.txt
 tools/darwin/packaging/media/osx/universalmediacenter.icns
 tools/darwin/packaging/media/osx/icon.iconset/*
-/platform/darwin/Credits.html
+xbmc/platform/darwin/Credits.html

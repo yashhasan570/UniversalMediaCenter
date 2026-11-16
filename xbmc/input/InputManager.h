@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2024 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -17,7 +17,7 @@
 #include "settings/lib/ISettingCallback.h"
 #include "threads/CriticalSection.h"
 #include "utils/Observer.h"
-#include "windowing/_events.h"
+#include "windowing/XBMC_events.h"
 
 #include <map>
 #include <memory>
@@ -117,9 +117,9 @@ public:
    *
    * \param newEvent event details
    * \return true on successfully handled event
-   * \sa _Event
+   * \sa XBMC_Event
    */
-  bool OnEvent(_Event& newEvent);
+  bool OnEvent(XBMC_Event& newEvent);
 
   /*! \brief Control if the mouse is actively used or not
    *

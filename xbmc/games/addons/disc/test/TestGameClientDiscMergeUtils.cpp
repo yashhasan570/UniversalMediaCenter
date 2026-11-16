@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -176,11 +176,11 @@ TEST(TestGameClientDiscMergeUtils, InvalidCoreSelectionIndexCanUnexpectedlyForce
 
 TEST(TestGameClientDiscMergeUtils, EmptyCoreRetainsHistoricalFrontendMedia)
 {
-  const auto deleteFile = [](XFILE::CFile* file) { _DELETETEMPFILE(file); };
-  std::unique_ptr<XFILE::CFile, decltype(deleteFile)> file(_CREATETEMPFILE(".chd"), deleteFile);
+  const auto deleteFile = [](XFILE::CFile* file) { XBMC_DELETETEMPFILE(file); };
+  std::unique_ptr<XFILE::CFile, decltype(deleteFile)> file(XBMC_CREATETEMPFILE(".chd"), deleteFile);
   ASSERT_NE(file, nullptr);
   file->Close();
-  const std::string path = _TEMPFILEPATH(file.get());
+  const std::string path = XBMC_TEMPFILEPATH(file.get());
   CGameClientDiscModel frontend;
   frontend.AddDisc(path);
   const auto saved = frontend.GetState();
@@ -199,11 +199,11 @@ TEST(TestGameClientDiscMergeUtils, EmptyCoreRetainsHistoricalFrontendMedia)
 
 TEST(TestGameClientDiscMergeUtils, EmptyFrontendRetainsHistoricalCoreMedia)
 {
-  const auto deleteFile = [](XFILE::CFile* file) { _DELETETEMPFILE(file); };
-  std::unique_ptr<XFILE::CFile, decltype(deleteFile)> file(_CREATETEMPFILE(".chd"), deleteFile);
+  const auto deleteFile = [](XFILE::CFile* file) { XBMC_DELETETEMPFILE(file); };
+  std::unique_ptr<XFILE::CFile, decltype(deleteFile)> file(XBMC_CREATETEMPFILE(".chd"), deleteFile);
   ASSERT_NE(file, nullptr);
   file->Close();
-  const std::string path = _TEMPFILEPATH(file.get());
+  const std::string path = XBMC_TEMPFILEPATH(file.get());
   CGameClientDiscModel core;
   core.AddDisc(path);
   const auto saved = core.GetState();

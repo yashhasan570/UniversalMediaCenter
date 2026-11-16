@@ -6,7 +6,7 @@
 \tableofcontents
 
 The visualisation control is used for displaying those funky patterns that jump
-to the music in Universal Media Center. You can choose the position, and size of the visualisation
+to the music in Kodi. You can choose the position, and size of the visualisation
 displayed. Note that the control is only rendered if music is being played.
 
 
@@ -27,7 +27,7 @@ displayed. Note that the control is only rendered if music is being played.
 
 --------------------------------------------------------------------------------
 \section Visualisation_Control_sect2 Available tags
-Only the [default control](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Default_Control_Tags) tags are
+Only the [default control](http://kodi.wiki/view/Default_Control_Tags) tags are
 applicable to this control.
 
 
@@ -36,7 +36,7 @@ applicable to this control.
 
 #### Development:
 
-- [Add-on development](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Add-on_development)
-- [Skinning](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Skinning)
+- [Add-on development](http://kodi.wiki/view/Add-on_development)
+- [Skinning](http://kodi.wiki/view/Skinning)
 
 */

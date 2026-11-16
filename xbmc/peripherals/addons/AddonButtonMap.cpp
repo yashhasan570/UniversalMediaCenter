@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2014-2024 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -176,7 +176,7 @@ bool CAddonButtonMap::GetScalar(const FeatureName& feature, CDriverPrimitive& pr
   FeatureMap::const_iterator it = m_features.find(feature);
   if (it != m_features.end())
   {
-    const addon::JoystickFeature& addonFeature = it->second;
+    const universalmediacenter::addon::JoystickFeature& addonFeature = it->second;
 
     if (addonFeature.Type() == JOYSTICK_FEATURE_TYPE_SCALAR ||
         addonFeature.Type() == JOYSTICK_FEATURE_TYPE_MOTOR)
@@ -217,7 +217,7 @@ void CAddonButtonMap::AddScalar(const FeatureName& feature, const CDriverPrimiti
 {
   const bool bMotor = (primitive.Type() == PRIMITIVE_TYPE::MOTOR);
 
-  addon::JoystickFeature scalar(feature, bMotor ? JOYSTICK_FEATURE_TYPE_MOTOR
+  universalmediacenter::addon::JoystickFeature scalar(feature, bMotor ? JOYSTICK_FEATURE_TYPE_MOTOR
                                                       : JOYSTICK_FEATURE_TYPE_SCALAR);
   scalar.SetPrimitive(JOYSTICK_SCALAR_PRIMITIVE,
                       CPeripheralAddonTranslator::TranslatePrimitive(primitive));
@@ -237,7 +237,7 @@ bool CAddonButtonMap::GetAnalogStick(const FeatureName& feature,
   FeatureMap::const_iterator it = m_features.find(feature);
   if (it != m_features.end())
   {
-    const addon::JoystickFeature& addonFeature = it->second;
+    const universalmediacenter::addon::JoystickFeature& addonFeature = it->second;
 
     if (addonFeature.Type() == JOYSTICK_FEATURE_TYPE_ANALOG_STICK)
     {
@@ -257,10 +257,10 @@ void CAddonButtonMap::AddAnalogStick(const FeatureName& feature,
   using namespace JOYSTICK;
 
   JOYSTICK_FEATURE_PRIMITIVE primitiveIndex = GetAnalogStickIndex(direction);
-  addon::DriverPrimitive addonPrimitive =
+  universalmediacenter::addon::DriverPrimitive addonPrimitive =
       CPeripheralAddonTranslator::TranslatePrimitive(primitive);
 
-  addon::JoystickFeature analogStick(feature, JOYSTICK_FEATURE_TYPE_ANALOG_STICK);
+  universalmediacenter::addon::JoystickFeature analogStick(feature, JOYSTICK_FEATURE_TYPE_ANALOG_STICK);
 
   {
     std::unique_lock lock(m_mutex);
@@ -294,7 +294,7 @@ bool CAddonButtonMap::GetRelativePointer(const FeatureName& feature,
   FeatureMap::const_iterator it = m_features.find(feature);
   if (it != m_features.end())
   {
-    const addon::JoystickFeature& addonFeature = it->second;
+    const universalmediacenter::addon::JoystickFeature& addonFeature = it->second;
 
     if (addonFeature.Type() == JOYSTICK_FEATURE_TYPE_RELPOINTER)
     {
@@ -314,10 +314,10 @@ void CAddonButtonMap::AddRelativePointer(const FeatureName& feature,
   using namespace JOYSTICK;
 
   JOYSTICK_FEATURE_PRIMITIVE primitiveIndex = GetRelativePointerIndex(direction);
-  addon::DriverPrimitive addonPrimitive =
+  universalmediacenter::addon::DriverPrimitive addonPrimitive =
       CPeripheralAddonTranslator::TranslatePrimitive(primitive);
 
-  addon::JoystickFeature relPointer(feature, JOYSTICK_FEATURE_TYPE_RELPOINTER);
+  universalmediacenter::addon::JoystickFeature relPointer(feature, JOYSTICK_FEATURE_TYPE_RELPOINTER);
 
   {
     std::unique_lock lock(m_mutex);
@@ -352,7 +352,7 @@ bool CAddonButtonMap::GetAccelerometer(const FeatureName& feature,
   FeatureMap::const_iterator it = m_features.find(feature);
   if (it != m_features.end())
   {
-    const addon::JoystickFeature& addonFeature = it->second;
+    const universalmediacenter::addon::JoystickFeature& addonFeature = it->second;
 
     if (addonFeature.Type() == JOYSTICK_FEATURE_TYPE_ACCELEROMETER)
     {
@@ -376,7 +376,7 @@ void CAddonButtonMap::AddAccelerometer(const FeatureName& feature,
 {
   using namespace JOYSTICK;
 
-  addon::JoystickFeature accelerometer(feature, JOYSTICK_FEATURE_TYPE_ACCELEROMETER);
+  universalmediacenter::addon::JoystickFeature accelerometer(feature, JOYSTICK_FEATURE_TYPE_ACCELEROMETER);
 
   accelerometer.SetPrimitive(JOYSTICK_ACCELEROMETER_POSITIVE_X,
                              CPeripheralAddonTranslator::TranslatePrimitive(positiveX));
@@ -400,7 +400,7 @@ bool CAddonButtonMap::GetWheel(const UNIVERSAL MEDIA CENTER::JOYSTICK::FeatureNa
   FeatureMap::const_iterator it = m_features.find(feature);
   if (it != m_features.end())
   {
-    const addon::JoystickFeature& addonFeature = it->second;
+    const universalmediacenter::addon::JoystickFeature& addonFeature = it->second;
 
     if (addonFeature.Type() == JOYSTICK_FEATURE_TYPE_WHEEL)
     {
@@ -420,10 +420,10 @@ void CAddonButtonMap::AddWheel(const UNIVERSAL MEDIA CENTER::JOYSTICK::FeatureNa
   using namespace JOYSTICK;
 
   JOYSTICK_FEATURE_PRIMITIVE primitiveIndex = GetPrimitiveIndex(direction);
-  addon::DriverPrimitive addonPrimitive =
+  universalmediacenter::addon::DriverPrimitive addonPrimitive =
       CPeripheralAddonTranslator::TranslatePrimitive(primitive);
 
-  addon::JoystickFeature joystickFeature(feature, JOYSTICK_FEATURE_TYPE_WHEEL);
+  universalmediacenter::addon::JoystickFeature joystickFeature(feature, JOYSTICK_FEATURE_TYPE_WHEEL);
 
   {
     std::unique_lock lock(m_mutex);
@@ -457,7 +457,7 @@ bool CAddonButtonMap::GetThrottle(const UNIVERSAL MEDIA CENTER::JOYSTICK::Featur
   FeatureMap::const_iterator it = m_features.find(feature);
   if (it != m_features.end())
   {
-    const addon::JoystickFeature& addonFeature = it->second;
+    const universalmediacenter::addon::JoystickFeature& addonFeature = it->second;
 
     if (addonFeature.Type() == JOYSTICK_FEATURE_TYPE_THROTTLE)
     {
@@ -477,10 +477,10 @@ void CAddonButtonMap::AddThrottle(const UNIVERSAL MEDIA CENTER::JOYSTICK::Featur
   using namespace JOYSTICK;
 
   JOYSTICK_FEATURE_PRIMITIVE primitiveIndex = GetPrimitiveIndex(direction);
-  addon::DriverPrimitive addonPrimitive =
+  universalmediacenter::addon::DriverPrimitive addonPrimitive =
       CPeripheralAddonTranslator::TranslatePrimitive(primitive);
 
-  addon::JoystickFeature joystickFeature(feature, JOYSTICK_FEATURE_TYPE_THROTTLE);
+  universalmediacenter::addon::JoystickFeature joystickFeature(feature, JOYSTICK_FEATURE_TYPE_THROTTLE);
 
   {
     std::unique_lock lock(m_mutex);
@@ -512,7 +512,7 @@ bool CAddonButtonMap::GetKey(const FeatureName& feature, CDriverPrimitive& primi
   FeatureMap::const_iterator it = m_features.find(feature);
   if (it != m_features.end())
   {
-    const addon::JoystickFeature& addonFeature = it->second;
+    const universalmediacenter::addon::JoystickFeature& addonFeature = it->second;
 
     if (addonFeature.Type() == JOYSTICK_FEATURE_TYPE_KEY)
     {
@@ -527,7 +527,7 @@ bool CAddonButtonMap::GetKey(const FeatureName& feature, CDriverPrimitive& primi
 
 void CAddonButtonMap::AddKey(const FeatureName& feature, const CDriverPrimitive& primitive)
 {
-  addon::JoystickFeature scalar(feature, JOYSTICK_FEATURE_TYPE_KEY);
+  universalmediacenter::addon::JoystickFeature scalar(feature, JOYSTICK_FEATURE_TYPE_KEY);
   scalar.SetPrimitive(JOYSTICK_SCALAR_PRIMITIVE,
                       CPeripheralAddonTranslator::TranslatePrimitive(primitive));
 
@@ -615,7 +615,7 @@ CAddonButtonMap::DriverMap CAddonButtonMap::CreateLookupTable(const FeatureMap& 
 
   for (const auto& it : features)
   {
-    const addon::JoystickFeature& feature = it.second;
+    const universalmediacenter::addon::JoystickFeature& feature = it.second;
 
     switch (feature.Type())
     {

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2012-2021 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -192,7 +192,7 @@ void CSubtitlesSettings::SettingOptionsSubtitleFontsFiller(const SettingConstPtr
 {
   // From application system fonts folder we add the default font only
   std::string defaultFontPath =
-      URIUtils::AddFileToFolder("special:///media/Fonts/", UTILS::FONT::FONT_DEFAULT_FILENAME);
+      URIUtils::AddFileToFolder("special://xbmc/media/Fonts/", UTILS::FONT::FONT_DEFAULT_FILENAME);
   if (CFileUtils::Exists(defaultFontPath))
   {
     std::string familyName = UTILS::FONT::GetFontFamily(defaultFontPath);

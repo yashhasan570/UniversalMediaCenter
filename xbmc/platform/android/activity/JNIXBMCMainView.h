@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2017 Christian Browet
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -19,11 +19,11 @@
 namespace jni
 {
 
-class CJNIMainView : virtual public CJNIBase, public CJNISurfaceHolderCallback, public CJNIInterfaceImplem<CJNIMainView>
+class CJNIXBMCMainView : virtual public CJNIBase, public CJNISurfaceHolderCallback, public CJNIInterfaceImplem<CJNIXBMCMainView>
 {
 public:
-  CJNIMainView(CJNISurfaceHolderCallback* callback);
-  ~CJNIMainView() override = default;
+  CJNIXBMCMainView(CJNISurfaceHolderCallback* callback);
+  ~CJNIXBMCMainView() override = default;
 
   static void RegisterNatives(JNIEnv* env);
 
@@ -39,7 +39,7 @@ public:
   bool isCreated() const;
 
 protected:
-  static CJNIMainView* m_instance;
+  static CJNIXBMCMainView* m_instance;
   CJNISurfaceHolderCallback* m_callback;
   static CEvent m_surfaceCreated;
 

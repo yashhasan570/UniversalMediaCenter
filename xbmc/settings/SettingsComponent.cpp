@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -64,11 +64,11 @@ bool InitDirectoriesLinux(UserDirectoriesLocation loc)
   /*
    The following is the directory mapping for Platform Specific Mode:
 
-   special:///          => [read-only] system directory (/usr/share/universalmediacenter)
+   special://xbmc/          => [read-only] system directory (/usr/share/universalmediacenter)
    special://home/          => [read-write] user's directory that will override special://universalmediacenter/ system-wide
    installations like skins, screensavers, etc.
    ($HOME/.universalmediacenter)
-   NOTE:  will look in both special:///addons and special://home/addons for addons.
+   NOTE: XBMC will look in both special://xbmc/addons and special://home/addons for addons.
    special://masterprofile/ => [read-write] userdata of master profile. It will by default be
    mapped to special://home/userdata ($HOME/.universalmediacenter/userdata)
    special://profile/       => [read-write] current profile's userdata directory.
@@ -142,9 +142,9 @@ bool InitDirectoriesLinux(UserDirectoriesLocation loc)
   if (loc == UserDirectoriesLocation::PLATFORM)
   {
     // map our special drives
-    CSpecialProtocol::SetBinPath(appBinPath);
-    CSpecialProtocol::SetAltBinAddonPath(binaddonAltDir);
-    CSpecialProtocol::SetPath(appPath);
+    CSpecialProtocol::SetXBMCBinPath(appBinPath);
+    CSpecialProtocol::SetXBMCAltBinAddonPath(binaddonAltDir);
+    CSpecialProtocol::SetXBMCPath(appPath);
     CSpecialProtocol::SetHomePath(userHome);
     CSpecialProtocol::SetMasterProfilePath(userHome + "/userdata");
     CSpecialProtocol::SetTempPath(strTempPath);
@@ -157,9 +157,9 @@ bool InitDirectoriesLinux(UserDirectoriesLocation loc)
   {
     URIUtils::AddSlashAtEnd(appPath);
 
-    CSpecialProtocol::SetBinPath(appBinPath);
-    CSpecialProtocol::SetAltBinAddonPath(binaddonAltDir);
-    CSpecialProtocol::SetPath(appPath);
+    CSpecialProtocol::SetXBMCBinPath(appBinPath);
+    CSpecialProtocol::SetXBMCAltBinAddonPath(binaddonAltDir);
+    CSpecialProtocol::SetXBMCPath(appPath);
 
     const std::string homePath = URIUtils::AddFileToFolder(
         appPath, loc == UserDirectoriesLocation::PORTABLE ? PORTABLE_DIRECTORY : TEST_DIRECTORY);
@@ -174,7 +174,7 @@ bool InitDirectoriesLinux(UserDirectoriesLocation loc)
     CSpecialProtocol::SetLogPath(strTempPath);
     CreateUserDirs();
   }
-  CSpecialProtocol::SetBinAddonPath(appBinPath + "/addons");
+  CSpecialProtocol::SetXBMCBinAddonPath(appBinPath + "/addons");
 
   return true;
 #else
@@ -210,14 +210,14 @@ bool InitDirectoriesOSX(UserDirectoriesLocation)
 
   // setup path to our internal dylibs so loader can find them
   std::string frameworksPath = CUtil::GetFrameworksPath();
-  CSpecialProtocol::SetFrameworksPath(frameworksPath);
+  CSpecialProtocol::SetXBMCFrameworksPath(frameworksPath);
 
   if (loc == UserDirectoriesLocation::PLATFORM)
   {
     // map our special drives
-    CSpecialProtocol::SetBinPath(appPath);
-    CSpecialProtocol::SetAltBinAddonPath(binaddonAltDir);
-    CSpecialProtocol::SetPath(appPath);
+    CSpecialProtocol::SetXBMCBinPath(appPath);
+    CSpecialProtocol::SetXBMCAltBinAddonPath(binaddonAltDir);
+    CSpecialProtocol::SetXBMCPath(appPath);
 #if defined(TARGET_DARWIN_EMBEDDED)
     std::string appName = CCompileInfo::GetAppName();
     CSpecialProtocol::SetHomePath(userHome + "/" + CDarwinEmbedUtils::GetAppRootFolder() + "/" +
@@ -243,7 +243,7 @@ bool InitDirectoriesOSX(UserDirectoriesLocation)
 #endif
     CSpecialProtocol::SetTempPath(strTempPath);
 
-    // .log file location
+    // xbmc.log file location
 #if defined(TARGET_DARWIN_EMBEDDED)
     strTempPath = userHome + "/" + std::string(CDarwinEmbedUtils::GetAppRootFolder());
 #else
@@ -256,9 +256,9 @@ bool InitDirectoriesOSX(UserDirectoriesLocation)
   {
     URIUtils::AddSlashAtEnd(appPath);
 
-    CSpecialProtocol::SetBinPath(appPath);
-    CSpecialProtocol::SetAltBinAddonPath(binaddonAltDir);
-    CSpecialProtocol::SetPath(appPath);
+    CSpecialProtocol::SetXBMCBinPath(appPath);
+    CSpecialProtocol::SetXBMCAltBinAddonPath(binaddonAltDir);
+    CSpecialProtocol::SetXBMCPath(appPath);
 
     const std::string homePath = URIUtils::AddFileToFolder(
         appPath, loc == UserDirectoriesLocation::PORTABLE ? PORTABLE_DIRECTORY : TEST_DIRECTORY);
@@ -271,7 +271,7 @@ bool InitDirectoriesOSX(UserDirectoriesLocation)
     CSpecialProtocol::SetLogPath(strTempPath);
     CreateUserDirs();
   }
-  CSpecialProtocol::SetBinAddonPath(appPath + "/addons");
+  CSpecialProtocol::SetXBMCBinAddonPath(appPath + "/addons");
   return true;
 #else
   return false;
@@ -281,11 +281,11 @@ bool InitDirectoriesOSX(UserDirectoriesLocation)
 bool InitDirectoriesWin32(UserDirectoriesLocation loc)
 {
 #ifdef TARGET_WINDOWS
-  std::string Path = CUtil::GetHomePath();
-  CEnvironment::setenv("UNIVERSALMEDIA_HOME", Path);
-  CSpecialProtocol::SetBinPath(Path);
-  CSpecialProtocol::SetPath(Path);
-  CSpecialProtocol::SetBinAddonPath(Path + "/addons");
+  std::string xbmcPath = CUtil::GetHomePath();
+  CEnvironment::setenv("UNIVERSALMEDIA_HOME", xbmcPath);
+  CSpecialProtocol::SetXBMCBinPath(xbmcPath);
+  CSpecialProtocol::SetXBMCPath(xbmcPath);
+  CSpecialProtocol::SetXBMCBinAddonPath(xbmcPath + "/addons");
 
   std::string strWin32UserFolder = CWIN32Util::GetProfilePath(loc);
   CSpecialProtocol::SetLogPath(strWin32UserFolder);

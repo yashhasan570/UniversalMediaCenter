@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2021 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -18,13 +18,13 @@ class CGameInfoTag;
 }
 } // namespace UNIVERSAL MEDIA CENTER
 
-namespace Addon
+namespace XBMCAddon
 {
-namespace 
+namespace xbmc
 {
 ///
 /// \defgroup python_InfoTagGame InfoTagGame
-/// \ingroup python_
+/// \ingroup python_xbmc
 /// @{
 /// @brief **Universal Media Center's game info tag class.**
 ///
@@ -61,7 +61,7 @@ public:
 #ifdef DOXYGEN_SHOULD_USE_THIS
   ///
   /// \ingroup python_InfoTagGame
-  /// @brief \python_func{ .InfoTagGame([offscreen]) }
+  /// @brief \python_func{ xbmc.InfoTagGame([offscreen]) }
   /// Create a game info tag.
   ///
   /// @param offscreen            [opt] bool (default `False`) - if GUI based locks should be
@@ -85,7 +85,7 @@ public:
   /// **Example:**
   /// ~~~~~~~~~~~~~{.py}
   /// ...
-  /// gameinfo = .InfoTagGame(offscreen=False)
+  /// gameinfo = xbmc.InfoTagGame(offscreen=False)
   /// ...
   /// ~~~~~~~~~~~~~
   ///
@@ -591,5 +591,5 @@ public:
 #endif
 };
 
-} // namespace 
-} // namespace Addon
+} // namespace xbmc
+} // namespace XBMCAddon

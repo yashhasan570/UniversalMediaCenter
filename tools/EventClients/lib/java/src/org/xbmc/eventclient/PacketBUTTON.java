@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2008-2013 Team 
+ *  Copyright (C) 2008-2013 Team XBMC
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -16,11 +16,11 @@
  *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package org..eventclient;
+package org.xbmc.eventclient;
 /**
- *  Event Client Class
+ * XBMC Event Client Class
  *
- * A button packet send a key press or release event to 
+ * A button packet send a key press or release event to XBMC
  * @author Stefan Agner
  *
  */
@@ -37,7 +37,7 @@ public class PacketBUTTON extends Packet {
 	protected final static byte BT_AXISSINGLE = (byte)0x100;
 
 	/**
-	 * A button packet send a key press or release event to 
+	 * A button packet send a key press or release event to XBMC
 	 * @param code raw button code (default: 0)
 	 * @param repeat this key press should repeat until released (default: 1)
      * Note that queued pressed cannot repeat.
@@ -61,7 +61,7 @@ public class PacketBUTTON extends Packet {
 	}
 
 	/**
-	 * A button packet send a key press or release event to 
+	 * A button packet send a key press or release event to XBMC
 	 * @param map_name a combination of map_name and button_name refers to a
      * mapping in the user's Keymap.xml or Lircmap.xml.
      * map_name can be one of the following:

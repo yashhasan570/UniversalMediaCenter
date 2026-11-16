@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -16,7 +16,7 @@ TEST(TestPOUtils, General)
 {
   CPODocument a;
 
-  EXPECT_TRUE(a.LoadFile(_REF_FILE_PATH("/utils/test/data/language/Spanish/strings.po")));
+  EXPECT_TRUE(a.LoadFile(XBMC_REF_FILE_PATH("xbmc/utils/test/data/language/Spanish/strings.po")));
 
   EXPECT_TRUE(a.GetNextEntry());
   EXPECT_EQ(ID_FOUND, a.GetEntryType());

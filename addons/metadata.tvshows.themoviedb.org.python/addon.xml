@@ -4,11 +4,11 @@
   version="2.0.7"
   provider-name="Team Universal Media Center">
   <requires>
-    <import addon=".python" version="3.0.1"/>
-    <import addon=".metadata" version="2.1.0"/>
+    <import addon="xbmc.python" version="3.0.1"/>
+    <import addon="xbmc.metadata" version="2.1.0"/>
   </requires>
-  <extension point=".metadata.scraper.tvshows" library="main.py"/>
-  <extension point=".addon.metadata">
+  <extension point="xbmc.metadata.scraper.tvshows" library="main.py"/>
+  <extension point="xbmc.addon.metadata">
     <reuselanguageinvoker>true</reuselanguageinvoker>
     <news>2.0.6
 - Show the season regular cast instead of everyone who ever appeared
@@ -20,9 +20,9 @@
     <assets>
       <icon>resources/icon.png</icon>
     </assets>
-    <forum>https://github.com/yashhasan570/UniversalMediaCenter/showthread.php?tid=357232</forum>
+    <forum>https://forum.universalmediacenter.tv/showthread.php?tid=357232</forum>
     <website>https://www.themoviedb.org</website>
-    <source>https://github.com//metadata.tvshows.themoviedb.org.python</source>
+    <source>https://github.com/xbmc/metadata.tvshows.themoviedb.org.python</source>
     <summary lang="be_BY">Атрымліваць метаданыя серыялаў з themoviedb.org</summary>
     <summary lang="ca_ES">Agafa les metadades de les sèries de themoviedb.org</summary>
     <summary lang="cs_CZ">Získat metadata pro seriály z themoviedb.org</summary>

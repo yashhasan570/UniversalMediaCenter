@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -87,8 +87,8 @@ void CRemoteControlXbox::HandleAcceleratorKey(const CoreDispatcher& sender, cons
   if (!button)
     return;
 
-  _Event newEvent = {};
-  newEvent.type = _BUTTON;
+  XBMC_Event newEvent = {};
+  newEvent.type = XBMC_BUTTON;
   newEvent.keybutton.button = button;
   newEvent.keybutton.holdtime = 0;
 
@@ -140,8 +140,8 @@ void CRemoteControlXbox::HandleAcceleratorKey(const CoreDispatcher& sender, cons
 
 void CRemoteControlXbox::HandleMediaButton(const SystemMediaTransportControlsButtonPressedEventArgs& args)
 {
-  _Event newEvent = {};
-  newEvent.type = _BUTTON;
+  XBMC_Event newEvent = {};
+  newEvent.type = XBMC_BUTTON;
   newEvent.keybutton.button = TranslateMediaKey(args.Button());
   newEvent.keybutton.holdtime = 0;
   std::shared_ptr<CAppInboundProtocol> appPort = CServiceBroker::GetAppPort();

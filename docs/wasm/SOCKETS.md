@@ -5,7 +5,7 @@ does: the Tizen Sockets Extension exposes POSIX-style sockets and synchronous
 DNS to WASM pages through `window.tizentvwasm`. Samsung documents it only for
 their Emscripten fork (1.39.4, 2021), but the extension is a runtime feature,
 so an upstream Emscripten build can use it through a JS library. That is what
-`/platform/wasm/network/tizen_sockets.js` and `TizenSockets.c` do.
+`xbmc/platform/wasm/network/tizen_sockets.js` and `TizenSockets.c` do.
 
 ## Runtime surface
 
@@ -57,7 +57,7 @@ One binary serves both environments and picks the HTTP backend at runtime:
 
 | | Tizen (sockets) | Other browsers |
 |---|---|---|
-| `http`, `https` | `CCurlFile` (libcurl) | `CXhrFile` (XMLHttpRequest, `/filesystem/wasm/`) |
+| `http`, `https` | `CCurlFile` (libcurl) | `CXhrFile` (XMLHttpRequest, `xbmc/filesystem/wasm/`) |
 | Scrapers, `CreateHttpClient()` | `CCurlHttpClient` | `CXhrHttpClient` |
 | `CCurlFile::GetMimeType` and friends | libcurl | forwarded to `CXhrFile` |
 

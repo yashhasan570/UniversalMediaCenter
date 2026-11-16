@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -1169,7 +1169,7 @@ TEST_F(TestVersionSubtitles, EachOfSeveralIsosInAFolderHasOnlyItsOwnSubtitles)
 TEST_F(TestVersionSubtitles, AnotherVersionsArchivedSubtitlesAreNotOffered)
 {
   const std::string disc{File("M3GAN.iso")};
-  const std::string archive{_REF_FILE_PATH("/filesystem/test/reffile.txt.zip")};
+  const std::string archive{XBMC_REF_FILE_PATH("xbmc/filesystem/test/reffile.txt.zip")};
   for (const char* name : {"M3GAN-00800.zip", "M3GAN-00801.zip"})
     ASSERT_TRUE(XFILE::CFile::Copy(archive, URIUtils::AddFileToFolder(m_folder, name)));
 
@@ -1221,7 +1221,7 @@ TEST_F(TestVersionSubtitles, AVideoFileHasAllItsSubtitles)
 TEST_F(TestVersionSubtitles, AnotherVersionsArchivedSubtitlesOfAFolderRipAreNotOffered)
 {
   const std::string disc{File(URIUtils::AddFileToFolder("BDMV", "index.bdmv"))};
-  const std::string archive{_REF_FILE_PATH("/filesystem/test/reffile.txt.zip")};
+  const std::string archive{XBMC_REF_FILE_PATH("xbmc/filesystem/test/reffile.txt.zip")};
   for (const char* name : {"M3GAN-00800.zip", "M3GAN-00801.zip"})
     ASSERT_TRUE(XFILE::CFile::Copy(archive, URIUtils::AddFileToFolder(m_folder, name)));
 
@@ -1867,7 +1867,7 @@ TEST_F(TestVersionSubtitles, AnExtraOfAnIsoHasOnlyItsOwnSubtitles)
 TEST_F(TestVersionSubtitles, AnExtrasArchivedSubtitlesAreThoseOfItsOwnArchive)
 {
   const std::string disc{URIUtils::GetBlurayPlaylistPath(File("M3GAN.iso"), 805)};
-  const std::string archive{_REF_FILE_PATH("/filesystem/test/reffile.txt.zip")};
+  const std::string archive{XBMC_REF_FILE_PATH("xbmc/filesystem/test/reffile.txt.zip")};
   for (const char* name : {"M3GAN.zip", "M3GAN-00805.zip"})
     ASSERT_TRUE(XFILE::CFile::Copy(archive, URIUtils::AddFileToFolder(m_folder, name)));
 

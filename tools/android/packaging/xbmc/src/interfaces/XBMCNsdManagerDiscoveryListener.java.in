@@ -3,7 +3,7 @@ package @APP_PACKAGE@.interfaces;
 import android.net.nsd.NsdManager;
 import android.net.nsd.NsdServiceInfo;
 
-public class NsdManagerDiscoveryListener implements NsdManager.DiscoveryListener
+public class XBMCNsdManagerDiscoveryListener implements NsdManager.DiscoveryListener
 {
   native void _onDiscoveryStarted(String serviceType);
 

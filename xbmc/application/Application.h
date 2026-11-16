@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -166,7 +166,7 @@ public:
 
   void UpdateCurrentPlayArt();
 
-  bool ExecuteAction(std::string action, const std::shared_ptr<CGUIListItem>& item = NULL);
+  bool ExecuteXBMCAction(std::string action, const std::shared_ptr<CGUIListItem>& item = NULL);
 
   bool WasPlaybackCancelled() const { return m_cancelPlayback; }
 
@@ -269,5 +269,5 @@ private:
   CEvent m_playerEvent;
 };
 
-_GLOBAL_REF(CApplication,g_application);
-#define g_application _GLOBAL_USE(CApplication)
+XBMC_GLOBAL_REF(CApplication,g_application);
+#define g_application XBMC_GLOBAL_USE(CApplication)

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2016 Christian Browet
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -14,13 +14,13 @@
 namespace jni
 {
 
-class CJNINsdManagerRegistrationListener : public CJNINsdManagerRegistrationListener, public CJNIInterfaceImplem<CJNINsdManagerRegistrationListener>
+class CJNIXBMCNsdManagerRegistrationListener : public CJNINsdManagerRegistrationListener, public CJNIInterfaceImplem<CJNIXBMCNsdManagerRegistrationListener>
 {
 public:
-  CJNINsdManagerRegistrationListener();
-  CJNINsdManagerRegistrationListener(const CJNINsdManagerRegistrationListener& other);
-  explicit CJNINsdManagerRegistrationListener(const jni::jhobject &object) : CJNIBase(object) {}
-  ~CJNINsdManagerRegistrationListener() override;
+  CJNIXBMCNsdManagerRegistrationListener();
+  CJNIXBMCNsdManagerRegistrationListener(const CJNIXBMCNsdManagerRegistrationListener& other);
+  explicit CJNIXBMCNsdManagerRegistrationListener(const jni::jhobject &object) : CJNIBase(object) {}
+  ~CJNIXBMCNsdManagerRegistrationListener() override;
 
   static void RegisterNatives(JNIEnv* env);
 

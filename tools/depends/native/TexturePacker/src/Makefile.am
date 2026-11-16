@@ -7,8 +7,8 @@ AM_CXXFLAGS = $(AM_CFLAGS) -std=c++17
 AM_CPPFLAGS = \
   -I. \
   -I./decoder \
-  -I@UNIVERSAL MEDIA CENTER_SRC_DIR@/ \
-  -I@UNIVERSAL MEDIA CENTER_SRC_DIR@//guilib \
+  -I@KODI_SRC_DIR@/xbmc \
+  -I@KODI_SRC_DIR@/xbmc/guilib \
   @CPPFLAGS@
 
 AM_LDFLAGS = @LIBS@ @STATIC_FLAG@
@@ -26,4 +26,4 @@ TexturePacker_SOURCES =  md5.cpp \
   XBTF.cpp
 
 XBTF.cpp:
-	@cp @UNIVERSAL MEDIA CENTER_SRC_DIR@//guilib/XBTF.cpp .
+	@cp @KODI_SRC_DIR@/xbmc/guilib/XBTF.cpp .

@@ -13,7 +13,7 @@ function(generate_file file)
   set(CPP_FILE ${file}.cpp)
   set(DEP_FILE ${CMAKE_CURRENT_BINARY_DIR}/${CPP_FILE}.d)
 
-  # AddonModuleXbmcgui.i -> low-level module/init name "gui"
+  # AddonModuleXbmcgui.i -> low-level module/init name "xbmcgui"
   get_filename_component(module_name ${file} NAME_WE)
   string(REPLACE "AddonModule" "" module_name ${module_name})
   string(TOLOWER ${module_name} module_name)
@@ -30,7 +30,7 @@ function(generate_file file)
   set(SWIG_ARGS -python -c++ -builtin -interface ${module_name} -pyi
                 -w401,389,514,362,302 -o ${CPP_FILE}
                 -MMD -MF ${DEP_FILE} -MT ${CMAKE_CURRENT_BINARY_DIR}/${CPP_FILE}
-                -I${CMAKE_SOURCE_DIR}/
+                -I${CMAKE_SOURCE_DIR}/xbmc
                 ${CMAKE_CURRENT_SOURCE_DIR}/${file})
 
   add_custom_command(OUTPUT ${CPP_FILE}

@@ -1,6 +1,6 @@
 /*
- *      Copyright (C) 2005-2013 Team 
- *      http://.org
+ *      Copyright (C) 2005-2013 Team XBMC
+ *      http://xbmc.org
  *
  *  This Program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -13,7 +13,7 @@
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with ; see the file COPYING.  If not, see
+ *  along with XBMC; see the file COPYING.  If not, see
  *  <http://www.gnu.org/licenses/>.
  *
  */
@@ -77,12 +77,12 @@ inline float2 unormUV(float2 rg)
 
 float4 YUV2RGB(VS_OUTPUT In) : SV_TARGET
 {
-#if defined(_YV12) //|| defined(_NV12)
+#if defined(XBMC_YV12) //|| defined(XBMC_NV12)
   float4 YUV = float4(g_Texture[0].Sample(YUVSampler, In.TextureY ).r
                     , g_Texture[1].Sample(YUVSampler, In.TextureUV).r
                     , g_Texture[2].Sample(YUVSampler, In.TextureUV).r
                     , 1.0);
-#elif defined(_NV12)
+#elif defined(XBMC_NV12)
   float4 YUV = float4(g_Texture[0].Sample(YUVSampler, In.TextureY).r
   #if defined(NV12_SNORM_UV)
                     , unormUV(g_Texture[1].Sample(YUVSampler, In.TextureUV).rg)
@@ -90,7 +90,7 @@ float4 YUV2RGB(VS_OUTPUT In) : SV_TARGET
                     , g_Texture[1].Sample(YUVSampler, In.TextureUV).rg
   #endif
                     , 1.0);
-#elif defined(_YUY2) || defined(_UYVY)
+#elif defined(XBMC_YUY2) || defined(XBMC_UYVY)
   // The HLSL compiler is smart enough to optimize away these redundant assignments.
   // That way the code is almost identical to the OGL shader.
   float2 stepxy = g_StepXY;
@@ -106,11 +106,11 @@ float4 YUV2RGB(VS_OUTPUT In) : SV_TARGET
   /* each pixel has two Y subpixels and one UV subpixel
       YUV  Y  YUV
       check if we're left or right of the middle Y subpixel and interpolate accordingly*/
-  #if defined(_YUY2) // BGRA = YUYV
+  #if defined(XBMC_YUY2) // BGRA = YUYV
     float  leftY  = lerp(c1.b, c1.r, f.x * 2.0);
     float  rightY = lerp(c1.r, c2.b, f.x * 2.0 - 1.0);
     float2 outUV  = lerp(c1.ga, c2.ga, f.x);
-  #elif defined(_UYVY) // BGRA = UYVY
+  #elif defined(XBMC_UYVY) // BGRA = UYVY
     float  leftY  = lerp(c1.g, c1.a, f.x * 2.0);
     float  rightY = lerp(c1.a, c2.g, f.x * 2.0 - 1.0);
     float2 outUV  = lerp(c1.br, c2.br, f.x);
@@ -120,11 +120,11 @@ float4 YUV2RGB(VS_OUTPUT In) : SV_TARGET
 #endif
 
   float4 rgb = mul(YUV, g_ColorMatrix);
-#if defined(UNIVERSAL MEDIA CENTER_HUESAT_YUV)
+#if defined(KODI_HUESAT_YUV)
   // before the primaries conversion, the signal is still BT.2020
   rgb.rgb = hueSaturation(rgb.rgb);
 #endif
-#if defined(_COL_CONVERSION)
+#if defined(XBMC_COL_CONVERSION)
   rgb.rgb = pow(max(0.0, rgb.rgb), g_gammaSrc);
   rgb.rgb = max(0.0, mul(rgb, g_primMat).rgb);
   rgb.rgb = pow(rgb.rgb, g_gammaDstInv);
@@ -132,7 +132,7 @@ float4 YUV2RGB(VS_OUTPUT In) : SV_TARGET
   return output4(rgb, In.TextureY);
 }
 
-#if defined(UNIVERSAL MEDIA CENTER_HUESAT_YUV)
+#if defined(KODI_HUESAT_YUV)
 #define YUV2RGB_PS_PROFILE ps_4_0_level_9_3
 #else
 #define YUV2RGB_PS_PROFILE ps_4_0_level_9_1

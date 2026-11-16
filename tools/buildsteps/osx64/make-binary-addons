@@ -1,8 +1,8 @@
 WORKSPACE=${WORKSPACE:-$( cd $(dirname $0)/../../.. ; pwd -P )}
-_PLATFORM_DIR=osx64
+XBMC_PLATFORM_DIR=osx64
 . $WORKSPACE/tools/buildsteps/defaultenv
 
-. $WORKSPACE/tools/buildsteps/$_PLATFORM_DIR/make-native-depends
+. $WORKSPACE/tools/buildsteps/$XBMC_PLATFORM_DIR/make-native-depends
 
 #clear the build failed file
 rm -f $WORKSPACE/cmake/$FAILED_BUILD_FILENAME

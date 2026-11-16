@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -73,10 +73,10 @@ TEST(TestMemoryStream, WorkerPersistsDetachedCoreAndAchievementsForReload)
     std::unique_ptr<uint32_t[]> memory = std::make_unique<uint32_t[]>(1025);
     std::array<uint8_t, 3> achievements{};
   };
-  auto deleteTemp = [](XFILE::CFile* file) { _DELETETEMPFILE(file); };
-  std::unique_ptr<XFILE::CFile, decltype(deleteTemp)> temp(_CREATETEMPFILE(".sav"), deleteTemp);
+  auto deleteTemp = [](XFILE::CFile* file) { XBMC_DELETETEMPFILE(file); };
+  std::unique_ptr<XFILE::CFile, decltype(deleteTemp)> temp(XBMC_CREATETEMPFILE(".sav"), deleteTemp);
   ASSERT_NE(temp, nullptr);
-  const auto path = _TEMPFILEPATH(temp.get());
+  const auto path = XBMC_TEMPFILEPATH(temp.get());
   temp->Close();
   CSavestateDatabase database;
   CSavestateWorker<Snapshot> worker(

@@ -1,15 +1,15 @@
-# Universal Media Center Media Center language file
+# Kodi Media Center language file
 # Addon Name: Estuary
 # Addon id: skin.estuary
-# Addon Provider: Team Universal Media Center
+# Addon Provider: Team Kodi
 msgid ""
 msgstr ""
-"Project-Id-Version: UNIVERSAL MEDIA CENTER Main\n"
-"Report-Msgid-Bugs-To: https://github.com///issues/\n"
+"Project-Id-Version: KODI Main\n"
+"Report-Msgid-Bugs-To: https://github.com/xbmc/xbmc/issues/\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: 2023-12-04 09:42+0000\n"
-"Last-Translator: Christian Gade <gade@github.com/yashhasan570/UniversalMediaCenter>\n"
-"Language-Team: Malay <https://universalmediacenter.weblate.cloud/projects/Universal Media Center-add-ons-skins/skin-estuary/ms_my/>\n"
+"Last-Translator: Christian Gade <gade@kodi.tv>\n"
+"Language-Team: Malay <https://kodi.weblate.cloud/projects/kodi-add-ons-skins/skin-estuary/ms_my/>\n"
 "Language: ms_my\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,16 +18,16 @@ msgstr ""
 "X-Generator: Weblate 5.2.1\n"
 
 msgctxt "Addon Summary"
-msgid "Estuary skin by phil65. (Universal Media Center's default skin)"
-msgstr "Kulit Estuary oleh phil65 dan rakan-rakan. (Kulit lalai Universal Media Center)"
+msgid "Estuary skin by phil65. (Kodi's default skin)"
+msgstr "Kulit Estuary oleh phil65 dan rakan-rakan. (Kulit lalai Kodi)"
 
 msgctxt "Addon Description"
-msgid "Estuary is the default skin for Universal Media Center 17.0 and above. It attempts to be easy for first time Universal Media Center users to understand and use."
-msgstr "Estuary ialah kulit lalai untuk Universal Media Center 17.0 dan ke atas. Kulit yang mudah digunakan buat pengguna Universal Media Center kali pertama untuk memahami dan menggunakannya."
+msgid "Estuary is the default skin for Kodi 17.0 and above. It attempts to be easy for first time Kodi users to understand and use."
+msgstr "Estuary ialah kulit lalai untuk Kodi 17.0 dan ke atas. Kulit yang mudah digunakan buat pengguna Kodi kali pertama untuk memahami dan menggunakannya."
 
 msgctxt "Addon Disclaimer"
-msgid "Estuary is the default skin for Universal Media Center, removing it may cause issues"
-msgstr "Estuary ialah kulit lalai Universal Media Center, mengubahnya boleh menimbulkan isu."
+msgid "Estuary is the default skin for Kodi, removing it may cause issues"
+msgstr "Estuary ialah kulit lalai Kodi, mengubahnya boleh menimbulkan isu."
 
 msgctxt "#31000"
 msgid "Now playing"
@@ -371,8 +371,8 @@ msgid "Channel options"
 msgstr "Pilihan saluran"
 
 msgctxt "#31098"
-msgid "Select your Universal Media Center user profile[CR]to login and continue"
-msgstr "Pilih Profil pengguna Universal Media Center anda[CR]untuk daftar masuk dan teruskan"
+msgid "Select your Kodi user profile[CR]to login and continue"
+msgstr "Pilih Profil pengguna Kodi anda[CR]untuk daftar masuk dan teruskan"
 
 #. viewtype name
 msgctxt "#31099"
@@ -462,8 +462,8 @@ msgid "Enter add-on browser"
 msgstr "Masukkan pelayar tambahan"
 
 msgctxt "#31119"
-msgid "You do not have any add-ons installed yet. Visit our add-on browser to browse through our collection and improve your Universal Media Center experience."
-msgstr "Anda belum lagi mempunyai tambahan yang terpasang. Lawati pelayar tambahan untuk melayari koleksi kami dan tambah baik Universal Media Center anda."
+msgid "You do not have any add-ons installed yet. Visit our add-on browser to browse through our collection and improve your Kodi experience."
+msgstr "Anda belum lagi mempunyai tambahan yang terpasang. Lawati pelayar tambahan untuk melayari koleksi kami dan tambah baik Kodi anda."
 
 msgctxt "#31120"
 msgid "You did not set up a weather provider yet. In order to view weather information, choose a weather provider and set up your location."
@@ -562,8 +562,8 @@ msgid "Play speed"
 msgstr "Kelajuan main"
 
 msgctxt "#31143"
-msgid "You did not set up PVR yet. In order to use PVR, choose a PVR client addon and configure it. Please visit http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/PVR to learn more."
-msgstr "Anda belum lagi menetapkan PVR. Supaya dapat gunakan PVR, pilih satu tambahan klien PVR dan konfigur ia. Sila lawati http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/PVR untuk ketahui lebih lanjut."
+msgid "You did not set up PVR yet. In order to use PVR, choose a PVR client addon and configure it. Please visit http://kodi.wiki/view/PVR to learn more."
+msgstr "Anda belum lagi menetapkan PVR. Supaya dapat gunakan PVR, pilih satu tambahan klien PVR dan konfigur ia. Sila lawati http://kodi.wiki/view/PVR untuk ketahui lebih lanjut."
 
 msgctxt "#31144"
 msgid "Enter add-on browser"

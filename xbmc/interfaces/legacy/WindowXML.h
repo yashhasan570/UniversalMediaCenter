@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -16,30 +16,30 @@
 #include <limits.h>
 #include <vector>
 
-namespace Addon
+namespace XBMCAddon
 {
-  namespace gui
+  namespace xbmcgui
   {
     class ListItem;
     class WindowXMLInterceptor;
 
     //
-    /// \defgroup python_gui_window_xml Subclass - WindowXML
-    /// \ingroup python_gui_window
+    /// \defgroup python_xbmcgui_window_xml Subclass - WindowXML
+    /// \ingroup python_xbmcgui_window
     /// @{
     /// @brief __GUI xml window class.__
     ///
-    /// \python_class{ gui.WindowXML(xmlFilename, scriptPath[, defaultSkin, defaultRes]) }
+    /// \python_class{ xbmcgui.WindowXML(xmlFilename, scriptPath[, defaultSkin, defaultRes]) }
     ///
     /// Creates a new xml file based window class.
     ///
-    /// \note This class include also all calls from <b><c>\ref python_gui_window</c></b>.
+    /// \note This class include also all calls from <b><c>\ref python_xbmcgui_window</c></b>.
     ///
     /// @param xmlFilename          string - the name of the xml file to
     ///                             look for.
     /// @param scriptPath           string - path to script. used to
     ///                             fallback to if the xml doesn't exist in
-    ///                             the current skin. (eg addon.Addon().getAddonInfo('path'))
+    ///                             the current skin. (eg xbmcaddon.Addon().getAddonInfo('path'))
     /// @param defaultSkin          [opt] string - name of the folder in the
     ///                             skins path to look in for the xml.
     ///                             (default='Default')
@@ -62,7 +62,7 @@ namespace Addon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// win = gui.WindowXML('script-Lyrics-main.xml', addon.Addon().getAddonInfo('path'), 'default', '1080i', False)
+    /// win = xbmcgui.WindowXML('script-Lyrics-main.xml', xbmcaddon.Addon().getAddonInfo('path'), 'default', '1080i', False)
     /// win.doModal()
     /// del win
     /// ..
@@ -111,7 +111,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_gui_window_xml
+      /// \ingroup python_xbmcgui_window_xml
       /// @brief \python_func{ addItem(item[, position]) }
       /// Add a new item to this Window List.
       ///
@@ -137,7 +137,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_gui_window_xml
+      /// \ingroup python_xbmcgui_window_xml
       /// @brief \python_func{ addItems(items) }
       /// Add a list of items to to the window list.
       ///
@@ -156,12 +156,12 @@ namespace Addon
       ///
       addItems(...);
 #else
-      SWIGHIDDENVIRTUAL void addItems(const std::vector<Alternative<String, const Addon::gui::ListItem* > > & items);
+      SWIGHIDDENVIRTUAL void addItems(const std::vector<Alternative<String, const XBMCAddon::xbmcgui::ListItem* > > & items);
 #endif
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_gui_window_xml
+      /// \ingroup python_xbmcgui_window_xml
       /// @brief \python_func{ removeItem(position) }
       /// Removes a specified item based on position, from the Window List.
       ///
@@ -185,7 +185,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_gui_window_xml
+      /// \ingroup python_xbmcgui_window_xml
       /// @brief \python_func{ getCurrentListPosition() }
       /// Gets the current position in the Window List.
       ///
@@ -207,7 +207,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_gui_window_xml
+      /// \ingroup python_xbmcgui_window_xml
       /// @brief \python_func{ setCurrentListPosition(position) }
       /// Set the current position in the Window List.
       ///
@@ -231,7 +231,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_gui_window_xml
+      /// \ingroup python_xbmcgui_window_xml
       /// @brief \python_func{ getListItem(position) }
       /// Returns a given ListItem in this Window List.
       ///
@@ -255,7 +255,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_gui_window_xml
+      /// \ingroup python_xbmcgui_window_xml
       /// @brief \python_func{ getListSize() }
       /// Returns the number of items in this Window List.
       ///
@@ -277,7 +277,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_gui_window_xml
+      /// \ingroup python_xbmcgui_window_xml
       /// @brief \python_func{ clearList() }
       /// Clear the Window List.
       ///
@@ -297,7 +297,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_gui_window_xml
+      /// \ingroup python_xbmcgui_window_xml
       /// @brief \python_func{ setContainerProperty(key, value) }
       /// Sets a container property, similar to an infolabel.
       ///
@@ -327,7 +327,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_gui_window_xml
+      /// \ingroup python_xbmcgui_window_xml
       /// @brief \python_func{ setContent(value) }
       /// Sets the content type of the container.
       ///
@@ -376,7 +376,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_gui_window_xml
+      /// \ingroup python_xbmcgui_window_xml
       /// @brief \python_func{ getCurrentContainerId() }
       /// Get the id of the currently visible container.
       ///
@@ -407,7 +407,7 @@ namespace Addon
 
       bool IsMediaWindow() const override
       {
-        _TRACE;
+        XBMC_TRACE;
         return m_isMedia;
       };
 
@@ -450,12 +450,12 @@ namespace Addon
     //  At some point this entire hierarchy needs to be reworked. The XML handling
     //  routines should be put in a mixin.
     //
-    /// \defgroup python_gui_window_dialog_xml Subclass - WindowDialogXML
-    /// \ingroup python_gui_window_xml
+    /// \defgroup python_xbmcgui_window_dialog_xml Subclass - WindowDialogXML
+    /// \ingroup python_xbmcgui_window_xml
     /// @{
     /// @brief __GUI xml window dialog__
     ///
-    /// \python_class{ gui.WindowXMLDialog(xmlFilename, scriptPath[, defaultSkin, defaultRes]) }
+    /// \python_class{ xbmcgui.WindowXMLDialog(xmlFilename, scriptPath[, defaultSkin, defaultRes]) }
     ///
     /// Creates a new xml file based window dialog class.
     ///
@@ -463,7 +463,7 @@ namespace Addon
     ///                                 look for.
     /// @param scriptPath               string - path to script. used to
     ///                                 fallback to if the xml doesn't exist in
-    ///                                 the current skin. (eg \ref python_addon_Addon "addon.Addon().getAddonInfo('path'))"
+    ///                                 the current skin. (eg \ref python_xbmcaddon_Addon "xbmcaddon.Addon().getAddonInfo('path'))"
     /// @param defaultSkin              [opt] string - name of the folder in the
     ///                                 skins path to look in for the xml.
     ///                                 (default='Default')
@@ -479,7 +479,7 @@ namespace Addon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// dialog = gui.WindowXMLDialog('script-Lyrics-main.xml', addon.Addon().getAddonInfo('path'), 'default', '1080i')
+    /// dialog = xbmcgui.WindowXMLDialog('script-Lyrics-main.xml', xbmcaddon.Addon().getAddonInfo('path'), 'default', '1080i')
     /// dialog.doModal()
     /// del dialog
     /// ..
@@ -517,22 +517,22 @@ namespace Addon
       bool OnMessage(CGUIMessage& message) override;
       bool IsDialogRunning() const override
       {
-        _TRACE;
+        XBMC_TRACE;
         return WindowDialogMixin::IsDialogRunning();
       }
       bool IsDialog() const override
       {
-        _TRACE;
+        XBMC_TRACE;
         return true;
       };
       bool IsModalDialog() const override
       {
-        _TRACE;
+        XBMC_TRACE;
         return true;
       };
       bool IsMediaWindow() const override
       {
-        _TRACE;
+        XBMC_TRACE;
         return false;
       };
       bool OnAction(const CAction& action) override;
@@ -542,12 +542,12 @@ namespace Addon
 
       inline void show() override
       {
-        _TRACE;
+        XBMC_TRACE;
         WindowDialogMixin::show();
       }
       inline void close() override
       {
-        _TRACE;
+        XBMC_TRACE;
         WindowDialogMixin::close();
       }
 

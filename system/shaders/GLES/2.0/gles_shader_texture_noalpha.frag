@@ -1,6 +1,6 @@
 /*
- *  Copyright (C) 2019 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  Copyright (C) 2019 Team Kodi
+ *  This file is part of Kodi - https://kodi.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -17,12 +17,12 @@ void main ()
 {
   vec3 rgb = texture2D(m_samp0, m_cord0.xy).rgb;
 
-#if defined(UNIVERSAL MEDIA CENTER_LIMITED_RANGE)
+#if defined(KODI_LIMITED_RANGE)
   rgb *= (235.0 - 16.0) / 255.0;
   rgb += 16.0 / 255.0;
 #endif
 
-#if defined(UNIVERSAL MEDIA CENTER_TRANSFER_PQ)
+#if defined(KODI_TRANSFER_PQ)
   rgb.rgb *= m_sdrPeak;
 #endif
 

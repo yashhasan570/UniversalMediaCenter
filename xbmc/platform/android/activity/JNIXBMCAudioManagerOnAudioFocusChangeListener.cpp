@@ -1,24 +1,24 @@
 /*
  *  Copyright (C) 2016 Christian Browet
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
  */
 
-#include "JNIAudioManagerOnAudioFocusChangeListener.h"
+#include "JNIXBMCAudioManagerOnAudioFocusChangeListener.h"
 
 #include "CompileInfo.h"
-#include "App.h"
+#include "XBMCApp.h"
 
 #include <androidjni/Context.h>
 #include <androidjni/jutils-details.hpp>
 
 using namespace jni;
 
-static std::string s_className = std::string(CCompileInfo::GetClass()) + "/interfaces/AudioManagerOnAudioFocusChangeListener";
+static std::string s_className = std::string(CCompileInfo::GetClass()) + "/interfaces/XBMCAudioManagerOnAudioFocusChangeListener";
 
-CJNIAudioManagerOnAudioFocusChangeListener::CJNIAudioManagerOnAudioFocusChangeListener()
+CJNIXBMCAudioManagerOnAudioFocusChangeListener::CJNIXBMCAudioManagerOnAudioFocusChangeListener()
   : CJNIBase(s_className)
 {
   m_object = new_object(CJNIContext::getClassLoader().loadClass(ToDotClassName(s_className)));
@@ -27,41 +27,41 @@ CJNIAudioManagerOnAudioFocusChangeListener::CJNIAudioManagerOnAudioFocusChangeLi
   add_instance(m_object, this);
 }
 
-CJNIAudioManagerOnAudioFocusChangeListener::CJNIAudioManagerOnAudioFocusChangeListener(const CJNIAudioManagerOnAudioFocusChangeListener& other)
+CJNIXBMCAudioManagerOnAudioFocusChangeListener::CJNIXBMCAudioManagerOnAudioFocusChangeListener(const CJNIXBMCAudioManagerOnAudioFocusChangeListener& other)
   : CJNIBase(other)
 {
   add_instance(m_object, this);
 }
 
-CJNIAudioManagerOnAudioFocusChangeListener::~CJNIAudioManagerOnAudioFocusChangeListener()
+CJNIXBMCAudioManagerOnAudioFocusChangeListener::~CJNIXBMCAudioManagerOnAudioFocusChangeListener()
 {
   remove_instance(this);
 }
 
-void CJNIAudioManagerOnAudioFocusChangeListener::RegisterNatives(JNIEnv* env)
+void CJNIXBMCAudioManagerOnAudioFocusChangeListener::RegisterNatives(JNIEnv* env)
 {
   jclass cClass = env->FindClass(s_className.c_str());
   if(cClass)
   {
     JNINativeMethod methods[] =
     {
-      {"_onAudioFocusChange", "(I)V", (void*)&CJNIAudioManagerOnAudioFocusChangeListener::_onAudioFocusChange},
+      {"_onAudioFocusChange", "(I)V", (void*)&CJNIXBMCAudioManagerOnAudioFocusChangeListener::_onAudioFocusChange},
     };
 
     env->RegisterNatives(cClass, methods, sizeof(methods)/sizeof(methods[0]));
   }
 }
 
-void CJNIAudioManagerOnAudioFocusChangeListener::_onAudioFocusChange(JNIEnv *env, jobject thiz, jint focusChange)
+void CJNIXBMCAudioManagerOnAudioFocusChangeListener::_onAudioFocusChange(JNIEnv *env, jobject thiz, jint focusChange)
 {
   (void)env;
 
-  CJNIAudioManagerOnAudioFocusChangeListener *inst = find_instance(thiz);
+  CJNIXBMCAudioManagerOnAudioFocusChangeListener *inst = find_instance(thiz);
   if (inst)
     inst->onAudioFocusChange(focusChange);
 }
 
-void CJNIAudioManagerOnAudioFocusChangeListener::onAudioFocusChange(int focusChange)
+void CJNIXBMCAudioManagerOnAudioFocusChangeListener::onAudioFocusChange(int focusChange)
 {
-  CApp::Get().onAudioFocusChange(focusChange);
+  CXBMCApp::Get().onAudioFocusChange(focusChange);
 }

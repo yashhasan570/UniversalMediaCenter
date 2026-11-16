@@ -1,6 +1,6 @@
 /*
- *  Copyright (C) 2010-2024 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  Copyright (C) 2010-2024 Team Kodi
+ *  This file is part of Kodi - https://kodi.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -24,12 +24,12 @@ out vec4 fragColor;
 //! also accepts an m_pma uniform that scales the limited-range offset by
 //! alpha for PMA-stored overlays. The fix here is the equivalent: replace the
 //! math below with the GLES-style "rgb *= 219/255; rgb += mix(1.0, a, m_pma)
-//! * 16/255" inside an "#if defined(UNIVERSAL MEDIA CENTER_LIMITED_RANGE)" block, and add the
-//! m_pma uniform plumbing on the GL side. See Universal Media Center issue #22383.
+//! * 16/255" inside an "#if defined(KODI_LIMITED_RANGE)" block, and add the
+//! m_pma uniform plumbing on the GL side. See Kodi issue #22383.
 void main()
 {
   fragColor = texture(m_samp0, m_cord0) * m_unicol;
-#if !defined(UNIVERSAL MEDIA CENTER_LIMITED_RANGE)
+#if !defined(KODI_LIMITED_RANGE)
   fragColor.rgb = clamp((fragColor.rgb-(16.0/255.0)) * 255.0/219.0, 0, 1);
 #endif
 }

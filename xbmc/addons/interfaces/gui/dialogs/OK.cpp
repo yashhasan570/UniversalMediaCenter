@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -21,17 +21,17 @@ namespace ADDON
 
 void Interface_GUIDialogOK::Init(AddonGlobalInterface* addonInterface)
 {
-  addonInterface->toUniversal Media Center->->dialogOK = new AddonToUniversal Media CenterFuncTable__dialogOK();
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogOK = new AddonToUniversal Media CenterFuncTable_universalmediacenter_gui_dialogOK();
 
-  addonInterface->toUniversal Media Center->->dialogOK->show_and_get_input_single_text =
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogOK->show_and_get_input_single_text =
       show_and_get_input_single_text;
-  addonInterface->toUniversal Media Center->->dialogOK->show_and_get_input_line_text =
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogOK->show_and_get_input_line_text =
       show_and_get_input_line_text;
 }
 
 void Interface_GUIDialogOK::DeInit(AddonGlobalInterface* addonInterface)
 {
-  delete addonInterface->toUniversal Media Center->->dialogOK;
+  delete addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogOK;
 }
 
 void Interface_GUIDialogOK::show_and_get_input_single_text(UNIVERSALMEDIA_HANDLE universalmediacenterBase,

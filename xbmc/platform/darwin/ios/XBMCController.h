@@ -1,13 +1,13 @@
 /*
  *  Copyright (C) 2010-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
  */
 
-#include "input/keyboard/_keysym.h"
-#include "windowing/_events.h"
+#include "input/keyboard/XBMC_keysym.h"
+#include "windowing/XBMC_events.h"
 
 #import "platform/darwin/ios-common/DarwinEmbedNowPlayingInfoManager.h"
 
@@ -18,7 +18,7 @@
 
 @class IOSEAGLView;
 
-@interface Controller : UIViewController <UIGestureRecognizerDelegate, UIKeyInput>
+@interface XBMCController : UIViewController <UIGestureRecognizerDelegate, UIKeyInput>
 {
   UIWindow *m_window;
   IOSEAGLView  *m_glView;
@@ -56,7 +56,7 @@
 - (void) enterBackground;
 - (void) enterForeground;
 - (void) becomeInactive;
-- (void) sendKey: (Key) key;
+- (void) sendKey: (XBMCKey) key;
 - (void) observeDefaultCenterStuff: (NSNotification *) notification;
 - (CGRect)fullscreenSubviewFrame;
 - (void)onXbmcAlive;
@@ -83,4 +83,4 @@
 - (CVEAGLContext)getEAGLContextObj;
 @end
 
-extern Controller *g_Controller;
+extern XBMCController *g_xbmcController;

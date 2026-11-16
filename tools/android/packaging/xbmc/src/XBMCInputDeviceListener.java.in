@@ -2,7 +2,7 @@ package @APP_PACKAGE@;
 
 import android.hardware.input.InputManager.InputDeviceListener;
 
-public class InputDeviceListener implements InputDeviceListener
+public class XBMCInputDeviceListener implements InputDeviceListener
 {
   native void _onInputDeviceAdded(int deviceId);
 

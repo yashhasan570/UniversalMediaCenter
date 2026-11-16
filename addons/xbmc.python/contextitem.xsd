@@ -27,12 +27,12 @@
   </xs:complexType>
   <xs:simpleType name="pointIdentifier">
     <xs:restriction base="xs:string">
-      <xs:pattern value="Universal Media Center\.context\.item"/>
+      <xs:pattern value="kodi\.context\.item"/>
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="menuIdentifier">
     <xs:restriction base="xs:string">
-      <xs:pattern value="Universal Media Center\.core\.(manage|main)"/>
+      <xs:pattern value="kodi\.core\.(manage|main)"/>
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>

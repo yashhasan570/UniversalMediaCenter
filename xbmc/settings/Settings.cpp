@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -49,11 +49,11 @@
 #include "utils/StringUtils.h"
 #include "utils/SystemInfo.h"
 #include "utils/Variant.h"
-#include "utils/TinyXML.h"
+#include "utils/XBMCTinyXML.h"
 #include "utils/log.h"
 #include "view/ViewStateSettings.h"
 
-#define SETTINGS_XML_FOLDER "special:///system/settings/"
+#define SETTINGS_XML_FOLDER "special://xbmc/system/settings/"
 
 using namespace UNIVERSAL MEDIA CENTER;
 using namespace XFILE;
@@ -116,7 +116,7 @@ bool CSettings::Load()
 
 bool CSettings::Load(const std::string &file)
 {
-  CTinyXML xmlDoc;
+  CXBMCTinyXML xmlDoc;
   bool updated = false;
   if (!XFILE::CFile::Exists(file) || !xmlDoc.LoadFile(file) ||
       !Load(xmlDoc.RootElement(), updated))
@@ -151,7 +151,7 @@ bool CSettings::Save()
 
 bool CSettings::Save(const std::string& file) const
 {
-  CTinyXML xmlDoc;
+  CXBMCTinyXML xmlDoc;
   if (!SaveValuesToXml(xmlDoc))
     return false;
 
@@ -229,7 +229,7 @@ bool CSettings::Load(const TiXmlNode* settings)
 
 bool CSettings::Initialize(const std::string &file)
 {
-  CTinyXML xmlDoc;
+  CXBMCTinyXML xmlDoc;
   if (!xmlDoc.LoadFile(file.c_str()))
   {
     CLog::Log(LOGERROR, "CSettings: error loading settings definition from {}, Line {}\n{}", file,
@@ -332,7 +332,7 @@ void CSettings::InitializeDefaults()
 #if defined(TARGET_WINDOWS)
   // We prefer a fake fullscreen mode (window covering the screen rather than dedicated fullscreen)
   // as it works nicer with switching to other applications. However on some systems vsync is broken
-  // when we do this (eg non-Aero on ATI in particular) and on others (AppleTV) we can't get  to
+  // when we do this (eg non-Aero on ATI in particular) and on others (AppleTV) we can't get XBMC to
   // the front
   if (g_sysinfo.IsAeroDisabled())
   {

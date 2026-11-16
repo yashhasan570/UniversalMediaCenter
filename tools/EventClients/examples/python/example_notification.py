@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 # This is a simple example showing how you can show a notification
-# window with a custom icon inside . It could be used by mail
+# window with a custom icon inside XBMC. It could be used by mail
 # monitoring apps, calendar apps, etc.
 
 import os
@@ -12,13 +12,13 @@ if os.path.exists("../../lib/python"):
     # try loading modules from source directory
     sys.path.append("../../lib/python")
 
-    from client import *
+    from xbmcclient import *
 
     ICON_PATH = "../../icons/"
 else:
     # fallback to system wide modules
 
-    from universalmediacenter.client import *
+    from universalmediacenter.xbmcclient import *
     from universalmediacenter.defs import *
 
 def main():

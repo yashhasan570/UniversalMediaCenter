@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -32,9 +32,9 @@ struct DependencyInfo;
 
 using AddonInstanceId = uint32_t;
 
-constexpr const char* ADDON_SETTING_INSTANCE_GROUP = "instance";
-constexpr const char* ADDON_SETTING_INSTANCE_NAME_VALUE = "instance_name";
-constexpr const char* ADDON_SETTING_INSTANCE_ENABLED_VALUE = "instance_enabled";
+constexpr const char* ADDON_SETTING_INSTANCE_GROUP = "universalmediacenter_addon_instance";
+constexpr const char* ADDON_SETTING_INSTANCE_NAME_VALUE = "universalmediacenter_addon_instance_name";
+constexpr const char* ADDON_SETTING_INSTANCE_ENABLED_VALUE = "universalmediacenter_addon_instance_enabled";
 
 /*!
  * @brief Identifier denoting default add-on instance.

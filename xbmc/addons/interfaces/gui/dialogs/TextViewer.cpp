@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -21,15 +21,15 @@ namespace ADDON
 
 void Interface_GUIDialogTextViewer::Init(AddonGlobalInterface* addonInterface)
 {
-  addonInterface->toUniversal Media Center->->dialogTextViewer =
-      new AddonToUniversal Media CenterFuncTable__dialogTextViewer();
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogTextViewer =
+      new AddonToUniversal Media CenterFuncTable_universalmediacenter_gui_dialogTextViewer();
 
-  addonInterface->toUniversal Media Center->->dialogTextViewer->open = open;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogTextViewer->open = open;
 }
 
 void Interface_GUIDialogTextViewer::DeInit(AddonGlobalInterface* addonInterface)
 {
-  delete addonInterface->toUniversal Media Center->->dialogTextViewer;
+  delete addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogTextViewer;
 }
 
 void Interface_GUIDialogTextViewer::open(UNIVERSALMEDIA_HANDLE universalmediacenterBase,

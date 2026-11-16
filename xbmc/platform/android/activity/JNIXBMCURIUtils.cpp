@@ -1,12 +1,12 @@
 /*
  *  Copyright (C) 2020 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
  */
 
-#include "JNIURIUtils.h"
+#include "JNIXBMCURIUtils.h"
 
 #include "CompileInfo.h"
 #include "utils/URIUtils.h"
@@ -16,23 +16,23 @@
 
 using namespace jni;
 
-static std::string s_className = std::string(CCompileInfo::GetClass()) + "/URIUtils";
+static std::string s_className = std::string(CCompileInfo::GetClass()) + "/XBMCURIUtils";
 
-void CJNIURIUtils::RegisterNatives(JNIEnv *env)
+void CJNIXBMCURIUtils::RegisterNatives(JNIEnv *env)
 {
   jclass cClass = env->FindClass(s_className.c_str());
   if(cClass)
   {
     JNINativeMethod methods[] =
     {
-      {"_substitutePath", "(Ljava/lang/String;)Ljava/lang/String;", (void*)&CJNIURIUtils::_substitutePath},
+      {"_substitutePath", "(Ljava/lang/String;)Ljava/lang/String;", (void*)&CJNIXBMCURIUtils::_substitutePath},
     };
 
     env->RegisterNatives(cClass, methods, sizeof(methods)/sizeof(methods[0]));
   }
 }
 
-jstring CJNIURIUtils::_substitutePath(JNIEnv *env, jobject thiz, jstring path)
+jstring CJNIXBMCURIUtils::_substitutePath(JNIEnv *env, jobject thiz, jstring path)
 {
   std::string strPath = jcast<std::string>(jhstring::fromJNI(path));
   std::string responseData = URIUtils::SubstitutePath(strPath);

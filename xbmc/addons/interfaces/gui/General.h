@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -24,7 +24,7 @@ extern "C"
    * To hold general gui functions and initialize also all other gui related types not
    * related to a instance type and usable for every add-on type.
    *
-   * Related add-on header is ".//addons/universalmediacenter-dev-kit/include/universalmediacenter/gui/General.h"
+   * Related add-on header is "./xbmc/addons/universalmediacenter-dev-kit/include/universalmediacenter/gui/General.h"
    */
   struct Interface_GUIGeneral
   {

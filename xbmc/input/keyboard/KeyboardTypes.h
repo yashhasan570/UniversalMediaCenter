@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2017-2024 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -9,7 +9,7 @@
 #pragma once
 
 #include "input/keyboard/Key.h"
-#include "input/keyboard/_keysym.h"
+#include "input/keyboard/XBMC_keysym.h"
 
 #include <string>
 
@@ -23,7 +23,7 @@ namespace KEYBOARD
 /*!
  * \brief Symbol of a hardware-independent key
  */
-using Key = Key;
+using XBMCKey = XBMCKey;
 
 /*!
  * \brief Name of a hardware-indendent symbol representing a key

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2010-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -255,7 +255,7 @@ public:
 
   /**
    * Registers the audio callback to call with each block of data, this is used by Audio Visualizations
-   * @warning Currently the callbacks require stereo float data in blocks of 512 samples, any deviation from this may crash , or cause junk to be rendered
+   * @warning Currently the callbacks require stereo float data in blocks of 512 samples, any deviation from this may crash XBMC, or cause junk to be rendered
    * @param pCallback The callback
    */
   virtual void RegisterAudioCallback(IAudioCallback* pCallback) = 0;

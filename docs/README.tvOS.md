@@ -37,17 +37,17 @@ and yet another one
 
 **Example:** Clone Universal Media Center's current master branch:
 ```
-git clone https://github.com// universalmediacenter
+git clone https://github.com/xbmc/xbmc universalmediacenter
 ```
 
 Commands that contain strings enclosed in angle brackets denote something you need to change to suit your needs.
 ```
-git clone -b <branch-name> https://github.com// universalmediacenter
+git clone -b <branch-name> https://github.com/xbmc/xbmc universalmediacenter
 ```
 
 **Example:** Clone Universal Media Center's current Krypton branch:
 ```
-git clone -b Krypton https://github.com// universalmediacenter
+git clone -b Krypton https://github.com/xbmc/xbmc universalmediacenter
 ```
 
 Several different strategies are used to draw your attention to certain pieces of information. In order of how critical the information is, these items are marked as a note, tip, or warning. For example:
@@ -94,13 +94,13 @@ cd $HOME
 
 Clone Universal Media Center's current master branch:
 ```
-git clone https://github.com// universalmediacenter
+git clone https://github.com/xbmc/xbmc universalmediacenter
 ```
 
 **[back to top](#table-of-contents)**
 
 ## 4. Configure and build tools and dependencies
-Universal Media Center can be built as a 64bit program only for tvOS. The dependencies are built in `$HOME/universalmediacenter/tools/depends` and installed into `/Users/Shared/-depends`.
+Universal Media Center can be built as a 64bit program only for tvOS. The dependencies are built in `$HOME/universalmediacenter/tools/depends` and installed into `/Users/Shared/xbmc-depends`.
 > [!NOTE]  
 > `--with-platform` is mandatory for all Apple platforms
 
@@ -155,7 +155,7 @@ make -j$(getconf _NPROCESSORS_ONLN)
 ```
 --with-tarballs=<path>
 ```
-  path where tarballs will be saved [prefix/-tarballs]
+  path where tarballs will be saved [prefix/xbmc-tarballs]
 
 ```
 --with-cpu=<cpu>
@@ -246,7 +246,7 @@ PROVISIONING_PROFILE_TOPSHELF - provprofile name for the top shelf
 > [!TIP]
 > If you wish to add signing settings automatically, look at **[Generate XCode Project Files](#51-generate-xcode-project-files)** for the additional `CMAKE_EXTRA_ARGUMENTS`
 
-You can find a complete list of available binary add-ons **[here](https://github.com//repo-binary-addons)**.
+You can find a complete list of available binary add-ons **[here](https://github.com/xbmc/repo-binary-addons)**.
 
 Binary addons will be built as a dependency in the Xcode project. You can choose the addons you wish to build during the Xcode project generation step
 

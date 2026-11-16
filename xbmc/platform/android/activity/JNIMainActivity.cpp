@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2015-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -34,8 +34,8 @@ void CJNIMainActivity::RegisterNatives(JNIEnv* env)
   std::string pkgRoot = CCompileInfo::GetClass();
 
   const std::string mainClass = pkgRoot + "/Main";
-  const std::string settingsObserver = pkgRoot + "/SettingsContentObserver";
-  const std::string inputDeviceListener = pkgRoot + "/InputDeviceListener";
+  const std::string settingsObserver = pkgRoot + "/XBMCSettingsContentObserver";
+  const std::string inputDeviceListener = pkgRoot + "/XBMCInputDeviceListener";
 
   jclass cMain = env->FindClass(mainClass.c_str());
   if (cMain)

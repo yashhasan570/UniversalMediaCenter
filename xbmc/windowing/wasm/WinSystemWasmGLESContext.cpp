@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -16,6 +16,7 @@
 #include "cores/VideoPlayer/DVDCodecs/Video/DVDVideoCodecWebCodecs.h"
 #include "cores/VideoPlayer/DVDCodecs/Video/DVDVideoCodecWebCodecsBridge.h"
 #include "cores/VideoPlayer/Process/wasm/ProcessInfoWasm.h"
+#include "cores/VideoPlayer/VideoRenderers/HwDecRender/RendererWasmMedia.h"
 #include "cores/VideoPlayer/VideoRenderers/HwDecRender/RendererWebCodecs.h"
 #include "cores/VideoPlayer/VideoRenderers/LinuxRendererGLES.h"
 #include "cores/VideoPlayer/VideoRenderers/RenderFactory.h"
@@ -50,7 +51,9 @@ EMSCRIPTEN_WEBGL_CONTEXT_HANDLE CreateProxiedGLContext()
 {
   EmscriptenWebGLContextAttributes attrs;
   emscripten_webgl_init_context_attributes(&attrs);
-  attrs.alpha = EM_FALSE;
+  // The <video> of a media backend shows through where the GUI is transparent. The
+  // canvas has a black background otherwise.
+  attrs.alpha = EM_TRUE;
   attrs.depth = EM_TRUE;
   attrs.stencil = EM_TRUE;
   attrs.antialias = EM_FALSE;
@@ -117,6 +120,7 @@ bool CWinSystemWasmGLESContext::InitWindowSystem()
   CDVDVideoCodecWebCodecs::Register();
   CLinuxRendererGLES::Register();
   CRendererWebCodecs::Register();
+  CRendererWasmMedia::Register();
   CScreenshotSurfaceGLES::Register();
 
   int initW = 0;

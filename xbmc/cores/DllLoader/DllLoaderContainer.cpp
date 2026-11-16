@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -21,24 +21,24 @@
 
 #if defined(TARGET_WINDOWS)
 #define ENV_PARTIAL_PATH \
-                 "special://bin/;" \
-                 "special://bin/system/;" \
-                 "special://bin/system/python/;" \
-                 "special:///;" \
-                 "special:///system/;" \
-                 "special:///system/python/"
+                 "special://xbmcbin/;" \
+                 "special://xbmcbin/system/;" \
+                 "special://xbmcbin/system/python/;" \
+                 "special://xbmc/;" \
+                 "special://xbmc/system/;" \
+                 "special://xbmc/system/python/"
 #else
 #define ENV_PARTIAL_PATH \
-                 "special://bin/system/;" \
-                 "special://bin/system/players/mplayer/;" \
-                 "special://bin/system/players/VideoPlayer/;" \
-                 "special://bin/system/players/paplayer/;" \
-                 "special://bin/system/python/;" \
-                 "special:///system/;" \
-                 "special:///system/players/mplayer/;" \
-                 "special:///system/players/VideoPlayer/;" \
-                 "special:///system/players/paplayer/;" \
-                 "special:///system/python/"
+                 "special://xbmcbin/system/;" \
+                 "special://xbmcbin/system/players/mplayer/;" \
+                 "special://xbmcbin/system/players/VideoPlayer/;" \
+                 "special://xbmcbin/system/players/paplayer/;" \
+                 "special://xbmcbin/system/python/;" \
+                 "special://xbmc/system/;" \
+                 "special://xbmc/system/players/mplayer/;" \
+                 "special://xbmc/system/players/VideoPlayer/;" \
+                 "special://xbmc/system/players/paplayer/;" \
+                 "special://xbmc/system/python/"
 #endif
 #if defined(TARGET_DARWIN)
 #define ENV_PATH ENV_PARTIAL_PATH \
@@ -132,7 +132,7 @@ LibraryLoader* DllLoaderContainer::FindModule(const char* sName, const char* sCu
     return LoadDll(sName, bLoadSymbols);
   }
 #ifdef TARGET_POSIX
-  else if (strcmp(sName, ".so") == 0)
+  else if (strcmp(sName, "xbmc.so") == 0)
     return LoadDll(sName, bLoadSymbols);
 #endif
   else if (sCurrentDir)

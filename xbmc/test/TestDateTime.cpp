@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2015-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -542,11 +542,11 @@ TEST_F(TestDateTime, GetAsLocalized)
   //and the windows-specific formatting happens in getRegion().
 #ifdef TARGET_WINDOWS
   //Windows is handled differently because that's what ModuleXbmc.cpp does.
-  EXPECT_EQ(Addon::::getRegion("dateshort"), "%#d/%#m/%y");
-  EXPECT_EQ(Addon::::getRegion("datelong"), "%a, %#d %B %Y");
+  EXPECT_EQ(XBMCAddon::xbmc::getRegion("dateshort"), "%#d/%#m/%y");
+  EXPECT_EQ(XBMCAddon::xbmc::getRegion("datelong"), "%a, %#d %B %Y");
 #else
-  EXPECT_EQ(Addon::::getRegion("dateshort"), "%-d/%-m/%y");
-  EXPECT_EQ(Addon::::getRegion("datelong"), "%a, %-d %B %Y");
+  EXPECT_EQ(XBMCAddon::xbmc::getRegion("dateshort"), "%-d/%-m/%y");
+  EXPECT_EQ(XBMCAddon::xbmc::getRegion("datelong"), "%a, %-d %B %Y");
 #endif
 
   //Test short day name, short month name and 2 digit year.

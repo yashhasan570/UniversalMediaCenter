@@ -1,15 +1,15 @@
-# Universal Media Center Media Center language file
+# Kodi Media Center language file
 # Addon Name: Estuary
 # Addon id: skin.estuary
-# Addon Provider: Team Universal Media Center
+# Addon Provider: Team Kodi
 msgid ""
 msgstr ""
-"Project-Id-Version: UNIVERSAL MEDIA CENTER Main\n"
-"Report-Msgid-Bugs-To: https://github.com///issues/\n"
+"Project-Id-Version: KODI Main\n"
+"Report-Msgid-Bugs-To: https://github.com/xbmc/xbmc/issues/\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: 2026-08-13 14:03+0000\n"
 "Last-Translator: Frodo19 <bilbohu@gmail.com>\n"
-"Language-Team: Hungarian <https://universalmediacenter.weblate.cloud/projects/Universal Media Center-add-ons-skins/skin-estuary/hu_hu/>\n"
+"Language-Team: Hungarian <https://kodi.weblate.cloud/projects/kodi-add-ons-skins/skin-estuary/hu_hu/>\n"
 "Language: hu_hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,16 +18,16 @@ msgstr ""
 "X-Generator: Weblate 2026.8.1\n"
 
 msgctxt "Addon Summary"
-msgid "Estuary skin by phil65. (Universal Media Center's default skin)"
-msgstr "Estuary felszín. Készítette phil65 és Piers. (Universal Media Center alapértelmezett felszín)"
+msgid "Estuary skin by phil65. (Kodi's default skin)"
+msgstr "Estuary felszín. Készítette phil65 és Piers. (Kodi alapértelmezett felszín)"
 
 msgctxt "Addon Description"
-msgid "Estuary is the default skin for Universal Media Center 17.0 and above. It attempts to be easy for first time Universal Media Center users to understand and use."
-msgstr "Az Estuary az alapértelmezett felszín a 17.0 és újabb Universal Media Center kiadásokban. Megpróbál könnyen kezelhető és használható lenni, az újonc Universal Media Center felhasználóknak is."
+msgid "Estuary is the default skin for Kodi 17.0 and above. It attempts to be easy for first time Kodi users to understand and use."
+msgstr "Az Estuary az alapértelmezett felszín a 17.0 és újabb Kodi kiadásokban. Megpróbál könnyen kezelhető és használható lenni, az újonc Kodi felhasználóknak is."
 
 msgctxt "Addon Disclaimer"
-msgid "Estuary is the default skin for Universal Media Center, removing it may cause issues"
-msgstr "Az Estuary az alapértelmezett Universal Media Center felszín. Eltávolítása problémákat okozhat"
+msgid "Estuary is the default skin for Kodi, removing it may cause issues"
+msgstr "Az Estuary az alapértelmezett Kodi felszín. Eltávolítása problémákat okozhat"
 
 msgctxt "#31000"
 msgid "Now playing"
@@ -371,8 +371,8 @@ msgid "Channel options"
 msgstr "Csatorna opciók"
 
 msgctxt "#31098"
-msgid "Select your Universal Media Center user profile[CR]to login and continue"
-msgstr "Válaszd ki a Universal Media Center felhasználói profilod[CR]a belépéshez"
+msgid "Select your Kodi user profile[CR]to login and continue"
+msgstr "Válaszd ki a Kodi felhasználói profilod[CR]a belépéshez"
 
 #. viewtype name
 msgctxt "#31099"
@@ -462,8 +462,8 @@ msgid "Enter add-on browser"
 msgstr "Belépés a kiegészítő böngészőbe"
 
 msgctxt "#31119"
-msgid "You do not have any add-ons installed yet. Visit our add-on browser to browse through our collection and improve your Universal Media Center experience."
-msgstr "Még nincs telepített kiegészítő. Látogass el a kiegészítő böngészőhöz és válassz a gyűjteményből a Universal Media Center felhasználói élmény javítása érdekében."
+msgid "You do not have any add-ons installed yet. Visit our add-on browser to browse through our collection and improve your Kodi experience."
+msgstr "Még nincs telepített kiegészítő. Látogass el a kiegészítő böngészőhöz és válassz a gyűjteményből a Kodi felhasználói élmény javítása érdekében."
 
 msgctxt "#31120"
 msgid "You did not set up a weather provider yet. In order to view weather information, choose a weather provider and set up your location."
@@ -562,8 +562,8 @@ msgid "Play speed"
 msgstr "Lejátszási sebesség"
 
 msgctxt "#31143"
-msgid "You did not set up PVR yet. In order to use PVR, choose a PVR client addon and configure it. Please visit http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/PVR to learn more."
-msgstr "Még nem állítottad be a PVT-t. A PVR használata érdekében, válassz egy PVR-ügyfél bővítményt és konfiguráld. Kérünk látogass el a http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/PVR oldalra több információért."
+msgid "You did not set up PVR yet. In order to use PVR, choose a PVR client addon and configure it. Please visit http://kodi.wiki/view/PVR to learn more."
+msgstr "Még nem állítottad be a PVT-t. A PVR használata érdekében, válassz egy PVR-ügyfél bővítményt és konfiguráld. Kérünk látogass el a http://kodi.wiki/view/PVR oldalra több információért."
 
 msgctxt "#31144"
 msgid "Enter add-on browser"

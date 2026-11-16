@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -58,7 +58,7 @@
 #ifdef TARGET_ANDROID
 #include "CompileInfo.h"
 
-#include "platform/android/activity/App.h"
+#include "platform/android/activity/XBMCApp.h"
 #endif
 
 // Remaining headers
@@ -603,7 +603,7 @@ bool CUtil::IsPicture(const std::string& strFile)
 
 std::string CUtil::GetSplashPath()
 {
-  std::array<std::string, 4> candidates {{ "special://home/media/splash.jpg", "special://home/media/splash.png", "special:///media/splash.jpg", "special:///media/splash.png" }};
+  std::array<std::string, 4> candidates {{ "special://home/media/splash.jpg", "special://home/media/splash.png", "special://xbmc/media/splash.jpg", "special://xbmc/media/splash.png" }};
   auto it = std::find_if(candidates.begin(), candidates.end(), [](std::string const& file) { return XFILE::CFile::Exists(file); });
   if (it == candidates.end())
     throw std::runtime_error("No splash image found");
@@ -1043,7 +1043,7 @@ std::string CUtil::ValidatePath(std::string path, bool bFixDoubleSlashes /* = fa
 
   // Don't do any stuff on URLs containing %-characters or protocols that embed
   // filenames. NOTE: Don't use IsInZip or IsInRar here since it will infinitely
-  // recurse and crash 
+  // recurse and crash XBMC
   if (URIUtils::IsURL(path) &&
       (path.find('%') != std::string::npos ||
       StringUtils::StartsWithNoCase(path, "apk:") ||
@@ -1889,7 +1889,7 @@ std::string CUtil::ResolveExecutablePath()
   else
     strExecutablePath = buf;
 #elif defined(TARGET_ANDROID)
-  strExecutablePath = CApp::getApplicationInfo().nativeLibraryDir;
+  strExecutablePath = CXBMCApp::getApplicationInfo().nativeLibraryDir;
 
   std::string appName = CCompileInfo::GetAppName();
   std::string libName = "lib" + appName + ".so";
@@ -2771,7 +2771,7 @@ void CUtil::CopyUserDataIfNeeded(const std::string& strPath,
   if (!CFile::Exists(destPath))
   {
     // need to copy it across
-    std::string srcPath = URIUtils::AddFileToFolder("special:///userdata/", file);
+    std::string srcPath = URIUtils::AddFileToFolder("special://xbmc/userdata/", file);
     CFile::Copy(srcPath, destPath);
   }
 }

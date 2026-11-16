@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -13,27 +13,27 @@
 #include "ListItem.h"
 #include "playlists/PlayList.h"
 
-namespace Addon
+namespace XBMCAddon
 {
-  namespace 
+  namespace xbmc
   {
-    COMMONS_STANDARD_EXCEPTION(PlayListException);
+    XBMCCOMMONS_STANDARD_EXCEPTION(PlayListException);
 
     //
     /// \defgroup python_PlayList PlayList
-    /// \ingroup python_
+    /// \ingroup python_xbmc
     /// @{
     /// @brief **Universal Media Center's Play List class.**
     ///
-    /// \python_class{ .PlayList(playList) }
+    /// \python_class{ xbmc.PlayList(playList) }
     ///
     /// To create and edit a playlist which can be handled by the player.
     ///
     /// @param playList              [integer] To define the stream type
     /// | Value | Integer String      | Description                            |
     /// |:-----:|:--------------------|:---------------------------------------|
-    /// |   0   | .PLAYLIST_MUSIC | Playlist for music files or streams    |
-    /// |   1   | .PLAYLIST_VIDEO | Playlist for video files or streams    |
+    /// |   0   | xbmc.PLAYLIST_MUSIC | Playlist for music files or streams    |
+    /// |   1   | xbmc.PLAYLIST_VIDEO | Playlist for video files or streams    |
     ///
     ///
     ///
@@ -42,7 +42,7 @@ namespace Addon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ...
-    /// play=.PlayList(.PLAYLIST_VIDEO)
+    /// play=xbmc.PlayList(xbmc.PLAYLIST_VIDEO)
     /// ...
     /// ~~~~~~~~~~~~~
     //
@@ -87,9 +87,9 @@ namespace Addon
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// playlist = .PlayList(.PLAYLIST_VIDEO)
+      /// playlist = xbmc.PlayList(xbmc.PLAYLIST_VIDEO)
       /// video = 'F:\\movies\\Ironman.mov'
-      /// listitem = gui.ListItem('Ironman', thumbnailImage='F:\\movies\\Ironman.tbn')
+      /// listitem = xbmcgui.ListItem('Ironman', thumbnailImage='F:\\movies\\Ironman.tbn')
       /// listitem.setInfo('video', {'Title': 'Ironman', 'Genre': 'Science Fiction'})
       /// playlist.add(url=video, listitem=listitem, index=7)
       /// ..
@@ -97,7 +97,7 @@ namespace Addon
       ///
       add(...);
 #else
-      void add(const String& url, Addon::gui::ListItem* listitem = NULL, int index = -1);
+      void add(const String& url, XBMCAddon::xbmcgui::ListItem* listitem = NULL, int index = -1);
 #endif
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
@@ -203,7 +203,7 @@ namespace Addon
       ///
       [](...);
 #else
-      Addon::gui::ListItem* operator[](long i);
+      XBMCAddon::xbmcgui::ListItem* operator[](long i);
 #endif
     };
     /// @}

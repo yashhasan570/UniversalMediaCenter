@@ -1,15 +1,15 @@
-# Universal Media Center Media Center language file
+# Kodi Media Center language file
 # Addon Name: The Movie Database
 # Addon id: metadata.themoviedb.org
-# Addon Provider: Universal Media Center project
+# Addon Provider: XBMC Foundation
 msgid ""
 msgstr ""
-"Project-Id-Version:  Addons\n"
-"Report-Msgid-Bugs-To: translations@github.com/yashhasan570/UniversalMediaCenter\n"
+"Project-Id-Version: XBMC Addons\n"
+"Report-Msgid-Bugs-To: translations@kodi.tv\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: 2026-08-19 22:44+0000\n"
 "Last-Translator: Pavlo Marianov <acid@jack.kyiv.ua>\n"
-"Language-Team: Ukrainian <https://universalmediacenter.weblate.cloud/projects/Universal Media Center-add-ons-information-providers/metadata-themoviedb-org-python/uk_ua/>\n"
+"Language-Team: Ukrainian <https://kodi.weblate.cloud/projects/kodi-add-ons-information-providers/metadata-themoviedb-org-python/uk_ua/>\n"
 "Language: uk_ua\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,8 +22,8 @@ msgid "Python TMDB Movie Scraper"
 msgstr "Екстрактор даних про фільми з TMDb"
 
 msgctxt "Addon Description"
-msgid "themoviedb.org is a free and open movie database. It's completely user driven by people like you. TMDb is currently used by millions of people every month and with their powerful API, it is also used by many popular media centers like Universal Media Center to retrieve Movie Metadata, Posters and Fanart to enrich the user's experience."
-msgstr "themoviedb.org — це безкоштовна і відкрита база даних фільмів. Вона повністю підтримується звичайними людьми. На даний момент сайтом TMDb користуються мільйони людей кожен місяць. А завдяки потужному API цю базу можуть використовувати різні популярні медіацентри, такі як Universal Media Center, отримуючи з неї метадані, постери і фанарт для фільмів для показу в своїх графічних інтерфейсах."
+msgid "themoviedb.org is a free and open movie database. It's completely user driven by people like you. TMDb is currently used by millions of people every month and with their powerful API, it is also used by many popular media centers like Kodi to retrieve Movie Metadata, Posters and Fanart to enrich the user's experience."
+msgstr "themoviedb.org — це безкоштовна і відкрита база даних фільмів. Вона повністю підтримується звичайними людьми. На даний момент сайтом TMDb користуються мільйони людей кожен місяць. А завдяки потужному API цю базу можуть використовувати різні популярні медіацентри, такі як Kodi, отримуючи з неї метадані, постери і фанарт для фільмів для показу в своїх графічних інтерфейсах."
 
 msgctxt "#30000"
 msgid "Enable fanart from TMDb"

@@ -1,7 +1,7 @@
 /*
  *  Copyright (c) 2007 d4rk
  *  Copyright (C) 2007-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -106,7 +106,7 @@ ConvolutionFilterShader::ConvolutionFilterShader(ESCALINGMETHOD method, bool dit
   }
 
   if (m_dither)
-    defines += "#define _DITHER\n";
+    defines += "#define XBMC_DITHER\n";
 
   CLog::Log(LOGDEBUG, "GLES: using scaling method: {}",
             fmt::formatter<ESCALINGMETHOD>::ToString(m_method));

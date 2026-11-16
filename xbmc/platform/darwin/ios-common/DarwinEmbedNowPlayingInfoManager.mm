@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2010-2019 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -9,9 +9,9 @@
 #import "DarwinEmbedNowPlayingInfoManager.h"
 
 #if defined(TARGET_DARWIN_IOS)
-#include "platform/darwin/ios/Controller.h"
+#include "platform/darwin/ios/XBMCController.h"
 #elif defined(TARGET_DARWIN_TVOS)
-#include "platform/darwin/tvos/Controller.h"
+#include "platform/darwin/tvos/XBMCController.h"
 #endif
 
 #import <AVFoundation/AVFoundation.h>
@@ -95,7 +95,7 @@
   self.playbackState = DARWINEMBED_PLAYBACK_PLAYING;
 
 #if defined(TARGET_DARWIN_IOS)
-  [g_Controller disableNetworkAutoSuspend];
+  [g_xbmcController disableNetworkAutoSuspend];
 #endif
 }
 
@@ -116,7 +116,7 @@
 
 #if defined(TARGET_DARWIN_IOS)
   // schedule set network auto suspend state for save power if idle.
-  [g_Controller rescheduleNetworkAutoSuspend];
+  [g_xbmcController rescheduleNetworkAutoSuspend];
 #endif
 }
 
@@ -128,7 +128,7 @@
 
 #if defined(TARGET_DARWIN_IOS)
   // delay set network auto suspend state in case we are switching playing item.
-  [g_Controller rescheduleNetworkAutoSuspend];
+  [g_xbmcController rescheduleNetworkAutoSuspend];
 #endif
 }
 

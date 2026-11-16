@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="https://github.com/yashhasan570/UniversalMediaCenter/Universal Media Center" version="@APP_VERSION_CODE@" viewmodes="maximized">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="https://universalmediacenter.tv/Universal Media Center" version="@APP_VERSION_CODE@" viewmodes="maximized">
    <name>Universal Media Center for Tizen</name>
    <content src="index.html"></content>
    <icon src="icon.png"></icon>

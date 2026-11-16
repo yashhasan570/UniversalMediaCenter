@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2012-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -55,7 +55,7 @@ CScraperParser &CScraperParser::operator=(const CScraperParser &parser)
     if (parser.m_document)
     {
       m_scraper = parser.m_scraper;
-      m_document = new CTinyXML(*parser.m_document);
+      m_document = new CXBMCTinyXML(*parser.m_document);
       LoadFromXML();
     }
     else
@@ -81,7 +81,7 @@ bool CScraperParser::Load(const std::string& strXMLFile)
 {
   Clear();
 
-  m_document = new CTinyXML();
+  m_document = new CXBMCTinyXML();
 
   if (!m_document)
     return false;
@@ -603,7 +603,7 @@ void CScraperParser::InsertToken(std::string& strOutput, int buf, const char* to
   }
 }
 
-void CScraperParser::AddDocument(const CTinyXML* doc)
+void CScraperParser::AddDocument(const CXBMCTinyXML* doc)
 {
   const TiXmlNode* node = doc->RootElement()->FirstChild();
   while (node)

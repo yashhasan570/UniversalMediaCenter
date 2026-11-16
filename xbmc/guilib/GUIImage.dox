@@ -5,7 +5,7 @@
 
 \tableofcontents
 
-The image control is used for displaying images in Universal Media Center. You can choose the
+The image control is used for displaying images in Kodi. You can choose the
 position, size, transparency and contents of the image to be displayed.
 
 --------------------------------------------------------------------------------
@@ -41,7 +41,7 @@ possible:
 \subsection Image_Control_sect2_1 Size
 Images can be any size, though some graphics cards allow only power of 2 textures,
 so this may be a consideration. For the most case, it doesn't really matter what
-size things are - Universal Media Center will quite happily load most files.
+size things are - Kodi will quite happily load most files.
 
 \subsection Image_Control_sect2_2 Formats
 If you wish to use transparency, then use PNG. It is suggested that you use PNG
@@ -60,19 +60,19 @@ background” and they should work fine.
 --------------------------------------------------------------------------------
 \section Image_Control_sect3 Available tags and attributes
 
-In addition to the [Default Control Tags](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Default_Control_Tags)
+In addition to the [Default Control Tags](http://kodi.wiki/view/Default_Control_Tags)
 the following tags are available. Note that each tag is **lower case** only. This is
 important, as `xml` tags are case-sensitive.
 
 | Tag           | Description                                                   |
 |--------------:|:--------------------------------------------------------------|
-| aspectratio   | This specifies how the image will be drawn inside the box defined by <b>`<width>`</b> and <b>`<height>`</b>. [See here for more information](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Aspect_Ratio).
-| texture       | Specifies the image file which should be displayed. [See here for additional information about textures](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Texture_Attributes).
+| aspectratio   | This specifies how the image will be drawn inside the box defined by <b>`<width>`</b> and <b>`<height>`</b>. [See here for more information](http://kodi.wiki/view/Aspect_Ratio).
+| texture       | Specifies the image file which should be displayed. [See here for additional information about textures](http://kodi.wiki/view/Texture_Attributes).
 | bordertexture | Specifies the image file which should be displayed as a border around the image. Use the <b>`<bordersize>`</b> to specify the size of the border. The <b>`<width>`</b>, <b>`<height>`</b> box specifies the size of the image plus border.
 | bordersize    | Specifies the size of the border. A single number specifies the border should be the same size all the way around the image, whereas a comma separated list of 4 values indicates left,top,right,bottom values.
-| info          | Specifies the information that this image control is presenting. Universal Media Center will select the texture to use based on this tag. [See here for more information](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/InfoLabels).
+| info          | Specifies the information that this image control is presenting. Kodi will select the texture to use based on this tag. [See here for more information](http://kodi.wiki/view/InfoLabels).
 | fadetime      | This specifies a crossfade time that will be used whenever the underlying <b>`<texture>`</b> filename changes. The previous image will be held until the new image is ready, and then they will be crossfaded. This is particularly useful for a large thumbnail image showing the focused item in a list, or for fanart or other large backdrops.
-| background    | For images inside a container, you can specify background="true" to load the textures in a background worker thread. [See here for additional information about background loading](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Background_Image_Loader).
+| background    | For images inside a container, you can specify background="true" to load the textures in a background worker thread. [See here for additional information about background loading](http://kodi.wiki/view/Background_Image_Loader).
 | imagefilter   | This can take two values: <b>`linear`</b> or <b>`nearest`</b>. Linear scaling is the default, and smoothly blurs between pixels. Nearest neighbor scaling will apply a pixelated effect to the image.
 | diffusefilter | Equivalent of <b>`imagefilter`</b> for the diffuse texture.
 
@@ -102,7 +102,7 @@ For the tags "texture" and "bordertexture", the following attributes are availab
 
 #### Development:
 
-- [Add-on development](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Add-on_development)
-- [Skinning](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Skinning)
+- [Add-on development](http://kodi.wiki/view/Add-on_development)
+- [Skinning](http://kodi.wiki/view/Skinning)
 
 */

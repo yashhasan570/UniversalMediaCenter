@@ -1,14 +1,14 @@
-# Universal Media Center Media Center language file
+# Kodi Media Center language file
 # Addon Name: TMDb TV Shows python3
 # Addon id: metadata.tvshows.tmdb.python3
 # Addon Provider: MikeSiLVO
 msgid ""
 msgstr ""
 "Project-Id-Version: metadata.tvshows.tmdb.python3\n"
-"Report-Msgid-Bugs-To: translations@github.com/yashhasan570/UniversalMediaCenter\n"
+"Report-Msgid-Bugs-To: translations@kodi.tv\n"
 "PO-Revision-Date: 2026-08-15 03:44+0000\n"
 "Last-Translator: Michal Várady <miko.vaji@gmail.com>\n"
-"Language-Team: Czech <https://universalmediacenter.weblate.cloud/projects/Universal Media Center-add-ons-information-providers/metadata-tvshows-themoviedb-org-python/cs_cz/>\n"
+"Language-Team: Czech <https://kodi.weblate.cloud/projects/kodi-add-ons-information-providers/metadata-tvshows-themoviedb-org-python/cs_cz/>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"

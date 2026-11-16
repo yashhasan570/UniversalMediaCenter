@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -28,6 +28,7 @@ public:
   bool Configure(const VideoPicture &picture, float fps, unsigned int orientation) override;
   void AddVideoPicture(const VideoPicture &picture, int index) override;
   void UnInit() override;
+  void PrepareForReconfigure() override;
   bool IsConfigured() override { return m_bConfigured; }
   bool Flush(bool saveBuffers) override;
   CRenderInfo GetRenderInfo() override;
@@ -57,4 +58,5 @@ protected:
 
   bool m_bConfigured = false;
   std::unique_ptr<CRendererBase> m_renderer;
+  bool m_replaced = false;
 };

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -37,8 +37,8 @@ TEST_F(TestLabelFormatter, FormatLabel)
   LABEL_MASKS labelMasks;
   CLabelFormatter formatter("", labelMasks.m_strLabel2File);
 
-  ASSERT_NE(nullptr, (tmpfile = _CREATETEMPFILE("")));
-  tmpfilepath = _TEMPFILEPATH(tmpfile);
+  ASSERT_NE(nullptr, (tmpfile = XBMC_CREATETEMPFILE("")));
+  tmpfilepath = XBMC_TEMPFILEPATH(tmpfile);
 
   CFileItemPtr item(new CFileItem(tmpfilepath));
   item->SetPath(tmpfilepath);
@@ -47,7 +47,7 @@ TEST_F(TestLabelFormatter, FormatLabel)
 
   formatter.FormatLabel(item.get());
 
-  EXPECT_TRUE(_DELETETEMPFILE(tmpfile));
+  EXPECT_TRUE(XBMC_DELETETEMPFILE(tmpfile));
 }
 
 TEST_F(TestLabelFormatter, FormatLabel2)
@@ -57,8 +57,8 @@ TEST_F(TestLabelFormatter, FormatLabel2)
   LABEL_MASKS labelMasks;
   CLabelFormatter formatter("", labelMasks.m_strLabel2File);
 
-  ASSERT_NE(nullptr, (tmpfile = _CREATETEMPFILE("")));
-  tmpfilepath = _TEMPFILEPATH(tmpfile);
+  ASSERT_NE(nullptr, (tmpfile = XBMC_CREATETEMPFILE("")));
+  tmpfilepath = XBMC_TEMPFILEPATH(tmpfile);
 
   CFileItemPtr item(new CFileItem(tmpfilepath));
   item->SetPath(tmpfilepath);
@@ -67,7 +67,7 @@ TEST_F(TestLabelFormatter, FormatLabel2)
 
   formatter.FormatLabel2(item.get());
 
-  EXPECT_TRUE(_DELETETEMPFILE(tmpfile));
+  EXPECT_TRUE(XBMC_DELETETEMPFILE(tmpfile));
 }
 
 TEST_F(TestLabelFormatter, AListIsLabelledByTheMasksOfEachKind)

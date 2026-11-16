@@ -6,7 +6,7 @@
 \tableofcontents
 
 The resize control is used to specify an area of changeable ratio for use in
-the screen calibration portion of Universal Media Center. You can choose the size, and look of
+the screen calibration portion of Kodi. You can choose the size, and look of
 the resizer.
 
 
@@ -36,13 +36,13 @@ the resizer.
 --------------------------------------------------------------------------------
 \section Resize_Control_sect2 Available tags
 
-In addition to the [Default Control Tags](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Default_Control_Tags)
+In addition to the [Default Control Tags](http://kodi.wiki/view/Default_Control_Tags)
 the following tags are available. Note that each tag is **lower case** only. This is
 important, as `xml` tags are case-sensitive.
 
 | Tag             | Description                                                   |
 |----------------:|:--------------------------------------------------------------|
-| texturefocus    | Specifies the image file which should be displayed when the resizer has focus. [See here for additional information about textures](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Texture_Attributes).
+| texturefocus    | Specifies the image file which should be displayed when the resizer has focus. [See here for additional information about textures](http://kodi.wiki/view/Texture_Attributes).
 | texturenofocus  | Specifies the image file which should be displayed when the resizer does not have focus.
 | movingspeed     | Specifies the allowed directional movements and respective configurations. The <c>`<movingspeed>`</c> tag section can contain as many <c>`<eventconfig>`</c> tags as required.
 
@@ -87,7 +87,7 @@ or globally in the <c>`movingspeed`</c> tag, or a mixture, as the following exam
 
 #### Development:
 
-- [Add-on development](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Add-on_development)
-- [Skinning](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Skinning)
+- [Add-on development](http://kodi.wiki/view/Add-on_development)
+- [Skinning](http://kodi.wiki/view/Skinning)
 
 */

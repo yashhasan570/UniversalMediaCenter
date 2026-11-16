@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2024 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -45,13 +45,13 @@ TEST(TestKeyboardTranslator, TranslateKeys)
 
   for (const GAME::CPhysicalFeature& feature : controller->Features())
   {
-    const KEYBOARD::Key keycode = feature.Keycode();
-    EXPECT_NE(keycode, KEYBOARD::Key::K_UNKNOWN);
+    const KEYBOARD::XBMCKey keycode = feature.Keycode();
+    EXPECT_NE(keycode, KEYBOARD::XBMCKey::XBMCK_UNKNOWN);
 
     const char* symbolName = CKeyboardTranslator::TranslateKeycode(keycode);
     EXPECT_STRNE(symbolName, "");
 
-    const KEYBOARD::Key keycode2 = CKeyboardTranslator::TranslateKeysym(symbolName);
+    const KEYBOARD::XBMCKey keycode2 = CKeyboardTranslator::TranslateKeysym(symbolName);
     EXPECT_EQ(keycode, keycode2);
 
     ++count;

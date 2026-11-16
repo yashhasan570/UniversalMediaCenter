@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2026 Team Universal Media Center
+ *  Copyright (C) 2026 Team Kodi
  *  SPDX-License-Identifier: GPL-2.0-or-later
  */
 

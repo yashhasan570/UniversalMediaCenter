@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2025 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -10,7 +10,7 @@
 
 namespace UNIVERSAL MEDIA CENTER::WEATHER
 {
-// Specification: https://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Weather_addons
+// Specification: https://universalmediacenter.wiki/view/Weather_addons
 
 // Current weather
 constexpr const char* CURRENT_CLOUDINESS = "Current.Cloudiness";

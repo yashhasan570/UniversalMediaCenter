@@ -3,4 +3,4 @@ ADDONS ?= all
 ADDON_SRC_PREFIX :=
 
 -include ../../Makefile.include
-include ../../-addons.include
+include ../../xbmc-addons.include

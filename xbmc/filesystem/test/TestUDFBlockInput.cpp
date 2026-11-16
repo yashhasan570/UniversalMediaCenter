@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -40,10 +40,10 @@ class TestUDFBlockInput : public ::testing::Test
 protected:
   void SetUp() override
   {
-    m_image = _CREATETEMPFILE("");
+    m_image = XBMC_CREATETEMPFILE("");
     ASSERT_NE(nullptr, m_image);
     m_image->Close();
-    ASSERT_TRUE(m_image->OpenForWrite(_TEMPFILEPATH(m_image), true));
+    ASSERT_TRUE(m_image->OpenForWrite(XBMC_TEMPFILEPATH(m_image), true));
     std::vector<uint8_t> block(UDF_BLOCK_SIZE);
     for (uint32_t i{0}; i < IMAGE_BLOCKS; ++i)
     {
@@ -52,7 +52,7 @@ protected:
     }
     m_image->Close();
 
-    m_blockInput = m_input.GetBlockInput(_TEMPFILEPATH(m_image));
+    m_blockInput = m_input.GetBlockInput(XBMC_TEMPFILEPATH(m_image));
     ASSERT_NE(nullptr, m_blockInput);
   }
 
@@ -60,7 +60,7 @@ protected:
   {
     if (m_blockInput)
       m_blockInput->close(m_blockInput);
-    _DELETETEMPFILE(m_image);
+    XBMC_DELETETEMPFILE(m_image);
   }
 
   //! Read blocks and check that each holds what is at that place in the image

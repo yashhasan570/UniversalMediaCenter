@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -89,10 +89,10 @@ CMediaDrmCryptoSession::CMediaDrmCryptoSession(const std::string& UUID,
 
   m_mediaDrm = new CJNIMediaDrm(uuid);
 
-  if (_jnienv()->ExceptionCheck())
+  if (xbmc_jnienv()->ExceptionCheck())
   {
-    _jnienv()->ExceptionDescribe();
-    _jnienv()->ExceptionClear();
+    xbmc_jnienv()->ExceptionDescribe();
+    xbmc_jnienv()->ExceptionClear();
     CLog::Log(LOGERROR, "MediaDrm: Failure creating instance");
     throw std::runtime_error("Failure creating MediaDrm");
   }
@@ -144,21 +144,21 @@ Buffer CMediaDrmCryptoSession::GetKeyRequest(const Buffer& init,
         *m_sessionId, Uint8VecBuffer(init), mimeType,
         offlineKey ? CJNIMediaDrm::KEY_TYPE_OFFLINE : CJNIMediaDrm::KEY_TYPE_STREAMING, parameters);
 
-    if (_jnienv()->ExceptionCheck())
+    if (xbmc_jnienv()->ExceptionCheck())
     {
       CLog::Log(LOGERROR, "MediaDrm: getKeyRequest exception");
-      _jnienv()->ExceptionDescribe();
-      _jnienv()->ExceptionClear();
+      xbmc_jnienv()->ExceptionDescribe();
+      xbmc_jnienv()->ExceptionClear();
       return Buffer();
     }
 
     Buffer data = Uint8VecBuffer(req.getData());
 
-    if (_jnienv()->ExceptionCheck())
+    if (xbmc_jnienv()->ExceptionCheck())
     {
       CLog::Log(LOGERROR, "MediaDrm: getKeyRequest.getData exception");
-      _jnienv()->ExceptionDescribe();
-      _jnienv()->ExceptionClear();
+      xbmc_jnienv()->ExceptionDescribe();
+      xbmc_jnienv()->ExceptionClear();
       return Buffer();
     }
 
@@ -186,11 +186,11 @@ std::string CMediaDrmCryptoSession::ProvideKeyResponse(const Buffer& response)
     m_hasKeys = true;
     std::vector<uint8_t> res =
         m_mediaDrm->provideKeyResponse(*m_sessionId, Uint8VecBuffer(response));
-    if (_jnienv()->ExceptionCheck())
+    if (xbmc_jnienv()->ExceptionCheck())
     {
       CLog::Log(LOGERROR, "MediaDrm: provideKeyResponse exception");
-      _jnienv()->ExceptionDescribe();
-      _jnienv()->ExceptionClear();
+      xbmc_jnienv()->ExceptionDescribe();
+      xbmc_jnienv()->ExceptionClear();
       return "";
     }
     return std::string(res.cbegin(), res.cend());
@@ -215,11 +215,11 @@ void CMediaDrmCryptoSession::RestoreKeys(const std::string& keySetId)
   if (m_mediaDrm && keySetId != m_keySetId)
   {
     m_mediaDrm->restoreKeys(*m_sessionId, std::vector<char>(keySetId.begin(), keySetId.end()));
-    if (_jnienv()->ExceptionCheck())
+    if (xbmc_jnienv()->ExceptionCheck())
     {
       CLog::Log(LOGERROR, "MediaDrm: restoreKeys exception");
-      _jnienv()->ExceptionDescribe();
-      _jnienv()->ExceptionClear();
+      xbmc_jnienv()->ExceptionDescribe();
+      xbmc_jnienv()->ExceptionClear();
     }
     else
     {
@@ -243,11 +243,11 @@ Buffer CMediaDrmCryptoSession::Decrypt(const Buffer& cipherKeyId, const Buffer& 
   {
     Buffer decrypt = CharVecBuffer(m_cryptoSession->decrypt(
         CharVecBuffer(cipherKeyId), CharVecBuffer(input), CharVecBuffer(iv)));
-    if (_jnienv()->ExceptionCheck())
+    if (xbmc_jnienv()->ExceptionCheck())
     {
       CLog::Log(LOGERROR, "MediaDrm: decrypt exception");
-      _jnienv()->ExceptionDescribe();
-      _jnienv()->ExceptionClear();
+      xbmc_jnienv()->ExceptionDescribe();
+      xbmc_jnienv()->ExceptionClear();
       return Buffer();
     }
     return decrypt;
@@ -263,11 +263,11 @@ Buffer CMediaDrmCryptoSession::Encrypt(const Buffer& cipherKeyId, const Buffer& 
   {
     Buffer encrypt = CharVecBuffer(m_cryptoSession->encrypt(
         CharVecBuffer(cipherKeyId), CharVecBuffer(input), CharVecBuffer(iv)));
-    if (_jnienv()->ExceptionCheck())
+    if (xbmc_jnienv()->ExceptionCheck())
     {
       CLog::Log(LOGERROR, "MediaDrm: encrypt exception");
-      _jnienv()->ExceptionDescribe();
-      _jnienv()->ExceptionClear();
+      xbmc_jnienv()->ExceptionDescribe();
+      xbmc_jnienv()->ExceptionClear();
       return Buffer();
     }
     return encrypt;
@@ -283,11 +283,11 @@ Buffer CMediaDrmCryptoSession::Sign(const Buffer& macKeyId, const Buffer& messag
   {
     Buffer sign =
         CharVecBuffer(m_cryptoSession->sign(CharVecBuffer(macKeyId), CharVecBuffer(message)));
-    if (_jnienv()->ExceptionCheck())
+    if (xbmc_jnienv()->ExceptionCheck())
     {
       CLog::Log(LOGERROR, "MediaDrm: sign exception");
-      _jnienv()->ExceptionDescribe();
-      _jnienv()->ExceptionClear();
+      xbmc_jnienv()->ExceptionDescribe();
+      xbmc_jnienv()->ExceptionClear();
       return Buffer();
     }
     return sign;
@@ -303,11 +303,11 @@ bool CMediaDrmCryptoSession::Verify(const Buffer& macKeyId, const Buffer& messag
   {
     bool verify = m_cryptoSession->verify(CharVecBuffer(macKeyId), CharVecBuffer(message),
                                           CharVecBuffer(signature));
-    if (_jnienv()->ExceptionCheck())
+    if (xbmc_jnienv()->ExceptionCheck())
     {
       CLog::Log(LOGERROR, "MediaDrm: verify exception");
-      _jnienv()->ExceptionDescribe();
-      _jnienv()->ExceptionClear();
+      xbmc_jnienv()->ExceptionDescribe();
+      xbmc_jnienv()->ExceptionClear();
       return false;
     }
     return verify;
@@ -323,10 +323,10 @@ bool CMediaDrmCryptoSession::OpenSession()
   bool provisioned = false;
 TRYAGAIN:
   m_sessionId = new CharVecBuffer(m_mediaDrm->openSession());
-  if (_jnienv()->ExceptionCheck())
+  if (xbmc_jnienv()->ExceptionCheck())
   {
-    _jnienv()->ExceptionDescribe();
-    _jnienv()->ExceptionClear();
+    xbmc_jnienv()->ExceptionDescribe();
+    xbmc_jnienv()->ExceptionClear();
     if (provisioned || !ProvisionRequest())
     {
       delete m_sessionId, m_sessionId = nullptr;
@@ -341,11 +341,11 @@ TRYAGAIN:
 
   m_cryptoSession = new CJNIMediaDrmCryptoSession(m_mediaDrm->getCryptoSession(*m_sessionId, m_cipherAlgo, m_macAlgo));
 
-  if (_jnienv()->ExceptionCheck())
+  if (xbmc_jnienv()->ExceptionCheck())
   {
     CLog::Log(LOGERROR, "MediaDrm: getCryptoSession failed");
-    _jnienv()->ExceptionDescribe();
-    _jnienv()->ExceptionClear();
+    xbmc_jnienv()->ExceptionDescribe();
+    xbmc_jnienv()->ExceptionClear();
     return false;
   }
   return true;
@@ -372,29 +372,29 @@ bool CMediaDrmCryptoSession::ProvisionRequest()
   CLog::Log(LOGINFO, "MediaDrm: starting provisioning");
 
   CJNIMediaDrmProvisionRequest request = m_mediaDrm->getProvisionRequest();
-  if (_jnienv()->ExceptionCheck())
+  if (xbmc_jnienv()->ExceptionCheck())
   {
     CLog::Log(LOGERROR, "MediaDrm: getProvisionRequest failed");
-    _jnienv()->ExceptionDescribe();
-    _jnienv()->ExceptionClear();
+    xbmc_jnienv()->ExceptionDescribe();
+    xbmc_jnienv()->ExceptionClear();
     return false;
   }
 
   std::vector<uint8_t> provData = request.getData();
-  if (_jnienv()->ExceptionCheck())
+  if (xbmc_jnienv()->ExceptionCheck())
   {
     CLog::Log(LOGERROR, "MediaDrm: getProvisionRequest.getData exception");
-    _jnienv()->ExceptionDescribe();
-    _jnienv()->ExceptionClear();
+    xbmc_jnienv()->ExceptionDescribe();
+    xbmc_jnienv()->ExceptionClear();
     return false;
   }
 
   std::string url = request.getDefaultUrl();
-  if (_jnienv()->ExceptionCheck())
+  if (xbmc_jnienv()->ExceptionCheck())
   {
     CLog::Log(LOGERROR, "MediaDrm: getProvisionRequest.getDefaultUrl exception");
-    _jnienv()->ExceptionDescribe();
-    _jnienv()->ExceptionClear();
+    xbmc_jnienv()->ExceptionDescribe();
+    xbmc_jnienv()->ExceptionClear();
     return false;
   }
 
@@ -432,11 +432,11 @@ bool CMediaDrmCryptoSession::ProvisionRequest()
     provData.insert(provData.end(), buf, buf + nbRead);
 
   m_mediaDrm->provideProvisionResponse(provData);
-  if (_jnienv()->ExceptionCheck())
+  if (xbmc_jnienv()->ExceptionCheck())
   {
     CLog::Log(LOGERROR, "MediaDrm: provideProvisionResponse failed");
-    _jnienv()->ExceptionDescribe();
-    _jnienv()->ExceptionClear();
+    xbmc_jnienv()->ExceptionDescribe();
+    xbmc_jnienv()->ExceptionClear();
     return false;
   }
   return true;

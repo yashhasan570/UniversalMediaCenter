@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -9,7 +9,7 @@
 #include "FileItem.h"
 #include "cores/playercorefactory/PlayerCoreConfig.h"
 #include "cores/playercorefactory/PlayerSelectionRule.h"
-#include "utils/TinyXML2.h"
+#include "utils/XBMCTinyXML2.h"
 #include "utils/XMLUtils.h"
 
 #include <memory>
@@ -22,7 +22,7 @@ TEST(TestPlayerCoreConfig, CopiesConfig)
 {
   std::unique_ptr<CPlayerCoreConfig> config;
   {
-    CTinyXML2 doc;
+    CXBMCTinyXML2 doc;
     ASSERT_TRUE(
         doc.Parse(std::string{R"(<player name="Ext" type="ExternalPlayer" audio="true" )"
                               R"(video="TRUE"><filename>/usr/bin/true</filename></player>)"}));
@@ -40,7 +40,7 @@ TEST(TestPlayerCoreConfig, CopiesConfig)
 
 TEST(TestPlayerCoreConfig, NoAudioOrVideo)
 {
-  CTinyXML2 doc;
+  CXBMCTinyXML2 doc;
   ASSERT_TRUE(doc.Parse(std::string{R"(<player name="Ext" audio="no"/>)"}));
   const CPlayerCoreConfig config("Ext", "external", doc.RootElement());
   EXPECT_FALSE(config.PlaysAudio());
@@ -57,7 +57,7 @@ TEST(TestPlayerCoreConfig, NoConfig)
 
 TEST(TestPlayerSelectionRule, GetPlayers)
 {
-  CTinyXML2 doc;
+  CXBMCTinyXML2 doc;
   ASSERT_TRUE(doc.Parse(std::string{R"(<rules name="rules">
       <rule name="mkv" filetypes="mkv" player="VideoPlayer"/>
       <rule name="http" protocols="http|https">

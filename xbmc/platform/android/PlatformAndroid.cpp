@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2016-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -15,7 +15,7 @@
 #include "utils/log.h"
 #include "windowing/android/WinSystemAndroidGLESContext.h"
 
-#include "platform/android/activity/App.h"
+#include "platform/android/activity/XBMCApp.h"
 #include "platform/android/powermanagement/AndroidPowerSyscall.h"
 #include "platform/android/storage/AndroidStorageProvider.h"
 
@@ -34,7 +34,7 @@ bool CPlatformAndroid::InitStageOne()
 {
   if (!CPlatformPosix::InitStageOne())
     return false;
-  setenv("SSL_CERT_FILE", CSpecialProtocol::TranslatePath("special:///system/certs/cacert.pem").c_str(), 1);
+  setenv("SSL_CERT_FILE", CSpecialProtocol::TranslatePath("special://xbmc/system/certs/cacert.pem").c_str(), 1);
 
   setenv("OS", "Linux", true); // for python scripts that check the OS
 
@@ -52,8 +52,8 @@ bool CPlatformAndroid::InitStageThree()
 
   if (CServiceBroker::GetSettingsComponent()->GetAdvancedSettings()->m_guiVideoLayoutTransparent)
   {
-    CLog::Log(LOGINFO, "App: VideoLayout view was set to transparent.");
-    CApp::Get().SetVideoLayoutBackgroundColor(0);
+    CLog::Log(LOGINFO, "XBMCApp: VideoLayout view was set to transparent.");
+    CXBMCApp::Get().SetVideoLayoutBackgroundColor(0);
   }
 
   return true;

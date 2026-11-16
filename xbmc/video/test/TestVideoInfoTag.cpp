@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -17,7 +17,7 @@
 #include "utils/SortUtils.h"
 #include "utils/StreamDetails.h"
 #include "utils/Variant.h"
-#include "utils/TinyXML.h"
+#include "utils/XBMCTinyXML.h"
 #include "utils/XMLUtils.h"
 #include "video/VideoInfoTag.h"
 #include "video/geometry/EffectiveGeometry.h"
@@ -39,7 +39,7 @@ TEST(TestVideoInfoTag, SaveNfoVersion)
   {
     SCOPED_TRACE(root);
     CVideoInfoTag details;
-    CTinyXML doc;
+    CXBMCTinyXML doc;
     ASSERT_TRUE(details.Save(&doc, root));
     ASSERT_NE(nullptr, doc.RootElement());
     EXPECT_STREQ(root, doc.RootElement()->Value());
@@ -59,7 +59,7 @@ TEST(TestVideoInfoTag, SaveNfoVersion)
 TEST(TestVideoInfoTag, SaveUnrelatedRootWithoutNfoVersion)
 {
   CVideoInfoTag details;
-  CTinyXML doc;
+  CXBMCTinyXML doc;
   ASSERT_TRUE(details.Save(&doc, "details"));
   ASSERT_NE(nullptr, doc.RootElement());
   EXPECT_EQ(nullptr, doc.RootElement()->Attribute("version"));
@@ -74,7 +74,7 @@ TEST(TestVideoInfoTag, NfoVersionZeroPreservesLoadAndRoundTrip)
     for (const std::string version : {"", " version=\"0\""})
     {
       SCOPED_TRACE(version);
-      CTinyXML doc;
+      CXBMCTinyXML doc;
       doc.Parse("<" + root + version +
                 "><title>Test title</title><plot>Test plot</plot>"
                 "<id>tt1234567</id><year>2001</year><rating>7.5</rating><votes>123</votes></" +
@@ -89,7 +89,7 @@ TEST(TestVideoInfoTag, NfoVersionZeroPreservesLoadAndRoundTrip)
       EXPECT_FLOAT_EQ(7.5f, details.GetRating().rating);
       EXPECT_EQ(123, details.GetRating().votes);
 
-      CTinyXML saved;
+      CXBMCTinyXML saved;
       ASSERT_TRUE(details.Save(&saved, root));
       const std::string exported = XMLUtils::NodeStringSerialization(
           saved.RootElement(), XMLUtils::SerializationFormat::COMPACT);
@@ -100,7 +100,7 @@ TEST(TestVideoInfoTag, NfoVersionZeroPreservesLoadAndRoundTrip)
 
       CVideoInfoTag reloaded;
       ASSERT_TRUE(reloaded.Load(saved.RootElement(), true, false));
-      CTinyXML resaved;
+      CXBMCTinyXML resaved;
       ASSERT_TRUE(reloaded.Save(&resaved, root));
       EXPECT_EQ(exported, XMLUtils::NodeStringSerialization(
                               resaved.RootElement(), XMLUtils::SerializationFormat::COMPACT));
@@ -122,7 +122,7 @@ TEST(TestVideoInfoTag, ReadTVShowSeasons)
          <seasonplot number="5"></seasonplot>
          </tvshow>)";
 
-  CTinyXML doc;
+  CXBMCTinyXML doc;
   doc.Parse(document, TIXML_ENCODING_UNKNOWN);
 
   CVideoInfoTag details;
@@ -153,7 +153,7 @@ TEST(TestVideoInfoTag, ReadStreamDetailFlags)
          </fileinfo>
          </movie>)";
 
-  CTinyXML doc;
+  CXBMCTinyXML doc;
   doc.Parse(document, TIXML_ENCODING_UNKNOWN);
 
   CVideoInfoTag details;
@@ -199,7 +199,7 @@ TEST(TestVideoInfoTag, WriteStreamDetailFlags)
   details.m_streamDetails.AddStream(new CStreamDetailSubtitle(subtitleInfo, CStreamDetail::MEDIA));
   details.m_streamDetails.DetermineBestStreams();
 
-  CTinyXML xmlDoc;
+  CXBMCTinyXML xmlDoc;
   ASSERT_TRUE(details.Save(&xmlDoc, "movie"));
 
   CVideoInfoTag reloaded;
@@ -219,7 +219,7 @@ TEST(TestVideoInfoTag, SaveRuntime)
   details.m_streamDetails.AddStream(video);
   details.m_streamDetails.DetermineBestStreams();
 
-  CTinyXML xmlDoc;
+  CXBMCTinyXML xmlDoc;
   ASSERT_TRUE(details.Save(&xmlDoc, "episodedetails"));
   int runtime{0};
   EXPECT_TRUE(XMLUtils::GetInt(xmlDoc.RootElement(), "runtime", runtime));
@@ -230,7 +230,7 @@ TEST(TestVideoInfoTag, SaveRuntime)
   EXPECT_EQ(1320u, reloaded.GetStaticDuration());
 
   CVideoInfoTag noRuntime;
-  CTinyXML noRuntimeDoc;
+  CXBMCTinyXML noRuntimeDoc;
   ASSERT_TRUE(noRuntime.Save(&noRuntimeDoc, "episodedetails"));
   EXPECT_EQ(nullptr, noRuntimeDoc.RootElement()->FirstChildElement("runtime"));
 }
@@ -248,7 +248,7 @@ TEST(TestVideoInfoTag, WriteVideoStreamDetails)
   details.m_streamDetails.AddStream(video);
   details.m_streamDetails.DetermineBestStreams();
 
-  CTinyXML xmlDoc;
+  CXBMCTinyXML xmlDoc;
   ASSERT_TRUE(details.Save(&xmlDoc, "movie"));
 
   CVideoInfoTag reloaded;
@@ -264,7 +264,7 @@ TEST(TestVideoInfoTag, EpisodeBookmarkRoundTrip)
   details.m_EpBookmark.timeInSeconds = 5479.0;
   details.m_EpBookmark.totalTimeInSeconds = 16066.5;
 
-  CTinyXML xmlDoc;
+  CXBMCTinyXML xmlDoc;
   ASSERT_TRUE(details.Save(&xmlDoc, "episodedetails"));
 
   CVideoInfoTag reloaded;
@@ -279,8 +279,8 @@ namespace
 class TestVideoInfoTagArchive : public testing::Test
 {
 protected:
-  TestVideoInfoTagArchive() : m_file(_CREATETEMPFILE(".ar")) {}
-  ~TestVideoInfoTagArchive() override { EXPECT_TRUE(_DELETETEMPFILE(m_file)); }
+  TestVideoInfoTagArchive() : m_file(XBMC_CREATETEMPFILE(".ar")) {}
+  ~TestVideoInfoTagArchive() override { EXPECT_TRUE(XBMC_DELETETEMPFILE(m_file)); }
 
   CVideoInfoTag StoredAndLoaded(CVideoInfoTag details)
   {
@@ -318,7 +318,7 @@ TEST_F(TestVideoInfoTagArchive, APlayCountOfZeroStaysSet)
 
 TEST(TestVideoInfoTag, ReadTextEpisodeGuide)
 {
-  CTinyXML doc;
+  CXBMCTinyXML doc;
   doc.Parse(std::string{
       "<tvshow><episodeguide>{&quot;tmdb&quot;: &quot;1234&quot;}</episodeguide></tvshow>"});
 
@@ -326,7 +326,7 @@ TEST(TestVideoInfoTag, ReadTextEpisodeGuide)
   ASSERT_TRUE(details.Load(doc.RootElement(), true, false));
   EXPECT_EQ(R"(<episodeguide>{"tmdb": "1234"}</episodeguide>)", details.m_strEpisodeGuide);
 
-  CTinyXML saved;
+  CXBMCTinyXML saved;
   ASSERT_TRUE(details.Save(&saved, "tvshow"));
   CVideoInfoTag reloaded;
   ASSERT_TRUE(reloaded.Load(saved.RootElement(), true, false));
@@ -354,7 +354,7 @@ TEST(TestVideoInfoTag, SaveTVShowSeasons)
   CVideoInfoTagTest details;
   details.SetSeasons(reference);
 
-  CTinyXML xmlDoc;
+  CXBMCTinyXML xmlDoc;
   details.ForwardSaveTvShowSeasons(&xmlDoc);
 
   EXPECT_EQ(referenceXml, XMLUtils::NodeStringSerialization(xmlDoc.RootElement(),
@@ -628,7 +628,7 @@ TEST(TestVideoInfoTag, ContentGeometryRoundTripsThroughNfo)
       {.aspects = {2.35f, 1.78f}, .identity = FileIdentity{68'719'476'736, 1'700'000'000}});
   ASSERT_TRUE(written.HasContentGeometry());
 
-  CTinyXML doc;
+  CXBMCTinyXML doc;
   doc.InsertEndChild(TiXmlElement("root"));
   ASSERT_TRUE(written.Save(doc.RootElement(), "movie", true));
 
@@ -665,7 +665,7 @@ TEST(TestVideoInfoTag, NoReadingWritesNoContentGeometry)
   CVideoInfoTag written;
   written.m_contentGeometry.Set({.aspects = {}, .identity = {8'000'000'000, 1'700'000'000}});
 
-  CTinyXML doc;
+  CXBMCTinyXML doc;
   doc.InsertEndChild(TiXmlElement("root"));
   ASSERT_TRUE(written.Save(doc.RootElement(), "movie", true));
 
@@ -678,7 +678,7 @@ TEST(TestVideoInfoTag, AnNfoWithoutContentGeometryHasNone)
 {
   const std::string document{R"(<movie><title>No geometry here</title></movie>)"};
 
-  CTinyXML doc;
+  CXBMCTinyXML doc;
   doc.Parse(document, TIXML_ENCODING_UNKNOWN);
 
   CVideoInfoTag details;
@@ -708,7 +708,7 @@ TEST(TestVideoInfoTag, ContentGeometryRoundTripsThroughTheArchive)
   // A field written after the geometry, which is what a mismatched pair damages first.
   written.m_showLink = {"a show", "another"};
 
-  XFILE::CFile* const file{_CREATETEMPFILE(".ar")};
+  XFILE::CFile* const file{XBMC_CREATETEMPFILE(".ar")};
   ASSERT_NE(nullptr, file);
 
   CArchive out(file, CArchive::store);
@@ -729,7 +729,7 @@ TEST(TestVideoInfoTag, ContentGeometryRoundTripsThroughTheArchive)
   EXPECT_EQ(record.identity.time, loaded.identity.time);
   EXPECT_EQ(written.m_showLink, read.m_showLink) << "the operators are out of step";
 
-  EXPECT_TRUE(_DELETETEMPFILE(file));
+  EXPECT_TRUE(XBMC_DELETETEMPFILE(file));
 }
 
 /*!
@@ -863,7 +863,7 @@ std::vector<std::string> CastAfterLoading(const std::string& clear)
                                     <actor clear=")" +
                                clear + R"("><name>Second</name></actor>
                                   </movie>)";
-  CTinyXML doc;
+  CXBMCTinyXML doc;
   doc.Parse(document, TIXML_ENCODING_UNKNOWN);
 
   CVideoInfoTag details;

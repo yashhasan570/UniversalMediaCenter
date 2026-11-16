@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -214,7 +214,7 @@ protected:
 
    When Update() is called with a path to e.g. a smartplaylist or
    a library node filter, that "original" path will be stored in
-   m_vecItems->m_strPath. But the path used by  to retrieve
+   m_vecItems->m_strPath. But the path used by XBMC to retrieve
    those items from the database (Videodb:// or musicdb://)
    is stored in this member variable to still have access to it
    because it is used for filtering by appending the currently active

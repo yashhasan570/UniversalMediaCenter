@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -12,9 +12,9 @@
 
 using namespace XbmcCommons;
 
-namespace Addon
+namespace XBMCAddon
 {
-  namespace drm
+  namespace xbmcdrm
   {
   CryptoSession::CryptoSession(const String& UUID,
                                const String& cipherAlgorithm,
@@ -104,5 +104,5 @@ namespace Addon
       return false;
     }
 
-  } //namespace drm
-} //namespace Addon
+  } //namespace xbmcdrm
+} //namespace XBMCAddon

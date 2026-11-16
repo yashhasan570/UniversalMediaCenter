@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -19,9 +19,9 @@
 
 class IPlayerCallback;
 
-namespace Addon
+namespace XBMCAddon
 {
-  namespace 
+  namespace xbmc
   {
     class Monitor;
   }
@@ -102,8 +102,8 @@ namespace Addon
 
     virtual void RegisterPlayerCallback(IPlayerCallback* player) = 0;
     virtual void UnregisterPlayerCallback(IPlayerCallback* player) = 0;
-    virtual void RegisterMonitorCallback(Addon::::Monitor* player) = 0;
-    virtual void UnregisterMonitorCallback(Addon::::Monitor* player) = 0;
+    virtual void RegisterMonitorCallback(XBMCAddon::xbmc::Monitor* player) = 0;
+    virtual void UnregisterMonitorCallback(XBMCAddon::xbmc::Monitor* player) = 0;
     virtual bool WaitForEvent(CEvent& hEvent, unsigned int milliseconds) = 0;
 
     static void SetLanguageHook(LanguageHook* languageHook);

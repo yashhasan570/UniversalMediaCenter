@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2021 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -18,11 +18,11 @@
 #include <string>
 #include <vector>
 
-using namespace AddonUtils;
+using namespace XBMCAddonUtils;
 
-namespace Addon
+namespace XBMCAddon
 {
-namespace 
+namespace xbmc
 {
 
 InfoTagPicture::InfoTagPicture(bool offscreen /* = false */)
@@ -58,13 +58,13 @@ String InfoTagPicture::getDateTimeTaken()
 
 void InfoTagPicture::setResolution(int width, int height)
 {
-  AddonUtils::GuiLock lock(languageHook, offscreen);
+  XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
   setResolutionRaw(infoTag, width, height);
 }
 
 void InfoTagPicture::setDateTimeTaken(const String& datetimetaken)
 {
-  AddonUtils::GuiLock lock(languageHook, offscreen);
+  XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
   setDateTimeTakenRaw(infoTag, datetimetaken);
 }
 
@@ -101,5 +101,5 @@ void InfoTagPicture::setDateTimeTakenRaw(CPictureInfoTag* infoTag, String dateti
   infoTag->SetDateTimeTaken(datetimetaken);
 }
 
-} // namespace 
-} // namespace Addon
+} // namespace xbmc
+} // namespace XBMCAddon

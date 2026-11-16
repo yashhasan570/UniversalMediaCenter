@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -15,7 +15,7 @@
 #include "utils/ColorUtils.h"
 #include "utils/StringUtils.h"
 #include "utils/URIUtils.h"
-#include "utils/TinyXML2.h"
+#include "utils/XBMCTinyXML2.h"
 #include "utils/log.h"
 
 CGUIColorManager::CGUIColorManager(void) = default;
@@ -40,8 +40,8 @@ void CGUIColorManager::Load(const std::string &colorFile)
     return;
 
   // load the global color map if it exists
-  CTinyXML2 xmlDoc;
-  if (xmlDoc.LoadFile(CSpecialProtocol::TranslatePathConvertCase("special:///system/colors.xml")))
+  CXBMCTinyXML2 xmlDoc;
+  if (xmlDoc.LoadFile(CSpecialProtocol::TranslatePathConvertCase("special://xbmc/system/colors.xml")))
     LoadXML(xmlDoc);
 
   // first load the default color map if it exists
@@ -63,7 +63,7 @@ void CGUIColorManager::Load(const std::string &colorFile)
     LoadXML(xmlDoc);
 }
 
-bool CGUIColorManager::LoadXML(CTinyXML2& xmlDoc)
+bool CGUIColorManager::LoadXML(CXBMCTinyXML2& xmlDoc)
 {
   const tinyxml2::XMLElement* pRootElement = xmlDoc.RootElement();
 
@@ -116,7 +116,7 @@ bool CGUIColorManager::LoadColorsListFromXML(
     bool sortColors)
 {
   CLog::Log(LOGDEBUG, "Loading colors from file {}", filePath);
-  CTinyXML2 xmlDoc;
+  CXBMCTinyXML2 xmlDoc;
   if (!xmlDoc.LoadFile(filePath))
   {
     CLog::Log(LOGERROR, "{} - Failed to load colors from file {}", __FUNCTION__, filePath);

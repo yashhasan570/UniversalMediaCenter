@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-// Copyright (C) 2026 Team Universal Media Center
+// Copyright (C) 2026 Team Kodi
 //
 // Development-only pre-js, linked when ENABLE_WASM_DEV_PROXY=ON. Rewrites every
 // cross-origin http(s) XHR/fetch issued by the module to '/proxy?u=<encoded>',
@@ -45,7 +45,7 @@
   }
 
   if (scope.XMLHttpRequest && scope.XMLHttpRequest.prototype &&
-      !scope.XMLHttpRequest.prototype.__UniversalMediaCenter*roxyPatched) {
+      !scope.XMLHttpRequest.prototype.__kodiProxyPatched) {
     var origOpen = scope.XMLHttpRequest.prototype.open;
     scope.XMLHttpRequest.prototype.open = function (method, url) {
       arguments[1] = rewrite(url);
@@ -58,10 +58,10 @@
         get: function () { return unwrap(responseURL.get.call(this)); }
       });
     }
-    scope.XMLHttpRequest.prototype.__UniversalMediaCenter*roxyPatched = true;
+    scope.XMLHttpRequest.prototype.__kodiProxyPatched = true;
   }
 
-  if (typeof scope.fetch === 'function' && !scope.fetch.__UniversalMediaCenter*roxyPatched) {
+  if (typeof scope.fetch === 'function' && !scope.fetch.__kodiProxyPatched) {
     var origFetch = scope.fetch.bind(scope);
     var patched = function (input, init) {
       if (typeof input === 'string') {
@@ -74,7 +74,7 @@
       }
       return origFetch(input, init);
     };
-    patched.__UniversalMediaCenter*roxyPatched = true;
+    patched.__kodiProxyPatched = true;
     scope.fetch = patched;
   }
 })(globalThis);

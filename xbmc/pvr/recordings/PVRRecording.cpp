@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2012-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -336,7 +336,7 @@ CBookmark CPVRRecording::GetResumePoint() const
   if (client && client->GetClientCapabilities().SupportsRecordingsLastPlayedPosition() &&
       m_resumePointRefetchTimeout.IsTimePast())
   {
-    // @todo: root cause should be fixed. details: https://github.com///pull/14961
+    // @todo: root cause should be fixed. details: https://github.com/xbmc/xbmc/pull/14961
     m_resumePointRefetchTimeout.Set(10s); // update resume point from backend at most every 10 secs
 
     int pos = -1;
@@ -361,7 +361,7 @@ bool CPVRRecording::UpdateRecordingSize()
   if (client && client->GetClientCapabilities().SupportsRecordingsSize() &&
       m_recordingSizeRefetchTimeout.IsTimePast())
   {
-    // @todo: root cause should be fixed. details: https://github.com///pull/14961
+    // @todo: root cause should be fixed. details: https://github.com/xbmc/xbmc/pull/14961
     m_recordingSizeRefetchTimeout.Set(10s); // update size from backend at most every 10 secs
 
     int64_t sizeInBytes = -1;

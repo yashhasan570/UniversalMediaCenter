@@ -2,7 +2,7 @@
  *  Copyright (c) 2007 d4rk
  *  Copyright (C) 2007-2018 Team Universal Media Center
  *  Copyright (C) 2015 Lauri Mylläri
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -43,9 +43,9 @@ std::string GLSLOutput::GetDefines()
 {
   std::string defines;
   if (m_dither)
-    defines += "#define _DITHER\n";
+    defines += "#define XBMC_DITHER\n";
   if (m_fullRange)
-    defines += "#define _FULLRANGE\n";
+    defines += "#define XBMC_FULLRANGE\n";
   if (m_3DLUT)
     defines += "#define UNIVERSALMEDIA_3DLUT\n";
   return defines;

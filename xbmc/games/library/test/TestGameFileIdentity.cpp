@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -27,7 +27,7 @@ namespace
 // identity.zip holds a single 6 MB member, deflated. The size matters: the zip
 // backend copies a deflated member over 4 MB into special://temp unless the read
 // asks it not to, and nothing ever deletes that copy.
-constexpr auto ARCHIVE = "/games/library/test/identity.zip";
+constexpr auto ARCHIVE = "xbmc/games/library/test/identity.zip";
 
 // The CRC-32 that PKZIP stores and the ROM catalogues index by
 constexpr auto MEMBER_CRC32 = "eeea5a12";
@@ -54,7 +54,7 @@ TEST(TestGameFileIdentity, HashesTheGameInsideAnArchive)
 {
   GameFile file;
   ASSERT_TRUE(
-      CGameFileIdentity::Identify(_REF_FILE_PATH(ARCHIVE), file, MediaFormat::CARTRIDGE));
+      CGameFileIdentity::Identify(XBMC_REF_FILE_PATH(ARCHIVE), file, MediaFormat::CARTRIDGE));
 
   // The hash is of the member, not of the archive around it
   EXPECT_EQ(file.crc32, MEMBER_CRC32);
@@ -68,7 +68,7 @@ TEST(TestGameFileIdentity, ReadsAnArchivedGameWithoutExtractingIt)
 
   GameFile file;
   ASSERT_TRUE(
-      CGameFileIdentity::Identify(_REF_FILE_PATH(ARCHIVE), file, MediaFormat::CARTRIDGE));
+      CGameFileIdentity::Identify(XBMC_REF_FILE_PATH(ARCHIVE), file, MediaFormat::CARTRIDGE));
 
   EXPECT_EQ(TempFileNames(), before);
 }
@@ -77,7 +77,7 @@ TEST(TestGameFileIdentity, ListsEveryFileOfAnArcadeSet)
 {
   // arcade.zip holds three small files, one of them in a folder
   GameFile file;
-  CGameFileIdentity::Identify(_REF_FILE_PATH("/games/library/test/arcade.zip"), file,
+  CGameFileIdentity::Identify(XBMC_REF_FILE_PATH("xbmc/games/library/test/arcade.zip"), file,
                               MediaFormat::CARTRIDGE);
 
   ASSERT_EQ(file.members.size(), 3U);
@@ -94,7 +94,7 @@ TEST(TestGameFileIdentity, HashesAGameFiledInAFolderInsideAnArchive)
   // clone's chips. An archive without a zip's directory, such as a 7z, only
   // knows it by hashing it.
   GameFile file;
-  ASSERT_TRUE(CGameFileIdentity::Identify(_REF_FILE_PATH("/games/library/test/nested.zip"),
+  ASSERT_TRUE(CGameFileIdentity::Identify(XBMC_REF_FILE_PATH("xbmc/games/library/test/nested.zip"),
                                           file, MediaFormat::CARTRIDGE));
 
   EXPECT_EQ(file.crc32, "f5765659");
@@ -106,7 +106,7 @@ TEST(TestGameFileIdentity, HashesAGameFiledInAFolderInsideAnArchive)
 TEST(TestGameFileIdentity, ListsNothingForAZipOfOneGame)
 {
   GameFile file;
-  CGameFileIdentity::Identify(_REF_FILE_PATH(ARCHIVE), file, MediaFormat::CARTRIDGE);
+  CGameFileIdentity::Identify(XBMC_REF_FILE_PATH(ARCHIVE), file, MediaFormat::CARTRIDGE);
 
   EXPECT_TRUE(file.members.empty());
 }
@@ -115,7 +115,7 @@ TEST(TestGameFileIdentity, KnowsASetFiledInAFolderByItsFiles)
 {
   // folder.zip holds two files, both under one folder
   GameFile file;
-  ASSERT_TRUE(CGameFileIdentity::Identify(_REF_FILE_PATH("/games/library/test/folder.zip"),
+  ASSERT_TRUE(CGameFileIdentity::Identify(XBMC_REF_FILE_PATH("xbmc/games/library/test/folder.zip"),
                                           file, MediaFormat::CARTRIDGE));
 
   ASSERT_EQ(file.members.size(), 2U);
@@ -127,7 +127,7 @@ TEST(TestGameFileIdentity, ReadsTheSerialOfAnArchivedDisc)
 {
   // disc.zip holds a cue sheet, its data track and a larger audio track
   GameFile file;
-  ASSERT_TRUE(CGameFileIdentity::Identify(_REF_FILE_PATH("/games/library/test/disc.zip"),
+  ASSERT_TRUE(CGameFileIdentity::Identify(XBMC_REF_FILE_PATH("xbmc/games/library/test/disc.zip"),
                                           file, MediaFormat::DISC));
 
   EXPECT_EQ(file.serial, "SLUS01234");
@@ -138,7 +138,7 @@ TEST(TestGameFileIdentity, ReadsTheSerialOfADiscArchivedInAFolder)
   // disc-folder.zip holds disc.zip's files under a folder
   GameFile file;
   ASSERT_TRUE(CGameFileIdentity::Identify(
-      _REF_FILE_PATH("/games/library/test/disc-folder.zip"), file, MediaFormat::DISC));
+      XBMC_REF_FILE_PATH("xbmc/games/library/test/disc-folder.zip"), file, MediaFormat::DISC));
 
   EXPECT_EQ(file.serial, "SLUS01234");
 }
@@ -146,7 +146,7 @@ TEST(TestGameFileIdentity, ReadsTheSerialOfADiscArchivedInAFolder)
 TEST(TestGameFileIdentity, ReadsAQuotedGdiTrack)
 {
   const std::string track =
-      CGameFileIdentity::FirstTrack(_REF_FILE_PATH("/games/library/test/quoted.gdi"));
+      CGameFileIdentity::FirstTrack(XBMC_REF_FILE_PATH("xbmc/games/library/test/quoted.gdi"));
 
   EXPECT_EQ(URIUtils::GetFileName(track), "Crazy Taxi (Track 3).bin");
 }
@@ -154,11 +154,11 @@ TEST(TestGameFileIdentity, ReadsAQuotedGdiTrack)
 TEST(TestGameFileIdentity, StartsAfreshForEachFile)
 {
   GameFile file;
-  CGameFileIdentity::Identify(_REF_FILE_PATH("/games/library/test/arcade.zip"), file,
+  CGameFileIdentity::Identify(XBMC_REF_FILE_PATH("xbmc/games/library/test/arcade.zip"), file,
                               MediaFormat::CARTRIDGE);
   ASSERT_FALSE(file.members.empty());
 
-  CGameFileIdentity::Identify(_REF_FILE_PATH(ARCHIVE), file, MediaFormat::CARTRIDGE);
+  CGameFileIdentity::Identify(XBMC_REF_FILE_PATH(ARCHIVE), file, MediaFormat::CARTRIDGE);
 
   EXPECT_TRUE(file.members.empty());
   EXPECT_EQ(file.crc32, MEMBER_CRC32);
@@ -167,13 +167,13 @@ TEST(TestGameFileIdentity, StartsAfreshForEachFile)
 TEST(TestGameFileIdentity, HashesACartridgeTooLargeToTellFromADisc)
 {
   // 65 MB of zeros, over the size a file of unknown media is hashed at
-  XFILE::CFile* rom = _CREATETEMPFILE(".nds");
+  XFILE::CFile* rom = XBMC_CREATETEMPFILE(".nds");
   ASSERT_NE(rom, nullptr);
   const std::vector<char> chunk(1024 * 1024);
   for (int i = 0; i < 65; ++i)
     ASSERT_EQ(rom->Write(chunk.data(), chunk.size()), static_cast<ssize_t>(chunk.size()));
   rom->Flush();
-  const std::string path = _TEMPFILEPATH(rom);
+  const std::string path = XBMC_TEMPFILEPATH(rom);
 
   GameFile file;
   EXPECT_TRUE(CGameFileIdentity::Identify(path, file, MediaFormat::CARTRIDGE));
@@ -184,14 +184,14 @@ TEST(TestGameFileIdentity, HashesACartridgeTooLargeToTellFromADisc)
   EXPECT_FALSE(CGameFileIdentity::Identify(path, unknown, MediaFormat::UNKNOWN));
   EXPECT_TRUE(unknown.crc32.empty());
 
-  _DELETETEMPFILE(rom);
+  XBMC_DELETETEMPFILE(rom);
 }
 
 TEST(TestGameFileIdentity, DoesNotHashAnInstalledGamesLargestFile)
 {
   // program.zip holds a program, a data file larger than it and a readme
   GameFile file;
-  CGameFileIdentity::Identify(_REF_FILE_PATH("/games/library/test/program.zip"), file,
+  CGameFileIdentity::Identify(XBMC_REF_FILE_PATH("xbmc/games/library/test/program.zip"), file,
                               MediaFormat::DISK);
 
   EXPECT_TRUE(file.crc32.empty());
@@ -203,7 +203,7 @@ TEST(TestGameFileIdentity, KnowsAnArchivedDiscOnlyByItsSerial)
 {
   // identity.zip holds a ROM, not a disc with a header
   GameFile file;
-  EXPECT_FALSE(CGameFileIdentity::Identify(_REF_FILE_PATH(ARCHIVE), file, MediaFormat::DISC));
+  EXPECT_FALSE(CGameFileIdentity::Identify(XBMC_REF_FILE_PATH(ARCHIVE), file, MediaFormat::DISC));
   EXPECT_TRUE(file.crc32.empty());
   EXPECT_TRUE(file.md5.empty());
 }
@@ -211,7 +211,7 @@ TEST(TestGameFileIdentity, KnowsAnArchivedDiscOnlyByItsSerial)
 TEST(TestGameFileIdentity, HashesALargeCartridgeInsideAnArchive)
 {
   // large.zip holds 65 MB of zeros, over the size a file of unknown media is hashed at
-  const std::string path = _REF_FILE_PATH("/games/library/test/large.zip");
+  const std::string path = XBMC_REF_FILE_PATH("xbmc/games/library/test/large.zip");
 
   GameFile file;
   EXPECT_TRUE(CGameFileIdentity::Identify(path, file, MediaFormat::CARTRIDGE));
@@ -240,7 +240,7 @@ std::string WriteDisc(XFILE::CFile* disc,
   data.replace(at + serialOffset, serial.size(), serial);
   EXPECT_EQ(disc->Write(data.data(), data.size()), static_cast<ssize_t>(data.size()));
   disc->Flush();
-  return _TEMPFILEPATH(disc);
+  return XBMC_TEMPFILEPATH(disc);
 }
 } // namespace
 
@@ -261,11 +261,11 @@ TEST(TestGameFileIdentity, ReadsTheSerialOfEachDiscHeader)
 
   for (const Disc& d : discs)
   {
-    XFILE::CFile* disc = _CREATETEMPFILE(".bin");
+    XFILE::CFile* disc = XBMC_CREATETEMPFILE(".bin");
     ASSERT_NE(disc, nullptr);
     const std::string path = WriteDisc(disc, 64 * 1024, 0x10, d.magic, d.serialOffset, d.serial);
     EXPECT_EQ(CGameFileIdentity::ReadDiscSerial(path), d.expected) << d.magic;
-    _DELETETEMPFILE(disc);
+    XBMC_DELETETEMPFILE(disc);
   }
 }
 
@@ -273,11 +273,11 @@ TEST(TestGameFileIdentity, ReadsAHeaderThatStraddlesTwoReads)
 {
   // Discs are read a megabyte at a time. Only "MK-5" of the serial is in the first.
   constexpr size_t READ = 1024 * 1024;
-  XFILE::CFile* disc = _CREATETEMPFILE(".bin");
+  XFILE::CFile* disc = XBMC_CREATETEMPFILE(".bin");
   ASSERT_NE(disc, nullptr);
   const std::string path =
       WriteDisc(disc, READ + 64 * 1024, READ - 0x44, "SEGA SEGAKATANA", 0x40, "MK-51171        ");
 
   EXPECT_EQ(CGameFileIdentity::ReadDiscSerial(path), "MK51171");
-  _DELETETEMPFILE(disc);
+  XBMC_DELETETEMPFILE(disc);
 }

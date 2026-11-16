@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2014-2024 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -36,8 +36,8 @@ class CPeripheral;
 class CPeripheralJoystick;
 class CPeripherals;
 
-typedef std::vector<addon::DriverPrimitive> PrimitiveVector;
-typedef std::map<UNIVERSAL MEDIA CENTER::JOYSTICK::FeatureName, addon::JoystickFeature> FeatureMap;
+typedef std::vector<universalmediacenter::addon::DriverPrimitive> PrimitiveVector;
+typedef std::map<UNIVERSAL MEDIA CENTER::JOYSTICK::FeatureName, universalmediacenter::addon::JoystickFeature> FeatureMap;
 
 /*!
 * \ingroup peripherals
@@ -90,7 +90,7 @@ public:
                    FeatureMap& features);
   bool MapFeature(const CPeripheral* device,
                   const std::string& strControllerId,
-                  const addon::JoystickFeature& feature);
+                  const universalmediacenter::addon::JoystickFeature& feature);
   bool GetIgnoredPrimitives(const CPeripheral* device, PrimitiveVector& primitives);
   bool SetIgnoredPrimitives(const CPeripheral* device, const PrimitiveVector& primitives);
   void SaveButtonMap(const CPeripheral* device);
@@ -118,11 +118,11 @@ private:
   /*!
    * @brief Helper functions
    */
-  static void GetPeripheralInfo(const CPeripheral* device, addon::Peripheral& peripheralInfo);
+  static void GetPeripheralInfo(const CPeripheral* device, universalmediacenter::addon::Peripheral& peripheralInfo);
 
-  static void GetJoystickInfo(const CPeripheral* device, addon::Joystick& joystickInfo);
+  static void GetJoystickInfo(const CPeripheral* device, universalmediacenter::addon::Joystick& joystickInfo);
   static void SetJoystickInfo(CPeripheralJoystick& joystick,
-                              const addon::Joystick& joystickInfo);
+                              const universalmediacenter::addon::Joystick& joystickInfo);
 
   /*!
    * @brief Reset all class members to their defaults. Called by the constructors

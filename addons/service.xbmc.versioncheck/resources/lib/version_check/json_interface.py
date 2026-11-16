@@ -2,10 +2,10 @@
 
 """
 
-    Copyright (C) 2013-2014 Team-
+    Copyright (C) 2013-2014 Team-XBMC
     Copyright (C) 2014-2019 Team Universal Media Center
 
-    This file is part of service..versioncheck
+    This file is part of service.xbmc.versioncheck
 
     SPDX-License-Identifier: GPL-3.0-or-later
     See LICENSES/GPL-3.0-or-later.txt for more information.
@@ -17,8 +17,8 @@ import json
 import os
 import sys
 
-import   # pylint: disable=import-error
-import vfs  # pylint: disable=import-error
+import xbmc  # pylint: disable=import-error
+import xbmcvfs  # pylint: disable=import-error
 
 from .common import ADDON_PATH
 
@@ -37,7 +37,7 @@ def get_installed_version():
         },
         "id": 1
     }
-    json_query = .executeJSONRPC(json.dumps(query))
+    json_query = xbmc.executeJSONRPC(json.dumps(query))
     if sys.version_info[0] >= 3:
         json_query = str(json_query)
     else:
@@ -56,7 +56,7 @@ def get_version_file_list():
     :rtype: dict
     """
     version_file = os.path.join(ADDON_PATH, 'resources/versions.txt')
-    with closing(vfs.File(version_file)) as open_file:
+    with closing(xbmcvfs.File(version_file)) as open_file:
         data = open_file.read()
 
     if sys.version_info[0] >= 3:

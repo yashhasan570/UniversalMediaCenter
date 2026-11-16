@@ -44,8 +44,8 @@ rem the first misses every code but 1, the second misses negative codes. Either 
 rem RUNTESTSUITE would then run a stale %APP_NAME%-test.exe left over from a previous
 rem build and publish its results as if this build had produced them.
 IF NOT "%buildresult%"=="0" (
-  set DIETEXT="%APP_NAME%-test.exe failed to build! (cmake --build returned %buildresult%)  See %CD%\..\vs2010express\\%buildconfig%\objs\.log"
-  type "%CD%\..\vs2010express\\%buildconfig%\objs\.log"
+  set DIETEXT="%APP_NAME%-test.exe failed to build! (cmake --build returned %buildresult%)  See %CD%\..\vs2010express\XBMC\%buildconfig%\objs\XBMC.log"
+  type "%CD%\..\vs2010express\XBMC\%buildconfig%\objs\XBMC.log"
   goto DIE
 )
 ECHO Done building!

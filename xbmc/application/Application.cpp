@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -161,7 +161,7 @@
 #include "windowing/WinSystem.h"
 #include "windowing/WindowSystemFactory.h"
 #if defined(TARGET_ANDROID)
-#include "platform/android/activity/App.h"
+#include "platform/android/activity/XBMCApp.h"
 #endif
 #ifdef TARGET_DARWIN
 #include "platform/darwin/DarwinUtils.h"
@@ -313,7 +313,7 @@ bool CApplication::Create()
       UserDirectoriesLocation::PLATFORM)
 #endif
   {
-    CDirectory::Create("special:///addons");
+    CDirectory::Create("special://xbmc/addons");
   }
 
   // Init our DllLoaders emu env
@@ -508,7 +508,7 @@ bool CApplication::CreateGUI()
   else
   {
     // If OS has no screen saver, use Universal Media Center one by default
-    screensaverModeSetting->SetDefault("screensaver..builtin.dim");
+    screensaverModeSetting->SetDefault("screensaver.xbmc.builtin.dim");
   }
 
   if (sav_res)
@@ -588,7 +588,7 @@ bool CApplication::Initialize()
                           g_sysinfo.GetAppName()),
       StringUtils::Format(CServiceBroker::GetResourcesComponent().GetLocalizeStrings().Get(178),
                           g_sysinfo.GetAppName()),
-      "special:///media/icon256x256.png", EventLevel::Basic)));
+      "special://xbmc/media/icon256x256.png", EventLevel::Basic)));
 
   m_ServiceManager->GetNetwork().WaitForNet();
 
@@ -1689,7 +1689,7 @@ bool CApplication::Stop(int exitCode)
 #if defined(TARGET_ANDROID)
   // Note: On Android, the app must be stopped asynchronously, once Android has
   // signalled that the app shall be destroyed. See android_main() implementation.
-  if (!CApp::Get().Stop(exitCode))
+  if (!CXBMCApp::Get().Stop(exitCode))
     return false;
 #endif
 
@@ -2144,7 +2144,7 @@ bool CApplication::OnMessage(CGUIMessage& message)
   return m_pMsgHandling->OnMessage(message);
 }
 
-bool CApplication::ExecuteAction(std::string actionStr,
+bool CApplication::ExecuteXBMCAction(std::string actionStr,
                                      const std::shared_ptr<CGUIListItem>& item /* = NULL */)
 {
   // see if it is a user set string
@@ -2372,7 +2372,7 @@ void CApplication::ProcessSlow()
 
 #ifdef TARGET_ANDROID
   // Pass the slow loop to droid
-  CApp::Get().ProcessSlow();
+  CXBMCApp::Get().ProcessSlow();
 #endif
 
   // check for any idle curl connections
@@ -2408,7 +2408,7 @@ void CApplication::ProcessSlow()
   CServiceBroker::GetMediaManager().ProcessEvents();
 
   // if we don't render the gui there's no reason to start the screensaver.
-  // that way the screensaver won't kick in if we maximize the  window
+  // that way the screensaver won't kick in if we maximize the XBMC window
   // after the screensaver start time.
   if (!appPower->GetRenderGUI())
     appPower->ResetScreenSaverTimer();

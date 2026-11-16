@@ -81,8 +81,8 @@ set(SOURCES ActorProtocol.cpp
             Utf8Utils.cpp
             Variant.cpp
             Vector.cpp
-            TinyXML.cpp
-            TinyXML2.cpp
+            XBMCTinyXML.cpp
+            XBMCTinyXML2.cpp
             XMLUtils.cpp)
 
 set(HEADERS ActorProtocol.h
@@ -201,8 +201,8 @@ set(HEADERS ActorProtocol.h
             Utf8Utils.h
             Variant.h
             Vector.h
-            TinyXML.h
-            TinyXML2.h
+            XBMCTinyXML.h
+            XBMCTinyXML2.h
             XMLUtils.h
             XTimeUtils.h)
 

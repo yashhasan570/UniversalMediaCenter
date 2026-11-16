@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2012-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -8,7 +8,7 @@
 
 #include "EventLoop.h"
 
-#include "App.h"
+#include "XBMCApp.h"
 
 #define IS_FROM_SOURCE(v, s) ((v & s) == s)
 
@@ -28,7 +28,7 @@ void CEventLoop::run(IActivityHandler& activityHandler, IInputHandler& inputHand
   m_activityHandler = &activityHandler;
   m_inputHandler = &inputHandler;
 
-  CApp::android_printf("CEventLoop: starting event loop");
+  CXBMCApp::android_printf("CEventLoop: starting event loop");
 
   while (!m_application->destroyRequested)
   {
@@ -37,7 +37,7 @@ void CEventLoop::run(IActivityHandler& activityHandler, IInputHandler& inputHand
 
     if (result == ALOOPER_POLL_ERROR)
     {
-      CApp::android_printf("CEventLoop: ALooper_pollOnce returned an error");
+      CXBMCApp::android_printf("CEventLoop: ALooper_pollOnce returned an error");
       break;
     }
 
@@ -46,7 +46,7 @@ void CEventLoop::run(IActivityHandler& activityHandler, IInputHandler& inputHand
       source->process(m_application, source);
   }
 
-  CApp::android_printf("CEventLoop: we are being destroyed");
+  CXBMCApp::android_printf("CEventLoop: we are being destroyed");
 }
 
 void CEventLoop::processActivity(int32_t command)
@@ -62,7 +62,7 @@ void CEventLoop::processActivity(int32_t command)
       m_activityHandler->onCreateWindow(m_application->window);
 
       // set the proper DPI value
-      m_inputHandler->setDPI(CApp::Get().GetDPI());
+      m_inputHandler->setDPI(CXBMCApp::Get().GetDPI());
       break;
 
     case APP_CMD_WINDOW_RESIZED:

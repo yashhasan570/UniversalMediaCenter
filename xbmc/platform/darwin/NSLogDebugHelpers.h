@@ -1,12 +1,12 @@
 	/*
  *  NSLogDebugHelpers.h
- *  launcher
+ *  xbmclauncher
  *
  *      Created by Stephan Diederich on 21.09.08.
  *  Copyright 2008 University Heidelberg. All rights reserved.
  *
  *  Copyright (C) 2008-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.

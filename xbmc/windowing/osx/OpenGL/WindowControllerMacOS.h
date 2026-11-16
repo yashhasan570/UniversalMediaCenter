@@ -2,7 +2,7 @@
 
 /*
  *  Copyright (C) 2023- Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -10,7 +10,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface WindowControllerMacOS : NSWindowController <NSWindowDelegate>
+@interface XBMCWindowControllerMacOS : NSWindowController <NSWindowDelegate>
 
 - (nullable instancetype)initWithTitle:(nonnull NSString*)title
                            defaultSize:(NSSize)size NS_DESIGNATED_INITIALIZER;

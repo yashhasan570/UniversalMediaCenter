@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2024 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -469,7 +469,7 @@ void CPeripheralCecAdapter::Process(void)
     }
     else
     {
-      CLog::Log(LOGDEBUG, "{} -  is not the active source, not sending any standby commands",
+      CLog::Log(LOGDEBUG, "{} - XBMC is not the active source, not sending any standby commands",
                 __FUNCTION__);
     }
   }
@@ -951,7 +951,7 @@ void CPeripheralCecAdapter::PushCecKeypress(const CecButtonPress& key)
       // update the duration
       if (m_bHasButton)
         m_currentButton.iDuration = key.iDuration;
-      // ignore this one, since it's already been handled by 
+      // ignore this one, since it's already been handled by xbmc
       return;
     }
     // if we received a keypress with a duration set, try to find the same one without a duration
@@ -978,252 +978,252 @@ void CPeripheralCecAdapter::PushCecKeypress(const CecButtonPress& key)
 
 void CPeripheralCecAdapter::PushCecKeypress(const cec_keypress& key)
 {
-  CecButtonPress Key;
-  Key.iDuration = key.duration;
+  CecButtonPress xbmcKey;
+  xbmcKey.iDuration = key.duration;
 
   switch (key.keycode)
   {
     case CEC_USER_CONTROL_CODE_SELECT:
-      Key.iButton = XINPUT_IR_REMOTE_SELECT;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_SELECT;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_UP:
-      Key.iButton = XINPUT_IR_REMOTE_UP;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_UP;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_DOWN:
-      Key.iButton = XINPUT_IR_REMOTE_DOWN;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_DOWN;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_LEFT:
-      Key.iButton = XINPUT_IR_REMOTE_LEFT;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_LEFT;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_LEFT_UP:
-      Key.iButton = XINPUT_IR_REMOTE_LEFT;
-      PushCecKeypress(Key);
-      Key.iButton = XINPUT_IR_REMOTE_UP;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_LEFT;
+      PushCecKeypress(xbmcKey);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_UP;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_LEFT_DOWN:
-      Key.iButton = XINPUT_IR_REMOTE_LEFT;
-      PushCecKeypress(Key);
-      Key.iButton = XINPUT_IR_REMOTE_DOWN;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_LEFT;
+      PushCecKeypress(xbmcKey);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_DOWN;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_RIGHT:
-      Key.iButton = XINPUT_IR_REMOTE_RIGHT;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_RIGHT;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_RIGHT_UP:
-      Key.iButton = XINPUT_IR_REMOTE_RIGHT;
-      PushCecKeypress(Key);
-      Key.iButton = XINPUT_IR_REMOTE_UP;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_RIGHT;
+      PushCecKeypress(xbmcKey);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_UP;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_RIGHT_DOWN:
-      Key.iButton = XINPUT_IR_REMOTE_RIGHT;
-      PushCecKeypress(Key);
-      Key.iButton = XINPUT_IR_REMOTE_DOWN;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_RIGHT;
+      PushCecKeypress(xbmcKey);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_DOWN;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_SETUP_MENU:
-      Key.iButton = XINPUT_IR_REMOTE_TITLE;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_TITLE;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_CONTENTS_MENU:
-      Key.iButton = XINPUT_IR_REMOTE_CONTENTS_MENU;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_CONTENTS_MENU;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_ROOT_MENU:
-      Key.iButton = XINPUT_IR_REMOTE_ROOT_MENU;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_ROOT_MENU;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_TOP_MENU:
-      Key.iButton = XINPUT_IR_REMOTE_TOP_MENU;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_TOP_MENU;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_DVD_MENU:
-      Key.iButton = XINPUT_IR_REMOTE_DVD_MENU;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_DVD_MENU;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_FAVORITE_MENU:
-      Key.iButton = XINPUT_IR_REMOTE_FAVORITE_MENU;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_FAVORITE_MENU;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_EXIT:
-      Key.iButton = XINPUT_IR_REMOTE_BACK;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_BACK;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_ENTER:
-      Key.iButton = XINPUT_IR_REMOTE_ENTER;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_ENTER;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_CHANNEL_DOWN:
-      Key.iButton = XINPUT_IR_REMOTE_CHANNEL_MINUS;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_CHANNEL_MINUS;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_CHANNEL_UP:
-      Key.iButton = XINPUT_IR_REMOTE_CHANNEL_PLUS;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_CHANNEL_PLUS;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_PREVIOUS_CHANNEL:
-      Key.iButton = XINPUT_IR_REMOTE_LAST;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_LAST;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_SOUND_SELECT:
-      Key.iButton = XINPUT_IR_REMOTE_LANGUAGE;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_LANGUAGE;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_POWER:
     case CEC_USER_CONTROL_CODE_POWER_TOGGLE_FUNCTION:
     case CEC_USER_CONTROL_CODE_POWER_OFF_FUNCTION:
-      Key.iButton = XINPUT_IR_REMOTE_POWER;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_POWER;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_VOLUME_UP:
-      Key.iButton = XINPUT_IR_REMOTE_VOLUME_PLUS;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_VOLUME_PLUS;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_VOLUME_DOWN:
-      Key.iButton = XINPUT_IR_REMOTE_VOLUME_MINUS;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_VOLUME_MINUS;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_MUTE:
     case CEC_USER_CONTROL_CODE_MUTE_FUNCTION:
     case CEC_USER_CONTROL_CODE_RESTORE_VOLUME_FUNCTION:
-      Key.iButton = XINPUT_IR_REMOTE_MUTE;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_MUTE;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_PLAY:
-      Key.iButton = XINPUT_IR_REMOTE_PLAY;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_PLAY;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_STOP:
-      Key.iButton = XINPUT_IR_REMOTE_STOP;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_STOP;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_PAUSE:
-      Key.iButton = XINPUT_IR_REMOTE_PAUSE;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_PAUSE;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_REWIND:
-      Key.iButton = XINPUT_IR_REMOTE_REVERSE;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_REVERSE;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_FAST_FORWARD:
-      Key.iButton = XINPUT_IR_REMOTE_FORWARD;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_FORWARD;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_NUMBER0:
-      Key.iButton = XINPUT_IR_REMOTE_0;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_0;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_NUMBER1:
-      Key.iButton = XINPUT_IR_REMOTE_1;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_1;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_NUMBER2:
-      Key.iButton = XINPUT_IR_REMOTE_2;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_2;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_NUMBER3:
-      Key.iButton = XINPUT_IR_REMOTE_3;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_3;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_NUMBER4:
-      Key.iButton = XINPUT_IR_REMOTE_4;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_4;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_NUMBER5:
-      Key.iButton = XINPUT_IR_REMOTE_5;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_5;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_NUMBER6:
-      Key.iButton = XINPUT_IR_REMOTE_6;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_6;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_NUMBER7:
-      Key.iButton = XINPUT_IR_REMOTE_7;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_7;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_NUMBER8:
-      Key.iButton = XINPUT_IR_REMOTE_8;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_8;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_NUMBER9:
-      Key.iButton = XINPUT_IR_REMOTE_9;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_9;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_RECORD:
-      Key.iButton = XINPUT_IR_REMOTE_RECORD;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_RECORD;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_CLEAR:
-      Key.iButton = XINPUT_IR_REMOTE_CLEAR;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_CLEAR;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_DISPLAY_INFORMATION:
-      Key.iButton = XINPUT_IR_REMOTE_INFO;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_INFO;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_PAGE_UP:
-      Key.iButton = XINPUT_IR_REMOTE_CHANNEL_PLUS;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_CHANNEL_PLUS;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_PAGE_DOWN:
-      Key.iButton = XINPUT_IR_REMOTE_CHANNEL_MINUS;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_CHANNEL_MINUS;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_FORWARD:
-      Key.iButton = XINPUT_IR_REMOTE_SKIP_PLUS;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_SKIP_PLUS;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_BACKWARD:
-      Key.iButton = XINPUT_IR_REMOTE_SKIP_MINUS;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_SKIP_MINUS;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_F1_BLUE:
-      Key.iButton = XINPUT_IR_REMOTE_BLUE;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_BLUE;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_F2_RED:
-      Key.iButton = XINPUT_IR_REMOTE_RED;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_RED;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_F3_GREEN:
-      Key.iButton = XINPUT_IR_REMOTE_GREEN;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_GREEN;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_F4_YELLOW:
-      Key.iButton = XINPUT_IR_REMOTE_YELLOW;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_YELLOW;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_ELECTRONIC_PROGRAM_GUIDE:
-      Key.iButton = XINPUT_IR_REMOTE_GUIDE;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_GUIDE;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_AN_CHANNELS_LIST:
-      Key.iButton = XINPUT_IR_REMOTE_LIVE_TV;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_LIVE_TV;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_NEXT_FAVORITE:
     case CEC_USER_CONTROL_CODE_DOT:
     case CEC_USER_CONTROL_CODE_AN_RETURN:
-      Key.iButton = XINPUT_IR_REMOTE_TITLE; // context menu
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_TITLE; // context menu
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_DATA:
-      Key.iButton = XINPUT_IR_REMOTE_TELETEXT;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_TELETEXT;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_SUB_PICTURE:
-      Key.iButton = XINPUT_IR_REMOTE_SUBTITLE;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_SUBTITLE;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_EJECT:
-      Key.iButton = XINPUT_IR_REMOTE_EJECT;
-      PushCecKeypress(Key);
+      xbmcKey.iButton = XINPUT_IR_REMOTE_EJECT;
+      PushCecKeypress(xbmcKey);
       break;
     case CEC_USER_CONTROL_CODE_POWER_ON_FUNCTION:
     case CEC_USER_CONTROL_CODE_INPUT_SELECT:
@@ -1490,7 +1490,7 @@ void CPeripheralCecAdapter::SetConfigurationFromSettings(void)
   // client version matches the version of libCEC that we originally used the API from
   m_configuration.clientVersion = LIBCEC_VERSION_TO_UINT(4, 0, 0);
 
-  // device name ''
+  // device name 'XBMC'
   snprintf(m_configuration.strDeviceName, 13, "%s", GetSettingString("device_name").c_str());
 
   // set the primary device type
@@ -1811,7 +1811,7 @@ std::string CPeripheralCecAdapterUpdateThread::UpdateAudioSystemStatus(void)
 
 bool CPeripheralCecAdapterUpdateThread::SetInitialConfiguration(void)
 {
-  // the option to make  the active source is set
+  // the option to make XBMC the active source is set
   if (m_configuration.bActivateSource == 1)
     m_adapter->m_cecAdapter->SetActiveSource();
 

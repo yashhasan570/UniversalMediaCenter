@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2023 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -21,7 +21,7 @@ protected:
 
 TEST_F(TestMetadataExtraction, TestGPSImage)
 {
-  auto path = _REF_FILE_PATH("/pictures/metadata/test/testdata/exifgps.jpg");
+  auto path = XBMC_REF_FILE_PATH("xbmc/pictures/metadata/test/testdata/exifgps.jpg");
   std::unique_ptr<ImageMetadata> metadata = CImageMetadataParser::ExtractMetadata(path);
   // Extract GPS tags
   EXPECT_EQ(metadata->exifInfo.GpsLat, "49° 5' 47.469\" N");
@@ -55,7 +55,7 @@ TEST_F(TestMetadataExtraction, TestGPSImage)
 
 TEST_F(TestMetadataExtraction, TestIPTC)
 {
-  auto path = _REF_FILE_PATH("/pictures/metadata/test/testdata/iptc.jpg");
+  auto path = XBMC_REF_FILE_PATH("xbmc/pictures/metadata/test/testdata/iptc.jpg");
   std::unique_ptr<ImageMetadata> metadata = CImageMetadataParser::ExtractMetadata(path);
   // Check the IPTC tags of this image
   EXPECT_TRUE(metadata->iptcInfo.Keywords.empty());

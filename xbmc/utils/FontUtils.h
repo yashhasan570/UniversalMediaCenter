@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2022 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -23,7 +23,7 @@ constexpr const char* FONT_DEFAULT_FILENAME = "arial.ttf";
 namespace FONTPATH
 {
 // Directory where Universal Media Center bundled fonts files are located
-constexpr const char* SYSTEM = "special:///media/Fonts/";
+constexpr const char* SYSTEM = "special://xbmc/media/Fonts/";
 // Directory where user defined fonts are located
 constexpr const char* USER = "special://home/media/Fonts/";
 // Temporary font path (where MKV fonts are extracted and temporarily stored)

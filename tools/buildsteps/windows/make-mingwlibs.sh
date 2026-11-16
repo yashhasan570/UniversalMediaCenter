@@ -1,7 +1,7 @@
 [[ -f $(dirname $0)/buildhelpers.sh ]] &&
     source $(dirname $0)/buildhelpers.sh
 
-Win32BuildSetup=//project/Win32BuildSetup
+Win32BuildSetup=/xbmc/project/Win32BuildSetup
 ERRORFILE=$Win32BuildSetup/errormingw
 TOUCH=/bin/touch
 RM=/bin/rm
@@ -76,8 +76,8 @@ checkfiles() {
 }
 
 buildProcess() {
-export PREFIX=//project/BuildDependencies/mingwlibs/$TRIPLET
-if [ "$(pathChanged $PREFIX //tools/depends/target/ffmpeg //tools/buildsteps/windows //tools/depends/target/dav1d/DAV1D-VERSION //tools/depends/target/libopus/LIBOPUS-VERSION //tools/depends/target/ffmpeg/FFMPEG-VERSION)" == "0" ]; then
+export PREFIX=/xbmc/project/BuildDependencies/mingwlibs/$TRIPLET
+if [ "$(pathChanged $PREFIX /xbmc/tools/depends/target/ffmpeg /xbmc/tools/buildsteps/windows /xbmc/tools/depends/target/dav1d/DAV1D-VERSION /xbmc/tools/depends/target/libopus/LIBOPUS-VERSION /xbmc/tools/depends/target/ffmpeg/FFMPEG-VERSION)" == "0" ]; then
   return
 fi
 
@@ -85,7 +85,7 @@ if [ -d "$PREFIX" ]; then
   rm -rdf $PREFIX/*
 fi
 
-cd //tools/buildsteps/windows
+cd /xbmc/tools/buildsteps/windows
 
 # compile our mingw dlls
 echo "-------------------------------------------------------------------------------"
@@ -110,7 +110,7 @@ echo "--------------------------------------------------------------------------
 echo " compile mingw libs $TRIPLET done..."
 echo "-------------------------------------------------------------------------------"
 
-tagSuccessFulBuild $PREFIX //tools/depends/target/ffmpeg //tools/buildsteps/windows //tools/depends/target/dav1d/DAV1D-VERSION //tools/depends/target/libopus/LIBOPUS-VERSION //tools/depends/target/ffmpeg/FFMPEG-VERSION
+tagSuccessFulBuild $PREFIX /xbmc/tools/depends/target/ffmpeg /xbmc/tools/buildsteps/windows /xbmc/tools/depends/target/dav1d/DAV1D-VERSION /xbmc/tools/depends/target/libopus/LIBOPUS-VERSION /xbmc/tools/depends/target/ffmpeg/FFMPEG-VERSION
 }
 
 run_builds() {

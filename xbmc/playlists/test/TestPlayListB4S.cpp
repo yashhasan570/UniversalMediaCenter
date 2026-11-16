@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2023 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -20,7 +20,7 @@ using namespace UNIVERSAL MEDIA CENTER;
 
 TEST(TestPlayListB4S, LoadData)
 {
-  const std::string filename = _REF_FILE_PATH("//playlists/test/test.b4s");
+  const std::string filename = XBMC_REF_FILE_PATH("/xbmc/playlists/test/test.b4s");
   PLAYLIST::CPlayListB4S playlist;
 
   std::filebuf fb;

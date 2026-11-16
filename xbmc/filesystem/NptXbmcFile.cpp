@@ -1,5 +1,5 @@
 /*
- *  Neptune - Files ::  Implementation
+ *  Neptune - Files :: XBMC Implementation
  *
  *  Copyright (c) 2002-2008, Axiomatic Systems, LLC.
  *  All rights reserved.

@@ -1,15 +1,15 @@
-# Universal Media Center Media Center language file
-# Addon Name: Universal Media Center Add-on repository
-# Addon id: repository.github.com/yashhasan570/UniversalMediaCenter
-# Addon Provider: Team Universal Media Center
+# Kodi Media Center language file
+# Addon Name: Kodi Add-on repository
+# Addon id: repository.xbmc.org
+# Addon Provider: Team Kodi
 msgid ""
 msgstr ""
-"Project-Id-Version: UNIVERSAL MEDIA CENTER Main\n"
-"Report-Msgid-Bugs-To: translations@github.com/yashhasan570/UniversalMediaCenter\n"
+"Project-Id-Version: KODI Main\n"
+"Report-Msgid-Bugs-To: translations@kodi.tv\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: 2023-03-27 15:08+0000\n"
-"Last-Translator: Christian Gade <gade@github.com/yashhasan570/UniversalMediaCenter>\n"
-"Language-Team: Belarusian <https://universalmediacenter.weblate.cloud/projects/Universal Media Center-core/repository--org/be_by/>\n"
+"Last-Translator: Christian Gade <gade@kodi.tv>\n"
+"Language-Team: Belarusian <https://kodi.weblate.cloud/projects/kodi-core/repository-xbmc-org/be_by/>\n"
 "Language: be_by\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,13 +18,13 @@ msgstr ""
 "X-Generator: Weblate 4.15.2\n"
 
 msgctxt "Addon Summary"
-msgid "Install Add-ons from Universal Media Center.tv"
-msgstr "Усталяваць дапаўненне з Universal Media Center.tv"
+msgid "Install Add-ons from Kodi.tv"
+msgstr "Усталяваць дапаўненне з Kodi.tv"
 
 msgctxt "Addon Description"
-msgid "Download and install add-ons from the Official Universal Media Center.tv add-on repository.[CR]  By using the official Repository you will be able to take advantage of our extensive file mirror service to help get you faster downloads from a region close to you.[CR]  All add-ons on this repository have under gone basic testing, if you find a broken or not working add-on please report it to Team Universal Media Center so we can take any action needed."
-msgstr "Спампаваць і ўсталяваць дапаўненне з афіцыйнага рэпазіторыя Universal Media Center.tv . [CR] Пры выкарыстанні афіцыйнага рэпазіторыя вы зможаце выкарыстаць нашу службу люстэрак, каб у вас была больш вышэйшая хуткасць спампоўвання з рэгіёна, бліжэйшага да вас. [CR] Усе дапаўненні ў гэтым рэпазіторыя былі пратэставаныя. Калі вы выявілі пашкоджанае дапаўненне, ці дапаўненне, якое не працуе, калі ласка, паведаміце пра гэта камандзе Universal Media Center, каб мы маглі гэта выправіць."
+msgid "Download and install add-ons from the Official Kodi.tv add-on repository.[CR]  By using the official Repository you will be able to take advantage of our extensive file mirror service to help get you faster downloads from a region close to you.[CR]  All add-ons on this repository have under gone basic testing, if you find a broken or not working add-on please report it to Team Kodi so we can take any action needed."
+msgstr "Спампаваць і ўсталяваць дапаўненне з афіцыйнага рэпазіторыя Kodi.tv . [CR] Пры выкарыстанні афіцыйнага рэпазіторыя вы зможаце выкарыстаць нашу службу люстэрак, каб у вас была больш вышэйшая хуткасць спампоўвання з рэгіёна, бліжэйшага да вас. [CR] Усе дапаўненні ў гэтым рэпазіторыя былі пратэставаныя. Калі вы выявілі пашкоджанае дапаўненне, ці дапаўненне, якое не працуе, калі ласка, паведаміце пра гэта камандзе Kodi, каб мы маглі гэта выправіць."
 
 msgctxt "Addon Disclaimer"
-msgid "Team Universal Media Center did not make all the add-ons on this repository and are not responsible for their content"
-msgstr "Каманда Universal Media Center не распрацоўвае усё дапаўненні з гэтага рэпазіторыя і не нясе адказнасці за іх змесціва"
+msgid "Team Kodi did not make all the add-ons on this repository and are not responsible for their content"
+msgstr "Каманда Kodi не распрацоўвае усё дапаўненні з гэтага рэпазіторыя і не нясе адказнасці за іх змесціва"

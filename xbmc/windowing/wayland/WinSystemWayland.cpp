@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2017-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -973,8 +973,8 @@ void CWinSystemWayland::SetResolutionInternal(CSizeInt size,
     {
       if (m_bFullScreen)
       {
-        _Event msg{};
-        msg.type = _MODECHANGE;
+        XBMC_Event msg{};
+        msg.type = XBMC_MODECHANGE;
         msg.mode.res = RES_WINDOW;
         SetWindowResolution(sizes.bufferSize.Width(), sizes.bufferSize.Height());
         // FIXME
@@ -985,8 +985,8 @@ void CWinSystemWayland::SetResolutionInternal(CSizeInt size,
       }
       else
       {
-        _Event msg{};
-        msg.type = _VIDEORESIZE;
+        XBMC_Event msg{};
+        msg.type = XBMC_VIDEORESIZE;
         msg.resize = {sizes.surfaceSize.Width(), sizes.surfaceSize.Height(), scale};
         // FIXME
         dynamic_cast<CWinEventsWayland&>(*m_winEvents).MessagePush(&msg);
@@ -1010,8 +1010,8 @@ void CWinSystemWayland::SetResolutionInternal(CSizeInt size,
         res = static_cast<RESOLUTION> (CDisplaySettings::GetInstance().ResolutionInfoSize() - 1);
       }
 
-      _Event msg{};
-      msg.type = _MODECHANGE;
+      XBMC_Event msg{};
+      msg.type = XBMC_MODECHANGE;
       msg.mode.res = res;
       // FIXME
       dynamic_cast<CWinEventsWayland&>(*m_winEvents).MessagePush(&msg);
@@ -1374,7 +1374,7 @@ void CWinSystemWayland::OnLeave(InputType type)
   }
 }
 
-void CWinSystemWayland::OnEvent(InputType type, _Event& event)
+void CWinSystemWayland::OnEvent(InputType type, XBMC_Event& event)
 {
   // FIXME
   dynamic_cast<CWinEventsWayland&>(*m_winEvents).MessagePush(&event);

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -21,27 +21,27 @@ namespace ADDON
 
 void Interface_GUIListItem::Init(AddonGlobalInterface* addonInterface)
 {
-  addonInterface->toUniversal Media Center->->listItem = new AddonToUniversal Media CenterFuncTable__listItem();
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->listItem = new AddonToUniversal Media CenterFuncTable_universalmediacenter_gui_listItem();
 
-  addonInterface->toUniversal Media Center->->listItem->create = create;
-  addonInterface->toUniversal Media Center->->listItem->destroy = destroy;
-  addonInterface->toUniversal Media Center->->listItem->get_label = get_label;
-  addonInterface->toUniversal Media Center->->listItem->set_label = set_label;
-  addonInterface->toUniversal Media Center->->listItem->get_label2 = get_label2;
-  addonInterface->toUniversal Media Center->->listItem->set_label2 = set_label2;
-  addonInterface->toUniversal Media Center->->listItem->get_art = get_art;
-  addonInterface->toUniversal Media Center->->listItem->set_art = set_art;
-  addonInterface->toUniversal Media Center->->listItem->get_path = get_path;
-  addonInterface->toUniversal Media Center->->listItem->set_path = set_path;
-  addonInterface->toUniversal Media Center->->listItem->get_property = get_property;
-  addonInterface->toUniversal Media Center->->listItem->set_property = set_property;
-  addonInterface->toUniversal Media Center->->listItem->select = select;
-  addonInterface->toUniversal Media Center->->listItem->is_selected = is_selected;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->listItem->create = create;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->listItem->destroy = destroy;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->listItem->get_label = get_label;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->listItem->set_label = set_label;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->listItem->get_label2 = get_label2;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->listItem->set_label2 = set_label2;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->listItem->get_art = get_art;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->listItem->set_art = set_art;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->listItem->get_path = get_path;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->listItem->set_path = set_path;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->listItem->get_property = get_property;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->listItem->set_property = set_property;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->listItem->select = select;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->listItem->is_selected = is_selected;
 }
 
 void Interface_GUIListItem::DeInit(AddonGlobalInterface* addonInterface)
 {
-  delete addonInterface->toUniversal Media Center->->listItem;
+  delete addonInterface->toUniversal Media Center->universalmediacenter_gui->listItem;
 }
 
 UNIVERSALMEDIA_GUI_LISTITEM_HANDLE Interface_GUIListItem::create(UNIVERSALMEDIA_HANDLE universalmediacenterBase,

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -16,7 +16,7 @@
 #include "URL.h"
 #include "utils/StringUtils.h"
 #include "utils/URIUtils.h"
-#include "utils/TinyXML2.h"
+#include "utils/XBMCTinyXML2.h"
 #include "utils/log.h"
 
 using namespace XFILE;
@@ -127,7 +127,7 @@ bool CDAVDirectory::GetDirectory(const CURL& url, CFileItemList &items)
   dav.ReadData(strResponse);
 
   std::string fileCharset(dav.GetProperty(XFILE::FileProperty::CONTENT_CHARSET));
-  CTinyXML2 davResponse;
+  CXBMCTinyXML2 davResponse;
   davResponse.Parse(strResponse);
 
   if (!davResponse.Parse(strResponse))

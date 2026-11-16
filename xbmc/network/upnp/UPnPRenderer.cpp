@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2012-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -41,7 +41,7 @@
 
 using namespace UNIVERSAL MEDIA CENTER;
 
-NPT_SET_LOCAL_LOGGER(".upnp.renderer")
+NPT_SET_LOCAL_LOGGER("xbmc.upnp.renderer")
 
 namespace UPNP
 {
@@ -78,7 +78,7 @@ NPT_Result CUPnPRenderer::SetupServices()
   PLT_Service* service = NULL;
   NPT_CHECK_FATAL(FindServiceByType("urn:schemas-upnp-org:service:ConnectionManager:1", service));
   service->SetStateVariable("SinkProtocolInfo", "http-get:*:*:*"
-                                                ",-get:*:*:*"
+                                                ",xbmc-get:*:*:*"
                                                 ",http-get:*:audio/mkv:*"
                                                 ",http-get:*:audio/mpegurl:*"
                                                 ",http-get:*:audio/mpeg:*"
@@ -416,7 +416,7 @@ NPT_Result CUPnPRenderer::Reset(PLT_Service* avt)
 +---------------------------------------------------------------------*/
 NPT_Result CUPnPRenderer::SetupIcons()
 {
-  NPT_String file_root = CSpecialProtocol::TranslatePath("special:///media/").c_str();
+  NPT_String file_root = CSpecialProtocol::TranslatePath("special://xbmc/media/").c_str();
   AddIcon(PLT_DeviceIcon("image/png", 256, 256, 8, "/icon256x256.png"), file_root);
   AddIcon(PLT_DeviceIcon("image/png", 120, 120, 8, "/icon120x120.png"), file_root);
   AddIcon(PLT_DeviceIcon("image/png", 48, 48, 8, "/icon48x48.png"), file_root);

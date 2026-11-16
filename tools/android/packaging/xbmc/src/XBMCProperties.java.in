@@ -10,7 +10,7 @@ import android.content.Context;
 import android.util.Base64;
 import android.util.Log;
 
-public class Properties
+public class XBMCProperties
 {
   private static final String TAG = "@APP_NAME@";
 
@@ -25,30 +25,30 @@ public class Properties
 
   private static boolean isInitialized()
   {
-    String isInit = System.getProperty(".proploaded", "");
+    String isInit = System.getProperty("xbmc.proploaded", "");
     return isInit.equalsIgnoreCase("yes");
   }
 
   public static void initializeProperties()
   {
-    String propfn = Storage.getPrimaryStorageVolumePath(mContext) + "/_env.properties";
-    Log.i(TAG, "Properties: Expected at " + propfn);
+    String propfn = Storage.getPrimaryStorageVolumePath(mContext) + "/xbmc_env.properties";
+    Log.i(TAG, "XBMCProperties: Expected at " + propfn);
 
     File fProp = new File(propfn);
     if (fProp.exists())
     {
-      Log.i(TAG, "Properties: Loading " + propfn);
+      Log.i(TAG, "XBMCProperties: Loading " + propfn);
       try
       {
         Properties sysProp = new Properties(System.getProperties());
-        FileInputStream envprop = new FileInputStream(fProp);
-        sysProp.load(envprop);
+        FileInputStream xbmcenvprop = new FileInputStream(fProp);
+        sysProp.load(xbmcenvprop);
         System.setProperties(sysProp);
-        System.setProperty(".proploaded", "yes");
+        System.setProperty("xbmc.proploaded", "yes");
       }
       catch (Exception e)
       {
-        Log.e(TAG, "Properties: Error loading " + propfn + " (" + e.getMessage() + ")");
+        Log.e(TAG, "XBMCProperties: Error loading " + propfn + " (" + e.getMessage() + ")");
       }
     }
   }
@@ -82,8 +82,8 @@ public class Properties
     if (!isInitialized())
       initializeProperties();
 
-    String jsonUser = System.getProperty(".jsonUser", "");
-    String jsonPwd = System.getProperty(".jsonPwd", "");
+    String jsonUser = System.getProperty("xbmc.jsonUser", "");
+    String jsonPwd = System.getProperty("xbmc.jsonPwd", "");
 
     if (!jsonPwd.isEmpty())
       return "Basic " + Base64.encodeToString((jsonUser + ":" + jsonPwd).getBytes(), Base64.NO_WRAP);

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -28,7 +28,7 @@ bool CPlatformWasm::InitStageOne()
     return false;
 
   setenv("SSL_CERT_FILE",
-         CSpecialProtocol::TranslatePath("special:///system/certs/cacert.pem").c_str(), 0);
+         CSpecialProtocol::TranslatePath("special://xbmc/system/certs/cacert.pem").c_str(), 0);
 
   CWinSystemWasmGLESContext::Register();
   CAESinkWasmAudioWorklet::Register();

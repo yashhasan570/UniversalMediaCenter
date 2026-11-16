@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -21,20 +21,20 @@ namespace ADDON
 
 void Interface_GUIControlTextBox::Init(AddonGlobalInterface* addonInterface)
 {
-  addonInterface->toUniversal Media Center->->control_text_box =
-      new AddonToUniversal Media CenterFuncTable__control_text_box();
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_text_box =
+      new AddonToUniversal Media CenterFuncTable_universalmediacenter_gui_control_text_box();
 
-  addonInterface->toUniversal Media Center->->control_text_box->set_visible = set_visible;
-  addonInterface->toUniversal Media Center->->control_text_box->reset = reset;
-  addonInterface->toUniversal Media Center->->control_text_box->set_text = set_text;
-  addonInterface->toUniversal Media Center->->control_text_box->get_text = get_text;
-  addonInterface->toUniversal Media Center->->control_text_box->scroll = scroll;
-  addonInterface->toUniversal Media Center->->control_text_box->set_auto_scrolling = set_auto_scrolling;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_text_box->set_visible = set_visible;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_text_box->reset = reset;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_text_box->set_text = set_text;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_text_box->get_text = get_text;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_text_box->scroll = scroll;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_text_box->set_auto_scrolling = set_auto_scrolling;
 }
 
 void Interface_GUIControlTextBox::DeInit(AddonGlobalInterface* addonInterface)
 {
-  delete addonInterface->toUniversal Media Center->->control_text_box;
+  delete addonInterface->toUniversal Media Center->universalmediacenter_gui->control_text_box;
 }
 
 void Interface_GUIControlTextBox::set_visible(UNIVERSALMEDIA_HANDLE universalmediacenterBase,

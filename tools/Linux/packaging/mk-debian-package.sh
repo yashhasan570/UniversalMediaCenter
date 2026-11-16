@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# Copyright (C) 2013 Team 
-# http://github.com/yashhasan570/UniversalMediaCenter
+# Copyright (C) 2013 Team XBMC
+# http://universalmediacenter.tv
 #
 # This Program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with ; see the file COPYING. If not, see
+# along with XBMC; see the file COPYING. If not, see
 # <http://www.gnu.org/licenses/>.
 #
 
@@ -31,7 +31,7 @@ DEBUILD_OPTS=${DEBUILD_OPTS:-""}
 PDEBUILD_OPTS=${PDEBUILD_OPTS:-""}
 PBUILDER_BASE=${PBUILDER_BASE:-"/var/cache/pbuilder"}
 DPUT_TARGET=${DPUT_TARGET:-"local"}
-DEBIAN=${DEBIAN:-"https://github.com//-packaging/archive/master.tar.gz"}
+DEBIAN=${DEBIAN:-"https://github.com/xbmc/xbmc-packaging/archive/master.tar.gz"}
 BUILD_DATE=$(date '+%Y%m%d.%H%M')
 
 function usage {
@@ -122,7 +122,7 @@ function getDebian {
         mkdir tmp && cd tmp
         curl -L -s $DEBIAN -o debian.tar.gz
         tar xzf debian.tar.gz
-        cd -packaging-*
+        cd xbmc-packaging-*
         for FILE in *.unified; do mv $FILE debian/${FILE%.unified}; done
         mv debian $REPO_DIR
         cd $REPO_DIR ; rm -rf tmp
@@ -133,7 +133,7 @@ function buildDebianPackages {
     archiveRepo
     cd $REPO_DIR || exit 1
     sed -e "s/#PACKAGEVERSION#/${PACKAGEVERSION}/g" -e "s/#TAGREV#/${TAGREV}/g" debian/changelog.in > debian/changelog.tmp
-    [ "$Configuration" == "Debug" ] && sed -i "s/_RELEASE = yes/_RELEASE = no/" debian/rules
+    [ "$Configuration" == "Debug" ] && sed -i "s/XBMC_RELEASE = yes/XBMC_RELEASE = no/" debian/rules
 
     for dist in $DISTS
     do

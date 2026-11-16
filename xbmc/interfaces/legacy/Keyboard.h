@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -14,19 +14,19 @@
 
 class CGUIDialogKeyboardGeneric;
 
-namespace Addon
+namespace XBMCAddon
 {
-  namespace 
+  namespace xbmc
   {
-    COMMONS_STANDARD_EXCEPTION(KeyboardException);
+    XBMCCOMMONS_STANDARD_EXCEPTION(KeyboardException);
 
     ///
     /// \defgroup python_keyboard Keyboard
-    /// \ingroup python_
+    /// \ingroup python_xbmc
     /// @{
     /// @brief **Universal Media Center's keyboard class.**
     ///
-    /// \python_class{ .Keyboard([default, heading, hidden]) }
+    /// \python_class{ xbmc.Keyboard([default, heading, hidden]) }
     ///
     /// Creates a new Keyboard object with default text
     /// heading and hidden input flag if supplied.
@@ -41,7 +41,7 @@ namespace Addon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// kb = .Keyboard('default', 'heading', True)
+    /// kb = xbmc.Keyboard('default', 'heading', True)
     /// kb.setDefault('password') # optional
     /// kb.setHeading('Enter password') # optional
     /// kb.setHiddenInput(True) # optional

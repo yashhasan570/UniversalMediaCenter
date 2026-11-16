@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -16,9 +16,9 @@
 
 #ifdef __GNUC__
 // under gcc, inline will only take place if optimizations are applied (-O). this will force inline even without optimizations.
-#define _FORCE_INLINE __attribute__((always_inline))
+#define XBMC_FORCE_INLINE __attribute__((always_inline))
 #else
-#define _FORCE_INLINE
+#define XBMC_FORCE_INLINE
 #endif
 
 class CGUIFont;
@@ -187,11 +187,11 @@ protected:
   float m_textWidth;
   float m_textHeight;
 private:
-  inline bool IsSpace(character_t letter) const _FORCE_INLINE
+  inline bool IsSpace(character_t letter) const XBMC_FORCE_INLINE
   {
     return (letter & 0xffffffff) == L' ';
   };
-  inline bool CanWrapAtLetter(character_t letter) const _FORCE_INLINE
+  inline bool CanWrapAtLetter(character_t letter) const XBMC_FORCE_INLINE
   {
     character_t ch = letter & 0xffffffff;
     //! @todo: unicode spaces are not handled, to check also all other GUI parts

@@ -1,1 +1,1 @@
-/network/mdns mdns # MDNS
+xbmc/network/mdns mdns # MDNS

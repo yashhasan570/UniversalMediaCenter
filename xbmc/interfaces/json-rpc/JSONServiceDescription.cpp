@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2016-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -26,7 +26,7 @@
 #include "SystemOperations.h"
 #include "TextureOperations.h"
 #include "VideoLibrary.h"
-#include "Operations.h"
+#include "XBMCOperations.h"
 #include "utils/JSONVariantParser.h"
 #include "utils/StringUtils.h"
 #include "utils/log.h"
@@ -262,9 +262,9 @@ JsonRpcMethodMap CJSONServiceDescription::m_methodMaps[] = {
   { "Settings.GetSkinSettingValue",                 CSettingsOperations::GetSkinSettingValue },
   { "Settings.SetSkinSettingValue",                 CSettingsOperations::SetSkinSettingValue },
 
-//  operations
-  { ".GetInfoLabels",                           COperations::GetInfoLabels },
-  { ".GetInfoBooleans",                         COperations::GetInfoBooleans },
+// XBMC operations
+  { "XBMC.GetInfoLabels",                           CXBMCOperations::GetInfoLabels },
+  { "XBMC.GetInfoBooleans",                         CXBMCOperations::GetInfoBooleans },
 
 // Database operations
   { "Database.GetDatabaseName",                     CDatabaseOperations::GetDatabaseNameByType },
@@ -1306,7 +1306,7 @@ JsonRpcMethod::JsonRpcMethod()
 
 bool JsonRpcMethod::Parse(const CVariant &value)
 {
-  // Parse  specific information about the method
+  // Parse XBMC specific information about the method
   if (value.isMember("transport") && value["transport"].isArray())
   {
     int transport = 0;

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -12,17 +12,17 @@
 #include "LanguageHook.h"
 #include "filesystem/File.h"
 
-namespace Addon
+namespace XBMCAddon
 {
-  namespace vfs
+  namespace xbmcvfs
   {
     //
     /// \defgroup python_stat Stat
-    /// \ingroup python_vfs
+    /// \ingroup python_xbmcvfs
     /// @{
     /// @brief **Get file or file system status.**
     ///
-    /// \python_class{ vfs.Stat(path) }
+    /// \python_class{ xbmcvfs.Stat(path) }
     ///
     /// These class return information about a file. Execute (search) permission
     /// is required on all of the directories in path that lead to the file.
@@ -36,7 +36,7 @@ namespace Addon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    ///   st = vfs.Stat(path)
+    ///   st = xbmcvfs.Stat(path)
     ///   modified = st.st_mtime()
     /// ..
     /// ~~~~~~~~~~~~~

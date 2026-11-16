@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -13,18 +13,18 @@
 #include "addons/Skin.h"
 #include "application/Application.h"
 #include "guilib/GUIComponent.h"
-#include "utils/TinyXML.h"
-#ifdef ENABLE__TRACE_API
+#include "utils/XBMCTinyXML.h"
+#ifdef ENABLE_XBMC_TRACE_API
 #include "utils/log.h"
 #endif
 
-namespace AddonUtils
+namespace XBMCAddonUtils
 {
-  GuiLock::GuiLock(Addon::LanguageHook* languageHook, bool offScreen)
+  GuiLock::GuiLock(XBMCAddon::LanguageHook* languageHook, bool offScreen)
     : m_languageHook(languageHook), m_offScreen(offScreen)
   {
     if (!m_languageHook)
-      m_languageHook = Addon::LanguageHook::GetLanguageHook();
+      m_languageHook = XBMCAddon::LanguageHook::GetLanguageHook();
     if (m_languageHook)
       m_languageHook->DelayedCallOpen();
 
@@ -73,7 +73,7 @@ namespace AddonUtils
     return "";
   }
 
-#ifdef ENABLE__TRACE_API
+#ifdef ENABLE_XBMC_TRACE_API
   static thread_local TraceGuard* tlParent;
 
   static char** getSpacesArray(int size)

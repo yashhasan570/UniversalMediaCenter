@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2020 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -23,8 +23,8 @@
 @implementation CBPeripheralBusGCControllerManager
 {
   PERIPHERALS::CPeripheralBusGCController* parentClass;
-  std::vector<addon::PeripheralEvent> m_digitalEvents;
-  std::vector<addon::PeripheralEvent> m_axisEvents;
+  std::vector<universalmediacenter::addon::PeripheralEvent> m_digitalEvents;
+  std::vector<universalmediacenter::addon::PeripheralEvent> m_axisEvents;
   CCriticalSection m_eventMutex;
 }
 
@@ -64,14 +64,14 @@
   return self;
 }
 
-- (void)SetDigitalEvent:(addon::PeripheralEvent)event
+- (void)SetDigitalEvent:(universalmediacenter::addon::PeripheralEvent)event
 {
   std::unique_lock lock(m_eventMutex);
 
   m_digitalEvents.emplace_back(event);
 }
 
-- (void)SetAxisEvent:(addon::PeripheralEvent)event
+- (void)SetAxisEvent:(universalmediacenter::addon::PeripheralEvent)event
 {
   std::unique_lock lock(m_eventMutex);
 
@@ -80,9 +80,9 @@
 
 #pragma mark - GetEvents
 
-- (std::vector<addon::PeripheralEvent>)GetAxisEvents
+- (std::vector<universalmediacenter::addon::PeripheralEvent>)GetAxisEvents
 {
-  std::vector<addon::PeripheralEvent> events;
+  std::vector<universalmediacenter::addon::PeripheralEvent> events;
   std::unique_lock lock(m_eventMutex);
 
   for (unsigned int i = 0; i < m_axisEvents.size(); i++)
@@ -93,13 +93,13 @@
   return events;
 }
 
-- (std::vector<addon::PeripheralEvent>)GetButtonEvents
+- (std::vector<universalmediacenter::addon::PeripheralEvent>)GetButtonEvents
 {
-  std::vector<addon::PeripheralEvent> events;
+  std::vector<universalmediacenter::addon::PeripheralEvent> events;
 
   std::unique_lock lock(m_eventMutex);
   // Only report a single event per button (avoids dropping rapid presses)
-  std::vector<addon::PeripheralEvent> repeatButtons;
+  std::vector<universalmediacenter::addon::PeripheralEvent> repeatButtons;
 
   for (const auto& digitalEvent : m_digitalEvents)
   {

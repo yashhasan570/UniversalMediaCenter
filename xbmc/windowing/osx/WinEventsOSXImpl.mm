@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2012-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -27,7 +27,7 @@
 
 @implementation CWinEventsOSXImpl
 {
-  std::queue<_Event> events;
+  std::queue<XBMC_Event> events;
   CCriticalSection m_inputlock;
   bool m_inputEnabled;
 
@@ -52,7 +52,7 @@
   return self;
 }
 
-- (void)MessagePush:(_Event*)newEvent
+- (void)MessagePush:(XBMC_Event*)newEvent
 {
   std::unique_lock lock(m_inputlock);
   events.emplace(*newEvent);
@@ -64,12 +64,12 @@
   bool ret = false;
 
   // Do not always loop, only pump the initial queued count events. else if ui keep pushing
-  // events the loop won't finish then it will block  main message loop.
+  // events the loop won't finish then it will block xbmc main message loop.
   for (size_t pumpEventCount = [self GetQueueSize]; pumpEventCount > 0; --pumpEventCount)
   {
     // Pop up only one event per time since in App::OnEvent it may init modal dialog which init
     // deeper message loop and call the deeper MessagePump from there.
-    _Event pumpEvent = {};
+    XBMC_Event pumpEvent = {};
     {
       std::unique_lock lock(m_inputlock);
       if (events.size() == 0)
@@ -95,97 +95,97 @@
   switch (character)
   {
     case NSLeftArrowFunctionKey:
-      return K_LEFT;
+      return XBMCK_LEFT;
     case NSRightArrowFunctionKey:
-      return K_RIGHT;
+      return XBMCK_RIGHT;
     case NSUpArrowFunctionKey:
-      return K_UP;
+      return XBMCK_UP;
     case NSDownArrowFunctionKey:
-      return K_DOWN;
+      return XBMCK_DOWN;
     case NSBackspaceCharacter:
     case NSDeleteCharacter:
-      return K_BACKSPACE;
+      return XBMCK_BACKSPACE;
     case NSCarriageReturnCharacter:
     case NSEnterCharacter:
-      return K_RETURN;
+      return XBMCK_RETURN;
     case NSF1FunctionKey:
-      return K_F1;
+      return XBMCK_F1;
     case NSF2FunctionKey:
-      return K_F2;
+      return XBMCK_F2;
     case NSF3FunctionKey:
-      return K_F3;
+      return XBMCK_F3;
     case NSF4FunctionKey:
-      return K_F4;
+      return XBMCK_F4;
     case NSF5FunctionKey:
-      return K_F5;
+      return XBMCK_F5;
     case NSF6FunctionKey:
-      return K_F6;
+      return XBMCK_F6;
     case NSF7FunctionKey:
-      return K_F7;
+      return XBMCK_F7;
     case NSF8FunctionKey:
-      return K_F8;
+      return XBMCK_F8;
     case NSF9FunctionKey:
-      return K_F9;
+      return XBMCK_F9;
     case NSF10FunctionKey:
-      return K_F10;
+      return XBMCK_F10;
     case NSF11FunctionKey:
-      return K_F11;
+      return XBMCK_F11;
     case NSF12FunctionKey:
-      return K_F12;
+      return XBMCK_F12;
     case NSF13FunctionKey:
-      return K_F13;
+      return XBMCK_F13;
     case NSF14FunctionKey:
-      return K_F14;
+      return XBMCK_F14;
     case NSF15FunctionKey:
-      return K_F15;
+      return XBMCK_F15;
     case NSHomeFunctionKey:
-      return K_HOME;
+      return XBMCK_HOME;
     case NSEndFunctionKey:
-      return K_END;
+      return XBMCK_END;
     case NSPageDownFunctionKey:
-      return K_PAGEDOWN;
+      return XBMCK_PAGEDOWN;
     case NSPageUpFunctionKey:
-      return K_PAGEUP;
+      return XBMCK_PAGEUP;
     case NSPauseFunctionKey:
-      return K_PAUSE;
+      return XBMCK_PAUSE;
     case NSInsertFunctionKey:
     case NSInsertCharFunctionKey:
-      return K_INSERT;
+      return XBMCK_INSERT;
     case NSDeleteFunctionKey:
     case NSDeleteCharFunctionKey:
-      return K_DELETE;
+      return XBMCK_DELETE;
     default:
       return character;
   }
 }
 
-- (Mod)OsxMod2XbmcMod:(NSEventModifierFlags)appleModifier
+- (XBMCMod)OsxMod2XbmcMod:(NSEventModifierFlags)appleModifier
 {
-  unsigned int Modifier = KMOD_NONE;
+  unsigned int xbmcModifier = XBMCKMOD_NONE;
   // shift
   if (appleModifier & NSEventModifierFlagShift)
-    Modifier |= KMOD_SHIFT;
+    xbmcModifier |= XBMCKMOD_SHIFT;
   // left ctrl
   if (appleModifier & NSEventModifierFlagControl)
-    Modifier |= KMOD_CTRL;
+    xbmcModifier |= XBMCKMOD_CTRL;
   // left alt/option
   if (appleModifier & NSEventModifierFlagOption)
-    Modifier |= KMOD_ALT;
+    xbmcModifier |= XBMCKMOD_ALT;
   // left command
   if (appleModifier & NSEventModifierFlagCommand)
-    Modifier |= KMOD_LMETA;
+    xbmcModifier |= XBMCKMOD_LMETA;
 
-  return static_cast<Mod>(Modifier);
+  return static_cast<XBMCMod>(xbmcModifier);
 }
 
-- (bool)ProcessOSXShortcuts:(_Event&)event
+- (bool)ProcessOSXShortcuts:(XBMC_Event&)event
 {
-  const auto cmd = (event.key.keysym.mod & (KMOD_LMETA | KMOD_RMETA)) != 0;
-  if (cmd && event.type == _KEYDOWN)
+  const auto cmd = (event.key.keysym.mod & (XBMCKMOD_LMETA | XBMCKMOD_RMETA)) != 0;
+  if (cmd && event.type == XBMC_KEYDOWN)
   {
     switch (event.key.keysym.sym)
     {
-      case K_s: // CMD-s to take a screenshot
+      case XBMCK_s: // CMD-s to take a screenshot
       {
         CAction* action = new CAction(ACTION_TAKE_SCREENSHOT);
         CServiceBroker::GetAppMessenger()->PostMsg(TMSG_GUI_ACTION, WINDOW_INVALID, -1,
@@ -240,57 +240,57 @@
 - (NSEvent*)InputEventHandler:(NSEvent*)nsEvent
 {
   bool passEvent = true;
-  _Event newEvent = {};
+  XBMC_Event newEvent = {};
 
   switch (nsEvent.type)
   {
-    // handle mouse events and transform them into the  event world
+    // handle mouse events and transform them into the xbmc event world
     case NSEventTypeLeftMouseUp:
     {
-      [self SendMouseButtonEvent:nsEvent
-                           Event:newEvent
-                      mouseEventType:_MOUSEBUTTONUP
-                          buttonCode:_BUTTON_LEFT];
+      [self SendXBMCMouseButtonEvent:nsEvent
+                           xbmcEvent:newEvent
+                      mouseEventType:XBMC_MOUSEBUTTONUP
+                          buttonCode:XBMC_BUTTON_LEFT];
       break;
     }
     case NSEventTypeLeftMouseDown:
     {
-      [self SendMouseButtonEvent:nsEvent
-                           Event:newEvent
-                      mouseEventType:_MOUSEBUTTONDOWN
-                          buttonCode:_BUTTON_LEFT];
+      [self SendXBMCMouseButtonEvent:nsEvent
+                           xbmcEvent:newEvent
+                      mouseEventType:XBMC_MOUSEBUTTONDOWN
+                          buttonCode:XBMC_BUTTON_LEFT];
       break;
     }
     case NSEventTypeRightMouseUp:
     {
-      [self SendMouseButtonEvent:nsEvent
-                           Event:newEvent
-                      mouseEventType:_MOUSEBUTTONUP
-                          buttonCode:_BUTTON_RIGHT];
+      [self SendXBMCMouseButtonEvent:nsEvent
+                           xbmcEvent:newEvent
+                      mouseEventType:XBMC_MOUSEBUTTONUP
+                          buttonCode:XBMC_BUTTON_RIGHT];
       break;
     }
     case NSEventTypeRightMouseDown:
     {
-      [self SendMouseButtonEvent:nsEvent
-                           Event:newEvent
-                      mouseEventType:_MOUSEBUTTONDOWN
-                          buttonCode:_BUTTON_RIGHT];
+      [self SendXBMCMouseButtonEvent:nsEvent
+                           xbmcEvent:newEvent
+                      mouseEventType:XBMC_MOUSEBUTTONDOWN
+                          buttonCode:XBMC_BUTTON_RIGHT];
       break;
     }
     case NSEventTypeOtherMouseUp:
     {
-      [self SendMouseButtonEvent:nsEvent
-                           Event:newEvent
-                      mouseEventType:_MOUSEBUTTONUP
-                          buttonCode:_BUTTON_MIDDLE];
+      [self SendXBMCMouseButtonEvent:nsEvent
+                           xbmcEvent:newEvent
+                      mouseEventType:XBMC_MOUSEBUTTONUP
+                          buttonCode:XBMC_BUTTON_MIDDLE];
       break;
     }
     case NSEventTypeOtherMouseDown:
     {
-      [self SendMouseButtonEvent:nsEvent
-                           Event:newEvent
-                      mouseEventType:_MOUSEBUTTONDOWN
-                          buttonCode:_BUTTON_MIDDLE];
+      [self SendXBMCMouseButtonEvent:nsEvent
+                           xbmcEvent:newEvent
+                      mouseEventType:XBMC_MOUSEBUTTONDOWN
+                          buttonCode:XBMC_BUTTON_MIDDLE];
       break;
     }
     case NSEventTypeMouseMoved:
@@ -302,7 +302,7 @@
       if (location.has_value())
       {
         NSPoint locationCoordinates = location.value();
-        newEvent.type = _MOUSEMOTION;
+        newEvent.type = XBMC_MOUSEMOTION;
         newEvent.motion.x = locationCoordinates.x;
         newEvent.motion.y = locationCoordinates.y;
         [self MessagePush:&newEvent];
@@ -315,27 +315,27 @@
       // with a zero deltaY. This reverses our scroll which is WTF? annoying. Trap them out here.
       if (nsEvent.deltaY != 0.0)
       {
-        auto button = nsEvent.scrollingDeltaY > 0 ? _BUTTON_WHEELUP : _BUTTON_WHEELDOWN;
-        if ([self SendMouseButtonEvent:nsEvent
-                                 Event:newEvent
-                            mouseEventType:_MOUSEBUTTONDOWN
+        auto button = nsEvent.scrollingDeltaY > 0 ? XBMC_BUTTON_WHEELUP : XBMC_BUTTON_WHEELDOWN;
+        if ([self SendXBMCMouseButtonEvent:nsEvent
+                                 xbmcEvent:newEvent
+                            mouseEventType:XBMC_MOUSEBUTTONDOWN
                                 buttonCode:button])
         {
           // scrollwhell need a subsequent button press with no button code
-          [self SendMouseButtonEvent:nsEvent
-                               Event:newEvent
-                          mouseEventType:_MOUSEBUTTONUP
+          [self SendXBMCMouseButtonEvent:nsEvent
+                               xbmcEvent:newEvent
+                          mouseEventType:XBMC_MOUSEBUTTONUP
                               buttonCode:std::nullopt];
         }
       }
       break;
     }
 
-    // handle keyboard events and transform them into the  event world
+    // handle keyboard events and transform them into the xbmc event world
     case NSEventTypeKeyUp:
     {
       newEvent = [self keyPressEvent:nsEvent];
-      newEvent.type = _KEYUP;
+      newEvent.type = XBMC_KEYUP;
 
       [self MessagePush:&newEvent];
       passEvent = false;
@@ -344,7 +344,7 @@
     case NSEventTypeKeyDown:
     {
       newEvent = [self keyPressEvent:nsEvent];
-      newEvent.type = _KEYDOWN;
+      newEvent.type = XBMC_KEYDOWN;
 
       if (![self ProcessOSXShortcuts:newEvent])
         [self MessagePush:&newEvent];
@@ -362,9 +362,9 @@
     return nullptr;
 }
 
-- (_Event)keyPressEvent:(NSEvent*)nsEvent
+- (XBMC_Event)keyPressEvent:(NSEvent*)nsEvent
 {
-  _Event newEvent = {};
+  XBMC_Event newEvent = {};
 
   // use characters to propagate the actual unicode character
   NSString* unicode = nsEvent.characters;
@@ -389,15 +389,15 @@
 
   newEvent.key.keysym.scancode = nsEvent.keyCode;
   newEvent.key.keysym.sym =
-      static_cast<Key>([self OsxKey2XbmcKey:[unicodeWithoutModifiers characterAtIndex:0]]);
+      static_cast<XBMCKey>([self OsxKey2XbmcKey:[unicodeWithoutModifiers characterAtIndex:0]]);
   newEvent.key.keysym.unicode = [unicode characterAtIndex:0];
   newEvent.key.keysym.mod = [self OsxMod2XbmcMod:nsEvent.modifierFlags];
 
   return newEvent;
 }
 
-- (BOOL)SendMouseButtonEvent:(NSEvent*)nsEvent
-                       Event:(_Event&)Event
+- (BOOL)SendXBMCMouseButtonEvent:(NSEvent*)nsEvent
+                       xbmcEvent:(XBMC_Event&)xbmcEvent
                   mouseEventType:(uint8_t)mouseEventType
                       buttonCode:(std::optional<uint8_t>)buttonCode
 {
@@ -405,14 +405,14 @@
   if (location.has_value())
   {
     NSPoint locationCoordinates = location.value();
-    Event.type = mouseEventType;
+    xbmcEvent.type = mouseEventType;
     if (buttonCode.has_value())
     {
-      Event.button.button = buttonCode.value();
+      xbmcEvent.button.button = buttonCode.value();
     }
-    Event.button.x = locationCoordinates.x;
-    Event.button.y = locationCoordinates.y;
-    [self MessagePush:&Event];
+    xbmcEvent.button.x = locationCoordinates.x;
+    xbmcEvent.button.y = locationCoordinates.y;
+    [self MessagePush:&xbmcEvent];
     return true;
   }
   return false;

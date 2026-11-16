@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2017-2024 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -10,7 +10,7 @@
 
 #include "input/joysticks/DriverPrimitive.h"
 #include "input/joysticks/interfaces/IButtonMap.h"
-#include "input/keyboard/_keysym.h"
+#include "input/keyboard/XBMC_keysym.h"
 #include "input/keyboard/interfaces/IKeyboardInputHandler.h"
 
 using namespace UNIVERSAL MEDIA CENTER;
@@ -27,7 +27,7 @@ bool CKeyboardInputHandling::OnKeyPress(const CKey& key)
 {
   bool bHandled = false;
 
-  JOYSTICK::CDriverPrimitive source(static_cast<Key>(key.GetKeycode()));
+  JOYSTICK::CDriverPrimitive source(static_cast<XBMCKey>(key.GetKeycode()));
 
   KeyName keyName;
   if (m_buttonMap->GetFeature(source, keyName))
@@ -41,7 +41,7 @@ bool CKeyboardInputHandling::OnKeyPress(const CKey& key)
 
 void CKeyboardInputHandling::OnKeyRelease(const CKey& key)
 {
-  JOYSTICK::CDriverPrimitive source(static_cast<Key>(key.GetKeycode()));
+  JOYSTICK::CDriverPrimitive source(static_cast<XBMCKey>(key.GetKeycode()));
 
   KeyName keyName;
   if (m_buttonMap->GetFeature(source, keyName))

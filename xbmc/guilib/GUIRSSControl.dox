@@ -5,9 +5,9 @@
 
 \tableofcontents
 
-Universal Media Center can display an RSS feed on the home screen of the default skin/interface
+Kodi can display an RSS feed on the home screen of the default skin/interface
 (Estuary), as well as any other skin that supports RSS feeds. By default,
-the RSS news feed is taken from [http://github.com/yashhasan570/UniversalMediaCenter](http://github.com/yashhasan570/UniversalMediaCenter/), but the feed
+the RSS news feed is taken from [http://kodi.tv](http://kodi.tv/), but the feed
 can be changed to almost any RSS feed.
 
 @note Don't confuse the RSS ticker with RSS media source, which allows access to
@@ -26,11 +26,11 @@ Below this setting one can also change the RSS news feed address.
 --------------------------------------------------------------------------------
 \section RSS_feed_Control_sect2 Technical documentation for skinners
 
-  Main page: [Skin development](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Skin_development)
+  Main page: [Skin development](http://kodi.wiki/view/Skin_development)
 
 \subsection RSS_feed_Control_sect2_1 RSS control
 The rss control is used for displaying scrolling RSS feeds from the internet
-in Universal Media Center. You can choose the font, size, colour, location and the RSS feed to
+in Kodi. You can choose the font, size, colour, location and the RSS feed to
 be displayed.
 
 __Example:__
@@ -52,27 +52,27 @@ __Example:__
 
 \subsection RSS_feed_Control_sect2_2 Available tags and attributes
 
-In addition to the [Default Control Tags](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Default_Control_Tags)
+In addition to the [Default Control Tags](http://kodi.wiki/view/Default_Control_Tags)
 the following tags are available. Note that each tag is **lower case** only. This is
 important, as `xml` tags are case-sensitive.
 
 | Tag           | Description                                                   |
 |--------------:|:--------------------------------------------------------------|
-| id            | This refers to the feedset to be displayed. This is the id reference to the <b>`<set>`</b> section in [RssFeeds.xml](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/RssFeeds.xml) (see below):
+| id            | This refers to the feedset to be displayed. This is the id reference to the <b>`<set>`</b> section in [RssFeeds.xml](http://kodi.wiki/view/RssFeeds.xml) (see below):
 | font          | Specifies the font to use from the font.xml file.
-| textcolor     | Specified the color the text should be. In hex **AARRGGBB** format, or a name from the [colour theme](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Colour_Themes).
-| shadowcolor   | Specifies the color of the drop shadow on the text. In **AARRGGBB** format, or a name from the [colour theme](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Colour_Themes).
-| headlinecolor | Specified the color that any highlighted text should be. In hex **AARRGGBB** format, or a name from the [colour theme](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Colour_Themes).
-| titlecolor    | Specified the color the titles of the feeds should be. In hex **AARRGGBB** format, or a name from the [colour theme](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Colour_Themes).
+| textcolor     | Specified the color the text should be. In hex **AARRGGBB** format, or a name from the [colour theme](http://kodi.wiki/view/Colour_Themes).
+| shadowcolor   | Specifies the color of the drop shadow on the text. In **AARRGGBB** format, or a name from the [colour theme](http://kodi.wiki/view/Colour_Themes).
+| headlinecolor | Specified the color that any highlighted text should be. In hex **AARRGGBB** format, or a name from the [colour theme](http://kodi.wiki/view/Colour_Themes).
+| titlecolor    | Specified the color the titles of the feeds should be. In hex **AARRGGBB** format, or a name from the [colour theme](http://kodi.wiki/view/Colour_Themes).
 | scrollspeed   | Scroll speed of text in pixels per second.
 
 
 \subsection RSS_feed_Control_sect2_3 RssFeeds.xml
 
-- <em>Main page: [RssFeeds.xml](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/RssFeeds.xml)</em>
+- <em>Main page: [RssFeeds.xml](http://kodi.wiki/view/RssFeeds.xml)</em>
 
 The actual content of the RSS feed is defined in the
-[RssFeeds.xml](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/RssFeeds.xml) file stored in the user's
+[RssFeeds.xml](http://kodi.wiki/view/RssFeeds.xml) file stored in the user's
 profile. Here is an example :
 
 ~~~~~~~~~~~~~
@@ -97,10 +97,10 @@ with & etc.). Each feed in the set runs through in the order they are defined.
 --------------------------------------------------------------------------------
 \section RSS_feed_Control_sect3 See also
 
-- [RssFeeds.xml](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/RssFeeds.xml)
+- [RssFeeds.xml](http://kodi.wiki/view/RssFeeds.xml)
 
 #### Development:
-- [Add-on development](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Add-on_development)
-- [Skinning](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Skinning)
+- [Add-on development](http://kodi.wiki/view/Add-on_development)
+- [Skinning](http://kodi.wiki/view/Skinning)
 
 */

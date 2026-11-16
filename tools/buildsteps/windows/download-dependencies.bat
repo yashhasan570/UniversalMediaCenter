@@ -66,7 +66,7 @@ IF NOT EXIST %FORMED_OK_FLAG% (
   ECHO if this download mirror seems to be having problems, try choosing another from
   ECHO the list on https://mirrors.universalmediacenter.tv/timestamp.txt?mirrorlist, and setting %%UNIVERSALMEDIA_MIRROR%% to
   ECHO point to it, like so:
-  ECHO   C:\^> SET UNIVERSALMEDIA_MIRROR=https://example.com/pub//
+  ECHO   C:\^> SET UNIVERSALMEDIA_MIRROR=https://example.com/pub/xbmc/
   ECHO.
   ECHO Then, rerun this script.
   

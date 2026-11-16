@@ -1,15 +1,15 @@
-# Universal Media Center Media Center language file
+# Kodi Media Center language file
 # Addon Name: Estuary
 # Addon id: skin.estuary
-# Addon Provider: Team Universal Media Center
+# Addon Provider: Team Kodi
 msgid ""
 msgstr ""
-"Project-Id-Version: UNIVERSAL MEDIA CENTER Main\n"
-"Report-Msgid-Bugs-To: https://github.com///issues/\n"
+"Project-Id-Version: KODI Main\n"
+"Report-Msgid-Bugs-To: https://github.com/xbmc/xbmc/issues/\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: 2025-09-20 04:29+0000\n"
 "Last-Translator: Jeremy Chen <jeremy@naviart.idv.tw>\n"
-"Language-Team: Chinese (Traditional Han script) <https://universalmediacenter.weblate.cloud/projects/Universal Media Center-add-ons-skins/skin-estuary/zh_Hant/>\n"
+"Language-Team: Chinese (Traditional Han script) <https://kodi.weblate.cloud/projects/kodi-add-ons-skins/skin-estuary/zh_Hant/>\n"
 "Language: zh_tw\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,16 +18,16 @@ msgstr ""
 "X-Generator: Weblate 5.13.3\n"
 
 msgctxt "Addon Summary"
-msgid "Estuary skin by phil65. (Universal Media Center's default skin)"
-msgstr "phil65與Piers 製作的Estuary佈景主題（Universal Media Center的預設佈景主題）"
+msgid "Estuary skin by phil65. (Kodi's default skin)"
+msgstr "phil65與Piers 製作的Estuary佈景主題（Kodi的預設佈景主題）"
 
 msgctxt "Addon Description"
-msgid "Estuary is the default skin for Universal Media Center 17.0 and above. It attempts to be easy for first time Universal Media Center users to understand and use."
-msgstr "Estuary是Universal Media Center 17.0開始搭載的預設佈景主題。主要在讓第一次使用 Universal Media Center 的使用者可以簡單地上手。"
+msgid "Estuary is the default skin for Kodi 17.0 and above. It attempts to be easy for first time Kodi users to understand and use."
+msgstr "Estuary是Kodi 17.0開始搭載的預設佈景主題。主要在讓第一次使用 Kodi 的使用者可以簡單地上手。"
 
 msgctxt "Addon Disclaimer"
-msgid "Estuary is the default skin for Universal Media Center, removing it may cause issues"
-msgstr "Estuary 是 Universal Media Center 預設的佈景主題，移除它可能會造成問題"
+msgid "Estuary is the default skin for Kodi, removing it may cause issues"
+msgstr "Estuary 是 Kodi 預設的佈景主題，移除它可能會造成問題"
 
 msgctxt "#31000"
 msgid "Now playing"
@@ -371,8 +371,8 @@ msgid "Channel options"
 msgstr "頻道選項"
 
 msgctxt "#31098"
-msgid "Select your Universal Media Center user profile[CR]to login and continue"
-msgstr "選擇您的 Universal Media Center 使用者設定檔[CR]登入並繼續"
+msgid "Select your Kodi user profile[CR]to login and continue"
+msgstr "選擇您的 Kodi 使用者設定檔[CR]登入並繼續"
 
 #. viewtype name
 msgctxt "#31099"
@@ -462,8 +462,8 @@ msgid "Enter add-on browser"
 msgstr "進入附加元件瀏覽器"
 
 msgctxt "#31119"
-msgid "You do not have any add-ons installed yet. Visit our add-on browser to browse through our collection and improve your Universal Media Center experience."
-msgstr "你還沒安裝任何附加元件。請到我們的附加元件瀏覽器逛逛，讓你的Universal Media Center更好用。"
+msgid "You do not have any add-ons installed yet. Visit our add-on browser to browse through our collection and improve your Kodi experience."
+msgstr "你還沒安裝任何附加元件。請到我們的附加元件瀏覽器逛逛，讓你的Kodi更好用。"
 
 msgctxt "#31120"
 msgid "You did not set up a weather provider yet. In order to view weather information, choose a weather provider and set up your location."
@@ -562,8 +562,8 @@ msgid "Play speed"
 msgstr "播放速度"
 
 msgctxt "#31143"
-msgid "You did not set up PVR yet. In order to use PVR, choose a PVR client addon and configure it. Please visit http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/PVR to learn more."
-msgstr "您尚未設置 PVR。欲使用 PVR，請選取並設置 PVR 客戶端附加元件。請參考 http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/PVR。"
+msgid "You did not set up PVR yet. In order to use PVR, choose a PVR client addon and configure it. Please visit http://kodi.wiki/view/PVR to learn more."
+msgstr "您尚未設置 PVR。欲使用 PVR，請選取並設置 PVR 客戶端附加元件。請參考 http://kodi.wiki/view/PVR。"
 
 msgctxt "#31144"
 msgid "Enter add-on browser"

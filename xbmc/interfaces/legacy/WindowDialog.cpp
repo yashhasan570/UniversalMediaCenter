@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -17,9 +17,9 @@
 
 #include <mutex>
 
-namespace Addon
+namespace XBMCAddon
 {
-  namespace gui
+  namespace xbmcgui
   {
     WindowDialog::WindowDialog() :
       Window(true), WindowDialogMixin(this)
@@ -35,8 +35,8 @@ namespace Addon
 
     bool WindowDialog::OnMessage(CGUIMessage& message)
     {
-#ifdef ENABLE__TRACE_API
-      _TRACE;
+#ifdef ENABLE_XBMC_TRACE_API
+      XBMC_TRACE;
       CLog::Log(LOGDEBUG, "{}NEWADDON WindowDialog::OnMessage Message {}", _tg.getSpaces(),
                 message.GetMessage());
 #endif
@@ -63,7 +63,7 @@ namespace Addon
 
     bool WindowDialog::OnAction(const CAction &action)
     {
-      _TRACE;
+      XBMC_TRACE;
       return WindowDialogMixin::OnAction(action) ? true : Window::OnAction(action);
     }
 

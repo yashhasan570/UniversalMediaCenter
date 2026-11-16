@@ -4,10 +4,10 @@
   */
  static int findDirFile( const char *path, const char *file, char *filename )
  {
-+#if defined(_)
++#if defined(_XBMC)
 +  struct stat fileinfo;
 +
-+       // no emulated opendir function in , so we'll
++       // no emulated opendir function in xbmc, so we'll
 +       // check if the file exists by stat'ing it ...
 +  sprintf(filename, "%s%s%s", path, ((path[strlen(path) - 1] == '/') ? "" : "/"), file);
 +
@@ -21,7 +21,7 @@
      }
    }
    closedir(dir);
-+#endif // _
++#endif // _XBMC
    return -1;
  }
  

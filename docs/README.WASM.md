@@ -37,17 +37,17 @@ and yet another one
 
 **Example:** Clone Universal Media Center's current master branch:
 ```
-git clone https://github.com// universalmediacenter
+git clone https://github.com/xbmc/xbmc universalmediacenter
 ```
 
 Commands that contain strings enclosed in angle brackets denote something you need to change to suit your needs.
 ```
-git clone -b <branch-name> https://github.com// universalmediacenter
+git clone -b <branch-name> https://github.com/xbmc/xbmc universalmediacenter
 ```
 
 **Example:** Clone Universal Media Center's current Krypton branch:
 ```
-git clone -b Krypton https://github.com// universalmediacenter
+git clone -b Krypton https://github.com/xbmc/xbmc universalmediacenter
 ```
 
 Several different strategies are used to draw your attention to certain pieces of information. In order of how critical the information is, these items are marked as a note, tip, or warning. For example:
@@ -119,7 +119,7 @@ cd $HOME
 
 Clone Universal Media Center's current master branch:
 ```
-git clone https://github.com// universalmediacenter
+git clone https://github.com/xbmc/xbmc universalmediacenter
 ```
 
 **[back to top](#table-of-contents)**
@@ -189,7 +189,7 @@ $HOME/universalmediacenter-wasm-depends/wasm32-unknown-emscripten-release/
 ```
 --with-tarballs=<path>
 ```
-  path where tarballs will be saved [prefix/-tarballs]
+  path where tarballs will be saved [prefix/xbmc-tarballs]
 
 ```
 --with-cpu=<cpu>

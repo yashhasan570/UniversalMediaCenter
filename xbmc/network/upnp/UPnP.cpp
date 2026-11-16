@@ -1,10 +1,10 @@
 /*
- * UPnP Support for 
+ * UPnP Support for XBMC
  *  Copyright (c) 2006 c0diq (Sylvain Rebaud)
  *      Portions Copyright (c) by the authors of libPlatinum
  *      http://www.plutinosoft.com/blog/category/platinum/
  *  Copyright (C) 2006-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -241,13 +241,13 @@ public:
                              (long)item.GetVideoInfoTag()->GetResumePoint().timeInSeconds),
           NPT_String::Format("<upnp:lastPlaybackPosition>%ld</upnp:lastPlaybackPosition>", time)));
 
-      NPT_String curr_value = "<:lastPlayerState>";
+      NPT_String curr_value = "<xbmc:lastPlayerState>";
       PLT_Didl::AppendXmlEscape(curr_value,
                                 item.GetVideoInfoTag()->GetResumePoint().playerState.c_str());
-      curr_value += "</:lastPlayerState>";
-      NPT_String new_value = "<:lastPlayerState>";
+      curr_value += "</xbmc:lastPlayerState>";
+      NPT_String new_value = "<xbmc:lastPlayerState>";
       PLT_Didl::AppendXmlEscape(new_value, bookmark.playerState.c_str());
-      new_value += "</:lastPlayerState>";
+      new_value += "</xbmc:lastPlayerState>";
       values.insert(std::make_pair(curr_value, new_value));
     }
     if (updatePlayCount)
@@ -553,7 +553,7 @@ CUPnP::CUPnP()
     m_CtrlPointHolder(new CCtrlPointReferenceHolder())
 {
   NPT_LogManager::GetDefault().Configure("plist:.level=FINE;.handlers=CustomHandler;");
-  NPT_LogHandler::Create("", "CustomHandler", m_LogHandler);
+  NPT_LogHandler::Create("xbmc", "CustomHandler", m_LogHandler);
   m_LogHandler->SetCustomHandlerFunction(&UPnPLogger);
 
   // initialize upnp context
@@ -796,9 +796,9 @@ CUPnPServer* CUPnP::CreateServer(int port /* = 0 */)
   device->m_ModelName = "Universal Media Center";
   device->m_ModelNumber = CSysInfo::GetVersion().c_str();
   device->m_ModelDescription = "Universal Media Center - Media Server";
-  device->m_ModelURL = "http://github.com/yashhasan570/UniversalMediaCenter/";
-  device->m_Manufacturer = "Universal Media Center project";
-  device->m_ManufacturerURL = "http://github.com/yashhasan570/UniversalMediaCenter/";
+  device->m_ModelURL = "http://universalmediacenter.tv/";
+  device->m_Manufacturer = "XBMC Foundation";
+  device->m_ManufacturerURL = "http://universalmediacenter.tv/";
 
   device->SetDelegate(device);
   return device;
@@ -890,9 +890,9 @@ CUPnPRenderer* CUPnP::CreateRenderer(int port /* = 0 */)
   device->m_ModelName = "Universal Media Center";
   device->m_ModelNumber = CSysInfo::GetVersion().c_str();
   device->m_ModelDescription = "Universal Media Center - Media Renderer";
-  device->m_ModelURL = "http://github.com/yashhasan570/UniversalMediaCenter/";
-  device->m_Manufacturer = "Universal Media Center project";
-  device->m_ManufacturerURL = "http://github.com/yashhasan570/UniversalMediaCenter/";
+  device->m_ModelURL = "http://universalmediacenter.tv/";
+  device->m_Manufacturer = "XBMC Foundation";
+  device->m_ManufacturerURL = "http://universalmediacenter.tv/";
 
   return device;
 }

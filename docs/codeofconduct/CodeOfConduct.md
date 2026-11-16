@@ -118,7 +118,7 @@
 ## **Enforcement:**
 
 -   Violations of this code which cannot be dealt with by simple
-    discussion should be reported to the working group via conduct@github.com/yashhasan570/UniversalMediaCenter .
+    discussion should be reported to the working group via conduct@universalmediacenter.tv .
     The group will then review the issue and mediate between the parties involved.
 
 -   The identity of the reporter and where appropriate the nature of the issue
@@ -172,13 +172,13 @@
         For individuals that are not members of Team Universal Media Center, there are no
         privileges that could be revoked. Appropriate measures therefore
         include warnings and revoking access to services such as the
-        forum or the `` organization on GitHub temporarily or
+        forum or the `xbmc` organization on GitHub temporarily or
         permanently.
 
 ## **Stakeholders:**
 
 -   *Universal Media Center Foundation Board* -- the elected five directors and management
-    of the Universal Media Center project.
+    of the XBMC Foundation.
 
 -   *Working Group* -- the team assigned by the board to create this
     document and to oversee its administration.
@@ -190,7 +190,7 @@
 
 ## **Related Documents:**
 
--   [Forum rules](https://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Official:Forum_rules)
--   [Moderation rules (the basics)](https://github.com///blob/master/docs/codeofconduct/ModerationRules.md)
--   [Moderator guidelines](https://github.com///blob/master/docs/codeofconduct/ModeratorGuidelines.md)
--   [Forum banning code of conduct](https://github.com///blob/master/docs/codeofconduct/ForumUserBanning.md)
+-   [Forum rules](https://universalmediacenter.wiki/view/Official:Forum_rules)
+-   [Moderation rules (the basics)](https://github.com/xbmc/xbmc/blob/master/docs/codeofconduct/ModerationRules.md)
+-   [Moderator guidelines](https://github.com/xbmc/xbmc/blob/master/docs/codeofconduct/ModeratorGuidelines.md)
+-   [Forum banning code of conduct](https://github.com/xbmc/xbmc/blob/master/docs/codeofconduct/ForumUserBanning.md)

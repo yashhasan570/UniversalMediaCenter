@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -8,15 +8,15 @@
 
 #include "XBDateTime.h"
 #include "utils/StringUtils.h"
-#include "utils/TinyXML.h"
-#include "utils/TinyXML2.h"
+#include "utils/XBMCTinyXML.h"
+#include "utils/XBMCTinyXML2.h"
 #include "utils/XMLUtils.h"
 
 #include <gtest/gtest.h>
 
 TEST(TestXMLUtils, GetUInt)
 {
-  CTinyXML a;
+  CXBMCTinyXML a;
   uint32_t ref, val, val2;
 
   a.Parse(std::string("<root><node>1000</node></root>"));
@@ -25,7 +25,7 @@ TEST(TestXMLUtils, GetUInt)
   ref = 1000;
   EXPECT_EQ(ref, val);
 
-  CTinyXML2 b;
+  CXBMCTinyXML2 b;
 
   b.Parse(std::string("<root><node>1000</node></root>"));
   EXPECT_TRUE(XMLUtils::GetUInt(b.RootElement(), "node", val2));
@@ -35,7 +35,7 @@ TEST(TestXMLUtils, GetUInt)
 
 TEST(TestXMLUtils, GetFloat)
 {
-  CTinyXML a;
+  CXBMCTinyXML a;
   float ref, val, val2;
 
   a.Parse(std::string("<root><node>1000.1f</node></root>"));
@@ -45,7 +45,7 @@ TEST(TestXMLUtils, GetFloat)
   ref = 1000.1f;
   EXPECT_EQ(ref, val);
 
-  CTinyXML2 b;
+  CXBMCTinyXML2 b;
 
   b.Parse(std::string("<root><node>1000.1f</node></root>"));
   EXPECT_TRUE(XMLUtils::GetFloat(b.RootElement(), "node", val2));
@@ -56,7 +56,7 @@ TEST(TestXMLUtils, GetFloat)
 
 TEST(TestXMLUtils, GetDouble)
 {
-  CTinyXML a;
+  CXBMCTinyXML a;
   double val, val2;
   std::string refstr, valstr, valstr2;
 
@@ -67,7 +67,7 @@ TEST(TestXMLUtils, GetDouble)
   valstr = StringUtils::Format("{:f}", val);
   EXPECT_STREQ(refstr.c_str(), valstr.c_str());
 
-  CTinyXML2 b;
+  CXBMCTinyXML2 b;
 
   b.Parse(std::string("<root><node>1000.1f</node></root>"));
   EXPECT_TRUE(XMLUtils::GetDouble(b.RootElement(), "node", val2));
@@ -78,7 +78,7 @@ TEST(TestXMLUtils, GetDouble)
 
 TEST(TestXMLUtils, GetInt)
 {
-  CTinyXML a;
+  CXBMCTinyXML a;
   int ref, val, val2;
 
   a.Parse(std::string("<root><node>1000</node></root>"));
@@ -88,7 +88,7 @@ TEST(TestXMLUtils, GetInt)
   ref = 1000;
   EXPECT_EQ(ref, val);
 
-  CTinyXML2 b;
+  CXBMCTinyXML2 b;
 
   b.Parse(std::string("<root><node>1000</node></root>"));
   EXPECT_TRUE(XMLUtils::GetInt(b.RootElement(), "node", val2));
@@ -99,7 +99,7 @@ TEST(TestXMLUtils, GetInt)
 
 TEST(TestXMLUtils, GetBoolean)
 {
-  CTinyXML a;
+  CXBMCTinyXML a;
   bool ref, val, val2;
 
   a.Parse(std::string("<root><node>true</node></root>"));
@@ -108,7 +108,7 @@ TEST(TestXMLUtils, GetBoolean)
   ref = true;
   EXPECT_EQ(ref, val);
 
-  CTinyXML2 b;
+  CXBMCTinyXML2 b;
 
   b.Parse(std::string("<root><node>true</node></root>"));
   EXPECT_TRUE(XMLUtils::GetBoolean(b.RootElement(), "node", val2));
@@ -118,7 +118,7 @@ TEST(TestXMLUtils, GetBoolean)
 
 TEST(TestXMLUtils, GetString)
 {
-  CTinyXML a;
+  CXBMCTinyXML a;
   std::string ref, val, val2;
 
   a.Parse(std::string("<root><node>some string</node></root>"));
@@ -127,7 +127,7 @@ TEST(TestXMLUtils, GetString)
   ref = "some string";
   EXPECT_STREQ(ref.c_str(), val.c_str());
 
-  CTinyXML2 b;
+  CXBMCTinyXML2 b;
 
   b.Parse(std::string("<root><node>some string</node></root>"));
   EXPECT_TRUE(XMLUtils::GetString(b.RootElement(), "node", val2));
@@ -137,7 +137,7 @@ TEST(TestXMLUtils, GetString)
 
 TEST(TestXMLUtils, GetStringArray)
 {
-  CTinyXML a;
+  CXBMCTinyXML a;
   std::vector<std::string> strarray, strarray2;
 
   a.Parse(std::string("<root>\n"
@@ -155,7 +155,7 @@ TEST(TestXMLUtils, GetStringArray)
   EXPECT_STREQ("some string4", strarray.at(3).c_str());
   EXPECT_STREQ("some string5", strarray.at(4).c_str());
 
-  CTinyXML2 b;
+  CXBMCTinyXML2 b;
 
   b.Parse(std::string("<root>\n"
                       "  <node>some string1</node>\n"
@@ -175,41 +175,41 @@ TEST(TestXMLUtils, GetStringArray)
 
 TEST(TestXMLUtils, GetPath)
 {
-  CTinyXML a, b;
+  CXBMCTinyXML a, b;
   std::string ref, val, val2;
 
-  a.Parse(std::string("<root><node urlencoded=\"yes\">special:///</node></root>"));
+  a.Parse(std::string("<root><node urlencoded=\"yes\">special://xbmc/</node></root>"));
   EXPECT_TRUE(XMLUtils::GetPath(a.RootElement(), "node", val));
 
-  ref = "special:///";
+  ref = "special://xbmc/";
   EXPECT_STREQ(ref.c_str(), val.c_str());
 
   val.clear();
-  b.Parse(std::string("<root><node>special://bin/</node></root>"));
+  b.Parse(std::string("<root><node>special://xbmcbin/</node></root>"));
   EXPECT_TRUE(XMLUtils::GetPath(b.RootElement(), "node", val));
 
-  ref = "special://bin/";
+  ref = "special://xbmcbin/";
   EXPECT_STREQ(ref.c_str(), val.c_str());
 
-  CTinyXML2 c, d;
+  CXBMCTinyXML2 c, d;
 
-  c.Parse(std::string("<root><node urlencoded=\"yes\">special:///</node></root>"));
+  c.Parse(std::string("<root><node urlencoded=\"yes\">special://xbmc/</node></root>"));
   EXPECT_TRUE(XMLUtils::GetPath(c.RootElement(), "node", val2));
 
-  ref = "special:///";
+  ref = "special://xbmc/";
   EXPECT_STREQ(ref.c_str(), val2.c_str());
 
   val2.clear();
-  d.Parse(std::string("<root><node>special://bin/</node></root>"));
+  d.Parse(std::string("<root><node>special://xbmcbin/</node></root>"));
   EXPECT_TRUE(XMLUtils::GetPath(d.RootElement(), "node", val2));
 
-  ref = "special://bin/";
+  ref = "special://xbmcbin/";
   EXPECT_STREQ(ref.c_str(), val2.c_str());
 }
 
 TEST(TestXMLUtils, GetDate)
 {
-  CTinyXML a;
+  CXBMCTinyXML a;
   CDateTime ref, val, val2;
 
   a.Parse(std::string("<root><node>2012-07-08</node></root>"));
@@ -217,7 +217,7 @@ TEST(TestXMLUtils, GetDate)
   ref.SetDate(2012, 7, 8);
   EXPECT_TRUE(ref == val);
 
-  CTinyXML2 b;
+  CXBMCTinyXML2 b;
 
   b.Parse(std::string("<root><node>2012-07-08</node></root>"));
   EXPECT_TRUE(XMLUtils::GetDate(b.RootElement(), "node", val2));
@@ -226,7 +226,7 @@ TEST(TestXMLUtils, GetDate)
 
 TEST(TestXMLUtils, GetDateTime)
 {
-  CTinyXML a;
+  CXBMCTinyXML a;
   CDateTime ref, val, val2;
 
   a.Parse(std::string("<root><node>2012-07-08 01:02:03</node></root>"));
@@ -234,7 +234,7 @@ TEST(TestXMLUtils, GetDateTime)
   ref.SetDateTime(2012, 7, 8, 1, 2, 3);
   EXPECT_TRUE(ref == val);
 
-  CTinyXML2 b;
+  CXBMCTinyXML2 b;
 
   b.Parse(std::string("<root><node>2012-07-08 01:02:03</node></root>"));
   EXPECT_TRUE(XMLUtils::GetDateTime(b.RootElement(), "node", val2));
@@ -243,7 +243,7 @@ TEST(TestXMLUtils, GetDateTime)
 
 TEST(TestXMLUtils, SetString)
 {
-  CTinyXML a;
+  CXBMCTinyXML a;
   std::string ref, val, val2;
 
   a.Parse(std::string("<root></root>"));
@@ -253,7 +253,7 @@ TEST(TestXMLUtils, SetString)
   ref = "some string";
   EXPECT_STREQ(ref.c_str(), val.c_str());
 
-  CTinyXML2 b;
+  CXBMCTinyXML2 b;
 
   b.Parse(std::string("<root></root>"));
   XMLUtils::SetString(b.RootElement(), "node", "some string");
@@ -264,7 +264,7 @@ TEST(TestXMLUtils, SetString)
 
 TEST(TestXMLUtils, SetStringArray)
 {
-  CTinyXML a;
+  CXBMCTinyXML a;
   std::vector<std::string> strarray;
   strarray.emplace_back("some string1");
   strarray.emplace_back("some string2");
@@ -282,7 +282,7 @@ TEST(TestXMLUtils, SetStringArray)
   EXPECT_STREQ("some string4", strarray.at(3).c_str());
   EXPECT_STREQ("some string5", strarray.at(4).c_str());
 
-  CTinyXML2 b;
+  CXBMCTinyXML2 b;
 
   strarray.clear();
   strarray.emplace_back("some string1");
@@ -304,7 +304,7 @@ TEST(TestXMLUtils, SetStringArray)
 
 TEST(TestXMLUtils, SetInt)
 {
-  CTinyXML a;
+  CXBMCTinyXML a;
   int ref, val, val2;
 
   a.Parse(std::string("<root></root>"));
@@ -314,7 +314,7 @@ TEST(TestXMLUtils, SetInt)
   ref = 1000;
   EXPECT_EQ(ref, val);
 
-  CTinyXML2 b;
+  CXBMCTinyXML2 b;
 
   b.Parse(std::string("<root></root>"));
   XMLUtils::SetInt(b.RootElement(), "node", 1000);
@@ -325,7 +325,7 @@ TEST(TestXMLUtils, SetInt)
 
 TEST(TestXMLUtils, SetFloat)
 {
-  CTinyXML a;
+  CXBMCTinyXML a;
   float ref, val, val2;
 
   a.Parse(std::string("<root></root>"));
@@ -335,7 +335,7 @@ TEST(TestXMLUtils, SetFloat)
   ref = 1000.1f;
   EXPECT_EQ(ref, val);
 
-  CTinyXML2 b;
+  CXBMCTinyXML2 b;
 
   b.Parse(std::string("<root></root>"));
   XMLUtils::SetFloat(b.RootElement(), "node", 1000.1f);
@@ -346,7 +346,7 @@ TEST(TestXMLUtils, SetFloat)
 
 TEST(TestXMLUtils, SetBoolean)
 {
-  CTinyXML a;
+  CXBMCTinyXML a;
   bool ref, val, val2;
 
   a.Parse(std::string("<root></root>"));
@@ -356,7 +356,7 @@ TEST(TestXMLUtils, SetBoolean)
   ref = true;
   EXPECT_EQ(ref, val);
 
-  CTinyXML2 b;
+  CXBMCTinyXML2 b;
 
   b.Parse(std::string("<root></root>"));
   XMLUtils::SetBoolean(b.RootElement(), "node", true);
@@ -367,20 +367,20 @@ TEST(TestXMLUtils, SetBoolean)
 
 TEST(TestXMLUtils, SetPath)
 {
-  CTinyXML a;
+  CXBMCTinyXML a;
   std::string ref, val, val2;
 
   a.Parse(std::string("<root></root>"));
-  XMLUtils::SetPath(a.RootElement(), "node", "special:///");
+  XMLUtils::SetPath(a.RootElement(), "node", "special://xbmc/");
   EXPECT_TRUE(XMLUtils::GetPath(a.RootElement(), "node", val));
 
-  ref = "special:///";
+  ref = "special://xbmc/";
   EXPECT_STREQ(ref.c_str(), val.c_str());
 
-  CTinyXML2 b;
+  CXBMCTinyXML2 b;
 
   b.Parse(std::string("<root></root>"));
-  XMLUtils::SetPath(b.RootElement(), "node", "special:///");
+  XMLUtils::SetPath(b.RootElement(), "node", "special://xbmc/");
   EXPECT_TRUE(XMLUtils::GetPath(b.RootElement(), "node", val2));
 
   EXPECT_STREQ(ref.c_str(), val2.c_str());
@@ -388,7 +388,7 @@ TEST(TestXMLUtils, SetPath)
 
 TEST(TestXMLUtils, SetDate)
 {
-  CTinyXML a;
+  CXBMCTinyXML a;
   CDateTime ref, val, val2;
 
   a.Parse(std::string("<root></root>"));
@@ -397,7 +397,7 @@ TEST(TestXMLUtils, SetDate)
   EXPECT_TRUE(XMLUtils::GetDate(a.RootElement(), "node", val));
   EXPECT_TRUE(ref == val);
 
-  CTinyXML2 b;
+  CXBMCTinyXML2 b;
 
   b.Parse(std::string("<root></root>"));
   XMLUtils::SetDate(b.RootElement(), "node", ref);
@@ -407,7 +407,7 @@ TEST(TestXMLUtils, SetDate)
 
 TEST(TestXMLUtils, SetDateTime)
 {
-  CTinyXML a;
+  CXBMCTinyXML a;
   CDateTime ref, val, val2;
 
   a.Parse(std::string("<root></root>"));
@@ -416,7 +416,7 @@ TEST(TestXMLUtils, SetDateTime)
   EXPECT_TRUE(XMLUtils::GetDateTime(a.RootElement(), "node", val));
   EXPECT_TRUE(ref == val);
 
-  CTinyXML2 b;
+  CXBMCTinyXML2 b;
 
   b.Parse(std::string("<root></root>"));
   XMLUtils::SetDateTime(b.RootElement(), "node", ref);
@@ -431,7 +431,7 @@ TEST(TestXMLUtils, NodeSerializationRoot)
 
   {
     // 1 - the node belongs to a document
-    CTinyXML doc;
+    CXBMCTinyXML doc;
     EXPECT_TRUE(doc.Parse(XmlDocument));
     EXPECT_EQ(expected, XMLUtils::NodeStringSerialization(doc.RootElement(),
                                                           XMLUtils::SerializationFormat::COMPACT));
@@ -448,7 +448,7 @@ TEST(TestXMLUtils, NodeSerializationRoot)
   }
   {
     // TinyXML2 doesn't allow freestanding XMLNodes. They are always memory-managed by a XMLDocument.
-    CTinyXML2 doc;
+    CXBMCTinyXML2 doc;
     EXPECT_TRUE(doc.Parse(XmlDocument));
     EXPECT_EQ(expected, XMLUtils::NodeStringSerialization(doc.RootElement(),
                                                           XMLUtils::SerializationFormat::COMPACT));
@@ -461,7 +461,7 @@ TEST(TestXMLUtils, NodeSerializationChild)
   const std::string expected = "<node>some string</node>";
 
   {
-    CTinyXML doc;
+    CXBMCTinyXML doc;
     EXPECT_TRUE(doc.Parse(XmlDocument));
     TiXmlElement* elem = doc.RootElement()->FirstChildElement("node");
     EXPECT_EQ(expected,
@@ -469,7 +469,7 @@ TEST(TestXMLUtils, NodeSerializationChild)
   }
   {
     // TinyXML2 doesn't allow freestanding XMLNodes. They are always memory-managed by a XMLDocument.
-    CTinyXML2 doc;
+    CXBMCTinyXML2 doc;
     EXPECT_TRUE(doc.Parse(XmlDocument));
     tinyxml2::XMLElement* elem = doc.RootElement()->FirstChildElement("node");
 
@@ -484,13 +484,13 @@ TEST(TestXMLUtils, NodeSerializationCompact)
   const std::string expected = "<root><node>some string</node></root>";
 
   {
-    CTinyXML doc;
+    CXBMCTinyXML doc;
     EXPECT_TRUE(doc.Parse(XmlDocument));
     EXPECT_EQ(expected, XMLUtils::NodeStringSerialization(doc.RootElement(),
                                                           XMLUtils::SerializationFormat::COMPACT));
   }
   {
-    CTinyXML2 doc;
+    CXBMCTinyXML2 doc;
     EXPECT_TRUE(doc.Parse(XmlDocument));
     EXPECT_EQ(expected, XMLUtils::NodeStringSerialization(doc.RootElement(),
                                                           XMLUtils::SerializationFormat::COMPACT));
@@ -506,13 +506,13 @@ TEST(TestXMLUtils, NodeSerializationPretty)
 )";
 
   {
-    CTinyXML doc;
+    CXBMCTinyXML doc;
     EXPECT_TRUE(doc.Parse(XmlDocument));
     EXPECT_EQ(expected, XMLUtils::NodeStringSerialization(doc.RootElement(),
                                                           XMLUtils::SerializationFormat::PRETTY));
   }
   {
-    CTinyXML2 doc;
+    CXBMCTinyXML2 doc;
     EXPECT_TRUE(doc.Parse(XmlDocument));
     EXPECT_EQ(expected, XMLUtils::NodeStringSerialization(doc.RootElement(),
                                                           XMLUtils::SerializationFormat::PRETTY));
@@ -523,7 +523,7 @@ TEST(TestXMLUtils, RemoveNodeFastFail)
 {
   const std::string XmlDocument = "<root><node>some string</node></root>";
   {
-    CTinyXML doc;
+    CXBMCTinyXML doc;
     EXPECT_TRUE(doc.Parse(XmlDocument));
 
     // the root element can't be deleted
@@ -533,7 +533,7 @@ TEST(TestXMLUtils, RemoveNodeFastFail)
   }
 
   {
-    CTinyXML2 doc;
+    CXBMCTinyXML2 doc;
     EXPECT_TRUE(doc.Parse(XmlDocument));
 
     // the root element can't be deleted
@@ -547,7 +547,7 @@ TEST(TestXMLUtils, RemoveNode)
 {
   const std::string XmlDocument = "<root><node>some string</node><other>string</other></root>";
   {
-    CTinyXML doc;
+    CXBMCTinyXML doc;
     EXPECT_TRUE(doc.Parse(XmlDocument));
     TiXmlNode* node = doc.RootElement()->FirstChildElement("node");
 
@@ -559,7 +559,7 @@ TEST(TestXMLUtils, RemoveNode)
   }
 
   {
-    CTinyXML2 doc;
+    CXBMCTinyXML2 doc;
     EXPECT_TRUE(doc.Parse(XmlDocument));
     tinyxml2::XMLNode* root = doc.RootElement();
     tinyxml2::XMLNode* node = root->FirstChildElement("node");
@@ -577,7 +577,7 @@ TEST(TestXMLUtils, RemoveNodeWithChild)
   const std::string XmlDocument =
       "<root><node><child>some string</child></node><other>string</other></root>";
   {
-    CTinyXML doc;
+    CXBMCTinyXML doc;
     EXPECT_TRUE(doc.Parse(XmlDocument));
     TiXmlNode* node = doc.RootElement()->FirstChildElement("node");
 
@@ -589,7 +589,7 @@ TEST(TestXMLUtils, RemoveNodeWithChild)
   }
 
   {
-    CTinyXML2 doc;
+    CXBMCTinyXML2 doc;
     EXPECT_TRUE(doc.Parse(XmlDocument));
     tinyxml2::XMLNode* root = doc.RootElement();
     tinyxml2::XMLNode* node = root->FirstChildElement("node");
@@ -607,7 +607,7 @@ TEST(TestXMLUtils, RemoveChildNode)
   const std::string XmlDocument =
       "<root><node>node string<child>some string</child></node><other>string</other></root>";
   {
-    CTinyXML doc;
+    CXBMCTinyXML doc;
     EXPECT_TRUE(doc.Parse(XmlDocument));
     TiXmlNode* node = doc.RootElement()->FirstChildElement("node");
     node = node->FirstChildElement("child");
@@ -619,7 +619,7 @@ TEST(TestXMLUtils, RemoveChildNode)
                                                           XMLUtils::SerializationFormat::COMPACT));
   }
   {
-    CTinyXML2 doc;
+    CXBMCTinyXML2 doc;
     EXPECT_TRUE(doc.Parse(XmlDocument));
     tinyxml2::XMLNode* root = doc.RootElement();
     tinyxml2::XMLNode* node = root->FirstChildElement("node");
@@ -637,7 +637,7 @@ TEST(TestXMLUtils, RemoveNodeFreestanding)
 {
   const std::string XmlDocument = "<root><node>some string</node><other>string</other></root>";
   {
-    CTinyXML doc;
+    CXBMCTinyXML doc;
     EXPECT_TRUE(doc.Parse(XmlDocument));
     TiXmlNode* node = doc.RootElement()->FirstChildElement("node");
 
@@ -650,7 +650,7 @@ TEST(TestXMLUtils, RemoveNodeFreestanding)
   }
 
   {
-    CTinyXML2 doc;
+    CXBMCTinyXML2 doc;
     EXPECT_TRUE(doc.Parse(XmlDocument));
     tinyxml2::XMLNode* root = doc.RootElement();
     tinyxml2::XMLNode* node = root->FirstChildElement("node");

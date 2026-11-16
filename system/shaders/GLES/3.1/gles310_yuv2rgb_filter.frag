@@ -1,6 +1,6 @@
 /*
- *  Copyright (C) 2024 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  Copyright (C) 2024 Team Kodi
+ *  This file is part of Kodi - https://kodi.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -80,14 +80,14 @@ void main()
   vec4 rgb;
   vec4 yuv;
 
-#if defined(_YV12) || defined(_NV12)
+#if defined(XBMC_YV12) || defined(XBMC_NV12)
 
   yuv = vec4(filter_0(m_sampY, m_cordY),
              texture2D(m_sampU, m_cordU).g,
              texture2D(m_sampV, m_cordV).a,
              1.0);
 
-#elif defined(_NV12_RRG)
+#elif defined(XBMC_NV12_RRG)
 
   yuv = vec4(filter_0(m_sampY, m_cordY),
              texture2D(m_sampU, m_cordU).r,
@@ -97,28 +97,28 @@ void main()
 #endif
 
   rgb = m_yuvmat * yuv;
-#if defined(UNIVERSAL MEDIA CENTER_HUESAT_PQ) || defined(UNIVERSAL MEDIA CENTER_HUESAT_HLG)
+#if defined(KODI_HUESAT_PQ) || defined(KODI_HUESAT_HLG)
   rgb.rgb = hueSaturation(rgb.rgb);
 #endif
   rgb.a = m_alpha;
 
-#if defined(_COL_CONVERSION)
+#if defined(XBMC_COL_CONVERSION)
   rgb.rgb = pow(max(vec3(0), rgb.rgb), vec3(m_gammaSrc));
   rgb.rgb = max(vec3(0), m_primMat * rgb.rgb);
   rgb.rgb = pow(rgb.rgb, vec3(m_gammaDstInv));
 
-#if defined(UNIVERSAL MEDIA CENTER_TONE_MAPPING_REINHARD)
+#if defined(KODI_TONE_MAPPING_REINHARD)
   float luma = dot(rgb.rgb, m_coefsDst);
   rgb.rgb *= reinhard(luma) / luma;
 
-#elif defined(UNIVERSAL MEDIA CENTER_TONE_MAPPING_ACES)
+#elif defined(KODI_TONE_MAPPING_ACES)
   rgb.rgb = inversePQ(rgb.rgb);
   rgb.rgb *= (10000.0 / m_luminance) * (2.0 / m_toneP1);
   rgb.rgb = aces(rgb.rgb);
   rgb.rgb *= (1.24 / m_toneP1);
   rgb.rgb = pow(rgb.rgb, vec3(0.27));
 
-#elif defined(UNIVERSAL MEDIA CENTER_TONE_MAPPING_HABLE)
+#elif defined(KODI_TONE_MAPPING_HABLE)
   rgb.rgb = inversePQ(rgb.rgb);
   rgb.rgb *= m_toneP1;
   float wp = m_luminance / 100.0;
@@ -128,7 +128,7 @@ void main()
 
 #endif
 
-#if defined(UNIVERSAL MEDIA CENTER_GAMMA)
+#if defined(KODI_GAMMA)
   rgb.rgb = pow(clamp((rgb.rgb - m_gammaRange.y) / m_gammaRange.x, 0.0, 1.0), vec3(m_gammaInv)) * m_gammaRange.x + m_gammaRange.y;
 #endif
 

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -9,7 +9,7 @@
 #include "music/Album.h"
 #include "music/Artist.h"
 #include "music/tags/MusicInfoTag.h"
-#include "utils/TinyXML.h"
+#include "utils/XBMCTinyXML.h"
 #include "utils/XMLUtils.h"
 
 #include <string>
@@ -22,7 +22,7 @@ namespace
 template<typename T>
 void CheckNfoVersion(T& details, const char* root)
 {
-  CTinyXML saved;
+  CXBMCTinyXML saved;
   ASSERT_TRUE(details.Save(&saved, root, "/music/"));
   ASSERT_NE(nullptr, saved.RootElement());
   EXPECT_STREQ(root, saved.RootElement()->Value());
@@ -42,7 +42,7 @@ void CheckNfoVersion(T& details, const char* root)
   saved.RootElement()->RemoveAttribute("version");
   T unversioned;
   ASSERT_TRUE(unversioned.Load(saved.RootElement()));
-  CTinyXML unrelated;
+  CXBMCTinyXML unrelated;
   ASSERT_TRUE(unversioned.Save(&unrelated, "details", "/music/"));
   EXPECT_EQ(nullptr, unrelated.RootElement()->Attribute("version"));
   unrelated.RootElement()->SetValue(root);
@@ -52,7 +52,7 @@ void CheckNfoVersion(T& details, const char* root)
 
 TEST(TestMusicInfoTag, ArtistNfoVersionZero)
 {
-  CTinyXML input;
+  CXBMCTinyXML input;
   const std::string document =
       "<artist><name>Test artist</name><biography>Test biography</biography>"
       "<album><title>Test album</title><year>2001</year></album></artist>";
@@ -65,7 +65,7 @@ TEST(TestMusicInfoTag, ArtistNfoVersionZero)
   EXPECT_EQ("Test album", artist.discography.front().strAlbum);
   CheckNfoVersion(artist, "artist");
 
-  CTinyXML saved;
+  CXBMCTinyXML saved;
   ASSERT_TRUE(artist.Save(&saved, "artist", ""));
   ASSERT_NE(nullptr, saved.RootElement()->FirstChildElement("album"));
   EXPECT_EQ(nullptr, saved.RootElement()->FirstChildElement("album")->Attribute("version"));
@@ -73,7 +73,7 @@ TEST(TestMusicInfoTag, ArtistNfoVersionZero)
 
 TEST(TestMusicInfoTag, AlbumNfoVersionZero)
 {
-  CTinyXML input;
+  CXBMCTinyXML input;
   const std::string document = "<album><title>Test album</title><review>Test review</review>"
                                "<rating>7.5</rating><votes>123</votes></album>";
   input.Parse(document);

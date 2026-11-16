@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-#   Copyright (C) 2008-2013 Team 
+#   Copyright (C) 2008-2013 Team XBMC
 #
 #   This program is free software; you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@ if os.path.exists("../../lib/python"):
     sys.path.append("../../lib/python")
     from bt.hid import HID
     from bt.bt import bt_lookup_name
-    from client import Client
+    from xbmcclient import XBMCClient
     from ps3 import sixaxis
     from ps3_remote import process_keys as process_remote
     try:
@@ -47,7 +47,7 @@ else:
     # fallback to system wide modules
     from universalmediacenter.bt.hid import HID
     from universalmediacenter.bt.bt import bt_lookup_name
-    from universalmediacenter.client import Client
+    from universalmediacenter.xbmcclient import XBMCClient
     from universalmediacenter.ps3 import sixaxis
     from universalmediacenter.ps3_remote import process_keys as process_remote
     from universalmediacenter.defs import *
@@ -124,12 +124,12 @@ class PS3SixaxisThread ( StoppableThread ):
         StoppableThread.__init__(self)
         self.csock = csock
         self.isock = isock
-        self. = Client(name="PS3 Sixaxis", icon_file=ICON_PATH + "/bluetooth.png", ip=ipaddr)
+        self.xbmc = XBMCClient(name="PS3 Sixaxis", icon_file=ICON_PATH + "/bluetooth.png", ip=ipaddr)
         self.set_timeout(600)
 
     def run(self):
-        six = sixaxis.sixaxis(self., self.csock, self.isock)
-        self..connect()
+        six = sixaxis.sixaxis(self.xbmc, self.csock, self.isock)
+        self.xbmc.connect()
         self.reset_timeout()
         try:
             while not self.stop():
@@ -137,7 +137,7 @@ class PS3SixaxisThread ( StoppableThread ):
                 if self.timed_out():
                     raise Exception("PS3 Sixaxis powering off, timed out")
                 if self.idle_time() > 50:
-                    self..connect()
+                    self.xbmc.connect()
                 try:
                     if six.process_socket(self.isock):
                         self.reset_timeout()
@@ -156,18 +156,18 @@ class PS3RemoteThread ( StoppableThread ):
         StoppableThread.__init__(self)
         self.csock = csock
         self.isock = isock
-        self. = Client(name="PS3 Blu-Ray Remote", icon_file=ICON_PATH + "/bluetooth.png", ip=ipaddr)
+        self.xbmc = XBMCClient(name="PS3 Blu-Ray Remote", icon_file=ICON_PATH + "/bluetooth.png", ip=ipaddr)
         self.set_timeout(600)
         self.services = []
-        self.current_ = 0
+        self.current_xbmc = 0
 
     def run(self):
-        self..connect()
+        self.xbmc.connect()
         try:
             # start the zeroconf thread if possible
             try:
                 self.zeroconf_thread = ZeroconfThread()
-                self.zeroconf_thread.add_service('_-events._udp',
+                self.zeroconf_thread.add_service('_xbmc-events._udp',
                                              self.zeroconf_service_handler)
                 self.zeroconf_thread.start()
             except Exception as e:
@@ -175,17 +175,17 @@ class PS3RemoteThread ( StoppableThread ):
 
             # main thread loop
             while not self.stop():
-                status = process_remote(self.isock, self.)
+                status = process_remote(self.isock, self.xbmc)
 
                 if status == 2:   # 2 = socket read timeout
                     if self.timed_out():
                         raise Exception("PS3 Blu-Ray Remote powering off, "\
                                             "timed out")
                 elif status == 3: # 3 = ps and skip +
-                    self.next_()
+                    self.next_xbmc()
 
                 elif status == 4: # 4 = ps and skip -
-                    self.previous_()
+                    self.previous_xbmc()
 
                 elif not status:  # 0 = keys are normally processed
                     self.reset_timeout()
@@ -197,33 +197,33 @@ class PS3RemoteThread ( StoppableThread ):
         self.zeroconf_thread.stop()
         self.close_sockets()
 
-    def next_(self):
+    def next_xbmc(self):
         """
-        Connect to the next  instance
+        Connect to the next XBMC instance
         """
-        self.current_ = (self.current_ + 1) % len( self.services )
+        self.current_xbmc = (self.current_xbmc + 1) % len( self.services )
         self.reconnect()
         return
 
-    def previous_(self):
+    def previous_xbmc(self):
         """
-        Connect to the previous  instance
+        Connect to the previous XBMC instance
         """
-        self.current_ -= 1
-        if self.current_ < 0 :
-            self.current_ = len( self.services ) - 1
+        self.current_xbmc -= 1
+        if self.current_xbmc < 0 :
+            self.current_xbmc = len( self.services ) - 1
         self.reconnect()
         return
 
     def reconnect(self):
         """
-        Reconnect to an  instance based on self.current_
+        Reconnect to an XBMC instance based on self.current_xbmc
         """
         try:
-            service = self.services[ self.current_ ]
+            service = self.services[ self.current_xbmc ]
             print("Connecting to %s" % service['name'])
-            self..connect( service['address'], service['port'] )
-            self..send_notification("PS3 Blu-Ray Remote", "New Connection", None)
+            self.xbmc.connect( service['address'], service['port'] )
+            self.xbmc.send_notification("PS3 Blu-Ray Remote", "New Connection", None)
         except Exception as e:
             print(str(e))
 
@@ -231,10 +231,10 @@ class PS3RemoteThread ( StoppableThread ):
         """
         Zeroconf event handler
         """
-        if event == zeroconf.SERVICE_FOUND:  # new  service detected
+        if event == zeroconf.SERVICE_FOUND:  # new xbmc service detected
             self.services.append( service )
 
-        elif event == zeroconf.SERVICE_LOST: #  service lost
+        elif event == zeroconf.SERVICE_LOST: # xbmc service lost
             try:
                 # search for the service by name, since IP+port isn't available
                 for s in self.services:
@@ -305,11 +305,11 @@ def usage():
     print("""
 PS3 Sixaxis / Blu-Ray Remote HID Server v0.1
 
-Usage: ps3.py [bdaddress] [ host]
+Usage: ps3.py [bdaddress] [XBMC host]
 
   bdaddress  => address of local bluetooth device to use (default: auto)
                 (e.g. aa:bb:cc:dd:ee:ff)
-  ip address => IP address or hostname of the  instance (default: localhost)
+  ip address => IP address or hostname of the XBMC instance (default: localhost)
                 (e.g. 192.168.1.110)
 """)
 

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -55,13 +55,13 @@
 
 using namespace UNIVERSAL MEDIA CENTER;
 
-namespace Addon
+namespace XBMCAddon
 {
 
-  namespace 
+  namespace xbmc
   {
     /*****************************************************************
-     * start of  methods
+     * start of xbmc methods
      *****************************************************************/
 
     void log(const char* msg, int level)
@@ -74,19 +74,19 @@ namespace Addon
 
     void shutdown()
     {
-      _TRACE;
+      XBMC_TRACE;
       CServiceBroker::GetAppMessenger()->PostMsg(TMSG_SHUTDOWN);
     }
 
     void restart()
     {
-      _TRACE;
+      XBMC_TRACE;
       CServiceBroker::GetAppMessenger()->PostMsg(TMSG_RESTART);
     }
 
     void executescript(const char* script)
     {
-      _TRACE;
+      XBMC_TRACE;
       if (! script)
         return;
 
@@ -95,7 +95,7 @@ namespace Addon
 
     void executebuiltin(const char* function, bool wait /* = false*/)
     {
-      _TRACE;
+      XBMC_TRACE;
       if (! function)
         return;
 
@@ -130,7 +130,7 @@ namespace Addon
 
     String executeJSONRPC(const char* jsonrpccommand)
     {
-      _TRACE;
+      XBMC_TRACE;
       DelayedCallGuard dg;
       String ret;
 
@@ -147,7 +147,7 @@ namespace Addon
 
     void sleep(long timemillis)
     {
-      _TRACE;
+      XBMC_TRACE;
 
       XbmcThreads::EndTime<> endTime{std::chrono::milliseconds(timemillis)};
       while (!endTime.IsTimePast())
@@ -168,7 +168,7 @@ namespace Addon
 
     String getLocalizedString(int id)
     {
-      _TRACE;
+      XBMC_TRACE;
       if (ADDON::IsSkinStringId(id))
       {
         auto gui = CServiceBroker::GetGUI();
@@ -185,13 +185,13 @@ namespace Addon
 
     String getSkinDir()
     {
-      _TRACE;
+      XBMC_TRACE;
       return CServiceBroker::GetSettingsComponent()->GetSettings()->GetString(CSettings::SETTING_LOOKANDFEEL_SKIN);
     }
 
     String getLanguage(int format /* = CLangCodeExpander::ENGLISH_NAME */, bool region /*= false*/)
     {
-      _TRACE;
+      XBMC_TRACE;
       switch (format)
       {
         case CLangCodeExpander::ENGLISH_NAME:
@@ -207,7 +207,7 @@ namespace Addon
 
     String getIPAddress()
     {
-      _TRACE;
+      XBMC_TRACE;
       char cTitleIP[32];
       snprintf(cTitleIP, sizeof(cTitleIP), "127.0.0.1");
       CNetworkInterface* iface = CServiceBroker::GetNetwork().GetFirstConnectedInterface();
@@ -219,13 +219,13 @@ namespace Addon
 
     long getDVDState()
     {
-      _TRACE;
+      XBMC_TRACE;
       return static_cast<long>(CServiceBroker::GetMediaManager().GetDriveStatus());
     }
 
     long getFreeMem()
     {
-      _TRACE;
+      XBMC_TRACE;
       UNIVERSAL MEDIA CENTER::MEMORY::MemoryStatus stat;
       UNIVERSAL MEDIA CENTER::MEMORY::GetMemoryStatus(&stat);
       return static_cast<long>(stat.availPhys  / ( 1024 * 1024 ));
@@ -237,9 +237,9 @@ namespace Addon
       "getCpuTemp() -- Returns the current cpu temperature as an integer."
       ""
       "example:"
-      "  - cputemp = .getCpuTemp()");
+      "  - cputemp = xbmc.getCpuTemp()");
 
-      PyObject* _GetCpuTemp(PyObject *self, PyObject *args)
+      PyObject* XBMC_GetCpuTemp(PyObject *self, PyObject *args)
       {
       unsigned short cputemp;
       unsigned short cpudec;
@@ -266,7 +266,7 @@ namespace Addon
 
     String getInfoLabel(const char* cLine)
     {
-      _TRACE;
+      XBMC_TRACE;
       DelayedCallGuard dg;
       if (!cLine)
       {
@@ -286,7 +286,7 @@ namespace Addon
 
     String getInfoImage(const char * infotag)
     {
-      _TRACE;
+      XBMC_TRACE;
       DelayedCallGuard dg;
       if (!infotag)
         {
@@ -301,7 +301,7 @@ namespace Addon
 
     String getDatabaseName(const char* dbType)
     {
-      _TRACE;
+      XBMC_TRACE;
       if (!dbType)
       {
         String ret;
@@ -313,7 +313,7 @@ namespace Addon
 
     void playSFX(const char* filename, bool useCached)
     {
-      _TRACE;
+      XBMC_TRACE;
       if (!filename)
         return;
 
@@ -326,7 +326,7 @@ namespace Addon
 
     void stopSFX()
     {
-      _TRACE;
+      XBMC_TRACE;
       DelayedCallGuard dg;
       CGUIComponent* gui = CServiceBroker::GetGUI();
       if (gui)
@@ -335,7 +335,7 @@ namespace Addon
 
     void enableNavSounds(bool yesNo)
     {
-      _TRACE;
+      XBMC_TRACE;
       CGUIComponent* gui = CServiceBroker::GetGUI();
       if (gui)
         gui->GetAudioManager().Enable(yesNo);
@@ -343,13 +343,13 @@ namespace Addon
 
     bool getCondVisibility(const char *condition)
     {
-      _TRACE;
+      XBMC_TRACE;
       if (!condition)
         return false;
 
       bool ret;
       {
-        AddonUtils::GuiLock lock(nullptr, false);
+        XBMCAddonUtils::GuiLock lock(nullptr, false);
 
         int id = CServiceBroker::GetGUI()->GetWindowManager().GetTopmostModalDialog();
         if (id == WINDOW_INVALID)
@@ -362,7 +362,7 @@ namespace Addon
 
     int getGlobalIdleTime()
     {
-      _TRACE;
+      XBMC_TRACE;
       auto& components = CServiceBroker::GetAppComponents();
       const auto appPower = components.GetComponent<CApplicationPowerHandling>();
       return appPower->GlobalIdleTime();
@@ -370,7 +370,7 @@ namespace Addon
 
     int getDevicePowerStatus(const String& adapterName /* = emptyString */)
     {
-      _TRACE;
+      XBMC_TRACE;
       // libCEC may block briefly on a CEC bus request when its cache is stale,
       // so release the GIL for the duration of the call.
       DelayedCallGuard dg;
@@ -379,20 +379,20 @@ namespace Addon
 
     std::vector<String> getCecAdapterNames()
     {
-      _TRACE;
+      XBMC_TRACE;
       return CServiceBroker::GetPeripherals().GetCecAdapterNames();
     }
 
     String getCacheThumbName(const String& path)
     {
-      _TRACE;
+      XBMC_TRACE;
       auto crc = Crc32::ComputeFromLowerCase(path);
       return StringUtils::Format("{:08x}.tbn", crc);
     }
 
     Tuple<String,String> getCleanMovieTitle(const String& path, bool usefoldername)
     {
-      _TRACE;
+      XBMC_TRACE;
       CFileItem item(path, false);
       std::string strName = item.GetMovieName(usefoldername);
 
@@ -405,7 +405,7 @@ namespace Addon
 
     String getRegion(const char* id)
     {
-      _TRACE;
+      XBMC_TRACE;
       std::string result;
       CDateTime now = CDateTime::GetCurrentDateTime();
 
@@ -473,7 +473,7 @@ namespace Addon
     //! @todo Add a mediaType enum
     String getSupportedMedia(const char* mediaType)
     {
-      _TRACE;
+      XBMC_TRACE;
       String result;
       if (StringUtils::CompareNoCase(mediaType, "video") == 0)
         result = CServiceBroker::GetFileExtensionProvider().GetVideoExtensions();
@@ -491,14 +491,14 @@ namespace Addon
 
     bool skinHasImage(const char* image)
     {
-      _TRACE;
+      XBMC_TRACE;
       return CServiceBroker::GetGUI()->GetTextureManager().HasTexture(image);
     }
 
 
     bool startServer(int iTyp, bool bStart)
     {
-      _TRACE;
+      XBMC_TRACE;
       DelayedCallGuard dg;
       return CServiceBroker::GetNetwork().GetServices().StartServer(
           static_cast<CNetworkServices::ESERVERS>(iTyp), bStart != 0);

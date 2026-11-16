@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -19,16 +19,16 @@ namespace ADDON
 
 void Interface_GUIControlAddonRendering::Init(AddonGlobalInterface* addonInterface)
 {
-  addonInterface->toUniversal Media Center->->control_rendering =
-      new AddonToUniversal Media CenterFuncTable__control_rendering();
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_rendering =
+      new AddonToUniversal Media CenterFuncTable_universalmediacenter_gui_control_rendering();
 
-  addonInterface->toUniversal Media Center->->control_rendering->set_callbacks = set_callbacks;
-  addonInterface->toUniversal Media Center->->control_rendering->destroy = destroy;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_rendering->set_callbacks = set_callbacks;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_rendering->destroy = destroy;
 }
 
 void Interface_GUIControlAddonRendering::DeInit(AddonGlobalInterface* addonInterface)
 {
-  delete addonInterface->toUniversal Media Center->->control_rendering;
+  delete addonInterface->toUniversal Media Center->universalmediacenter_gui->control_rendering;
 }
 
 void Interface_GUIControlAddonRendering::set_callbacks(

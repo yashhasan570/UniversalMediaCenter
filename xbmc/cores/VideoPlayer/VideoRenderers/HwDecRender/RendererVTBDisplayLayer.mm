@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -18,7 +18,7 @@
 #include "windowing/tvos/WinSystemTVOS.h"
 
 #include "platform/darwin/tvos/TVOSEAGLView.h"
-#include "platform/darwin/tvos/Controller.h"
+#include "platform/darwin/tvos/XBMCController.h"
 
 #include <algorithm>
 #include <cmath>
@@ -239,7 +239,7 @@ bool CRendererVTBDisplayLayer::Configure(const VideoPicture& picture,
     CLog::Log(LOGERROR, "CRendererVTBDisplayLayer::Configure: missing VideoToolbox pixel buffer");
     return false;
   }
-  if (![g_Controller enableVideoLayer])
+  if (![g_xbmcController enableVideoLayer])
   {
     CLog::Log(LOGERROR, "CRendererVTBDisplayLayer::Configure: unable to enable video layer");
     return false;
@@ -305,14 +305,14 @@ void CRendererVTBDisplayLayer::UnInit()
   for (int i = 0; i < NUM_BUFFERS; ++i)
     ReleaseBuffer(i);
   CServiceBroker::GetWinSystem()->SetHDR(nullptr);
-  [g_Controller disableVideoLayer];
+  [g_xbmcController disableVideoLayer];
   m_lastIndex = -1;
   m_configured = false;
 }
 
 bool CRendererVTBDisplayLayer::Flush(bool saveBuffers)
 {
-  [g_Controller flushVideoLayer];
+  [g_xbmcController flushVideoLayer];
   m_lastIndex = -1;
   if (!saveBuffers)
   {
@@ -330,11 +330,11 @@ void CRendererVTBDisplayLayer::Update()
   if (m_destRect != m_lastRect || m_sourceRect != m_lastSourceRect)
   {
     const auto& gfx = CServiceBroker::GetWinSystem()->GetGfxContext();
-    const CGSize boundsSize = g_Controller.glView.bounds.size;
+    const CGSize boundsSize = g_xbmcController.glView.bounds.size;
     const CGFloat sx = boundsSize.width / gfx.GetWidth();
     const CGFloat sy = boundsSize.height / gfx.GetHeight();
     // UIKit uses points; the source crop is normalized in the unrotated surface.
-    [g_Controller
+    [g_xbmcController
         setVideoLayerFrame:CGRectApplyAffineTransform(ToCGRect(m_destRect),
                                                       CGAffineTransformMakeScale(sx, sy))
                 sourceRect:CGRectApplyAffineTransform(
@@ -397,7 +397,7 @@ void CRendererVTBDisplayLayer::RenderUpdate(
   auto dictionary = static_cast<CFMutableDictionaryRef>(
       const_cast<void*>(CFArrayGetValueAtIndex(attachments, 0)));
   CFDictionarySetValue(dictionary, kCMSampleAttachmentKey_DisplayImmediately, kCFBooleanTrue);
-  [g_Controller enqueueVideoSampleBuffer:sample];
+  [g_xbmcController enqueueVideoSampleBuffer:sample];
   CFRelease(sample);
   m_lastIndex = index;
 }

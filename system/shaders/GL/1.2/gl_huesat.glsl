@@ -1,10 +1,10 @@
-#if defined(UNIVERSAL MEDIA CENTER_HUESAT_PQ) || defined(UNIVERSAL MEDIA CENTER_HUESAT_HLG)
+#if defined(KODI_HUESAT_PQ) || defined(KODI_HUESAT_HLG)
 uniform mat3 m_hsMat;
 uniform vec3 m_hsCoefs;
 uniform float m_hsPeak; // linear, 1.0 = PQ 10000 cd/m2 or HLG nominal peak
 uniform vec2 m_hsRange;
 
-#if defined(UNIVERSAL MEDIA CENTER_HUESAT_PQ)
+#if defined(KODI_HUESAT_PQ)
 const float HS_PQ_m1 = 2610.0 / (4096.0 * 4.0);
 const float HS_PQ_m2 = (2523.0 / 4096.0) * 128.0;
 const float HS_PQ_c1 = 3424.0 / 4096.0;
@@ -65,7 +65,7 @@ vec3 hsEncodeHLG(vec3 x)
 vec3 hueSaturation(vec3 color)
 {
   color = (color - m_hsRange.y) / m_hsRange.x;
-#if defined(UNIVERSAL MEDIA CENTER_HUESAT_PQ)
+#if defined(KODI_HUESAT_PQ)
   vec3 lin = hsDecodePQ(color);
 #else
   vec3 lin = hsDecodeHLG(color);
@@ -81,7 +81,7 @@ vec3 hueSaturation(vec3 color)
                    + above * ((top - luma) / max(chroma, vec3(eps)) - 1.0);
   lin = max(luma + clamp(min(limit.r, min(limit.g, limit.b)), 0.0, 1.0) * chroma, vec3(0.0));
 
-#if defined(UNIVERSAL MEDIA CENTER_HUESAT_PQ)
+#if defined(KODI_HUESAT_PQ)
   return hsEncodePQ(lin) * m_hsRange.x + m_hsRange.y;
 #else
   return hsEncodeHLG(lin) * m_hsRange.x + m_hsRange.y;

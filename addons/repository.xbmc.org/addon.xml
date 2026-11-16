@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="repository.github.com/yashhasan570/UniversalMediaCenter"
+<addon id="repository.xbmc.org"
 		name="Universal Media Center Add-on repository"
 		version="3.5.0"
 		provider-name="Team Universal Media Center">
   <requires>
-    <import addon=".addon" version="12.0.0"/>
+    <import addon="xbmc.addon" version="12.0.0"/>
   </requires>
-	<extension point=".addon.repository">
+	<extension point="xbmc.addon.repository">
 		<!-- Do not forget to bump add-on version when changing paths to force a repo refresh -->
 		<dir>
-			<info>https://mirrors.github.com/yashhasan570/UniversalMediaCenter/addons/piers/addons.xml.gz</info>
-			<checksum verify="sha256">https://mirrors.github.com/yashhasan570/UniversalMediaCenter/addons/piers/addons.xml.gz?sha256</checksum>
-			<datadir>https://mirrors.github.com/yashhasan570/UniversalMediaCenter/addons/piers</datadir>
-			<artdir>https://mirrors.github.com/yashhasan570/UniversalMediaCenter/addons/piers</artdir>
+			<info>https://mirrors.universalmediacenter.tv/addons/piers/addons.xml.gz</info>
+			<checksum verify="sha256">https://mirrors.universalmediacenter.tv/addons/piers/addons.xml.gz?sha256</checksum>
+			<datadir>https://mirrors.universalmediacenter.tv/addons/piers</datadir>
+			<artdir>https://mirrors.universalmediacenter.tv/addons/piers</artdir>
 			<hashes>sha256</hashes>
 		</dir>
 	</extension>
-	<extension point=".addon.metadata">
+	<extension point="xbmc.addon.metadata">
 		<platform>all</platform>
 		<assets>
 			<icon>icon.png</icon>
@@ -139,7 +139,7 @@
 		<description lang="tg_TJ">Барномаҳои иловагиро аз анбори нармафзори Universal Media Center.tv боргирӣ кунед ва насб намоед.[CR]  Аз истифодаи анбори нармафзори расмии мо ба шумо имконият пайдо мешавад, ки тавонед шароити мусофидро аз хидмати оинаи файлии васеъ ба даст оред ва нармафзори лозимиро аз сервери минтакаи ба шумо наздиктар бо суръати баланд боргирӣ кунед.[CR]  Ҳамаи барномаҳо аз анбори нармафзори мо дар ҳолати санҷишӣ мебошанд, бинобар ин агар ягон барномаи иловагии нуқсондор ё вайроншударо ёбед, лутфан дар бораи он барнома ва нуқсон пайдошуда ба гурӯҳи кории Universal Media Center гузориш диҳед, то ин ки мо тавонем ҳамаи камбудиҳои барномаҳои моро ҳал кунем.</description>
 		<description lang="th_TH">ดาวน์โหลดและติดตั้งส่วนเสริม จากแหล่งข้อมูลโปรแกรมของ Universal Media Center.tv อย่างเป็นทางการ.[CR]  โดยการใช้งานแหล่งข้อมูลโปรแกรมอย่างเป็นทางการ คุณสามารถใช้ประโยชน์จากบริการแฟ้มมิเรอร์ที่กว้างขวางของเรา ที่จะช่วยให้การดาวน์โหลดของคุณเร็วขึ้นจากภูมิภาคที่ใกล้ที่สุด.[CR]  ส่วนเสริม ทั้งหมดในแหล่งเก็บข้อมูลนี้ อยู่ภายใต้การทดสอบขั้นพื้นฐานแล้ว ถ้าคุณพบส่วนเสริมที่เสียหายหรือไม่ทำงาน กรุณาแจ้งทีมงาน Universal Media Center เพื่อให้เราสามารถดำเนินการใด ๆ ที่จำเป็น.</description>
 		<description lang="tr_TR">Eklentileri resmi Universal Media Center.tv eklenti deposundan indirin ve yükleyin.[CR]Resmi yazılım depomuzu kullanarak size en yakın bölgeden en hızlı biçimde indirme yapmanızı sağlayacak gelişkin dosya aynalama servisini kullanma avantajını elde edeceksiniz.[CR]Bu yazılım deposundaki tüm eklentiler temel testlerden geçerler, şayet hatalı ya da çalışmayan bir eklenti bulursanız lütfen düzeltilmesi için bu durumu Universal Media Center Takımına bildiriniz.</description>
-		<description lang="uk_UA">Завантажити і встановити додатки з офіційного репозиторію додатків github.com/yashhasan570/UniversalMediaCenter.[CR]  Використовуючи офіційний репозиторій, ви отримуєте доступ до багатьох серверів-дзеркал, що гарантує швидке завантаження із найближчого до вас регіону.[CR]  Всі додатки в цьому репозиторії пройшли лише базове тестування. Якщо ви знайшли поламаний або непрацюючий додаток, повідомте про це команду Universal Media Center, щоб ми змогли вжити потрібних заходів.</description>
+		<description lang="uk_UA">Завантажити і встановити додатки з офіційного репозиторію додатків universalmediacenter.tv.[CR]  Використовуючи офіційний репозиторій, ви отримуєте доступ до багатьох серверів-дзеркал, що гарантує швидке завантаження із найближчого до вас регіону.[CR]  Всі додатки в цьому репозиторії пройшли лише базове тестування. Якщо ви знайшли поламаний або непрацюючий додаток, повідомте про це команду Universal Media Center, щоб ми змогли вжити потрібних заходів.</description>
 		<description lang="vi_VN">Tải về và cài đặt tiện ích từ kho tiện ích chính thức của Universal Media Center.[CR]  Khi sử dụng kho lưu trữ này bạn sẽ hưởng lợi từ dịch vụ nguồn của chúng tôi, giúp bạn có thể tải về nhanh hơn từ một khu vực gần bạn.[CR]  Tất cả tiện ích trên kho lưu trữ này đã được thông qua bài kiểm tra cơ bản, nếu bạn phát hiện ra một tiện ích không hoạt động xin vui lòng báo cáo lại nó cho đội ngũ Universal Media Center để chúng tôi có thể kịp thời xử lý.</description>
 		<description lang="zh_CN">从 Universal Media Center.tv 官方插件库下载并安装插件。[CR]通过使用官方插件库，您将能够利用我们遍布各地的文件镜像服务，就近高速下载。[CR]本插件库中的所有插件都已进行基本测试，如果您发现损坏或无法工作的插件，请报告给 Universal Media Center 团队，以便我们及时处理。</description>
 		<description lang="zh_TW">從 Universal Media Center.tv 官方的附加元件庫下載並安裝附加元件。[CR] 使用官方的附加元件庫你可以從離你較近的檔案鏡像伺器以較快的速度下載附加元件。[CR] 在這個附加元件庫中的附加元件都經過簡單的測試，如果你發現損壞或無法正常工作的附加元件，請回報給 Universal Media Center 團隊，以讓 Universal Media Center 團隊能做一些必須的處置。</description>

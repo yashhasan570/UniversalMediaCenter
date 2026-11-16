@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -20,9 +20,9 @@
 #include <string>
 #include <vector>
 
-namespace Addon
+namespace XBMCAddon
 {
-namespace gui
+namespace xbmcgui
 {
 #ifndef SWIG
 // These constants are exposed to Python via SWIG_CONSTANT in ModuleXbmcgui.h.
@@ -40,7 +40,7 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
 
     ///
     /// \defgroup python_Dialog Dialog
-    /// \ingroup python_gui
+    /// \ingroup python_xbmcgui
     /// @{
     /// @brief **Universal Media Center's dialog class**
     ///
@@ -58,7 +58,7 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
       /// \ingroup python_Dialog
-      /// \python_func{ gui.Dialog().yesno(heading, message, [nolabel, yeslabel, autoclose]) }
+      /// \python_func{ xbmcgui.Dialog().yesno(heading, message, [nolabel, yeslabel, autoclose]) }
       /// **Yes / no dialog**
       ///
       /// The Yes / No dialog can be used to inform the user about questions and
@@ -73,9 +73,9 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
       ///                       <em>(default=DLG_YESNO_NO_BTN)</em>
       ///  |  Value:                       | Description:                                      |
       ///  |------------------------------:|---------------------------------------------------|
-      ///  | gui.DLG_YESNO_NO_BTN     | Set the "No" button as default.
-      ///  | gui.DLG_YESNO_YES_BTN    | Set the "Yes" button as default.
-      ///  | gui.DLG_YESNO_CUSTOM_BTN | Set the "Custom" button as default.
+      ///  | xbmcgui.DLG_YESNO_NO_BTN     | Set the "No" button as default.
+      ///  | xbmcgui.DLG_YESNO_YES_BTN    | Set the "Yes" button as default.
+      ///  | xbmcgui.DLG_YESNO_CUSTOM_BTN | Set the "Custom" button as default.
       /// @return Returns True if 'Yes' was pressed, else False.
       ///
       ///
@@ -90,7 +90,7 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// dialog = gui.Dialog()
+      /// dialog = xbmcgui.Dialog()
       /// ret = dialog.yesno('Universal Media Center', 'Do you want to exit this script?')
       /// ..
       /// ~~~~~~~~~~~~~
@@ -108,7 +108,7 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
       /// \ingroup python_Dialog
-      /// \python_func{ gui.Dialog().yesnocustom(heading, message, customlabel, [nolabel, yeslabel, autoclose]) }
+      /// \python_func{ xbmcgui.Dialog().yesnocustom(heading, message, customlabel, [nolabel, yeslabel, autoclose]) }
       /// **Yes / no / custom dialog**
       ///
       /// The YesNoCustom dialog can be used to inform the user about questions and
@@ -125,9 +125,9 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
       ///                       <em>(default=DLG_YESNO_NO_BTN)</em>
       ///  |  Value:                       | Description:                                      |
       ///  |------------------------------:|---------------------------------------------------|
-      ///  | gui.DLG_YESNO_NO_BTN     | Set the "No" button as default.
-      ///  | gui.DLG_YESNO_YES_BTN    | Set the "Yes" button as default.
-      ///  | gui.DLG_YESNO_CUSTOM_BTN | Set the "Custom" button as default.
+      ///  | xbmcgui.DLG_YESNO_NO_BTN     | Set the "No" button as default.
+      ///  | xbmcgui.DLG_YESNO_YES_BTN    | Set the "Yes" button as default.
+      ///  | xbmcgui.DLG_YESNO_CUSTOM_BTN | Set the "Custom" button as default.
       /// @return Returns the integer value for the selected button (-1:cancelled, 0:no, 1:yes, 2:custom)
       ///
       ///
@@ -139,7 +139,7 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// dialog = gui.Dialog()
+      /// dialog = xbmcgui.Dialog()
       /// ret = dialog.yesnocustom('Universal Media Center', 'Question?', 'Maybe')
       /// ..
       /// ~~~~~~~~~~~~~
@@ -158,12 +158,12 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
       /// \ingroup python_Dialog
-      /// \python_func{ gui.Dialog().info(listitem) }
+      /// \python_func{ xbmcgui.Dialog().info(listitem) }
       /// **Info dialog**
       ///
       /// Show the corresponding info dialog for a given listitem
       ///
-      /// @param listitem       gui.ListItem - ListItem to show info for.
+      /// @param listitem       xbmcgui.ListItem - ListItem to show info for.
       /// @return Returns whether the dialog opened successfully.
       ///
       ///
@@ -173,7 +173,7 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// dialog = gui.Dialog()
+      /// dialog = xbmcgui.Dialog()
       /// ret = dialog.info(listitem)
       /// ..
       /// ~~~~~~~~~~~~~
@@ -186,13 +186,13 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
       /// \ingroup python_Dialog
-      /// \python_func{ gui.Dialog().select(heading, list[, autoclose, preselect, useDetails]) }
+      /// \python_func{ xbmcgui.Dialog().select(heading, list[, autoclose, preselect, useDetails]) }
       /// **Select dialog**
       ///
       /// Show of a dialog to select of an entry as a key
       ///
       /// @param heading        string or unicode - dialog heading.
-      /// @param list           list of strings / gui.ListItems - list of items shown in dialog.
+      /// @param list           list of strings / xbmcgui.ListItems - list of items shown in dialog.
       /// @param autoclose      [opt] integer - milliseconds to autoclose dialog. (default=do not autoclose)
       /// @param preselect      [opt] integer - index of preselected item. (default=no preselected item)
       /// @param useDetails     [opt] bool - use detailed list instead of a compact list. (default=false)
@@ -207,7 +207,7 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// dialog = gui.Dialog()
+      /// dialog = xbmcgui.Dialog()
       /// ret = dialog.select('Choose a playlist', ['Playlist #1', 'Playlist #2, 'Playlist #3'])
       /// ..
       /// ~~~~~~~~~~~~~
@@ -220,7 +220,7 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
       /// \ingroup python_Dialog
-      /// \python_func{ gui.Dialog().contextmenu(list) }
+      /// \python_func{ xbmcgui.Dialog().contextmenu(list) }
       /// Show a context menu.
       ///
       /// @param list           string list - list of items.
@@ -234,7 +234,7 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// dialog = gui.Dialog()
+      /// dialog = xbmcgui.Dialog()
       /// ret = dialog.contextmenu(['Option #1', 'Option #2', 'Option #3'])
       /// ..
       /// ~~~~~~~~~~~~~
@@ -247,11 +247,11 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
       /// \ingroup python_Dialog
-      /// \python_func{ gui.Dialog().multiselect(heading, options[, autoclose, preselect, useDetails]) }
+      /// \python_func{ xbmcgui.Dialog().multiselect(heading, options[, autoclose, preselect, useDetails]) }
       /// Show a multi-select dialog.
       ///
       /// @param heading        string or unicode - dialog heading.
-      /// @param options        list of strings / gui.ListItems - options to choose from.
+      /// @param options        list of strings / xbmcgui.ListItems - options to choose from.
       /// @param autoclose      [opt] integer - milliseconds to autoclose dialog.
       ///                       (default=do not autoclose)
       /// @param preselect      [opt] list of int - indexes of items to preselect
@@ -270,7 +270,7 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
       /// **Example:**
       /// @code{.py}
       /// ..
-      /// dialog = gui.Dialog()
+      /// dialog = xbmcgui.Dialog()
       /// ret = dialog.multiselect("Choose something", ["Foo", "Bar", "Baz"], preselect=[1,2])
       /// ..
       /// @endcode
@@ -283,7 +283,7 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
       /// \ingroup python_Dialog
-      /// \python_func{ gui.Dialog().ok(heading, message) }
+      /// \python_func{ xbmcgui.Dialog().ok(heading, message) }
       /// **OK dialog**
       ///
       /// The functions permit the call of a dialog of information, a
@@ -302,7 +302,7 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// dialog = gui.Dialog()
+      /// dialog = xbmcgui.Dialog()
       /// ok = dialog.ok('Universal Media Center', 'There was an error.')
       /// ..
       /// ~~~~~~~~~~~~~
@@ -315,7 +315,7 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
       /// \ingroup python_Dialog
-      /// \python_func{ gui.Dialog().textviewer(heading, text, usemono) }
+      /// \python_func{ xbmcgui.Dialog().textviewer(heading, text, usemono) }
       /// **TextViewer dialog**
       ///
       /// The text viewer dialog can be used to display descriptions, help texts
@@ -333,7 +333,7 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// dialog = gui.Dialog()
+      /// dialog = xbmcgui.Dialog()
       /// dialog.textviewer('Plot', 'Some movie plot.')
       /// ..
       /// ~~~~~~~~~~~~~
@@ -346,7 +346,7 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
       /// \ingroup python_Dialog
-      /// \python_func{ gui.Dialog().browse(type, heading, shares[, mask, useThumbs, treatAsFolder, defaultt, enableMultiple]) }
+      /// \python_func{ xbmcgui.Dialog().browse(type, heading, shares[, mask, useThumbs, treatAsFolder, defaultt, enableMultiple]) }
       /// **Browser dialog**
       ///
       /// The function offer the possibility to select a file by the user of
@@ -363,7 +363,7 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
       /// |   2   | ShowAndGetImage                 |
       /// |   3   | ShowAndGetWriteableDirectory    |
       /// @param heading        string or unicode - dialog heading.
-      /// @param shares         string or unicode - from [sources.xml](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Sources.xml)
+      /// @param shares         string or unicode - from [sources.xml](http://universalmediacenter.wiki/view/Sources.xml)
       /// | Param          | Name                                         |
       /// |:--------------:|:---------------------------------------------|
       /// |   "programs"   | list program addons
@@ -394,7 +394,7 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// dialog = gui.Dialog()
+      /// dialog = xbmcgui.Dialog()
       /// fn = dialog.browse(3, 'Universal Media Center', 'files', '', False, False, False, 'special://masterprofile/script_data/Universal Media Center Lyrics')
       /// ..
       /// ~~~~~~~~~~~~~
@@ -410,7 +410,7 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
       /// \ingroup python_Dialog
-      /// \python_func{ gui.Dialog().browseSingle(type, heading, shares[, mask, useThumbs, treatAsFolder, defaultt]) }
+      /// \python_func{ xbmcgui.Dialog().browseSingle(type, heading, shares[, mask, useThumbs, treatAsFolder, defaultt]) }
       /// **Browse single dialog**
       ///
       /// The function offer the possibility to select a file by the user of
@@ -427,7 +427,7 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
       /// |   2   | ShowAndGetImage
       /// |   3   | ShowAndGetWriteableDirectory
       /// @param heading        string or unicode - dialog heading.
-      /// @param shares         string or unicode - from [sources.xml](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Sources.xml)
+      /// @param shares         string or unicode - from [sources.xml](http://universalmediacenter.wiki/view/Sources.xml)
       /// | Param          | Name                                         |
       /// |:--------------:|:---------------------------------------------|
       /// |   "programs"   | list program addons
@@ -454,7 +454,7 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// dialog = gui.Dialog()
+      /// dialog = xbmcgui.Dialog()
       /// fn = dialog.browseSingle(3, 'Universal Media Center', 'files', '', False, False, 'special://masterprofile/script_data/Universal Media Center Lyrics')
       /// ..
       /// ~~~~~~~~~~~~~
@@ -470,7 +470,7 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
       /// \ingroup python_Dialog
-      /// \python_func{ gui.Dialog().browseMultiple(type, heading, shares[, mask, useThumbs, treatAsFolder, defaultt]) }
+      /// \python_func{ xbmcgui.Dialog().browseMultiple(type, heading, shares[, mask, useThumbs, treatAsFolder, defaultt]) }
       /// **Browser dialog**
       ///
       /// The function offer the possibility to select multiple files by the
@@ -485,7 +485,7 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
       /// |   1   | ShowAndGetFile
       /// |   2   | ShowAndGetImage
       /// @param heading        string or unicode - dialog heading.
-      /// @param shares         string or unicode - from [sources.xml](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Sources.xml)
+      /// @param shares         string or unicode - from [sources.xml](http://universalmediacenter.wiki/view/Sources.xml)
       /// | Param          | Name                                         |
       /// |:--------------:|:---------------------------------------------|
       /// |   "programs"   | list program addons
@@ -510,7 +510,7 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// dialog = gui.Dialog()
+      /// dialog = xbmcgui.Dialog()
       /// fn = dialog.browseMultiple(2, 'Universal Media Center', 'files', '', False, False, 'special://masterprofile/script_data/Universal Media Center Lyrics')
       /// ..
       /// ~~~~~~~~~~~~~
@@ -526,7 +526,7 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
       /// \ingroup python_Dialog
-      /// \python_func{ gui.Dialog().numeric(type, heading[, defaultt, bHiddenInput]) }
+      /// \python_func{ xbmcgui.Dialog().numeric(type, heading[, defaultt, bHiddenInput]) }
       /// **Numeric dialog**
       ///
       /// The function have to be permitted by the user for the representation
@@ -554,7 +554,7 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// dialog = gui.Dialog()
+      /// dialog = xbmcgui.Dialog()
       /// d = dialog.numeric(1, 'Enter date of birth')
       /// ..
       /// ~~~~~~~~~~~~~
@@ -567,19 +567,19 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
       /// \ingroup python_Dialog
-      /// \python_func{ gui.Dialog().notification(heading, message[, icon, time, sound]) }
+      /// \python_func{ xbmcgui.Dialog().notification(heading, message[, icon, time, sound]) }
       /// Show a Notification alert.
       ///
       /// @param heading        string - dialog heading.
       /// @param message        string - dialog message.
-      /// @param icon           [opt] string - icon to use. (default gui.NOTIFICATION_INFO)
+      /// @param icon           [opt] string - icon to use. (default xbmcgui.NOTIFICATION_INFO)
       /// @param time           [opt] integer - time in milliseconds (default 5000)
       /// @param sound          [opt] bool - play notification sound (default True)
       ///
       /// Builtin Icons:
-      ///   - gui.NOTIFICATION_INFO
-      ///   - gui.NOTIFICATION_WARNING
-      ///   - gui.NOTIFICATION_ERROR
+      ///   - xbmcgui.NOTIFICATION_INFO
+      ///   - xbmcgui.NOTIFICATION_WARNING
+      ///   - xbmcgui.NOTIFICATION_ERROR
       ///
       ///
       ///------------------------------------------------------------------------
@@ -588,8 +588,8 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// dialog = gui.Dialog()
-      /// dialog.notification('Movie Trailers', 'Finding Nemo download finished.', gui.NOTIFICATION_INFO, 5000)
+      /// dialog = xbmcgui.Dialog()
+      /// dialog.notification('Movie Trailers', 'Finding Nemo download finished.', xbmcgui.NOTIFICATION_INFO, 5000)
       /// ..
       /// ~~~~~~~~~~~~~
       ///
@@ -601,25 +601,25 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
       /// \ingroup python_Dialog
-      /// \python_func{ gui.Dialog().input(heading[, defaultt, type, option, autoclose]) }
+      /// \python_func{ xbmcgui.Dialog().input(heading[, defaultt, type, option, autoclose]) }
       /// Show an Input dialog.
       ///
       /// @param heading        string - dialog heading.
       /// @param defaultt       [opt] string - default value. (default=empty string)
-      /// @param type           [opt] integer - the type of keyboard dialog. (default=gui.INPUT_ALPHANUM)
+      /// @param type           [opt] integer - the type of keyboard dialog. (default=xbmcgui.INPUT_ALPHANUM)
       /// | Parameter                        | Format                          |
       /// |---------------------------------:|:--------------------------------|
-      /// | <tt>gui.INPUT_ALPHANUM</tt>  | (standard keyboard)
-      /// | <tt>gui.INPUT_NUMERIC</tt>   | (format: #)
-      /// | <tt>gui.INPUT_DATE</tt>      | (format: DD/MM/YYYY)
-      /// | <tt>gui.INPUT_TIME</tt>      | (format: HH:MM)
-      /// | <tt>gui.INPUT_IPADDRESS</tt> | (format: #.#.#.#)
-      /// | <tt>gui.INPUT_PASSWORD</tt>  | (return md5 hash of input, input is masked)
+      /// | <tt>xbmcgui.INPUT_ALPHANUM</tt>  | (standard keyboard)
+      /// | <tt>xbmcgui.INPUT_NUMERIC</tt>   | (format: #)
+      /// | <tt>xbmcgui.INPUT_DATE</tt>      | (format: DD/MM/YYYY)
+      /// | <tt>xbmcgui.INPUT_TIME</tt>      | (format: HH:MM)
+      /// | <tt>xbmcgui.INPUT_IPADDRESS</tt> | (format: #.#.#.#)
+      /// | <tt>xbmcgui.INPUT_PASSWORD</tt>  | (return md5 hash of input, input is masked)
       /// @param option         [opt] integer - option for the dialog. (see Options below)
       ///   - Password dialog:
-      ///     - <tt>gui.PASSWORD_VERIFY</tt> (verifies an existing (default) md5 hashed password)
+      ///     - <tt>xbmcgui.PASSWORD_VERIFY</tt> (verifies an existing (default) md5 hashed password)
       ///   - Alphanum dialog:
-      ///     - <tt>gui.ALPHANUM_HIDE_INPUT</tt> (masks input)
+      ///     - <tt>xbmcgui.ALPHANUM_HIDE_INPUT</tt> (masks input)
       /// @param autoclose      [opt] integer - milliseconds to autoclose dialog. (default=do not autoclose)
       ///
       /// @return Returns the entered data as a string.
@@ -632,8 +632,8 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// dialog = gui.Dialog()
-      /// d = dialog.input('Enter secret code', type=gui.INPUT_ALPHANUM, option=gui.ALPHANUM_HIDE_INPUT)
+      /// dialog = xbmcgui.Dialog()
+      /// d = dialog.input('Enter secret code', type=xbmcgui.INPUT_ALPHANUM, option=xbmcgui.ALPHANUM_HIDE_INPUT)
       /// ..
       /// ~~~~~~~~~~~~~
       ///
@@ -649,7 +649,7 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
       /// \ingroup python_Dialog
-      /// \python_func{ gui.Dialog().colorpicker(heading[, colorfile, colorlist, selectedcolor]) }
+      /// \python_func{ xbmcgui.Dialog().colorpicker(heading[, colorfile, colorlist, selectedcolor]) }
       /// Show a color selection dialog.
       ///
       /// @param heading        string - dialog heading.
@@ -663,7 +663,7 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
       ///   <color name="green">ff00ff7f</color>
       /// </colors>
       /// ~~~~~~
-      /// @param colorlist      [opt] gui.ListItems - where label defines the color name and label2 is set to the hex value.
+      /// @param colorlist      [opt] xbmcgui.ListItems - where label defines the color name and label2 is set to the hex value.
       ///
       /// @return Returns the hex value of the selected color as a string.
       ///
@@ -675,18 +675,18 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
       /// ~~~~~~~~~~~~~{.py}
       /// ..
       /// # colorfile example
-      /// dialog = gui.Dialog()
-      /// value = dialog.colorpicker('Select color', 'ff00ff00', 'os.path.join(addon.Addon().getAddonInfo("path"), "colors.xml")')
+      /// dialog = xbmcgui.Dialog()
+      /// value = dialog.colorpicker('Select color', 'ff00ff00', 'os.path.join(xbmcaddon.Addon().getAddonInfo("path"), "colors.xml")')
       /// ..
       /// # colorlist example
       /// listitems = []
-      /// l1 = gui.ListItem("red", "FFFF0000")
-      /// l2 = gui.ListItem("green", "FF00FF00")
-      /// l3 = gui.ListItem("blue", "FF0000FF")
+      /// l1 = xbmcgui.ListItem("red", "FFFF0000")
+      /// l2 = xbmcgui.ListItem("green", "FF00FF00")
+      /// l3 = xbmcgui.ListItem("blue", "FF0000FF")
       /// listitems.append(l1)
       /// listitems.append(l2)
       /// listitems.append(l3)
-      /// dialog = gui.Dialog()
+      /// dialog = xbmcgui.Dialog()
       /// value = dialog.colorpicker("Select color", "FF0000FF", colorlist=listitems)
       /// ..
       /// ~~~~~~~~~~~~~
@@ -716,7 +716,7 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
 
     ///
     /// \defgroup python_DialogProgress DialogProgress
-    /// \ingroup python_gui
+    /// \ingroup python_xbmcgui
     /// @{
     /// @brief <b>Universal Media Center's progress dialog class (Duh!)</b>
     ///
@@ -737,7 +737,7 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
       /// \ingroup python_DialogProgress
-      /// \python_func{ gui.DialogProgress().create(heading[, message]) }
+      /// \python_func{ xbmcgui.DialogProgress().create(heading[, message]) }
       /// Create and show a progress dialog.
       ///
       /// @param heading        string or unicode - dialog heading.
@@ -754,7 +754,7 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// pDialog = gui.DialogProgress()
+      /// pDialog = xbmcgui.DialogProgress()
       /// pDialog.create('Universal Media Center', 'Initializing script...')
       /// ..
       /// ~~~~~~~~~~~~~
@@ -767,7 +767,7 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
       /// \ingroup python_DialogProgress
-      /// \python_func{ gui.DialogProgress().update(percent[, message]) }
+      /// \python_func{ xbmcgui.DialogProgress().update(percent[, message]) }
       /// Updates the progress dialog.
       ///
       /// @param percent        integer - percent complete. (0:100)
@@ -795,7 +795,7 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
       /// \ingroup python_DialogProgress
-      /// \python_func{ gui.DialogProgress().close() }
+      /// \python_func{ xbmcgui.DialogProgress().close() }
       /// Close the progress dialog.
       ///
       ///
@@ -816,7 +816,7 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
       /// \ingroup python_DialogProgress
-      /// \python_func{ gui.DialogProgress().iscanceled() }
+      /// \python_func{ xbmcgui.DialogProgress().iscanceled() }
       /// Checks progress is canceled.
       ///
       /// @return True if the user pressed cancel.
@@ -841,7 +841,7 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
 
     ///
     /// \defgroup python_DialogProgressBG DialogProgressBG
-    /// \ingroup python_gui
+    /// \ingroup python_xbmcgui
     /// @{
     /// @brief <b>Universal Media Center's background progress dialog class</b>
     ///
@@ -863,7 +863,7 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
       /// \ingroup python_DialogProgressBG
-      /// \python_func{ gui.DialogProgressBG().create(heading[, message]) }
+      /// \python_func{ xbmcgui.DialogProgressBG().create(heading[, message]) }
       /// Create and show a background progress dialog.
       ///
       /// @param heading     string or unicode - dialog heading.
@@ -878,7 +878,7 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// pDialog = gui.DialogProgressBG()
+      /// pDialog = xbmcgui.DialogProgressBG()
       /// pDialog.create('Movie Trailers', 'Downloading Monsters Inc... .')
       /// ..
       /// ~~~~~~~~~~~~~
@@ -891,7 +891,7 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
       /// \ingroup python_DialogProgressBG
-      /// \python_func{ gui.DialogProgressBG().update([percent, heading, message]) }
+      /// \python_func{ xbmcgui.DialogProgressBG().update([percent, heading, message]) }
       /// Updates the background progress dialog.
       ///
       /// @param percent     [opt] integer - percent complete. (0:100)
@@ -918,7 +918,7 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
       /// \ingroup python_DialogProgressBG
-      /// \python_func{ gui.DialogProgressBG().close() }
+      /// \python_func{ xbmcgui.DialogProgressBG().close() }
       /// Close the background progress dialog
       ///
       ///
@@ -939,7 +939,7 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
       /// \ingroup python_DialogProgressBG
-      /// \python_func{ gui.DialogProgressBG().isFinished() }
+      /// \python_func{ xbmcgui.DialogProgressBG().isFinished() }
       /// Checks progress is finished
       ///
       /// @return True if the background dialog is active.
@@ -965,5 +965,5 @@ constexpr int ALPHANUM_HIDE_INPUT{2};
     SWIG_CONSTANT2(int, DLG_YESNO_YES_BTN, CONTROL_YES_BUTTON);
     SWIG_CONSTANT2(int, DLG_YESNO_CUSTOM_BTN, CONTROL_CUSTOM_BUTTON);
 #endif
-} // namespace gui
-} // namespace Addon
+} // namespace xbmcgui
+} // namespace XBMCAddon

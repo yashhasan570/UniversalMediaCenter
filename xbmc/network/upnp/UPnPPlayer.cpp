@@ -1,7 +1,7 @@
 /*
  *  Copyright (c) 2006 elupus (Joakim Plate)
  *  Copyright (C) 2006-2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -37,7 +37,7 @@ using namespace UNIVERSAL MEDIA CENTER;
 using UNIVERSAL MEDIA CENTER::MESSAGING::HELPERS::DialogResponse;
 using namespace std::chrono_literals;
 
-NPT_SET_LOCAL_LOGGER(".upnp.player")
+NPT_SET_LOCAL_LOGGER("xbmc.upnp.player")
 
 namespace UPNP
 {
@@ -253,7 +253,7 @@ int CUPnPPlayer::PlayFile(const CFileItem& file,
 
   if (options.starttime > 0)
   {
-    /* many upnp units won't load file properly until after play (including ) */
+    /* many upnp units won't load file properly until after play (including xbmc) */
     NPT_CHECK_LABEL(m_control->Seek(m_delegate->m_device, m_delegate->m_instance, "REL_TIME",
                                     PLT_Didl::FormatTimeStamp((NPT_UInt32)options.starttime),
                                     m_delegate.get()),

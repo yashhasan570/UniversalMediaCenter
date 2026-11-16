@@ -24,7 +24,7 @@ import android.net.Uri;
 import android.provider.BaseColumns;
 import android.util.Log;
 
-import @APP_PACKAGE@.content.FileContentProvider;
+import @APP_PACKAGE@.content.XBMCFileContentProvider;
 import @APP_PACKAGE@.model.Album;
 import @APP_PACKAGE@.model.File;
 import @APP_PACKAGE@.model.Media;
@@ -34,7 +34,7 @@ import @APP_PACKAGE@.model.Song;
 import @APP_PACKAGE@.model.TVEpisode;
 import @APP_PACKAGE@.model.TVShow;
 
-public class JsonRPC
+public class XBMCJsonRPC
 {
   native String _requestJSON(String request);
 
@@ -61,9 +61,9 @@ public class JsonRPC
 
   private static String TAG = "@APP_NAME@";
 
-  private String m__web_url = "http://localhost:8080";
+  private String m_xbmc_web_url = "http://localhost:8080";
   private HashSet<Integer> mRecomendationIds = new HashSet<Integer>();
-  private TextureCache mTextureCache = null;
+  private XBMCTextureCache mTextureCache = null;
 
   private int MAX_RECOMMENDATIONS = 3;
 
@@ -123,12 +123,12 @@ public class JsonRPC
 
   private NotificationManager mNotificationManager;
 
-  public JsonRPC(Context context)
+  public XBMCJsonRPC(Context context)
   {
-    Properties.initialize(context);
-    String jsonPort = Properties.getStringProperty(".jsonPort", "8080");
-    m__web_url = "http://localhost:" + jsonPort;
-    mTextureCache = new TextureCache();
+    XBMCProperties.initialize(context);
+    String jsonPort = XBMCProperties.getStringProperty("xbmc.jsonPort", "8080");
+    m_xbmc_web_url = "http://localhost:" + jsonPort;
+    mTextureCache = new XBMCTextureCache();
   }
 
   public String request_string(String jsonRequest)
@@ -139,13 +139,13 @@ public class JsonRPC
     }
     catch (Exception e)
     {
-      Log.e(TAG, "JsonRPC: Failed to read JSON");
+      Log.e(TAG, "XBMCJsonRPC: Failed to read JSON");
       e.printStackTrace();
       return null;
     }
     catch (UnsatisfiedLinkError e)
     {
-      Log.e(TAG, "JsonRPC: _requestJSON: Not available");
+      Log.e(TAG, "XBMCJsonRPC: _requestJSON: Not available");
       return null;
     }
   }
@@ -162,7 +162,7 @@ public class JsonRPC
     }
     catch (Exception e)
     {
-      Log.e(TAG, "JsonRPC: Failed to parse JSON");
+      Log.e(TAG, "XBMCJsonRPC: Failed to parse JSON");
       e.printStackTrace();
       return null;
     }
@@ -180,7 +180,7 @@ public class JsonRPC
     }
     catch (Exception e)
     {
-      Log.e(TAG, "JsonRPC: Failed to parse JSON");
+      Log.e(TAG, "XBMCJsonRPC: Failed to parse JSON");
       e.printStackTrace();
       return null;
     }
@@ -191,7 +191,7 @@ public class JsonRPC
     try
     {
       ContentResolver resolver = ctx.getContentResolver();
-      InputStream input = resolver.openInputStream(FileContentProvider.buildUri(src));
+      InputStream input = resolver.openInputStream(XBMCFileContentProvider.buildUri(src));
       Bitmap bitmap = BitmapFactory.decodeStream(input);
       input.close();
       return bitmap;
@@ -422,10 +422,10 @@ public class JsonRPC
               movie.get("movieid").getAsString(),
               movie.get("title").getAsString(),
               movie.get("tagline").getAsString(),
-              FileContentProvider.buildUri(getDownloadUrl(
+              XBMCFileContentProvider.buildUri(getDownloadUrl(
                 poster != null && !poster.isEmpty() ? poster : thumb != null && !thumb.isEmpty() ? thumb : ""
               )).toString(),
-              FileContentProvider.buildUri(getDownloadUrl(
+              XBMCFileContentProvider.buildUri(getDownloadUrl(
                 poster != null && !poster.isEmpty() ? poster : thumb != null && !thumb.isEmpty() ? thumb : ""
               )).toString(),
               Intent.ACTION_GET_CONTENT,
@@ -477,10 +477,10 @@ public class JsonRPC
               tvshow.get("tvshowid").getAsString(),
               tvshow.get("title").getAsString(),
               tvshow.get("plot").getAsString(),
-              FileContentProvider.buildUri(getDownloadUrl(
+              XBMCFileContentProvider.buildUri(getDownloadUrl(
                 poster != null && !poster.isEmpty() ? poster : thumb != null && !thumb.isEmpty() ? thumb : ""
               )).toString(),
-              FileContentProvider.buildUri(getDownloadUrl(
+              XBMCFileContentProvider.buildUri(getDownloadUrl(
                 poster != null && !poster.isEmpty() ? poster : thumb != null && !thumb.isEmpty() ? thumb : ""
               )).toString(),
               Intent.ACTION_GET_CONTENT,
@@ -491,7 +491,7 @@ public class JsonRPC
               45*60*1000,
               -1
             });
-            Log.d(TAG, "JsonRPC: tvshow: " + tvshow.get("title").getAsString() + ", " + tvshow.get("year").getAsInt());
+            Log.d(TAG, "XBMCJsonRPC: tvshow: " + tvshow.get("title").getAsString() + ", " + tvshow.get("year").getAsInt());
             nb_shows++;
             totCount++;
           }
@@ -521,8 +521,8 @@ public class JsonRPC
               album.get("albumid").getAsString(),
               album.get("title").getAsString(),
               album.get("displayartist").getAsString(),
-              FileContentProvider.buildUri(getDownloadUrl(thumb != null && !thumb.isEmpty() ? thumb : "" )).toString(),
-              FileContentProvider.buildUri(getDownloadUrl(thumb != null && !thumb.isEmpty() ? thumb : "" )).toString(),
+              XBMCFileContentProvider.buildUri(getDownloadUrl(thumb != null && !thumb.isEmpty() ? thumb : "" )).toString(),
+              XBMCFileContentProvider.buildUri(getDownloadUrl(thumb != null && !thumb.isEmpty() ? thumb : "" )).toString(),
               Intent.ACTION_GET_CONTENT,
               Uri.parse("musicdb://albums/" + album.get("albumid").getAsString() + "/"),
               0,
@@ -559,8 +559,8 @@ public class JsonRPC
               artist.get("artistid").getAsString(),
               artist.get("artist").getAsString(),
               artist.get("description").getAsString(),
-              FileContentProvider.buildUri(getDownloadUrl(thumb != null && !thumb.isEmpty() ? thumb : "" )).toString(),
-              FileContentProvider.buildUri(getDownloadUrl(thumb != null && !thumb.isEmpty() ? thumb : "" )).toString(),
+              XBMCFileContentProvider.buildUri(getDownloadUrl(thumb != null && !thumb.isEmpty() ? thumb : "" )).toString(),
+              XBMCFileContentProvider.buildUri(getDownloadUrl(thumb != null && !thumb.isEmpty() ? thumb : "" )).toString(),
               Intent.ACTION_GET_CONTENT,
               Uri.parse("musicdb://artists/" + artist.get("artistid").getAsString() + "/"),
               0,
@@ -611,7 +611,7 @@ public class JsonRPC
             String thumb = extractKeyFromArtMap(movie, "thumb");
             String fanart = extractKeyFromArtMap(movie, "fanart");
 
-            final RecommendationBuilder notificationBuilder = new RecommendationBuilder()
+            final XBMCRecommendationBuilder notificationBuilder = new XBMCRecommendationBuilder()
                     .setContext(ctx)
                     .setSmallIcon(R.drawable.notif_icon)
                     .setId(id).setPriority(MAX_RECOMMENDATIONS - count)
@@ -621,7 +621,7 @@ public class JsonRPC
 
             if (fanart != null && !fanart.isEmpty())
             {
-              notificationBuilder.setBackground(FileContentProvider.buildUri(
+              notificationBuilder.setBackground(XBMCFileContentProvider.buildUri(
                       getDownloadUrl(fanart)).toString());
             }
 
@@ -671,7 +671,7 @@ public class JsonRPC
             String thumb = extractKeyFromArtMap(tvshow, "thumb");
             String fanart = extractKeyFromArtMap(tvshow, "fanart");
 
-            final RecommendationBuilder notificationBuilder = new RecommendationBuilder()
+            final XBMCRecommendationBuilder notificationBuilder = new XBMCRecommendationBuilder()
                     .setContext(ctx)
                     .setSmallIcon(R.drawable.notif_icon)
                     .setId(id).setPriority(MAX_RECOMMENDATIONS - count)
@@ -681,7 +681,7 @@ public class JsonRPC
 
             if (fanart != null && !fanart.isEmpty())
             {
-              notificationBuilder.setBackground(FileContentProvider.buildUri(
+              notificationBuilder.setBackground(XBMCFileContentProvider.buildUri(
                       getDownloadUrl(fanart)).toString());
             }
 
@@ -731,7 +731,7 @@ public class JsonRPC
             String thumb = extractKeyFromArtMap(album, "thumb");
             String fanart = extractKeyFromArtMap(album, "fanart");
 
-            final RecommendationBuilder notificationBuilder = new RecommendationBuilder()
+            final XBMCRecommendationBuilder notificationBuilder = new XBMCRecommendationBuilder()
                     .setContext(ctx)
                     .setSmallIcon(R.drawable.notif_icon)
                     .setId(id).setPriority(MAX_RECOMMENDATIONS - count)
@@ -741,7 +741,7 @@ public class JsonRPC
 
             if (fanart != null && !fanart.isEmpty())
             {
-              notificationBuilder.setBackground(FileContentProvider.buildUri(
+              notificationBuilder.setBackground(XBMCFileContentProvider.buildUri(
                       getDownloadUrl(fanart)).toString());
             }
             if (thumb != null && !thumb.isEmpty())
@@ -839,7 +839,7 @@ public class JsonRPC
       {
         JsonObject fileO = filesA.get(i).getAsJsonObject();
         Uri uri = Uri.parse(fileO.get("file").getAsString());
-        File file = File.createFile(fileO.get("label").getAsString(), fileO.get("filetype").getAsString(), FileContentProvider.buildUri(uri.toString()).toString());
+        File file = File.createFile(fileO.get("label").getAsString(), fileO.get("filetype").getAsString(), XBMCFileContentProvider.buildUri(uri.toString()).toString());
         if (fileO.has("id"))
           file.setId(fileO.get("id").getAsInt());
         if (fileO.has("type") && !fileO.get("type").getAsString().equals("unknown"))
@@ -1425,14 +1425,14 @@ public class JsonRPC
     if (sUrl.startsWith("image://video@") || sUrl.startsWith("image://music@"))
     {
       Log.d(TAG, "getImageUrl: " + sUrl + " is not unwrapped");
-      return FileContentProvider.buildUri(sUrl).toString();
+      return XBMCFileContentProvider.buildUri(sUrl).toString();
     }
 
     String sUnwrapImageUrl = this.mTextureCache.unwrapImageURL(sUrl);
     Log.d(TAG, "getImageUrl: sUnwrapImageUrl = " + sUnwrapImageUrl);
     if (!sUnwrapImageUrl.startsWith("http"))
     {
-      return FileContentProvider.buildUri(sUrl).toString();
+      return XBMCFileContentProvider.buildUri(sUrl).toString();
     }
 
     return sUnwrapImageUrl;

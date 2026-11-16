@@ -1,12 +1,12 @@
 /*
- *  Copyright (C) 2005-2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://Universal Media Center.tv
+ *  Copyright (C) 2005-2026 Team Kodi
+ *  This file is part of Kodi - https://kodi.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
  */
 
-%module vfs
+%module xbmcvfs
 
 %{
 #if defined(TARGET_WINDOWS)
@@ -18,8 +18,8 @@
 #include "interfaces/legacy/Stat.h"
 #include "utils/log.h"
 
-using namespace Addon;
-using namespace vfs;
+using namespace XBMCAddon;
+using namespace xbmcvfs;
 
 #if defined(__GNUG__)
 #pragma GCC diagnostic ignored "-Wstrict-aliasing"
@@ -28,32 +28,32 @@ using namespace vfs;
 %}
 
 
-%include "Universal Media Center_common.i"
+%include "kodi_common.i"
 
-// construction in tp_new; see Universal Media Center_construct.i
-UNIVERSAL MEDIA CENTER_CONSTRUCT(Addon::vfs, File)
-UNIVERSAL MEDIA CENTER_CONSTRUCT(Addon::vfs, Stat)
+// construction in tp_new; see kodi_construct.i
+KODI_CONSTRUCT(XBMCAddon::xbmcvfs, File)
+KODI_CONSTRUCT(XBMCAddon::xbmcvfs, Stat)
 
 /* one line per shape crossing the boundary in this module */
 %template() std::vector<std::string>;
-%template() Addon::Tuple<std::vector<std::string>, std::vector<std::string> >;
+%template() XBMCAddon::Tuple<std::vector<std::string>, std::vector<std::string> >;
 
 %include "interfaces/legacy/swighelper.h"
 %include "interfaces/legacy/AddonString.h"
 
 // The shipped bindings decode File.read strictly (%feature("python:strictUnicode"),
-// a Universal Media Center-invented feature stock SWIG drops). Stock SWIG_FromCharPtrAndSize uses
+// a Kodi-invented feature stock SWIG drops). Stock SWIG_FromCharPtrAndSize uses
 // surrogateescape, which turns binary content into surrogates instead of raising,
 // so a caller reading a non-text file gets silent mojibake rather than an error.
-%typemap(out) Addon::String Addon::vfs::File::read {
+%typemap(out) XBMCAddon::String XBMCAddon::xbmcvfs::File::read {
   $result = PyUnicode_DecodeUTF8($1.c_str(), (Py_ssize_t)$1.size(), "strict");
   if (!$result)
     SWIG_fail;
 }
 
 /* Python calls __exit__ with the exception triple, which File.h does not take. */
-%ignore Addon::vfs::File::__exit__();
-%extend Addon::vfs::File {
+%ignore XBMCAddon::xbmcvfs::File::__exit__();
+%extend XBMCAddon::xbmcvfs::File {
   void __exit__(PyObject* exc_type = nullptr, PyObject* exc_value = nullptr,
                 PyObject* traceback = nullptr)
   {
@@ -63,11 +63,11 @@ UNIVERSAL MEDIA CENTER_CONSTRUCT(Addon::vfs, Stat)
 
 %include "interfaces/legacy/File.h"
 
-%rename ("st_atime") Addon::vfs::Stat::atime;
-%rename ("st_mtime") Addon::vfs::Stat::mtime;
-%rename ("st_ctime") Addon::vfs::Stat::ctime;
+%rename ("st_atime") XBMCAddon::xbmcvfs::Stat::atime;
+%rename ("st_mtime") XBMCAddon::xbmcvfs::Stat::mtime;
+%rename ("st_ctime") XBMCAddon::xbmcvfs::Stat::ctime;
 %include "interfaces/legacy/Stat.h"
 
-%rename ("delete") Addon::vfs::deleteFile;
+%rename ("delete") XBMCAddon::xbmcvfs::deleteFile;
 %include "interfaces/legacy/ModuleXbmcvfs.h"
 

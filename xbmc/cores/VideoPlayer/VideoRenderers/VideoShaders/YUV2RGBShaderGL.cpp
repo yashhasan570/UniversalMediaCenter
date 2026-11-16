@@ -1,7 +1,7 @@
 /*
  *  Copyright (c) 2007 d4rk
  *  Copyright (C) 2007-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -57,20 +57,20 @@ BaseYUV2RGBGLSLShader::BaseYUV2RGBGLSLShader(bool rect,
   }
 
   if (rect)
-    m_defines += "#define _texture_rectangle 1\n";
+    m_defines += "#define XBMC_texture_rectangle 1\n";
   else
-    m_defines += "#define _texture_rectangle 0\n";
+    m_defines += "#define XBMC_texture_rectangle 0\n";
 
   if (CServiceBroker::GetSettingsComponent()->GetAdvancedSettings()->m_GLRectangleHack)
-    m_defines += "#define _texture_rectangle_hack 1\n";
+    m_defines += "#define XBMC_texture_rectangle_hack 1\n";
   else
-    m_defines += "#define _texture_rectangle_hack 0\n";
+    m_defines += "#define XBMC_texture_rectangle_hack 0\n";
 
   //don't compile in stretch support when it's not needed
   if (stretch)
-    m_defines += "#define _STRETCH 1\n";
+    m_defines += "#define XBMC_STRETCH 1\n";
   else
-    m_defines += "#define _STRETCH 0\n";
+    m_defines += "#define XBMC_STRETCH 0\n";
 
   if (m_format == SHADER_YV12 ||
       m_format == SHADER_YV12_9 ||
@@ -78,13 +78,13 @@ BaseYUV2RGBGLSLShader::BaseYUV2RGBGLSLShader(bool rect,
       m_format == SHADER_YV12_12 ||
       m_format == SHADER_YV12_14 ||
       m_format == SHADER_YV12_16)
-    m_defines += "#define _YV12\n";
+    m_defines += "#define XBMC_YV12\n";
   else if (m_format == SHADER_NV12)
-    m_defines += "#define _NV12\n";
+    m_defines += "#define XBMC_NV12\n";
   else if (m_format == SHADER_YUY2)
-    m_defines += "#define _YUY2\n";
+    m_defines += "#define XBMC_YUY2\n";
   else if (m_format == SHADER_UYVY)
-    m_defines += "#define _UYVY\n";
+    m_defines += "#define XBMC_UYVY\n";
   else
     CLog::Log(LOGERROR, "GL: BaseYUV2RGBGLSLShader - unsupported format {}",
               fmt::formatter<EShaderFormat>::ToString(m_format));
@@ -92,14 +92,14 @@ BaseYUV2RGBGLSLShader::BaseYUV2RGBGLSLShader(bool rect,
   if (dstPrimaries != srcPrimaries)
   {
     m_colorConversion = true;
-    m_defines += "#define _COL_CONVERSION\n";
+    m_defines += "#define XBMC_COL_CONVERSION\n";
   }
 
   if (toneMap)
   {
     m_toneMapping = true;
     m_toneMappingMethod = toneMapMethod;
-    m_defines += "#define _TONE_MAPPING\n";
+    m_defines += "#define XBMC_TONE_MAPPING\n";
     if (toneMapMethod == VS_TONEMAPMETHOD_REINHARD)
       m_defines += "#define UNIVERSALMEDIA_TONE_MAPPING_REINHARD\n";
     else if (toneMapMethod == VS_TONEMAPMETHOD_ACES)

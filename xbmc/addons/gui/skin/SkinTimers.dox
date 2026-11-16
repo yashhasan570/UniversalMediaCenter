@@ -108,7 +108,7 @@ always reset to 0 on each start operation. Whenever the timer is started or stop
 ~~~~~~~~~~~~~
 
 In certain situations you might want to reset your timer without having to stop and start. For instance, if you want to stop the timer after 5 seconds
-but have the timer resetting to 0 seconds if the user provides some input to Universal Media Center. For such cases the `<reset/>` condition can be used:
+but have the timer resetting to 0 seconds if the user provides some input to Kodi. For such cases the `<reset/>` condition can be used:
 
 ~~~~~~~~~~~~~{.xml}
 <timer>
@@ -159,6 +159,6 @@ Skin timers have the following available tags:
 \section Skin_Timers_sect4 See also
 #### Development:
 
-- [Skinning](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Skinning)
+- [Skinning](http://kodi.wiki/view/Skinning)
 
 */

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -11,7 +11,7 @@
 #include "CompileInfo.h"
 #include "threads/SystemClock.h"
 #include "utils/StringUtils.h"
-#include "utils/TinyXML2.h"
+#include "utils/XBMCTinyXML2.h"
 #include "utils/XTimeUtils.h"
 #include "utils/log.h"
 
@@ -78,7 +78,7 @@ bool CXRandR::Query(bool force, int screennum, bool ignoreoff)
     return false;
   }
 
-  CTinyXML2 xmlDoc;
+  CXBMCTinyXML2 xmlDoc;
   if (!xmlDoc.LoadFile(file))
   {
     CLog::Log(LOGERROR, "CXRandR::Query - unable to open xrandr xml");
@@ -397,9 +397,9 @@ XMode CXRandR::GetPreferredMode(const std::string& outputName)
 void CXRandR::LoadCustomModeLinesToAllOutputs(void)
 {
   Query();
-  CTinyXML2 xmlDoc;
+  CXBMCTinyXML2 xmlDoc;
 
-  if (!xmlDoc.LoadFile("special:///userdata/ModeLines.xml"))
+  if (!xmlDoc.LoadFile("special://xbmc/userdata/ModeLines.xml"))
   {
     return;
   }

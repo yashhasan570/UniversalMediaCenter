@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -988,7 +988,7 @@ std::string CRenderSystemGL::GetShaderPath(const std::string &filename)
 
   if (m_glslMajor >= 4)
   {
-    std::string file = "special:///system/shaders/GL/4.0/" + filename;
+    std::string file = "special://xbmc/system/shaders/GL/4.0/" + filename;
     const CURL pathToUrl(file);
     if (CFileUtils::Exists(pathToUrl.Get()))
       return "GL/4.0/";

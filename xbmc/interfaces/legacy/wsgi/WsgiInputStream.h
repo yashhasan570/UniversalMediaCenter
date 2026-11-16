@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2015-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -14,9 +14,9 @@
 
 struct HTTPPythonRequest;
 
-namespace Addon
+namespace XBMCAddon
 {
-  namespace wsgi
+  namespace xbmcwsgi
   {
 
     // Iterator for the wsgi.input stream.
@@ -27,7 +27,7 @@ namespace Addon
       ~WsgiInputStreamIterator() override;
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_wsgi_WsgiInputStream
+      /// \ingroup python_xbmcwsgi_WsgiInputStream
       /// \python_func{ read([size]) }
       ///
       /// Read a maximum of `<size>` bytes from the wsgi.input stream.
@@ -41,7 +41,7 @@ namespace Addon
 #endif
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_wsgi_WsgiInputStream
+      /// \ingroup python_xbmcwsgi_WsgiInputStream
       /// \python_func{ readline([size]) }
       ///
       /// Read a full line up to a maximum of `<size>` bytes from the wsgi.input
@@ -56,7 +56,7 @@ namespace Addon
 #endif
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_wsgi_WsgiInputStream
+      /// \ingroup python_xbmcwsgi_WsgiInputStream
       /// \python_func{ readlines([sizehint]) }
       ///
       /// Read multiple full lines up to at least `<sizehint>` bytes from the
@@ -89,8 +89,8 @@ namespace Addon
 #endif
     };
 
-    /// \defgroup python_wsgi_WsgiInputStream WsgiInputStream
-    /// \ingroup python_wsgi
+    /// \defgroup python_xbmcwsgi_WsgiInputStream WsgiInputStream
+    /// \ingroup python_xbmcwsgi
     /// @{
     /// @brief **Represents the wsgi.input stream to access data from a HTTP request.**
     ///

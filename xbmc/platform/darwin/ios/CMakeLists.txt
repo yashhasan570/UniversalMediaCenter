@@ -2,13 +2,13 @@ set(SOURCES IOSEAGLView.mm
             IOSExternalTouchController.mm
             IOSKeyboardView.mm
             IOSScreenManager.mm
-            Controller.mm)
+            XBMCController.mm)
 
 set(HEADERS IOSEAGLView.h
             IOSExternalTouchController.h
             IOSKeyboardView.h
             IOSScreenManager.h
-            Application.h
-            Controller.h)
+            XBMCApplication.h
+            XBMCController.h)
 
 core_add_library(platform_ios)

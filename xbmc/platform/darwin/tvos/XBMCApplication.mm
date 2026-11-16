@@ -1,25 +1,25 @@
 /*
  *  Copyright (C) 2010-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
  */
 
-#import "platform/darwin/tvos/Application.h"
+#import "platform/darwin/tvos/XBMCApplication.h"
 
 #import "platform/darwin/NSLogDebugHelpers.h"
 #import "platform/darwin/tvos/PreflightHandler.h"
 #import "platform/darwin/tvos/TVOSTopShelf.h"
-#import "platform/darwin/tvos/Controller.h"
+#import "platform/darwin/tvos/XBMCController.h"
 
 #import <AVFoundation/AVFoundation.h>
 
-@implementation ApplicationDelegate
+@implementation XBMCApplicationDelegate
 
-- (Controller*)Controller
+- (XBMCController*)xbmcController
 {
-  return static_cast<Controller*>(self.window.rootViewController);
+  return static_cast<XBMCController*>(self.window.rootViewController);
 }
 
 #pragma mark - Shutdown Procedures
@@ -38,14 +38,14 @@
   if (application.applicationState == UIApplicationStateBackground)
   {
     // the app is turn into background, not in by screen lock which has app state inactive.
-    [self.Controller pauseAnimation];
-    [self.Controller enterBackground];
+    [self.xbmcController pauseAnimation];
+    [self.xbmcController enterBackground];
   }
 }
 
 - (void)applicationWillTerminate:(UIApplication*)application
 {
-  [self.Controller stopAnimation];
+  [self.xbmcController stopAnimation];
 }
 
 #pragma mark - Startup Procedures
@@ -61,8 +61,8 @@
 - (void)applicationWillEnterForeground:(UIApplication*)application
 {
   // Occurs only after an applicationDidEnterBackground()
-  [self.Controller resumeAnimation];
-  [self.Controller enterForeground];
+  [self.xbmcController resumeAnimation];
+  [self.xbmcController enterForeground];
 }
 
 - (BOOL)application:(UIApplication*)application
@@ -79,9 +79,9 @@
 
   // UI setup
   self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
-  self.window.rootViewController = [Controller new];
+  self.window.rootViewController = [XBMCController new];
   [self.window makeKeyAndVisible];
-  [self.Controller startAnimation];
+  [self.xbmcController startAnimation];
 
   // audio session setup
   auto audioSession = AVAudioSession.sharedInstance;
@@ -127,7 +127,7 @@ int main(int argc, char* argv[])
     @try
     {
       retVal =
-          UIApplicationMain(argc, argv, nil, NSStringFromClass([ApplicationDelegate class]));
+          UIApplicationMain(argc, argv, nil, NSStringFromClass([XBMCApplicationDelegate class]));
     }
     @catch (id theException)
     {

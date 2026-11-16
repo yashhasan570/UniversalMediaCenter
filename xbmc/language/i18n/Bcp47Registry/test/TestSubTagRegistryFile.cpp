@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -27,35 +27,35 @@ public:
 TEST(TestI18nRegistryFile, Read)
 {
   // Examples of real records
-  CRegistryFile f(_REF_FILE_PATH(
-      "/language/i18n/Bcp47Registry/test/test-language-subtag-registry.txt"));
+  CRegistryFile f(XBMC_REF_FILE_PATH(
+      "xbmc/language/i18n/Bcp47Registry/test/test-language-subtag-registry.txt"));
   EXPECT_TRUE(f.Load());
 }
 
 TEST(TestI18nRegistryFile, ReadMissing)
 {
-  CRegistryFile f(_REF_FILE_PATH("/language/i18n/Bcp47Registry/test/inexistent"));
+  CRegistryFile f(XBMC_REF_FILE_PATH("xbmc/language/i18n/Bcp47Registry/test/inexistent"));
   EXPECT_FALSE(f.Load());
 }
 
 TEST(TestI18nRegistryFile, ReadInvalid1)
 {
-  CRegistryFile f(_REF_FILE_PATH(
-      "/language/i18n/Bcp47Registry/test/test-language-subtag-registry-invalid1.txt"));
+  CRegistryFile f(XBMC_REF_FILE_PATH(
+      "xbmc/language/i18n/Bcp47Registry/test/test-language-subtag-registry-invalid1.txt"));
   EXPECT_FALSE(f.Load());
 }
 
 TEST(TestI18nRegistryFile, ReadInvalid2)
 {
-  CRegistryFile f(_REF_FILE_PATH(
-      "/language/i18n/Bcp47Registry/test/test-language-subtag-registry-invalid2.txt"));
+  CRegistryFile f(XBMC_REF_FILE_PATH(
+      "xbmc/language/i18n/Bcp47Registry/test/test-language-subtag-registry-invalid2.txt"));
   EXPECT_FALSE(f.Load());
 }
 
 TEST(TestI18nRegistryFile, Type)
 {
-  CRegistryFile f(_REF_FILE_PATH(
-      "/language/i18n/Bcp47Registry/test/test-language-subtag-registry-type.txt"));
+  CRegistryFile f(XBMC_REF_FILE_PATH(
+      "xbmc/language/i18n/Bcp47Registry/test/test-language-subtag-registry-type.txt"));
   EXPECT_TRUE(f.Load());
   auto result = f.GetRecords();
 
@@ -65,8 +65,8 @@ TEST(TestI18nRegistryFile, Type)
 
 TEST(TestI18nRegistryFile, Scope)
 {
-  CRegistryFile f(_REF_FILE_PATH(
-      "/language/i18n/Bcp47Registry/test/test-language-subtag-registry-scope.txt"));
+  CRegistryFile f(XBMC_REF_FILE_PATH(
+      "xbmc/language/i18n/Bcp47Registry/test/test-language-subtag-registry-scope.txt"));
   EXPECT_TRUE(f.Load());
   auto result = f.GetRecords();
 
@@ -77,8 +77,8 @@ TEST(TestI18nRegistryFile, Scope)
 
 TEST(TestI18nRegistryFile, DateValid)
 {
-  CRegistryFile f(_REF_FILE_PATH(
-      "/language/i18n/Bcp47Registry/test/test-language-subtag-registry-date-valid.txt"));
+  CRegistryFile f(XBMC_REF_FILE_PATH(
+      "xbmc/language/i18n/Bcp47Registry/test/test-language-subtag-registry-date-valid.txt"));
   EXPECT_TRUE(f.Load());
   auto result = f.GetRecords();
 
@@ -94,8 +94,8 @@ TEST(TestI18nRegistryFile, DateValid)
 #ifdef TARGET_WINDOWS
 TEST(TestI18nRegistryFile, DateInvalid)
 {
-  CRegistryFile f(_REF_FILE_PATH(
-      "/language/i18n/Bcp47Registry/test/test-language-subtag-registry-date-invalid.txt"));
+  CRegistryFile f(XBMC_REF_FILE_PATH(
+      "xbmc/language/i18n/Bcp47Registry/test/test-language-subtag-registry-date-invalid.txt"));
   EXPECT_FALSE(f.Load());
   EXPECT_EQ(f.GetRecords().size(), 0);
 }
@@ -103,8 +103,8 @@ TEST(TestI18nRegistryFile, DateInvalid)
 
 TEST(TestI18nRegistryFile, Strings)
 {
-  CRegistryFile f(_REF_FILE_PATH(
-      "/language/i18n/Bcp47Registry/test/test-language-subtag-registry-strings.txt"));
+  CRegistryFile f(XBMC_REF_FILE_PATH(
+      "xbmc/language/i18n/Bcp47Registry/test/test-language-subtag-registry-strings.txt"));
   EXPECT_TRUE(f.Load());
   auto result = f.GetRecords();
 
@@ -202,8 +202,8 @@ TEST(TestI18nRegistryFile, ParseRecords1)
       {{"record3"}},
   };
 
-  std::vector<std::vector<std::string>> actual = ReadRecords(_REF_FILE_PATH(
-      "/language/i18n/Bcp47Registry/test/test-language-subtag-registry-records1.txt"));
+  std::vector<std::vector<std::string>> actual = ReadRecords(XBMC_REF_FILE_PATH(
+      "xbmc/language/i18n/Bcp47Registry/test/test-language-subtag-registry-records1.txt"));
 
   EXPECT_EQ(expected, actual);
 }
@@ -215,8 +215,8 @@ TEST(TestI18nRegistryFile, ParseRecords2)
       {{"record2"}},
   };
 
-  std::vector<std::vector<std::string>> actual = ReadRecords(_REF_FILE_PATH(
-      "/language/i18n/Bcp47Registry/test/test-language-subtag-registry-records2.txt"));
+  std::vector<std::vector<std::string>> actual = ReadRecords(XBMC_REF_FILE_PATH(
+      "xbmc/language/i18n/Bcp47Registry/test/test-language-subtag-registry-records2.txt"));
 
   EXPECT_EQ(expected, actual);
 }
@@ -229,8 +229,8 @@ TEST(TestI18nRegistryFile, LineEndingsCrLf)
       {{"name: line1"}, {"  line2"}},
   };
 
-  std::vector<std::vector<std::string>> actual = ReadRecords(_REF_FILE_PATH(
-      "/language/i18n/Bcp47Registry/test/test-language-subtag-registry-lineendings-crlf.txt"));
+  std::vector<std::vector<std::string>> actual = ReadRecords(XBMC_REF_FILE_PATH(
+      "xbmc/language/i18n/Bcp47Registry/test/test-language-subtag-registry-lineendings-crlf.txt"));
 
   EXPECT_EQ(expected, actual);
 }
@@ -243,8 +243,8 @@ TEST(TestI18nRegistryFile, LineEndingsLf)
       {{"name: line1"}, {"  line2"}},
   };
 
-  std::vector<std::vector<std::string>> actual = ReadRecords(_REF_FILE_PATH(
-      "/language/i18n/Bcp47Registry/test/test-language-subtag-registry-lineendings-lf.txt"));
+  std::vector<std::vector<std::string>> actual = ReadRecords(XBMC_REF_FILE_PATH(
+      "xbmc/language/i18n/Bcp47Registry/test/test-language-subtag-registry-lineendings-lf.txt"));
 
   EXPECT_EQ(expected, actual);
 }
@@ -253,8 +253,8 @@ TEST(TestI18nRegistryFile, CasePreservation)
 {
   std::vector<std::vector<std::string>> expected = {{{"ReCoRd1-1"}, {"rEcOrD2-1"}}};
 
-  std::vector<std::vector<std::string>> actual = ReadRecords(_REF_FILE_PATH(
-      "/language/i18n/Bcp47Registry/test/test-language-subtag-registry-case.txt"));
+  std::vector<std::vector<std::string>> actual = ReadRecords(XBMC_REF_FILE_PATH(
+      "xbmc/language/i18n/Bcp47Registry/test/test-language-subtag-registry-case.txt"));
 
   EXPECT_EQ(expected, actual);
 }

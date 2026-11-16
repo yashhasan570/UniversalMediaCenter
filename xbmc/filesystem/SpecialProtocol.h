@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -17,11 +17,11 @@ class CProfileManager;
 
 /* paths are as follows:
 
- special:///          - the main  folder (i.e. where the app resides).
- special://home/          - a writeable version of the main  folder
+ special://xbmc/          - the main XBMC folder (i.e. where the app resides).
+ special://home/          - a writeable version of the main XBMC folder
                              Linux: ~/.universalmediacenter/
                              OS X:  ~/Library/Application Support/Universal Media Center/
-                             Win32: ~/Application Data//
+                             Win32: ~/Application Data/XBMC/
  special://envhome/       - on posix systems this will be equal to the $HOME
  special://userhome/      - a writable version of the user home directory
                              Linux, OS X: ~/.universalmediacenter
@@ -29,16 +29,16 @@ class CProfileManager;
  special://masterprofile/ - the master users userdata folder - usually special://home/userdata
                              Linux: ~/.universalmediacenter/userdata/
                              OS X:  ~/Library/Application Support/Universal Media Center/UserData/
-                             Win32: ~/Application Data//UserData/
+                             Win32: ~/Application Data/XBMC/UserData/
  special://profile/       - the current users userdata folder - usually special://masterprofile/profiles/<current_profile>
                              Linux: ~/.universalmediacenter/userdata/profiles/<current_profile>
                              OS X:  ~/Library/Application Support/Universal Media Center/UserData/profiles/<current_profile>
-                             Win32: ~/Application Data//UserData/profiles/<current_profile>
+                             Win32: ~/Application Data/XBMC/UserData/profiles/<current_profile>
 
  special://temp/          - the temporary directory.
                              Linux: ~/.universalmediacenter/temp
                              OS X:  ~/
-                             Win32: ~/Application Data//cache
+                             Win32: ~/Application Data/XBMC/cache
 */
 class CURL;
 class CSpecialProtocol
@@ -48,11 +48,11 @@ public:
   static void UnregisterProfileManager();
 
   static void SetProfilePath(const std::string &path);
-  static void SetPath(const std::string &path);
-  static void SetBinPath(const std::string &path);
-  static void SetBinAddonPath(const std::string &path);
-  static void SetAltBinAddonPath(const std::string &path);
-  static void SetFrameworksPath(const std::string &path);
+  static void SetXBMCPath(const std::string &path);
+  static void SetXBMCBinPath(const std::string &path);
+  static void SetXBMCBinAddonPath(const std::string &path);
+  static void SetXBMCAltBinAddonPath(const std::string &path);
+  static void SetXBMCFrameworksPath(const std::string &path);
   static void SetHomePath(const std::string &path);
   static void SetUserHomePath(const std::string &path);
   static void SetEnvHomePath(const std::string &path);

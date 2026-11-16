@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -35,9 +35,9 @@
 
 #define A(x) interceptor->x
 
-namespace Addon
+namespace XBMCAddon
 {
-  namespace gui
+  namespace xbmcgui
   {
     template class Interceptor<CGUIMediaWindow>;
 
@@ -60,36 +60,36 @@ namespace Addon
       { }
 
       void AllocResources(bool forceLoad = false) override
-      { _TRACE; if(up()) CGUIMediaWindow::AllocResources(forceLoad); else checkedv(AllocResources(forceLoad)); }
+      { XBMC_TRACE; if(up()) CGUIMediaWindow::AllocResources(forceLoad); else checkedv(AllocResources(forceLoad)); }
        void FreeResources(bool forceUnLoad = false) override
-      { _TRACE; if(up()) CGUIMediaWindow::FreeResources(forceUnLoad); else checkedv(FreeResources(forceUnLoad)); }
-      bool OnClick(int iItem, const std::string &player = "") override { _TRACE; return up() ? CGUIMediaWindow::OnClick(iItem, player) : checkedb(OnClick(iItem)); }
+      { XBMC_TRACE; if(up()) CGUIMediaWindow::FreeResources(forceUnLoad); else checkedv(FreeResources(forceUnLoad)); }
+      bool OnClick(int iItem, const std::string &player = "") override { XBMC_TRACE; return up() ? CGUIMediaWindow::OnClick(iItem, player) : checkedb(OnClick(iItem)); }
 
       void Process(unsigned int currentTime, CDirtyRegionList &dirtyregions) override
-      { _TRACE; if(up()) CGUIMediaWindow::Process(currentTime,dirtyregions); else checkedv(Process(currentTime,dirtyregions)); }
+      { XBMC_TRACE; if(up()) CGUIMediaWindow::Process(currentTime,dirtyregions); else checkedv(Process(currentTime,dirtyregions)); }
 
       // this is a hack to SKIP the CGUIMediaWindow
       bool OnAction(const CAction &action) override
-      { _TRACE; return up() ? CGUIWindow::OnAction(action) : checkedb(OnAction(action)); }
+      { XBMC_TRACE; return up() ? CGUIWindow::OnAction(action) : checkedb(OnAction(action)); }
 
     protected:
       // CGUIWindow
       bool LoadXML(const std::string &strPath, const std::string &strPathLower) override
-      { _TRACE; return up() ? CGUIMediaWindow::LoadXML(strPath,strPathLower) : xwin->LoadXML(strPath,strPathLower); }
+      { XBMC_TRACE; return up() ? CGUIMediaWindow::LoadXML(strPath,strPathLower) : xwin->LoadXML(strPath,strPathLower); }
 
       // CGUIMediaWindow
       void GetContextButtons(int itemNumber, CContextButtons &buttons) override
-      { _TRACE; if (up()) CGUIMediaWindow::GetContextButtons(itemNumber,buttons); else xwin->GetContextButtons(itemNumber,buttons); }
+      { XBMC_TRACE; if (up()) CGUIMediaWindow::GetContextButtons(itemNumber,buttons); else xwin->GetContextButtons(itemNumber,buttons); }
       bool Update(const std::string &strPath, bool) override
-      { _TRACE; return up() ? CGUIMediaWindow::Update(strPath) : xwin->Update(strPath); }
-      void SetupShares() override { _TRACE; if(up()) CGUIMediaWindow::SetupShares(); else checkedv(SetupShares()); }
+      { XBMC_TRACE; return up() ? CGUIMediaWindow::Update(strPath) : xwin->Update(strPath); }
+      void SetupShares() override { XBMC_TRACE; if(up()) CGUIMediaWindow::SetupShares(); else checkedv(SetupShares()); }
 
       friend class WindowXML;
       friend class WindowXMLDialog;
 
     };
 
-    WindowXML::~WindowXML() { _TRACE; deallocating();  }
+    WindowXML::~WindowXML() { XBMC_TRACE; deallocating();  }
 
     WindowXML::WindowXML(const String& xmlFilename,
                          const String& scriptPath,
@@ -98,7 +98,7 @@ namespace Addon
                          bool isMedia) :
       Window(true)
     {
-      _TRACE;
+      XBMC_TRACE;
       auto skin = CServiceBroker::GetGUI()->GetSkinInfo();
       if (!skin)
         return;
@@ -131,7 +131,7 @@ namespace Addon
 
         if (!CFileUtils::Exists(strSkinPath))
         {
-          // Finally fallback to the DefaultSkin as it didn't exist in either the  Skin folder or the fallback skin folder
+          // Finally fallback to the DefaultSkin as it didn't exist in either the XBMC Skin folder or the fallback skin folder
           addonInfo->SetPath(URIUtils::AddFileToFolder(fallbackPath, defaultSkin));
           std::shared_ptr<ADDON::CSkinInfo> skinInfo = std::make_shared<ADDON::CSkinInfo>(addonInfo, res);
 
@@ -152,23 +152,23 @@ namespace Addon
 
     int WindowXML::lockingGetNextAvailableWindowId()
     {
-      _TRACE;
+      XBMC_TRACE;
       std::unique_lock lock(CServiceBroker::GetWinSystem()->GetGfxContext());
       return getNextAvailableWindowId();
     }
 
     void WindowXML::addItem(const Alternative<String, const ListItem*>& item, int position)
     {
-      _TRACE;
+      XBMC_TRACE;
       // item could be deleted if the reference count is 0.
       //   so I MAY need to check prior to using a Ref just in
       //   case this object is managed by Python. I'm not sure
       //   though.
-      AddonClass::Ref<ListItem> ritem = item.which() == Addon::first ? ListItem::fromString(item.former()) : AddonClass::Ref<ListItem>(item.later());
+      AddonClass::Ref<ListItem> ritem = item.which() == XBMCAddon::first ? ListItem::fromString(item.former()) : AddonClass::Ref<ListItem>(item.later());
 
       // Tells the window to add the item to FileItem vector
       {
-        AddonUtils::GuiLock lock(languageHook, false);
+        XBMCAddonUtils::GuiLock lock(languageHook, false);
 
         //----------------------------------------------------
         // Former AddItem call
@@ -193,13 +193,13 @@ namespace Addon
       }
     }
 
-    void WindowXML::addItems(const std::vector<Alternative<String, const Addon::gui::ListItem* > > & items)
+    void WindowXML::addItems(const std::vector<Alternative<String, const XBMCAddon::xbmcgui::ListItem* > > & items)
     {
-    _TRACE;
-    AddonUtils::GuiLock lock(languageHook, false);
+    XBMC_TRACE;
+    XBMCAddonUtils::GuiLock lock(languageHook, false);
     for (auto item : items)
       {
-        AddonClass::Ref<ListItem> ritem = item.which() == Addon::first ? ListItem::fromString(item.former()) : AddonClass::Ref<ListItem>(item.later());
+        AddonClass::Ref<ListItem> ritem = item.which() == XBMCAddon::first ? ListItem::fromString(item.former()) : AddonClass::Ref<ListItem>(item.later());
         CFileItemPtr& fileItem = ritem->item;
         A(m_vecItems)->Add(fileItem);
       }
@@ -209,31 +209,31 @@ namespace Addon
 
     void WindowXML::removeItem(int position)
     {
-      _TRACE;
+      XBMC_TRACE;
       // Tells the window to remove the item at the specified position from the FileItem vector
-      AddonUtils::GuiLock lock(languageHook, false);
+      XBMCAddonUtils::GuiLock lock(languageHook, false);
       A(m_vecItems)->Remove(position);
       A(m_viewControl).SetItems(*(A(m_vecItems)));
     }
 
     int WindowXML::getCurrentListPosition()
     {
-      _TRACE;
-      AddonUtils::GuiLock lock(languageHook, false);
+      XBMC_TRACE;
+      XBMCAddonUtils::GuiLock lock(languageHook, false);
       int listPos = A(m_viewControl).GetSelectedItem();
       return listPos;
     }
 
     void WindowXML::setCurrentListPosition(int position)
     {
-      _TRACE;
-      AddonUtils::GuiLock lock(languageHook, false);
+      XBMC_TRACE;
+      XBMCAddonUtils::GuiLock lock(languageHook, false);
       A(m_viewControl).SetSelectedItem(position);
     }
 
     ListItem* WindowXML::getListItem(int position)
     {
-      AddonUtils::GuiLock lock(languageHook, false);
+      XBMCAddonUtils::GuiLock lock(languageHook, false);
       //CFileItemPtr fi = pwx->GetListItem(listPos);
       CFileItemPtr fi;
       {
@@ -256,14 +256,14 @@ namespace Addon
 
     int WindowXML::getListSize()
     {
-      _TRACE;
+      XBMC_TRACE;
       return A(m_vecItems)->Size();
     }
 
     void WindowXML::clearList()
     {
-      _TRACE;
-      AddonUtils::GuiLock lock(languageHook, false);
+      XBMC_TRACE;
+      XBMCAddonUtils::GuiLock lock(languageHook, false);
       A(ClearFileItems());
 
       A(m_viewControl).SetItems(*(A(m_vecItems)));
@@ -271,27 +271,27 @@ namespace Addon
 
     void WindowXML::setContainerProperty(const String& key, const String& value)
     {
-      _TRACE;
+      XBMC_TRACE;
       A(m_vecItems)->SetProperty(key, value);
     }
 
     void WindowXML::setContent(const String& value)
     {
-      _TRACE;
-      AddonUtils::GuiLock lock(languageHook, false);
+      XBMC_TRACE;
+      XBMCAddonUtils::GuiLock lock(languageHook, false);
       A(m_vecItems)->SetContent(value);
     }
 
     int WindowXML::getCurrentContainerId()
     {
-      _TRACE;
-      AddonUtils::GuiLock lock(languageHook, false);
+      XBMC_TRACE;
+      XBMCAddonUtils::GuiLock lock(languageHook, false);
       return A(m_viewControl.GetCurrentControl());
     }
 
     bool WindowXML::OnAction(const CAction &action)
     {
-      _TRACE;
+      XBMC_TRACE;
       // do the base class window first, and the call to python after this
       bool ret = ref(window)->OnAction(action);  // we don't currently want the mediawindow actions here
                                                  //  look at the WindowXMLInterceptor onAction, it skips
@@ -305,8 +305,8 @@ namespace Addon
 
     bool WindowXML::OnMessage(CGUIMessage& message)
     {
-#ifdef ENABLE__TRACE_API
-      _TRACE;
+#ifdef ENABLE_XBMC_TRACE_API
+      XBMC_TRACE;
       CLog::Log(LOGDEBUG, "{}Message id:{}", _tg.getSpaces(), (int)message.GetMessage());
 #endif
 
@@ -417,7 +417,7 @@ namespace Addon
 
     void WindowXML::AllocResources(bool forceLoad /*= false */)
     {
-      _TRACE;
+      XBMC_TRACE;
       std::string tmpDir = URIUtils::GetDirectory(ref(window)->GetProperty("xmlfile").asString());
       std::string fallbackMediaPath;
       URIUtils::GetParentPath(tmpDir, fallbackMediaPath);
@@ -432,14 +432,14 @@ namespace Addon
 
     void WindowXML::FreeResources(bool forceUnLoad /*= false */)
     {
-      _TRACE;
+      XBMC_TRACE;
 
       ref(window)->FreeResources(forceUnLoad);
     }
 
     void WindowXML::Process(unsigned int currentTime, CDirtyRegionList &regions)
     {
-      _TRACE;
+      XBMC_TRACE;
       CServiceBroker::GetGUI()->GetTextureManager().AddTexturePath(m_mediaDir);
       ref(window)->Process(currentTime, regions);
       CServiceBroker::GetGUI()->GetTextureManager().RemoveTexturePath(m_mediaDir);
@@ -447,7 +447,7 @@ namespace Addon
 
     bool WindowXML::OnClick(int iItem)
     {
-      _TRACE;
+      XBMC_TRACE;
       // Hook Over calling  CGUIMediaWindow::OnClick(iItem) results in it trying to PLAY the file item
       // which if its not media is BAD and 99 out of 100 times undesirable.
       return false;
@@ -455,31 +455,31 @@ namespace Addon
 
     bool WindowXML::OnDoubleClick(int iItem)
     {
-      _TRACE;
+      XBMC_TRACE;
       return false;
     }
 
     void WindowXML::GetContextButtons(int itemNumber, CContextButtons &buttons)
     {
-      _TRACE;
+      XBMC_TRACE;
       // maybe on day we can make an easy way to do this context menu
       // with out this method overriding the MediaWindow version, it will display 'Add to Favorites'
     }
 
     bool WindowXML::LoadXML(const String &strPath, const String &strLowerPath)
     {
-      _TRACE;
+      XBMC_TRACE;
       return A(CGUIWindow::LoadXML(strPath, strLowerPath));
     }
 
     void WindowXML::SetupShares()
     {
-      _TRACE;
+      XBMC_TRACE;
     }
 
     bool WindowXML::Update(const String &strPath)
     {
-      _TRACE;
+      XBMC_TRACE;
       return true;
     }
 
@@ -488,13 +488,13 @@ namespace Addon
                                      const String& defaultRes) :
       WindowXML(xmlFilename, scriptPath, defaultSkin, defaultRes),
       WindowDialogMixin(this)
-    { _TRACE; }
+    { XBMC_TRACE; }
 
-    WindowXMLDialog::~WindowXMLDialog() { _TRACE; deallocating(); }
+    WindowXMLDialog::~WindowXMLDialog() { XBMC_TRACE; deallocating(); }
 
     bool WindowXMLDialog::OnMessage(CGUIMessage &message)
     {
-      _TRACE;
+      XBMC_TRACE;
       if (message.GetMessage() == GUI_MSG_WINDOW_DEINIT)
         return A(CGUIWindow::OnMessage(message));
 
@@ -503,20 +503,20 @@ namespace Addon
 
     bool WindowXMLDialog::OnAction(const CAction &action)
     {
-      _TRACE;
+      XBMC_TRACE;
       return WindowDialogMixin::OnAction(action) ? true : WindowXML::OnAction(action);
     }
 
     void WindowXMLDialog::OnDeinitWindow(int nextWindowID)
     {
-      _TRACE;
+      XBMC_TRACE;
       CServiceBroker::GetGUI()->GetWindowManager().RemoveDialog(interceptor->GetID());
       WindowXML::OnDeinitWindow(nextWindowID);
     }
 
     bool WindowXMLDialog::LoadXML(const String &strPath, const String &strLowerPath)
     {
-      _TRACE;
+      XBMC_TRACE;
       if (WindowXML::LoadXML(strPath, strLowerPath))
       {
         // Set the render order to the dialog's default in case it's not specified in the skin xml

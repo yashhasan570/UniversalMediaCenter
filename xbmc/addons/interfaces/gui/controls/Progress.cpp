@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -19,17 +19,17 @@ namespace ADDON
 
 void Interface_GUIControlProgress::Init(AddonGlobalInterface* addonInterface)
 {
-  addonInterface->toUniversal Media Center->->control_progress =
-      new AddonToUniversal Media CenterFuncTable__control_progress();
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_progress =
+      new AddonToUniversal Media CenterFuncTable_universalmediacenter_gui_control_progress();
 
-  addonInterface->toUniversal Media Center->->control_progress->set_visible = set_visible;
-  addonInterface->toUniversal Media Center->->control_progress->set_percentage = set_percentage;
-  addonInterface->toUniversal Media Center->->control_progress->get_percentage = get_percentage;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_progress->set_visible = set_visible;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_progress->set_percentage = set_percentage;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_progress->get_percentage = get_percentage;
 }
 
 void Interface_GUIControlProgress::DeInit(AddonGlobalInterface* addonInterface)
 {
-  delete addonInterface->toUniversal Media Center->->control_progress;
+  delete addonInterface->toUniversal Media Center->universalmediacenter_gui->control_progress;
 }
 
 void Interface_GUIControlProgress::set_visible(UNIVERSALMEDIA_HANDLE universalmediacenterBase,

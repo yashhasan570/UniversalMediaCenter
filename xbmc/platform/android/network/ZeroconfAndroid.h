@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2017 Christian Browet
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -11,7 +11,7 @@
 #include "network/Zeroconf.h"
 #include "threads/CriticalSection.h"
 
-#include "platform/android/activity/JNINsdManagerRegistrationListener.h"
+#include "platform/android/activity/JNIXBMCNsdManagerRegistrationListener.h"
 
 #include <androidjni/NsdManager.h>
 #include <androidjni/NsdServiceInfo.h>
@@ -37,7 +37,7 @@ private:
   struct tServiceRef
   {
     jni::CJNINsdServiceInfo serviceInfo;
-    jni::CJNINsdManagerRegistrationListener registrationListener;
+    jni::CJNIXBMCNsdManagerRegistrationListener registrationListener;
     int updateNumber;
   };
   typedef std::map<std::string, struct tServiceRef> tServiceMap;

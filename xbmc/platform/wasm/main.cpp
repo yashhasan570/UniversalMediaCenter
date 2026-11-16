@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -9,7 +9,7 @@
 #include "application/AppEnvironment.h"
 #include "application/AppParamParser.h"
 #include "application/AppParams.h"
-#include "platform/.h"
+#include "platform/xbmc.h"
 
 #include <locale.h>
 #include <stdlib.h>
@@ -27,7 +27,7 @@ int main(int argc, char* argv[])
 
   CAppEnvironment::SetUp(appParamParser.GetAppParams());
 
-  const int status = _Run(true);
+  const int status = XBMC_Run(true);
   // Only reached when startup fails: once the Emscripten main loop is installed the stack is
   // unwound and CApplication tears the environment down itself.
   CAppEnvironment::TearDown();

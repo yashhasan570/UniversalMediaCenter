@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -11,7 +11,7 @@
 #include "threads/CriticalSection.h"
 #include "threads/Thread.h"
 #include "utils/IRssObserver.h"
-#include "utils/TinyXML2.h"
+#include "utils/XBMCTinyXML2.h"
 
 #include <list>
 #include <string>
@@ -55,7 +55,7 @@ private:
   std::vector<UNIVERSAL MEDIA CENTER::TIME::SystemTime*> m_vecTimeStamps;
   std::vector<int> m_vecUpdateTimes;
   int m_spacesBetweenFeeds;
-  CTinyXML2 m_xml;
+  CXBMCTinyXML2 m_xml;
   std::list<std::string> m_tagSet;
   std::vector<std::string> m_vecUrls;
   std::vector<int> m_vecQueue;

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -17,7 +17,7 @@
 #include "dialogs/GUIDialogNumeric.h"
 #include "input/actions/Action.h"
 #include "input/actions/ActionIDs.h"
-#include "input/keyboard/_vkeys.h"
+#include "input/keyboard/XBMC_vkeys.h"
 #include "input/keymaps/keyboard/KeyIDs.h"
 #include "resources/LocalizeStrings.h"
 #include "resources/ResourcesComponent.h"
@@ -174,31 +174,31 @@ bool CGUIEditControl::OnAction(const CAction &action)
     {
       // input from the keyboard (vkey, not ascii)
       uint16_t b = action.GetID() - KEY_VKEY;
-      if (b == VK_HOME)
+      if (b == XBMCVK_HOME)
       {
         m_cursorPos = 0;
         UpdateText(false);
         return true;
       }
-      else if (b == VK_END)
+      else if (b == XBMCVK_END)
       {
         m_cursorPos = m_text2.length();
         UpdateText(false);
         return true;
       }
-      if (b == VK_LEFT && m_cursorPos > 0)
+      if (b == XBMCVK_LEFT && m_cursorPos > 0)
       {
         m_cursorPos--;
         UpdateText(false);
         return true;
       }
-      if (b == VK_RIGHT && m_cursorPos < m_text2.length())
+      if (b == XBMCVK_RIGHT && m_cursorPos < m_text2.length())
       {
         m_cursorPos++;
         UpdateText(false);
         return true;
       }
-      if (b == VK_DELETE)
+      if (b == XBMCVK_DELETE)
       {
         if (m_cursorPos < m_text2.length())
         {
@@ -208,7 +208,7 @@ bool CGUIEditControl::OnAction(const CAction &action)
           return true;
         }
       }
-      if (b == VK_BACK)
+      if (b == XBMCVK_BACK)
       {
         if (m_cursorPos > 0)
         {
@@ -218,13 +218,13 @@ bool CGUIEditControl::OnAction(const CAction &action)
         }
         return true;
       }
-      else if (b == VK_RETURN || b == VK_NUMPADENTER)
+      else if (b == XBMCVK_RETURN || b == XBMCVK_NUMPADENTER)
       {
         // enter - send click message, but otherwise ignore
         SEND_CLICK_MESSAGE(GetID(), GetParentID(), 1);
         return true;
       }
-      else if (b == VK_ESCAPE)
+      else if (b == XBMCVK_ESCAPE)
       { // escape - fallthrough to default action
         return CGUIButtonControl::OnAction(action);
       }
@@ -849,7 +849,7 @@ void CGUIEditControl::ComposingCursorAppendChar(std::uint32_t deadUnicodeKey)
 void CGUIEditControl::CancelKeyComposition(std::uint32_t deadUnicodeKey)
 {
   // sequence cancelled and reverted...
-  if (deadUnicodeKey == K_BACKSPACE)
+  if (deadUnicodeKey == XBMCK_BACKSPACE)
   {
     ResetCursor();
   }

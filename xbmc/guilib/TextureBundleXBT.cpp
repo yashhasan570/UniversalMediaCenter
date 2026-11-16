@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -236,7 +236,7 @@ std::unique_ptr<CTexture> CTextureBundleXBT::ConvertFrameToTexture(const std::st
     buffer = std::move(unpacked);
   }
 
-  // create an  texture
+  // create an xbmc texture
   std::unique_ptr<CTexture> texture = CTexture::CreateTexture();
 
   if (frame.GetKDFormatType())

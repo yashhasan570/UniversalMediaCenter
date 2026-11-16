@@ -71,7 +71,7 @@ cmake-kits.json
 *.diagsession
 
 # osx specifics
-/universalmediacenter.build/
+/Universal Media Center.build/
 /Debug/
 /Release/
 .DS_Store
@@ -100,14 +100,14 @@ cmake_install.cmake
 /nbproject
 
 # /
-/universalmediacenter.log
-/universalmediacenter.old.log
-/universalmediacenter.bin
-/universalmediacenter-test
-/universalmediacenter-xrandr
+/Universal Media Center.log
+/Universal Media Center.old.log
+/Universal Media Center.bin
+/Universal Media Center-test
+/Universal Media Center-xrandr
 /*.diff
 /*.patch
-/universalmediacenter-build*/
+/Universal Media Center-build*/
 /gtestresults.xml
 
 # /addons/
@@ -119,27 +119,27 @@ cmake_install.cmake
 /addons/pvr.*
 /addons/peripheral.*
 /addons/game.*
-/addons/.global.audioengine/addon.xml
-/addons/.global.filesystem/addon.xml
-/addons/.global.general/addon.xml
-/addons/.global.gui/addon.xml
-/addons/.global.main/addon.xml
-/addons/.global.network/addon.xml
-/addons/.global.tools/addon.xml
-/addons/.instance.audiodecoder/addon.xml
-/addons/.instance.audioencoder/addon.xml
-/addons/.instance.game/addon.xml
-/addons/.instance.imagedecoder/addon.xml
-/addons/.instance.inputstream/addon.xml
-/addons/.instance.peripheral/addon.xml
-/addons/.instance.pvr/addon.xml
-/addons/.instance.shaderpreset/addon.xml
-/addons/.instance.screensaver/addon.xml
-/addons/.instance.vfs/addon.xml
-/addons/.instance.videocodec/addon.xml
-/addons/.instance.visualization/addon.xml
-/addons/.addon/addon.xml
-/addons/.json/addon.xml
+/addons/Universal Media Center.binary.global.audioengine/addon.xml
+/addons/Universal Media Center.binary.global.filesystem/addon.xml
+/addons/Universal Media Center.binary.global.general/addon.xml
+/addons/Universal Media Center.binary.global.gui/addon.xml
+/addons/Universal Media Center.binary.global.main/addon.xml
+/addons/Universal Media Center.binary.global.network/addon.xml
+/addons/Universal Media Center.binary.global.tools/addon.xml
+/addons/Universal Media Center.binary.instance.audiodecoder/addon.xml
+/addons/Universal Media Center.binary.instance.audioencoder/addon.xml
+/addons/Universal Media Center.binary.instance.game/addon.xml
+/addons/Universal Media Center.binary.instance.imagedecoder/addon.xml
+/addons/Universal Media Center.binary.instance.inputstream/addon.xml
+/addons/Universal Media Center.binary.instance.peripheral/addon.xml
+/addons/Universal Media Center.binary.instance.pvr/addon.xml
+/addons/Universal Media Center.binary.instance.shaderpreset/addon.xml
+/addons/Universal Media Center.binary.instance.screensaver/addon.xml
+/addons/Universal Media Center.binary.instance.vfs/addon.xml
+/addons/Universal Media Center.binary.instance.videocodec/addon.xml
+/addons/Universal Media Center.binary.instance.visualization/addon.xml
+/addons/xbmc.addon/addon.xml
+/addons/xbmc.json/addon.xml
 /addons/audiodecoder.*
 /addons/visualization.*
 /addons/screensaver.*
@@ -234,12 +234,12 @@ cmake_install.cmake
 /tools/darwin/packaging/osx/VolumeIcon.icns
 
 # /tools/Linux/
-/tools/Linux/universalmediacenter.sh
-/tools/Linux/universalmediacenter.desktop
-/tools/Linux/universalmediacenter-gbm-session.desktop
-/tools/Linux/universalmediacenter-metainfo.xml
-/tools/Linux/universalmediacenter-standalone.sh
-/tools/Linux/universalmediacenter-xsession.desktop
+/tools/Linux/Universal Media Center.sh
+/tools/Linux/Universal Media Center.desktop
+/tools/Linux/Universal Media Center-gbm-session.desktop
+/tools/Linux/Universal Media Center-metainfo.xml
+/tools/Linux/Universal Media Center-standalone.sh
+/tools/Linux/Universal Media Center-xsession.desktop
 
 # /tools/TexturePacker
 /tools/TexturePacker/TexturePacker*

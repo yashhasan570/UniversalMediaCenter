@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -152,7 +152,7 @@ void CEventServer::Run()
 
   // publish service
   std::vector<std::pair<std::string, std::string>> txt;
-  CZeroconf::GetInstance()->PublishService("servers.eventserver", "_-events._udp",
+  CZeroconf::GetInstance()->PublishService("servers.eventserver", "_xbmc-events._udp",
                                            CSysInfo::GetDeviceName() + " eventserver", m_iPort,
                                            txt);
 

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -217,9 +217,9 @@ TEST_F(TestVideoDatabaseContentGeometry, AFailureReadsAsMissingToEveryConsumer)
 //! An NFO is trusted for the file as it stands when it is imported.
 TEST_F(TestVideoDatabaseContentGeometry, ARecordWithNoIdentityTakesTheFilesOwn)
 {
-  XFILE::CFile* const file{_CREATETEMPFILE(".mkv")};
+  XFILE::CFile* const file{XBMC_CREATETEMPFILE(".mkv")};
   ASSERT_NE(nullptr, file);
-  const std::string path{_TEMPFILEPATH(file)};
+  const std::string path{XBMC_TEMPFILEPATH(file)};
   const int idFile{m_db.AddFile(path, URIUtils::GetDirectory(path))};
   ASSERT_GE(idFile, 0);
 
@@ -233,14 +233,14 @@ TEST_F(TestVideoDatabaseContentGeometry, ARecordWithNoIdentityTakesTheFilesOwn)
   EXPECT_EQ(ContentGeometryState::VALID, lookup.state);
   EXPECT_EQ(imported.aspects, lookup.record.aspects);
 
-  EXPECT_TRUE(_DELETETEMPFILE(file));
+  EXPECT_TRUE(XBMC_DELETETEMPFILE(file));
 }
 
 TEST_F(TestVideoDatabaseContentGeometry, AStoredRecordIsCheckedAgainstTheFileAtItsPath)
 {
-  XFILE::CFile* const file{_CREATETEMPFILE(".mkv")};
+  XFILE::CFile* const file{XBMC_CREATETEMPFILE(".mkv")};
   ASSERT_NE(nullptr, file);
-  const std::string path{_TEMPFILEPATH(file)};
+  const std::string path{XBMC_TEMPFILEPATH(file)};
   const int idFile{m_db.AddFile(path, URIUtils::GetDirectory(path))};
   ASSERT_GE(idFile, 0);
 
@@ -253,7 +253,7 @@ TEST_F(TestVideoDatabaseContentGeometry, AStoredRecordIsCheckedAgainstTheFileAtI
   ASSERT_TRUE(m_db.SetContentGeometry(idFile, MakeRecord(IDENTITY)));
   EXPECT_EQ(ContentGeometryState::MISSING, m_db.GetContentGeometryOfFile(idFile, path).state);
 
-  EXPECT_TRUE(_DELETETEMPFILE(file));
+  EXPECT_TRUE(XBMC_DELETETEMPFILE(file));
 }
 
 TEST_F(TestVideoDatabaseContentGeometry, AFileWithNoRowHasNothingStored)

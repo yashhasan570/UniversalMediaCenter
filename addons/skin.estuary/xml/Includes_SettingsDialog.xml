@@ -213,7 +213,7 @@
 		<control type="button" id="22104">
 			<include>DialogSettingButton</include>
 			<label>$LOCALIZE[31084]</label>
-			<onclick>Addon.Default.OpenSettings(.player.musicviz)</onclick>
+			<onclick>Addon.Default.OpenSettings(xbmc.player.musicviz)</onclick>
 		</control>
 		<control type="button" id="22105">
 			<include>DialogSettingButton</include>
@@ -225,7 +225,7 @@
 			<include>DialogSettingButton</include>
 			<label>$LOCALIZE[31082]</label>
 			<label2>[B]$INFO[Skin.String(LyricScript_Path)][/B]</label2>
-			<onclick>Skin.SetAddon(LyricScript_Path,.python.lyrics)</onclick>
+			<onclick>Skin.SetAddon(LyricScript_Path,xbmc.python.lyrics)</onclick>
 		</control>
 		<control type="button" id="22107">
 			<include>DialogSettingButton</include>

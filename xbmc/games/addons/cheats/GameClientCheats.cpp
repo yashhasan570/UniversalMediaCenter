@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -37,7 +37,7 @@
 #include "threads/CriticalSection.h"
 #include "utils/StringUtils.h"
 #include "utils/URIUtils.h"
-#include "utils/TinyXML2.h"
+#include "utils/XBMCTinyXML2.h"
 #include "utils/log.h"
 
 #include <algorithm>
@@ -575,7 +575,7 @@ std::string CGameClientCheats::ReadChoice(const std::string& gamePath) const
 {
   if (gamePath.empty())
     return {};
-  CTinyXML2 xml;
+  CXBMCTinyXML2 xml;
   if (xml.LoadFile(GetSelectionPath(gamePath)))
   {
     const auto* root = xml.FirstChildElement("cheatpack");
@@ -591,7 +591,7 @@ std::string CGameClientCheats::ReadChoice(const std::string& gamePath) const
 void CGameClientCheats::SaveChoice(const std::string& gamePath, const std::string& candidate) const
 {
   const std::string path = GetSelectionPath(gamePath);
-  CTinyXML2 xml;
+  CXBMCTinyXML2 xml;
   auto* root = xml.NewElement("cheatpack");
   root->SetAttribute("game", gamePath.c_str());
   root->SetAttribute("candidate", candidate.c_str());

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -28,7 +28,7 @@ namespace XFILE
 
 typedef struct stEmuFileObject
 {
-  XFILE::CFile*  file_;
+  XFILE::CFile*  file_xbmc;
   CCriticalSection *file_lock;
   int mode;
   //Stick this last to avoid 3-7 bytes of padding
@@ -43,7 +43,7 @@ public:
   ~CEmuFileWrapper();
 
   /**
-   * Only to be called when shutting down 
+   * Only to be called when shutting down xbmc
    */
   void CleanUp();
 

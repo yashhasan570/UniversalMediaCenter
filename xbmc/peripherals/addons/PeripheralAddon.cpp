@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2014-2024 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -380,7 +380,7 @@ bool CPeripheralAddon::PerformDeviceScan(PeripheralScanResults& results)
   {
     for (unsigned int i = 0; i < peripheralCount; i++)
     {
-      addon::Peripheral peripheral(pScanResults[i]);
+      universalmediacenter::addon::Peripheral peripheral(pScanResults[i]);
       PeripheralScanResult result(PERIPHERAL_BUS_ADDON);
       switch (peripheral.Type())
       {
@@ -432,7 +432,7 @@ bool CPeripheralAddon::ProcessEvents(void)
   {
     for (unsigned int i = 0; i < eventCount; i++)
     {
-      addon::PeripheralEvent event(pEvents[i]);
+      universalmediacenter::addon::PeripheralEvent event(pEvents[i]);
       PeripheralPtr device = GetPeripheral(event.PeripheralIndex());
       if (!device)
         continue;
@@ -537,7 +537,7 @@ bool CPeripheralAddon::GetJoystickProperties(unsigned int index, CPeripheralJoys
            "GetJoystickInfo()");
   if (retVal == PERIPHERAL_NO_ERROR)
   {
-    addon::Joystick addonJoystick(joystickStruct);
+    universalmediacenter::addon::Joystick addonJoystick(joystickStruct);
     SetJoystickInfo(joystick, addonJoystick);
 
     m_ifc.peripheral->toAddon->free_joystick_info(m_ifc.peripheral, &joystickStruct);
@@ -560,7 +560,7 @@ bool CPeripheralAddon::GetAppearance(const CPeripheral* device, std::string& con
 
   PERIPHERAL_ERROR retVal;
 
-  addon::Joystick joystickInfo;
+  universalmediacenter::addon::Joystick joystickInfo;
   GetJoystickInfo(device, joystickInfo);
 
   JOYSTICK_INFO joystickStruct;
@@ -572,7 +572,7 @@ bool CPeripheralAddon::GetAppearance(const CPeripheral* device, std::string& con
                m_ifc.peripheral, &joystickStruct, strControllerId, sizeof(strControllerId)),
            "GetAppearance()");
 
-  addon::Joystick::FreeStruct(joystickStruct);
+  universalmediacenter::addon::Joystick::FreeStruct(joystickStruct);
 
   if (retVal == PERIPHERAL_NO_ERROR)
   {
@@ -595,7 +595,7 @@ bool CPeripheralAddon::SetAppearance(const CPeripheral* device, const std::strin
 
   PERIPHERAL_ERROR retVal;
 
-  addon::Joystick joystickInfo;
+  universalmediacenter::addon::Joystick joystickInfo;
   GetJoystickInfo(device, joystickInfo);
 
   JOYSTICK_INFO joystickStruct;
@@ -605,7 +605,7 @@ bool CPeripheralAddon::SetAppearance(const CPeripheral* device, const std::strin
                                                               controllerId.c_str()),
            "SetAppearance()");
 
-  addon::Joystick::FreeStruct(joystickStruct);
+  universalmediacenter::addon::Joystick::FreeStruct(joystickStruct);
 
   return retVal == PERIPHERAL_NO_ERROR;
 }
@@ -624,7 +624,7 @@ bool CPeripheralAddon::GetFeatures(const CPeripheral* device,
 
   PERIPHERAL_ERROR retVal;
 
-  addon::Joystick joystickInfo;
+  universalmediacenter::addon::Joystick joystickInfo;
   GetJoystickInfo(device, joystickInfo);
 
   JOYSTICK_INFO joystickStruct;
@@ -638,13 +638,13 @@ bool CPeripheralAddon::GetFeatures(const CPeripheral* device,
                                                             &pFeatures),
            "GetFeatures()");
 
-  addon::Joystick::FreeStruct(joystickStruct);
+  universalmediacenter::addon::Joystick::FreeStruct(joystickStruct);
 
   if (retVal == PERIPHERAL_NO_ERROR)
   {
     for (unsigned int i = 0; i < featureCount; i++)
     {
-      addon::JoystickFeature feature(pFeatures[i]);
+      universalmediacenter::addon::JoystickFeature feature(pFeatures[i]);
       if (feature.Type() != JOYSTICK_FEATURE_TYPE_UNKNOWN)
         features[feature.Name()] = feature;
     }
@@ -659,7 +659,7 @@ bool CPeripheralAddon::GetFeatures(const CPeripheral* device,
 
 bool CPeripheralAddon::MapFeature(const CPeripheral* device,
                                   const std::string& strControllerId,
-                                  const addon::JoystickFeature& feature)
+                                  const universalmediacenter::addon::JoystickFeature& feature)
 {
   if (!m_bProvidesButtonMaps)
     return false;
@@ -671,7 +671,7 @@ bool CPeripheralAddon::MapFeature(const CPeripheral* device,
 
   PERIPHERAL_ERROR retVal;
 
-  addon::Joystick joystickInfo;
+  universalmediacenter::addon::Joystick joystickInfo;
   GetJoystickInfo(device, joystickInfo);
 
   JOYSTICK_INFO joystickStruct;
@@ -684,8 +684,8 @@ bool CPeripheralAddon::MapFeature(const CPeripheral* device,
                m_ifc.peripheral, &joystickStruct, strControllerId.c_str(), 1, &addonFeature),
            "MapFeatures()");
 
-  addon::Joystick::FreeStruct(joystickStruct);
-  addon::JoystickFeature::FreeStruct(addonFeature);
+  universalmediacenter::addon::Joystick::FreeStruct(joystickStruct);
+  universalmediacenter::addon::JoystickFeature::FreeStruct(addonFeature);
 
   return retVal == PERIPHERAL_NO_ERROR;
 }
@@ -702,7 +702,7 @@ bool CPeripheralAddon::GetIgnoredPrimitives(const CPeripheral* device, Primitive
 
   PERIPHERAL_ERROR retVal;
 
-  addon::Joystick joystickInfo;
+  universalmediacenter::addon::Joystick joystickInfo;
   GetJoystickInfo(device, joystickInfo);
 
   JOYSTICK_INFO joystickStruct;
@@ -715,7 +715,7 @@ bool CPeripheralAddon::GetIgnoredPrimitives(const CPeripheral* device, Primitive
                m_ifc.peripheral, &joystickStruct, &primitiveCount, &pPrimitives),
            "GetIgnoredPrimitives()");
 
-  addon::Joystick::FreeStruct(joystickStruct);
+  universalmediacenter::addon::Joystick::FreeStruct(joystickStruct);
 
   if (retVal == PERIPHERAL_NO_ERROR)
   {
@@ -743,22 +743,22 @@ bool CPeripheralAddon::SetIgnoredPrimitives(const CPeripheral* device,
 
   PERIPHERAL_ERROR retVal;
 
-  addon::Joystick joystickInfo;
+  universalmediacenter::addon::Joystick joystickInfo;
   GetJoystickInfo(device, joystickInfo);
 
   JOYSTICK_INFO joystickStruct;
   joystickInfo.ToStruct(joystickStruct);
 
   JOYSTICK_DRIVER_PRIMITIVE* addonPrimitives = nullptr;
-  addon::DriverPrimitives::ToStructs(primitives, &addonPrimitives);
+  universalmediacenter::addon::DriverPrimitives::ToStructs(primitives, &addonPrimitives);
   const unsigned int primitiveCount = static_cast<unsigned int>(primitives.size());
 
   LogError(retVal = m_ifc.peripheral->toAddon->set_ignored_primitives(
                m_ifc.peripheral, &joystickStruct, primitiveCount, addonPrimitives),
            "SetIgnoredPrimitives()");
 
-  addon::Joystick::FreeStruct(joystickStruct);
-  addon::DriverPrimitives::FreeStructs(primitiveCount, addonPrimitives);
+  universalmediacenter::addon::Joystick::FreeStruct(joystickStruct);
+  universalmediacenter::addon::DriverPrimitives::FreeStructs(primitiveCount, addonPrimitives);
 
   return retVal == PERIPHERAL_NO_ERROR;
 }
@@ -773,7 +773,7 @@ void CPeripheralAddon::SaveButtonMap(const CPeripheral* device)
   if (!m_ifc.peripheral->toAddon->save_button_map)
     return;
 
-  addon::Joystick joystickInfo;
+  universalmediacenter::addon::Joystick joystickInfo;
   GetJoystickInfo(device, joystickInfo);
 
   JOYSTICK_INFO joystickStruct;
@@ -781,7 +781,7 @@ void CPeripheralAddon::SaveButtonMap(const CPeripheral* device)
 
   m_ifc.peripheral->toAddon->save_button_map(m_ifc.peripheral, &joystickStruct);
 
-  addon::Joystick::FreeStruct(joystickStruct);
+  universalmediacenter::addon::Joystick::FreeStruct(joystickStruct);
 
   // Notify observing button maps
   RefreshButtonMaps(device->DeviceName());
@@ -797,7 +797,7 @@ void CPeripheralAddon::RevertButtonMap(const CPeripheral* device)
   if (!m_ifc.peripheral->toAddon->revert_button_map)
     return;
 
-  addon::Joystick joystickInfo;
+  universalmediacenter::addon::Joystick joystickInfo;
   GetJoystickInfo(device, joystickInfo);
 
   JOYSTICK_INFO joystickStruct;
@@ -805,7 +805,7 @@ void CPeripheralAddon::RevertButtonMap(const CPeripheral* device)
 
   m_ifc.peripheral->toAddon->revert_button_map(m_ifc.peripheral, &joystickStruct);
 
-  addon::Joystick::FreeStruct(joystickStruct);
+  universalmediacenter::addon::Joystick::FreeStruct(joystickStruct);
 }
 
 void CPeripheralAddon::ResetButtonMap(const CPeripheral* device, const std::string& strControllerId)
@@ -813,7 +813,7 @@ void CPeripheralAddon::ResetButtonMap(const CPeripheral* device, const std::stri
   if (!m_bProvidesButtonMaps)
     return;
 
-  addon::Joystick joystickInfo;
+  universalmediacenter::addon::Joystick joystickInfo;
   GetJoystickInfo(device, joystickInfo);
 
   JOYSTICK_INFO joystickStruct;
@@ -822,7 +822,7 @@ void CPeripheralAddon::ResetButtonMap(const CPeripheral* device, const std::stri
   m_ifc.peripheral->toAddon->reset_button_map(m_ifc.peripheral, &joystickStruct,
                                               strControllerId.c_str());
 
-  addon::Joystick::FreeStruct(joystickStruct);
+  universalmediacenter::addon::Joystick::FreeStruct(joystickStruct);
 
   // Notify observing button maps
   RefreshButtonMaps(device->DeviceName());
@@ -938,7 +938,7 @@ JOYSTICK_FEATURE_TYPE CPeripheralAddon::FeatureType(const std::string& controlle
 }
 
 void CPeripheralAddon::GetPeripheralInfo(const CPeripheral* device,
-                                         addon::Peripheral& peripheralInfo)
+                                         universalmediacenter::addon::Peripheral& peripheralInfo)
 {
   peripheralInfo.SetType(CPeripheralAddonTranslator::TranslateType(device->Type()));
   peripheralInfo.SetName(device->DeviceName());
@@ -947,7 +947,7 @@ void CPeripheralAddon::GetPeripheralInfo(const CPeripheral* device,
 }
 
 void CPeripheralAddon::GetJoystickInfo(const CPeripheral* device,
-                                       addon::Joystick& joystickInfo)
+                                       universalmediacenter::addon::Joystick& joystickInfo)
 {
   GetPeripheralInfo(device, joystickInfo);
 
@@ -969,7 +969,7 @@ void CPeripheralAddon::GetJoystickInfo(const CPeripheral* device,
 }
 
 void CPeripheralAddon::SetJoystickInfo(CPeripheralJoystick& joystick,
-                                       const addon::Joystick& joystickInfo)
+                                       const universalmediacenter::addon::Joystick& joystickInfo)
 {
   joystick.SetProvider(joystickInfo.Provider());
   joystick.SetRequestedPort(joystickInfo.RequestedPort());

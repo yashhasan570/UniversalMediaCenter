@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2021 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -1168,7 +1168,7 @@ void CWebVTTHandler::LoadColors()
 {
   CGUIColorManager colorManager;
   colorManager.LoadColorsListFromXML(
-      CSpecialProtocol::TranslatePathConvertCase("special:///system/colors.xml"), m_CSSColors,
+      CSpecialProtocol::TranslatePathConvertCase("special://xbmc/system/colors.xml"), m_CSSColors,
       false);
   m_CSSColorsLoaded = true;
 }

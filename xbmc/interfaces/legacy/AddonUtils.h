@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -15,7 +15,7 @@
  *      Author: jim
  */
 
-//#define ENABLE__TRACE_API
+//#define ENABLE_XBMC_TRACE_API
 
 #include "threads/CriticalSection.h"
 
@@ -32,21 +32,21 @@
  * by those writing language bindings.
  */
 
-namespace Addon
+namespace XBMCAddon
 {
 class LanguageHook;
 }
 
-namespace AddonUtils
+namespace XBMCAddonUtils
 {
   class GuiLock
   {
   public:
-    GuiLock(Addon::LanguageHook* languageHook, bool offScreen);
+    GuiLock(XBMCAddon::LanguageHook* languageHook, bool offScreen);
     ~GuiLock();
 
   protected:
-    Addon::LanguageHook* m_languageHook = nullptr;
+    XBMCAddon::LanguageHook* m_languageHook = nullptr;
     bool m_offScreen = false;
   };
 
@@ -69,7 +69,7 @@ namespace AddonUtils
    */
   const char *getDefaultImage(const char* cControlType, const char* cTextureType);
 
-#ifdef ENABLE__TRACE_API
+#ifdef ENABLE_XBMC_TRACE_API
   class TraceGuard
   {
     const char* function;
@@ -86,10 +86,10 @@ namespace AddonUtils
 #endif
 }
 
-#ifdef ENABLE__TRACE_API
-#define _TRACE AddonUtils::TraceGuard _tg(__PRETTY_FUNCTION__)
+#ifdef ENABLE_XBMC_TRACE_API
+#define XBMC_TRACE XBMCAddonUtils::TraceGuard _tg(__PRETTY_FUNCTION__)
 #else
-#define _TRACE
+#define XBMC_TRACE
 #endif
 
 

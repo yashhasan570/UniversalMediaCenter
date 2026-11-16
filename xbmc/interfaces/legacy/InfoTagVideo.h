@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -14,17 +14,17 @@
 #include "utils/StreamDetails.h"
 #include "video/VideoInfoTag.h"
 
-namespace Addon
+namespace XBMCAddon
 {
-  namespace 
+  namespace xbmc
   {
     ///
-    /// \defgroup python__actor Actor
-    /// \ingroup python_
+    /// \defgroup python_xbmc_actor Actor
+    /// \ingroup python_xbmc
     /// @{
     /// @brief **Actor class used in combination with InfoTagVideo.**
     ///
-    /// \python_class{ .Actor([name, role, order, thumbnail]) }
+    /// \python_class{ xbmc.Actor([name, role, order, thumbnail]) }
     ///
     /// Represents a single actor in the cast of a video item wrapped by InfoTagVideo.
     ///
@@ -36,7 +36,7 @@ namespace Addon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ...
-    /// actor = .Actor('Sean Connery', 'James Bond', order=1)
+    /// actor = xbmc.Actor('Sean Connery', 'James Bond', order=1)
     /// ...
     /// ~~~~~~~~~~~~~
     ///
@@ -45,8 +45,8 @@ namespace Addon
     public:
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__actor Actor
-      /// @brief \python_func{ .Actor([name, role, order, thumbnail]) }
+      /// \ingroup python_xbmc_actor Actor
+      /// @brief \python_func{ xbmc.Actor([name, role, order, thumbnail]) }
       /// Creates a single actor for the cast of a video item wrapped by InfoTagVideo.
       ///
       /// @param name               [opt] string - Name of the actor.
@@ -61,7 +61,7 @@ namespace Addon
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ...
-      /// actor = .Actor('Sean Connery', 'James Bond', order=1)
+      /// actor = xbmc.Actor('Sean Connery', 'James Bond', order=1)
       /// ...
       /// ~~~~~~~~~~~~~
       ///
@@ -75,7 +75,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__actor
+      /// \ingroup python_xbmc_actor
       /// @brief \python_func{ getName() }
       /// Get the name of the actor.
       ///
@@ -92,7 +92,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__actor
+      /// \ingroup python_xbmc_actor
       /// @brief \python_func{ getRole() }
       /// Get the role of the actor in the specific video item.
       ///
@@ -109,7 +109,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__actor
+      /// \ingroup python_xbmc_actor
       /// @brief \python_func{ getOrder() }
       /// Get the order of the actor in the cast of the specific video item.
       ///
@@ -126,7 +126,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__actor
+      /// \ingroup python_xbmc_actor
       /// @brief \python_func{ getThumbnail() }
       /// Get the path / URL to the thumbnail of the actor.
       ///
@@ -143,7 +143,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__actor
+      /// \ingroup python_xbmc_actor
       /// @brief \python_func{ setName(name) }
       /// Set the name of the actor.
       ///
@@ -160,7 +160,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__actor
+      /// \ingroup python_xbmc_actor
       /// @brief \python_func{ setRole(role) }
       /// Set the role of the actor in the specific video item.
       ///
@@ -177,7 +177,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__actor
+      /// \ingroup python_xbmc_actor
       /// @brief \python_func{ setOrder(order) }
       /// Set the order of the actor in the cast of the specific video item.
       ///
@@ -194,7 +194,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__actor
+      /// \ingroup python_xbmc_actor
       /// @brief \python_func{ setThumbnail(thumbnail) }
       /// Set the path / URL to the thumbnail of the actor.
       ///
@@ -222,12 +222,12 @@ namespace Addon
     /// @}
 
     ///
-    /// \defgroup python__videostreamdetail VideoStreamDetail
-    /// \ingroup python_
+    /// \defgroup python_xbmc_videostreamdetail VideoStreamDetail
+    /// \ingroup python_xbmc
     /// @{
     /// @brief **Video stream details class used in combination with InfoTagVideo.**
     ///
-    /// \python_class{ .VideoStreamDetail([width, height, aspect, duration, codec, stereoMode, language, hdrType]) }
+    /// \python_class{ xbmc.VideoStreamDetail([width, height, aspect, duration, codec, stereoMode, language, hdrType]) }
     ///
     /// Represents a single selectable video stream for a video item wrapped by InfoTagVideo.
     ///
@@ -239,7 +239,7 @@ namespace Addon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ...
-    /// videostream = .VideoStreamDetail(1920, 1080, language='English')
+    /// videostream = xbmc.VideoStreamDetail(1920, 1080, language='English')
     /// ...
     /// ~~~~~~~~~~~~~
     ///
@@ -248,8 +248,8 @@ namespace Addon
     public:
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__videostreamdetail
-      /// @brief \python_func{ .VideoStreamDetail([width, height, aspect, duration, codec, stereomode, language, hdrtype, hdrdetail]) }
+      /// \ingroup python_xbmc_videostreamdetail
+      /// @brief \python_func{ xbmc.VideoStreamDetail([width, height, aspect, duration, codec, stereomode, language, hdrtype, hdrdetail]) }
       /// Creates a single video stream details class for a video item wrapped by InfoTagVideo.
       ///
       /// @param width              [opt] integer - Width of the video stream in pixel.
@@ -274,7 +274,7 @@ namespace Addon
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ...
-      /// videostream = .VideoStreamDetail(1920, 1080, language='English')
+      /// videostream = xbmc.VideoStreamDetail(1920, 1080, language='English')
       /// ...
       /// ~~~~~~~~~~~~~
       ///
@@ -293,7 +293,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__videostreamdetail
+      /// \ingroup python_xbmc_videostreamdetail
       /// @brief \python_func{ getWidth() }
       /// Get the width of the video stream in pixel.
       ///
@@ -310,7 +310,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__videostreamdetail
+      /// \ingroup python_xbmc_videostreamdetail
       /// @brief \python_func{ getHeight() }
       /// Get the height of the video stream in pixel.
       ///
@@ -327,7 +327,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__videostreamdetail
+      /// \ingroup python_xbmc_videostreamdetail
       /// @brief \python_func{ getAspect() }
       /// Get the aspect ratio of the video stream.
       ///
@@ -344,7 +344,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__videostreamdetail
+      /// \ingroup python_xbmc_videostreamdetail
       /// @brief \python_func{ getDuration() }
       /// Get the duration of the video stream in seconds.
       ///
@@ -361,7 +361,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__videostreamdetail
+      /// \ingroup python_xbmc_videostreamdetail
       /// @brief \python_func{ getCodec() }
       /// Get the codec of the stream.
       ///
@@ -378,7 +378,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__videostreamdetail
+      /// \ingroup python_xbmc_videostreamdetail
       /// @brief \python_func{ getStereoMode() }
       /// Get the stereo mode of the video stream.
       ///
@@ -395,7 +395,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__videostreamdetail
+      /// \ingroup python_xbmc_videostreamdetail
       /// @brief \python_func{ getLanguage() }
       /// Get the language of the stream.
       ///
@@ -412,7 +412,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__videostreamdetail
+      /// \ingroup python_xbmc_videostreamdetail
       /// @brief \python_func{ getHDRType() }
       /// Get the HDR type of the stream.
       ///
@@ -429,7 +429,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__videostreamdetail
+      /// \ingroup python_xbmc_videostreamdetail
       /// @brief \python_func{ getHDRDetail() }
       /// Get the HDR detail of the stream.
       ///
@@ -446,7 +446,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__videostreamdetail
+      /// \ingroup python_xbmc_videostreamdetail
       /// @brief \python_func{ setWidth(width) }
       /// Set the width of the video stream in pixel.
       ///
@@ -463,7 +463,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__videostreamdetail
+      /// \ingroup python_xbmc_videostreamdetail
       /// @brief \python_func{ setHeight(height) }
       /// Set the height of the video stream in pixel.
       ///
@@ -480,7 +480,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__videostreamdetail
+      /// \ingroup python_xbmc_videostreamdetail
       /// @brief \python_func{ setAspect(aspect) }
       /// Set the aspect ratio of the video stream.
       ///
@@ -497,7 +497,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__videostreamdetail
+      /// \ingroup python_xbmc_videostreamdetail
       /// @brief \python_func{ setDuration(duration) }
       /// Set the duration of the video stream in seconds.
       ///
@@ -514,7 +514,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__videostreamdetail
+      /// \ingroup python_xbmc_videostreamdetail
       /// @brief \python_func{ setCodec(codec) }
       /// Set the codec of the stream.
       ///
@@ -531,7 +531,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__videostreamdetail
+      /// \ingroup python_xbmc_videostreamdetail
       /// @brief \python_func{ setStereoMode(stereomode) }
       /// Set the stereo mode of the video stream.
       ///
@@ -548,7 +548,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__videostreamdetail
+      /// \ingroup python_xbmc_videostreamdetail
       /// @brief \python_func{ setLanguage(language) }
       /// Set the language of the stream.
       ///
@@ -565,7 +565,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__videostreamdetail
+      /// \ingroup python_xbmc_videostreamdetail
       /// @brief \python_func{ setHDRType(hdrtype) }
       /// Set the HDR type of the stream.
       ///
@@ -583,7 +583,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__videostreamdetail
+      /// \ingroup python_xbmc_videostreamdetail
       /// @brief \python_func{ setHDRDetail(hdrdetail) }
       /// Set the HDR detail of the stream.
       ///
@@ -618,12 +618,12 @@ namespace Addon
     /// @}
 
     ///
-    /// \defgroup python__audiostreamdetail AudioStreamDetail
-    /// \ingroup python_
+    /// \defgroup python_xbmc_audiostreamdetail AudioStreamDetail
+    /// \ingroup python_xbmc
     /// @{
     /// @brief **Audio stream details class used in combination with InfoTagVideo.**
     ///
-    /// \python_class{ .AudioStreamDetail([channels, codec, language]) }
+    /// \python_class{ xbmc.AudioStreamDetail([channels, codec, language]) }
     ///
     /// Represents a single selectable audio stream for a video item wrapped by InfoTagVideo.
     ///
@@ -635,7 +635,7 @@ namespace Addon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ...
-    /// audiostream = .AudioStreamDetail(6, 'DTS', 'English')
+    /// audiostream = xbmc.AudioStreamDetail(6, 'DTS', 'English')
     /// ...
     /// ~~~~~~~~~~~~~
     ///
@@ -644,8 +644,8 @@ namespace Addon
     public:
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__audiostreamdetail AudioStreamDetail
-      /// @brief \python_func{ .AudioStreamDetail([channels, codec, language]) }
+      /// \ingroup python_xbmc_audiostreamdetail AudioStreamDetail
+      /// @brief \python_func{ xbmc.AudioStreamDetail([channels, codec, language]) }
       /// Creates a single audio stream details class for a video item wrapped by InfoTagVideo.
       ///
       /// @param channels           [opt] integer - Number of channels in the audio stream.
@@ -659,7 +659,7 @@ namespace Addon
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ...
-      /// audiostream = .AudioStreamDetail(6, 'DTS', 'English')
+      /// audiostream = xbmc.AudioStreamDetail(6, 'DTS', 'English')
       /// ...
       /// ~~~~~~~~~~~~~
       ///
@@ -672,7 +672,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__audiostreamdetail
+      /// \ingroup python_xbmc_audiostreamdetail
       /// @brief \python_func{ getChannels() }
       /// Get the number of channels in the stream.
       ///
@@ -689,7 +689,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__audiostreamdetail
+      /// \ingroup python_xbmc_audiostreamdetail
       /// @brief \python_func{ getCodec() }
       /// Get the codec of the stream.
       ///
@@ -706,7 +706,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__audiostreamdetail
+      /// \ingroup python_xbmc_audiostreamdetail
       /// @brief \python_func{ getLanguage() }
       /// Get the language of the stream.
       ///
@@ -723,7 +723,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__audiostreamdetail
+      /// \ingroup python_xbmc_audiostreamdetail
       /// @brief \python_func{ setChannels(channels) }
       /// Set the number of channels in the stream.
       ///
@@ -740,7 +740,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__audiostreamdetail
+      /// \ingroup python_xbmc_audiostreamdetail
       /// @brief \python_func{ setCodec(codec) }
       /// Set the codec of the stream.
       ///
@@ -757,7 +757,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__audiostreamdetail
+      /// \ingroup python_xbmc_audiostreamdetail
       /// @brief \python_func{ setLanguage(language) }
       /// Set the language of the stream.
       ///
@@ -784,12 +784,12 @@ namespace Addon
     /// @}
 
     ///
-    /// \defgroup python__subtitlestreamdetail SubtitleStreamDetail
-    /// \ingroup python_
+    /// \defgroup python_xbmc_subtitlestreamdetail SubtitleStreamDetail
+    /// \ingroup python_xbmc
     /// @{
     /// @brief **Subtitle stream details class used in combination with InfoTagVideo.**
     ///
-    /// \python_class{ .SubtitleStreamDetail([language]) }
+    /// \python_class{ xbmc.SubtitleStreamDetail([language]) }
     ///
     /// Represents a single selectable subtitle stream for a video item wrapped by InfoTagVideo.
     ///
@@ -801,7 +801,7 @@ namespace Addon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ...
-    /// subtitlestream = .SubtitleStreamDetail('English')
+    /// subtitlestream = xbmc.SubtitleStreamDetail('English')
     /// ...
     /// ~~~~~~~~~~~~~
     ///
@@ -810,8 +810,8 @@ namespace Addon
     public:
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__subtitlestreamdetail SubtitleStreamDetail
-      /// @brief \python_func{ .SubtitleStreamDetail([language]) }
+      /// \ingroup python_xbmc_subtitlestreamdetail SubtitleStreamDetail
+      /// @brief \python_func{ xbmc.SubtitleStreamDetail([language]) }
       /// Creates a single subtitle stream details class for a video item wrapped by InfoTagVideo.
       ///
       /// @param language           [opt] string - Language of the subtitle.
@@ -823,7 +823,7 @@ namespace Addon
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ...
-      /// subtitlestream = .SubtitleStreamDetail('English')
+      /// subtitlestream = xbmc.SubtitleStreamDetail('English')
       /// ...
       /// ~~~~~~~~~~~~~
       ///
@@ -834,7 +834,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__subtitlestreamdetail
+      /// \ingroup python_xbmc_subtitlestreamdetail
       /// @brief \python_func{ getLanguage() }
       /// Get the language of the stream.
       ///
@@ -851,7 +851,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__subtitlestreamdetail
+      /// \ingroup python_xbmc_subtitlestreamdetail
       /// @brief \python_func{ setLanguage(language) }
       /// Set the language of the stream.
       ///
@@ -876,12 +876,12 @@ namespace Addon
     /// @}
 
     ///
-    /// \defgroup python__contentgeometrysection ContentGeometrySection
-    /// \ingroup python_
+    /// \defgroup python_xbmc_contentgeometrysection ContentGeometrySection
+    /// \ingroup python_xbmc
     /// @{
     /// @brief **One of the geometries a title was measured in.**
     ///
-    /// \python_class{ .ContentGeometrySection() }
+    /// \python_class{ xbmc.ContentGeometrySection() }
     ///
     /// Carried by ContentGeometry for a title whose picture changes shape partway through.
     /// Obtained from ContentGeometry.getSections() rather than created.
@@ -901,7 +901,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__contentgeometrysection
+      /// \ingroup python_xbmc_contentgeometrysection
       /// @brief \python_func{ getX() }
       /// Get the left edge of the section, in display space.
       ///
@@ -918,7 +918,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__contentgeometrysection
+      /// \ingroup python_xbmc_contentgeometrysection
       /// @brief \python_func{ getY() }
       /// Get the top edge of the section, in display space.
       ///
@@ -935,7 +935,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__contentgeometrysection
+      /// \ingroup python_xbmc_contentgeometrysection
       /// @brief \python_func{ getWidth() }
       /// Get the width of the section, in display space.
       ///
@@ -952,7 +952,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__contentgeometrysection
+      /// \ingroup python_xbmc_contentgeometrysection
       /// @brief \python_func{ getHeight() }
       /// Get the height of the section, in display space.
       ///
@@ -969,7 +969,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__contentgeometrysection
+      /// \ingroup python_xbmc_contentgeometrysection
       /// @brief \python_func{ getAspect() }
       /// Get the ratio the section was shot at.
       ///
@@ -986,7 +986,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__contentgeometrysection
+      /// \ingroup python_xbmc_contentgeometrysection
       /// @brief \python_func{ getLabel() }
       /// Get the section's ratio as Universal Media Center writes it, e.g. `2.35`.
       ///
@@ -1003,7 +1003,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__contentgeometrysection
+      /// \ingroup python_xbmc_contentgeometrysection
       /// @brief \python_func{ getName() }
       /// Get what the section's ratio is called, e.g. `Scope`. Empty when it has no name.
       /// Not translated.
@@ -1027,12 +1027,12 @@ namespace Addon
     /// @}
 
     ///
-    /// \defgroup python__contentgeometry ContentGeometry
-    /// \ingroup python_
+    /// \defgroup python_xbmc_contentgeometry ContentGeometry
+    /// \ingroup python_xbmc
     /// @{
     /// @brief **Where the picture is inside the frame carrying it.**
     ///
-    /// \python_class{ .ContentGeometry() }
+    /// \python_class{ xbmc.ContentGeometry() }
     ///
     /// A snapshot of the content rectangle in force, taken when it was asked for and never
     /// changing afterwards. Every member of one describes the same resolution.
@@ -1041,7 +1041,7 @@ namespace Addon
     /// library item nothing was measured for. The ratio is still answered while nothing is
     /// playing; getFrameWidth() is what separates the two.
     ///
-    /// Obtained from .Player().getContentGeometry() for what is playing, or from
+    /// Obtained from xbmc.Player().getContentGeometry() for what is playing, or from
     /// InfoTagVideo.getContentGeometry() for a library item, rather than created.
     ///
     ///
@@ -1052,7 +1052,7 @@ namespace Addon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ...
-    /// geometry = .Player().getContentGeometry()
+    /// geometry = xbmc.Player().getContentGeometry()
     /// if geometry.getSource() != 'container':
     ///     lens.select(geometry.getAspect())
     /// ...
@@ -1069,7 +1069,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__contentgeometry
+      /// \ingroup python_xbmc_contentgeometry
       /// @brief \python_func{ getX() }
       /// Get the left edge of the picture, in display space.
       ///
@@ -1086,7 +1086,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__contentgeometry
+      /// \ingroup python_xbmc_contentgeometry
       /// @brief \python_func{ getY() }
       /// Get the top edge of the picture, in display space.
       ///
@@ -1103,7 +1103,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__contentgeometry
+      /// \ingroup python_xbmc_contentgeometry
       /// @brief \python_func{ getWidth() }
       /// Get the width of the picture, in display space.
       ///
@@ -1120,7 +1120,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__contentgeometry
+      /// \ingroup python_xbmc_contentgeometry
       /// @brief \python_func{ getHeight() }
       /// Get the height of the picture, in display space.
       ///
@@ -1137,7 +1137,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__contentgeometry
+      /// \ingroup python_xbmc_contentgeometry
       /// @brief \python_func{ getFrameWidth() }
       /// Get the width of the whole frame the picture sits in, in display space.
       ///
@@ -1154,7 +1154,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__contentgeometry
+      /// \ingroup python_xbmc_contentgeometry
       /// @brief \python_func{ getFrameHeight() }
       /// Get the height of the whole frame the picture sits in, in display space.
       ///
@@ -1171,7 +1171,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__contentgeometry
+      /// \ingroup python_xbmc_contentgeometry
       /// @brief \python_func{ getCodedWidth() }
       /// Get the width of the coded frame, before pixel aspect correction and before rotation.
       ///
@@ -1188,7 +1188,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__contentgeometry
+      /// \ingroup python_xbmc_contentgeometry
       /// @brief \python_func{ getCodedHeight() }
       /// Get the height of the coded frame, before pixel aspect correction and before rotation.
       ///
@@ -1205,7 +1205,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__contentgeometry
+      /// \ingroup python_xbmc_contentgeometry
       /// @brief \python_func{ getPixelAspect() }
       /// Get the width of a coded pixel in display pixels. One for content with no anamorphic
       /// coding.
@@ -1223,7 +1223,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__contentgeometry
+      /// \ingroup python_xbmc_contentgeometry
       /// @brief \python_func{ getOrientation() }
       /// Get the clockwise rotation applied to the picture for display, in degrees.
       ///
@@ -1240,7 +1240,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__contentgeometry
+      /// \ingroup python_xbmc_contentgeometry
       /// @brief \python_func{ getAspect() }
       /// Get the ratio the content was shot at. The picture's own ratio except when it is
       /// rotated, where it is the upright one.
@@ -1258,7 +1258,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__contentgeometry
+      /// \ingroup python_xbmc_contentgeometry
       /// @brief \python_func{ getLabel() }
       /// Get the ratio as Universal Media Center writes it, e.g. `2.35`.
       ///
@@ -1275,7 +1275,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__contentgeometry
+      /// \ingroup python_xbmc_contentgeometry
       /// @brief \python_func{ getName() }
       /// Get what the ratio is called, e.g. `Scope`. Empty when it has no name. Not
       /// translated.
@@ -1293,7 +1293,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__contentgeometry
+      /// \ingroup python_xbmc_contentgeometry
       /// @brief \python_func{ getSource() }
       /// Get where the answer came from.
       ///
@@ -1317,7 +1317,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__contentgeometry
+      /// \ingroup python_xbmc_contentgeometry
       /// @brief \python_func{ getVaries() }
       /// Whether the title's geometry changes partway through, so that one rectangle cannot
       /// describe all of it. What the others are is at getSections().
@@ -1335,7 +1335,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__contentgeometry
+      /// \ingroup python_xbmc_contentgeometry
       /// @brief \python_func{ getStale() }
       /// Whether the measurement came from a superseded detector, and is served rather than
       /// discarded.
@@ -1353,7 +1353,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__contentgeometry
+      /// \ingroup python_xbmc_contentgeometry
       /// @brief \python_func{ getRejected() }
       /// Whether a measurement existed and the plausibility gate refused it, so the frame is
       /// being served instead. Never having measured at all reports the same `container`.
@@ -1371,7 +1371,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__contentgeometry
+      /// \ingroup python_xbmc_contentgeometry
       /// @brief \python_func{ getSections() }
       /// Get every geometry the title was measured in, dominant first. Empty unless the answer
       /// came from a measurement.
@@ -1398,11 +1398,11 @@ namespace Addon
 
     ///
     /// \defgroup python_InfoTagVideo InfoTagVideo
-    /// \ingroup python_
+    /// \ingroup python_xbmc
     /// @{
     /// @brief **Universal Media Center's video info tag class.**
     ///
-    /// \python_class{ .InfoTagVideo([offscreen]) }
+    /// \python_class{ xbmc.InfoTagVideo([offscreen]) }
     ///
     /// Access and / or modify the video metadata of a ListItem.
     ///
@@ -1412,7 +1412,7 @@ namespace Addon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ...
-    /// tag = .Player().getVideoInfoTag()
+    /// tag = xbmc.Player().getVideoInfoTag()
     ///
     /// title = tag.getTitle()
     /// file  = tag.getFile()
@@ -1435,7 +1435,7 @@ namespace Addon
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
       /// \ingroup python_InfoTagVideo
-      /// @brief \python_func{ .InfoTagVideo([offscreen]) }
+      /// @brief \python_func{ xbmc.InfoTagVideo([offscreen]) }
       /// Create a video info tag.
       ///
       /// @param offscreen            [opt] bool (default `False`) - if GUI based locks should be
@@ -1459,7 +1459,7 @@ namespace Addon
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ...
-      /// videoinfo = .InfoTagVideo(offscreen=False)
+      /// videoinfo = xbmc.InfoTagVideo(offscreen=False)
       /// ...
       /// ~~~~~~~~~~~~~
       ///
@@ -1807,7 +1807,7 @@ namespace Addon
       /// Resolved from what was measured for the file, the same way the player resolves it. A
       /// ratio the viewer declared is not applied here\, living in the per-file settings the
       /// library does not read. Use
-      /// .Player().getContentGeometry() during playback\, where it is.
+      /// xbmc.Player().getContentGeometry() during playback\, where it is.
       ///
       /// @return [ContentGeometry] A snapshot. When nothing was measured for the item it
       ///                           reports source `container` with an empty rectangle and no

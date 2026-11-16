@@ -4,7 +4,7 @@ set(SOURCES Key.cpp
             KeyboardLayoutManager.cpp
             KeyboardStat.cpp
             KeyboardTranslator.cpp
-            _keytable.cpp
+            XBMC_keytable.cpp
 )
 
 set(HEADERS Key.h
@@ -15,10 +15,10 @@ set(HEADERS Key.h
             KeyboardSymbols.h
             KeyboardTranslator.h
             KeyboardTypes.h
-            _keyboard.h
-            _keysym.h
-            _keytable.h
-            _vkeys.h
+            XBMC_keyboard.h
+            XBMC_keysym.h
+            XBMC_keytable.h
+            XBMC_vkeys.h
 )
 
 core_add_library(input_keyboard)

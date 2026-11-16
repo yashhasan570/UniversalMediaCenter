@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -62,6 +62,8 @@ public:
   virtual void AddVideoPicture(const VideoPicture &picture, int index) = 0;
   virtual bool IsPictureHW(const VideoPicture& picture) { return false; }
   virtual void UnInit() = 0;
+  //! Called before the renderer is deleted to be replaced by a new one for the same playback.
+  virtual void PrepareForReconfigure() {}
   virtual bool Flush(bool saveBuffers) { return false; }
   virtual void SetBufferSize(int numBuffers) { }
   virtual void ReleaseBuffer(int idx) { }

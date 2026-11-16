@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2016-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -11,7 +11,7 @@
 #include "addons/addoninfo/AddonInfo.h"
 #include "addons/addoninfo/AddonInfoBuilder.h"
 #include "addons/addoninfo/AddonType.h"
-#include "utils/TinyXML2.h"
+#include "utils/XBMCTinyXML2.h"
 
 #include <set>
 #include <string>
@@ -26,15 +26,15 @@ const std::string addonXML = R"xml(
        version="1.2.3"
        provider-name="Team Universal Media Center">
   <requires>
-    <import addon=".metadata" version="2.1.0"/>
+    <import addon="xbmc.metadata" version="2.1.0"/>
     <import addon="metadata.common.imdb.com" minversion="2.9.2" version="2.9.2"/>
     <import addon="metadata.common.themoviedb.org" minversion="3.1.0" version="3.1.0"/>
     <import addon="plugin.video.youtube" minversion="4.4.0" version="4.4.10" optional="true"/>
   </requires>
-  <extension point=".metadata.scraper.movies"
+  <extension point="xbmc.metadata.scraper.movies"
              language="en"
              library="blablabla.xml"/>
-  <extension point=".python.module"
+  <extension point="xbmc.python.module"
              library="lib.so"/>
   <extension point="universalmediacenter.addon.metadata">
     <summary lang="en">Summary bla bla bla</summary>
@@ -43,10 +43,10 @@ const std::string addonXML = R"xml(
     <platform>all</platform>
     <language>marsian</language>
     <license>GPL v2.0</license>
-    <forum>https://github.com/yashhasan570/UniversalMediaCenter</forum>
-    <website>https://github.com/yashhasan570/UniversalMediaCenter</website>
+    <forum>https://forum.universalmediacenter.tv</forum>
+    <website>https://universalmediacenter.tv</website>
     <email>a@a.dummy</email>
-    <source>https://github.com//</source>
+    <source>https://github.com/xbmc/xbmc</source>
   </extension>
 </addon>
 )xml";
@@ -60,7 +60,7 @@ AddonInfoPtr GenerateWithLibrary(const std::string& libraryName)
        name="The Binary Bla Bla Bla Addon"
        version="1.2.3"
        provider-name="Team Universal Media Center">
-  <extension point=".python.module" library=")xml" +
+  <extension point="xbmc.python.module" library=")xml" +
                           libraryName + R"xml("/>
   <extension point="universalmediacenter.addon.metadata">
     <platform>all</platform>
@@ -68,7 +68,7 @@ AddonInfoPtr GenerateWithLibrary(const std::string& libraryName)
 </addon>
 )xml";
 
-  CTinyXML2 doc;
+  CXBMCTinyXML2 doc;
   EXPECT_TRUE(doc.Parse(xml));
   return CAddonInfoBuilder::Generate(doc.RootElement(), RepositoryDirInfo{});
 }
@@ -98,7 +98,7 @@ TEST_F(TestAddonInfoBuilder, TestGenerate_Id_Type)
 
 TEST_F(TestAddonInfoBuilder, TestGenerate_Repo)
 {
-  CTinyXML2 doc;
+  CXBMCTinyXML2 doc;
   EXPECT_TRUE(doc.Parse(addonXML));
   ASSERT_NE(nullptr, doc.RootElement());
 
@@ -124,14 +124,14 @@ TEST_F(TestAddonInfoBuilder, TestGenerate_Repo)
   EXPECT_EQ(addon->Description(), "Description bla bla bla");
   EXPECT_EQ(addon->Disclaimer(), "Disclaimer bla bla bla");
   EXPECT_EQ(addon->License(), "GPL v2.0");
-  EXPECT_EQ(addon->Forum(), "https://github.com/yashhasan570/UniversalMediaCenter");
-  EXPECT_EQ(addon->Website(), "https://github.com/yashhasan570/UniversalMediaCenter");
+  EXPECT_EQ(addon->Forum(), "https://forum.universalmediacenter.tv");
+  EXPECT_EQ(addon->Website(), "https://universalmediacenter.tv");
   EXPECT_EQ(addon->EMail(), "a@a.dummy");
-  EXPECT_EQ(addon->Source(), "https://github.com//");
+  EXPECT_EQ(addon->Source(), "https://github.com/xbmc/xbmc");
 
   const std::vector<DependencyInfo>& dependencies = addon->GetDependencies();
   ASSERT_EQ(dependencies.size(), (long unsigned int)4);
-  EXPECT_EQ(dependencies[0].id, ".metadata");
+  EXPECT_EQ(dependencies[0].id, "xbmc.metadata");
   EXPECT_EQ(dependencies[0].optional, false);
   EXPECT_EQ(dependencies[0].versionMin.asString(), "2.1.0");
   EXPECT_EQ(dependencies[0].version.asString(), "2.1.0");

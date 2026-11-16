@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -9,7 +9,7 @@
 #include "filesystem/File.h"
 #include "guilib/GUIControlProfiler.h"
 #include "test/TestUtils.h"
-#include "utils/TinyXML2.h"
+#include "utils/XBMCTinyXML2.h"
 
 #include <string>
 
@@ -17,10 +17,10 @@
 
 TEST(TestGUIControlProfiler, SaveResults)
 {
-  XFILE::CFile* file = _CREATETEMPFILE(".xml");
+  XFILE::CFile* file = XBMC_CREATETEMPFILE(".xml");
   ASSERT_NE(nullptr, file);
   file->Close();
-  const std::string path = _TEMPFILEPATH(file);
+  const std::string path = XBMC_TEMPFILEPATH(file);
 
   CGUIControlProfiler& profiler = CGUIControlProfiler::Instance();
   const int maxFrameCount = profiler.GetMaxFrameCount();
@@ -32,9 +32,9 @@ TEST(TestGUIControlProfiler, SaveResults)
   profiler.SetOutputFile("");
   EXPECT_FALSE(CGUIControlProfiler::IsRunning());
 
-  CTinyXML2 doc;
+  CXBMCTinyXML2 doc;
   const bool loaded = doc.LoadFile(path);
-  _DELETETEMPFILE(file);
+  XBMC_DELETETEMPFILE(file);
   ASSERT_TRUE(loaded);
 
   ASSERT_NE(nullptr, doc.FirstChild());

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -16,10 +16,10 @@
 #endif
 
 #if defined(TARGET_ANDROID)
-#include "platform/android/activity/App.h"
+#include "platform/android/activity/XBMCApp.h"
 #endif
 
-extern "C" int _Run(bool renderGUI)
+extern "C" int XBMC_Run(bool renderGUI)
 {
   int status = -1;
 
@@ -30,7 +30,7 @@ extern "C" int _Run(bool renderGUI)
   }
 
 #if defined(TARGET_ANDROID)
-  CApp::Get().Initialize();
+  CXBMCApp::Get().Initialize();
 #endif
 
   if (renderGUI && !g_application.CreateGUI())
@@ -74,7 +74,7 @@ extern "C" int _Run(bool renderGUI)
 #endif
 
 #if defined(TARGET_ANDROID)
-  CApp::Get().Deinitialize();
+  CXBMCApp::Get().Deinitialize();
 #endif
 
   return status;

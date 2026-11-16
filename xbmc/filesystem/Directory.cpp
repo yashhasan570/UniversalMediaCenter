@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -302,7 +302,7 @@ bool CDirectory::GetDirectory(const CURL& url,
 
     return true;
   }
-  COMMONS_HANDLE_UNCHECKED
+  XBMCCOMMONS_HANDLE_UNCHECKED
   catch (...) { CLog::Log(LOGERROR, "{} - Unhandled exception", __FUNCTION__); }
   CLog::Log(LOGERROR, "{} - Error getting {}", __FUNCTION__, url.GetRedacted());
   return false;
@@ -361,7 +361,7 @@ bool CDirectory::Create(const CURL& url)
     if (pDirectory && pDirectory->Create(authURL))
       return true;
   }
-  COMMONS_HANDLE_UNCHECKED
+  XBMCCOMMONS_HANDLE_UNCHECKED
   catch (...) { CLog::Log(LOGERROR, "{} - Unhandled exception", __FUNCTION__); }
   CLog::Log(LOGERROR, "{} - Error creating {}", __FUNCTION__, url.GetRedacted());
   return false;
@@ -395,7 +395,7 @@ bool CDirectory::Exists(const CURL& url, bool bUseCache /* = true */)
     if (pDirectory)
       return pDirectory->Exists(authURL);
   }
-  COMMONS_HANDLE_UNCHECKED
+  XBMCCOMMONS_HANDLE_UNCHECKED
   catch (...) { CLog::Log(LOGERROR, "{} - Unhandled exception", __FUNCTION__); }
   CLog::Log(LOGERROR, "{} - Error checking for {}", __FUNCTION__, url.GetRedacted());
   return false;
@@ -428,7 +428,7 @@ bool CDirectory::Remove(const CURL& url)
         return true;
       }
   }
-  COMMONS_HANDLE_UNCHECKED
+  XBMCCOMMONS_HANDLE_UNCHECKED
   catch (...) { CLog::Log(LOGERROR, "{} - Unhandled exception", __FUNCTION__); }
   CLog::Log(LOGERROR, "{} - Error removing {}", __FUNCTION__, url.GetRedacted());
   return false;
@@ -450,7 +450,7 @@ bool CDirectory::RemoveRecursive(const CURL& url)
         return true;
       }
   }
-  COMMONS_HANDLE_UNCHECKED
+  XBMCCOMMONS_HANDLE_UNCHECKED
   catch (...) { CLog::Log(LOGERROR, "{} - Unhandled exception", __FUNCTION__); }
   CLog::Log(LOGERROR, "{} - Error removing {}", __FUNCTION__, url.GetRedacted());
   return false;

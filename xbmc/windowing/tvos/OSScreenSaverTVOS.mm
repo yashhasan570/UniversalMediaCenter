@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2017-2019 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -8,14 +8,14 @@
 
 #import "OSScreenSaverTVOS.h"
 
-#import "platform/darwin/tvos/Controller.h"
+#import "platform/darwin/tvos/XBMCController.h"
 
 void COSScreenSaverTVOS::Inhibit()
 {
-  [g_Controller disableScreenSaver];
+  [g_xbmcController disableScreenSaver];
 }
 
 void COSScreenSaverTVOS::Uninhibit()
 {
-  [g_Controller enableScreenSaver];
+  [g_xbmcController enableScreenSaver];
 }

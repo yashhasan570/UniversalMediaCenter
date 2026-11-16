@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2020 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -203,7 +203,7 @@ struct PlayerControllerState
   auto __unsafe_unretained controllerInBlock = controller;
   controller.microGamepad.valueChangedHandler =
       ^(GCMicroGamepad* gamepad, GCControllerElement* element) {
-        addon::PeripheralEvent newEvent;
+        universalmediacenter::addon::PeripheralEvent newEvent;
         newEvent.SetPeripheralIndex(static_cast<unsigned int>(gamepad.controller.playerIndex));
 
         std::unique_lock lock(m_GCMutex);
@@ -259,8 +259,8 @@ struct PlayerControllerState
                                                      GCControllerElement* element) {
     NSString* message;
 
-    addon::PeripheralEvent newEvent;
-    addon::PeripheralEvent axisEvent;
+    universalmediacenter::addon::PeripheralEvent newEvent;
+    universalmediacenter::addon::PeripheralEvent axisEvent;
     auto playerIndex = static_cast<int>(gamepad.controller.playerIndex);
     newEvent.SetPeripheralIndex(playerIndex);
     axisEvent.SetPeripheralIndex(playerIndex);
@@ -444,7 +444,7 @@ struct PlayerControllerState
     // check if we're currently paused or not
     // then bring up or remove the paused view controller
 
-    addon::PeripheralEvent newEvent;
+    universalmediacenter::addon::PeripheralEvent newEvent;
     newEvent.SetPeripheralIndex(static_cast<unsigned int>(controller.playerIndex));
     newEvent.SetType(PERIPHERAL_EVENT_TYPE_DRIVER_BUTTON);
 
@@ -467,7 +467,7 @@ struct PlayerControllerState
 #pragma mark - valuechangehandler event state change
 
 - (NSString*)setButtonState:(GCControllerButtonInput*)button
-                  withEvent:(addon::PeripheralEvent*)event
+                  withEvent:(universalmediacenter::addon::PeripheralEvent*)event
                 withMessage:(NSString*)message
               withInputInfo:(InputValueInfo)inputInfo
 {
@@ -499,7 +499,7 @@ struct PlayerControllerState
 }
 
 - (void)setAxisValue:(GCControllerAxisInput*)axisValue
-           withEvent:(addon::PeripheralEvent*)event
+           withEvent:(universalmediacenter::addon::PeripheralEvent*)event
             withAxis:(GCCONTROLLER_EXTENDED_GAMEPAD_AXIS)axis
 {
   event->SetType(PERIPHERAL_EVENT_TYPE_DRIVER_AXIS);
@@ -607,7 +607,7 @@ struct PlayerControllerState
 }
 
 - (NSString*)checkthumbstick:(GCControllerDirectionPad*)thumbstick
-                   withEvent:(addon::PeripheralEvent*)event
+                   withEvent:(universalmediacenter::addon::PeripheralEvent*)event
                  withMessage:(NSString*)message
                     withAxis:(GCCONTROLLER_EXTENDED_GAMEPAD_AXIS)thumbstickside
              withplayerIndex:(int)playerIndex
@@ -624,7 +624,7 @@ struct PlayerControllerState
       controllerState[playerIndex].RightThumbDownPressed = NO;
 
       // Thumbstick release event
-      addon::PeripheralEvent releaseEvent;
+      universalmediacenter::addon::PeripheralEvent releaseEvent;
       releaseEvent.SetPeripheralIndex(static_cast<unsigned int>(playerIndex));
       [self setAxisValue:0
                withEvent:&releaseEvent
@@ -647,7 +647,7 @@ struct PlayerControllerState
       controllerState[playerIndex].LeftThumbDownPressed = NO;
 
       // Thumbstick release event
-      addon::PeripheralEvent releaseEvent;
+      universalmediacenter::addon::PeripheralEvent releaseEvent;
       releaseEvent.SetPeripheralIndex(static_cast<unsigned int>(playerIndex));
       [self setAxisValue:0
                withEvent:&releaseEvent
@@ -680,7 +680,7 @@ struct PlayerControllerState
               !controllerState[playerIndex].LeftThumbUpPressed;
 
         // Thumbstick release event
-        addon::PeripheralEvent newReleaseEvent;
+        universalmediacenter::addon::PeripheralEvent newReleaseEvent;
         newReleaseEvent.SetPeripheralIndex(static_cast<unsigned int>(playerIndex));
         [self setAxisValue:0
                  withEvent:&newReleaseEvent
@@ -727,7 +727,7 @@ struct PlayerControllerState
               !controllerState[playerIndex].LeftThumbDownPressed;
 
         // Thumbstick release event
-        addon::PeripheralEvent newReleaseEvent;
+        universalmediacenter::addon::PeripheralEvent newReleaseEvent;
         newReleaseEvent.SetPeripheralIndex(static_cast<unsigned int>(playerIndex));
         [self setAxisValue:0
                  withEvent:&newReleaseEvent
@@ -774,7 +774,7 @@ struct PlayerControllerState
               !controllerState[playerIndex].LeftThumbLeftPressed;
 
         // Thumbstick release event
-        addon::PeripheralEvent newReleaseEvent;
+        universalmediacenter::addon::PeripheralEvent newReleaseEvent;
         newReleaseEvent.SetPeripheralIndex(static_cast<unsigned int>(playerIndex));
         [self setAxisValue:0
                  withEvent:&newReleaseEvent
@@ -821,7 +821,7 @@ struct PlayerControllerState
               !controllerState[playerIndex].LeftThumbRightPressed;
 
         // Thumbstick release event
-        addon::PeripheralEvent newReleaseEvent;
+        universalmediacenter::addon::PeripheralEvent newReleaseEvent;
         newReleaseEvent.SetPeripheralIndex(static_cast<unsigned int>(playerIndex));
         [self setAxisValue:0
                  withEvent:&newReleaseEvent
@@ -859,7 +859,7 @@ struct PlayerControllerState
 }
 
 - (NSString*)checkdpad:(GCControllerDirectionPad*)dpad
-             withEvent:(addon::PeripheralEvent*)event
+             withEvent:(universalmediacenter::addon::PeripheralEvent*)event
          withInputInfo:(InputValueInfo)inputInfo
        withplayerIndex:(int)playerIndex
 {
@@ -885,7 +885,7 @@ struct PlayerControllerState
     else
     {
       // Button Up event
-      addon::PeripheralEvent newReleaseEvent;
+      universalmediacenter::addon::PeripheralEvent newReleaseEvent;
       newReleaseEvent.SetPeripheralIndex(static_cast<unsigned int>(playerIndex));
       message = [self setButtonState:dpad.up
                            withEvent:&newReleaseEvent
@@ -916,7 +916,7 @@ struct PlayerControllerState
     else
     {
       // Button Up event
-      addon::PeripheralEvent newReleaseEvent;
+      universalmediacenter::addon::PeripheralEvent newReleaseEvent;
       newReleaseEvent.SetPeripheralIndex(static_cast<unsigned int>(playerIndex));
       message = [self setButtonState:dpad.down
                            withEvent:&newReleaseEvent
@@ -947,7 +947,7 @@ struct PlayerControllerState
     else
     {
       // Button Up event
-      addon::PeripheralEvent newReleaseEvent;
+      universalmediacenter::addon::PeripheralEvent newReleaseEvent;
       newReleaseEvent.SetPeripheralIndex(static_cast<unsigned int>(playerIndex));
       message = [self setButtonState:dpad.left
                            withEvent:&newReleaseEvent
@@ -978,7 +978,7 @@ struct PlayerControllerState
     else
     {
       // Button Up event
-      addon::PeripheralEvent newReleaseEvent;
+      universalmediacenter::addon::PeripheralEvent newReleaseEvent;
       newReleaseEvent.SetPeripheralIndex(static_cast<unsigned int>(playerIndex));
       message = [self setButtonState:dpad.right
                            withEvent:&newReleaseEvent

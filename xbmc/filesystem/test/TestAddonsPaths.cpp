@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -9,6 +9,7 @@
 #include "URL.h"
 #include "addons/addoninfo/AddonInfo.h"
 #include "addons/addoninfo/AddonType.h"
+#include "filesystem/AddonsDirectory.h"
 #include "filesystem/AddonsPaths.h"
 
 #include <gtest/gtest.h>
@@ -16,6 +17,7 @@
 using namespace UNIVERSAL MEDIA CENTER;
 using ADDON::AddonType;
 using ADDON::CAddonInfo;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaSection;
 
 TEST(TestAddonsPaths, EndpointIsTheHostName)
 {
@@ -24,6 +26,18 @@ TEST(TestAddonsPaths, EndpointIsTheHostName)
         ADDONS::RUNNING, ADDONS::REPOS, ADDONS::SOURCES, ADDONS::SEARCH, ADDONS::RECENTLY_UPDATED,
         ADDONS::DOWNLOADING, ADDONS::MORE, ADDONS::DEFAULT_BINARY_ADDONS_SOURCE})
     EXPECT_EQ(ADDONS::EndpointOf(path), CURL(path).GetHostName()) << path;
+}
+
+TEST(TestAddonsPaths, SourcesPathNamesTheContentASectionTakes)
+{
+  EXPECT_EQ(XFILE::CAddonsDirectory::SourcesPathOf(MediaSection::VIDEO), "addons://sources/video/");
+  EXPECT_EQ(XFILE::CAddonsDirectory::SourcesPathOf(MediaSection::MUSIC), "addons://sources/audio/");
+  EXPECT_EQ(XFILE::CAddonsDirectory::SourcesPathOf(MediaSection::PICTURES),
+            "addons://sources/image/");
+  EXPECT_EQ(XFILE::CAddonsDirectory::SourcesPathOf(MediaSection::PROGRAMS),
+            "addons://sources/executable/");
+  EXPECT_EQ(XFILE::CAddonsDirectory::SourcesPathOf(MediaSection::GAMES), "addons://sources/game/");
+  EXPECT_EQ(XFILE::CAddonsDirectory::SourcesPathOf(MediaSection::FILES), "");
 }
 
 TEST(TestAddonsPaths, SubContentNamesRoundTrip)

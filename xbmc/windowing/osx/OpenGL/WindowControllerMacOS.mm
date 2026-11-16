@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2023- Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -30,7 +30,7 @@ void EnableRenderGUI(bool enable)
 }
 } // unnamed namespace
 
-@implementation WindowControllerMacOS
+@implementation XBMCWindowControllerMacOS
 
 - (nullable instancetype)initWithTitle:(NSString*)title defaultSize:(NSSize)size
 {
@@ -69,8 +69,8 @@ void EnableRenderGUI(bool enable)
     NSRect rect = [self.window.contentView
         convertRectToBacking:[self.window contentRectForFrameRect:self.window.frame]];
 
-    _Event newEvent = {};
-    newEvent.type = _VIDEORESIZE;
+    XBMC_Event newEvent = {};
+    newEvent.type = XBMC_VIDEORESIZE;
     newEvent.resize.width = static_cast<int>(rect.size.width);
     newEvent.resize.height = static_cast<int>(rect.size.height);
     newEvent.resize.scale = 1.0;
@@ -162,8 +162,8 @@ void EnableRenderGUI(bool enable)
   if (self.window.contentView)
   {
     NSPoint window_origin = [self.window.contentView frame].origin;
-    _Event newEvent = {};
-    newEvent.type = _VIDEOMOVE;
+    XBMC_Event newEvent = {};
+    newEvent.type = XBMC_VIDEOMOVE;
     newEvent.move.x = window_origin.x;
     newEvent.move.y = window_origin.y;
     std::shared_ptr<CAppInboundProtocol> appPort = CServiceBroker::GetAppPort();
@@ -179,8 +179,8 @@ void EnableRenderGUI(bool enable)
   // window has moved to a different screen
   if (self.window)
   {
-    _Event newEvent = {};
-    newEvent.type = _SCREENCHANGE;
+    XBMC_Event newEvent = {};
+    newEvent.type = XBMC_SCREENCHANGE;
     newEvent.screen.screenIdx =
         static_cast<unsigned int>([NSScreen.screens indexOfObject:self.window.screen]);
     std::shared_ptr<CAppInboundProtocol> appPort = CServiceBroker::GetAppPort();

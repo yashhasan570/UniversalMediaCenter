@@ -1,6 +1,6 @@
 /*
- *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  Copyright (C) 2026 Team Kodi
+ *  This file is part of Kodi - https://kodi.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -81,7 +81,7 @@ void main()
   // Limited-range encoding at the BO write boundary. Canonical normalized
   // ratios (bit-depth-agnostic in float space; BO write quantizes to the
   // active surface bit depth).
-#ifdef UNIVERSAL MEDIA CENTER_LIMITED_RANGE
+#ifdef KODI_LIMITED_RANGE
   result = result * ((235.0 - 16.0) / 255.0) + (16.0 / 255.0);
 #endif
 

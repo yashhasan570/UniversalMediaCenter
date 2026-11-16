@@ -1,4 +1,4 @@
-/filesystem                         filesystem
-/filesystem/bluray                  filesystem/bluray
-/filesystem/MusicDatabaseDirectory  filesystem/musicdatabase
-/filesystem/VideoDatabaseDirectory  filesystem/videodatabase
+xbmc/filesystem                         filesystem
+xbmc/filesystem/bluray                  filesystem/bluray
+xbmc/filesystem/MusicDatabaseDirectory  filesystem/musicdatabase
+xbmc/filesystem/VideoDatabaseDirectory  filesystem/videodatabase

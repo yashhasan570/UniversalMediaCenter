@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2008-2013 Team 
+ *  Copyright (C) 2008-2013 Team XBMC
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -16,13 +16,13 @@
  *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package org..eventclient;
+package org.xbmc.eventclient;
 import java.nio.charset.Charset;
 
 /**
- *  Event Client Class
+ * XBMC Event Client Class
  *
- * A HELO packet establishes a valid connection to . It is the
+ * A HELO packet establishes a valid connection to XBMC. It is the
  * first packet that should be sent.
  * @author Stefan Agner
  *
@@ -31,8 +31,8 @@ public class PacketHELO extends Packet {
 
 
 	/**
-	 * A HELO packet establishes a valid connection to .
-	 * @param devicename Name of the device which connects to 
+	 * A HELO packet establishes a valid connection to XBMC.
+	 * @param devicename Name of the device which connects to XBMC
 	 */
 	public PacketHELO(String devicename)
 	{
@@ -45,8 +45,8 @@ public class PacketHELO extends Packet {
 	}
 
 	/**
-	 * A HELO packet establishes a valid connection to .
-	 * @param devicename Name of the device which connects to 
+	 * A HELO packet establishes a valid connection to XBMC.
+	 * @param devicename Name of the device which connects to XBMC
 	 * @param iconType Type of the icon (Packet.ICON_PNG, Packet.ICON_JPEG or Packet.ICON_GIF)
 	 * @param iconData The icon as a Byte-Array
 	 */

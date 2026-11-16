@@ -5,7 +5,7 @@ include(ExternalProject)
 # Variables required
 # TARBALL_DIR = location to download tarballs
 # UNIVERSALMEDIA_MIRROR = mirror address
-# UNIVERSALMEDIA_SOURCE_DIR =  source root
+# UNIVERSALMEDIA_SOURCE_DIR = xbmc source root
 # NATIVEPREFIX = install prefix
 
 set(pkgconf_INSTALL_PREFIX ${NATIVEPREFIX})

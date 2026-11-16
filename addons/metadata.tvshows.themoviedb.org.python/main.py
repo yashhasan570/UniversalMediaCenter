@@ -3,7 +3,7 @@
 import sys
 from urllib.parse import parse_qsl
 
-import plugin
+import xbmcplugin
 
 from lib.scraper import run_action
 
@@ -16,7 +16,7 @@ def main():
     if action:
         run_action(HANDLE, action, PARAMS)
     else:
-        plugin.endOfDirectory(HANDLE)
+        xbmcplugin.endOfDirectory(HANDLE)
 
 
 if __name__ == '__main__':

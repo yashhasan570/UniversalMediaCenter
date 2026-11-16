@@ -1,1 +1,1 @@
-/network/dacp network/dacp # AIRTUNES
+xbmc/network/dacp network/dacp # AIRTUNES

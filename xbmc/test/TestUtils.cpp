@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -68,36 +68,36 @@ private:
   std::string m_ptempFilePath;
 };
 
-CTestUtils::CTestUtils()
+CXBMCTestUtils::CXBMCTestUtils()
 {
   probability = 0.01;
 }
 
-CTestUtils &CTestUtils::Instance()
+CXBMCTestUtils &CXBMCTestUtils::Instance()
 {
-  static CTestUtils instance;
+  static CXBMCTestUtils instance;
   return instance;
 }
 
-std::string CTestUtils::ReferenceFilePath(const std::string& path)
+std::string CXBMCTestUtils::ReferenceFilePath(const std::string& path)
 {
-  return CSpecialProtocol::TranslatePath(URIUtils::AddFileToFolder("special://", path));
+  return CSpecialProtocol::TranslatePath(URIUtils::AddFileToFolder("special://xbmc", path));
 }
 
-bool CTestUtils::SetReferenceFileBasePath()
+bool CXBMCTestUtils::SetReferenceFileBasePath()
 {
-  std::string Path = CUtil::GetHomePath();
-  if (Path.empty())
+  std::string xbmcPath = CUtil::GetHomePath();
+  if (xbmcPath.empty())
     return false;
 
-  /* Set , bin and home path */
-  CSpecialProtocol::SetPath(Path);
-  CSpecialProtocol::SetBinPath(Path);
+  /* Set xbmc, xbmcbin and home path */
+  CSpecialProtocol::SetXBMCPath(xbmcPath);
+  CSpecialProtocol::SetXBMCBinPath(xbmcPath);
 
   return true;
 }
 
-XFILE::CFile *CTestUtils::CreateTempFile(std::string const& suffix)
+XFILE::CFile *CXBMCTestUtils::CreateTempFile(std::string const& suffix)
 {
   CTempFile *f = new CTempFile();
   if (f->Create(suffix))
@@ -106,7 +106,7 @@ XFILE::CFile *CTestUtils::CreateTempFile(std::string const& suffix)
   return NULL;
 }
 
-bool CTestUtils::DeleteTempFile(XFILE::CFile *tempfile)
+bool CXBMCTestUtils::DeleteTempFile(XFILE::CFile *tempfile)
 {
   if (!tempfile)
     return true;
@@ -116,7 +116,7 @@ bool CTestUtils::DeleteTempFile(XFILE::CFile *tempfile)
   return retval;
 }
 
-std::string CTestUtils::TempFilePath(XFILE::CFile const* const tempfile)
+std::string CXBMCTestUtils::TempFilePath(XFILE::CFile const* const tempfile)
 {
   if (!tempfile)
     return "";
@@ -124,7 +124,7 @@ std::string CTestUtils::TempFilePath(XFILE::CFile const* const tempfile)
   return f->getTempFilePath();
 }
 
-std::string CTestUtils::TempFileDirectory(XFILE::CFile const* const tempfile)
+std::string CXBMCTestUtils::TempFileDirectory(XFILE::CFile const* const tempfile)
 {
   if (!tempfile)
     return "";
@@ -132,7 +132,7 @@ std::string CTestUtils::TempFileDirectory(XFILE::CFile const* const tempfile)
   return f->getTempFileDirectory();
 }
 
-XFILE::CFile *CTestUtils::CreateCorruptedFile(std::string const& strFileName,
+XFILE::CFile *CXBMCTestUtils::CreateCorruptedFile(std::string const& strFileName,
   std::string const& suffix)
 {
   XFILE::CFile inputfile, *tmpfile = CreateTempFile(suffix);
@@ -172,32 +172,32 @@ XFILE::CFile *CTestUtils::CreateCorruptedFile(std::string const& strFileName,
 }
 
 
-std::vector<std::string> &CTestUtils::getTestFileFactoryReadUrls()
+std::vector<std::string> &CXBMCTestUtils::getTestFileFactoryReadUrls()
 {
   return TestFileFactoryReadUrls;
 }
 
-std::vector<std::string> &CTestUtils::getTestFileFactoryWriteUrls()
+std::vector<std::string> &CXBMCTestUtils::getTestFileFactoryWriteUrls()
 {
   return TestFileFactoryWriteUrls;
 }
 
-std::string &CTestUtils::getTestFileFactoryWriteInputFile()
+std::string &CXBMCTestUtils::getTestFileFactoryWriteInputFile()
 {
   return TestFileFactoryWriteInputFile;
 }
 
-void CTestUtils::setTestFileFactoryWriteInputFile(std::string const& file)
+void CXBMCTestUtils::setTestFileFactoryWriteInputFile(std::string const& file)
 {
   TestFileFactoryWriteInputFile = file;
 }
 
-std::vector<std::string> &CTestUtils::getAdvancedSettingsFiles()
+std::vector<std::string> &CXBMCTestUtils::getAdvancedSettingsFiles()
 {
   return AdvancedSettingsFiles;
 }
 
-std::vector<std::string> &CTestUtils::getGUISettingsFiles()
+std::vector<std::string> &CXBMCTestUtils::getGUISettingsFiles()
 {
   return GUISettingsFiles;
 }
@@ -246,7 +246,7 @@ static const char usage[] =
 "    as 1.0. The default probability is 0.01.\n"
 ;
 
-void CTestUtils::ParseArgs(int argc, char **argv)
+void CXBMCTestUtils::ParseArgs(int argc, char **argv)
 {
   int i;
   std::string arg;
@@ -317,7 +317,7 @@ void CTestUtils::ParseArgs(int argc, char **argv)
   }
 }
 
-std::string CTestUtils::getNewLineCharacters() const
+std::string CXBMCTestUtils::getNewLineCharacters() const
 {
 #ifdef TARGET_WINDOWS
   return "\r\n";

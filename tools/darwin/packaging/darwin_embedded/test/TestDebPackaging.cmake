@@ -20,7 +20,7 @@ set(APP_NAME Universal Media Center)
 set(APP_VERSION_MAJOR 22)
 set(APP_VERSION_MINOR 0)
 set(APP_VERSION_TAG_LC alpha1)
-set(APP_WEBSITE "https://github.com/yashhasan570/UniversalMediaCenter")
+set(APP_WEBSITE "https://universalmediacenter.tv")
 set(PLATFORM "${TEST_PLATFORM}")
 set(PLATFORM_BUNDLE_IDENTIFIER "${TEST_BUNDLE_IDENTIFIER}")
 

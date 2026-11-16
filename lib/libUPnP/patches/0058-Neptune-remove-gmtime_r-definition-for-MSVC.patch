@@ -1,5 +1,5 @@
 From 4be187271768fad5f2695452c778b4138b5dc8c5 Mon Sep 17 00:00:00 2001
-From: fuzzard <fuzzard@Universal Media Center.tv>
+From: fuzzard <fuzzard@kodi.tv>
 Date: Sun, 21 Dec 2025 14:08:04 +1000
 Subject: [PATCH] [Neptune] remove gmtime_r definition for MSVC
 

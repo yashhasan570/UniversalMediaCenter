@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -38,7 +38,7 @@ static inline void SDL_memset4(uint32_t* dst, uint32_t val, size_t len)
 }
 #define SDL_memcpy4(dst, src, len) memcpy(dst, src, (len) << 2)
 
-static const char *TeletextFont = "special:///media/Fonts/teletext.ttf";
+static const char *TeletextFont = "special://xbmc/media/Fonts/teletext.ttf";
 
 /* spacing attributes */
 #define alpha_black         0x00

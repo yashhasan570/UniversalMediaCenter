@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -19,31 +19,31 @@ namespace ADDON
 
 void Interface_GUIDialogKeyboard::Init(AddonGlobalInterface* addonInterface)
 {
-  addonInterface->toUniversal Media Center->->dialogKeyboard =
-      new AddonToUniversal Media CenterFuncTable__dialogKeyboard();
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogKeyboard =
+      new AddonToUniversal Media CenterFuncTable_universalmediacenter_gui_dialogKeyboard();
 
-  addonInterface->toUniversal Media Center->->dialogKeyboard->show_and_get_input_with_head =
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogKeyboard->show_and_get_input_with_head =
       show_and_get_input_with_head;
-  addonInterface->toUniversal Media Center->->dialogKeyboard->show_and_get_input = show_and_get_input;
-  addonInterface->toUniversal Media Center->->dialogKeyboard->show_and_get_new_password_with_head =
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogKeyboard->show_and_get_input = show_and_get_input;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogKeyboard->show_and_get_new_password_with_head =
       show_and_get_new_password_with_head;
-  addonInterface->toUniversal Media Center->->dialogKeyboard->show_and_get_new_password =
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogKeyboard->show_and_get_new_password =
       show_and_get_new_password;
-  addonInterface->toUniversal Media Center->->dialogKeyboard->show_and_verify_new_password_with_head =
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogKeyboard->show_and_verify_new_password_with_head =
       show_and_verify_new_password_with_head;
-  addonInterface->toUniversal Media Center->->dialogKeyboard->show_and_verify_new_password =
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogKeyboard->show_and_verify_new_password =
       show_and_verify_new_password;
-  addonInterface->toUniversal Media Center->->dialogKeyboard->show_and_verify_password =
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogKeyboard->show_and_verify_password =
       show_and_verify_password;
-  addonInterface->toUniversal Media Center->->dialogKeyboard->show_and_get_filter = show_and_get_filter;
-  addonInterface->toUniversal Media Center->->dialogKeyboard->send_text_to_active_keyboard =
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogKeyboard->show_and_get_filter = show_and_get_filter;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogKeyboard->send_text_to_active_keyboard =
       send_text_to_active_keyboard;
-  addonInterface->toUniversal Media Center->->dialogKeyboard->is_keyboard_activated = is_keyboard_activated;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogKeyboard->is_keyboard_activated = is_keyboard_activated;
 }
 
 void Interface_GUIDialogKeyboard::DeInit(AddonGlobalInterface* addonInterface)
 {
-  delete addonInterface->toUniversal Media Center->->dialogKeyboard;
+  delete addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogKeyboard;
 }
 
 bool Interface_GUIDialogKeyboard::show_and_get_input_with_head(UNIVERSALMEDIA_HANDLE universalmediacenterBase,

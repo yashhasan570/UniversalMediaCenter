@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2007-2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -21,6 +21,7 @@
 
 #include "platform/win32/WIN32Util.h"
 
+#include <cmath>
 #include <map>
 
 #include <DirectXPackedVector.h>
@@ -373,7 +374,7 @@ bool COutputShader::Create(bool useLUT,
   defines["UNIVERSALMEDIA_OUTPUT_T"] = "";
   GetDefines(defines);
 
-  std::string effectString("special:///system/shaders/output_d3d.fx");
+  std::string effectString("special://xbmc/system/shaders/output_d3d.fx");
 
   if (!LoadEffect(effectString, &defines))
   {
@@ -459,7 +460,6 @@ bool COutputShader::CreateLUTView(int lutSize, uint16_t* lutData, bool isRGB, ID
     cData = lutData;
 
   ComPtr<ID3D11Device> pDevice = DX::DeviceResources::Get()->GetD3DDevice();
-  ComPtr<ID3D11DeviceContext> pContext = DX::DeviceResources::Get()->GetImmediateContext();
   CD3D11_TEXTURE3D_DESC txDesc(DXGI_FORMAT_R16G16B16A16_UNORM, lutSize, lutSize, lutSize, 1,
                                D3D11_BIND_SHADER_RESOURCE, D3D11_USAGE_IMMUTABLE);
 
@@ -482,7 +482,6 @@ bool COutputShader::CreateLUTView(int lutSize, uint16_t* lutData, bool isRGB, ID
   ComPtr<ID3D11ShaderResourceView> lutView;
   CD3D11_SHADER_RESOURCE_VIEW_DESC srvDesc(D3D11_SRV_DIMENSION_TEXTURE3D, DXGI_FORMAT_R16G16B16A16_UNORM, 0, 1);
   hr = pDevice->CreateShaderResourceView(pLUTTex.Get(), &srvDesc, &lutView);
-  pContext->Flush();
 
   if (FAILED(hr))
   {
@@ -640,36 +639,30 @@ bool CYUV2RGBShader::Create(AVPixelFormat fmt,
 
   DefinesMap defines;
 
-  switch (fmt)
+  const int planes = av_pix_fmt_count_planes(fmt);
+
+  if (fmt == AV_PIX_FMT_UYVY422)
+    defines["XBMC_UYVY"] = "";
+  else if (fmt == AV_PIX_FMT_YUYV422)
+    defines["XBMC_YUY2"] = "";
+  else if (planes == 3)
+    defines["XBMC_YV12"] = "";
+  else if (planes == 2 || fmt == AV_PIX_FMT_D3D11VA_VLD)
   {
-  case AV_PIX_FMT_YUV420P:
-  case AV_PIX_FMT_YUV420P10:
-  case AV_PIX_FMT_YUV420P16:
-    defines["_YV12"] = "";
-    break;
-  case AV_PIX_FMT_D3D11VA_VLD:
-  case AV_PIX_FMT_NV12:
-  case AV_PIX_FMT_P010:
-  case AV_PIX_FMT_P016:
-    defines["_NV12"] = "";
+    defines["XBMC_NV12"] = "";
     // FL 9.x doesn't support DXGI_FORMAT_R8G8_UNORM, so we have to use SNORM and correct values in shader
     if (!DX::Windowing()->IsFormatSupport(DXGI_FORMAT_R8G8_UNORM, D3D11_FORMAT_SUPPORT_TEXTURE2D))
       defines["NV12_SNORM_UV"] = "";
-    break;
-  case AV_PIX_FMT_UYVY422:
-    defines["_UYVY"] = "";
-    break;
-  case AV_PIX_FMT_YUYV422:
-    defines["_YUY2"] = "";
-    break;
-  default:
-    return false;
   }
+  else
+    return false;
+
+  m_convMatrix.SetSourceRGB((av_pix_fmt_desc_get(fmt)->flags & AV_PIX_FMT_FLAG_RGB) != 0);
 
   if (srcPrimaries != dstPrimaries)
   {
     m_colorConversion = true;
-    defines["_COL_CONVERSION"] = "";
+    defines["XBMC_COL_CONVERSION"] = "";
   }
 
   if (m_hueSatTransfer == AVCOL_TRC_SMPTE2084)
@@ -682,7 +675,7 @@ bool CYUV2RGBShader::Create(AVPixelFormat fmt,
   if (m_pOutShader)
     m_pOutShader->GetDefines(defines);
 
-  std::string effectString = "special:///system/shaders/yuv2rgb_d3d.fx";
+  std::string effectString = "special://xbmc/system/shaders/yuv2rgb_d3d.fx";
 
   if(!LoadEffect(effectString, &defines))
   {
@@ -764,6 +757,13 @@ void CYUV2RGBShader::PrepareParameters(CRenderBuffer* videoBuffer, CRect sourceR
     m_sourceWidth = videoBuffer->GetWidth();
     m_sourceHeight = videoBuffer->GetHeight();
 
+    // the second and third planes are smaller where the format subsamples chroma, rounded up
+    const AVPixFmtDescriptor* desc = av_pix_fmt_desc_get(m_format);
+    const float chromaScaleX = static_cast<float>(1 << desc->log2_chroma_w);
+    const float chromaScaleY = static_cast<float>(1 << desc->log2_chroma_h);
+    const float chromaWidth = std::ceil(m_sourceWidth / chromaScaleX);
+    const float chromaHeight = std::ceil(m_sourceHeight / chromaScaleY);
+
     Vertex* v;
     CWinShader::LockVertexBuffer(reinterpret_cast<void**>(&v));
 
@@ -772,32 +772,32 @@ void CYUV2RGBShader::PrepareParameters(CRenderBuffer* videoBuffer, CRect sourceR
     v[0].z = 0.0f;
     v[0].tu = sourceRect.x1 / m_sourceWidth;
     v[0].tv = sourceRect.y1 / m_sourceHeight;
-    v[0].tu2 = (sourceRect.x1 / 2.0f) / (m_sourceWidth>>1);
-    v[0].tv2 = (sourceRect.y1 / 2.0f) / (m_sourceHeight>>1);
+    v[0].tu2 = (sourceRect.x1 / chromaScaleX) / chromaWidth;
+    v[0].tv2 = (sourceRect.y1 / chromaScaleY) / chromaHeight;
 
     v[1].x = m_dest[1].x;
     v[1].y = m_dest[1].y;
     v[1].z = 0.0f;
     v[1].tu = sourceRect.x2 / m_sourceWidth;
     v[1].tv = sourceRect.y1 / m_sourceHeight;
-    v[1].tu2 = (sourceRect.x2 / 2.0f) / (m_sourceWidth>>1);
-    v[1].tv2 = (sourceRect.y1 / 2.0f) / (m_sourceHeight>>1);
+    v[1].tu2 = (sourceRect.x2 / chromaScaleX) / chromaWidth;
+    v[1].tv2 = (sourceRect.y1 / chromaScaleY) / chromaHeight;
 
     v[2].x = m_dest[2].x;
     v[2].y = m_dest[2].y;
     v[2].z = 0.0f;
     v[2].tu = sourceRect.x2 / m_sourceWidth;
     v[2].tv = sourceRect.y2 / m_sourceHeight;
-    v[2].tu2 = (sourceRect.x2 / 2.0f) / (m_sourceWidth>>1);
-    v[2].tv2 = (sourceRect.y2 / 2.0f) / (m_sourceHeight>>1);
+    v[2].tu2 = (sourceRect.x2 / chromaScaleX) / chromaWidth;
+    v[2].tv2 = (sourceRect.y2 / chromaScaleY) / chromaHeight;
 
     v[3].x = m_dest[3].x;
     v[3].y = m_dest[3].y;
     v[3].z = 0.0f;
     v[3].tu = sourceRect.x1 / m_sourceWidth;
     v[3].tv = sourceRect.y2 / m_sourceHeight;
-    v[3].tu2 = (sourceRect.x1 / 2.0f) / (m_sourceWidth>>1);
-    v[3].tv2 = (sourceRect.y2 / 2.0f) / (m_sourceHeight>>1);
+    v[3].tu2 = (sourceRect.x1 / chromaScaleX) / chromaWidth;
+    v[3].tv2 = (sourceRect.y2 / chromaScaleY) / chromaHeight;
 
     CWinShader::UnlockVertexBuffer();
   }
@@ -918,11 +918,11 @@ bool CConvolutionShader1Pass::Create(ESCALINGMETHOD method, const std::shared_pt
     case VS_SCALINGMETHOD_LANCZOS2:
     case VS_SCALINGMETHOD_SPLINE36_FAST:
     case VS_SCALINGMETHOD_LANCZOS3_FAST:
-      effectString = "special:///system/shaders/convolution-4x4_d3d.fx";
+      effectString = "special://xbmc/system/shaders/convolution-4x4_d3d.fx";
       break;
     case VS_SCALINGMETHOD_SPLINE36:
     case VS_SCALINGMETHOD_LANCZOS3:
-      effectString = "special:///system/shaders/convolution-6x6_d3d.fx";
+      effectString = "special://xbmc/system/shaders/convolution-6x6_d3d.fx";
       break;
     default:
       CLog::LogF(LOGERROR, "scaling method {} not supported.", method);
@@ -1051,11 +1051,11 @@ bool CConvolutionShaderSeparable::Create(ESCALINGMETHOD method, const std::share
     case VS_SCALINGMETHOD_LANCZOS2:
     case VS_SCALINGMETHOD_SPLINE36_FAST:
     case VS_SCALINGMETHOD_LANCZOS3_FAST:
-      effectString = "special:///system/shaders/convolutionsep-4x4_d3d.fx";
+      effectString = "special://xbmc/system/shaders/convolutionsep-4x4_d3d.fx";
       break;
     case VS_SCALINGMETHOD_SPLINE36:
     case VS_SCALINGMETHOD_LANCZOS3:
-      effectString = "special:///system/shaders/convolutionsep-6x6_d3d.fx";
+      effectString = "special://xbmc/system/shaders/convolutionsep-6x6_d3d.fx";
       break;
     default:
       CLog::LogF(LOGERROR, "scaling method {} not supported.", method);

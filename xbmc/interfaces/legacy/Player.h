@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -23,26 +23,26 @@
 
 #include <vector>
 
-namespace Addon
+namespace XBMCAddon
 {
-  namespace 
+  namespace xbmc
   {
-    COMMONS_STANDARD_EXCEPTION(PlayerException);
+    XBMCCOMMONS_STANDARD_EXCEPTION(PlayerException);
 
     typedef Alternative<String, const PlayList* > PlayParameter;
 
-    // This class is a merge of what was previously in module/player.h
-    //  and module/PythonPlayer.h without the python references. The
+    // This class is a merge of what was previously in xbmcmodule/player.h
+    //  and xbmcmodule/PythonPlayer.h without the python references. The
     //  queuing and handling of asynchronous callbacks is done internal to
     //  this class.
 
     //
     /// \defgroup python_Player Player
-    /// \ingroup python_
+    /// \ingroup python_xbmc
     /// @{
     /// @brief **Universal Media Center's player.**
     ///
-    /// \python_class{ .Player() }
+    /// \python_class{ xbmc.Player() }
     ///
     /// To become and create the class to play something.
     ///
@@ -53,7 +53,7 @@ namespace Addon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ...
-    /// .Player().play(url, listitem, windowed)
+    /// xbmc.Player().play(url, listitem, windowed)
     /// ...
     /// ~~~~~~~~~~~~~
     //
@@ -62,7 +62,7 @@ namespace Addon
     private:
       int iPlayList;
 
-      void playStream(const String& item = emptyString, const Addon::gui::ListItem* listitem = NULL, bool windowed = false);
+      void playStream(const String& item = emptyString, const XBMCAddon::xbmcgui::ListItem* listitem = NULL, bool windowed = false);
       void playPlaylist(const PlayList* playlist = NULL,
       bool windowed = false, int startpos=-1);
       void playCurrent(bool windowed = false);
@@ -114,17 +114,17 @@ namespace Addon
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ...
-      /// listitem = gui.ListItem('Ironman')
+      /// listitem = xbmcgui.ListItem('Ironman')
       /// listitem.setInfo('video', {'Title': 'Ironman', 'Genre': 'Science Fiction'})
-      /// .Player().play(url, listitem, windowed)
-      /// .Player().play(playlist, listitem, windowed, startpos)
+      /// xbmc.Player().play(url, listitem, windowed)
+      /// xbmc.Player().play(playlist, listitem, windowed, startpos)
       /// ...
       /// ~~~~~~~~~~~~~
       ///
       play(...);
 #else
       void play(const PlayParameter& item = Player::defaultPlayParameter,
-                const Addon::gui::ListItem* listitem = NULL, bool windowed = false, int startpos = -1);
+                const XBMCAddon::xbmcgui::ListItem* listitem = NULL, bool windowed = false, int startpos = -1);
 #endif
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
@@ -494,7 +494,7 @@ namespace Addon
       ///
       getPlayingItem();
 #else
-      Addon::gui::ListItem* getPlayingItem();
+      XBMCAddon::xbmcgui::ListItem* getPlayingItem();
 #endif
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
@@ -559,7 +559,7 @@ namespace Addon
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ...
-      /// .Player().showSubtitles(True)
+      /// xbmc.Player().showSubtitles(True)
       /// ...
       /// ~~~~~~~~~~~~~
       ///
@@ -614,7 +614,7 @@ namespace Addon
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ...
-      /// .Player().setSubtitleStream(1)
+      /// xbmc.Player().setSubtitleStream(1)
       /// ...
       /// ~~~~~~~~~~~~~
       ///
@@ -639,16 +639,16 @@ namespace Addon
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ...
-      /// item = gui.ListItem()
-      /// item.setPath(.Player().getPlayingFile())
+      /// item = xbmcgui.ListItem()
+      /// item.setPath(xbmc.Player().getPlayingFile())
       /// item.setInfo('music', {'title' : 'foo', 'artist' : 'bar'})
-      /// .Player().updateInfoTag(item)
+      /// xbmc.Player().updateInfoTag(item)
       /// ...
       /// ~~~~~~~~~~~~~
       ///
       updateInfoTag();
 #else
-      void updateInfoTag(const Addon::gui::ListItem* item);
+      void updateInfoTag(const XBMCAddon::xbmcgui::ListItem* item);
 #endif
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
@@ -710,7 +710,7 @@ namespace Addon
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ...
-      /// geometry = .Player().getContentGeometry()
+      /// geometry = xbmc.Player().getContentGeometry()
       /// if geometry.getSource() != 'container':
       ///     lens.select(geometry.getAspect())
       /// ...
@@ -804,7 +804,7 @@ namespace Addon
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ...
-      /// .Player().setAudioStream(1)
+      /// xbmc.Player().setAudioStream(1)
       /// ...
       /// ~~~~~~~~~~~~~
       ///
@@ -843,7 +843,7 @@ namespace Addon
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ...
-      /// .Player().setVideoStream(1)
+      /// xbmc.Player().setVideoStream(1)
       /// ...
       /// ~~~~~~~~~~~~~
       ///

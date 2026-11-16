@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -20,17 +20,17 @@ namespace ADDON
 
 void Interface_GUIControlImage::Init(AddonGlobalInterface* addonInterface)
 {
-  addonInterface->toUniversal Media Center->->control_image =
-      new AddonToUniversal Media CenterFuncTable__control_image();
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_image =
+      new AddonToUniversal Media CenterFuncTable_universalmediacenter_gui_control_image();
 
-  addonInterface->toUniversal Media Center->->control_image->set_visible = set_visible;
-  addonInterface->toUniversal Media Center->->control_image->set_filename = set_filename;
-  addonInterface->toUniversal Media Center->->control_image->set_color_diffuse = set_color_diffuse;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_image->set_visible = set_visible;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_image->set_filename = set_filename;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->control_image->set_color_diffuse = set_color_diffuse;
 }
 
 void Interface_GUIControlImage::DeInit(AddonGlobalInterface* addonInterface)
 {
-  delete addonInterface->toUniversal Media Center->->control_image;
+  delete addonInterface->toUniversal Media Center->universalmediacenter_gui->control_image;
 }
 
 void Interface_GUIControlImage::set_visible(UNIVERSALMEDIA_HANDLE universalmediacenterBase,

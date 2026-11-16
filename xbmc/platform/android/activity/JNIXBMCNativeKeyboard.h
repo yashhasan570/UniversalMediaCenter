@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -17,7 +17,7 @@ namespace jni
 
 /*!
  * \brief Callback interface implemented by the native consumer of
- *        CJNINativeKeyboard to receive soft keyboard input events.
+ *        CJNIXBMCNativeKeyboard to receive soft keyboard input events.
  */
 class IKeyboardInputHandler
 {
@@ -29,11 +29,11 @@ public:
   virtual void OnInputCanceled() = 0;
 };
 
-class CJNINativeKeyboard : public CJNIBase, public CJNIInterfaceImplem<CJNINativeKeyboard>
+class CJNIXBMCNativeKeyboard : public CJNIBase, public CJNIInterfaceImplem<CJNIXBMCNativeKeyboard>
 {
 public:
-  explicit CJNINativeKeyboard(IKeyboardInputHandler* handler);
-  ~CJNINativeKeyboard() override;
+  explicit CJNIXBMCNativeKeyboard(IKeyboardInputHandler* handler);
+  ~CJNIXBMCNativeKeyboard() override;
 
   static void RegisterNatives(JNIEnv* env);
 

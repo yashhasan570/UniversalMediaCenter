@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -42,7 +42,7 @@ public:
 
 /*!
  * Upgrades from schema < 131 by Universal Media Center 22 builds turned versions and their types into extras
- * (https://github.com///issues/29918). The tests damage a database the same way and
+ * (https://github.com/xbmc/xbmc/issues/29918). The tests damage a database the same way and
  * repair it.
  */
 class TestVideoDatabaseMigration : public ::testing::Test

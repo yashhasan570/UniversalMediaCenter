@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2017 Christian Browet
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -11,15 +11,15 @@
 #include "network/ZeroconfBrowser.h"
 #include "threads/Event.h"
 
-#include "platform/android/activity/JNINsdManagerDiscoveryListener.h"
-#include "platform/android/activity/JNINsdManagerResolveListener.h"
+#include "platform/android/activity/JNIXBMCNsdManagerDiscoveryListener.h"
+#include "platform/android/activity/JNIXBMCNsdManagerResolveListener.h"
 
 #include <androidjni/NsdManager.h>
 #include <androidjni/NsdServiceInfo.h>
 
 class CZeroconfBrowserAndroid;
 
-class CZeroconfBrowserAndroidDiscover : public jni::CJNINsdManagerDiscoveryListener
+class CZeroconfBrowserAndroidDiscover : public jni::CJNIXBMCNsdManagerDiscoveryListener
 {
 public:
   explicit CZeroconfBrowserAndroidDiscover(CZeroconfBrowserAndroid* browser);
@@ -39,7 +39,7 @@ protected:
   bool m_isActive = false;
 };
 
-class CZeroconfBrowserAndroidResolve : public jni::CJNINsdManagerResolveListener
+class CZeroconfBrowserAndroidResolve : public jni::CJNIXBMCNsdManagerResolveListener
 {
 public:
   CZeroconfBrowserAndroidResolve();

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2011-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -33,7 +33,7 @@ using UNIVERSAL MEDIA CENTER::UTILITY::CDigest;
 #define WS_HEADER_PROTOCOL      "Sec-WebSocket-Protocol"
 #define WS_HEADER_PROTOCOL_LC   "sec-websocket-protocol"    // "Sec-WebSocket-Protocol"
 
-#define WS_PROTOCOL_JSONRPC     "jsonrpc.github.com/yashhasan570/UniversalMediaCenter"
+#define WS_PROTOCOL_JSONRPC     "jsonrpc.xbmc.org"
 #define WS_HEADER_UPGRADE_VALUE "websocket"
 #define WS_KEY_MAGICSTRING      "258EAFA5-E914-47DA-95CA-C5AB0DC85B11"
 

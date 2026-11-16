@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -18,7 +18,7 @@
 //#define LOG_LIFECYCLE_EVENTS
 
 /**
- * Defining _ADDON_DEBUG_MEMORY will make the Acquire and Release
+ * Defining XBMC_ADDON_DEBUG_MEMORY will make the Acquire and Release
  *  methods virtual allow the developer to overload them in a sub-class
  *  and set breakpoints to aid in debugging. It will also cause the
  *  reference counting mechanism to never actually delete any AddonClass
@@ -27,19 +27,19 @@
  *
  * Comment out (or uncomment out) to change the setting.
  */
-//#define _ADDON_DEBUG_MEMORY
+//#define XBMC_ADDON_DEBUG_MEMORY
 
 #include "AddonString.h"
 
 #include <mutex>
-#ifdef _ADDON_DEBUG_MEMORY
+#ifdef XBMC_ADDON_DEBUG_MEMORY
 #include "utils/log.h"
 #endif
 #include "AddonUtils.h"
 
 #include <atomic>
 
-namespace Addon
+namespace XBMCAddon
 {
   class LanguageHook;
 
@@ -62,7 +62,7 @@ namespace Addon
     // no copying
     inline AddonClass(const AddonClass&) = delete;
 
-#ifdef _ADDON_DEBUG_MEMORY
+#ifdef XBMC_ADDON_DEBUG_MEMORY
     bool isDeleted;
 #endif
 
@@ -96,15 +96,15 @@ namespace Addon
      *  on the object. It will prevent the deallocation during
      *  the time it's held.
      */
-    bool isDeallocating() { _TRACE; return m_isDeallocating; }
+    bool isDeallocating() { XBMC_TRACE; return m_isDeallocating; }
 
-#ifdef _ADDON_DEBUG_MEMORY
+#ifdef XBMC_ADDON_DEBUG_MEMORY
     virtual
 #else
     inline
 #endif
     void Release() const
-#ifndef _ADDON_DEBUG_MEMORY
+#ifndef XBMC_ADDON_DEBUG_MEMORY
     {
       long ct = --refs;
 #ifdef LOG_LIFECYCLE_EVENTS
@@ -119,13 +119,13 @@ namespace Addon
 #endif
 
 
-#ifdef _ADDON_DEBUG_MEMORY
+#ifdef XBMC_ADDON_DEBUG_MEMORY
     virtual
 #else
     inline
 #endif
     void Acquire() const
-#ifndef _ADDON_DEBUG_MEMORY
+#ifndef XBMC_ADDON_DEBUG_MEMORY
     {
 #ifdef LOG_LIFECYCLE_EVENTS
       CLog::Log(LOGDEBUG, "NEWADDON REFCNT incrementing to {} on {} 0x{:x}", ++refs, GetClassname(),

@@ -33,17 +33,17 @@ and yet another one
 
 **Example:** Clone Universal Media Center's current master branch:
 ```
-git clone https://github.com// universalmediacenter
+git clone https://github.com/xbmc/xbmc universalmediacenter
 ```
 
 Commands that contain strings enclosed in angle brackets denote something you need to change to suit your needs.
 ```
-git clone -b <branch-name> https://github.com// universalmediacenter
+git clone -b <branch-name> https://github.com/xbmc/xbmc universalmediacenter
 ```
 
 **Example:** Clone Universal Media Center's current Krypton branch:
 ```
-git clone -b Krypton https://github.com// universalmediacenter
+git clone -b Krypton https://github.com/xbmc/xbmc universalmediacenter
 ```
 
 Several different strategies are used to draw your attention to certain pieces of information. In order of how critical the information is, these items are marked as a note, tip, or warning. For example:
@@ -120,7 +120,7 @@ cd $HOME
 
 Clone Universal Media Center's current master branch:
 ```
-git clone https://github.com// universalmediacenter
+git clone https://github.com/xbmc/xbmc universalmediacenter
 ```
 
 ## 5. Build tools and dependencies
@@ -135,22 +135,22 @@ cd $HOME/universalmediacenter/tools/depends
 
 Configure build for aarch64:
 ```
-./configure --with-tarballs=$HOME/android-tools/-tarballs --host=aarch64-linux-android --with-sdk-path=$HOME/android-tools/android-sdk-linux --prefix=$HOME/android-tools/-depends
+./configure --with-tarballs=$HOME/android-tools/xbmc-tarballs --host=aarch64-linux-android --with-sdk-path=$HOME/android-tools/android-sdk-linux --prefix=$HOME/android-tools/xbmc-depends
 ```
 
 Or configure build for arm:
 ```
-./configure --with-tarballs=$HOME/android-tools/-tarballs --host=arm-linux-androideabi --with-sdk-path=$HOME/android-tools/android-sdk-linux --prefix=$HOME/android-tools/-depends
+./configure --with-tarballs=$HOME/android-tools/xbmc-tarballs --host=arm-linux-androideabi --with-sdk-path=$HOME/android-tools/android-sdk-linux --prefix=$HOME/android-tools/xbmc-depends
 ```
 
 Or configure build for x86:
 ```
-./configure --with-tarballs=$HOME/android-tools/-tarballs --host=i686-linux-android --with-sdk-path=$HOME/android-tools/android-sdk-linux --prefix=$HOME/android-tools/-depends
+./configure --with-tarballs=$HOME/android-tools/xbmc-tarballs --host=i686-linux-android --with-sdk-path=$HOME/android-tools/android-sdk-linux --prefix=$HOME/android-tools/xbmc-depends
 ```
 
 Or configure build for x86_64:
 ```
-./configure --with-tarballs=$HOME/android-tools/-tarballs --host=x86_64-linux-android --with-sdk-path=$HOME/android-tools/android-sdk-linux --prefix=$HOME/android-tools/-depends
+./configure --with-tarballs=$HOME/android-tools/xbmc-tarballs --host=x86_64-linux-android --with-sdk-path=$HOME/android-tools/android-sdk-linux --prefix=$HOME/android-tools/xbmc-depends
 ```
 
 > [!NOTE]  
@@ -190,7 +190,7 @@ make -j$(getconf _NPROCESSORS_ONLN)
 ```
 --with-tarballs=<path>
 ```
-  path where tarballs will be saved [prefix/-tarballs]
+  path where tarballs will be saved [prefix/xbmc-tarballs]
 
 ```
 --with-cpu=<cpu>
@@ -254,7 +254,7 @@ make -j$(getconf _NPROCESSORS_ONLN)
 **[back to top](#table-of-contents)** | **[back to section top](#5-build-tools-and-dependencies)**
 
 ## 6. Build binary add-ons
-You can find a complete list of available binary add-ons **[here](https://github.com//repo-binary-addons)**.
+You can find a complete list of available binary add-ons **[here](https://github.com/xbmc/repo-binary-addons)**.
 
 Change to Universal Media Center's source code directory:
 ```
@@ -349,17 +349,17 @@ adb -s <device-id> logcat
 
 Install a new build over the existing one:
 ```
-adb -e install -r images/app-debug.apk
+adb -e install -r images/xbmcapp-debug.apk
 ```
 
 Launch Universal Media Center on Android Emulator without the GUI:
 ```
-adb shell am start -n com.universalmediacenter.app/com.universalmediacenter.app.Splash
+adb shell am start -n /.Splash
 ```
 
 Kill a misbehaving Universal Media Center:
 ```
-adb shell ps | grep org. | awk '{print $2}' | xargs adb shell kill
+adb shell ps | grep org.xbmc | awk '{print $2}' | xargs adb shell kill
 ```
 
 Filter logcat messages by a specific tag (e.g. `Universal Media Center`):
@@ -375,7 +375,7 @@ adb shell setprop debug.checkjni 1
 > [!NOTE]  
 > These commands assume that current directory is `$HOME/universalmediacenter-build/tools/android/packaging` and that the proper SDK/NDK paths are set.
 
-GDB can be used to debug, though the support is rather primitive. Rather than using `gdb` directly, you will need to use `ndk-gdb` which wraps it. You can use the `-p/--project` switches or instead you will need to `cd` to `$HOME/universalmediacenter-build/tools/android/packaging/` and execute it from there.
+GDB can be used to debug, though the support is rather primitive. Rather than using `gdb` directly, you will need to use `ndk-gdb` which wraps it. You can use the `-p/--project` switches or instead you will need to `cd` to `$HOME/universalmediacenter-build/tools/android/packaging/xbmc` and execute it from there.
 ```
  ndk-gdb --verbose
 ```

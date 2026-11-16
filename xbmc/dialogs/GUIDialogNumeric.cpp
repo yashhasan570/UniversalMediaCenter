@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -15,7 +15,7 @@
 #include "guilib/GUIWindowManager.h"
 #include "input/actions/Action.h"
 #include "input/actions/ActionIDs.h"
-#include "input/keyboard/_vkeys.h"
+#include "input/keyboard/XBMC_vkeys.h"
 #include "input/keymaps/keyboard/KeyIDs.h"
 #include "interfaces/AnnouncementManager.h"
 #include "messaging/helpers/DialogOKHelper.h"
@@ -120,15 +120,15 @@ bool CGUIDialogNumeric::OnAction(const CAction &action)
   {
     // input from the keyboard (vkey, not ascii)
     uint16_t b = action.GetID() - KEY_VKEY;
-    if (b == VK_LEFT)
+    if (b == XBMCVK_LEFT)
       OnPrevious();
-    else if (b == VK_RIGHT)
+    else if (b == XBMCVK_RIGHT)
       OnNext();
-    else if (b == VK_RETURN || b == VK_NUMPADENTER)
+    else if (b == XBMCVK_RETURN || b == XBMCVK_NUMPADENTER)
       OnOK();
-    else if (b == VK_BACK)
+    else if (b == XBMCVK_BACK)
       OnBackSpace();
-    else if (b == VK_ESCAPE)
+    else if (b == XBMCVK_ESCAPE)
       OnCancel();
   }
   else if (action.GetID() == KEY_UNICODE)

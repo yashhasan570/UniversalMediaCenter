@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -165,9 +165,9 @@ bool CZeroconfMDNS::doForceReAnnounceService(const std::string& fcr_identifier)
     // to change a txt record - so we diddle between
     // even and odd dummy records here
     if ( (it->second.updateNumber % 2) == 0)
-      TXTRecordSetValue(&it->second.txtRecordRef, "dummy", strlen("evendummy"), "evendummy");
+      TXTRecordSetValue(&it->second.txtRecordRef, "xbmcdummy", strlen("evendummy"), "evendummy");
     else
-      TXTRecordSetValue(&it->second.txtRecordRef, "dummy", strlen("odddummy"), "odddummy");
+      TXTRecordSetValue(&it->second.txtRecordRef, "xbmcdummy", strlen("odddummy"), "odddummy");
     it->second.updateNumber++;
 
     if (DNSServiceUpdateRecord(it->second.serviceRef, NULL, 0, TXTRecordGetLength(&it->second.txtRecordRef), TXTRecordGetBytesPtr(&it->second.txtRecordRef), 0) ==  kDNSServiceErr_NoError)

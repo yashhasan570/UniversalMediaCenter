@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2021 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -15,7 +15,7 @@
 #include "games/ports/types/PortNode.h"
 #include "utils/FileUtils.h"
 #include "utils/URIUtils.h"
-#include "utils/TinyXML2.h"
+#include "utils/XBMCTinyXML2.h"
 #include "utils/XMLUtils.h"
 #include "utils/log.h"
 
@@ -74,7 +74,7 @@ void CPortManager::LoadXML()
 
   CLog::Log(LOGINFO, "Loading port layout: {}", CURL::GetRedacted(m_xmlPath));
 
-  CTinyXML2 xmlDoc;
+  CXBMCTinyXML2 xmlDoc;
   if (!xmlDoc.LoadFile(m_xmlPath))
   {
     CLog::Log(LOGDEBUG, "Unable to load file: {} at line {}", xmlDoc.ErrorStr(),
@@ -109,7 +109,7 @@ void CPortManager::SaveXMLAsync()
   std::future<void> task = std::async(std::launch::async,
                                       [this, ports = std::move(ports)]()
                                       {
-                                        CTinyXML2 doc;
+                                        CXBMCTinyXML2 doc;
                                         auto* node = doc.NewElement(XML_ROOT_PORTS);
                                         if (node == nullptr)
                                           return;

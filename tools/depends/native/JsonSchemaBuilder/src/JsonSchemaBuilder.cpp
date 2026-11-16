@@ -13,7 +13,7 @@
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with ; see the file COPYING.  If not, write to
+ *  along with XBMC; see the file COPYING.  If not, write to
  *  the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.
  *  http://www.gnu.org/copyleft/gpl.html
  *
@@ -151,9 +151,9 @@ int main(int argc, char* argv[])
 
   out << "namespace JSONRPC" << std::endl;
   out << "{" << std::endl;
-  out << "  const char* const JSONRPC_SERVICE_ID          = \"http://github.com/yashhasan570/UniversalMediaCenter/jsonrpc/ServiceDescription.json\";" << std::endl;
+  out << "  const char* const JSONRPC_SERVICE_ID          = \"http://xbmc.org/jsonrpc/ServiceDescription.json\";" << std::endl;
   out << "  const char* const JSONRPC_SERVICE_VERSION     = \""; print_version(version, out); out << "\";" << std::endl;
-  out << "  const char* const JSONRPC_SERVICE_DESCRIPTION = \"JSON-RPC API of \";" << std::endl;
+  out << "  const char* const JSONRPC_SERVICE_DESCRIPTION = \"JSON-RPC API of XBMC\";" << std::endl;
   out << std::endl;
 
   out << "  const char* const JSONRPC_SERVICE_TYPES[] = {";

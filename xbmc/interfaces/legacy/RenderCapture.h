@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -22,15 +22,15 @@
 #include <cstdint>
 #include <memory>
 
-namespace Addon
+namespace XBMCAddon
 {
-  namespace 
+  namespace xbmc
   {
-    COMMONS_STANDARD_EXCEPTION(RenderCaptureException);
+    XBMCCOMMONS_STANDARD_EXCEPTION(RenderCaptureException);
 
     //
-    /// \defgroup python__RenderCapture RenderCapture
-    /// \ingroup python_
+    /// \defgroup python_xbmc_RenderCapture RenderCapture
+    /// \ingroup python_xbmc
     /// @{
     /// @brief **Universal Media Center's render capture.**
     ///
@@ -55,7 +55,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__RenderCapture
+      /// \ingroup python_xbmc_RenderCapture
       /// @brief \python_func{ getWidth() }
       /// Get width
       ///
@@ -71,7 +71,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__RenderCapture
+      /// \ingroup python_xbmc_RenderCapture
       /// @brief \python_func{ getHeight() }
       /// Get height
       ///
@@ -86,7 +86,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__RenderCapture
+      /// \ingroup python_xbmc_RenderCapture
       /// @brief \python_func{ getAspectRatio() }
       /// Get aspect ratio of currently displayed video.
       ///
@@ -105,7 +105,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__RenderCapture
+      /// \ingroup python_xbmc_RenderCapture
       /// @brief \python_func{ getImageFormat() }
       /// Get image format
       ///
@@ -125,7 +125,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__RenderCapture
+      /// \ingroup python_xbmc_RenderCapture
       /// @brief \python_func{ getImage([msecs]) }
       /// Returns captured image as a bytearray.
       ///
@@ -153,7 +153,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python__RenderCapture
+      /// \ingroup python_xbmc_RenderCapture
       /// @brief \python_func{ capture(width, height) }
       /// Issue capture request.
       ///

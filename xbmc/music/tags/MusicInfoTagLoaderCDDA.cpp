@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -121,7 +121,7 @@ bool CMusicInfoTagLoaderCDDA::Load(const std::string& strFileName, CMusicInfoTag
         tag.SetTitle(strTitle);
 
         // Get info for track zero, as we may have and need CD-Text Album info
-        _cdtext_t discCDText = pCdInfo->GetDiscCDTextInformation();
+        xbmc_cdtext_t discCDText = pCdInfo->GetDiscCDTextInformation();
 
         // Artist: Use track artist or disc artist
         std::string strArtist = ti.cdtext[CDTEXT_FIELD_PERFORMER];

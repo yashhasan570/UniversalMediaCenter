@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2012-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -10,7 +10,7 @@
 
 #include "ServiceBroker.h"
 #include "Util.h"
-#import "Controller.h"
+#import "XBMCController.h"
 #include "filesystem/SpecialProtocol.h"
 #include "input/mouse/MouseStat.h"
 #include "resources/LocalizeStrings.h"
@@ -29,8 +29,8 @@ const CGFloat timeFadeSecs                    = 2.0;
   self = [super init];
   if (self)
   {
-    UIImage       *Logo;
-    UIImageView   *LogoView;
+    UIImage       *xbmcLogo;
+    UIImageView   *xbmcLogoView;
     UILabel       *descriptionLabel;
 
     _internalWindow = [[UIWindow alloc] initWithFrame:frame];
@@ -44,19 +44,19 @@ const CGFloat timeFadeSecs                    = 2.0;
 
     //load the splash image
     std::string strUserSplash = CUtil::GetSplashPath();
-    Logo = [UIImage imageWithContentsOfFile:[NSString stringWithUTF8String:strUserSplash.c_str()]];
+    xbmcLogo = [UIImage imageWithContentsOfFile:[NSString stringWithUTF8String:strUserSplash.c_str()]];
     
     //make a view with the image
-    LogoView = [[UIImageView alloc] initWithImage:Logo];
+    xbmcLogoView = [[UIImageView alloc] initWithImage:xbmcLogo];
     //center the image and add it to the view
-    [LogoView setFrame:frame];
-    [LogoView setContentMode:UIViewContentModeScaleAspectFill];
+    [xbmcLogoView setFrame:frame];
+    [xbmcLogoView setContentMode:UIViewContentModeScaleAspectFill];
     //autoresize the image frame
-    [LogoView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
-    [LogoView setAutoresizesSubviews:YES];
-    [_touchView addSubview:LogoView];
+    [xbmcLogoView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
+    [xbmcLogoView setAutoresizesSubviews:YES];
+    [_touchView addSubview:xbmcLogoView];
     //send the image to the background
-    [_touchView sendSubviewToBack:LogoView];
+    [_touchView sendSubviewToBack:xbmcLogoView];
 
     CGRect labelRect = frame;
     labelRect.size.height/=2;
@@ -237,7 +237,7 @@ const CGFloat timeFadeSecs                    = 2.0;
 {
   if([self wakeUpFromSleep])
   {
-    [g_Controller sendKey:K_BACKSPACE];
+    [g_xbmcController sendKey:XBMCK_BACKSPACE];
   }
 }
 //--------------------------------------------------------------
@@ -245,7 +245,7 @@ const CGFloat timeFadeSecs                    = 2.0;
 {
   if([self wakeUpFromSleep])
   {
-    [g_Controller sendKey:K_LEFT];
+    [g_xbmcController sendKey:XBMCK_LEFT];
   }
 }
 //--------------------------------------------------------------
@@ -253,7 +253,7 @@ const CGFloat timeFadeSecs                    = 2.0;
 {
   if([self wakeUpFromSleep])
   {
-    [g_Controller sendKey:K_RIGHT];
+    [g_xbmcController sendKey:XBMCK_RIGHT];
   }
 }
 //--------------------------------------------------------------
@@ -261,7 +261,7 @@ const CGFloat timeFadeSecs                    = 2.0;
 {
   if([self wakeUpFromSleep])
   {
-    [g_Controller sendKey:K_UP];
+    [g_xbmcController sendKey:XBMCK_UP];
   }
 }
 //--------------------------------------------------------------
@@ -269,7 +269,7 @@ const CGFloat timeFadeSecs                    = 2.0;
 {
   if([self wakeUpFromSleep])
   {
-    [g_Controller sendKey:K_DOWN];
+    [g_xbmcController sendKey:XBMCK_DOWN];
   }
 }
 //--------------------------------------------------------------
@@ -277,7 +277,7 @@ const CGFloat timeFadeSecs                    = 2.0;
 {
   if([self wakeUpFromSleep])
   {
-    [g_Controller sendKey:K_c];
+    [g_xbmcController sendKey:XBMCK_c];
   }
 }
 //--------------------------------------------------------------
@@ -296,7 +296,7 @@ const CGFloat timeFadeSecs                    = 2.0;
 {
   if([self wakeUpFromSleep])
   {
-    [g_Controller sendKey:K_RETURN];
+    [g_xbmcController sendKey:XBMCK_RETURN];
   }
 }
 //--------------------------------------------------------------

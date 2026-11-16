@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -31,7 +31,7 @@ struct AddonEvent;
 }
 class CGUIFont;
 class CGUIFontTTF;
-class CTinyXML;
+class CXBMCTinyXML;
 class TiXmlNode;
 class CSetting;
 struct StringSettingOption;
@@ -163,5 +163,5 @@ private:
  \ingroup textures
  \brief
  */
-_GLOBAL_REF(GUIFontManager, g_fontManager);
-#define g_fontManager _GLOBAL_USE(GUIFontManager)
+XBMC_GLOBAL_REF(GUIFontManager, g_fontManager);
+#define g_fontManager XBMC_GLOBAL_USE(GUIFontManager)

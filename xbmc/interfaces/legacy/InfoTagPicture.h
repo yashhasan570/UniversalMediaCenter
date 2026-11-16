@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2021 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -12,14 +12,14 @@
 
 class CPictureInfoTag;
 
-namespace Addon
+namespace XBMCAddon
 {
-namespace 
+namespace xbmc
 {
 
 ///
 /// \defgroup python_InfoTagPicture InfoTagPicture
-/// \ingroup python_
+/// \ingroup python_xbmc
 /// @{
 /// @brief **Universal Media Center's picture info tag class.**
 ///
@@ -56,7 +56,7 @@ public:
 #ifdef DOXYGEN_SHOULD_USE_THIS
   ///
   /// \ingroup python_InfoTagPicture
-  /// @brief \python_func{ .InfoTagPicture([offscreen]) }
+  /// @brief \python_func{ xbmc.InfoTagPicture([offscreen]) }
   /// Create a picture info tag.
   ///
   /// @param offscreen            [opt] bool (default `False`) - if GUI based locks should be
@@ -80,7 +80,7 @@ public:
   /// **Example:**
   /// ~~~~~~~~~~~~~{.py}
   /// ...
-  /// pictureinfo = .InfoTagPicture(offscreen=False)
+  /// pictureinfo = xbmc.InfoTagPicture(offscreen=False)
   /// ...
   /// ~~~~~~~~~~~~~
   ///
@@ -176,5 +176,5 @@ public:
 #endif
 };
 
-} // namespace 
-} // namespace Addon
+} // namespace xbmc
+} // namespace XBMCAddon

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -38,8 +38,8 @@ void CGUIWindowScreensaverDim::UpdateVisibility()
       return;
 
     std::string usedId = appPower->ScreensaverIdInUse();
-    if  (usedId == "screensaver..builtin.dim" ||
-         usedId == "screensaver..builtin.black")
+    if  (usedId == "screensaver.xbmc.builtin.dim" ||
+         usedId == "screensaver.xbmc.builtin.black")
     {
       m_visible = true;
       ADDON::AddonPtr info;

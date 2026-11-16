@@ -1,15 +1,15 @@
-# Universal Media Center Media Center language file
+# Kodi Media Center language file
 # Addon Name: Generic Artist Scraper
 # Addon id: metadata.generic.artists
-# Addon Provider: Team Universal Media Center
+# Addon Provider: Team Kodi
 msgid ""
 msgstr ""
-"Project-Id-Version: UNIVERSAL MEDIA CENTER Main\n"
-"Report-Msgid-Bugs-To: translations@github.com/yashhasan570/UniversalMediaCenter\n"
+"Project-Id-Version: KODI Main\n"
+"Report-Msgid-Bugs-To: translations@kodi.tv\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: 2022-12-21 20:15+0000\n"
 "Last-Translator: skypichat <skypichat@hotmail.fr>\n"
-"Language-Team: French (France) <https://universalmediacenter.weblate.cloud/projects/Universal Media Center-add-ons-information-providers/metadata-generic-artists/fr_fr/>\n"
+"Language-Team: French (France) <https://kodi.weblate.cloud/projects/kodi-add-ons-information-providers/metadata-generic-artists/fr_fr/>\n"
 "Language: fr_fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -83,4 +83,4 @@ msgstr "Tenter de récupérer l'information d'ambiance avec le collecteur sélec
 
 msgctxt "#30301"
 msgid "If Musicbrainz does not provide a link to allmusic and/or discogs, we can search those sites based on artistname. Since artist names are not unique, this could potentially result in a mixture of metadata from multiple artists by the same name."
-msgstr "Si Musicbrainz ne fourni pas de lien vers « allmusic » et/ou « discogs », Universal Media Center cherchera sur ces sites à partir de « artistname ». Les noms d'artiste n'étant pas uniques, le résultat pourrait être un mélange des métadonnées de l'ensemble des artistes ayant le même nom."
+msgstr "Si Musicbrainz ne fourni pas de lien vers « allmusic » et/ou « discogs », Kodi cherchera sur ces sites à partir de « artistname ». Les noms d'artiste n'étant pas uniques, le résultat pourrait être un mélange des métadonnées de l'ensemble des artistes ayant le même nom."

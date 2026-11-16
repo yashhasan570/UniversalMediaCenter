@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -13,17 +13,17 @@
 #include "SortFileItem.h"
 #include "filesystem/PluginDirectory.h"
 
-namespace Addon
+namespace XBMCAddon
 {
 
-  namespace plugin
+  namespace xbmcplugin
   {
-    bool addDirectoryItem(int handle, const String& url, const gui::ListItem* listItem,
+    bool addDirectoryItem(int handle, const String& url, const xbmcgui::ListItem* listItem,
                           bool isFolder, int totalItems)
     {
       if (listItem == nullptr)
-        throw new Addon::WrongTypeException("None not allowed as argument for listitem");
-      AddonClass::Ref<gui::ListItem> pListItem(listItem);
+        throw new XBMCAddon::WrongTypeException("None not allowed as argument for listitem");
+      AddonClass::Ref<xbmcgui::ListItem> pListItem(listItem);
       pListItem->item->SetPath(url);
       pListItem->item->SetFolder(isFolder);
 
@@ -32,14 +32,14 @@ namespace Addon
     }
 
     bool addDirectoryItems(int handle,
-                           const std::vector<Tuple<String,const Addon::gui::ListItem*,bool> >& items,
+                           const std::vector<Tuple<String,const XBMCAddon::xbmcgui::ListItem*,bool> >& items,
                            int totalItems)
     {
       CFileItemList fitems;
       for (const auto& item : items)
       {
         const String& url = item.first();
-        const Addon::gui::ListItem* pListItem = item.second();
+        const XBMCAddon::xbmcgui::ListItem* pListItem = item.second();
         bool bIsFolder = item.GetNumValuesSet() > 2 ? item.third() : false;
         pListItem->item->SetPath(url);
         pListItem->item->SetFolder(bIsFolder);
@@ -57,11 +57,11 @@ namespace Addon
       XFILE::CPluginDirectory::EndOfDirectory(handle, succeeded, updateListing, cacheToDisc);
     }
 
-    void setResolvedUrl(int handle, bool succeeded, const gui::ListItem* listItem)
+    void setResolvedUrl(int handle, bool succeeded, const xbmcgui::ListItem* listItem)
     {
       if (listItem == nullptr)
-        throw new Addon::WrongTypeException("None not allowed as argument for listitem");
-      AddonClass::Ref<gui::ListItem> pListItem(listItem);
+        throw new XBMCAddon::WrongTypeException("None not allowed as argument for listitem");
+      AddonClass::Ref<xbmcgui::ListItem> pListItem(listItem);
       XFILE::CPluginDirectory::SetResolvedUrl(handle, succeeded, pListItem->item.get());
     }
 

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -33,7 +33,7 @@ public:
   //fcr_identifier can be used to stop or reannounce this service later
   //fcr_type is the zeroconf service type to publish (e.g. _http._tcp for webserver)
   //fcr_name is the name of the service to publish. The hostname is currently automatically appended
-  //         and used for name collisions. e.g.  would get published as fcr_name@Martn or, after collision fcr_name@Martn-2
+  //         and used for name collisions. e.g. XBMC would get published as fcr_name@Martn or, after collision fcr_name@Martn-2
   //f_port port of the service to publish
   // returns false if fcr_identifier was already present
   bool PublishService(const std::string& fcr_identifier,

@@ -1,15 +1,15 @@
-# Universal Media Center Media Center language file
+# Kodi Media Center language file
 # Addon Name: Generic Album Scraper
 # Addon id: metadata.generic.albums
-# Addon Provider: Team Universal Media Center
+# Addon Provider: Team Kodi
 msgid ""
 msgstr ""
-"Project-Id-Version: Universal Media Center add-ons\n"
-"Report-Msgid-Bugs-To: translations@github.com/yashhasan570/UniversalMediaCenter\n"
+"Project-Id-Version: Kodi add-ons\n"
+"Report-Msgid-Bugs-To: translations@kodi.tv\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: 2025-08-11 22:15+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
-"Language-Team: Dari <https://universalmediacenter.weblate.cloud/projects/Universal Media Center-add-ons-information-providers/metadata-generic-albums/prs/>\n"
+"Language-Team: Dari <https://kodi.weblate.cloud/projects/kodi-add-ons-information-providers/metadata-generic-albums/prs/>\n"
 "Language: prs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"

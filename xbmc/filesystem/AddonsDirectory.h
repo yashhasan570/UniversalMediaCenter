@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -9,6 +9,7 @@
 #pragma once
 
 #include "IDirectory.h"
+#include "media/MediaSection.h"
 
 #include <memory>
 #include <vector>
@@ -65,6 +66,11 @@ namespace XFILE
 
     /*! \brief Returns true if `path` is a path or subpath of the repository directory, otherwise false */
     static bool IsRepoDirectory(const CURL& path);
+
+    /*! \brief The addons:// path listing the add-ons that provide content to \p section, empty
+     when \p section has none.
+     */
+    static std::string SourcesPathOf(UNIVERSAL MEDIA CENTER::MEDIA::MediaSection section);
 
   private:
     bool GetSearchResults(const CURL& path, CFileItemList &items);

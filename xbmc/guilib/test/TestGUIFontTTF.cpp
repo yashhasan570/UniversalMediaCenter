@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -82,7 +82,7 @@ protected:
     m_previousWinSystem = CServiceBroker::GetWinSystem();
     CServiceBroker::RegisterWinSystem(&m_winSystem);
     m_font = std::make_unique<CTestFont>();
-    ASSERT_TRUE(m_font->Load(_REF_FILE_PATH(PRIMARY_FONT)));
+    ASSERT_TRUE(m_font->Load(XBMC_REF_FILE_PATH(PRIMARY_FONT)));
   }
 
   void TearDown() override
@@ -127,7 +127,7 @@ TEST_F(TestGUIFontTTF, SymbolInCaptionKeepsTextClusters)
 TEST_F(TestGUIFontTTF, PrimarySymbolTakesPrecedence)
 {
   CTestFont font;
-  ASSERT_TRUE(font.Load(_REF_FILE_PATH("media/Fonts/arial.ttf")));
+  ASSERT_TRUE(font.Load(XBMC_REF_FILE_PATH("media/Fonts/arial.ttf")));
   const auto glyphs = font.GetHarfBuzzShapedGlyphs(vecText{SYMBOL});
   ASSERT_EQ(glyphs.size(), 1u);
   EXPECT_NE(glyphs[0].m_glyphInfo.codepoint, 0u);
@@ -251,7 +251,7 @@ TEST_F(TestGUIFontTTF, SymbolReceivesTextBorder)
   ASSERT_NE(normal, nullptr);
 
   CTestFont borderFont;
-  ASSERT_TRUE(borderFont.Load(_REF_FILE_PATH(PRIMARY_FONT), 20.0f, 1.0f, 1.0f, true));
+  ASSERT_TRUE(borderFont.Load(XBMC_REF_FILE_PATH(PRIMARY_FONT), 20.0f, 1.0f, 1.0f, true));
   const auto* border = borderFont.GetCharacter(SYMBOL, glyphIndex, FontFace::Symbols, true);
   ASSERT_NE(border, nullptr);
   EXPECT_GT(border->m_right - border->m_left, normal->m_right - normal->m_left);

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2015-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -49,7 +49,7 @@ public:
 
   // Input properties
   JOYSTICK::INPUT_TYPE InputType(void) const { return m_inputType; }
-  KEYBOARD::Key Keycode() const { return m_keycode; }
+  KEYBOARD::XBMCKey Keycode() const { return m_keycode; }
 
   bool Deserialize(const tinyxml2::XMLElement* pElement,
                    const CController* controller,
@@ -64,7 +64,7 @@ private:
   std::string m_strName;
   int m_labelId = -1;
   JOYSTICK::INPUT_TYPE m_inputType = JOYSTICK::INPUT_TYPE::UNKNOWN;
-  KEYBOARD::Key m_keycode = KEYBOARD::Key::K_UNKNOWN;
+  KEYBOARD::XBMCKey m_keycode = KEYBOARD::XBMCKey::XBMCK_UNKNOWN;
 };
 
 } // namespace GAME

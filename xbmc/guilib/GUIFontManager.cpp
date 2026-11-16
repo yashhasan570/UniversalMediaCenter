@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -55,7 +55,7 @@ namespace
 {
 constexpr const char* XML_FONTCACHE_FILENAME = "fontcache.xml";
 
-bool LoadXMLData(const std::string& filepath, CTinyXML& xmlDoc)
+bool LoadXMLData(const std::string& filepath, CXBMCTinyXML& xmlDoc)
 {
   if (!CFileUtils::Exists(filepath))
   {
@@ -185,7 +185,7 @@ CGUIFont* GUIFontManager::LoadTTF(const std::string& strFontName,
   // Check if the file exists, otherwise try loading it from the global media dir
   std::string file = URIUtils::GetFileName(strFilename);
   if (!CheckFont(strPath, "special://home/media/Fonts", file) &&
-      !CheckFont(strPath, "special:///media/Fonts", file))
+      !CheckFont(strPath, "special://xbmc/media/Fonts", file))
   {
     VECADDONS addons;
     CServiceBroker::GetAddonMgr().GetAddons(addons, AddonType::RESOURCE_FONT);
@@ -431,7 +431,7 @@ bool GUIFontManager::LoadFontsFromFile(const std::string& fontsetFilePath,
                                        std::string& firstFontset,
                                        bool resolveIncludes)
 {
-  CTinyXML xmlDoc;
+  CXBMCTinyXML xmlDoc;
   if (LoadXMLData(fontsetFilePath, xmlDoc))
   {
     TiXmlElement* rootElement = xmlDoc.RootElement();
@@ -680,7 +680,7 @@ void GUIFontManager::LoadUserFonts()
     return;
 
   CLog::LogF(LOGDEBUG, "Updating user fonts cache...");
-  CTinyXML xmlDoc;
+  CXBMCTinyXML xmlDoc;
   std::string userFontCacheFilepath =
       URIUtils::AddFileToFolder(UNIVERSAL MEDIA CENTER::UTILS::FONT::FONTPATH::USER, XML_FONTCACHE_FILENAME);
   if (LoadXMLData(userFontCacheFilepath, xmlDoc))
@@ -758,7 +758,7 @@ void GUIFontManager::LoadUserFonts()
   // If the cache is changed save an updated XML cache file
   if (isCacheChanged)
   {
-    CTinyXML xmlDoc;
+    CXBMCTinyXML xmlDoc;
     TiXmlDeclaration decl("1.0", "UTF-8", "yes");
     xmlDoc.InsertEndChild(decl);
     TiXmlElement xmlMainElement("fonts");

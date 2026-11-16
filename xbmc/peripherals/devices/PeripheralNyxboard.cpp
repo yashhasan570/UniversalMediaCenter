@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2024 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -22,17 +22,17 @@ CPeripheralNyxboard::CPeripheralNyxboard(CPeripherals& manager,
   m_features.push_back(FEATURE_NYXBOARD);
 }
 
-bool CPeripheralNyxboard::LookupSymAndUnicode(_keysym& keysym, uint16_t* key, char* unicode)
+bool CPeripheralNyxboard::LookupSymAndUnicode(XBMC_keysym& keysym, uint16_t* key, char* unicode)
 {
   std::string strCommand;
-  if (keysym.sym == K_F7 && keysym.mod == KMOD_NONE &&
+  if (keysym.sym == XBMCK_F7 && keysym.mod == XBMCKMOD_NONE &&
       GetSettingBool("enable_flip_commands"))
   {
     /* switched to keyboard side */
     CLog::Log(LOGDEBUG, "{} - switched to keyboard side", __FUNCTION__);
     strCommand = GetSettingString("flip_keyboard");
   }
-  else if (keysym.sym == K_F7 && keysym.mod == KMOD_LCTRL &&
+  else if (keysym.sym == XBMCK_F7 && keysym.mod == XBMCKMOD_LCTRL &&
            GetSettingBool("enable_flip_commands"))
   {
     /* switched to remote side */
@@ -43,7 +43,7 @@ bool CPeripheralNyxboard::LookupSymAndUnicode(_keysym& keysym, uint16_t* key, ch
   if (!strCommand.empty())
   {
     CLog::Log(LOGDEBUG, "{} - executing command '{}'", __FUNCTION__, strCommand);
-    if (g_application.ExecuteAction(strCommand))
+    if (g_application.ExecuteXBMCAction(strCommand))
     {
       *key = 0;
       *unicode = (char)0;

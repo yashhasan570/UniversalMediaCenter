@@ -1,15 +1,15 @@
-# Universal Media Center Media Center language file
+# Kodi Media Center language file
 # Addon Name: Version Check
-# Addon id: service..versioncheck
-# Addon Provider: Team Universal Media Center
+# Addon id: service.xbmc.versioncheck
+# Addon Provider: Team Kodi
 msgid ""
 msgstr ""
-"Project-Id-Version:  Addons\n"
-"Report-Msgid-Bugs-To: translations@github.com/yashhasan570/UniversalMediaCenter\n"
+"Project-Id-Version: XBMC Addons\n"
+"Report-Msgid-Bugs-To: translations@kodi.tv\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: 2021-10-25 10:08+0000\n"
-"Last-Translator: Christian Gade <gade@github.com/yashhasan570/UniversalMediaCenter>\n"
-"Language-Team: Catalan (Spain) <https://universalmediacenter.weblate.cloud/projects/Universal Media Center-core/service--versioncheck/ca_es/>\n"
+"Last-Translator: Christian Gade <gade@kodi.tv>\n"
+"Language-Team: Catalan (Spain) <https://kodi.weblate.cloud/projects/kodi-core/service-xbmc-versioncheck/ca_es/>\n"
 "Language: ca_es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,24 +18,24 @@ msgstr ""
 "X-Generator: Weblate 4.8\n"
 
 msgctxt "Addon Summary"
-msgid "Universal Media Center Version Check checks if you are running latest released version."
-msgstr "Universal Media Center Version Check comprova si està utilitzant la última versió publicada."
+msgid "Kodi Version Check checks if you are running latest released version."
+msgstr "Kodi Version Check comprova si està utilitzant la última versió publicada."
 
 msgctxt "Addon Description"
-msgid "Universal Media Center Version Check only supports a number of platforms/distros as releases may differ between them. For more information visit the github.com/yashhasan570/UniversalMediaCenter website."
-msgstr "Universal Media Center Version Check només és compatible amb una sèrie de plataformes / distribucions ja que les ultimes versions poden ser diferents entre elles. Per obtenir més informació, visiteu el lloc web github.com/yashhasan570/UniversalMediaCenter."
+msgid "Kodi Version Check only supports a number of platforms/distros as releases may differ between them. For more information visit the kodi.tv website."
+msgstr "Kodi Version Check només és compatible amb una sèrie de plataformes / distribucions ja que les ultimes versions poden ser diferents entre elles. Per obtenir més informació, visiteu el lloc web kodi.tv."
 
 msgctxt "Addon Disclaimer"
-msgid "Feel free to use this script. For information visit github.com/yashhasan570/UniversalMediaCenter"
-msgstr "Sigues lliure d'utilitzar aquest script. Per més informació visita github.com/yashhasan570/UniversalMediaCenter"
+msgid "Feel free to use this script. For information visit kodi.tv"
+msgstr "Sigues lliure d'utilitzar aquest script. Per més informació visita kodi.tv"
 
 msgctxt "#32001"
 msgid "We would like to recommend you to upgrade."
 msgstr "En agradaria recomanar-te actualitzar."
 
 msgctxt "#32002"
-msgid "Visit Universal Media Center.tv for more information."
-msgstr "Visita Universal Media Center.tv per més informació."
+msgid "Visit Kodi.tv for more information."
+msgstr "Visita Kodi.tv per més informació."
 
 msgctxt "#32009"
 msgid "Would you like to remove this reminder?"
@@ -58,24 +58,24 @@ msgid "Upgrade successful"
 msgstr "Actualització realitzada correctament"
 
 msgctxt "#32014"
-msgid "Do you want to restart Universal Media Center to finish the upgrade?"
-msgstr "Vols reiniciar Universal Media Center per finalitzar la actualització?"
+msgid "Do you want to restart Kodi to finish the upgrade?"
+msgstr "Vols reiniciar Kodi per finalitzar la actualització?"
 
 msgctxt "#32015"
 msgid "Do you want to check the repository for a new version?"
 msgstr "Vols comprovar el repositori per buscar una versió nova?"
 
 msgctxt "#32016"
-msgid "There is a newer stable Universal Media Center version available."
-msgstr "Hi ha una nova versió estable de Universal Media Center disponible."
+msgid "There is a newer stable Kodi version available."
+msgstr "Hi ha una nova versió estable de Kodi disponible."
 
 msgctxt "#32020"
 msgid "General"
 msgstr "General"
 
 msgctxt "#32021"
-msgid "Enable Universal Media Center version check?"
-msgstr "Habilitar comprovació de versió Universal Media Center?"
+msgid "Enable Kodi version check?"
+msgstr "Habilitar comprovació de versió Kodi?"
 
 msgctxt "#32022"
 msgid "Please enter your password"
@@ -92,23 +92,23 @@ msgstr "Linux: actualitzeu amb apt"
 # empty strings from id 32025 to 32029
 #. Used in OK dialog
 msgctxt "#32030"
-msgid "A new stable version of Universal Media Center is available."
-msgstr "Hi ha disponible una nova versió estable de Universal Media Center."
+msgid "A new stable version of Kodi is available."
+msgstr "Hi ha disponible una nova versió estable de Kodi."
 
 #. Direct people to the website. Used in OK dialog
 msgctxt "#32031"
-msgid "Visit http://github.com/yashhasan570/UniversalMediaCenter for more information."
-msgstr "Visiteu http://github.com/yashhasan570/UniversalMediaCenter per obtenir més informació."
+msgid "Visit http://kodi.tv for more information."
+msgstr "Visiteu http://kodi.tv per obtenir més informació."
 
 #. Used in OK dialog
 msgctxt "#32032"
-msgid "A new stable version of Universal Media Center is available."
-msgstr "Hi ha disponible una nova versió estable de Universal Media Center."
+msgid "A new stable version of Kodi is available."
+msgstr "Hi ha disponible una nova versió estable de Kodi."
 
 #. Direct people to the website. Used in OK dialog
 msgctxt "#32033"
-msgid "Visit http://github.com/yashhasan570/UniversalMediaCenter for more information."
-msgstr "Visiteu http://github.com/yashhasan570/UniversalMediaCenter per obtenir més informació."
+msgid "Visit http://kodi.tv for more information."
+msgstr "Visiteu http://kodi.tv per obtenir més informació."
 
 #. For example: "You are using 13.1 prealpha while 13.2 stable is available"
 msgctxt "#32034"
@@ -130,8 +130,8 @@ msgid "Please upgrade your operating system."
 msgstr "Si us plau, actualitzeu el vostre sistema operatiu."
 
 msgctxt "#32042"
-msgid "For more information, see https://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Linux"
-msgstr "Per obtenir més informació, consulteu https://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Linux"
+msgid "For more information, see https://kodi.wiki/view/Linux"
+msgstr "Per obtenir més informació, consulteu https://kodi.wiki/view/Linux"
 
 #~ msgctxt "#32035"
 #~ msgid "It is recommended that you to upgrade to a newer version."

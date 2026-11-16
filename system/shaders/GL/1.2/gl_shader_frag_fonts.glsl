@@ -1,6 +1,6 @@
 /*
- *  Copyright (C) 2010-2024 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  Copyright (C) 2010-2024 Team Kodi
+ *  This file is part of Kodi - https://kodi.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -15,7 +15,7 @@ varying vec4 m_colour;
 // SM_FONTS and SM_FONTS_RGBA shader
 void main()
 {
-#if defined(UNIVERSAL MEDIA CENTER_FONTS_RGBA)
+#if defined(KODI_FONTS_RGBA)
   gl_FragColor = m_colour * texture2D(m_samp0, m_cord0);
 #else
   gl_FragColor = m_colour;

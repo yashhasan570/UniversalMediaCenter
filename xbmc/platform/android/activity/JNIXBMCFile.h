@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2018 Christian Browet
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -17,12 +17,12 @@
 namespace jni
 {
 
-  class CJNIFile : public CJNIBase, public CJNIInterfaceImplem<CJNIFile>
+  class CJNIXBMCFile : public CJNIBase, public CJNIInterfaceImplem<CJNIXBMCFile>
   {
   public:
-    CJNIFile();
-    CJNIFile(const jni::jhobject &object) : CJNIBase(object) {}
-    ~CJNIFile() override = default;
+    CJNIXBMCFile();
+    CJNIXBMCFile(const jni::jhobject &object) : CJNIBase(object) {}
+    ~CJNIXBMCFile() override = default;
 
     static void RegisterNatives(JNIEnv* env);
 

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -10,7 +10,7 @@
 #include "filesystem/File.h"
 #include "settings/MediaSourceSettings.h"
 #include "test/TestUtils.h"
-#include "utils/TinyXML2.h"
+#include "utils/XBMCTinyXML2.h"
 #include "utils/XMLUtils.h"
 
 #include <string>
@@ -59,14 +59,14 @@ TEST_F(TestMediaSourceSettingsSections, SavesEverySectionAndReloadsItsDefault)
   SetDefaultSource(MediaSection::FILES, "smb://server/files/");
   SetDefaultSource(MediaSection::PROGRAMS, "smb://server/programs/");
 
-  XFILE::CFile* file = _CREATETEMPFILE(".xml");
+  XFILE::CFile* file = XBMC_CREATETEMPFILE(".xml");
   ASSERT_NE(file, nullptr);
-  const std::string xmlfile = _TEMPFILEPATH(file);
+  const std::string xmlfile = XBMC_TEMPFILEPATH(file);
   file->Close();
 
   ASSERT_TRUE(Save(xmlfile));
 
-  CTinyXML2 doc;
+  CXBMCTinyXML2 doc;
   ASSERT_TRUE(doc.LoadFile(xmlfile));
   std::vector<std::string> sections;
   for (const tinyxml2::XMLElement* element = doc.RootElement()->FirstChildElement(); element;
@@ -77,7 +77,7 @@ TEST_F(TestMediaSourceSettingsSections, SavesEverySectionAndReloadsItsDefault)
 
   Clear();
   EXPECT_TRUE(Load(xmlfile));
-  EXPECT_TRUE(_DELETETEMPFILE(file));
+  EXPECT_TRUE(XBMC_DELETETEMPFILE(file));
 
   EXPECT_EQ(GetDefaultSource(MediaSection::MUSIC), "smb://server/music/");
   EXPECT_EQ(GetDefaultSource(MediaSection::PICTURES), "smb://server/pictures/");
@@ -110,15 +110,15 @@ TEST_F(TestMediaSourceSettingsDevicePath, ReloadDriveSource)
   source.FromNameAndPaths("Disc", {"E:\\"});
   GetSources(MediaSection::VIDEO).push_back(source);
 
-  XFILE::CFile* file = _CREATETEMPFILE(".xml");
+  XFILE::CFile* file = XBMC_CREATETEMPFILE(".xml");
   ASSERT_NE(file, nullptr);
-  const std::string xmlfile = _TEMPFILEPATH(file);
+  const std::string xmlfile = XBMC_TEMPFILEPATH(file);
   file->Close();
 
   EXPECT_TRUE(Save(xmlfile));
   Clear();
   EXPECT_TRUE(Load(xmlfile));
-  EXPECT_TRUE(_DELETETEMPFILE(file));
+  EXPECT_TRUE(XBMC_DELETETEMPFILE(file));
 
   const auto& sources = GetSources(MediaSection::VIDEO);
   ASSERT_EQ(sources.size(), 1);
@@ -132,7 +132,7 @@ TEST_F(TestMediaSourceSettingsDevicePath, ReloadDriveSource)
 TEST(TestMediaSourceSettings, LoadString)
 {
   CMediaSourceSettings& ms = CMediaSourceSettings::GetInstance();
-  EXPECT_TRUE(ms.Load(_REF_FILE_PATH("//settings/test/test-MediaSources.xml")));
+  EXPECT_TRUE(ms.Load(XBMC_REF_FILE_PATH("/xbmc/settings/test/test-MediaSources.xml")));
 
   EXPECT_EQ(ms.GetSources(MediaSection::PROGRAMS).size(), 0);
   EXPECT_EQ(ms.GetSources(MediaSection::FILES).size(), 0);
@@ -145,7 +145,7 @@ TEST(TestMediaSourceSettings, LoadString)
 TEST(TestMediaSourceSettings, SaveString)
 {
   CMediaSourceSettings& ms = CMediaSourceSettings::GetInstance();
-  EXPECT_TRUE(ms.Load(_REF_FILE_PATH("//settings/test/test-MediaSources.xml")));
+  EXPECT_TRUE(ms.Load(XBMC_REF_FILE_PATH("/xbmc/settings/test/test-MediaSources.xml")));
 
   int refprograms = ms.GetSources(MediaSection::PROGRAMS).size();
   int reffiles = ms.GetSources(MediaSection::FILES).size();
@@ -155,8 +155,8 @@ TEST(TestMediaSourceSettings, SaveString)
   int refgames = ms.GetSources(MediaSection::GAMES).size();
 
   XFILE::CFile* file;
-  file = _CREATETEMPFILE(".xml");
-  std::string xmlfile = _TEMPFILEPATH(file);
+  file = XBMC_CREATETEMPFILE(".xml");
+  std::string xmlfile = XBMC_TEMPFILEPATH(file);
   file->Close();
 
   EXPECT_TRUE(ms.Save(xmlfile));
@@ -175,7 +175,7 @@ TEST(TestMediaSourceSettings, SaveString)
   const auto& gamessources = ms.GetSources(MediaSection::GAMES);
   EXPECT_EQ(gamessources.size(), refgames);
 
-  EXPECT_TRUE(_DELETETEMPFILE(file));
+  EXPECT_TRUE(XBMC_DELETETEMPFILE(file));
 }
 
 TEST(TestMediaSourceSettings, GetSource)

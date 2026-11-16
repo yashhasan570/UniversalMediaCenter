@@ -5,7 +5,7 @@ set -x
 # This is the list of binaries we have to sign for being able to run un-jailbroken
 LIST_BINARY_EXTENSIONS="dylib so app"
 
-DARWIN_EMBEDDED_ENTITLEMENTS="$_DEPENDS/share/darwin_embedded_entitlements.xml"
+DARWIN_EMBEDDED_ENTITLEMENTS="$XBMC_DEPENDS/share/darwin_embedded_entitlements.xml"
 LDID="$NATIVEPREFIX/bin/ldid"
 
 if [ "${PLATFORM_NAME}" == "macosx" ]; then
@@ -83,12 +83,12 @@ if ! [ -z "${CODE_SIGN_IDENTITY_FOR_ITEMS}" ]; then
 elif [ ! "$MACOS" ]; then
   # Do fake sign - needed for iOS >=5.1 and tvOS >=10.2 jailbroken devices
   # See http://www.saurik.com/id/8
-  echo "Doing a fake sign using ldid for jailbroken devices (main Universal Media Center binary and all Mach-O files)"
+  echo "Doing a fake sign using ldid for jailbroken devices (main kodi binary and all Mach-O files)"
 
   # Delete existing provisioning profile
   rm -f "${CONTENTS_PATH}/embedded.mobileprovision"
 
-  # Main 'Universal Media Center' binary
+  # Main 'kodi' binary
   "${LDID}" -S"${DARWIN_EMBEDDED_ENTITLEMENTS}" "${CONTENTS_PATH}/${EXECUTABLE_NAME}"
 
   # All Mach-O files (except TopShelf)

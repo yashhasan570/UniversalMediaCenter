@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2015-2024 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -15,7 +15,7 @@
 #include "filesystem/Directory.h"
 #include "settings/lib/Setting.h"
 #include "settings/lib/SettingDefinitions.h"
-#include "utils/TinyXML2.h"
+#include "utils/XBMCTinyXML2.h"
 #include "utils/log.h"
 
 #include <algorithm>
@@ -24,7 +24,7 @@
 using namespace UNIVERSAL MEDIA CENTER;
 using namespace KEYBOARD;
 
-#define KEYBOARD_LAYOUTS_PATH "special:///system/keyboardlayouts"
+#define KEYBOARD_LAYOUTS_PATH "special://xbmc/system/keyboardlayouts"
 
 CKeyboardLayoutManager::~CKeyboardLayoutManager()
 {
@@ -65,7 +65,7 @@ bool CKeyboardLayoutManager::Load(const std::string& path /* = "" */)
     if (layoutPath.empty())
       continue;
 
-    CTinyXML2 xmlDoc;
+    CXBMCTinyXML2 xmlDoc;
     if (!xmlDoc.LoadFile(layoutPath))
     {
       CLog::Log(LOGWARNING, "CKeyboardLayoutManager: unable to open {}", layoutPath);

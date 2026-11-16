@@ -6,7 +6,7 @@ DEPS =../../Makefile.include Makefile
 APP=$(PLATFORM)/build/TexturePacker
 
 CMAKE_OPTIONS := -DNATIVEPREFIX=${NATIVEPREFIX} \
-                 -DUNIVERSALMEDIA_SOURCE_DIR=$(CMAKE_SOURCE_DIR) \
+                 -DUNIVERSAL MEDIA CENTER_SOURCE_DIR=$(CMAKE_SOURCE_DIR) \
                  -DENABLE_STATIC=1 \
                  -DARCH_DEFINES="$(NATIVE_ARCH_DEFINES)"
 

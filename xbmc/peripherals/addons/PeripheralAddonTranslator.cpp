@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2015-2024 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -82,7 +82,7 @@ PERIPHERAL_TYPE CPeripheralAddonTranslator::TranslateType(PeripheralType type)
 }
 
 CDriverPrimitive CPeripheralAddonTranslator::TranslatePrimitive(
-    const addon::DriverPrimitive& primitive)
+    const universalmediacenter::addon::DriverPrimitive& primitive)
 {
   CDriverPrimitive retVal;
 
@@ -113,7 +113,7 @@ CDriverPrimitive CPeripheralAddonTranslator::TranslatePrimitive(
     }
     case JOYSTICK_DRIVER_PRIMITIVE_TYPE_KEY:
     {
-      KEYBOARD::Key keycode =
+      KEYBOARD::XBMCKey keycode =
           KEYBOARD::CKeyboardTranslator::TranslateKeysym(primitive.Keycode());
       retVal = CDriverPrimitive(keycode);
       break;
@@ -135,52 +135,52 @@ CDriverPrimitive CPeripheralAddonTranslator::TranslatePrimitive(
   return retVal;
 }
 
-addon::DriverPrimitive CPeripheralAddonTranslator::TranslatePrimitive(
+universalmediacenter::addon::DriverPrimitive CPeripheralAddonTranslator::TranslatePrimitive(
     const CDriverPrimitive& primitive)
 {
-  addon::DriverPrimitive retVal;
+  universalmediacenter::addon::DriverPrimitive retVal;
 
   switch (primitive.Type())
   {
     case PRIMITIVE_TYPE::BUTTON:
     {
-      retVal = addon::DriverPrimitive::CreateButton(primitive.Index());
+      retVal = universalmediacenter::addon::DriverPrimitive::CreateButton(primitive.Index());
       break;
     }
     case PRIMITIVE_TYPE::HAT:
     {
-      retVal = addon::DriverPrimitive(primitive.Index(),
+      retVal = universalmediacenter::addon::DriverPrimitive(primitive.Index(),
                                             TranslateHatDirection(primitive.HatDirection()));
       break;
     }
     case PRIMITIVE_TYPE::SEMIAXIS:
     {
-      retVal = addon::DriverPrimitive(
+      retVal = universalmediacenter::addon::DriverPrimitive(
           primitive.Index(), primitive.Center(),
           TranslateSemiAxisDirection(primitive.SemiAxisDirection()), primitive.Range());
       break;
     }
     case PRIMITIVE_TYPE::MOTOR:
     {
-      retVal = addon::DriverPrimitive::CreateMotor(primitive.Index());
+      retVal = universalmediacenter::addon::DriverPrimitive::CreateMotor(primitive.Index());
       break;
     }
     case PRIMITIVE_TYPE::KEY:
     {
       std::string keysym = KEYBOARD::CKeyboardTranslator::TranslateKeycode(primitive.Keycode());
-      retVal = addon::DriverPrimitive(keysym);
+      retVal = universalmediacenter::addon::DriverPrimitive(keysym);
       break;
     }
     case PRIMITIVE_TYPE::MOUSE_BUTTON:
     {
-      retVal = addon::DriverPrimitive::CreateMouseButton(
+      retVal = universalmediacenter::addon::DriverPrimitive::CreateMouseButton(
           TranslateMouseButton(primitive.MouseButton()));
       break;
     }
     case PRIMITIVE_TYPE::RELATIVE_POINTER:
     {
       retVal =
-          addon::DriverPrimitive(TranslateRelPointerDirection(primitive.PointerDirection()));
+          universalmediacenter::addon::DriverPrimitive(TranslateRelPointerDirection(primitive.PointerDirection()));
       break;
     }
     default:
@@ -191,19 +191,19 @@ addon::DriverPrimitive CPeripheralAddonTranslator::TranslatePrimitive(
 }
 
 std::vector<JOYSTICK::CDriverPrimitive> CPeripheralAddonTranslator::TranslatePrimitives(
-    const std::vector<addon::DriverPrimitive>& primitives)
+    const std::vector<universalmediacenter::addon::DriverPrimitive>& primitives)
 {
   std::vector<JOYSTICK::CDriverPrimitive> ret;
   std::ranges::transform(primitives, std::back_inserter(ret),
-                         [](const addon::DriverPrimitive& primitive)
+                         [](const universalmediacenter::addon::DriverPrimitive& primitive)
                          { return CPeripheralAddonTranslator::TranslatePrimitive(primitive); });
   return ret;
 }
 
-std::vector<addon::DriverPrimitive> CPeripheralAddonTranslator::TranslatePrimitives(
+std::vector<universalmediacenter::addon::DriverPrimitive> CPeripheralAddonTranslator::TranslatePrimitives(
     const std::vector<JOYSTICK::CDriverPrimitive>& primitives)
 {
-  std::vector<addon::DriverPrimitive> ret;
+  std::vector<universalmediacenter::addon::DriverPrimitive> ret;
   std::ranges::transform(primitives, std::back_inserter(ret),
                          [](const JOYSTICK::CDriverPrimitive& primitive)
                          { return CPeripheralAddonTranslator::TranslatePrimitive(primitive); });
@@ -447,9 +447,9 @@ JOYSTICK_FEATURE_TYPE CPeripheralAddonTranslator::TranslateFeatureType(JOYSTICK:
   return JOYSTICK_FEATURE_TYPE_UNKNOWN;
 }
 
-addon::DriverPrimitive CPeripheralAddonTranslator::Opposite(
-    const addon::DriverPrimitive& primitive)
+universalmediacenter::addon::DriverPrimitive CPeripheralAddonTranslator::Opposite(
+    const universalmediacenter::addon::DriverPrimitive& primitive)
 {
-  return addon::DriverPrimitive(primitive.DriverIndex(), primitive.Center() * -1,
+  return universalmediacenter::addon::DriverPrimitive(primitive.DriverIndex(), primitive.Center() * -1,
                                       primitive.SemiAxisDirection() * -1, primitive.Range());
 }

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2015-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -15,14 +15,14 @@
 
 #include <vector>
 
-namespace Addon
+namespace XBMCAddon
 {
-  namespace wsgi
+  namespace xbmcwsgi
   {
     typedef Tuple<String, String> WsgiHttpHeader;
 
-    /// \defgroup python_wsgi_WsgiResponse WsgiResponse
-    /// \ingroup python_wsgi
+    /// \defgroup python_xbmcwsgi_WsgiResponse WsgiResponse
+    /// \ingroup python_xbmcwsgi
     /// @{
     /// @brief **Represents the start_response callable passed to a WSGI handler.**
     ///
@@ -37,7 +37,7 @@ namespace Addon
       ~WsgiResponse() override;
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
-      /// \ingroup python_wsgi_WsgiInputStreamIterator
+      /// \ingroup python_xbmcwsgi_WsgiInputStreamIterator
       /// \python_func{ operator(status, response_headers[, exc_info]) }
       ///
       /// Callable implementation to initialize the response with the given
@@ -53,7 +53,7 @@ namespace Addon
       ///                             This argument should be supplied by the
       ///                             application only if start_response is
       ///                             being called by an error
-      /// @return                     The write() method \ref python_wsgi_WsgiResponseBody "WsgiResponseBody"
+      /// @return                     The write() method \ref python_xbmcwsgi_WsgiResponseBody "WsgiResponseBody"
       ///
       operator(...);
 #else

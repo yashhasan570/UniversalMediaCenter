@@ -1,4 +1,4 @@
-AC_DEFUN([_SETUP_ARCH_DEFINES],[
+AC_DEFUN([XBMC_SETUP_ARCH_DEFINES],[
 
 # build detection and setup - this is the native arch
 case $build in

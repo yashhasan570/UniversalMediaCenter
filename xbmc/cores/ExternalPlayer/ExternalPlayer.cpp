@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -35,7 +35,7 @@
   #include <Windows.h>
 #endif
 #if defined(TARGET_ANDROID)
-  #include "platform/android/activity/App.h"
+  #include "platform/android/activity/XBMCApp.h"
 #endif
 
 // If the process ends in less than this time (ms), we assume it's a launcher
@@ -63,7 +63,7 @@ CExternalPlayer::CExternalPlayer(IPlayerCallback& callback)
 
   m_hideconsole = false;
   m_warpcursor = WARP_NONE;
-  m_hide = false;
+  m_hidexbmc = false;
   m_islauncher = false;
   m_playCountMinTime = DEFAULT_PLAYCOUNT_MIN_TIME;
   m_playOneStackItem = false;
@@ -273,7 +273,7 @@ void CExternalPlayer::Process()
   LONG currentStyle = GetWindowLong(g_hWnd, GWL_EXSTYLE);
 #endif
 
-  if (m_hide && !m_islauncher)
+  if (m_hidexbmc && !m_islauncher)
   {
     CLog::Log(LOGINFO, "{}: Hiding {} window", __FUNCTION__, CCompileInfo::GetAppName());
     CServiceBroker::GetWinSystem()->Hide();
@@ -322,7 +322,7 @@ void CExternalPlayer::Process()
 
   if (ret && (m_islauncher || duration.count() < LAUNCHER_PROCESS_TIME))
   {
-    if (m_hide)
+    if (m_hidexbmc)
     {
       CLog::Log(LOGINFO, "{}: {} cannot stay hidden for a launcher process", __FUNCTION__,
                 CCompileInfo::GetAppName());
@@ -381,7 +381,7 @@ void CExternalPlayer::Process()
   bookmark.player = m_name;
   m_callback.OnPlayerCloseFile(m_file, bookmark);
 
-  /* Resume AE processing of  native audio */
+  /* Resume AE processing of XBMC native audio */
   if (!CServiceBroker::GetActiveAE()->Resume())
   {
     CLog::Log(LOGFATAL, "{}: Failed to restart AudioEngine after return from external player",
@@ -475,7 +475,7 @@ bool CExternalPlayer::ExecuteAppAndroid(const char* strSwitches,const char* strP
 {
   CLog::Log(LOGINFO, "{}: {}", __FUNCTION__, strSwitches);
 
-  bool ret = CApp::StartActivity(strSwitches, "android.intent.action.VIEW", "video/*", strPath);
+  bool ret = CXBMCApp::StartActivity(strSwitches, "android.intent.action.VIEW", "video/*", strPath);
 
   if (!ret)
   {
@@ -563,7 +563,7 @@ bool CExternalPlayer::Initialize(tinyxml2::XMLElement* pConfig)
   XMLUtils::GetString(pConfig, "args", m_args);
   XMLUtils::GetBoolean(pConfig, "playonestackitem", m_playOneStackItem);
   XMLUtils::GetBoolean(pConfig, "islauncher", m_islauncher);
-  XMLUtils::GetBoolean(pConfig, "hide", m_hide);
+  XMLUtils::GetBoolean(pConfig, "hidexbmc", m_hidexbmc);
   if (!XMLUtils::GetBoolean(pConfig, "hideconsole", m_hideconsole))
   {
 #ifdef TARGET_WINDOWS_DESKTOP
@@ -595,8 +595,8 @@ bool CExternalPlayer::Initialize(tinyxml2::XMLElement* pConfig)
 
   CLog::Log(
       LOGINFO,
-      "ExternalPlayer Tweaks: hideconsole ({}), hide ({}), islauncher ({}), warpcursor ({})",
-      m_hideconsole ? "true" : "false", m_hide ? "true" : "false",
+      "ExternalPlayer Tweaks: hideconsole ({}), hidexbmc ({}), islauncher ({}), warpcursor ({})",
+      m_hideconsole ? "true" : "false", m_hidexbmc ? "true" : "false",
       m_islauncher ? "true" : "false", warpCursor);
 
 #ifdef TARGET_WINDOWS_DESKTOP

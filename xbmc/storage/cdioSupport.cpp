@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -639,7 +639,7 @@ int CCdIoSupport::GuessFilesystem(int start_session, track_t track_num)
   return ret;
 }
 
-void CCdIoSupport::GetCdTextInfo(_cdtext_t &xcdt, int trackNum)
+void CCdIoSupport::GetCdTextInfo(xbmc_cdtext_t &xcdt, int trackNum)
 {
   // cdtext disabled for windows as some setup doesn't like mmc commands
   // and stall for over a minute in cdio_get_cdtext 83
@@ -757,7 +757,7 @@ CCdInfo* CCdIoSupport::GetCdInfo(char* cDeviceFileName)
       // Make sure that we have the Disc related info available
       if (i == 1)
       {
-        _cdtext_t xcdt;
+        xbmc_cdtext_t xcdt;
         GetCdTextInfo(xcdt, 0);
         info->SetDiscCDTextInformation( xcdt );
       }

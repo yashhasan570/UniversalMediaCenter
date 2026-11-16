@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2007-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -101,7 +101,7 @@ bool CVaapi2Texture::Import(CVaapiRenderPicture* pic)
       case 1:
         // Single-plane packed formats (YUY2, Y210/Y212/Y216). The DMA-BUF
         // carries Y/Cb/Y/Cr (or wider) interleaved; bind to m_y and leave
-        // m_vu unused. The shader (_Y210 in gles_yuv2rgb_basic.frag)
+        // m_vu unused. The shader (XBMC_Y210 in gles_yuv2rgb_basic.frag)
         // decodes the packed layout.
         texture = &m_y;
         break;

@@ -19,4 +19,4 @@ set(SOURCES TestAutoSwitch.cpp
 set(HEADERS TestBasicEnvironment.h
             TestUtils.h)
 
-core_add_test_library(_test)
+core_add_test_library(xbmc_test)

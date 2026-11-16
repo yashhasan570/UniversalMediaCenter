@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -20,7 +20,7 @@
 #include "utils/FileUtils.h"
 #include "utils/RssReader.h"
 #include "utils/StringUtils.h"
-#include "utils/TinyXML2.h"
+#include "utils/XBMCTinyXML2.h"
 #include "utils/log.h"
 
 #include <mutex>
@@ -102,7 +102,7 @@ bool CRssManager::Load()
   if (!CFileUtils::Exists(rssXML))
     return false;
 
-  CTinyXML2 rssDoc;
+  CXBMCTinyXML2 rssDoc;
   if (!rssDoc.LoadFile(rssXML))
   {
     CLog::Log(LOGERROR, "CRssManager: error loading {}, Line {}\n{}", rssXML, rssDoc.ErrorLineNum(),

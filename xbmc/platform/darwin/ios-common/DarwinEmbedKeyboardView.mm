@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2012-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -14,9 +14,9 @@
 #include "utils/log.h"
 
 #if defined(TARGET_DARWIN_IOS)
-#include "platform/darwin/ios/Controller.h"
+#include "platform/darwin/ios/XBMCController.h"
 #elif defined(TARGET_DARWIN_TVOS)
-#include "platform/darwin/tvos/Controller.h"
+#include "platform/darwin/tvos/XBMCController.h"
 #endif
 
 using namespace std::chrono_literals;
@@ -94,7 +94,7 @@ static CEvent keyboardFinishedEvent;
 - (void)activate
 {
   dispatch_sync(dispatch_get_main_queue(), ^{
-    [g_Controller activateKeyboard:self];
+    [g_xbmcController activateKeyboard:self];
     [self layoutIfNeeded];
     [m_inputTextField becomeFirstResponder];
     keyboardFinishedEvent.Reset();
@@ -124,7 +124,7 @@ static CEvent keyboardFinishedEvent;
   dispatch_async(dispatch_get_main_queue(), ^{
     // always called in the mainloop context
     // detach the keyboard view from our main controller
-    [g_Controller deactivateKeyboard:self];
+    [g_xbmcController deactivateKeyboard:self];
 
     // no more notification we want to receive.
     [[NSNotificationCenter defaultCenter] removeObserver:self];

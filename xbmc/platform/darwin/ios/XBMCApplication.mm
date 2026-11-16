@@ -1,23 +1,23 @@
 /*
  *  Copyright (C) 2010-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
  */
 
-#import "Application.h"
+#import "XBMCApplication.h"
 
 #import "IOSScreenManager.h"
-#import "Controller.h"
+#import "XBMCController.h"
 
 #import "platform/darwin/NSLogDebugHelpers.h"
 
 #import <AVFoundation/AVAudioSession.h>
 
-@implementation ApplicationDelegate
+@implementation XBMCApplicationDelegate
 {
-  Controller* m_Controller;
+  XBMCController* m_xbmcController;
 }
 
 // - iOS6 rotation API - will be called on iOS7 runtime!--------
@@ -33,16 +33,16 @@
 {
   PRINT_SIGNATURE();
 
-  [m_Controller pauseAnimation];
-  [m_Controller becomeInactive];
+  [m_xbmcController pauseAnimation];
+  [m_xbmcController becomeInactive];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
   PRINT_SIGNATURE();
 
-  [m_Controller resumeAnimation];
-  [m_Controller enterForeground];
+  [m_xbmcController resumeAnimation];
+  [m_xbmcController enterForeground];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -52,7 +52,7 @@
   if (application.applicationState == UIApplicationStateBackground)
   {
     // the app is turn into background, not in by screen lock which has app state inactive.
-    [m_Controller enterBackground];
+    [m_xbmcController enterBackground];
   }
 }
 
@@ -60,7 +60,7 @@
 {
   PRINT_SIGNATURE();
 
-  [m_Controller stopAnimation];
+  [m_xbmcController stopAnimation];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -110,8 +110,8 @@
   [[UIDevice currentDevice] setBatteryMonitoringEnabled:YES];
   UIScreen *currentScreen = [UIScreen mainScreen];
 
-  m_Controller = [[Controller alloc] initWithFrame: [currentScreen bounds] withScreen:currentScreen];
-  [m_Controller startAnimation];
+  m_xbmcController = [[XBMCController alloc] initWithFrame: [currentScreen bounds] withScreen:currentScreen];
+  [m_xbmcController startAnimation];
   [self registerScreenNotifications:YES];
 
   NSError *err = nil;
@@ -149,22 +149,22 @@
 
 - (void)upPressed
 {
-  [g_Controller sendKey:K_UP];
+  [g_xbmcController sendKey:XBMCK_UP];
 }
 
 - (void)downPressed
 {
-  [g_Controller sendKey:K_DOWN];
+  [g_xbmcController sendKey:XBMCK_DOWN];
 }
 
 - (void)leftPressed
 {
-  [g_Controller sendKey:K_LEFT];
+  [g_xbmcController sendKey:XBMCK_LEFT];
 }
 
 - (void)rightPressed
 {
-  [g_Controller sendKey:K_RIGHT];
+  [g_xbmcController sendKey:XBMCK_RIGHT];
 }
 
 @end
@@ -184,7 +184,7 @@ int main(int argc, char *argv[]) {
 
     @try
     {
-      retVal = UIApplicationMain(argc, argv, nil, NSStringFromClass(ApplicationDelegate.class));
+      retVal = UIApplicationMain(argc, argv, nil, NSStringFromClass(XBMCApplicationDelegate.class));
     }
     @catch (id theException)
     {

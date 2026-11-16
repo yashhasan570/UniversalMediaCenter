@@ -1,12 +1,13 @@
 ﻿/*
  *  Copyright (C) 2017-2019 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
  */
 #pragma once
 
+#include "LutLoader.h"
 #include "VideoRenderers/ColorManager.h"
 #include "VideoRenderers/DebugInfo.h"
 #include "VideoRenderers/RenderInfo.h"
@@ -119,6 +120,11 @@ class CRendererBase
 public:
   virtual ~CRendererBase();
 
+  //! The playback continues with a new renderer, so the Windows HDR state is not restored.
+  void KeepHdrStateOnDestroy() { m_keepHdrState = true; }
+  //! Restores the Windows HDR state stored at the start of the playback, if one was stored.
+  static void RestoreHdrStateBeforePlayback();
+
   virtual CRenderInfo GetRenderInfo();
   virtual bool Configure(const VideoPicture &picture, float fps, unsigned int orientation);
   virtual bool Supports(ESCALINGMETHOD method) const = 0;
@@ -153,7 +159,7 @@ protected:
                                 unsigned int height,
                                 bool dynamic = false,
                                 DXGI_FORMAT format = DXGI_FORMAT_UNKNOWN);
-  void OnCMSConfigChanged(AVColorPrimaries srcPrimaries);
+  static CLutLoader::Lut LoadLut(CColorManager& colorManager, AVColorPrimaries primaries);
   void ReorderDrawPoints(const CRect& destRect, CPoint(&rotatedPoints)[4]) const;
   bool CreateRenderBuffer(int index);
   void DeleteRenderBuffer(int index);
@@ -195,7 +201,6 @@ protected:
   bool m_toneMapping = false;
   bool m_useDithering = false;
   bool m_cmsOn = false;
-  bool m_lutIsLoading = false;
   bool m_useHLGtoPQ = false;
   ETONEMAPMETHOD m_toneMapMethod = VS_TONEMAPMETHOD_OFF;
   // PQ/HLG streams get hue and saturation from the output shader instead of the YUV conversion
@@ -232,7 +237,6 @@ protected:
     float gamma = 0.0f;
     bool limitedColor = false;
     float toneMapParam = 0.0f;
-    bool lutLoading = false;
     bool operator==(const IntermediateState&) const = default;
   };
   IntermediateState m_intermediateState;
@@ -243,17 +247,19 @@ protected:
   AVPixelFormat m_format = AV_PIX_FMT_NONE;
   CD3DTexture m_IntermediateTarget;
   std::shared_ptr<COutputShader> m_outputShader;
-  std::unique_ptr<CColorManager> m_colorManager;
+  // shared with a LUT load in flight, which can outlive the renderer
+  std::shared_ptr<CColorManager> m_colorManager;
   Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_pLUTView;
+  CLutLoader m_lut;
   CVideoSettings& m_videoSettings;
   std::map<int, CRenderBuffer*> m_renderBuffers;
 
   DXGI_HDR_METADATA_HDR10 m_lastHdr10 = {};
   HDR_TYPE m_HdrType = HDR_TYPE::HDR_INVALID;
   bool m_AutoSwitchHDR = false;
-  bool m_initialHdrEnabled = false;
   bool m_DolbyVisionOutput = false;
   bool m_canRenderDolbyVision = false;
   bool m_dolbyVisionEffect = false; // frames are already display-referred RGB
+  bool m_keepHdrState = false;
   std::string m_renderMethodName;
 };

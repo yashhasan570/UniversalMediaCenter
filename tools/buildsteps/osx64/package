@@ -1,11 +1,11 @@
 WORKSPACE=${WORKSPACE:-$( cd $(dirname $0)/../../.. ; pwd -P )}
-_PLATFORM_DIR=osx64
+XBMC_PLATFORM_DIR=osx64
 . $WORKSPACE/tools/buildsteps/defaultenv
 
 cd $WORKSPACE/build;make -j$BUILDTHREADS dmg
 cd $WORKSPACE/build/tools/darwin/packaging/osx/
 
 #rename for upload
-#e.x. universalmediacenter-20130314-8c2fb31-Frodo-x86_64.dmg
-UPLOAD_FILENAME="universalmediacenter-$(getBuildRevDateStr)-x86_64.dmg"
+#e.x. Universal Media Center-20130314-8c2fb31-Frodo-x86_64.dmg
+UPLOAD_FILENAME="Universal Media Center-$(getBuildRevDateStr)-x86_64.dmg"
 mv *.dmg $WORKSPACE/tools/darwin/packaging/osx/$UPLOAD_FILENAME

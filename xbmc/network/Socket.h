@@ -2,7 +2,7 @@
  * Socket classes
  *  Copyright (c) 2008 d4rk
  *  Copyright (C) 2008-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -100,7 +100,7 @@ namespace SOCKETS
       if (saddr.saddr_generic.sa_family == AF_INET6)
       {
         // IPv4 coercion (see http://home.samfundet.no/~sesse/ipv6-porting.pdf).
-        // We hash the entire IPv6 address because  might conceivably need to
+        // We hash the entire IPv6 address because XBMC might conceivably need to
         // distinguish between different hosts in the same subnet.
         // This hash function (djbhash) is not too strong, but good enough.
         uint32_t hash = 5381;

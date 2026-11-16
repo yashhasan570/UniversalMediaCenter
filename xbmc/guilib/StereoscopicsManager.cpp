@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: LGPL-2.1-or-later
  *  See LICENSES/README.md for more information.
@@ -102,7 +102,7 @@ CStereoscopicsManager::~CStereoscopicsManager(void)
 
 void CStereoscopicsManager::Initialize()
 {
-  // turn off stereo mode on  startup
+  // turn off stereo mode on XBMC startup
   SetStereoMode(RenderStereoMode::OFF);
 }
 

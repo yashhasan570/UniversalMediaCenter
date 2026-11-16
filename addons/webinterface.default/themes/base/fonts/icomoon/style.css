@@ -216,10 +216,10 @@
 .icon-clapperboard:before {
   content: "\e601";
 }
-.icon-Universal Media Center-symbol:before {
+.icon-kodi-symbol:before {
   content: "\e602";
 }
-.icon-Universal Media Center-text:before {
+.icon-kodi-text:before {
   content: "\e603";
 }
 .icon-linux:before {

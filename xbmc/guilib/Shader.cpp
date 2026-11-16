@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -34,7 +34,7 @@ bool CShader::LoadSource(const std::string& filename, const std::string& prefix)
 
   CFileStream file;
 
-  std::string path = "special:///system/shaders/";
+  std::string path = "special://xbmc/system/shaders/";
   path += CServiceBroker::GetRenderSystem()->GetShaderPath(filename);
   path += filename;
   if(!file.Open(path))
@@ -67,7 +67,7 @@ bool CShader::AppendSource(const std::string& filename)
   CFileStream file;
   std::string temp;
 
-  std::string path = "special:///system/shaders/";
+  std::string path = "special://xbmc/system/shaders/";
   path += CServiceBroker::GetRenderSystem()->GetShaderPath(filename);
   path += filename;
   if(!file.Open(path))
@@ -91,7 +91,7 @@ bool CShader::InsertSource(const std::string& filename, const std::string& loc)
   CFileStream file;
   std::string temp;
 
-  std::string path = "special:///system/shaders/";
+  std::string path = "special://xbmc/system/shaders/";
   path += CServiceBroker::GetRenderSystem()->GetShaderPath(filename);
   path += filename;
   if(!file.Open(path))

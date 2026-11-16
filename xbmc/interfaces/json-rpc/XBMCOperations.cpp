@@ -1,12 +1,12 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
  */
 
-#include "Operations.h"
+#include "XBMCOperations.h"
 
 #include "ServiceBroker.h"
 #include "messaging/ApplicationMessenger.h"
@@ -15,7 +15,7 @@
 
 using namespace JSONRPC;
 
-JSONRPC_STATUS COperations::GetInfoLabels(const std::string &method, ITransportLayer *transport, IClient *client, const CVariant &parameterObject, CVariant &result)
+JSONRPC_STATUS CXBMCOperations::GetInfoLabels(const std::string &method, ITransportLayer *transport, IClient *client, const CVariant &parameterObject, CVariant &result)
 {
   std::vector<std::string> info;
 
@@ -44,7 +44,7 @@ JSONRPC_STATUS COperations::GetInfoLabels(const std::string &method, ITransportL
   return OK;
 }
 
-JSONRPC_STATUS COperations::GetInfoBooleans(const std::string &method, ITransportLayer *transport, IClient *client, const CVariant &parameterObject, CVariant &result)
+JSONRPC_STATUS CXBMCOperations::GetInfoBooleans(const std::string &method, ITransportLayer *transport, IClient *client, const CVariant &parameterObject, CVariant &result)
 {
   std::vector<std::string> info;
 

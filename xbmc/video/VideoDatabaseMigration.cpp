@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2025-2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -930,7 +930,7 @@ void CVideoDatabase::UpdateTables(int iVersion)
 
   if (iVersion < 121)
   {
-    // https://github.com///issues/21253 - Universal Media Center picks up wrong "year" for PVR recording.
+    // https://github.com/xbmc/xbmc/issues/21253 - Universal Media Center picks up wrong "year" for PVR recording.
 
     m_pDS->query("SELECT idFile, strFilename FROM files WHERE strFilename LIKE '% (1969)%.pvr' OR "
                  "strFilename LIKE '% (1601)%.pvr'");

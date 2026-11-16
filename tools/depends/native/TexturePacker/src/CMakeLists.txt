@@ -50,7 +50,7 @@ set(SOURCES md5.cpp
             decoder/GifHelper.cpp
             decoder/JPGDecoder.cpp
             decoder/PNGDecoder.cpp
-            ${UNIVERSALMEDIA_SOURCE_DIR}//guilib/XBTF.cpp)
+            ${UNIVERSALMEDIA_SOURCE_DIR}/xbmc/guilib/XBTF.cpp)
 
 if(WIN32)
   list(APPEND SOURCES Win32/dirent.c)
@@ -63,7 +63,7 @@ target_include_directories(TexturePacker
                            PRIVATE ${PNG_INCLUDE_DIRS}
                                    ${JPEG_INCLUDE_DIR}
                                    ${GIF_INCLUDE_DIR}
-                                   ${UNIVERSALMEDIA_SOURCE_DIR}/
+                                   ${UNIVERSALMEDIA_SOURCE_DIR}/xbmc
                                    ${CMAKE_CURRENT_SOURCE_DIR}
                                    ${CMAKE_CURRENT_SOURCE_DIR}/decoder)
 if(WIN32)

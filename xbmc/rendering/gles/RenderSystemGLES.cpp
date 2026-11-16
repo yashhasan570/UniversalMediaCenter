@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -1022,7 +1022,7 @@ std::string CRenderSystemGLES::GetShaderPath(const std::string& filename)
 
   if (m_RenderVersionMajor >= 3 && m_RenderVersionMinor >= 1)
   {
-    std::string file = "special:///system/shaders/GLES/3.1/" + filename;
+    std::string file = "special://xbmc/system/shaders/GLES/3.1/" + filename;
     const CURL pathToUrl(file);
     if (CFileUtils::Exists(pathToUrl.Get()))
       return "GLES/3.1/";

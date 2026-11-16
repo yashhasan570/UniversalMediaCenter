@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2013-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -66,11 +66,11 @@ using namespace XFILE;
 using namespace std::chrono_literals;
 
 static const std::string getListOfAddonClassesAsString(
-    Addon::AddonClass::Ref<Addon::Python::PythonLanguageHook>& languageHook)
+    XBMCAddon::AddonClass::Ref<XBMCAddon::Python::PythonLanguageHook>& languageHook)
 {
   std::string message;
   std::unique_lock l(*(languageHook.get()));
-  const std::set<Addon::AddonClass*>& acs = languageHook->GetRegisteredAddonClasses();
+  const std::set<XBMCAddon::AddonClass*>& acs = languageHook->GetRegisteredAddonClasses();
   bool firstTime = true;
   for (const auto& iter : acs)
   {
@@ -194,7 +194,7 @@ bool CPythonInvoker::execute(const std::string& script, std::vector<std::wstring
   PyEval_RestoreThread(l_threadState);
   if (newInterp)
   {
-    m_languageHook = new Addon::Python::PythonLanguageHook(l_threadState->interp);
+    m_languageHook = new XBMCAddon::Python::PythonLanguageHook(l_threadState->interp);
     m_languageHook->RegisterMe();
 
     onInitialization();
@@ -309,7 +309,7 @@ bool CPythonInvoker::execute(const std::string& script, std::vector<std::wstring
     {
       // run script from file
       // We need to have python open the file because on Windows the DLL that python
-      //  is linked against may not be the DLL that  is linked against so
+      //  is linked against may not be the DLL that xbmc is linked against so
       //  passing a FILE* to python from an fopen has the potential to crash.
 
       PyObject* pyRealFilename = Py_BuildValue("s", realFilename.c_str());
@@ -329,7 +329,7 @@ bool CPythonInvoker::execute(const std::string& script, std::vector<std::wstring
 
         Py_DECREF(f);
         setState(InvokerStateRunning);
-        Addon::Python::PyContext
+        XBMCAddon::Python::PyContext
             pycontext; // this is a guard class that marks this callstack as being in a python context
         executeScript(fp, realFilename, moduleDict);
       }
@@ -429,7 +429,7 @@ bool CPythonInvoker::execute(const std::string& script, std::vector<std::wstring
   }
 
   // pending calls must be cleared out
-  Addon::RetardedAsyncCallbackHandler::clearPendingCalls(m_threadState);
+  XBMCAddon::RetardedAsyncCallbackHandler::clearPendingCalls(m_threadState);
 
   assert(m_threadState != nullptr);
   PyEval_ReleaseThread(m_threadState);
@@ -485,7 +485,7 @@ bool CPythonInvoker::stop(bool abort)
       setState(InvokerStateStopping);
       lock.unlock();
 
-      //tell .Monitor to call onAbortRequested(). That needs no Python, but taking the GIL
+      //tell xbmc.Monitor to call onAbortRequested(). That needs no Python, but taking the GIL
       //here finds a script stuck holding it before the 5 s wait below.
       const auto abortNotify = [this]
       {
@@ -522,7 +522,7 @@ bool CPythonInvoker::stop(bool abort)
       }
 
       // We can't empty-spin in the main thread and expect scripts to be able to
-      // dismantle themselves. Python dialogs aren't normal  dialogs, they rely
+      // dismantle themselves. Python dialogs aren't normal XBMC dialogs, they rely
       // on TMSG_GUI_PYTHON_DIALOG messages, so pump the message loop.
       if (CServiceBroker::GetAppMessenger()->IsProcessThread())
       {
@@ -680,7 +680,7 @@ void CPythonInvoker::onExecutionFailed()
 
 void CPythonInvoker::onInitialization()
 {
-  _TRACE;
+  XBMC_TRACE;
 
   // get a possible initialization script
   const char* runscript = getInitializationScript();
@@ -699,24 +699,24 @@ void CPythonInvoker::onPythonModuleInitialization(void* moduleDict)
 
   PyObject* moduleDictionary = (PyObject*)moduleDict;
 
-  PyDict_SetItemString(moduleDictionary, "__addonid__",
+  PyDict_SetItemString(moduleDictionary, "__xbmcaddonid__",
                        PyObjectPtr(PyUnicode_FromString(m_addon->ID().c_str())).get());
 
-  ADDON::CAddonVersion version = m_addon->GetDependencyVersion(".python");
-  PyDict_SetItemString(moduleDictionary, "__apiversion__",
+  ADDON::CAddonVersion version = m_addon->GetDependencyVersion("xbmc.python");
+  PyDict_SetItemString(moduleDictionary, "__xbmcapiversion__",
                        PyObjectPtr(PyUnicode_FromString(version.asString().c_str())).get());
 
-  PyDict_SetItemString(moduleDictionary, "__invokerid__", PyLong_FromLong(GetId()));
+  PyDict_SetItemString(moduleDictionary, "__xbmcinvokerid__", PyLong_FromLong(GetId()));
 
   CLog::Log(LOGDEBUG,
             "CPythonInvoker({}, {}): instantiating addon using automatically obtained id of \"{}\" "
-            "dependent on version {} of the .python api",
+            "dependent on version {} of the xbmc.python api",
             GetId(), m_sourceFile, m_addon->ID(), version.asString());
 }
 
 void CPythonInvoker::onDeinitialization()
 {
-  _TRACE;
+  XBMC_TRACE;
 }
 
 void CPythonInvoker::onError(const std::string& exceptionType /* = "" */,

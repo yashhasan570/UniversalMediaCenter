@@ -1,6 +1,6 @@
 #version 400
 
-#if(_texture_rectangle)
+#if(XBMC_texture_rectangle)
 # define texture2D texture2DRect
 # define sampler2D sampler2DRect
 #endif
@@ -26,11 +26,11 @@ out vec4 fragColor;
 
 vec2 stretch(vec2 pos)
 {
-#if (_STRETCH)
+#if (XBMC_STRETCH)
   // our transform should map [0..1] to itself, with f(0) = 0, f(1) = 1, f(0.5) = 0.5, and f'(0.5) = b.
   // a simple curve to do this is g(x) = b(x-0.5) + (1-b)2^(n-1)(x-0.5)^n + 0.5
   // where the power preserves sign. n = 2 is the simplest non-linear case (required when b != 1)
-  #if(_texture_rectangle)
+  #if(XBMC_texture_rectangle)
     float x = (pos.x * m_step.x) - 0.5;
     return vec2((mix(2.0 * x * abs(x), x, m_stretch) + 0.5) / m_step.x, pos.y);
   #else
@@ -93,14 +93,14 @@ vec4 process()
   vec4 rgb;
   vec4 yuv;
 
-#if defined(_YV12)
+#if defined(XBMC_YV12)
 
   yuv = vec4(filter_0(m_sampY, stretch(m_cordY)),
              texture(m_sampU, stretch(m_cordU)).r,
              texture(m_sampV, stretch(m_cordV)).r,
              1.0);
 
-#elif defined(_NV12)
+#elif defined(XBMC_NV12)
 
   yuv = vec4(filter_0(m_sampY, stretch(m_cordY)),
              texture(m_sampU, stretch(m_cordU)).rg,
@@ -109,28 +109,28 @@ vec4 process()
 #endif
 
   rgb = m_yuvmat * yuv;
-#if defined(UNIVERSAL MEDIA CENTER_HUESAT_PQ) || defined(UNIVERSAL MEDIA CENTER_HUESAT_HLG)
+#if defined(KODI_HUESAT_PQ) || defined(KODI_HUESAT_HLG)
   rgb.rgb = hueSaturation(rgb.rgb);
 #endif
   rgb.a = m_alpha;
 
-#if defined(_COL_CONVERSION)
+#if defined(XBMC_COL_CONVERSION)
   rgb.rgb = pow(max(vec3(0), rgb.rgb), vec3(m_gammaSrc));
   rgb.rgb = max(vec3(0), m_primMat * rgb.rgb);
   rgb.rgb = pow(rgb.rgb, vec3(m_gammaDstInv));
 
-#if defined(UNIVERSAL MEDIA CENTER_TONE_MAPPING_REINHARD)
+#if defined(KODI_TONE_MAPPING_REINHARD)
   float luma = dot(rgb.rgb, m_coefsDst);
   rgb.rgb *= reinhard(luma) / luma;
 
-#elif defined(UNIVERSAL MEDIA CENTER_TONE_MAPPING_ACES)
+#elif defined(KODI_TONE_MAPPING_ACES)
   rgb.rgb = inversePQ(rgb.rgb);
   rgb.rgb *= (10000.0 / m_luminance) * (2.0 / m_toneP1);
   rgb.rgb = aces(rgb.rgb);
   rgb.rgb *= (1.24 / m_toneP1);
   rgb.rgb = pow(rgb.rgb, vec3(0.27));
 
-#elif defined(UNIVERSAL MEDIA CENTER_TONE_MAPPING_HABLE)
+#elif defined(KODI_TONE_MAPPING_HABLE)
   rgb.rgb = inversePQ(rgb.rgb);
   rgb.rgb *= m_toneP1;
   float wp = m_luminance / 100.0;
@@ -140,7 +140,7 @@ vec4 process()
 
 #endif
 
-#if defined(UNIVERSAL MEDIA CENTER_GAMMA)
+#if defined(KODI_GAMMA)
   rgb.rgb = pow(clamp((rgb.rgb - m_gammaRange.y) / m_gammaRange.x, 0.0, 1.0), vec3(m_gammaInv)) * m_gammaRange.x + m_gammaRange.y;
 #endif
 

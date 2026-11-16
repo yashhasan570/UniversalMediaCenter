@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2012-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -565,7 +565,7 @@ private:
   int m_iPriority; /*!< priority of this recording */
   int m_iLifetime; /*!< lifetime of this recording */
   std::string m_strDirectory; /*!< directory of this recording on the client */
-  unsigned int m_iRecordingId; /*!< id that won't change while  is running */
+  unsigned int m_iRecordingId; /*!< id that won't change while xbmc is running */
 
   CPVRCachedImage m_iconPath; /*!< icon path */
   CPVRCachedImage m_thumbnailPath; /*!< thumbnail path */

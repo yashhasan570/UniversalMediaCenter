@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2010-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -28,7 +28,7 @@
 	GLfloat rotz;
 
 	BOOL animating;
-  BOOL Alive;
+  BOOL xbmcAlive;
   BOOL readyToRun;
   BOOL pause;
   NSConditionLock* animationThreadLock;
@@ -38,7 +38,7 @@
   BOOL framebufferResizeRequested;
 }
 @property (readonly, nonatomic, getter=isAnimating) BOOL animating;
-@property (readonly, nonatomic, getter=isAlive) BOOL Alive;
+@property (readonly, nonatomic, getter=isXBMCAlive) BOOL xbmcAlive;
 @property (readonly, nonatomic, getter=isReadyToRun) BOOL readyToRun;
 @property (readonly, nonatomic, getter=isPause) BOOL pause;
 @property(weak, readonly, getter=getCurrentScreen) UIScreen* currentScreen;

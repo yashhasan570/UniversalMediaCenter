@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -30,8 +30,8 @@ public:
   virtual bool HasSymbols() = 0;
 
   const char *GetName() const; // eg "mplayer.dll"
-  const char *GetFileName() const; // "special://bin/system/mplayer/players/mplayer.dll"
-  const char *GetPath() const; // "special://bin/system/mplayer/players/"
+  const char *GetFileName() const; // "special://xbmcbin/system/mplayer/players/mplayer.dll"
+  const char *GetPath() const; // "special://xbmcbin/system/mplayer/players/"
 
   int IncrRef();
   int DecrRef();

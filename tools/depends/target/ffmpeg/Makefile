@@ -36,7 +36,7 @@ else
   RETRIEVE_TOOL = curl
   RETRIEVE_TOOL_FLAGS = -LsS --create-dirs --retry 10 --retry-connrefused -o
   ARCHIVE_TOOL_FLAGS = --strip-components=1 -xf
-  BASE_URL ?= https://mirrors.github.com/yashhasan570/UniversalMediaCenter/build-deps/sources
+  BASE_URL ?= https://mirrors.Universal Media Center.tv/build-deps/sources
 endif
 
 include ../../download-files.include

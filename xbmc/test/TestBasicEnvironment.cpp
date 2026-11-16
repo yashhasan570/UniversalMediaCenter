@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -58,17 +58,17 @@ void TestBasicEnvironment::SetUp()
 
   g_application.m_ServiceManager.reset(new CServiceManager());
 
-  if (!CTestUtils::Instance().SetReferenceFileBasePath())
+  if (!CXBMCTestUtils::Instance().SetReferenceFileBasePath())
     SetUpError();
-  CTestUtils::Instance().setTestFileFactoryWriteInputFile(
-    _REF_FILE_PATH("/filesystem/test/reffile.txt")
+  CXBMCTestUtils::Instance().setTestFileFactoryWriteInputFile(
+    XBMC_REF_FILE_PATH("xbmc/filesystem/test/reffile.txt")
   );
 
 //for darwin set framework path - else we get assert
 //in guisettings init below
 #ifdef TARGET_DARWIN
   std::string frameworksPath = CUtil::GetFrameworksPath();
-  CSpecialProtocol::SetFrameworksPath(frameworksPath);
+  CSpecialProtocol::SetXBMCFrameworksPath(frameworksPath);
 #endif
   /**
    * @todo Something should be done about all the asserts in GUISettings so
@@ -98,8 +98,8 @@ void TestBasicEnvironment::SetUp()
   /** @todo Make the initialization of the VFS here optional so it can be
    * testable in a test case.
    */
-  f = _CREATETEMPFILE("");
-  if (!f || !_DELETETEMPFILE(f))
+  f = XBMC_CREATETEMPFILE("");
+  if (!f || !XBMC_DELETETEMPFILE(f))
   {
     TearDown();
     SetUpError();

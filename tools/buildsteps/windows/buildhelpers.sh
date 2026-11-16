@@ -136,7 +136,7 @@ do_download() {
     tar -xf /downloads/$ARCHIVE --strip 1
   fi
   # applying patches
-  local patches=(//tools/depends/target/$LIBNAME/*-$LIBNAME-windows-*.patch //tools/depends/target/$LIBNAME/*-$LIBNAME-all-*.patch)
+  local patches=(/xbmc/tools/depends/target/$LIBNAME/*-$LIBNAME-windows-*.patch /xbmc/tools/depends/target/$LIBNAME/*-$LIBNAME-all-*.patch)
   for patch in ${patches[@]}; do
     echo "Applying patch ${patch}"
     if [[ -f $patch ]]; then
@@ -159,7 +159,7 @@ do_loaddeps() {
 
   BASE_URL=$(grep "BASE_URL=" $file | sed 's/BASE_URL=//g;s/#.*$//g;/^$/d')
   if [ -z "$BASE_URL" ]; then
-    BASE_URL=https://mirrors.github.com/yashhasan570/UniversalMediaCenter/build-deps/sources
+    BASE_URL=https://mirrors.universalmediacenter.tv/build-deps/sources
   fi
   local libsrcdir=$LIBNAME-$VERSION
 

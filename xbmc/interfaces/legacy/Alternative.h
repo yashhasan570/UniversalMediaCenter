@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -10,7 +10,7 @@
 
 #include "Exception.h"
 
-namespace Addon
+namespace XBMCAddon
 {
   enum WhichAlternative { none, first, second };
 
@@ -30,7 +30,7 @@ namespace Addon
     inline T1& former()
     {
       if (pos == second)// first and none is ok
-        throw WrongTypeException("Access of Addon::Alternative as incorrect type");
+        throw WrongTypeException("Access of XBMCAddon::Alternative as incorrect type");
       if (pos == none)
         d1 = T1();
       pos = first;
@@ -40,14 +40,14 @@ namespace Addon
     inline const T1& former() const
     {
       if (pos != first)
-        throw WrongTypeException("Access of Addon::Alternative as incorrect type");
+        throw WrongTypeException("Access of XBMCAddon::Alternative as incorrect type");
       return d1;
     }
 
     inline T2& later()
     {
       if (pos == first)
-        throw WrongTypeException("Access of Addon::Alternative as incorrect type");
+        throw WrongTypeException("Access of XBMCAddon::Alternative as incorrect type");
       if (pos == none)
         d2 = T2();
       pos = second;
@@ -57,7 +57,7 @@ namespace Addon
     inline const T2& later() const
     {
       if (pos != second)
-        throw WrongTypeException("Access of Addon::Alternative as incorrect type");
+        throw WrongTypeException("Access of XBMCAddon::Alternative as incorrect type");
       return d2;
     }
 

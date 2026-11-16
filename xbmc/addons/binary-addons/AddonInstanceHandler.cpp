@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -43,7 +43,7 @@ IAddonInstanceHandler::IAddonInstanceHandler(
 
   m_info.number = m_instanceId; // @todo change within next big API change to "instance_id"
   m_info.id = m_uniqueWorkID.c_str(); // @todo change within next big API change to "unique_work_id"
-  m_info.version = addon::GetTypeVersion(m_type);
+  m_info.version = universalmediacenter::addon::GetTypeVersion(m_type);
   m_info.type = m_type;
   m_info.universalmediacenter = this;
   m_info.parent = m_parentInstance;
@@ -119,7 +119,7 @@ ADDON_STATUS IAddonInstanceHandler::CreateInstance()
   if (status != ADDON_STATUS_OK)
   {
     CLog::LogF(LOGERROR, "{} returned bad status \"{}\" during instance creation", m_addon->ID(),
-               addon::TranslateAddonStatus(status));
+               universalmediacenter::addon::TranslateAddonStatus(status));
   }
   return status;
 }

@@ -1,7 +1,7 @@
 /*!
 
 \page Addon_Rendering_control Add-on Rendering control
-\brief **Control where rendering becomes performed from add-on to show on Universal Media Center**
+\brief **Control where rendering becomes performed from add-on to show on Kodi**
 
 \tableofcontents
 
@@ -20,7 +20,7 @@
 --------------------------------------------------------------------------------
 \section Addon_Rendering_control_sect2 Available tags
 
-Only the [default control](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Default_Control_Tags) tags are
+Only the [default control](http://kodi.wiki/view/Default_Control_Tags) tags are
 applicable to this control.
 
 
@@ -28,7 +28,7 @@ applicable to this control.
 \section Addon_Rendering_control_sect3 See also
 #### Development:
 
-- [Add-on development](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Add-on_development)
-- [Skinning](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Skinning)
+- [Add-on development](http://kodi.wiki/view/Add-on_development)
+- [Skinning](http://kodi.wiki/view/Skinning)
 
 */

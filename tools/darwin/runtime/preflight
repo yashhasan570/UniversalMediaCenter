@@ -3,16 +3,16 @@
 die("No HOME set, cannot install defaults.\n")
     if !$ENV{'HOME'};
 
-die("No UNIVERSALMEDIA_HOME set, cannot install defaults.\n")
-    if !$ENV{'UNIVERSALMEDIA_HOME'};
+die("No UNIVERSAL MEDIA CENTER_HOME set, cannot install defaults.\n")
+    if !$ENV{'UNIVERSAL MEDIA CENTER_HOME'};
 
 sub get_home {
     return $ENV{'HOME'} if defined $ENV{'HOME'};
 }
 
 sub get_extras {
-    # UNIVERSALMEDIA_HOME is assumed to be always setup
-    return $ENV{'UNIVERSALMEDIA_HOME'}."/extras/" if get_os() eq "osx";
+    # UNIVERSAL MEDIA CENTER_HOME is assumed to be always setup
+    return $ENV{'UNIVERSAL MEDIA CENTER_HOME'}."/extras/" if get_os() eq "osx";
     return;
 }
 
@@ -24,7 +24,7 @@ sub get_app_home {
         return $home."/Library/Application Support/Universal Media Center";
     }
     elsif ( $os eq "linux" ) {
-        return $home."/.universalmediacenter";
+        return $home."/.Universal Media Center";
     }
     return;
 }
@@ -155,14 +155,14 @@ sub setup_default_app() {
 
     die("No extras :(\n")
         if !defined $extras;
-    die("No  home folder :(\n")
+    die("No XBMC home folder :(\n")
         if !defined $apphome;
     die ("No userdata folder :(\n")
         if !defined $userdata;
 
     # create userdata directory if it doesn't exist
     `mkdir -p "$userdata"`;
-    # copy extra stuff to 's userdata directory
+    # copy extra stuff to xbmc's userdata directory
     `cp -fRv "$extras/user/" "$userdata"`;
 
     setup_sources();

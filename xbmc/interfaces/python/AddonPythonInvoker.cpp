@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2013-2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -14,12 +14,12 @@
 #include <Python.h>
 #include <osdefs.h>
 
-#define MODULE ""
+#define MODULE "xbmc"
 
 #define RUNSCRIPT_PREAMBLE \
         "" \
         "import " MODULE "\n" \
-        "class out:\n" \
+        "class xbmcout:\n" \
         "  def __init__(self, loglevel=" MODULE ".LOGDEBUG):\n" \
         "    self.ll=loglevel\n" \
         "  def write(self, data):\n" \
@@ -29,8 +29,8 @@
         "  def flush(self):\n" \
         "    " MODULE ".log('.')\n" \
         "import sys\n" \
-        "sys.stdout = out()\n" \
-        "sys.stderr = out(" MODULE ".LOGERROR)\n" \
+        "sys.stdout = xbmcout()\n" \
+        "sys.stderr = xbmcout(" MODULE ".LOGERROR)\n" \
         ""
 
 #define RUNSCRIPT_SETUPTOOLS_HACK \
@@ -64,12 +64,12 @@
 
 extern "C"
 {
-  PyObject* PyInit_drm(void);
-  PyObject* PyInit_gui(void);
-  PyObject* PyInit_(void);
-  PyObject* PyInit_plugin(void);
-  PyObject* PyInit_addon(void);
-  PyObject* PyInit_vfs(void);
+  PyObject* PyInit_xbmcdrm(void);
+  PyObject* PyInit_xbmcgui(void);
+  PyObject* PyInit_xbmc(void);
+  PyObject* PyInit_xbmcplugin(void);
+  PyObject* PyInit_xbmcaddon(void);
+  PyObject* PyInit_xbmcvfs(void);
 }
 
 namespace
@@ -77,12 +77,12 @@ namespace
 // clang-format off
 const _inittab PythonModules[] =
   {
-    { "drm",    PyInit_drm    },
-    { "gui",    PyInit_gui    },
-    { "",       PyInit_       },
-    { "plugin", PyInit_plugin },
-    { "addon",  PyInit_addon  },
-    { "vfs",    PyInit_vfs    },
+    { "xbmcdrm",    PyInit_xbmcdrm    },
+    { "xbmcgui",    PyInit_xbmcgui    },
+    { "xbmc",       PyInit_xbmc       },
+    { "xbmcplugin", PyInit_xbmcplugin },
+    { "xbmcaddon",  PyInit_xbmcaddon  },
+    { "xbmcvfs",    PyInit_xbmcvfs    },
     { nullptr,      nullptr }
   };
 // clang-format on

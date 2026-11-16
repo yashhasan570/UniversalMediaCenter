@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2011-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -16,7 +16,7 @@
 #include "utils/log.h"
 #include "windowing/GraphicContext.h"
 
-#include "platform/android/activity/App.h"
+#include "platform/android/activity/XBMCApp.h"
 
 #include <androidjni/MediaCodecInfo.h>
 #include <androidjni/MediaCodecList.h>
@@ -30,7 +30,7 @@ static void fetchDisplayModes()
 {
   s_res_displayModes.clear();
 
-  CJNIDisplay display = CApp::getWindow().getDecorView().getDisplay();
+  CJNIDisplay display = CXBMCApp::getWindow().getDecorView().getDisplay();
 
   if (display)
   {
@@ -153,7 +153,7 @@ CAndroidUtils::CAndroidUtils()
 
 bool CAndroidUtils::GetNativeResolution(RESOLUTION_INFO* res) const
 {
-  const std::shared_ptr<CNativeWindow> nativeWindow = CApp::Get().GetNativeWindow(30000);
+  const std::shared_ptr<CNativeWindow> nativeWindow = CXBMCApp::Get().GetNativeWindow(30000);
   if (!nativeWindow)
     return false;
 
@@ -187,10 +187,10 @@ bool CAndroidUtils::SetNativeResolution(const RESOLUTION_INFO& res)
       std::fabs(s_res_cur_displayMode.fRefreshRate - res.fRefreshRate) > FLT_EPSILON)
   {
     CLog::LogF(LOGDEBUG, "request mode: {}", res.strId);
-    CApp::Get().SetDisplayMode(std::atoi(res.strId.c_str()), res.fRefreshRate);
+    CXBMCApp::Get().SetDisplayMode(std::atoi(res.strId.c_str()), res.fRefreshRate);
   }
   s_res_cur_displayMode = res;
-  CApp::Get().SetBuffersGeometry(res.iWidth, res.iHeight, 0);
+  CXBMCApp::Get().SetBuffersGeometry(res.iWidth, res.iHeight, 0);
 
   return true;
 }
@@ -223,7 +223,7 @@ bool CAndroidUtils::UpdateDisplayModes()
 
 bool CAndroidUtils::IsHDRDisplay()
 {
-  CJNIWindow window = CApp::getWindow();
+  CJNIWindow window = CXBMCApp::getWindow();
   bool ret = false;
 
   if (window)
@@ -250,7 +250,7 @@ void CAndroidUtils::OnSettingChanged(const std::shared_ptr<const CSetting>& sett
 
 std::vector<int> CAndroidUtils::GetDisplaySupportedHdrTypes()
 {
-  CJNIWindow window = CApp::getWindow();
+  CJNIWindow window = CXBMCApp::getWindow();
 
   if (window)
   {

@@ -1,7 +1,7 @@
 /*
  *  Copyright (C) 2018 Tyler Szabo
  *  Copyright (C) 2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -19,7 +19,7 @@ using namespace UNIVERSAL MEDIA CENTER;
 
 TEST(TestPlayListFactory, XSPF)
 {
-  std::string filename = _REF_FILE_PATH("//playlists/test/newfile.xspf");
+  std::string filename = XBMC_REF_FILE_PATH("/xbmc/playlists/test/newfile.xspf");
   CURL url("http://example.com/playlists/playlist.xspf");
   PLAYLIST::CPlayList* playlist = nullptr;
 

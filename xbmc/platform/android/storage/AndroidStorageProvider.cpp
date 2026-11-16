@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2012-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -16,7 +16,7 @@
 #include "utils/URIUtils.h"
 #include "utils/log.h"
 
-#include "platform/android/activity/App.h"
+#include "platform/android/activity/XBMCApp.h"
 
 #include <androidjni/Context.h>
 #include <androidjni/Environment.h>
@@ -60,20 +60,20 @@ void CAndroidStorageProvider::GetRemovableDrives(std::vector<CMediaSource>& remo
   bool inError = false;
 
   CJNIStorageManager manager(CJNIContext::getSystemService(CJNIContext::STORAGE_SERVICE));
-  if (_jnienv()->ExceptionCheck())
+  if (xbmc_jnienv()->ExceptionCheck())
   {
-    _jnienv()->ExceptionDescribe();
-    _jnienv()->ExceptionClear();
+    xbmc_jnienv()->ExceptionDescribe();
+    xbmc_jnienv()->ExceptionClear();
     inError = true;
   }
 
   if (!inError)
   {
     CJNIStorageVolumes vols = manager.getStorageVolumes();
-    if (_jnienv()->ExceptionCheck())
+    if (xbmc_jnienv()->ExceptionCheck())
     {
-      _jnienv()->ExceptionDescribe();
-      _jnienv()->ExceptionClear();
+      xbmc_jnienv()->ExceptionDescribe();
+      xbmc_jnienv()->ExceptionClear();
       inError = true;
     }
 
@@ -87,19 +87,19 @@ void CAndroidStorageProvider::GetRemovableDrives(std::vector<CMediaSource>& remo
         // CLog::Log(LOGDEBUG, "-- Volume: {}({}) -- {}", vol.getDirectory().getAbsolutePath(), vol.getUserLabel(), vol.getState());
 
         bool removable = vol.isRemovable();
-        if (_jnienv()->ExceptionCheck())
+        if (xbmc_jnienv()->ExceptionCheck())
         {
-          _jnienv()->ExceptionDescribe();
-          _jnienv()->ExceptionClear();
+          xbmc_jnienv()->ExceptionDescribe();
+          xbmc_jnienv()->ExceptionClear();
           inError = true;
           break;
         }
 
         std::string state = vol.getState();
-        if (_jnienv()->ExceptionCheck())
+        if (xbmc_jnienv()->ExceptionCheck())
         {
-          _jnienv()->ExceptionDescribe();
-          _jnienv()->ExceptionClear();
+          xbmc_jnienv()->ExceptionDescribe();
+          xbmc_jnienv()->ExceptionClear();
           inError = true;
           break;
         }
@@ -112,19 +112,19 @@ void CAndroidStorageProvider::GetRemovableDrives(std::vector<CMediaSource>& remo
             share.strPath = vol.getDirectory().getAbsolutePath();
           else
             share.strPath = vol.getPath();
-          if (_jnienv()->ExceptionCheck())
+          if (xbmc_jnienv()->ExceptionCheck())
           {
-            _jnienv()->ExceptionDescribe();
-            _jnienv()->ExceptionClear();
+            xbmc_jnienv()->ExceptionDescribe();
+            xbmc_jnienv()->ExceptionClear();
             inError = true;
             break;
           }
 
           share.strName = vol.getUserLabel();
-          if (_jnienv()->ExceptionCheck())
+          if (xbmc_jnienv()->ExceptionCheck())
           {
-            _jnienv()->ExceptionDescribe();
-            _jnienv()->ExceptionClear();
+            xbmc_jnienv()->ExceptionDescribe();
+            xbmc_jnienv()->ExceptionClear();
             inError = true;
             break;
           }
@@ -241,7 +241,7 @@ bool CAndroidStorageProvider::GetExternalStorage(std::string& path,
   else
   {
     CJNIStorageManager manager =
-        (CJNIStorageManager)CApp::Get().getSystemService(CJNIContext::STORAGE_SERVICE);
+        (CJNIStorageManager)CXBMCApp::Get().getSystemService(CJNIContext::STORAGE_SERVICE);
     CJNIStorageVolume volume = manager.getPrimaryStorageVolume();
     path = volume.getDirectory().getAbsolutePath();
   }

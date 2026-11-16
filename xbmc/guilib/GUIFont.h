@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2003-2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -29,8 +29,8 @@ class CGUIFontTTF;
 class CGraphicContext;
 
 ///
-/// \defgroup _font_alignment Font alignment flags
-/// \ingroup python_gui_control_radiobutton
+/// \defgroup universalmediacenter_gui_font_alignment Font alignment flags
+/// \ingroup python_xbmcgui_control_radiobutton
 /// @{
 /// @brief Flags for alignment
 ///

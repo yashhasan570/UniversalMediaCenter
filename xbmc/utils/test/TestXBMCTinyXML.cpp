@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -8,15 +8,15 @@
 
 #include "test/TestUtils.h"
 #include "utils/StringUtils.h"
-#include "utils/TinyXML.h"
+#include "utils/XBMCTinyXML.h"
 
 #include <gtest/gtest.h>
 
-TEST(TestTinyXML, ParseFromString)
+TEST(TestXBMCTinyXML, ParseFromString)
 {
   bool retval = false;
   // scraper results with unescaped &
-  CTinyXML doc;
+  CXBMCTinyXML doc;
   std::string data("<details><url function=\"ParseTMDBRating\" "
                   "cache=\"tmdb-en-12244.json\">"
                   "http://api.themoviedb.org/3/movie/12244"
@@ -35,12 +35,12 @@ TEST(TestTinyXML, ParseFromString)
   EXPECT_TRUE(retval);
 }
 
-TEST(TestTinyXML, ParseFromFileHandle)
+TEST(TestXBMCTinyXML, ParseFromFileHandle)
 {
   bool retval = false;
   // scraper results with unescaped &
-  CTinyXML doc;
-  FILE *f = fopen(_REF_FILE_PATH("//utils/test/CTinyXML-test.xml").c_str(), "r");
+  CXBMCTinyXML doc;
+  FILE *f = fopen(XBMC_REF_FILE_PATH("/xbmc/utils/test/CXBMCTinyXML-test.xml").c_str(), "r");
   ASSERT_NE(nullptr, f);
   doc.LoadFile(f);
   fclose(f);

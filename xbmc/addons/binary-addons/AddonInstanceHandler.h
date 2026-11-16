@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -45,7 +45,7 @@ public:
    *                           **Currently used values:**
    * | Parent | Target | Description
    * |--------|--------|-------------
-   * | @ref addon::CInstanceInputStream | @ref addon::CInstanceVideoCodec | In order to be able to access the overlying input stream instance in the video codec created by Universal Media Center on the add-on.
+   * | @ref universalmediacenter::addon::CInstanceInputStream | @ref universalmediacenter::addon::CInstanceVideoCodec | In order to be able to access the overlying input stream instance in the video codec created by Universal Media Center on the add-on.
    * @param[in] uniqueWorkID *[opt]* Identification value intended to pass any special
    *                         values to the instance to be opened.
    *                         If not used, the IAddonInstanceHandler class pointer
@@ -53,7 +53,7 @@ public:
    *                         **Currently used values:**
    * | Add-on instance type | Description
    * |----------------------|---------------------
-   * | @ref addon::CInstanceInputStream "Inputstream" | To transfer special values to inputstream using the property @ref STREAM_PROPERTY_INPUTSTREAM_INSTANCE_ID from external space, for example PVR add-on which also supports inputstream can exchange special values with it, e.g. select the necessary add-on processing class, since it is not known at the start what is being executed ( live TV, radio, recordings...) and add-on may use different classes.
+   * | @ref universalmediacenter::addon::CInstanceInputStream "Inputstream" | To transfer special values to inputstream using the property @ref STREAM_PROPERTY_INPUTSTREAM_INSTANCE_ID from external space, for example PVR add-on which also supports inputstream can exchange special values with it, e.g. select the necessary add-on processing class, since it is not known at the start what is being executed ( live TV, radio, recordings...) and add-on may use different classes.
    * | All other | The used class pointer of Universal Media Center's @ref IAddonInstanceHandler is used as a value to have an individually different value.
    */
   IAddonInstanceHandler(ADDON_TYPE type,

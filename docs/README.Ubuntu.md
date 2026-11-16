@@ -27,17 +27,17 @@ and yet another one
 
 **Example:** Clone Universal Media Center's current master branch:
 ```
-git clone https://github.com// universalmediacenter
+git clone https://github.com/xbmc/xbmc universalmediacenter
 ```
 
 Commands that contain strings enclosed in angle brackets denote something you need to change to suit your needs.
 ```
-git clone -b <branch-name> https://github.com// universalmediacenter
+git clone -b <branch-name> https://github.com/xbmc/xbmc universalmediacenter
 ```
 
 **Example:** Clone Universal Media Center's current Krypton branch:
 ```
-git clone -b Krypton https://github.com// universalmediacenter
+git clone -b Krypton https://github.com/xbmc/xbmc universalmediacenter
 ```
 
 Several different strategies are used to draw your attention to certain pieces of information. In order of how critical the information is, these items are marked as a note, tip, or warning. For example:
@@ -66,7 +66,7 @@ cd $HOME
 
 Clone Universal Media Center's current master branch:
 ```
-git clone https://github.com// universalmediacenter
+git clone https://github.com/xbmc/xbmc universalmediacenter
 ```
 
 **[back to top](#table-of-contents)**
@@ -80,12 +80,12 @@ You can install the required packages using one of two methods: automagically or
 ### 3.1. Get build dependencies automagically
 Add Universal Media Center's *nightly* PPA to grab dependencies:
 ```
-sudo add-apt-repository -s ppa:team-/-nightly
+sudo add-apt-repository -s ppa:team-xbmc/xbmc-nightly
 ```
 
 If you're using Ubuntu 16.04, *build-depends* PPA is also required:
 ```
-sudo add-apt-repository ppa:team-/-ppa-build-depends
+sudo add-apt-repository ppa:team-xbmc/xbmc-ppa-build-depends
 sudo apt update
 ```
 
@@ -99,8 +99,8 @@ sudo apt build-dep universalmediacenter
 
 If at a later point you decide you do not want Universal Media Center's PPAs on your system, removing them is as easy as:
 ```
-sudo add-apt-repository -r ppa:team-/-nightly
-sudo add-apt-repository -r ppa:team-/-ppa-build-depends
+sudo add-apt-repository -r ppa:team-xbmc/xbmc-nightly
+sudo add-apt-repository -r ppa:team-xbmc/xbmc-ppa-build-depends
 ```
 
 > [!NOTE]  

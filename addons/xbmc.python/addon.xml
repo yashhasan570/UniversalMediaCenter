@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<addon id=".python" version="3.1.2" provider-name="Team Universal Media Center">
+<addon id="xbmc.python" version="3.1.2" provider-name="Team Universal Media Center">
   <backwards-compatibility abi="3.0.0"/>
   <requires>
-    <import addon=".core" version="0.1.0"/>
+    <import addon="xbmc.core" version="0.1.0"/>
   </requires>
   <extension-point id="script" schema="script.xsd"/>
   <extension-point id="subtitles" schema="script.xsd"/>

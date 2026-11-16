@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -281,5 +281,5 @@ private:
   std::shared_ptr<XFILE::CBlurayDiscCache> m_blurayDiscCache;
 };
 
-_GLOBAL_REF(CServiceBroker, g_serviceBroker);
-#define g_serviceBroker _GLOBAL_USE(CServiceBroker)
+XBMC_GLOBAL_REF(CServiceBroker, g_serviceBroker);
+#define g_serviceBroker XBMC_GLOBAL_USE(CServiceBroker)

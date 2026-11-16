@@ -2,20 +2,20 @@
     \brief  Introduction page
 
   \mainpage Introduction
-            Welcome to the documentation of Universal Media Center. This starting page is meant to help people find their
+            Welcome to the documentation of Kodi. This starting page is meant to help people find their
             way around the code.
 
             This documentation is a work in progress - only some of the code has thus far been documented
             and we welcome any and all input to documenting it further. Documentation serves both to help
             newcomers get to grips with the source quickly, and to highlight possible deficiencies in the
-            code or interfaces. Due to the projects history you may find  mentioned in the docs, this was
+            code or interfaces. Due to the projects history you may find XBMC mentioned in the docs, this was
             the previous name of the project.
 
             Any help/suggestions are more than welcome.
 
-  \section  doxy_whatis What is Universal Media Center?
-            Universal Media Center is a free, open source (GPL) multimedia player that runs on Linux, Mac OS X (10.4 and later),
-            Windows, IOS and Android.  See http://github.com/yashhasan570/UniversalMediaCenter for more details.
+  \section  doxy_whatisxbmc What is Kodi?
+            Kodi is a free, open source (GPL) multimedia player that runs on Linux, Mac OS X (10.4 and later),
+            Windows, IOS and Android.  See http://kodi.tv for more details.
 */
 
 // Groups definition
@@ -225,5 +225,5 @@
 
 /*!
 	\defgroup windows Windows
-	Universal Media Center windows
+	Kodi windows
 */

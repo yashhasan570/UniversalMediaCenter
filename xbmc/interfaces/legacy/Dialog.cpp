@@ -1,6 +1,6 @@
  /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -40,9 +40,9 @@
 
 #define ACTIVE_WINDOW CServiceBroker::GetGUI()->GetWindowManager().GetActiveWindow()
 
-namespace Addon
+namespace XBMCAddon
 {
-  namespace gui
+  namespace xbmcgui
   {
     Dialog::~Dialog() = default;
 
@@ -92,7 +92,7 @@ namespace Addon
     bool Dialog::info(const ListItem* item)
     {
       DelayedCallGuard dcguard(languageHook);
-      const AddonClass::Ref<gui::ListItem> listitem(item);
+      const AddonClass::Ref<xbmcgui::ListItem> listitem(item);
       if (listitem->item->HasVideoInfoTag())
       {
         CGUIDialogVideoInfo::ShowFor(*listitem->item);
@@ -134,7 +134,7 @@ namespace Addon
         pDialog->SetHeading(CVariant{heading});
       for (const auto& item : list)
       {
-        AddonClass::Ref<ListItem> ritem = item.which() == Addon::first ? ListItem::fromString(item.former()) : AddonClass::Ref<ListItem>(item.later());
+        AddonClass::Ref<ListItem> ritem = item.which() == XBMCAddon::first ? ListItem::fromString(item.former()) : AddonClass::Ref<ListItem>(item.later());
         CFileItemPtr& fileItem = ritem->item;
         pDialog->Add(*fileItem);
       }
@@ -163,7 +163,7 @@ namespace Addon
 
       for (const auto& item : options)
       {
-        AddonClass::Ref<ListItem> ritem = item.which() == Addon::first ? ListItem::fromString(item.former()) : AddonClass::Ref<ListItem>(item.later());
+        AddonClass::Ref<ListItem> ritem = item.which() == XBMCAddon::first ? ListItem::fromString(item.former()) : AddonClass::Ref<ListItem>(item.later());
         CFileItemPtr& fileItem = ritem->item;
         pDialog->Add(*fileItem);
       }
@@ -488,11 +488,11 @@ namespace Addon
       return value;
     }
 
-    DialogProgress::~DialogProgress() { _TRACE; deallocating(); }
+    DialogProgress::~DialogProgress() { XBMC_TRACE; deallocating(); }
 
     void DialogProgress::deallocating()
     {
-      _TRACE;
+      XBMC_TRACE;
 
       if (dlg && open)
       {
@@ -558,11 +558,11 @@ namespace Addon
       return dlg->IsCanceled();
     }
 
-    DialogProgressBG::~DialogProgressBG() { _TRACE; deallocating(); }
+    DialogProgressBG::~DialogProgressBG() { XBMC_TRACE; deallocating(); }
 
     void DialogProgressBG::deallocating()
     {
-      _TRACE;
+      XBMC_TRACE;
 
       if (dlg && open)
       {

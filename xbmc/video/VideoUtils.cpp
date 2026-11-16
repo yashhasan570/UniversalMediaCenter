@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2022-2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -36,7 +36,7 @@
 #include "utils/StringUtils.h"
 #include "utils/URIUtils.h"
 #include "utils/Variant.h"
-#include "utils/TinyXML2.h"
+#include "utils/XBMCTinyXML2.h"
 #include "utils/log.h"
 #include "video/VideoDatabase.h"
 #include "video/VideoFileItemClassify.h"
@@ -396,7 +396,7 @@ std::optional<int> GetNextPartFromBookmark(const CBookmark& bookmark)
   if (!bookmark.HasSavedPlayerState())
     return std::nullopt;
 
-  CTinyXML2 xmlDoc;
+  CXBMCTinyXML2 xmlDoc;
   if (!xmlDoc.Parse(bookmark.playerState))
     return std::nullopt;
 
@@ -409,7 +409,7 @@ std::optional<int> GetNextPartFromBookmark(const CBookmark& bookmark)
 
 std::string MakeNextPartPlayerState(int part, const std::string& playerState)
 {
-  CTinyXML2 xmlDoc;
+  CXBMCTinyXML2 xmlDoc;
   auto* eRoot{xmlDoc.NewElement("nextpart")};
   eRoot->SetText(part);
   if (!playerState.empty())
@@ -426,7 +426,7 @@ std::optional<std::string> GetNextPartPlayerStateFromBookmark(const CBookmark& b
   if (!bookmark.HasSavedPlayerState())
     return std::nullopt;
 
-  CTinyXML2 xmlDoc;
+  CXBMCTinyXML2 xmlDoc;
   if (!xmlDoc.Parse(bookmark.playerState))
     return std::nullopt;
 

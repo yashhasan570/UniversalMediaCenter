@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -29,7 +29,7 @@
 #include "network/NetworkFileItemClassify.h"
 #include "playlists/PlayListFileItemClassify.h"
 #if defined(TARGET_ANDROID)
-#include "platform/android/activity/App.h"
+#include "platform/android/activity/XBMCApp.h"
 #endif
 #include "dialogs/GUIDialogBusy.h"
 #include "dialogs/GUIDialogKaiToast.h"
@@ -1194,7 +1194,7 @@ bool CGUIMediaWindow::OnClick(int iItem, const std::string &player)
   {
     std::string appName = URIUtils::GetFileName(pItem->GetPath());
     CLog::Log(LOGDEBUG, "CGUIMediaWindow::OnClick Trying to run: {}", appName);
-    return CApp::StartActivity(appName);
+    return CXBMCApp::StartActivity(appName);
   }
 #endif
   else

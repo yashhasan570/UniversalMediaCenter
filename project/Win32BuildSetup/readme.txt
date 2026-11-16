@@ -1,6 +1,6 @@
 Prerequisites for building a Universal Media Center for Windows installer:
 
-1) See http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/HOW-TO:Compile_for_Windows
+1) See http://universalmediacenter.wiki/view/HOW-TO:Compile_for_Windows
 
 Usage:
 1) Run BuildSetup.bat in tools\buildsteps\windows\{win32|x64|arm64|x64-uwp}

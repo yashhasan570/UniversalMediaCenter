@@ -1,6 +1,6 @@
 /*
- *      Copyright (C) 2010-2013 Team 
- *      http://github.com/yashhasan570/UniversalMediaCenter
+ *      Copyright (C) 2010-2013 Team XBMC
+ *      http://xbmc.org
  *
  *  This Program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -13,12 +13,12 @@
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with ; see the file COPYING.  If not, see
+ *  along with XBMC; see the file COPYING.  If not, see
  *  <http://www.gnu.org/licenses/>.
  *
  */
 
-#if(_texture_rectangle)
+#if(XBMC_texture_rectangle)
 # extension GL_ARB_texture_rectangle : enable
 # define texture2D texture2DRect
 # define sampler2D sampler2DRect
@@ -40,11 +40,11 @@ uniform float m_alpha;
 
 vec2 stretch(vec2 pos)
 {
-#if (_STRETCH)
+#if (XBMC_STRETCH)
   // our transform should map [0..1] to itself, with f(0) = 0, f(1) = 1, f(0.5) = 0.5, and f'(0.5) = b.
   // a simple curve to do this is g(x) = b(x-0.5) + (1-b)2^(n-1)(x-0.5)^n + 0.5
   // where the power preserves sign. n = 2 is the simplest non-linear case (required when b != 1)
-  #if(_texture_rectangle)
+  #if(XBMC_texture_rectangle)
     float x = (pos.x * m_step.x) - 0.5;
     return vec2((mix(2.0 * x * abs(x), x, m_stretch) + 0.5) / m_step.x, pos.y);
   #else
@@ -59,7 +59,7 @@ vec2 stretch(vec2 pos)
 vec4 process()
 {
   vec4 rgb;
-#if defined(_YV12)
+#if defined(XBMC_YV12)
 
   vec4 yuv;
   yuv.rgba = vec4( texture2D(m_sampY, stretch(m_cordY)).r
@@ -68,12 +68,12 @@ vec4 process()
                  , 1.0 );
 
   rgb   = m_yuvmat * yuv;
-#if defined(UNIVERSAL MEDIA CENTER_HUESAT_PQ) || defined(UNIVERSAL MEDIA CENTER_HUESAT_HLG)
+#if defined(KODI_HUESAT_PQ) || defined(KODI_HUESAT_HLG)
   rgb.rgb = hueSaturation(rgb.rgb);
 #endif
   rgb.a = m_alpha;
 
-#elif defined(_NV12)
+#elif defined(XBMC_NV12)
 
     vec4 yuv;
     yuv.rgba = vec4( texture2D(m_sampY, stretch(m_cordY)).r
@@ -81,14 +81,14 @@ vec4 process()
                    , 1.0 );
 
     rgb   = m_yuvmat * yuv;
-#if defined(UNIVERSAL MEDIA CENTER_HUESAT_PQ) || defined(UNIVERSAL MEDIA CENTER_HUESAT_HLG)
+#if defined(KODI_HUESAT_PQ) || defined(KODI_HUESAT_HLG)
     rgb.rgb = hueSaturation(rgb.rgb);
 #endif
     rgb.a = m_alpha;
 
-#elif defined(_YUY2) || defined(_UYVY)
+#elif defined(XBMC_YUY2) || defined(XBMC_UYVY)
 
-#if(_texture_rectangle)
+#if(XBMC_texture_rectangle)
   vec2 stepxy = vec2(1.0, 1.0);
   vec2 pos    = stretch(m_cordY);
   pos         = vec2(pos.x - 0.25, pos.y);
@@ -108,7 +108,7 @@ vec4 process()
   /* each pixel has two Y subpixels and one UV subpixel
      YUV  Y  YUV
      check if we're left or right of the middle Y subpixel and interpolate accordingly*/
-#ifdef _YUY2 //BGRA = YUYV
+#ifdef XBMC_YUY2 //BGRA = YUYV
   float leftY   = mix(c1.b, c1.r, f.x * 2.0);
   float rightY  = mix(c1.r, c2.b, f.x * 2.0 - 1.0);
   vec2  outUV   = mix(c1.ga, c2.ga, f.x);
@@ -116,13 +116,13 @@ vec4 process()
   float leftY   = mix(c1.g, c1.a, f.x * 2.0);
   float rightY  = mix(c1.a, c2.g, f.x * 2.0 - 1.0);
   vec2  outUV   = mix(c1.br, c2.br, f.x);
-#endif //_YUY2
+#endif //XBMC_YUY2
 
   float outY    = mix(leftY, rightY, step(0.5, f.x));
 
   vec4  yuv     = vec4(outY, outUV, 1.0);
   rgb           = m_yuvmat * yuv;
-#if defined(UNIVERSAL MEDIA CENTER_HUESAT_PQ) || defined(UNIVERSAL MEDIA CENTER_HUESAT_HLG)
+#if defined(KODI_HUESAT_PQ) || defined(KODI_HUESAT_HLG)
   rgb.rgb = hueSaturation(rgb.rgb);
 #endif
 
@@ -130,13 +130,13 @@ vec4 process()
 
 #endif
 
-#if defined(_COL_CONVERSION)
+#if defined(XBMC_COL_CONVERSION)
   rgb.rgb = pow(max(vec3(0), rgb.rgb), vec3(m_gammaSrc));
   rgb.rgb = max(vec3(0), m_primMat * rgb.rgb);
   rgb.rgb = pow(rgb.rgb, vec3(m_gammaDstInv));
 #endif
 
-#if defined(UNIVERSAL MEDIA CENTER_GAMMA)
+#if defined(KODI_GAMMA)
   rgb.rgb = pow(clamp((rgb.rgb - m_gammaRange.y) / m_gammaRange.x, 0.0, 1.0), vec3(m_gammaInv)) * m_gammaRange.x + m_gammaRange.y;
 #endif
 

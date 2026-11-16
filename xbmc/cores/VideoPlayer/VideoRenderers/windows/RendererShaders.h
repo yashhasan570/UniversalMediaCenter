@@ -1,6 +1,6 @@
 ﻿/*
  *  Copyright (C) 2017-2019 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -39,6 +39,11 @@ public:
 
   static CRendererBase* Create(CVideoSettings& videoSettings);
   static void GetWeight(std::map<RenderMethod, int>& weights, const VideoPicture& picture);
+
+  /*!
+   * \brief The formats the renderer draws as they are, which a decoder need not convert first.
+   */
+  static std::vector<AVPixelFormat> GetRenderFormats();
 
 protected:
   explicit CRendererShaders(CVideoSettings& videoSettings);

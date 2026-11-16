@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -46,6 +46,7 @@
 using namespace UNIVERSAL MEDIA CENTER;
 using namespace ADDON;
 using namespace UNIVERSAL MEDIA CENTER::MESSAGING;
+using UNIVERSAL MEDIA CENTER::MEDIA::MediaSection;
 
 namespace XFILE
 {
@@ -788,7 +789,7 @@ bool CAddonsDirectory::GetDirectory(const CURL& url, CFileItemList &items)
   {
     const std::string& type = path.GetFileName();
     if (type == "video" || type == "audio" || type == "image" || type == "executable")
-      return Browse(CURL("addons://all/.addon." + type), items);
+      return Browse(CURL("addons://all/xbmc.addon." + type), items);
     else if (type == "game")
       return Browse(CURL("addons://all/category.gameaddons"), items);
     return false;
@@ -797,6 +798,16 @@ bool CAddonsDirectory::GetDirectory(const CURL& url, CFileItemList &items)
   {
     return Browse(path, items);
   }
+}
+
+std::string CAddonsDirectory::SourcesPathOf(MediaSection section)
+{
+  const auto source{
+      std::ranges::find(ADDONS::SECTION_SOURCES, section, &ADDONS::SectionSource::section)};
+  if (source == ADDONS::SECTION_SOURCES.end())
+    return {};
+  const std::string_view content{CAddonInfo::SubContentNameOf(source->type)};
+  return std::string{ADDONS::SOURCES}.append(content).append("/");
 }
 
 bool CAddonsDirectory::IsRepoDirectory(const CURL& url)

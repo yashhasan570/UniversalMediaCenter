@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -466,7 +466,7 @@ TEST_P(TestGUIControlGroupMaskGLES, DisjointMasksShareABucket)
 TEST_P(TestGUIControlGroupMaskGLES, TextUsesTheSameStencilMask)
 {
   CTestFont font;
-  ASSERT_TRUE(font.Load(_REF_FILE_PATH("media/Fonts/arial.ttf"), 32));
+  ASSERT_TRUE(font.Load(XBMC_REF_FILE_PATH("media/Fonts/arial.ttf"), 32));
   font.Paint(Context());
   const auto unmasked = ReadPixels();
   ASSERT_TRUE(m_window->ClearBuffers(0));
@@ -604,7 +604,7 @@ TEST_P(TestGUIControlGroupMaskGLES, SeparateStencilAttachmentAndMissingStencil)
   texture.Paint();
   EXPECT_EQ(ReadPixels(), Pixels{});
   CTestFont font;
-  ASSERT_TRUE(font.Load(_REF_FILE_PATH("media/Fonts/arial.ttf"), 32));
+  ASSERT_TRUE(font.Load(XBMC_REF_FILE_PATH("media/Fonts/arial.ttf"), 32));
   font.Paint(Context());
   EXPECT_EQ(ReadPixels(), Pixels{});
   Context().RestoreStencilLayer();

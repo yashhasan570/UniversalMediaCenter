@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2021 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -156,7 +156,7 @@ void CGUIDialogColorPicker::SetItems(const CFileItemList& pList)
 
 void CGUIDialogColorPicker::LoadColors()
 {
-  LoadColors(CSpecialProtocol::TranslatePathConvertCase("special:///system/dialogcolors.xml"));
+  LoadColors(CSpecialProtocol::TranslatePathConvertCase("special://xbmc/system/dialogcolors.xml"));
 }
 
 void CGUIDialogColorPicker::LoadColors(const std::string& filePath)

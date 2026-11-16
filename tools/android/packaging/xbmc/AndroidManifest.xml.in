@@ -120,7 +120,7 @@
                 android:value="@APP_NAME_LC@" />
         </activity>
 
-        <receiver android:name=".BroadcastReceiver"
+        <receiver android:name=".XBMCBroadcastReceiver"
                   android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.DREAMING_STOPPED" />
@@ -130,15 +130,15 @@
         </receiver>
 
         <provider
-            android:name=".content.MediaContentProvider"
+            android:name=".content.XBMCMediaContentProvider"
             android:authorities="@APP_PACKAGE@.media"
             android:exported="true" />
         <provider
-            android:name=".content.FileContentProvider"
+            android:name=".content.XBMCFileContentProvider"
             android:authorities="@APP_PACKAGE@.file"
             android:exported="true" />
         <provider
-            android:name=".content.FileProvider"
+            android:name=".content.XBMCFileProvider"
             android:authorities="@APP_PACKAGE@.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
@@ -147,7 +147,7 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".SearchableActivity" 
+        <activity android:name=".XBMCSearchableActivity" 
                   android:exported="true">
              <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
@@ -167,7 +167,7 @@
                 android:resource="@xml/searchable" />
         </activity>
 
-        <activity android:name=".Universal Media CenterDeepLinkActivity"
+        <activity android:name=".UniversalMediaCenterDeepLinkActivity"
                   android:exported="true"
                   android:theme="@android:style/Theme.NoDisplay"
                   android:noHistory="true">

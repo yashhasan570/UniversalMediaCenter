@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2025 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -126,7 +126,7 @@ ChplChapterResult ParseChpl(CFile& file, const int64_t chplSize, std::vector<Chp
   for (uint32_t i = 0; i < count; ++i)
   { // Note: Spec claims 8 bytes, but actual implementations use 7 bytes
     // Using 8 bytes will cause progressive data corruption in chapter titles and incorrect times
-    // See the example hex in /utils/Mp4ChplReader.h and breakdown for more information
+    // See the example hex in xbmc/utils/Mp4ChplReader.h and breakdown for more information
     std::array<uint8_t, 7> timestampBuf{};
     if (file.Read(timestampBuf.data(), timestampBuf.size()) !=
         static_cast<ssize_t>(timestampBuf.size()))

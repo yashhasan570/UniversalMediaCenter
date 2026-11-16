@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2020 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -188,7 +188,7 @@ void Interface_Base::addon_log_msg(const UNIVERSALMEDIA_ADDON_BACKEND_HDL hdl,
 
 char* Interface_Base::get_type_version(const UNIVERSALMEDIA_ADDON_BACKEND_HDL /*hdl*/, int type)
 {
-  return strdup(addon::GetTypeVersion(type));
+  return strdup(universalmediacenter::addon::GetTypeVersion(type));
 }
 
 char* Interface_Base::get_addon_path(const UNIVERSALMEDIA_ADDON_BACKEND_HDL hdl)
@@ -212,7 +212,7 @@ char* Interface_Base::get_lib_path(const UNIVERSALMEDIA_ADDON_BACKEND_HDL hdl)
     return nullptr;
   }
 
-  return strdup(CSpecialProtocol::TranslatePath("special://binaddons/" + addon->ID()).c_str());
+  return strdup(CSpecialProtocol::TranslatePath("special://xbmcbinaddons/" + addon->ID()).c_str());
 }
 
 char* Interface_Base::get_user_path(const UNIVERSALMEDIA_ADDON_BACKEND_HDL hdl)

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -298,7 +298,7 @@ TEST(TestI18nRegistryManager, DuplicateSubTag)
 TEST(TestI18nRegistryManager, LoadFile)
 {
   const std::string filePath =
-      _REF_FILE_PATH("/language/i18n/Bcp47Registry/test/test-language-subtag-registry.txt");
+      XBMC_REF_FILE_PATH("xbmc/language/i18n/Bcp47Registry/test/test-language-subtag-registry.txt");
   auto provider = std::make_unique<CRegistryFile>(filePath);
   CSubTagRegistryManager registry;
   EXPECT_TRUE(registry.Initialize(std::move(provider)));

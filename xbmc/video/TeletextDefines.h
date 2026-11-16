@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -425,7 +425,7 @@ typedef struct TextCacheStruct_t
 
   std::string      line30;
 
-  // TODO: We should get rid of this public mutex. Here are the details: https://github.com///pull/22226
+  // TODO: We should get rid of this public mutex. Here are the details: https://github.com/xbmc/xbmc/pull/22226
   CCriticalSection m_critSection;
 } TextCacheStruct_t;
 

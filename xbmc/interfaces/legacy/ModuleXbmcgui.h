@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -12,14 +12,14 @@
 #include "swighelper.h"
 
 #ifndef DOXYGEN_SHOULD_SKIP_THIS
-namespace Addon
+namespace XBMCAddon
 {
-  namespace gui
+  namespace xbmcgui
   {
 #endif /* DOXYGEN_SHOULD_SKIP_THIS */
 
     //
-    /// \defgroup python_gui Library - gui
+    /// \defgroup python_xbmcgui Library - xbmcgui
     /// @{
     /// @brief **GUI functions on Universal Media Center.**
     ///
@@ -29,8 +29,8 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_gui
-    /// @brief \python_func{ gui.getCurrentWindowId() }
+    /// \ingroup python_xbmcgui
+    /// @brief \python_func{ xbmcgui.getCurrentWindowId() }
     /// Returns the id for the current 'active' window as an integer.
     ///
     /// @return                        The currently active window Id
@@ -41,7 +41,7 @@ namespace Addon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// wid = gui.getCurrentWindowId()
+    /// wid = xbmcgui.getCurrentWindowId()
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -52,8 +52,8 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_gui
-    /// @brief \python_func{ gui.getCurrentWindowDialogId() }
+    /// \ingroup python_xbmcgui
+    /// @brief \python_func{ xbmcgui.getCurrentWindowDialogId() }
     /// Returns the id for the current 'active' dialog as an integer.
     ///
     /// @return                        The currently active dialog Id
@@ -64,7 +64,7 @@ namespace Addon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// wid = gui.getCurrentWindowDialogId()
+    /// wid = xbmcgui.getCurrentWindowDialogId()
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -75,7 +75,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_gui
+    /// \ingroup python_xbmcgui
     /// @brief \python_func{ getScreenHeight() }
     /// Returns the height of this screen.
     ///
@@ -92,7 +92,7 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_gui
+    /// \ingroup python_xbmcgui
     /// @brief \python_func{ getScreenWidth() }
     /// Returns the width of this screen.
     ///

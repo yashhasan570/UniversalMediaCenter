@@ -1,8 +1,8 @@
 WORKSPACE=${WORKSPACE:-$( cd $(dirname $0)/../../.. ; pwd -P )}
-_PLATFORM_DIR=wasm
+XBMC_PLATFORM_DIR=wasm
 . $WORKSPACE/tools/buildsteps/defaultenv
 
 # cd $WORKSPACE/build;make -j$BUILDTHREADS dmg
 
 #rename for upload
-#e.x. universalmediacenter-20130314-8c2fb31-Frodo-x86_64.dmg
+#e.x. Universal Media Center-20130314-8c2fb31-Frodo-x86_64.dmg

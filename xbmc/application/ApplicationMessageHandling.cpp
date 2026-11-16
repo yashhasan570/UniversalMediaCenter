@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -72,7 +72,7 @@
 #include <memory>
 
 #ifdef TARGET_ANDROID
-#include "platform/android/activity/App.h"
+#include "platform/android/activity/XBMCApp.h"
 #endif
 #ifdef TARGET_DARWIN_EMBEDDED
 #include "platform/darwin/DarwinUtils.h"
@@ -290,7 +290,7 @@ void CApplicationMessageHandling::OnApplicationMessage(MESSAGING::ThreadMessage*
 #if defined(TARGET_ANDROID)
       if (!pMsg->params.empty())
       {
-        CApp::StartActivity(pMsg->params[0], pMsg->params.size() > 1 ? pMsg->params[1] : "",
+        CXBMCApp::StartActivity(pMsg->params[0], pMsg->params.size() > 1 ? pMsg->params[1] : "",
                                 pMsg->params.size() > 2 ? pMsg->params[2] : "",
                                 pMsg->params.size() > 3 ? pMsg->params[3] : "",
                                 pMsg->params.size() > 4 ? pMsg->params[4] : "",
@@ -320,8 +320,8 @@ void CApplicationMessageHandling::OnApplicationMessage(MESSAGING::ThreadMessage*
     }
     case TMSG_VIDEORESIZE:
     {
-      _Event newEvent = {};
-      newEvent.type = _VIDEORESIZE;
+      XBMC_Event newEvent = {};
+      newEvent.type = XBMC_VIDEORESIZE;
       newEvent.resize.width = pMsg->param1;
       newEvent.resize.height = pMsg->param2;
       newEvent.resize.scale = 1.0;
@@ -361,9 +361,9 @@ void CApplicationMessageHandling::OnApplicationMessage(MESSAGING::ThreadMessage*
 #elif defined(TARGET_POSIX)
       CUtil::RunCommandLine(pMsg->strParam, (pMsg->param1 == 1));
 #elif defined(TARGET_WINDOWS)
-      CWIN32Util::ShellExecute(pMsg->strParam, (pMsg->param1 == 1));
+      CWIN32Util::XBMCShellExecute(pMsg->strParam, (pMsg->param1 == 1));
 #endif
-      // Resume AE processing of  native audio
+      // Resume AE processing of XBMC native audio
       if (audioengine && !audioengine->Resume())
         CLog::LogF(LOGFATAL, "Failed to restart AudioEngine after return from external player");
 
@@ -455,7 +455,7 @@ void CApplicationMessageHandling::OnApplicationMessage(MESSAGING::ThreadMessage*
         if (items.IsEmpty())
         {
           CServiceBroker::GetSettingsComponent()->GetSettings()->SetString(
-              CSettings::SETTING_SCREENSAVER_MODE, "screensaver..builtin.dim");
+              CSettings::SETTING_SCREENSAVER_MODE, "screensaver.xbmc.builtin.dim");
           m_app.GetComponent<CApplicationPowerHandling>()->ActivateScreenSaver();
         }
         else
@@ -478,7 +478,7 @@ void CApplicationMessageHandling::OnApplicationMessage(MESSAGING::ThreadMessage*
     {
       if (pMsg->lpVoid)
       {
-        const auto* event{static_cast<_Event*>(pMsg->lpVoid)};
+        const auto* event{static_cast<XBMC_Event*>(pMsg->lpVoid)};
         this->OnEvent(*event);
         delete event;
       }
@@ -935,7 +935,7 @@ bool CApplicationMessageHandling::OnMessage(const CGUIMessage& message)
     break;
     case GUI_MSG_EXECUTE:
       if (message.GetNumStringParams())
-        return m_app.ExecuteAction(message.GetStringParam(), message.GetItem());
+        return m_app.ExecuteXBMCAction(message.GetStringParam(), message.GetItem());
       break;
     default:
       break;

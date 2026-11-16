@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<addon id=".instance.audiodecoder" version="@ADDON_INSTANCE_VERSION_AUDIODECODER@" provider-name="Team Universal Media Center">
-  <backwards-compatibility abi="@ADDON_INSTANCE_VERSION_AUDIODECODER_MIN@"/>
-  <requires>
-    <import addon=".core" version="0.1.0"/>
-  </requires>
-</addon>

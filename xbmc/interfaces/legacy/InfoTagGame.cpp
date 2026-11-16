@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2021 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -12,11 +12,11 @@
 #include "games/tags/GameInfoTag.h"
 
 using namespace UNIVERSAL MEDIA CENTER::GAME;
-using namespace AddonUtils;
+using namespace XBMCAddonUtils;
 
-namespace Addon
+namespace XBMCAddon
 {
-namespace 
+namespace xbmc
 {
 
 InfoTagGame::InfoTagGame(bool offscreen /* = false */)
@@ -112,85 +112,85 @@ std::vector<String> InfoTagGame::getTags()
 
 void InfoTagGame::setTitle(const String& title)
 {
-  AddonUtils::GuiLock lock(languageHook, offscreen);
+  XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
   setTitleRaw(infoTag, title);
 }
 
 void InfoTagGame::setPlatform(const String& platform)
 {
-  AddonUtils::GuiLock lock(languageHook, offscreen);
+  XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
   setPlatformRaw(infoTag, platform);
 }
 
 void InfoTagGame::setGenres(const std::vector<String>& genres)
 {
-  AddonUtils::GuiLock lock(languageHook, offscreen);
+  XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
   setGenresRaw(infoTag, genres);
 }
 
 void InfoTagGame::setPublisher(const String& publisher)
 {
-  AddonUtils::GuiLock lock(languageHook, offscreen);
+  XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
   setPublisherRaw(infoTag, publisher);
 }
 
 void InfoTagGame::setDeveloper(const String& developer)
 {
-  AddonUtils::GuiLock lock(languageHook, offscreen);
+  XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
   setDeveloperRaw(infoTag, developer);
 }
 
 void InfoTagGame::setOverview(const String& overview)
 {
-  AddonUtils::GuiLock lock(languageHook, offscreen);
+  XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
   setOverviewRaw(infoTag, overview);
 }
 
 void InfoTagGame::setYear(unsigned int year)
 {
-  AddonUtils::GuiLock lock(languageHook, offscreen);
+  XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
   setYearRaw(infoTag, year);
 }
 
 void InfoTagGame::setGameClient(const String& gameClient)
 {
-  AddonUtils::GuiLock lock(languageHook, offscreen);
+  XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
   setGameClientRaw(infoTag, gameClient);
 }
 
 void InfoTagGame::setOriginalTitle(const String& originalTitle)
 {
-  AddonUtils::GuiLock lock(languageHook, offscreen);
+  XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
   infoTag->SetOriginalTitle(originalTitle);
 }
 
 void InfoTagGame::setRating(float rating)
 {
-  AddonUtils::GuiLock lock(languageHook, offscreen);
+  XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
   infoTag->SetRating(rating);
 }
 
 void InfoTagGame::setPlayers(unsigned int players)
 {
-  AddonUtils::GuiLock lock(languageHook, offscreen);
+  XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
   infoTag->SetPlayers(players);
 }
 
 void InfoTagGame::setAgeRating(const String& ageRating)
 {
-  AddonUtils::GuiLock lock(languageHook, offscreen);
+  XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
   infoTag->SetAgeRating(ageRating);
 }
 
 void InfoTagGame::setTrailer(const String& trailer)
 {
-  AddonUtils::GuiLock lock(languageHook, offscreen);
+  XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
   infoTag->SetTrailer(trailer);
 }
 
 void InfoTagGame::setTags(const std::vector<String>& tags)
 {
-  AddonUtils::GuiLock lock(languageHook, offscreen);
+  XBMCAddonUtils::GuiLock lock(languageHook, offscreen);
   infoTag->SetTags(tags);
 }
 
@@ -234,5 +234,5 @@ void InfoTagGame::setGameClientRaw(UNIVERSAL MEDIA CENTER::GAME::CGameInfoTag* i
   infoTag->SetGameClient(gameClient);
 }
 
-} // namespace 
-} // namespace Addon
+} // namespace xbmc
+} // namespace XBMCAddon

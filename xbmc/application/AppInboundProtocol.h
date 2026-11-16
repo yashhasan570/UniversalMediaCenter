@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -9,7 +9,7 @@
 #pragma once
 
 #include "threads/CriticalSection.h"
-#include "windowing/_events.h"
+#include "windowing/XBMC_events.h"
 
 #include <deque>
 
@@ -21,7 +21,7 @@ class CAppInboundProtocol
 
 public:
   CAppInboundProtocol(CApplication& app);
-  bool OnEvent(const _Event& newEvent);
+  bool OnEvent(const XBMC_Event& newEvent);
   void SetRenderGUI(bool renderGUI);
   void Close();
 
@@ -30,6 +30,6 @@ protected:
 
   bool m_closed = false;
   CApplication &m_pApp;
-  std::deque<_Event> m_portEvents;
+  std::deque<XBMC_Event> m_portEvents;
   CCriticalSection m_portSection;
 };

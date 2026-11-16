@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2024 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -8,28 +8,28 @@
 
 #pragma once
 
-#include "windowing/_events.h"
+#include "windowing/XBMC_events.h"
 
 /// \ingroup mouse
 /// \{
 
-#define _BUTTON(X) (1 << ((X) - 1))
-#define _BUTTON_LEFT 1
-#define _BUTTON_MIDDLE 2
-#define _BUTTON_RIGHT 3
-#define _BUTTON_WHEELUP 4
-#define _BUTTON_WHEELDOWN 5
-#define _BUTTON_X1 6
-#define _BUTTON_X2 7
-#define _BUTTON_X3 8
-#define _BUTTON_X4 9
-#define _BUTTON_LMASK _BUTTON(_BUTTON_LEFT)
-#define _BUTTON_MMASK _BUTTON(_BUTTON_MIDDLE)
-#define _BUTTON_RMASK _BUTTON(_BUTTON_RIGHT)
-#define _BUTTON_X1MASK _BUTTON(_BUTTON_X1)
-#define _BUTTON_X2MASK _BUTTON(_BUTTON_X2)
-#define _BUTTON_X3MASK _BUTTON(_BUTTON_X3)
-#define _BUTTON_X4MASK _BUTTON(_BUTTON_X4)
+#define XBMC_BUTTON(X) (1 << ((X) - 1))
+#define XBMC_BUTTON_LEFT 1
+#define XBMC_BUTTON_MIDDLE 2
+#define XBMC_BUTTON_RIGHT 3
+#define XBMC_BUTTON_WHEELUP 4
+#define XBMC_BUTTON_WHEELDOWN 5
+#define XBMC_BUTTON_X1 6
+#define XBMC_BUTTON_X2 7
+#define XBMC_BUTTON_X3 8
+#define XBMC_BUTTON_X4 9
+#define XBMC_BUTTON_LMASK XBMC_BUTTON(XBMC_BUTTON_LEFT)
+#define XBMC_BUTTON_MMASK XBMC_BUTTON(XBMC_BUTTON_MIDDLE)
+#define XBMC_BUTTON_RMASK XBMC_BUTTON(XBMC_BUTTON_RIGHT)
+#define XBMC_BUTTON_X1MASK XBMC_BUTTON(XBMC_BUTTON_X1)
+#define XBMC_BUTTON_X2MASK XBMC_BUTTON(XBMC_BUTTON_X2)
+#define XBMC_BUTTON_X3MASK XBMC_BUTTON(XBMC_BUTTON_X3)
+#define XBMC_BUTTON_X4MASK XBMC_BUTTON(XBMC_BUTTON_X4)
 
 #define MOUSE_MINIMUM_MOVEMENT 2
 #define MOUSE_DOUBLE_CLICK_LENGTH 500L
@@ -106,7 +106,7 @@ public:
   virtual ~CMouseStat();
 
   void Initialize();
-  void HandleEvent(const _Event& newEvent);
+  void HandleEvent(const XBMC_Event& newEvent);
   void SetResolution(int maxX, int maxY, float speedX, float speedY);
   bool IsActive();
   bool IsEnabled() const;

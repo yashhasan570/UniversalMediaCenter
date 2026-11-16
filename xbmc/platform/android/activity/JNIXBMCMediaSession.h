@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2017 Christian Browet
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -16,13 +16,13 @@
 namespace jni
 {
 
-class CJNIMediaSession : public CJNIBase, public CJNIInterfaceImplem<CJNIMediaSession>
+class CJNIXBMCMediaSession : public CJNIBase, public CJNIInterfaceImplem<CJNIXBMCMediaSession>
 {
 public:
-  CJNIMediaSession();
-  CJNIMediaSession(const CJNIMediaSession& other);
-  CJNIMediaSession(const jni::jhobject &object) : CJNIBase(object) {}
-  ~CJNIMediaSession() override;
+  CJNIXBMCMediaSession();
+  CJNIXBMCMediaSession(const CJNIXBMCMediaSession& other);
+  CJNIXBMCMediaSession(const jni::jhobject &object) : CJNIBase(object) {}
+  ~CJNIXBMCMediaSession() override;
 
   static void RegisterNatives(JNIEnv* env);
 

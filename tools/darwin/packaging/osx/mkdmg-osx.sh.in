@@ -41,7 +41,7 @@ if [ "$EXPANDED_CODE_SIGN_IDENTITY_NAME" ]; then
   codesign --verbose=4 --sign "$EXPANDED_CODE_SIGN_IDENTITY_NAME" --force --options runtime --timestamp --entitlements Universal Media Center.entitlements "$APP"
 fi
 
-PACKAGE=org..@APP_NAME_LC@-osx
+PACKAGE=org.xbmc.@APP_NAME_LC@-osx
 
 VERSION=@APP_VERSION_MAJOR@.@APP_VERSION_MINOR@
 REVISION=0

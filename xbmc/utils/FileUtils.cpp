@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2010-2020 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -28,6 +28,7 @@
 #include "settings/Settings.h"
 #include "settings/SettingsComponent.h"
 #include "storage/MediaManager.h"
+#include "utils/Screenshot.h"
 #include "utils/Variant.h"
 #include "utils/log.h"
 
@@ -114,6 +115,8 @@ bool CFileUtils::RemoteAccessAllowed(const std::string &strPath)
     realPath = CURL(realPath).GetHostName();
 
   if (StringUtils::StartsWithNoCase(realPath, "virtualpath://upnproot/"))
+    return true;
+  else if (CScreenShot::IsScreenshotPath(realPath))
     return true;
   else if (StringUtils::StartsWithNoCase(realPath, "musicdb://"))
     return true;
@@ -275,7 +278,7 @@ bool CFileUtils::CheckFileAccessAllowed(const std::string &filePath)
   // ALLOW universalmediacenter paths
   std::vector<std::string> whitelist = {
       CSpecialProtocol::TranslatePath("special://home"),
-      CSpecialProtocol::TranslatePath("special://"),
+      CSpecialProtocol::TranslatePath("special://xbmc"),
       CSpecialProtocol::TranslatePath("special://musicartistsinfo"),
   };
 

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2007-2024 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -25,7 +25,7 @@
 // ASCII/unicode.
 
 #include "input/keyboard/Key.h"
-#include "input/keyboard/_keyboard.h"
+#include "input/keyboard/XBMC_keyboard.h"
 
 #include <chrono>
 #include <string>
@@ -45,17 +45,17 @@ public:
 
   void Initialize();
 
-  CKey TranslateKey(_keysym& keysym) const;
+  CKey TranslateKey(XBMC_keysym& keysym) const;
 
-  void ProcessKeyDown(_keysym& keysym);
+  void ProcessKeyDown(XBMC_keysym& keysym);
   void ProcessKeyUp(void);
 
   std::string GetKeyName(uint32_t keyId);
 
 private:
-  static bool LookupSymAndUnicodePeripherals(_keysym& keysym, uint16_t* key, char* unicode);
+  static bool LookupSymAndUnicodePeripherals(XBMC_keysym& keysym, uint16_t* key, char* unicode);
 
-  _keysym m_lastKeysym;
+  XBMC_keysym m_lastKeysym;
   std::chrono::time_point<std::chrono::steady_clock> m_lastKeyTime;
 };
 } // namespace KEYBOARD

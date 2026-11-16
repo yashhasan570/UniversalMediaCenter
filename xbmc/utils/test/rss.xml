@@ -3,33 +3,33 @@
   <channel>
     <title><![CDATA[Universal Media Center News]]></title>
     <description><![CDATA[Universal Media Center is a free media player that is designed to look great on your big screen TV but is just as at home on a small screen.]]></description>
-    <link>https://github.com/yashhasan570/UniversalMediaCenter</link>
+    <link>https://universalmediacenter.tv</link>
     <generator>GatsbyJS</generator>
     <lastBuildDate>Sat, 16 Dec 2023 02:17:35 GMT</lastBuildDate>
     <item>
       <title><![CDATA[Universal Media Center 21.0 "Omega" Beta 1]]></title>
       <description><![CDATA[Things are beginning to heat up for Universal Media Center 21 "Omega" with the first Beta release! This is a major release, so, as you'd expect, it comes with…]]></description>
-      <link>https://github.com/yashhasan570/UniversalMediaCenter/article/universalmediacenter-omega-beta-1/</link>
-      <guid isPermaLink="false">https://github.com/yashhasan570/UniversalMediaCenter/article/universalmediacenter-omega-beta-1/</guid>
+      <link>https://universalmediacenter.tv/article/universalmediacenter-omega-beta-1/</link>
+      <guid isPermaLink="false">https://universalmediacenter.tv/article/universalmediacenter-omega-beta-1/</guid>
       <category><![CDATA[Developer]]></category>
       <category><![CDATA[Prerelease]]></category>
       <dc:creator><![CDATA[Team Universal Media Center]]></dc:creator>
       <pubDate>Tue, 24 Oct 2023 10:39:36 GMT</pubDate>
       <content:encoded>
                     &lt;figure&gt;
-                      &lt;img title="Universal Media Center 21 "Omega" Splash Screen" alt="Universal Media Center 21 "Omega" Splash Screen - the Universal Media Center logo sits at the centre of a black screen, a stylised Greek letter "Omega" around it.'" src="https://github.com/yashhasan570/UniversalMediaCenter/images/blog/universalmediacenter_splash_v21.0_omega_beta_1080p.webp" /&gt;
+                      &lt;img title="Universal Media Center 21 "Omega" Splash Screen" alt="Universal Media Center 21 "Omega" Splash Screen - the Universal Media Center logo sits at the centre of a black screen, a stylised Greek letter "Omega" around it.'" src="https://universalmediacenter.tv/images/blog/universalmediacenter_splash_v21.0_omega_beta_1080p.webp" /&gt;
                     &lt;/figure&gt;
                   &lt;p&gt;Things are beginning to heat up for Universal Media Center 21 "Omega" with the first Beta release!&lt;/p&gt;
-&lt;p&gt;This is a major release, so, as you'd expect, it comes with many new features. However, with a core change to FFmpeg 6.0, there is a very good chance that some regressions may occur.  As such, please be aware that installing this will most likely break things, and we'd really like your help at that point to identify the problems and get them fixed. Please raise &lt;a href="https://github.com///issues"&gt;Github issues&lt;/a&gt; with full debug logs to help us resolve any issues you wonderful testers come across.&lt;/p&gt;
+&lt;p&gt;This is a major release, so, as you'd expect, it comes with many new features. However, with a core change to FFmpeg 6.0, there is a very good chance that some regressions may occur.  As such, please be aware that installing this will most likely break things, and we'd really like your help at that point to identify the problems and get them fixed. Please raise &lt;a href="https://github.com/xbmc/xbmc/issues"&gt;Github issues&lt;/a&gt; with full debug logs to help us resolve any issues you wonderful testers come across.&lt;/p&gt;
 &lt;p&gt;First, we would like to make a few targeted announcements.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Android users&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Many users may still be on the Universal Media Center testing track for their Android devices. It's far easier to leave the testing track from a 'phone-based device, but be aware that if your device is on the testing track, we will be starting to deploy the Beta 1 release over the next week or so. If you wish to opt out of the testing group, one way you can is by visiting the following link &lt;a href="https://play.google.com/apps/testing/com.universalmediacenter.app"&gt;Google Play - Universal Media Center testing track&lt;/a&gt;. From there, you can opt out for your Google Play account. This is the best (and possibly only) way to opt out on many Android TV devices (e.g. Nvidia Shields).&lt;/p&gt;
+&lt;p&gt;Many users may still be on the Universal Media Center testing track for their Android devices. It's far easier to leave the testing track from a 'phone-based device, but be aware that if your device is on the testing track, we will be starting to deploy the Beta 1 release over the next week or so. If you wish to opt out of the testing group, one way you can is by visiting the following link &lt;a href="https://play.google.com/apps/testing/"&gt;Google Play - Universal Media Center testing track&lt;/a&gt;. From there, you can opt out for your Google Play account. This is the best (and possibly only) way to opt out on many Android TV devices (e.g. Nvidia Shields).&lt;/p&gt;
 &lt;p&gt;With that said, for those adventurous types who would like to help us with testing, you can use the same link to opt in for a Google Play account.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Skin Developers&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;An API bump will be made with the next release of Universal Media Center 21's testing cycle. See the following PR's for details&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com///pull/23926"&gt;https://github.com///pull/23926&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com///pull/23927"&gt;https://github.com///pull/23927&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com///pull/23862"&gt;https://github.com///pull/23862&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/xbmc/xbmc/pull/23926"&gt;https://github.com/xbmc/xbmc/pull/23926&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/xbmc/xbmc/pull/23927"&gt;https://github.com/xbmc/xbmc/pull/23927&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/xbmc/xbmc/pull/23862"&gt;https://github.com/xbmc/xbmc/pull/23862&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;This will require changes and submissions to the Omega branch for skins for those who submit to the Universal Media Center Repository. Reach out on the forums if you have any questions/concerns.&lt;/p&gt;
 &lt;p&gt;And now, for the list of changes for Beta 1.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Build/Dependencies&lt;/strong&gt;&lt;/p&gt;
@@ -40,70 +40,70 @@
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;Estuary, Estouchy&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Retire Favourites dialog, use Favourites window instead (&lt;a href="https://github.com///pull/23861"&gt;https://github.com///pull/23861&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Retire Favourites dialog, use Favourites window instead (&lt;a href="https://github.com/xbmc/xbmc/pull/23861"&gt;https://github.com/xbmc/xbmc/pull/23861&lt;/a&gt;).&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;Favourites&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Add selected items of the target to favourite's context menu (&lt;a href="https://github.com///pull/23895"&gt;https://github.com///pull/23895&lt;/a&gt;).&lt;/li&gt;
-&lt;li&gt;Fix crash on moving items in favourites widget and favourites window (&lt;a href="https://github.com///pull/23946"&gt;https://github.com///pull/23946&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Add selected items of the target to favourite's context menu (&lt;a href="https://github.com/xbmc/xbmc/pull/23895"&gt;https://github.com/xbmc/xbmc/pull/23895&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Fix crash on moving items in favourites widget and favourites window (&lt;a href="https://github.com/xbmc/xbmc/pull/23946"&gt;https://github.com/xbmc/xbmc/pull/23946&lt;/a&gt;).&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;General&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;A bug was recently introduced that led to external subtitle entries becoming unavailable on streamdetails. This was fixed in &lt;a href="https://github.com///pull/23835"&gt;https://github.com///pull/23835&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;A bug was recently introduced that led to external subtitle entries becoming unavailable on streamdetails. This was fixed in &lt;a href="https://github.com/xbmc/xbmc/pull/23835"&gt;https://github.com/xbmc/xbmc/pull/23835&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;A fix to allow &lt;code&gt;.strm&lt;/code&gt; files to properly use resume points was made by &lt;strong&gt;@Acidzero2020&lt;/strong&gt;.&lt;/li&gt;
 &lt;li&gt;An improvement to the Event Log "toast" notifications has been made by &lt;strong&gt;@DaVukovic&lt;/strong&gt; to provide more meaningful information when an item fails to scrape TV Shows.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;Input&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;A fix to allow Python addons to correctly handle custom controller button inputs was made by &lt;strong&gt;@icr8ions&lt;/strong&gt;. This allows addons like the Keymap Editor to correctly recognise and handle actions from custom controllers (&lt;a href="https://github.com///pull/23789"&gt;https://github.com///pull/23789&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;A fix to allow Python addons to correctly handle custom controller button inputs was made by &lt;strong&gt;@icr8ions&lt;/strong&gt;. This allows addons like the Keymap Editor to correctly recognise and handle actions from custom controllers (&lt;a href="https://github.com/xbmc/xbmc/pull/23789"&gt;https://github.com/xbmc/xbmc/pull/23789&lt;/a&gt;).&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;Music&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;A PR that extends the Python 'generic artist' scraper to fetch the associated YouTube video links for an artist from theaudiodb, and then match them up to songs already scanned into the user's music library. This allows skins to then display links to the corresponding song video. More information can be see in the PR from &lt;strong&gt;@the-black-eagle&lt;/strong&gt;  (&lt;a href="https://github.com///pull/22654"&gt;https://github.com///pull/22654&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;A PR that extends the Python 'generic artist' scraper to fetch the associated YouTube video links for an artist from theaudiodb, and then match them up to songs already scanned into the user's music library. This allows skins to then display links to the corresponding song video. More information can be see in the PR from &lt;strong&gt;@the-black-eagle&lt;/strong&gt;  (&lt;a href="https://github.com/xbmc/xbmc/pull/22654"&gt;https://github.com/xbmc/xbmc/pull/22654&lt;/a&gt;).&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;Player&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Updated some internal constants to handle better very high bit rate streams (maximums of UHD Blu-Ray at least - 144 Mbit/s) (&lt;a href="https://github.com///pull/23883"&gt;https://github.com///pull/23883&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Updated some internal constants to handle better very high bit rate streams (maximums of UHD Blu-Ray at least - 144 Mbit/s) (&lt;a href="https://github.com/xbmc/xbmc/pull/23883"&gt;https://github.com/xbmc/xbmc/pull/23883&lt;/a&gt;).&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;Platform Specifics&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;Android&lt;/strong&gt;:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;A fix to actually package themes for skins like Estuary/Estouchy was made. This was found by accident, and dates way back to the implementation of our Android platform (&lt;a href="https://github.com///pull/23782"&gt;https://github.com///pull/23782&lt;/a&gt;).&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;@joseluismarti&lt;/strong&gt; continues his improvement of our Android code. This time he has updated some code to use Android-provided values rather than a manually-curated list of values. (&lt;a href="https://github.com///pull/23769"&gt;https://github.com///pull/23769&lt;/a&gt;).&lt;/li&gt;
-&lt;li&gt;A workaround for an Amlogic BSP audio bug that affects many platforms, even modern Google devices (more information &lt;a href="https://github.com/yashhasan570/UniversalMediaCenter/showthread.php?tid=371883&amp;#x26;pid=3169260#pid3169260"&gt;here&lt;/a&gt;, fixed in &lt;a href="https://github.com///commit/be049ba900df39b9f2cef820a19088f8aa1ba7d2"&gt;https://github.com///commit/be049ba900df39b9f2cef820a19088f8aa1ba7d2&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;A fix to actually package themes for skins like Estuary/Estouchy was made. This was found by accident, and dates way back to the implementation of our Android platform (&lt;a href="https://github.com/xbmc/xbmc/pull/23782"&gt;https://github.com/xbmc/xbmc/pull/23782&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;@joseluismarti&lt;/strong&gt; continues his improvement of our Android code. This time he has updated some code to use Android-provided values rather than a manually-curated list of values. (&lt;a href="https://github.com/xbmc/xbmc/pull/23769"&gt;https://github.com/xbmc/xbmc/pull/23769&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;A workaround for an Amlogic BSP audio bug that affects many platforms, even modern Google devices (more information &lt;a href="https://forum.universalmediacenter.tv/showthread.php?tid=371883&amp;#x26;pid=3169260#pid3169260"&gt;here&lt;/a&gt;, fixed in &lt;a href="https://github.com/xbmc/xbmc/commit/be049ba900df39b9f2cef820a19088f8aa1ba7d2"&gt;https://github.com/xbmc/xbmc/commit/be049ba900df39b9f2cef820a19088f8aa1ba7d2&lt;/a&gt;).&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;FreeBSD&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;We don't have too many improvements to our FreeBSD port, however &lt;strong&gt;@lrusak&lt;/strong&gt; has brought FreeBSD in line with Linux with its usage of the command line argument &lt;code&gt;--audio-backend&lt;/code&gt; (&lt;a href="https://github.com///pull/23886"&gt;https://github.com///pull/23886&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;We don't have too many improvements to our FreeBSD port, however &lt;strong&gt;@lrusak&lt;/strong&gt; has brought FreeBSD in line with Linux with its usage of the command line argument &lt;code&gt;--audio-backend&lt;/code&gt; (&lt;a href="https://github.com/xbmc/xbmc/pull/23886"&gt;https://github.com/xbmc/xbmc/pull/23886&lt;/a&gt;).&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;Linux&lt;/strong&gt;:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;A fix for a crash with Pipewire was contributed by &lt;strong&gt;@dobo90.&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;@lrusak&lt;/strong&gt; has implemented a command line switch (&lt;code&gt;--gl-interface=&amp;#x3C;interface&gt;&lt;/code&gt;) to replace the old environment variable usage of &lt;code&gt;UNIVERSALMEDIA_GL_INTERFACE&lt;/code&gt; (&lt;a href="https://github.com///pull/23907"&gt;https://github.com///pull/23907&lt;/a&gt;).&lt;/li&gt;
-&lt;li&gt;Universal Media Center's usage of the system ping utility has been replaced with an internal implementation (&lt;a href="https://github.com///pull/23870"&gt;https://github.com///pull/23870&lt;/a&gt;).&lt;/li&gt;
-&lt;li&gt;DRMPrime has had a check based on pitch value removed as it was causing failures with some formats, like single plane and/or compressed ones, where the pitch can be 0 and therefore it has no meaning. Thanks &lt;strong&gt;@jernejsk&lt;/strong&gt; (&lt;a href="https://github.com///pull/23889"&gt;https://github.com///pull/23889&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;@lrusak&lt;/strong&gt; has implemented a command line switch (&lt;code&gt;--gl-interface=&amp;#x3C;interface&gt;&lt;/code&gt;) to replace the old environment variable usage of &lt;code&gt;UNIVERSALMEDIA_GL_INTERFACE&lt;/code&gt; (&lt;a href="https://github.com/xbmc/xbmc/pull/23907"&gt;https://github.com/xbmc/xbmc/pull/23907&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Universal Media Center's usage of the system ping utility has been replaced with an internal implementation (&lt;a href="https://github.com/xbmc/xbmc/pull/23870"&gt;https://github.com/xbmc/xbmc/pull/23870&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;DRMPrime has had a check based on pitch value removed as it was causing failures with some formats, like single plane and/or compressed ones, where the pitch can be 0 and therefore it has no meaning. Thanks &lt;strong&gt;@jernejsk&lt;/strong&gt; (&lt;a href="https://github.com/xbmc/xbmc/pull/23889"&gt;https://github.com/xbmc/xbmc/pull/23889&lt;/a&gt;).&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;macOS&lt;/strong&gt;:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;SDL windowing while not enabled by default since Alpha1 (in favour of native windowing) was still a possible build compile switch. It has finally been removed in Beta 1 (&lt;a href="https://github.com///pull/22990"&gt;https://github.com///pull/22990&lt;/a&gt;).&lt;/li&gt;
-&lt;li&gt;Universal Media Center now relies on an external library, &lt;code&gt;smctemp&lt;/code&gt;, to display the CPU and GPU sensor values - this being valid for either x86 or Apple Silicon (&lt;a href="https://github.com///pull/23770"&gt;https://github.com///pull/23770&lt;/a&gt;).&lt;/li&gt;
-&lt;li&gt;Network info subsystem was improved avoiding the execution of external commands to obtain the current gateway and DNS server list (&lt;a href="https://github.com///pull/23724"&gt;https://github.com///pull/23724&lt;/a&gt;).&lt;/li&gt;
-&lt;li&gt;Improvements to input, e.g. the enter keyboard key was not being recognised (only key return)  (&lt;a href="https://github.com///pull/23860"&gt;https://github.com///pull/23860&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;SDL windowing while not enabled by default since Alpha1 (in favour of native windowing) was still a possible build compile switch. It has finally been removed in Beta 1 (&lt;a href="https://github.com/xbmc/xbmc/pull/22990"&gt;https://github.com/xbmc/xbmc/pull/22990&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Universal Media Center now relies on an external library, &lt;code&gt;smctemp&lt;/code&gt;, to display the CPU and GPU sensor values - this being valid for either x86 or Apple Silicon (&lt;a href="https://github.com/xbmc/xbmc/pull/23770"&gt;https://github.com/xbmc/xbmc/pull/23770&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Network info subsystem was improved avoiding the execution of external commands to obtain the current gateway and DNS server list (&lt;a href="https://github.com/xbmc/xbmc/pull/23724"&gt;https://github.com/xbmc/xbmc/pull/23724&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Improvements to input, e.g. the enter keyboard key was not being recognised (only key return)  (&lt;a href="https://github.com/xbmc/xbmc/pull/23860"&gt;https://github.com/xbmc/xbmc/pull/23860&lt;/a&gt;).&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;webOS&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;@quietvoid&lt;/strong&gt; has contributed a fix to allow webOS to play back AV1 DolbyVision files on supported devices (&lt;a href="https://github.com///pull/23771"&gt;https://github.com///pull/23771&lt;/a&gt;).&lt;/li&gt;
-&lt;li&gt;Support to allow webOS to to suspend to background rather than exit was made by &lt;strong&gt;@sundermann&lt;/strong&gt; (&lt;a href="https://github.com///pull/23684"&gt;https://github.com///pull/23684&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;@quietvoid&lt;/strong&gt; has contributed a fix to allow webOS to play back AV1 DolbyVision files on supported devices (&lt;a href="https://github.com/xbmc/xbmc/pull/23771"&gt;https://github.com/xbmc/xbmc/pull/23771&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Support to allow webOS to to suspend to background rather than exit was made by &lt;strong&gt;@sundermann&lt;/strong&gt; (&lt;a href="https://github.com/xbmc/xbmc/pull/23684"&gt;https://github.com/xbmc/xbmc/pull/23684&lt;/a&gt;).&lt;/li&gt;
 &lt;li&gt;With the support to suspend/minimise for webOS, behaviour to pause/resume media playback when Universal Media Center is minimised/restored has been implemented by &lt;strong&gt;@sundermann&lt;/strong&gt;.&lt;/li&gt;
 &lt;li&gt;Initial support for webOS 4 devices has been implemented by &lt;strong&gt;@mariotaku.&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -111,58 +111,58 @@
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;Windows&lt;/strong&gt;:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Fixed Windows 11 refresh rate switching (&lt;a href="https://github.com///pull/23766"&gt;https://github.com///pull/23766&lt;/a&gt;).&lt;/li&gt;
-&lt;li&gt;Improved the vsync detection used by "Sync playback to display" mode (&lt;a href="https://github.com///pull/23893"&gt;https://github.com///pull/23893&lt;/a&gt;). Breaks compatibility with Windows 7 (which is not supported in v21).&lt;/li&gt;
+&lt;li&gt;Fixed Windows 11 refresh rate switching (&lt;a href="https://github.com/xbmc/xbmc/pull/23766"&gt;https://github.com/xbmc/xbmc/pull/23766&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Improved the vsync detection used by "Sync playback to display" mode (&lt;a href="https://github.com/xbmc/xbmc/pull/23893"&gt;https://github.com/xbmc/xbmc/pull/23893&lt;/a&gt;). Breaks compatibility with Windows 7 (which is not supported in v21).&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;PVR&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Fix 'switch to previous channel' not working if it is in another group than the currently playing channel (&lt;a href="https://github.com///pull/23932"&gt;https://github.com///pull/23932&lt;/a&gt;).&lt;/li&gt;
-&lt;li&gt;Fix Live TV - Randomly spinner stays forever although channel is playing fine (&lt;a href="https://github.com///pull/23844"&gt;https://github.com///pull/23844&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Fix 'switch to previous channel' not working if it is in another group than the currently playing channel (&lt;a href="https://github.com/xbmc/xbmc/pull/23932"&gt;https://github.com/xbmc/xbmc/pull/23932&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Fix Live TV - Randomly spinner stays forever although channel is playing fine (&lt;a href="https://github.com/xbmc/xbmc/pull/23844"&gt;https://github.com/xbmc/xbmc/pull/23844&lt;/a&gt;).&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;Skinning&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;@DeltaMikeCharlie&lt;/strong&gt; has provided a way for skinners to use a &lt;code&gt;ParentalRatingCode&lt;/code&gt; info label (&lt;a href="https://github.com///pull/23586"&gt;https://github.com///pull/23586&lt;/a&gt;).&lt;/li&gt;
-&lt;li&gt;Infolabels for video width and height have been added by &lt;strong&gt;@graham8&lt;/strong&gt; (&lt;a href="https://github.com///pull/23850"&gt;https://github.com///pull/23850&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;@DeltaMikeCharlie&lt;/strong&gt; has provided a way for skinners to use a &lt;code&gt;ParentalRatingCode&lt;/code&gt; info label (&lt;a href="https://github.com/xbmc/xbmc/pull/23586"&gt;https://github.com/xbmc/xbmc/pull/23586&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Infolabels for video width and height have been added by &lt;strong&gt;@graham8&lt;/strong&gt; (&lt;a href="https://github.com/xbmc/xbmc/pull/23850"&gt;https://github.com/xbmc/xbmc/pull/23850&lt;/a&gt;).&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;Videos&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Respect default select action setting at more places - Home screen widgets, PVR recordings window, Favourites window (&lt;a href="https://github.com///pull/23848"&gt;https://github.com///pull/23848&lt;/a&gt; , &lt;a href="https://github.com///pull/23857"&gt;https://github.com///pull/23857&lt;/a&gt;).&lt;/li&gt;
-&lt;li&gt;Add default play action setting to control resume behaviour when starting playback of videos (xhttps://github.com///pull/23863).&lt;/li&gt;
-&lt;li&gt;Fix play/resume of BD and DVD disc images not working from Home screen widgets (&lt;a href="https://github.com///pull/23905"&gt;https://github.com///pull/23905&lt;/a&gt;).&lt;/li&gt;
-&lt;li&gt;Automatic video rotation from metadata was fixed (&lt;a href="https://github.com///pull/23832"&gt;https://github.com///pull/23832&lt;/a&gt;).&lt;/li&gt;
-&lt;li&gt;Teletext language codes sometimes were not persisted correctly in the teletext browser (&lt;a href="https://github.com///pull/23890"&gt;https://github.com///pull/23890&lt;/a&gt;).&lt;/li&gt;
-&lt;li&gt;Improvements to the teletext browser window (&lt;a href="https://github.com///pull/23896"&gt;https://github.com///pull/23896&lt;/a&gt;).&lt;/li&gt;
-&lt;li&gt;EDL files are now valid even if they are not on the same subnet of the Universal Media Center host - valid across all private subnet ranges (&lt;a href="https://github.com///pull/23836"&gt;https://github.com///pull/23836&lt;/a&gt;).&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;@joseluismarti&lt;/strong&gt; also contributed outside of his usual Android improvements with a fix for a crash when scan to library on a directory contained new movies (&lt;a href="https://github.com///pull/23767"&gt;https://github.com///pull/23767&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Respect default select action setting at more places - Home screen widgets, PVR recordings window, Favourites window (&lt;a href="https://github.com/xbmc/xbmc/pull/23848"&gt;https://github.com/xbmc/xbmc/pull/23848&lt;/a&gt; , &lt;a href="https://github.com/xbmc/xbmc/pull/23857"&gt;https://github.com/xbmc/xbmc/pull/23857&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Add default play action setting to control resume behaviour when starting playback of videos (xhttps://github.com/xbmc/xbmc/pull/23863).&lt;/li&gt;
+&lt;li&gt;Fix play/resume of BD and DVD disc images not working from Home screen widgets (&lt;a href="https://github.com/xbmc/xbmc/pull/23905"&gt;https://github.com/xbmc/xbmc/pull/23905&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Automatic video rotation from metadata was fixed (&lt;a href="https://github.com/xbmc/xbmc/pull/23832"&gt;https://github.com/xbmc/xbmc/pull/23832&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Teletext language codes sometimes were not persisted correctly in the teletext browser (&lt;a href="https://github.com/xbmc/xbmc/pull/23890"&gt;https://github.com/xbmc/xbmc/pull/23890&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Improvements to the teletext browser window (&lt;a href="https://github.com/xbmc/xbmc/pull/23896"&gt;https://github.com/xbmc/xbmc/pull/23896&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;EDL files are now valid even if they are not on the same subnet of the Universal Media Center host - valid across all private subnet ranges (&lt;a href="https://github.com/xbmc/xbmc/pull/23836"&gt;https://github.com/xbmc/xbmc/pull/23836&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;@joseluismarti&lt;/strong&gt; also contributed outside of his usual Android improvements with a fix for a crash when scan to library on a directory contained new movies (&lt;a href="https://github.com/xbmc/xbmc/pull/23767"&gt;https://github.com/xbmc/xbmc/pull/23767&lt;/a&gt;).&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;Known Issues&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;You can see open issues on our tracker at &lt;a href="https://github.com///issues"&gt;https://github.com///issues&lt;/a&gt;. However, to call out a couple of specifics, please be aware of the following if you're planning on upgrading:&lt;/p&gt;
+&lt;p&gt;You can see open issues on our tracker at &lt;a href="https://github.com/xbmc/xbmc/issues"&gt;https://github.com/xbmc/xbmc/issues&lt;/a&gt;. However, to call out a couple of specifics, please be aware of the following if you're planning on upgrading:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;There are seek issues with multi-part MP4 files on Android (&lt;a href="https://github.com///issues/23673"&gt;https://github.com///issues/23673&lt;/a&gt;).&lt;/li&gt;
-&lt;li&gt;There is an upstream FFmpeg issue that means that OGG music playback does not work. This will be rectified upstream to Universal Media Center. (&lt;a href="https://github.com///issues/23198"&gt;https://github.com///issues/23198&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;There are seek issues with multi-part MP4 files on Android (&lt;a href="https://github.com/xbmc/xbmc/issues/23673"&gt;https://github.com/xbmc/xbmc/issues/23673&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;There is an upstream FFmpeg issue that means that OGG music playback does not work. This will be rectified upstream to Universal Media Center. (&lt;a href="https://github.com/xbmc/xbmc/issues/23198"&gt;https://github.com/xbmc/xbmc/issues/23198&lt;/a&gt;).&lt;/li&gt;
 &lt;li&gt;We've had reports that the new splash screen looks like an OpenGL corruption; we know, it's not a problem, so don't panic. We'd be happy to have your artwork contributions if you'd like to work on an alternative.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;If you love to live on the bleeding edge of new, you can get Beta 1 from &lt;a href="https://github.com/yashhasan570/UniversalMediaCenter/download"&gt;here&lt;/a&gt;. Select your platform of choice, and look in the "Prerelease" section. Again, though, please: expect some breakage, don't use this as your daily installation unless you know how to get things working again, and please share your experiences back with us so we can really get going on those bugs.&lt;/p&gt;
-&lt;p&gt;As usual - well, it is open source - you can see what's changed between v21 and v20 &lt;a href="https://github.com///compare/Nexus...:21.0b1-Omega"&gt;here&lt;/a&gt;.
-For a more targeted look at the changes made since v21 Alpha 3, you can see those changes &lt;a href="https://github.com///compare/21.0a3-Omega...21.0b1-Omega"&gt;here&lt;/a&gt;.&lt;/p&gt;</content:encoded>
+&lt;p&gt;If you love to live on the bleeding edge of new, you can get Beta 1 from &lt;a href="https://universalmediacenter.tv/download"&gt;here&lt;/a&gt;. Select your platform of choice, and look in the "Prerelease" section. Again, though, please: expect some breakage, don't use this as your daily installation unless you know how to get things working again, and please share your experiences back with us so we can really get going on those bugs.&lt;/p&gt;
+&lt;p&gt;As usual - well, it is open source - you can see what's changed between v21 and v20 &lt;a href="https://github.com/xbmc/xbmc/compare/Nexus...xbmc:21.0b1-Omega"&gt;here&lt;/a&gt;.
+For a more targeted look at the changes made since v21 Alpha 3, you can see those changes &lt;a href="https://github.com/xbmc/xbmc/compare/21.0a3-Omega...21.0b1-Omega"&gt;here&lt;/a&gt;.&lt;/p&gt;</content:encoded>
     </item>
     <item>
       <title><![CDATA[Universal Media Center 21.0 "Omega" Alpha 3]]></title>
       <description><![CDATA[Time for the next milestone release for Universal Media Center 21 "Omega". Slightly delayed this time around compared to what we were striving for, however we…]]></description>
-      <link>https://github.com/yashhasan570/UniversalMediaCenter/article/universalmediacenter-omega-alpha-3/</link>
-      <guid isPermaLink="false">https://github.com/yashhasan570/UniversalMediaCenter/article/universalmediacenter-omega-alpha-3/</guid>
+      <link>https://universalmediacenter.tv/article/universalmediacenter-omega-alpha-3/</link>
+      <guid isPermaLink="false">https://universalmediacenter.tv/article/universalmediacenter-omega-alpha-3/</guid>
       <category><![CDATA[Developer]]></category>
       <category><![CDATA[Prerelease]]></category>
       <dc:creator><![CDATA[Team Universal Media Center]]></dc:creator>
       <pubDate>Sat, 09 Sep 2023 10:36:03 GMT</pubDate>
       <content:encoded>
                     &lt;figure&gt;
-                      &lt;img title="Universal Media Center 21 "Omega" Splash Screen" alt="Universal Media Center 21 "Omega" Splash Screen - the Universal Media Center logo sits at the centre of a black screen, a stylised Greek letter "Omega" around it." src="https://github.com/yashhasan570/UniversalMediaCenter/images/blog/universalmediacenter_21_omega_alpha_splash.webp" /&gt;
+                      &lt;img title="Universal Media Center 21 "Omega" Splash Screen" alt="Universal Media Center 21 "Omega" Splash Screen - the Universal Media Center logo sits at the centre of a black screen, a stylised Greek letter "Omega" around it." src="https://universalmediacenter.tv/images/blog/universalmediacenter_21_omega_alpha_splash.webp" /&gt;
                     &lt;/figure&gt;
                   &lt;p&gt;Time for the next milestone release for Universal Media Center 21 "Omega". Slightly delayed this time around compared to what we were striving for, however we are happy to announce the arrival of Alpha 3.&lt;/p&gt;
-&lt;p&gt;This is a major release, so, as you'd expect, it comes with many new features. However, with a core change to FFmpeg 6.0, there is a very good chance that some regressions may occur. As such, please be aware that installing this will most likely break things, and we'd really like your help at that point to identify the problems and get them fixed. Please raise &lt;a href="https://github.com///issues"&gt;Github issues&lt;/a&gt; with full debug logs to help us resolve any issues you wonderful testers come across.&lt;/p&gt;
+&lt;p&gt;This is a major release, so, as you'd expect, it comes with many new features. However, with a core change to FFmpeg 6.0, there is a very good chance that some regressions may occur. As such, please be aware that installing this will most likely break things, and we'd really like your help at that point to identify the problems and get them fixed. Please raise &lt;a href="https://github.com/xbmc/xbmc/issues"&gt;Github issues&lt;/a&gt; with full debug logs to help us resolve any issues you wonderful testers come across.&lt;/p&gt;
 &lt;p&gt;A further 176 Pull Requests have been merged since Alpha 2 - fixing issues, adding features, and improving Universal Media Center.&lt;/p&gt;
 &lt;p&gt;So... what's actually changed?&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Estuary&lt;/strong&gt;&lt;/p&gt;
@@ -180,7 +180,7 @@ For a more targeted look at the changes made since v21 Alpha 3, you can see thos
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;Games&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;@garbear&lt;/strong&gt; continues to improve the gaming interface of Universal Media Center. Changes around player management/assignment have been made in &lt;a href="https://github.com///pull/23548"&gt;https://github.com///pull/23548&lt;/a&gt;. Have a read of that PR for more details/info.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;@garbear&lt;/strong&gt; continues to improve the gaming interface of Universal Media Center. Changes around player management/assignment have been made in &lt;a href="https://github.com/xbmc/xbmc/pull/23548"&gt;https://github.com/xbmc/xbmc/pull/23548&lt;/a&gt;. Have a read of that PR for more details/info.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;General&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -196,8 +196,8 @@ For a more targeted look at the changes made since v21 Alpha 3, you can see thos
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;Android&lt;/strong&gt;:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;@quietvoid&lt;/strong&gt; has had a PR merged that enables the ability to convert some Dolby Vision media types to more common types to allow playback. A forum thread has been around for testing that can explain the benefits a little better than this blog editor, so head there for some info and any feedback/support around the feature: &lt;a href="https://github.com/yashhasan570/UniversalMediaCenter/showthread.php?tid=371557"&gt;https://github.com/yashhasan570/UniversalMediaCenter/showthread.php?tid=371557&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;@fritsch&lt;/strong&gt; has once again delved into our Audio Engine to fix a regression for Amazon FireTV 4K users: &lt;a href="https://github.com///pull/23687"&gt;https://github.com///pull/23687&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;@quietvoid&lt;/strong&gt; has had a PR merged that enables the ability to convert some Dolby Vision media types to more common types to allow playback. A forum thread has been around for testing that can explain the benefits a little better than this blog editor, so head there for some info and any feedback/support around the feature: &lt;a href="https://forum.universalmediacenter.tv/showthread.php?tid=371557"&gt;https://forum.universalmediacenter.tv/showthread.php?tid=371557&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;@fritsch&lt;/strong&gt; has once again delved into our Audio Engine to fix a regression for Amazon FireTV 4K users: &lt;a href="https://github.com/xbmc/xbmc/pull/23687"&gt;https://github.com/xbmc/xbmc/pull/23687&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;@joseluismarti&lt;/strong&gt; has further updated some Android dependencies and fixed/modernised areas of our Android API usage.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
@@ -247,7 +247,7 @@ For a more targeted look at the changes made since v21 Alpha 3, you can see thos
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;Skinning&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;a change by &lt;strong&gt;@smfontes&lt;/strong&gt; to allow loading of font sets defined in a skins/fonts folder: &lt;a href="https://github.com///pull/22993"&gt;https://github.com///pull/22993&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;a change by &lt;strong&gt;@smfontes&lt;/strong&gt; to allow loading of font sets defined in a skins/fonts folder: &lt;a href="https://github.com/xbmc/xbmc/pull/22993"&gt;https://github.com/xbmc/xbmc/pull/22993&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;Subtitles&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -264,24 +264,24 @@ For a more targeted look at the changes made since v21 Alpha 3, you can see thos
 &lt;li&gt;&lt;strong&gt;@alanswanson&lt;/strong&gt; has provided a change to use the FFmpeg software deinterlacer from &lt;em&gt;yadiff&lt;/em&gt; to &lt;em&gt;bwdif.&lt;/em&gt; This is said to have fairly significant performance improvements over the old interlacing method.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;There are a lot more changes not mentioned, but we are grateful for all contributors that help make Universal Media Center better.&lt;/p&gt;
-&lt;p&gt;If you love to live on the bleeding edge of new, you can get Alpha 3 from &lt;a href="https://github.com/yashhasan570/UniversalMediaCenter/download"&gt;here&lt;/a&gt;. Select your platform of choice, and look in the "Prerelease" section. Again, though, please: expect some breakage, don't use this as your daily installation unless you know how to get things working again, and please share your experiences back with us so we can really get going on those bugs.&lt;/p&gt;
-&lt;p&gt;As usual - we are an open source project - you can see what's changed between v21 and v20 &lt;a href="https://github.com///compare/Nexus...:21.0a3-Omega"&gt;here&lt;/a&gt;.
-For a more targeted look at the changes made since v21 Alpha 2, you can see those changes &lt;a href="https://github.com///compare/21.0a2-Omega...21.0a3-Omega"&gt;here&lt;/a&gt;.&lt;/p&gt;</content:encoded>
+&lt;p&gt;If you love to live on the bleeding edge of new, you can get Alpha 3 from &lt;a href="https://universalmediacenter.tv/download"&gt;here&lt;/a&gt;. Select your platform of choice, and look in the "Prerelease" section. Again, though, please: expect some breakage, don't use this as your daily installation unless you know how to get things working again, and please share your experiences back with us so we can really get going on those bugs.&lt;/p&gt;
+&lt;p&gt;As usual - we are an open source project - you can see what's changed between v21 and v20 &lt;a href="https://github.com/xbmc/xbmc/compare/Nexus...xbmc:21.0a3-Omega"&gt;here&lt;/a&gt;.
+For a more targeted look at the changes made since v21 Alpha 2, you can see those changes &lt;a href="https://github.com/xbmc/xbmc/compare/21.0a2-Omega...21.0a3-Omega"&gt;here&lt;/a&gt;.&lt;/p&gt;</content:encoded>
     </item>
     <item>
       <title><![CDATA[Universal Media Center 20.2 "Nexus" - Release]]></title>
       <description><![CDATA[As is always inevitable in software, we are back with a new release of Universal Media Center "Nexus". An assortment of bug fixes, some backports, no real new…]]></description>
-      <link>https://github.com/yashhasan570/UniversalMediaCenter/article/universalmediacenter-20-2-nexus-release/</link>
-      <guid isPermaLink="false">https://github.com/yashhasan570/UniversalMediaCenter/article/universalmediacenter-20-2-nexus-release/</guid>
+      <link>https://universalmediacenter.tv/article/universalmediacenter-20-2-nexus-release/</link>
+      <guid isPermaLink="false">https://universalmediacenter.tv/article/universalmediacenter-20-2-nexus-release/</guid>
       <category><![CDATA[Release]]></category>
       <dc:creator><![CDATA[Team Universal Media Center]]></dc:creator>
       <pubDate>Sun, 02 Jul 2023 09:59:41 GMT</pubDate>
       <content:encoded>
                     &lt;figure&gt;
-                      &lt;img title="Universal Media Center 20.2 "Nexus" Splash Screen" alt="Universal Media Center 20.2 "Nexus" Splash Screen - a blue Universal Media Center logo sits in the centre of a black page, around it, a dial - a gauge or chronograph, perhaps." src="https://github.com/yashhasan570/UniversalMediaCenter/images/blog/universalmediacenter-20.2-nexus-splash.webp" /&gt;
+                      &lt;img title="Universal Media Center 20.2 "Nexus" Splash Screen" alt="Universal Media Center 20.2 "Nexus" Splash Screen - a blue Universal Media Center logo sits in the centre of a black page, around it, a dial - a gauge or chronograph, perhaps." src="https://universalmediacenter.tv/images/blog/universalmediacenter-20.2-nexus-splash.webp" /&gt;
                     &lt;/figure&gt;
                   &lt;p&gt;As is always inevitable in software, we are back with a new release of Universal Media Center "Nexus".&lt;/p&gt;
-&lt;p&gt;An assortment of bug fixes, some backports, no real new features. Full changelog since 20.1 on &lt;a href="https://github.com///compare/20.1-Nexus...20.2-Nexus"&gt;Github&lt;/a&gt;, as usual.&lt;/p&gt;
+&lt;p&gt;An assortment of bug fixes, some backports, no real new features. Full changelog since 20.1 on &lt;a href="https://github.com/xbmc/xbmc/compare/20.1-Nexus...20.2-Nexus"&gt;Github&lt;/a&gt;, as usual.&lt;/p&gt;
 &lt;h3&gt;&lt;strong&gt;Release notes&lt;/strong&gt;&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;Audio&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -318,7 +318,7 @@ For a more targeted look at the changes made since v21 Alpha 2, you can see thos
 &lt;li&gt;
 &lt;p&gt;macOS/iOS&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Fix speech recognition not working (&lt;a href="https://github.com///pull/23341"&gt;https://github.com///pull/23341&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Fix speech recognition not working (&lt;a href="https://github.com/xbmc/xbmc/pull/23341"&gt;https://github.com/xbmc/xbmc/pull/23341&lt;/a&gt;).&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
@@ -331,8 +331,8 @@ For a more targeted look at the changes made since v21 Alpha 2, you can see thos
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;PVR&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Fix crash on saved search (&lt;a href="https://github.com///pull/23195"&gt;https://github.com///pull/23195&lt;/a&gt;).&lt;/li&gt;
-&lt;li&gt;Fix last opened group not always restored on Universal Media Center startup (&lt;a href="https://github.com///pull/23165"&gt;https://github.com///pull/23165&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Fix crash on saved search (&lt;a href="https://github.com/xbmc/xbmc/pull/23195"&gt;https://github.com/xbmc/xbmc/pull/23195&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Fix last opened group not always restored on Universal Media Center startup (&lt;a href="https://github.com/xbmc/xbmc/pull/23165"&gt;https://github.com/xbmc/xbmc/pull/23165&lt;/a&gt;).&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;Python&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -342,12 +342,12 @@ For a more targeted look at the changes made since v21 Alpha 2, you can see thos
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;Video&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Fix watched/unwatched status not taken into account for items not added to video library when creating playlists (&lt;a href="https://github.com///pull/23398"&gt;https://github.com///pull/23398&lt;/a&gt;).&lt;/li&gt;
-&lt;li&gt;Fix missing watched/unwatched status in Playlist window (&lt;a href="https://github.com///pull/23013"&gt;https://github.com///pull/23013&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Fix watched/unwatched status not taken into account for items not added to video library when creating playlists (&lt;a href="https://github.com/xbmc/xbmc/pull/23398"&gt;https://github.com/xbmc/xbmc/pull/23398&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Fix missing watched/unwatched status in Playlist window (&lt;a href="https://github.com/xbmc/xbmc/pull/23013"&gt;https://github.com/xbmc/xbmc/pull/23013&lt;/a&gt;).&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Thanks, as always, to everyone who has helped us track down and fix any issues. We endeavour to minimise the issues everyone experiences, but with such a large project, and the fact everyone contributing to Universal Media Center is a volunteer, issues and bugs are a part of life. if you happen to experience any bugs/issues, don't hesitate to reach out on the forums, or raise an issue on Github.&lt;/p&gt;
 &lt;p&gt;As this is a point release, there are no major changes since the previous version, and you should be fine to install this straight over the top of any existing Universal Media Center 20.x installation - indeed, this will happen automatically on many platforms. However, as for all software installations, back up your userdata beforehand if you've any doubts or have anything you can't afford to lose (and definitely do this if you're going for a major version upgrade).&lt;/p&gt;
-&lt;p&gt;A list of all changes for this version can be found at &lt;a href="https://github.com///milestone/155?closed=1"&gt;GitHub&lt;/a&gt;. If you want to read back on the full history of v20 itself, or of previous versions, you can find the corresponding articles in the relevant &lt;a href="https://github.com/yashhasan570/UniversalMediaCenter/blog/tag/release"&gt;blog posts&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;A list of all changes for this version can be found at &lt;a href="https://github.com/xbmc/xbmc/milestone/155?closed=1"&gt;GitHub&lt;/a&gt;. If you want to read back on the full history of v20 itself, or of previous versions, you can find the corresponding articles in the relevant &lt;a href="https://universalmediacenter.tv/blog/tag/release"&gt;blog posts&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Application deployment on different platforms (notably the Microsoft Store) can vary considerably due to circumstances outside of our control, so just be patient, and the update will inevitably find its way through.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Android Deployment&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;We always do what's known as a "staged" deployment roll out for Android. So if you don't receive the update immediately, be patient, as it will come through over the next week.&lt;/p&gt;</content:encoded>
@@ -355,18 +355,18 @@ For a more targeted look at the changes made since v21 Alpha 2, you can see thos
     <item>
       <title><![CDATA[Universal Media Center 21.0 "Omega" Alpha 2]]></title>
       <description><![CDATA[Time for the next milestone release for Universal Media Center 21 "Omega". This is our second Alpha release for this cycle. This is a major release, so, as…]]></description>
-      <link>https://github.com/yashhasan570/UniversalMediaCenter/article/universalmediacenter-omega-alpha-2/</link>
-      <guid isPermaLink="false">https://github.com/yashhasan570/UniversalMediaCenter/article/universalmediacenter-omega-alpha-2/</guid>
+      <link>https://universalmediacenter.tv/article/universalmediacenter-omega-alpha-2/</link>
+      <guid isPermaLink="false">https://universalmediacenter.tv/article/universalmediacenter-omega-alpha-2/</guid>
       <category><![CDATA[Prerelease]]></category>
       <category><![CDATA[Developer]]></category>
       <dc:creator><![CDATA[Team Universal Media Center]]></dc:creator>
       <pubDate>Sun, 18 Jun 2023 13:12:18 GMT</pubDate>
       <content:encoded>
                     &lt;figure&gt;
-                      &lt;img title="Universal Media Center 21 "Omega" Splash Screen" alt="Universal Media Center 21 "Omega" Splash Screen - the Universal Media Center logo sits at the centre of a black screen, a stylised Greek letter "Omega" around it." src="https://github.com/yashhasan570/UniversalMediaCenter/images/blog/universalmediacenter_21_omega_alpha_splash.webp" /&gt;
+                      &lt;img title="Universal Media Center 21 "Omega" Splash Screen" alt="Universal Media Center 21 "Omega" Splash Screen - the Universal Media Center logo sits at the centre of a black screen, a stylised Greek letter "Omega" around it." src="https://universalmediacenter.tv/images/blog/universalmediacenter_21_omega_alpha_splash.webp" /&gt;
                     &lt;/figure&gt;
                   &lt;p&gt;Time for the next milestone release for Universal Media Center 21 "Omega". This is our second Alpha release for this cycle.&lt;/p&gt;
-&lt;p&gt;This is a major release, so, as you'd expect, it comes with many new features. However, with a core change to FFmpeg 6.0, there is a very good chance that some regressions may occur.  As such, please be aware that installing this will most likely break things, and we'd really like your help at that point to identify the problems and get them fixed. Please raise &lt;a href="https://github.com///issues"&gt;Github issues&lt;/a&gt; with full debug logs to help us resolve any issues you wonderful testers come across.&lt;/p&gt;
+&lt;p&gt;This is a major release, so, as you'd expect, it comes with many new features. However, with a core change to FFmpeg 6.0, there is a very good chance that some regressions may occur.  As such, please be aware that installing this will most likely break things, and we'd really like your help at that point to identify the problems and get them fixed. Please raise &lt;a href="https://github.com/xbmc/xbmc/issues"&gt;Github issues&lt;/a&gt; with full debug logs to help us resolve any issues you wonderful testers come across.&lt;/p&gt;
 &lt;p&gt;Over the last couple of months we've merged 120 pull requests - fixing issues, adding features, and improving Universal Media Center.&lt;/p&gt;
 &lt;p&gt;So... what's actually changed?&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Build/Dependencies&lt;/strong&gt;&lt;/p&gt;
@@ -394,7 +394,7 @@ For a more targeted look at the changes made since v21 Alpha 2, you can see thos
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;JSON-RPC&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;VideoLibrary.GetEpisodeDetails&lt;/code&gt; now returns "studio" and "genre" added by &lt;strong&gt;@scott967&lt;/strong&gt;  in &lt;a href="https://github.com///pull/23112"&gt;https://github.com///pull/23112&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;VideoLibrary.GetEpisodeDetails&lt;/code&gt; now returns "studio" and "genre" added by &lt;strong&gt;@scott967&lt;/strong&gt;  in &lt;a href="https://github.com/xbmc/xbmc/pull/23112"&gt;https://github.com/xbmc/xbmc/pull/23112&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;Platform Specifics&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -408,7 +408,7 @@ For a more targeted look at the changes made since v21 Alpha 2, you can see thos
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;Linux&lt;/strong&gt;:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;@lrusak&lt;/strong&gt; has added the ability for users to select the audio backend with a command line switch when starting Universal Media Center. This also allows seeing with which enabled audio backends Universal Media Center was built. For more information check out the following &lt;a href="https://github.com///pull/23148"&gt;PR&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;@lrusak&lt;/strong&gt; has added the ability for users to select the audio backend with a command line switch when starting Universal Media Center. This also allows seeing with which enabled audio backends Universal Media Center was built. For more information check out the following &lt;a href="https://github.com/xbmc/xbmc/pull/23148"&gt;PR&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
@@ -441,9 +441,9 @@ For a more targeted look at the changes made since v21 Alpha 2, you can see thos
 &lt;ul&gt;
 &lt;li&gt;A fix for a regression was made by &lt;strong&gt;@lrusak&lt;/strong&gt; that puts addon paths at the front of the system paths. This fixes addons using system modules instead of potentially customised Universal Media Center modules of the same name. This mostly affects Linux based systems.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;If you love to live on the bleeding edge of new, you can get Alpha 2 from &lt;a href="https://github.com/yashhasan570/UniversalMediaCenter/download"&gt;here&lt;/a&gt;. Select your platform of choice, and look in the "Prerelease" section. Again, though, please: expect some breakage, don't use this as your daily installation unless you know how to get things working again, and please share your experiences back with us so we can really get going on those bugs.&lt;/p&gt;
-&lt;p&gt;As usual - well, it is open source - you can see what's changed between v21 and v20 &lt;a href="https://github.com///compare/Nexus...:21.0a2-Omega"&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;For a more targeted look at the changes made since v21 Alpha 1, you can see those changes &lt;a href="https://github.com///compare/21.0a1-Omega...21.0a2-Omega"&gt;here&lt;/a&gt;.&lt;/p&gt;</content:encoded>
+&lt;p&gt;If you love to live on the bleeding edge of new, you can get Alpha 2 from &lt;a href="https://universalmediacenter.tv/download"&gt;here&lt;/a&gt;. Select your platform of choice, and look in the "Prerelease" section. Again, though, please: expect some breakage, don't use this as your daily installation unless you know how to get things working again, and please share your experiences back with us so we can really get going on those bugs.&lt;/p&gt;
+&lt;p&gt;As usual - well, it is open source - you can see what's changed between v21 and v20 &lt;a href="https://github.com/xbmc/xbmc/compare/Nexus...xbmc:21.0a2-Omega"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;For a more targeted look at the changes made since v21 Alpha 1, you can see those changes &lt;a href="https://github.com/xbmc/xbmc/compare/21.0a1-Omega...21.0a2-Omega"&gt;here&lt;/a&gt;.&lt;/p&gt;</content:encoded>
     </item>
   </channel>
 </rss>

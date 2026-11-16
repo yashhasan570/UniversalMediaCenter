@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -562,6 +562,7 @@ void CAdvancedSettings::Initialize()
 
   m_nfsTimeout = 30;
   m_nfsRetries = -1;
+  m_nfsMaxConnections = 4;
 
   m_initialized = true;
 }
@@ -572,7 +573,7 @@ bool CAdvancedSettings::Load(const CProfileManager &profileManager)
   //       it should instead use the versions of GetString/Integer/Float that
   //       don't take defaults in.  Defaults are set in the constructor above
   Initialize(); // In case of profile switch.
-  ParseSettingsFile("special:///system/advancedsettings.xml");
+  ParseSettingsFile("special://xbmc/system/advancedsettings.xml");
   for (const auto& file : m_settingsFiles)
     ParseSettingsFile(file);
 
@@ -582,12 +583,22 @@ bool CAdvancedSettings::Load(const CProfileManager &profileManager)
   if (!m_discStubExtensions.empty())
     m_videoExtensions += "|" + m_discStubExtensions;
 
+  // Built after parsing so the defaults apply without an advancedsettings.xml or a
+  // <videoscanner> section.
+  StringUtils::ToLower(m_metadataSourcesPriv);
+  m_videoScannerMetadataSources.clear();
+  for (auto& source : StringUtils::Split(m_metadataSourcesPriv, '|'))
+  {
+    if (!source.empty())
+      m_videoScannerMetadataSources.insert(std::move(source));
+  }
+
   return true;
 }
 
 void CAdvancedSettings::ParseSettingsFile(const std::string &file)
 {
-  CTinyXML advancedXML;
+  CXBMCTinyXML advancedXML;
   if (!CFileUtils::Exists(file))
   {
     CLog::Log(LOGINFO, "No settings file to load ({})", file);
@@ -612,7 +623,7 @@ void CAdvancedSettings::ParseSettingsFile(const std::string &file)
   CLog::Log(LOGINFO, "Loaded settings file from {}", file);
 
   //Make a copy of the AS.xml and hide advancedsettings passwords
-  CTinyXML advancedXMLCopy(advancedXML);
+  CXBMCTinyXML advancedXMLCopy(advancedXML);
   TiXmlNode *pRootElementCopy = advancedXMLCopy.RootElement();
   for (const auto& dbname : { "videodatabase", "musicdatabase", "tvdatabase", "epgdatabase" })
   {
@@ -952,14 +963,11 @@ void CAdvancedSettings::ParseSettingsFile(const std::string &file)
   {
     XMLUtils::GetBoolean(pElement, "ignoreerrors", m_bVideoScannerIgnoreErrors);
 
-    // Adjust the builtin list with the advanced setting then prepare for use.
+    // Adjust the builtin list with the advanced setting.
     if (const TiXmlElement* elem = pElement->FirstChildElement("metadatasources"); elem != nullptr)
       GetCustomExtensions(elem, m_metadataSourcesPriv);
 
     StringUtils::ToLower(m_metadataSourcesPriv);
-    const std::vector<std::string> split = StringUtils::Split(m_metadataSourcesPriv, '|');
-    m_videoScannerMetadataSources = std::unordered_set<std::string>(
-        std::make_move_iterator(split.begin()), std::make_move_iterator(split.end()));
   }
 
   // Backward-compatibility of ExternalPlayer config
@@ -988,6 +996,7 @@ void CAdvancedSettings::ParseSettingsFile(const std::string &file)
     XMLUtils::GetString(pElement, "catrustfile", m_caTrustFile);
     XMLUtils::GetUInt(pElement, "nfstimeout", m_nfsTimeout, 0, 3600);
     XMLUtils::GetInt(pElement, "nfsretries", m_nfsRetries, -1, 30);
+    XMLUtils::GetUInt(pElement, "nfsmaxconnections", m_nfsMaxConnections, 1, 16);
   }
 
   pElement = pRootElement->FirstChildElement("jsonrpc");

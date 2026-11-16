@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -17,7 +17,7 @@
 #include "guilib/GUIListItemLayout.h"
 #include "guilib/GUIListLabel.h"
 #include "guilib/GUIWindowManager.h"
-#include "utils/TinyXML.h"
+#include "utils/XBMCTinyXML.h"
 #include "windowing/WinSystem.h"
 
 #include <memory>
@@ -118,7 +118,7 @@ class TestGUIListItemLayout : public testing::Test
 protected:
   void LoadLayouts(CTestContainer& container)
   {
-    CTinyXML xml;
+    CXBMCTinyXML xml;
     ASSERT_TRUE(xml.Parse(R"(<control type="list">
       <itemlayout width="100" height="20">
         <control type="group" id="10">
@@ -202,7 +202,7 @@ TEST_F(TestGUIListItemLayout, LiveFreeMemoryUnregistersDescendantsFromLookupPare
     CTestGroup ancestor;
     auto* parent = new CTestGroup;
     ancestor.AddControl(parent);
-    CTinyXML xml;
+    CXBMCTinyXML xml;
     ASSERT_TRUE(xml.Parse(R"(<itemlayout width="100" height="20">
       <control type="group" id="10"/>
     </itemlayout>)"s));
@@ -276,7 +276,7 @@ TEST_F(TestGUIListItemLayout, LabelsReceiveSelectionAndFocusThroughGroups)
   {
     SCOPED_TRACE(groups.first);
     SCOPED_TRACE(groups.second);
-    CTinyXML xml;
+    CXBMCTinyXML xml;
     ASSERT_TRUE(xml.Parse("<itemlayout width=\"100\" height=\"20\">"
                           "<control type=\""s +
                           groups.first +

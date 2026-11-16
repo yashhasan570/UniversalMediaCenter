@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2012-2022 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -13,7 +13,7 @@
 #include "utils/log.h"
 
 #include "platform/android/activity/JNIMainActivity.h"
-#include "platform/android/activity/App.h"
+#include "platform/android/activity/XBMCApp.h"
 #include "platform/android/speech/SpeechRecognitionListenerAndroid.h"
 
 #include <mutex>
@@ -28,7 +28,7 @@
 
 std::shared_ptr<speech::ISpeechRecognition> speech::ISpeechRecognition::CreateInstance()
 {
-  return std::make_shared<CSpeechRecognitionAndroid>(CApp::Get());
+  return std::make_shared<CSpeechRecognitionAndroid>(CXBMCApp::Get());
 }
 
 CSpeechRecognitionAndroid::CSpeechRecognitionAndroid(const CJNIContext& context)
@@ -89,7 +89,7 @@ void CSpeechRecognitionAndroid::RegisterSpeechRecognitionListener(void* thiz)
 }
 
 void CSpeechRecognitionAndroid::SpeechRecognitionDone(
-    jni::CJNISpeechRecognitionListener* listener)
+    jni::CJNIXBMCSpeechRecognitionListener* listener)
 {
   std::unique_lock lock(m_speechRecognitionListenersMutex);
   for (auto it = m_speechRecognitionListeners.begin(); it != m_speechRecognitionListeners.end();

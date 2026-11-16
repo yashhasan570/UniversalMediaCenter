@@ -55,7 +55,7 @@ rem compiles a bunch of mingw libs and not more
 IF %opt%==sh (
   IF EXIST %WORKDIR%\project\BuildDependencies\msys64\usr\bin\sh.exe (
     ECHO starting sh shell
-    %WORKDIR%\project\BuildDependencies\msys64\usr\bin\sh.exe --login -i //tools/buildsteps/windows/make-mingwlibs.sh --prompt=%PROMPTLEVEL% --mode=%BUILDMODE% --build32=%build32% --build64=%build64% --buildArm=%buildArm% --buildArm64=%buildArm64%  --win10=%win10%
+    %WORKDIR%\project\BuildDependencies\msys64\usr\bin\sh.exe --login -i /xbmc/tools/buildsteps/windows/make-mingwlibs.sh --prompt=%PROMPTLEVEL% --mode=%BUILDMODE% --build32=%build32% --build64=%build64% --buildArm=%buildArm% --buildArm64=%buildArm64%  --win10=%win10%
     GOTO END
   ) ELSE (
     GOTO ENDWITHERROR
@@ -63,7 +63,7 @@ IF %opt%==sh (
 )
 IF EXIST %WORKDIR%\project\BuildDependencies\msys64\usr\bin\mintty.exe (
   ECHO starting mintty shell
-  %WORKDIR%\project\BuildDependencies\msys64\usr\bin\mintty.exe -d -i /msys2.ico /usr/bin/bash --login //tools/buildsteps/windows/make-mingwlibs.sh --prompt=%PROMPTLEVEL% --mode=%BUILDMODE% --build32=%build32% --build64=%build64% --buildArm=%buildArm% --buildArm64=%buildArm64% --win10=%win10%
+  %WORKDIR%\project\BuildDependencies\msys64\usr\bin\mintty.exe -d -i /msys2.ico /usr/bin/bash --login /xbmc/tools/buildsteps/windows/make-mingwlibs.sh --prompt=%PROMPTLEVEL% --mode=%BUILDMODE% --build32=%build32% --build64=%build64% --buildArm=%buildArm% --buildArm64=%buildArm64% --win10=%win10%
   GOTO END
 )
 GOTO ENDWITHERROR

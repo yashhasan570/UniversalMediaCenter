@@ -1,15 +1,15 @@
-# Universal Media Center Media Center language file
+# Kodi Media Center language file
 # Addon Name: Generic Album Scraper
 # Addon id: metadata.generic.albums
-# Addon Provider: Team Universal Media Center
+# Addon Provider: Team Kodi
 msgid ""
 msgstr ""
-"Project-Id-Version: UNIVERSAL MEDIA CENTER Main\n"
-"Report-Msgid-Bugs-To: translations@github.com/yashhasan570/UniversalMediaCenter\n"
+"Project-Id-Version: KODI Main\n"
+"Report-Msgid-Bugs-To: translations@kodi.tv\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: 2025-09-23 22:29+0000\n"
 "Last-Translator: Cutter <CutterXYZ@users.noreply.github.com>\n"
-"Language-Team: French (France) <https://universalmediacenter.weblate.cloud/projects/Universal Media Center-add-ons-information-providers/metadata-generic-albums/fr_fr/>\n"
+"Language-Team: French (France) <https://kodi.weblate.cloud/projects/kodi-add-ons-information-providers/metadata-generic-albums/fr_fr/>\n"
 "Language: fr_fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -91,4 +91,4 @@ msgstr "Tenter de récupérer la critique d'album avec le collecteur sélectionn
 
 msgctxt "#30301"
 msgid "If Musicbrainz does not provide a link to allmusic and/or discogs, we can search those sites based on artistname & albumname. In circumstances where an artist has released multiple albums by the same name, this could potentially result in a mixture of metadata from those albums."
-msgstr "Si Musicbrainz ne fournit pas de lien vers « allmusic » et/ou « discogs », Universal Media Center cherchera sur ces sites à partir de « artistname » et « albumname ». Dans le cas où un artiste a édité plusieurs albums avec le même nom, le résultat peut être un mélange des métadonnées de l'ensemble de ces albums."
+msgstr "Si Musicbrainz ne fournit pas de lien vers « allmusic » et/ou « discogs », Kodi cherchera sur ces sites à partir de « artistname » et « albumname ». Dans le cas où un artiste a édité plusieurs albums avec le même nom, le résultat peut être un mélange des métadonnées de l'ensemble de ces albums."

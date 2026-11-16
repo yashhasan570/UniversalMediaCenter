@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -22,9 +22,9 @@ protected:
   TestFileFactory()
   {
     std::vector<std::string> advancedsettings =
-      CTestUtils::Instance().getAdvancedSettingsFiles();
+      CXBMCTestUtils::Instance().getAdvancedSettingsFiles();
     std::vector<std::string> guisettings =
-      CTestUtils::Instance().getGUISettingsFiles();
+      CXBMCTestUtils::Instance().getGUISettingsFiles();
 
     const std::shared_ptr<CSettings> settings = CServiceBroker::GetSettingsComponent()->GetSettings();
     for (const auto& it : guisettings)
@@ -57,7 +57,7 @@ TEST_F(TestFileFactory, Read)
   int64_t count = 0;
 
   std::vector<std::string> urls =
-    CTestUtils::Instance().getTestFileFactoryReadUrls();
+    CXBMCTestUtils::Instance().getTestFileFactoryReadUrls();
 
   for (const auto& url : urls)
   {
@@ -106,11 +106,11 @@ TEST_F(TestFileFactory, Write)
   unsigned char buf[16];
   int64_t count = 0;
 
-  str = CTestUtils::Instance().getTestFileFactoryWriteInputFile();
+  str = CXBMCTestUtils::Instance().getTestFileFactoryWriteInputFile();
   ASSERT_TRUE(inputfile.Open(str));
 
   std::vector<std::string> urls =
-    CTestUtils::Instance().getTestFileFactoryWriteUrls();
+    CXBMCTestUtils::Instance().getTestFileFactoryWriteUrls();
 
   for (const auto& url : urls)
   {

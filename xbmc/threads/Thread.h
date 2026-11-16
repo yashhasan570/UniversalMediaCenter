@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -107,6 +107,9 @@ protected:
   virtual void Process();
 
   std::atomic<bool> m_bStop;
+
+  //! Set by StopThread(), i.e. once the owner may be blocked waiting for this thread
+  CEvent& GetStopEvent() { return m_StopEvent; }
 
   enum WaitResponse { WAIT_INTERRUPTED = -1, WAIT_SIGNALED = 0, WAIT_TIMEDOUT = 1 };
 

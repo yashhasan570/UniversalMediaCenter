@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -13,7 +13,7 @@
 #include "profiles/ProfileManager.h"
 #include "settings/SettingsComponent.h"
 #include "utils/StringUtils.h"
-#include "utils/TinyXML2.h"
+#include "utils/XBMCTinyXML2.h"
 #include "utils/log.h"
 
 #include <algorithm>
@@ -417,7 +417,7 @@ std::string CAspectRatioVocabulary::ChoiceLabel(const AspectRatioEntry& entry)
 
 bool CAspectRatioVocabulary::Apply(std::string_view xml)
 {
-  CTinyXML2 document;
+  CXBMCTinyXML2 document;
   if (!document.Parse(xml) || document.Error())
   {
     CLog::LogF(LOGERROR, "aspect ratio definition is not valid XML: {}", document.ErrorStr());
@@ -500,7 +500,7 @@ void CAspectRatioVocabulary::Load()
       CLog::LogF(LOGERROR, "{} was rejected, keeping the ratios already in force", path);
   };
 
-  apply(std::string("special:///system/") + DEFINITION_FILE, true);
+  apply(std::string("special://xbmc/system/") + DEFINITION_FILE, true);
 
   // The viewer's own, over the shipped one.
   apply(

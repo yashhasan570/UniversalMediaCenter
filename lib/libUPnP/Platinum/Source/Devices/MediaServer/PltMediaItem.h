@@ -265,7 +265,7 @@ public:
     /* sec resources related */
     NPT_Array<PLT_SecResource> m_SecResources;
 
-    /*  specific */
+    /* XBMC specific */
     PLT_XbmcInfo m_XbmcInfo;
 
     /* original DIDL for Control Points to pass to a renderer when invoking SetAVTransportURI */

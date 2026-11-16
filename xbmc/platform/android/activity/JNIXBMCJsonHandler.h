@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2018 Christian Browet
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -16,16 +16,16 @@
 namespace jni
 {
 
-  class CJNIJsonHandler : public CJNIBase
+  class CJNIXBMCJsonHandler : public CJNIBase
   {
   public:
-    CJNIJsonHandler(const jni::jhobject &object) : CJNIBase(object) {}
+    CJNIXBMCJsonHandler(const jni::jhobject &object) : CJNIBase(object) {}
 
     static void RegisterNatives(JNIEnv* env);
 
 
   protected:
-    ~CJNIJsonHandler() override = default;
+    ~CJNIXBMCJsonHandler() override = default;
 
     static jstring _requestJSON(JNIEnv* env, jobject thiz, jstring request);
 

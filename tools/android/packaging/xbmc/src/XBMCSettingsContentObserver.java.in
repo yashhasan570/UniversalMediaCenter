@@ -7,7 +7,7 @@ import android.net.Uri;
 import android.os.Handler;
 import android.util.Log;
 
-public class SettingsContentObserver extends ContentObserver
+public class XBMCSettingsContentObserver extends ContentObserver
 {
   native void _onVolumeChanged(int newVolume);
 
@@ -16,7 +16,7 @@ public class SettingsContentObserver extends ContentObserver
   int previousVolume;
   Context context;
 
-  public SettingsContentObserver(Context c, Handler handler)
+  public XBMCSettingsContentObserver(Context c, Handler handler)
   {
     super(handler);
     context = c;
@@ -39,7 +39,7 @@ public class SettingsContentObserver extends ContentObserver
   {
     super.onChange(selfChange);
 
-    Log.d(TAG, "SettingsContentObserver: Setting changed: " + uri.toString());
+    Log.d(TAG, "XBMCSettingsContentObserver: Setting changed: " + uri.toString());
 
     if (
             uri.compareTo(Uri.parse("content://settings/system/volume_music_speaker")) == 0 ||
@@ -59,7 +59,7 @@ public class SettingsContentObserver extends ContentObserver
         }
         catch (UnsatisfiedLinkError e)
         {
-          Log.e(TAG, "SettingsContentObserver: Native not registered");
+          Log.e(TAG, "XBMCSettingsContentObserver: Native not registered");
         }
       }
     }

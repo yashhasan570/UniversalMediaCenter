@@ -1,15 +1,15 @@
-# Universal Media Center Media Center language file
+# Kodi Media Center language file
 # Addon Name: Version Check
-# Addon id: service..versioncheck
-# Addon Provider: Team Universal Media Center
+# Addon id: service.xbmc.versioncheck
+# Addon Provider: Team Kodi
 msgid ""
 msgstr ""
-"Project-Id-Version:  Addons\n"
-"Report-Msgid-Bugs-To: translations@github.com/yashhasan570/UniversalMediaCenter\n"
+"Project-Id-Version: XBMC Addons\n"
+"Report-Msgid-Bugs-To: translations@kodi.tv\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: 2021-10-25 10:08+0000\n"
-"Last-Translator: Christian Gade <gade@github.com/yashhasan570/UniversalMediaCenter>\n"
-"Language-Team: Lithuanian <https://universalmediacenter.weblate.cloud/projects/Universal Media Center-core/service--versioncheck/lt_lt/>\n"
+"Last-Translator: Christian Gade <gade@kodi.tv>\n"
+"Language-Team: Lithuanian <https://kodi.weblate.cloud/projects/kodi-core/service-xbmc-versioncheck/lt_lt/>\n"
 "Language: lt_lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,24 +18,24 @@ msgstr ""
 "X-Generator: Weblate 4.8\n"
 
 msgctxt "Addon Summary"
-msgid "Universal Media Center Version Check checks if you are running latest released version."
-msgstr "Universal Media Center Version Check patikrina ar naudojate naujausią versiją."
+msgid "Kodi Version Check checks if you are running latest released version."
+msgstr "Kodi Version Check patikrina ar naudojate naujausią versiją."
 
 msgctxt "Addon Description"
-msgid "Universal Media Center Version Check only supports a number of platforms/distros as releases may differ between them. For more information visit the github.com/yashhasan570/UniversalMediaCenter website."
-msgstr "Universal Media Center Version Check palaiko tik kelias platformas/distribucijas, nes leidimai tarp jų gali skirtis. Norėdami gauti daugiau informacijos, apsilankykite Universal Media Center.tv puslapyje."
+msgid "Kodi Version Check only supports a number of platforms/distros as releases may differ between them. For more information visit the kodi.tv website."
+msgstr "Kodi Version Check palaiko tik kelias platformas/distribucijas, nes leidimai tarp jų gali skirtis. Norėdami gauti daugiau informacijos, apsilankykite Kodi.tv puslapyje."
 
 msgctxt "Addon Disclaimer"
-msgid "Feel free to use this script. For information visit github.com/yashhasan570/UniversalMediaCenter"
-msgstr "Galite laisvai naudoti šį scenarijų. Apsilankykite github.com/yashhasan570/UniversalMediaCenter, norėdami gauti daugiau informacijos."
+msgid "Feel free to use this script. For information visit kodi.tv"
+msgstr "Galite laisvai naudoti šį scenarijų. Apsilankykite kodi.tv, norėdami gauti daugiau informacijos."
 
 msgctxt "#32001"
 msgid "We would like to recommend you to upgrade."
 msgstr "Norėtume pasiūlyti jums atsinaujinti."
 
 msgctxt "#32002"
-msgid "Visit Universal Media Center.tv for more information."
-msgstr "Apsilankykite Universal Media Center.tv, norėdami gauti daugiau informacijos."
+msgid "Visit Kodi.tv for more information."
+msgstr "Apsilankykite Kodi.tv, norėdami gauti daugiau informacijos."
 
 msgctxt "#32009"
 msgid "Would you like to remove this reminder?"
@@ -58,24 +58,24 @@ msgid "Upgrade successful"
 msgstr "Atnaujinimas sėkmingas"
 
 msgctxt "#32014"
-msgid "Do you want to restart Universal Media Center to finish the upgrade?"
-msgstr "Ar norite iš naujo paleisti Universal Media Center, kad užbaigti atnaujinimą?"
+msgid "Do you want to restart Kodi to finish the upgrade?"
+msgstr "Ar norite iš naujo paleisti Kodi, kad užbaigti atnaujinimą?"
 
 msgctxt "#32015"
 msgid "Do you want to check the repository for a new version?"
 msgstr "Ar norite patikrinti saugykloje, ar yra nauja versija?"
 
 msgctxt "#32016"
-msgid "There is a newer stable Universal Media Center version available."
-msgstr "Galima naujesnė stabili Universal Media Center versija."
+msgid "There is a newer stable Kodi version available."
+msgstr "Galima naujesnė stabili Kodi versija."
 
 msgctxt "#32020"
 msgid "General"
 msgstr "Pagrindinis"
 
 msgctxt "#32021"
-msgid "Enable Universal Media Center version check?"
-msgstr "Įjungti Universal Media Center versijos tikrinimą?"
+msgid "Enable Kodi version check?"
+msgstr "Įjungti Kodi versijos tikrinimą?"
 
 msgctxt "#32022"
 msgid "Please enter your password"
@@ -91,23 +91,23 @@ msgstr "Linux: atnaujinti naudojant apt"
 
 #. Used in OK dialog
 msgctxt "#32030"
-msgid "A new stable version of Universal Media Center is available."
-msgstr "Galima nauja Universal Media Center versija."
+msgid "A new stable version of Kodi is available."
+msgstr "Galima nauja Kodi versija."
 
 #. Direct people to the website. Used in OK dialog
 msgctxt "#32031"
-msgid "Visit http://github.com/yashhasan570/UniversalMediaCenter for more information."
-msgstr "Apsilankykite http://github.com/yashhasan570/UniversalMediaCenter, norėdami gauti daugiau informacijos."
+msgid "Visit http://kodi.tv for more information."
+msgstr "Apsilankykite http://kodi.tv, norėdami gauti daugiau informacijos."
 
 #. Used in OK dialog
 msgctxt "#32032"
-msgid "A new stable version of Universal Media Center is available."
-msgstr "Galima nauja stabili Universal Media Center versija."
+msgid "A new stable version of Kodi is available."
+msgstr "Galima nauja stabili Kodi versija."
 
 #. Direct people to the website. Used in OK dialog
 msgctxt "#32033"
-msgid "Visit http://github.com/yashhasan570/UniversalMediaCenter for more information."
-msgstr "Apsilankykite http://github.com/yashhasan570/UniversalMediaCenter, norėdami gauti daugiau informacijos."
+msgid "Visit http://kodi.tv for more information."
+msgstr "Apsilankykite http://kodi.tv, norėdami gauti daugiau informacijos."
 
 #. For example: "You are using 13.1 prealpha while 13.2 stable is available"
 msgctxt "#32034"
@@ -129,8 +129,8 @@ msgid "Please upgrade your operating system."
 msgstr "Atnaujinkite savo operacinę sistemą."
 
 msgctxt "#32042"
-msgid "For more information, see https://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Linux"
-msgstr "Norėdami gauti daugiau informacijos, žr. https://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Linux"
+msgid "For more information, see https://kodi.wiki/view/Linux"
+msgstr "Norėdami gauti daugiau informacijos, žr. https://kodi.wiki/view/Linux"
 
 #~ msgctxt "#32035"
 #~ msgid "It is recommended that you to upgrade to a newer version."

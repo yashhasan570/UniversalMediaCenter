@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -50,10 +50,10 @@ public:
   virtual int  BatteryLevel() = 0;
 
   /*!
-   \brief Pump power related events back to .
+   \brief Pump power related events back to xbmc.
 
    PumpPowerEvents is called from Application Thread and the platform implementation may signal
-   power related events back to  through the callback.
+   power related events back to xbmc through the callback.
 
    return true if an event occurred and false if not.
 

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2012-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -20,7 +20,7 @@
 #include "input/actions/Action.h"
 #include "input/actions/ActionIDs.h"
 #include "input/keyboard/KeyboardLayoutManager.h"
-#include "input/keyboard/_vkeys.h"
+#include "input/keyboard/XBMC_vkeys.h"
 #include "input/keymaps/keyboard/KeyIDs.h"
 #include "interfaces/AnnouncementManager.h"
 #include "messaging/ApplicationMessenger.h"
@@ -248,7 +248,7 @@ bool CGUIDialogKeyboardGeneric::OnAction(const CAction &action)
 {
   int actionId = action.GetID();
   bool handled = true;
-  if (actionId == (KEY_VKEY | VK_BACK))
+  if (actionId == (KEY_VKEY | XBMCVK_BACK))
     Backspace();
   else if (actionId == ACTION_ENTER ||
            (actionId == ACTION_SELECT_ITEM && (m_isKeyboardNavigationMode || GetFocusedControlID() == CTL_EDIT)))
@@ -281,7 +281,7 @@ bool CGUIDialogKeyboardGeneric::OnAction(const CAction &action)
       if (!handled && actionId >= KEY_VKEY && actionId <= KEY_VKEY_MAX)
       {
         uint16_t b = actionId - KEY_VKEY;
-        if (b == VK_TAB)
+        if (b == XBMCVK_TAB)
         {
           // Toggle left/right key mode
           m_isKeyboardNavigationMode = !m_isKeyboardNavigationMode;

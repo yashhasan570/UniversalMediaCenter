@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2017 Christian Browet
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -48,11 +48,11 @@ bool CZeroconfAndroid::doPublishService(const std::string& fcr_identifier,
 
   m_manager.registerService(newService.serviceInfo, 1 /* PROTOCOL_DNS_SD */,
                             newService.registrationListener);
-  if (_jnienv()->ExceptionCheck())
+  if (xbmc_jnienv()->ExceptionCheck())
   {
     std::string ex = CJNIBase::ExceptionToString();
     CLog::Log(LOGERROR, "ZeroconfAndroid: {}", ex);
-    _jnienv()->ExceptionClear();
+    xbmc_jnienv()->ExceptionClear();
     return false;
   }
 
@@ -74,20 +74,20 @@ bool CZeroconfAndroid::doForceReAnnounceService(const std::string& fcr_identifie
     // to change a txt record - so we diddle between
     // even and odd dummy records here
     if ( (it->second.updateNumber % 2) == 0)
-      it->second.serviceInfo.setAttribute("dummy", "evendummy");
+      it->second.serviceInfo.setAttribute("xbmcdummy", "evendummy");
     else
-      it->second.serviceInfo.setAttribute("dummy", "odddummy");
+      it->second.serviceInfo.setAttribute("xbmcdummy", "odddummy");
     it->second.updateNumber++;
 
     m_manager.unregisterService(it->second.registrationListener);
-    it->second.registrationListener = jni::CJNINsdManagerRegistrationListener();
+    it->second.registrationListener = jni::CJNIXBMCNsdManagerRegistrationListener();
     m_manager.registerService(it->second.serviceInfo, 1 /* PROTOCOL_DNS_SD */,
                               it->second.registrationListener);
-    if (_jnienv()->ExceptionCheck())
+    if (xbmc_jnienv()->ExceptionCheck())
     {
       std::string ex = CJNIBase::ExceptionToString();
       CLog::Log(LOGERROR, "ZeroconfAndroid: {}", ex);
-      _jnienv()->ExceptionClear();
+      xbmc_jnienv()->ExceptionClear();
     }
   }
   return ret;

@@ -11,7 +11,7 @@ import android.widget.RelativeLayout;
 import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;
 
-public class VideoView extends SurfaceView implements
+public class XBMCVideoView extends SurfaceView implements
         SurfaceHolder.Callback
 {
   native void _surfaceChanged(SurfaceHolder holder, int format, int width, int height);
@@ -25,21 +25,21 @@ public class VideoView extends SurfaceView implements
   public boolean mIsCreated = false;
   private RelativeLayout mVideoLayout = null;
 
-  public static VideoView createVideoView()
+  public static XBMCVideoView createVideoView()
   {
-    FutureTask<VideoView> futureResult = new FutureTask<VideoView>(new Callable<VideoView>()
+    FutureTask<XBMCVideoView> futureResult = new FutureTask<XBMCVideoView>(new Callable<XBMCVideoView>()
     {
       @Override
-      public VideoView call() throws Exception
+      public XBMCVideoView call() throws Exception
       {
-        return new VideoView(Main.MainActivity);
+        return new XBMCVideoView(Main.MainActivity);
       }
     });
 
     try
     {
       Main.MainActivity.runOnUiThread(futureResult);
-      VideoView vw = futureResult.get();
+      XBMCVideoView vw = futureResult.get();
       return vw;
     }
     catch (Exception e)
@@ -49,7 +49,7 @@ public class VideoView extends SurfaceView implements
     }
   }
 
-  public VideoView(Context context)
+  public XBMCVideoView(Context context)
   {
     super(context);
     setZOrderMediaOverlay(true);
@@ -67,7 +67,7 @@ public class VideoView extends SurfaceView implements
       public void run()
       {
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
-        mVideoLayout.addView(VideoView.this, layoutParams);
+        mVideoLayout.addView(XBMCVideoView.this, layoutParams);
       }
     });
   }
@@ -79,7 +79,7 @@ public class VideoView extends SurfaceView implements
       @Override
       public void run()
       {
-        mVideoLayout.removeView(VideoView.this);
+        mVideoLayout.removeView(XBMCVideoView.this);
       }
     });
   }
@@ -92,7 +92,7 @@ public class VideoView extends SurfaceView implements
     }
     else
     {
-      Log.d(TAG, "VideoView.getSurface() = " + getHolder().getSurface());
+      Log.d(TAG, "XBMCVideoView.getSurface() = " + getHolder().getSurface());
       return getHolder().getSurface();
     }
   }
@@ -127,7 +127,7 @@ public class VideoView extends SurfaceView implements
   @Override
   public void surfaceCreated(SurfaceHolder holder)
   {
-    Log.d(TAG, "VideoView: Created");
+    Log.d(TAG, "XBMCVideoView: Created");
     mIsCreated = true;
     _surfaceCreated(holder);
   }
@@ -141,14 +141,14 @@ public class VideoView extends SurfaceView implements
 
     _surfaceChanged(holder, format, width, height);
 
-    Log.d(TAG, "VideoView: Changed, format:" + format + ", width:" + width
+    Log.d(TAG, "XBMCVideoView: Changed, format:" + format + ", width:" + width
             + ", height:" + height);
   }
 
   @Override
   public void surfaceDestroyed(SurfaceHolder holder)
   {
-    Log.d(TAG, "VideoView: Destroyed");
+    Log.d(TAG, "XBMCVideoView: Destroyed");
     mIsCreated = false;
     _surfaceDestroyed(holder);
   }

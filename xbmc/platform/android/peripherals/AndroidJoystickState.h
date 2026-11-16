@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2016-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -79,14 +79,14 @@ public:
   /*!
    * \brief Get events that have occurred since the last call to GetEvents()
    */
-  void GetEvents(std::vector<addon::PeripheralEvent>& events);
+  void GetEvents(std::vector<universalmediacenter::addon::PeripheralEvent>& events);
 
 private:
   bool SetButtonValue(int axisId, JOYSTICK_STATE_BUTTON buttonValue);
   bool SetAxisValue(const std::vector<int>& axisIds, JOYSTICK_STATE_AXIS axisValue);
 
-  void GetButtonEvents(std::vector<addon::PeripheralEvent>& events);
-  void GetAxisEvents(std::vector<addon::PeripheralEvent>& events) const;
+  void GetButtonEvents(std::vector<universalmediacenter::addon::PeripheralEvent>& events);
+  void GetAxisEvents(std::vector<universalmediacenter::addon::PeripheralEvent>& events) const;
 
   bool MapButton(UNIVERSAL MEDIA CENTER::JOYSTICK::IButtonMap& buttonMap, int buttonKeycode) const;
   bool MapTrigger(UNIVERSAL MEDIA CENTER::JOYSTICK::IButtonMap& buttonMap,
@@ -130,6 +130,6 @@ private:
   std::vector<JOYSTICK_STATE_AXIS> m_analogState;
 
   CCriticalSection m_eventMutex;
-  std::vector<addon::PeripheralEvent> m_digitalEvents;
+  std::vector<universalmediacenter::addon::PeripheralEvent> m_digitalEvents;
 };
 } // namespace PERIPHERALS

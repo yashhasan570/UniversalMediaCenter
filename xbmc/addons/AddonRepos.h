@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2020 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -71,7 +71,7 @@ public:
 
   /*!
    * \brief Checks if the origin-repository of a given addon is defined as official repo
-   *        and can also verify if the origin-path (e.g. https://mirrors.github.com/yashhasan570/UniversalMediaCenter ...)
+   *        and can also verify if the origin-path (e.g. https://mirrors.universalmediacenter.tv ...)
    *        is matching
    * \note if this function is called on locally installed add-ons, for instance when populating
    *       'My add-ons', the local installation path is returned as origin.

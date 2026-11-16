@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -10,7 +10,7 @@
 
 #include "dbwrappers/DatabaseQuery.h"
 #include "utils/SortUtils.h"
-#include "utils/TinyXML.h"
+#include "utils/XBMCTinyXML.h"
 
 #include <optional>
 #include <set>
@@ -204,7 +204,7 @@ private:
   bool m_groupMixed;
   std::optional<WatchedMode> m_watchedMode;
 
-  CTinyXML m_xmlDoc;
+  CXBMCTinyXML m_xmlDoc;
 };
 
 } // namespace UNIVERSAL MEDIA CENTER::PLAYLIST

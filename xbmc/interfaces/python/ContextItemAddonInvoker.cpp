@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2015-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -17,8 +17,8 @@
 #include <Python.h>
 #include <osdefs.h>
 
-// Host-side wrap helper compiled into the gui module
-extern "C" PyObject* Universal Media CenterSwig_wrapListItem(Addon::gui::ListItem* obj, int owned);
+// Host-side wrap helper compiled into the xbmcgui module
+extern "C" PyObject* UniversalMediaCenterSwig_wrapListItem(XBMCAddon::xbmcgui::ListItem* obj, int owned);
 
 CContextItemAddonInvoker::CContextItemAddonInvoker(ILanguageInvocationHandler* invocationHandler,
                                                    const CFileItemPtr& item)
@@ -33,10 +33,10 @@ void CContextItemAddonInvoker::onPythonModuleInitialization(void* moduleDict)
   CAddonPythonInvoker::onPythonModuleInitialization(moduleDict);
   if (m_item)
   {
-    Addon::gui::ListItem* arg = new Addon::gui::ListItem(m_item);
+    XBMCAddon::xbmcgui::ListItem* arg = new XBMCAddon::xbmcgui::ListItem(m_item);
     // the python wrapper holds the only reference and Releases on dealloc
     arg->Acquire();
-    PyObject* pyItem = Universal Media CenterSwig_wrapListItem(arg, 1);
+    PyObject* pyItem = UniversalMediaCenterSwig_wrapListItem(arg, 1);
     if (pyItem == Py_None || PySys_SetObject("listitem", pyItem) == -1)
     {
       CLog::Log(LOGERROR, "CPythonInvoker({}, {}): Failed to set sys parameter", GetId(),

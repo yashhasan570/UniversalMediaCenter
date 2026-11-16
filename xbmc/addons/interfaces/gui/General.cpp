@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -50,7 +50,7 @@ int Interface_GUIGeneral::m_iAddonGUILockRef = 0;
 
 void Interface_GUIGeneral::Init(AddonGlobalInterface* addonInterface)
 {
-  addonInterface->toUniversal Media Center-> = new AddonToUniversal Media CenterFuncTable_();
+  addonInterface->toUniversal Media Center->universalmediacenter_gui = new AddonToUniversal Media CenterFuncTable_universalmediacenter_gui();
 
   Interface_GUIControlButton::Init(addonInterface);
   Interface_GUIControlEdit::Init(addonInterface);
@@ -77,25 +77,25 @@ void Interface_GUIGeneral::Init(AddonGlobalInterface* addonInterface)
   Interface_GUIListItem::Init(addonInterface);
   Interface_GUIWindow::Init(addonInterface);
 
-  addonInterface->toUniversal Media Center->->general = new AddonToUniversal Media CenterFuncTable__general();
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->general = new AddonToUniversal Media CenterFuncTable_universalmediacenter_gui_general();
 
-  addonInterface->toUniversal Media Center->->general->lock = lock;
-  addonInterface->toUniversal Media Center->->general->unlock = unlock;
-  addonInterface->toUniversal Media Center->->general->get_screen_height = get_screen_height;
-  addonInterface->toUniversal Media Center->->general->get_screen_width = get_screen_width;
-  addonInterface->toUniversal Media Center->->general->get_video_resolution = get_video_resolution;
-  addonInterface->toUniversal Media Center->->general->get_current_window_dialog_id =
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->general->lock = lock;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->general->unlock = unlock;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->general->get_screen_height = get_screen_height;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->general->get_screen_width = get_screen_width;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->general->get_video_resolution = get_video_resolution;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->general->get_current_window_dialog_id =
       get_current_window_dialog_id;
-  addonInterface->toUniversal Media Center->->general->get_current_window_id = get_current_window_id;
-  addonInterface->toUniversal Media Center->->general->get_hw_context = get_hw_context;
-  addonInterface->toUniversal Media Center->->general->get_adjust_refresh_rate_status =
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->general->get_current_window_id = get_current_window_id;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->general->get_hw_context = get_hw_context;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->general->get_adjust_refresh_rate_status =
       get_adjust_refresh_rate_status;
 }
 
 void Interface_GUIGeneral::DeInit(AddonGlobalInterface* addonInterface)
 {
   if (addonInterface->toUniversal Media Center && /* <-- needed as long as the old addon way is used */
-      addonInterface->toUniversal Media Center->)
+      addonInterface->toUniversal Media Center->universalmediacenter_gui)
   {
     Interface_GUIControlButton::DeInit(addonInterface);
     Interface_GUIControlEdit::DeInit(addonInterface);
@@ -122,9 +122,9 @@ void Interface_GUIGeneral::DeInit(AddonGlobalInterface* addonInterface)
     Interface_GUIListItem::DeInit(addonInterface);
     Interface_GUIWindow::DeInit(addonInterface);
 
-    delete addonInterface->toUniversal Media Center->->general;
-    delete addonInterface->toUniversal Media Center->;
-    addonInterface->toUniversal Media Center-> = nullptr;
+    delete addonInterface->toUniversal Media Center->universalmediacenter_gui->general;
+    delete addonInterface->toUniversal Media Center->universalmediacenter_gui;
+    addonInterface->toUniversal Media Center->universalmediacenter_gui = nullptr;
   }
 }
 

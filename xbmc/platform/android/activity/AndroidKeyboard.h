@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -12,7 +12,7 @@
 #include "threads/CriticalSection.h"
 #include "threads/Event.h"
 
-#include "platform/android/activity/JNINativeKeyboard.h"
+#include "platform/android/activity/JNIXBMCNativeKeyboard.h"
 
 #include <memory>
 #include <string>
@@ -20,7 +20,7 @@
 /*!
  * \brief Native Android on-screen keyboard implementation.
  *
- * Wraps the Java soft keyboard dialog (jni::CJNINativeKeyboard) and blocks
+ * Wraps the Java soft keyboard dialog (jni::CJNIXBMCNativeKeyboard) and blocks
  * the calling thread until the user has either confirmed or canceled the
  * input, as required by the CGUIKeyboard interface.
  */
@@ -48,7 +48,7 @@ private:
   //! Keyboard shown via CGUIKeyboardFactory; passed to the char callback so that typing resets
   //! its auto-close timer.
   CGUIKeyboard& m_owner;
-  std::unique_ptr<jni::CJNINativeKeyboard> m_keyboard;
+  std::unique_ptr<jni::CJNIXBMCNativeKeyboard> m_keyboard;
   char_callback_t m_pCallback{nullptr};
 
   CCriticalSection m_critSection;
@@ -59,7 +59,7 @@ private:
   //! \brief Set by SetTextToKeyboard() when closeKeyboard is true.
   //!
   //! The Java bridge only exposes hide(), which always dismisses the dialog as if
-  //! canceled (see NativeKeyboard.java.in cancelInput()). To still honor the
+  //! canceled (see XBMCNativeKeyboard.java.in cancelInput()). To still honor the
   //! CGUIKeyboard::SetTextToKeyboard(text, closeKeyboard=true) contract of confirming
   //! and closing (as done by CDarwinEmbedKeyboard on iOS/tvOS), the resulting
   //! OnInputCanceled() callback is reinterpreted as a confirmation whenever this flag

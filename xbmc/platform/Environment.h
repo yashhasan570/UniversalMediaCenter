@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2013-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -79,7 +79,7 @@ public:
    * \brief Gets value of environment variable in UTF-8 encoding.
    * \param name The name of environment variable.
    * \return Copy of of environment variable value or empty string if variable in not present in environment.
-   * \sa _getenvUtf8, _getenvW
+   * \sa xbmc_getenvUtf8, xbmc_getenvW
    */
   static std::string getenv(const std::string &name);
 private:

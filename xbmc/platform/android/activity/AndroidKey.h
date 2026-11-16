@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2012-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -22,7 +22,7 @@ public:
 
   static void SetHandleMediaKeys(bool enable) { m_handleMediaKeys = enable; }
   static void SetHandleSearchKeys(bool enable) { m_handleSearchKeys = enable; }
-  static void _Key(uint32_t code, uint16_t key, uint16_t modifiers, uint16_t unicode, bool up);
+  static void XBMC_Key(uint32_t code, uint16_t key, uint16_t modifiers, uint16_t unicode, bool up);
 
 protected:
   static bool m_handleMediaKeys;

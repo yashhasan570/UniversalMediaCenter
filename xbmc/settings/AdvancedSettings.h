@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -356,7 +356,7 @@ class CAdvancedSettings : public ISettingCallback, public ISettingsHandler
     bool m_showExitButton; /* Ideal for appliances to hide a 'useless' button */
     bool m_canWindowed;
     bool m_splashImage;
-    bool m_alwaysOnTop;  /* makes  to run always on top .. osx/win32 only .. */
+    bool m_alwaysOnTop;  /* makes xbmc to run always on top .. osx/win32 only .. */
     int m_playlistRetries;
     int m_playlistTimeout;
     bool m_GLRectangleHack;
@@ -438,6 +438,7 @@ class CAdvancedSettings : public ISettingCallback, public ISettingsHandler
     std::string m_userAgent;
     uint32_t m_nfsTimeout;
     int m_nfsRetries;
+    uint32_t m_nfsMaxConnections; // per export
 
   private:
     void Initialize();

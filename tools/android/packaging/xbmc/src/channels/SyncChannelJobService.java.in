@@ -31,12 +31,12 @@ import android.util.Log;
 import androidx.tvprovider.media.tv.TvContractCompat;
 
 import @APP_PACKAGE@.R;
-import @APP_PACKAGE@.JsonRPC;
-import @APP_PACKAGE@.URIUtils;
+import @APP_PACKAGE@.XBMCJsonRPC;
+import @APP_PACKAGE@.XBMCURIUtils;
 import @APP_PACKAGE@.channels.model.Subscription;
-import @APP_PACKAGE@.channels.model.Database;
+import @APP_PACKAGE@.channels.model.XBMCDatabase;
 import @APP_PACKAGE@.channels.util.TvUtil;
-import @APP_PACKAGE@.content.FileContentProvider;
+import @APP_PACKAGE@.content.XBMCFileContentProvider;
 import @APP_PACKAGE@.model.File;
 
 /**
@@ -113,7 +113,7 @@ public class SyncChannelJobService extends JobService
       try (Cursor cursor =
                    mContext.getContentResolver()
                            .query(
-                                   FileContentProvider.buildUri(url),
+                                   XBMCFileContentProvider.buildUri(url),
                                    null,
                                    null,
                                    null,
@@ -130,15 +130,15 @@ public class SyncChannelJobService extends JobService
 
     protected Boolean doInBackground()
     {
-      JsonRPC json = new JsonRPC(mContext);
+      XBMCJsonRPC json = new XBMCJsonRPC(mContext);
       if (!json.Ping())
         return false;
       json = null;
 
-      List<Subscription> subscriptions = Database.getSubscriptions(mContext);
+      List<Subscription> subscriptions = XBMCDatabase.getSubscriptions(mContext);
       List<Subscription> freshsubscriptions = new ArrayList<>();
       List<File> playlistsContent = new ArrayList<>();
-      URIUtils uriutils = new URIUtils();
+      XBMCURIUtils uriutils = new XBMCURIUtils();
 
       playlistsContent.addAll(getFilesFromUrl(uriutils.substitutePath("special://profile/playlists/video/")));
       playlistsContent.addAll(getFilesFromUrl(uriutils.substitutePath("special://profile/playlists/mixed/")));
@@ -205,7 +205,7 @@ public class SyncChannelJobService extends JobService
                           TvContractCompat.buildChannelUri(chanid),
                           null,
                           null);
-          Database.removeMedias(mContext, chanid);
+          XBMCDatabase.removeMedias(mContext, chanid);
           iterator.remove();
 
           JobScheduler scheduler =
@@ -220,7 +220,7 @@ public class SyncChannelJobService extends JobService
         TvUtil.scheduleTriggeredSyncingProgramsForChannel(mContext, channel.getChannelId());
         TvUtil.scheduleTimedSyncingProgramsForChannel(mContext, channel.getChannelId());
       }
-      Database.saveSubscriptions(mContext, freshsubscriptions);
+      XBMCDatabase.saveSubscriptions(mContext, freshsubscriptions);
 
       return true;
     }

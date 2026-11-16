@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2017-2024 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -15,7 +15,7 @@
 #include "utils/FileUtils.h"
 #include "utils/StringUtils.h"
 #include "utils/URIUtils.h"
-#include "utils/TinyXML2.h"
+#include "utils/XBMCTinyXML2.h"
 #include "utils/log.h"
 
 #include <cstring>
@@ -35,7 +35,7 @@ void CIRTranslator::Load(const std::string& irMapName)
 
   bool success = false;
 
-  std::string irMapPath = URIUtils::AddFileToFolder("special:///system/", irMapName);
+  std::string irMapPath = URIUtils::AddFileToFolder("special://xbmc/system/", irMapName);
   if (CFileUtils::Exists(irMapPath))
     success |= LoadIRMap(irMapPath);
   else
@@ -61,7 +61,7 @@ bool CIRTranslator::LoadIRMap(const std::string& irMapPath)
   StringUtils::ToLower(remoteMapTag);
 
   // Load our xml file, and fill up our mapping tables
-  CTinyXML2 xmlDoc;
+  CXBMCTinyXML2 xmlDoc;
 
   // Load the config file
   CLog::Log(LOGINFO, "Loading {}", irMapPath);

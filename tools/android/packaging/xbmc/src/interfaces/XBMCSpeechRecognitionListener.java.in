@@ -3,7 +3,7 @@ package @APP_PACKAGE@.interfaces;
 import android.os.Bundle;
 import android.speech.RecognitionListener;
 
-public class SpeechRecognitionListener implements RecognitionListener
+public class XBMCSpeechRecognitionListener implements RecognitionListener
 {
   native void _onReadyForSpeech(Bundle bundle);
   native void _onError(int i);

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -19,10 +19,10 @@
 #include "utils/FileUtils.h"
 #include "utils/URIUtils.h"
 
-namespace Addon
+namespace XBMCAddon
 {
 
-  namespace vfs
+  namespace xbmcvfs
   {
     bool copy(const String& strSource, const String& strDestination)
     {
@@ -56,21 +56,21 @@ namespace Addon
     // make legal file name
     String makeLegalFilename(const String& filename)
     {
-      _TRACE;
+      XBMC_TRACE;
       return CUtil::MakeLegalPath(filename);
     }
 
     // translate path
     String translatePath(const String& path)
     {
-      _TRACE;
+      XBMC_TRACE;
       return CSpecialProtocol::TranslatePath(path);
     }
 
     // validate path
     String validatePath(const String& path)
     {
-      _TRACE;
+      XBMC_TRACE;
       return CUtil::ValidatePath(path, true);
     }
 

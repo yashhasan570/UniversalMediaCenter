@@ -1,9 +1,9 @@
-Universal Media Center is downloaded from http://github.com/yashhasan570/UniversalMediaCenter/.
+Universal Media Center is downloaded from http://Universal Media Center.tv/.
 Orig tarballs are generated from the script located at
-https://github.com///. The orig tarball is
-generated using the sources in https://github.com///.
+https://github.com/xbmc/xbmc/. The orig tarball is
+generated using the sources in https://github.com/xbmc/xbmc/.
 
-Main Contact: "Team-Universal Media Center" <team at universalmediacenter dot tv>
+Main Contact: "Team-Universal Media Center" <team at Universal Media Center dot tv>
 
 Upstream Authors:
 
@@ -71,7 +71,7 @@ Credits:
 Universal Media Center - Cross-platform Media Center
 <http://Universal Media Center.org/>
 
-    Copyright © 2005-2016 Team Universal Media Center http://github.com/yashhasan570/UniversalMediaCenter
+    Copyright © 2005-2016 Team Universal Media Center http://Universal Media Center.tv
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -1853,7 +1853,7 @@ Universal Media Center-xrandr.c
 Universal Media Center/Crc32.cpp and Universal Media Center/Crc32.h
 
     Copyright (C) 2005-2009 Team Universal Media Center
-    http://github.com/yashhasan570/UniversalMediaCenter
+    http://Universal Media Center.tv
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2016-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -48,7 +48,7 @@ AddonPtr CAddonBuilder::Generate(const AddonInfoPtr& info, AddonType type)
   if (type == AddonType::SCREENSAVER)
   {
     // built in screensaver or python screensaver
-    if (StringUtils::StartsWithNoCase(info->ID(), "screensaver..builtin.") ||
+    if (StringUtils::StartsWithNoCase(info->ID(), "screensaver.xbmc.builtin.") ||
         URIUtils::HasExtension(info->LibName(), ".py"))
       return std::make_shared<CAddon>(info, type);
   }

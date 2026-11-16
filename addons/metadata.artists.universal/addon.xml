@@ -4,19 +4,19 @@
        version="4.3.24"
        provider-name="Olympia, Team Universal Media Center">
   <requires>
-    <import addon=".metadata" version="2.1.0"/>
+    <import addon="xbmc.metadata" version="2.1.0"/>
     <import addon="metadata.common.allmusic.com" version="3.1.0"/>
     <import addon="metadata.common.fanart.tv" version="3.1.0"/>
     <import addon="metadata.common.musicbrainz.org" version="2.1.0"/>
     <import addon="metadata.common.theaudiodb.com" version="2.0.0"/>
   </requires>
-  <extension point=".metadata.scraper.artists"
+  <extension point="xbmc.metadata.scraper.artists"
              language="en"
              library="artistuniversal.xml"/>
-  <extension point=".addon.metadata">
+  <extension point="xbmc.addon.metadata">
     <platform>all</platform>
     <license>GPL v2.0</license>
-    <forum>https://github.com/yashhasan570/UniversalMediaCenter/showthread.php?tid=132623</forum>
+    <forum>https://forum.universalmediacenter.tv/showthread.php?tid=132623</forum>
     <assets>
         <icon>icon.png</icon>
     </assets>

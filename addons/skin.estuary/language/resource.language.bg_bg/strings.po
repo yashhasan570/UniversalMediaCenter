@@ -1,15 +1,15 @@
-# Universal Media Center Media Center language file
+# Kodi Media Center language file
 # Addon Name: Estuary
 # Addon id: skin.estuary
-# Addon Provider: Team Universal Media Center
+# Addon Provider: Team Kodi
 msgid ""
 msgstr ""
-"Project-Id-Version: UNIVERSAL MEDIA CENTER Main\n"
-"Report-Msgid-Bugs-To: https://github.com///issues/\n"
+"Project-Id-Version: KODI Main\n"
+"Report-Msgid-Bugs-To: https://github.com/xbmc/xbmc/issues/\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: 2023-12-04 09:42+0000\n"
-"Last-Translator: Christian Gade <gade@github.com/yashhasan570/UniversalMediaCenter>\n"
-"Language-Team: Bulgarian <https://universalmediacenter.weblate.cloud/projects/Universal Media Center-add-ons-skins/skin-estuary/bg_bg/>\n"
+"Last-Translator: Christian Gade <gade@kodi.tv>\n"
+"Language-Team: Bulgarian <https://kodi.weblate.cloud/projects/kodi-add-ons-skins/skin-estuary/bg_bg/>\n"
 "Language: bg_bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,16 +18,16 @@ msgstr ""
 "X-Generator: Weblate 5.2.1\n"
 
 msgctxt "Addon Summary"
-msgid "Estuary skin by phil65. (Universal Media Center's default skin)"
-msgstr "Estuary облик от phil65 и Piers. (стандартния облик на Universal Media Center)"
+msgid "Estuary skin by phil65. (Kodi's default skin)"
+msgstr "Estuary облик от phil65 и Piers. (стандартния облик на Kodi)"
 
 msgctxt "Addon Description"
-msgid "Estuary is the default skin for Universal Media Center 17.0 and above. It attempts to be easy for first time Universal Media Center users to understand and use."
-msgstr "Estuary е стандартният облик на Universal Media Center 17 и по-новите версии. Целта е да се улеснят хората, които се сблъскват за първи път с Universal Media Center."
+msgid "Estuary is the default skin for Kodi 17.0 and above. It attempts to be easy for first time Kodi users to understand and use."
+msgstr "Estuary е стандартният облик на Kodi 17 и по-новите версии. Целта е да се улеснят хората, които се сблъскват за първи път с Kodi."
 
 msgctxt "Addon Disclaimer"
-msgid "Estuary is the default skin for Universal Media Center, removing it may cause issues"
-msgstr "Estuary е стандартният облик на Universal Media Center. Премахването му може да предизвика проблеми"
+msgid "Estuary is the default skin for Kodi, removing it may cause issues"
+msgstr "Estuary е стандартният облик на Kodi. Премахването му може да предизвика проблеми"
 
 msgctxt "#31000"
 msgid "Now playing"
@@ -371,7 +371,7 @@ msgid "Channel options"
 msgstr "Настройки на канала"
 
 msgctxt "#31098"
-msgid "Select your Universal Media Center user profile[CR]to login and continue"
+msgid "Select your Kodi user profile[CR]to login and continue"
 msgstr "Изберете потребителски профил,[CR]за да продължите"
 
 #. viewtype name
@@ -462,7 +462,7 @@ msgid "Enter add-on browser"
 msgstr "Браузър за добавки"
 
 msgctxt "#31119"
-msgid "You do not have any add-ons installed yet. Visit our add-on browser to browse through our collection and improve your Universal Media Center experience."
+msgid "You do not have any add-ons installed yet. Visit our add-on browser to browse through our collection and improve your Kodi experience."
 msgstr "Не сте инсталирали добавки. Можете да прегледате наличните, за инсталиране, добавки посредством браузъра за добавки."
 
 msgctxt "#31120"
@@ -562,8 +562,8 @@ msgid "Play speed"
 msgstr "Скорост на възпроизвеждане"
 
 msgctxt "#31143"
-msgid "You did not set up PVR yet. In order to use PVR, choose a PVR client addon and configure it. Please visit http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/PVR to learn more."
-msgstr "Все още няма настроен ПВР. За да използвате ПВР, изберете добавка за ПВР и я настройте. Можете да прегледате http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/PVR за повече информация."
+msgid "You did not set up PVR yet. In order to use PVR, choose a PVR client addon and configure it. Please visit http://kodi.wiki/view/PVR to learn more."
+msgstr "Все още няма настроен ПВР. За да използвате ПВР, изберете добавка за ПВР и я настройте. Можете да прегледате http://kodi.wiki/view/PVR за повече информация."
 
 msgctxt "#31144"
 msgid "Enter add-on browser"

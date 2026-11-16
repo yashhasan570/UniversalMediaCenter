@@ -1,12 +1,12 @@
 /*
- *  Copyright (C) 2005-2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://Universal Media Center.tv
+ *  Copyright (C) 2005-2026 Team Kodi
+ *  This file is part of Kodi - https://kodi.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
  */
 
-%module addon
+%module xbmcaddon
 
 %{
 #if defined(TARGET_WINDOWS)
@@ -16,8 +16,8 @@
 #include "interfaces/legacy/Addon.h"
 #include "interfaces/legacy/Settings.h"
 
-using namespace Addon;
-using namespace addon;
+using namespace XBMCAddon;
+using namespace xbmcaddon;
 
 #if defined(__GNUG__)
 #pragma GCC diagnostic ignored "-Wstrict-aliasing"
@@ -27,16 +27,16 @@ using namespace addon;
 
 // This is all about warning suppression. It's OK that these base classes are
 // not part of what swig parses.
-%feature("knownbasetypes") Addon::addon "AddonClass"
+%feature("knownbasetypes") XBMCAddon::xbmcaddon "AddonClass"
 
-%include "Universal Media Center_common.i"
+%include "kodi_common.i"
 
 // declared before the header that returns it, fully qualified, so SWIG
 // records a name the registering module also uses
-namespace Addon { namespace addon { class Settings; } }
+namespace XBMCAddon { namespace xbmcaddon { class Settings; } }
 
-// construction in tp_new; see Universal Media Center_construct.i
-UNIVERSAL MEDIA CENTER_CONSTRUCT(Addon::addon, Addon)
+// construction in tp_new; see kodi_construct.i
+KODI_CONSTRUCT(XBMCAddon::xbmcaddon, Addon)
 
 /* one line per shape crossing the boundary in this module */
 %template() std::vector<bool>;

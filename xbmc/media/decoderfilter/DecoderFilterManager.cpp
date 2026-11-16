@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2013-2019 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -18,7 +18,7 @@
 #include "Util.h"
 #include "cores/VideoPlayer/DVDStreamInfo.h"
 #include "filesystem/File.h"
-#include "utils/TinyXML2.h"
+#include "utils/XBMCTinyXML2.h"
 #include "utils/XMLUtils.h"
 #include "utils/log.h"
 
@@ -124,7 +124,7 @@ bool CDecoderFilterManager::Load()
 
   CLog::LogF(LOGINFO, "loading filters from {}", fileName);
 
-  CTinyXML2 xmlDoc;
+  CXBMCTinyXML2 xmlDoc;
   if (!xmlDoc.LoadFile(fileName))
   {
     CLog::LogF(LOGERROR, "error loading: line {}, {}", xmlDoc.ErrorLineNum(), xmlDoc.ErrorStr());
@@ -155,7 +155,7 @@ bool CDecoderFilterManager::Save() const
   if (!m_dirty || m_filters.empty())
     return true;
 
-  CTinyXML2 doc;
+  CXBMCTinyXML2 doc;
   auto* xmlRootElement = doc.NewElement(TAG_ROOT);
   if (xmlRootElement == nullptr)
     return false;

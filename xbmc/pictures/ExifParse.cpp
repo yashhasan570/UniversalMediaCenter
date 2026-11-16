@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -11,7 +11,7 @@
 // images and present it in a reasonably consistent way
 //
 // Original code pulled from 'jhead' by Matthias Wandel (http://www.sentex.net/~mwandel/) - jhead
-// Adapted for  by DD.
+// Adapted for XBMC by DD.
 //--------------------------------------------------------------------------
 
 // Note: Jhead supports TAG_MAKER_NOTE exif field,

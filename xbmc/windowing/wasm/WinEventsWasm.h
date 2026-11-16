@@ -6,7 +6,7 @@
 #pragma once
 
 #include "windowing/WinEvents.h"
-#include "windowing/_events.h"
+#include "windowing/XBMC_events.h"
 
 #include <deque>
 #include <mutex>
@@ -19,12 +19,12 @@ public:
 
   bool MessagePump() override;
 
-  void MessagePush(const _Event& newEvent);
+  void MessagePush(const XBMC_Event& newEvent);
 
 private:
   void ProcessProxyCallbacks();
   bool DispatchQueuedEvents();
 
   std::mutex m_mutex;
-  std::deque<_Event> m_events;
+  std::deque<XBMC_Event> m_events;
 };

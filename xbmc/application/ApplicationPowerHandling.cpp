@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -159,8 +159,8 @@ bool CApplicationPowerHandling::WakeUpScreenSaver(bool bPowerOffKeyPressed /* = 
            CServiceBroker::GetSettingsComponent()->GetSettings()->GetBool(
                CSettings::SETTING_MASTERLOCK_STARTUPLOCK)) &&
           profileManager->GetCurrentProfile().getLockMode() != LockMode::EVERYONE &&
-          m_screensaverIdInUse != "screensaver..builtin.dim" &&
-          m_screensaverIdInUse != "screensaver..builtin.black" &&
+          m_screensaverIdInUse != "screensaver.xbmc.builtin.dim" &&
+          m_screensaverIdInUse != "screensaver.xbmc.builtin.black" &&
           m_screensaverIdInUse != "visualization")
       {
         m_iScreenSaveLock = 2;
@@ -188,8 +188,8 @@ bool CApplicationPowerHandling::WakeUpScreenSaver(bool bPowerOffKeyPressed /* = 
       // we can just continue as usual from vis mode
       return false;
     }
-    else if (m_screensaverIdInUse == "screensaver..builtin.dim" ||
-             m_screensaverIdInUse == "screensaver..builtin.black" ||
+    else if (m_screensaverIdInUse == "screensaver.xbmc.builtin.dim" ||
+             m_screensaverIdInUse == "screensaver.xbmc.builtin.black" ||
              m_screensaverIdInUse.empty())
     {
       return true;
@@ -380,8 +380,8 @@ void CApplicationPowerHandling::ActivateScreenSaver(bool forceType /*= false */)
 
   if (!forceType)
   {
-    if (m_screensaverIdInUse == "screensaver..builtin.dim" ||
-        m_screensaverIdInUse == "screensaver..builtin.black" || m_screensaverIdInUse.empty())
+    if (m_screensaverIdInUse == "screensaver.xbmc.builtin.dim" ||
+        m_screensaverIdInUse == "screensaver.xbmc.builtin.black" || m_screensaverIdInUse.empty())
     {
       return;
     }
@@ -395,11 +395,11 @@ void CApplicationPowerHandling::ActivateScreenSaver(bool forceType /*= false */)
       bUseDim = true;
 
     if (bUseDim)
-      m_screensaverIdInUse = "screensaver..builtin.dim";
+      m_screensaverIdInUse = "screensaver.xbmc.builtin.dim";
   }
 
-  if (m_screensaverIdInUse == "screensaver..builtin.dim" ||
-      m_screensaverIdInUse == "screensaver..builtin.black" || m_screensaverIdInUse.empty())
+  if (m_screensaverIdInUse == "screensaver.xbmc.builtin.dim" ||
+      m_screensaverIdInUse == "screensaver.xbmc.builtin.black" || m_screensaverIdInUse.empty())
   {
     return;
   }

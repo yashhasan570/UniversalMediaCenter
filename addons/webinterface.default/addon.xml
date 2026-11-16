@@ -5,13 +5,13 @@
   name="Universal Media Center web interface - Chorus2"
   provider-name="jez500, Team Universal Media Center">
   <requires>
-    <import addon=".json" version="6.0.0" />
+    <import addon="xbmc.json" version="6.0.0" />
   </requires>
-  <extension point=".webinterface"/>
-  <extension point=".addon.metadata">
+  <extension point="xbmc.webinterface"/>
+  <extension point="xbmc.addon.metadata">
     <platform>all</platform>
-    <source>https://github.com//chorus2</source>
-    <forum>http://forum.github.com/yashhasan570/UniversalMediaCenter/showthread.php?tid=183451</forum>
+    <source>https://github.com/xbmc/chorus2</source>
+    <forum>http://forum.xbmc.org/showthread.php?tid=183451</forum>
     <assets>
       <icon>icon.png</icon>
       <fanart>images/turntable.jpg</fanart>

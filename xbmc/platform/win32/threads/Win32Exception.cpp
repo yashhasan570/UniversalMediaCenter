@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -63,7 +63,7 @@ std::string win32_exception::m_platformDir;
 
 bool win32_exception::write_minidump(EXCEPTION_POINTERS* pEp)
 {
-  // Create the dump file where the .exe resides
+  // Create the dump file where the xbmc.exe resides
   bool returncode = false;
   std::string dumpFileName;
   std::wstring dumpFileNameW;
@@ -131,7 +131,7 @@ cleanup:
   return returncode;
 }
 
-/* \brief Writes a simple stack trace to the  user directory.
+/* \brief Writes a simple stack trace to the XBMC user directory.
    It needs a valid .pdb file to show the method, filename and
    line number where the exception took place.
 */

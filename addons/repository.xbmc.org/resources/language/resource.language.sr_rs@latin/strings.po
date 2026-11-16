@@ -1,15 +1,15 @@
-# Universal Media Center Media Center language file
-# Addon Name: Universal Media Center Add-on repository
-# Addon id: repository.github.com/yashhasan570/UniversalMediaCenter
-# Addon Provider: Team Universal Media Center
+# Kodi Media Center language file
+# Addon Name: Kodi Add-on repository
+# Addon id: repository.xbmc.org
+# Addon Provider: Team Kodi
 msgid ""
 msgstr ""
-"Project-Id-Version: UNIVERSAL MEDIA CENTER Main\n"
-"Report-Msgid-Bugs-To: translations@github.com/yashhasan570/UniversalMediaCenter\n"
+"Project-Id-Version: KODI Main\n"
+"Report-Msgid-Bugs-To: translations@kodi.tv\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: 2023-03-27 15:19+0000\n"
-"Last-Translator: Christian Gade <gade@github.com/yashhasan570/UniversalMediaCenter>\n"
-"Language-Team: Serbian (latin) <https://universalmediacenter.weblate.cloud/projects/Universal Media Center-core/repository--org/sr_Latn/>\n"
+"Last-Translator: Christian Gade <gade@kodi.tv>\n"
+"Language-Team: Serbian (latin) <https://kodi.weblate.cloud/projects/kodi-core/repository-xbmc-org/sr_Latn/>\n"
 "Language: sr_rs@latin\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,13 +18,13 @@ msgstr ""
 "X-Generator: Weblate 4.15.2\n"
 
 msgctxt "Addon Summary"
-msgid "Install Add-ons from Universal Media Center.tv"
-msgstr "Instaliraj dodatne programe sa Universal Media Center.tv"
+msgid "Install Add-ons from Kodi.tv"
+msgstr "Instaliraj dodatne programe sa Kodi.tv"
 
 msgctxt "Addon Description"
-msgid "Download and install add-ons from the Official Universal Media Center.tv add-on repository.[CR]  By using the official Repository you will be able to take advantage of our extensive file mirror service to help get you faster downloads from a region close to you.[CR]  All add-ons on this repository have under gone basic testing, if you find a broken or not working add-on please report it to Team Universal Media Center so we can take any action needed."
-msgstr "Preuzmi i instaliraj dodatne programe iz Zvaničnog Universal Media Center.tv spremišta za dodatne programe.[CR] Korišćenjem zvaničnog Spremišta moći ćete da iskoristite prednosti našeg servisa kopija fajlova koji će vam pomoći prilikom bržeg preuzimanja iz regiona bližeg vašoj lokaciji.[CR] Svi dodatni programi u ovom spremištu prošli su osnovno testiranje, u slučaju da pronađete neispravan dodatni program molimo vas da to prijavite Universal Media Center timu koji će zatim preduzeti neophodne mere."
+msgid "Download and install add-ons from the Official Kodi.tv add-on repository.[CR]  By using the official Repository you will be able to take advantage of our extensive file mirror service to help get you faster downloads from a region close to you.[CR]  All add-ons on this repository have under gone basic testing, if you find a broken or not working add-on please report it to Team Kodi so we can take any action needed."
+msgstr "Preuzmi i instaliraj dodatne programe iz Zvaničnog Kodi.tv spremišta za dodatne programe.[CR] Korišćenjem zvaničnog Spremišta moći ćete da iskoristite prednosti našeg servisa kopija fajlova koji će vam pomoći prilikom bržeg preuzimanja iz regiona bližeg vašoj lokaciji.[CR] Svi dodatni programi u ovom spremištu prošli su osnovno testiranje, u slučaju da pronađete neispravan dodatni program molimo vas da to prijavite Kodi timu koji će zatim preduzeti neophodne mere."
 
 msgctxt "Addon Disclaimer"
-msgid "Team Universal Media Center did not make all the add-ons on this repository and are not responsible for their content"
-msgstr "Tim-Universal Media Center nije napravio sve dodatne programe u ovom spremištu i nije odgovoran za njihov sadržaj"
+msgid "Team Kodi did not make all the add-ons on this repository and are not responsible for their content"
+msgstr "Tim-Kodi nije napravio sve dodatne programe u ovom spremištu i nije odgovoran za njihov sadržaj"

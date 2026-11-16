@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -227,7 +227,7 @@ bool CDVDInputStreamNavigator::Open()
           sizeof(language_subtitle) - 1);
   language_subtitle[2] = '\0';
 
-  // set language settings in case they are not set in 's configuration
+  // set language settings in case they are not set in xbmc's configuration
   if (language_menu[0] == '\0') strcpy(language_menu, "en");
   if (language_audio[0] == '\0') strcpy(language_audio, "en");
   if (language_subtitle[0] == '\0') strcpy(language_subtitle, "en");

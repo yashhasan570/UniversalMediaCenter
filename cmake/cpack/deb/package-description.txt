@@ -1,4 +1,4 @@
-Universal Media Center, formerly known as  Media Center, is an award winning free and open
+Universal Media Center, formerly known as XBMC Media Center, is an award winning free and open
 source software media-player and entertainment hub for all your digital media.
 Universal Media Center is available for Linux, Mac OS X (Leopard, Tiger and Apple TV) and
 Microsoft Windows, as well as the original Xbox game console. Created in 2003

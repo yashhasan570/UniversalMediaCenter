@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -19,25 +19,25 @@ namespace ADDON
 
 void Interface_GUIDialogNumeric::Init(AddonGlobalInterface* addonInterface)
 {
-  addonInterface->toUniversal Media Center->->dialogNumeric =
-      new AddonToUniversal Media CenterFuncTable__dialogNumeric();
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogNumeric =
+      new AddonToUniversal Media CenterFuncTable_universalmediacenter_gui_dialogNumeric();
 
-  addonInterface->toUniversal Media Center->->dialogNumeric->show_and_verify_new_password =
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogNumeric->show_and_verify_new_password =
       show_and_verify_new_password;
-  addonInterface->toUniversal Media Center->->dialogNumeric->show_and_verify_password =
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogNumeric->show_and_verify_password =
       show_and_verify_password;
-  addonInterface->toUniversal Media Center->->dialogNumeric->show_and_verify_input = show_and_verify_input;
-  addonInterface->toUniversal Media Center->->dialogNumeric->show_and_get_time = show_and_get_time;
-  addonInterface->toUniversal Media Center->->dialogNumeric->show_and_get_date = show_and_get_date;
-  addonInterface->toUniversal Media Center->->dialogNumeric->show_and_get_ip_address =
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogNumeric->show_and_verify_input = show_and_verify_input;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogNumeric->show_and_get_time = show_and_get_time;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogNumeric->show_and_get_date = show_and_get_date;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogNumeric->show_and_get_ip_address =
       show_and_get_ip_address;
-  addonInterface->toUniversal Media Center->->dialogNumeric->show_and_get_number = show_and_get_number;
-  addonInterface->toUniversal Media Center->->dialogNumeric->show_and_get_seconds = show_and_get_seconds;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogNumeric->show_and_get_number = show_and_get_number;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogNumeric->show_and_get_seconds = show_and_get_seconds;
 }
 
 void Interface_GUIDialogNumeric::DeInit(AddonGlobalInterface* addonInterface)
 {
-  delete addonInterface->toUniversal Media Center->->dialogNumeric;
+  delete addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogNumeric;
 }
 
 bool Interface_GUIDialogNumeric::show_and_verify_new_password(UNIVERSALMEDIA_HANDLE universalmediacenterBase, char** password)

@@ -1,1 +1,1 @@
-/rendering/gles rendering/gles # OPENGLES
+xbmc/rendering/gles rendering/gles # OPENGLES

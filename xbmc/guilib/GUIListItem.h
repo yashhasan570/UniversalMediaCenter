@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -35,8 +35,8 @@ class CGUIListItem
 {
 public:
   ///
-  /// @ingroup controls python_gui_listitem
-  /// @defgroup lib_listitem_iconoverlay Overlay icon types
+  /// @ingroup controls python_xbmcgui_listitem
+  /// @defgroup universalmediacenter_guilib_listitem_iconoverlay Overlay icon types
   /// @brief Overlay icon types used on list item.
   /// @{
   enum GUIIconOverlay { ICON_OVERLAY_NONE = 0,   //!< Value **0** - No overlay icon

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2017-2024 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -86,47 +86,47 @@ bool CMouseTranslator::TranslateEventID(unsigned int eventId, BUTTON_ID& buttonI
 {
   switch (eventId)
   {
-    case _BUTTON_LEFT:
+    case XBMC_BUTTON_LEFT:
     {
       buttonId = BUTTON_ID::LEFT;
       return true;
     }
-    case _BUTTON_MIDDLE:
+    case XBMC_BUTTON_MIDDLE:
     {
       buttonId = BUTTON_ID::MIDDLE;
       return true;
     }
-    case _BUTTON_RIGHT:
+    case XBMC_BUTTON_RIGHT:
     {
       buttonId = BUTTON_ID::RIGHT;
       return true;
     }
-    case _BUTTON_WHEELUP:
+    case XBMC_BUTTON_WHEELUP:
     {
       buttonId = BUTTON_ID::WHEEL_UP;
       return true;
     }
-    case _BUTTON_WHEELDOWN:
+    case XBMC_BUTTON_WHEELDOWN:
     {
       buttonId = BUTTON_ID::WHEEL_DOWN;
       return true;
     }
-    case _BUTTON_X1:
+    case XBMC_BUTTON_X1:
     {
       buttonId = BUTTON_ID::BUTTON4;
       return true;
     }
-    case _BUTTON_X2:
+    case XBMC_BUTTON_X2:
     {
       buttonId = BUTTON_ID::BUTTON5;
       return true;
     }
-    case _BUTTON_X3:
+    case XBMC_BUTTON_X3:
     {
       buttonId = BUTTON_ID::HORIZ_WHEEL_LEFT;
       return true;
     }
-    case _BUTTON_X4:
+    case XBMC_BUTTON_X4:
     {
       buttonId = BUTTON_ID::HORIZ_WHEEL_RIGHT;
       return true;

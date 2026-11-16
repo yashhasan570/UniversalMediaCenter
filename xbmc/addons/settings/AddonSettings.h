@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2017-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -25,7 +25,7 @@ enum class SettingDependencyOperator;
 class CSettingCategory;
 class CSettingGroup;
 class CSettingDependency;
-class CTinyXML;
+class CXBMCTinyXML;
 
 struct StringSettingOption;
 
@@ -62,9 +62,9 @@ public:
 
   const std::string& GetAddonId() const { return m_addonId; }
 
-  bool Initialize(const CTinyXML& doc, bool allowEmpty = false);
-  bool Load(const CTinyXML& doc);
-  bool Save(CTinyXML& doc) const;
+  bool Initialize(const CXBMCTinyXML& doc, bool allowEmpty = false);
+  bool Load(const CXBMCTinyXML& doc);
+  bool Save(CXBMCTinyXML& doc) const;
 
   bool HasSettings() const;
 
@@ -86,9 +86,9 @@ protected:
 
 private:
   bool AddInstanceSettings() const;
-  bool InitializeDefinitions(const CTinyXML& doc);
+  bool InitializeDefinitions(const CXBMCTinyXML& doc);
 
-  bool ParseSettingVersion(const CTinyXML& doc, uint32_t& version) const;
+  bool ParseSettingVersion(const CXBMCTinyXML& doc, uint32_t& version) const;
 
   std::shared_ptr<CSettingGroup> ParseOldSettingElement(
       const TiXmlElement* categoryElement,
@@ -100,7 +100,7 @@ private:
       const TiXmlElement* categoryElement,
       std::set<std::string, std::less<>>& settingIds);
 
-  bool InitializeFromOldSettingDefinitions(const CTinyXML& doc);
+  bool InitializeFromOldSettingDefinitions(const CXBMCTinyXML& doc);
   std::shared_ptr<CSetting> InitializeFromOldSettingAction(const std::string& settingId,
                                                            const TiXmlElement* settingElement,
                                                            const std::string& defaultValue);
@@ -165,7 +165,7 @@ private:
       const std::string& defaultValue,
       std::string source);
 
-  bool LoadOldSettingValues(const CTinyXML& doc,
+  bool LoadOldSettingValues(const CXBMCTinyXML& doc,
                             std::map<std::string, std::string, std::less<>>& settings) const;
 
   struct ConditionExpression

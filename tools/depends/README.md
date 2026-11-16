@@ -1,7 +1,7 @@
 ![Universal Media Center Logo](../../docs/resources/banner_slim.png)
 
 # Universal Media Center's Unified Depends Build System
-This builds native tools and library dependencies for platforms that do not provide them. It is used on our continuous integration system, **[jenkins](http://jenkins.github.com/yashhasan570/UniversalMediaCenter/)**. A nice side effect is that it allows us to use the same tools and library versions across all platforms.
+This builds native tools and library dependencies for platforms that do not provide them. It is used on our continuous integration system, **[jenkins](http://jenkins.universalmediacenter.tv/)**. A nice side effect is that it allows us to use the same tools and library versions across all platforms.
 
 In terms of build system usage, largest percentage is Autotools, followed by CMake and, in rare cases, hand crafted Makefiles. Tools and libraries versions are picked for a reason. If you feel the urge to start bumping them, be prepared for robust testing. Some tools and libraries need patching, most do not.
 
@@ -34,28 +34,28 @@ Paths below are examples. If you want to build Universal Media Center, follow ou
 
 ### Android
 **arm**
-`./configure --with-tarballs=$HOME/android-tools/-tarballs --host=arm-linux-androideabi --with-sdk-path=$HOME/android-tools/android-sdk-linux --with-ndk-path=$HOME/android-tools/android-ndk-r20 --prefix=$HOME/android-tools/-depends`
+`./configure --with-tarballs=$HOME/android-tools/xbmc-tarballs --host=arm-linux-androideabi --with-sdk-path=$HOME/android-tools/android-sdk-linux --with-ndk-path=$HOME/android-tools/android-ndk-r20 --prefix=$HOME/android-tools/xbmc-depends`
 
 **aarch64**
-`./configure --with-tarballs=$HOME/android-tools/-tarballs --host=aarch64-linux-android --with-sdk-path=$HOME/android-tools/android-sdk-linux --with-ndk-path=$HOME/android-tools/android-ndk-r20 --prefix=$HOME/android-tools/-depends`
+`./configure --with-tarballs=$HOME/android-tools/xbmc-tarballs --host=aarch64-linux-android --with-sdk-path=$HOME/android-tools/android-sdk-linux --with-ndk-path=$HOME/android-tools/android-ndk-r20 --prefix=$HOME/android-tools/xbmc-depends`
 
 **x86**
-`./configure --with-tarballs=$HOME/android-tools/-tarballs --host=i686-linux-android --with-sdk-path=$HOME/android-tools/android-sdk-linux --with-ndk-path=$HOME/android-tools/android-ndk-r20 --prefix=$HOME/android-tools/-depends`
+`./configure --with-tarballs=$HOME/android-tools/xbmc-tarballs --host=i686-linux-android --with-sdk-path=$HOME/android-tools/android-sdk-linux --with-ndk-path=$HOME/android-tools/android-ndk-r20 --prefix=$HOME/android-tools/xbmc-depends`
 
 **x86_64**
-`./configure --with-tarballs=$HOME/android-tools/-tarballs --host=x86_64-linux-android --with-sdk-path=$HOME/android-tools/android-sdk-linux --with-ndk-path=$HOME/android-tools/android-ndk-r20 --prefix=$HOME/android-tools/-depends`
+`./configure --with-tarballs=$HOME/android-tools/xbmc-tarballs --host=x86_64-linux-android --with-sdk-path=$HOME/android-tools/android-sdk-linux --with-ndk-path=$HOME/android-tools/android-ndk-r20 --prefix=$HOME/android-tools/xbmc-depends`
 
 > [!NOTE]  
 > Android x86 and x86_64 are not maintained and are not 100% sure that everything works correctly!
 
 ### Linux
 **ARM (codesourcery/lenaro/etc)**
-`./configure --with-toolchain=/opt/toolchains/my-example-toolchain/ --prefix=/opt/-deps --host=arm-linux-gnueabi --with-rendersystem=gles`
+`./configure --with-toolchain=/opt/toolchains/my-example-toolchain/ --prefix=/opt/xbmc-deps --host=arm-linux-gnueabi --with-rendersystem=gles`
 
 **webos (buildroot-nc4)**
-`./configure --with-toolchain=/opt/toolchains/arm-webos-linux-gnueabi_sdk-buildroot --prefix=/opt/-deps --host=arm-webos-linux-gnueabi`
+`./configure --with-toolchain=/opt/toolchains/arm-webos-linux-gnueabi_sdk-buildroot --prefix=/opt/xbmc-deps --host=arm-webos-linux-gnueabi`
 
 **Native**
-`./configure --with-toolchain=/usr --prefix=/opt/-deps --host=x86_64-linux-gnu --with-rendersystem=gl`
+`./configure --with-toolchain=/usr --prefix=/opt/xbmc-deps --host=x86_64-linux-gnu --with-rendersystem=gl`
 
 Cross compiling is a PITA.

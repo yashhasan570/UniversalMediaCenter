@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2013-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -11,7 +11,7 @@
 #include "ServiceBroker.h"
 #include "utils/FileUtils.h"
 #include "utils/StringUtils.h"
-#include "utils/TinyXML2.h"
+#include "utils/XBMCTinyXML2.h"
 #include "utils/XMLUtils.h"
 #include "utils/log.h"
 
@@ -54,7 +54,7 @@ bool CUPnPSettings::Load(const std::string &file)
   if (!CFileUtils::Exists(file))
     return false;
 
-  CTinyXML2 doc;
+  CXBMCTinyXML2 doc;
   if (!doc.LoadFile(file))
   {
     m_logger->error("error loading {}, Line {}\n{}", file, doc.ErrorLineNum(), doc.ErrorStr());
@@ -82,7 +82,7 @@ bool CUPnPSettings::Save(const std::string &file) const
 {
   std::unique_lock lock(m_critical);
 
-  CTinyXML2 doc;
+  CXBMCTinyXML2 doc;
   auto* element = doc.NewElement(XML_UPNP);
   auto* rootNode = doc.InsertFirstChild(element);
   if (!rootNode)

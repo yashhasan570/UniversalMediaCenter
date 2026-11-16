@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2016 Christian Browet
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -14,13 +14,13 @@
 namespace jni
 {
 
-class CJNINsdManagerDiscoveryListener : public CJNINsdManagerDiscoveryListener, public CJNIInterfaceImplem<CJNINsdManagerDiscoveryListener>
+class CJNIXBMCNsdManagerDiscoveryListener : public CJNINsdManagerDiscoveryListener, public CJNIInterfaceImplem<CJNIXBMCNsdManagerDiscoveryListener>
 {
 public:
-  CJNINsdManagerDiscoveryListener();
-  CJNINsdManagerDiscoveryListener(const CJNINsdManagerDiscoveryListener& other);
-  explicit CJNINsdManagerDiscoveryListener(const jni::jhobject &object) : CJNIBase(object) {}
-  ~CJNINsdManagerDiscoveryListener() override;
+  CJNIXBMCNsdManagerDiscoveryListener();
+  CJNIXBMCNsdManagerDiscoveryListener(const CJNIXBMCNsdManagerDiscoveryListener& other);
+  explicit CJNIXBMCNsdManagerDiscoveryListener(const jni::jhobject &object) : CJNIBase(object) {}
+  ~CJNIXBMCNsdManagerDiscoveryListener() override;
 
   static void RegisterNatives(JNIEnv* env);
 

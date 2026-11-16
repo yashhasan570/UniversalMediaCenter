@@ -1,6 +1,6 @@
 /*
  *      Copyright (C) 2008-2015 Team Universal Media Center
- *      http://github.com/yashhasan570/UniversalMediaCenter
+ *      http://universalmediacenter.tv
  *
  *  This Program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -137,11 +137,11 @@ public:
   }
 };
 
-class ClientUtils
+class XBMCClientUtils
 {
 public:
-  ClientUtils() = default;
-  ~ClientUtils() = default;
+  XBMCClientUtils() = default;
+  ~XBMCClientUtils() = default;
   static unsigned int GetUniqueIdentifier()
   {
     static time_t id = time(NULL);
@@ -179,7 +179,7 @@ class CPacket
      - H7 must be set to zeros for now
 
          -----------------------------
-         | -H1 Signature ("")    | - 4  x CHAR                4B
+         | -H1 Signature ("XBMC")    | - 4  x CHAR                4B
          | -H2 Version (eg. 2.0)     | - 2  x UNSIGNED CHAR       2B
          | -H3 PacketType            | - 1  x UNSIGNED SHORT      2B
          | -H4 Sequence number       | - 1  x UNSIGNED LONG       4B
@@ -198,7 +198,7 @@ public:
   }
   virtual ~CPacket() = default;
 
-  bool Send(int Socket, CAddress &Addr, unsigned int UID = ClientUtils::GetUniqueIdentifier())
+  bool Send(int Socket, CAddress &Addr, unsigned int UID = XBMCClientUtils::GetUniqueIdentifier())
   {
     if (m_Payload.empty())
       ConstructPayload();
@@ -246,7 +246,7 @@ protected:
 
   static void ConstructHeader(int PacketType, int NumberOfPackets, int CurrentPacket, unsigned short PayloadSize, unsigned int UniqueToken, char *Header)
   {
-    sprintf(Header, "");
+    sprintf(Header, "XBMC");
     for (int i = 4; i < HEADER_SIZE; i++)
       Header[i] = 0;
     Header[4]  = MAJOR_VERSION;
@@ -727,14 +727,14 @@ public:
   ~CPacketACTION() override = default;
 };
 
-class CClient
+class CXBMCClient
 {
 private:
   CAddress      m_Addr;
   int           m_Socket;
   unsigned int  m_UID;
 public:
-  CClient(const char *IP = "127.0.0.1", int Port = 9777, int Socket = -1, unsigned int UID = 0)
+  CXBMCClient(const char *IP = "127.0.0.1", int Port = 9777, int Socket = -1, unsigned int UID = 0)
   {
     m_Addr = CAddress(IP, Port);
     if (Socket == -1)
@@ -745,7 +745,7 @@ public:
     if (UID)
       m_UID = UID;
     else
-      m_UID = ClientUtils::GetUniqueIdentifier();
+      m_UID = XBMCClientUtils::GetUniqueIdentifier();
   }
 
   void SendNOTIFICATION(const char *Title, const char *Message, unsigned short IconType, const char *IconFile = NULL)

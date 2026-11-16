@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2008-2013 Team 
+ *  Copyright (C) 2008-2013 Team XBMC
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -16,11 +16,11 @@
  *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package org..eventclient;
+package org.xbmc.eventclient;
 /**
- *  Event Client Class
+ * XBMC Event Client Class
  *
- * This packet displays a notification window in . It can contain
+ * This packet displays a notification window in XBMC. It can contain
  * a caption, a message and an icon.
  * @author Stefan Agner
  *
@@ -28,7 +28,7 @@ package org..eventclient;
 public class PacketNOTIFICATION extends Packet {
 
 	/**
-	 * This packet displays a notification window in .
+	 * This packet displays a notification window in XBMC.
 	 * @param title Message title
 	 * @param message The actual message
 	 * @param iconType Type of the icon (Packet.ICON_PNG, Packet.ICON_JPEG or Packet.ICON_GIF)
@@ -41,7 +41,7 @@ public class PacketNOTIFICATION extends Packet {
 	}
 
 	/**
-	 * This packet displays a notification window in .
+	 * This packet displays a notification window in XBMC.
 	 * @param title Message title
 	 * @param message The actual message
 	 */

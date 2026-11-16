@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -9,7 +9,7 @@
 #include "settings/lib/ISettingsMigrationStep.h"
 #include "settings/lib/SettingsManager.h"
 #include "settings/lib/SettingsMigration.h"
-#include "utils/TinyXML.h"
+#include "utils/XBMCTinyXML.h"
 #include "utils/XMLUtils.h"
 
 #include <stdexcept>
@@ -183,7 +183,7 @@ TEST_P(TestSettingsMigrationToV3VideoVersions, MigratesVideoVersionPreference)
   for (const int targetVersion : {3, static_cast<int>(CSettingsManager::Version)})
   {
     SCOPED_TRACE(targetVersion);
-    CTinyXML doc;
+    CXBMCTinyXML doc;
     ASSERT_TRUE(doc.Parse(xml));
 
     CSettingsMigration migration;
@@ -232,7 +232,7 @@ TEST_P(TestSettingsMigrationToV4ReplayGain, MigratesPreampSetting)
       std::to_string(params.oldValue) +
       "</setting><setting id=\"lookandfeel.skin\">skin.estuary</setting></settings>";
 
-  CTinyXML doc;
+  CXBMCTinyXML doc;
   ASSERT_TRUE(doc.Parse(xml));
 
   CSettingsMigration migration;
@@ -267,7 +267,7 @@ TEST_P(TestSettingsMigrationToV5ApplicationKeyboard, MigratesTvosKeyboardSetting
   const std::string xml = "<settings version=\"4\"><setting id=\"input.tvosuseuniversalmediacenterkeyboard\">" +
                           value + "</setting></settings>";
 
-  CTinyXML doc;
+  CXBMCTinyXML doc;
   ASSERT_TRUE(doc.Parse(xml));
 
   CSettingsMigration migration;

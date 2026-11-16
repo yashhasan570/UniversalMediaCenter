@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -589,8 +589,8 @@ static int SkinTimerStop(const std::vector<std::string>& params)
 ///     ,
 ///     Pops up a select dialog and allows the user to select an add-on of the
 ///     given type to be used elsewhere in the skin via the info tag
-///     `Skin.String(string)`. The most common types are .addon.video\,
-///     .addon.audio\, .addon.image and .addon.executable.
+///     `Skin.String(string)`. The most common types are xbmc.addon.video\,
+///     xbmc.addon.audio\, xbmc.addon.image and xbmc.addon.executable.
 ///     @param[in] string[0]             Skin setting to store result in.
 ///     @param[in] type[1\,...]           Add-on types to allow selecting.
 ///   }

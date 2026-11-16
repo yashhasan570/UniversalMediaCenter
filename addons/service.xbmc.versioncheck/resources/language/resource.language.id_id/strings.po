@@ -1,15 +1,15 @@
-# Universal Media Center Media Center language file
+# Kodi Media Center language file
 # Addon Name: Version Check
-# Addon id: service..versioncheck
-# Addon Provider: Team Universal Media Center
+# Addon id: service.xbmc.versioncheck
+# Addon Provider: Team Kodi
 msgid ""
 msgstr ""
-"Project-Id-Version:  Addons\n"
-"Report-Msgid-Bugs-To: translations@github.com/yashhasan570/UniversalMediaCenter\n"
+"Project-Id-Version: XBMC Addons\n"
+"Report-Msgid-Bugs-To: translations@kodi.tv\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: 2021-11-18 07:13+0000\n"
 "Last-Translator: Nao3Line Prez <n.yazawa6932@gmail.com>\n"
-"Language-Team: Indonesian <https://universalmediacenter.weblate.cloud/projects/Universal Media Center-core/service--versioncheck/id_id/>\n"
+"Language-Team: Indonesian <https://kodi.weblate.cloud/projects/kodi-core/service-xbmc-versioncheck/id_id/>\n"
 "Language: id_id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,24 +18,24 @@ msgstr ""
 "X-Generator: Weblate 4.9\n"
 
 msgctxt "Addon Summary"
-msgid "Universal Media Center Version Check checks if you are running latest released version."
-msgstr "Universal Media Center Version Check mengecek apakah Anda menggunakan versi rilis terbaru."
+msgid "Kodi Version Check checks if you are running latest released version."
+msgstr "Kodi Version Check mengecek apakah Anda menggunakan versi rilis terbaru."
 
 msgctxt "Addon Description"
-msgid "Universal Media Center Version Check only supports a number of platforms/distros as releases may differ between them. For more information visit the github.com/yashhasan570/UniversalMediaCenter website."
-msgstr "Universal Media Center Version Check hanya mendukung beberapa platform/distro karena rilisnya mungkin berbeda-beda. Untuk informasi lebih lanjut kunjungi situs github.com/yashhasan570/UniversalMediaCenter."
+msgid "Kodi Version Check only supports a number of platforms/distros as releases may differ between them. For more information visit the kodi.tv website."
+msgstr "Kodi Version Check hanya mendukung beberapa platform/distro karena rilisnya mungkin berbeda-beda. Untuk informasi lebih lanjut kunjungi situs kodi.tv."
 
 msgctxt "Addon Disclaimer"
-msgid "Feel free to use this script. For information visit github.com/yashhasan570/UniversalMediaCenter"
-msgstr "Jangan sungkan menggunakan script ini. Untuk informasi hubungi github.com/yashhasan570/UniversalMediaCenter"
+msgid "Feel free to use this script. For information visit kodi.tv"
+msgstr "Jangan sungkan menggunakan script ini. Untuk informasi hubungi kodi.tv"
 
 msgctxt "#32001"
 msgid "We would like to recommend you to upgrade."
 msgstr "Kami merekomendasikan Anda untuk upgrade."
 
 msgctxt "#32002"
-msgid "Visit Universal Media Center.tv for more information."
-msgstr "Kunjungi Universal Media Center.tv untuk informasi lebih lanjut."
+msgid "Visit Kodi.tv for more information."
+msgstr "Kunjungi Kodi.tv untuk informasi lebih lanjut."
 
 msgctxt "#32009"
 msgid "Would you like to remove this reminder?"
@@ -58,24 +58,24 @@ msgid "Upgrade successful"
 msgstr "Upgrade sukses"
 
 msgctxt "#32014"
-msgid "Do you want to restart Universal Media Center to finish the upgrade?"
-msgstr "Apakah Anda ingin memulai ulang Universal Media Center untuk menuntaskan proses upgrade?"
+msgid "Do you want to restart Kodi to finish the upgrade?"
+msgstr "Apakah Anda ingin memulai ulang Kodi untuk menuntaskan proses upgrade?"
 
 msgctxt "#32015"
 msgid "Do you want to check the repository for a new version?"
 msgstr "Apakah Anda ingin memeriksa repositori untuk versi yang baru?"
 
 msgctxt "#32016"
-msgid "There is a newer stable Universal Media Center version available."
-msgstr "Telah tersedia Universal Media Center stabil versi lebih baru."
+msgid "There is a newer stable Kodi version available."
+msgstr "Telah tersedia Kodi stabil versi lebih baru."
 
 msgctxt "#32020"
 msgid "General"
 msgstr "Umum"
 
 msgctxt "#32021"
-msgid "Enable Universal Media Center version check?"
-msgstr "Aktifkan pengecekan versi Universal Media Center?"
+msgid "Enable Kodi version check?"
+msgstr "Aktifkan pengecekan versi Kodi?"
 
 msgctxt "#32022"
 msgid "Please enter your password"
@@ -92,23 +92,23 @@ msgstr "Linux: Perbarui menggunakan apt"
 # empty strings from id 32025 to 32029
 #. Used in OK dialog
 msgctxt "#32030"
-msgid "A new stable version of Universal Media Center is available."
-msgstr "Versi stabil baru dari Universal Media Center tersedia."
+msgid "A new stable version of Kodi is available."
+msgstr "Versi stabil baru dari Kodi tersedia."
 
 #. Direct people to the website. Used in OK dialog
 msgctxt "#32031"
-msgid "Visit http://github.com/yashhasan570/UniversalMediaCenter for more information."
-msgstr "Kunjungi http://github.com/yashhasan570/UniversalMediaCenter untuk informasi lebih lanjut."
+msgid "Visit http://kodi.tv for more information."
+msgstr "Kunjungi http://kodi.tv untuk informasi lebih lanjut."
 
 #. Used in OK dialog
 msgctxt "#32032"
-msgid "A new stable version of Universal Media Center is available."
-msgstr "Versi stabil baru dari Universal Media Center tersedia."
+msgid "A new stable version of Kodi is available."
+msgstr "Versi stabil baru dari Kodi tersedia."
 
 #. Direct people to the website. Used in OK dialog
 msgctxt "#32033"
-msgid "Visit http://github.com/yashhasan570/UniversalMediaCenter for more information."
-msgstr "Kunjungi http://github.com/yashhasan570/UniversalMediaCenter untuk informasi lebih lanjut."
+msgid "Visit http://kodi.tv for more information."
+msgstr "Kunjungi http://kodi.tv untuk informasi lebih lanjut."
 
 #. For example: "You are using 13.1 prealpha while 13.2 stable is available"
 msgctxt "#32034"
@@ -130,5 +130,5 @@ msgid "Please upgrade your operating system."
 msgstr "Harap tingkatkan sistem operasi Anda."
 
 msgctxt "#32042"
-msgid "For more information, see https://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Linux"
-msgstr "Untuk informasi lebih lanjut, lihat https://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Linux"
+msgid "For more information, see https://kodi.wiki/view/Linux"
+msgstr "Untuk informasi lebih lanjut, lihat https://kodi.wiki/view/Linux"

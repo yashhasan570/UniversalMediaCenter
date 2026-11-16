@@ -7,5 +7,5 @@ set(CORE_ADDON_BINDINGS_FILES
 )
 
 set(CORE_ADDON_BINDINGS_DIRS
-    ${CORE_SOURCE_DIR}//addons/universalmediacenter-dev-kit/include/universalmediacenter/
+    ${CORE_SOURCE_DIR}/xbmc/addons/universalmediacenter-dev-kit/include/universalmediacenter/
 )

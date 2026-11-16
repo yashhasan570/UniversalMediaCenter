@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -16,7 +16,7 @@
 #include "URL.h"
 #include "addons/Scraper.h"
 #include "filesystem/StackDirectory.h"
-#include "utils/TinyXML.h"
+#include "utils/XBMCTinyXML.h"
 
 #include <string>
 #include <utility>
@@ -47,7 +47,7 @@ public:
   {
     if (document)
     {
-      CTinyXML doc;
+      CXBMCTinyXML doc;
       doc.Parse(document, TIXML_ENCODING_UNKNOWN);
       return details.Load(doc.RootElement(), true, prioritise);
     }
@@ -93,7 +93,7 @@ private:
   ADDON::ScraperPtr m_info;
   CScraperUrl m_scurl;
 
-  mutable CTinyXML m_xmlDoc;
+  mutable CXBMCTinyXML m_xmlDoc;
   mutable bool m_xmlParsed = false;
 
   int Load(const CURL&);

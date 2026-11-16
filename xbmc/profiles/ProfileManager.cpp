@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2013-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -142,7 +142,7 @@ bool CProfileManager::Load()
 
   if (CFile::Exists(file))
   {
-    CTinyXML profilesDoc;
+    CXBMCTinyXML profilesDoc;
     if (profilesDoc.LoadFile(file))
     {
       const TiXmlElement *rootElement = profilesDoc.RootElement();
@@ -155,7 +155,7 @@ bool CProfileManager::Load()
 
         std::string defaultDir("special://home/userdata");
         if (!CDirectory::Exists(defaultDir))
-          defaultDir = "special:///userdata";
+          defaultDir = "special://xbmc/userdata";
 
         const TiXmlElement* pProfile = rootElement->FirstChildElement(XML_PROFILE);
         while (pProfile)
@@ -223,7 +223,7 @@ bool CProfileManager::Save() const
 
   std::unique_lock lock(m_critical);
 
-  CTinyXML xmlDoc;
+  CXBMCTinyXML xmlDoc;
   TiXmlElement xmlRootElement(XML_PROFILES);
   TiXmlNode *pRoot = xmlDoc.InsertEndChild(xmlRootElement);
   if (pRoot == nullptr)
@@ -352,7 +352,7 @@ bool CProfileManager::LoadProfile(unsigned int index)
 
   if (m_currentProfile != MASTER_PROFILE_ID)
   {
-    CTinyXML doc;
+    CXBMCTinyXML doc;
     if (doc.LoadFile(URIUtils::AddFileToFolder(GetUserDataFolder(), "guisettings.xml")))
     {
       settings->LoadSetting(doc.RootElement(), CSettings::SETTING_MASTERLOCK_MAXRETRIES);

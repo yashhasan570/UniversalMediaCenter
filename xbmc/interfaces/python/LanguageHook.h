@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -17,7 +17,7 @@
 
 #include <Python.h>
 
-namespace Addon
+namespace XBMCAddon
 {
   namespace Python
   {
@@ -28,7 +28,7 @@ namespace Addon
      *  plugging into the API. It's got a static only implementation
      *  and uses the singleton pattern for access.
      */
-    class PythonLanguageHook : public Addon::LanguageHook
+    class PythonLanguageHook : public XBMCAddon::LanguageHook
     {
       PyInterpreterState* m_interp;
       CCriticalSection crit;
@@ -58,7 +58,7 @@ namespace Addon
        * See PythonCallbackHandler for more details
        * See PythonCallbackHandler::PythonCallbackHandler for more details
        */
-      Addon::CallbackHandler* GetCallbackHandler() override;
+      XBMCAddon::CallbackHandler* GetCallbackHandler() override;
 
       String GetAddonId() override;
       String GetAddonVersion() override;
@@ -66,8 +66,8 @@ namespace Addon
 
       void RegisterPlayerCallback(IPlayerCallback* player) override;
       void UnregisterPlayerCallback(IPlayerCallback* player) override;
-      void RegisterMonitorCallback(Addon::::Monitor* monitor) override;
-      void UnregisterMonitorCallback(Addon::::Monitor* monitor) override;
+      void RegisterMonitorCallback(XBMCAddon::xbmc::Monitor* monitor) override;
+      void UnregisterMonitorCallback(XBMCAddon::xbmc::Monitor* monitor) override;
       bool WaitForEvent(CEvent& hEvent, unsigned int milliseconds) override;
 
       static AddonClass::Ref<PythonLanguageHook> GetIfExists(PyInterpreterState* interp);

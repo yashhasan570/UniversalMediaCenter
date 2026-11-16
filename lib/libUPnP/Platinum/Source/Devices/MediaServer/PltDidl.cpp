@@ -49,12 +49,12 @@ const char* didl_header         = "<DIDL-Lite xmlns=\"urn:schemas-upnp-org:metad
                                             " xmlns:upnp=\"urn:schemas-upnp-org:metadata-1-0/upnp/\""
                                             " xmlns:dlna=\"urn:schemas-dlna-org:metadata-1-0/\""
                                             " xmlns:sec=\"http://www.sec.co.kr/\""
-                                            " xmlns:=\"urn:schemas--org:metadata-1-0/\">";
+                                            " xmlns:xbmc=\"urn:schemas-xbmc-org:metadata-1-0/\">";
 const char* didl_footer         = "</DIDL-Lite>";
 const char* didl_namespace_dc   = "http://purl.org/dc/elements/1.1/";
 const char* didl_namespace_upnp = "urn:schemas-upnp-org:metadata-1-0/upnp/";
 const char* didl_namespace_dlna = "urn:schemas-dlna-org:metadata-1-0/";
-const char* didl_namespace_ = "urn:schemas--org:metadata-1-0/";
+const char* didl_namespace_xbmc = "urn:schemas-xbmc-org:metadata-1-0/";
 
 /*----------------------------------------------------------------------
 |   PLT_Didl::ConvertFilterToMask
@@ -163,22 +163,22 @@ PLT_Didl::ConvertFilterToMask(const NPT_String& filter)
             mask |= PLT_FILTER_MASK_EPISODE_COUNT;
         } else if (NPT_String::CompareN(s+i, PLT_FILTER_FIELD_EPISODE_SEASON, len, true) == 0) {
             mask |= PLT_FILTER_MASK_EPISODE_SEASON;
-        } else if (NPT_String::CompareN(s+i, PLT_FILTER_FIELD__LASTPLAYERSTATE, len, true) == 0) {
-            mask |= PLT_FILTER_MASK__LASTPLAYERSTATE;
-        } else if (NPT_String::CompareN(s+i, PLT_FILTER_FIELD__DATEADDED, len, true) == 0) {
-            mask |= PLT_FILTER_MASK__DATEADDED;
-        } else if (NPT_String::CompareN(s+i, PLT_FILTER_FIELD__RATING, len, true) == 0) {
-            mask |= PLT_FILTER_MASK__RATING;
-        } else if (NPT_String::CompareN(s+i, PLT_FILTER_FIELD__VOTES, len, true) == 0) {
-            mask |= PLT_FILTER_MASK__VOTES;
-        } else if (NPT_String::CompareN(s+i, PLT_FILTER_FIELD__ARTWORK, len, true) == 0) {
-            mask |= PLT_FILTER_MASK__ARTWORK;
-        } else if (NPT_String::CompareN(s+i, PLT_FILTER_FIELD__UNIQUE_IDENTIFIER, len, true) == 0) {
-            mask |= PLT_FILTER_MASK__UNIQUE_IDENTIFIER;
-        } else if (NPT_String::CompareN(s + i, PLT_FILTER_FIELD__COUNTRY, len, true) == 0) {
-          mask |= PLT_FILTER_MASK__COUNTRY;
-        } else if (NPT_String::CompareN(s + i, PLT_FILTER_FIELD__USERRATING, len, true) == 0) {
-          mask |= PLT_FILTER_MASK__USERRATING;
+        } else if (NPT_String::CompareN(s+i, PLT_FILTER_FIELD_XBMC_LASTPLAYERSTATE, len, true) == 0) {
+            mask |= PLT_FILTER_MASK_XBMC_LASTPLAYERSTATE;
+        } else if (NPT_String::CompareN(s+i, PLT_FILTER_FIELD_XBMC_DATEADDED, len, true) == 0) {
+            mask |= PLT_FILTER_MASK_XBMC_DATEADDED;
+        } else if (NPT_String::CompareN(s+i, PLT_FILTER_FIELD_XBMC_RATING, len, true) == 0) {
+            mask |= PLT_FILTER_MASK_XBMC_RATING;
+        } else if (NPT_String::CompareN(s+i, PLT_FILTER_FIELD_XBMC_VOTES, len, true) == 0) {
+            mask |= PLT_FILTER_MASK_XBMC_VOTES;
+        } else if (NPT_String::CompareN(s+i, PLT_FILTER_FIELD_XBMC_ARTWORK, len, true) == 0) {
+            mask |= PLT_FILTER_MASK_XBMC_ARTWORK;
+        } else if (NPT_String::CompareN(s+i, PLT_FILTER_FIELD_XBMC_UNIQUE_IDENTIFIER, len, true) == 0) {
+            mask |= PLT_FILTER_MASK_XBMC_UNIQUE_IDENTIFIER;
+        } else if (NPT_String::CompareN(s + i, PLT_FILTER_FIELD_XBMC_COUNTRY, len, true) == 0) {
+          mask |= PLT_FILTER_MASK_XBMC_COUNTRY;
+        } else if (NPT_String::CompareN(s + i, PLT_FILTER_FIELD_XBMC_USERRATING, len, true) == 0) {
+          mask |= PLT_FILTER_MASK_XBMC_USERRATING;
         }
 
         if (next_comma < 0) {

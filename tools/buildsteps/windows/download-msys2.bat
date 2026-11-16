@@ -211,8 +211,8 @@ for %%x in (win32 x64 arm64) do (
 if not exist %instdir%\%msys2%\etc\fstab. GOTO writeFstab
 
 set searchRes=
-for /f "tokens=2 delims=/" %%a in ('findstr /i  %instdir%\%msys2%\etc\fstab.') do set searchRes=%%a
-if "%searchRes%"=="" GOTO installbase
+for /f "tokens=2 delims=/" %%a in ('findstr /i xbmc %instdir%\%msys2%\etc\fstab.') do set searchRes=%%a
+if "%searchRes%"=="xbmc" GOTO installbase
 
 :writeFstab
 echo -------------------------------------------------------------------------------
@@ -238,7 +238,7 @@ if "%cygdrive%"=="no" echo.none / cygdrive binary,posix=0,noacl,user 0 ^0>>%inst
     echo.%instdir%\x64\              /depends/x64
     echo.%instdir%\win10-x64\        /depends/win10-x64
     echo.%instdir%\arm64\            /depends/arm64
-    echo.%instdir%\..\..\            /
+    echo.%instdir%\..\..\            /xbmc
 )>>%instdir%\%msys2%\etc\fstab.
 
 :installbase

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2016-2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -11806,7 +11806,7 @@ void CVideoDatabase::ExportToXML(const std::string &path, bool singleFile /* = t
     int current = 0;
 
     // create our xml document
-    CTinyXML xmlDoc;
+    CXBMCTinyXML xmlDoc;
     TiXmlDeclaration decl("1.0", "UTF-8", "yes");
     xmlDoc.InsertEndChild(decl);
     TiXmlNode* pMain = nullptr;
@@ -12673,7 +12673,7 @@ void CVideoDatabase::ImportFromXML(const std::string &path)
     if (nullptr == m_pDS)
       return;
 
-    CTinyXML xmlDoc;
+    CXBMCTinyXML xmlDoc;
     if (!xmlDoc.LoadFile(URIUtils::AddFileToFolder(path, "videodb.xml")))
       return;
 

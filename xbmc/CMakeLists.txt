@@ -83,7 +83,7 @@ if(ENABLE_OPTICAL)
   list(APPEND HEADERS Autorun.h)
 endif()
 
-core_add_library()
+core_add_library(xbmc)
 
 if(CORE_SYSTEM_NAME STREQUAL windowsstore)
   set_target_properties(${CORE_LIBRARY} PROPERTIES STATIC_LIBRARY_FLAGS "/ignore:4264")

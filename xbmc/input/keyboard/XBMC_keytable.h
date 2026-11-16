@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2007-2024 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -18,7 +18,7 @@ namespace KEYBOARD
 /// \ingroup keyboard
 /// \{
 
-struct KEYTABLE
+struct XBMCKEYTABLE
 {
   // The sym is a value that identifies which key was pressed. Note
   // that it specifies the key not the character so it is unaffected by
@@ -43,11 +43,11 @@ struct KEYTABLE
 
 struct KeyTable
 {
-  static bool LookupName(std::string keyname, KEYTABLE* keytable);
-  static bool LookupSym(uint16_t sym, KEYTABLE* keytable);
-  static bool LookupUnicode(uint16_t unicode, KEYTABLE* keytable);
-  static bool LookupSymAndUnicode(uint16_t sym, uint16_t unicode, KEYTABLE* keytable);
-  static bool LookupVKeyName(uint32_t vkey, KEYTABLE* keytable);
+  static bool LookupName(std::string keyname, XBMCKEYTABLE* keytable);
+  static bool LookupSym(uint16_t sym, XBMCKEYTABLE* keytable);
+  static bool LookupUnicode(uint16_t unicode, XBMCKEYTABLE* keytable);
+  static bool LookupSymAndUnicode(uint16_t sym, uint16_t unicode, XBMCKEYTABLE* keytable);
+  static bool LookupVKeyName(uint32_t vkey, XBMCKEYTABLE* keytable);
 };
 
 /// \}

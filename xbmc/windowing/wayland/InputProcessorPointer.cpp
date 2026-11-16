@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2017-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -25,11 +25,11 @@ int WaylandToXbmcButton(std::uint32_t button)
   switch (button)
   {
     case BTN_LEFT:
-      return _BUTTON_LEFT;
+      return XBMC_BUTTON_LEFT;
     case BTN_MIDDLE:
-      return _BUTTON_MIDDLE;
+      return XBMC_BUTTON_MIDDLE;
     case BTN_RIGHT:
-      return _BUTTON_RIGHT;
+      return XBMC_BUTTON_RIGHT;
     default:
       return -1;
   }
@@ -81,15 +81,15 @@ void CInputProcessorPointer::OnPointerButton(CSeat* seat, std::uint32_t serial, 
 {
   if (m_pointerOnSurface)
   {
-    int Button = WaylandToXbmcButton(button);
-    if (Button < 0)
+    int xbmcButton = WaylandToXbmcButton(button);
+    if (xbmcButton < 0)
     {
       // Button is unmapped
       return;
     }
 
     bool pressed = (state == wayland::pointer_button_state::pressed);
-    SendMouseButton(Button, pressed);
+    SendMouseButton(xbmcButton, pressed);
   }
 }
 
@@ -99,13 +99,13 @@ void CInputProcessorPointer::OnPointerAxis(CSeat* seat, std::uint32_t time, wayl
   {
     // For axis events we only care about the vector direction
     // and not the scalar magnitude. Every axis event callback
-    // generates one scroll button event for 
+    // generates one scroll button event for XBMC
 
     // Negative is up
-    auto Button = static_cast<unsigned char> ((value < 0.0) ? _BUTTON_WHEELUP : _BUTTON_WHEELDOWN);
+    auto xbmcButton = static_cast<unsigned char> ((value < 0.0) ? XBMC_BUTTON_WHEELUP : XBMC_BUTTON_WHEELDOWN);
     // Simulate a single click of the wheel-equivalent "button"
-    SendMouseButton(Button, true);
-    SendMouseButton(Button, false);
+    SendMouseButton(xbmcButton, true);
+    SendMouseButton(xbmcButton, false);
   }
 }
 
@@ -121,16 +121,16 @@ void CInputProcessorPointer::SetMousePosFromSurface(CPointGen<double> position)
 
 void CInputProcessorPointer::SendMouseMotion()
 {
-  _Event event{};
-  event.type = _MOUSEMOTION;
+  XBMC_Event event{};
+  event.type = XBMC_MOUSEMOTION;
   event.motion = {m_pointerPosition.x, m_pointerPosition.y};
   m_handler.OnPointerEvent(event);
 }
 
 void CInputProcessorPointer::SendMouseButton(unsigned char button, bool pressed)
 {
-  _Event event{};
-  event.type = pressed ? _MOUSEBUTTONDOWN : _MOUSEBUTTONUP;
+  XBMC_Event event{};
+  event.type = pressed ? XBMC_MOUSEBUTTONDOWN : XBMC_MOUSEBUTTONUP;
   event.button = {button, m_pointerPosition.x, m_pointerPosition.y};
   m_handler.OnPointerEvent(event);
 }

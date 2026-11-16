@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -9,7 +9,7 @@
 #include "filesystem/File.h"
 #include "guilib/GUIColorManager.h"
 #include "test/TestUtils.h"
-#include "utils/TinyXML2.h"
+#include "utils/XBMCTinyXML2.h"
 
 #include <string>
 #include <string_view>
@@ -33,7 +33,7 @@ class CTestColorManager : public CGUIColorManager
 public:
   bool LoadXMLFile(const std::string& path)
   {
-    CTinyXML2 xmlDoc;
+    CXBMCTinyXML2 xmlDoc;
     return xmlDoc.LoadFile(path) && LoadXML(xmlDoc);
   }
 };
@@ -44,16 +44,16 @@ protected:
   void TearDown() override
   {
     for (XFILE::CFile* file : m_files)
-      _DELETETEMPFILE(file);
+      XBMC_DELETETEMPFILE(file);
   }
 
   std::string CreateFile(std::string_view content)
   {
-    XFILE::CFile* file = _CREATETEMPFILE(".xml");
+    XFILE::CFile* file = XBMC_CREATETEMPFILE(".xml");
     m_files.push_back(file);
     file->Write(content.data(), content.size());
     file->Close();
-    return _TEMPFILEPATH(file);
+    return XBMC_TEMPFILEPATH(file);
   }
 
   std::vector<XFILE::CFile*> m_files;

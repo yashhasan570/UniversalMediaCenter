@@ -22,9 +22,9 @@ if(CLANGTIDY_FOUND)
     set(CLANG_TIDY_EXECUTABLE ${CLANG_TIDY_EXECUTABLE};--extra-arg-before=--target=${HOST})
   endif()
   # Universal Media Center's own headers only: the internal dependencies install theirs below the
-  # build tree, which the .clang-tidy regex matches on a checkout path containing //
+  # build tree, which the .clang-tidy regex matches on a checkout path containing /xbmc/
   core_regex_escape(source_dir_regex "${CMAKE_SOURCE_DIR}")
-  set(CLANG_TIDY_EXECUTABLE "${CLANG_TIDY_EXECUTABLE};--header-filter=^${source_dir_regex}/(tools|)/")
+  set(CLANG_TIDY_EXECUTABLE "${CLANG_TIDY_EXECUTABLE};--header-filter=^${source_dir_regex}/(tools|xbmc)/")
   # Supports Unix Makefiles and Ninja
   set(CMAKE_C_CLANG_TIDY "${CLANG_TIDY_EXECUTABLE}" PARENT_SCOPE)
   set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY_EXECUTABLE}" PARENT_SCOPE)

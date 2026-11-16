@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -381,12 +381,12 @@ bool CIRServerSuite::HandleRemoteEvent(CIrssMessage& message)
       m_irTranslator.Load(IRSS_MAP_FILENAME);
     }
 
-    //translate to a buttoncode  understands
+    //translate to a buttoncode xbmc understands
     CLog::LogF(LOGDEBUG, "remoteEvent: {} {}", deviceName, keycode);
     const uint32_t button = m_irTranslator.TranslateButton(deviceName, keycode);
 
-    _Event newEvent = {};
-    newEvent.type = _BUTTON;
+    XBMC_Event newEvent = {};
+    newEvent.type = XBMC_BUTTON;
     newEvent.keybutton.button = button;
     newEvent.keybutton.holdtime = 0;
     std::shared_ptr<CAppInboundProtocol> appPort = CServiceBroker::GetAppPort();

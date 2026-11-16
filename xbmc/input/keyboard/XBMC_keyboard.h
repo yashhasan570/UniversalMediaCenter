@@ -13,7 +13,7 @@
 
 /* Include file for SDL keyboard event handling */
 
-#include "_keysym.h"
+#include "XBMC_keysym.h"
 
 #include <stdint.h>
 
@@ -25,7 +25,7 @@
      applications.  If no hardware scancode is available, it will be 0.
 
    - The 'unicode' translated character is only available when character
-     translation is enabled by the _EnableUNICODE() API.  If non-zero,
+     translation is enabled by the XBMC_EnableUNICODE() API.  If non-zero,
      this is a UNICODE character corresponding to the keypress.  If the
      high 9 bits of the character are 0, then this maps to the equivalent
      ASCII character:
@@ -36,15 +36,15 @@
                 An international character..
         }
  */
-struct _keysym
+struct XBMC_keysym
 {
   uint32_t scancode; /* hardware specific scancode */
-  Key sym; /* SDL virtual keysym */
-  Mod mod; /* current key modifiers */
+  XBMCKey sym; /* SDL virtual keysym */
+  XBMCMod mod; /* current key modifiers */
   uint16_t unicode; /* translated character */
 };
 
 /* This is the mask which refers to all hotkey bindings */
-#define _ALL_HOTKEYS 0xFFFFFFFF
+#define XBMC_ALL_HOTKEYS 0xFFFFFFFF
 
 /// \}

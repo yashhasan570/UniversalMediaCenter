@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -11,17 +11,17 @@
 #include "Window.h"
 #include "WindowDialogMixin.h"
 
-namespace Addon
+namespace XBMCAddon
 {
-  namespace gui
+  namespace xbmcgui
   {
     //
-    /// \defgroup python_gui_window_dialog Subclass - WindowDialog
-    /// \ingroup python_gui_window
+    /// \defgroup python_xbmcgui_window_dialog Subclass - WindowDialog
+    /// \ingroup python_xbmcgui_window
     /// @{
     /// @brief __GUI window dialog class for Add-Ons.__
     ///
-    /// \python_class{ gui.WindowDialog(int windowId): }
+    /// \python_class{ xbmcgui.WindowDialog(int windowId): }
     ///
     /// Creates a new window from Add-On usable dialog class. This is to create
     /// window for related controls by system calls.
@@ -41,7 +41,7 @@ namespace Addon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// dialog = gui.WindowDialog()
+    /// dialog = xbmcgui.WindowDialog()
     /// width = dialog.getWidth()
     /// ..
     /// ~~~~~~~~~~~~~
@@ -62,23 +62,23 @@ namespace Addon
       bool IsDialogRunning() const override { return WindowDialogMixin::IsDialogRunning(); }
       bool IsModalDialog() const override
       {
-        _TRACE;
+        XBMC_TRACE;
         return true;
       };
       bool IsDialog() const override
       {
-        _TRACE;
+        XBMC_TRACE;
         return true;
       };
 
       inline void show() override
       {
-        _TRACE;
+        XBMC_TRACE;
         WindowDialogMixin::show();
       }
       inline void close() override
       {
-        _TRACE;
+        XBMC_TRACE;
         WindowDialogMixin::close();
       }
 #endif

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -41,15 +41,15 @@ void WriteFile(const std::string& path, const std::string& contents)
 
 std::string Extract(const std::string& contents)
 {
-  XFILE::CFile* file = _CREATETEMPFILE(".jpg");
+  XFILE::CFile* file = XBMC_CREATETEMPFILE(".jpg");
   EXPECT_NE(file, nullptr);
   if (!file)
     return {};
   file->Write(contents.data(), contents.size());
   file->Close();
 
-  const std::string clipPath = PICTURE::ExtractMotionPhotoClip(_TEMPFILEPATH(file));
-  _DELETETEMPFILE(file);
+  const std::string clipPath = PICTURE::ExtractMotionPhotoClip(XBMC_TEMPFILEPATH(file));
+  XBMC_DELETETEMPFILE(file);
 
   std::string clip;
   XFILE::CFile clipFile;

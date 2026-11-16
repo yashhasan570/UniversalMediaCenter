@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -46,8 +46,8 @@ void CEmuFileWrapper::CleanUp()
   {
     if (file.used)
     {
-      file.file_->Close();
-      delete file.file_;
+      file.file_xbmc->Close();
+      delete file.file_xbmc;
 
       if (file.file_lock)
       {
@@ -73,7 +73,7 @@ EmuFileObject* CEmuFileWrapper::RegisterFileObject(XFILE::CFile* pFile)
       // found a free location
       object = &m_files[i];
       object->used = true;
-      object->file_ = pFile;
+      object->file_xbmc = pFile;
       object->fd = (i + FILE_WRAPPER_OFFSET);
       object->file_lock = new CCriticalSection();
       break;
@@ -179,7 +179,7 @@ XFILE::CFile* CEmuFileWrapper::GetFileXbmcByDescriptor(int fd)
   auto object = GetFileObjectByDescriptor(fd);
   if (object != nullptr && object->used)
   {
-    return object->file_;
+    return object->file_xbmc;
   }
   return nullptr;
 }
@@ -191,7 +191,7 @@ XFILE::CFile* CEmuFileWrapper::GetFileXbmcByStream(FILE* stream)
     EmuFileObject* object = reinterpret_cast<EmuFileObject*>(stream);
     if (object != nullptr && object->used)
     {
-      return object->file_;
+      return object->file_xbmc;
     }
   }
   return nullptr;

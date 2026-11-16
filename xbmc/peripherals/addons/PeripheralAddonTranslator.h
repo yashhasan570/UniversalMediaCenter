@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2015-2024 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -30,13 +30,13 @@ public:
   static PERIPHERAL_TYPE TranslateType(PeripheralType type);
 
   static UNIVERSAL MEDIA CENTER::JOYSTICK::CDriverPrimitive TranslatePrimitive(
-      const addon::DriverPrimitive& primitive);
-  static addon::DriverPrimitive TranslatePrimitive(
+      const universalmediacenter::addon::DriverPrimitive& primitive);
+  static universalmediacenter::addon::DriverPrimitive TranslatePrimitive(
       const UNIVERSAL MEDIA CENTER::JOYSTICK::CDriverPrimitive& primitive);
 
   static std::vector<UNIVERSAL MEDIA CENTER::JOYSTICK::CDriverPrimitive> TranslatePrimitives(
-      const std::vector<addon::DriverPrimitive>& primitives);
-  static std::vector<addon::DriverPrimitive> TranslatePrimitives(
+      const std::vector<universalmediacenter::addon::DriverPrimitive>& primitives);
+  static std::vector<universalmediacenter::addon::DriverPrimitive> TranslatePrimitives(
       const std::vector<UNIVERSAL MEDIA CENTER::JOYSTICK::CDriverPrimitive>& primitives);
 
   static UNIVERSAL MEDIA CENTER::JOYSTICK::HAT_DIRECTION TranslateHatDirection(JOYSTICK_DRIVER_HAT_DIRECTION dir);
@@ -60,6 +60,6 @@ public:
   static UNIVERSAL MEDIA CENTER::JOYSTICK::FEATURE_TYPE TranslateFeatureType(JOYSTICK_FEATURE_TYPE type);
   static JOYSTICK_FEATURE_TYPE TranslateFeatureType(UNIVERSAL MEDIA CENTER::JOYSTICK::FEATURE_TYPE type);
 
-  static addon::DriverPrimitive Opposite(const addon::DriverPrimitive& semiaxis);
+  static universalmediacenter::addon::DriverPrimitive Opposite(const universalmediacenter::addon::DriverPrimitive& semiaxis);
 };
 } // namespace PERIPHERALS

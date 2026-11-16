@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -157,9 +157,9 @@ TEST_F(TestCurlHttpClientNetwork, SetUserAgentIsForwardedInRequest)
 TEST_F(TestCurlHttpClientNetwork, SetRefererIsForwardedInRequest)
 {
   XFILE::CCurlHttpClient client;
-  client.SetReferer("http://github.com/yashhasan570/UniversalMediaCenter");
+  client.SetReferer("http://universalmediacenter.tv");
 
   std::string response;
   ASSERT_TRUE(client.Get(Url("/echo-headers"), response));
-  EXPECT_NE(response.find("http://github.com/yashhasan570/UniversalMediaCenter"), std::string::npos);
+  EXPECT_NE(response.find("http://universalmediacenter.tv"), std::string::npos);
 }

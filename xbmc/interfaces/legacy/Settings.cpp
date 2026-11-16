@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2017-2021 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -15,9 +15,9 @@
 #include <functional>
 #include <utility>
 
-namespace Addon
+namespace XBMCAddon
 {
-namespace addon
+namespace xbmcaddon
 {
 
 template<class TSetting>
@@ -100,7 +100,7 @@ bool Settings::getBool(const char* id)
 {
   bool value = false;
   if (!GetSettingValue<CSettingBool>(settings, id, value))
-    throw Addon::WrongTypeException("Invalid setting type \"boolean\" for \"%s\"", id);
+    throw XBMCAddon::WrongTypeException("Invalid setting type \"boolean\" for \"%s\"", id);
 
   return value;
 }
@@ -109,7 +109,7 @@ int Settings::getInt(const char* id)
 {
   int value = 0;
   if (!GetSettingValue<CSettingInt>(settings, id, value))
-    throw Addon::WrongTypeException("Invalid setting type \"integer\" for \"%s\"", id);
+    throw XBMCAddon::WrongTypeException("Invalid setting type \"integer\" for \"%s\"", id);
 
   return value;
 }
@@ -118,7 +118,7 @@ double Settings::getNumber(const char* id)
 {
   double value = 0.0;
   if (!GetSettingValue<CSettingNumber>(settings, id, value))
-    throw Addon::WrongTypeException("Invalid setting type \"number\" for \"%s\"", id);
+    throw XBMCAddon::WrongTypeException("Invalid setting type \"number\" for \"%s\"", id);
 
   return value;
 }
@@ -127,7 +127,7 @@ String Settings::getString(const char* id)
 {
   std::string value;
   if (!GetSettingValue<CSettingString>(settings, id, value))
-    throw Addon::WrongTypeException("Invalid setting type \"string\" for \"%s\"", id);
+    throw XBMCAddon::WrongTypeException("Invalid setting type \"string\" for \"%s\"", id);
 
   return value;
 }
@@ -137,7 +137,7 @@ std::vector<bool> Settings::getBoolList(const char* id)
   const auto transform = [](const CVariant& value) { return value.asBoolean(); };
   std::vector<bool> values;
   if (!GetSettingValueList<CSettingBool>(settings, id, transform, values))
-    throw Addon::WrongTypeException("Invalid setting type \"list[boolean]\" for \"%s\"", id);
+    throw XBMCAddon::WrongTypeException("Invalid setting type \"list[boolean]\" for \"%s\"", id);
 
   return values;
 }
@@ -147,7 +147,7 @@ std::vector<int> Settings::getIntList(const char* id)
   const auto transform = [](const CVariant& value) { return value.asInteger32(); };
   std::vector<int> values;
   if (!GetSettingValueList<CSettingInt>(settings, id, transform, values))
-    throw Addon::WrongTypeException("Invalid setting type \"list[integer]\" for \"%s\"", id);
+    throw XBMCAddon::WrongTypeException("Invalid setting type \"list[integer]\" for \"%s\"", id);
 
   return values;
 }
@@ -157,7 +157,7 @@ std::vector<double> Settings::getNumberList(const char* id)
   const auto transform = [](const CVariant& value) { return value.asDouble(); };
   std::vector<double> values;
   if (!GetSettingValueList<CSettingNumber>(settings, id, transform, values))
-    throw Addon::WrongTypeException("Invalid setting type \"list[number]\" for \"%s\"", id);
+    throw XBMCAddon::WrongTypeException("Invalid setting type \"list[number]\" for \"%s\"", id);
 
   return values;
 }
@@ -167,7 +167,7 @@ std::vector<String> Settings::getStringList(const char* id)
   const auto transform = [](const CVariant& value) { return value.asString(); };
   std::vector<std::string> values;
   if (!GetSettingValueList<CSettingString>(settings, id, transform, values))
-    throw Addon::WrongTypeException("Invalid setting type \"list[string]\" for \"%s\"", id);
+    throw XBMCAddon::WrongTypeException("Invalid setting type \"list[string]\" for \"%s\"", id);
 
   return values;
 }
@@ -175,58 +175,58 @@ std::vector<String> Settings::getStringList(const char* id)
 void Settings::setBool(const char* id, bool value)
 {
   if (!SetSettingValue<CSettingBool>(settings, id, value))
-    throw Addon::WrongTypeException("Invalid setting type \"boolean\" for \"%s\"", id);
+    throw XBMCAddon::WrongTypeException("Invalid setting type \"boolean\" for \"%s\"", id);
   settings->Save();
 }
 
 void Settings::setInt(const char* id, int value)
 {
   if (!SetSettingValue<CSettingInt>(settings, id, value))
-    throw Addon::WrongTypeException("Invalid setting type \"integer\" for \"%s\"", id);
+    throw XBMCAddon::WrongTypeException("Invalid setting type \"integer\" for \"%s\"", id);
   settings->Save();
 }
 
 void Settings::setNumber(const char* id, double value)
 {
   if (!SetSettingValue<CSettingNumber>(settings, id, value))
-    throw Addon::WrongTypeException("Invalid setting type \"number\" for \"%s\"", id);
+    throw XBMCAddon::WrongTypeException("Invalid setting type \"number\" for \"%s\"", id);
   settings->Save();
 }
 
 void Settings::setString(const char* id, const String& value)
 {
   if (!SetSettingValue<CSettingString>(settings, id, value))
-    throw Addon::WrongTypeException("Invalid setting type \"string\" for \"%s\"", id);
+    throw XBMCAddon::WrongTypeException("Invalid setting type \"string\" for \"%s\"", id);
   settings->Save();
 }
 
 void Settings::setBoolList(const char* id, const std::vector<bool>& values)
 {
   if (!SetSettingValueList<CSettingBool>(settings, id, values))
-    throw Addon::WrongTypeException("Invalid setting type \"list[boolean]\" for \"%s\"", id);
+    throw XBMCAddon::WrongTypeException("Invalid setting type \"list[boolean]\" for \"%s\"", id);
   settings->Save();
 }
 
 void Settings::setIntList(const char* id, const std::vector<int>& values)
 {
   if (!SetSettingValueList<CSettingInt>(settings, id, values))
-    throw Addon::WrongTypeException("Invalid setting type \"list[integer]\" for \"%s\"", id);
+    throw XBMCAddon::WrongTypeException("Invalid setting type \"list[integer]\" for \"%s\"", id);
   settings->Save();
 }
 
 void Settings::setNumberList(const char* id, const std::vector<double>& values)
 {
   if (!SetSettingValueList<CSettingNumber>(settings, id, values))
-    throw Addon::WrongTypeException("Invalid setting type \"list[number]\" for \"%s\"", id);
+    throw XBMCAddon::WrongTypeException("Invalid setting type \"list[number]\" for \"%s\"", id);
   settings->Save();
 }
 
 void Settings::setStringList(const char* id, const std::vector<String>& values)
 {
   if (!SetSettingValueList<CSettingString>(settings, id, values))
-    throw Addon::WrongTypeException("Invalid setting type \"list[string]\" for \"%s\"", id);
+    throw XBMCAddon::WrongTypeException("Invalid setting type \"list[string]\" for \"%s\"", id);
   settings->Save();
 }
 
-} // namespace addon
-} // namespace Addon
+} // namespace xbmcaddon
+} // namespace XBMCAddon

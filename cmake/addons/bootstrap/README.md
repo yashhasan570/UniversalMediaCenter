@@ -1,4 +1,4 @@
-![Universal Media Center logo](https://github.com///raw/master/docs/resources/banner_slim.png)
+![Universal Media Center logo](https://github.com/xbmc/xbmc/raw/master/docs/resources/banner_slim.png)
 # UNIVERSAL MEDIA CENTER ADDON DEFINITIONS BOOTSTRAPPING
 This directory contains the cmake-based buildsystem for addon definitions
 bootstrapping which downloads the addon definitions from one or more addon

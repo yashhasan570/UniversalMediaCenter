@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -26,7 +26,7 @@ namespace
 
 constexpr const char* versionText =
     R"""({0} Media Center {1}
-Copyright (C) {2} Team {0} - http://github.com/yashhasan570/UniversalMediaCenter
+Copyright (C) {2} Team {0} - http://universalmediacenter.tv
 )""";
 
 constexpr const char* helpText =
@@ -42,7 +42,7 @@ Arguments:
   --version             Print version information
   --test                Enable test mode. [FILE] required.
   --settings=<filename> Loads specified file after advancedsettings.xml replacing any settings specified
-                        specified file must exist in special:///system/
+                        specified file must exist in special://xbmc/system/
 )""";
 
 } // namespace

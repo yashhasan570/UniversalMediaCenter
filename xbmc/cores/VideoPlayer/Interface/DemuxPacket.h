@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2012-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -46,6 +46,9 @@ extern "C"
 
     //! @brief Packet is a keyframe, only set by demuxers that know it.
     bool m_keyFrame{false};
+
+    //! @brief Empty packet replacing input the demuxer read and dropped.
+    bool m_inputDropped{false};
   };
 
 #ifdef __cplusplus

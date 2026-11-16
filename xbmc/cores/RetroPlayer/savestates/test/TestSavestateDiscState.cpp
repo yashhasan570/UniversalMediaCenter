@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -140,9 +140,9 @@ TEST(TestSavestateDiscState, PortableStoragePreservesDisplayLabelsContainingSlas
 
 TEST(TestSavestateDiscState, RenamePreservesDiscState)
 {
-  std::unique_ptr<XFILE::CFile> tempFile(_CREATETEMPFILE(".sav"));
+  std::unique_ptr<XFILE::CFile> tempFile(XBMC_CREATETEMPFILE(".sav"));
   ASSERT_NE(tempFile, nullptr);
-  const std::string path = _TEMPFILEPATH(tempFile.get());
+  const std::string path = XBMC_TEMPFILEPATH(tempFile.get());
   tempFile->Close();
 
   CSavestateFlatBuffer writer;
@@ -164,5 +164,5 @@ TEST(TestSavestateDiscState, RenamePreservesDiscState)
   expected.slots[3].fileName = "Disc 2.chd";
   EXPECT_EQ(*renamed->GetDiscState(), expected);
 
-  EXPECT_TRUE(_DELETETEMPFILE(tempFile.release()));
+  EXPECT_TRUE(XBMC_DELETETEMPFILE(tempFile.release()));
 }

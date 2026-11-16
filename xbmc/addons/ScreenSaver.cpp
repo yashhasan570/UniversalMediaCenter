@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -34,14 +34,14 @@ CScreenSaver::CScreenSaver(const AddonInfoPtr& addonInfo)
   m_ifc.screensaver->toUniversal Media Center = new AddonToUniversal Media CenterFuncTable_Screensaver();
   m_ifc.screensaver->toUniversal Media Center->get_properties = get_properties;
 
-  /* Open the class "addon::CInstanceScreensaver" on add-on side */
+  /* Open the class "universalmediacenter::addon::CInstanceScreensaver" on add-on side */
   if (CreateInstance() != ADDON_STATUS_OK)
     CLog::Log(LOGFATAL, "Screensaver: failed to create instance for '{}' and not usable!", ID());
 }
 
 CScreenSaver::~CScreenSaver()
 {
-  /* Destroy the class "addon::CInstanceScreensaver" on add-on side */
+  /* Destroy the class "universalmediacenter::addon::CInstanceScreensaver" on add-on side */
   DestroyInstance();
 
   delete m_ifc.screensaver->toAddon;

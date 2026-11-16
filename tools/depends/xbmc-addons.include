@@ -76,7 +76,7 @@ distclean:
 	mkdir -p $(PLATFORM)
 ifeq ($(PREFIX),)
 	@echo
-	@echo "ERROR: please set PREFIX to the  install path e.g. $(MAKE) PREFIX=/usr/local"
+	@echo "ERROR: please set PREFIX to the xbmc install path e.g. $(MAKE) PREFIX=/usr/local"
 	@exit 1
 endif
 ifeq ($(CROSS_COMPILING),yes)

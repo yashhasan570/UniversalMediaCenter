@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -15,13 +15,13 @@
 
 using namespace std::chrono_literals;
 
-namespace Addon
+namespace XBMCAddon
 {
-  namespace 
+  namespace xbmc
   {
     Monitor::Monitor(): abortEvent(true)
     {
-      _TRACE;
+      XBMC_TRACE;
       if (languageHook)
       {
         Id = languageHook->GetAddonId();
@@ -32,13 +32,13 @@ namespace Addon
 
     void Monitor::AbortNotify()
     {
-      _TRACE;
+      XBMC_TRACE;
       abortEvent.Set();
     }
 
     bool Monitor::waitForAbort(double timeout)
     {
-      _TRACE;
+      XBMC_TRACE;
       int timeoutMS = ceil(timeout * 1000);
       XbmcThreads::EndTime<> endTime{std::chrono::milliseconds(timeoutMS)};
 
@@ -61,13 +61,13 @@ namespace Addon
 
     bool Monitor::abortRequested()
     {
-      _TRACE;
+      XBMC_TRACE;
       return abortEvent.Signaled();
     }
 
     Monitor::~Monitor()
     {
-      _TRACE;
+      XBMC_TRACE;
       deallocating();
       DelayedCallGuard dg(languageHook);
       // we're shutting down so unregister me.

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2012-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -62,7 +62,7 @@
 
 #include <Platinum/Source/Platinum/Platinum.h>
 
-NPT_SET_LOCAL_LOGGER(".upnp.server")
+NPT_SET_LOCAL_LOGGER("xbmc.upnp.server")
 
 using namespace ANNOUNCEMENT;
 using namespace UNIVERSAL MEDIA CENTER;
@@ -133,7 +133,7 @@ NPT_Result CUPnPServer::SetupServices()
         "SortCapabilities",
         "res@duration,res@size,res@bitrate,dc:date,dc:title,dc:size,upnp:album,upnp:artist,upnp:"
         "albumArtist,upnp:episodeNumber,upnp:genre,upnp:originalTrackNumber,upnp:rating,upnp:"
-        "episodeCount,upnp:episodeSeason,:rating,:dateadded,:votes");
+        "episodeCount,upnp:episodeSeason,xbmc:rating,xbmc:dateadded,xbmc:votes");
   }
 
   m_scanning = true;
@@ -238,7 +238,7 @@ failed:
 +---------------------------------------------------------------------*/
 NPT_Result CUPnPServer::SetupIcons()
 {
-  NPT_String file_root = CSpecialProtocol::TranslatePath("special:///media/").c_str();
+  NPT_String file_root = CSpecialProtocol::TranslatePath("special://xbmc/media/").c_str();
   AddIcon(PLT_DeviceIcon("image/png", 256, 256, 8, "/icon256x256.png"), file_root);
   AddIcon(PLT_DeviceIcon("image/png", 120, 120, 8, "/icon120x120.png"), file_root);
   AddIcon(PLT_DeviceIcon("image/png", 48, 48, 8, "/icon48x48.png"), file_root);

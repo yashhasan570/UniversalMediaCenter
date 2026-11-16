@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2014-2024 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -127,7 +127,7 @@ bool CButtonMapping::OnKeyPress(const CKey& key)
   if (!m_buttonMapper->AcceptsPrimitive(PRIMITIVE_TYPE::KEY))
     return false;
 
-  return GetKey(static_cast<Key>(key.GetKeycode())).OnMotion(true);
+  return GetKey(static_cast<XBMCKey>(key.GetKeycode())).OnMotion(true);
 }
 
 bool CButtonMapping::OnPosition(int x, int y)
@@ -289,7 +289,7 @@ CAxisDetector& CButtonMapping::GetAxis(
   return itAxis->second;
 }
 
-CKeyDetector& CButtonMapping::GetKey(Key keycode)
+CKeyDetector& CButtonMapping::GetKey(XBMCKey keycode)
 {
   auto itKey = m_keys.find(keycode);
 

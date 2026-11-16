@@ -1,15 +1,15 @@
-# Universal Media Center Media Center language file
+# Kodi Media Center language file
 # Addon Name: Universal Album Scraper
 # Addon id: metadata.album.universal
-# Addon Provider: Olympia, Universal Media Center project
+# Addon Provider: Olympia, XBMC Foundation
 msgid ""
 msgstr ""
-"Project-Id-Version:  Addons\n"
-"Report-Msgid-Bugs-To: translations@github.com/yashhasan570/UniversalMediaCenter\n"
+"Project-Id-Version: XBMC Addons\n"
+"Report-Msgid-Bugs-To: translations@kodi.tv\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: 2026-08-07 03:04+0000\n"
-"Last-Translator: Christian Gade <gade@github.com/yashhasan570/UniversalMediaCenter>\n"
-"Language-Team: Macedonian <https://universalmediacenter.weblate.cloud/projects/Universal Media Center-add-ons-information-providers/metadata-album-universal/mk_mk/>\n"
+"Last-Translator: Christian Gade <gade@kodi.tv>\n"
+"Language-Team: Macedonian <https://kodi.weblate.cloud/projects/kodi-add-ons-information-providers/metadata-album-universal/mk_mk/>\n"
 "Language: mk_mk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"

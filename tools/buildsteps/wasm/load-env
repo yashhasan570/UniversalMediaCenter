@@ -1,3 +1,3 @@
 WORKSPACE=${WORKSPACE:-$( cd $(dirname $0)/../../.. ; pwd -P )}
-_PLATFORM_DIR=wasm
+XBMC_PLATFORM_DIR=wasm
 . $WORKSPACE/tools/buildsteps/defaultenv

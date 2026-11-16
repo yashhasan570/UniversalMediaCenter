@@ -94,7 +94,7 @@ PY_MODULES = py_cv_module_grp=n/a \
              py_cv_module__codecs_tw=n/a
 
 # These modules use "internal" libs for building. The required static archives
-# are not installed outside of the cpython build tree, and cause failure in universalmediacenter linking
+# are not installed outside of the cpython build tree, and cause failure in Universal Media Center linking
 # If we wish to support them in the future, we should create "system libs" for them
 PY_MODULES+= py_cv_module__decimal=n/a \
              py_cv_module__sha2=n/a \

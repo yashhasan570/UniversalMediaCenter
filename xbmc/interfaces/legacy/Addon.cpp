@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -23,9 +23,9 @@
 
 using namespace ADDON;
 
-namespace Addon
+namespace XBMCAddon
 {
-  namespace addon
+  namespace xbmcaddon
   {
     String Addon::getDefaultId() { return languageHook == NULL ? emptyString : languageHook->GetAddonId(); }
 
@@ -97,7 +97,7 @@ namespace Addon
     {
       bool value = false;
       if (!pAddon->GetSettingBool(id, value))
-        throw Addon::WrongTypeException("Invalid setting type");
+        throw XBMCAddon::WrongTypeException("Invalid setting type");
 
       return value;
     }
@@ -106,7 +106,7 @@ namespace Addon
     {
       int value = 0;
       if (!pAddon->GetSettingInt(id, value))
-        throw Addon::WrongTypeException("Invalid setting type");
+        throw XBMCAddon::WrongTypeException("Invalid setting type");
 
       return value;
     }
@@ -115,7 +115,7 @@ namespace Addon
     {
       double value = 0.0;
       if (!pAddon->GetSettingNumber(id, value))
-        throw Addon::WrongTypeException("Invalid setting type");
+        throw XBMCAddon::WrongTypeException("Invalid setting type");
 
       return value;
     }
@@ -124,7 +124,7 @@ namespace Addon
     {
       std::string value;
       if (!pAddon->GetSettingString(id, value))
-        throw Addon::WrongTypeException("Invalid setting type");
+        throw XBMCAddon::WrongTypeException("Invalid setting type");
 
       return value;
     }
@@ -148,7 +148,7 @@ namespace Addon
         return true;
 
       if (!addon->UpdateSettingBool(id, value))
-        throw Addon::WrongTypeException("Invalid setting type");
+        throw XBMCAddon::WrongTypeException("Invalid setting type");
 
       addon->SaveSettings();
 
@@ -163,7 +163,7 @@ namespace Addon
         return true;
 
       if (!addon->UpdateSettingInt(id, value))
-        throw Addon::WrongTypeException("Invalid setting type");
+        throw XBMCAddon::WrongTypeException("Invalid setting type");
 
       addon->SaveSettings();
 
@@ -178,7 +178,7 @@ namespace Addon
         return true;
 
       if (!addon->UpdateSettingNumber(id, value))
-        throw Addon::WrongTypeException("Invalid setting type");
+        throw XBMCAddon::WrongTypeException("Invalid setting type");
 
       addon->SaveSettings();
 
@@ -193,7 +193,7 @@ namespace Addon
         return true;
 
       if (!addon->UpdateSettingString(id, value))
-        throw Addon::WrongTypeException("Invalid setting type");
+        throw XBMCAddon::WrongTypeException("Invalid setting type");
 
       addon->SaveSettings();
 

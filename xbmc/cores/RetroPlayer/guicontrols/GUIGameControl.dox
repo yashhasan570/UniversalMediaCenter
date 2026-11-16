@@ -7,7 +7,7 @@ while playing a game.**
 \tableofcontents
 
 The gamewindow control is used for displaying the currently playing game
-elsewhere in the Universal Media Center GUI. You can choose the position, and size of the game
+elsewhere in the Kodi GUI. You can choose the position, and size of the game
 displayed, as well as various effects. Note that the control is only rendered if
 game is being played.
 
@@ -32,7 +32,7 @@ game is being played.
 --------------------------------------------------------------------------------
 \section Game_Control_sect2 Available tags
 
-In addition to the [Default Control Tags](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Default_Control_Tags)
+In addition to the [Default Control Tags](http://kodi.wiki/view/Default_Control_Tags)
 the following tags are available. Note that each tag is lower case only. This is
 important, as xml tags are case-sensitive.
 
@@ -82,7 +82,7 @@ The in-game dialogs with a gamewindow control (<b>`GameVideoFilter`</b>, <b>`Gam
 
 #### Development:
 
-- [Add-on development](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Add-on_development)
-- [Skinning](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Skinning)
+- [Add-on development](http://kodi.wiki/view/Add-on_development)
+- [Skinning](http://kodi.wiki/view/Skinning)
 
 */

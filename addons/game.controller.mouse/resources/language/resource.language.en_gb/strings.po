@@ -1,15 +1,15 @@
-# Universal Media Center Media Center language file
+# Kodi Media Center language file
 # Addon Name: Computer Mouse
 # Addon id: game.controller.mouse
-# Addon Provider: Team Universal Media Center
+# Addon Provider: Team Kodi
 msgid ""
 msgstr ""
 "Project-Id-Version: game.controller.mouse\n"
-"Report-Msgid-Bugs-To: translations@github.com/yashhasan570/UniversalMediaCenter\n"
+"Report-Msgid-Bugs-To: translations@kodi.tv\n"
 "POT-Creation-Date: 2014-05-30 17:00+8\n"
 "PO-Revision-Date: 2014-05-30 17:00+8\n"
-"Last-Translator: Universal Media Center Translation Team\n"
-"Language-Team: English (United Kingdom) <https://universalmediacenter.weblate.cloud/projects/Universal Media Center-add-ons-game/game-controller-mouse/en_gb/>\n"
+"Last-Translator: Kodi Translation Team\n"
+"Language-Team: English (United Kingdom) <https://kodi.weblate.cloud/projects/kodi-add-ons-game/game-controller-mouse/en_gb/>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"

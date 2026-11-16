@@ -26,23 +26,23 @@ endif()
 # clientdata.pytype pointing into whichever interpreter imported last
 #
 # BEFORE:
-#   builtin_pytype = SwigPyBuiltin__Addon__vfs__File_type_create(metatype, builtin_bases, d);
+#   builtin_pytype = SwigPyBuiltin__XBMCAddon__xbmcvfs__File_type_create(metatype, builtin_bases, d);
 #   if(!builtin_pytype) {
 #     return -1;
 #   }
-#   SwigPyBuiltin__Addon__vfs__File_clientdata.pytype = builtin_pytype;
+#   SwigPyBuiltin__XBMCAddon__xbmcvfs__File_clientdata.pytype = builtin_pytype;
 #
 # AFTER:
-#   if (SwigPyBuiltin__Addon__vfs__File_clientdata.pytype) {
+#   if (SwigPyBuiltin__XBMCAddon__xbmcvfs__File_clientdata.pytype) {
 #     SWIG_Py_DECREF(d);
-#     builtin_pytype = SwigPyBuiltin__Addon__vfs__File_clientdata.pytype;
+#     builtin_pytype = SwigPyBuiltin__XBMCAddon__xbmcvfs__File_clientdata.pytype;
 #   } else {
-#   builtin_pytype = SwigPyBuiltin__Addon__vfs__File_type_create(metatype, builtin_bases, d);
+#   builtin_pytype = SwigPyBuiltin__XBMCAddon__xbmcvfs__File_type_create(metatype, builtin_bases, d);
 #   if(!builtin_pytype) {
 #     return -1;
 #   }
-#   SwigPyBuiltin__Addon__vfs__File_clientdata.pytype = builtin_pytype;
-#   Universal Media CenterSwig_freeze(builtin_pytype);
+#   SwigPyBuiltin__XBMCAddon__xbmcvfs__File_clientdata.pytype = builtin_pytype;
+#   UniversalMediaCenterSwig_freeze(builtin_pytype);
 #   SWIG_Py_INCREF((PyObject *)builtin_pytype);
 #   }
 string(REGEX MATCHALL "SWIG_Py_INCREF\\(\\(PyObject \\*\\)builtin_pytype\\)" _increfs "${_content}")
@@ -58,7 +58,7 @@ string(REGEX REPLACE
     return -1;
   }
   SwigPyBuiltin__\\2_clientdata.pytype = builtin_pytype;
-  Universal Media CenterSwig_freeze(builtin_pytype);
+  UniversalMediaCenterSwig_freeze(builtin_pytype);
   SWIG_Py_INCREF((PyObject *)builtin_pytype);
   }"
 _content "${_content}")

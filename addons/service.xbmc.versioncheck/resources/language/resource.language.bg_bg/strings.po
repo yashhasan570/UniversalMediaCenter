@@ -1,15 +1,15 @@
-# Universal Media Center Media Center language file
+# Kodi Media Center language file
 # Addon Name: Version Check
-# Addon id: service..versioncheck
-# Addon Provider: Team Universal Media Center
+# Addon id: service.xbmc.versioncheck
+# Addon Provider: Team Kodi
 msgid ""
 msgstr ""
-"Project-Id-Version:  Addons\n"
-"Report-Msgid-Bugs-To: translations@github.com/yashhasan570/UniversalMediaCenter\n"
+"Project-Id-Version: XBMC Addons\n"
+"Report-Msgid-Bugs-To: translations@kodi.tv\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: 2022-01-07 15:13+0000\n"
-"Last-Translator: Christian Gade <gade@github.com/yashhasan570/UniversalMediaCenter>\n"
-"Language-Team: Bulgarian <https://universalmediacenter.weblate.cloud/projects/Universal Media Center-core/service--versioncheck/bg_bg/>\n"
+"Last-Translator: Christian Gade <gade@kodi.tv>\n"
+"Language-Team: Bulgarian <https://kodi.weblate.cloud/projects/kodi-core/service-xbmc-versioncheck/bg_bg/>\n"
 "Language: bg_bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,24 +18,24 @@ msgstr ""
 "X-Generator: Weblate 4.10.1\n"
 
 msgctxt "Addon Summary"
-msgid "Universal Media Center Version Check checks if you are running latest released version."
-msgstr "Проверява дали ползвате най-новата версия на Universal Media Center."
+msgid "Kodi Version Check checks if you are running latest released version."
+msgstr "Проверява дали ползвате най-новата версия на Kodi."
 
 msgctxt "Addon Description"
-msgid "Universal Media Center Version Check only supports a number of platforms/distros as releases may differ between them. For more information visit the github.com/yashhasan570/UniversalMediaCenter website."
-msgstr "Universal Media Center Version Check поддържа няколко платформи/дистрибуции. За повече информация посетете страницата www.github.com/yashhasan570/UniversalMediaCenter"
+msgid "Kodi Version Check only supports a number of platforms/distros as releases may differ between them. For more information visit the kodi.tv website."
+msgstr "Kodi Version Check поддържа няколко платформи/дистрибуции. За повече информация посетете страницата www.kodi.tv"
 
 msgctxt "Addon Disclaimer"
-msgid "Feel free to use this script. For information visit github.com/yashhasan570/UniversalMediaCenter"
-msgstr "Ползвайте скрипта свободно. За повече информация посетете www.github.com/yashhasan570/UniversalMediaCenter"
+msgid "Feel free to use this script. For information visit kodi.tv"
+msgstr "Ползвайте скрипта свободно. За повече информация посетете www.kodi.tv"
 
 msgctxt "#32001"
 msgid "We would like to recommend you to upgrade."
 msgstr "Препоръчваме Ви да актуализирате."
 
 msgctxt "#32002"
-msgid "Visit Universal Media Center.tv for more information."
-msgstr "За повече информация посетете www.github.com/yashhasan570/UniversalMediaCenter"
+msgid "Visit Kodi.tv for more information."
+msgstr "За повече информация посетете www.kodi.tv"
 
 msgctxt "#32009"
 msgid "Would you like to remove this reminder?"
@@ -58,24 +58,24 @@ msgid "Upgrade successful"
 msgstr "Актуализирането е успешно"
 
 msgctxt "#32014"
-msgid "Do you want to restart Universal Media Center to finish the upgrade?"
-msgstr "Желаете ли да рестартирате Universal Media Center, за да приключи актуализирането?"
+msgid "Do you want to restart Kodi to finish the upgrade?"
+msgstr "Желаете ли да рестартирате Kodi, за да приключи актуализирането?"
 
 msgctxt "#32015"
 msgid "Do you want to check the repository for a new version?"
 msgstr "Желаете ли хранилището да бъде проверено за нова версия?"
 
 msgctxt "#32016"
-msgid "There is a newer stable Universal Media Center version available."
-msgstr "Налична е по-нова, стабилна, версия на Universal Media Center."
+msgid "There is a newer stable Kodi version available."
+msgstr "Налична е по-нова, стабилна, версия на Kodi."
 
 msgctxt "#32020"
 msgid "General"
 msgstr "Основни"
 
 msgctxt "#32021"
-msgid "Enable Universal Media Center version check?"
-msgstr "Да се включи ли проверката за нови версии на Universal Media Center?"
+msgid "Enable Kodi version check?"
+msgstr "Да се включи ли проверката за нови версии на Kodi?"
 
 msgctxt "#32022"
 msgid "Please enter your password"
@@ -91,23 +91,23 @@ msgstr "Линукс: Актуализиране чрез apt"
 
 #. Used in OK dialog
 msgctxt "#32030"
-msgid "A new stable version of Universal Media Center is available."
-msgstr "Налична е нова стабилна версия на Universal Media Center."
+msgid "A new stable version of Kodi is available."
+msgstr "Налична е нова стабилна версия на Kodi."
 
 #. Direct people to the website. Used in OK dialog
 msgctxt "#32031"
-msgid "Visit http://github.com/yashhasan570/UniversalMediaCenter for more information."
-msgstr "За повече информация посетете www.github.com/yashhasan570/UniversalMediaCenter"
+msgid "Visit http://kodi.tv for more information."
+msgstr "За повече информация посетете www.kodi.tv"
 
 #. Used in OK dialog
 msgctxt "#32032"
-msgid "A new stable version of Universal Media Center is available."
-msgstr "Налична е нова стабилна версия на Universal Media Center."
+msgid "A new stable version of Kodi is available."
+msgstr "Налична е нова стабилна версия на Kodi."
 
 #. Direct people to the website. Used in OK dialog
 msgctxt "#32033"
-msgid "Visit http://github.com/yashhasan570/UniversalMediaCenter for more information."
-msgstr "За повече информация посетете www.github.com/yashhasan570/UniversalMediaCenter"
+msgid "Visit http://kodi.tv for more information."
+msgstr "За повече информация посетете www.kodi.tv"
 
 #. For example: "You are using 13.1 prealpha while 13.2 stable is available"
 msgctxt "#32034"
@@ -129,8 +129,8 @@ msgid "Please upgrade your operating system."
 msgstr "Моля подновете Вашата операционна система."
 
 msgctxt "#32042"
-msgid "For more information, see https://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Linux"
-msgstr "За повече информация, посететеше https://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Linux."
+msgid "For more information, see https://kodi.wiki/view/Linux"
+msgstr "За повече информация, посететеше https://kodi.wiki/view/Linux."
 
 #~ msgctxt "#32035"
 #~ msgid "It is recommended that you to upgrade to a newer version."

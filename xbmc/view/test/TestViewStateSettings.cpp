@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -8,7 +8,7 @@
 
 #include "utils/SortUtils.h"
 #include "utils/StringUtils.h"
-#include "utils/TinyXML.h"
+#include "utils/XBMCTinyXML.h"
 #include "view/ViewState.h"
 #include "view/ViewStateNames.h"
 #include "view/ViewStateSettings.h"
@@ -34,7 +34,7 @@ protected:
 
   const CViewState* LoadGames(const std::string& viewStates)
   {
-    CTinyXML doc;
+    CXBMCTinyXML doc;
     doc.Parse("<settings><viewstates>" + viewStates + "</viewstates></settings>");
     EXPECT_TRUE(CViewStateSettings::GetInstance().Load(doc.RootElement()));
     return CViewStateSettings::GetInstance().Get(UNIVERSAL MEDIA CENTER::VIEW::STATE::GAMES);

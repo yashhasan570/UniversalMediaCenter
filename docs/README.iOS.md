@@ -31,17 +31,17 @@ and yet another one
 
 **Example:** Clone Universal Media Center's current master branch:
 ```
-git clone https://github.com// universalmediacenter
+git clone https://github.com/xbmc/xbmc universalmediacenter
 ```
 
 Commands that contain strings enclosed in angle brackets denote something you need to change to suit your needs.
 ```
-git clone -b <branch-name> https://github.com// universalmediacenter
+git clone -b <branch-name> https://github.com/xbmc/xbmc universalmediacenter
 ```
 
 **Example:** Clone Universal Media Center's current Krypton branch:
 ```
-git clone -b Krypton https://github.com// universalmediacenter
+git clone -b Krypton https://github.com/xbmc/xbmc universalmediacenter
 ```
 
 Several different strategies are used to draw your attention to certain pieces of information. In order of how critical the information is, these items are marked as a note, tip, or warning. For example:
@@ -80,13 +80,13 @@ cd $HOME
 
 Clone Universal Media Center's current master branch:
 ```
-git clone https://github.com// universalmediacenter
+git clone https://github.com/xbmc/xbmc universalmediacenter
 ```
 
 **[back to top](#table-of-contents)**
 
 ## 4. Configure and build tools and dependencies
-Universal Media Center can be built as a 64bit program for iOS. The dependencies are built in `$HOME/universalmediacenter/tools/depends` and installed into `/Users/Shared/-depends`.
+Universal Media Center can be built as a 64bit program for iOS. The dependencies are built in `$HOME/universalmediacenter/tools/depends` and installed into `/Users/Shared/xbmc-depends`.
 
 > [!TIP]
 > Look for comments starting with `Or ...` and only execute the command(s) you need.
@@ -145,7 +145,7 @@ make -j$(getconf _NPROCESSORS_ONLN)
 ```
 --with-tarballs=<path>
 ```
-  path where tarballs will be saved [prefix/-tarballs]
+  path where tarballs will be saved [prefix/xbmc-tarballs]
 
 ```
 --with-cpu=<cpu>
@@ -200,7 +200,7 @@ make -j$(getconf _NPROCESSORS_ONLN)
 
 ## 5. Build binary add-ons
 
-You can find a complete list of available binary add-ons **[here](https://github.com//repo-binary-addons)**.
+You can find a complete list of available binary add-ons **[here](https://github.com/xbmc/repo-binary-addons)**.
 
 ## 5.1. Independent Add-on building
 
@@ -290,15 +290,15 @@ Alternatively:
 Generate Xcode project for ARM 64bit (**recommended**):
 ```
 cd $HOME/universalmediacenter-build
-/Users/Shared/-depends/x86_64-darwin17.5.0-native/bin/cmake -G Xcode -DCMAKE_TOOLCHAIN_FILE=/Users/Shared/-depends/iphoneos11.3_arm64-target-debug/share/Toolchain.cmake $HOME/universalmediacenter
+/Users/Shared/xbmc-depends/x86_64-darwin17.5.0-native/bin/cmake -G Xcode -DCMAKE_TOOLCHAIN_FILE=/Users/Shared/xbmc-depends/iphoneos11.3_arm64-target-debug/share/Toolchain.cmake $HOME/universalmediacenter
 ```
 
 > [!WARNING]  
 > The toolchain file location differs depending on your iOS and SDK version. You have to replace `x86_64-darwin15.6.0-native` and `iphoneos11.3_arm64-target-debug` in the paths above with the correct ones on your system.
 
-You can check `Users/Shared/-depends` directory content with:
+You can check `Users/Shared/xbmc-depends` directory content with:
 ```
-ls -l /Users/Shared/-depends
+ls -l /Users/Shared/xbmc-depends
 ```
 ## 6.2 Build 
 
@@ -346,12 +346,12 @@ xcodebuild -target deb -target ipa
 
 ```
 cd $HOME/universalmediacenter-build
-/Users/Shared/-depends/x86_64-darwin17.5.0-native/bin/cmake --build . --target "deb" --config "Debug"
+/Users/Shared/xbmc-depends/x86_64-darwin17.5.0-native/bin/cmake --build . --target "deb" --config "Debug"
 ```
 
 ```
 cd $HOME/universalmediacenter-build
-/Users/Shared/-depends/x86_64-darwin17.5.0-native/bin/cmake --build . --target "ipa" --config "Debug"
+/Users/Shared/xbmc-depends/x86_64-darwin17.5.0-native/bin/cmake --build . --target "ipa" --config "Debug"
 ```
 
 The generated packages are written to `$HOME/universalmediacenter-build/tools/darwin/packaging/darwin_embedded`.
@@ -385,6 +385,6 @@ From Xcode7 on this approach is also available for non paying app developers (Ap
 | Dragging                                 | For scrollbars and sliders |
 | Zoom gesture                             | In the picture viewer      |
 
-Gestures can be adapted in **[system/keymaps/touchscreen.xml](https://github.com///blob/master/system/keymaps/touchscreen.xml)**.
+Gestures can be adapted in **[system/keymaps/touchscreen.xml](https://github.com/xbmc/xbmc/blob/master/system/keymaps/touchscreen.xml)**.
 
 **[back to top](#table-of-contents)**

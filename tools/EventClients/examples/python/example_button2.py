@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 
 # This is a simple example showing how you can send a key press event
-# to  in a non-queued fashion to achieve a button pressed down
+# to XBMC in a non-queued fashion to achieve a button pressed down
 # event i.e. a key press that repeats.
 
-# The repeat interval is currently hard coded in  but that might
+# The repeat interval is currently hard coded in XBMC but that might
 # change in the future.
 
 # NOTE: Read the comments in 'example_button1.py' for a more detailed
@@ -18,13 +18,13 @@ if os.path.exists("../../lib/python"):
     # try loading modules from source directory
     sys.path.append("../../lib/python")
 
-    from client import *
+    from xbmcclient import *
 
     ICON_PATH = "../../icons/"
 else:
     # fallback to system wide modules
 
-    from universalmediacenter.client import *
+    from universalmediacenter.xbmcclient import *
     from universalmediacenter.defs import *
 
 def main():
@@ -42,7 +42,7 @@ def main():
                         ICON_PATH + "/bluetooth.png")
     packet.send(sock, addr)
 
-    # wait for notification window to close (in )
+    # wait for notification window to close (in XBMC)
     time.sleep(5)
 
     # send a up key press using the xbox gamepad map "XG" and button

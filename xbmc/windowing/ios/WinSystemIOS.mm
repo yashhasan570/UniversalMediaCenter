@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2010-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -34,7 +34,7 @@
 #include "windowing/WindowSystemFactory.h"
 
 #import "platform/darwin/ios/IOSScreenManager.h"
-#import "platform/darwin/ios/Controller.h"
+#import "platform/darwin/ios/XBMCController.h"
 
 #include <memory>
 #include <mutex>
@@ -130,7 +130,7 @@ bool CWinSystemIOS::CreateNewWindow(const std::string& name, bool fullScreen, RE
   if(!SetFullScreen(fullScreen, res, false))
     return false;
 
-  [g_Controller setFramebuffer];
+  [g_xbmcController setFramebuffer];
 
   m_bWindowCreated = true;
 
@@ -224,7 +224,7 @@ bool CWinSystemIOS::SwitchToVideoMode(int width, int height, double refreshrate)
 
   if(newMode)
   {
-    ret = [g_Controller changeScreen:screenIdx withMode:newMode];
+    ret = [g_xbmcController changeScreen:screenIdx withMode:newMode];
   }
   return ret;
 }
@@ -246,7 +246,7 @@ bool CWinSystemIOS::GetScreenResolution(int* w, int* h, double* fps, int screenI
     *h = firstMode.size.height;
   }
 
-  // for mainscreen use the eagl bounds from Controller
+  // for mainscreen use the eagl bounds from xbmcController
   // because mainscreen is might be 90° rotate dependent on
   // the device and eagl gives the correct values in all cases.
   if(screenIdx == 0)
@@ -260,8 +260,8 @@ bool CWinSystemIOS::GetScreenResolution(int* w, int* h, double* fps, int screenI
     if (m_internalTouchscreenResolutionWidth == -1 &&
         m_internalTouchscreenResolutionHeight == -1)
     {
-      m_internalTouchscreenResolutionWidth = [g_Controller getScreenSize].width;
-      m_internalTouchscreenResolutionHeight = [g_Controller getScreenSize].height;
+      m_internalTouchscreenResolutionWidth = [g_xbmcController getScreenSize].width;
+      m_internalTouchscreenResolutionHeight = [g_xbmcController getScreenSize].height;
     }
 
     *w = m_internalTouchscreenResolutionWidth;
@@ -335,7 +335,7 @@ bool CWinSystemIOS::BeginRender()
 {
   bool rtn;
 
-  [g_Controller setFramebuffer];
+  [g_xbmcController setFramebuffer];
 
   rtn = CRenderSystemGLES::BeginRender();
   return rtn;
@@ -428,7 +428,7 @@ void CWinSystemIOS::PresentRenderImpl(bool rendered)
 {
   //glFlush;
   if (rendered)
-    [g_Controller presentFramebuffer];
+    [g_xbmcController presentFramebuffer];
 }
 
 bool CWinSystemIOS::HasCursor()
@@ -469,7 +469,7 @@ bool CWinSystemIOS::Show(bool raise)
 
 CVEAGLContext CWinSystemIOS::GetEAGLContextObj()
 {
-  return [g_Controller getEAGLContextObj];
+  return [g_xbmcController getEAGLContextObj];
 }
 
 std::vector<std::string> CWinSystemIOS::GetConnectedOutputs()

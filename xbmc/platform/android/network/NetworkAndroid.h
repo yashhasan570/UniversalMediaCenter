@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2016 Christian Browet
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -11,7 +11,7 @@
 #include "network/Network.h"
 #include "threads/CriticalSection.h"
 
-#include "platform/android/activity/JNIConnectivityManagerNetworkCallback.h"
+#include "platform/android/activity/JNIXBMCConnectivityManagerNetworkCallback.h"
 
 #include <androidjni/LinkProperties.h>
 #include <androidjni/Network.h>
@@ -45,7 +45,7 @@ protected:
   CJNINetworkInterface m_intf;
 };
 
-class CNetworkAndroid : public CNetworkBase, public jni::CJNIConnectivityManagerNetworkCallback
+class CNetworkAndroid : public CNetworkBase, public jni::CJNIXBMCConnectivityManagerNetworkCallback
 {
 
 public:

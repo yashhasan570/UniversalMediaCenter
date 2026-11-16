@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -17,9 +17,9 @@
 
 #ifdef __GNUC__
 // under gcc, inline will only take place if optimizations are applied (-O). this will force inline even with optimizations.
-#define _FORCE_INLINE __attribute__((always_inline))
+#define XBMC_FORCE_INLINE __attribute__((always_inline))
 #else
-#define _FORCE_INLINE
+#define XBMC_FORCE_INLINE
 #endif
 
 class TransformMatrix
@@ -211,7 +211,7 @@ public:
     return result;
   }
 
-  inline void TransformPosition(float &x, float &y, float &z) const _FORCE_INLINE
+  inline void TransformPosition(float &x, float &y, float &z) const XBMC_FORCE_INLINE
   {
     float newX = m[0][0] * x + m[0][1] * y + m[0][2] * z + m[0][3];
     float newY = m[1][0] * x + m[1][1] * y + m[1][2] * z + m[1][3];
@@ -220,7 +220,7 @@ public:
     x = newX;
   }
 
-  inline void TransformPositionUnscaled(float &x, float &y, float &z) const _FORCE_INLINE
+  inline void TransformPositionUnscaled(float &x, float &y, float &z) const XBMC_FORCE_INLINE
   {
     float n;
     // calculate the norm of the transformed (but not translated) vectors involved
@@ -235,7 +235,7 @@ public:
     x = newX;
   }
 
-  inline void InverseTransformPosition(float &x, float &y) const _FORCE_INLINE
+  inline void InverseTransformPosition(float &x, float &y) const XBMC_FORCE_INLINE
   { // used for mouse - no way to find z
     x -= m[0][3]; y -= m[1][3];
     float detM = m[0][0]*m[1][1] - m[0][1]*m[1][0];
@@ -244,29 +244,29 @@ public:
     x = newX;
   }
 
-  inline float TransformXCoord(float x, float y, float z) const _FORCE_INLINE
+  inline float TransformXCoord(float x, float y, float z) const XBMC_FORCE_INLINE
   {
     return m[0][0] * x + m[0][1] * y + m[0][2] * z + m[0][3];
   }
 
-  inline float TransformYCoord(float x, float y, float z) const _FORCE_INLINE
+  inline float TransformYCoord(float x, float y, float z) const XBMC_FORCE_INLINE
   {
     return m[1][0] * x + m[1][1] * y + m[1][2] * z + m[1][3];
   }
 
-  inline float TransformZCoord(float x, float y, float z) const _FORCE_INLINE
+  inline float TransformZCoord(float x, float y, float z) const XBMC_FORCE_INLINE
   {
     return m[2][0] * x + m[2][1] * y + m[2][2] * z + m[2][3];
   }
 
   inline UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color TransformAlpha(UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color color) const
-      _FORCE_INLINE
+      XBMC_FORCE_INLINE
   {
     return static_cast<UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color>(color * alpha);
   }
 
   inline UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color TransformColor(UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color color) const
-      _FORCE_INLINE
+      XBMC_FORCE_INLINE
   {
     UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color a =
         static_cast<UNIVERSAL MEDIA CENTER::UTILS::COLOR::Color>(((color >> 24) & 0xff) * alpha);
@@ -287,7 +287,7 @@ public:
     return ((a << 24) & 0xff000000) | ((r << 16) & 0xff0000) | ((g << 8) & 0xff00) | (b & 0xff);
   }
 
-  inline bool HasRotation() const _FORCE_INLINE
+  inline bool HasRotation() const XBMC_FORCE_INLINE
   {
     // X-axis rotation
     if (m[1][2] != 0.f || m[2][1] != 0.f)

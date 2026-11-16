@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -22,7 +22,7 @@
 #include "utils/StringUtils.h"
 #include "utils/URIUtils.h"
 #include "utils/Variant.h"
-#include "utils/TinyXML2.h"
+#include "utils/XBMCTinyXML2.h"
 #include "utils/log.h"
 
 #include <algorithm>
@@ -196,7 +196,7 @@ AddonInfoPtr CAddonInfoBuilder::Generate(const std::string& addonPath, bool plat
 {
   auto addonRealPath = CSpecialProtocol::TranslatePath(addonPath);
 
-  CTinyXML2 xmlDoc;
+  CXBMCTinyXML2 xmlDoc;
   if (!xmlDoc.LoadFile(URIUtils::AddFileToFolder(addonRealPath, "addon.xml")))
   {
     CLog::LogF(LOGERROR, "Unable to load '{}', Line: {}, Error: {}",
@@ -385,7 +385,7 @@ bool CAddonInfoBuilder::ParseXML(const AddonInfoPtr& addon,
   {
     const std::string point = StringUtils::CreateFromCString(child->Attribute("point"));
 
-    if (point == "universalmediacenter.addon.metadata" || point == ".addon.metadata")
+    if (point == "universalmediacenter.addon.metadata" || point == "xbmc.addon.metadata")
     {
       /*
        * Parse addon.xml "<path">...</path>" (special related to repository path),

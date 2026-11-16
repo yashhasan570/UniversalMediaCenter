@@ -53,7 +53,7 @@
 <!-- duplicate the holdtime overload in the section.                         -->
 <!--                                                                         -->
 <!-- More documentation on keymaps can be found on                           -->
-<!-- http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/keymaps                                           -->
+<!-- http://universalmediacenter.wiki/view/keymaps                                           -->
 <!--                                                                         -->
 <keymap>
   <global>
@@ -251,7 +251,7 @@
     <joystick profile="game.controller.default">
       <a>Pause</a>
       <b>Stop</b>
-      <x>Addon.Default.OpenSettings(.player.musicviz)</x>
+      <x>Addon.Default.OpenSettings(xbmc.player.musicviz)</x>
       <y>ActivateWindow(VisualisationPresetList)</y>
       <start>Info</start>
       <rightthumb>ActivateWindow(MusicOSD)</rightthumb>

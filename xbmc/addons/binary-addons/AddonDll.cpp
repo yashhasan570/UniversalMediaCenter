@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -64,12 +64,12 @@ std::string CAddonDll::GetDllPath(const std::string &libPath)
   if (strLibName.empty())
     return "";
 
-  /* Check if lib being loaded exists, else check in  binary location */
+  /* Check if lib being loaded exists, else check in XBMC binary location */
 #if defined(TARGET_ANDROID)
   if (XFILE::CFile::Exists(strFileName))
   {
     bool doCopy = true;
-    std::string dstfile = URIUtils::AddFileToFolder(CSpecialProtocol::TranslatePath("special://altbinaddons/"), strLibName);
+    std::string dstfile = URIUtils::AddFileToFolder(CSpecialProtocol::TranslatePath("special://xbmcaltbinaddons/"), strLibName);
 
     struct __stat64 dstFileStat;
     if (XFILE::CFile::Stat(dstfile, &dstFileStat) == 0)
@@ -106,13 +106,13 @@ std::string CAddonDll::GetDllPath(const std::string &libPath)
   {
     std::string strAltFileName;
 
-    std::string altbin = CSpecialProtocol::TranslatePath("special://altbinaddons/");
+    std::string altbin = CSpecialProtocol::TranslatePath("special://xbmcaltbinaddons/");
     if (!altbin.empty())
     {
       strAltFileName = altbin + strLibName;
       if (!XFILE::CFile::Exists(strAltFileName))
       {
-        std::string temp = CSpecialProtocol::TranslatePath("special:///addons/");
+        std::string temp = CSpecialProtocol::TranslatePath("special://xbmc/addons/");
         strAltFileName = strFileName;
         strAltFileName.erase(0, temp.size());
         strAltFileName = altbin + strAltFileName;
@@ -124,8 +124,8 @@ std::string CAddonDll::GetDllPath(const std::string &libPath)
       strFileName = strAltFileName;
     else
     {
-      std::string temp = CSpecialProtocol::TranslatePath("special:///");
-      std::string tempbin = CSpecialProtocol::TranslatePath("special://bin/");
+      std::string temp = CSpecialProtocol::TranslatePath("special://xbmc/");
+      std::string tempbin = CSpecialProtocol::TranslatePath("special://xbmcbin/");
       strFileName.erase(0, temp.size());
       strFileName = tempbin + strFileName;
       if (!XFILE::CFile::Exists(strFileName))
@@ -519,7 +519,7 @@ ADDON_STATUS CAddonDll::TransferSettings(AddonInstanceId instanceId)
 bool CAddonDll::CheckAPIVersion(int type)
 {
   /* check the API version */
-  CAddonVersion universalmediacenterMinVersion(addon::GetTypeMinVersion(type));
+  CAddonVersion universalmediacenterMinVersion(universalmediacenter::addon::GetTypeMinVersion(type));
   CAddonVersion addonVersion(m_pDll->GetAddonTypeVersion(type));
   CAddonVersion addonMinVersion = m_pDll->GetAddonTypeMinVersion_available()
                                       ? CAddonVersion(m_pDll->GetAddonTypeMinVersion(type))
@@ -535,12 +535,12 @@ bool CAddonDll::CheckAPIVersion(int type)
    * present.
    */
   if (universalmediacenterMinVersion > addonVersion ||
-      addonMinVersion > CAddonVersion(addon::GetTypeVersion(type)))
+      addonMinVersion > CAddonVersion(universalmediacenter::addon::GetTypeVersion(type)))
   {
     CLog::Log(LOGERROR, "Add-on '{}' is using an incompatible API version for type '{}'. Universal Media Center API min version = '{}/{}', add-on API version '{}/{}'",
       Name(),
-      addon::GetTypeName(type),
-      addon::GetTypeVersion(type),
+      universalmediacenter::addon::GetTypeName(type),
+      universalmediacenter::addon::GetTypeVersion(type),
       universalmediacenterMinVersion.asString(),
       addonMinVersion.asString(),
       addonVersion.asString());

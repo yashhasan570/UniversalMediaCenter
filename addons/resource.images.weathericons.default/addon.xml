@@ -8,7 +8,7 @@
   </requires>
   <extension point="universalmediacenter.resource.images"
              type="weather" />
-  <extension point=".addon.metadata">
+  <extension point="xbmc.addon.metadata">
     <summary lang="en">Default Weather Icons</summary>
     <description lang="en">Default set of Weather Icons shipped with Universal Media Center</description>
     <platform>all</platform>

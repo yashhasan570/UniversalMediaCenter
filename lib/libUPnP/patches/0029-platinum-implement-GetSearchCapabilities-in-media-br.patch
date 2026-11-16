@@ -1,5 +1,5 @@
 From 4a35702414b4c3be06d24b5b5c5da86c3f058078 Mon Sep 17 00:00:00 2001
-From: montellese <montellese@.org>
+From: montellese <montellese@xbmc.org>
 Date: Sat, 8 Feb 2014 11:46:11 +0100
 Subject: [PATCH 06/11] platinum: implement GetSearchCapabilities in media
  browser
@@ -223,7 +223,7 @@ index 5ef9f37..7054b72 100644
 +typedef NPT_Reference<PLT_CapabilitiesData> PLT_CapabilitiesDataReference;
 +
  // explicitely specify res otherwise WMP won't return a URL!
- #define PLT_DEFAULT_FILTER  "dc:date,dc:description,upnp:longDescription,upnp:genre,res,res@duration,res@size,upnp:albumArtURI,upnp:rating,upnp:lastPlaybackPosition,upnp:lastPlaybackTime,upnp:playbackCount,upnp:originalTrackNumber,upnp:episodeNumber,upnp:programTitle,upnp:seriesTitle,upnp:album,upnp:artist,upnp:author,upnp:director,dc:publisher,searchable,childCount,dc:title,dc:creator,upnp:actor,res@resolution,upnp:episodeCount,upnp:episodeSeason,:dateadded,:rating,:votes,:artwork"
+ #define PLT_DEFAULT_FILTER  "dc:date,dc:description,upnp:longDescription,upnp:genre,res,res@duration,res@size,upnp:albumArtURI,upnp:rating,upnp:lastPlaybackPosition,upnp:lastPlaybackTime,upnp:playbackCount,upnp:originalTrackNumber,upnp:episodeNumber,upnp:programTitle,upnp:seriesTitle,upnp:album,upnp:artist,upnp:author,upnp:director,dc:publisher,searchable,childCount,dc:title,dc:creator,upnp:actor,res@resolution,upnp:episodeCount,upnp:episodeSeason,xbmc:dateadded,xbmc:rating,xbmc:votes,xbmc:artwork"
  
 @@ -103,6 +111,10 @@ public:
                                  PLT_DeviceDataReference& device, 

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -41,7 +41,7 @@ public:
 
   static char FirstDriveFromMask (ULONG unitmask);
   static int GetDriveStatus(const std::string &strPath, bool bStatusEx=false);
-  static bool ShellExecute(const std::string &strPath, bool bWaitForScriptExit=false);
+  static bool XBMCShellExecute(const std::string &strPath, bool bWaitForScriptExit=false);
   static std::string GetResInfoString();
   static size_t GetSystemMemorySize();
 

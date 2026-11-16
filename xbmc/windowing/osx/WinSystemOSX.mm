@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -548,8 +548,8 @@ static void DisplayReconfigured(CGDirectDisplayID display,
     // valid
     if (pScreen)
     {
-      CGDirectDisplayID _display = GetDisplayIDFromScreen(pScreen);
-      if (_display == display)
+      CGDirectDisplayID xbmc_display = GetDisplayIDFromScreen(pScreen);
+      if (xbmc_display == display)
       {
         // we only respond to changes on the display we are running on.
         winsys->AnnounceOnLostDevice();
@@ -717,7 +717,7 @@ bool CWinSystemOSX::CreateNewWindow(const std::string& name, bool fullScreen, RE
     auto title = [NSString stringWithUTF8String:m_name.c_str()];
     auto size = NSMakeSize(m_nWidth, m_nHeight);
     // propose the window size based on the last stored RES_WINDOW resolution info
-    m_appWindowController = [[WindowControllerMacOS alloc] initWithTitle:title
+    m_appWindowController = [[XBMCWindowControllerMacOS alloc] initWithTitle:title
                                                                  defaultSize:size];
 
     m_appWindow = m_appWindowController.window;

@@ -2,10 +2,10 @@
 
 """
 
-    Copyright (C) 2013-2014 Team-
+    Copyright (C) 2013-2014 Team-XBMC
     Copyright (C) 2014-2019 Team Universal Media Center
 
-    This file is part of service..versioncheck
+    This file is part of service.xbmc.versioncheck
 
     SPDX-License-Identifier: GPL-3.0-or-later
     See LICENSES/GPL-3.0-or-later.txt for more information.
@@ -15,8 +15,8 @@
 import platform
 import sys
 
-import   # pylint: disable=import-error
-import gui  # pylint: disable=import-error
+import xbmc  # pylint: disable=import-error
+import xbmcgui  # pylint: disable=import-error
 
 from .common import ADDON
 from .common import ADDON_NAME
@@ -137,7 +137,7 @@ def _check_cryptography():
     ver_parts = list(map(int, ver.split('.')))
     if len(ver_parts) < 2 or ver_parts[0] < 1 or (ver_parts[0] == 1 and ver_parts[1] < 7):
         log('Python cryptography module version %s is too old, at least version 1.7 needed' % ver)
-        gui.Dialog().ok(
+        xbmcgui.Dialog().ok(
             ADDON_NAME,
             '[CR]'.join([localise(32040) % ver, localise(32041), localise(32042)])
         )
@@ -156,7 +156,7 @@ def run():
         if wait_for_abort(5):
             sys.exit(0)
 
-        if (.getCondVisibility('System.Platform.Linux') and
+        if (xbmc.getCondVisibility('System.Platform.Linux') and
                 ADDON.getSetting('upgrade_apt') == 'true'):
             _version_check_linux(['universalmediacenter'])
         else:

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -339,7 +339,7 @@ TEST_F(TestBlurayDirectory, GetPlaylists_IgnoresOtherFilesNamedAfterAPlaylist)
   ASSERT_TRUE(CDirectory::Create(URIUtils::AddFileToFolder(disc, "BDMV")));
   ASSERT_TRUE(CDirectory::Create(playlistFolder));
   ASSERT_TRUE(
-      CFile::Copy(_REF_FILE_PATH("/utils/test/data/bluray/BDMV/PLAYLIST/00888.mpls"),
+      CFile::Copy(XBMC_REF_FILE_PATH("xbmc/utils/test/data/bluray/BDMV/PLAYLIST/00888.mpls"),
                   URIUtils::AddFileToFolder(playlistFolder, "00888.mpls")));
   {
     CFile hash;

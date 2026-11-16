@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -15,7 +15,7 @@
 #include <mutex>
 #include <vector>
 
-namespace Addon
+namespace XBMCAddon
 {
   class AsyncCallbackMessage : public AddonClass
   {
@@ -23,7 +23,7 @@ namespace Addon
     AddonClass::Ref<Callback> cb;
     AddonClass::Ref<RetardedAsyncCallbackHandler> handler;
     AsyncCallbackMessage(Callback* _cb, RetardedAsyncCallbackHandler* _handler) :
-      cb(_cb), handler(_handler) { _TRACE; }
+      cb(_cb), handler(_handler) { XBMC_TRACE; }
   };
 
   //********************************************************************
@@ -38,7 +38,7 @@ namespace Addon
 
   void RetardedAsyncCallbackHandler::invokeCallback(Callback* cb)
   {
-    _TRACE;
+    XBMC_TRACE;
     std::unique_lock lock(critSection);
     if (g_callQueueClosed)
     {
@@ -51,7 +51,7 @@ namespace Addon
 
   RetardedAsyncCallbackHandler::~RetardedAsyncCallbackHandler()
   {
-    _TRACE;
+    XBMC_TRACE;
     std::unique_lock lock(critSection);
 
     // find any messages that might be there because of me ... and remove them
@@ -70,7 +70,7 @@ namespace Addon
 
   void RetardedAsyncCallbackHandler::makePendingCalls()
   {
-    _TRACE;
+    XBMC_TRACE;
     std::unique_lock lock(critSection);
     CallbackQueue::iterator iter = g_callQueue.begin();
     while (iter != g_callQueue.end())
@@ -88,14 +88,14 @@ namespace Addon
         //  lock on the object. Not doing so results in deadlocks. We no
         //  longer are accessing the g_callQueue so it's fine to do this now
         {
-          AddonUtils::InvertSingleLockGuard unlock(lock);
+          XBMCAddonUtils::InvertSingleLockGuard unlock(lock);
 
           // make sure the object is not deallocating
 
           // we need to grab the object lock to see if the object of the call
           //  is deallocating. holding this lock should prevent it from
           //  deallocating during the execution of this call.
-#ifdef ENABLE__TRACE_API
+#ifdef ENABLE_XBMC_TRACE_API
           CLog::Log(LOGDEBUG, "{}NEWADDON executing callback 0x{:x}", _tg.getSpaces(),
                     (long)(p->cb.get()));
 #endif
@@ -131,7 +131,7 @@ namespace Addon
 
   void RetardedAsyncCallbackHandler::clearAllPendingCalls()
   {
-    _TRACE;
+    XBMC_TRACE;
     CallbackQueue pending;
     {
       std::unique_lock lock(critSection);
@@ -144,7 +144,7 @@ namespace Addon
 
   void RetardedAsyncCallbackHandler::clearPendingCalls(void* userData)
   {
-    _TRACE;
+    XBMC_TRACE;
     std::unique_lock lock(critSection);
     CallbackQueue::iterator iter = g_callQueue.begin();
     while (iter != g_callQueue.end())
@@ -153,7 +153,7 @@ namespace Addon
 
       if(p->handler->shouldRemoveCallback(p->cb->getObject(),userData))
       {
-#ifdef ENABLE__TRACE_API
+#ifdef ENABLE_XBMC_TRACE_API
         CLog::Log(LOGDEBUG,
                   "{}NEWADDON removing callback 0x{:x} for PyThreadState 0x{:x} from queue",
                   _tg.getSpaces(), (long)(p->cb.get()), (long)userData);

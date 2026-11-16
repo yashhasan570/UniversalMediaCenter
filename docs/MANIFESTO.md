@@ -12,7 +12,7 @@ One major ongoing goal of Team-Universal Media Center has always been to make Un
 
 Universal Media Center as a whole must...
 
-* First and foremost be aimed at a large-screen (28" or more) [10-foot user interface](https://github.com/yashhasan570/UniversalMediaCenter/wiki/view/10-foot_user_interface) for the living-room experience.
+* First and foremost be aimed at a large-screen (28" or more) [10-foot user interface](https://universalmediacenter.wiki/view/10-foot_user_interface) for the living-room experience.
   * Large menus, text/fonts and buttons that is designed to be navigated by a hand-held remote-control.
 * Be focused around the main features of playing music, watching movies, recorded television broadcasts, and viewing pictures.
   * Universal Media Center may be capable of converging other things but those things should never take over the main focus in the interface.
@@ -24,12 +24,12 @@ Universal Media Center as a whole must...
 * Use standards and be consistent, (the Music section can for example not use completely different controls from the Video section).
 * Perform actions in the GUI with as few 'clicks' as possible.
 * Be aimed at an international audience, internationalization and localization by supporting different languages, timezones and other regional differences
-* Require little to no non-GUI configuration (and all such non-GUI configuration should be done in just one file: [advancedsettings.xml](https://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Advancedsettings.xml)).
+* Require little to no non-GUI configuration (and all such non-GUI configuration should be done in just one file: [advancedsettings.xml](https://universalmediacenter.wiki/view/Advancedsettings.xml)).
 * Be beautiful to look at, after all we hope you will be using it a lot!
 
 1.2 Team-Universal Media Center members should always strive to
 
-* **Promote open source** - Universal Media Center is based on the ideas of FOSS (free open source software), licensed under the GPL and builds partly on other open source projects which we do our best to support. The GPL should be respected at all times. All code should be committed to the Universal Media Center project’s [git repo](https://github.com//) before any public binaries are released.
+* **Promote open source** - Universal Media Center is based on the ideas of FOSS (free open source software), licensed under the GPL and builds partly on other open source projects which we do our best to support. The GPL should be respected at all times. All code should be committed to the Universal Media Center project’s [git repo](https://github.com/xbmc/xbmc) before any public binaries are released.
 * **Promote the sharing of knowledge and collaboration** - Through the use of information sharing tools and practices Universal Media Center is a collaborative environment.
 * **Understand that development is a team effort** - Treating our users as co-developers has proven to be the most effective option for rapid development. Always strive to work as a team at all times. Actively promote discussion on new features and bug fixes, and respect others comments and criticisms with replies in a timely fashion.
 * **Apply the Law of Diminishing Return** - The majority of the effort should be invested in implementing features which have the most benefit and widest general usage by the community.

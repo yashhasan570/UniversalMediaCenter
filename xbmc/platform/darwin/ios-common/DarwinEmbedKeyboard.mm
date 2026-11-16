@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2012-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -16,12 +16,12 @@
 
 #if defined(TARGET_DARWIN_IOS)
 #include "platform/darwin/ios/IOSKeyboardView.h"
-#include "platform/darwin/ios/Controller.h"
+#include "platform/darwin/ios/XBMCController.h"
 
 #define KEYBOARDVIEW_CLASS IOSKeyboardView
 #elif defined(TARGET_DARWIN_TVOS)
 #include "platform/darwin/tvos/TVOSKeyboardView.h"
-#include "platform/darwin/tvos/Controller.h"
+#include "platform/darwin/tvos/XBMCController.h"
 #define KEYBOARDVIEW_CLASS TVOSKeyboardView
 #endif
 
@@ -41,7 +41,7 @@ bool CDarwinEmbedKeyboard::ShowAndGetInput(char_callback_t pCallback,
                                            const std::string& heading,
                                            bool bHiddenInput)
 {
-  // we are in  main thread or python module thread.
+  // we are in xbmc main thread or python module thread.
   @autoreleasepool
   {
     @synchronized([KeyboardView class])
@@ -54,7 +54,7 @@ bool CDarwinEmbedKeyboard::ShowAndGetInput(char_callback_t pCallback,
       KEYBOARDVIEW_CLASS* __block keyboardView;
       dispatch_sync(dispatch_get_main_queue(), ^{
         // assume we are only drawn on the mainscreen ever!
-        auto keyboardFrame = [g_Controller fullscreenSubviewFrame];
+        auto keyboardFrame = [g_xbmcController fullscreenSubviewFrame];
         keyboardView = [[KEYBOARDVIEW_CLASS alloc] initWithFrame:keyboardFrame];
       });
       ////////////////////////////////////////////
@@ -64,7 +64,7 @@ bool CDarwinEmbedKeyboard::ShowAndGetInput(char_callback_t pCallback,
 
       // inform the controller that the native keyboard is active
       // basically as long as m_impl->g_pKeyboard exists...
-      [g_Controller nativeKeyboardActive:true];
+      [g_xbmcController nativeKeyboardActive:true];
     }
 
     m_pCharCallback = pCallback;
@@ -90,7 +90,7 @@ bool CDarwinEmbedKeyboard::ShowAndGetInput(char_callback_t pCallback,
     @synchronized([KeyboardView class])
     {
       m_impl->g_pKeyboard = nil;
-      [g_Controller nativeKeyboardActive:false];
+      [g_xbmcController nativeKeyboardActive:false];
     }
     return confirmed;
   }

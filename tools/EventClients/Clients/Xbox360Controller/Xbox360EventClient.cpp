@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2009-2013 Team 
+ *  Copyright (C) 2009-2013 Team XBMC
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -21,15 +21,15 @@
 
 #include "stdafx.h"
 #include "Xbox360Controller.h"
-#include "../../lib/c++/client.h"
-#pragma comment(lib, "wsock32.lib")      // needed for lient.h?
+#include "../../lib/c++/xbmcclient.h"
+#pragma comment(lib, "wsock32.lib")      // needed for xbmclient.h?
 
 // You can have up to 4 xbox360 controllers on a system
 #define MAX_NUM_CONTROLLERS 4
 
 // global variable :(
 // needed for exit event handler
-CClient *client;
+CXBMCClient *client;
 
 BOOL exitHandler( DWORD ctrlType )
 {
@@ -41,7 +41,7 @@ BOOL exitHandler( DWORD ctrlType )
   return FALSE;
 }
 
-void checkTrigger(Xbox360Controller &cont, CClient *client, int num, const char* name)
+void checkTrigger(Xbox360Controller &cont, CXBMCClient *client, int num, const char* name)
 {
   if (cont.triggerMoved(num))
   {
@@ -49,7 +49,7 @@ void checkTrigger(Xbox360Controller &cont, CClient *client, int num, const char*
   }
 }
 
-void checkThumb(Xbox360Controller &cont, CClient *client, int num,
+void checkThumb(Xbox360Controller &cont, CXBMCClient *client, int num,
         const char* leftname, const char* rightname)
 {
   if (cont.thumbMoved(num))
@@ -65,7 +65,7 @@ void checkThumb(Xbox360Controller &cont, CClient *client, int num,
   }
 }
 
-void checkButton(Xbox360Controller &cont, CClient *client, int num, const char* name)
+void checkButton(Xbox360Controller &cont, CXBMCClient *client, int num, const char* name)
 {
   if (cont.buttonPressed(num))
   {
@@ -124,7 +124,7 @@ int main(int argc, char* argv[])
 
   if ( argc > 3 )
   {
-    printf("USAGE: %s [HOST [PORT]]\n\nThe event client connects to the  EventServer at HOST:PORT.\
+    printf("USAGE: %s [HOST [PORT]]\n\nThe event client connects to the XBMC EventServer at HOST:PORT.\
           Default value for HOST is localhost, default value for port  is 9777.\n", argv[0]);
     return -1;
   }
@@ -139,7 +139,7 @@ int main(int argc, char* argv[])
     port = argv[2];
   }
 
-  client = new CClient(host, atoi(port));
+  client = new CXBMCClient(host, atoi(port));
 
   SetConsoleCtrlHandler( (PHANDLER_ROUTINE) exitHandler, TRUE);
 

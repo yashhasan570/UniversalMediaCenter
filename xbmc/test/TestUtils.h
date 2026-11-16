@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -16,14 +16,14 @@ namespace XFILE
   class CFile;
 }
 
-class CTestUtils
+class CXBMCTestUtils
 {
 public:
-  static CTestUtils &Instance();
+  static CXBMCTestUtils &Instance();
 
   /* ReferenceFilePath() is used to prepend a path with the location to the
-   * -test binary. It's assumed the test suite program will only be run
-   * with -test residing in the source tree.
+   * xbmc-test binary. It's assumed the test suite program will only be run
+   * with xbmc-test residing in the source tree.
    */
   std::string ReferenceFilePath(const std::string& path);
 
@@ -80,9 +80,9 @@ public:
   /* Function to return the newline characters for this platform */
   std::string getNewLineCharacters() const;
 private:
-  CTestUtils();
-  CTestUtils(CTestUtils const&) = delete;
-  CTestUtils& operator=(CTestUtils const&) = delete;
+  CXBMCTestUtils();
+  CXBMCTestUtils(CXBMCTestUtils const&) = delete;
+  CXBMCTestUtils& operator=(CXBMCTestUtils const&) = delete;
 
   std::vector<std::string> TestFileFactoryReadUrls;
   std::vector<std::string> TestFileFactoryWriteUrls;
@@ -115,9 +115,9 @@ private:
   std::string m_previous;
 };
 
-#define _REF_FILE_PATH(s) CTestUtils::Instance().ReferenceFilePath(s)
-#define _CREATETEMPFILE(a) CTestUtils::Instance().CreateTempFile(a)
-#define _DELETETEMPFILE(a) CTestUtils::Instance().DeleteTempFile(a)
-#define _TEMPFILEPATH(a) CTestUtils::Instance().TempFilePath(a)
-#define _CREATECORRUPTEDFILE(a, b) \
-  CTestUtils::Instance().CreateCorruptedFile(a, b)
+#define XBMC_REF_FILE_PATH(s) CXBMCTestUtils::Instance().ReferenceFilePath(s)
+#define XBMC_CREATETEMPFILE(a) CXBMCTestUtils::Instance().CreateTempFile(a)
+#define XBMC_DELETETEMPFILE(a) CXBMCTestUtils::Instance().DeleteTempFile(a)
+#define XBMC_TEMPFILEPATH(a) CXBMCTestUtils::Instance().TempFilePath(a)
+#define XBMC_CREATECORRUPTEDFILE(a, b) \
+  CXBMCTestUtils::Instance().CreateCorruptedFile(a, b)

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -26,6 +26,7 @@
 #include "dialogs/GUIDialogSelect.h"
 #include "dialogs/GUIDialogSmartPlaylistEditor.h"
 #include "dialogs/GUIDialogYesNo.h"
+#include "filesystem/AddonsDirectory.h"
 #include "filesystem/Directory.h"
 #include "filesystem/MultiPathDirectory.h"
 #include "filesystem/VideoDatabaseDirectory.h"
@@ -1785,7 +1786,7 @@ std::string CGUIWindowVideoBase::GetStartFolder(const std::string &dir)
   if (lower == "$playlists" || lower == "playlists")
     return "special://videoplaylists/";
   else if (lower == "plugins" || lower == "addons")
-    return "addons://sources/video/";
+    return XFILE::CAddonsDirectory::SourcesPathOf(MEDIA::MediaSection::VIDEO);
   return CGUIMediaWindow::GetStartFolder(dir);
 }
 

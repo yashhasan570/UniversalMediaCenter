@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2012-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -272,7 +272,7 @@ bool CLibraryGUIInfo::GetBool(bool& value,
       std::string libDir = profileManager->GetLibraryFolder();
       XFILE::CDirectory::GetDirectory(libDir, items, "", XFILE::DIR_FLAG_NO_FILE_DIRS);
       if (items.IsEmpty())
-        libDir = "special:///system/library/";
+        libDir = "special://xbmc/system/library/";
 
       std::string nodePath = URIUtils::AddFileToFolder(libDir, url.GetHostName() + "/");
       nodePath = URIUtils::AddFileToFolder(nodePath, url.GetFileName());

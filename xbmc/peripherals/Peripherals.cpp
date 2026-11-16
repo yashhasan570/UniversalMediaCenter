@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2024 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -59,7 +59,7 @@
 #include "settings/SettingsComponent.h"
 #include "settings/lib/Setting.h"
 #include "utils/StringUtils.h"
-#include "utils/TinyXML2.h"
+#include "utils/XBMCTinyXML2.h"
 #include "utils/XMLUtils.h"
 #include "utils/log.h"
 
@@ -545,8 +545,8 @@ bool CPeripherals::LoadMappings()
 {
   std::unique_lock lock(m_critSectionMappings);
 
-  CTinyXML2 xmlDoc;
-  if (!xmlDoc.LoadFile("special:///system/peripherals.xml"))
+  CXBMCTinyXML2 xmlDoc;
+  if (!xmlDoc.LoadFile("special://xbmc/system/peripherals.xml"))
   {
     CLog::LogF(LOGWARNING, "peripherals.xml does not exist");
     return true;

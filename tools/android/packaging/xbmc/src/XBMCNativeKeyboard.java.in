@@ -12,7 +12,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class NativeKeyboard
+public class XBMCNativeKeyboard
 {
   private static final String TAG = "@APP_NAME@";
 
@@ -24,7 +24,7 @@ public class NativeKeyboard
   private EditText mEditText = null;
   private boolean mCallbackSent = true;
 
-  public NativeKeyboard()
+  public XBMCNativeKeyboard()
   {
   }
 
@@ -36,7 +36,7 @@ public class NativeKeyboard
       @Override
       public void run()
       {
-        Log.d(TAG, "NativeKeyboard.show");
+        Log.d(TAG, "XBMCNativeKeyboard.show");
         mCallbackSent = false;
 
         mEditText = new EditText(Main.MainActivity);
@@ -143,7 +143,7 @@ public class NativeKeyboard
       return;
 
     mCallbackSent = true;
-    Log.d(TAG, "NativeKeyboard.finishInput");
+    Log.d(TAG, "XBMCNativeKeyboard.finishInput");
     _onInputFinished(mEditText.getText().toString());
     if (mDialog != null)
       mDialog.dismiss();
@@ -158,7 +158,7 @@ public class NativeKeyboard
       return;
 
     mCallbackSent = true;
-    Log.d(TAG, "NativeKeyboard.cancelInput");
+    Log.d(TAG, "XBMCNativeKeyboard.cancelInput");
     _onInputCanceled();
   }
 }

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -16,19 +16,19 @@
 
 #include <algorithm>
 
-namespace Addon
+namespace XBMCAddon
 {
 
-  namespace vfs
+  namespace xbmcvfs
   {
 
     //
     /// \defgroup python_file File
-    /// \ingroup python_vfs
+    /// \ingroup python_xbmcvfs
     /// @{
     /// @brief <b>Universal Media Center's file class.</b>
     ///
-    /// \python_class{ vfs.File(filepath, [mode]) }
+    /// \python_class{ xbmcvfs.File(filepath, [mode]) }
     ///
     /// @param filepath             string Selected file path
     /// @param mode                 [opt] string Additional mode options (if no mode is supplied, the default is Open for Read).
@@ -43,14 +43,14 @@ namespace Addon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// f = vfs.File(file, 'w')
+    /// f = xbmcvfs.File(file, 'w')
     /// ..
     /// ~~~~~~~~~~~~~
     ///
     /// **Example (v19 and up):**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// with vfs.File(file, 'w') as f:
+    /// with xbmcvfs.File(file, 'w') as f:
     ///   ..
     /// ..
     /// ~~~~~~~~~~~~~
@@ -91,7 +91,7 @@ namespace Addon
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// f = vfs.File(file)
+      /// f = xbmcvfs.File(file)
       /// b = f.read()
       /// f.close()
       /// ..
@@ -100,7 +100,7 @@ namespace Addon
       /// **Example (v19 and up):**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// with vfs.File(file) as file:
+      /// with xbmcvfs.File(file) as file:
       ///   b = f.read()
       /// ..
       /// ~~~~~~~~~~~~~
@@ -130,7 +130,7 @@ namespace Addon
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// f = vfs.File(file)
+      /// f = xbmcvfs.File(file)
       /// b = f.readBytes()
       /// f.close()
       /// ..
@@ -139,7 +139,7 @@ namespace Addon
       /// **Example (v19 and up):**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// with vfs.File(file) as f:
+      /// with xbmcvfs.File(file) as f:
       ///   b = f.readBytes()
       /// ..
       /// ~~~~~~~~~~~~~
@@ -164,7 +164,7 @@ namespace Addon
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// f = vfs.File(file, 'w')
+      /// f = xbmcvfs.File(file, 'w')
       /// result = f.write(buffer)
       /// f.close()
       /// ..
@@ -173,7 +173,7 @@ namespace Addon
       /// **Example (v19 and up):**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// with vfs.File(file, 'w') as f:
+      /// with xbmcvfs.File(file, 'w') as f:
       ///   result = f.write(buffer)
       /// ..
       /// ~~~~~~~~~~~~~
@@ -197,7 +197,7 @@ namespace Addon
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// f = vfs.File(file)
+      /// f = xbmcvfs.File(file)
       /// s = f.size()
       /// f.close()
       /// ..
@@ -206,7 +206,7 @@ namespace Addon
       /// **Example (v19 and up):**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// with vfs.File(file) as f:
+      /// with xbmcvfs.File(file) as f:
       ///   s = f.size()
       /// ..
       /// ~~~~~~~~~~~~~
@@ -233,7 +233,7 @@ namespace Addon
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// f = vfs.File(file)
+      /// f = xbmcvfs.File(file)
       /// result = f.seek(8129, 0)
       /// f.close()
       /// ..
@@ -242,7 +242,7 @@ namespace Addon
       /// **Example (v19 and up):**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// with vfs.File(file) as f:
+      /// with xbmcvfs.File(file) as f:
       ///   result = f.seek(8129, 0)
       /// ..
       /// ~~~~~~~~~~~~~
@@ -267,7 +267,7 @@ namespace Addon
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// f = vfs.File(file)
+      /// f = xbmcvfs.File(file)
       /// s = f.tell()
       /// f.close()
       /// ..
@@ -276,7 +276,7 @@ namespace Addon
       /// **Example (v19 and up):**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// with vfs.File(file) as f:
+      /// with xbmcvfs.File(file) as f:
       ///   s = f.tell()
       /// ..
       /// ~~~~~~~~~~~~~
@@ -298,7 +298,7 @@ namespace Addon
       /// **Example:**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// f = vfs.File(file)
+      /// f = xbmcvfs.File(file)
       /// f.close()
       /// ..
       /// ~~~~~~~~~~~~~
@@ -306,7 +306,7 @@ namespace Addon
       /// **Example (v19 and up):**
       /// ~~~~~~~~~~~~~{.py}
       /// ..
-      /// with vfs.File(file) as f:
+      /// with xbmcvfs.File(file) as f:
       ///   ..
       /// ..
       /// ~~~~~~~~~~~~~

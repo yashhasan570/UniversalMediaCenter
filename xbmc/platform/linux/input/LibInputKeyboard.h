@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -9,7 +9,7 @@
 #pragma once
 
 #include "threads/Timer.h"
-#include "windowing/_events.h"
+#include "windowing/XBMC_events.h"
 
 #include <map>
 #include <memory>
@@ -32,7 +32,7 @@ public:
   bool SetKeymap(const std::string& layout);
 
 private:
-  Key KeyForKeysym(xkb_keysym_t sym, uint32_t scancode);
+  XBMCKey XBMCKeyForKeysym(xkb_keysym_t sym, uint32_t scancode);
   void KeyRepeatTimeout();
   /**
    * Check if the system supports key composition
@@ -85,7 +85,7 @@ private:
 
   int m_leds;
 
-  _Event m_repeatEvent;
+  XBMC_Event m_repeatEvent;
   std::map<libinput_device*, std::vector<int>> m_repeatData;
   CTimer m_repeatTimer;
   int m_repeatRate;

@@ -4,7 +4,7 @@
         version="1.1.50"
         provider-name="Team Universal Media Center">
     <extension point="universalmediacenter.game.controller" library="resources/layout.xml"/>
-    <extension point=".addon.metadata">
+    <extension point="xbmc.addon.metadata">
         <platform>all</platform>
         <assets>
             <icon>resources/icon.png</icon>

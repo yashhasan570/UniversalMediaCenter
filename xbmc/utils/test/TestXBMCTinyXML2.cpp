@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -9,8 +9,8 @@
 #include "filesystem/File.h"
 #include "test/TestUtils.h"
 #include "utils/StringUtils.h"
-#include "utils/TinyXML.h"
-#include "utils/TinyXML2.h"
+#include "utils/XBMCTinyXML.h"
+#include "utils/XBMCTinyXML2.h"
 
 #include <array>
 #include <string>
@@ -18,15 +18,15 @@
 
 #include <gtest/gtest.h>
 
-class TestTinyXML2 : public testing::Test
+class TestXBMCTinyXML2 : public testing::Test
 {
 };
 
-TEST(TestTinyXML2, ParseFromString)
+TEST(TestXBMCTinyXML2, ParseFromString)
 {
   bool retval = false;
   // scraper results with unescaped &
-  CTinyXML2 doc;
+  CXBMCTinyXML2 doc;
   std::string data("<details><url function=\"ParseTMDBRating\" "
                    "cache=\"tmdb-en-12244.json\">"
                    "http://api.themoviedb.org/3/movie/12244"
@@ -47,12 +47,12 @@ TEST(TestTinyXML2, ParseFromString)
   EXPECT_TRUE(retval);
 }
 
-TEST(TestTinyXML2, ParseFromChar)
+TEST(TestXBMCTinyXML2, ParseFromChar)
 {
   bool retval = false;
   // scraper results with unescaped &
-  CTinyXML2 doc;
-  std::string testfile = _REF_FILE_PATH("//utils/test/CTinyXML-test.xml");
+  CXBMCTinyXML2 doc;
+  std::string testfile = XBMC_REF_FILE_PATH("/xbmc/utils/test/CXBMCTinyXML-test.xml");
   bool load = doc.LoadFile(testfile);
   EXPECT_TRUE(load);
 
@@ -73,21 +73,21 @@ TEST(TestTinyXML2, ParseFromChar)
   EXPECT_TRUE(retval);
 }
 
-TEST(TestTinyXML2, ParseFromCharFail)
+TEST(TestXBMCTinyXML2, ParseFromCharFail)
 {
   // scraper results with unescaped &
-  CTinyXML2 doc;
-  std::string testfile = _REF_FILE_PATH("//utils/test/Non-existant-CTinyXML-test.xml");
+  CXBMCTinyXML2 doc;
+  std::string testfile = XBMC_REF_FILE_PATH("/xbmc/utils/test/Non-existant-CXBMCTinyXML-test.xml");
   bool load = doc.LoadFile(testfile);
   EXPECT_FALSE(load);
 }
 
-TEST(TestTinyXML2, ParseFromFileHandle)
+TEST(TestXBMCTinyXML2, ParseFromFileHandle)
 {
   bool retval = false;
   // scraper results with unescaped &
-  CTinyXML2 doc;
-  FILE* f = fopen(_REF_FILE_PATH("//utils/test/CTinyXML-test.xml").c_str(), "r");
+  CXBMCTinyXML2 doc;
+  FILE* f = fopen(XBMC_REF_FILE_PATH("/xbmc/utils/test/CXBMCTinyXML-test.xml").c_str(), "r");
   ASSERT_NE(nullptr, f);
   doc.LoadFile(f);
   fclose(f);
@@ -107,16 +107,16 @@ TEST(TestTinyXML2, ParseFromFileHandle)
 }
 
 #if defined(TARGET_WINDOWS)
-// Windows fails this test. Something to do with _TEMPFILEPATH
+// Windows fails this test. Something to do with XBMC_TEMPFILEPATH
 // Todo: fix this
-TEST(TestTinyXML2, DISABLED_SaveFile)
+TEST(TestXBMCTinyXML2, DISABLED_SaveFile)
 #else
-TEST(TestTinyXML2, SaveFile)
+TEST(TestXBMCTinyXML2, SaveFile)
 #endif
 {
   bool retval = false;
   // scraper results with unescaped &
-  CTinyXML2 outputdoc;
+  CXBMCTinyXML2 outputdoc;
   std::string data("<details><url function=\"ParseTMDBRating\" "
                    "cache=\"tmdb-en-12244.json\">"
                    "http://api.themoviedb.org/3/movie/12244"
@@ -125,18 +125,18 @@ TEST(TestTinyXML2, SaveFile)
   outputdoc.Parse(data);
 
   XFILE::CFile* file;
-  file = _CREATETEMPFILE(".xml");
-  std::string xmlfile = _TEMPFILEPATH(file);
+  file = XBMC_CREATETEMPFILE(".xml");
+  std::string xmlfile = XBMC_TEMPFILEPATH(file);
 
   EXPECT_TRUE(outputdoc.SaveFile(xmlfile));
   file->Close();
 
-  CTinyXML2 inputdoc;
+  CXBMCTinyXML2 inputdoc;
   FILE* f = fopen(xmlfile.c_str(), "r");
   ASSERT_NE(nullptr, f);
   inputdoc.LoadFile(f);
   fclose(f);
-  _DELETETEMPFILE(file);
+  XBMC_DELETETEMPFILE(file);
 
   auto* root = inputdoc.RootElement();
   if (root && (strcmp(root->Value(), "details") == 0))
@@ -165,7 +165,7 @@ struct CharsetTest
 
 constexpr std::string_view CAFE_UTF8{"caf\xC3\xA9"};
 
-// CTinyXML is the reference, CTinyXML2 must produce the same results
+// CXBMCTinyXML is the reference, CXBMCTinyXML2 must produce the same results
 constexpr auto charsetTests = std::array{
     CharsetTest{"Utf8", "<a>caf\xC3\xA9</a>", "", "UTF-8", CAFE_UTF8},
     CharsetTest{"Utf8Bom", "\xEF\xBB\xBF<a>caf\xC3\xA9</a>", "", "UTF-8", CAFE_UTF8},
@@ -181,78 +181,78 @@ constexpr auto charsetTests = std::array{
     CharsetTest{"Unconvertible", "<a>\x81</a>\n", "", "", "\x81"},
 };
 
-class TestTinyXML2Charset : public testing::TestWithParam<CharsetTest>
+class TestXBMCTinyXML2Charset : public testing::TestWithParam<CharsetTest>
 {
 };
 } // namespace
 
-TEST_P(TestTinyXML2Charset, ParseTinyXML1)
+TEST_P(TestXBMCTinyXML2Charset, ParseTinyXML1)
 {
   const CharsetTest& test = GetParam();
-  CTinyXML doc;
+  CXBMCTinyXML doc;
   ASSERT_TRUE(doc.Parse(std::string{test.data}, std::string{test.charset}));
   ASSERT_NE(nullptr, doc.RootElement());
   EXPECT_STREQ(std::string{test.text}.c_str(), doc.RootElement()->GetText());
   EXPECT_EQ(test.usedCharset, doc.GetUsedCharset());
 }
 
-TEST_P(TestTinyXML2Charset, LoadFileTinyXML1)
+TEST_P(TestXBMCTinyXML2Charset, LoadFileTinyXML1)
 {
   const CharsetTest& test = GetParam();
   if (!test.charset.empty())
     GTEST_SKIP() << "LoadFile takes the suggested charset from the file";
 
-  XFILE::CFile* file = _CREATETEMPFILE(".xml");
+  XFILE::CFile* file = XBMC_CREATETEMPFILE(".xml");
   ASSERT_NE(nullptr, file);
   ASSERT_EQ(static_cast<ssize_t>(test.data.size()),
             file->Write(test.data.data(), test.data.size()));
   file->Close();
-  const std::string path = _TEMPFILEPATH(file);
+  const std::string path = XBMC_TEMPFILEPATH(file);
 
-  CTinyXML doc;
+  CXBMCTinyXML doc;
   const bool loaded = doc.LoadFile(path);
-  _DELETETEMPFILE(file);
+  XBMC_DELETETEMPFILE(file);
   ASSERT_TRUE(loaded);
   ASSERT_NE(nullptr, doc.RootElement());
   EXPECT_STREQ(std::string{test.text}.c_str(), doc.RootElement()->GetText());
   EXPECT_EQ(test.usedCharset, doc.GetUsedCharset());
 }
 
-TEST_P(TestTinyXML2Charset, Parse)
+TEST_P(TestXBMCTinyXML2Charset, Parse)
 {
   const CharsetTest& test = GetParam();
-  CTinyXML2 doc;
+  CXBMCTinyXML2 doc;
   ASSERT_TRUE(doc.Parse(std::string{test.data}, std::string{test.charset}));
   ASSERT_NE(nullptr, doc.RootElement());
   EXPECT_STREQ(std::string{test.text}.c_str(), doc.RootElement()->GetText());
   EXPECT_EQ(test.usedCharset, doc.GetUsedCharset());
 }
 
-TEST_P(TestTinyXML2Charset, LoadFile)
+TEST_P(TestXBMCTinyXML2Charset, LoadFile)
 {
   const CharsetTest& test = GetParam();
   if (!test.charset.empty())
     GTEST_SKIP() << "LoadFile takes the suggested charset from the file";
 
-  XFILE::CFile* file = _CREATETEMPFILE(".xml");
+  XFILE::CFile* file = XBMC_CREATETEMPFILE(".xml");
   ASSERT_NE(nullptr, file);
   ASSERT_EQ(static_cast<ssize_t>(test.data.size()),
             file->Write(test.data.data(), test.data.size()));
   file->Close();
-  const std::string path = _TEMPFILEPATH(file);
+  const std::string path = XBMC_TEMPFILEPATH(file);
 
-  CTinyXML2 doc;
+  CXBMCTinyXML2 doc;
   const bool loaded = doc.LoadFile(path);
-  _DELETETEMPFILE(file);
+  XBMC_DELETETEMPFILE(file);
   ASSERT_TRUE(loaded);
   ASSERT_NE(nullptr, doc.RootElement());
   EXPECT_STREQ(std::string{test.text}.c_str(), doc.RootElement()->GetText());
   EXPECT_EQ(test.usedCharset, doc.GetUsedCharset());
 }
 
-TEST(TestTinyXML2, ConvertedDeclaresUtf8)
+TEST(TestXBMCTinyXML2, ConvertedDeclaresUtf8)
 {
-  CTinyXML2 doc;
+  CXBMCTinyXML2 doc;
   ASSERT_TRUE(doc.Parse(std::string{"<?xml version=\"1.0\" encoding='ISO-8859-1' "
                                     "standalone=\"yes\"?><a>caf\xE9</a>"},
                         ""));
@@ -263,15 +263,15 @@ TEST(TestTinyXML2, ConvertedDeclaresUtf8)
 
   tinyxml2::XMLPrinter printer;
   doc.Print(&printer);
-  CTinyXML2 reloaded;
+  CXBMCTinyXML2 reloaded;
   ASSERT_TRUE(reloaded.Parse(std::string{printer.CStr()}, ""));
   EXPECT_EQ("UTF-8", reloaded.GetUsedCharset());
   ASSERT_NE(nullptr, reloaded.RootElement());
   EXPECT_STREQ(std::string{CAFE_UTF8}.c_str(), reloaded.RootElement()->GetText());
 }
 
-INSTANTIATE_TEST_SUITE_P(TestTinyXML2,
-                         TestTinyXML2Charset,
+INSTANTIATE_TEST_SUITE_P(TestXBMCTinyXML2,
+                         TestXBMCTinyXML2Charset,
                          testing::ValuesIn(charsetTests),
                          [](const testing::TestParamInfo<CharsetTest>& info)
                          { return std::string{info.param.name}; });

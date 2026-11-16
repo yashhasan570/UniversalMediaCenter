@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -235,7 +235,7 @@ char CWIN32Util::FirstDriveFromMask (ULONG unitmask)
     return (i + 'A');
 }
 
-bool CWIN32Util::ShellExecute(const std::string &strPath, bool bWaitForScriptExit)
+bool CWIN32Util::XBMCShellExecute(const std::string &strPath, bool bWaitForScriptExit)
 {
 #ifdef TARGET_WINDOWS_STORE
   CLog::LogF(LOGDEBUG, "s not implemented");
@@ -298,7 +298,7 @@ bool CWIN32Util::ShellExecute(const std::string &strPath, bool bWaitForScriptExi
   g_windowHelper.SetHANDLE(ShExecInfo.hProcess);
 
   // ShellExecute doesn't return the window of the started process
-  // we need to gather it from somewhere to allow switch back to 
+  // we need to gather it from somewhere to allow switch back to XBMC
   // when a program is minimized instead of stopped.
   //g_windowHelper.SetHWND(ShExecInfo.hwnd);
   g_windowHelper.Create();
@@ -1078,7 +1078,7 @@ bool CWIN32Util::UtilRegOpenKeyEx( const HKEY hKeyParent, const char *const pcKe
 
 // Retrieve the filename of the process that currently has the focus.
 // Typically this will be some process using the system tray grabbing
-// the focus and causing  to minimise. Logging the offending
+// the focus and causing XBMC to minimise. Logging the offending
 // process name can help the user fix the problem.
 bool CWIN32Util::GetFocussedProcess(std::string &strProcessFile)
 {

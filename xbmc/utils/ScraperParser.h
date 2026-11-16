@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2012-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -19,7 +19,7 @@ namespace ADDON
 }
 
 class TiXmlElement;
-class CTinyXML;
+class CXBMCTinyXML;
 
 class CScraperSettings;
 
@@ -39,7 +39,7 @@ public:
   const std::string Parse(const std::string& strTag,
                          ADDON::CScraper* scraper);
 
-  void AddDocument(const CTinyXML* doc);
+  void AddDocument(const CXBMCTinyXML* doc);
 
   std::string m_param[MAX_SCRAPER_BUFFERS];
 
@@ -65,7 +65,7 @@ private:
   void GetBufferParams(bool* result, const char* attribute, bool defvalue);
   void InsertToken(std::string& strOutput, int buf, const char* token);
 
-  CTinyXML* m_document;
+  CXBMCTinyXML* m_document;
   TiXmlElement* m_pRootElement;
 
   const char* m_SearchStringEncoding;

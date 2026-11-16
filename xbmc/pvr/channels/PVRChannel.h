@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2012-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -189,12 +189,12 @@ public:
   bool SetIconPath(const std::string& strIconPath, bool bIsUserSetIcon = false);
 
   /*!
-   * @return The name for this channel used by .
+   * @return The name for this channel used by XBMC.
    */
   std::string ChannelName() const;
 
   /*!
-   * @brief Set the name for this channel used by .
+   * @brief Set the name for this channel used by XBMC.
    * @param strChannelName The new channel name.
    * @param bIsUserSetName whether the change was triggered by the user directly
    * @return True if something changed, false otherwise.
@@ -298,7 +298,7 @@ public:
   /*!
    * @brief Return true if this channel is encrypted.
    *
-   * Return true if this channel is encrypted. Does not inform whether  can play the file.
+   * Return true if this channel is encrypted. Does not inform whether XBMC can play the file.
    * Decryption should be done by the client.
    *
    * @return Return true if this channel is encrypted.

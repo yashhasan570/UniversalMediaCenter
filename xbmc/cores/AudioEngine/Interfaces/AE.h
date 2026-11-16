@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2010-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -191,7 +191,7 @@ public:
   /*!
    * \brief Creates a new IAESound that is ready to play the specified file
    *
-   * \param file The WAV file to load, this supports 's VFS
+   * \param file The WAV file to load, this supports XBMC's VFS
    * \return A new IAESound if the file could be loaded, otherwise NULL
    */
   virtual SoundPtr MakeSound(const std::string& file) = 0;

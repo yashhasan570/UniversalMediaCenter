@@ -2,8 +2,8 @@
  *      Copyright (C) 2007 by Tobias Arrskog
  *      topfs@tobias
  *
- *      Copyright (C) 2007-2013 Team 
- *      http://github.com/yashhasan570/UniversalMediaCenter
+ *      Copyright (C) 2007-2013 Team XBMC
+ *      http://universalmediacenter.tv
  *
  *  This Program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -16,7 +16,7 @@
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with ; see the file COPYING.  If not, see
+ *  along with XBMC; see the file COPYING.  If not, see
  *  <http://www.gnu.org/licenses/>.
  *
  */

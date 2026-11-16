@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -21,25 +21,25 @@ namespace ADDON
 
 void Interface_GUIDialogExtendedProgress::Init(AddonGlobalInterface* addonInterface)
 {
-  addonInterface->toUniversal Media Center->->dialogExtendedProgress =
-      new AddonToUniversal Media CenterFuncTable__dialogExtendedProgress();
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogExtendedProgress =
+      new AddonToUniversal Media CenterFuncTable_universalmediacenter_gui_dialogExtendedProgress();
 
-  addonInterface->toUniversal Media Center->->dialogExtendedProgress->new_dialog = new_dialog;
-  addonInterface->toUniversal Media Center->->dialogExtendedProgress->delete_dialog = delete_dialog;
-  addonInterface->toUniversal Media Center->->dialogExtendedProgress->get_title = get_title;
-  addonInterface->toUniversal Media Center->->dialogExtendedProgress->set_title = set_title;
-  addonInterface->toUniversal Media Center->->dialogExtendedProgress->get_text = get_text;
-  addonInterface->toUniversal Media Center->->dialogExtendedProgress->set_text = set_text;
-  addonInterface->toUniversal Media Center->->dialogExtendedProgress->is_finished = is_finished;
-  addonInterface->toUniversal Media Center->->dialogExtendedProgress->mark_finished = mark_finished;
-  addonInterface->toUniversal Media Center->->dialogExtendedProgress->get_percentage = get_percentage;
-  addonInterface->toUniversal Media Center->->dialogExtendedProgress->set_percentage = set_percentage;
-  addonInterface->toUniversal Media Center->->dialogExtendedProgress->set_progress = set_progress;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogExtendedProgress->new_dialog = new_dialog;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogExtendedProgress->delete_dialog = delete_dialog;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogExtendedProgress->get_title = get_title;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogExtendedProgress->set_title = set_title;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogExtendedProgress->get_text = get_text;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogExtendedProgress->set_text = set_text;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogExtendedProgress->is_finished = is_finished;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogExtendedProgress->mark_finished = mark_finished;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogExtendedProgress->get_percentage = get_percentage;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogExtendedProgress->set_percentage = set_percentage;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogExtendedProgress->set_progress = set_progress;
 }
 
 void Interface_GUIDialogExtendedProgress::DeInit(AddonGlobalInterface* addonInterface)
 {
-  delete addonInterface->toUniversal Media Center->->dialogExtendedProgress;
+  delete addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogExtendedProgress;
 }
 
 UNIVERSALMEDIA_GUI_HANDLE Interface_GUIDialogExtendedProgress::new_dialog(UNIVERSALMEDIA_HANDLE universalmediacenterBase,

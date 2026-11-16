@@ -1,15 +1,15 @@
-# Universal Media Center Media Center language file
+# Kodi Media Center language file
 # Addon Name: Version Check
-# Addon id: service..versioncheck
-# Addon Provider: Team Universal Media Center
+# Addon id: service.xbmc.versioncheck
+# Addon Provider: Team Kodi
 msgid ""
 msgstr ""
-"Project-Id-Version:  Addons\n"
-"Report-Msgid-Bugs-To: translations@github.com/yashhasan570/UniversalMediaCenter\n"
+"Project-Id-Version: XBMC Addons\n"
+"Report-Msgid-Bugs-To: translations@kodi.tv\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: 2023-01-08 13:15+0000\n"
 "Last-Translator: HansCR <h.vanek@gmail.com>\n"
-"Language-Team: Czech <https://universalmediacenter.weblate.cloud/projects/Universal Media Center-core/service--versioncheck/cs_cz/>\n"
+"Language-Team: Czech <https://kodi.weblate.cloud/projects/kodi-core/service-xbmc-versioncheck/cs_cz/>\n"
 "Language: cs_cz\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,24 +18,24 @@ msgstr ""
 "X-Generator: Weblate 4.15\n"
 
 msgctxt "Addon Summary"
-msgid "Universal Media Center Version Check checks if you are running latest released version."
-msgstr "Kontrola verze Universal Media Center, zkontroluje, zda používáte nejnovější vydanou verzi."
+msgid "Kodi Version Check checks if you are running latest released version."
+msgstr "Kontrola verze Kodi, zkontroluje, zda používáte nejnovější vydanou verzi."
 
 msgctxt "Addon Description"
-msgid "Universal Media Center Version Check only supports a number of platforms/distros as releases may differ between them. For more information visit the github.com/yashhasan570/UniversalMediaCenter website."
-msgstr "Kontrola verze Universal Media Center podporuje pouze několik platforem/distribucí a verze mezi nimi se můžou lišit. Pro více informací navštivte webové stránky github.com/yashhasan570/UniversalMediaCenter."
+msgid "Kodi Version Check only supports a number of platforms/distros as releases may differ between them. For more information visit the kodi.tv website."
+msgstr "Kontrola verze Kodi podporuje pouze několik platforem/distribucí a verze mezi nimi se můžou lišit. Pro více informací navštivte webové stránky kodi.tv."
 
 msgctxt "Addon Disclaimer"
-msgid "Feel free to use this script. For information visit github.com/yashhasan570/UniversalMediaCenter"
-msgstr "Neváhejte použít tento skript. Pro více informací navštivte github.com/yashhasan570/UniversalMediaCenter"
+msgid "Feel free to use this script. For information visit kodi.tv"
+msgstr "Neváhejte použít tento skript. Pro více informací navštivte kodi.tv"
 
 msgctxt "#32001"
 msgid "We would like to recommend you to upgrade."
 msgstr "Rádi bychom vám doporučili upgrade."
 
 msgctxt "#32002"
-msgid "Visit Universal Media Center.tv for more information."
-msgstr "Navštivte Universal Media Center.tv pro více informací."
+msgid "Visit Kodi.tv for more information."
+msgstr "Navštivte Kodi.tv pro více informací."
 
 msgctxt "#32009"
 msgid "Would you like to remove this reminder?"
@@ -58,24 +58,24 @@ msgid "Upgrade successful"
 msgstr "Aktualizace úspěšná"
 
 msgctxt "#32014"
-msgid "Do you want to restart Universal Media Center to finish the upgrade?"
-msgstr "Chcete restartovat Universal Media Center pro dokončení aktualizace?"
+msgid "Do you want to restart Kodi to finish the upgrade?"
+msgstr "Chcete restartovat Kodi pro dokončení aktualizace?"
 
 msgctxt "#32015"
 msgid "Do you want to check the repository for a new version?"
 msgstr "Chcete zjistit, jestli je v repositáři nová verze?"
 
 msgctxt "#32016"
-msgid "There is a newer stable Universal Media Center version available."
-msgstr "Je k dispozici nová verze Universal Media Center."
+msgid "There is a newer stable Kodi version available."
+msgstr "Je k dispozici nová verze Kodi."
 
 msgctxt "#32020"
 msgid "General"
 msgstr "Obecné"
 
 msgctxt "#32021"
-msgid "Enable Universal Media Center version check?"
-msgstr "Povolit kontrolu verze Universal Media Center?"
+msgid "Enable Kodi version check?"
+msgstr "Povolit kontrolu verze Kodi?"
 
 msgctxt "#32022"
 msgid "Please enter your password"
@@ -91,23 +91,23 @@ msgstr "Linux: Aktualizace za použití apt"
 
 #. Used in OK dialog
 msgctxt "#32030"
-msgid "A new stable version of Universal Media Center is available."
-msgstr "Je k dispozici nová stabilní verze Universal Media Center."
+msgid "A new stable version of Kodi is available."
+msgstr "Je k dispozici nová stabilní verze Kodi."
 
 #. Direct people to the website. Used in OK dialog
 msgctxt "#32031"
-msgid "Visit http://github.com/yashhasan570/UniversalMediaCenter for more information."
-msgstr "Navštivte http://github.com/yashhasan570/UniversalMediaCenter pro více informací."
+msgid "Visit http://kodi.tv for more information."
+msgstr "Navštivte http://kodi.tv pro více informací."
 
 #. Used in OK dialog
 msgctxt "#32032"
-msgid "A new stable version of Universal Media Center is available."
-msgstr "Je k dispozici nová stabilní verze Universal Media Center."
+msgid "A new stable version of Kodi is available."
+msgstr "Je k dispozici nová stabilní verze Kodi."
 
 #. Direct people to the website. Used in OK dialog
 msgctxt "#32033"
-msgid "Visit http://github.com/yashhasan570/UniversalMediaCenter for more information."
-msgstr "Navštivte http://github.com/yashhasan570/UniversalMediaCenter pro více informací."
+msgid "Visit http://kodi.tv for more information."
+msgstr "Navštivte http://kodi.tv pro více informací."
 
 #. For example: "You are using 13.1 prealpha while 13.2 stable is available"
 msgctxt "#32034"
@@ -129,8 +129,8 @@ msgid "Please upgrade your operating system."
 msgstr "Prosím aktualizujte váš operační systém."
 
 msgctxt "#32042"
-msgid "For more information, see https://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Linux"
-msgstr "Pro více informací navštivte https://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Linux"
+msgid "For more information, see https://kodi.wiki/view/Linux"
+msgstr "Pro více informací navštivte https://kodi.wiki/view/Linux"
 
 #~ msgctxt "#32035"
 #~ msgid "It is recommended that you to upgrade to a newer version."

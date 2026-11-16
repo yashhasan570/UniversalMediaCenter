@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2007-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -19,7 +19,7 @@
 #include "windowing/GraphicContext.h"
 #include "windowing/WinSystem.h"
 
-#include "platform/android/activity/App.h"
+#include "platform/android/activity/XBMCApp.h"
 
 #include <chrono>
 #include <thread>
@@ -107,7 +107,7 @@ void CRendererMediaCodecSurface::ReleaseVideoBuffer(int idx, bool render)
     if (mcvb)
     {
       if (render && m_bConfigured)
-        mcvb->RenderUpdate(m_surfDestRect, CApp::Get().GetNextFrameTime());
+        mcvb->RenderUpdate(m_surfDestRect, CXBMCApp::Get().GetNextFrameTime());
       else
         mcvb->ReleaseOutputBuffer(render, 0);
     }

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2022- Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -47,7 +47,7 @@ TEST_F(TestEdl, TestParsingMplayerTimeBasedEDL)
   // create a dummy "media" fileitem whose corresponding edl file is testdata/mplayertimebased.edl
   CFileItem mediaItem;
   mediaItem.SetPath(
-      _REF_FILE_PATH("/cores/VideoPlayer/Edl/test/testdata/mplayertimebased.mkv"));
+      XBMC_REF_FILE_PATH("xbmc/cores/VideoPlayer/Edl/test/testdata/mplayertimebased.mkv"));
   const bool found = edl.ReadEditDecisionLists(mediaItem, 0, 0ms);
   // expect universalmediacenter to be able to parse the file correctly
   EXPECT_EQ(found, true);
@@ -135,7 +135,7 @@ TEST_F(TestEdl, TestParsingEDLFromItemProperty)
   mediaItem.SetPath("https://example.com/stream.mpd");
   mediaItem.SetProperty(
       "edlpath",
-      _REF_FILE_PATH("/cores/VideoPlayer/Edl/test/testdata/mplayertimebasedmixed.edl"));
+      XBMC_REF_FILE_PATH("xbmc/cores/VideoPlayer/Edl/test/testdata/mplayertimebasedmixed.edl"));
   EXPECT_EQ(edl.ReadEditDecisionLists(mediaItem, 0, 0ms), true);
   EXPECT_EQ(edl.HasCuts(), true);
   EXPECT_EQ(edl.GetSceneMarkers().size(), 4);
@@ -147,10 +147,10 @@ TEST_F(TestEdl, TestEDLPropertyTakesPriorityOverVideoReDo)
   CEdl edl;
 
   CFileItem mediaItem;
-  mediaItem.SetPath(_REF_FILE_PATH("/cores/VideoPlayer/Edl/test/testdata/videoredo.mkv"));
+  mediaItem.SetPath(XBMC_REF_FILE_PATH("xbmc/cores/VideoPlayer/Edl/test/testdata/videoredo.mkv"));
   mediaItem.SetProperty(
       "edlpath",
-      _REF_FILE_PATH("/cores/VideoPlayer/Edl/test/testdata/mplayertimebasedmixed.edl"));
+      XBMC_REF_FILE_PATH("xbmc/cores/VideoPlayer/Edl/test/testdata/mplayertimebasedmixed.edl"));
   EXPECT_EQ(edl.ReadEditDecisionLists(mediaItem, 0, 0ms), true);
   ASSERT_FALSE(edl.GetEditList().empty());
   EXPECT_EQ(edl.GetEditList().front().start, 15s - edl.GetTotalCutTime());
@@ -163,8 +163,8 @@ TEST_F(TestEdl, TestParsingMplayerTimeBasedInterleavedCutsEDL)
   // create a dummy "media" fileitem whose corresponding edl file is testdata/mplayertimebasedinterleavedcuts.edl
   // this is an edl file with commbreaks interleaved with cuts
   CFileItem mediaItem;
-  mediaItem.SetPath(_REF_FILE_PATH(
-      "/cores/VideoPlayer/Edl/test/testdata/mplayertimebasedinterleavedcuts.mkv"));
+  mediaItem.SetPath(XBMC_REF_FILE_PATH(
+      "xbmc/cores/VideoPlayer/Edl/test/testdata/mplayertimebasedinterleavedcuts.mkv"));
   const bool found = edl.ReadEditDecisionLists(mediaItem, 0, 0ms);
   // expect universalmediacenter to be able to parse the file correctly
   EXPECT_EQ(found, true);
@@ -194,7 +194,7 @@ TEST_F(TestEdl, TestParsingMplayerFrameBasedEDL)
   // this is an edl file with frame based edit points
   CFileItem mediaItem;
   mediaItem.SetPath(
-      _REF_FILE_PATH("/cores/VideoPlayer/Edl/test/testdata/mplayerframebased.mkv"));
+      XBMC_REF_FILE_PATH("xbmc/cores/VideoPlayer/Edl/test/testdata/mplayerframebased.mkv"));
   const bool found = edl.ReadEditDecisionLists(mediaItem, fps, 0ms);
   // expect universalmediacenter to be able to parse the file correctly
   EXPECT_EQ(found, true);
@@ -221,7 +221,7 @@ TEST_F(TestEdl, TestParsingMplayerTimeBasedMixedEDL)
   // this file has edit points with seconds and others with seconds timestrings
   CFileItem mediaItem;
   mediaItem.SetPath(
-      _REF_FILE_PATH("/cores/VideoPlayer/Edl/test/testdata/mplayertimebasedmixed.mkv"));
+      XBMC_REF_FILE_PATH("xbmc/cores/VideoPlayer/Edl/test/testdata/mplayertimebasedmixed.mkv"));
   bool found = edl.ReadEditDecisionLists(mediaItem, 0, 0ms);
   // expect universalmediacenter to be able to parse the file correctly
   EXPECT_EQ(found, true);
@@ -251,7 +251,7 @@ TEST_F(TestEdl, TestParsingVideoRedoEDL)
   // create a dummy "media" fileitem whose corresponding edl file is testdata/videoredo.Vprj
   // this is an edl file in VideoReDo format
   CFileItem mediaItem;
-  mediaItem.SetPath(_REF_FILE_PATH("/cores/VideoPlayer/Edl/test/testdata/videoredo.mkv"));
+  mediaItem.SetPath(XBMC_REF_FILE_PATH("xbmc/cores/VideoPlayer/Edl/test/testdata/videoredo.mkv"));
   bool found = edl.ReadEditDecisionLists(mediaItem, 0, 0ms);
   EXPECT_EQ(found, true);
   EXPECT_EQ(edl.HasEdits(), true);
@@ -274,7 +274,7 @@ TEST_F(TestEdl, TestSnapStreamEDL)
   // create a dummy "media" fileitem whose corresponding edl file is testdata/snapstream.mkv.chapters.xml
   // this is an edl file in SnapStream BeyondTV format
   CFileItem mediaItem;
-  mediaItem.SetPath(_REF_FILE_PATH("/cores/VideoPlayer/Edl/test/testdata/snapstream.mkv"));
+  mediaItem.SetPath(XBMC_REF_FILE_PATH("xbmc/cores/VideoPlayer/Edl/test/testdata/snapstream.mkv"));
   const bool found = edl.ReadEditDecisionLists(mediaItem, 0, 0ms);
   EXPECT_EQ(found, true);
   // this format only supports commbreak types
@@ -296,7 +296,7 @@ TEST_F(TestEdl, TestComSkipVersion1EDL)
   // this is an edl file in ComSkip (version 1) format
   CFileItem mediaItem;
   mediaItem.SetPath(
-      _REF_FILE_PATH("/cores/VideoPlayer/Edl/test/testdata/comskipversion1.mkv"));
+      XBMC_REF_FILE_PATH("xbmc/cores/VideoPlayer/Edl/test/testdata/comskipversion1.mkv"));
   bool found = edl.ReadEditDecisionLists(mediaItem, 0, 0ms);
   // fps was not supplied, universalmediacenter will not be able to process the file
   EXPECT_EQ(found, false);
@@ -324,7 +324,7 @@ TEST_F(TestEdl, TestComSkipVersion2EDL)
   // this is an edl file in ComSkip (version 2) format where fps is obtained from the file
   CFileItem mediaItem;
   mediaItem.SetPath(
-      _REF_FILE_PATH("/cores/VideoPlayer/Edl/test/testdata/comskipversion2.mkv"));
+      XBMC_REF_FILE_PATH("xbmc/cores/VideoPlayer/Edl/test/testdata/comskipversion2.mkv"));
   const bool found = edl.ReadEditDecisionLists(mediaItem, 0, 0ms);
   EXPECT_EQ(found, true);
   // fps is obtained from the file as it always takes precedence (note we supplied 0 above),
@@ -379,7 +379,7 @@ TEST_F(TestEdl, TestCommBreakAdvancedSettings)
   // create a dummy "media" fileitem whose corresponding edl file is testdata/edlautowindautowait.txt
   CFileItem mediaItem;
   mediaItem.SetPath(
-      _REF_FILE_PATH("/cores/VideoPlayer/Edl/test/testdata/edlautowindautowait.mkv"));
+      XBMC_REF_FILE_PATH("xbmc/cores/VideoPlayer/Edl/test/testdata/edlautowindautowait.mkv"));
   bool found = edl.ReadEditDecisionLists(mediaItem, 0, 0ms);
   EXPECT_EQ(found, true);
   // confirm the start and end times of all the commbreaks match
@@ -449,7 +449,7 @@ TEST_F(TestEdl, TestCommBreakAdvancedSettingsRemoveSmallCommbreaks)
 
   CFileItem mediaItem;
   mediaItem.SetPath(
-      _REF_FILE_PATH("/cores/VideoPlayer/Edl/test/testdata/edlautowindautowait.mkv"));
+      XBMC_REF_FILE_PATH("xbmc/cores/VideoPlayer/Edl/test/testdata/edlautowindautowait.mkv"));
   const bool found = edl.ReadEditDecisionLists(mediaItem, 0, 0ms);
   EXPECT_EQ(found, true);
   EXPECT_EQ(edl.GetEditList().size(), 3);
@@ -478,7 +478,7 @@ TEST_F(TestEdl, TestMergeSmallCommbreaks)
 
   CFileItem mediaItem;
   mediaItem.SetPath(
-      _REF_FILE_PATH("/cores/VideoPlayer/Edl/test/testdata/edlautowindautowait.mkv"));
+      XBMC_REF_FILE_PATH("xbmc/cores/VideoPlayer/Edl/test/testdata/edlautowindautowait.mkv"));
   const bool found = edl.ReadEditDecisionLists(mediaItem, 0, 0ms);
   EXPECT_EQ(found, true);
   // universalmediacenter should merge all commbreaks into a single one starting at the first point (0)
@@ -511,7 +511,7 @@ TEST_F(TestEdl, TestMergeSmallCommbreaksAdvanced)
 
   CFileItem mediaItem;
   mediaItem.SetPath(
-      _REF_FILE_PATH("/cores/VideoPlayer/Edl/test/testdata/edlautowindautowait.mkv"));
+      XBMC_REF_FILE_PATH("xbmc/cores/VideoPlayer/Edl/test/testdata/edlautowindautowait.mkv"));
   const bool found = edl.ReadEditDecisionLists(mediaItem, 0, 0ms);
   EXPECT_EQ(found, true);
   // universalmediacenter should merge all commbreaks into two
@@ -718,7 +718,7 @@ TEST_F(TestParseEditsForEpisode, EmptyMultiEpisodeResultIsNoOp)
   CEdl edl;
   CFileItem mediaItem;
   mediaItem.SetPath(
-      _REF_FILE_PATH("/cores/VideoPlayer/Edl/test/testdata/mplayertimebased.mkv"));
+      XBMC_REF_FILE_PATH("xbmc/cores/VideoPlayer/Edl/test/testdata/mplayertimebased.mkv"));
   edl.ReadEditDecisionLists(mediaItem, 0, 0ms);
   const size_t editsBefore = edl.GetRawEditList().size();
   const size_t markersBefore = edl.GetSceneMarkers().size();
@@ -738,7 +738,7 @@ TEST_F(TestParseEditsForEpisode, EditsOutsideEpisodeWindowAreRemoved)
   CEdl edl;
   CFileItem mediaItem;
   mediaItem.SetPath(
-      _REF_FILE_PATH("/cores/VideoPlayer/Edl/test/testdata/mplayertimebased.mkv"));
+      XBMC_REF_FILE_PATH("xbmc/cores/VideoPlayer/Edl/test/testdata/mplayertimebased.mkv"));
   edl.ReadEditDecisionLists(mediaItem, 0, 0ms);
 
   // Sanity check: cut exists before ParseEditsForEpisode
@@ -760,7 +760,7 @@ TEST_F(TestParseEditsForEpisode, EpisodeStartCutIsAddedToEditList)
   CEdl edl;
   CFileItem mediaItem;
   mediaItem.SetPath(
-      _REF_FILE_PATH("/cores/VideoPlayer/Edl/test/testdata/mplayertimebased.mkv"));
+      XBMC_REF_FILE_PATH("xbmc/cores/VideoPlayer/Edl/test/testdata/mplayertimebased.mkv"));
   edl.ReadEditDecisionLists(mediaItem, 0, 0ms);
 
   const std::chrono::milliseconds fileDuration = 1000s;
@@ -783,7 +783,7 @@ TEST_F(TestParseEditsForEpisode, EpisodeEndCutIsAddedToEditList)
   CEdl edl;
   CFileItem mediaItem;
   mediaItem.SetPath(
-      _REF_FILE_PATH("/cores/VideoPlayer/Edl/test/testdata/mplayertimebased.mkv"));
+      XBMC_REF_FILE_PATH("xbmc/cores/VideoPlayer/Edl/test/testdata/mplayertimebased.mkv"));
   edl.ReadEditDecisionLists(mediaItem, 0, 0ms);
 
   const std::chrono::milliseconds fileDuration = 1000s;
@@ -807,7 +807,7 @@ TEST_F(TestParseEditsForEpisode, TotalCutTimeIsRecalculatedAfterEpisodeWindow)
   CEdl edl;
   CFileItem mediaItem;
   mediaItem.SetPath(
-      _REF_FILE_PATH("/cores/VideoPlayer/Edl/test/testdata/mplayertimebased.mkv"));
+      XBMC_REF_FILE_PATH("xbmc/cores/VideoPlayer/Edl/test/testdata/mplayertimebased.mkv"));
   edl.ReadEditDecisionLists(mediaItem, 0, 0ms);
   EXPECT_EQ(edl.GetTotalCutTime(), 1800ms);
 
@@ -826,7 +826,7 @@ TEST_F(TestParseEditsForEpisode, SceneMarkersOutsideEpisodeWindowAreRemoved)
   CEdl edl;
   CFileItem mediaItem;
   mediaItem.SetPath(
-      _REF_FILE_PATH("/cores/VideoPlayer/Edl/test/testdata/mplayertimebased.mkv"));
+      XBMC_REF_FILE_PATH("xbmc/cores/VideoPlayer/Edl/test/testdata/mplayertimebased.mkv"));
   edl.ReadEditDecisionLists(mediaItem, 0, 0ms);
 
   // There should be 4 scene markers initially
@@ -858,7 +858,7 @@ TEST_F(TestParseEditsForEpisode, BothStartAndEndCutsApplied)
   CEdl edl;
   CFileItem mediaItem;
   mediaItem.SetPath(
-      _REF_FILE_PATH("/cores/VideoPlayer/Edl/test/testdata/mplayertimebased.mkv"));
+      XBMC_REF_FILE_PATH("xbmc/cores/VideoPlayer/Edl/test/testdata/mplayertimebased.mkv"));
   edl.ReadEditDecisionLists(mediaItem, 0, 0ms);
 
   const std::chrono::milliseconds fileDuration = 1000s;
@@ -890,7 +890,7 @@ TEST_F(TestParseEditsForEpisode, EditsWithinEpisodeWindowAreRetained)
   CEdl edl;
   CFileItem mediaItem;
   mediaItem.SetPath(
-      _REF_FILE_PATH("/cores/VideoPlayer/Edl/test/testdata/mplayertimebased.mkv"));
+      XBMC_REF_FILE_PATH("xbmc/cores/VideoPlayer/Edl/test/testdata/mplayertimebased.mkv"));
   edl.ReadEditDecisionLists(mediaItem, 0, 0ms);
 
   const size_t editsBeforeEpisodeWindow = edl.GetRawEditList().size();
@@ -932,7 +932,7 @@ TEST_F(TestParseEditsForEpisode, EditStraddlingEpisodeStartIsClamped)
   CEdl edl;
   CFileItem mediaItem;
   mediaItem.SetPath(
-      _REF_FILE_PATH("/cores/VideoPlayer/Edl/test/testdata/mplayertimebased.mkv"));
+      XBMC_REF_FILE_PATH("xbmc/cores/VideoPlayer/Edl/test/testdata/mplayertimebased.mkv"));
   edl.ReadEditDecisionLists(mediaItem, 0, 0ms);
   EXPECT_TRUE(edl.HasCuts());
 
@@ -966,7 +966,7 @@ TEST_F(TestParseEditsForEpisode, EditStraddlingBothBoundariesIsClamped)
   CEdl edl;
   CFileItem mediaItem;
   mediaItem.SetPath(
-      _REF_FILE_PATH("/cores/VideoPlayer/Edl/test/testdata/mplayertimebased.mkv"));
+      XBMC_REF_FILE_PATH("xbmc/cores/VideoPlayer/Edl/test/testdata/mplayertimebased.mkv"));
   edl.ReadEditDecisionLists(mediaItem, 0, 0ms);
 
   const std::chrono::milliseconds fileDuration = 1000s;

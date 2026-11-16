@@ -1,7 +1,7 @@
 /*
  *      Initial code sponsored by: Voddler Inc (voddler.com)
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -57,13 +57,14 @@ public:
     GLfloat x, y, z;
   };
 
-  GLuint m_texture = 0;
-  float m_u;
-  float m_v;
-
 private:
-  UNIVERSAL MEDIA CENTER::UTILS::GL::CGLBufferObject m_VBO{GL_ARRAY_BUFFER};
-  GLsizei m_vertexCount = 0;
+  struct Page
+  {
+    GLuint texture = 0;
+    UNIVERSAL MEDIA CENTER::UTILS::GL::CGLBufferObject vbo{GL_ARRAY_BUFFER};
+    GLsizei vertexCount = 0;
+  };
+  std::vector<Page> m_pages;
 };
 
 } // namespace OVERLAY

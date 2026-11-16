@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -22,8 +22,8 @@ TEST(TestFileUtils, DeleteItem_CFileItemPtr)
   XFILE::CFile *tmpfile;
   std::string tmpfilepath;
 
-  ASSERT_NE(nullptr, (tmpfile = _CREATETEMPFILE("")));
-  tmpfilepath = _TEMPFILEPATH(tmpfile);
+  ASSERT_NE(nullptr, (tmpfile = XBMC_CREATETEMPFILE("")));
+  tmpfilepath = XBMC_TEMPFILEPATH(tmpfile);
 
   CFileItemPtr item(new CFileItem(tmpfilepath));
   item->SetPath(tmpfilepath);
@@ -31,17 +31,17 @@ TEST(TestFileUtils, DeleteItem_CFileItemPtr)
   item->Select(true);
   tmpfile->Close();  //Close tmpfile before we try to delete it
   EXPECT_TRUE(CFileUtils::DeleteItem(item));
-  EXPECT_FALSE(_DELETETEMPFILE(tmpfile));
+  EXPECT_FALSE(XBMC_DELETETEMPFILE(tmpfile));
 }
 
 TEST(TestFileUtils, DeleteItemString)
 {
   XFILE::CFile *tmpfile;
 
-  ASSERT_NE(nullptr, (tmpfile = _CREATETEMPFILE("")));
+  ASSERT_NE(nullptr, (tmpfile = XBMC_CREATETEMPFILE("")));
   tmpfile->Close();  //Close tmpfile before we try to delete it
-  EXPECT_TRUE(CFileUtils::DeleteItem(_TEMPFILEPATH(tmpfile)));
-  EXPECT_FALSE(_DELETETEMPFILE(tmpfile));
+  EXPECT_TRUE(CFileUtils::DeleteItem(XBMC_TEMPFILEPATH(tmpfile)));
+  EXPECT_FALSE(XBMC_DELETETEMPFILE(tmpfile));
 }
 
 //! \brief An empty playlists path names no folder, so it shares nothing for remote access
@@ -68,12 +68,12 @@ TEST(TestFileUtils, AnEmptyPlaylistsPathSharesNothing)
 TEST(TestFileUtils, GetModificationDateOfDiscImagePlaylist)
 {
   // A playlist within a disc image, alone or as the first part of a stack, has the image's date
-  const std::string image{_REF_FILE_PATH(
-      "/video/test/testdata/moviestack_blurayiso/Movie_(2001)/Movie_(2001)_part1.iso")};
+  const std::string image{XBMC_REF_FILE_PATH(
+      "xbmc/video/test/testdata/moviestack_blurayiso/Movie_(2001)/Movie_(2001)_part1.iso")};
   const std::string playlist{URIUtils::GetBlurayPlaylistPath(image, 1003)};
   const std::string otherPlaylist{URIUtils::GetBlurayPlaylistPath(
-      _REF_FILE_PATH(
-          "/video/test/testdata/moviestack_blurayiso/Movie_(2001)/Movie_(2001)_part2.iso"),
+      XBMC_REF_FILE_PATH(
+          "xbmc/video/test/testdata/moviestack_blurayiso/Movie_(2001)/Movie_(2001)_part2.iso"),
       1003)};
   ASSERT_TRUE(URIUtils::IsBlurayPath(playlist));
 

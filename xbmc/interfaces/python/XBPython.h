@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -36,13 +36,13 @@ struct PyElem
 
 class LibraryLoader;
 
-namespace Addon
+namespace XBMCAddon
 {
-namespace 
+namespace xbmc
 {
 class Monitor;
 }
-} // namespace Addon
+} // namespace XBMCAddon
 
 template<class T>
 struct LockableType : public T, public CCriticalSection
@@ -51,7 +51,7 @@ struct LockableType : public T, public CCriticalSection
 };
 
 typedef LockableType<std::vector<void*>> PlayerCallbackList;
-typedef LockableType<std::vector<Addon::::Monitor*>> MonitorCallbackList;
+typedef LockableType<std::vector<XBMCAddon::xbmc::Monitor*>> MonitorCallbackList;
 typedef LockableType<std::vector<PyElem>> PyList;
 typedef std::vector<LibraryLoader*> PythonExtensionLibraries;
 
@@ -81,8 +81,8 @@ public:
                 const CVariant& data) override;
   void RegisterPythonPlayerCallBack(IPlayerCallback* pCallback);
   void UnregisterPythonPlayerCallBack(IPlayerCallback* pCallback);
-  void RegisterPythonMonitorCallBack(Addon::::Monitor* pCallback);
-  void UnregisterPythonMonitorCallBack(Addon::::Monitor* pCallback);
+  void RegisterPythonMonitorCallBack(XBMCAddon::xbmc::Monitor* pCallback);
+  void UnregisterPythonMonitorCallBack(XBMCAddon::xbmc::Monitor* pCallback);
   void OnSettingsChanged(const std::string& strings);
   void OnScreensaverActivated();
   void OnScreensaverDeactivated();

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2016-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -19,7 +19,7 @@ class CSetting;
 class CSettingSection;
 class CSettingsManager;
 class CVariant;
-class CTinyXML;
+class CXBMCTinyXML;
 class TiXmlElement;
 
 /*!
@@ -235,7 +235,7 @@ protected:
   virtual void InitializeISettingCallbacks() { }
   virtual void UninitializeISettingCallbacks() { }
 
-  bool InitializeDefinitionsFromXml(const CTinyXML& xml);
+  bool InitializeDefinitionsFromXml(const CXBMCTinyXML& xml);
 
   /*!
   \brief Loads setting values from the given document in XML format
@@ -244,14 +244,14 @@ protected:
   \param updated Output parameter indicating whether setting values had to be updated
   \return True if the setting values were successfully loaded, false otherwise
   */
-  bool LoadValuesFromXml(const CTinyXML& xml, bool& updated);
+  bool LoadValuesFromXml(const CXBMCTinyXML& xml, bool& updated);
   /*!
   \brief Saves the setting values in XML format to the given document.
 
   \param xml Document to save the setting values in XML format into
   \return True if the setting values were successfully saved, false otherwise
   */
-  bool SaveValuesToXml(CTinyXML& xml) const;
+  bool SaveValuesToXml(CXBMCTinyXML& xml) const;
 
   /*!
   \brief Loads setting values from the given XML element.

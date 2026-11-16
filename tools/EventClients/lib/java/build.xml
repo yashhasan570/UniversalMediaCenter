@@ -1,12 +1,12 @@
-<project default="jar" name="JEventClient">
-    <description description="JEventClient"/>
+<project default="jar" name="JXBMCEventClient">
+    <description description="JXBMCEventClient"/>
     <target name="init">
         <tstamp/>
         <property name="srcdir"       value="${basedir}/src"/>
         <property name="classdir"     value="${basedir}/classes"/>
         <property name="apidir"       value="${basedir}/doc/api"/>
         <property name="libdir"       value="/usr/local/share/java/classes"/>
-        <property name="projectname"  value="JEventClient"/>
+        <property name="projectname"  value="JXBMCEventClient"/>
         <property name="jarfile"      value="${projectname}.jar"/>
         <property name="distdir"      value="${basedir}/../dist"/>
         <fileset id="eventclient.files"       dir="${classdir}" includes="**/*"/>
@@ -49,7 +49,7 @@
     <target name="javadoc" depends="init">
         <mkdir dir="${apidir}"/>
         <javadoc
-            packagenames="org..eventclient.*"
+            packagenames="org.xbmc.eventclient.*"
             sourcepath="${srcdir}"
             defaultexcludes="yes"
             destdir="${apidir}"

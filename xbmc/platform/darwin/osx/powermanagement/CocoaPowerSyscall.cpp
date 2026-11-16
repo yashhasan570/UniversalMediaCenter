@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -308,12 +308,12 @@ void CCocoaPowerSyscall::OSPowerCallBack(void *refcon, io_service_t service, nat
       CServiceBroker::GetPowerManager().ProcessEvents();
       IOAllowPowerChange(ctx->m_root_port, (long)msg_arg);
       //CLog::Log(LOGDEBUG, "{} - kIOMessageSystemWillSleep", __FUNCTION__);
-      // let  know system will sleep
+      // let XBMC know system will sleep
       //! @todo implement
       break;
     case kIOMessageSystemHasPoweredOn:
       // System has awakened from sleep.
-      // let  know system has woke
+      // let XBMC know system has woke
       //! @todo implement
       ctx->m_OnResume = true;
       //CLog::Log(LOGDEBUG, "{} - kIOMessageSystemHasPoweredOn", __FUNCTION__);

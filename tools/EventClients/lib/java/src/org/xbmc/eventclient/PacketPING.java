@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2008-2013 Team 
+ *  Copyright (C) 2008-2013 Team XBMC
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -16,19 +16,19 @@
  *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package org..eventclient;
+package org.xbmc.eventclient;
 /**
- *  Event Client Class
+ * XBMC Event Client Class
  *
- * A PING packet tells  that the client is still alive. All valid
+ * A PING packet tells XBMC that the client is still alive. All valid
  * packets act as ping (not just this one). A client needs to ping
- *  at least once in 60 seconds or it will time
+ * XBMC at least once in 60 seconds or it will time
  * @author Stefan Agner
  *
  */
 public class PacketPING extends Packet {
 	/**
-	 * A PING packet tells  that the client is still alive.
+	 * A PING packet tells XBMC that the client is still alive.
 	 */
 	public PacketPING()
 	{

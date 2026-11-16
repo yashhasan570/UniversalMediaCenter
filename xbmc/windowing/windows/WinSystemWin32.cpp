@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -67,7 +67,7 @@ CWinSystemWin32::CWinSystemWin32()
   std::string cacert = CEnvironment::getenv("SSL_CERT_FILE");
   if (cacert.empty() || !XFILE::CFile::Exists(cacert))
   {
-    cacert = CSpecialProtocol::TranslatePath("special:///system/certs/cacert.pem");
+    cacert = CSpecialProtocol::TranslatePath("special://xbmc/system/certs/cacert.pem");
     if (XFILE::CFile::Exists(cacert))
       CEnvironment::setenv("SSL_CERT_FILE", cacert, 1);
   }

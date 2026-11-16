@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -31,7 +31,7 @@
 #include "settings/Settings.h"
 #include "settings/SettingsComponent.h"
 #include "test/TestUtils.h"
-#include "utils/TinyXML2.h"
+#include "utils/XBMCTinyXML2.h"
 #include "windowing/WinSystem.h"
 
 #if defined(HAS_GL)
@@ -47,7 +47,7 @@
 
 #include <gtest/gtest.h>
 
-AddonGlobalInterface* addon::CPrivateBase::m_interface = nullptr;
+AddonGlobalInterface* universalmediacenter::addon::CPrivateBase::m_interface = nullptr;
 
 using namespace UNIVERSAL MEDIA CENTER;
 using namespace UNIVERSAL MEDIA CENTER::GAME;
@@ -293,7 +293,7 @@ public:
   explicit DevKitInstance(CGameClientStreams& streams,
                           const char* universalmediacenterVersion = ADDON_INSTANCE_VERSION_GAME,
                           const char* libretroCore = nullptr)
-    : m_previous(addon::CPrivateBase::m_interface)
+    : m_previous(universalmediacenter::addon::CPrivateBase::m_interface)
   {
     m_props.libretro_core = libretroCore;
     m_callbacks.universalmediacenterInstance = &streams;
@@ -319,13 +319,13 @@ public:
     m_instance.functions = &m_functions;
     m_instance.game = &m_game;
     m_global.firstUniversal Media CenterInstance = &m_instance;
-    addon::CPrivateBase::m_interface = &m_global;
-    m_addon = std::make_unique<addon::CInstanceGame>();
+    universalmediacenter::addon::CPrivateBase::m_interface = &m_global;
+    m_addon = std::make_unique<universalmediacenter::addon::CInstanceGame>();
   }
   ~DevKitInstance()
   {
     m_addon.reset();
-    addon::CPrivateBase::m_interface = m_previous;
+    universalmediacenter::addon::CPrivateBase::m_interface = m_previous;
   }
 
   std::string LibretroCore() const { return m_addon->LibretroCore(); }
@@ -345,7 +345,7 @@ private:
   UNIVERSALMEDIA_ADDON_INSTANCE_FUNC m_functions{};
   UNIVERSALMEDIA_ADDON_INSTANCE_STRUCT m_instance{};
   AddonGlobalInterface m_global{};
-  std::unique_ptr<addon::CInstanceGame> m_addon;
+  std::unique_ptr<universalmediacenter::addon::CInstanceGame> m_addon;
 };
 } // namespace
 
@@ -359,7 +359,7 @@ protected:
     m_previousRepositoryUpdater = std::move(repositoryUpdater);
     repositoryUpdater = std::make_unique<ADDON::CRepositoryUpdater>(CServiceBroker::GetAddonMgr());
 
-    CTinyXML2 xml;
+    CXBMCTinyXML2 xml;
     const std::string addonXml =
         R"(<addon id="game.test.hardware" name="Hardware test" version="1.0.0">
       <extension point="universalmediacenter.gameclient" library="test.so"><extensions>rom</extensions></extension>
@@ -531,9 +531,9 @@ protected:
 
   void CheckStartupRestore(RETRO::CPlaybackTestEnvironment& environment)
   {
-    std::unique_ptr<XFILE::CFile> file(_CREATETEMPFILE(".sav"));
+    std::unique_ptr<XFILE::CFile> file(XBMC_CREATETEMPFILE(".sav"));
     ASSERT_NE(file, nullptr);
-    const std::string path = _TEMPFILEPATH(file.get());
+    const std::string path = XBMC_TEMPFILEPATH(file.get());
     file->Close();
     RETRO::CSavestateFlatBuffer savestate;
     *savestate.GetMemoryBuffer(1) = 1;
@@ -552,7 +552,7 @@ protected:
       EXPECT_EQ(m_client->GetSerializeSize(), 1U);
       EXPECT_EQ(m_core.sizeQueries, 1U);
     }
-    EXPECT_TRUE(_DELETETEMPFILE(file.release()));
+    EXPECT_TRUE(XBMC_DELETETEMPFILE(file.release()));
   }
 
   void PrepareCloseFile()
@@ -1202,7 +1202,7 @@ TEST_F(TestGameClientHardwareRendering, RewindRetriesUntilSerializationBecomesAv
 
 TEST_F(TestGameClientHardwareRendering, PropertiesPassTheLibretroCore)
 {
-  CTinyXML2 xml;
+  CXBMCTinyXML2 xml;
   const std::string addonXml =
       R"(<addon id="game.test.core" name="Core test" version="1.0.0">
       <extension point="universalmediacenter.gameclient" library="test.so">
@@ -1462,7 +1462,7 @@ TEST_F(TestGameClientHardwareRendering, DevKitInstallsHandleBeforeSingleReset)
   UseRenderingStream(environment, process, state);
   ASSERT_TRUE(Negotiate());
   DevKitInstance addon(m_client->Streams());
-  addon::CInstanceGame::CStream stream;
+  universalmediacenter::addon::CInstanceGame::CStream stream;
   m_core.onReset = [&]
   {
     EXPECT_GT(m_manager.depth, 0U);
@@ -1523,7 +1523,7 @@ TEST_F(TestGameClientHardwareRendering, DevKitResetFailureClosesOnceAndReopens)
   UseRenderingStream(environment, process, state);
   ASSERT_TRUE(Negotiate());
   DevKitInstance addon(m_client->Streams());
-  addon::CInstanceGame::CStream stream;
+  universalmediacenter::addon::CInstanceGame::CStream stream;
   m_core.onReset = [&]
   {
     EXPECT_TRUE(stream.IsOpen());
@@ -1665,7 +1665,7 @@ TEST_F(TestGameClientHardwareRendering, ResetMayCloseItsStreamWithoutDeletingAct
   UseRenderingStream(environment, process, state);
   ASSERT_TRUE(Negotiate());
   DevKitInstance addon(m_client->Streams());
-  addon::CInstanceGame::CStream stream;
+  universalmediacenter::addon::CInstanceGame::CStream stream;
   m_core.onReset = [&] { stream.Close(); };
   game_stream_properties properties{};
   properties.type = GAME_STREAM_HW_FRAMEBUFFER;
@@ -1689,7 +1689,7 @@ TEST_F(TestGameClientHardwareRendering, FailedOuterResetDoesNotCloseReopenedStre
   UseRenderingStream(environment, process, state);
   ASSERT_TRUE(Negotiate());
   DevKitInstance addon(m_client->Streams());
-  addon::CInstanceGame::CStream stream;
+  universalmediacenter::addon::CInstanceGame::CStream stream;
   game_stream_properties properties{};
   properties.type = GAME_STREAM_HW_FRAMEBUFFER;
   properties.hw_framebuffer.max_width = 640;

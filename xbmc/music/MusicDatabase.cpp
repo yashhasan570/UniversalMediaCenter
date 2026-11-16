@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -11940,7 +11940,7 @@ void CMusicDatabase::ExportToXML(const CLibExportSettings& settings,
       return;
 
     // Create our xml document
-    CTinyXML xmlDoc;
+    CXBMCTinyXML xmlDoc;
     TiXmlDeclaration decl("1.0", "UTF-8", "yes");
     xmlDoc.InsertEndChild(decl);
     TiXmlNode* pMain = nullptr;
@@ -12350,7 +12350,7 @@ void CMusicDatabase::ImportFromXML(const std::string& xmlFile, CGUIDialogProgres
     if (nullptr == m_pDS)
       return;
 
-    CTinyXML xmlDoc;
+    CXBMCTinyXML xmlDoc;
     if (!xmlDoc.LoadFile(xmlFile) && progressDialog)
     {
       HELPERS::ShowOKDialogLines(CVariant{20197}, CVariant{38354}); //"Unable to read xml file"
@@ -12465,7 +12465,7 @@ bool CMusicDatabase::ImportSongHistory(const std::string& xmlFile,
   bool bHistSongExists = false;
   try
   {
-    CTinyXML xmlDoc;
+    CXBMCTinyXML xmlDoc;
     if (!xmlDoc.LoadFile(xmlFile))
       return false;
 

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -22,7 +22,7 @@
 #include "utils/ContentUtils.h"
 #include "utils/FileUtils.h"
 #include "utils/URIUtils.h"
-#include "utils/TinyXML2.h"
+#include "utils/XBMCTinyXML2.h"
 #include "utils/log.h"
 #include "video/VideoFileItemClassify.h"
 
@@ -106,7 +106,7 @@ bool IsMediasourceOfFavItemUnlocked(const std::shared_ptr<CFileItem>& item)
 
 bool LoadFromFile(const std::string& strPath, CFileItemList& items)
 {
-  CTinyXML2 doc;
+  CXBMCTinyXML2 doc;
   if (!doc.LoadFile(strPath))
   {
     CLog::Log(LOGERROR, "Unable to load {} (line {})", strPath, doc.ErrorLineNum());
@@ -125,7 +125,7 @@ bool LoadFromFile(const std::string& strPath, CFileItemList& items)
     // format:
     // <favourite name="Cool Video" thumb="foo.jpg">PlayMedia(c:\videos\cool_video.avi)</favourite>
     // <favourite name="My Album" thumb="bar.tbn">ActivateWindow(MyMusic,c:\music\my album)</favourite>
-    // <favourite name="Apple Movie Trailers" thumb="path_to_thumb.png">RunScript(special:///scripts/apple movie trailers/default.py)</favourite>
+    // <favourite name="Apple Movie Trailers" thumb="path_to_thumb.png">RunScript(special://xbmc/scripts/apple movie trailers/default.py)</favourite>
     const char* name = favourite->Attribute("name");
     const char* thumb = favourite->Attribute("thumb");
     if (name && favourite->FirstChild())
@@ -161,7 +161,7 @@ void CFavouritesService::ReInit(std::string userDataFolder)
   m_targets.clear();
   m_favourites.SetContent(MEDIA::CONTENT::FAVOURITES);
 
-  std::string favourites = "special:///system/favourites.xml";
+  std::string favourites = "special://xbmc/system/favourites.xml";
   if (CFileUtils::Exists(favourites))
     LoadFromFile(favourites, m_favourites);
   else
@@ -200,7 +200,7 @@ void CFavouritesService::OnPlaybackEnded(const CFileItem& item)
 
 bool CFavouritesService::Persist() const
 {
-  CTinyXML2 doc;
+  CXBMCTinyXML2 doc;
   auto* element = doc.NewElement("favourites");
   auto* rootNode = doc.InsertEndChild(element);
   if (!rootNode)

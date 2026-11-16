@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2025 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -19,7 +19,7 @@ class TestMp4ChplReader : public ::testing::Test
 // Valid chapter file
 TEST_F(TestMp4ChplReader, CanParseValidChplAtom)
 {
-  const CURL url(_REF_FILE_PATH("/utils/test/resources/sample_chpl.mp4"));
+  const CURL url(XBMC_REF_FILE_PATH("xbmc/utils/test/resources/sample_chpl.mp4"));
   std::vector<ChplChapter> chapters;
 
   ChplChapterResult result = CChplChapterReader::ScanNeroChapters(url, chapters);
@@ -32,7 +32,7 @@ TEST_F(TestMp4ChplReader, CanParseValidChplAtom)
 // MP4 with no chapters
 TEST_F(TestMp4ChplReader, ReturnsNoneWhenNoChplAtom)
 {
-  const CURL url(_REF_FILE_PATH("/utils/test/resources/no_chapters.mp4"));
+  const CURL url(XBMC_REF_FILE_PATH("xbmc/utils/test/resources/no_chapters.mp4"));
   std::vector<ChplChapter> chapters;
 
   ChplChapterResult result = CChplChapterReader::ScanNeroChapters(url, chapters);
@@ -44,7 +44,7 @@ TEST_F(TestMp4ChplReader, ReturnsNoneWhenNoChplAtom)
 // Corrupt or truncated chpl atom
 TEST_F(TestMp4ChplReader, FailsGracefullyOnCorruptChplAtom)
 {
-  const CURL url(_REF_FILE_PATH("/utils/test/resources/corrupt_chpl.mp4"));
+  const CURL url(XBMC_REF_FILE_PATH("xbmc/utils/test/resources/corrupt_chpl.mp4"));
   std::vector<ChplChapter> chapters;
 
   ChplChapterResult result = CChplChapterReader::ScanNeroChapters(url, chapters);

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -30,13 +30,13 @@
 #undef DECLARATION
 #undef TYPECOUNT
 
-class CTinyXML : public TiXmlDocument
+class CXBMCTinyXML : public TiXmlDocument
 {
 public:
-  CTinyXML();
-  explicit CTinyXML(const char*);
-  explicit CTinyXML(const std::string& documentName);
-  CTinyXML(const std::string& documentName, const std::string& documentCharset);
+  CXBMCTinyXML();
+  explicit CXBMCTinyXML(const char*);
+  explicit CXBMCTinyXML(const std::string& documentName);
+  CXBMCTinyXML(const std::string& documentName, const std::string& documentCharset);
   bool LoadFile(TiXmlEncoding encoding = TIXML_DEFAULT_ENCODING);
   bool LoadFile(const char*, TiXmlEncoding encoding = TIXML_DEFAULT_ENCODING);
   bool LoadFile(const std::string& _filename, TiXmlEncoding encoding = TIXML_DEFAULT_ENCODING);

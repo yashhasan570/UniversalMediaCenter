@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -11,7 +11,6 @@
 #include "IStorageProvider.h"
 #include "MediaSource.h" // for std::vector<CMediaSource>
 #include "jobs/IJobCallback.h"
-#include "media/MediaSection.h"
 #include "storage/discs/IDiscDriveHandler.h"
 #include "threads/CriticalSection.h"
 #include "utils/DiscsUtils.h"
@@ -220,23 +219,6 @@ private:
   /*! \brief Loads the addon sources for the different supported browsable addon types
    */
   void LoadAddonSources() const;
-
-  /*! \brief Get the addons root source for the given section
-   \param section the section whose add-ons are wanted
-   \return the given CMediaSource for the addon root directory, empty for a section with no
-   add-ons of its own
-   */
-  CMediaSource GetRootAddonTypeSource(UNIVERSAL MEDIA CENTER::MEDIA::MediaSection section) const;
-
-  /*! \brief Generate the addons source for the given content type
-   \param type the type of addon content desired
-   \param label the name of the addons source
-   \param thumb image to use as the icon
-   \return the given CMediaSource for the addon root directory
-   */
-  CMediaSource ComputeRootAddonTypeSource(const std::string& type,
-                                          const std::string& label,
-                                          const std::string& thumb) const;
 
   std::unique_ptr<IStorageProvider> m_platformStorage;
 #ifdef HAS_OPTICAL_DRIVE

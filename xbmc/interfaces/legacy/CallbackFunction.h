@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -10,7 +10,7 @@
 
 #include "AddonClass.h"
 
-namespace Addon
+namespace XBMCAddon
 {
   /**
    * <p>This is the parent class for the class templates that hold
@@ -26,13 +26,13 @@ namespace Addon
   {
   protected:
     AddonClass* addonClassObject;
-    explicit Callback(AddonClass* _object) : addonClassObject(_object) { _TRACE; }
+    explicit Callback(AddonClass* _object) : addonClassObject(_object) { XBMC_TRACE; }
 
   public:
     virtual void executeCallback() = 0;
     ~Callback() override;
 
-    AddonClass* getObject() { _TRACE; return addonClassObject; }
+    AddonClass* getObject() { XBMC_TRACE; return addonClassObject; }
   };
 
   struct cb_null_type {};
@@ -58,11 +58,11 @@ namespace Addon
 
   public:
     CallbackFunction(M* object, MemberFunction method) :
-      Callback(object), meth(method), obj(object) { _TRACE; }
+      Callback(object), meth(method), obj(object) { XBMC_TRACE; }
 
-    ~CallbackFunction() override { _TRACE; deallocating(); }
+    ~CallbackFunction() override { XBMC_TRACE; deallocating(); }
 
-    void executeCallback() override { _TRACE; ((*obj).*(meth))(); }
+    void executeCallback() override { XBMC_TRACE; ((*obj).*(meth))(); }
   };
 
   /**
@@ -82,11 +82,11 @@ namespace Addon
   public:
     CallbackFunction(M* object, MemberFunction method, P1 parameter) :
       Callback(object), meth(method), obj(object),
-      param(parameter) { _TRACE; }
+      param(parameter) { XBMC_TRACE; }
 
-    ~CallbackFunction() override { _TRACE; deallocating(); }
+    ~CallbackFunction() override { XBMC_TRACE; deallocating(); }
 
-    void executeCallback() override { _TRACE; ((*obj).*(meth))(param); }
+    void executeCallback() override { XBMC_TRACE; ((*obj).*(meth))(param); }
   };
 
   /**
@@ -107,11 +107,11 @@ namespace Addon
   public:
     CallbackFunction(M* object, MemberFunction method, P1* parameter) :
       Callback(object), meth(method), obj(object),
-      param(parameter) { _TRACE; }
+      param(parameter) { XBMC_TRACE; }
 
-    ~CallbackFunction() override { _TRACE; deallocating(); }
+    ~CallbackFunction() override { XBMC_TRACE; deallocating(); }
 
-    void executeCallback() override { _TRACE; ((*obj).*(meth))(param); }
+    void executeCallback() override { XBMC_TRACE; ((*obj).*(meth))(param); }
   };
 
 
@@ -133,11 +133,11 @@ namespace Addon
   public:
     CallbackFunction(M* object, MemberFunction method, P1 parameter, P2 parameter2) :
       Callback(object), meth(method), obj(object),
-      param1(parameter), param2(parameter2) { _TRACE; }
+      param1(parameter), param2(parameter2) { XBMC_TRACE; }
 
-    ~CallbackFunction() override { _TRACE; deallocating(); }
+    ~CallbackFunction() override { XBMC_TRACE; deallocating(); }
 
-    void executeCallback() override { _TRACE; ((*obj).*(meth))(param1,param2); }
+    void executeCallback() override { XBMC_TRACE; ((*obj).*(meth))(param1,param2); }
   };
 
 
@@ -160,11 +160,11 @@ namespace Addon
   public:
     CallbackFunction(M* object, MemberFunction method, P1 parameter, P2 parameter2, P3 parameter3) :
       Callback(object), meth(method), obj(object),
-      param1(parameter), param2(parameter2), param3(parameter3) { _TRACE; }
+      param1(parameter), param2(parameter2), param3(parameter3) { XBMC_TRACE; }
 
-    ~CallbackFunction() override { _TRACE; deallocating(); }
+    ~CallbackFunction() override { XBMC_TRACE; deallocating(); }
 
-    void executeCallback() override { _TRACE; ((*obj).*(meth))(param1,param2,param3); }
+    void executeCallback() override { XBMC_TRACE; ((*obj).*(meth))(param1,param2,param3); }
   };
 }
 

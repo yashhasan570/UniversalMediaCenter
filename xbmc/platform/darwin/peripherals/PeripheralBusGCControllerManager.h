@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2020 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -26,10 +26,10 @@
 - (PERIPHERALS::PeripheralScanResults)GetInputDevices;
 - (void)DeviceAdded:(int)deviceID;
 - (void)DeviceRemoved:(int)deviceID;
-- (void)SetDigitalEvent:(addon::PeripheralEvent)event;
-- (void)SetAxisEvent:(addon::PeripheralEvent)event;
-- (std::vector<addon::PeripheralEvent>)GetButtonEvents;
-- (std::vector<addon::PeripheralEvent>)GetAxisEvents;
+- (void)SetDigitalEvent:(universalmediacenter::addon::PeripheralEvent)event;
+- (void)SetAxisEvent:(universalmediacenter::addon::PeripheralEvent)event;
+- (std::vector<universalmediacenter::addon::PeripheralEvent>)GetButtonEvents;
+- (std::vector<universalmediacenter::addon::PeripheralEvent>)GetAxisEvents;
 - (int)GetControllerAxisCount:(int)deviceId withControllerType:(GCCONTROLLER_TYPE)controllerType;
 - (int)GetControllerButtonCount:(int)deviceId withControllerType:(GCCONTROLLER_TYPE)controllerType;
 - (GCCONTROLLER_TYPE)GetControllerType:(int)deviceID;

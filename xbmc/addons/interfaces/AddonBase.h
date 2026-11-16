@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2020 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -28,7 +28,7 @@ class CAddonDll;
  * To hold general functions not related to a instance type and usable for
  * every add-on type.
  *
- * Related add-on header is ".//addons/universalmediacenter-dev-kit/include/universalmediacenter/General.h"
+ * Related add-on header is "./xbmc/addons/universalmediacenter-dev-kit/include/universalmediacenter/General.h"
  */
 struct Interface_Base
 {

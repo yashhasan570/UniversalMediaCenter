@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2019 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -11,7 +11,7 @@
 #include "settings/lib/SettingDefinitions.h"
 #include "settings/lib/SettingSection.h"
 #include "settings/lib/SettingsManager.h"
-#include "utils/TinyXML.h"
+#include "utils/XBMCTinyXML.h"
 #include "utils/XMLUtils.h"
 #include "utils/log.h"
 
@@ -23,7 +23,7 @@ std::string CSettingsValueXmlSerializer::SerializeValues(
   if (!settingsManager)
     return "";
 
-  CTinyXML xmlDoc;
+  CXBMCTinyXML xmlDoc;
   TiXmlElement rootElement(SETTINGS_XML_ROOT);
   rootElement.SetAttribute(SETTING_XML_ROOT_VERSION, settingsManager->GetVersion());
   TiXmlNode* xmlRoot = xmlDoc.InsertEndChild(rootElement);

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2014-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -12,7 +12,7 @@
 #include "games/controllers/input/PhysicalFeature.h"
 #include "input/joysticks/DriverPrimitive.h"
 #include "input/joysticks/interfaces/IButtonMapper.h"
-#include "input/keyboard/_keysym.h"
+#include "input/keyboard/XBMC_keysym.h"
 #include "input/keyboard/interfaces/IKeyboardDriverHandler.h"
 #include "threads/CriticalSection.h"
 #include "threads/Event.h"

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2023- Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -19,7 +19,7 @@ protected:
 
 TEST_F(TestSkinTimers, TestSkinTimerParsing)
 {
-  auto timersFile = _REF_FILE_PATH("/addons/gui/skin/test/testdata/Timers.xml");
+  auto timersFile = XBMC_REF_FILE_PATH("xbmc/addons/gui/skin/test/testdata/Timers.xml");
   CGUIInfoManager infoMgr;
   CSkinTimerManager skinTimerManager{infoMgr};
   skinTimerManager.LoadTimers(timersFile);

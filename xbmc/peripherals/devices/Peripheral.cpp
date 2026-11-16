@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2024 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -31,7 +31,7 @@
 #include "utils/DefaultArt.h"
 #include "utils/FileUtils.h"
 #include "utils/StringUtils.h"
-#include "utils/TinyXML2.h"
+#include "utils/XBMCTinyXML2.h"
 #include "utils/XMLUtils.h"
 #include "utils/log.h"
 
@@ -647,7 +647,7 @@ void CPeripheral::SetAddonSetting(const std::string& strKey, const std::string& 
 
 void CPeripheral::PersistSettings(bool bExiting /* = false */)
 {
-  CTinyXML2 doc;
+  CXBMCTinyXML2 doc;
   auto* node = doc.NewElement("settings");
   if (node == nullptr)
     return;
@@ -714,7 +714,7 @@ void CPeripheral::PersistSettings(bool bExiting /* = false */)
 
 void CPeripheral::LoadPersistedSettings(void)
 {
-  CTinyXML2 doc;
+  CXBMCTinyXML2 doc;
   if (doc.LoadFile(m_strSettingsFileLoad))
   {
     const auto* setting = doc.RootElement()->FirstChildElement("setting");

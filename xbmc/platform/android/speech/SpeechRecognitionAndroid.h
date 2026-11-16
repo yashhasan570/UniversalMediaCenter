@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2012-2022 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -19,7 +19,7 @@ class CJNIContext;
 
 namespace jni
 {
-class CJNISpeechRecognitionListener;
+class CJNIXBMCSpeechRecognitionListener;
 }
 
 class CSpeechRecognitionAndroid : public ISpeechRecognitionCallback,
@@ -34,7 +34,7 @@ public:
       const std::shared_ptr<speech::ISpeechRecognitionListener>& listener) override;
 
   // ISpeechRecognitionCallback implementation
-  void SpeechRecognitionDone(jni::CJNISpeechRecognitionListener* listener) override;
+  void SpeechRecognitionDone(jni::CJNIXBMCSpeechRecognitionListener* listener) override;
 
 private:
   CSpeechRecognitionAndroid() = delete;
@@ -43,5 +43,5 @@ private:
 
   const CJNIContext& m_context;
   CCriticalSection m_speechRecognitionListenersMutex;
-  std::vector<std::unique_ptr<jni::CJNISpeechRecognitionListener>> m_speechRecognitionListeners;
+  std::vector<std::unique_ptr<jni::CJNIXBMCSpeechRecognitionListener>> m_speechRecognitionListeners;
 };

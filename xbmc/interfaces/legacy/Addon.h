@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -14,14 +14,14 @@
 #include "Settings.h"
 #include "addons/IAddon.h"
 
-namespace Addon
+namespace XBMCAddon
 {
-  namespace addon
+  namespace xbmcaddon
   {
-    COMMONS_STANDARD_EXCEPTION(AddonException);
+    XBMCCOMMONS_STANDARD_EXCEPTION(AddonException);
 
     ///
-    /// \addtogroup python_addon
+    /// \addtogroup python_xbmcaddon
     /// @{
     /// @brief **Universal Media Center's addon class.**
     ///
@@ -30,16 +30,16 @@ namespace Addon
     ///
     ///-------------------------------------------------------------------------
     ///
-    /// \python_class{ addon.Addon([id]) }
+    /// \python_class{ xbmcaddon.Addon([id]) }
     ///
     /// Creates a new AddOn class.
     ///
     /// @param id                    [opt] string - id of the addon as
-    ///                              specified in [addon.xml](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Addon.xml)
+    ///                              specified in [addon.xml](http://universalmediacenter.wiki/view/Addon.xml)
     ///
     /// @note Specifying the addon id is not needed.\n
     /// Important however is that the addon folder has the same name as the AddOn
-    /// id provided in [addon.xml](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Addon.xml).\n
+    /// id provided in [addon.xml](http://universalmediacenter.wiki/view/Addon.xml).\n
     /// You can optionally specify the addon id from another installed addon to
     /// retrieve settings from it.
     ///
@@ -51,8 +51,8 @@ namespace Addon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// self.Addon = addon.Addon()
-    /// self.Addon = addon.Addon('script.foo.bar')
+    /// self.Addon = xbmcaddon.Addon()
+    /// self.Addon = xbmcaddon.Addon('script.foo.bar')
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -72,8 +72,8 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_addon
-      /// @brief \python_func{ addon.Addon([id]).getLocalizedString(id) }
+      /// \ingroup python_xbmcaddon
+      /// @brief \python_func{ xbmcaddon.Addon([id]).getLocalizedString(id) }
       /// Returns an addon's localized 'string'.
       ///
       /// @param id                      integer - id# for string you want to
@@ -99,8 +99,8 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_addon
-      /// @brief \python_func{ addon.Addon([id]).getSettings() }
+      /// \ingroup python_xbmcaddon
+      /// @brief \python_func{ xbmcaddon.Addon([id]).getSettings() }
       /// Returns a wrapper around the addon's settings.
       ///
       /// @return                        @ref python_settings wrapper
@@ -124,8 +124,8 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_addon
-      /// @brief \python_func{ addon.Addon([id]).getSetting(id) }
+      /// \ingroup python_xbmcaddon
+      /// @brief \python_func{ xbmcaddon.Addon([id]).getSetting(id) }
       /// Returns the value of a setting as string.
       ///
       /// @param id                      string - id of the setting that the module
@@ -152,8 +152,8 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_addon
-      /// @brief \python_func{ addon.Addon([id]).getSettingBool(id) }
+      /// \ingroup python_xbmcaddon
+      /// @brief \python_func{ xbmcaddon.Addon([id]).getSettingBool(id) }
       /// Returns the value of a setting as a boolean.
       ///
       /// @param id                      string - id of the setting that the module
@@ -181,8 +181,8 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_addon
-      /// @brief \python_func{ addon.Addon([id]).getSettingInt(id) }
+      /// \ingroup python_xbmcaddon
+      /// @brief \python_func{ xbmcaddon.Addon([id]).getSettingInt(id) }
       /// Returns the value of a setting as an integer.
       ///
       /// @param id                      string - id of the setting that the module
@@ -210,8 +210,8 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_addon
-      /// @brief \python_func{ addon.Addon([id]).getSettingNumber(id) }
+      /// \ingroup python_xbmcaddon
+      /// @brief \python_func{ xbmcaddon.Addon([id]).getSettingNumber(id) }
       /// Returns the value of a setting as a floating point number.
       ///
       /// @param id                      string - id of the setting that the module
@@ -239,8 +239,8 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_addon
-      /// @brief \python_func{ addon.Addon([id]).getSettingString(id) }
+      /// \ingroup python_xbmcaddon
+      /// @brief \python_func{ xbmcaddon.Addon([id]).getSettingString(id) }
       /// Returns the value of a setting as a string.
       ///
       /// @param id                      string - id of the setting that the module
@@ -268,8 +268,8 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_addon
-      /// @brief \python_func{ addon.Addon([id]).setSetting(id, value) }
+      /// \ingroup python_xbmcaddon
+      /// @brief \python_func{ xbmcaddon.Addon([id]).setSetting(id, value) }
       /// Sets a script setting.
       ///
       /// @param id                  string - id of the setting that the module needs to access.
@@ -298,8 +298,8 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_addon
-      /// @brief \python_func{ addon.Addon([id]).setSettingBool(id, value) }
+      /// \ingroup python_xbmcaddon
+      /// @brief \python_func{ xbmcaddon.Addon([id]).setSettingBool(id, value) }
       /// Sets a script setting.
       ///
       /// @param id                  string - id of the setting that the module needs to access.
@@ -330,8 +330,8 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_addon
-      /// @brief \python_func{ addon.Addon([id]).setSettingInt(id, value) }
+      /// \ingroup python_xbmcaddon
+      /// @brief \python_func{ xbmcaddon.Addon([id]).setSettingInt(id, value) }
       /// Sets a script setting.
       ///
       /// @param id                  string - id of the setting that the module needs to access.
@@ -362,8 +362,8 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_addon
-      /// @brief \python_func{ addon.Addon([id]).setSettingNumber(id, value) }
+      /// \ingroup python_xbmcaddon
+      /// @brief \python_func{ xbmcaddon.Addon([id]).setSettingNumber(id, value) }
       /// Sets a script setting.
       ///
       /// @param id                  string - id of the setting that the module needs to access.
@@ -394,8 +394,8 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_addon
-      /// @brief \python_func{ addon.Addon([id]).setSettingString(id, value) }
+      /// \ingroup python_xbmcaddon
+      /// @brief \python_func{ xbmcaddon.Addon([id]).setSettingString(id, value) }
       /// Sets a script setting.
       ///
       /// @param id                  string - id of the setting that the module needs to access.
@@ -426,8 +426,8 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_addon
-      /// @brief \python_func{ addon.Addon([id]).openSettings() }
+      /// \ingroup python_xbmcaddon
+      /// @brief \python_func{ xbmcaddon.Addon([id]).openSettings() }
       /// Opens this scripts settings dialog.
       ///
       ///-----------------------------------------------------------------------
@@ -446,9 +446,9 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
       ///
-      /// \ingroup python_addon
-      /// \anchor python_addon_Addon
-      /// @brief \python_func{ addon.Addon([id]).getAddonInfo(id) }
+      /// \ingroup python_xbmcaddon
+      /// \anchor python_xbmcaddon_Addon
+      /// @brief \python_func{ xbmcaddon.Addon([id]).getAddonInfo(id) }
       /// Returns the value of an addon property as a string.
       ///
       /// @param id                      string - id of the property that the

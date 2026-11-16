@@ -170,7 +170,7 @@ Added: option to select language from TheAudioDB.com
 Added back the option to scrape from last.fm
 
 [B]2.4.3[/B]
-Disable last.fm options because last.fm suspended 's API account
+Disable last.fm options because last.fm suspended XBMC's API account
 
 [B]2.4.2[/B]
 Updated language files from Transifex

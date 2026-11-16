@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2017-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -133,7 +133,7 @@ private:
   // IInputHandler
   void OnEnter(InputType type) override;
   void OnLeave(InputType type) override;
-  void OnEvent(InputType type, _Event& event) override;
+  void OnEvent(InputType type, XBMC_Event& event) override;
   void OnSetCursor(std::uint32_t seatGlobalName, std::uint32_t serial) override;
 
   // IWindowDecorationHandler

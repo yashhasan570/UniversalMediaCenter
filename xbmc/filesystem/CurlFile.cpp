@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -930,7 +930,7 @@ void CCurlFile::ParseAndCorrectUrl(CURL &url2)
     url2.GetProtocolOptions(options);
     if (!options.empty())
     {
-      // set  headers
+      // set xbmc headers
       for (const auto& it : options)
       {
         std::string name = it.first;
@@ -2238,7 +2238,7 @@ void CCurlFile::PreloadCaCertsBlob()
 {
   XFILE::CFile file;
 
-  if (file.LoadFile(CSpecialProtocol::TranslatePath("special:///system/certs/cacert.pem"),
+  if (file.LoadFile(CSpecialProtocol::TranslatePath("special://xbmc/system/certs/cacert.pem"),
                     cachedCaCertsBlob) <= 0)
   {
     CLog::LogF(LOGERROR, "failed to load 'system/certs/cacert.pem'");

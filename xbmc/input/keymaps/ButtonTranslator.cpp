@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2024 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -26,7 +26,7 @@
 #include "input/keymaps/remote/IRTranslator.h"
 #include "input/mouse/MouseTranslator.h"
 #include "utils/StringUtils.h"
-#include "utils/TinyXML2.h"
+#include "utils/XBMCTinyXML2.h"
 #include "utils/log.h"
 
 #include <algorithm>
@@ -73,7 +73,7 @@ bool CButtonTranslator::Load()
 
   // Directories to search for keymaps. They're applied in this order,
   // so keymaps in profile/keymaps/ override e.g. system/keymaps
-  static std::vector<std::string> DIRS_TO_CHECK = {"special:///system/keymaps/",
+  static std::vector<std::string> DIRS_TO_CHECK = {"special://xbmc/system/keymaps/",
                                                    "special://masterprofile/keymaps/",
                                                    "special://profile/keymaps/"};
 
@@ -129,7 +129,7 @@ bool CButtonTranslator::Load()
 
 bool CButtonTranslator::LoadKeymap(const std::string& keymapPath)
 {
-  CTinyXML2 xmlDoc;
+  CXBMCTinyXML2 xmlDoc;
 
   CLog::Log(LOGINFO, "Loading {}", keymapPath);
   if (!xmlDoc.LoadFile(keymapPath))

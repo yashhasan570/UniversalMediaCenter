@@ -1,7 +1,7 @@
 /*
  *  Copyright (C) 2018 Tyler Szabo
  *  Copyright (C) 2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -19,7 +19,7 @@ using namespace UNIVERSAL MEDIA CENTER;
 
 TEST(TestPlayListXSPF, Load)
 {
-  std::string filename = _REF_FILE_PATH("//playlists/test/test.xspf");
+  std::string filename = XBMC_REF_FILE_PATH("/xbmc/playlists/test/test.xspf");
   PLAYLIST::CPlayListXSPF playlist;
   std::vector<std::string> pathparts;
   std::vector<std::string>::reverse_iterator it;
@@ -44,7 +44,7 @@ TEST(TestPlayListXSPF, Load)
   EXPECT_STREQ((*it++).c_str(), "relative");
   EXPECT_STREQ((*it++).c_str(), "test");
   EXPECT_STREQ((*it++).c_str(), "playlists");
-  EXPECT_STREQ((*it++).c_str(), "");
+  EXPECT_STREQ((*it++).c_str(), "xbmc");
 
 
   ASSERT_GT(playlist.size(), 2);

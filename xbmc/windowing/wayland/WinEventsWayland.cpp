@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2017-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -247,7 +247,7 @@ bool CWinEventsWayland::MessagePump()
   // Forward any events that may have been pushed to our queue
   while (true)
   {
-    _Event event;
+    XBMC_Event event;
     {
       // Scoped lock for reentrancy
       std::unique_lock lock(m_queueMutex);
@@ -270,7 +270,7 @@ bool CWinEventsWayland::MessagePump()
   return true;
 }
 
-void CWinEventsWayland::MessagePush(_Event* ev)
+void CWinEventsWayland::MessagePush(XBMC_Event* ev)
 {
   std::unique_lock lock(m_queueMutex);
   m_queue.emplace(*ev);

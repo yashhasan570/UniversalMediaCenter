@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -35,6 +35,7 @@
 #include "settings/SettingsComponent.h"
 #include "utils/Artwork.h"
 #include "utils/URIUtils.h"
+#include "video/FilenameAttributes.h"
 #include "video/SetInfoTag.h"
 #include "video/VideoDatabase.h"
 #include "video/VideoInfoScanner.h"
@@ -49,6 +50,7 @@
 #include <memory>
 #include <optional>
 #include <string>
+#include <unordered_set>
 #include <utility>
 #include <vector>
 
@@ -68,13 +70,13 @@ constexpr const char* SCRAPER_ADDON = R"(<?xml version="1.0" encoding="UTF-8"?>
 <addon id="metadata.test.videoinfoscanner" name="Test scraper" version="1.0.0"
        provider-name="Team Universal Media Center">
   <requires>
-    <import addon=".metadata" version="2.1.0"/>
+    <import addon="xbmc.metadata" version="2.1.0"/>
   </requires>
-  <extension point=".metadata.scraper.movies" library="scraper.xml"
+  <extension point="xbmc.metadata.scraper.movies" library="scraper.xml"
              cachepersistence="01:00"/>
-  <extension point=".metadata.scraper.tvshows" library="scraper.xml"
+  <extension point="xbmc.metadata.scraper.tvshows" library="scraper.xml"
              cachepersistence="01:00"/>
-  <extension point=".addon.metadata">
+  <extension point="xbmc.addon.metadata">
     <platform>all</platform>
   </extension>
 </addon>)";
@@ -111,11 +113,11 @@ constexpr const char* OTHER_SCRAPER_ADDON = R"(<?xml version="1.0" encoding="UTF
 <addon id="metadata.alternative.videoinfoscanner" name="Other test scraper" version="1.0.0"
        provider-name="Team Universal Media Center">
   <requires>
-    <import addon=".metadata" version="2.1.0"/>
+    <import addon="xbmc.metadata" version="2.1.0"/>
   </requires>
-  <extension point=".metadata.scraper.movies" library="scraper.xml"/>
-  <extension point=".metadata.scraper.tvshows" library="scraper.xml"/>
-  <extension point=".addon.metadata">
+  <extension point="xbmc.metadata.scraper.movies" library="scraper.xml"/>
+  <extension point="xbmc.metadata.scraper.tvshows" library="scraper.xml"/>
+  <extension point="xbmc.addon.metadata">
     <platform>all</platform>
   </extension>
 </addon>)";
@@ -230,6 +232,7 @@ public:
   }
 
   using CVideoInfoScanner::EnumerateSeriesFolder;
+  using CVideoInfoScanner::GetMovieIdentifier;
   using EpisodeResult = CVideoInfoScanner::EpisodeResult;
   using ScanSummary = CVideoInfoScanner::ScanSummary;
 
@@ -1098,6 +1101,74 @@ TEST_F(TestVideoInfoScanner, AnEditionInTheFileNameNamesTheMoviesVersion)
   Scan();
 
   EXPECT_EQ("Director's Cut", m_db.GetVideoVersionInfo(movie).m_assetTypeName);
+}
+
+// The identifier a movie is looked up by. Only a python scraper is given one, which the test
+// scraper isn't, so the identifier is asked for directly.
+
+namespace
+{
+class TestVideoInfoScannerMovieIdentifier : public TestVideoInfoScanner
+{
+protected:
+  void SetUp() override
+  {
+    TestVideoInfoScanner::SetUp();
+    m_metadataSources = AdvancedSettings()->m_videoScannerMetadataSources;
+    AdvancedSettings()->m_videoScannerMetadataSources = {"tmdb", "imdb"};
+  }
+
+  void TearDown() override
+  {
+    AdvancedSettings()->m_videoScannerMetadataSources = m_metadataSources;
+    TestVideoInfoScanner::TearDown();
+  }
+
+  static std::shared_ptr<CAdvancedSettings> AdvancedSettings()
+  {
+    return CServiceBroker::GetSettingsComponent()->GetAdvancedSettings();
+  }
+
+  bool GetMovieIdentifier(const std::string& path, bool bDirNames)
+  {
+    const TestScanner scanner{m_settings};
+    return scanner.GetMovieIdentifier(CFileItem{path, false}, bDirNames,
+                                      CFilenameAttributes{URIUtils::GetFileName(path), nullptr},
+                                      m_identifierType, m_identifier);
+  }
+
+  std::string m_identifierType;
+  std::string m_identifier;
+
+private:
+  std::unordered_set<std::string> m_metadataSources;
+};
+} // namespace
+
+TEST_F(TestVideoInfoScannerMovieIdentifier, TheFolderNameGivesTheIdentifierWhenFolderNamesAreUsed)
+{
+  const std::string movie{URIUtils::AddFileToFolder(m_root, "Film (2010) {tmdb=603}", "ww.mkv")};
+
+  ASSERT_TRUE(GetMovieIdentifier(movie, true));
+  EXPECT_EQ("tmdb", m_identifierType);
+  EXPECT_EQ("603", m_identifier);
+}
+
+TEST_F(TestVideoInfoScannerMovieIdentifier, TheFolderNameGivesNoIdentifierWhenFolderNamesAreNotUsed)
+{
+  const std::string movie{URIUtils::AddFileToFolder(m_root, "Film (2010) {tmdb=603}", "ww.mkv")};
+
+  EXPECT_FALSE(GetMovieIdentifier(movie, false));
+}
+
+TEST_F(TestVideoInfoScannerMovieIdentifier, TheFileNameGivesTheIdentifierBeforeTheFolderName)
+{
+  const std::string movie{URIUtils::AddFileToFolder(m_root, "Film (2010) {tmdb=603}",
+                                                    "Film (2010) {imdb=tt0133093}.mkv")};
+
+  ASSERT_TRUE(GetMovieIdentifier(movie, true));
+  EXPECT_EQ("imdb", m_identifierType);
+  EXPECT_EQ("tt0133093", m_identifier);
 }
 
 // Movies looked up with a scraper

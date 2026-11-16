@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2017-2024 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -9,7 +9,7 @@
 #include "KeyboardTranslator.h"
 
 #include "input/keyboard/Key.h"
-#include "input/keyboard/_keytable.h"
+#include "input/keyboard/XBMC_keytable.h"
 #include "input/keymaps/keyboard/KeyIDs.h"
 #include "utils/StringUtils.h"
 #include "utils/log.h"
@@ -84,7 +84,7 @@ uint32_t CKeyboardTranslator::TranslateButton(const tinyxml2::XMLElement* pButto
 uint32_t CKeyboardTranslator::TranslateString(const std::string& szButton)
 {
   uint32_t buttonCode = 0;
-  KEYBOARD::KEYTABLE keytable;
+  KEYBOARD::XBMCKEYTABLE keytable;
 
   // Look up the key name
   if (KEYBOARD::KeyTable::LookupName(szButton, &keytable))

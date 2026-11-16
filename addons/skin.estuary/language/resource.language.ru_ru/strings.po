@@ -1,15 +1,15 @@
-# Universal Media Center Media Center language file
+# Kodi Media Center language file
 # Addon Name: Estuary
 # Addon id: skin.estuary
-# Addon Provider: Team Universal Media Center
+# Addon Provider: Team Kodi
 msgid ""
 msgstr ""
-"Project-Id-Version: UNIVERSAL MEDIA CENTER Main\n"
-"Report-Msgid-Bugs-To: https://github.com///issues/\n"
+"Project-Id-Version: KODI Main\n"
+"Report-Msgid-Bugs-To: https://github.com/xbmc/xbmc/issues/\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: 2026-05-27 03:16+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
-"Language-Team: Russian <https://universalmediacenter.weblate.cloud/projects/Universal Media Center-add-ons-skins/skin-estuary/ru_ru/>\n"
+"Language-Team: Russian <https://kodi.weblate.cloud/projects/kodi-add-ons-skins/skin-estuary/ru_ru/>\n"
 "Language: ru_ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,16 +18,16 @@ msgstr ""
 "X-Generator: Weblate 2026.5\n"
 
 msgctxt "Addon Summary"
-msgid "Estuary skin by phil65. (Universal Media Center's default skin)"
-msgstr "Обложка Estuary от phil65 (стандартная обложка Universal Media Center)"
+msgid "Estuary skin by phil65. (Kodi's default skin)"
+msgstr "Обложка Estuary от phil65 (стандартная обложка Kodi)"
 
 msgctxt "Addon Description"
-msgid "Estuary is the default skin for Universal Media Center 17.0 and above. It attempts to be easy for first time Universal Media Center users to understand and use."
-msgstr "Estuary — стандартная обложка Universal Media Center, начиная с версии 17.0. Простая и понятная в использовании для новых пользователей Universal Media Center."
+msgid "Estuary is the default skin for Kodi 17.0 and above. It attempts to be easy for first time Kodi users to understand and use."
+msgstr "Estuary — стандартная обложка Kodi, начиная с версии 17.0. Простая и понятная в использовании для новых пользователей Kodi."
 
 msgctxt "Addon Disclaimer"
-msgid "Estuary is the default skin for Universal Media Center, removing it may cause issues"
-msgstr "Estuary — стандартная обложка Universal Media Center, ее удаление может привести к возникновению проблем"
+msgid "Estuary is the default skin for Kodi, removing it may cause issues"
+msgstr "Estuary — стандартная обложка Kodi, ее удаление может привести к возникновению проблем"
 
 msgctxt "#31000"
 msgid "Now playing"
@@ -371,8 +371,8 @@ msgid "Channel options"
 msgstr "Настройки канала"
 
 msgctxt "#31098"
-msgid "Select your Universal Media Center user profile[CR]to login and continue"
-msgstr "Выберите профиль пользователя Universal Media Center,[CR]чтобы войти и продолжить"
+msgid "Select your Kodi user profile[CR]to login and continue"
+msgstr "Выберите профиль пользователя Kodi,[CR]чтобы войти и продолжить"
 
 #. viewtype name
 msgctxt "#31099"
@@ -462,8 +462,8 @@ msgid "Enter add-on browser"
 msgstr "Вход в браузер дополнений"
 
 msgctxt "#31119"
-msgid "You do not have any add-ons installed yet. Visit our add-on browser to browse through our collection and improve your Universal Media Center experience."
-msgstr "У вас еще нет каких-либо установленных дополнений. Перейдите в браузер дополнений, чтобы просмотреть нашу коллекцию и улучшить возможности Вашего Universal Media Center."
+msgid "You do not have any add-ons installed yet. Visit our add-on browser to browse through our collection and improve your Kodi experience."
+msgstr "У вас еще нет каких-либо установленных дополнений. Перейдите в браузер дополнений, чтобы просмотреть нашу коллекцию и улучшить возможности Вашего Kodi."
 
 msgctxt "#31120"
 msgid "You did not set up a weather provider yet. In order to view weather information, choose a weather provider and set up your location."
@@ -562,8 +562,8 @@ msgid "Play speed"
 msgstr "Скорость воспроизведения"
 
 msgctxt "#31143"
-msgid "You did not set up PVR yet. In order to use PVR, choose a PVR client addon and configure it. Please visit http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/PVR to learn more."
-msgstr "Функции записи эфира не настроены. Для записи эфира выберите соответствующий клиент и настройте его. Посетите http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/PVR для получения дополнительной информации."
+msgid "You did not set up PVR yet. In order to use PVR, choose a PVR client addon and configure it. Please visit http://kodi.wiki/view/PVR to learn more."
+msgstr "Функции записи эфира не настроены. Для записи эфира выберите соответствующий клиент и настройте его. Посетите http://kodi.wiki/view/PVR для получения дополнительной информации."
 
 msgctxt "#31144"
 msgid "Enter add-on browser"

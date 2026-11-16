@@ -3,12 +3,12 @@ SDK_VERSION=${SDK_VERSION:-"Default"}
 NDK_VERSION=${NDK_VERSION:-"Default"}
 NDK_API=${NDK_API:-"Default"}
 Configuration=${Configuration:-"Default"}
-_DEPENDS_ROOT=${_DEPENDS_ROOT:-"Default"}
+XBMC_DEPENDS_ROOT=${XBMC_DEPENDS_ROOT:-"Default"}
 XCODE_APP=${XCODE_APP:-"Default"}
 PATH_CHANGE_REV_FILENAME=".last_success_revision"
 FAILED_BUILD_FILENAME=".last_failed_revision"
 #TARBALLS ENV-VAR is only used by android scripts atm
-TARBALLS=${TARBALLS:-"/opt/-tarballs"}
+TARBALLS=${TARBALLS:-"/opt/xbmc-tarballs"}
 RENDER_SYSTEM=${RENDER_SYSTEM:-"Default"}
 BUILD_HOST=${BUILD_HOST:-"Default"}
 BUILD_CACHE_ENTRIES=${BUILD_CACHE_ENTRIES:-2}
@@ -29,32 +29,32 @@ JENKINS_BUILD_ID=${BUILD_ID:-"unknown"}
 JENKINS_BUILD_STRING="${JENKINS_BUILD_TIMESTAMP}-${JENKINS_BUILD_COMMIT}-${JENKINS_BUILD_REVISION}-${JENKINS_BUILD_ID}"
 
 #set platform defaults
-#$_PLATFORM_DIR matches the platform subdirs!
-case $_PLATFORM_DIR in
+#$XBMC_PLATFORM_DIR matches the platform subdirs!
+case $XBMC_PLATFORM_DIR in
   ios)
     DEFAULT_SDK_VERSION=26.2
-    DEFAULT__DEPENDS_ROOT=$WORKSPACE/tools/depends/-depends
+    DEFAULT_XBMC_DEPENDS_ROOT=$WORKSPACE/tools/depends/xbmc-depends
     DEFAULT_CONFIGURATION="RelWithDebInfo"
     DEFAULT_XCODE_APP="Xcode-26.3.0.app"
     ;;
 
   tvos)
     DEFAULT_SDK_VERSION=26.2
-    DEFAULT__DEPENDS_ROOT=$WORKSPACE/tools/depends/-depends
+    DEFAULT_XBMC_DEPENDS_ROOT=$WORKSPACE/tools/depends/xbmc-depends
     DEFAULT_CONFIGURATION="Release"
     DEFAULT_XCODE_APP="Xcode-26.3.0.app"
     ;;
 
   osx64)
     DEFAULT_SDK_VERSION=14.2
-    DEFAULT__DEPENDS_ROOT=$WORKSPACE/tools/depends/-depends
+    DEFAULT_XBMC_DEPENDS_ROOT=$WORKSPACE/tools/depends/xbmc-depends
     DEFAULT_CONFIGURATION="Release"
     DEFAULT_XCODE_APP="Xcode_15.2.app"
     ;;
 
   osx-arm64)
     DEFAULT_SDK_VERSION=14.2
-    DEFAULT__DEPENDS_ROOT=$WORKSPACE/tools/depends/-depends
+    DEFAULT_XBMC_DEPENDS_ROOT=$WORKSPACE/tools/depends/xbmc-depends
     DEFAULT_CONFIGURATION="Release"
     DEFAULT_XCODE_APP="Xcode_15.2.app"
     ;;
@@ -62,12 +62,12 @@ case $_PLATFORM_DIR in
   android)
     DEFAULT_NDK_VERSION="28.2.13676358" # NDK package version (newer API can be inside)
     DEFAULT_NDK_API="24" # Nougat API level (24) defined in package ./sysroot/usr/include/android/api-level.h
-    DEFAULT__DEPENDS_ROOT=$WORKSPACE/tools/depends/-depends
+    DEFAULT_XBMC_DEPENDS_ROOT=$WORKSPACE/tools/depends/xbmc-depends
     DEFAULT_CONFIGURATION="RelWithDebInfo"
     ;;
 
   linux)
-    DEFAULT__DEPENDS_ROOT=$WORKSPACE/tools/depends/-depends
+    DEFAULT_XBMC_DEPENDS_ROOT=$WORKSPACE/tools/depends/xbmc-depends
     DEFAULT_CONFIGURATION="Debug"
     DEFAULT_RENDER_SYSTEM="gl"
     DEFAULT_BUILD_HOST="x86_64-linux-gnu"
@@ -76,7 +76,7 @@ case $_PLATFORM_DIR in
   wasm)
     DEFAULT_SDK_VERSION=5.0.6
     DEFAULT_CONFIGURATION="Release"
-    DEFAULT__DEPENDS_ROOT=$WORKSPACE/tools/depends/-depends
+    DEFAULT_XBMC_DEPENDS_ROOT=$WORKSPACE/tools/depends/xbmc-depends
     DEFAULT_XCODE_APP="Xcode_15.2.app" # CI host is macos currently
   ;;
 
@@ -100,9 +100,9 @@ then
   NDK_API=$DEFAULT_NDK_API
 fi
 
-if [ "$_DEPENDS_ROOT" == "Default" ]
+if [ "$XBMC_DEPENDS_ROOT" == "Default" ]
 then
-  _DEPENDS_ROOT=$DEFAULT__DEPENDS_ROOT
+  XBMC_DEPENDS_ROOT=$DEFAULT_XBMC_DEPENDS_ROOT
 fi
 
 if [ "$XCODE_APP" == "Default" ]
@@ -135,7 +135,7 @@ fi
 
 #helper functions
 
-#hash a dir based on the git revision, Configuration, SDK_PATH, NDK_PATH, NDK_VERSION, SDK_VERSION, TOOLCHAIN and _DEPENDS_ROOT
+#hash a dir based on the git revision, Configuration, SDK_PATH, NDK_PATH, NDK_VERSION, SDK_VERSION, TOOLCHAIN and XBMC_DEPENDS_ROOT
 #param1 path to be hashed
 function getBuildHash ()
 {
@@ -143,7 +143,7 @@ function getBuildHash ()
   checkPath="$1"
   local hashStr
   hashStr="$(git rev-list HEAD --max-count=1  -- $checkPath)"
-  hashStr="$hashStr $Configuration $SDK_PATH $NDK_PATH $NDK_VERSION $SDK_VERSION $TOOLCHAIN $_DEPENDS_ROOT $XCODE_APP"
+  hashStr="$hashStr $Configuration $SDK_PATH $NDK_PATH $NDK_VERSION $SDK_VERSION $TOOLCHAIN $XBMC_DEPENDS_ROOT $XCODE_APP"
   [ -z "$DEBUG_SWITCH" ] || hashStr="$hashStr $DEBUG_SWITCH"
   echo $hashStr
 }

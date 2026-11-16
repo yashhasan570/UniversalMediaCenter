@@ -1,15 +1,15 @@
-# Universal Media Center Media Center language file
+# Kodi Media Center language file
 # Addon Name: Generic Artist Scraper
 # Addon id: metadata.generic.artists
-# Addon Provider: Team Universal Media Center
+# Addon Provider: Team Kodi
 msgid ""
 msgstr ""
-"Project-Id-Version: UNIVERSAL MEDIA CENTER Main\n"
-"Report-Msgid-Bugs-To: translations@github.com/yashhasan570/UniversalMediaCenter\n"
+"Project-Id-Version: KODI Main\n"
+"Report-Msgid-Bugs-To: translations@kodi.tv\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: 2021-08-21 01:29+0000\n"
 "Last-Translator: Minho Park <parkmino@gmail.com>\n"
-"Language-Team: Korean <https://universalmediacenter.weblate.cloud/projects/Universal Media Center-add-ons-information-providers/metadata-generic-artists/ko_kr/>\n"
+"Language-Team: Korean <https://kodi.weblate.cloud/projects/kodi-add-ons-information-providers/metadata-generic-artists/ko_kr/>\n"
 "Language: ko_kr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"

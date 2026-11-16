@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2025 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -62,7 +62,7 @@ TEST(TestMPLSParser, InvalidExtensionDataIsIgnored)
   // Léon (2in1 UHD), whose ExtensionData_start_address points into its sub-path
   CURL url;
   url.SetProtocol("bluray");
-  url.SetHostName(_REF_FILE_PATH("/utils/test/data/bluray/"));
+  url.SetHostName(XBMC_REF_FILE_PATH("xbmc/utils/test/data/bluray/"));
 
   XFILE::BlurayPlaylistInformation playlist;
   std::map<unsigned int, XFILE::ClipInformation> clipCache;
@@ -93,7 +93,7 @@ TEST(TestM2TSParser, General)
 {
   XFILE::StreamMap streams;
   EXPECT_EQ(XFILE::CM2TSParser::GetStreamsFromFile(
-                _REF_FILE_PATH("/utils/test/data/bluray/"), 1, "M2TS", streams),
+                XBMC_REF_FILE_PATH("xbmc/utils/test/data/bluray/"), 1, "M2TS", streams),
             true);
   if (!streams.empty())
   {

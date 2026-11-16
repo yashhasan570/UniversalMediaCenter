@@ -60,7 +60,7 @@ public class Splash extends Activity
   private static final int RecordAudioInfo = 14;
   private static final int AccessLocalNetworkPermission = 15;
   private static final int AccessLocalNetworkInfo = 16;
-  private static final int Starting = 99;
+  private static final int StartingXBMC = 99;
 
   private static final String TAG = "@APP_NAME@";
 
@@ -174,7 +174,7 @@ public class Splash extends Activity
           break;
         case CachingDone:
           mSplash.mCachingDone = true;
-          sendEmptyMessage(Starting);
+          sendEmptyMessage(StartingXBMC);
           break;
         case CheckExternalStorage:
           if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState()))
@@ -197,7 +197,7 @@ public class Splash extends Activity
           mExternalStorageChecked = true;
           mSplash.stopWatchingExternalStorage();
           if (mSplash.mCachingDone)
-            sendEmptyMessage(Starting);
+            sendEmptyMessage(StartingXBMC);
           else
           {
             SetupEnvironment();
@@ -211,7 +211,7 @@ public class Splash extends Activity
               mState = CachingDone;
               mCachingDone = true;
 
-              sendEmptyMessage(Starting);
+              sendEmptyMessage(StartingXBMC);
             }
             else
             {
@@ -220,10 +220,10 @@ public class Splash extends Activity
           }
 
           break;
-        case Starting:
+        case StartingXBMC:
           mSplash.mTextView.setText(getString(R.string.starting, "@APP_NAME@"));
           mSplash.mProgress.setVisibility(View.INVISIBLE);
-          mSplash.start();
+          mSplash.startXBMC();
           break;
         default:
           break;
@@ -454,7 +454,7 @@ public class Splash extends Activity
 
   private void SetupEnvironment()
   {
-    sXbmcHome = Properties.getStringProperty(".home", "");
+    sXbmcHome = XBMCProperties.getStringProperty("xbmc.home", "");
     if (!sXbmcHome.isEmpty())
     {
       fXbmcHome = new File(sXbmcHome);
@@ -474,7 +474,7 @@ public class Splash extends Activity
       }
       if (!fXbmcHome.exists())
       {
-        System.setProperty(".home", "");
+        System.setProperty("xbmc.home", "");
         sXbmcHome = "";
       }
     }
@@ -488,7 +488,7 @@ public class Splash extends Activity
     File fLibCache = new File(fCacheDir.getAbsolutePath() + "/lib");
     fLibCache.mkdirs();
 
-    final String sXbmcdata = Properties.getStringProperty(".data", "");
+    final String sXbmcdata = XBMCProperties.getStringProperty("xbmc.data", "");
     if (!sXbmcdata.isEmpty())
     {
       File fXbmcData = new File(sXbmcdata);
@@ -509,11 +509,11 @@ public class Splash extends Activity
 
       if (!fXbmcData.exists())
       {
-        System.setProperty(".data", "");
+        System.setProperty("xbmc.data", "");
       }
     }
 
-    final String sXbmcTemp = Properties.getStringProperty(".temp", "");
+    final String sXbmcTemp = XBMCProperties.getStringProperty("xbmc.temp", "");
     if (!sXbmcTemp.isEmpty())
     {
       File fXbmcTemp = new File(sXbmcTemp);
@@ -534,7 +534,7 @@ public class Splash extends Activity
 
       if (!fXbmcTemp.exists())
       {
-        System.setProperty(".temp", "");
+        System.setProperty("xbmc.temp", "");
       }
     }
 
@@ -689,7 +689,7 @@ public class Splash extends Activity
       mStateMachine.post(this::launchMain);
   }
 
-  protected void start()
+  protected void startXBMC()
   {
     if (mHandoffPending || mMainLaunched || isFinishing() || isDestroyed())
       return;
@@ -722,7 +722,7 @@ public class Splash extends Activity
     super.onCreate(savedInstanceState);
 
     // Be sure properties are initialized for native
-    Properties.initialize(getApplicationContext());
+    XBMCProperties.initialize(getApplicationContext());
 
     if (Main.isShuttingDown())
     {
@@ -733,7 +733,7 @@ public class Splash extends Activity
 
     if (Main.isActivityRunning()) {
       Log.d(TAG, "@APP_NAME@ already running; just activate it");
-      start();
+      startXBMC();
       return;
     }
 
@@ -768,7 +768,7 @@ public class Splash extends Activity
 
     if (mState != InError && mCachingDone && mExternalStorageChecked && mPermissionOK)
     {
-      start();
+      startXBMC();
       return;
     }
 

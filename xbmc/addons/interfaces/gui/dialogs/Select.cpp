@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -22,15 +22,15 @@ namespace ADDON
 
 void Interface_GUIDialogSelect::Init(AddonGlobalInterface* addonInterface)
 {
-  addonInterface->toUniversal Media Center->->dialogSelect = new AddonToUniversal Media CenterFuncTable__dialogSelect();
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogSelect = new AddonToUniversal Media CenterFuncTable_universalmediacenter_gui_dialogSelect();
 
-  addonInterface->toUniversal Media Center->->dialogSelect->open = open;
-  addonInterface->toUniversal Media Center->->dialogSelect->open_multi_select = open_multi_select;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogSelect->open = open;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogSelect->open_multi_select = open_multi_select;
 }
 
 void Interface_GUIDialogSelect::DeInit(AddonGlobalInterface* addonInterface)
 {
-  delete addonInterface->toUniversal Media Center->->dialogSelect;
+  delete addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogSelect;
 }
 
 int Interface_GUIDialogSelect::open(UNIVERSALMEDIA_HANDLE universalmediacenterBase,

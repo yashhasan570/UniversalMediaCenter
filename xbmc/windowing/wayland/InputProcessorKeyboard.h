@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2017-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -10,9 +10,9 @@
 
 #include "Seat.h"
 #include "XkbcommonKeymap.h"
-#include "input/keyboard/_keysym.h"
+#include "input/keyboard/XBMC_keysym.h"
 #include "threads/Timer.h"
-#include "windowing/_events.h"
+#include "windowing/XBMC_events.h"
 
 #include <atomic>
 #include <cstdint>
@@ -30,7 +30,7 @@ class IInputHandlerKeyboard
 public:
   virtual void OnKeyboardEnter() {}
   virtual void OnKeyboardLeave() {}
-  virtual void OnKeyboardEvent(_Event& event) = 0;
+  virtual void OnKeyboardEvent(XBMC_Event& event) = 0;
   virtual ~IInputHandlerKeyboard() = default;
 };
 
@@ -56,7 +56,7 @@ private:
   CInputProcessorKeyboard& operator=(CInputProcessorKeyboard const& other) = delete;
 
   void ConvertAndSendKey(std::uint32_t scancode, bool pressed);
-  _Event SendKey(uint32_t scancode, Key key, std::uint16_t unicodeCodepoint, bool pressed);
+  XBMC_Event SendKey(uint32_t scancode, XBMCKey key, std::uint16_t unicodeCodepoint, bool pressed);
   /**
    * Notify the outside world about key composing events
    *
@@ -73,9 +73,9 @@ private:
   // Default values are used if compositor does not send any
   std::atomic<int> m_keyRepeatDelay{1000};
   std::atomic<int> m_keyRepeatInterval{50};
-  // Save complete _Event so no keymap lookups which might not be thread-safe
+  // Save complete XBMC_Event so no keymap lookups which might not be thread-safe
   // are needed in the repeat callback
-  _Event m_keyToRepeat;
+  XBMC_Event m_keyToRepeat;
 
   CTimer m_keyRepeatTimer;
 };

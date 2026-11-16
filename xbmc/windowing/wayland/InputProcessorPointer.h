@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2017-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -9,9 +9,9 @@
 #pragma once
 
 #include "Seat.h"
-#include "input/keyboard/_keysym.h"
+#include "input/keyboard/XBMC_keysym.h"
 #include "utils/Geometry.h"
-#include "windowing/_events.h"
+#include "windowing/XBMC_events.h"
 
 #include <cstdint>
 
@@ -29,7 +29,7 @@ class IInputHandlerPointer
 public:
   virtual void OnPointerEnter(std::uint32_t seatGlobalName, std::uint32_t serial) {}
   virtual void OnPointerLeave() {}
-  virtual void OnPointerEvent(_Event& event) = 0;
+  virtual void OnPointerEvent(XBMC_Event& event) = 0;
 protected:
   ~IInputHandlerPointer() = default;
 };

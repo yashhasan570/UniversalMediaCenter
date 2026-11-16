@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2013-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -11,7 +11,7 @@
  * \brief Implements CEnvironment class functions.
  *
  *  Some ideas were inspired by PostgreSQL's pgwin32_putenv function.
- *  Refined, updated, enhanced and modified for  by Karlson2k.
+ *  Refined, updated, enhanced and modified for XBMC by Karlson2k.
  */
 
 #include "Environment.h"

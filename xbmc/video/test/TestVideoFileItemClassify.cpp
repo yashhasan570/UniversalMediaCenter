@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -189,8 +189,8 @@ TEST(TestVideoFileItemClassify, IsDVDFile)
 
 TEST(TestVideoFileItemClassify, IsProtectedBlurayDisc)
 {
-  const auto temp_file = CTestUtils::Instance().CreateTempFile("bluraytest");
-  const std::string dir = CTestUtils::Instance().TempFileDirectory(temp_file);
+  const auto temp_file = CXBMCTestUtils::Instance().CreateTempFile("bluraytest");
+  const std::string dir = CXBMCTestUtils::Instance().TempFileDirectory(temp_file);
   CFileUtils::DeleteItem(URIUtils::AddFileToFolder(dir, "AACS", "Unit_Key_RO.inf"));
   EXPECT_FALSE(VIDEO::IsProtectedBlurayDisc(CFileItem(dir, true)));
   XFILE::CDirectory::Create(URIUtils::AddFileToFolder(dir, "AACS"));
@@ -199,7 +199,7 @@ TEST(TestVideoFileItemClassify, IsProtectedBlurayDisc)
   inf_file.Close();
   EXPECT_TRUE(VIDEO::IsProtectedBlurayDisc(CFileItem(dir, true)));
   CFileUtils::DeleteItem(URIUtils::AddFileToFolder(dir, "AACS", "Unit_Key_RO.inf"));
-  CTestUtils::Instance().DeleteTempFile(temp_file);
+  CXBMCTestUtils::Instance().DeleteTempFile(temp_file);
 }
 
 TEST(TestVideoFileItemClassify, IsSubtitle)

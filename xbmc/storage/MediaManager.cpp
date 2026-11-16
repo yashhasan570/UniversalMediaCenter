@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -21,6 +21,8 @@
 #include "application/ApplicationPlayer.h"
 #include "dialogs/GUIDialogKaiToast.h"
 #include "dialogs/GUIDialogPlayEject.h"
+#include "filesystem/AddonsDirectory.h"
+#include "filesystem/AddonsPaths.h"
 #ifdef HAVE_LIBBLURAY
 #include "filesystem/BlurayDirectory.h"
 #include "filesystem/BlurayDiscCache.h"
@@ -44,7 +46,7 @@
 #include "utils/FileUtils.h"
 #include "utils/StringUtils.h"
 #include "utils/URIUtils.h"
-#include "utils/TinyXML2.h"
+#include "utils/XBMCTinyXML2.h"
 #include "utils/XMLUtils.h"
 #include "utils/log.h"
 #include "video/VideoDatabase.h"
@@ -280,7 +282,7 @@ void CMediaManager::LoadSources()
   }
 
   // load xml file...
-  CTinyXML2 xmlDoc;
+  CXBMCTinyXML2 xmlDoc;
   if (!xmlDoc.LoadFile(MEDIA_SOURCES_XML))
   {
     CLog::Log(LOGERROR, "Error loading {}, Line {} ({})", MEDIA_SOURCES_XML, xmlDoc.ErrorLineNum(),
@@ -316,7 +318,7 @@ void CMediaManager::LoadSources()
 
 bool CMediaManager::SaveSources()
 {
-  CTinyXML2 doc;
+  CXBMCTinyXML2 doc;
   auto* xmlRootElement = doc.NewElement("mediasources");
   auto* rootNode = doc.InsertFirstChild(xmlRootElement);
 
@@ -492,51 +494,20 @@ bool CMediaManager::SetLocationPath(const std::string& oldPath, const std::strin
 
 void CMediaManager::LoadAddonSources() const
 {
-  if (CServiceBroker::GetSettingsComponent()->GetAdvancedSettings()->m_bVirtualShares)
-  {
-    for (const MediaSection section :
-         {MediaSection::VIDEO, MediaSection::PROGRAMS, MediaSection::PICTURES, MediaSection::MUSIC,
-          MediaSection::GAMES})
-      CMediaSourceSettings::GetInstance().AddShare(section, GetRootAddonTypeSource(section));
-  }
-}
+  if (!CServiceBroker::GetSettingsComponent()->GetAdvancedSettings()->m_bVirtualShares)
+    return;
 
-CMediaSource CMediaManager::GetRootAddonTypeSource(MediaSection section) const
-{
   auto& localizeStrings = CServiceBroker::GetResourcesComponent().GetLocalizeStrings();
-  switch (section)
+  for (const UNIVERSAL MEDIA CENTER::ADDONS::SectionSource& entry : UNIVERSAL MEDIA CENTER::ADDONS::SECTION_SOURCES)
   {
-    case MediaSection::PROGRAMS:
-      return ComputeRootAddonTypeSource("executable", localizeStrings.Get(1043),
-                                        "DefaultAddonProgram.png");
-    case MediaSection::VIDEO:
-      return ComputeRootAddonTypeSource("video", localizeStrings.Get(1037),
-                                        "DefaultAddonVideo.png");
-    case MediaSection::MUSIC:
-      return ComputeRootAddonTypeSource("audio", localizeStrings.Get(1038),
-                                        "DefaultAddonMusic.png");
-    case MediaSection::PICTURES:
-      return ComputeRootAddonTypeSource("image", localizeStrings.Get(1039),
-                                        "DefaultAddonPicture.png");
-    case MediaSection::GAMES:
-      return ComputeRootAddonTypeSource("game", localizeStrings.Get(35049), "DefaultAddonGame.png");
-    case MediaSection::FILES:
-      break;
+    CMediaSource source;
+    source.strPath = XFILE::CAddonsDirectory::SourcesPathOf(entry.section);
+    source.strName = localizeStrings.Get(entry.label);
+    source.m_strThumbnailImage = entry.icon;
+    source.m_iDriveType = SourceType::VPATH;
+    source.m_ignore = true;
+    CMediaSourceSettings::GetInstance().AddShare(entry.section, source);
   }
-  return {};
-}
-
-CMediaSource CMediaManager::ComputeRootAddonTypeSource(const std::string& type,
-                                                       const std::string& label,
-                                                       const std::string& thumb) const
-{
-  CMediaSource source;
-  source.strPath = "addons://sources/" + type + "/";
-  source.strName = label;
-  source.m_strThumbnailImage = thumb;
-  source.m_iDriveType = SourceType::VPATH;
-  source.m_ignore = true;
-  return source;
 }
 
 void CMediaManager::AddAutoSource(const CMediaSource &share, bool bAutorun)
@@ -1474,7 +1445,7 @@ void CMediaManager::ProcessEvents()
     // darwins GetFirstOpticalDeviceFileName only gives us something
     // when a disc is inserted
     // so we have to refresh m_strFirstAvailDrive when this happens after Initialize
-    // was called (e.x. the disc was inserted after the start of )
+    // was called (e.x. the disc was inserted after the start of xbmc)
     // else TranslateDevicePath wouldn't give the correct device
     {
       const std::string firstDrive{m_platformStorage->GetFirstOpticalDeviceFileName()};
@@ -1796,7 +1767,7 @@ bool CMediaManager::playStubFile(const CFileItem& item)
   strLine1 = CServiceBroker::GetResourcesComponent().GetLocalizeStrings().Get(435).c_str();
   strLine2 = CServiceBroker::GetResourcesComponent().GetLocalizeStrings().Get(436).c_str();
 
-  CTinyXML2 discStubXML;
+  CXBMCTinyXML2 discStubXML;
   if (discStubXML.LoadFile(item.GetPath()))
   {
     auto* pRootElement = discStubXML.RootElement();

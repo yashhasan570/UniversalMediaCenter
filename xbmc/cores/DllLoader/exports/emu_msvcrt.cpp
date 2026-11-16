@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -139,7 +139,7 @@ extern "C" void __stdcall init_emu_environ()
   dll_putenv("OS=unknown");
 #endif
 
-  // check if we are running as real .app or just binary
+  // check if we are running as real xbmc.app or just binary
   if (!CUtil::GetFrameworksPath(true).empty())
   {
     // using external python, it's build looking for xxx/lib/python(VERSIONMAJOR.MINOR)
@@ -148,7 +148,7 @@ extern "C" void __stdcall init_emu_environ()
     dll_putenv(("PYTHONPATH=" + pythonRootPath).c_str());
     dll_putenv(("PYTHONHOME=" + pythonRootPath).c_str());
     dll_putenv(
-        ("PATH=.;" + CSpecialProtocol::TranslatePath("special://") + ";" + pythonRootPath)
+        ("PATH=.;" + CSpecialProtocol::TranslatePath("special://xbmc") + ";" + pythonRootPath)
             .c_str());
   }
   else
@@ -156,13 +156,13 @@ extern "C" void __stdcall init_emu_environ()
     // default PYTHONPATH/PYTHONHOME are correct for darwin_embedded
 #if !defined(TARGET_DARWIN_EMBEDDED)
     dll_putenv(("PYTHONPATH=" +
-      CSpecialProtocol::TranslatePath("special:///system/python/DLLs") + ";" +
-      CSpecialProtocol::TranslatePath("special:///system/python/Lib")).c_str());
+      CSpecialProtocol::TranslatePath("special://xbmc/system/python/DLLs") + ";" +
+      CSpecialProtocol::TranslatePath("special://xbmc/system/python/Lib")).c_str());
     dll_putenv(("PYTHONHOME=" +
-      CSpecialProtocol::TranslatePath("special:///system/python")).c_str());
+      CSpecialProtocol::TranslatePath("special://xbmc/system/python")).c_str());
 #endif
-    dll_putenv(("PATH=.;" + CSpecialProtocol::TranslatePath("special://") + ";" +
-      CSpecialProtocol::TranslatePath("special:///system/python")).c_str());
+    dll_putenv(("PATH=.;" + CSpecialProtocol::TranslatePath("special://xbmc") + ";" +
+      CSpecialProtocol::TranslatePath("special://xbmc/system/python")).c_str());
   }
 
 #if defined(TARGET_ANDROID)
@@ -1829,7 +1829,7 @@ extern "C"
   const char* dll_getcwd(char *buffer, int maxlen)
   {
     not_implement("msvcrt.dll fake function dll_getcwd() called\n");
-    return "special:///";
+    return "special://xbmc/";
   }
 
   int dll_putenv(const char* envstring)

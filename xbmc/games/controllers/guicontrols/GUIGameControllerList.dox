@@ -50,7 +50,7 @@ The control was introduced in v21 to support the new Player Viewer (<b>`GameAgen
 --------------------------------------------------------------------------------
 \section Game_Controller_sect2 Available tags
 
-The [default control](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Default_Control_Tags) tags are
+The [default control](http://kodi.wiki/view/Default_Control_Tags) tags are
 applicable to this control. Note that each tag is lower case only. This is
 important, as xml tags are case-sensitive.
 
@@ -71,7 +71,7 @@ In addition, the following game-related tags are available:
 
 #### Development:
 
-- [Add-on development](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Add-on_development)
-- [Skinning](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Skinning)
+- [Add-on development](http://kodi.wiki/view/Add-on_development)
+- [Skinning](http://kodi.wiki/view/Skinning)
 
 */

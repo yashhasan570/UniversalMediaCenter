@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -297,7 +297,7 @@ public:
 
   /* \brief Checks whether an addon is installed from a
      *        particular origin repo
-     * \note if checked for an origin defined as official (i.e. repository.github.com/yashhasan570/UniversalMediaCenter)
+     * \note if checked for an origin defined as official (i.e. repository.xbmc.org)
      *       this function will return true even if the addon is a shipped system add-on
      * \param ID id of the addon
      * \param origin origin repository id
@@ -306,7 +306,7 @@ public:
 
   /* \brief Checks whether an addon is installed from a
      *        particular origin repo and version
-     * \note if checked for an origin defined as official (i.e. repository.github.com/yashhasan570/UniversalMediaCenter)
+     * \note if checked for an origin defined as official (i.e. repository.xbmc.org)
      *       this function will return true even if the addon is a shipped system add-on
      * \param ID id of the addon
      * \param origin origin repository id

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2015-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -17,7 +17,7 @@
 #include "windowing/GraphicContext.h"
 #include "windowing/WinSystem.h"
 
-#include "platform/android/activity/App.h"
+#include "platform/android/activity/XBMCApp.h"
 
 bool CVideoSyncAndroid::Setup()
 {
@@ -27,7 +27,7 @@ bool CVideoSyncAndroid::Setup()
   m_LastVBlankTime = CurrentHostCounter();
   m_abortEvent.Reset();
 
-  CApp::Get().InitFrameCallback(this);
+  CXBMCApp::Get().InitFrameCallback(this);
   CServiceBroker::GetWinSystem()->Register(this);
 
   return true;
@@ -42,7 +42,7 @@ void CVideoSyncAndroid::Run(CEvent& stopEvent)
 void CVideoSyncAndroid::Cleanup()
 {
   CLog::Log(LOGDEBUG, "CVideoSyncAndroid::{} cleaning up", __FUNCTION__);
-  CApp::Get().DeinitFrameCallback();
+  CXBMCApp::Get().DeinitFrameCallback();
   CServiceBroker::GetWinSystem()->Unregister(this);
 }
 

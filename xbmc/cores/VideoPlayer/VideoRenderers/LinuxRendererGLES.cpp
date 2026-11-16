@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2010-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -725,7 +725,7 @@ void CLinuxRendererGLES::UpdateVideoFilter()
     // multi-pass FBO path. Matches GL 4.0+ single-pass / GL <4.0 multi-pass pattern.
     // On GLES, VAAPI maps to SHADER_NV12_RRG (GL maps it to SHADER_NV12).
     // Only patterns the filter shader implements may pass: >8-bit planar
-    // (_YV12_HI) has no sampling block there and takes the multipass path.
+    // (XBMC_YV12_HI) has no sampling block there and takes the multipass path.
     EShaderFormat fmt = GetShaderFormat();
     if (fmt == SHADER_NV12 || fmt == SHADER_NV12_RRG || fmt == SHADER_YV12)
     {
@@ -877,7 +877,7 @@ void CLinuxRendererGLES::LoadShaders(int field)
         if (glCreateProgram())
         {
           // Auto dithering (depth=0): decide per-video whether dithering is beneficial.
-          // Shaders are always compiled with _DITHER when the setting is on.
+          // Shaders are always compiled with XBMC_DITHER when the setting is on.
           // The m_ditherEnabled uniform controls whether the shader applies dithering.
           bool ditherActive = true;
           unsigned int effectiveDitherDepth = m_ditherDepth;

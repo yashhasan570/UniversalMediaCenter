@@ -41,7 +41,7 @@ containers (list, panel, etc.).
 --------------------------------------------------------------------------------
 \section Group_List_Control_sect2 Available tags
 
-In addition to the [Default Control Tags](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Default_Control_Tags)
+In addition to the [Default Control Tags](http://kodi.wiki/view/Default_Control_Tags)
 the following tags are available. Note that each tag is **lower case** only. This is
 important, as `xml` tags are case-sensitive.
 
@@ -50,7 +50,7 @@ important, as `xml` tags are case-sensitive.
 | itemgap           | Specifies the gap (in pixels) between controls in the list. Defaults to 5px.
 | orientation       | Specifies whether the list is horizontal or vertical. Defaults to vertical.
 | pagecontrol       | Specifies the page control used to scroll up and down the list. Set the page control's id here.
-| scrolltime        | The time (in ms) to scroll from one item to another. By default, this is 200ms. The list will scroll smoothly from one item to another as needed. Set it to zero to disable the smooth scrolling. The scroll movement can be further adjusted by selecting one of the available [tween](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Tweeners) methods.
+| scrolltime        | The time (in ms) to scroll from one item to another. By default, this is 200ms. The list will scroll smoothly from one item to another as needed. Set it to zero to disable the smooth scrolling. The scroll movement can be further adjusted by selecting one of the available [tween](http://kodi.wiki/view/Tweeners) methods.
 | usecontrolcoords  | Specifies whether the list should use the control's coordinates as an offset location from the coordinates it would normally use to draw the control. Defaults to false. Useful for staggering a control in from the edge of the grouplist, or for having more space around a control than <c>`<itemgap>`</c> gives.
 | align             | Specifies how to align the grouplist. possible values: left, right, center, justify. defaults to left.
 
@@ -60,8 +60,8 @@ important, as `xml` tags are case-sensitive.
 
 #### Development:
 
-- [Add-on development](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Add-on_development)
-- [Skinning](http://github.com/yashhasan570/UniversalMediaCenter/wiki/view/Skinning)
+- [Add-on development](http://kodi.wiki/view/Add-on_development)
+- [Skinning](http://kodi.wiki/view/Skinning)
 
 
 */

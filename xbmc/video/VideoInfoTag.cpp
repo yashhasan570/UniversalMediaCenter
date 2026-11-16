@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -179,7 +179,7 @@ bool CVideoInfoTag::Save(TiXmlNode *node, const std::string &tag, bool savePathI
     if (!m_EpBookmark.playerState.empty())
     {
       TiXmlElement playerstate("playerstate");
-      CTinyXML doc;
+      CXBMCTinyXML doc;
       doc.Parse(m_EpBookmark.playerState);
       playerstate.InsertEndChild(*doc.RootElement());
       epbookmark.InsertEndChild(playerstate);
@@ -208,7 +208,7 @@ bool CVideoInfoTag::Save(TiXmlNode *node, const std::string &tag, bool savePathI
     XMLUtils::SetInt(movie, "runtime", runtime);
   if (m_strPictureURL.HasData())
   {
-    CTinyXML doc;
+    CXBMCTinyXML doc;
     doc.Parse(m_strPictureURL.GetData());
     const TiXmlNode* thumb = doc.FirstChild("thumb");
     while (thumb)
@@ -219,7 +219,7 @@ bool CVideoInfoTag::Save(TiXmlNode *node, const std::string &tag, bool savePathI
   }
   if (!m_fanart.m_xml.empty())
   {
-    CTinyXML doc;
+    CXBMCTinyXML doc;
     doc.Parse(m_fanart.m_xml);
     movie->InsertEndChild(*doc.RootElement());
   }
@@ -241,7 +241,7 @@ bool CVideoInfoTag::Save(TiXmlNode *node, const std::string &tag, bool savePathI
   }
   if (!m_strEpisodeGuide.empty())
   {
-    CTinyXML doc;
+    CXBMCTinyXML doc;
     doc.Parse(m_strEpisodeGuide);
     if (doc.RootElement())
       movie->InsertEndChild(*doc.RootElement());
@@ -370,7 +370,7 @@ bool CVideoInfoTag::Save(TiXmlNode *node, const std::string &tag, bool savePathI
   if (!m_resumePoint.playerState.empty())
   {
     TiXmlElement playerstate("playerstate");
-    CTinyXML doc;
+    CXBMCTinyXML doc;
     doc.Parse(m_resumePoint.playerState);
     playerstate.InsertEndChild(*doc.RootElement());
     resume.InsertEndChild(playerstate);

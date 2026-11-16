@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2016-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -13,7 +13,7 @@
 #include "settings/lib/Setting.h"
 #include "settings/lib/SettingsManager.h"
 #include "utils/Variant.h"
-#include "utils/TinyXML.h"
+#include "utils/XBMCTinyXML.h"
 
 #include <mutex>
 
@@ -72,7 +72,7 @@ bool CSettingsBase::IsInitialized() const
   return m_initialized && m_settingsManager->IsInitialized();
 }
 
-bool CSettingsBase::LoadValuesFromXml(const CTinyXML& xml, bool& updated)
+bool CSettingsBase::LoadValuesFromXml(const CXBMCTinyXML& xml, bool& updated)
 {
   const TiXmlElement* xmlRoot = xml.RootElement();
   if (xmlRoot == nullptr || xmlRoot->ValueStr() != SETTINGS_XML_ROOT)
@@ -118,7 +118,7 @@ bool CSettingsBase::IsLoaded() const
   return m_settingsManager->IsLoaded();
 }
 
-bool CSettingsBase::SaveValuesToXml(CTinyXML& xml) const
+bool CSettingsBase::SaveValuesToXml(CXBMCTinyXML& xml) const
 {
   std::string serializedSettings;
   const auto xmlSerializer = std::make_unique<CSettingsValueXmlSerializer>();
@@ -267,7 +267,7 @@ void CSettingsBase::SetDefaults()
   m_settingsManager->SetDefaults();
 }
 
-bool CSettingsBase::InitializeDefinitionsFromXml(const CTinyXML& xml)
+bool CSettingsBase::InitializeDefinitionsFromXml(const CXBMCTinyXML& xml)
 {
   const TiXmlElement* root = xml.RootElement();
   if (!root)

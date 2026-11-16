@@ -84,7 +84,7 @@ make
 
 It is recommended to specify the directories as absolute paths. If relative paths are used, they are considered relative to the build directory in which `cmake` was executed (the current working directory).
 
-Both methods work only for already existing add-ons. See this **[forum thread](https://github.com/yashhasan570/UniversalMediaCenter/showthread.php?tid=219166&pid=1934922)** and add-ons **[README](cmake/addons/README.md)**
+Both methods work only for already existing add-ons. See this **[forum thread](https://forum.universalmediacenter.tv/showthread.php?tid=219166&pid=1934922)** and add-ons **[README](cmake/addons/README.md)**
 for add-on development and detailed documentation about the add-on build system.
 
 ## Sanitizers

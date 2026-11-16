@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2012-2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -313,9 +313,9 @@ const NPT_String GetProtocolInfo(const CFileItem& item,
 {
   const std::string source{protocol && *protocol ? protocol : item.GetURL().GetProtocol()};
 
-  // UPnP clients get http; other protocols are offered as -get for other Universal Media Center clients
+  // UPnP clients get http; other protocols are offered as xbmc-get for other Universal Media Center clients
   //! @todo add rtsp ?
-  NPT_String proto{source == "http" ? "http-get" : "-get"};
+  NPT_String proto{source == "http" ? "http-get" : "xbmc-get"};
 
   const NPT_String mime{GetMimeType(item, context)};
   proto += ":*:" + mime + ":" + PLT_ProtocolInfo::GetDlnaExtension(mime, context);
@@ -634,8 +634,8 @@ PLT_MediaObject* BuildObject(CFileItem& item,
       resource.m_Uri = file_path;
 
       // if the direct link can be served directly using http, then push it in front
-      // otherwise keep the -get resource last and let a compatible client look for it
-      if (resource.m_ProtocolInfo.ToString().StartsWith("", true))
+      // otherwise keep the xbmc-get resource last and let a compatible client look for it
+      if (resource.m_ProtocolInfo.ToString().StartsWith("xbmc", true))
       {
         object->m_Resources.Add(resource);
       }
@@ -822,7 +822,7 @@ PLT_MediaObject* BuildObject(CFileItem& item,
             upnp_server->BuildSafeResourceUri(rooturi, (*ips.GetFirstItem()).ToString(),
                                               wrappedUrl.c_str()));
         upnp_server->AddSafeResourceUri(object, rooturi, ips, wrappedUrl.c_str(),
-                                        ("github.com/yashhasan570/UniversalMediaCenter:*:" + itArtwork.first + ":*").c_str());
+                                        ("xbmc.org:*:" + itArtwork.first + ":*").c_str());
       }
     }
   }
@@ -1256,7 +1256,7 @@ struct ResourcePrioritySort
     if (URIUtils::IsHostOnLAN(url.GetHost().GetChars(), LanCheckMode::ONLY_LOCAL_SUBNET))
       prio += 300;
 
-    if (res.m_ProtocolInfo.GetProtocol() == "-get")
+    if (res.m_ProtocolInfo.GetProtocol() == "xbmc-get")
       prio += 200;
     else if (res.m_ProtocolInfo.GetProtocol() == "http-get")
       prio += 100;

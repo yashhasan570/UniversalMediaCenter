@@ -32,17 +32,17 @@ and yet another one
 
 **Example:** Clone Universal Media Center's current master branch:
 ```
-git clone https://github.com// universalmediacenter
+git clone https://github.com/xbmc/xbmc universalmediacenter
 ```
 
 Commands that contain strings enclosed in angle brackets denote something you need to change to suit your needs.
 ```
-git clone -b <branch-name> https://github.com// universalmediacenter
+git clone -b <branch-name> https://github.com/xbmc/xbmc universalmediacenter
 ```
 
 **Example:** Clone Universal Media Center's current Krypton branch:
 ```
-git clone -b Krypton https://github.com// universalmediacenter
+git clone -b Krypton https://github.com/xbmc/xbmc universalmediacenter
 ```
 
 Several different strategies are used to draw your attention to certain pieces of information. In order of how critical the information is, these items are marked as a note, tip, or warning. For example:
@@ -81,13 +81,13 @@ cd $HOME
 
 Clone Universal Media Center's current master branch:
 ```
-git clone https://github.com// universalmediacenter
+git clone https://github.com/xbmc/xbmc universalmediacenter
 ```
 
 **[back to top](#table-of-contents)**
 
 ## 4. Configure and build tools and dependencies
-Universal Media Center can be built as either a 32bit or 64bit program. The dependencies are built in `$HOME/universalmediacenter/tools/depends` and installed into `/Users/Shared/-depends`.
+Universal Media Center can be built as either a 32bit or 64bit program. The dependencies are built in `$HOME/universalmediacenter/tools/depends` and installed into `/Users/Shared/xbmc-depends`.
 
 > [!TIP]
 > Look for comments starting with `Or ...` and only execute the command(s) you need.
@@ -150,7 +150,7 @@ make -j$(getconf _NPROCESSORS_ONLN)
 ```
 --with-tarballs=<path>
 ```
-  path where tarballs will be saved [prefix/-tarballs]
+  path where tarballs will be saved [prefix/xbmc-tarballs]
 
 ```
 --with-cpu=<cpu>
@@ -202,7 +202,7 @@ make -j$(getconf _NPROCESSORS_ONLN)
 **[back to top](#table-of-contents)** | **[back to section top](#4-configure-and-build-tools-and-dependencies)**
 
 ## 5. Build binary add-ons
-You can find a complete list of available binary add-ons **[here](https://github.com//repo-binary-addons)**.
+You can find a complete list of available binary add-ons **[here](https://github.com/xbmc/repo-binary-addons)**.
 
 Change to Universal Media Center's source code directory:
 ```
@@ -259,15 +259,15 @@ cd $HOME/universalmediacenter-build
 
 Generate Xcode project (x86_64 intel):
 ```
-/Users/Shared/-depends/x86_64-darwin17.5.0-native/bin/cmake -G Xcode -DCMAKE_TOOLCHAIN_FILE=/Users/Shared/-depends/macosx10.15_x86_64-target-debug/share/Toolchain.cmake ../universalmediacenter
+/Users/Shared/xbmc-depends/x86_64-darwin17.5.0-native/bin/cmake -G Xcode -DCMAKE_TOOLCHAIN_FILE=/Users/Shared/xbmc-depends/macosx10.15_x86_64-target-debug/share/Toolchain.cmake ../universalmediacenter
 ```
 
 > [!WARNING]  
 > The toolchain file location differs depending on SDK version. You have to replace `x86_64-darwin17.5.0-native` and `macosx10.15_x86_64-target-debug` in the paths above with the correct ones on your system.
 
-You can check `Users/Shared/-depends` directory content with:
+You can check `Users/Shared/xbmc-depends` directory content with:
 ```
-ls -l /Users/Shared/-depends
+ls -l /Users/Shared/xbmc-depends
 ```
 
 **Start Xcode, open the Universal Media Center project file** (`universalmediacenter.xcodeproj`) located in `$HOME/universalmediacenter-build` and hit `Build`.
@@ -291,7 +291,7 @@ xcodebuild -config "Debug"
 
 Build Universal Media Center:
 ```
-/Users/Shared/-depends/x86_64-darwin17.5.0-native/bin/cmake --build . --config "Debug" -- -verbose
+/Users/Shared/xbmc-depends/x86_64-darwin17.5.0-native/bin/cmake --build . --config "Debug" -- -verbose
 ```
 
 > [!TIP]
@@ -356,7 +356,7 @@ xcodebuild -target dmg
 **OR**
 ```
 cd $HOME/universalmediacenter-build
-/Users/Shared/-depends/x86_64-darwin17.5.0-native/bin/cmake --build . --target "dmg" --config "Debug"
+/Users/Shared/xbmc-depends/x86_64-darwin17.5.0-native/bin/cmake --build . --target "dmg" --config "Debug"
 ```
 
 Generated `dmg` file will be inside `$HOME/universalmediacenter-build/tools/darwin/packaging/osx/`.

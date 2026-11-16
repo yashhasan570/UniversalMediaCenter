@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2014-2024 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -65,7 +65,7 @@ namespace JOYSTICK
  *       - pointer direction
  *
  * For more info, see "Chapter 2. Joystick drivers" in the documentation
- * thread: http://github.com/yashhasan570/UniversalMediaCenter/showthread.php?tid=257764
+ * thread: http://forum.universalmediacenter.tv/showthread.php?tid=257764
  */
 class CDriverPrimitive
 {
@@ -98,7 +98,7 @@ public:
   /*!
    * \brief Construct a driver primitive representing a key on a keyboard
    */
-  CDriverPrimitive(KEYBOARD::Key keycode);
+  CDriverPrimitive(KEYBOARD::XBMCKey keycode);
 
   /*!
    * \brief Construct a driver primitive representing a mouse button
@@ -157,7 +157,7 @@ public:
   /*!
    * \brief The keyboard symbol (valid for keys)
    */
-  KEYBOARD::Key Keycode() const { return m_keycode; }
+  KEYBOARD::XBMCKey Keycode() const { return m_keycode; }
 
   /*!
    * \brief The mouse button ID (valid for mouse buttons)
@@ -194,7 +194,7 @@ private:
   int m_center = 0;
   SEMIAXIS_DIRECTION m_semiAxisDirection = SEMIAXIS_DIRECTION::ZERO;
   unsigned int m_range = 1;
-  KEYBOARD::Key m_keycode = KEYBOARD::Key::K_UNKNOWN;
+  KEYBOARD::XBMCKey m_keycode = KEYBOARD::XBMCKey::XBMCK_UNKNOWN;
   RELATIVE_POINTER_DIRECTION m_pointerDirection = RELATIVE_POINTER_DIRECTION::NONE;
 };
 } // namespace JOYSTICK

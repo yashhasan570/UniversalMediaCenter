@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2024 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -155,289 +155,289 @@ constexpr auto DEFAULT_KEYBOARD_FEATURE_UNDO = "undo";
 constexpr auto DEFAULT_KEYBOARD_FEATURE_OEM_102 = "oem102";
 } // namespace
 
-const char* CDefaultKeyboardTranslator::TranslateKeycode(KEYBOARD::Key keycode)
+const char* CDefaultKeyboardTranslator::TranslateKeycode(KEYBOARD::XBMCKey keycode)
 {
   switch (keycode)
   {
-    case K_BACKSPACE:
+    case XBMCK_BACKSPACE:
       return DEFAULT_KEYBOARD_FEATURE_BACKSPACE;
-    case K_TAB:
+    case XBMCK_TAB:
       return DEFAULT_KEYBOARD_FEATURE_TAB;
-    case K_CLEAR:
+    case XBMCK_CLEAR:
       return DEFAULT_KEYBOARD_FEATURE_CLEAR;
-    case K_RETURN:
+    case XBMCK_RETURN:
       return DEFAULT_KEYBOARD_FEATURE_ENTER;
-    case K_PAUSE:
+    case XBMCK_PAUSE:
       return DEFAULT_KEYBOARD_FEATURE_PAUSE;
-    case K_ESCAPE:
+    case XBMCK_ESCAPE:
       return DEFAULT_KEYBOARD_FEATURE_ESCAPE;
-    case K_SPACE:
+    case XBMCK_SPACE:
       return DEFAULT_KEYBOARD_FEATURE_SPACE;
-    case K_EXCLAIM:
+    case XBMCK_EXCLAIM:
       return DEFAULT_KEYBOARD_FEATURE_EXCLAIM;
-    case K_QUOTEDBL:
+    case XBMCK_QUOTEDBL:
       return DEFAULT_KEYBOARD_FEATURE_DOUBLEQUOTE;
-    case K_HASH:
+    case XBMCK_HASH:
       return DEFAULT_KEYBOARD_FEATURE_HASH;
-    case K_DOLLAR:
+    case XBMCK_DOLLAR:
       return DEFAULT_KEYBOARD_FEATURE_DOLLAR;
-    case K_AMPERSAND:
+    case XBMCK_AMPERSAND:
       return DEFAULT_KEYBOARD_FEATURE_AMPERSAND;
-    case K_QUOTE:
+    case XBMCK_QUOTE:
       return DEFAULT_KEYBOARD_FEATURE_QUOTE;
-    case K_LEFTPAREN:
+    case XBMCK_LEFTPAREN:
       return DEFAULT_KEYBOARD_FEATURE_LEFTPAREN;
-    case K_RIGHTPAREN:
+    case XBMCK_RIGHTPAREN:
       return DEFAULT_KEYBOARD_FEATURE_RIGHTPAREN;
-    case K_ASTERISK:
+    case XBMCK_ASTERISK:
       return DEFAULT_KEYBOARD_FEATURE_ASTERISK;
-    case K_PLUS:
+    case XBMCK_PLUS:
       return DEFAULT_KEYBOARD_FEATURE_PLUS;
-    case K_COMMA:
+    case XBMCK_COMMA:
       return DEFAULT_KEYBOARD_FEATURE_COMMA;
-    case K_MINUS:
+    case XBMCK_MINUS:
       return DEFAULT_KEYBOARD_FEATURE_MINUS;
-    case K_PERIOD:
+    case XBMCK_PERIOD:
       return DEFAULT_KEYBOARD_FEATURE_PERIOD;
-    case K_SLASH:
+    case XBMCK_SLASH:
       return DEFAULT_KEYBOARD_FEATURE_SLASH;
-    case K_0:
+    case XBMCK_0:
       return DEFAULT_KEYBOARD_FEATURE_0;
-    case K_1:
+    case XBMCK_1:
       return DEFAULT_KEYBOARD_FEATURE_1;
-    case K_2:
+    case XBMCK_2:
       return DEFAULT_KEYBOARD_FEATURE_2;
-    case K_3:
+    case XBMCK_3:
       return DEFAULT_KEYBOARD_FEATURE_3;
-    case K_4:
+    case XBMCK_4:
       return DEFAULT_KEYBOARD_FEATURE_4;
-    case K_5:
+    case XBMCK_5:
       return DEFAULT_KEYBOARD_FEATURE_5;
-    case K_6:
+    case XBMCK_6:
       return DEFAULT_KEYBOARD_FEATURE_6;
-    case K_7:
+    case XBMCK_7:
       return DEFAULT_KEYBOARD_FEATURE_7;
-    case K_8:
+    case XBMCK_8:
       return DEFAULT_KEYBOARD_FEATURE_8;
-    case K_9:
+    case XBMCK_9:
       return DEFAULT_KEYBOARD_FEATURE_9;
-    case K_COLON:
+    case XBMCK_COLON:
       return DEFAULT_KEYBOARD_FEATURE_COLON;
-    case K_SEMICOLON:
+    case XBMCK_SEMICOLON:
       return DEFAULT_KEYBOARD_FEATURE_SEMICOLON;
-    case K_LESS:
+    case XBMCK_LESS:
       return DEFAULT_KEYBOARD_FEATURE_LESS;
-    case K_EQUALS:
+    case XBMCK_EQUALS:
       return DEFAULT_KEYBOARD_FEATURE_EQUALS;
-    case K_GREATER:
+    case XBMCK_GREATER:
       return DEFAULT_KEYBOARD_FEATURE_GREATER;
-    case K_QUESTION:
+    case XBMCK_QUESTION:
       return DEFAULT_KEYBOARD_FEATURE_QUESTION;
-    case K_AT:
+    case XBMCK_AT:
       return DEFAULT_KEYBOARD_FEATURE_AT;
-    case K_LEFTBRACKET:
+    case XBMCK_LEFTBRACKET:
       return DEFAULT_KEYBOARD_FEATURE_LEFTBRACKET;
-    case K_BACKSLASH:
+    case XBMCK_BACKSLASH:
       return DEFAULT_KEYBOARD_FEATURE_BACKSLASH;
-    case K_RIGHTBRACKET:
+    case XBMCK_RIGHTBRACKET:
       return DEFAULT_KEYBOARD_FEATURE_RIGHTBRACKET;
-    case K_CARET:
+    case XBMCK_CARET:
       return DEFAULT_KEYBOARD_FEATURE_CARET;
-    case K_UNDERSCORE:
+    case XBMCK_UNDERSCORE:
       return DEFAULT_KEYBOARD_FEATURE_UNDERSCORE;
-    case K_BACKQUOTE:
+    case XBMCK_BACKQUOTE:
       return DEFAULT_KEYBOARD_FEATURE_GRAVE;
-    case K_a:
+    case XBMCK_a:
       return DEFAULT_KEYBOARD_FEATURE_A;
-    case K_b:
+    case XBMCK_b:
       return DEFAULT_KEYBOARD_FEATURE_B;
-    case K_c:
+    case XBMCK_c:
       return DEFAULT_KEYBOARD_FEATURE_C;
-    case K_d:
+    case XBMCK_d:
       return DEFAULT_KEYBOARD_FEATURE_D;
-    case K_e:
+    case XBMCK_e:
       return DEFAULT_KEYBOARD_FEATURE_E;
-    case K_f:
+    case XBMCK_f:
       return DEFAULT_KEYBOARD_FEATURE_F;
-    case K_g:
+    case XBMCK_g:
       return DEFAULT_KEYBOARD_FEATURE_G;
-    case K_h:
+    case XBMCK_h:
       return DEFAULT_KEYBOARD_FEATURE_H;
-    case K_i:
+    case XBMCK_i:
       return DEFAULT_KEYBOARD_FEATURE_I;
-    case K_j:
+    case XBMCK_j:
       return DEFAULT_KEYBOARD_FEATURE_J;
-    case K_k:
+    case XBMCK_k:
       return DEFAULT_KEYBOARD_FEATURE_K;
-    case K_l:
+    case XBMCK_l:
       return DEFAULT_KEYBOARD_FEATURE_L;
-    case K_m:
+    case XBMCK_m:
       return DEFAULT_KEYBOARD_FEATURE_M;
-    case K_n:
+    case XBMCK_n:
       return DEFAULT_KEYBOARD_FEATURE_N;
-    case K_o:
+    case XBMCK_o:
       return DEFAULT_KEYBOARD_FEATURE_O;
-    case K_p:
+    case XBMCK_p:
       return DEFAULT_KEYBOARD_FEATURE_P;
-    case K_q:
+    case XBMCK_q:
       return DEFAULT_KEYBOARD_FEATURE_Q;
-    case K_r:
+    case XBMCK_r:
       return DEFAULT_KEYBOARD_FEATURE_R;
-    case K_s:
+    case XBMCK_s:
       return DEFAULT_KEYBOARD_FEATURE_S;
-    case K_t:
+    case XBMCK_t:
       return DEFAULT_KEYBOARD_FEATURE_T;
-    case K_u:
+    case XBMCK_u:
       return DEFAULT_KEYBOARD_FEATURE_U;
-    case K_v:
+    case XBMCK_v:
       return DEFAULT_KEYBOARD_FEATURE_V;
-    case K_w:
+    case XBMCK_w:
       return DEFAULT_KEYBOARD_FEATURE_W;
-    case K_x:
+    case XBMCK_x:
       return DEFAULT_KEYBOARD_FEATURE_X;
-    case K_y:
+    case XBMCK_y:
       return DEFAULT_KEYBOARD_FEATURE_Y;
-    case K_z:
+    case XBMCK_z:
       return DEFAULT_KEYBOARD_FEATURE_Z;
-    case K_LEFTBRACE:
+    case XBMCK_LEFTBRACE:
       return DEFAULT_KEYBOARD_FEATURE_LEFTBRACE;
-    case K_PIPE:
+    case XBMCK_PIPE:
       return DEFAULT_KEYBOARD_FEATURE_BAR;
-    case K_RIGHTBRACE:
+    case XBMCK_RIGHTBRACE:
       return DEFAULT_KEYBOARD_FEATURE_RIGHTBRACE;
-    case K_TILDE:
+    case XBMCK_TILDE:
       return DEFAULT_KEYBOARD_FEATURE_TILDE;
-    case K_DELETE:
+    case XBMCK_DELETE:
       return DEFAULT_KEYBOARD_FEATURE_DELETE;
-    case K_KP0:
+    case XBMCK_KP0:
       return DEFAULT_KEYBOARD_FEATURE_KP0;
-    case K_KP1:
+    case XBMCK_KP1:
       return DEFAULT_KEYBOARD_FEATURE_KP1;
-    case K_KP2:
+    case XBMCK_KP2:
       return DEFAULT_KEYBOARD_FEATURE_KP2;
-    case K_KP3:
+    case XBMCK_KP3:
       return DEFAULT_KEYBOARD_FEATURE_KP3;
-    case K_KP4:
+    case XBMCK_KP4:
       return DEFAULT_KEYBOARD_FEATURE_KP4;
-    case K_KP5:
+    case XBMCK_KP5:
       return DEFAULT_KEYBOARD_FEATURE_KP5;
-    case K_KP6:
+    case XBMCK_KP6:
       return DEFAULT_KEYBOARD_FEATURE_KP6;
-    case K_KP7:
+    case XBMCK_KP7:
       return DEFAULT_KEYBOARD_FEATURE_KP7;
-    case K_KP8:
+    case XBMCK_KP8:
       return DEFAULT_KEYBOARD_FEATURE_KP8;
-    case K_KP9:
+    case XBMCK_KP9:
       return DEFAULT_KEYBOARD_FEATURE_KP9;
-    case K_KP_PERIOD:
+    case XBMCK_KP_PERIOD:
       return DEFAULT_KEYBOARD_FEATURE_KPPERIOD;
-    case K_KP_DIVIDE:
+    case XBMCK_KP_DIVIDE:
       return DEFAULT_KEYBOARD_FEATURE_KPDIVIDE;
-    case K_KP_MULTIPLY:
+    case XBMCK_KP_MULTIPLY:
       return DEFAULT_KEYBOARD_FEATURE_KPMULTIPLY;
-    case K_KP_MINUS:
+    case XBMCK_KP_MINUS:
       return DEFAULT_KEYBOARD_FEATURE_KPMINUS;
-    case K_KP_PLUS:
+    case XBMCK_KP_PLUS:
       return DEFAULT_KEYBOARD_FEATURE_KPPLUS;
-    case K_KP_ENTER:
+    case XBMCK_KP_ENTER:
       return DEFAULT_KEYBOARD_FEATURE_KPENTER;
-    case K_KP_EQUALS:
+    case XBMCK_KP_EQUALS:
       return DEFAULT_KEYBOARD_FEATURE_KPEQUALS;
-    case K_UP:
+    case XBMCK_UP:
       return DEFAULT_KEYBOARD_FEATURE_UP;
-    case K_DOWN:
+    case XBMCK_DOWN:
       return DEFAULT_KEYBOARD_FEATURE_DOWN;
-    case K_RIGHT:
+    case XBMCK_RIGHT:
       return DEFAULT_KEYBOARD_FEATURE_RIGHT;
-    case K_LEFT:
+    case XBMCK_LEFT:
       return DEFAULT_KEYBOARD_FEATURE_LEFT;
-    case K_INSERT:
+    case XBMCK_INSERT:
       return DEFAULT_KEYBOARD_FEATURE_INSERT;
-    case K_HOME:
+    case XBMCK_HOME:
       return DEFAULT_KEYBOARD_FEATURE_HOME;
-    case K_END:
+    case XBMCK_END:
       return DEFAULT_KEYBOARD_FEATURE_END;
-    case K_PAGEUP:
+    case XBMCK_PAGEUP:
       return DEFAULT_KEYBOARD_FEATURE_PAGEUP;
-    case K_PAGEDOWN:
+    case XBMCK_PAGEDOWN:
       return DEFAULT_KEYBOARD_FEATURE_PAGEDOWN;
-    case K_F1:
+    case XBMCK_F1:
       return DEFAULT_KEYBOARD_FEATURE_F1;
-    case K_F2:
+    case XBMCK_F2:
       return DEFAULT_KEYBOARD_FEATURE_F2;
-    case K_F3:
+    case XBMCK_F3:
       return DEFAULT_KEYBOARD_FEATURE_F3;
-    case K_F4:
+    case XBMCK_F4:
       return DEFAULT_KEYBOARD_FEATURE_F4;
-    case K_F5:
+    case XBMCK_F5:
       return DEFAULT_KEYBOARD_FEATURE_F5;
-    case K_F6:
+    case XBMCK_F6:
       return DEFAULT_KEYBOARD_FEATURE_F6;
-    case K_F7:
+    case XBMCK_F7:
       return DEFAULT_KEYBOARD_FEATURE_F7;
-    case K_F8:
+    case XBMCK_F8:
       return DEFAULT_KEYBOARD_FEATURE_F8;
-    case K_F9:
+    case XBMCK_F9:
       return DEFAULT_KEYBOARD_FEATURE_F9;
-    case K_F10:
+    case XBMCK_F10:
       return DEFAULT_KEYBOARD_FEATURE_F10;
-    case K_F11:
+    case XBMCK_F11:
       return DEFAULT_KEYBOARD_FEATURE_F11;
-    case K_F12:
+    case XBMCK_F12:
       return DEFAULT_KEYBOARD_FEATURE_F12;
-    case K_F13:
+    case XBMCK_F13:
       return DEFAULT_KEYBOARD_FEATURE_F13;
-    case K_F14:
+    case XBMCK_F14:
       return DEFAULT_KEYBOARD_FEATURE_F14;
-    case K_F15:
+    case XBMCK_F15:
       return DEFAULT_KEYBOARD_FEATURE_F15;
-    case K_NUMLOCK:
+    case XBMCK_NUMLOCK:
       return DEFAULT_KEYBOARD_FEATURE_NUMLOCK;
-    case K_CAPSLOCK:
+    case XBMCK_CAPSLOCK:
       return DEFAULT_KEYBOARD_FEATURE_CAPSLOCK;
-    case K_SCROLLOCK:
+    case XBMCK_SCROLLOCK:
       return DEFAULT_KEYBOARD_FEATURE_SCROLLLOCK;
-    case K_RSHIFT:
+    case XBMCK_RSHIFT:
       return DEFAULT_KEYBOARD_FEATURE_RIGHTSHIFT;
-    case K_LSHIFT:
+    case XBMCK_LSHIFT:
       return DEFAULT_KEYBOARD_FEATURE_LEFTSHIFT;
-    case K_RCTRL:
+    case XBMCK_RCTRL:
       return DEFAULT_KEYBOARD_FEATURE_RIGHTCTRL;
-    case K_LCTRL:
+    case XBMCK_LCTRL:
       return DEFAULT_KEYBOARD_FEATURE_LEFTCTRL;
-    case K_RALT:
+    case XBMCK_RALT:
       return DEFAULT_KEYBOARD_FEATURE_RIGHTALT;
-    case K_LALT:
+    case XBMCK_LALT:
       return DEFAULT_KEYBOARD_FEATURE_LEFTALT;
-    case K_RMETA:
+    case XBMCK_RMETA:
       return DEFAULT_KEYBOARD_FEATURE_RIGHTMETA;
-    case K_LMETA:
+    case XBMCK_LMETA:
       return DEFAULT_KEYBOARD_FEATURE_LEFTMETA;
-    case K_RSUPER:
+    case XBMCK_RSUPER:
       return DEFAULT_KEYBOARD_FEATURE_RIGHTSUPER;
-    case K_LSUPER:
+    case XBMCK_LSUPER:
       return DEFAULT_KEYBOARD_FEATURE_LEFTSUPER;
-    case K_MODE:
+    case XBMCK_MODE:
       return DEFAULT_KEYBOARD_FEATURE_MODE;
-    case K_COMPOSE:
+    case XBMCK_COMPOSE:
       return DEFAULT_KEYBOARD_FEATURE_COMPOSE;
-    case K_HELP:
+    case XBMCK_HELP:
       return DEFAULT_KEYBOARD_FEATURE_HELP;
-    case K_PRINT:
+    case XBMCK_PRINT:
       return DEFAULT_KEYBOARD_FEATURE_PRINTSCREEN;
-    case K_SYSREQ:
+    case XBMCK_SYSREQ:
       return DEFAULT_KEYBOARD_FEATURE_SYSREQ;
-    case K_BREAK:
+    case XBMCK_BREAK:
       return DEFAULT_KEYBOARD_FEATURE_BREAK;
-    case K_MENU:
+    case XBMCK_MENU:
       return DEFAULT_KEYBOARD_FEATURE_MENU;
-    case K_POWER:
+    case XBMCK_POWER:
       return DEFAULT_KEYBOARD_FEATURE_POWER;
-    case K_EURO:
+    case XBMCK_EURO:
       return DEFAULT_KEYBOARD_FEATURE_EURO;
-    case K_UNDO:
+    case XBMCK_UNDO:
       return DEFAULT_KEYBOARD_FEATURE_UNDO;
-    case K_OEM_102:
+    case XBMCK_OEM_102:
       return DEFAULT_KEYBOARD_FEATURE_OEM_102;
     default:
       break;

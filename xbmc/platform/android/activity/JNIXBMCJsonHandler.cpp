@@ -1,12 +1,12 @@
 /*
  *  Copyright (C) 2018 Christian Browet
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
  */
 
-#include "JNIJsonHandler.h"
+#include "JNIXBMCJsonHandler.h"
 
 #include "CompileInfo.h"
 #include "interfaces/json-rpc/JSONRPC.h"
@@ -18,23 +18,23 @@
 
 using namespace jni;
 
-static std::string s_className = std::string(CCompileInfo::GetClass()) + "/JsonRPC";
+static std::string s_className = std::string(CCompileInfo::GetClass()) + "/XBMCJsonRPC";
 
-void CJNIJsonHandler::RegisterNatives(JNIEnv *env)
+void CJNIXBMCJsonHandler::RegisterNatives(JNIEnv *env)
 {
   jclass cClass = env->FindClass(s_className.c_str());
   if(cClass)
   {
     JNINativeMethod methods[] =
     {
-      {"_requestJSON", "(Ljava/lang/String;)Ljava/lang/String;", (void*)&CJNIJsonHandler::_requestJSON},
+      {"_requestJSON", "(Ljava/lang/String;)Ljava/lang/String;", (void*)&CJNIXBMCJsonHandler::_requestJSON},
     };
 
     env->RegisterNatives(cClass, methods, sizeof(methods)/sizeof(methods[0]));
   }
 }
 
-jstring CJNIJsonHandler::_requestJSON(JNIEnv *env, jobject thiz, jstring request)
+jstring CJNIXBMCJsonHandler::_requestJSON(JNIEnv *env, jobject thiz, jstring request)
 {
   CJNIClient client;
   CJNITransportLayer transportLayer;
@@ -48,33 +48,33 @@ jstring CJNIJsonHandler::_requestJSON(JNIEnv *env, jobject thiz, jstring request
 
 /**********************************/
 
-bool CJNIJsonHandler::CJNITransportLayer::PrepareDownload(const char *path, CVariant &details, std::string &protocol)
+bool CJNIXBMCJsonHandler::CJNITransportLayer::PrepareDownload(const char *path, CVariant &details, std::string &protocol)
 {
   return false;
 }
 
-bool CJNIJsonHandler::CJNITransportLayer::Download(const char *path, CVariant &result)
+bool CJNIXBMCJsonHandler::CJNITransportLayer::Download(const char *path, CVariant &result)
 {
   return false;
 }
 
-int CJNIJsonHandler::CJNITransportLayer::GetCapabilities()
+int CJNIXBMCJsonHandler::CJNITransportLayer::GetCapabilities()
 {
   return JSONRPC::Response;
 }
 
-int CJNIJsonHandler::CJNIClient::GetPermissionFlags()
+int CJNIXBMCJsonHandler::CJNIClient::GetPermissionFlags()
 {
   return JSONRPC::OPERATION_PERMISSION_ALL;
 }
 
-int CJNIJsonHandler::CJNIClient::GetAnnouncementFlags()
+int CJNIXBMCJsonHandler::CJNIClient::GetAnnouncementFlags()
 {
   // Does not support broadcast
   return 0;
 }
 
-bool CJNIJsonHandler::CJNIClient::SetAnnouncementFlags(int flags)
+bool CJNIXBMCJsonHandler::CJNIClient::SetAnnouncementFlags(int flags)
 {
   return false;
 }

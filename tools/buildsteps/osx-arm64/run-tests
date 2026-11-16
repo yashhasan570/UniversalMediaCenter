@@ -1,9 +1,9 @@
 WORKSPACE=${WORKSPACE:-$( cd $(dirname $0)/../../.. ; pwd -P )}
-_PLATFORM_DIR=osx-arm64
+XBMC_PLATFORM_DIR=osx-arm64
 . $WORKSPACE/tools/buildsteps/defaultenv
 
-cd $WORKSPACE/build;make -j$BUILDTHREADS universalmediacenter-test
-cd $WORKSPACE;build/universalmediacenter-test --gtest_output=xml:gtestresults.xml
+cd $WORKSPACE/build;make -j$BUILDTHREADS Universal Media Center-test
+cd $WORKSPACE;build/Universal Media Center-test --gtest_output=xml:gtestresults.xml
 
 awk '{ if ($1 == "<testcase" && match($0, "notrun")) print substr($0,0,length($0)-2) "><skipped/></testcase>"; else print $0;}' gtestresults.xml > gtestresults-skipped.xml
 rm gtestresults.xml

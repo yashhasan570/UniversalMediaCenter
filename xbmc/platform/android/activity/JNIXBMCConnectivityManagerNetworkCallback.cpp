@@ -1,12 +1,12 @@
 /*
  *  Copyright (C) 2012-2023 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
  */
 
-#include "JNIConnectivityManagerNetworkCallback.h"
+#include "JNIXBMCConnectivityManagerNetworkCallback.h"
 
 #include "CompileInfo.h"
 
@@ -19,11 +19,11 @@ namespace
 {
 
 static std::string className =
-    std::string(CCompileInfo::GetClass()) + "/interfaces/ConnectivityManagerNetworkCallback";
+    std::string(CCompileInfo::GetClass()) + "/interfaces/XBMCConnectivityManagerNetworkCallback";
 
 } // namespace
 
-CJNIConnectivityManagerNetworkCallback::CJNIConnectivityManagerNetworkCallback()
+CJNIXBMCConnectivityManagerNetworkCallback::CJNIXBMCConnectivityManagerNetworkCallback()
   : CJNIBase(className)
 {
   m_object = new_object(CJNIContext::getClassLoader().loadClass(ToDotClassName(className)));
@@ -32,39 +32,39 @@ CJNIConnectivityManagerNetworkCallback::CJNIConnectivityManagerNetworkCallback()
   add_instance(m_object, this);
 }
 
-CJNIConnectivityManagerNetworkCallback::~CJNIConnectivityManagerNetworkCallback()
+CJNIXBMCConnectivityManagerNetworkCallback::~CJNIXBMCConnectivityManagerNetworkCallback()
 {
   remove_instance(this);
 }
 
-void CJNIConnectivityManagerNetworkCallback::RegisterNatives(JNIEnv* env)
+void CJNIXBMCConnectivityManagerNetworkCallback::RegisterNatives(JNIEnv* env)
 {
   jclass cClass = env->FindClass(className.c_str());
   if (cClass)
   {
     JNINativeMethod methods[] = {
         {"_onAvailable", "(Landroid/net/Network;)V",
-         reinterpret_cast<void*>(&CJNIConnectivityManagerNetworkCallback::_onAvailable)},
+         reinterpret_cast<void*>(&CJNIXBMCConnectivityManagerNetworkCallback::_onAvailable)},
         {"_onLost", "(Landroid/net/Network;)V",
-         reinterpret_cast<void*>(&CJNIConnectivityManagerNetworkCallback::_onLost)},
+         reinterpret_cast<void*>(&CJNIXBMCConnectivityManagerNetworkCallback::_onLost)},
     };
 
     env->RegisterNatives(cClass, methods, sizeof(methods) / sizeof(methods[0]));
   }
 }
 
-void CJNIConnectivityManagerNetworkCallback::_onAvailable(JNIEnv* env,
+void CJNIXBMCConnectivityManagerNetworkCallback::_onAvailable(JNIEnv* env,
                                                               jobject thiz,
                                                               jobject network)
 {
-  CJNIConnectivityManagerNetworkCallback* inst = find_instance(thiz);
+  CJNIXBMCConnectivityManagerNetworkCallback* inst = find_instance(thiz);
   if (inst)
     inst->onAvailable(CJNINetwork(jhobject::fromJNI(network)));
 }
 
-void CJNIConnectivityManagerNetworkCallback::_onLost(JNIEnv* env, jobject thiz, jobject network)
+void CJNIXBMCConnectivityManagerNetworkCallback::_onLost(JNIEnv* env, jobject thiz, jobject network)
 {
-  CJNIConnectivityManagerNetworkCallback* inst = find_instance(thiz);
+  CJNIXBMCConnectivityManagerNetworkCallback* inst = find_instance(thiz);
   if (inst)
     inst->onLost(CJNINetwork(jhobject::fromJNI(network)));
 }

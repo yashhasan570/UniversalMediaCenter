@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2012-2022 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -14,13 +14,13 @@
 namespace jni
 {
 
-class CJNISpeechRecognitionListener
+class CJNIXBMCSpeechRecognitionListener
   : public CJNISpeechRecognitionListener,
-    public CJNIInterfaceImplem<CJNISpeechRecognitionListener>
+    public CJNIInterfaceImplem<CJNIXBMCSpeechRecognitionListener>
 {
 public:
-  CJNISpeechRecognitionListener();
-  ~CJNISpeechRecognitionListener() override;
+  CJNIXBMCSpeechRecognitionListener();
+  ~CJNIXBMCSpeechRecognitionListener() override;
 
   static void RegisterNatives(JNIEnv* env);
 

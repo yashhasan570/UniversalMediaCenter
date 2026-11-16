@@ -1,12 +1,12 @@
 /*
  *  Copyright (C) 2017 Christian Browet
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
  */
 
-#include "JNIMainView.h"
+#include "JNIXBMCMainView.h"
 
 #include "CompileInfo.h"
 #include "utils/StringUtils.h"
@@ -21,34 +21,34 @@
 
 using namespace jni;
 
-static std::string s_className = std::string(CCompileInfo::GetClass()) + "/MainView";
-CEvent CJNIMainView::m_surfaceCreated;
-CJNIMainView* CJNIMainView::m_instance = nullptr;
+static std::string s_className = std::string(CCompileInfo::GetClass()) + "/XBMCMainView";
+CEvent CJNIXBMCMainView::m_surfaceCreated;
+CJNIXBMCMainView* CJNIXBMCMainView::m_instance = nullptr;
 
-void CJNIMainView::RegisterNatives(JNIEnv* env)
+void CJNIXBMCMainView::RegisterNatives(JNIEnv* env)
 {
   jclass cClass = env->FindClass(s_className.c_str());
   if(cClass)
   {
     JNINativeMethod methods[] =
     {
-      {"_attach", "()V", (void*)&CJNIMainView::_attach},
-      {"_surfaceChanged", "(Landroid/view/SurfaceHolder;III)V", (void*)&CJNIMainView::_surfaceChanged},
-      {"_surfaceCreated", "(Landroid/view/SurfaceHolder;)V", (void*)&CJNIMainView::_surfaceCreated},
-      {"_surfaceDestroyed", "(Landroid/view/SurfaceHolder;)V", (void*)&CJNIMainView::_surfaceDestroyed}
+      {"_attach", "()V", (void*)&CJNIXBMCMainView::_attach},
+      {"_surfaceChanged", "(Landroid/view/SurfaceHolder;III)V", (void*)&CJNIXBMCMainView::_surfaceChanged},
+      {"_surfaceCreated", "(Landroid/view/SurfaceHolder;)V", (void*)&CJNIXBMCMainView::_surfaceCreated},
+      {"_surfaceDestroyed", "(Landroid/view/SurfaceHolder;)V", (void*)&CJNIXBMCMainView::_surfaceDestroyed}
     };
 
     env->RegisterNatives(cClass, methods, sizeof(methods)/sizeof(methods[0]));
   }
 }
 
-CJNIMainView::CJNIMainView(CJNISurfaceHolderCallback* callback)
+CJNIXBMCMainView::CJNIXBMCMainView(CJNISurfaceHolderCallback* callback)
   : m_callback(callback)
 {
   m_instance = this;
 }
 
-void CJNIMainView::_attach(JNIEnv* env, jobject thiz)
+void CJNIXBMCMainView::_attach(JNIEnv* env, jobject thiz)
 {
   (void)env;
 
@@ -56,7 +56,7 @@ void CJNIMainView::_attach(JNIEnv* env, jobject thiz)
     m_instance->attach(thiz);
 }
 
-void CJNIMainView::_surfaceChanged(JNIEnv *env, jobject thiz, jobject holder, jint format, jint width, jint height )
+void CJNIXBMCMainView::_surfaceChanged(JNIEnv *env, jobject thiz, jobject holder, jint format, jint width, jint height )
 {
   (void)env;
 
@@ -64,7 +64,7 @@ void CJNIMainView::_surfaceChanged(JNIEnv *env, jobject thiz, jobject holder, ji
     m_instance->surfaceChanged(CJNISurfaceHolder(jhobject(holder)), format, width, height);
 }
 
-void CJNIMainView::_surfaceCreated(JNIEnv* env, jobject thiz, jobject holder)
+void CJNIXBMCMainView::_surfaceCreated(JNIEnv* env, jobject thiz, jobject holder)
 {
   (void)env;
 
@@ -72,7 +72,7 @@ void CJNIMainView::_surfaceCreated(JNIEnv* env, jobject thiz, jobject holder)
     m_instance->surfaceCreated(CJNISurfaceHolder(jhobject(holder)));
 }
 
-void CJNIMainView::_surfaceDestroyed(JNIEnv* env, jobject thiz, jobject holder)
+void CJNIXBMCMainView::_surfaceDestroyed(JNIEnv* env, jobject thiz, jobject holder)
 {
   (void)env;
 
@@ -80,7 +80,7 @@ void CJNIMainView::_surfaceDestroyed(JNIEnv* env, jobject thiz, jobject holder)
     m_instance->surfaceDestroyed(CJNISurfaceHolder(jhobject(holder)));
 }
 
-void CJNIMainView::attach(const jobject& thiz)
+void CJNIXBMCMainView::attach(const jobject& thiz)
 {
   if (!m_object)
   {
@@ -89,32 +89,32 @@ void CJNIMainView::attach(const jobject& thiz)
   }
 }
 
-void CJNIMainView::surfaceChanged(CJNISurfaceHolder holder, int format, int width, int height)
+void CJNIXBMCMainView::surfaceChanged(CJNISurfaceHolder holder, int format, int width, int height)
 {
   if (m_callback)
     m_callback->surfaceChanged(holder, format, width, height);
 }
 
-void CJNIMainView::surfaceCreated(CJNISurfaceHolder holder)
+void CJNIXBMCMainView::surfaceCreated(CJNISurfaceHolder holder)
 {
   if (m_callback)
     m_callback->surfaceCreated(holder);
   m_surfaceCreated.Set();
 }
 
-void CJNIMainView::surfaceDestroyed(CJNISurfaceHolder holder)
+void CJNIXBMCMainView::surfaceDestroyed(CJNISurfaceHolder holder)
 {
   m_surfaceCreated.Reset();
   if (m_callback)
     m_callback->surfaceDestroyed(holder);
 }
 
-bool CJNIMainView::waitForSurface(unsigned int millis)
+bool CJNIXBMCMainView::waitForSurface(unsigned int millis)
 {
   return m_surfaceCreated.Wait(std::chrono::milliseconds(millis));
 }
 
-bool CJNIMainView::isCreated() const
+bool CJNIXBMCMainView::isCreated() const
 {
   if (!m_object)
     return false;

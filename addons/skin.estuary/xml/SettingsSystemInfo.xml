@@ -117,7 +117,7 @@
 				<texture colordiffuse="button_focus" border="2">dialogs/separator-grey.png</texture>
 			</control>
 			<control type="group" id="102">
-				<description>System Info page that shows a QR code linking to https://github.com/yashhasan570/UniversalMediaCenter/donate/</description>
+				<description>System Info page that shows a QR code linking to https://universalmediacenter.tv/donate/</description>
 				<left>420</left>
 				<right>50</right>
 				<top>30</top>
@@ -129,7 +129,7 @@
 				<control type="multiimage" id="103">
 					<top>110</top>
 					<height>620</height>
-					<imagepath>special:///media/qr/universalmediacenterlove/</imagepath>
+					<imagepath>special://xbmc/media/qr/universalmediacenterlove/</imagepath>
 					<aspectratio>keep</aspectratio>
 					<timeperimage>5000</timeperimage>
 					<fadetime>1000</fadetime>

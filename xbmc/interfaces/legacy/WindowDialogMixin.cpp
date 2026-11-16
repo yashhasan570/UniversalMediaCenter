@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -16,20 +16,20 @@
 #include "input/actions/ActionIDs.h"
 #include "messaging/ApplicationMessenger.h"
 
-namespace Addon
+namespace XBMCAddon
 {
-  namespace gui
+  namespace xbmcgui
   {
     void WindowDialogMixin::show()
     {
-      _TRACE;
+      XBMC_TRACE;
       CServiceBroker::GetAppMessenger()->SendMsg(TMSG_GUI_PYTHON_DIALOG, HACK_CUSTOM_ACTION_OPENING,
                                                  0, static_cast<void*>(w->window->get()));
     }
 
     void WindowDialogMixin::close()
     {
-      _TRACE;
+      XBMC_TRACE;
       w->bModal = false;
       w->PulseActionEvent();
 
@@ -39,11 +39,11 @@ namespace Addon
       w->iOldWindowId = 0;
     }
 
-    bool WindowDialogMixin::IsDialogRunning() const { _TRACE; return w->window->isActive(); }
+    bool WindowDialogMixin::IsDialogRunning() const { XBMC_TRACE; return w->window->isActive(); }
 
     bool WindowDialogMixin::OnAction(const CAction &action)
     {
-      _TRACE;
+      XBMC_TRACE;
       switch (action.GetID())
       {
       case HACK_CUSTOM_ACTION_OPENING:

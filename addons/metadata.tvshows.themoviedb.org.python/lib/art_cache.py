@@ -7,7 +7,7 @@ import os
 import sqlite3
 import time
 
-import vfs
+import xbmcvfs
 
 from lib import log
 from lib.config import ADDON
@@ -28,7 +28,7 @@ def _open():
     global _db_path, _initialized
 
     if not _db_path:
-        addon_data = vfs.translatePath(ADDON.getAddonInfo('profile'))
+        addon_data = xbmcvfs.translatePath(ADDON.getAddonInfo('profile'))
         if not os.path.exists(addon_data):
             os.makedirs(addon_data)
         _db_path = os.path.join(addon_data, 'art_cache.db')

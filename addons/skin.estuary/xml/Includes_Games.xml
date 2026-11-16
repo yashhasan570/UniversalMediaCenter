@@ -1279,7 +1279,7 @@
 						<height>720</height>
 						<centerleft>50%</centerleft>
 						<aspectratio>keep</aspectratio>
-						<texture>special:///media/qr/games/retroachievements.png</texture>
+						<texture>special://xbmc/media/qr/games/retroachievements.png</texture>
 					</control>
 					<control type="label">
 						<top>830</top>

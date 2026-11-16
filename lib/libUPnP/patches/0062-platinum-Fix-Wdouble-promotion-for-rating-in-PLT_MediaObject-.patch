@@ -20,12 +20,12 @@ index fac16902f7..c3e0cea2bb 100644
 --- a/lib/libUPnP/Platinum/Source/Devices/MediaServer/PltMediaItem.cpp
 +++ b/lib/libUPnP/Platinum/Source/Devices/MediaServer/PltMediaItem.cpp
 @@ -586,7 +586,7 @@ PLT_MediaObject::ToDidl(NPT_UInt64 mask, NPT_String& didl)
-     //  rating
-     if (mask & PLT_FILTER_MASK__RATING) {
-         didl += "<:rating>";
+     // xbmc rating
+     if (mask & PLT_FILTER_MASK_XBMC_RATING) {
+         didl += "<xbmc:rating>";
 -        didl += NPT_String::Format("%.1f", m_XbmcInfo.rating);
 +        didl += NPT_String::Format("%.1f", (double)m_XbmcInfo.rating);
-         didl += "</:rating>";
+         didl += "</xbmc:rating>";
      }
  
 -- 

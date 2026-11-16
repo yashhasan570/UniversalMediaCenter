@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -289,10 +289,10 @@ protected:
   static CSkinSettingPtr ParseSetting(const TiXmlElement* element);
 
   bool SettingsLoaded(AddonInstanceId id = ADDON_SETTINGS_ID) const override;
-  bool SettingsFromXML(const CTinyXML& doc,
+  bool SettingsFromXML(const CXBMCTinyXML& doc,
                        bool loadDefaults,
                        AddonInstanceId id = ADDON_SETTINGS_ID) override;
-  bool SettingsToXML(CTinyXML& doc, AddonInstanceId id = ADDON_SETTINGS_ID) const override;
+  bool SettingsToXML(CXBMCTinyXML& doc, AddonInstanceId id = ADDON_SETTINGS_ID) const override;
 
   RESOLUTION_INFO m_defaultRes;
   std::vector<RESOLUTION_INFO> m_resolutions;

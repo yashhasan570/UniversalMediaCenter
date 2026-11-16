@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -19,17 +19,17 @@
 
 #ifdef __GNUC__
 // The 'this' pointer counts as a parameter on member methods.
-#define COMMONS_ATTRIB_EXCEPTION_FORMAT __attribute__((format(printf,2,3)))
+#define XBMCCOMMONS_ATTRIB_EXCEPTION_FORMAT __attribute__((format(printf,2,3)))
 #else
-#define COMMONS_ATTRIB_EXCEPTION_FORMAT
+#define XBMCCOMMONS_ATTRIB_EXCEPTION_FORMAT
 #endif
 
-#define COMMONS_COPYVARARGS(fmt) va_list argList; va_start(argList, fmt); Set(fmt, argList); va_end(argList)
-#define COMMONS_STANDARD_EXCEPTION(E) \
+#define XBMCCOMMONS_COPYVARARGS(fmt) va_list argList; va_start(argList, fmt); Set(fmt, argList); va_end(argList)
+#define XBMCCOMMONS_STANDARD_EXCEPTION(E) \
   class E : public XbmcCommons::Exception \
   { \
   public: \
-    inline E(const char* message,...) COMMONS_ATTRIB_EXCEPTION_FORMAT : Exception(#E) { COMMONS_COPYVARARGS(message); } \
+    inline E(const char* message,...) XBMCCOMMONS_ATTRIB_EXCEPTION_FORMAT : Exception(#E) { XBMCCOMMONS_COPYVARARGS(message); } \
     \
     inline E(const E& other) : Exception(other) {} \
   }
@@ -67,10 +67,10 @@ namespace XbmcCommons
      * This message can be called from the constructor of subclasses.
      * It will set the message and log the throwing.
      */
-    inline void SetMessage(const char* fmt, ...) COMMONS_ATTRIB_EXCEPTION_FORMAT
+    inline void SetMessage(const char* fmt, ...) XBMCCOMMONS_ATTRIB_EXCEPTION_FORMAT
     {
       // calls 'set'
-      COMMONS_COPYVARARGS(fmt);
+      XBMCCOMMONS_COPYVARARGS(fmt);
     }
 
     inline void setClassname(const char* cn) { classname = cn; }
@@ -90,7 +90,7 @@ namespace XbmcCommons
    * that can be done in most code. The outer most stack frame might try to
    * do some error logging prior to shutting down, but that's really it.
    */
-  COMMONS_STANDARD_EXCEPTION(UncheckedException);
+  XBMCCOMMONS_STANDARD_EXCEPTION(UncheckedException);
 
 /**
  * In cases where you catch(...){} you will (may) inadvertently be
@@ -101,11 +101,11 @@ namespace XbmcCommons
  * In order to avoid catching UncheckedException, use the macro as follows:
  *
  *    try { ... }
- *    COMMONS_HANDLE_UNCHECKED
+ *    XBMCCOMMONS_HANDLE_UNCHECKED
  *    catch(...){ ... }
  */
 // Yes. I recognize that the name of this macro is an oxymoron.
-#define  COMMONS_HANDLE_UNCHECKED \
+#define  XBMCCOMMONS_HANDLE_UNCHECKED \
   catch (const XbmcCommons::UncheckedException& ) { throw; } \
   catch (const XbmcCommons::UncheckedException* ) { throw; }
 

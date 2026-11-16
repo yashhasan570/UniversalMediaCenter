@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -28,7 +28,7 @@ public:
   CWinEventsWin10();
   virtual ~CWinEventsWin10();
 
-  void MessagePush(_Event *newEvent);
+  void MessagePush(XBMC_Event *newEvent);
   bool MessagePump() override;
   virtual size_t GetQueueSize();
 
@@ -78,7 +78,7 @@ private:
   bool HasJoystickPeripheral() const;
   void TriggerGamepadScan();
 
-  Concurrency::concurrent_queue<_Event> m_events;
+  Concurrency::concurrent_queue<XBMC_Event> m_events;
   winrt::Windows::Media::SystemMediaTransportControls m_smtc{ nullptr };
   bool m_bResized{ false };
   bool m_bMoved{ false };

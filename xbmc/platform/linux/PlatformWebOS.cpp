@@ -1,6 +1,6 @@
 /*
 *  Copyright (C) 2023 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -67,7 +67,7 @@ bool CPlatformWebOS::InitStageOne()
   setenv("PYTHONIOENCODING", "UTF-8", 1);
   setenv("UNIVERSALMEDIA_HOME", HOME.c_str(), 1);
   setenv("SSL_CERT_FILE",
-         CSpecialProtocol::TranslatePath("special:///system/certs/cacert.pem").c_str(), 1);
+         CSpecialProtocol::TranslatePath("special://xbmc/system/certs/cacert.pem").c_str(), 1);
 
   return CPlatformLinux::InitStageOne();
 }

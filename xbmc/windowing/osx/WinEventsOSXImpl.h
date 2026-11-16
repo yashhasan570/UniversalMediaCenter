@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2011-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -16,12 +16,12 @@
 
 @interface CWinEventsOSXImpl : NSObject
 
-- (void)MessagePush:(_Event*)newEvent;
+- (void)MessagePush:(XBMC_Event*)newEvent;
 - (size_t)GetQueueSize;
 - (bool)MessagePump;
 - (void)enableInputEvents;
 - (void)disableInputEvents;
-- (_Event)keyPressEvent:(NSEvent*)nsEvent;
+- (XBMC_Event)keyPressEvent:(NSEvent*)nsEvent;
 
 - (void)signalMouseEntered;
 - (void)signalMouseExited;

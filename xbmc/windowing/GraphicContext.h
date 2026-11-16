@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -73,6 +73,8 @@ enum class STENCIL_LAYER
   INVALID,
 };
 
+class CEvent;
+
 class CGraphicContext : public CCriticalSection
 {
 public:
@@ -88,7 +90,12 @@ public:
   void SetFullScreenVideo(bool bOnOff);
   bool IsFullScreenVideo() const;
   bool IsValidResolution(RESOLUTION res);
-  void SetVideoResolution(RESOLUTION res, bool forceUpdate);
+  /*!
+   * \brief Switch the video resolution on the app thread
+   * \param abortEvent off the app thread, once set drop the switch and stop waiting, unless the
+   *        app thread has already started it, in which case wait for it to finish
+   */
+  void SetVideoResolution(RESOLUTION res, bool forceUpdate, CEvent* abortEvent = nullptr);
   void ApplyModeChange(RESOLUTION res);
   void ApplyWindowResize(int newWidth, int newHeight);
   RESOLUTION GetVideoResolution() const;

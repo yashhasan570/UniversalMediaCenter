@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -11,7 +11,7 @@
 #include "games/addons/GameClient.h"
 #include "games/addons/disc/GameClientDiscs.h"
 #include "games/dialogs/disc/DiscManagerGame.h"
-#include "utils/TinyXML2.h"
+#include "utils/XBMCTinyXML2.h"
 
 #include <cstdlib>
 #include <cstring>
@@ -47,14 +47,14 @@ class TestDiscManagerGame : public testing::Test
 protected:
   void SetUp() override
   {
-    CTinyXML2 xml;
+    CXBMCTinyXML2 xml;
     const std::string addonXml =
         R"(<addon id="game.test.discmanager" name="Disc manager test" version="1.0.0">
       <extension point="universalmediacenter.gameclient" library="test.so">
         <supports_disc_control>true</supports_disc_control>
         <extensions>chd</extensions>
       </extension>
-      <extension point=".addon.metadata"><platform>all</platform></extension>
+      <extension point="xbmc.addon.metadata"><platform>all</platform></extension>
     </addon>)";
     ASSERT_TRUE(xml.Parse(addonXml));
     const auto info =

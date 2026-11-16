@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -29,7 +29,7 @@ CAppInboundProtocol::CAppInboundProtocol(CApplication &app) : m_pApp(app)
 {
 }
 
-bool CAppInboundProtocol::OnEvent(const _Event& newEvent)
+bool CAppInboundProtocol::OnEvent(const XBMC_Event& newEvent)
 {
   std::unique_lock lock(m_portSection);
   if (m_closed)
@@ -61,11 +61,11 @@ void CAppInboundProtocol::HandleEvents()
     CSingleExit lock(m_portSection);
     switch (newEvent.type)
     {
-      case _QUIT:
+      case XBMC_QUIT:
         if (!m_pApp.m_bStop)
           CServiceBroker::GetAppMessenger()->PostMsg(TMSG_QUIT);
         break;
-      case _VIDEORESIZE:
+      case XBMC_VIDEORESIZE:
         if (CServiceBroker::GetGUI()->GetWindowManager().Initialized())
         {
           if (!CServiceBroker::GetSettingsComponent()->GetAdvancedSettings()->m_fullScreen)
@@ -86,21 +86,21 @@ void CAppInboundProtocol::HandleEvents()
           }
         }
         break;
-      case _VIDEOMOVE:
+      case XBMC_VIDEOMOVE:
       {
         CServiceBroker::GetWinSystem()->OnMove(newEvent.move.x, newEvent.move.y);
       }
       break;
-      case _MODECHANGE:
+      case XBMC_MODECHANGE:
         CServiceBroker::GetWinSystem()->GetGfxContext().ApplyModeChange(newEvent.mode.res);
         break;
-      case _SCREENCHANGE:
+      case XBMC_SCREENCHANGE:
         CServiceBroker::GetWinSystem()->OnChangeScreen(newEvent.screen.screenIdx);
         break;
-      case _USEREVENT:
+      case XBMC_USEREVENT:
         CServiceBroker::GetAppMessenger()->PostMsg(static_cast<uint32_t>(newEvent.user.code));
         break;
-      case _SETFOCUS:
+      case XBMC_SETFOCUS:
       {
         // Reset the screensaver
         const auto appPower = m_pApp.GetComponent<CApplicationPowerHandling>();

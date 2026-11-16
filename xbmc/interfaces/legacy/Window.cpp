@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -26,9 +26,9 @@
 
 #define ACTIVE_WINDOW CServiceBroker::GetGUI()->GetWindowManager().GetActiveWindow()
 
-namespace Addon
+namespace XBMCAddon
 {
-  namespace gui
+  namespace xbmcgui
   {
     thread_local ref* InterceptorBase::upcallTls;
 
@@ -71,19 +71,19 @@ namespace Addon
 
     public:
       inline ProxyExistingWindowInterceptor(CGUIWindow* window) :
-        cguiwindow(window) { _TRACE; }
+        cguiwindow(window) { XBMC_TRACE; }
 
       CGUIWindow* get() override;
     };
 
-    CGUIWindow* ProxyExistingWindowInterceptor::get() { _TRACE; return cguiwindow; }
+    CGUIWindow* ProxyExistingWindowInterceptor::get() { XBMC_TRACE; return cguiwindow; }
 
     Window::Window(bool discrim):
       window(NULL),
       m_actionEvent(true),
       canPulse(true), existingWindow(false)
     {
-      _TRACE;
+      XBMC_TRACE;
     }
 
     /**
@@ -93,7 +93,7 @@ namespace Addon
       window(NULL),
       m_actionEvent(true)
     {
-      _TRACE;
+      XBMC_TRACE;
       SingleLockWithDelayGuard gslock(CServiceBroker::GetWinSystem()->GetGfxContext(),languageHook);
 
       if (existingWindowId == -1)
@@ -118,7 +118,7 @@ namespace Addon
 
     Window::~Window()
     {
-      _TRACE;
+      XBMC_TRACE;
 
       deallocating();
 
@@ -136,7 +136,7 @@ namespace Addon
 
     void Window::dispose()
     {
-      _TRACE;
+      XBMC_TRACE;
 
       //! @todo rework locking
       // Python GIL and CServiceBroker::GetWinSystem()->GetGfxContext() are deadlock happy
@@ -210,7 +210,7 @@ namespace Addon
 
     void Window::setWindow(InterceptorBase* _window)
     {
-      _TRACE;
+      XBMC_TRACE;
       window = _window;
       iWindowId = _window->get()->GetID();
 
@@ -220,7 +220,7 @@ namespace Addon
 
     int Window::getNextAvailableWindowId()
     {
-      _TRACE;
+      XBMC_TRACE;
       // window id's 13000 - 13100 are reserved for python
       // get first window id that is not in use
       int id = WINDOW_PYTHON_START;
@@ -234,7 +234,7 @@ namespace Addon
 
     void Window::popActiveWindowId()
     {
-      _TRACE;
+      XBMC_TRACE;
       if (iOldWindowId != iWindowId &&
           iWindowId != ACTIVE_WINDOW)
         iOldWindowId = ACTIVE_WINDOW;
@@ -247,7 +247,7 @@ namespace Addon
      */
     Control* Window::GetControlById(int iControlId, CCriticalSection* gc)
     {
-      _TRACE;
+      XBMC_TRACE;
 
       // find in window vector first!!!
       // this saves us from creating a complete new control
@@ -261,7 +261,7 @@ namespace Addon
         } else ++it;
       }
 
-      // lock  GUI before accessing data from it
+      // lock xbmc GUI before accessing data from it
       MaybeLock lock(gc);
 
       // check if control exists
@@ -385,14 +385,14 @@ namespace Addon
 
     void Window::PulseActionEvent()
     {
-      _TRACE;
+      XBMC_TRACE;
       if (canPulse)
         m_actionEvent.Set();
     }
 
     bool Window::WaitForActionEvent(unsigned int milliseconds)
     {
-      _TRACE;
+      XBMC_TRACE;
       // DO NOT MAKE THIS A DELAYED CALL!!!!
       bool ret = languageHook == NULL ? m_actionEvent.Wait(std::chrono::milliseconds(milliseconds))
                                       : languageHook->WaitForEvent(m_actionEvent, milliseconds);
@@ -403,7 +403,7 @@ namespace Addon
 
     bool Window::OnAction(const CAction &action)
     {
-      _TRACE;
+      XBMC_TRACE;
       // do the base class window first, and the call to python after this
       bool ret = ref(window)->OnAction(action);
 
@@ -438,7 +438,7 @@ namespace Addon
 
     void Window::onAction(Action* action)
     {
-      _TRACE;
+      XBMC_TRACE;
       // default onAction behavior
       if(action->id == ACTION_PREVIOUS_MENU || action->id == ACTION_NAV_BACK)
         close();
@@ -446,7 +446,7 @@ namespace Addon
 
     bool Window::OnMessage(CGUIMessage& message)
     {
-      _TRACE;
+      XBMC_TRACE;
       switch (message.GetMessage())
       {
       case GUI_MSG_CLICKED:
@@ -487,15 +487,15 @@ namespace Addon
       return ref(window)->OnMessage(message);
     }
 
-    void Window::onControl(Control* action) { _TRACE; /* do nothing by default */ }
-    void Window::onClick(int controlId) { _TRACE; /* do nothing by default */ }
-    void Window::onDoubleClick(int controlId) { _TRACE; /* do nothing by default */ }
-    void Window::onFocus(int controlId) { _TRACE; /* do nothing by default */ }
-    void Window::onInit() { _TRACE; /* do nothing by default */ }
+    void Window::onControl(Control* action) { XBMC_TRACE; /* do nothing by default */ }
+    void Window::onClick(int controlId) { XBMC_TRACE; /* do nothing by default */ }
+    void Window::onDoubleClick(int controlId) { XBMC_TRACE; /* do nothing by default */ }
+    void Window::onFocus(int controlId) { XBMC_TRACE; /* do nothing by default */ }
+    void Window::onInit() { XBMC_TRACE; /* do nothing by default */ }
 
     void Window::show()
     {
-      _TRACE;
+      XBMC_TRACE;
       DelayedCallGuard dcguard(languageHook);
       popActiveWindowId();
 
@@ -504,7 +504,7 @@ namespace Addon
 
     void Window::setFocus(Control* pControl)
     {
-      _TRACE;
+      XBMC_TRACE;
       if(pControl == NULL)
         throw WindowException("Object should be of type Control");
 
@@ -514,14 +514,14 @@ namespace Addon
 
     void Window::setFocusId(int iControlId)
     {
-      _TRACE;
+      XBMC_TRACE;
       CGUIMessage msg = CGUIMessage(GUI_MSG_SETFOCUS,iWindowId,iControlId);
       CServiceBroker::GetGUI()->GetWindowManager().SendThreadMessage(msg, iWindowId);
     }
 
     Control* Window::getFocus()
     {
-      _TRACE;
+      XBMC_TRACE;
       SingleLockWithDelayGuard gslock(CServiceBroker::GetWinSystem()->GetGfxContext(),languageHook);
 
       int iControlId = ref(window)->GetFocusedControlID();
@@ -533,7 +533,7 @@ namespace Addon
 
     long Window::getFocusId()
     {
-      _TRACE;
+      XBMC_TRACE;
       SingleLockWithDelayGuard gslock(CServiceBroker::GetWinSystem()->GetGfxContext(),languageHook);
       int iControlId = ref(window)->GetFocusedControlID();
       if(iControlId == -1)
@@ -543,14 +543,14 @@ namespace Addon
 
     void Window::removeControl(Control* pControl)
     {
-      _TRACE;
+      XBMC_TRACE;
       DelayedCallGuard dg(languageHook);
       doRemoveControl(pControl,&CServiceBroker::GetWinSystem()->GetGfxContext(),true);
     }
 
     void Window::doRemoveControl(Control* pControl, CCriticalSection* gcontext, bool wait)
     {
-      _TRACE;
+      XBMC_TRACE;
       // type checking, object should be of type Control
       if(pControl == NULL)
         throw WindowException("Object should be of type Control");
@@ -588,7 +588,7 @@ namespace Addon
 
     void Window::removeControls(std::vector<Control*> pControls)
     {
-      _TRACE;
+      XBMC_TRACE;
       DelayedCallGuard dg(languageHook);
       int count = 1; int size = pControls.size();
       for (std::vector<Control*>::iterator iter = pControls.begin(); iter != pControls.end(); count++, ++iter)
@@ -597,7 +597,7 @@ namespace Addon
 
     long Window::getHeight()
     {
-      _TRACE;
+      XBMC_TRACE;
       SingleLockWithDelayGuard gslock(CServiceBroker::GetWinSystem()->GetGfxContext(), languageHook);
       RESOLUTION_INFO resInfo = ref(window)->GetCoordsRes();
       return resInfo.iHeight;
@@ -605,7 +605,7 @@ namespace Addon
 
     long Window::getWidth()
     {
-      _TRACE;
+      XBMC_TRACE;
       SingleLockWithDelayGuard gslock(CServiceBroker::GetWinSystem()->GetGfxContext(), languageHook);
       RESOLUTION_INFO resInfo = ref(window)->GetCoordsRes();
       return resInfo.iWidth;
@@ -613,7 +613,7 @@ namespace Addon
 
     void Window::setProperty(const char* key, const String& value)
     {
-      _TRACE;
+      XBMC_TRACE;
       SingleLockWithDelayGuard gslock(CServiceBroker::GetWinSystem()->GetGfxContext(),languageHook);
       std::string lowerKey = key;
       StringUtils::ToLower(lowerKey);
@@ -623,7 +623,7 @@ namespace Addon
 
     String Window::getProperty(const char* key)
     {
-      _TRACE;
+      XBMC_TRACE;
       SingleLockWithDelayGuard gslock(CServiceBroker::GetWinSystem()->GetGfxContext(),languageHook);
       std::string lowerKey = key;
       StringUtils::ToLower(lowerKey);
@@ -633,7 +633,7 @@ namespace Addon
 
     void Window::clearProperty(const char* key)
     {
-      _TRACE;
+      XBMC_TRACE;
       if (!key) return;
       SingleLockWithDelayGuard gslock(CServiceBroker::GetWinSystem()->GetGfxContext(),languageHook);
 
@@ -644,14 +644,14 @@ namespace Addon
 
     void Window::clearProperties()
     {
-      _TRACE;
+      XBMC_TRACE;
       SingleLockWithDelayGuard gslock(CServiceBroker::GetWinSystem()->GetGfxContext(),languageHook);
       ref(window)->ClearProperties();
     }
 
     void Window::close()
     {
-      _TRACE;
+      XBMC_TRACE;
       bModal = false;
 
       if (!existingWindow)
@@ -667,7 +667,7 @@ namespace Addon
 
     void Window::doModal()
     {
-      _TRACE;
+      XBMC_TRACE;
       if (!existingWindow)
       {
         bModal = true;
@@ -702,14 +702,14 @@ namespace Addon
 
     void Window::addControl(Control* pControl)
     {
-      _TRACE;
+      XBMC_TRACE;
       DelayedCallGuard dg(languageHook);
       doAddControl(pControl,&CServiceBroker::GetWinSystem()->GetGfxContext(),true);
     }
 
     void Window::doAddControl(Control* pControl, CCriticalSection* gcontext, bool wait)
     {
-      _TRACE;
+      XBMC_TRACE;
       if(pControl == NULL)
         throw WindowException("NULL Control passed to WindowBase::addControl");
 
@@ -751,7 +751,7 @@ namespace Addon
 
     void Window::addControls(std::vector<Control*> pControls)
     {
-      _TRACE;
+      XBMC_TRACE;
       SingleLockWithDelayGuard gslock(CServiceBroker::GetWinSystem()->GetGfxContext(),languageHook);
       int count = 1; int size = pControls.size();
       for (std::vector<Control*>::iterator iter = pControls.begin(); iter != pControls.end(); count++, ++iter)
@@ -760,14 +760,14 @@ namespace Addon
 
     Control* Window::getControl(int iControlId)
     {
-      _TRACE;
+      XBMC_TRACE;
       DelayedCallGuard dg(languageHook);
       return GetControlById(iControlId,&CServiceBroker::GetWinSystem()->GetGfxContext());
     }
 
     void Action::setFromCAction(const CAction& action)
     {
-      _TRACE;
+      XBMC_TRACE;
       id = action.GetID();
       buttonCode = action.GetButtonCode();
       fAmount1 = action.GetAmount(0);

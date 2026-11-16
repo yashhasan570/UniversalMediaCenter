@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -36,7 +36,7 @@ protected:
 
 TEST_F(TestZipFile, Read)
 {
-  const std::string reffile = _REF_FILE_PATH("/filesystem/test/reffile.txt.zip");
+  const std::string reffile = XBMC_REF_FILE_PATH("xbmc/filesystem/test/reffile.txt.zip");
 
   XFILE::CFile file;
   char buf[20]{};
@@ -54,7 +54,7 @@ TEST_F(TestZipFile, Read)
   EXPECT_EQ(sizeof(buf), static_cast<size_t>(file.Read(buf, sizeof(buf))));
   file.Flush();
   EXPECT_EQ(20, file.GetPosition());
-  EXPECT_TRUE(!memcmp("About\n-----\n is ", buf, sizeof(buf) - 1));
+  EXPECT_TRUE(!memcmp("About\n-----\nXBMC is ", buf, sizeof(buf) - 1));
   EXPECT_TRUE(file.ReadLine(buf, sizeof(buf)).code != XFILE::CFile::ReadLineResult::FAILURE);
   EXPECT_EQ(39, file.GetPosition());
   EXPECT_STREQ("an award-winning fr", buf);
@@ -69,7 +69,7 @@ TEST_F(TestZipFile, Read)
   EXPECT_EQ(sizeof(buf), static_cast<size_t>(file.Read(buf, sizeof(buf))));
   file.Flush();
   EXPECT_EQ(240, file.GetPosition());
-  EXPECT_TRUE(!memcmp("rs,  is a non-pr", buf, sizeof(buf) - 1));
+  EXPECT_TRUE(!memcmp("rs, XBMC is a non-pr", buf, sizeof(buf) - 1));
   EXPECT_EQ(1596, file.Seek(-(int64_t)sizeof(buf), SEEK_END));
   EXPECT_EQ(1596, file.GetPosition());
   EXPECT_EQ(sizeof(buf), static_cast<size_t>(file.Read(buf, sizeof(buf))));
@@ -82,7 +82,7 @@ TEST_F(TestZipFile, Read)
   EXPECT_EQ(sizeof(buf), static_cast<size_t>(file.Read(buf, sizeof(buf))));
   file.Flush();
   EXPECT_EQ(20, file.GetPosition());
-  EXPECT_TRUE(!memcmp("About\n-----\n is ", buf, sizeof(buf) - 1));
+  EXPECT_TRUE(!memcmp("About\n-----\nXBMC is ", buf, sizeof(buf) - 1));
   EXPECT_EQ(0, file.Seek(0, SEEK_SET));
   EXPECT_EQ(-1, file.Seek(-100, SEEK_SET));
   file.Close();
@@ -93,7 +93,7 @@ TEST_F(TestZipFile, Exists)
   std::string reffile, strpathinzip;
   CFileItemList itemlist;
 
-  reffile = _REF_FILE_PATH("/filesystem/test/reffile.txt.zip");
+  reffile = XBMC_REF_FILE_PATH("xbmc/filesystem/test/reffile.txt.zip");
   CURL zipUrl = URIUtils::CreateArchivePath("zip", CURL(reffile), "");
   ASSERT_TRUE(XFILE::CDirectory::GetDirectory(zipUrl, itemlist, "",
     XFILE::DIR_FLAG_NO_FILE_DIRS));
@@ -108,7 +108,7 @@ TEST_F(TestZipFile, Stat)
   std::string reffile, strpathinzip;
   CFileItemList itemlist;
 
-  reffile = _REF_FILE_PATH("/filesystem/test/reffile.txt.zip");
+  reffile = XBMC_REF_FILE_PATH("xbmc/filesystem/test/reffile.txt.zip");
   CURL zipUrl = URIUtils::CreateArchivePath("zip", CURL(reffile), "");
   ASSERT_TRUE(XFILE::CDirectory::GetDirectory(zipUrl, itemlist, "",
     XFILE::DIR_FLAG_NO_FILE_DIRS));
@@ -131,21 +131,21 @@ TEST_F(TestZipFile, CorruptedFile)
   ssize_t size, i;
   int64_t count = 0;
 
-  reffilepath = _REF_FILE_PATH("/filesystem/test/reffile.txt.zip");
-  ASSERT_TRUE((file = _CREATECORRUPTEDFILE(reffilepath, ".zip")) != NULL);
-  std::cout << "Reference file generated at '" << _TEMPFILEPATH(file) << "'" << std::endl;
+  reffilepath = XBMC_REF_FILE_PATH("xbmc/filesystem/test/reffile.txt.zip");
+  ASSERT_TRUE((file = XBMC_CREATECORRUPTEDFILE(reffilepath, ".zip")) != NULL);
+  std::cout << "Reference file generated at '" << XBMC_TEMPFILEPATH(file) << "'" << std::endl;
 
   CURL zipUrl = URIUtils::CreateArchivePath("zip", CURL(reffilepath), "");
   if (!XFILE::CDirectory::GetDirectory(zipUrl, itemlist, "",
                                        XFILE::DIR_FLAG_NO_FILE_DIRS))
   {
-    _DELETETEMPFILE(file);
+    XBMC_DELETETEMPFILE(file);
     SUCCEED();
     return;
   }
   if (itemlist.IsEmpty())
   {
-    _DELETETEMPFILE(file);
+    XBMC_DELETETEMPFILE(file);
     SUCCEED();
     return;
   }
@@ -153,7 +153,7 @@ TEST_F(TestZipFile, CorruptedFile)
 
   if (!file->Open(strpathinzip))
   {
-    _DELETETEMPFILE(file);
+    XBMC_DELETETEMPFILE(file);
     SUCCEED();
     return;
   }
@@ -189,7 +189,7 @@ TEST_F(TestZipFile, CorruptedFile)
     std::cout << "]" << std::endl;
   }
   file->Close();
-  _DELETETEMPFILE(file);
+  XBMC_DELETETEMPFILE(file);
 }
 
 TEST_F(TestZipFile, ExtendedLocalHeader)
@@ -198,7 +198,7 @@ TEST_F(TestZipFile, ExtendedLocalHeader)
   ssize_t readlen;
   char zipdata[20000]; // size of zip file is 15352 Bytes
 
-  ASSERT_TRUE(file.Open(_REF_FILE_PATH("/filesystem/test/extendedlocalheader.zip")));
+  ASSERT_TRUE(file.Open(XBMC_REF_FILE_PATH("xbmc/filesystem/test/extendedlocalheader.zip")));
   readlen = file.Read(zipdata, sizeof(zipdata));
   EXPECT_TRUE(readlen);
 
@@ -213,7 +213,7 @@ TEST_F(TestZipFile, ExtendedLocalHeader)
 
 TEST_F(TestZipFile, Read64)
 {
-  const std::string reffile = _REF_FILE_PATH("/filesystem/test/reffile.txt.zip64.zip");
+  const std::string reffile = XBMC_REF_FILE_PATH("xbmc/filesystem/test/reffile.txt.zip64.zip");
 
   XFILE::CFile file;
   char buf[20]{};
@@ -231,7 +231,7 @@ TEST_F(TestZipFile, Read64)
   EXPECT_EQ(sizeof(buf), static_cast<size_t>(file.Read(buf, sizeof(buf))));
   file.Flush();
   EXPECT_EQ(20, file.GetPosition());
-  EXPECT_TRUE(!memcmp("About\n-----\n is ", buf, sizeof(buf) - 1));
+  EXPECT_TRUE(!memcmp("About\n-----\nXBMC is ", buf, sizeof(buf) - 1));
   EXPECT_TRUE(file.ReadLine(buf, sizeof(buf)).code != XFILE::CFile::ReadLineResult::FAILURE);
   EXPECT_EQ(39, file.GetPosition());
   EXPECT_STREQ("an award-winning fr", buf);
@@ -246,7 +246,7 @@ TEST_F(TestZipFile, Read64)
   EXPECT_EQ(sizeof(buf), static_cast<size_t>(file.Read(buf, sizeof(buf))));
   file.Flush();
   EXPECT_EQ(240, file.GetPosition());
-  EXPECT_TRUE(!memcmp("rs,  is a non-pr", buf, sizeof(buf) - 1));
+  EXPECT_TRUE(!memcmp("rs, XBMC is a non-pr", buf, sizeof(buf) - 1));
   EXPECT_EQ(1596, file.Seek(-(int64_t)sizeof(buf), SEEK_END));
   EXPECT_EQ(1596, file.GetPosition());
   EXPECT_EQ(sizeof(buf), static_cast<size_t>(file.Read(buf, sizeof(buf))));
@@ -259,13 +259,13 @@ TEST_F(TestZipFile, Read64)
   EXPECT_EQ(sizeof(buf), static_cast<size_t>(file.Read(buf, sizeof(buf))));
   file.Flush();
   EXPECT_EQ(20, file.GetPosition());
-  EXPECT_TRUE(!memcmp("About\n-----\n is ", buf, sizeof(buf) - 1));
+  EXPECT_TRUE(!memcmp("About\n-----\nXBMC is ", buf, sizeof(buf) - 1));
   file.Close();
 }
 
 TEST_F(TestZipFile, BigRead64)
 {
-  const std::string reffile = _REF_FILE_PATH("/filesystem/test/dummy64.zip");
+  const std::string reffile = XBMC_REF_FILE_PATH("xbmc/filesystem/test/dummy64.zip");
 
   XFILE::CFile file;
   char buf[4]{};
@@ -292,7 +292,7 @@ TEST_F(TestZipFile, BigRead64)
 TEST_F(TestZipFile, Zip64DirectoryListing)
 {
   CFileItemList items;
-  std::string zipfile = _REF_FILE_PATH("/filesystem/test/reffile.txt.zip64.zip");
+  std::string zipfile = XBMC_REF_FILE_PATH("xbmc/filesystem/test/reffile.txt.zip64.zip");
   CURL url = URIUtils::CreateArchivePath("zip", CURL(zipfile), "");
   ASSERT_TRUE(XFILE::CDirectory::GetDirectory(url, items, "", XFILE::DIR_FLAG_NO_FILE_DIRS));
   EXPECT_EQ(items.Size(), 1);
@@ -306,7 +306,7 @@ TEST_F(TestZipFile, Zip64ExtendedInformation)
   std::string reffile, strpathinzip;
   CFileItemList itemlist;
 
-  reffile = _REF_FILE_PATH("/filesystem/test/reffile.txt.zip64.zip");
+  reffile = XBMC_REF_FILE_PATH("xbmc/filesystem/test/reffile.txt.zip64.zip");
   CURL zipUrl = URIUtils::CreateArchivePath("zip", CURL(reffile), "");
   ASSERT_TRUE(XFILE::CDirectory::GetDirectory(zipUrl, itemlist, "", XFILE::DIR_FLAG_NO_FILE_DIRS));
   strpathinzip = itemlist[0]->GetPath();

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2026 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -10,7 +10,7 @@
 #include "addons/Skin.h"
 #include "addons/addoninfo/AddonInfoBuilder.h"
 #include "addons/addoninfo/AddonType.h"
-#include "utils/TinyXML2.h"
+#include "utils/XBMCTinyXML2.h"
 
 #include <string>
 
@@ -31,14 +31,14 @@ AddonInfoPtr SkinWithAspect(const std::string& aspect)
 {
   const std::string xml{R"xml(
 <addon id="skin.test" name="Test" version="1.0.0" provider-name="Team Universal Media Center">
-  <extension point=".gui.skin">
+  <extension point="xbmc.gui.skin">
     <res width="1920" height="1080" aspect=")xml" +
                         aspect + R"xml(" default="true" folder="xml" />
   </extension>
 </addon>
 )xml"};
 
-  CTinyXML2 doc;
+  CXBMCTinyXML2 doc;
   EXPECT_TRUE(doc.Parse(xml));
   return CAddonInfoBuilder::Generate(doc.RootElement(), RepositoryDirInfo{});
 }

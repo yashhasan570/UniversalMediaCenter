@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2010-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -24,8 +24,8 @@ public:
   CWinEventsAndroid();
   ~CWinEventsAndroid() override;
 
-  void            MessagePush(_Event *newEvent);
-  void            MessagePushRepeat(_Event *repeatEvent);
+  void            MessagePush(XBMC_Event *newEvent);
+  void            MessagePushRepeat(XBMC_Event *repeatEvent);
   bool MessagePump() override;
 
 private:
@@ -35,9 +35,9 @@ private:
   void Process() override;
 
   CCriticalSection             m_eventsCond;
-  std::list<_Event>        m_events;
+  std::list<XBMC_Event>        m_events;
 
   CCriticalSection             m_lasteventCond;
-  std::queue<_Event>       m_lastevent;
+  std::queue<XBMC_Event>       m_lastevent;
 };
 

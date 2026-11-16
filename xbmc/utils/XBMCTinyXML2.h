@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2022 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -14,10 +14,10 @@
 
 #include <tinyxml2.h>
 
-class CTinyXML2 : public tinyxml2::XMLDocument
+class CXBMCTinyXML2 : public tinyxml2::XMLDocument
 {
 public:
-  CTinyXML2() = default;
+  CXBMCTinyXML2() = default;
   /*!
    * \brief Load a file, detecting its charset and converting it to UTF-8
    */

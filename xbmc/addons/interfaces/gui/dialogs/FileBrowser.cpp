@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -25,26 +25,26 @@ namespace ADDON
 
 void Interface_GUIDialogFileBrowser::Init(AddonGlobalInterface* addonInterface)
 {
-  addonInterface->toUniversal Media Center->->dialogFileBrowser =
-      new AddonToUniversal Media CenterFuncTable__dialogFileBrowser();
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogFileBrowser =
+      new AddonToUniversal Media CenterFuncTable_universalmediacenter_gui_dialogFileBrowser();
 
-  addonInterface->toUniversal Media Center->->dialogFileBrowser->show_and_get_directory =
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogFileBrowser->show_and_get_directory =
       show_and_get_directory;
-  addonInterface->toUniversal Media Center->->dialogFileBrowser->show_and_get_file = show_and_get_file;
-  addonInterface->toUniversal Media Center->->dialogFileBrowser->show_and_get_file_from_dir =
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogFileBrowser->show_and_get_file = show_and_get_file;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogFileBrowser->show_and_get_file_from_dir =
       show_and_get_file_from_dir;
-  addonInterface->toUniversal Media Center->->dialogFileBrowser->show_and_get_file_list =
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogFileBrowser->show_and_get_file_list =
       show_and_get_file_list;
-  addonInterface->toUniversal Media Center->->dialogFileBrowser->show_and_get_source = show_and_get_source;
-  addonInterface->toUniversal Media Center->->dialogFileBrowser->show_and_get_image = show_and_get_image;
-  addonInterface->toUniversal Media Center->->dialogFileBrowser->show_and_get_image_list =
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogFileBrowser->show_and_get_source = show_and_get_source;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogFileBrowser->show_and_get_image = show_and_get_image;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogFileBrowser->show_and_get_image_list =
       show_and_get_image_list;
-  addonInterface->toUniversal Media Center->->dialogFileBrowser->clear_file_list = clear_file_list;
+  addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogFileBrowser->clear_file_list = clear_file_list;
 }
 
 void Interface_GUIDialogFileBrowser::DeInit(AddonGlobalInterface* addonInterface)
 {
-  delete addonInterface->toUniversal Media Center->->dialogFileBrowser;
+  delete addonInterface->toUniversal Media Center->universalmediacenter_gui->dialogFileBrowser;
 }
 
 bool Interface_GUIDialogFileBrowser::show_and_get_directory(UNIVERSALMEDIA_HANDLE universalmediacenterBase,

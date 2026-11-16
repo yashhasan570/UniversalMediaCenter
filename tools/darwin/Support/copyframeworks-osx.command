@@ -25,7 +25,7 @@ function check_dyloaded_depends
   fi
 }
 
-function check__dylib_depends
+function check_xbmc_dylib_depends
 {
   REWIND="1"
   while [ $REWIND = "1" ]
@@ -48,7 +48,7 @@ function check__dylib_depends
   done
 }
 
-EXTERNAL_LIBS=$_DEPENDS
+EXTERNAL_LIBS=$XBMC_DEPENDS
 
 TARGET_NAME=$FULL_PRODUCT_NAME
 TARGET_CONTENTS=$TARGET_BUILD_DIR
@@ -56,7 +56,7 @@ TARGET_CONTENTS=$TARGET_BUILD_DIR
 TARGET_BINARY=$TARGET_CONTENTS/MacOS/$APP_NAME
 TARGET_FRAMEWORKS=$TARGET_CONTENTS/Libraries
 DYLIB_NAMEPATH=@executable_path/../Libraries
-_HOME=$TARGET_CONTENTS/Resources/$APP_NAME
+XBMC_HOME=$TARGET_CONTENTS/Resources/$APP_NAME
 
 mkdir -p "$TARGET_CONTENTS/MacOS"
 mkdir -p "$TARGET_CONTENTS/Resources"
@@ -66,23 +66,23 @@ mkdir -p "$TARGET_CONTENTS/Libraries"
 
 echo "Creating icon"
 ICON_ROOT="${SOURCE_ROOT:-$SRCROOT}"
-ICON_ICNS="$ICON_ROOT/tools/darwin/packaging/media/osx/Universal Media Center.icns"
+ICON_ICNS="$ICON_ROOT/tools/darwin/packaging/media/osx/kodi.icns"
 ICON_ICONSET="$ICON_ROOT/tools/darwin/packaging/media/osx/icon.iconset"
 
 if [ -f "$ICON_ICNS" ]; then
   echo "Using bundled icns: $ICON_ICNS"
-  cp -f "$ICON_ICNS" "$TARGET_CONTENTS/Resources/Universal Media Center.icns"
+  cp -f "$ICON_ICNS" "$TARGET_CONTENTS/Resources/kodi.icns"
 elif [ -d "$ICON_ICONSET" ]; then
   echo "Falling back to legacy iconset: $ICON_ICONSET"
-  iconutil -c icns --output "$TARGET_CONTENTS/Resources/Universal Media Center.icns" "$ICON_ICONSET"
+  iconutil -c icns --output "$TARGET_CONTENTS/Resources/kodi.icns" "$ICON_ICONSET"
 else
   echo "ERROR: No macOS icon source found" >&2
   exit 1
 fi
 
-cp -f "$SRCROOT//platform/darwin/osx/Info.plist" "$TARGET_CONTENTS/"
+cp -f "$SRCROOT/xbmc/platform/darwin/osx/Info.plist" "$TARGET_CONTENTS/"
 
-# Copy all of 's dylib dependencies and rename their locations to inside the Framework
+# Copy all of XBMC's dylib dependencies and rename their locations to inside the Framework
 echo "Checking $TARGET_BINARY dylib dependencies"
 for a in $(otool -LX "$TARGET_BINARY"  | grep "$EXTERNAL_LIBS" | awk ' { print $1 } ') ; do
 	echo "    Packaging $a"
@@ -98,22 +98,22 @@ ${PYTHONSYNC} "$EXTERNAL_LIBS/lib/python$PYTHON_VERSION" "$TARGET_FRAMEWORKS/lib
 rm -rf "$TARGET_FRAMEWORKS/lib/python$PYTHON_VERSION/config"
 
 echo "Checking $TARGET_FRAMEWORKS/lib/python$PYTHON_VERSION *.so for dylib dependencies"
-check__dylib_depends "$TARGET_FRAMEWORKS"/lib/python$PYTHON_VERSION "*.so"
+check_xbmc_dylib_depends "$TARGET_FRAMEWORKS"/lib/python$PYTHON_VERSION "*.so"
 
-echo "Checking $_HOME/system *.so for dylib dependencies"
-check__dylib_depends "$_HOME"/system "*.so"
+echo "Checking $XBMC_HOME/system *.so for dylib dependencies"
+check_xbmc_dylib_depends "$XBMC_HOME"/system "*.so"
 
-echo "Checking $_HOME/addons *.so for dylib dependencies"
-check__dylib_depends "$_HOME"/addons "*.so"
+echo "Checking $XBMC_HOME/addons *.so for dylib dependencies"
+check_xbmc_dylib_depends "$XBMC_HOME"/addons "*.so"
 
-echo "Checking $_HOME/addons *.pvr for dylib dependencies"
-check__dylib_depends "$_HOME"/addons "*.pvr"
+echo "Checking $XBMC_HOME/addons *.pvr for dylib dependencies"
+check_xbmc_dylib_depends "$XBMC_HOME"/addons "*.pvr"
 
-echo "Checking $_HOME/addons *.xbs for dylib dependencies"
-check__dylib_depends "$_HOME"/addons "*.xbs"
+echo "Checking $XBMC_HOME/addons *.xbs for dylib dependencies"
+check_xbmc_dylib_depends "$XBMC_HOME"/addons "*.xbs"
 
-echo "Checking /DllPaths_generated.h for dylib dependencies"
-for a in $(grep .dylib "$SRCROOT"//DllPaths_generated.h | awk '{print $3}' | sed s/\"//g) ; do
+echo "Checking xbmc/DllPaths_generated.h for dylib dependencies"
+for a in $(grep .dylib "$SRCROOT"/xbmc/DllPaths_generated.h | awk '{print $3}' | sed s/\"//g) ; do
   check_dyloaded_depends $a
 done
 

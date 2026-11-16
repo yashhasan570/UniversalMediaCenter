@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -14,14 +14,14 @@
 #include <vector>
 
 #ifndef DOXYGEN_SHOULD_SKIP_THIS
-namespace Addon
+namespace XBMCAddon
 {
-  namespace vfs
+  namespace xbmcvfs
   {
 #endif /* DOXYGEN_SHOULD_SKIP_THIS */
 
     //
-    /// \defgroup python_vfs Library - vfs
+    /// \defgroup python_xbmcvfs Library - xbmcvfs
     /// @{
     /// @brief **Virtual file system functions on Universal Media Center.**
     ///
@@ -31,8 +31,8 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
   ///
-  /// \ingroup python_vfs
-  /// @brief \python_func{ vfs.copy(source, destination) }
+  /// \ingroup python_xbmcvfs
+  /// @brief \python_func{ xbmcvfs.copy(source, destination) }
   /// Copy file to destination, returns true/false.
   ///
   /// @param source                file to copy.
@@ -45,7 +45,7 @@ namespace Addon
   /// **Example:**
   /// ~~~~~~~~~~~~~{.py}
   /// ..
-  /// success = vfs.copy(source, destination)
+  /// success = xbmcvfs.copy(source, destination)
   /// ..
   /// ~~~~~~~~~~~~~
   ///
@@ -56,8 +56,8 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
   ///
-  /// \ingroup python_vfs
-  /// @brief \python_func{ vfs.delete(file) }
+  /// \ingroup python_xbmcvfs
+  /// @brief \python_func{ xbmcvfs.delete(file) }
   /// Delete a file
   ///
   /// @param file                  File to delete
@@ -69,7 +69,7 @@ namespace Addon
   /// **Example:**
   /// ~~~~~~~~~~~~~{.py}
   /// ..
-  /// vfs.delete(file)
+  /// xbmcvfs.delete(file)
   /// ..
   /// ~~~~~~~~~~~~~
   ///
@@ -80,8 +80,8 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
   ///
-  /// \ingroup python_vfs
-  /// @brief \python_func{ vfs.rename(file, newFileName) }
+  /// \ingroup python_xbmcvfs
+  /// @brief \python_func{ xbmcvfs.rename(file, newFileName) }
   /// Rename a file
   ///
   /// @param file                  File to rename
@@ -97,7 +97,7 @@ namespace Addon
   /// **Example:**
   /// ~~~~~~~~~~~~~{.py}
   /// ..
-  /// success = vfs.rename(file,newFileName)
+  /// success = xbmcvfs.rename(file,newFileName)
   /// ..
   /// ~~~~~~~~~~~~~
   ///
@@ -108,8 +108,8 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
   ///
-  /// \ingroup python_vfs
-  /// @brief \python_func{ vfs.exists(path) }
+  /// \ingroup python_xbmcvfs
+  /// @brief \python_func{ xbmcvfs.exists(path) }
   /// Check for a file or folder existence
   ///
   /// @param path                  File or folder (folder must end with
@@ -122,7 +122,7 @@ namespace Addon
   /// **Example:**
   /// ~~~~~~~~~~~~~{.py}
   /// ..
-  /// success = vfs.exists(path)
+  /// success = xbmcvfs.exists(path)
   /// ..
   /// ~~~~~~~~~~~~~
   ///
@@ -133,8 +133,8 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_vfs
-    /// @brief \python_func{ vfs.makeLegalFilename(filename) }
+    /// \ingroup python_xbmcvfs
+    /// @brief \python_func{ xbmcvfs.makeLegalFilename(filename) }
     /// Returns a legal filename or path as a string.
     ///
     /// @param filename              string - filename/path to make legal
@@ -148,16 +148,16 @@ namespace Addon
     ///
     ///
     ///-------------------------------------------------------------------------
-    /// @python_v19 New function added (replaces old **.makeLegalFilename**)
+    /// @python_v19 New function added (replaces old **xbmc.makeLegalFilename**)
     ///
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
     /// # windows
-    /// >> vfs.makeLegalFilename('C://Trailers/Ice Age: The Meltdown.avi')
+    /// >> xbmcvfs.makeLegalFilename('C://Trailers/Ice Age: The Meltdown.avi')
     /// C:\Trailers\Ice Age_ The Meltdown.avi
     /// # non-windows
-    /// >> vfs.makeLegalFilename("///\\jk???lj????.mpg")
+    /// >> xbmcvfs.makeLegalFilename("///\\jk???lj????.mpg")
     /// /jk___lj____.mpg
     /// ..
     /// ~~~~~~~~~~~~~
@@ -169,8 +169,8 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_vfs
-    /// @brief \python_func{ vfs.translatePath(path)  }
+    /// \ingroup python_xbmcvfs
+    /// @brief \python_func{ xbmcvfs.translatePath(path)  }
     /// Returns the translated path.
     ///
     /// @param path string - Path to format
@@ -182,12 +182,12 @@ namespace Addon
     ///
     ///
     /// ------------------------------------------------------------------------
-    /// @python_v19 New function added (replaces old **.translatePath**)
+    /// @python_v19 New function added (replaces old **xbmc.translatePath**)
     ///
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// fpath = vfs.translatePath('special://home')
+    /// fpath = xbmcvfs.translatePath('special://home')
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -198,8 +198,8 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_vfs
-    /// @brief \python_func{ vfs.validatePath(path) }
+    /// \ingroup python_xbmcvfs
+    /// @brief \python_func{ xbmcvfs.validatePath(path) }
     /// Returns the validated path.
     ///
     /// @param path                  string  - Path to format
@@ -211,12 +211,12 @@ namespace Addon
     ///
     ///
     /// ------------------------------------------------------------------------
-    /// @python_v19 New function added (replaces old **.validatePath**)
+    /// @python_v19 New function added (replaces old **xbmc.validatePath**)
     ///
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// fpath = vfs.validatePath(somepath)
+    /// fpath = xbmcvfs.validatePath(somepath)
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -227,8 +227,8 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_vfs
-    /// @brief \python_func{ vfs.mkdir(path) }
+    /// \ingroup python_xbmcvfs
+    /// @brief \python_func{ xbmcvfs.mkdir(path) }
     /// Create a folder.
     ///
     /// @param path                  Folder to create
@@ -240,7 +240,7 @@ namespace Addon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// success = vfs.mkdir(path)
+    /// success = xbmcvfs.mkdir(path)
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -251,8 +251,8 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_vfs
-    /// @brief \python_func{ vfs.mkdirs(path) }
+    /// \ingroup python_xbmcvfs
+    /// @brief \python_func{ xbmcvfs.mkdirs(path) }
     /// Make all directories along the path
     ///
     /// Create folder(s) - it will create all folders in the path.
@@ -266,7 +266,7 @@ namespace Addon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// success = vfs.mkdirs(path)
+    /// success = xbmcvfs.mkdirs(path)
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -277,8 +277,8 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_vfs
-    /// @brief \python_func{ vfs.rmdir(path, [force]) }
+    /// \ingroup python_xbmcvfs
+    /// @brief \python_func{ xbmcvfs.rmdir(path, [force]) }
     /// Remove a folder.
     ///
     /// @param path                  string - Folder to remove
@@ -294,7 +294,7 @@ namespace Addon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// success = vfs.rmdir(path)
+    /// success = xbmcvfs.rmdir(path)
     /// ..
     /// ~~~~~~~~~~~~~
     ///
@@ -305,8 +305,8 @@ namespace Addon
 
 #ifdef DOXYGEN_SHOULD_USE_THIS
     ///
-    /// \ingroup python_vfs
-    /// @brief \python_func{ vfs.listdir(path) }
+    /// \ingroup python_xbmcvfs
+    /// @brief \python_func{ xbmcvfs.listdir(path) }
     /// Lists content of a folder.
     ///
     /// @param path                  Folder to get list from
@@ -318,7 +318,7 @@ namespace Addon
     /// **Example:**
     /// ~~~~~~~~~~~~~{.py}
     /// ..
-    /// dirs, files = vfs.listdir(path)
+    /// dirs, files = xbmcvfs.listdir(path)
     /// ..
     /// ~~~~~~~~~~~~~
     ///

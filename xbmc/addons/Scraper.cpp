@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2005-2018 Team Universal Media Center
- *  This file is part of Universal Media Center - https://github.com/yashhasan570/UniversalMediaCenter
+ *  This file is part of Universal Media Center - https://universalmediacenter.tv
  *
  *  SPDX-License-Identifier: GPL-2.0-or-later
  *  See LICENSES/README.md for more information.
@@ -188,7 +188,7 @@ bool CScraper::SetPathSettings(ContentType content, const std::string& xml)
   if (xml.empty())
     return true;
 
-  CTinyXML doc;
+  CXBMCTinyXML doc;
   doc.Parse(xml);
   return SettingsFromXML(doc, false);
 }
@@ -199,7 +199,7 @@ std::string CScraper::GetPathSettings()
     return "";
 
   std::stringstream stream;
-  CTinyXML doc;
+  CXBMCTinyXML doc;
   SettingsToXML(doc);
   if (doc.RootElement())
     stream << *doc.RootElement();
@@ -255,7 +255,7 @@ std::vector<std::string> CScraper::Run(const std::string& function,
 
   CLog::Log(LOGDEBUG, "scraper: {} returned {}", function, strXML);
 
-  CTinyXML doc;
+  CXBMCTinyXML doc;
   /* all data was converted to UTF-8 before being processed by scraper */
   doc.Parse(strXML, TIXML_ENCODING_UTF8);
   if (!doc.RootElement())
@@ -377,7 +377,7 @@ bool CScraper::Load()
     auto itr = deps.begin();
     while (itr != deps.end())
     {
-      if (itr->id == ".metadata")
+      if (itr->id == "xbmc.metadata")
       {
         ++itr;
         continue;
@@ -388,7 +388,7 @@ bool CScraper::Load()
 
       if (CServiceBroker::GetAddonMgr().GetAddon((*itr).id, dep, ADDON::OnlyEnabled::CHOICE_YES))
       {
-        CTinyXML doc;
+        CXBMCTinyXML doc;
         if (dep->Type() == AddonType::SCRAPER_LIBRARY && doc.LoadFile(dep->LibPath()))
           m_parser.AddDocument(&doc);
       }
@@ -480,7 +480,7 @@ CScraperUrl CScraper::NfoUrl(const std::string &sNfoContent)
   // or <url>...</url> or <url>...</url><id>...</id> on success
   for (const auto& i : vcsOut)
   {
-    CTinyXML doc;
+    CXBMCTinyXML doc;
     doc.Parse(i, TIXML_ENCODING_UTF8);
     CheckScraperError(doc.RootElement());
 
@@ -556,7 +556,7 @@ CScraperUrl CScraper::ResolveIDToUrl(const std::string &externalID)
   // or <url>...</url> or <url>...</url><id>...</id> on success
   for (const auto& i : vcsOut)
   {
-    CTinyXML doc;
+    CXBMCTinyXML doc;
     doc.Parse(i, TIXML_ENCODING_UTF8);
     CheckScraperError(doc.RootElement());
 
@@ -1038,7 +1038,7 @@ std::vector<CScraperUrl> CScraper::FindMovieUncached(XFILE::IHttpClient& fcurl,
   bool fResults(false);
   for (const auto& i : vcsOut)
   {
-    CTinyXML doc;
+    CXBMCTinyXML doc;
     doc.Parse(i, TIXML_ENCODING_UTF8);
     if (!doc.RootElement())
     {
@@ -1178,7 +1178,7 @@ std::vector<CMusicAlbumInfo> CScraper::FindAlbum(XFILE::IHttpClient& fcurl,
   // parse the returned XML into a vector of album objects
   for (const auto& i : vcsOut)
   {
-    CTinyXML doc;
+    CXBMCTinyXML doc;
     doc.Parse(i, TIXML_ENCODING_UTF8);
     TiXmlHandle xhDoc(&doc);
 
@@ -1274,7 +1274,7 @@ std::vector<CMusicArtistInfo> CScraper::FindArtist(XFILE::IHttpClient& fcurl,
   // parse the returned XML into a vector of artist objects
   for (const auto& i : vcsOut)
   {
-    CTinyXML doc;
+    CXBMCTinyXML doc;
     doc.Parse(i, TIXML_ENCODING_UTF8);
     if (!doc.RootElement())
     {
@@ -1362,7 +1362,7 @@ VIDEO::EPISODELIST CScraper::GetEpisodeList(XFILE::IHttpClient& fcurl, const CSc
   // parse the XML response
   for (const auto& i : vcsOut)
   {
-    CTinyXML doc;
+    CXBMCTinyXML doc;
     doc.Parse(i);
     if (!doc.RootElement())
     {
@@ -1472,7 +1472,7 @@ bool CScraper::GetVideoDetailsUncached(XFILE::IHttpClient& fcurl,
     // parse XML output
     for (const auto& i : vcsOut)
     {
-      CTinyXML doc;
+      CXBMCTinyXML doc;
       doc.Parse(i, TIXML_ENCODING_UTF8);
       if (!doc.RootElement())
       {
@@ -1513,7 +1513,7 @@ bool CScraper::GetAlbumDetails(XFILE::IHttpClient& fcurl, const CScraperUrl& scu
   bool fRet(false);
   for (auto i = vcsOut.begin(); i != vcsOut.end(); ++i)
   {
-    CTinyXML doc;
+    CXBMCTinyXML doc;
     doc.Parse(*i, TIXML_ENCODING_UTF8);
     if (!doc.RootElement())
     {
@@ -1554,7 +1554,7 @@ bool CScraper::GetArtistDetails(XFILE::IHttpClient& fcurl,
   bool fRet(false);
   for (auto i = vcsOut.begin(); i != vcsOut.end(); ++i)
   {
-    CTinyXML doc;
+    CXBMCTinyXML doc;
     doc.Parse(*i, TIXML_ENCODING_UTF8);
     if (!doc.RootElement())
     {
@@ -1588,7 +1588,7 @@ bool CScraper::GetArtwork(XFILE::IHttpClient& fcurl, CVideoInfoTag& details)
   bool fRet(false);
   for (auto it = vcsOut.begin(); it != vcsOut.end(); ++it)
   {
-    CTinyXML doc;
+    CXBMCTinyXML doc;
     doc.Parse(*it, TIXML_ENCODING_UTF8);
     if (!doc.RootElement())
     {

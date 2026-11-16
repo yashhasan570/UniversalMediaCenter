@@ -1,15 +1,15 @@
-# Universal Media Center Media Center language file
+# Kodi Media Center language file
 # Addon Name: Dim
-# Addon id: screensaver..builtin.dim
-# Addon Provider: Team Universal Media Center
+# Addon id: screensaver.xbmc.builtin.dim
+# Addon Provider: Team Kodi
 msgid ""
 msgstr ""
-"Project-Id-Version: UNIVERSAL MEDIA CENTER Main\n"
-"Report-Msgid-Bugs-To: translations@github.com/yashhasan570/UniversalMediaCenter\n"
+"Project-Id-Version: KODI Main\n"
+"Report-Msgid-Bugs-To: translations@kodi.tv\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: 2021-07-22 14:51+0000\n"
 "Last-Translator: rimasx <riks_12@hot.ee>\n"
-"Language-Team: Estonian <https://universalmediacenter.weblate.cloud/projects/Universal Media Center-core/screensaver--builtin-dim/et_ee/>\n"
+"Language-Team: Estonian <https://kodi.weblate.cloud/projects/kodi-core/screensaver-xbmc-builtin-dim/et_ee/>\n"
 "Language: et_ee\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
