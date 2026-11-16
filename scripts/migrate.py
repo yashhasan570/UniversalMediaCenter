@@ -12,28 +12,26 @@ ROOT = Path(__file__).resolve().parent.parent
 #  - * / * / .* / * /  = C++ binary add-on
 #    ABI symbols and extension points (compiled add-ons link against them).
 #  - org..universalmediacenter = official app package, referenced for interop.
-ANCHORS = ['', '', '', '', '', '',
-           '', 'org..universalmediacenter']
-CODE = [
-    ('universalmediacenter.weblate.cloud', 'universalmediacenter.weblate.cloud'),
-    ('UNIVERSALMEDIA_', 'UNIVERSALMEDIA_'),
-    ('UniversalMediaCenterSwig', 'UniversalMediaCenterSwig'),
-    ('UniversalMediaCenterConfig', 'UniversalMediaCenterConfig'),
-    ('UniversalMediaCenterTupleTraits', 'UniversalMediaCenterTupleTraits'),
-    ('UniversalMediaCenterTpNew', 'UniversalMediaCenterTpNew'),
-    ('UniversalMediaCenterDictTraits', 'UniversalMediaCenterDictTraits'),
-    ('UniversalMediaCenterAlternativeTraits', 'UniversalMediaCenterAlternativeTraits'),
-    ('UniversalMediaCenterSend', 'UniversalMediaCenterSend'),
-    ('UniversalMediaCenterDeepLinkActivity', 'UniversalMediaCenterDeepLinkActivity'),
-    ('UNIVERSAL MEDIA CENTER', 'UNIVERSAL MEDIA CENTER'),
-    ('Universal Media Center', 'Universal Media Center'),
-    ('universalmediacenter', 'universalmediacenter'),
+ANCHORS = ['org.xbmc.kodi']CODE = [
+    ('kodi.weblate.cloud', 'universalmediacenter.weblate.cloud'),
+    ('KODI_', 'UNIVERSALMEDIA_'),
+    ('KodiSwig', 'UniversalMediaCenterSwig'),
+    ('KodiConfig', 'UniversalMediaCenterConfig'),
+    ('KodiTupleTraits', 'UniversalMediaCenterTupleTraits'),
+    ('KodiTpNew', 'UniversalMediaCenterTpNew'),
+    ('KodiDictTraits', 'UniversalMediaCenterDictTraits'),
+    ('KodiAlternativeTraits', 'UniversalMediaCenterAlternativeTraits'),
+    ('KodiSend', 'UniversalMediaCenterSend'),
+    ('KodiDeepLinkActivity', 'UniversalMediaCenterDeepLinkActivity'),
+    ('KODI', 'UNIVERSAL MEDIA CENTER'),
+    ('Kodi', 'Universal Media Center'),
+    ('kodi', 'universalmediacenter'),
 ]
 DOC = [
-    ('universalmediacenter.weblate.cloud', 'universalmediacenter.weblate.cloud'),
-    ('UNIVERSAL MEDIA CENTER', 'UNIVERSAL MEDIA CENTER'),
-    ('Universal Media Center', 'Universal Media Center'),
-    ('universalmediacenter', 'Universal Media Center'),
+    ('kodi.weblate.cloud', 'universalmediacenter.weblate.cloud'),
+    ('KODI', 'UNIVERSAL MEDIA CENTER'),
+    ('Kodi', 'Universal Media Center'),
+    ('kodi', 'Universal Media Center'),
 ]
 CODE_EXT = {'.cpp', '.h', '.c', '.hpp', '.cc', '.java', '.kt', '.kts', '.py', '.sh',
             '.cmake', '.in', '.m', '.mm', '.swift', '.gradle', '.json', '.xml', '.yml',
@@ -44,7 +42,10 @@ def main():
     changed = 0
     for dirpath, dirnames, filenames in os.walk(ROOT):
         rel = os.path.relpath(dirpath, ROOT).replace(os.sep, '/')
-        dirnames[:] = [d for d in dirnames if rel.split('/')[0] not in ('.git', 'scripts')]
+        if rel == '.':
+            dirnames[:] = [d for d in dirnames if d not in ('.git', 'scripts')]
+        elif rel.split('/')[0] in ('.git', 'scripts'):
+            dirnames[:] = []
         for fn in filenames:
             p = Path(dirpath) / fn
             if p.suffix.lower() not in CODE_EXT and p.suffix != '': continue
