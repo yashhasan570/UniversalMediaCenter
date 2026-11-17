@@ -59,7 +59,6 @@ Universal Media Center is created by users for users and **we welcome every cont
 **Not enough free time?** No problem! There are other ways to help Universal Media Center.
 
 * **Spread the word:** Share Universal Media Center with the world! Tell your friends and family about how Universal Media Center creates an amazing entertainment experience. Stay up to date on the latest stories about Universal Media Center reading our **[news](https://universalmediacenter.tv/blog)** section, follow us on **[Twitter](https://twitter.com/universalmediacentertv)** and **[Facebook](https://www.facebook.com/XBMC/)**, or **star Universal Media Center's repo** if you want to follow development.
-* **Donate:** We are always happy to receive a **[donation](https://universalmediacenter.tv/contribute/donate)**. Donations are typically used for travel to attend conferences, any necessary paperwork and legal fees, and the yearly XBMC Foundation Developers Conference, where a great deal of coding and planning for the following year occurs. Donations may also be used to purchase necessary hardware and licenses for developers, along with t-shirts, stickers, and other accessories for conferences.
 
 ## Building
 Universal Media Center uses CMake as its building system but instructions are highly dependent on your operating system and target platform. Fortunately **[we've got you covered](docs/README.md)**.
@@ -70,7 +69,6 @@ Universal Media Center couldn't exist without
 * All the **[contributors](https://github.com/xbmc/xbmc/graphs/contributors)**. Big or small a change, it does make a difference.
 * All the developers that write the fantastic **software and libraries** that Universal Media Center uses. We stand on the shoulders of giants.
 * Our **[fantastic community](https://forum.universalmediacenter.tv/)** for the never ending support, inspiration, feedback, and for keeping us on our toes when we screw up!
-* **[Our sponsors](https://universalmediacenter.tv/sponsors)**. Without them, keeping a huge project like this alive would be next to impossible.
 
 ## License
 Universal Media Center is **[GPLv2 licensed](LICENSE.md)**. You may use, distribute and copy it under the license terms.
