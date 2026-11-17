@@ -78,6 +78,18 @@ TEST_F(VideoDatabaseGetResultTest, BoolOverloadsStillReportFalseForMissingRows)
   EXPECT_FALSE(m_db.GetFileInfo("", details, MISSING_ID));
 }
 
+TEST_F(VideoDatabaseGetResultTest, MissingItemOfEveryKindIsNotFound)
+{
+  CVideoInfoTag details;
+
+  for (const UNIVERSAL MEDIA CENTER::MEDIA::TYPE type :
+       {UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MOVIE, UNIVERSAL MEDIA CENTER::MEDIA::TYPE::VIDEO_COLLECTION, UNIVERSAL MEDIA CENTER::MEDIA::TYPE::TV_SHOW,
+        UNIVERSAL MEDIA CENTER::MEDIA::TYPE::SEASON, UNIVERSAL MEDIA CENTER::MEDIA::TYPE::EPISODE, UNIVERSAL MEDIA CENTER::MEDIA::TYPE::MUSIC_VIDEO,
+        UNIVERSAL MEDIA CENTER::MEDIA::TYPE::SONG})
+    EXPECT_EQ(m_db.TryGetDetailsByTypeAndId(type, MISSING_ID, details), GetResult::NotFound)
+        << UNIVERSAL MEDIA CENTER::MEDIA::NameOf(type);
+}
+
 // A negative id is rejected before any query runs, which is still an answer
 // about the record.
 TEST_F(VideoDatabaseGetResultTest, NegativeIdIsNotFound)
