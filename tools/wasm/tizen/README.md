@@ -36,7 +36,8 @@ web project in `<build-dir>/tizen_packaging/Universal Media Center`:
   templates
 - `index.html`, the shared web entry page
 - `media/splash.jpg`, the splash picture `index.html` shows while Universal Media Center loads
-- the build artifacts `universalmediacenter.js`, `universalmediacenter.wasm` and `universalmediacenter.data`
+- the build artifacts `universalmediacenter.js`, `universalmediacenter.wasm`, `universalmediacenter.data` and
+  `audio_worklet_processor.js`
 
 `package_tizen_wgt` then packs and signs that directory into
 `<build-dir>/tizen_packaging/Universal Media Center/Release/Universal Media Center.wgt` (`Debug/` for a Debug
